@@ -1,6 +1,6 @@
 {
-  "parent": "kubejs:block/pipe/template/item_model",
+  "parent": "synergy:block/pipe/template/item_model",
   "textures": {
-    "pipe": "kubejs:block/pipe/black"
+    "pipe": "synergy:block/pipe/black"
   }
 }

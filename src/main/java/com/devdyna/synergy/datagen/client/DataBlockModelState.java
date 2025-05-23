@@ -9,7 +9,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class DataBlockModelState extends BlockStateProvider {
@@ -28,6 +27,7 @@ public class DataBlockModelState extends BlockStateProvider {
                 models().getExistingFile(modLoc("block/dynamo/off")));
     }
 
+    @SuppressWarnings("unused")
     private void demoBiState(Block b, BooleanProperty p) {
         DataGenUtil.BiStateBlock(this, b, p, models()
                 .getExistingFile(modLoc("block/dynamo/on")),

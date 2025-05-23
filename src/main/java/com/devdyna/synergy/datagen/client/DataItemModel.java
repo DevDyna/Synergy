@@ -2,10 +2,7 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.List;
 
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
@@ -15,13 +12,14 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class DataItemModel extends ItemModelProvider {
 
     public DataItemModel(PackOutput o, ExistingFileHelper f) {
         super(o, ID, f);
     }
+
+    List<Block> demo = List.of(zBlocks.SPRINKLER.get());
 
     @Override
     protected void registerModels() {
@@ -30,8 +28,7 @@ public class DataItemModel extends ItemModelProvider {
 
         zItems.zItem.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
 
-        zBlocks.zBlockItem.getEntries()
-                .forEach(e -> DataGenUtil.itemBlockwithParent(e.get(), this, ID + ":block/dynamo/off"));
+        demo.forEach(e -> DataGenUtil.itemBlockwithParent(e, this, ID + ":block/dynamo/off"));
 
     }
 

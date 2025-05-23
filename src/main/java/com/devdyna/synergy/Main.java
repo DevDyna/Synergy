@@ -22,7 +22,7 @@ public class Main {
         Material.register(bus);
         core.registerCompat();
 
-        NeoForge.EVENT_BUS.register(new blockevent());
+        NeoForge.EVENT_BUS.register(blockevent.class);
 
     }
 }

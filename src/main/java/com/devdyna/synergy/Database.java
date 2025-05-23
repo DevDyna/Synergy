@@ -17,5 +17,6 @@ public class Database {
     public class Blocks {
         public static String azalea = "azalea";
         public static String sprinkler = "sprinkler";
+        public static String pipe = "pipe";
     }
 }

@@ -1,6 +1,6 @@
 {
     "credit": "Made with Blockbench",
-    "parent": "kubejs:block/pipe/template/active",
+    "parent": "synergy:block/pipe/template/active",
     "textures": {
         "1": "#pipe",
         "particle": "#pipe"
