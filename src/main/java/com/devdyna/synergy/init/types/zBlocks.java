@@ -1,9 +1,15 @@
 package com.devdyna.synergy.init.types;
 
+import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import com.devdyna.synergy.Database;
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.init.Material;
+import com.devdyna.synergy.init.builder.PottedAzalea;
+import com.devdyna.synergy.init.builder.Sprinkler.SprinklerBLK;
 
 public class zBlocks {
         public static void register(IEventBus bus) {
@@ -13,12 +19,15 @@ public class zBlocks {
         }
 
         // ---------------------------------------------------------------------------------------//
-        public static final DeferredRegister.Blocks zBlock = DeferredRegister.createBlocks(Main.MODID);
-        public static final DeferredRegister.Blocks zBlockItem = DeferredRegister.createBlocks(Main.MODID);
+        public static final DeferredRegister.Blocks zBlock = DeferredRegister.createBlocks(Main.ID);
+        public static final DeferredRegister.Blocks zBlockItem = DeferredRegister.createBlocks(Main.ID);
         // ---------------------------------------------------------------------------------------//
 
-        // public static final DeferredHolder<Block, ?> BK = zBlock.register("bk",() ->
-        // new BK());
+        public static final DeferredHolder<Block, PottedAzalea> AZALEA = zBlock.register(Database.Blocks.azalea,
+                        () -> new PottedAzalea());
+
+        public static final DeferredHolder<Block, ?> SPRINKLER = Material.registerItemBlock(Database.Blocks.sprinkler,
+                        () -> new SprinklerBLK());
 
         // ---------------------------------------------------------------------------------------//
 

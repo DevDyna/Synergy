@@ -74,7 +74,7 @@ public class Material {
          */
         public static TagKey<Item> tagItem(String name) {
                 return TagKey.create(BuiltInRegistries.ITEM.key(),
-                                ResourceLocation.fromNamespaceAndPath(Main.MODID, name));
+                                ResourceLocation.fromNamespaceAndPath(Main.ID, name));
         }
 
         /**
@@ -82,7 +82,7 @@ public class Material {
          */
         public static TagKey<Block> tagBlock(String name) {
                 return TagKey.create(BuiltInRegistries.BLOCK.key(),
-                                ResourceLocation.fromNamespaceAndPath(Main.MODID, name));
+                                ResourceLocation.fromNamespaceAndPath(Main.ID, name));
         }
 
         /**
@@ -90,7 +90,7 @@ public class Material {
          */
         public static TagKey<Fluid> tagFluid(String name) {
                 return TagKey.create(BuiltInRegistries.FLUID.key(),
-                                ResourceLocation.fromNamespaceAndPath(Main.MODID, name));
+                                ResourceLocation.fromNamespaceAndPath(Main.ID, name));
         }
 
 }

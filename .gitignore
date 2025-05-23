@@ -26,3 +26,5 @@ run-data
 repo
 /.vscode
 /generated
+desktop.ini
+/src/generated/resources/.cache

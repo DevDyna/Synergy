@@ -1,0 +1,102 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "block/block",
+  "render_type": "cutout",
+  "textures": { "0": "synergy:block/azalea" },
+  "elements": [
+    {
+      "from": [4, 15.9, 4],
+      "to": [12, 16, 12],
+      "faces": {
+        "up": {
+          "uv": [8.33333, 0.16667, 9.66667, 1.5],
+          "texture": "#0",
+          "cullface": "up"
+        },
+        "down": { "uv": [8.33333, 1.5, 9.66667, 0.16667], "texture": "#0" }
+      }
+    },
+    {
+      "from": [4.1, 4, 8],
+      "to": [11.85, 14, 8],
+      "rotation": {
+        "angle": -45,
+        "axis": "y",
+        "origin": [8, 8, 8],
+        "rescale": true
+      },
+      "faces": {
+        "north": { "uv": [8.33334, 3, 9.66666, 4.66667], "texture": "#0" },
+        "south": { "uv": [8.33334, 3, 9.66666, 4.66667], "texture": "#0" }
+      }
+    },
+    {
+      "from": [4.1, 4, 8],
+      "to": [11.85, 14, 8],
+      "rotation": {
+        "angle": 45,
+        "axis": "y",
+        "origin": [8, 8, 8],
+        "rescale": true
+      },
+      "faces": {
+        "north": { "uv": [8.33334, 3, 9.66666, 4.66667], "texture": "#0" },
+        "south": { "uv": [8.33334, 3, 9.66666, 4.66667], "texture": "#0" }
+      }
+    },
+    {
+      "from": [4, 8, 4],
+      "to": [12, 16, 4],
+      "faces": {
+        "north": { "uv": [8.33333, 1.5, 9.66667, 2.83333], "texture": "#0" },
+        "south": { "uv": [12, 5, 4, 13], "texture": "#0" }
+      }
+    },
+    {
+      "from": [4, 8, 12],
+      "to": [12, 16, 12],
+      "faces": {
+        "north": { "uv": [12, 5, 4, 13], "texture": "#0" },
+        "south": { "uv": [8.33333, 1.5, 9.66667, 2.83333], "texture": "#0" }
+      }
+    },
+    {
+      "from": [12, 8, 4],
+      "to": [12, 16, 12],
+      "faces": {
+        "east": { "uv": [8.33333, 1.5, 9.66667, 2.83333], "texture": "#0" },
+        "west": { "uv": [12, 5, 4, 13], "texture": "#0" }
+      }
+    },
+    {
+      "from": [4, 8, 4],
+      "to": [4, 16, 12],
+      "faces": {
+        "east": { "uv": [12, 5, 4, 13], "texture": "#0" },
+        "west": { "uv": [8.33333, 1.5, 9.66667, 2.83333], "texture": "#0" }
+      }
+    }
+  ],
+  "groups": [
+    {
+      "name": "bush",
+      "origin": [8, 8, 8],
+      "color": 0,
+      "children": [
+        0,
+        {
+          "name": "rotation",
+          "origin": [8, 8, 8],
+          "color": 0,
+          "children": [1, 2]
+        },
+        {
+          "name": "sides",
+          "origin": [0, 0, 0],
+          "color": 0,
+          "children": [3, 4, 5, 6]
+        }
+      ]
+    }
+  ]
+}

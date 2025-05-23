@@ -69,6 +69,10 @@ public class LevelUtil {
         popItemFromPos((Level) level, x, y, z, itemStack);
     }
 
+    public static void popItemFromPos(Level level, BlockPos pos, ItemStack itemStack) {
+        popItemFromPos( level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
+    }
+
     @SuppressWarnings("null")
     public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, float luck) {
 

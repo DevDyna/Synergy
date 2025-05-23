@@ -1,22 +1,37 @@
 package com.devdyna.synergy.datagen.client;
 
-import static com.devdyna.synergy.Main.MODID;
+import static com.devdyna.synergy.Main.ID;
+
+import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.utils.DataGenUtil;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class DataBlockModelState extends BlockStateProvider {
 
     public DataBlockModelState(PackOutput o, ExistingFileHelper f) {
-        super(o, MODID, f);
+        super(o, ID, f);
     }
 
     @Override
     protected void registerStatesAndModels() {
+        demosimpleBlock(zBlocks.SPRINKLER.get());
+    }
 
-        // simpleBlock(Blocks.BK.get(),
-        //         models().getExistingFile(DataGenUtil.getResource("block/stone")));
+    private void demosimpleBlock(Block b) {
+        simpleBlock(b,
+                models().getExistingFile(modLoc("block/dynamo/off")));
+    }
+
+    private void demoBiState(Block b, BooleanProperty p) {
+        DataGenUtil.BiStateBlock(this, b, p, models()
+                .getExistingFile(modLoc("block/dynamo/on")),
+                models().getExistingFile(modLoc("block/dynamo/off")));
     }
 
 }

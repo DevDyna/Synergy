@@ -1,11 +1,13 @@
 package com.devdyna.synergy.init.types;
 
+import com.devdyna.synergy.Database;
 import com.devdyna.synergy.Main;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -19,14 +21,14 @@ public class zCreativeTab {
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredRegister<CreativeModeTab> zCreative = DeferredRegister
-                        .create(Registries.CREATIVE_MODE_TAB, Main.MODID);
+                        .create(Registries.CREATIVE_MODE_TAB, Main.ID);
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = zCreative
-                        .register(Main.MODID, () -> CreativeModeTab.builder()
-                                        .title(Component.translatable(Main.MODID + ".tab"))
+                        .register(Main.ID, () -> CreativeModeTab.builder()
+                                        .title(Component.translatable(Main.ID + "."+Database.CreativeTab))
                                         .withTabsBefore(CreativeModeTabs.COMBAT)
-                                        // .icon(() -> Items.IT.get().getDefaultInstance())
+                                        .icon(() -> Items.DIAMOND.getDefaultInstance())
                                         .displayItems((parameters, output) -> {
 
                                                 zItems.zItem.getEntries().forEach(e -> {

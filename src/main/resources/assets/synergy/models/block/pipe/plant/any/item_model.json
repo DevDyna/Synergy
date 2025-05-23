@@ -1,0 +1,6 @@
+{
+  "parent": "kubejs:block/pipe/template/cross",
+  "textures": {
+    "pipe": "kubejs:block/pipe/lime"
+  }
+}

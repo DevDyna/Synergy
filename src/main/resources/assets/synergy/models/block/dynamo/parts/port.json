@@ -1,0 +1,6 @@
+{
+  "parent": "synergy:block/dynamo/parts/template",
+  "textures": {
+    "base": "synergy:block/frame"
+  }
+}

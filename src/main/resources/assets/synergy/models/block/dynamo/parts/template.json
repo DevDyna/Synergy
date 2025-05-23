@@ -1,0 +1,55 @@
+{
+    "credit": "Made with Blockbench",
+    "parent": "block/block",
+    "render_type": "cutout",
+    "textures": {
+        "0": "#base",
+        "particle": "#base"
+    },
+    "elements": [{
+            "from": [4, 4, 0],
+            "to": [12, 12, 1],
+            "rotation": {
+                "angle": 0,
+                "axis": "y",
+                "origin": [8, 8, 8]
+            },
+            "faces": {
+                "north": {
+                    "uv": [10, 6, 14, 10],
+                    "texture": "#0"
+                },
+                "east": {
+                    "uv": [10, 6, 10.5, 10],
+                    "texture": "#0"
+                },
+                "south": {
+                    "uv": [10, 6, 14, 10],
+                    "texture": "#0"
+                },
+                "west": {
+                    "uv": [13.5, 6, 14, 10],
+                    "texture": "#0"
+                },
+                "up": {
+                    "uv": [10, 6, 10.5, 10],
+                    "rotation": 90,
+                    "texture": "#0"
+                },
+                "down": {
+                    "uv": [10, 9.5, 14, 10],
+                    "rotation": 180,
+                    "texture": "#0"
+                }
+            }
+        }
+    ],
+    "groups": [{
+            "name": "face",
+            "origin": [8, 8, 8],
+            "color": 0,
+            "nbt": "{}",
+            "children": [0]
+        }
+    ]
+}

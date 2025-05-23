@@ -1,0 +1,7 @@
+{
+  "parent": "synergy:block/dynamo/template",
+  "textures": {
+    "front": "synergy:block/animate",
+	"frame": "synergy:block/frame"
+  }
+}

@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.types;
 
-import static com.devdyna.synergy.Main.MODID;
+import static com.devdyna.synergy.Main.ID;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
@@ -15,7 +15,7 @@ public class zHandlers {
     // ---------------------------------------------------------------------------------------//
 
     public static final DeferredRegister<AttachmentType<?>> zHandler = DeferredRegister.create(Keys.ATTACHMENT_TYPES,
-            MODID);
+            ID);
 
     // ---------------------------------------------------------------------------------------//
 

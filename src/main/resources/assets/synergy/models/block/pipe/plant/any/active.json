@@ -1,0 +1,6 @@
+{
+  "parent": "kubejs:block/pipe/template/active",
+  "textures": {
+    "pipe": "kubejs:block/pipe/black"
+  }
+}

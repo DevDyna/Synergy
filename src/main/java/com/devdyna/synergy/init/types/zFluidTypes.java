@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.types;
 
-import static com.devdyna.synergy.Main.MODID;
+import static com.devdyna.synergy.Main.ID;
 
 import java.util.function.Consumer;
 
@@ -24,7 +24,7 @@ public class zFluidTypes {
 
     // ---------------------------------------------------------------------------------------//
 
-    public static final DeferredRegister<FluidType> zFluidTypes = DeferredRegister.create(Keys.FLUID_TYPES, MODID);
+    public static final DeferredRegister<FluidType> zFluidTypes = DeferredRegister.create(Keys.FLUID_TYPES, ID);
 
     // ---------------------------------------------------------------------------------------//
 
@@ -48,7 +48,7 @@ public class zFluidTypes {
 
     //                     @Override
     //                     public ResourceLocation getStillTexture() {
-    //                         return ResourceLocation.fromNamespaceAndPath(MODID, "block/fluid_source");// TO CHANGE
+    //                         return ResourceLocation.fromNamespaceAndPath(ID, "block/fluid_source");// TO CHANGE
     //                     }
 
     //                     @Override
@@ -58,12 +58,12 @@ public class zFluidTypes {
 
     //                     @Override
     //                     public ResourceLocation getFlowingTexture() {
-    //                         return ResourceLocation.fromNamespaceAndPath(MODID, "block/fluid_flowing");
+    //                         return ResourceLocation.fromNamespaceAndPath(ID, "block/fluid_flowing");
     //                     }
 
     //                     @Override
     //                     public ResourceLocation getOverlayTexture() {
-    //                         return ResourceLocation.fromNamespaceAndPath(MODID, "block/fluid_overlay");
+    //                         return ResourceLocation.fromNamespaceAndPath(ID, "block/fluid_overlay");
     //                     }
                         
     //                 });

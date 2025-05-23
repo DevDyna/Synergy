@@ -1,6 +1,6 @@
 package com.devdyna.synergy.utils;
 
-import static com.devdyna.synergy.Main.MODID;
+import static com.devdyna.synergy.Main.ID;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -12,7 +12,7 @@ public class PlayerUtil {
         }
 
         public static void traslableActionMessage(String traslationkey, Player player) {
-                player.displayClientMessage(Component.translatable(MODID + "." + traslationkey),
+                player.displayClientMessage(Component.translatable(ID + "." + traslationkey),
                                 true);
         }
 }

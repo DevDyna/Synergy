@@ -1,6 +1,6 @@
 package com.devdyna.synergy.datagen;
 
-import static com.devdyna.synergy.Main.MODID;
+import static com.devdyna.synergy.Main.ID;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -21,7 +21,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = MODID)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = ID)
 public class Controller {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent e) {

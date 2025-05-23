@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.types;
 
-import static com.devdyna.synergy.Main.MODID;
+import static com.devdyna.synergy.Main.ID;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -17,7 +17,7 @@ public class zFluids {
     }
 
     // ---------------------------------------------------------------------------------------//
-    public static final DeferredRegister<Fluid> zFluids = DeferredRegister.create(BuiltInRegistries.FLUID, MODID);
+    public static final DeferredRegister<Fluid> zFluids = DeferredRegister.create(BuiltInRegistries.FLUID, ID);
 
     // ---------------------------------------------------------------------------------------//
 

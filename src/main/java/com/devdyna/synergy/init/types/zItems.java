@@ -1,7 +1,14 @@
 package com.devdyna.synergy.init.types;
 
+import com.devdyna.synergy.Database;
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.init.builder.CroockItem;
+
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tiers;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class zItems {
@@ -10,14 +17,23 @@ public class zItems {
         zTool.register(bus);
         zBlockItem.register(bus);
     }
+
     // ---------------------------------------------------------------------------------------//
-    public static final DeferredRegister.Items zTool = DeferredRegister.createItems(Main.MODID);
-    //DONT USE IT , ONLY FUNCTIONAL
-    public static final DeferredRegister.Items zBlockItem = DeferredRegister.createItems(Main.MODID);
-    public static final DeferredRegister.Items zItem = DeferredRegister.createItems(Main.MODID);
+    public static final DeferredRegister.Items zTool = DeferredRegister.createItems(Main.ID);
+    // DONT USE IT , ONLY FUNCTIONAL
+    public static final DeferredRegister.Items zBlockItem = DeferredRegister.createItems(Main.ID);
+    public static final DeferredRegister.Items zItem = DeferredRegister.createItems(Main.ID);
     // ---------------------------------------------------------------------------------------//
 
-    // public static final DeferredHolder<Item, Item> IT = zItem.registerSimpleItem("it");
+    public static final DeferredHolder<Item, Item> AZALEA_SEEDS = zItem.registerSimpleItem(Database.Items.Azalea.seeds);
 
+    public static final DeferredHolder<Item, Item> SMALL_AZALEA_LEAF = zItem
+            .registerSimpleItem(Database.Items.Azalea.leaf);
+
+    public static final DeferredHolder<Item, Item> SMALL_AZALEA_ROOTS = zItem
+            .registerSimpleItem(Database.Items.Azalea.roots);
+
+    public static final DeferredHolder<Item, CroockItem> WOODEN_CROOK = zTool.register(Database.Items.wooden_crook,
+            () -> new CroockItem(BlockTags.LEAVES, Tiers.NETHERITE));
 
 }

@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.types;
 
-import static com.devdyna.synergy.Main.MODID;
+import static com.devdyna.synergy.Main.ID;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
@@ -15,7 +15,7 @@ public class zContainer {
                 zCTNR.register(bus);
         }
 
-        public static final DeferredRegister<MenuType<?>> zCTNR = DeferredRegister.create(Registries.MENU, MODID);
+        public static final DeferredRegister<MenuType<?>> zCTNR = DeferredRegister.create(Registries.MENU, ID);
 
         // public static final DeferredHolder<MenuType<?>, MenuType<GUI>> GUI = zCTNR
         //                 .register("name",
