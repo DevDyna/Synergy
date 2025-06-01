@@ -32,6 +32,15 @@ public interface pipeType {
     VoxelShape Y_PART = Block.box(6, 10, 6, 10, 16, 10);// u-d
     VoxelShape Z_PART = Block.box(6, 6, 0, 10, 10, 6);// n-s
 
+     class VoxelShapes {
+       public static VoxelShape DOWN = Y_PART.move(0, -0.625, 0);
+       public static VoxelShape UP = Y_PART;
+       public static VoxelShape NORTH = Z_PART;
+       public static VoxelShape SOUTH = Z_PART.move(0, 0, 0.625);
+       public static VoxelShape WEST = X_PART;
+       public static VoxelShape EAST = X_PART.move(0.625, 0, 0);
+    }
+
     public static List<BooleanProperty> PROPRTIES = List.of(DOWN, UP, NORTH, SOUTH, WEST, EAST);
     public static List<Integer> X_ROT = List.of(-90, 90, 0, 0, 0, 0);
     public static List<Integer> Y_ROT = List.of(0, 0, 0, 180, -90, 90);
@@ -45,17 +54,17 @@ public interface pipeType {
     default VoxelShape getPipeBaseShape(BlockState s) {
         VoxelShape model = BASE;
         if (s.getValue(DOWN))
-            model = Shapes.or(model, Y_PART.move(0, -0.625, 0));
+            model = Shapes.or(model, VoxelShapes.DOWN);
         if (s.getValue(UP))
-            model = Shapes.or(model, Y_PART);
+            model = Shapes.or(model, VoxelShapes.UP);
         if (s.getValue(SOUTH))
-            model = Shapes.or(model, Z_PART.move(0, 0, 0.625));
+            model = Shapes.or(model, VoxelShapes.SOUTH);
         if (s.getValue(NORTH))
-            model = Shapes.or(model, Z_PART);
+            model = Shapes.or(model, VoxelShapes.NORTH);
         if (s.getValue(EAST))
-            model = Shapes.or(model, X_PART.move(0.625, 0, 0));
+            model = Shapes.or(model, VoxelShapes.EAST);
         if (s.getValue(WEST))
-            model = Shapes.or(model, X_PART);
+            model = Shapes.or(model, VoxelShapes.WEST);
         return model.optimize();
     }
 
@@ -69,7 +78,7 @@ public interface pipeType {
         model.part().modelFile(pipe).rotationX(90).addModel().condition(DOWN, true);
     }
 
-    static BlockState updatePipeOnPlace(BlockState state,Level level,BlockPos pos){
+    static BlockState updatePipeOnPlace(BlockState state, Level level, BlockPos pos) {
         for (Direction face : DIRECTIONS) {
             var offset = level.getBlockState(pos.relative(face));
             if (!offset.is(zBlockTag.PIPE_CONNECTORS)) {
