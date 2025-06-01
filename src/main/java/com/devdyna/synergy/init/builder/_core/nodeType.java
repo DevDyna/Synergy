@@ -61,7 +61,7 @@ public interface nodeType extends pipeType {
         nm.addModel().condition(NodeBlock.FACING, Direction.NORTH);
         nm.rotationY(90).addModel().condition(NodeBlock.FACING, Direction.EAST);
         nm.rotationX(180).addModel().condition(NodeBlock.FACING, Direction.SOUTH);
-        nm.rotationY(270).addModel().condition(NodeBlock.FACING, Direction.WEST);
+        nm.rotationY(90).addModel().condition(NodeBlock.FACING, Direction.WEST);
         nm.rotationX(270).addModel().condition(NodeBlock.FACING, Direction.UP);
         nm.rotationX(90).addModel().condition(NodeBlock.FACING, Direction.DOWN);
 
