@@ -2,6 +2,8 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
+import com.devdyna.synergy.init.builder._core.nodeType;
+import com.devdyna.synergy.init.builder._core.pipeType;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.utils.DataGenUtil;
 
@@ -20,6 +22,22 @@ public class DataBlockModelState extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         demosimpleBlock(zBlocks.SPRINKLER.get());
+        node(zBlocks.NODE.get());
+        pipe(zBlocks.PIPE.get());
+    }
+
+    private void node(Block b) {
+        var model = getMultipartBuilder(b);
+        var pipe = models().getExistingFile(modLoc("block/pipe/basic/pipe"));
+        var node = models().getExistingFile(modLoc("block/node/basic/plate"));
+        nodeType.getNodeMultiPart(b, model, node, pipe);
+    }
+
+    private void pipe(Block b) {
+        var model = getMultipartBuilder(b);
+        var core = models().getExistingFile(modLoc("block/pipe/basic/core"));
+        var pipe = models().getExistingFile(modLoc("block/pipe/basic/pipe"));
+        pipeType.getPipeMultiPart(b, model, core, pipe);
     }
 
     private void demosimpleBlock(Block b) {

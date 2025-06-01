@@ -4,6 +4,7 @@ import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.types.zBlockTag;
+import com.devdyna.synergy.init.types.zBlocks;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
@@ -21,11 +22,12 @@ public class DataBlockTag extends BlockTagsProvider {
 
     @Override
     protected void addTags(Provider p) {
-        tag(zBlockTag.LEAVES)
-                .addTag(BlockTags.LEAVES);
 
-        tag(zBlockTag.CROPS)
-                .addTag(BlockTags.CROPS);
+        tag(zBlockTag.LEAVES).addTag(BlockTags.LEAVES);
+
+        tag(zBlockTag.CROPS).addTag(BlockTags.CROPS);
+
+        tag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.PIPE.get(), zBlocks.NODE.get());
 
     }
 

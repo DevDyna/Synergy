@@ -3,6 +3,7 @@ package com.devdyna.synergy.init.types;
 import com.devdyna.synergy.Database;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.builder.Sprinkler.SprinklerBE;
+import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -28,5 +29,11 @@ public class zBlockEntities {
                     () -> BlockEntityType.Builder.of(SprinklerBE::new,
                             zBlocks.SPRINKLER.get()).build(null));
         
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<NodeBE>> PIPE_NODE = zBE
+            .register(
+                    Database.Blocks.node,
+                    () -> BlockEntityType.Builder.of(NodeBE::new,
+                            zBlocks.NODE.get()).build(null));
+
 
 }

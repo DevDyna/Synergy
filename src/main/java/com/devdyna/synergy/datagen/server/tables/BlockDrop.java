@@ -41,6 +41,11 @@ public class BlockDrop extends BlockLootSubProvider {
 
         @Override
         protected void generate() {
+
+
+                dropSelf(zBlocks.PIPE.get());
+                dropSelf(zBlocks.NODE.get());
+
                 dropSelf(zBlocks.SPRINKLER.get());
 
                 add(zBlocks.AZALEA.get(),

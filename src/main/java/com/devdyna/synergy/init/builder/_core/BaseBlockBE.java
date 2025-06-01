@@ -15,8 +15,8 @@ import net.minecraft.world.level.block.state.BlockState;
 @SuppressWarnings("null")
 public abstract class BaseBlockBE extends Block implements EntityBlock {
 
-    public BaseBlockBE() {
-        super(Material.bProp);
+    public BaseBlockBE(Properties properties) {
+        super(properties);
     }
 
     @Nullable

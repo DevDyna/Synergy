@@ -1,7 +1,7 @@
 package com.devdyna.synergy;
 
 import com.devdyna.synergy.compat.core;
-import com.devdyna.synergy.events.blockevent;
+import com.devdyna.synergy.events.blockEvents;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.utils.LogUtil;
 
@@ -22,7 +22,7 @@ public class Main {
         Material.register(bus);
         core.registerCompat();
 
-        NeoForge.EVENT_BUS.register(blockevent.class);
+        NeoForge.EVENT_BUS.register(blockEvents.class);
 
     }
 }

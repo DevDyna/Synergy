@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.builder.Sprinkler;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder._core.BaseBlockBE;
 
 import net.minecraft.core.BlockPos;
@@ -12,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class SprinklerBLK extends BaseBlockBE {
 
     public SprinklerBLK() {
+        super(Material.bProp);
     }
 
     @Nullable

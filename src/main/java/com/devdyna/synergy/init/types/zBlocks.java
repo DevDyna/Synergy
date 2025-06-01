@@ -10,7 +10,8 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.PottedAzalea;
 import com.devdyna.synergy.init.builder.Sprinkler.SprinklerBLK;
-import com.devdyna.synergy.init.builder.pipe.pipeBlock;
+import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
+import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBlock;
 
 public class zBlocks {
         public static void register(IEventBus bus) {
@@ -32,6 +33,9 @@ public class zBlocks {
 
         public static final DeferredHolder<Block, ?> PIPE = Material.registerItemBlock(Database.Blocks.pipe,
                         () -> new pipeBlock());
+
+        public static final DeferredHolder<Block, ?> NODE = Material.registerItemBlock(Database.Blocks.node,
+                        () -> new NodeBlock());
 
         // ---------------------------------------------------------------------------------------//
 

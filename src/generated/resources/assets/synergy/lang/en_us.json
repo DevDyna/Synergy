@@ -1,6 +1,8 @@
 {
   "block.synergy.azalea": "Azalea",
+  "block.synergy.pipe": "Pipe",
   "block.synergy.sprinkler": "Sprinkler",
+  "block.synergy.transfer_node": "Transfer Node",
   "item.synergy.azalea_seeds": "Azalea Seeds",
   "item.synergy.small_azalea_leaf": "Small Azalea Leaf",
   "item.synergy.small_azalea_roots": "Small Azalea Roots",

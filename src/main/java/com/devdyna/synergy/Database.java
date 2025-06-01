@@ -18,5 +18,6 @@ public class Database {
         public static String azalea = "azalea";
         public static String sprinkler = "sprinkler";
         public static String pipe = "pipe";
+        public static String node = "transfer_node";
     }
 }

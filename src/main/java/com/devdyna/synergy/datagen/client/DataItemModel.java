@@ -30,6 +30,9 @@ public class DataItemModel extends ItemModelProvider {
 
         demo.forEach(e -> DataGenUtil.itemBlockwithParent(e, this, ID + ":block/dynamo/off"));
 
+        withExistingParent(zBlocks.PIPE.getRegisteredName(), modLoc("block/pipe/basic/item_model"));
+        withExistingParent(zBlocks.NODE.getRegisteredName(), modLoc("block/node/basic/item_model"));
+
     }
 
 }
