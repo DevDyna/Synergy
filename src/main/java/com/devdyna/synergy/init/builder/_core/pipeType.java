@@ -32,13 +32,13 @@ public interface pipeType {
     VoxelShape Y_PART = Block.box(6, 10, 6, 10, 16, 10);// u-d
     VoxelShape Z_PART = Block.box(6, 6, 0, 10, 10, 6);// n-s
 
-     class VoxelShapes {
-       public static VoxelShape DOWN = Y_PART.move(0, -0.625, 0);
-       public static VoxelShape UP = Y_PART;
-       public static VoxelShape NORTH = Z_PART;
-       public static VoxelShape SOUTH = Z_PART.move(0, 0, 0.625);
-       public static VoxelShape WEST = X_PART;
-       public static VoxelShape EAST = X_PART.move(0.625, 0, 0);
+    class VoxelShapes {
+        public static VoxelShape DOWN = Y_PART.move(0, -0.625, 0);
+        public static VoxelShape UP = Y_PART;
+        public static VoxelShape NORTH = Z_PART;
+        public static VoxelShape SOUTH = Z_PART.move(0, 0, 0.625);
+        public static VoxelShape WEST = X_PART;
+        public static VoxelShape EAST = X_PART.move(0.625, 0, 0);
     }
 
     public static List<BooleanProperty> PROPRTIES = List.of(DOWN, UP, NORTH, SOUTH, WEST, EAST);
@@ -47,11 +47,11 @@ public interface pipeType {
 
     public static List<Direction> DIRECTIONS = Arrays.stream(Direction.values()).toList();
 
-    default void PipeStateDefinition(Builder<Block, BlockState> b) {
+    static void PipeStateDefinition(Builder<Block, BlockState> b) {
         PROPRTIES.forEach(e -> b.add(e));
     }
 
-    default VoxelShape getPipeBaseShape(BlockState s) {
+    static VoxelShape getPipeBaseShape(BlockState s) {
         VoxelShape model = BASE;
         if (s.getValue(DOWN))
             model = Shapes.or(model, VoxelShapes.DOWN);

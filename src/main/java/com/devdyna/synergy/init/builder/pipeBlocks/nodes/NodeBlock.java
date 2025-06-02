@@ -24,7 +24,7 @@ public class NodeBlock extends BaseBlockBE implements nodeType {
 
     @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> b) {
-        NodeStateDefinition(b);
+        nodeType.NodeStateDefinition(b);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class NodeBlock extends BaseBlockBE implements nodeType {
 
     @Override
     protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
-        return getNodeBaseShape(s);
+        return nodeType.getNodeBaseShape(s);
     }
 
     @Override

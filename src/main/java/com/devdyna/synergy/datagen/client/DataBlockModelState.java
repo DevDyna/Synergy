@@ -26,18 +26,19 @@ public class DataBlockModelState extends BlockStateProvider {
         pipe(zBlocks.PIPE.get());
     }
 
-    private void node(Block b) {
-        var model = getMultipartBuilder(b);
-        var pipe = models().getExistingFile(modLoc("block/pipe/basic/pipe"));
-        var node = models().getExistingFile(modLoc("block/node/basic/plate"));
-        nodeType.getNodeMultiPart(b, model, node, pipe);
-    }
-
     private void pipe(Block b) {
         var model = getMultipartBuilder(b);
         var core = models().getExistingFile(modLoc("block/pipe/basic/core"));
         var pipe = models().getExistingFile(modLoc("block/pipe/basic/pipe"));
         pipeType.getPipeMultiPart(b, model, core, pipe);
+    }
+
+    private void node(Block b) {
+        var model = getMultipartBuilder(b);
+        var core = models().getExistingFile(modLoc("block/pipe/basic/core"));
+        var pipe = models().getExistingFile(modLoc("block/pipe/basic/pipe"));
+        var node = models().getExistingFile(modLoc("block/node/basic/plate"));
+        nodeType.getNodeMultiPart(b, model, core, pipe, node);
     }
 
     private void demosimpleBlock(Block b) {

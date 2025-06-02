@@ -18,8 +18,8 @@ public interface nodeType extends pipeType {
 
     static DirectionProperty FACING = DirectionProperty.create("facing");
 
-    default void NodeStateDefinition(Builder<Block, BlockState> b) {
-        PipeStateDefinition(b);
+    static void NodeStateDefinition(Builder<Block, BlockState> b) {
+        pipeType.PipeStateDefinition(b);
         b.add(FACING);
     }
 
@@ -32,8 +32,8 @@ public interface nodeType extends pipeType {
         public static VoxelShape EAST = Shapes.box(0.8125, 0.0625, 0.0625, 1, 0.9375, 0.9375);
     }
 
-    default VoxelShape getNodeBaseShape(BlockState s) {
-        VoxelShape model = getPipeBaseShape(s);
+    static VoxelShape getNodeBaseShape(BlockState s) {
+        VoxelShape model = pipeType.getPipeBaseShape(s);
 
         model = switch (s.getValue(FACING)) {
             case Direction.DOWN -> Shapes.or(model, VoxelShapes.DOWN);
@@ -53,22 +53,15 @@ public interface nodeType extends pipeType {
         return state;
     }
 
-    static void getNodeMultiPart(Block b, MultiPartBlockStateBuilder model, ModelFile node, ModelFile pipe) {
-        var pm = model.part().modelFile(pipe);
-        var nm = model.part().modelFile(node);
-
-        pm.addModel().condition(NORTH, true);
-        pm.rotationY(90).addModel().condition(EAST, true);
-        pm.rotationX(180).addModel().condition(SOUTH, true);
-        pm.rotationY(270).addModel().condition(WEST, true);
-        pm.rotationX(270).addModel().condition(UP, true);
-        pm.rotationX(90).addModel().condition(DOWN, true);
-        nm.addModel().condition(NodeBlock.FACING, Direction.NORTH);
-        nm.rotationY(90).addModel().condition(NodeBlock.FACING, Direction.EAST);
-        nm.rotationY(180).addModel().condition(NodeBlock.FACING, Direction.SOUTH);
-        nm.rotationY(270).addModel().condition(NodeBlock.FACING, Direction.WEST);
-        nm.rotationX(270).addModel().condition(NodeBlock.FACING, Direction.UP);
-        nm.rotationX(90).addModel().condition(NodeBlock.FACING, Direction.DOWN);
+    static void getNodeMultiPart(Block b, MultiPartBlockStateBuilder model, ModelFile core, ModelFile pipe,
+            ModelFile node) {
+        pipeType.getPipeMultiPart(b, model, core, pipe);
+        model.part().modelFile(node).addModel().condition(NodeBlock.FACING, Direction.NORTH);
+        model.part().modelFile(node).rotationY(90).addModel().condition(NodeBlock.FACING, Direction.EAST);
+        model.part().modelFile(node).rotationY(180).addModel().condition(NodeBlock.FACING, Direction.SOUTH);
+        model.part().modelFile(node).rotationY(270).addModel().condition(NodeBlock.FACING, Direction.WEST);
+        model.part().modelFile(node).rotationX(270).addModel().condition(NodeBlock.FACING, Direction.UP);
+        model.part().modelFile(node).rotationX(90).addModel().condition(NodeBlock.FACING, Direction.DOWN);
 
     }
 

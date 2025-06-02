@@ -22,7 +22,7 @@ public class pipeBlock extends Block implements pipeType {
 
     @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> b) {
-        PipeStateDefinition(b);
+        pipeType.PipeStateDefinition(b);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class pipeBlock extends Block implements pipeType {
 
     @Override
     protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
-        return getPipeBaseShape(s);
+        return pipeType.getPipeBaseShape(s);
     }
 
 }
