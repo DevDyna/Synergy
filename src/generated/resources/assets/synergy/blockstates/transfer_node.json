@@ -10,7 +10,7 @@
         "model": "synergy:block/pipe/basic/pipe"
       },
       "when": {
-        "north": "true"
+        "north": "true|node"
       }
     },
     {
@@ -19,7 +19,7 @@
         "y": 90
       },
       "when": {
-        "east": "true"
+        "east": "true|node"
       }
     },
     {
@@ -28,7 +28,7 @@
         "x": 180
       },
       "when": {
-        "south": "true"
+        "south": "true|node"
       }
     },
     {
@@ -37,7 +37,7 @@
         "y": 270
       },
       "when": {
-        "west": "true"
+        "west": "true|node"
       }
     },
     {
@@ -46,7 +46,7 @@
         "x": 270
       },
       "when": {
-        "up": "true"
+        "up": "true|node"
       }
     },
     {
@@ -55,7 +55,7 @@
         "x": 90
       },
       "when": {
-        "down": "true"
+        "down": "true|node"
       }
     },
     {

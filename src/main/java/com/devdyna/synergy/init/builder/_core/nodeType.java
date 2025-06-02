@@ -4,6 +4,7 @@ import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -36,27 +37,28 @@ public interface nodeType extends pipeType {
         VoxelShape model = pipeType.getPipeBaseShape(s);
 
         model = switch (s.getValue(FACING)) {
-            case Direction.DOWN -> Shapes.or(model, VoxelShapes.DOWN);
-            case Direction.UP -> Shapes.or(model, VoxelShapes.UP);
-            case Direction.NORTH -> Shapes.or(model, VoxelShapes.NORTH);
-            case Direction.SOUTH -> Shapes.or(model, VoxelShapes.SOUTH);
-            case Direction.WEST -> Shapes.or(model, VoxelShapes.WEST);
-            case Direction.EAST -> Shapes.or(model, VoxelShapes.EAST);
+            case Direction.DOWN -> Shapes.or(model, Shapes.or(pipeType.VoxelShapes.DOWN, VoxelShapes.DOWN));
+            case Direction.UP -> Shapes.or(model, Shapes.or(pipeType.VoxelShapes.UP, VoxelShapes.UP));
+            case Direction.NORTH -> Shapes.or(model, Shapes.or(pipeType.VoxelShapes.NORTH, VoxelShapes.NORTH));
+            case Direction.SOUTH -> Shapes.or(model, Shapes.or(pipeType.VoxelShapes.SOUTH, VoxelShapes.SOUTH));
+            case Direction.WEST -> Shapes.or(model, Shapes.or(pipeType.VoxelShapes.WEST, VoxelShapes.WEST));
+            case Direction.EAST -> Shapes.or(model, Shapes.or(pipeType.VoxelShapes.EAST, VoxelShapes.EAST));
         };
 
         return model.optimize();
     }
 
-    static BlockState updateNodeOnPlace(BlockState s, Level level, BlockPos pos, Direction direction) {
-        var state = pipeType.updatePipeOnPlace(s, level, pos);
+    static BlockState updateNodeOnPlace(BlockState state, BlockPlaceContext context) {
+        Direction direction = context.getClickedFace();
         state = state.setValue(FACING, direction.getOpposite());
+        state = pipeType.updatePipeOnPlace(state, context);
         state = switch (direction.getOpposite()) {
-            case Direction.DOWN -> state.setValue(DOWN, true);
-            case Direction.UP -> state.setValue(UP, true);
-            case Direction.NORTH -> state.setValue(NORTH, true);
-            case Direction.SOUTH -> state.setValue(SOUTH, true);
-            case Direction.WEST -> state.setValue(WEST, true);
-            case Direction.EAST -> state.setValue(EAST, true);
+            case Direction.DOWN -> state.setValue(DOWN, pipeProperties.NODE);
+            case Direction.UP -> state.setValue(UP, pipeProperties.NODE);
+            case Direction.NORTH -> state.setValue(NORTH, pipeProperties.NODE);
+            case Direction.SOUTH -> state.setValue(SOUTH, pipeProperties.NODE);
+            case Direction.WEST -> state.setValue(WEST, pipeProperties.NODE);
+            case Direction.EAST -> state.setValue(EAST, pipeProperties.NODE);
         };
         return state;
     }
@@ -70,7 +72,10 @@ public interface nodeType extends pipeType {
         model.part().modelFile(node).rotationY(270).addModel().condition(NodeBlock.FACING, Direction.WEST);
         model.part().modelFile(node).rotationX(270).addModel().condition(NodeBlock.FACING, Direction.UP);
         model.part().modelFile(node).rotationX(90).addModel().condition(NodeBlock.FACING, Direction.DOWN);
+    }
 
+    static void onDestroyNode(BlockState state, Level level, BlockPos pos) {
+        pipeType.onDestroyPipe(state, level, pos);
     }
 
 }

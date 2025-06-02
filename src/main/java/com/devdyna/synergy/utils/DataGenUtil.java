@@ -15,6 +15,7 @@ import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 
+
 public class DataGenUtil {
 
     public static final ResourceLocation CUTOUT = ResourceLocation.withDefaultNamespace("cutout");
@@ -88,7 +89,6 @@ public class DataGenUtil {
     public static ItemModelBuilder itemBlockwithParent(Block block, ItemModelProvider b, String parent) {
         return b.withExistingParent(getPath(block), parent);
     }
-
    
 
 }

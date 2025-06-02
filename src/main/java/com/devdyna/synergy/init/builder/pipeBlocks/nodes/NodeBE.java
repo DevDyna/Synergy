@@ -16,5 +16,10 @@ public class NodeBE extends BaseBE {
         public NodeBE(BlockPos pos, BlockState blockState) {
         super(zBlockEntities.PIPE_NODE.get(), pos, blockState);
     }
+
+    @Override
+    public void tickServer() {
+        
+    }
     
 }

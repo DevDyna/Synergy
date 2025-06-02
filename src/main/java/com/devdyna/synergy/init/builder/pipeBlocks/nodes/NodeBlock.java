@@ -8,6 +8,8 @@ import com.devdyna.synergy.init.builder._core.nodeType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -30,7 +32,7 @@ public class NodeBlock extends BaseBlockBE implements nodeType {
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext c) {
-        return nodeType.updateNodeOnPlace(defaultBlockState(), c.getLevel(), c.getClickedPos(), c.getClickedFace());
+        return nodeType.updateNodeOnPlace(defaultBlockState(),c);
     }
 
     @Override
@@ -39,9 +41,15 @@ public class NodeBlock extends BaseBlockBE implements nodeType {
     }
 
     @Override
+    public void destroy(LevelAccessor l, BlockPos p, BlockState s) {
+        nodeType.onDestroyNode(s, (Level) l, p);
+    }
+
+    @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
         return new NodeBE(p, s);
     }
+
 
 }

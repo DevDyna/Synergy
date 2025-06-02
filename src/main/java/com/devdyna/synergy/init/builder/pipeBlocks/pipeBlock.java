@@ -7,6 +7,8 @@ import com.devdyna.synergy.init.builder._core.pipeType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
@@ -28,12 +30,17 @@ public class pipeBlock extends Block implements pipeType {
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext c) {
-        return pipeType.updatePipeOnPlace(defaultBlockState(),c.getLevel(),c.getClickedPos());
+        return pipeType.updatePipeOnPlace(defaultBlockState(),c);
     }
 
     @Override
     protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
         return pipeType.getPipeBaseShape(s);
+    }
+
+    @Override
+    public void destroy(LevelAccessor l, BlockPos p, BlockState s) {
+        pipeType.onDestroyPipe(s, (Level) l, p);
     }
 
 }
