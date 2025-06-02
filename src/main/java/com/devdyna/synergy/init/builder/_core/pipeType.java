@@ -103,10 +103,7 @@ public interface pipeType {
                         && Capabilities.ItemHandler.BLOCK.getCapability(level, pos.relative(face),
                                 level.getBlockState(pos.relative(face)),
                                 level.getBlockEntity(pos.relative(face)), face.getOpposite()) != null) {
-                    // TODO
-                    // for (int i = 0; i < cap.getSlots(); i++) {
-                    // cap.extractItem(i, i, true);
-                    // }
+                    
 
                 } else {
                     // remove connection
