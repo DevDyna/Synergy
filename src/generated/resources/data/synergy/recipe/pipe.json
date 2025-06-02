@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "G": {
+      "tag": "c:glass_blocks/colorless"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    },
+    "S": {
+      "tag": "synergy:stone_slabs"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "GRG",
+    "SSS"
+  ],
+  "result": {
+    "count": 16,
+    "id": "synergy:pipe"
+  }
+}

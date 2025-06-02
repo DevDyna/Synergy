@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.builder._core;
 
 import java.util.Arrays;
 import java.util.List;
+
 import com.devdyna.synergy.init.types.zBlockTag;
 
 import net.minecraft.core.BlockPos;
@@ -14,9 +15,11 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 
+@SuppressWarnings("null")
 public interface pipeType {
 
     static EnumProperty<pipeProperties> NORTH = EnumProperty.create("north", pipeProperties.class);
@@ -83,16 +86,35 @@ public interface pipeType {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
         for (Direction face : DIRECTIONS) {
+
             var offset = level.getBlockState(pos.relative(face));
             if (offset.is(zBlockTag.PIPE_CONNECTORS)) {
-                // default is true
+                // TIP. default is true
+
+                // connect to another pipe connector
                 if (offset.getValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite()))) != pipeProperties.NODE)
                     level.setBlockAndUpdate(pos.relative(face),
                             offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
                                     pipeProperties.TRUE));
             } else {
-                if (state.getValue(PROPRTIES.get(DIRECTIONS.indexOf(face))) != pipeProperties.NODE)
+
+                // connect to BE itemhandler
+                if (level.getBlockEntity(pos.relative(face)) != null
+                        && Capabilities.ItemHandler.BLOCK.getCapability(level, pos.relative(face),
+                                level.getBlockState(pos.relative(face)),
+                                level.getBlockEntity(pos.relative(face)), face.getOpposite()) != null) {
+                    // TODO
+                    // for (int i = 0; i < cap.getSlots(); i++) {
+                    // cap.extractItem(i, i, true);
+                    // }
+
+                } else {
+                    // remove connection
+
+                    // if (state.getValue(PROPRTIES.get(DIRECTIONS.indexOf(face))) !=
+                    // pipeProperties.NODE)
                     state = state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), pipeProperties.FALSE);
+                }
             }
         }
         return state;

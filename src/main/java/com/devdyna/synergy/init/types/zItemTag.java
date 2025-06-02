@@ -1,5 +1,9 @@
 package com.devdyna.synergy.init.types;
 
+import com.devdyna.synergy.init.Material;
+
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 
 public class zItemTag {
@@ -7,6 +11,6 @@ public class zItemTag {
 
     }
 
-    // public static final TagKey<Item> LEAVES = tagItem("tag");
+    public static final TagKey<Item> STONE_SLABS = Material.tagItem("stone_slabs");
 
 }
