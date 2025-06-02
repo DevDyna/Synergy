@@ -50,6 +50,14 @@ public interface nodeType extends pipeType {
     static BlockState updateNodeOnPlace(BlockState s, Level level, BlockPos pos, Direction direction) {
         var state = pipeType.updatePipeOnPlace(s, level, pos);
         state = state.setValue(FACING, direction.getOpposite());
+        state = switch (direction.getOpposite()) {
+            case Direction.DOWN -> state.setValue(DOWN, true);
+            case Direction.UP -> state.setValue(UP, true);
+            case Direction.NORTH -> state.setValue(NORTH, true);
+            case Direction.SOUTH -> state.setValue(SOUTH, true);
+            case Direction.WEST -> state.setValue(WEST, true);
+            case Direction.EAST -> state.setValue(EAST, true);
+        };
         return state;
     }
 
