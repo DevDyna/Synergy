@@ -55,17 +55,17 @@ public interface pipeType {
 
     static VoxelShape getPipeBaseShape(BlockState s) {
         VoxelShape model = BASE;
-        if (s.getValue(DOWN) == pipeProperties.TRUE)
+        if (s.getValue(DOWN) == pipeProperties.TRUE || s.getValue(DOWN) == pipeProperties.OUTPUT)
             model = Shapes.or(model, VoxelShapes.DOWN);
-        if (s.getValue(UP) == pipeProperties.TRUE)
+        if (s.getValue(UP) == pipeProperties.TRUE || s.getValue(UP) == pipeProperties.OUTPUT)
             model = Shapes.or(model, VoxelShapes.UP);
-        if (s.getValue(SOUTH) == pipeProperties.TRUE)
+        if (s.getValue(SOUTH) == pipeProperties.TRUE || s.getValue(SOUTH) == pipeProperties.OUTPUT)
             model = Shapes.or(model, VoxelShapes.SOUTH);
-        if (s.getValue(NORTH) == pipeProperties.TRUE)
+        if (s.getValue(NORTH) == pipeProperties.TRUE || s.getValue(NORTH) == pipeProperties.OUTPUT)
             model = Shapes.or(model, VoxelShapes.NORTH);
-        if (s.getValue(EAST) == pipeProperties.TRUE)
+        if (s.getValue(EAST) == pipeProperties.TRUE || s.getValue(EAST) == pipeProperties.OUTPUT)
             model = Shapes.or(model, VoxelShapes.EAST);
-        if (s.getValue(WEST) == pipeProperties.TRUE)
+        if (s.getValue(WEST) == pipeProperties.TRUE || s.getValue(WEST) == pipeProperties.OUTPUT)
             model = Shapes.or(model, VoxelShapes.WEST);
         return model.optimize();
     }

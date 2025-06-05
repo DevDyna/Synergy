@@ -9,14 +9,11 @@ import com.devdyna.synergy.init.builder._core.pipeProperties;
 import com.devdyna.synergy.init.builder._core.pipeType;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zBlockTag;
-import com.devdyna.synergy.utils.LogUtil;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 
@@ -31,20 +28,19 @@ public class NodeBE extends BaseBE {
         super(zBlockEntities.PIPE_NODE.get(), pos, blockState);
     }
 
-    int i = 0;
-    int delay = 80;
+    // int i = 0;
+    // int delay = 80;
 
     @Override
     public void tickServer() {
 
-        // TODO temp delayer
-        if (i < delay)
-            i++;
+        // if (i < delay)
+        //     i++;
 
-        if (i >= delay) {
+        // if (i >= delay) {
             doRun();
-            i = 0;
-        }
+        //     i = 0;
+        // }
     }
 
     public void doRun() {
@@ -66,7 +62,7 @@ public class NodeBE extends BaseBE {
         var flag = false;
 
         if (inCap == null) {
-            LogUtil.info("##ERROR## input NULL");
+            // LogUtil.info("##ERROR## input NULL");
             return;
         } else
             for (int i = 0; i < inCap.getSlots(); i++) {
@@ -85,13 +81,13 @@ public class NodeBE extends BaseBE {
                 offset = level.getBlockState(variablePos.relative(dir));
 
                 // LogUtil.info("#1 INFO" +
-                //         "\n direction : " + pipeType.D2P(dir).getName() +
-                //         "\n base :" + actual.getBlock() + " of :" + variablePos +
-                //         "\n offset :" + offset.getBlock() + " of :" + variablePos.relative(dir) +
-                //         "\n list :" + validPath);
+                // "\n direction : " + pipeType.D2P(dir).getName() +
+                // "\n base :" + actual.getBlock() + " of :" + variablePos +
+                // "\n offset :" + offset.getBlock() + " of :" + variablePos.relative(dir) +
+                // "\n list :" + validPath);
 
                 if (actual.getValue(pipeType.D2P(dir)) == pipeProperties.OUTPUT) {
-                    LogUtil.info("#2 SUCCESS output found");
+                    // LogUtil.info("#2 SUCCESS output found");
                     outputPos = variablePos;
                     outputSide = dir;
                     flag = false;
@@ -102,9 +98,9 @@ public class NodeBE extends BaseBE {
                         && validPath.indexOf(variablePos.relative(dir)) == -1
                         && actual.getValue(pipeType.D2P(dir)) == pipeProperties.TRUE) {
 
-                    LogUtil.info("#3 SUCCESS pipe found " + variablePos.relative(dir) + " at "
-                            + dir + " -> "
-                            + offset.getBlock());
+                    // LogUtil.info("#3 SUCCESS pipe found " + variablePos.relative(dir) + " at "
+                    //         + dir + " -> "
+                    //         + offset.getBlock());
 
                     validPath.add(variablePos);
                     variablePos = variablePos.relative(dir);
@@ -115,8 +111,8 @@ public class NodeBE extends BaseBE {
                 // LogUtil.info("#4 INFO time :" + totalCheckSide);
 
                 if (totalCheckSide < 0) {
-                    LogUtil.info("#5 FAIL no valid side found \n block:" + actual.getBlock()
-                            + "\n pos:" + variablePos + "\n last dir:" + dir);
+                    // LogUtil.info("#5 FAIL no valid side found \n block:" + actual.getBlock()
+                    //         + "\n pos:" + variablePos + "\n last dir:" + dir);
                     flag = false;
                     break;
                 }
@@ -124,11 +120,13 @@ public class NodeBE extends BaseBE {
         }
 
         if (totalCheckSide >= 0) {
+            if(outputSide == null && outputPos == null)return;
 
-            var outCap = getCap(level, outputSide.getOpposite(), outputPos.relative(outputSide.getOpposite()));
+            var outCap = getCap(level, outputSide.getOpposite(), outputPos.relative(outputSide));
 
             if (outCap == null) {
-                LogUtil.info("##ERROR## output NULL");
+                // LogUtil.info("##ERROR## output NULL" +
+                //         "side :" + outputSide.getOpposite() + " pos:" + outputPos.relative(outputSide));
                 return;
             }
 
@@ -145,9 +143,9 @@ public class NodeBE extends BaseBE {
     }
 
     private IItemHandler getCap(Level l, Direction d, BlockPos pos) {
-        LogUtil.info("pos:" + pos + "\ndirection:" + d);
+        // LogUtil.info("pos:" + pos + " relative:" + pos + " direction:" + d);
 
-        return l != null && l.getBlockEntity(pos.relative(d)) != null
+        return l != null && l.getBlockEntity(pos) != null
                 ? Capabilities.ItemHandler.BLOCK.getCapability(l, pos, l.getBlockState(pos),
                         l.getBlockEntity(pos), d.getOpposite())
                 : null;
