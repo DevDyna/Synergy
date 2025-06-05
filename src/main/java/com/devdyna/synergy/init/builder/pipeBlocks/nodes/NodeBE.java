@@ -147,7 +147,7 @@ public class NodeBE extends BaseBE {
     private IItemHandler getCap(Level l, Direction d, BlockPos pos) {
         LogUtil.info("pos:" + pos + "\ndirection:" + d);
 
-        return l != null && l.getBlockEntity(pos) != null
+        return l != null && l.getBlockEntity(pos.relative(d)) != null
                 ? Capabilities.ItemHandler.BLOCK.getCapability(l, pos, l.getBlockState(pos),
                         l.getBlockEntity(pos), d.getOpposite())
                 : null;

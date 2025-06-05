@@ -43,8 +43,6 @@ public interface pipeType {
         public static VoxelShape EAST = X_PART.move(0.625, 0, 0);
     }
 
-    public static List<VoxelShape> AllShapes = List.of(VoxelShapes.DOWN, VoxelShapes.UP, VoxelShapes.NORTH,
-            VoxelShapes.SOUTH, VoxelShapes.WEST, VoxelShapes.EAST);
     public static List<EnumProperty<pipeProperties>> PROPRTIES = List.of(DOWN, UP, NORTH, SOUTH, WEST, EAST);
     public static List<Integer> X_ROT = List.of(-90, 90, 0, 0, 0, 0);
     public static List<Integer> Y_ROT = List.of(0, 0, 0, 180, -90, 90);
@@ -55,18 +53,25 @@ public interface pipeType {
         PROPRTIES.forEach(e -> b.add(e));
     }
 
-    // TODO need to define differents model parts
-    static List<pipeProperties> shapeState = List.of(pipeProperties.TRUE, pipeProperties.OUTPUT);
-    static pipeProperties[] allTrue = (pipeProperties[]) List
-            .of(pipeProperties.TRUE, pipeProperties.OUTPUT, pipeProperties.NODE).toArray();
-
     static VoxelShape getPipeBaseShape(BlockState s) {
         VoxelShape model = BASE;
-        for (EnumProperty<pipeProperties> p : PROPRTIES) {
-            model = shapeState.contains(s.getValue(p)) ? Shapes.or(model, AllShapes.get(PROPRTIES.indexOf(p))) : model;
-        }
+        if (s.getValue(DOWN) == pipeProperties.TRUE)
+            model = Shapes.or(model, VoxelShapes.DOWN);
+        if (s.getValue(UP) == pipeProperties.TRUE)
+            model = Shapes.or(model, VoxelShapes.UP);
+        if (s.getValue(SOUTH) == pipeProperties.TRUE)
+            model = Shapes.or(model, VoxelShapes.SOUTH);
+        if (s.getValue(NORTH) == pipeProperties.TRUE)
+            model = Shapes.or(model, VoxelShapes.NORTH);
+        if (s.getValue(EAST) == pipeProperties.TRUE)
+            model = Shapes.or(model, VoxelShapes.EAST);
+        if (s.getValue(WEST) == pipeProperties.TRUE)
+            model = Shapes.or(model, VoxelShapes.WEST);
         return model.optimize();
     }
+
+    // TODO need to define differents model parts
+    static pipeProperties[] allTrue = { pipeProperties.TRUE, pipeProperties.NODE, pipeProperties.OUTPUT };
 
     static void getPipeMultiPart(Block b, MultiPartBlockStateBuilder model, ModelFile core, ModelFile pipe) {
         model.part().modelFile(core).addModel();
