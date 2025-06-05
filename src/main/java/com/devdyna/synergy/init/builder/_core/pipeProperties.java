@@ -6,6 +6,7 @@ public enum pipeProperties implements StringRepresentable {
     
     TRUE("true"),
     FALSE("false"),
+    OUTPUT("output"),
     NODE("node");
 
     private final String name;

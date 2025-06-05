@@ -70,16 +70,17 @@ public interface pipeType {
         return model.optimize();
     }
 
+    // TODO need to define differents model parts
+    static pipeProperties[] allTrue = { pipeProperties.TRUE, pipeProperties.NODE, pipeProperties.OUTPUT };
+
     static void getPipeMultiPart(Block b, MultiPartBlockStateBuilder model, ModelFile core, ModelFile pipe) {
         model.part().modelFile(core).addModel();
-        model.part().modelFile(pipe).addModel().condition(NORTH, pipeProperties.TRUE, pipeProperties.NODE);
-        model.part().modelFile(pipe).rotationY(90).addModel().condition(EAST, pipeProperties.TRUE, pipeProperties.NODE);
-        model.part().modelFile(pipe).rotationX(180).addModel().condition(SOUTH, pipeProperties.TRUE,
-                pipeProperties.NODE);
-        model.part().modelFile(pipe).rotationY(270).addModel().condition(WEST, pipeProperties.TRUE,
-                pipeProperties.NODE);
-        model.part().modelFile(pipe).rotationX(270).addModel().condition(UP, pipeProperties.TRUE, pipeProperties.NODE);
-        model.part().modelFile(pipe).rotationX(90).addModel().condition(DOWN, pipeProperties.TRUE, pipeProperties.NODE);
+        model.part().modelFile(pipe).addModel().condition(NORTH, allTrue);
+        model.part().modelFile(pipe).rotationY(90).addModel().condition(EAST, allTrue);
+        model.part().modelFile(pipe).rotationX(180).addModel().condition(SOUTH, allTrue);
+        model.part().modelFile(pipe).rotationY(270).addModel().condition(WEST, allTrue);
+        model.part().modelFile(pipe).rotationX(270).addModel().condition(UP, allTrue);
+        model.part().modelFile(pipe).rotationX(90).addModel().condition(DOWN, allTrue);
     }
 
     static BlockState updatePipeOnPlace(BlockState state, BlockPlaceContext context) {
@@ -94,7 +95,7 @@ public interface pipeType {
                 // connect to another pipe connector
                 if (offset.getValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite()))) != pipeProperties.NODE)
                     level.setBlockAndUpdate(pos.relative(face),
-                            offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
+                            offset = offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
                                     pipeProperties.TRUE));
             } else {
 
@@ -103,13 +104,10 @@ public interface pipeType {
                         && Capabilities.ItemHandler.BLOCK.getCapability(level, pos.relative(face),
                                 level.getBlockState(pos.relative(face)),
                                 level.getBlockEntity(pos.relative(face)), face.getOpposite()) != null) {
-                    
-
+                    state = state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), pipeProperties.OUTPUT);
                 } else {
                     // remove connection
 
-                    // if (state.getValue(PROPRTIES.get(DIRECTIONS.indexOf(face))) !=
-                    // pipeProperties.NODE)
                     state = state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), pipeProperties.FALSE);
                 }
             }
@@ -128,6 +126,14 @@ public interface pipeType {
                         Block.UPDATE_ALL);
             }
         }
+    }
+
+    static Direction P2D(EnumProperty<pipeProperties> e) {
+        return DIRECTIONS.get(PROPRTIES.indexOf(e));
+    }
+
+    static EnumProperty<pipeProperties> D2P(Direction d) {
+        return PROPRTIES.get(DIRECTIONS.indexOf(d));
     }
 
 }
