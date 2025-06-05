@@ -61,7 +61,7 @@ public class NodeBE extends BaseBE {
         List<BlockPos> validPath = new ArrayList<>();
 
         var input = getBlockState().getValue(nodeType.FACING);
-        var inCap = getCap(level, input, getBlockPos().relative(input));
+        var inCap = getCap(level, input.getOpposite(), getBlockPos().relative(input));
 
         var flag = false;
 
@@ -78,17 +78,17 @@ public class NodeBE extends BaseBE {
 
         while (flag) {
 
-            LogUtil.info("#### start directions ####");
+            // LogUtil.info("#### start directions ####");
 
             for (Direction dir : Direction.values()) {
                 actual = level.getBlockState(variablePos);
                 offset = level.getBlockState(variablePos.relative(dir));
 
-                LogUtil.info("#1 INFO" +
-                        "\n direction : " + pipeType.D2P(dir).getName() +
-                        "\n base :" + actual.getBlock() + " of :" + variablePos +
-                        "\n offset :" + offset.getBlock() + " of :" + variablePos.relative(dir) +
-                        "\n list :" + validPath);
+                // LogUtil.info("#1 INFO" +
+                //         "\n direction : " + pipeType.D2P(dir).getName() +
+                //         "\n base :" + actual.getBlock() + " of :" + variablePos +
+                //         "\n offset :" + offset.getBlock() + " of :" + variablePos.relative(dir) +
+                //         "\n list :" + validPath);
 
                 if (actual.getValue(pipeType.D2P(dir)) == pipeProperties.OUTPUT) {
                     LogUtil.info("#2 SUCCESS output found");
@@ -112,7 +112,7 @@ public class NodeBE extends BaseBE {
                 }
 
                 totalCheckSide--;
-                LogUtil.info("#4 INFO time :" + totalCheckSide);
+                // LogUtil.info("#4 INFO time :" + totalCheckSide);
 
                 if (totalCheckSide < 0) {
                     LogUtil.info("#5 FAIL no valid side found \n block:" + actual.getBlock()
@@ -125,7 +125,7 @@ public class NodeBE extends BaseBE {
 
         if (totalCheckSide >= 0) {
 
-            var outCap = getCap(level, outputSide.getOpposite(), outputPos);
+            var outCap = getCap(level, outputSide.getOpposite(), outputPos.relative(outputSide.getOpposite()));
 
             if (outCap == null) {
                 LogUtil.info("##ERROR## output NULL");
@@ -148,9 +148,8 @@ public class NodeBE extends BaseBE {
         LogUtil.info("pos:" + pos + "\ndirection:" + d);
 
         return l != null && l.getBlockEntity(pos.relative(d)) != null
-                ? Capabilities.ItemHandler.BLOCK.getCapability(l, pos.relative(d),
-                        l.getBlockState(pos.relative(d)),
-                        l.getBlockEntity(pos.relative(d)), d.getOpposite())
+                ? Capabilities.ItemHandler.BLOCK.getCapability(l, pos, l.getBlockState(pos),
+                        l.getBlockEntity(pos), d.getOpposite())
                 : null;
     }
 
