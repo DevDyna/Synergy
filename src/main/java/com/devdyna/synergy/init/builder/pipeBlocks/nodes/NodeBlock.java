@@ -32,7 +32,7 @@ public class NodeBlock extends BaseBlockBE implements nodeType {
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext c) {
-        return nodeType.updateNodeOnPlace(defaultBlockState(),c);
+        return nodeType.updateNodeOnPlace(defaultBlockState(), c.getClickedPos(),c.getLevel(),c.getClickedFace());
     }
 
     @Override
@@ -46,10 +46,16 @@ public class NodeBlock extends BaseBlockBE implements nodeType {
     }
 
     @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
+            BlockPos neighborPos, boolean movedByPiston) {
+        nodeType.updateNodeOnPlace(state, pos, level, state.getValue(nodeType.FACING).getOpposite());
+        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+    }
+
+    @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
         return new NodeBE(p, s);
     }
-
 
 }

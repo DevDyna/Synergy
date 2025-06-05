@@ -2,8 +2,6 @@ package com.devdyna.synergy.init.builder._core;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.init.Material;
-
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;

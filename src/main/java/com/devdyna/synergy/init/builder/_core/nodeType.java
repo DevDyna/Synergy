@@ -48,10 +48,25 @@ public interface nodeType extends pipeType {
         return model.optimize();
     }
 
+    @Deprecated
     static BlockState updateNodeOnPlace(BlockState state, BlockPlaceContext context) {
         Direction direction = context.getClickedFace();
         state = state.setValue(FACING, direction.getOpposite());
         state = pipeType.updatePipeOnPlace(state, context);
+        state = switch (direction.getOpposite()) {
+            case Direction.DOWN -> state.setValue(DOWN, pipeProperties.NODE);
+            case Direction.UP -> state.setValue(UP, pipeProperties.NODE);
+            case Direction.NORTH -> state.setValue(NORTH, pipeProperties.NODE);
+            case Direction.SOUTH -> state.setValue(SOUTH, pipeProperties.NODE);
+            case Direction.WEST -> state.setValue(WEST, pipeProperties.NODE);
+            case Direction.EAST -> state.setValue(EAST, pipeProperties.NODE);
+        };
+        return state;
+    }
+
+        static BlockState updateNodeOnPlace(BlockState state,BlockPos pos, Level level, Direction direction) {
+        state = state.setValue(FACING, direction.getOpposite());
+        state = pipeType.updatePipeOnPlace(state, level,pos);
         state = switch (direction.getOpposite()) {
             case Direction.DOWN -> state.setValue(DOWN, pipeProperties.NODE);
             case Direction.UP -> state.setValue(UP, pipeProperties.NODE);

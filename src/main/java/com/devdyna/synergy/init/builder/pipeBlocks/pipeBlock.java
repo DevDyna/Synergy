@@ -30,7 +30,7 @@ public class pipeBlock extends Block implements pipeType {
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext c) {
-        return pipeType.updatePipeOnPlace(defaultBlockState(),c);
+        return pipeType.updatePipeOnPlace(defaultBlockState(), c.getLevel(),c.getClickedPos());
     }
 
     @Override
@@ -41,6 +41,13 @@ public class pipeBlock extends Block implements pipeType {
     @Override
     public void destroy(LevelAccessor l, BlockPos p, BlockState s) {
         pipeType.onDestroyPipe(s, (Level) l, p);
+    }
+
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
+            BlockPos neighborPos, boolean movedByPiston) {
+        pipeType.updatePipeOnPlace(state, level, pos);
+        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
     }
 
 }

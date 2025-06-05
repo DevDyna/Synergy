@@ -11,6 +11,7 @@ import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zBlockTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,18 +29,21 @@ public class NodeBE extends BaseBE {
         super(zBlockEntities.PIPE_NODE.get(), pos, blockState);
     }
 
+    int inputSlot = 0;
+    int outputSlot = 0;
+
     // int i = 0;
-    // int delay = 80;
+    // int delay = 10;
 
     @Override
     public void tickServer() {
 
         // if (i < delay)
-        //     i++;
+        // i++;
 
         // if (i >= delay) {
-            doRun();
-        //     i = 0;
+        doRun();
+        // i = 0;
         // }
     }
 
@@ -99,8 +103,8 @@ public class NodeBE extends BaseBE {
                         && actual.getValue(pipeType.D2P(dir)) == pipeProperties.TRUE) {
 
                     // LogUtil.info("#3 SUCCESS pipe found " + variablePos.relative(dir) + " at "
-                    //         + dir + " -> "
-                    //         + offset.getBlock());
+                    // + dir + " -> "
+                    // + offset.getBlock());
 
                     validPath.add(variablePos);
                     variablePos = variablePos.relative(dir);
@@ -112,7 +116,7 @@ public class NodeBE extends BaseBE {
 
                 if (totalCheckSide < 0) {
                     // LogUtil.info("#5 FAIL no valid side found \n block:" + actual.getBlock()
-                    //         + "\n pos:" + variablePos + "\n last dir:" + dir);
+                    // + "\n pos:" + variablePos + "\n last dir:" + dir);
                     flag = false;
                     break;
                 }
@@ -120,26 +124,51 @@ public class NodeBE extends BaseBE {
         }
 
         if (totalCheckSide >= 0) {
-            if(outputSide == null && outputPos == null)return;
+            if (outputSide == null && outputPos == null)
+                return;
 
             var outCap = getCap(level, outputSide.getOpposite(), outputPos.relative(outputSide));
 
             if (outCap == null) {
                 // LogUtil.info("##ERROR## output NULL" +
-                //         "side :" + outputSide.getOpposite() + " pos:" + outputPos.relative(outputSide));
+                // "side :" + outputSide.getOpposite() + " pos:" +
+                // outputPos.relative(outputSide));
                 return;
             }
 
-            for (int i = 0; i < inCap.getSlots(); i++) {
-                if (outCap.insertItem(i, inCap.extractItem(i, 1, true), true).getCount() <= outCap
-                        .getSlotLimit(i)) {
-                    outCap.insertItem(i, inCap.extractItem(i, 1, false), false);
-                }
+            ItemStack inItem = inCap.extractItem(inputSlot, inCap.getStackInSlot(inputSlot).getCount(), true);
+            ItemStack outItem = outCap.extractItem(outputSlot, outCap.getStackInSlot(outputSlot).getCount(), true);
 
+            if (inCap.getStackInSlot(inputSlot).isEmpty()) {
+                if (inCap.getSlots() - 1 <= inputSlot)
+                    inputSlot = 0;
+                else
+                    inputSlot++;
+                return;
+            }
+
+            if (outCap.getStackInSlot(outputSlot).isEmpty()) {
+                outCap.insertItem(outputSlot,
+                        inCap.extractItem(inputSlot, inCap.getStackInSlot(inputSlot).getCount(), false), false);
+            } else {
+                if (inItem.is(outItem.getItem()) && outItem.getCount() != outItem.getMaxStackSize()) {
+
+                    outCap.insertItem(outputSlot,
+                            inCap.extractItem(inputSlot,
+                                    Math.min(inItem.getCount(), outItem.getMaxStackSize() - outItem.getCount()), false),
+                            false);
+                } else {
+                    if (outCap.getSlots() - 1 <= outputSlot)
+                        outputSlot = 0;
+                    else
+                        outputSlot++;
+                    return;
+                }
             }
 
         }
-
+        inputSlot = 0;
+        outputSlot = 0;
     }
 
     private IItemHandler getCap(Level l, Direction d, BlockPos pos) {

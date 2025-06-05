@@ -83,9 +83,41 @@ public interface pipeType {
         model.part().modelFile(pipe).rotationX(90).addModel().condition(DOWN, allTrue);
     }
 
+    @Deprecated
     static BlockState updatePipeOnPlace(BlockState state, BlockPlaceContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
+        for (Direction face : DIRECTIONS) {
+
+            var offset = level.getBlockState(pos.relative(face));
+            if (offset.is(zBlockTag.PIPE_CONNECTORS)) {
+                // TIP. default is true
+
+                // connect to another pipe connector
+                if (offset.getValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite()))) != pipeProperties.NODE)
+                    level.setBlockAndUpdate(pos.relative(face),
+                            offset = offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
+                                    pipeProperties.TRUE));
+            } else {
+
+                // connect to BE itemhandler
+                if (level.getBlockEntity(pos.relative(face)) != null
+                        && Capabilities.ItemHandler.BLOCK.getCapability(level, pos.relative(face),
+                                level.getBlockState(pos.relative(face)),
+                                level.getBlockEntity(pos.relative(face)), face.getOpposite()) != null) {
+                    state = state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), pipeProperties.OUTPUT);
+                } else {
+                    // remove connection
+
+                    state = state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), pipeProperties.FALSE);
+                }
+            }
+        }
+        return state;
+    }
+
+
+        static BlockState updatePipeOnPlace(BlockState state, Level level,BlockPos pos) {
         for (Direction face : DIRECTIONS) {
 
             var offset = level.getBlockState(pos.relative(face));
