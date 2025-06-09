@@ -3,18 +3,7 @@ package com.devdyna.synergy.init;
 import java.util.function.Supplier;
 
 import com.devdyna.synergy.Main;
-import com.devdyna.synergy.init.types.zBlockEntities;
-import com.devdyna.synergy.init.types.zBlockTag;
-import com.devdyna.synergy.init.types.zBlocks;
-import com.devdyna.synergy.init.types.zContainer;
-import com.devdyna.synergy.init.types.zCreativeTab;
-import com.devdyna.synergy.init.types.zFluidTags;
-import com.devdyna.synergy.init.types.zFluidTypes;
-import com.devdyna.synergy.init.types.zFluids;
-import com.devdyna.synergy.init.types.zHandlers;
-import com.devdyna.synergy.init.types.zItemTag;
-import com.devdyna.synergy.init.types.zItems;
-import com.devdyna.synergy.init.types.zProperties;
+import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -42,6 +31,7 @@ public class Material {
                 zItems.register(bus);
                 zItemTag.register(bus);
                 zProperties.register(bus);
+                // zMixed.register(bus);
         }
 
         public static final BlockBehaviour.Properties bProp = BlockBehaviour.Properties.of();
@@ -83,6 +73,22 @@ public class Material {
         public static TagKey<Block> tagBlock(String name) {
                 return TagKey.create(BuiltInRegistries.BLOCK.key(),
                                 ResourceLocation.fromNamespaceAndPath(Main.ID, name));
+        }
+
+                /**
+         * create an itemtag
+         */
+        public static TagKey<Item> tagItem(String name,String modname) {
+                return TagKey.create(BuiltInRegistries.ITEM.key(),
+                                ResourceLocation.fromNamespaceAndPath(modname, name));
+        }
+
+        /**
+         * create an blocktag
+         */
+        public static TagKey<Block> tagBlock(String name,String modname) {
+                return TagKey.create(BuiltInRegistries.BLOCK.key(),
+                                ResourceLocation.fromNamespaceAndPath(modname, name));
         }
 
         /**

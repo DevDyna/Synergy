@@ -2,16 +2,20 @@ package com.devdyna.synergy.utils;
 
 import java.util.List;
 
+import com.devdyna.synergy.init.Material;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.ReloadableServerRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -40,24 +44,40 @@ public class LevelUtil {
         return value;
     }
 
-    public static List<Holder<Block>> ResourceByTag(TagKey<Block> tag) {
+    public static List<Holder<Block>> BlockByTag(TagKey<Block> tag) {
         return BuiltInRegistries.BLOCK.getOrCreateTag(tag).stream().toList();
     }
 
-    public static Block ResourceByTag(TagKey<Block> tag, int index) {
-        return ResourceByTag(tag).get(index).value();
+    public static List<Holder<Block>> BlockByTagName(String tag) {
+        return BuiltInRegistries.BLOCK.getOrCreateTag(Material.tagBlock(tag)).stream().toList();
     }
 
-    public static int getSizeTag(TagKey<Block> tag) {
-        return ResourceByTag(tag).size() - 1;
+    public static List<Holder<Item>> ItemByTagName(String tag) {
+        return BuiltInRegistries.ITEM.getOrCreateTag(Material.tagItem(tag)).stream().toList();
+    }
+
+    public static Block BlockByTag(TagKey<Block> tag, int index) {
+        return BlockByTag(tag).get(index).value();
+    }
+
+    public static List<Holder<Item>> ItemByTag(TagKey<Item> tag) {
+        return BuiltInRegistries.ITEM.getOrCreateTag(tag).stream().toList();
+    }
+
+    public static Item ItemByTag(TagKey<Item> tag, int index) {
+        return ItemByTag(tag).get(index).value();
+    }
+
+    public static int getSizeItemTag(TagKey<Item> tag) {
+        return ItemByTag(tag).size() - 1;
+    }
+
+    public static int getSizeBlockTag(TagKey<Block> tag) {
+        return BlockByTag(tag).size() - 1;
     }
 
     public static void popItemFromPos(Level level, double x, double y, double z, ItemStack itemStack) {
-        ItemEntity itementity = new ItemEntity(level,
-                x,
-                y,
-                z,
-                itemStack);
+        ItemEntity itementity = new ItemEntity(level, x, y, z, itemStack);
         level.addFreshEntity(itementity);
     }
 
@@ -70,7 +90,7 @@ public class LevelUtil {
     }
 
     public static void popItemFromPos(Level level, BlockPos pos, ItemStack itemStack) {
-        popItemFromPos( level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
+        popItemFromPos(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
     }
 
     @SuppressWarnings("null")

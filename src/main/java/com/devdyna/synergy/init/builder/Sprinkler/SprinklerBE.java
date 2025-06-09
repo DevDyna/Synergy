@@ -23,7 +23,7 @@ public class SprinklerBE extends BaseBE {
                 getBlockPos().getX() + radius, getBlockPos().getY() + 2, getBlockPos().getZ() + radius)
                 .forEach(pos -> {
                     BlockState st = level.getBlockState(pos);
-                    if (st.isRandomlyTicking() && level instanceof ServerLevel) {
+                    if (st.isRandomlyTicking()) {
                         st.randomTick((ServerLevel) level, pos, level.random);
                     }
                 });

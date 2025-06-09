@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.types;
 
-import com.devdyna.synergy.Database;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 
 import net.minecraft.core.registries.Registries;
@@ -26,7 +26,7 @@ public class zCreativeTab {
 
         public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = zCreative
                         .register(Main.ID, () -> CreativeModeTab.builder()
-                                        .title(Component.translatable(Main.ID + "."+Database.CreativeTab))
+                                        .title(Component.translatable(Main.ID + "."+zStatic.CreativeTab))
                                         .withTabsBefore(CreativeModeTabs.COMBAT)
                                         .icon(() -> Items.DIAMOND.getDefaultInstance())
                                         .displayItems((parameters, output) -> {

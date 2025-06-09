@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.types;
 
-import com.devdyna.synergy.Database;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.builder.CroockItem;
 
@@ -25,15 +25,15 @@ public class zItems {
     public static final DeferredRegister.Items zItem = DeferredRegister.createItems(Main.ID);
     // ---------------------------------------------------------------------------------------//
 
-    public static final DeferredHolder<Item, Item> AZALEA_SEEDS = zItem.registerSimpleItem(Database.Items.Azalea.seeds);
+    public static final DeferredHolder<Item, Item> AZALEA_SEEDS = zItem.registerSimpleItem(zStatic.Items.Azalea.seeds);
 
     public static final DeferredHolder<Item, Item> SMALL_AZALEA_LEAF = zItem
-            .registerSimpleItem(Database.Items.Azalea.leaf);
+            .registerSimpleItem(zStatic.Items.Azalea.leaf);
 
     public static final DeferredHolder<Item, Item> SMALL_AZALEA_ROOTS = zItem
-            .registerSimpleItem(Database.Items.Azalea.roots);
+            .registerSimpleItem(zStatic.Items.Azalea.roots);
 
-    public static final DeferredHolder<Item, CroockItem> WOODEN_CROOK = zTool.register(Database.Items.wooden_crook,
+    public static final DeferredHolder<Item, CroockItem> WOODEN_CROOK = zTool.register(zStatic.Items.wooden_crook,
             () -> new CroockItem(BlockTags.LEAVES, Tiers.NETHERITE));
 
 }

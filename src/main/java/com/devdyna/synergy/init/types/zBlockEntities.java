@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.types;
 
-import com.devdyna.synergy.Database;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.builder.Sprinkler.SprinklerBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBE;
@@ -25,13 +25,13 @@ public class zBlockEntities {
     
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SprinklerBE>> SPRINKLER = zBE
             .register(
-                    Database.Blocks.sprinkler,
+                    zStatic.Blocks.sprinkler,
                     () -> BlockEntityType.Builder.of(SprinklerBE::new,
                             zBlocks.SPRINKLER.get()).build(null));
         
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<NodeBE>> PIPE_NODE = zBE
             .register(
-                    Database.Blocks.node,
+                    zStatic.Blocks.node,
                     () -> BlockEntityType.Builder.of(NodeBE::new,
                             zBlocks.NODE.get()).build(null));
 
