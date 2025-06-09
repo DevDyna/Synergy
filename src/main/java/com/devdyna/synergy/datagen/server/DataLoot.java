@@ -42,7 +42,6 @@ public class DataLoot extends BlockLootSubProvider {
         @Override
         protected void generate() {
 
-
                 dropSelf(zBlocks.PIPE.get());
                 dropSelf(zBlocks.NODE.get());
 
@@ -76,6 +75,10 @@ public class DataLoot extends BlockLootSubProvider {
                                                                                 .add(LootItem.lootTableItem(
                                                                                                 zItems.SMALL_AZALEA_ROOTS
                                                                                                                 .get())))));
+
+                dropSelf(zBlocks.EXTRACTOR.get());
+                zBlocks.deposits.forEach(e -> dropSelf(e.get()));
+                zBlocks.generators.forEach(e->dropSelf(e.get()));
 
         }
 
