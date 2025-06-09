@@ -2,8 +2,8 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
-import com.devdyna.synergy.Database;
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 
@@ -18,7 +18,7 @@ public class DataLang extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add(Main.ID + "."+Database.CreativeTab,"Synergy Stuff");
+        add(Main.ID + "."+zStatic.CreativeTab,"Synergy Stuff");
         zBlocks.zBlockItem.getEntries().forEach(b -> addBlock(b, named(b.getRegisteredName())));
         zBlocks.zBlock.getEntries().forEach(b -> addBlock(b, named(b.getRegisteredName())));
         zItems.zItem.getEntries().forEach(b -> addItem(b, named(b.getRegisteredName())));
