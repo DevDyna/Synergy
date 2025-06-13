@@ -55,6 +55,7 @@ public class zBlocks {
         public static final DeferredHolder<Block, ?> COTTON =
         zBlocks.zCrop.register(zStatic.Plants.COTTON,
         () -> new cotton());
+        //TODO REWORK TO MAKE IT MUSHROOMS INTEND OF CROPS
         public static final DeferredHolder<Block, ?> ELF_CUP_MUSHROOM =
         zBlocks.zCrop.register(
         zStatic.Plants.ELF_CUP_MUSHROOM,

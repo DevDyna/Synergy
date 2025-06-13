@@ -29,20 +29,24 @@ public class zStatic {
 
         private static String SEED = "_seed";
         private static String SPORE = "_spore";
+        private static String MUSH = "_mushroom";
 
         public static final String RICE = "rice";
         public static final String CAVE_WHEAT = "cave_wheat";
         public static final String COTTON = "cotton";
 
-        public static final String ELF_CUP_MUSHROOM = "elf_cup_mushroom";
-        public static final String CORTINARIUS_MUSHROOM = "cortinarius_mushroom";
+        public static final String ELF_CUP = "elf_cup";
+        public static final String CORTINARIUS = "cortinarius";
 
-        public static final String RICE_SEED = "rice" + SEED;
-        public static final String CAVE_WHEAT_SEED = "cave_wheat" + SEED;
-        public static final String COTTON_SEED = "cotton" + SEED;
+        public static final String ELF_CUP_MUSHROOM = ELF_CUP + MUSH;
+        public static final String CORTINARIUS_MUSHROOM = CORTINARIUS + MUSH;
 
-        public static final String ELF_CUP_MUSHROOM_SPORE = "elf_cup_mushroom" + SPORE;
-        public static final String CORTINARIUS_MUSHROOM_SPORE = "cortinarius_mushroom" + SPORE;
+        public static final String RICE_SEED = RICE + SEED;
+        public static final String CAVE_WHEAT_SEED = CAVE_WHEAT + SEED;
+        public static final String COTTON_SEED = COTTON + SEED;
+
+        public static final String ELF_CUP_MUSHROOM_SPORE = ELF_CUP + SPORE;
+        public static final String CORTINARIUS_MUSHROOM_SPORE = CORTINARIUS + SPORE;
 
     }
 

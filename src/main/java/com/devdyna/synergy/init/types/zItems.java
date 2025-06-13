@@ -54,17 +54,17 @@ public class zItems {
 
         // public static final DeferredHolder<Item, Item> RICE;
         public static final DeferredHolder<Item, ?> CAVE_WHEAT_SEEDS = zSeeds.register(zStatic.Plants.CAVE_WHEAT_SEED,
-                        () -> new BaseSeedItem(zBlocks.RICE.get()));
+                        () -> new BaseSeedItem(zBlocks.CAVE_WHEAT.get()));
         public static final DeferredHolder<Item, ?> RICE_SEED = zSeeds.register(zStatic.Plants.RICE_SEED,
                         () -> new BaseSeedItem(zBlocks.RICE.get()));
         public static final DeferredHolder<Item, ?> COTTON_SEEDS = zSeeds.register(zStatic.Plants.COTTON_SEED,
-                        () -> new BaseSeedItem(zBlocks.RICE.get()));
+                        () -> new BaseSeedItem(zBlocks.COTTON.get()));
         public static final DeferredHolder<Item, ?> ELF_CUP_SPORES = zSeeds.register(
                         zStatic.Plants.ELF_CUP_MUSHROOM_SPORE,
-                        () -> new BaseSeedItem(zBlocks.RICE.get()));
+                        () -> new BaseSeedItem(zBlocks.ELF_CUP_MUSHROOM.get()));
         public static final DeferredHolder<Item, ?> CORTINARIUS_SPORES = zSeeds.register(
                         zStatic.Plants.CORTINARIUS_MUSHROOM_SPORE,
-                        () -> new BaseSeedItem(zBlocks.RICE.get()));
+                        () -> new BaseSeedItem(zBlocks.CORTINARIUS_MUSHROOM.get()));
 
         public static final DeferredHolder<Item, ?> CAVE_WHEAT = zCropExtra
                         .registerSimpleItem(zStatic.Plants.CAVE_WHEAT);
