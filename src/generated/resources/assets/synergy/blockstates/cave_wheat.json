@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "synergy:crops/cave_wheat/0"
+    },
+    "age=1": {
+      "model": "synergy:crops/cave_wheat/1"
+    },
+    "age=2": {
+      "model": "synergy:crops/cave_wheat/1"
+    },
+    "age=3": {
+      "model": "synergy:crops/cave_wheat/2"
+    },
+    "age=4": {
+      "model": "synergy:crops/cave_wheat/3"
+    },
+    "age=5": {
+      "model": "synergy:crops/cave_wheat/3"
+    },
+    "age=6": {
+      "model": "synergy:crops/cave_wheat/4"
+    },
+    "age=7": {
+      "model": "synergy:crops/cave_wheat/5"
+    }
+  }
+}
