@@ -24,6 +24,7 @@ public class DataBlockModelState extends BlockStateProvider {
         demosimpleBlock(zBlocks.SPRINKLER.get());
         node(zBlocks.NODE.get());
         pipe(zBlocks.PIPE.get());
+        // deposits();
     }
 
     private void pipe(Block b) {
@@ -40,6 +41,11 @@ public class DataBlockModelState extends BlockStateProvider {
         var node = models().getExistingFile(modLoc("block/node/basic/plate"));
         nodeType.getNodeMultiPart(b, model, core, pipe, node);
     }
+
+    // private void deposits(){
+    //    // zBlocks.deposits.forEach(c->DataGenUtil.BlockwithParent(zBlocks.AZALEA.get(), this, ID + ":block/pebbles/_base").texture("block", ""));
+    // }
+
 
     private void demosimpleBlock(Block b) {
         simpleBlock(b,

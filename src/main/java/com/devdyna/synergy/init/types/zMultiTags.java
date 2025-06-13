@@ -1,5 +1,7 @@
 package com.devdyna.synergy.init.types;
 
+import static com.devdyna.synergy.Main.ID;
+
 import java.util.List;
 
 import com.devdyna.synergy.zStatic;
@@ -7,93 +9,80 @@ import com.devdyna.synergy.init.core.MultiTag;
 
 public class zMultiTags {
 
-  public static  List<MultiTag> ALL_DEPOSITS = List.of(
-            Soil(zStatic.Resources.Soils.ANDESITE),
-            Soil(zStatic.Resources.Soils.BASALT),
-            Soil(zStatic.Resources.Soils.BLACKSTONE),
-            Soil(zStatic.Resources.Soils.BLUE_ICE),
-            Soil(zStatic.Resources.Soils.CALCITE),
-            Soil(zStatic.Resources.Soils.CLAY),
-            Soil(zStatic.Resources.Soils.COBBLESTONE),
-            Soil(zStatic.Resources.Soils.COBBLED_DEEPSLATE),
-            Soil(zStatic.Resources.Soils.COARSE_DIRT),
-            Soil(zStatic.Resources.Soils.DEEPSLATE),
-            Soil(zStatic.Resources.Soils.DIORITE),
-            Soil(zStatic.Resources.Soils.DRIPSTONE_BLOCK),
-            Soil(zStatic.Resources.Soils.DIRT),
-            Soil(zStatic.Resources.Soils.END_STONE),
-            Soil(zStatic.Resources.Soils.GRAVEL),
-            Soil(zStatic.Resources.Soils.GRANITE),
-            Soil(zStatic.Resources.Soils.GILDED_BLACKSTONE),
-            Soil(zStatic.Resources.Soils.ICE),
-            Soil(zStatic.Resources.Soils.MAGMA_BLOCK),
-            Soil(zStatic.Resources.Soils.MOSS_BLOCK),
-            Soil(zStatic.Resources.Soils.MOSSY_COBBLESTONE),
-            Soil(zStatic.Resources.Soils.MUD),
-            Soil(zStatic.Resources.Soils.NETHERRACK),
-            Soil(zStatic.Resources.Soils.OBSIDIAN),
-            Soil(zStatic.Resources.Soils.PACKED_ICE),
-            Soil(zStatic.Resources.Soils.PACKED_MUD),
-            Soil(zStatic.Resources.Soils.PRISMARINE),
-            Soil(zStatic.Resources.Soils.RED_SAND),
-            Soil(zStatic.Resources.Soils.ROOTED_DIRT),
-            Soil(zStatic.Resources.Soils.SCULK),
-            Soil(zStatic.Resources.Soils.SOUL_SAND),
-            Soil(zStatic.Resources.Soils.SOUL_SOIL),
-            Soil(zStatic.Resources.Soils.SAND),
-            Soil(zStatic.Resources.Soils.SANDSTONE),
-            Soil(zStatic.Resources.Soils.SNOW_BLOCK),
-            Soil(zStatic.Resources.Soils.STONE),
-            Soil(zStatic.Resources.Soils.TUFF),
-            Soil(zStatic.Resources.Soils.CRYING_OBSIDIAN),
+    public static List<MultiTag> BLOCKS = List.of(
+            deposit(zStatic.Resources.Soils.ANDESITE),
+            deposit(zStatic.Resources.Soils.BASALT),
+            deposit(zStatic.Resources.Soils.BLACKSTONE),
+            deposit(zStatic.Resources.Soils.BLUE_ICE),
+            deposit(zStatic.Resources.Soils.CALCITE),
+            deposit(zStatic.Resources.Soils.CLAY),
+            deposit(zStatic.Resources.Soils.COBBLESTONE),
+            deposit(zStatic.Resources.Soils.COBBLED_DEEPSLATE),
+            deposit(zStatic.Resources.Soils.COARSE_DIRT),
+            deposit(zStatic.Resources.Soils.DEEPSLATE),
+            deposit(zStatic.Resources.Soils.DIORITE),
+            deposit(zStatic.Resources.Soils.DRIPSTONE_BLOCK),
+            deposit(zStatic.Resources.Soils.DIRT),
+            deposit(zStatic.Resources.Soils.END_STONE),
+            deposit(zStatic.Resources.Soils.GRAVEL),
+            deposit(zStatic.Resources.Soils.GRANITE),
+            deposit(zStatic.Resources.Soils.GILDED_BLACKSTONE),
+            deposit(zStatic.Resources.Soils.ICE),
+            deposit(zStatic.Resources.Soils.MAGMA_BLOCK),
+            deposit(zStatic.Resources.Soils.MOSS_BLOCK),
+            deposit(zStatic.Resources.Soils.MOSSY_COBBLESTONE),
+            deposit(zStatic.Resources.Soils.MUD),
+            deposit(zStatic.Resources.Soils.NETHERRACK),
+            deposit(zStatic.Resources.Soils.OBSIDIAN),
+            deposit(zStatic.Resources.Soils.PACKED_ICE),
+            deposit(zStatic.Resources.Soils.PACKED_MUD),
+            deposit(zStatic.Resources.Soils.PRISMARINE),
+            deposit(zStatic.Resources.Soils.RED_SAND),
+            deposit(zStatic.Resources.Soils.ROOTED_DIRT),
+            deposit(zStatic.Resources.Soils.SCULK),
+            deposit(zStatic.Resources.Soils.SOUL_SAND),
+            deposit(zStatic.Resources.Soils.SOUL_SOIL),
+            deposit(zStatic.Resources.Soils.SAND),
+            deposit(zStatic.Resources.Soils.SANDSTONE),
+            deposit(zStatic.Resources.Soils.SNOW_BLOCK),
+            deposit(zStatic.Resources.Soils.STONE),
+            deposit(zStatic.Resources.Soils.TUFF),
+            deposit(zStatic.Resources.Soils.CRYING_OBSIDIAN));
+    public static List<MultiTag> ORES = List.of(
+            deposit(zStatic.Resources.RawMaterials.COPPER),
+            deposit(zStatic.Resources.RawMaterials.IRON),
+            deposit(zStatic.Resources.RawMaterials.GOLD),
+            deposit(zStatic.Resources.RawMaterials.ALUMINUM),
+            deposit(zStatic.Resources.RawMaterials.TIN),
+            deposit(zStatic.Resources.RawMaterials.NICKEL),
+            deposit(zStatic.Resources.RawMaterials.ZINC),
+            deposit(zStatic.Resources.RawMaterials.SILVER),
+            deposit(zStatic.Resources.RawMaterials.LEAD),
+            deposit(zStatic.Resources.RawMaterials.OSMIUM),
+            deposit(zStatic.Resources.RawMaterials.URANIUM),
+            deposit(zStatic.Resources.RawMaterials.IRIDIUM),
+            deposit(zStatic.Resources.RawMaterials.PLATINUM),
 
-            RawMaterial(zStatic.Resources.RawMaterials.COPPER),
-            RawMaterial(zStatic.Resources.RawMaterials.IRON),
-            RawMaterial(zStatic.Resources.RawMaterials.GOLD),
-            RawMaterial(zStatic.Resources.RawMaterials.PLUTONIUM),
-            RawMaterial(zStatic.Resources.RawMaterials.CHROMIUM),
-            RawMaterial(zStatic.Resources.RawMaterials.ALUMINUM),
-            RawMaterial(zStatic.Resources.RawMaterials.TIN),
-            RawMaterial(zStatic.Resources.RawMaterials.NICKEL),
-            RawMaterial(zStatic.Resources.RawMaterials.ZINC),
-            RawMaterial(zStatic.Resources.RawMaterials.SILVER),
-            RawMaterial(zStatic.Resources.RawMaterials.LEAD),
-            RawMaterial(zStatic.Resources.RawMaterials.OSMIUM),
-            RawMaterial(zStatic.Resources.RawMaterials.URANIUM),
-            RawMaterial(zStatic.Resources.RawMaterials.IRIDIUM),
-            RawMaterial(zStatic.Resources.RawMaterials.PLATINUM),
+            deposit(zStatic.Resources.Gems.COAL),
+            deposit(zStatic.Resources.Gems.QUARTZ),
+            deposit(zStatic.Resources.Gems.AMETHYST_SHARD),
+            deposit(zStatic.Resources.Gems.LAPIS_LAZULI),
+            deposit(zStatic.Resources.Gems.DIAMOND),
+            deposit(zStatic.Resources.Gems.EMERALD),
+            deposit(zStatic.Resources.Gems.NETHERITE_SCRAP),
+            deposit(zStatic.Resources.Gems.RUBY),
+            deposit(zStatic.Resources.Gems.SAPPHIRE),
+            deposit(zStatic.Resources.Gems.PERIDOT),
+            deposit(zStatic.Resources.Gems.FLUORITE),
+            deposit(zStatic.Resources.Gems.CINNABAR),
 
-            Gem(zStatic.Resources.Gems.COAL),
-            Gem(zStatic.Resources.Gems.QUARTZ),
-            Gem(zStatic.Resources.Gems.AMETHYST_SHARD),
-            Gem(zStatic.Resources.Gems.LAPIS_LAZULI),
-            Gem(zStatic.Resources.Gems.DIAMOND),
-            Gem(zStatic.Resources.Gems.EMERALD),
-            Gem(zStatic.Resources.Gems.NETHERITE_SCRAP),
-            Gem(zStatic.Resources.Gems.RUBY),
-            Gem(zStatic.Resources.Gems.SAPPHIRE),
-            Gem(zStatic.Resources.Gems.PERIDOT),
-            Gem(zStatic.Resources.Gems.FLUORITE),
-            Gem(zStatic.Resources.Gems.CINNABAR),
+            deposit(zStatic.Resources.Dusts.GLOWSTONE),
+            deposit(zStatic.Resources.Dusts.REDSTONE),
+            deposit(zStatic.Resources.Dusts.SALT),
+            deposit(zStatic.Resources.Dusts.SULFUR));
 
-            Dust(zStatic.Resources.Dusts.GLOWSTONE),
-            Dust(zStatic.Resources.Dusts.REDSTONE),
-            Dust(zStatic.Resources.Dusts.SALT),
-            Dust(zStatic.Resources.Dusts.SULFUR));
-
-    public static MultiTag Soil(String name) {
-        return new MultiTag("c", "soils/" , name);
+    public static MultiTag deposit(String name) {
+        return new MultiTag(ID, "deposit/", name);
     }
 
-    public static MultiTag RawMaterial(String name) {
-        return new MultiTag("c", "raw_materials/" , name);
-    }
-
-    public static MultiTag Dust(String name) {
-        return new MultiTag("c", "dusts/" , name);
-    }
-
-    public static MultiTag Gem(String name) {
-        return new MultiTag("c", "gems/" , name);
-    }
 }

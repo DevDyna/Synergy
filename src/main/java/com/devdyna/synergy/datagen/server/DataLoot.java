@@ -76,9 +76,9 @@ public class DataLoot extends BlockLootSubProvider {
                                                                                                 zItems.SMALL_AZALEA_ROOTS
                                                                                                                 .get())))));
 
-                dropSelf(zBlocks.EXTRACTOR.get());
-                zBlocks.deposits.forEach(e -> dropSelf(e.get()));
-                zBlocks.generators.forEach(e->dropSelf(e.get()));
+                // dropSelf(zBlocks.EXTRACTOR.get());
+                // zBlocks.deposits.forEach(e -> dropSelf(e.get()));
+                // zBlocks.generators.forEach(e->dropSelf(e.get()));
 
         }
 

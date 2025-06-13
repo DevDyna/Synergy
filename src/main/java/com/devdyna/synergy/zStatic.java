@@ -25,6 +25,28 @@ public class zStatic {
         public static String extractor = "extractor";
     }
 
+    public class Plants {
+
+        private static String SEED = "_seed";
+        private static String SPORE = "_spore";
+
+        public static final String RICE = "rice";
+        public static final String CAVE_WHEAT = "cave_wheat";
+        public static final String COTTON = "cotton";
+
+        public static final String ELF_CUP_MUSHROOM = "elf_cup_mushroom";
+        public static final String CORTINARIUS_MUSHROOM = "cortinarius_mushroom";
+
+        public static final String RICE_SEED = "rice" + SEED;
+        public static final String CAVE_WHEAT_SEED = "cave_wheat" + SEED;
+        public static final String COTTON_SEED = "cotton" + SEED;
+
+        public static final String ELF_CUP_MUSHROOM_SPORE = "elf_cup_mushroom" + SPORE;
+        public static final String CORTINARIUS_MUSHROOM_SPORE = "cortinarius_mushroom" + SPORE;
+
+    }
+
+    // TODO WIP
     public class Resources {
 
         public static class Soils {
@@ -72,8 +94,6 @@ public class zStatic {
             public static final String COPPER = "copper";
             public static final String IRON = "iron";
             public static final String GOLD = "gold";
-            public static final String PLUTONIUM = "plutonium";
-            public static final String CHROMIUM = "chromium";
             public static final String ALUMINUM = "aluminum";
             public static final String TIN = "tin";
             public static final String NICKEL = "nickel";

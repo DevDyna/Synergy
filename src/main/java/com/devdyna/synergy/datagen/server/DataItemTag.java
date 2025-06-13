@@ -2,10 +2,7 @@ package com.devdyna.synergy.datagen.server;
 
 import java.util.concurrent.CompletableFuture;
 
-import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItemTag;
-import com.devdyna.synergy.init.types.zMultiTags;
-
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -24,10 +21,7 @@ public class DataItemTag extends ItemTagsProvider {
     protected void addTags(Provider p) {
         tag(zItemTag.STONE_SLABS).add(Items.STONE_SLAB, Items.SMOOTH_STONE_SLAB);
 
-        zMultiTags.ALL_DEPOSITS.forEach(
-                depo -> tag(depo.item()).add(
-                        zBlocks.deposits.get(zMultiTags.ALL_DEPOSITS.indexOf(depo)).get().asItem()));
-
+        
     }
 
 }

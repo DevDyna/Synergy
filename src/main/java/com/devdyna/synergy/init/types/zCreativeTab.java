@@ -43,6 +43,18 @@ public class zCreativeTab {
                                                         output.accept((Item) e.get());
                                                 });
 
+                                                zItems.zFoods.getEntries().forEach(e -> {
+                                                        output.accept((Item) e.get());
+                                                });
+
+                                                zItems.zCropExtra.getEntries().forEach(e -> {
+                                                        output.accept((Item) e.get());
+                                                });
+
+                                                zItems.zSeeds.getEntries().forEach(e -> {
+                                                        output.accept((Item) e.get());
+                                                });
+
                                         }).build());
 
 }

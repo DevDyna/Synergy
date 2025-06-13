@@ -71,14 +71,10 @@ public class DataGenUtil {
      * @param block
      * @param b       this
      * @param parent  Main.ID + ":block/..."
-     * @param keyname "all"
-     * @param texture "minecraft:block/cobblestone"
-     * @return
      */
     public static BlockModelBuilder BlockwithParent(Block block, BlockStateProvider b,
-            String parent, String keyname, String texture) {
-        return b.models().withExistingParent(getPath(block), parent)
-                .texture(keyname, texture);
+            String parent) {
+        return b.models().withExistingParent(getPath(block), parent);
     }
 
     public static void BiStateBlock(DataBlockModelState t, Block b, BooleanProperty p, ModelFile on,
