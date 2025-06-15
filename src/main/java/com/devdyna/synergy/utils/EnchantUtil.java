@@ -1,6 +1,7 @@
 package com.devdyna.synergy.utils;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -15,5 +16,9 @@ public class EnchantUtil {
     public static Holder<Enchantment> getEnchantHolder(LevelAccessor level, ResourceKey<Enchantment> enchant) {
         return level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT)
                 .getOrThrow(enchant);
+    }
+
+    public static Holder<Enchantment> getEnchantHolder(HolderLookup.Provider r, ResourceKey<Enchantment> enchant) {
+        return r.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(enchant);
     }
 }

@@ -28,6 +28,8 @@ public class DataBlockTag extends BlockTagsProvider {
 
         tag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.PIPE.get(), zBlocks.NODE.get());
 
+        // tag(zBlockTag.WILD_CROP_BLOCKS).addTag(BlockTags.DIRT);
+
         // tag(zBlockTag.EXTRACTORS).add(zBlocks.EXTRACTOR.get());
 
         // zMultiTags.ALL_DEPOSITS.forEach(

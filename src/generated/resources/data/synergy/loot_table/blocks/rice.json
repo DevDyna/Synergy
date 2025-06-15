@@ -1,0 +1,96 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "synergy:rice",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "age": "7"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:uniform_bonus_count",
+              "function": "minecraft:apply_bonus",
+              "parameters": {
+                "bonusMultiplier": 1
+              }
+            }
+          ],
+          "name": "synergy:rice_seed"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "synergy:rice",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "7"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 3.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                },
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "bonusMultiplier": 1
+                  }
+                }
+              ],
+              "name": "synergy:rice_seed"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "synergy:rice_seed"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "synergy:blocks/rice"
+}

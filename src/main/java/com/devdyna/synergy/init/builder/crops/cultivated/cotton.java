@@ -16,4 +16,5 @@ public class cotton extends BaseShortCropBlock {
     protected ItemLike getBaseSeedId() {
         return zItems.COTTON_SEEDS.get();
     }
+
 }

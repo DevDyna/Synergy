@@ -27,26 +27,41 @@ public class zStatic {
 
     public class Plants {
 
-        private static String SEED = "_seed";
-        private static String SPORE = "_spore";
         private static String MUSH = "_mushroom";
 
         public static final String RICE = "rice";
         public static final String CAVE_WHEAT = "cave_wheat";
         public static final String COTTON = "cotton";
 
-        public static final String ELF_CUP = "elf_cup";
-        public static final String CORTINARIUS = "cortinarius";
+        protected static final String BLUE_CUP = "blue_cup";
+        protected static final String VIOLET_WEBCAP = "violet_webcap";
 
-        public static final String ELF_CUP_MUSHROOM = ELF_CUP + MUSH;
-        public static final String CORTINARIUS_MUSHROOM = CORTINARIUS + MUSH;
+        public static final String BLUE_CUP_MUSHROOM = BLUE_CUP + MUSH;
+        public static final String VIOLET_WEBCAP_MUSHROOM = VIOLET_WEBCAP + MUSH;
 
-        public static final String RICE_SEED = RICE + SEED;
-        public static final String CAVE_WHEAT_SEED = CAVE_WHEAT + SEED;
-        public static final String COTTON_SEED = COTTON + SEED;
+    }
 
-        public static final String ELF_CUP_MUSHROOM_SPORE = ELF_CUP + SPORE;
-        public static final String CORTINARIUS_MUSHROOM_SPORE = CORTINARIUS + SPORE;
+    public class Wild {
+
+        private static String WILD = "wild_";
+
+        public static final String RICE = WILD + Plants.RICE;
+        public static final String CAVE_WHEAT =WILD+ Plants.CAVE_WHEAT;
+        public static final String COTTON =WILD+ Plants.COTTON;
+
+    }
+
+    public class Seeds {
+
+        private static String SEED = "_seed";
+        private static String SPORE = "_pod";
+
+        public static final String RICE_SEED = Plants.RICE + SEED;
+        public static final String CAVE_WHEAT_SEED = Plants.CAVE_WHEAT + SEED;
+        public static final String COTTON_SEED = Plants.COTTON + SEED;
+
+        public static final String BLUE_CUP_SPORE = Plants.BLUE_CUP + SPORE;
+        public static final String VIOLET_WEBCAP_SPORE = Plants.VIOLET_WEBCAP + SPORE;
 
     }
 

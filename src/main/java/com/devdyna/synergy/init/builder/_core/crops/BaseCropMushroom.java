@@ -1,11 +1,14 @@
 package com.devdyna.synergy.init.builder._core.crops;
 
+import com.devdyna.synergy.utils.LevelUtil;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,53 +23,78 @@ public class BaseCropMushroom extends BaseShortCropBlock {
         super(properties);
     }
 
-    VoxelShape[] SHAPE_BY_AGE = { Block.box(5.0, 0.0, 5.0, 11.0, 2.0, 11.0), Block.box(5.0, 0.0, 5.0, 11.0, 4.0, 11.0),
-            Block.box(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), Block.box(5.0, 0.0, 5.0, 11.0, 8.0, 11.0),
-            Block.box(5.0, 0.0, 5.0, 11.0, 10.0, 11.0), Block.box(5.0, 0.0, 5.0, 11.0, 12.0, 11.0) };
+    VoxelShape[] SHAPE_BY_AGE = { Block.box(5.0, 0.0, 5.0, 11.0, 5.0, 11.0), Block.box(5.0, 0.0, 5.0, 11.0, 7.0, 11.0),
+            Block.box(5.0, 0.0, 5.0, 11.0, 9.0, 11.0), Block.box(5.0, 0.0, 5.0, 11.0, 11.0, 11.0),
+            Block.box(4.0, 0.0, 4.0, 12.0, 13.0, 12.0), Block.box(3.0, 0.0, 3.0, 13.0, 14.0, 13.0) };
 
+    @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return this.SHAPE_BY_AGE[getAge(state)];
     }
 
-    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (!level.isAreaLoaded(pos, 1))
-            return;
-
-        if (getAge(state) == getMaxAge()) {
-            for (int i = 0; i < Direction.values().length; i++) {
-                var offset = pos.relative(Direction.values()[i]);
-
-                if (Direction.values()[i] == Direction.UP)
-                    offset = offset.relative(Direction.DOWN)
-                            .relative(Direction.values()[random.nextInt(Direction.values().length)]);
-
-                if (Direction.values()[i] == Direction.DOWN)
-                    offset = offset.relative(Direction.UP)
-                            .relative(Direction.values()[random.nextInt(Direction.values().length)]);
-
-                if (level.getBlockState(offset).is(BlockTags.AIR)) {
-                    level.setBlockAndUpdate(offset, state.setValue(AGE, 0));
-                }
-            }
-        } else {
-
-            if (getAge(state) < getMaxAge()) {
-                if (CommonHooks.canCropGrow(level, pos, state, random.nextInt(13) == 0)) {
-                    level.setBlock(pos, getStateForAge(getAge(state) + 1), 2);
-                    CommonHooks.fireCropGrowPost(level, pos, state);
-                }
-            }
-
-        }
-
+    @Override
+    protected boolean isRandomlyTicking(BlockState state) {
+        return true;
     }
 
+    @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
         return state.isSolidRender(level, pos);
     }
 
+    @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return !level.getBlockState(pos.below()).isAir() && mayPlaceOn(state, level, pos);
+        return level.getBlockState(pos.below()).is(BlockTags.MUSHROOM_GROW_BLOCK) ? true
+                : (level.getBlockState(pos.below()).canSustainPlant(level, pos.below(), Direction.UP, state).isDefault()
+                        ? level.getRawBrightness(pos, 0) < maxBrightnessSustainable()
+                                && mayPlaceOn(level.getBlockState(pos.below()), level, pos.below())
+                        : level.getBlockState(pos.below()).canSustainPlant(level, pos.below(), Direction.UP, state)
+                                .isTrue());
+    }
+
+    public void spreadSpores(BlockPos pos, Level level, BlockState state) {
+        var valid = getSpreadPos(pos, level);
+        if (valid != null)
+            level.setBlockAndUpdate(valid, state.setValue(AGE, 0));
+    }
+
+    public BlockPos getSpreadPos(BlockPos pos, Level level) {
+        //TODO mycelium and other condition placement
+        if (pos == null)
+            return null;
+        var spots = BlockPos.randomBetweenClosed(level.random, 1,
+                pos.getX() - 3, pos.getY() - 3, pos.getZ() - 3,
+                pos.getX() + 3, pos.getY() + 3, pos.getZ() + 3);
+
+        if (spots != null)
+            for (BlockPos offpos : spots)
+                if (level.getBlockState(offpos).is(BlockTags.AIR)
+                        && this.canSurvive(level.getBlockState(offpos), level, pos)
+                        && this.mayPlaceOn(level.getBlockState(offpos.below()), level, pos.below())
+                        && level.getRawBrightness(offpos, 0) < maxBrightnessSustainable())
+                    return offpos;
+
+        return null;
+    }
+
+    @Override
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+
+        if (getAge(state) >= 3) {
+            if (LevelUtil.chance(25, level))
+                spreadSpores(pos, level, state);
+        }
+
+        if (!isMaxAge(state))
+            if (CommonHooks.canCropGrow(level, pos, state, random.nextInt(13) == 0)) {
+                level.setBlock(pos, getStateForAge(getAge(state) + 1), 2);
+                CommonHooks.fireCropGrowPost(level, pos, state);
+            }
+
+    }
+
+    public int maxBrightnessSustainable() {
+        return 13;
     }
 
 }

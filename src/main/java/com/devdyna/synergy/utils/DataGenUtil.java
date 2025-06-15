@@ -4,17 +4,19 @@ import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.datagen.client.DataBlockModelState;
 
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
-
 
 public class DataGenUtil {
 
@@ -29,7 +31,7 @@ public class DataGenUtil {
         return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ID, id));
     }
 
-    public static Block getBlock(String id,String modid) {
+    public static Block getBlock(String id, String modid) {
         return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(modid, id));
     }
 
@@ -69,8 +71,8 @@ public class DataGenUtil {
 
     /**
      * @param block
-     * @param b       this
-     * @param parent  Main.ID + ":block/..."
+     * @param b      this
+     * @param parent Main.ID + ":block/..."
      */
     public static BlockModelBuilder BlockwithParent(Block block, BlockStateProvider b,
             String parent) {
@@ -89,6 +91,11 @@ public class DataGenUtil {
     public static ItemModelBuilder itemBlockwithParent(Block block, ItemModelProvider b, String parent) {
         return b.withExistingParent(getPath(block), parent);
     }
-   
+
+    public static LootItemBlockStatePropertyCondition.Builder lootTableCondition(Block block, IntegerProperty prop,
+            int age_limit) {
+        return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(prop, age_limit));
+    }
 
 }

@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class DataBlockModelState extends BlockStateProvider {
@@ -29,11 +30,11 @@ public class DataBlockModelState extends BlockStateProvider {
         pipe(zBlocks.PIPE.get());
         // deposits();
 
-        crop(zBlocks.RICE.get(), 7,CropBlock.AGE);
-        crop(zBlocks.CAVE_WHEAT.get(),5,BaseShortCropBlock.AGE);
-        crop(zBlocks.CORTINARIUS_MUSHROOM.get(),5,BaseShortCropBlock.AGE);
-        crop(zBlocks.COTTON.get(),5,BaseShortCropBlock.AGE);
-        crop(zBlocks.ELF_CUP_MUSHROOM.get(),5,BaseShortCropBlock.AGE);
+        crop(zBlocks.RICE.get(), 7, CropBlock.AGE);
+        crop(zBlocks.CAVE_WHEAT.get(), 5, BaseShortCropBlock.AGE);
+        growPlant(zBlocks.VIOLET_WEBCAP_MUSHROOM.get(), 5, BaseShortCropBlock.AGE);
+        crop(zBlocks.COTTON.get(), 5, BaseShortCropBlock.AGE);
+        growPlantWithVariants(zBlocks.BLUE_CUP_MUSHROOM.get(), 5, BaseShortCropBlock.AGE);
     }
 
     private void pipe(Block b) {
@@ -57,7 +58,7 @@ public class DataBlockModelState extends BlockStateProvider {
     // this, ID + ":block/pebbles/_base").texture("block", ""));
     // }
 
-    private void crop(Block b,int max,IntegerProperty property) {
+    private void crop(Block b, int max, IntegerProperty property) {
         var name = b.getDescriptionId().replace("block." + ID + ".", "");
 
         var model = getVariantBuilder(b).partialState().with(property, 0).modelForState()
@@ -70,9 +71,52 @@ public class DataBlockModelState extends BlockStateProvider {
                     .crop("crops/" + name + "/" + index, modLoc("block/crops/" + name + "/" + index))
                     .renderType("minecraft:cutout"))
                     .addModel();
-                    
     }
 
+    private void growPlant(Block b, int max, IntegerProperty property) {
+        var name = b.getDescriptionId().replace("block." + ID + ".", "");
+
+        var model = getVariantBuilder(b).partialState().with(property, 0).modelForState()
+                .modelFile(models().cross("crops/" + name + "/0", modLoc("block/crops/" + name + "/0"))
+                        .renderType("minecraft:cutout"))
+                .addModel();
+
+        for (int index = 1; index <= max; index++)
+            model.partialState().with(property, index).modelForState().modelFile(models()
+                    .cross("crops/" + name + "/" + index, modLoc("block/crops/" + name + "/" + index))
+                    .renderType("minecraft:cutout"))
+                    .addModel();
+    }
+
+    //TODO make it dynamic
+    private void growPlantWithVariants(Block b, int max, IntegerProperty property) {
+        var name = b.getDescriptionId().replace("block." + ID + ".", "");
+
+        var model = getVariantBuilder(b);
+
+        model.partialState().with(property, 0)
+                .addModels(ConfiguredModel.builder()
+                        .modelFile(models().cross("crops/" + name + "/0/0", modLoc("block/crops/" + name + "/0/0"))
+                                .renderType("minecraft:cutout"))
+                        .nextModel()
+                        .modelFile(models().cross("crops/" + name + "/1/0", modLoc("block/crops/" + name + "/1/0"))
+                                .renderType("minecraft:cutout"))
+                        .build());
+
+        for (int index = 1; index <= max; index++)
+            model.partialState().with(property, index)
+                    .addModels(ConfiguredModel.builder()
+                            .modelFile(models()
+                                    .cross("crops/" + name + "/0/" + index,
+                                            modLoc("block/crops/" + name + "/0/" + index))
+                                    .renderType("minecraft:cutout"))
+                            .nextModel()
+                            .modelFile(models()
+                                    .cross("crops/" + name + "/1/" + index,
+                                            modLoc("block/crops/" + name + "/1/" + index))
+                                    .renderType("minecraft:cutout"))
+                            .build());
+    }
 
     private void demosimpleBlock(Block b) {
         simpleBlock(b,

@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "age=0": [
+      {
+        "model": "synergy:crops/blue_cup_mushroom/0/0"
+      },
+      {
+        "model": "synergy:crops/blue_cup_mushroom/1/0"
+      }
+    ],
+    "age=1": [
+      {
+        "model": "synergy:crops/blue_cup_mushroom/0/1"
+      },
+      {
+        "model": "synergy:crops/blue_cup_mushroom/1/1"
+      }
+    ],
+    "age=2": [
+      {
+        "model": "synergy:crops/blue_cup_mushroom/0/2"
+      },
+      {
+        "model": "synergy:crops/blue_cup_mushroom/1/2"
+      }
+    ],
+    "age=3": [
+      {
+        "model": "synergy:crops/blue_cup_mushroom/0/3"
+      },
+      {
+        "model": "synergy:crops/blue_cup_mushroom/1/3"
+      }
+    ],
+    "age=4": [
+      {
+        "model": "synergy:crops/blue_cup_mushroom/0/4"
+      },
+      {
+        "model": "synergy:crops/blue_cup_mushroom/1/4"
+      }
+    ],
+    "age=5": [
+      {
+        "model": "synergy:crops/blue_cup_mushroom/0/5"
+      },
+      {
+        "model": "synergy:crops/blue_cup_mushroom/1/5"
+      }
+    ]
+  }
+}

@@ -27,6 +27,9 @@ public class DataItemModel extends ItemModelProvider {
         zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemTool(item.get(), this));
 
         zItems.zItem.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
+        zItems.zCropExtra.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
+        zItems.zFoods.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
+        zItems.zSeeds.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
 
         demo.forEach(e -> DataGenUtil.itemBlockwithParent(e, this, ID + ":block/dynamo/off"));
 

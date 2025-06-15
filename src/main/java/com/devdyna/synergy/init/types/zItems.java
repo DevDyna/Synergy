@@ -51,26 +51,26 @@ public class zItems {
                         () -> new CroockItem(BlockTags.LEAVES, Tiers.NETHERITE));
 
         // public static final DeferredHolder<Item, Item> RICE;
-        public static final DeferredHolder<Item, ?> CAVE_WHEAT_SEEDS = zSeeds.register(zStatic.Plants.CAVE_WHEAT_SEED,
+        public static final DeferredHolder<Item, ?> CAVE_WHEAT_SEEDS = zSeeds.register(zStatic.Seeds.CAVE_WHEAT_SEED,
                         () -> new BaseSeedItem(zBlocks.CAVE_WHEAT.get()));
-        public static final DeferredHolder<Item, ?> RICE_SEED = zSeeds.register(zStatic.Plants.RICE_SEED,
+        public static final DeferredHolder<Item, ?> RICE_SEED = zSeeds.register(zStatic.Seeds.RICE_SEED,
                         () -> new BaseSeedItem(zBlocks.RICE.get()));
-        public static final DeferredHolder<Item, ?> COTTON_SEEDS = zSeeds.register(zStatic.Plants.COTTON_SEED,
+        public static final DeferredHolder<Item, ?> COTTON_SEEDS = zSeeds.register(zStatic.Seeds.COTTON_SEED,
                         () -> new BaseSeedItem(zBlocks.COTTON.get()));
-        public static final DeferredHolder<Item, ?> ELF_CUP_SPORES = zSeeds.register(
-                        zStatic.Plants.ELF_CUP_MUSHROOM_SPORE,
-                        () -> new BaseSeedItem(zBlocks.ELF_CUP_MUSHROOM.get()));
-        public static final DeferredHolder<Item, ?> CORTINARIUS_SPORES = zSeeds.register(
-                        zStatic.Plants.CORTINARIUS_MUSHROOM_SPORE,
-                        () -> new BaseSeedItem(zBlocks.CORTINARIUS_MUSHROOM.get()));
+        public static final DeferredHolder<Item, ?> BLUE_CUP_SPORE = zSeeds.register(
+                        zStatic.Seeds.BLUE_CUP_SPORE,
+                        () -> new BaseSeedItem(zBlocks.BLUE_CUP_MUSHROOM.get()));
+        public static final DeferredHolder<Item, ?> VIOLET_WEBCAP_SPORE = zSeeds.register(
+                        zStatic.Seeds.VIOLET_WEBCAP_SPORE,
+                        () -> new BaseSeedItem(zBlocks.VIOLET_WEBCAP_MUSHROOM.get()));
 
-        public static final DeferredHolder<Item, ?> CAVE_WHEAT = zCropExtra
-                        .registerSimpleItem(zStatic.Plants.CAVE_WHEAT);
+        // public static final DeferredHolder<Item, ?> CAVE_WHEAT = zCropExtra
+        //                 .registerSimpleItem(zStatic.Plants.CAVE_WHEAT);
         public static final DeferredHolder<Item, ?> COTTON = zCropExtra.registerSimpleItem(zStatic.Plants.COTTON);
-        public static final DeferredHolder<Item, ?> ELF_CUP_MUSHROOM = zCropExtra
-                        .registerSimpleItem(zStatic.Plants.ELF_CUP_MUSHROOM);
-        public static final DeferredHolder<Item, ?> CORTINARIUS_MUSHROOM = zCropExtra
-                        .registerSimpleItem(zStatic.Plants.CORTINARIUS_MUSHROOM);
+        public static final DeferredHolder<Item, ?> BLUE_CUP_MUSHROOM = zCropExtra
+                        .registerSimpleItem(zStatic.Plants.BLUE_CUP_MUSHROOM);
+        public static final DeferredHolder<Item, ?> VIOLET_WEBCAP_MUSHROOM = zCropExtra
+                        .registerSimpleItem(zStatic.Plants.VIOLET_WEBCAP_MUSHROOM);
 
         /*
          * TODO
@@ -88,6 +88,8 @@ public class zItems {
          * strawberries cultivated | (pole-plant) (no texture)
          * blackberries wild | (bush) (no texture)
          * blackberries cultivated | (pole-plant) (no texture)
+         * Nerium oleander (no texture)
+         * Macrolepiota procera mushroom (double) (no texture)
          */
 
 }

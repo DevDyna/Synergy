@@ -17,5 +17,4 @@ public class cave_wheat extends BaseShortCropBlock {
         return zItems.CAVE_WHEAT_SEEDS.get();
     }
 
-
 }
