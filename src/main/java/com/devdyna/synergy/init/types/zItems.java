@@ -2,13 +2,11 @@ package com.devdyna.synergy.init.types;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
-import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.CroockItem;
-import com.devdyna.synergy.init.builder._core.BaseSeedItem;
+import com.devdyna.synergy.init.builder._core.seeds.BaseSeedItem;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Tiers;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;

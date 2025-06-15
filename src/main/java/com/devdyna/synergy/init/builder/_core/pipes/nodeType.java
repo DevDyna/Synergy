@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder._core;
+package com.devdyna.synergy.init.builder._core.pipes;
 
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBlock;
 

@@ -3,7 +3,8 @@ package com.devdyna.synergy.init.builder.pipeBlocks;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.init.Material;
-import com.devdyna.synergy.init.builder._core.pipeType;
+import com.devdyna.synergy.init.builder._core.pipes.pipeType;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;

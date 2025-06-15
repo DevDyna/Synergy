@@ -11,7 +11,7 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.PottedAzalea;
 import com.devdyna.synergy.init.builder.Sprinkler.SprinklerBLK;
-import com.devdyna.synergy.init.builder.crops.*;
+import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBlock;
 

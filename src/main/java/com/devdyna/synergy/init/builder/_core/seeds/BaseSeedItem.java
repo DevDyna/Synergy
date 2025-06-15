@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder._core;
+package com.devdyna.synergy.init.builder._core.seeds;
 
 import com.devdyna.synergy.init.Material;
 

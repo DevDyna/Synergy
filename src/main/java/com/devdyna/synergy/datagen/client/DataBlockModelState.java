@@ -2,8 +2,9 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
-import com.devdyna.synergy.init.builder._core.nodeType;
-import com.devdyna.synergy.init.builder._core.pipeType;
+import com.devdyna.synergy.init.builder._core.crops.BaseShortCropBlock;
+import com.devdyna.synergy.init.builder._core.pipes.nodeType;
+import com.devdyna.synergy.init.builder._core.pipes.pipeType;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.utils.DataGenUtil;
 
@@ -11,8 +12,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class DataBlockModelState extends BlockStateProvider {
@@ -28,11 +29,11 @@ public class DataBlockModelState extends BlockStateProvider {
         pipe(zBlocks.PIPE.get());
         // deposits();
 
-        crop(zBlocks.RICE.get(), 7);
-        unstableCrop(zBlocks.CAVE_WHEAT.get());
-        unstableCrop(zBlocks.CORTINARIUS_MUSHROOM.get());
-        unstableCrop(zBlocks.COTTON.get());
-        unstableCrop(zBlocks.ELF_CUP_MUSHROOM.get());
+        crop(zBlocks.RICE.get(), 7,CropBlock.AGE);
+        crop(zBlocks.CAVE_WHEAT.get(),5,BaseShortCropBlock.AGE);
+        crop(zBlocks.CORTINARIUS_MUSHROOM.get(),5,BaseShortCropBlock.AGE);
+        crop(zBlocks.COTTON.get(),5,BaseShortCropBlock.AGE);
+        crop(zBlocks.ELF_CUP_MUSHROOM.get(),5,BaseShortCropBlock.AGE);
     }
 
     private void pipe(Block b) {
@@ -56,38 +57,20 @@ public class DataBlockModelState extends BlockStateProvider {
     // this, ID + ":block/pebbles/_base").texture("block", ""));
     // }
 
-    private void crop(Block b,int state) {
+    private void crop(Block b,int max,IntegerProperty property) {
         var name = b.getDescriptionId().replace("block." + ID + ".", "");
 
-        var model = getVariantBuilder(b).partialState().with(CropBlock.AGE, 0).modelForState()
+        var model = getVariantBuilder(b).partialState().with(property, 0).modelForState()
                 .modelFile(models().crop("crops/" + name + "/0", modLoc("block/crops/" + name + "/0"))
                         .renderType("minecraft:cutout"))
                 .addModel();
 
-        for (int index = 1; index <= state; index++)
-            model.partialState().with(CropBlock.AGE, index).modelForState().modelFile(models()
+        for (int index = 1; index <= max; index++)
+            model.partialState().with(property, index).modelForState().modelFile(models()
                     .crop("crops/" + name + "/" + index, modLoc("block/crops/" + name + "/" + index))
                     .renderType("minecraft:cutout"))
                     .addModel();
                     
-    }
-
-    /**
-     * TODO new CropBlock builder
-     * @Deprecated
-     */
-    public void unstableCrop(Block b){
-        var name = b.getDescriptionId().replace("block." + ID + ".", "");
-
-         getVariantBuilder(b).partialState()
-            .with(CropBlock.AGE, 0).modelForState().modelFile(models().crop("crops/" + name + "/0", modLoc("block/crops/" + name + "/0")).renderType("minecraft:cutout")).addModel()
-            .partialState().with(CropBlock.AGE, 1).modelForState().modelFile(models().crop("crops/" + name + "/1", modLoc("block/crops/" + name + "/1")).renderType("minecraft:cutout")).addModel()
-            .partialState().with(CropBlock.AGE, 2).modelForState().modelFile(models().crop("crops/" + name + "/1", modLoc("block/crops/" + name + "/1")).renderType("minecraft:cutout")).addModel()
-            .partialState().with(CropBlock.AGE, 3).modelForState().modelFile(models().crop("crops/" + name + "/2", modLoc("block/crops/" + name + "/2")).renderType("minecraft:cutout")).addModel()
-            .partialState().with(CropBlock.AGE, 4).modelForState().modelFile(models().crop("crops/" + name + "/3", modLoc("block/crops/" + name + "/3")).renderType("minecraft:cutout")).addModel()
-            .partialState().with(CropBlock.AGE, 5).modelForState().modelFile(models().crop("crops/" + name + "/3", modLoc("block/crops/" + name + "/3")).renderType("minecraft:cutout")).addModel()
-            .partialState().with(CropBlock.AGE, 6).modelForState().modelFile(models().crop("crops/" + name + "/4", modLoc("block/crops/" + name + "/4")).renderType("minecraft:cutout")).addModel()
-            .partialState().with(CropBlock.AGE, 7).modelForState().modelFile(models().crop("crops/" + name + "/5", modLoc("block/crops/" + name + "/5")).renderType("minecraft:cutout")).addModel();
     }
 
 

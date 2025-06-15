@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.devdyna.synergy.init.builder._core.BaseBE;
-import com.devdyna.synergy.init.builder._core.nodeType;
-import com.devdyna.synergy.init.builder._core.pipeProperties;
-import com.devdyna.synergy.init.builder._core.pipeType;
+import com.devdyna.synergy.init.builder._core.pipes.nodeType;
+import com.devdyna.synergy.init.builder._core.pipes.pipeProperties;
+import com.devdyna.synergy.init.builder._core.pipes.pipeType;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zBlockTag;
 import net.minecraft.core.BlockPos;
