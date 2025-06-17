@@ -8,7 +8,6 @@ import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 

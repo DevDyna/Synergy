@@ -18,8 +18,10 @@ public class zStatic {
         public static String azalea = "azalea";
         public static String sprinkler = "sprinkler";
         public static String pipe = "pipe";
-        public static String node = "transfer_node";
+        public static String itemTransfer = "item_transfer_node";
+        public static String itemGen = "item_generator_node";
 
+        //TODO WIP
         public static String generator = "generator";
         public static String deposit = "deposit";
         public static String extractor = "extractor";

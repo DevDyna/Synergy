@@ -26,7 +26,7 @@ public class DataBlockTag extends BlockTagsProvider {
 
         tag(zBlockTag.CROPS).addTag(BlockTags.CROPS);
 
-        tag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.PIPE.get(), zBlocks.NODE.get());
+        tag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.PIPE.get(), zBlocks.ITEM_TRANSFER.get(), zBlocks.ITEM_GEN.get());
 
         // tag(zBlockTag.WILD_CROP_BLOCKS).addTag(BlockTags.DIRT);
 

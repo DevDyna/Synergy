@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder._core.pipes;
 
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBlock;
+import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.ItemTranfer;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -64,9 +64,9 @@ public interface nodeType extends pipeType {
         return state;
     }
 
-        static BlockState updateNodeOnPlace(BlockState state,BlockPos pos, Level level, Direction direction) {
+    static BlockState updateNodeOnPlace(BlockState state, BlockPos pos, Level level, Direction direction) {
         state = state.setValue(FACING, direction.getOpposite());
-        state = pipeType.updatePipeOnPlace(state, level,pos);
+        state = pipeType.updatePipeOnPlace(state, level, pos);
         state = switch (direction.getOpposite()) {
             case Direction.DOWN -> state.setValue(DOWN, pipeProperties.NODE);
             case Direction.UP -> state.setValue(UP, pipeProperties.NODE);
@@ -81,12 +81,12 @@ public interface nodeType extends pipeType {
     static void getNodeMultiPart(Block b, MultiPartBlockStateBuilder model, ModelFile core, ModelFile pipe,
             ModelFile node) {
         pipeType.getPipeMultiPart(b, model, core, pipe);
-        model.part().modelFile(node).addModel().condition(NodeBlock.FACING, Direction.NORTH);
-        model.part().modelFile(node).rotationY(90).addModel().condition(NodeBlock.FACING, Direction.EAST);
-        model.part().modelFile(node).rotationY(180).addModel().condition(NodeBlock.FACING, Direction.SOUTH);
-        model.part().modelFile(node).rotationY(270).addModel().condition(NodeBlock.FACING, Direction.WEST);
-        model.part().modelFile(node).rotationX(270).addModel().condition(NodeBlock.FACING, Direction.UP);
-        model.part().modelFile(node).rotationX(90).addModel().condition(NodeBlock.FACING, Direction.DOWN);
+        model.part().modelFile(node).addModel().condition(ItemTranfer.FACING, Direction.NORTH);
+        model.part().modelFile(node).rotationY(90).addModel().condition(ItemTranfer.FACING, Direction.EAST);
+        model.part().modelFile(node).rotationY(180).addModel().condition(ItemTranfer.FACING, Direction.SOUTH);
+        model.part().modelFile(node).rotationY(270).addModel().condition(ItemTranfer.FACING, Direction.WEST);
+        model.part().modelFile(node).rotationX(270).addModel().condition(ItemTranfer.FACING, Direction.UP);
+        model.part().modelFile(node).rotationX(90).addModel().condition(ItemTranfer.FACING, Direction.DOWN);
     }
 
     static void onDestroyNode(BlockState state, Level level, BlockPos pos) {

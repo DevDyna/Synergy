@@ -26,7 +26,7 @@ public class DataRecipe extends RecipeProvider {
         @Override
         protected void buildRecipes(RecipeOutput c) {
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.NODE.get().asItem(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ITEM_TRANSFER.get().asItem(), 1)
                                 .pattern(" P ")
                                 .pattern("RBR")
                                 .pattern("SCS")
@@ -40,7 +40,7 @@ public class DataRecipe extends RecipeProvider {
                                                                 zBlocks.PIPE.get()))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.NODE.get().asItem(), 4)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ITEM_TRANSFER.get().asItem(), 4)
                                 .pattern(" P ")
                                 .pattern("RBR")
                                 .pattern("SCS")
@@ -54,7 +54,8 @@ public class DataRecipe extends RecipeProvider {
                                                                 zBlocks.PIPE.get()))
                                 .group(ID)
                                 .save(c, DataGenUtil.getResource(
-                                                zBlocks.NODE.get().getDescriptionId().replace("block." + ID + ".", "")
+                                                zBlocks.ITEM_TRANSFER.get().getDescriptionId()
+                                                                .replace("block." + ID + ".", "")
                                                                 + "_alt"));
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.PIPE.get().asItem(), 16)
@@ -66,6 +67,12 @@ public class DataRecipe extends RecipeProvider {
                                 .define('S', zItemTag.STONE_SLABS)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.REDSTONE, Items.GLASS, Items.STONE_SLAB))
+                                .group(ID).save(c);
+
+                ShapelessRecipeBuilder.shapeless(MISC, zBlocks.ITEM_GEN.get().asItem())
+                                .requires(zBlocks.ITEM_TRANSFER.get())
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zBlocks.ITEM_TRANSFER.get()))
                                 .group(ID).save(c);
 
         }

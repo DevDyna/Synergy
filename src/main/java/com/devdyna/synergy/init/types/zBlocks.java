@@ -12,7 +12,7 @@ import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.PottedAzalea;
 import com.devdyna.synergy.init.builder.Sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBlock;
+import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.*;
 import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.crops.mushroom.*;
 import com.devdyna.synergy.init.builder.crops.wild.*;
@@ -45,8 +45,12 @@ public class zBlocks {
         public static final DeferredHolder<Block, ?> PIPE = Material.registerItemBlock(zStatic.Blocks.pipe,
                         () -> new pipeBlock());
 
-        public static final DeferredHolder<Block, ?> NODE = Material.registerItemBlock(zStatic.Blocks.node,
-                        () -> new NodeBlock());
+        public static final DeferredHolder<Block, ?> ITEM_TRANSFER = Material.registerItemBlock(
+                        zStatic.Blocks.itemTransfer,
+                        () -> new ItemTranfer());
+
+        public static final DeferredHolder<Block, ?> ITEM_GEN = Material.registerItemBlock(zStatic.Blocks.itemGen,
+                        () -> new ItemGen());
 
         public static final DeferredHolder<Block, ?> RICE = zCrop.register(zStatic.Plants.RICE,
                         () -> new rice());

@@ -1,10 +1,11 @@
-package com.devdyna.synergy.init.builder.pipeBlocks.nodes;
+package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks;
 
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder._core.BaseBlockBE;
 import com.devdyna.synergy.init.builder._core.pipes.nodeType;
+import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemTransferBE;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -19,9 +20,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class NodeBlock extends BaseBlockBE implements nodeType {
+public class ItemTranfer extends BaseBlockBE implements nodeType {
 
-    public NodeBlock() {
+    public ItemTranfer() {
         super(Material.bProp);
     }
 
@@ -56,7 +57,7 @@ public class NodeBlock extends BaseBlockBE implements nodeType {
     @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
-        return new NodeBE(p, s);
+        return new ItemTransferBE(p, s);
     }
 
 }
