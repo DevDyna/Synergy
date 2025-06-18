@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:transfer_node"
+        "recipe": "synergy:item_generator_node"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,16 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:redstone"
-          },
-          {
-            "items": "minecraft:chest"
-          },
-          {
-            "items": "minecraft:redstone_block"
-          },
-          {
-            "items": "synergy:pipe"
+            "items": "synergy:item_transfer_node"
           }
         ]
       },
@@ -35,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:transfer_node"
+      "synergy:item_generator_node"
     ]
   }
 }

@@ -1,72 +1,62 @@
-package com.devdyna.synergy.init.builder.pipeBlocks;
+package com.devdyna.synergy.init.builder.pipeBlocks.nodes;
 
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.init.Material;
-import com.devdyna.synergy.init.builder._core.pipes.pipeType;
+import com.devdyna.synergy.init.builder._core.BaseBlockBE;
+import com.devdyna.synergy.init.builder._core.pipes.nodeType;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.Tags;
 
 @SuppressWarnings("null")
-public class pipeBlock extends Block implements pipeType {
+public class NodeBaseBlock extends BaseBlockBE implements nodeType {
 
-    public pipeBlock() {
+    public NodeBaseBlock() {
         super(Material.bProp);
     }
 
     @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> b) {
-        pipeType.PipeStateDefinition(b);
+        nodeType.NodeStateDefinition(b);
     }
 
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext c) {
-        return pipeType.updatePipeOnPlace(defaultBlockState(), c.getLevel(), c.getClickedPos());
+        return nodeType.updateNodeOnPlace(defaultBlockState(), c.getClickedPos(),c.getLevel(),c.getClickedFace());
     }
 
     @Override
     protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
-        return pipeType.getPipeBaseShape(s);
+        return nodeType.getNodeBaseShape(s);
     }
 
     @Override
     public void destroy(LevelAccessor l, BlockPos p, BlockState s) {
-        pipeType.onDestroyPipe(s, (Level) l, p);
+        nodeType.onDestroyNode(s, (Level) l, p);
     }
 
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
             BlockPos neighborPos, boolean movedByPiston) {
-        pipeType.updatePipeOnPlace(state, level, pos);
+        nodeType.updateNodeOnPlace(state, pos, level, state.getValue(nodeType.FACING).getOpposite());
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
-            Player player, InteractionHand hand, BlockHitResult hitResult) {
-
-        if (stack.is(Tags.Items.TOOLS_WRENCH)) {
-            pipeType.updatePipeOnPlace(state, level, pos);
-            return ItemInteractionResult.SUCCESS;
-        }
-
-        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+    @Nullable
+    public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
+        return new NodeBaseBE(p, s);
     }
 
 }

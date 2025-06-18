@@ -1,6 +1,7 @@
 {
   "values": [
     "synergy:pipe",
-    "synergy:transfer_node"
+    "synergy:item_transfer_node",
+    "synergy:item_generator_node"
   ]
 }

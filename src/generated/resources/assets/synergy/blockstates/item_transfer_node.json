@@ -1,0 +1,115 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/core"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe"
+      },
+      "when": {
+        "north": "true|node|output"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe",
+        "y": 90
+      },
+      "when": {
+        "east": "true|node|output"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe",
+        "x": 180
+      },
+      "when": {
+        "south": "true|node|output"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe",
+        "y": 270
+      },
+      "when": {
+        "west": "true|node|output"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe",
+        "x": 270
+      },
+      "when": {
+        "up": "true|node|output"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe",
+        "x": 90
+      },
+      "when": {
+        "down": "true|node|output"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/node/basic/plate"
+      },
+      "when": {
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/node/basic/plate",
+        "y": 90
+      },
+      "when": {
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/node/basic/plate",
+        "y": 180
+      },
+      "when": {
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/node/basic/plate",
+        "y": 270
+      },
+      "when": {
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/node/basic/plate",
+        "x": 270
+      },
+      "when": {
+        "facing": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/node/basic/plate",
+        "x": 90
+      },
+      "when": {
+        "facing": "down"
+      }
+    }
+  ]
+}

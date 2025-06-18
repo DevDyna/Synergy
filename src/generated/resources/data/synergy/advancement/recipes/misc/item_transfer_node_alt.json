@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:transfer_node_alt"
+        "recipe": "synergy:item_transfer_node_alt"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -35,7 +35,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:transfer_node_alt"
+      "synergy:item_transfer_node_alt"
     ]
   }
 }

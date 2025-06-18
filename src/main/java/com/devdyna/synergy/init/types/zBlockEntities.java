@@ -3,8 +3,7 @@ package com.devdyna.synergy.init.types;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.builder.Sprinkler.SprinklerBE;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemGenBE;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemTransferBE;
+import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;

@@ -65,12 +65,15 @@ public class zItems {
                         () -> new BaseSeedItem(zBlocks.VIOLET_WEBCAP_MUSHROOM.get()));
 
         // public static final DeferredHolder<Item, ?> CAVE_WHEAT = zCropExtra
-        //                 .registerSimpleItem(zStatic.Plants.CAVE_WHEAT);
+        // .registerSimpleItem(zStatic.Plants.CAVE_WHEAT);
         public static final DeferredHolder<Item, ?> COTTON = zCropExtra.registerSimpleItem(zStatic.Plants.COTTON);
         public static final DeferredHolder<Item, ?> BLUE_CUP_MUSHROOM = zCropExtra
                         .registerSimpleItem(zStatic.Plants.BLUE_CUP_MUSHROOM);
         public static final DeferredHolder<Item, ?> VIOLET_WEBCAP_MUSHROOM = zCropExtra
                         .registerSimpleItem(zStatic.Plants.VIOLET_WEBCAP_MUSHROOM);
+
+        public static final DeferredHolder<Item, Item> PIPE_UPDATER = zItem
+                        .registerSimpleItem(zStatic.Items.pipe_updater);
 
         /*
          * TODO
@@ -90,6 +93,8 @@ public class zItems {
          * blackberries cultivated | (pole-plant) (no texture)
          * Nerium oleander (no texture)
          * Macrolepiota procera mushroom (double) (no texture)
+         * 
+         * mushroom Desarmillaria tabescens like candles
          */
 
 }

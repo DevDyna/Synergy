@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "synergy",
+  "ingredients": [
+    {
+      "item": "synergy:item_transfer_node"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:item_generator_node"
+  }
+}

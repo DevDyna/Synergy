@@ -28,3 +28,4 @@ repo
 /generated
 desktop.ini
 /src/generated/resources/.cache
+/src/test

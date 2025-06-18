@@ -12,6 +12,7 @@ public class zStatic {
         }
 
         public static String wooden_crook = "wooden_crook";
+        public static String pipe_updater = "pipe_updater";
     }
 
     public class Blocks {

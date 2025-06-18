@@ -3,6 +3,7 @@ package com.devdyna.synergy.init.builder._core.pipes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Nullable;
 
@@ -26,6 +27,14 @@ public interface nodeLogic {
     default IItemHandler getInputBlock(BlockState state, Level level, BlockPos pos) {
         return getCap(level, state.getValue(nodeType.FACING).getOpposite(),
                 pos.relative(state.getValue(nodeType.FACING)));
+    }
+
+    /**
+     * return the input block
+     */
+    @Nullable
+    default Entry<Direction, BlockPos> getInputPos(BlockState state, Level level, BlockPos pos) {
+        return Map.entry(state.getValue(nodeType.FACING).getOpposite(), pos.relative(state.getValue(nodeType.FACING)));
     }
 
     /**
@@ -76,6 +85,58 @@ public interface nodeLogic {
                 return null;
             else
                 return getCap(level, outputSide.getOpposite(), outputPos.relative(outputSide));
+        else
+            return null;
+    }
+
+    /**
+     * return the output block
+     */
+    @Nullable
+    default Entry<Direction, BlockPos> getOutputPos(BlockState state, Level level, BlockPos pos) {
+        BlockPos variablePos = pos;
+        Direction outputSide = null;
+        BlockPos outputPos = null;
+        BlockState actual;
+        BlockState offset;
+        var totalCheckSide = 6;
+        List<BlockPos> validPath = new ArrayList<>();
+
+        var flag = true;
+        while (flag)
+            for (Direction dir : Direction.values()) {
+                actual = level.getBlockState(variablePos);
+                offset = level.getBlockState(variablePos.relative(dir));
+
+                if (actual.getValue(pipeType.D2P(dir)) == pipeProperties.OUTPUT) {
+                    outputPos = variablePos;
+                    outputSide = dir;
+                    flag = false;
+                    break;
+                }
+
+                if (offset.is(zBlockTag.PIPE_CONNECTORS)
+                        && validPath.indexOf(variablePos.relative(dir)) == -1
+                        && actual.getValue(pipeType.D2P(dir)) == pipeProperties.TRUE) {
+
+                    validPath.add(variablePos);
+                    variablePos = variablePos.relative(dir);
+                    totalCheckSide = 6;
+                }
+
+                totalCheckSide--;
+
+                if (totalCheckSide < 0) {
+                    flag = false;
+                    break;
+                }
+            }
+
+        if (totalCheckSide >= 0)
+            if (outputSide == null && outputPos == null)
+                return null;
+            else
+                return Map.entry(outputSide.getOpposite(), outputPos.relative(outputSide));
         else
             return null;
     }
