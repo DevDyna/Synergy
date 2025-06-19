@@ -42,7 +42,7 @@ public class DataLang extends LanguageProvider {
 
                 // pipe stuff
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".desc",
-                                TIP_COLOR + "Can connect to other of same type");
+                                TIP_COLOR + "Can connect to other #synergy:pipe_connector of same type");
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".safe",
                                 TIP_COLOR + "Safe for decoration");
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".extend",
