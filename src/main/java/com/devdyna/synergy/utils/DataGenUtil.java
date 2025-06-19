@@ -65,6 +65,11 @@ public class DataGenUtil {
                 getResource("item/" + getPath(item)));
     }
 
+    public static ItemModelBuilder itemModel(Item item, ItemModelProvider b, String pathSuffix) {
+        return b.withExistingParent(getPath(item), ITEM).texture("layer0",
+                getResource("item/" + pathSuffix + getPath(item)));
+    }
+
     public static ItemModelBuilder itemBlock(Block block, ItemModelProvider b) {
         return b.withExistingParent(getPath(block), mod + "block/" + getPath(block));
     }

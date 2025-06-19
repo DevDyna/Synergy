@@ -17,7 +17,9 @@ public class zBlockTag {
 
     public static final TagKey<Block> EXTRACTORS = Material.tagBlock("extractors");
 
+    public static final TagKey<Block> MASHABLE = Material.tagBlock("mashable");
 
-    // public static final TagKey<Block> WILD_CROP_BLOCKS = Material.tagBlock("wildcrop_blocks");
+    // public static final TagKey<Block> WILD_CROP_BLOCKS =
+    // Material.tagBlock("wildcrop_blocks");
 
 }

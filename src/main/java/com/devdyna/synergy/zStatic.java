@@ -12,7 +12,7 @@ public class zStatic {
         }
 
         public static String wooden_crook = "wooden_crook";
-
+        public static String smasher = "smasher";
     }
 
     public class Blocks {
@@ -33,7 +33,13 @@ public class zStatic {
         }
 
         public class nodes {
+
             private static String node = "_node";
+
+            // only used for tooltips atm
+            public static String type_transfer = "transfer" + node;
+            public static String type_provider = "provider" + node;
+
             public static String ITransfer = types.item + "transfer" + node;
             public static String IGen = types.item + "provider" + node;
 
@@ -48,7 +54,6 @@ public class zStatic {
         public class tools {
             public static String refactorizer = pipe + "_updater";
             public static String visualizer = pipe + "_visualizer";
-            public static String smasher = pipe + "_smasher";
         }
 
         public static String pipe = "pipe";

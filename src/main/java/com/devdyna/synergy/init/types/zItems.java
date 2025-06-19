@@ -3,9 +3,9 @@ package com.devdyna.synergy.init.types;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.builder.CroockItem;
+import com.devdyna.synergy.init.builder.Smasher;
 import com.devdyna.synergy.init.builder._core.seeds.BaseSeedItem;
 import com.devdyna.synergy.init.builder.pipeTools.PipeRefactorizer;
-import com.devdyna.synergy.init.builder.pipeTools.PipeSmasher;
 import com.devdyna.synergy.init.builder.pipeTools.PipeVisualizer;
 
 import net.minecraft.tags.BlockTags;
@@ -23,7 +23,6 @@ public class zItems {
                 zSeeds.register(bus);
                 zCropExtra.register(bus);
                 zFoods.register(bus);
-                // zSpores.register(bus);
         }
 
         // ---------------------------------------------------------------------------------------//
@@ -41,13 +40,13 @@ public class zItems {
 
         // ---------------------------------------------------------------------------------------//
 
-        public static final DeferredHolder<Item, Item> AZALEA_SEEDS = zItem
+        public static final DeferredHolder<Item, Item> AZALEA_SEEDS = zSeeds
                         .registerSimpleItem(zStatic.Items.Azalea.seeds);
 
-        public static final DeferredHolder<Item, Item> SMALL_AZALEA_LEAF = zItem
+        public static final DeferredHolder<Item, Item> SMALL_AZALEA_LEAF = zCropExtra
                         .registerSimpleItem(zStatic.Items.Azalea.leaf);
 
-        public static final DeferredHolder<Item, Item> SMALL_AZALEA_ROOTS = zItem
+        public static final DeferredHolder<Item, Item> SMALL_AZALEA_ROOTS = zCropExtra
                         .registerSimpleItem(zStatic.Items.Azalea.roots);
 
         public static final DeferredHolder<Item, CroockItem> WOODEN_CROOK = zTool.register(zStatic.Items.wooden_crook,
@@ -75,13 +74,13 @@ public class zItems {
         public static final DeferredHolder<Item, ?> VIOLET_WEBCAP_MUSHROOM = zCropExtra
                         .registerSimpleItem(zStatic.Plants.VIOLET_WEBCAP_MUSHROOM);
 
-        public static final DeferredHolder<Item, Item> PIPE_REFARCTORIZER = zItem
+        public static final DeferredHolder<Item, Item> PIPE_REFARCTORIZER = zTool
                         .register(zStatic.PipeStuff.tools.refactorizer, () -> new PipeRefactorizer());
 
-        public static final DeferredHolder<Item, Item> PIPE_SMASHER = zItem
-                        .register(zStatic.PipeStuff.tools.smasher, () -> new PipeSmasher());
+        public static final DeferredHolder<Item, Item> SMASHER = zTool
+                        .register(zStatic.Items.smasher, () -> new Smasher());
 
-        public static final DeferredHolder<Item, Item> PIPE_VISUALIZER = zItem
+        public static final DeferredHolder<Item, Item> PIPE_VISUALIZER = zTool
                         .register(zStatic.PipeStuff.tools.visualizer, () -> new PipeVisualizer());
 
         /*

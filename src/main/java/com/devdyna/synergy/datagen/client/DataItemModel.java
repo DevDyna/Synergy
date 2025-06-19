@@ -24,18 +24,18 @@ public class DataItemModel extends ItemModelProvider {
     @Override
     protected void registerModels() {
 
-        zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemTool(item.get(), this));
-
         zItems.zItem.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
-        zItems.zCropExtra.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
-        zItems.zFoods.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
-        zItems.zSeeds.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
+        zItems.zCropExtra.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/results/"));
+        zItems.zFoods.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "foods/"));
+        zItems.zSeeds.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/seeds/"));
 
         demo.forEach(e -> DataGenUtil.itemBlockwithParent(e, this, ID + ":block/dynamo/off"));
 
         withExistingParent(zBlocks.PIPE.getRegisteredName(), modLoc("block/pipe/basic/item_model"));
         withExistingParent(zBlocks.ITEM_TRANSFER.getRegisteredName(), modLoc("block/node/basic/item_model"));
         withExistingParent(zBlocks.ITEM_GEN.getRegisteredName(), modLoc("block/node/basic/item_model"));
+
+        zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "tools/"));
     }
 
 }

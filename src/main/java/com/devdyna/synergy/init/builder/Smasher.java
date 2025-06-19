@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.pipeTools;
+package com.devdyna.synergy.init.builder;
 
 import java.util.List;
 
@@ -18,16 +18,16 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 
 @SuppressWarnings("null")
-public class PipeSmasher extends Item {
+public class Smasher extends Item {
 
-    public PipeSmasher() {
+    public Smasher() {
         super(Material.iProp);
     }
 
     @Override
     public InteractionResult useOn(UseOnContext c) {
         var state = c.getLevel().getBlockState(c.getClickedPos());
-        if (state.is(zBlockTag.PIPE_CONNECTORS) && c.getPlayer().isCrouching()) {
+        if (state.is(zBlockTag.MASHABLE) && c.getPlayer().isCrouching()) {
 
             c.getPlayer().playSound(SoundEvents.ITEM_FRAME_REMOVE_ITEM);
 
@@ -45,6 +45,6 @@ public class PipeSmasher extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
             TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.tools.smasher));
+        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Items.smasher));
     }
 }

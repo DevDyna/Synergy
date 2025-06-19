@@ -28,13 +28,15 @@ public class DataBlockTag extends BlockTagsProvider {
 
         tag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.PIPE.get(), zBlocks.ITEM_TRANSFER.get(), zBlocks.ITEM_GEN.get());
 
+        tag(zBlockTag.MASHABLE).addTag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.SPRINKLER.get());
+
         // tag(zBlockTag.WILD_CROP_BLOCKS).addTag(BlockTags.DIRT);
 
         // tag(zBlockTag.EXTRACTORS).add(zBlocks.EXTRACTOR.get());
 
         // zMultiTags.ALL_DEPOSITS.forEach(
-        //         depo -> tag(depo.block()).add(
-        //             zBlocks.deposits.get(zMultiTags.ALL_DEPOSITS.indexOf(depo)).get())
+        // depo -> tag(depo.block()).add(
+        // zBlocks.deposits.get(zMultiTags.ALL_DEPOSITS.indexOf(depo)).get())
         // );
 
     }
