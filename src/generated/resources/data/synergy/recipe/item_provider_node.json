@@ -9,6 +9,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "synergy:item_generator_node"
+    "id": "synergy:item_provider_node"
   }
 }

@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:item_generator_node"
+        "recipe": "synergy:item_provider_node"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:item_generator_node"
+      "synergy:item_provider_node"
     ]
   }
 }

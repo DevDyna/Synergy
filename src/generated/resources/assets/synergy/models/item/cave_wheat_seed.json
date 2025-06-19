@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "synergy:item/cave_wheat_seed"
+    "layer0": "synergy:item/plants/seeds/cave_wheat_seed"
   }
 }

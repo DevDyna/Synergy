@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "synergy:item/small_azalea_roots"
+    "layer0": "synergy:item/plants/results/small_azalea_roots"
   }
 }

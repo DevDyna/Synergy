@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "synergy:item/azalea_seeds"
+    "layer0": "synergy:item/plants/seeds/azalea_seeds"
   }
 }

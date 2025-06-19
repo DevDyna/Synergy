@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "synergy:item/rice_seed"
+    "layer0": "synergy:item/plants/seeds/rice_seed"
   }
 }

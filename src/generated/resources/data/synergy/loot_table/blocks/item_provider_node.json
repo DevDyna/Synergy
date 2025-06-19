@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:item_generator_node"
+          "name": "synergy:item_provider_node"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "synergy:blocks/item_generator_node"
+  "random_sequence": "synergy:blocks/item_provider_node"
 }

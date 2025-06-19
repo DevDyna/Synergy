@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:item/handheld",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "synergy:item/wooden_crook"
+    "layer0": "synergy:item/tools/wooden_crook"
   }
 }

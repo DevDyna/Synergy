@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "synergy:item/violet_webcap_mushroom"
+    "layer0": "synergy:item/plants/results/violet_webcap_mushroom"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "synergy:item/cotton_seed"
+    "layer0": "synergy:item/plants/seeds/cotton_seed"
   }
 }

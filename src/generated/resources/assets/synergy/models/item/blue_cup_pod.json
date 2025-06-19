@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "synergy:item/blue_cup_pod"
+    "layer0": "synergy:item/plants/seeds/blue_cup_pod"
   }
 }
