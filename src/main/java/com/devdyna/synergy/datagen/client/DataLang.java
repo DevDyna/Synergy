@@ -37,7 +37,7 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "Show the debug vision of I/O foreach node");
                 add(Main.ID + "." + zStatic.PipeStuff.tools.refactorizer,
                                 TIP_COLOR + "Update all states of a specific pipe/node block");
-                add(Main.ID + "." + zStatic.Items.smasher, TIP_COLOR + "Quick break any Synergy #synergy:mashable block");
+                add(Main.ID + "." + zStatic.Items.smasher, TIP_COLOR + "Quick break any #synergy:mashable");
                 add(Main.ID + "." + zStatic.Items.wooden_crook, TIP_COLOR + "Increase the chance to obtain saplings");
 
                 // pipe stuff
