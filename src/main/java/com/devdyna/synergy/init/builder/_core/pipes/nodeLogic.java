@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.init.types.zBlockTag;
+// import com.devdyna.synergy.utils.LogUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -37,6 +38,7 @@ public interface nodeLogic {
         return Map.entry(state.getValue(nodeType.FACING).getOpposite(), pos.relative(state.getValue(nodeType.FACING)));
     }
 
+    // TODO implement rerouting logic when fail
     /**
      * return the output block
      */
@@ -107,15 +109,15 @@ public interface nodeLogic {
             for (Direction dir : Direction.values()) {
                 actual = level.getBlockState(variablePos);
                 offset = level.getBlockState(variablePos.relative(dir));
-
-                if (actual.getValue(pipeType.D2P(dir)) == pipeProperties.OUTPUT) {
+                if (actual.is(zBlockTag.PIPE_CONNECTORS) &&
+                        actual.getValue(pipeType.D2P(dir)) == pipeProperties.OUTPUT) {
                     outputPos = variablePos;
                     outputSide = dir;
                     flag = false;
                     break;
                 }
 
-                if (offset.is(zBlockTag.PIPE_CONNECTORS)
+                if (offset.is(zBlockTag.PIPE_CONNECTORS) && actual.is(zBlockTag.PIPE_CONNECTORS)
                         && validPath.indexOf(variablePos.relative(dir)) == -1
                         && actual.getValue(pipeType.D2P(dir)) == pipeProperties.TRUE) {
 
@@ -156,11 +158,16 @@ public interface nodeLogic {
      * return list of slot index with input items
      */
     @Nullable
-    default List<Integer> getSlotsOfItems(IItemHandler inpuItemHandler) {
-        List<Integer> items = List.of();
-        for (int i = 0; inpuItemHandler.getSlots() - 1 <= i; i++)
-            if (!inpuItemHandler.getStackInSlot(i).isEmpty())
+    default ArrayList<Integer> getSlotsOfItems(IItemHandler inpuItemHandler) {
+        ArrayList<Integer> items = new ArrayList<>();
+        // LogUtil.info("slots: " + inpuItemHandler.getSlots());
+
+        for (int i = 0; i < inpuItemHandler.getSlots(); i++) {
+            // LogUtil.info(inpuItemHandler.extractItem(i, 1, true) + " -> " +
+            // inpuItemHandler.extractItem(i, 1, true).isEmpty());
+            if (!inpuItemHandler.extractItem(i, 1, true).isEmpty())
                 items.add(i);
+        }
         return items;
     }
 
@@ -170,35 +177,55 @@ public interface nodeLogic {
     @Nullable
     default List<Map.Entry<Integer, ItemStack>> getInputItems(IItemHandler inpuItemHandler) {
         List<Map.Entry<Integer, ItemStack>> items = List.of();
-        for (int i = 0; inpuItemHandler.getSlots() - 1 <= i; i++)
-            if (!inpuItemHandler.getStackInSlot(i).isEmpty())
+        for (int i = 0; inpuItemHandler.getSlots() - 1 <= i; i++) {
+
+            if (!inpuItemHandler.getStackInSlot(i).isEmpty()) {
                 items.add(Map.entry(i, inpuItemHandler.getStackInSlot(i)));
+            }
+        }
         return items;
     }
 
     /**
-     * move all possible input item to an output
+     * move one at time of all possible input item to an output
+     * default stack = 1
+     * -1 -> full stack
      */
-    default void moveItems(IItemHandler input, IItemHandler output) {
+    default void moveItems(IItemHandler input, IItemHandler output, int stacksize) {
+
+        // LogUtil.info("try to move item");
 
         var inputitems = getSlotsOfItems(input);
-        if (inputitems.isEmpty())
+        if (inputitems.isEmpty() || inputitems == null) {
+            // LogUtil.info("no valid input");
+            // LogUtil.info(inputitems.toString());
             return;// no valid input provided
+        }
 
         for (Integer index : inputitems) {
-            ItemStack inItem = input.extractItem(index, input.getStackInSlot(index).getCount(), true);
+            // LogUtil.info("index: "+index);
 
-            for (int slot = 0; output.getSlots() - 1 <= slot; slot++) {
+            int insize = stacksize == -1 ? getCount(input, index) : 1;
+
+            ItemStack inItem = input.extractItem(index, insize, true);
+
+            for (int slot = 0; slot < output.getSlots(); slot++) {
+
+                int outsize = stacksize == -1 ? getCount(output, slot) : 1;
 
                 ItemStack outItem = output.extractItem(slot,
-                        output.getStackInSlot(slot).getCount(), true);
+                        outsize, true);
+
+                // LogUtil.info(index + " -> " + inItem.getDescriptionId());
+                // LogUtil.info(slot + " -> " + outItem.getDescriptionId());
 
                 if (output.getStackInSlot(slot).isEmpty()) {
                     // if output is empty
                     output.insertItem(slot,
-                            input.extractItem(index, input.getStackInSlot(index).getCount(),
+                            input.extractItem(index, insize,
                                     false),
                             false);
+                    break;
                 } else {
                     // if output match input
                     if (inItem.is(outItem.getItem()) && outItem.getCount() != outItem.getMaxStackSize()) {
@@ -207,6 +234,7 @@ public interface nodeLogic {
                                         Math.min(inItem.getCount(), outItem.getMaxStackSize() - outItem.getCount()),
                                         false),
                                 false);
+                        break;
                     }
                 }
             }
@@ -214,24 +242,42 @@ public interface nodeLogic {
     }
 
     /**
+     * move one at time of all possible input item to an output
+     * default stack = 1
+     * -1 -> full stack
+     */
+    default void moveItems(IItemHandler input, IItemHandler output) {
+        moveItems(input, output, 1);
+    }
+
+    /**
+     * return the item count of a specific slot index
+     */
+    default int getCount(IItemHandler be, int index) {
+        return be.getStackInSlot(index).getCount();
+    }
+
+    /**
      * add an itemstack to the output
+     * stacksize defined on itemstack
      */
     default void itemToOutput(ItemStack input, IItemHandler output) {
 
-        for (int slot = 0; output.getSlots() - 1 <= slot; slot++) {
-
+        for (int slot = 0; slot < output.getSlots(); slot++) {
             ItemStack outItem = output.extractItem(slot,
-                    output.getStackInSlot(slot).getCount(), true);
+                    getCount(output, slot), true);
 
             if (output.getStackInSlot(slot).isEmpty()) {
                 // if output is empty
                 output.insertItem(slot,
                         input,
                         false);
+                break;
             } else {
                 // if output match input
                 if (input.is(outItem.getItem()) && outItem.getCount() != outItem.getMaxStackSize()) {
                     output.insertItem(slot, input, false);
+                    break;
                 }
             }
         }

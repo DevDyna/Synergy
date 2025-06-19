@@ -116,8 +116,7 @@ public interface pipeType {
         return state;
     }
 
-
-        static BlockState updatePipeOnPlace(BlockState state, Level level,BlockPos pos) {
+    static BlockState updatePipeOnPlace(BlockState state, Level level, BlockPos pos) {
         for (Direction face : DIRECTIONS) {
 
             var offset = level.getBlockState(pos.relative(face));

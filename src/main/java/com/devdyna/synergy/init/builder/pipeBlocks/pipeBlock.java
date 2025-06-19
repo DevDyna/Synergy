@@ -62,7 +62,7 @@ public class pipeBlock extends Block implements pipeType {
             Player player, InteractionHand hand, BlockHitResult hitResult) {
 
         if (stack.is(Tags.Items.TOOLS_WRENCH)) {
-            pipeType.updatePipeOnPlace(state, level, pos);
+           state = pipeType.updatePipeOnPlace(state, level, pos);
             return ItemInteractionResult.SUCCESS;
         }
 

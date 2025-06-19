@@ -1,23 +1,31 @@
 package com.devdyna.synergy.client.core;
 
 import com.devdyna.synergy.init.builder._core.renderItem;
+import com.devdyna.synergy.init.builder._core.pipes.pipeProperties;
+import com.devdyna.synergy.init.builder._core.pipes.pipeType;
+import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.init.types.zItemTag;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.Vec3;
 
-public interface ItemRender {
+@SuppressWarnings("null")
+public interface TypeRenders<T> {
 
     private int getLightLevel(Level level, BlockPos pos) {
         return LightTexture.pack(level.getBrightness(LightLayer.BLOCK, pos), level.getBrightness(LightLayer.SKY, pos));
@@ -47,4 +55,32 @@ public interface ItemRender {
                 be.getBlockPos()), OverlayTexture.NO_OVERLAY, stack, bufferSource, be.getLevel(), 0);
         stack.popPose();
     }
+
+    default void createPipeRender(int x, int y, int z, PoseStack stack, BlockEntity be, MultiBufferSource bufferSource,
+            int packedLight,
+            int packedOverlay) {
+        var render = Minecraft.getInstance().getBlockRenderer();
+
+        stack.pushPose();
+
+        stack.translate(x, y, z);
+
+        // pipe render
+        var pipe = zBlocks.PIPE.get().defaultBlockState();
+
+        for (EnumProperty<pipeProperties> prop : pipeType.PROPRTIES) {
+            pipe = pipe.setValue(prop, pipeProperties.FALSE);
+        }
+        // wip , only make it white atm
+        var color = bufferSource.getBuffer(RenderType.DEBUG_QUADS).setColor(1.0f, 0.0f, 0.0f, 1.0f);
+
+        var player = be.getLevel().getNearestPlayer(be.getBlockPos().getX(),
+                be.getBlockPos().getY(),
+                be.getBlockPos().getZ(), 8, false);
+
+        if (player != null && ((LivingEntity) player).getMainHandItem().is(zItemTag.VISUALIZER))
+            render.renderBatched(pipe, be.getBlockPos(), be.getLevel(), stack, color, false, be.getLevel().getRandom());
+        stack.popPose();
+    }
+
 }

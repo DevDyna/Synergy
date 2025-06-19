@@ -1,13 +1,14 @@
 package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities;
 
-import com.devdyna.synergy.init.builder._core.BaseBE;
 import com.devdyna.synergy.init.builder._core.pipes.nodeLogic;
+import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class ItemTransferBE extends BaseBE implements nodeLogic {
+@SuppressWarnings("null")
+public class ItemTransferBE extends NodeBaseBE implements nodeLogic {
 
     public ItemTransferBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -26,10 +27,18 @@ public class ItemTransferBE extends BaseBE implements nodeLogic {
         var input = getInputBlock(getBlockState(), level, getBlockPos());
         var output = getOutputBlock(getBlockState(), level, getBlockPos());
 
-        if (input == null || output == null)
+        if (input == null) {
+            // LogUtil.info("input null");
             return;
+        }
 
-        moveItems(input, output);
+        if (output == null) {
+            // LogUtil.info("output null");
+            return;
+        }
+        
+        if (level.getGameTime() % 20 == 0)
+            moveItems(input, output);
 
     }
 

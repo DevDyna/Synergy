@@ -29,6 +29,12 @@ public class DataLang extends LanguageProvider {
         zItems.zFoods.getEntries().forEach(b -> addItem(b, named(b)));
         zItems.zSeeds.getEntries().forEach(b -> addItem(b, named(b)));
 
+        add(Main.ID + "." + zStatic.PipeStuff.tools.visualizer, "Show the debug vision of I/O foreach node");
+
+        add(Main.ID + "." + zStatic.PipeStuff.tools.refactorizer, "Update all states of a specific pipe/node block");
+
+        add(Main.ID + "." + zStatic.PipeStuff.tools.smasher, "Quick break any pipe blocks");
+
     }
 
     private String named(DeferredHolder<?, ?> b) {

@@ -64,7 +64,7 @@ public interface nodeType extends pipeType {
         return state;
     }
 
-    static BlockState updateNodeOnPlace(BlockState state, BlockPos pos, Level level, Direction direction) {
+    static BlockState updateNodeOnPlace(BlockState state,Level level,  BlockPos pos,  Direction direction) {
         state = state.setValue(FACING, direction.getOpposite());
         state = pipeType.updatePipeOnPlace(state, level, pos);
         state = switch (direction.getOpposite()) {

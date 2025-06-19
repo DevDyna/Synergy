@@ -4,6 +4,9 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.builder.CroockItem;
 import com.devdyna.synergy.init.builder._core.seeds.BaseSeedItem;
+import com.devdyna.synergy.init.builder.pipeTools.PipeRefactorizer;
+import com.devdyna.synergy.init.builder.pipeTools.PipeSmasher;
+import com.devdyna.synergy.init.builder.pipeTools.PipeVisualizer;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Item;
@@ -72,8 +75,14 @@ public class zItems {
         public static final DeferredHolder<Item, ?> VIOLET_WEBCAP_MUSHROOM = zCropExtra
                         .registerSimpleItem(zStatic.Plants.VIOLET_WEBCAP_MUSHROOM);
 
-        public static final DeferredHolder<Item, Item> PIPE_UPDATER = zItem
-                        .registerSimpleItem(zStatic.Items.pipe_updater);
+        public static final DeferredHolder<Item, Item> PIPE_REFARCTORIZER = zItem
+                        .register(zStatic.PipeStuff.tools.refactorizer, () -> new PipeRefactorizer());
+
+        public static final DeferredHolder<Item, Item> PIPE_SMASHER = zItem
+                        .register(zStatic.PipeStuff.tools.smasher, () -> new PipeSmasher());
+
+        public static final DeferredHolder<Item, Item> PIPE_VISUALIZER = zItem
+                        .register(zStatic.PipeStuff.tools.visualizer, () -> new PipeVisualizer());
 
         /*
          * TODO

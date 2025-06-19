@@ -42,14 +42,14 @@ public class zBlocks {
         public static final DeferredHolder<Block, ?> SPRINKLER = Material.registerItemBlock(zStatic.Blocks.sprinkler,
                         () -> new SprinklerBLK());
 
-        public static final DeferredHolder<Block, ?> PIPE = Material.registerItemBlock(zStatic.Blocks.pipe,
+        public static final DeferredHolder<Block, ?> PIPE = Material.registerItemBlock(zStatic.PipeStuff.pipe,
                         () -> new pipeBlock());
 
         public static final DeferredHolder<Block, ?> ITEM_TRANSFER = Material.registerItemBlock(
-                        zStatic.Blocks.itemTransfer,
+                        zStatic.PipeStuff.nodes.ITransfer,
                         () -> new ItemTranfer());
 
-        public static final DeferredHolder<Block, ?> ITEM_GEN = Material.registerItemBlock(zStatic.Blocks.itemGen,
+        public static final DeferredHolder<Block, ?> ITEM_GEN = Material.registerItemBlock(zStatic.PipeStuff.nodes.IGen,
                         () -> new ItemGen());
 
         public static final DeferredHolder<Block, ?> RICE = zCrop.register(zStatic.Plants.RICE,

@@ -1,21 +1,14 @@
 package com.devdyna.synergy.client;
 
-import com.devdyna.synergy.init.builder._core.pipes.pipeProperties;
-import com.devdyna.synergy.init.builder._core.pipes.pipeType;
+import com.devdyna.synergy.client.core.TypeRenders;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemTransferBE;
-import com.devdyna.synergy.init.types.zBlocks;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.neoforged.neoforge.client.model.data.ModelData;
-import net.neoforged.neoforge.common.Tags;
 
 @SuppressWarnings("null")
-public class PipeDebugRender<T extends ItemTransferBE> implements BlockEntityRenderer<T> {
+public class PipeDebugRender<T extends ItemTransferBE> implements BlockEntityRenderer<T> , TypeRenders<T> {
 
         public PipeDebugRender(BlockEntityRendererProvider.Context context) {
                 super();
@@ -50,32 +43,5 @@ public class PipeDebugRender<T extends ItemTransferBE> implements BlockEntityRen
 
         }
 
-        private void createPipeRender(int x, int y, int z, PoseStack stack, T be, MultiBufferSource bufferSource,
-                        int packedLight,
-                        int packedOverlay) {
-                var render = Minecraft.getInstance().getBlockRenderer();
-
-                stack.pushPose();
-
-                // stack.scale(1.25f, 1.25f, 1.25f);
-                stack.translate(x, y, z);
-
-                // pipe render
-                var pipe = zBlocks.PIPE.get().defaultBlockState();
-
-                for (EnumProperty<pipeProperties> prop : pipeType.PROPRTIES) {
-                        pipe = pipe.setValue(prop, pipeProperties.FALSE);
-                }
-
-                var player = be.getLevel().getNearestPlayer(be.getBlockPos().getX(), be.getBlockPos().getY(),
-                                be.getBlockPos().getZ(), 8, false);
-
-                if (player != null && player.getMainHandItem().is(Tags.Items.TOOLS_WRENCH))
-                        render.renderSingleBlock(pipe, stack, bufferSource, packedLight, packedOverlay,
-                                        ModelData.EMPTY,
-                                        RenderType.debugQuads());
-
-                stack.popPose();
-        }
 
 }

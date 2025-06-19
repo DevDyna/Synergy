@@ -23,8 +23,11 @@ public class DataItemTag extends ItemTagsProvider {
     @Override
     protected void addTags(Provider p) {
         tag(zItemTag.STONE_SLABS).add(Items.STONE_SLAB, Items.SMOOTH_STONE_SLAB);
-        tag(Tags.Items.TOOLS_WRENCH).add(zItems.PIPE_UPDATER.get());
-        
+        tag(Tags.Items.TOOLS_WRENCH).add(zItems.PIPE_SMASHER.get(), zItems.PIPE_REFARCTORIZER.get(),
+                zItems.PIPE_VISUALIZER.get());
+
+        tag(zItemTag.VISUALIZER).add(zItems.PIPE_VISUALIZER.get());
+
     }
 
 }

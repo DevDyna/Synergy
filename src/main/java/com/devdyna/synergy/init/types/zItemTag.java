@@ -13,4 +13,8 @@ public class zItemTag {
 
     public static final TagKey<Item> STONE_SLABS = Material.tagItem("stone_slabs");
 
+    public static final TagKey<Item> VISUALIZER = Material.tagItem("visualizer");
+
+    //TODO all pipe tools datadriven
+
 }

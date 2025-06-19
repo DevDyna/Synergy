@@ -12,20 +12,47 @@ public class zStatic {
         }
 
         public static String wooden_crook = "wooden_crook";
-        public static String pipe_updater = "pipe_updater";
+
     }
 
     public class Blocks {
         public static String azalea = "azalea";
         public static String sprinkler = "sprinkler";
-        public static String pipe = "pipe";
-        public static String itemTransfer = "item_transfer_node";
-        public static String itemGen = "item_generator_node";
 
-        //TODO WIP
+        // TODO WIP
         public static String generator = "generator";
         public static String deposit = "deposit";
         public static String extractor = "extractor";
+    }
+
+    public class PipeStuff {
+        public class types {
+            private static String item = "item_";
+            private static String fluid = "fluid_";
+            private static String chemical = "chemical_";
+        }
+
+        public class nodes {
+            private static String node = "_node";
+            public static String ITransfer = types.item + "transfer" + node;
+            public static String IGen = types.item + "provider" + node;
+
+            // TODO fluid nodes
+            public static String FTransfer = types.fluid + "transfer" + node;
+            public static String FGen = types.fluid + "provider" + node;
+            // TODO chem nodes (meka compat)
+            public static String CTransfer = types.chemical + "transfer" + node;
+            public static String CGen = types.chemical + "provider" + node;
+        }
+
+        public class tools {
+            public static String refactorizer = pipe + "_updater";
+            public static String visualizer = pipe + "_visualizer";
+            public static String smasher = pipe + "_smasher";
+        }
+
+        public static String pipe = "pipe";
+
     }
 
     public class Plants {
@@ -49,8 +76,8 @@ public class zStatic {
         private static String WILD = "wild_";
 
         public static final String RICE = WILD + Plants.RICE;
-        public static final String CAVE_WHEAT =WILD+ Plants.CAVE_WHEAT;
-        public static final String COTTON =WILD+ Plants.COTTON;
+        public static final String CAVE_WHEAT = WILD + Plants.CAVE_WHEAT;
+        public static final String COTTON = WILD + Plants.COTTON;
 
     }
 
