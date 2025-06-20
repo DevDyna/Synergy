@@ -1,6 +1,5 @@
 package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities;
 
-import com.devdyna.synergy.init.builder._core.pipes.nodeLogic;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -10,14 +9,14 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
-public class ItemGenBE extends NodeBaseBE implements nodeLogic {
+public class ItemProviderBE extends NodeBaseBE {
 
-    public ItemGenBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public ItemProviderBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
-    public ItemGenBE(BlockPos pos, BlockState blockState) {
-        super(zBlockEntities.ITEM_GEN.get(), pos, blockState);
+    public ItemProviderBE(BlockPos pos, BlockState blockState) {
+        super(zBlockEntities.ITEM_PROVIDER.get(), pos, blockState);
     }
 
     @Override

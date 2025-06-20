@@ -1,6 +1,6 @@
 package com.devdyna.synergy;
 
-import com.devdyna.synergy.client.PipeDebugRender;
+import com.devdyna.synergy.client.core.*;
 import com.devdyna.synergy.init.types.zBlockEntities;
 
 import net.neoforged.api.distmarker.Dist;
@@ -13,13 +13,13 @@ public class Client {
 
     @SubscribeEvent
     public static void render(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(zBlockEntities.ITEM_TRANSFER.get(), PipeDebugRender::new);
-    }
+        event.registerBlockEntityRenderer(zBlockEntities.ITEM_TRANSFER.get(), ItemTransferDebugRender::new);
+    
 
        
 
-        event.registerBlockEntityRenderer(zBlockEntities.ITEM_TRANSFER.get(), ItemTransferDebugRender::new)
-        event.registerBlockEntityRenderer(zBlockEntities.ITEM_PROVIDER.get(),ItemProviderDebugRender::new)
+        event.registerBlockEntityRenderer(zBlockEntities.ITEM_TRANSFER.get(), ItemTransferDebugRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.ITEM_PROVIDER.get(),ItemProviderDebugRender::new);
     }
 
 }

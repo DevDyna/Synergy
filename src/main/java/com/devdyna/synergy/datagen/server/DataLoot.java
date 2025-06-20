@@ -63,7 +63,7 @@ public class DataLoot extends BlockLootSubProvider {
 
                 dropSelf(zBlocks.PIPE.get());
                 dropSelf(zBlocks.ITEM_TRANSFER.get());
-                dropSelf(zBlocks.ITEM_GEN.get());
+                dropSelf(zBlocks.ITEM_PROVIDER.get());
                 azalea();
                 dropSelf(zBlocks.SPRINKLER.get());
 

@@ -34,10 +34,10 @@ public class zBlockEntities {
                                         () -> BlockEntityType.Builder.of(ItemTransferBE::new,
                                                         zBlocks.ITEM_TRANSFER.get()).build(null));
 
-        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ItemGenBE>> ITEM_GEN = zBE
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ItemProviderBE>> ITEM_PROVIDER = zBE
                         .register(
                                         zStatic.PipeStuff.nodes.IGen,
-                                        () -> BlockEntityType.Builder.of(ItemGenBE::new,
-                                                        zBlocks.ITEM_GEN.get()).build(null));
+                                        () -> BlockEntityType.Builder.of(ItemProviderBE::new,
+                                                        zBlocks.ITEM_PROVIDER.get()).build(null));
 
 }

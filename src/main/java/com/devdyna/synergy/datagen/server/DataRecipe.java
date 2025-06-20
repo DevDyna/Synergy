@@ -69,7 +69,7 @@ public class DataRecipe extends RecipeProvider {
                                                 .hasItems(Items.REDSTONE, Items.GLASS, Items.STONE_SLAB))
                                 .group(ID).save(c);
 
-                ShapelessRecipeBuilder.shapeless(MISC, zBlocks.ITEM_GEN.get().asItem())
+                ShapelessRecipeBuilder.shapeless(MISC, zBlocks.ITEM_PROVIDER.get().asItem())
                                 .requires(zBlocks.ITEM_TRANSFER.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zBlocks.ITEM_TRANSFER.get()))

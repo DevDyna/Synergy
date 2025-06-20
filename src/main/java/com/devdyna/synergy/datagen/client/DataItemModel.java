@@ -44,7 +44,7 @@ public class DataItemModel extends ItemModelProvider {
 
                 withExistingParent(zBlocks.PIPE.getRegisteredName(), modLoc("block/pipe/basic/item_model"));
                 withExistingParent(zBlocks.ITEM_TRANSFER.getRegisteredName(), modLoc("block/node/basic/item_model"));
-                withExistingParent(zBlocks.ITEM_GEN.getRegisteredName(), modLoc("block/node/basic/item_model"));
+                withExistingParent(zBlocks.ITEM_PROVIDER.getRegisteredName(), modLoc("block/node/basic/item_model"));
 
                 zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "tools/"));
 

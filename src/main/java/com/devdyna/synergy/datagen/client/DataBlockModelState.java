@@ -27,7 +27,7 @@ public class DataBlockModelState extends BlockStateProvider {
         protected void registerStatesAndModels() {
                 sprinkler(zBlocks.SPRINKLER.get());
                 node(zBlocks.ITEM_TRANSFER.get());
-                node(zBlocks.ITEM_GEN.get());
+                node(zBlocks.ITEM_PROVIDER.get());
                 pipe(zBlocks.PIPE.get());
                 // deposits();
 

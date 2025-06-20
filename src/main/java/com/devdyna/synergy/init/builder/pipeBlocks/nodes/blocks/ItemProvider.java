@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBaseBlock;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemGenBE;
+import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemProviderBE;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -18,15 +18,15 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
-public class ItemGen extends NodeBaseBlock {
+public class ItemProvider extends NodeBaseBlock {
 
-    public ItemGen() {
+    public ItemProvider() {
     }
 
     @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
-        return new ItemGenBE(p, s);
+        return new ItemProviderBE(p, s);
     }
 
     @Override
