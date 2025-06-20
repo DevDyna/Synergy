@@ -1,10 +1,18 @@
 package com.devdyna.synergy.init.builder.crops.wild;
 
+import java.util.List;
+
+import com.devdyna.synergy.Main;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.builder._core.crops.BaseWildCropBlock;
 import com.devdyna.synergy.init.builder._core.crops.CropEntityInteraction;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item.TooltipContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -38,6 +46,12 @@ public class wild_cotton extends BaseWildCropBlock implements CropEntityInteract
     @Override
     public boolean StuckWhenInside() {
         return true;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
+            TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Wild.WILD + ".tip"));
     }
 
 }

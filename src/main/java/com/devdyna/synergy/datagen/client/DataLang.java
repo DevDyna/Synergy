@@ -31,18 +31,19 @@ public class DataLang extends LanguageProvider {
                 zItems.zCropExtra.getEntries().forEach(b -> addItem(b, named(b)));
                 zItems.zFoods.getEntries().forEach(b -> addItem(b, named(b)));
                 zItems.zSeeds.getEntries().forEach(b -> addItem(b, named(b)));
+                zBlocks.zWildCrop.getEntries().forEach(b -> addBlock(b, named(b)));
 
                 // tools
                 add(Main.ID + "." + zStatic.PipeStuff.tools.visualizer,
                                 TIP_COLOR + "Show the debug vision of I/O foreach node");
                 add(Main.ID + "." + zStatic.PipeStuff.tools.refactorizer,
-                                TIP_COLOR + "Update all states of a specific pipe/node block");
+                                TIP_COLOR + "[WIP] Update all states of a specific pipe/node block");
                 add(Main.ID + "." + zStatic.Items.smasher, TIP_COLOR + "Quick break any #synergy:mashable");
                 add(Main.ID + "." + zStatic.Items.wooden_crook, TIP_COLOR + "Increase the chance to obtain saplings");
 
                 // pipe stuff
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".desc",
-                                TIP_COLOR + "Can connect to other #synergy:pipe_connector of same type");
+                                TIP_COLOR + "Can connected at any #synergy:pipe_connector");
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".safe",
                                 TIP_COLOR + "Safe for decoration");
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".extend",
@@ -53,6 +54,11 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + "." + zStatic.PipeStuff.nodes.type_provider,
                                 TIP_COLOR + "Generate resources and deposit it");
+
+                //wild crops warning
+                add(Main.ID + "." + zStatic.Wild.WILD + ".tip",
+                                TIP_COLOR + "Item unobtainable");
+
 
         }
 

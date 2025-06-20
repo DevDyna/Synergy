@@ -9,39 +9,52 @@ import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.utils.DataGenUtil;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class DataItemModel extends ItemModelProvider {
 
-    public DataItemModel(PackOutput o, ExistingFileHelper f) {
-        super(o, ID, f);
-    }
+        public DataItemModel(PackOutput o, ExistingFileHelper f) {
+                super(o, ID, f);
+        }
 
-    List<Block> demo = List.of();
+        List<Block> demo = List.of();
 
-    @Override
-    protected void registerModels() {
+        @Override
+        protected void registerModels() {
 
-        zItems.zItem.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
-        zItems.zCropExtra.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/results/"));
-        zItems.zFoods.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "foods/"));
-        zItems.zSeeds.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/seeds/"));
+                List<Item> wild_plants = List.of(zBlocks.WILD_CAVE_WHEAT.get().asItem(),
+                                zBlocks.WILD_COTTON.get().asItem(),
+                                zBlocks.WILD_RICE.get().asItem());
 
-        demo.forEach(e -> DataGenUtil.itemBlockwithParent(e, this, ID + ":block/dynamo/off"));
+                zItems.zItem.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
+                zItems.zCropExtra.getEntries()
+                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/results/"));
+                zItems.zFoods.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "foods/"));
 
+                zItems.zSeeds.getEntries().stream().filter(f -> !wild_plants.contains(f.get()))
+                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/seeds/"));
 
-        DataGenUtil.itemBlockwithParent(zBlocks.SPRINKLER.get(), this, ID + ":block/"+DataGenUtil.getPath(zBlocks.SPRINKLER.get()));
+                demo.forEach(e -> DataGenUtil.itemBlockwithParent(e, this, ID + ":block/dynamo/off"));
 
-        withExistingParent(zBlocks.PIPE.getRegisteredName(), modLoc("block/pipe/basic/item_model"));
-        withExistingParent(zBlocks.ITEM_TRANSFER.getRegisteredName(), modLoc("block/node/basic/item_model"));
-        withExistingParent(zBlocks.ITEM_GEN.getRegisteredName(), modLoc("block/node/basic/item_model"));
+                DataGenUtil.itemBlockwithParent(zBlocks.SPRINKLER.get(), this,
+                                ID + ":block/" + DataGenUtil.getPath(zBlocks.SPRINKLER.get()));
 
-        zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "tools/"));
-    
-    
-    
-    }
+                withExistingParent(zBlocks.PIPE.getRegisteredName(), modLoc("block/pipe/basic/item_model"));
+                withExistingParent(zBlocks.ITEM_TRANSFER.getRegisteredName(), modLoc("block/node/basic/item_model"));
+                withExistingParent(zBlocks.ITEM_GEN.getRegisteredName(), modLoc("block/node/basic/item_model"));
+
+                zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "tools/"));
+
+                wild_plants
+                                .forEach(w -> withExistingParent(DataGenUtil.getPath(w), "minecraft:item/generated")
+                                                .texture("layer0",
+                                                                DataGenUtil.getResource("item/plants/bush/"
+                                                                                + DataGenUtil.getPath(w).replace(
+                                                                                                "wild_", ""))));
+
+        }
 
 }

@@ -78,7 +78,7 @@ public class zStatic {
 
     public class Wild {
 
-        private static String WILD = "wild_";
+        public static String WILD = "wild_";
 
         public static final String RICE = WILD + Plants.RICE;
         public static final String CAVE_WHEAT = WILD + Plants.CAVE_WHEAT;

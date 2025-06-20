@@ -71,12 +71,16 @@ public class zBlocks {
                         zStatic.Plants.VIOLET_WEBCAP_MUSHROOM,
                         () -> new violet_webcap());
 
+                        //TODO worldgen
+                        //river and wet biomes
         public static final DeferredHolder<Block, ?> WILD_RICE = Material.registerItemBlock(zStatic.Wild.RICE,
                         () -> new wild_rice(),zWildCrop);
 
+                        //underground
         public static final DeferredHolder<Block, ?> WILD_CAVE_WHEAT = Material.registerItemBlock(zStatic.Wild.CAVE_WHEAT,
                         () -> new wild_cave_wheat(),zWildCrop);
 
+                        //plains and forest biomes
         public static final DeferredHolder<Block, ?> WILD_COTTON = Material.registerItemBlock(zStatic.Wild.COTTON,
                         () -> new wild_cotton(),zWildCrop);
 

@@ -6,9 +6,8 @@ import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.neoforged.neoforge.common.IShearable;
 
-public class BaseWildCropBlock extends BushBlock implements IShearable {
+public class BaseWildCropBlock extends BushBlock {
 
     protected BaseWildCropBlock(Properties properties) {
         super(properties.mapColor(MapColor.PLANT)

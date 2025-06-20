@@ -9,6 +9,9 @@
   "block.synergy.rice": "Rice",
   "block.synergy.sprinkler": "Sprinkler",
   "block.synergy.violet_webcap_mushroom": "Violet Webcap Mushroom",
+  "block.synergy.wild_cave_wheat": "Wild Cave Wheat",
+  "block.synergy.wild_cotton": "Wild Cotton",
+  "block.synergy.wild_rice": "Wild Rice",
   "item.synergy.azalea_seeds": "Azalea Seeds",
   "item.synergy.blue_cup_mushroom": "Blue Cup Mushroom",
   "item.synergy.blue_cup_pod": "Blue Cup Pod",
@@ -25,7 +28,7 @@
   "item.synergy.violet_webcap_pod": "Violet Webcap Pod",
   "item.synergy.wooden_crook": "Wooden Crook",
   "synergy.creative_tab": "Synergy Stuff",
-  "synergy.pipe.desc": "§7Can connect to other #synergy:pipe_connector of same type",
+  "synergy.pipe.desc": "§7Can connected at any #synergy:pipe_connector",
   "synergy.pipe.extend": "§7Can be extended using pipes",
   "synergy.pipe.safe": "§7Safe for decoration",
   "synergy.pipe_updater": "§7Update all states of a specific pipe/node block",
@@ -33,5 +36,6 @@
   "synergy.provider_node": "§7Generate resources and deposit it",
   "synergy.smasher": "§7Quick break any #synergy:mashable",
   "synergy.transfer_node": "§7Extract and deposit stuff from containers",
+  "synergy.wild_.tip": "§7Item unobtainable",
   "synergy.wooden_crook": "§7Increase the chance to obtain saplings"
 }
