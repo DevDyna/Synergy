@@ -2,7 +2,6 @@ package com.devdyna.synergy.init.builder.pipeTools;
 
 import java.util.List;
 
-import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 
@@ -15,7 +14,7 @@ import net.minecraft.world.item.TooltipFlag;
 public class PipeVisualizer extends Item {
 
     public PipeVisualizer() {
-        super(Material.iProp.stacksTo(1));
+        super(new Properties().stacksTo(1));
     }
 
     @Override

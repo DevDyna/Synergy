@@ -6,7 +6,6 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder._core.pipes.pipeType;
 
 import net.minecraft.core.BlockPos;
@@ -22,6 +21,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.phys.BlockHitResult;
@@ -33,7 +34,8 @@ import net.neoforged.neoforge.common.Tags;
 public class pipeBlock extends Block implements pipeType {
 
     public pipeBlock() {
-        super(Material.bProp);
+        super(BlockBehaviour.Properties.of().destroyTime(0.125f).forceSolidOn()
+                .sound(SoundType.WOOL));
     }
 
     @Override

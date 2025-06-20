@@ -1,6 +1,5 @@
 package com.devdyna.synergy.init.builder.crops.wild;
 
-import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder._core.crops.BaseWildCropBlock;
 
 import net.minecraft.core.BlockPos;
@@ -12,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class wild_rice extends BaseWildCropBlock {
 
     public wild_rice() {
-        super(Material.cropProp);
+        super(Properties.of());
     }
 
     @Override

@@ -8,16 +8,19 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public abstract class BaseShortCropBlock extends CropBlock {
+public class BaseShortCropBlock extends CropBlock {
 
     public static final int MAX_AGE = 5;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
@@ -27,7 +30,12 @@ public abstract class BaseShortCropBlock extends CropBlock {
             Block.box(0.0, 0.0, 0.0, 16.0, 16.0, 16.0) };
 
     public BaseShortCropBlock(BlockBehaviour.Properties p) {
-        super(p);
+        super(p.mapColor(MapColor.PLANT)
+                .noCollission()
+                .randomTicks()
+                .instabreak()
+                .sound(SoundType.CROP)
+                .pushReaction(PushReaction.DESTROY));
     }
 
     @Override

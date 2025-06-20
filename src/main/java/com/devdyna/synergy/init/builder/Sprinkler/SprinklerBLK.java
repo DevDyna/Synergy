@@ -2,10 +2,10 @@ package com.devdyna.synergy.init.builder.Sprinkler;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder._core.BaseBlockBE;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class SprinklerBLK extends BaseBlockBE {
 
     public SprinklerBLK() {
-        super(Material.bProp);
+        super(Properties.of().forceSolidOn().destroyTime(1.0f).sound(SoundType.TUFF_BRICKS));
     }
 
     @Nullable

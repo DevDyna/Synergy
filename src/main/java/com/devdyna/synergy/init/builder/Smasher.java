@@ -2,7 +2,6 @@ package com.devdyna.synergy.init.builder;
 
 import java.util.List;
 
-import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder._core.pipes.pipeType;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.utils.LevelUtil;
@@ -21,7 +20,7 @@ import net.minecraft.world.item.context.UseOnContext;
 public class Smasher extends Item {
 
     public Smasher() {
-        super(Material.iProp);
+        super(new Properties().stacksTo(1));
     }
 
     @Override

@@ -10,14 +10,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -37,17 +32,17 @@ public class Material {
                 zItems.register(bus);
                 zItemTag.register(bus);
                 zProperties.register(bus);
-                // zMixed.register(bus);
         }
 
-        public static final BlockBehaviour.Properties bProp = BlockBehaviour.Properties.of();
-        public static final Properties iProp = new Item.Properties();
-        public static final BlockBehaviour.Properties cropProp = bProp.mapColor(MapColor.PLANT)
-                .noCollission()
-                .randomTicks()
-                .instabreak()
-                .sound(SoundType.CROP)
-                .pushReaction(PushReaction.DESTROY);
+        // public static BlockBehaviour.Properties bProp = new BlockBehaviour.Properties.of();
+        // public static Properties iProp = new Item.Properties();
+        // public static BlockBehaviour.Properties cropProp = new BlockBehaviour.Properties.of();
+        // .mapColor(MapColor.PLANT)
+        //                 .noCollission()
+        //                 .randomTicks()
+        //                 .instabreak()
+        //                 .sound(SoundType.CROP)
+        //                 .pushReaction(PushReaction.DESTROY);
 
         /**
          * register an block + item
@@ -124,12 +119,12 @@ public class Material {
                         food.alwaysEdible();
 
                 return zItems.zFoods.register(name,
-                                () -> new ItemNameBlockItem(b, Material.iProp.food(food.build())));
+                                () -> new ItemNameBlockItem(b, new Item.Properties().food(food.build())));
         }
 
         public static DeferredItem<ItemNameBlockItem> seedItem(String name, Block b) {
                 return zItems.zSeeds.register(name,
-                                () -> new ItemNameBlockItem(b, Material.iProp));
+                                () -> new ItemNameBlockItem(b, new Item.Properties()));
         }
 
         // public static DeferredBlock<BaseCropBlock> seedBlock(String name, Item

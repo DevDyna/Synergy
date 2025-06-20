@@ -1,6 +1,5 @@
 package com.devdyna.synergy.init.builder.crops.wild;
 
-import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder._core.crops.BaseWildCropBlock;
 import com.devdyna.synergy.init.builder._core.crops.CropEntityInteraction;
 
@@ -14,7 +13,7 @@ import net.minecraft.world.phys.Vec3;
 public class wild_cotton extends BaseWildCropBlock implements CropEntityInteraction {
 
     public wild_cotton() {
-        super(Material.cropProp);
+        super(Properties.of());
     }
 
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {

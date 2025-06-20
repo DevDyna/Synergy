@@ -11,6 +11,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -20,7 +21,7 @@ import net.neoforged.neoforge.common.CommonHooks;
 public class BaseCropMushroom extends BaseShortCropBlock {
 
     protected BaseCropMushroom(Properties properties) {
-        super(properties);
+        super(properties.sound(SoundType.GRASS));
     }
 
     VoxelShape[] SHAPE_BY_AGE = { Block.box(5.0, 0.0, 5.0, 11.0, 5.0, 11.0), Block.box(5.0, 0.0, 5.0, 11.0, 7.0, 11.0),

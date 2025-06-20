@@ -1,6 +1,5 @@
 package com.devdyna.synergy.init.builder.crops.mushroom;
 
-import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder._core.crops.BaseCropMushroom;
 import com.devdyna.synergy.init.types.zItems;
 
@@ -13,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class blue_cup extends BaseCropMushroom {
 
     public blue_cup() {
-        super(Material.cropProp);
+        super(Properties.of());
     }
 
     @Override

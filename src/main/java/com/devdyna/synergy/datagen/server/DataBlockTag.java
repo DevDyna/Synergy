@@ -30,6 +30,7 @@ public class DataBlockTag extends BlockTagsProvider {
 
         tag(zBlockTag.MASHABLE).addTag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.SPRINKLER.get());
 
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(zBlocks.SPRINKLER.get());
         // tag(zBlockTag.WILD_CROP_BLOCKS).addTag(BlockTags.DIRT);
 
         // tag(zBlockTag.EXTRACTORS).add(zBlocks.EXTRACTOR.get());

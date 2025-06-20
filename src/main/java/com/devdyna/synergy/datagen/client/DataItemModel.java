@@ -19,7 +19,7 @@ public class DataItemModel extends ItemModelProvider {
         super(o, ID, f);
     }
 
-    List<Block> demo = List.of(zBlocks.SPRINKLER.get());
+    List<Block> demo = List.of();
 
     @Override
     protected void registerModels() {
@@ -31,11 +31,17 @@ public class DataItemModel extends ItemModelProvider {
 
         demo.forEach(e -> DataGenUtil.itemBlockwithParent(e, this, ID + ":block/dynamo/off"));
 
+
+        DataGenUtil.itemBlockwithParent(zBlocks.SPRINKLER.get(), this, ID + ":block/"+DataGenUtil.getPath(zBlocks.SPRINKLER.get()));
+
         withExistingParent(zBlocks.PIPE.getRegisteredName(), modLoc("block/pipe/basic/item_model"));
         withExistingParent(zBlocks.ITEM_TRANSFER.getRegisteredName(), modLoc("block/node/basic/item_model"));
         withExistingParent(zBlocks.ITEM_GEN.getRegisteredName(), modLoc("block/node/basic/item_model"));
 
         zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "tools/"));
+    
+    
+    
     }
 
 }

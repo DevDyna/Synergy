@@ -102,6 +102,8 @@ public class zItems {
          * Nerium oleander (no texture)
          * Macrolepiota procera mushroom (double) (no texture)
          * 
+         * dye essence
+         *
          * mushroom Desarmillaria tabescens like candles
          */
 

@@ -2,7 +2,6 @@ package com.devdyna.synergy.init.builder.pipeBlocks.nodes;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder._core.BaseBlockBE;
 import com.devdyna.synergy.init.builder._core.pipes.nodeType;
 
@@ -16,7 +15,9 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.phys.BlockHitResult;
@@ -28,7 +29,8 @@ import net.neoforged.neoforge.common.Tags;
 public class NodeBaseBlock extends BaseBlockBE implements nodeType {
 
     public NodeBaseBlock() {
-        super(Material.bProp);
+        super(BlockBehaviour.Properties.of().destroyTime(0.5f).forceSolidOn()
+                .sound(SoundType.WOOL));
     }
 
     @Override

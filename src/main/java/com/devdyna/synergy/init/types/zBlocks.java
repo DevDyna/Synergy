@@ -24,6 +24,7 @@ public class zBlocks {
                 zDepositBlocks.register(bus);
                 zDepositOres.register(bus);
                 zCrop.register(bus);
+                zWildCrop.register(bus);
                 registerLists();
         }
 
@@ -33,6 +34,7 @@ public class zBlocks {
         public static final DeferredRegister.Blocks zDepositBlocks = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zDepositOres = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zCrop = DeferredRegister.createBlocks(Main.ID);
+        public static final DeferredRegister.Blocks zWildCrop = DeferredRegister.createBlocks(Main.ID);
 
         // ---------------------------------------------------------------------------------------//
 
@@ -55,28 +57,28 @@ public class zBlocks {
         public static final DeferredHolder<Block, ?> RICE = zCrop.register(zStatic.Plants.RICE,
                         () -> new rice());
 
-        public static final DeferredHolder<Block, ?> CAVE_WHEAT = zBlocks.zCrop.register(zStatic.Plants.CAVE_WHEAT,
+        public static final DeferredHolder<Block, ?> CAVE_WHEAT = zCrop.register(zStatic.Plants.CAVE_WHEAT,
                         () -> new cave_wheat());
 
-        public static final DeferredHolder<Block, ?> COTTON = zBlocks.zCrop.register(zStatic.Plants.COTTON,
+        public static final DeferredHolder<Block, ?> COTTON = zCrop.register(zStatic.Plants.COTTON,
                         () -> new cotton());
 
-        public static final DeferredHolder<Block, ?> BLUE_CUP_MUSHROOM = zBlocks.zCrop.register(
+        public static final DeferredHolder<Block, ?> BLUE_CUP_MUSHROOM = zCrop.register(
                         zStatic.Plants.BLUE_CUP_MUSHROOM,
                         () -> new blue_cup());
 
-        public static final DeferredHolder<Block, ?> VIOLET_WEBCAP_MUSHROOM = zBlocks.zCrop.register(
+        public static final DeferredHolder<Block, ?> VIOLET_WEBCAP_MUSHROOM = zCrop.register(
                         zStatic.Plants.VIOLET_WEBCAP_MUSHROOM,
                         () -> new violet_webcap());
 
-        public static final DeferredHolder<Block, ?> WILD_RICE = zCrop.register(zStatic.Wild.RICE,
-                        () -> new wild_rice());
+        public static final DeferredHolder<Block, ?> WILD_RICE = Material.registerItemBlock(zStatic.Wild.RICE,
+                        () -> new wild_rice(),zWildCrop);
 
-        public static final DeferredHolder<Block, ?> WILD_CAVE_WHEAT = zBlocks.zCrop.register(zStatic.Wild.CAVE_WHEAT,
-                        () -> new wild_cave_wheat());
+        public static final DeferredHolder<Block, ?> WILD_CAVE_WHEAT = Material.registerItemBlock(zStatic.Wild.CAVE_WHEAT,
+                        () -> new wild_cave_wheat(),zWildCrop);
 
-        public static final DeferredHolder<Block, ?> WILD_COTTON = zBlocks.zCrop.register(zStatic.Wild.COTTON,
-                        () -> new wild_cotton());
+        public static final DeferredHolder<Block, ?> WILD_COTTON = Material.registerItemBlock(zStatic.Wild.COTTON,
+                        () -> new wild_cotton(),zWildCrop);
 
         // public static final DeferredHolder<Block, ?> EXTRACTOR =
         // Material.registerItemBlock(zStatic.Blocks.extractor,

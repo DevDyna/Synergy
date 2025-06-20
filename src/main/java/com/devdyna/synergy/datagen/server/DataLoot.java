@@ -36,21 +36,27 @@ public class DataLoot extends BlockLootSubProvider {
                 super(Set.of(), FeatureFlags.DEFAULT_FLAGS, l);
         }
 
+        List<DeferredRegister.Blocks> blocktypes = List.of(
+                        zBlocks.zBlock,
+                        zBlocks.zBlockItem,
+                        zBlocks.zCrop,
+                        zBlocks.zWildCrop,
+                        // wip
+                        zBlocks.zDepositBlocks,
+                        zBlocks.zDepositOres);
+
         @Override
         protected Iterable<Block> getKnownBlocks() {
                 List<Block> blocks = new ArrayList<>();
-                blocks.addAll(getList(zBlocks.zBlock));
-                blocks.addAll(getList(zBlocks.zBlockItem));
-                blocks.addAll(getList(zBlocks.zCrop));
-                blocks.addAll(getList(zBlocks.zDepositBlocks));
-                blocks.addAll(getList(zBlocks.zDepositOres));
+                blocktypes.forEach(t -> blocks.addAll(t.getEntries().stream().map(DeferredHolder::get).toList()));
                 return blocks;
         }
 
-        @SuppressWarnings("unchecked")
-        private List<Block> getList(DeferredRegister.Blocks c) {
-                return (List<Block>) c.getEntries().stream().map(DeferredHolder::get).toList();
-        }
+        // @SuppressWarnings("unchecked")
+        // private List<Block> getList(DeferredRegister.Blocks c) {
+        // return (List<Block>)
+        // c.getEntries().stream().map(DeferredHolder::get).toList();
+        // }
 
         @Override
         protected void generate() {
