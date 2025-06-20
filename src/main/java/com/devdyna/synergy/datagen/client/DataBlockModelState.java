@@ -37,9 +37,9 @@ public class DataBlockModelState extends BlockStateProvider {
                 crop(zBlocks.COTTON.get(), 5, BaseShortCropBlock.AGE);
                 growPlantWithVariants(zBlocks.BLUE_CUP_MUSHROOM.get(), 5, BaseShortCropBlock.AGE);
 
-                crossBlock(zBlocks.WILD_CAVE_WHEAT.get(), "block/crops/cave_wheat/5");
-                                crossBlock(zBlocks.WILD_COTTON.get(), "block/crops/cotton/5");
-                                crossBlock(zBlocks.WILD_RICE.get(), "block/crops/rice/5");
+                crossORcropStatic(zBlocks.WILD_CAVE_WHEAT.get(), true, "block/crops/cave_wheat/5");
+                crossORcropStatic(zBlocks.WILD_COTTON.get(), false, "block/crops/cotton/5");
+                crossORcropStatic(zBlocks.WILD_RICE.get(), true, "block/crops/rice/7");
 
         }
 
@@ -147,12 +147,11 @@ public class DataBlockModelState extends BlockStateProvider {
                                 .build());
         }
 
-        private void crossBlock(Block b, String texturePath) {
-                var fileModelLocation = DataGenUtil.getPath(b);
+        private void crossORcropStatic(Block b, boolean isCrop, String texturePath) {
                 var model = getVariantBuilder(b);
                 model.partialState().addModels(ConfiguredModel.builder()
-                                .modelFile(models().cross(fileModelLocation, modLoc(texturePath))
-                                                .renderType("minecraft:cutout"))
+                                .modelFile(DataGenUtil.crossORcrop(this, isCrop, DataGenUtil.getPath(b),
+                                                modLoc(texturePath)))
                                 .build());
         }
 
