@@ -16,5 +16,10 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.ITEM_TRANSFER.get(), PipeDebugRender::new);
     }
 
+       
+
+        event.registerBlockEntityRenderer(zBlockEntities.ITEM_TRANSFER.get(), ItemTransferDebugRender::new)
+        event.registerBlockEntityRenderer(zBlockEntities.ITEM_PROVIDER.get(),ItemProviderDebugRender::new)
+    }
 
 }
