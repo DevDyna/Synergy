@@ -31,11 +31,11 @@ public class DataBlockModelState extends BlockStateProvider {
                 pipe(zBlocks.PIPE.get());
                 // deposits();
 
-                crop(zBlocks.RICE.get(), 7, CropBlock.AGE);
-                crop(zBlocks.CAVE_WHEAT.get(), 5, BaseShortCropBlock.AGE);
-                growPlant(zBlocks.VIOLET_WEBCAP_MUSHROOM.get(), 5, BaseShortCropBlock.AGE);
-                crop(zBlocks.COTTON.get(), 5, BaseShortCropBlock.AGE);
-                growPlantWithVariants(zBlocks.BLUE_CUP_MUSHROOM.get(), 5, BaseShortCropBlock.AGE);
+                crop(zBlocks.RICE.get(), 7,true, CropBlock.AGE);
+                crop(zBlocks.CAVE_WHEAT.get(), 5,true, BaseShortCropBlock.AGE);
+                crop(zBlocks.VIOLET_WEBCAP_MUSHROOM.get(), 5,true, BaseShortCropBlock.AGE);
+                crop(zBlocks.COTTON.get(), 5,false, BaseShortCropBlock.AGE);
+                growPlantWithVariants(zBlocks.BLUE_CUP_MUSHROOM.get(), 5,false, BaseShortCropBlock.AGE);
 
                 crossORcropStatic(zBlocks.WILD_CAVE_WHEAT.get(), true, "block/crops/cave_wheat/5");
                 crossORcropStatic(zBlocks.WILD_COTTON.get(), false, "block/crops/cotton/5");
@@ -64,73 +64,70 @@ public class DataBlockModelState extends BlockStateProvider {
         // this, ID + ":block/pebbles/_base").texture("block", ""));
         // }
 
-        private void crop(Block b, int max, IntegerProperty property) {
+        private void crop(Block b, int max,boolean isCrop, IntegerProperty property) {
                 var name = b.getDescriptionId().replace("block." + ID + ".", "");
 
                 var model = getVariantBuilder(b).partialState().with(property, 0).modelForState()
-                                .modelFile(models().crop("crops/" + name + "/0", modLoc("block/crops/" + name + "/0"))
-                                                .renderType("minecraft:cutout"))
+                                .modelFile(DataGenUtil.crossORcrop(this, isCrop,"crops/" + name + "/0", modLoc("block/crops/" + name + "/0"))
+                                                )
                                 .addModel();
 
                 for (int index = 1; index <= max; index++)
-                        model.partialState().with(property, index).modelForState().modelFile(models()
-                                        .crop("crops/" + name + "/" + index,
+                        model.partialState().with(property, index).modelForState().modelFile(DataGenUtil.crossORcrop(this, isCrop,"crops/" + name + "/" + index,
                                                         modLoc("block/crops/" + name + "/" + index))
-                                        .renderType("minecraft:cutout"))
+                                        )
                                         .addModel();
         }
 
-        private void growPlant(Block b, int max, IntegerProperty property) {
-                var name = b.getDescriptionId().replace("block." + ID + ".", "");
+        // private void growPlant(Block b, int max, IntegerProperty property) {
+        // var name = b.getDescriptionId().replace("block." + ID + ".", "");
 
-                var model = getVariantBuilder(b).partialState().with(property, 0).modelForState()
-                                .modelFile(models().cross("crops/" + name + "/0", modLoc("block/crops/" + name + "/0"))
-                                                .renderType("minecraft:cutout"))
-                                .addModel();
+        // var model = getVariantBuilder(b).partialState().with(property,
+        // 0).modelForState()
+        // .modelFile(models().cross("crops/" + name + "/0", modLoc("block/crops/" +
+        // name + "/0"))
+        // .renderType("minecraft:cutout"))
+        // .addModel();
 
-                for (int index = 1; index <= max; index++)
-                        model.partialState().with(property, index).modelForState().modelFile(models()
-                                        .cross("crops/" + name + "/" + index,
-                                                        modLoc("block/crops/" + name + "/" + index))
-                                        .renderType("minecraft:cutout"))
-                                        .addModel();
-        }
+        // for (int index = 1; index <= max; index++)
+        // model.partialState().with(property, index).modelForState().modelFile(models()
+        // .cross("crops/" + name + "/" + index,
+        // modLoc("block/crops/" + name + "/" + index))
+        // .renderType("minecraft:cutout"))
+        // .addModel();
+        // }
 
-        // TODO make it dynamic
-        private void growPlantWithVariants(Block b, int max, IntegerProperty property) {
+        // TODO make it dynamic deja vù?
+        private void growPlantWithVariants(Block b, int max, boolean isCrop, IntegerProperty property) {
                 var name = b.getDescriptionId().replace("block." + ID + ".", "");
 
                 var model = getVariantBuilder(b);
 
                 model.partialState().with(property, 0)
                                 .addModels(ConfiguredModel.builder()
-                                                .modelFile(models()
-                                                                .cross("crops/" + name + "/0/0",
-                                                                                modLoc("block/crops/" + name + "/0/0"))
-                                                                .renderType("minecraft:cutout"))
+                                                .modelFile(DataGenUtil.crossORcrop(this, isCrop,
+                                                                "crops/" + name + "/0/0",
+                                                                modLoc("block/crops/" + name + "/0/0")))
                                                 .nextModel()
-                                                .modelFile(models()
-                                                                .cross("crops/" + name + "/1/0",
-                                                                                modLoc("block/crops/" + name + "/1/0"))
-                                                                .renderType("minecraft:cutout"))
+                                                .modelFile(DataGenUtil.crossORcrop(this, isCrop,
+                                                                "crops/" + name + "/1/0",
+                                                                modLoc("block/crops/" + name + "/1/0")))
                                                 .build());
 
                 for (int index = 1; index <= max; index++)
                         model.partialState().with(property, index)
                                         .addModels(ConfiguredModel.builder()
-                                                        .modelFile(models()
-                                                                        .cross("crops/" + name + "/0/" + index,
-                                                                                        modLoc("block/crops/" + name
-                                                                                                        + "/0/"
-                                                                                                        + index))
-                                                                        .renderType("minecraft:cutout"))
+                                                        .modelFile(DataGenUtil.crossORcrop(this, isCrop,
+                                                                        "crops/" + name + "/0/" + index,
+                                                                        modLoc("block/crops/" + name
+                                                                                        + "/0/"
+                                                                                        + index)))
                                                         .nextModel()
-                                                        .modelFile(models()
-                                                                        .cross("crops/" + name + "/1/" + index,
-                                                                                        modLoc("block/crops/" + name
-                                                                                                        + "/1/"
-                                                                                                        + index))
-                                                                        .renderType("minecraft:cutout"))
+                                                        .modelFile(DataGenUtil.crossORcrop(this, isCrop,
+                                                                        "crops/" + name + "/1/" + index,
+                                                                        modLoc("block/crops/" + name
+                                                                                        + "/1/"
+                                                                                        + index)))
                                                         .build());
         }
 

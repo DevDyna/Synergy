@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "minecraft:block/crop",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "synergy:block/crops/violet_webcap_mushroom/1"
+    "crop": "synergy:block/crops/violet_webcap_mushroom/1"
   }
 }

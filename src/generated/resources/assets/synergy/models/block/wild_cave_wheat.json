@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "minecraft:block/crop",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "synergy:block/crops/cave_wheat/5"
+    "crop": "synergy:block/crops/cave_wheat/5"
   }
 }

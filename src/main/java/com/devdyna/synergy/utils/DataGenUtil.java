@@ -74,6 +74,23 @@ public class DataGenUtil {
         return b.withExistingParent(getPath(block), mod + "block/" + getPath(block));
     }
 
+    public static BlockModelBuilder cross(DataBlockModelState t, String filePath, ResourceLocation texturePath) {
+        return t.models().withExistingParent(filePath, t.mcLoc("block/cross")).texture("cross", texturePath)
+                .renderType("minecraft:cutout");
+    }
+
+    public static BlockModelBuilder crop(DataBlockModelState t, String filePath, ResourceLocation texturePath) {
+        return t.models().withExistingParent(filePath, t.mcLoc("block/crop")).texture("crop", texturePath)
+                .renderType("minecraft:cutout");
+    }
+
+    public static BlockModelBuilder crossORcrop(DataBlockModelState t, boolean isCrop, String filePath,
+            ResourceLocation texturePath) {
+        return t.models().withExistingParent(filePath, t.mcLoc("block/" + (isCrop ? "crop" : "cross")))
+                .texture((isCrop ? "crop" : "cross"), texturePath)
+                .renderType("minecraft:cutout");
+    }
+
     /**
      * @param block
      * @param b      this
