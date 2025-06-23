@@ -26,13 +26,14 @@ public class wild_cave_wheat extends BaseWildCropBlock {
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         return level.getBlockState(pos.below()).is(BlockTags.BASE_STONE_OVERWORLD)
-                || level.getBlockState(pos.below()).is(BlockTags.DIRT);
+                || level.getBlockState(pos.below()).is(BlockTags.LUSH_GROUND_REPLACEABLE);
     }
 
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return level.getBlockState(pos.below()).is(BlockTags.BASE_STONE_OVERWORLD) ? true
-                : super.mayPlaceOn(state, level, pos);
+        return (level.getBlockState(pos.below()).is(BlockTags.BASE_STONE_OVERWORLD)
+                || level.getBlockState(pos.below()).is(BlockTags.LUSH_GROUND_REPLACEABLE)) ? true
+                        : super.mayPlaceOn(state, level, pos);
     }
 
     @Override
