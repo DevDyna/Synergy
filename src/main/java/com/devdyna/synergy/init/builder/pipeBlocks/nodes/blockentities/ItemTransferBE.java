@@ -27,18 +27,21 @@ public class ItemTransferBE extends NodeBaseBE  {
         var output = getOutputBlock(getBlockState(), level, getBlockPos());
 
         if (input == null) {
-            // LogUtil.info("input null");
             return;
         }
 
         if (output == null) {
-            // LogUtil.info("output null");
             return;
         }
         
-        if (level.getGameTime() % 20 == 0)
+        if (level.getGameTime() % getTickDelay() == 0)
             moveItems(input, output);
 
+    }
+
+    @Override
+    public int getTickDelay() {
+        return 20;
     }
 
 }
