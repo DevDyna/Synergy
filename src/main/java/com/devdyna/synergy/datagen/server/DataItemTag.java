@@ -29,6 +29,8 @@ public class DataItemTag extends ItemTagsProvider {
 
         tag(zItemTag.SMASHER).add(zItems.SMASHER.get());
 
+        tag(zItemTag.AZALEA_BUSHES).add(Items.FLOWERING_AZALEA,Items.AZALEA);
+
     }
 
 }
