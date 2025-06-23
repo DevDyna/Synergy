@@ -2,8 +2,9 @@ package com.devdyna.synergy.init.builder.Sprinkler;
 
 import com.devdyna.synergy.init.builder._core.BaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
-
+import com.devdyna.synergy.utils.LevelUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -17,14 +18,27 @@ public class SprinklerBE extends BaseBE {
     }
 
     @Override
-    public void tickServer() {
+    public void tickBoth() {
+
+        var x = getBlockPos().getX();
+        var y = getBlockPos().getY();
+        var z = getBlockPos().getZ();
+
         BlockPos.randomBetweenClosed(level.random, 3,
-                getBlockPos().getX() - radius, getBlockPos().getY(), getBlockPos().getZ() - radius,
-                getBlockPos().getX() + radius, getBlockPos().getY() + 2, getBlockPos().getZ() + radius)
+                x - radius, y, z - radius,
+                x + radius, y + 2, z + radius)
                 .forEach(pos -> {
-                    BlockState st = level.getBlockState(pos);
-                    if (st.isRandomlyTicking()) {
-                        st.randomTick((ServerLevel) level, pos, level.random);
+                    BlockState state = level.getBlockState(pos);
+                    if (state.isRandomlyTicking()) {
+                        if (LevelUtil.chance(10, level))
+                            level.addParticle(ParticleTypes.HAPPY_VILLAGER,
+                                    pos.getX() + (0.1 * LevelUtil.getRandomValue(4, level)),
+                                    pos.getY() + (0.1 * LevelUtil.getRandomValue(4, level)),
+                                    pos.getZ() + (0.1 * LevelUtil.getRandomValue(4, level)),
+                                    // TODO tweak particles
+                                    5, 5, 5);
+                        if (!level.isClientSide)
+                            state.randomTick((ServerLevel) level, pos, level.random);
                     }
                 });
     }
