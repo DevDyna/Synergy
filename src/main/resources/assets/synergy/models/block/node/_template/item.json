@@ -3,10 +3,10 @@
   "parent": "block/block",
   "render_type": "cutout",
   "textures": {
-    "1": "synergy:block/pipe/black",
-    "2": "synergy:block/pipe/node/front",
-    "3": "synergy:block/pipe/node/back",
-    "particle": "synergy:block/pipe/node/front"
+    "1": "#pipe",
+    "2": "#node",
+    "3": "#back",
+    "particle": "#node"
   },
   "elements": [
     {
