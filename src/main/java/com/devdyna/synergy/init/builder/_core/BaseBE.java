@@ -11,15 +11,22 @@ public class BaseBE extends BlockEntity {
         super(type, pos, blockState);
     }
 
-    /** Server only ticking */
+    /** Server only ticking 
+     * Useful for block events
+    */
     public void tickServer() {
     }
 
-    /** Client only ticking */
+    /** Client only ticking 
+     * Useful for player events
+    */
     public void tickClient() {
     }
 
-    /** Client and Server ticking */
+    /** Client and Server ticking 
+     * 
+     * Usefull for particles
+    */
     public void tickBoth() {
     }
 
