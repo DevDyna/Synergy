@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "synergy",
+  "ingredients": [
+    {
+      "tag": "synergy:azalea"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "id": "synergy:azalea_seeds"
+  }
+}

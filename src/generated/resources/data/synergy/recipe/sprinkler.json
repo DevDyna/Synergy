@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "A": {
+      "item": "synergy:adobe"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "W": {
+      "item": "synergy:waxed_planks"
+    }
+  },
+  "pattern": [
+    "WWW",
+    "RIR",
+    "AIA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:sprinkler"
+  }
+}

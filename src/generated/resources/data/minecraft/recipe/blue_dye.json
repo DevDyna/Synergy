@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "synergy",
+  "ingredients": [
+    {
+      "item": "synergy:blue_cup_mushroom"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:blue_dye"
+  }
+}

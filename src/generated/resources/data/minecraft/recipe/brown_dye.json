@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "synergy",
+  "ingredients": [
+    {
+      "item": "synergy:violet_webcap_mushroom"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:brown_dye"
+  }
+}
