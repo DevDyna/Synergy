@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#synergy:plant_spawn/blue_cup",
+  "features": "synergy:blue_cup",
+  "step": "underground_decoration"
+}

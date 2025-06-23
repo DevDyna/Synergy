@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#synergy:plant_spawn/wild_cave_wheat",
+  "features": "synergy:wild_cave_wheat",
+  "step": "underground_decoration"
+}
