@@ -41,6 +41,7 @@ public class DataLoot extends BlockLootSubProvider {
                         zBlocks.zBlockItem,
                         zBlocks.zCrop,
                         zBlocks.zWildCrop,
+                        zBlocks.zDecorative,
                         // wip
                         zBlocks.zDepositBlocks,
                         zBlocks.zDepositOres);
@@ -66,6 +67,7 @@ public class DataLoot extends BlockLootSubProvider {
                 dropSelf(zBlocks.ITEM_PROVIDER.get());
                 azalea();
                 dropSelf(zBlocks.SPRINKLER.get());
+                zBlocks.zDecorative.getEntries().forEach(b->dropSelf(b.get()));
 
                 cropDrop7(zBlocks.RICE.get(), zItems.RICE_SEED.get(),
                                 zItems.RICE_SEED.get());
@@ -105,6 +107,7 @@ public class DataLoot extends BlockLootSubProvider {
         }
 
         // TODO add fortune and age condition
+        // TODO convert to crop
         private void azalea() {
                 add(zBlocks.AZALEA.get(),
                                 LootTable.lootTable()
