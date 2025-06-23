@@ -9,4 +9,8 @@ public class BaseSeedItem extends ItemNameBlockItem {
         super(block, new Properties());
     }
 
+    public BaseSeedItem(Block block, Properties p) {
+        super(block, p);
+    }
+
 }
