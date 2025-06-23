@@ -25,8 +25,8 @@ public class DataBlockModelState extends BlockStateProvider {
         @Override
         protected void registerStatesAndModels() {
                 rotableBlock(zBlocks.SPRINKLER.get());
-                node(zBlocks.ITEM_TRANSFER.get());
-                node(zBlocks.ITEM_PROVIDER.get());
+                node(zBlocks.ITEM_TRANSFER.get(),"red");
+                node(zBlocks.ITEM_PROVIDER.get(),"aqua");
                 pipe(zBlocks.PIPE.get());
 
                 simpleBlock(zBlocks.ADOBE.get());
@@ -52,11 +52,17 @@ public class DataBlockModelState extends BlockStateProvider {
                 pipeType.getPipeMultiPart(b, model, core, pipe);
         }
 
-        private void node(Block b) {
+        private void node(Block b, String color) {
                 var model = getMultipartBuilder(b);
                 var core = models().getExistingFile(modLoc("block/pipe/basic/core"));
                 var pipe = models().getExistingFile(modLoc("block/pipe/basic/pipe"));
-                var node = models().getExistingFile(modLoc("block/node/basic/plate"));
+                var node = models()
+                                .withExistingParent(b.getDescriptionId().replace("block." + ID + ".", ""),
+                                                modLoc("block/node/_template/block"))
+                                .texture("pipe", ID + ":block/pipe/black")
+                                .texture("node", ID + ":block/node/" + color)
+                                .texture("back", ID + ":block/node/back");
+
                 nodeType.getNodeMultiPart(b, model, core, pipe, node);
         }
 
