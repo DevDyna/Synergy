@@ -10,7 +10,6 @@ import com.devdyna.synergy.utils.DataGenUtil;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -19,8 +18,6 @@ public class DataItemModel extends ItemModelProvider {
         public DataItemModel(PackOutput o, ExistingFileHelper f) {
                 super(o, ID, f);
         }
-
-        List<Block> demo = List.of();
 
         @Override
         protected void registerModels() {
@@ -37,8 +34,6 @@ public class DataItemModel extends ItemModelProvider {
                 zItems.zSeeds.getEntries().stream().filter(f -> !wild_plants.contains(f.get()))
                                 .forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/seeds/"));
 
-                demo.forEach(e -> DataGenUtil.itemBlockwithParent(e, this, ID + ":block/dynamo/off"));
-
                 DataGenUtil.itemBlockwithParent(zBlocks.SPRINKLER.get(), this,
                                 ID + ":block/" + DataGenUtil.getPath(zBlocks.SPRINKLER.get()));
 
@@ -48,12 +43,13 @@ public class DataItemModel extends ItemModelProvider {
 
                 zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "tools/"));
 
-                wild_plants
-                                .forEach(w -> withExistingParent(DataGenUtil.getPath(w), "minecraft:item/generated")
-                                                .texture("layer0",
-                                                                DataGenUtil.getResource("item/plants/bush/"
-                                                                                + DataGenUtil.getPath(w).replace(
-                                                                                                "wild_", ""))));
+                wild_plants.forEach(w -> withExistingParent(DataGenUtil.getPath(w), "minecraft:item/generated")
+                                .texture("layer0", DataGenUtil.getResource(
+                                                "item/plants/bush/" + DataGenUtil.getPath(w).replace("wild_", ""))));
+
+                zBlocks.zDecorative.getEntries()
+                                .forEach(bk -> cubeAll(bk.getRegisteredName().replace(ID + ":block/", ""),
+                                                modLoc("block/"+DataGenUtil.getPath(bk.get()).replace(ID + ":block/", ""))));
 
         }
 
