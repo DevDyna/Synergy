@@ -15,6 +15,12 @@ public class zStatic {
         public static String smasher = "smasher";
     }
 
+    public class DecorativeBlocks {
+        public static String industrial_metal = "industrial_metal";
+        public static String waxed_planks = "waxed_planks";
+        public static String adobe = "adobe";
+    }
+
     public class Blocks {
         public static String azalea = "azalea";
         public static String sprinkler = "sprinkler";
@@ -52,7 +58,7 @@ public class zStatic {
         }
 
         public class tools {
-            public static String refactorizer = pipe + "_updater";
+            public static String refactorizer = pipe + "_refactorizer";
             public static String visualizer = pipe + "_visualizer";
         }
 

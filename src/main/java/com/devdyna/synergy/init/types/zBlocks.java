@@ -1,6 +1,8 @@
 package com.devdyna.synergy.init.types;
 
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -10,9 +12,9 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.PottedAzalea;
-import com.devdyna.synergy.init.builder.Sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.*;
+import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.crops.mushroom.*;
 import com.devdyna.synergy.init.builder.crops.wild.*;
@@ -25,6 +27,7 @@ public class zBlocks {
                 zDepositOres.register(bus);
                 zCrop.register(bus);
                 zWildCrop.register(bus);
+                zDecorative.register(bus);
                 registerLists();
         }
 
@@ -35,6 +38,7 @@ public class zBlocks {
         public static final DeferredRegister.Blocks zDepositOres = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zCrop = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zWildCrop = DeferredRegister.createBlocks(Main.ID);
+        public static final DeferredRegister.Blocks zDecorative = DeferredRegister.createBlocks(Main.ID);
 
         // ---------------------------------------------------------------------------------------//
 
@@ -51,7 +55,8 @@ public class zBlocks {
                         zStatic.PipeStuff.nodes.ITransfer,
                         () -> new ItemTranfer());
 
-        public static final DeferredHolder<Block, ?> ITEM_PROVIDER = Material.registerItemBlock(zStatic.PipeStuff.nodes.IGen,
+        public static final DeferredHolder<Block, ?> ITEM_PROVIDER = Material.registerItemBlock(
+                        zStatic.PipeStuff.nodes.IGen,
                         () -> new ItemProvider());
 
         public static final DeferredHolder<Block, ?> RICE = zCrop.register(zStatic.Plants.RICE,
@@ -71,18 +76,33 @@ public class zBlocks {
                         zStatic.Plants.VIOLET_WEBCAP_MUSHROOM,
                         () -> new violet_webcap());
 
-                        //TODO worldgen
-                        //river and wet biomes
         public static final DeferredHolder<Block, ?> WILD_RICE = Material.registerItemBlock(zStatic.Wild.RICE,
-                        () -> new wild_rice(),zWildCrop);
+                        () -> new wild_rice(), zWildCrop);
 
-                        //underground
-        public static final DeferredHolder<Block, ?> WILD_CAVE_WHEAT = Material.registerItemBlock(zStatic.Wild.CAVE_WHEAT,
-                        () -> new wild_cave_wheat(),zWildCrop);
+        public static final DeferredHolder<Block, ?> WILD_CAVE_WHEAT = Material.registerItemBlock(
+                        zStatic.Wild.CAVE_WHEAT,
+                        () -> new wild_cave_wheat(), zWildCrop);
 
-                        //plains and forest biomes
         public static final DeferredHolder<Block, ?> WILD_COTTON = Material.registerItemBlock(zStatic.Wild.COTTON,
-                        () -> new wild_cotton(),zWildCrop);
+                        () -> new wild_cotton(), zWildCrop);
+
+        public static final DeferredHolder<Block, ?> INDUSTRIAL_METAL = Material
+                        .registerItemBlock(zStatic.DecorativeBlocks.industrial_metal,
+                                        () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL)
+                                                        .strength(2.5f)),
+                                        zDecorative);
+
+        public static final DeferredHolder<Block, ?> WAXED_PLANKS = Material
+                        .registerItemBlock(zStatic.DecorativeBlocks.waxed_planks,
+                                        () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.WOOD)
+                                                        .strength(1.5f)),
+                                        zDecorative);
+
+        public static final DeferredHolder<Block, ?> ADOBE = Material
+                        .registerItemBlock(zStatic.DecorativeBlocks.adobe,
+                                        () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE)
+                                                        .strength(1.0f)),
+                                        zDecorative);
 
         // public static final DeferredHolder<Block, ?> EXTRACTOR =
         // Material.registerItemBlock(zStatic.Blocks.extractor,

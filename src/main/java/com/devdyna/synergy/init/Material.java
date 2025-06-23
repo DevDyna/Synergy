@@ -12,6 +12,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -34,16 +35,6 @@ public class Material {
                 zProperties.register(bus);
         }
 
-        // public static BlockBehaviour.Properties bProp = new BlockBehaviour.Properties.of();
-        // public static Properties iProp = new Item.Properties();
-        // public static BlockBehaviour.Properties cropProp = new BlockBehaviour.Properties.of();
-        // .mapColor(MapColor.PLANT)
-        //                 .noCollission()
-        //                 .randomTicks()
-        //                 .instabreak()
-        //                 .sound(SoundType.CROP)
-        //                 .pushReaction(PushReaction.DESTROY);
-
         /**
          * register an block + item
          * 
@@ -64,6 +55,10 @@ public class Material {
                 DeferredHolder<Block, ?> block = b.register(blockname, sup);
                 zItems.zBlockItem.registerSimpleBlockItem(block);
                 return block;
+        }
+
+        public static DeferredHolder<Block, ?> registerItemBlock(String blockname, DeferredRegister.Blocks b) {
+                return registerItemBlock(blockname, () -> new Block(BlockBehaviour.Properties.of()), b);
         }
 
         /**

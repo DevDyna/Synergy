@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.Sprinkler;
+package com.devdyna.synergy.init.builder.sprinkler;
 
 import com.devdyna.synergy.init.builder._core.BaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
