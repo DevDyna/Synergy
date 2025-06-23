@@ -38,8 +38,14 @@ public class DataItemModel extends ItemModelProvider {
                                 ID + ":block/" + DataGenUtil.getPath(zBlocks.SPRINKLER.get()));
 
                 withExistingParent(zBlocks.PIPE.getRegisteredName(), modLoc("block/pipe/basic/item_model"));
-                withExistingParent(zBlocks.ITEM_TRANSFER.getRegisteredName(), modLoc("block/node/basic/item_model"));
-                withExistingParent(zBlocks.ITEM_PROVIDER.getRegisteredName(), modLoc("block/node/basic/item_model"));
+                withExistingParent(zBlocks.ITEM_TRANSFER.getRegisteredName(), modLoc("block/node/_template/item"))
+                                .texture("pipe", ID + ":block/pipe/black")
+                                .texture("node", ID + ":block/node/red")
+                                .texture("back", ID + ":block/node/back");
+                withExistingParent(zBlocks.ITEM_PROVIDER.getRegisteredName(), modLoc("block/node/_template/item"))
+                                .texture("pipe", ID + ":block/pipe/black")
+                                .texture("node", ID + ":block/node/aqua")
+                                .texture("back", ID + ":block/node/back");
 
                 zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "tools/"));
 
@@ -49,7 +55,8 @@ public class DataItemModel extends ItemModelProvider {
 
                 zBlocks.zDecorative.getEntries()
                                 .forEach(bk -> cubeAll(bk.getRegisteredName().replace(ID + ":block/", ""),
-                                                modLoc("block/"+DataGenUtil.getPath(bk.get()).replace(ID + ":block/", ""))));
+                                                modLoc("block/" + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
+                                                                ""))));
 
         }
 
