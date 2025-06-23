@@ -1,6 +1,7 @@
 package com.devdyna.synergy.init.builder._core.crops;
 
 import com.devdyna.synergy.utils.LevelUtil;
+import com.devdyna.synergy.utils.LogUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,6 +14,10 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
@@ -22,7 +27,16 @@ public class BaseCropMushroom extends BaseShortCropBlock {
 
     protected BaseCropMushroom(Properties properties) {
         super(properties.sound(SoundType.GRASS));
+        this.registerDefaultState(
+                stateDefinition.any()
+                        .setValue(getAgeProperty(), 0)
+                        .setValue(FERTILE, true));
+
     }
+
+    public static final BooleanProperty FERTILE = BooleanProperty.create("fertile");
+
+    private static int posFail = 0;
 
     VoxelShape[] SHAPE_BY_AGE = { Block.box(5.0, 0.0, 5.0, 11.0, 5.0, 11.0), Block.box(5.0, 0.0, 5.0, 11.0, 7.0, 11.0),
             Block.box(5.0, 0.0, 5.0, 11.0, 9.0, 11.0), Block.box(5.0, 0.0, 5.0, 11.0, 11.0, 11.0),
@@ -34,8 +48,13 @@ public class BaseCropMushroom extends BaseShortCropBlock {
     }
 
     @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(AGE, FERTILE);
+    }
+
+    @Override
     protected boolean isRandomlyTicking(BlockState state) {
-        return true;
+        return state.getValue(FERTILE) && !isMaxAge(state);
     }
 
     @Override
@@ -60,7 +79,7 @@ public class BaseCropMushroom extends BaseShortCropBlock {
     }
 
     public BlockPos getSpreadPos(BlockPos pos, Level level) {
-        //TODO mycelium and other condition placement
+        // TODO mycelium and other condition placement
         if (pos == null)
             return null;
         var spots = BlockPos.randomBetweenClosed(level.random, 1,
@@ -68,29 +87,37 @@ public class BaseCropMushroom extends BaseShortCropBlock {
                 pos.getX() + 3, pos.getY() + 3, pos.getZ() + 3);
 
         if (spots != null)
-            for (BlockPos offpos : spots)
+            for (BlockPos offpos : spots) {
+                if (level.getBlockState(offpos).is(this))
+                    posFail++;
+
                 if (level.getBlockState(offpos).is(BlockTags.AIR)
                         && this.canSurvive(level.getBlockState(offpos), level, pos)
                         && this.mayPlaceOn(level.getBlockState(offpos.below()), level, pos.below())
                         && level.getRawBrightness(offpos, 0) < maxBrightnessSustainable())
                     return offpos;
-
+            }
         return null;
     }
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 
-        if (getAge(state) >= 3) {
-            if (LevelUtil.chance(25, level))
-                spreadSpores(pos, level, state);
-        }
-
         if (!isMaxAge(state))
             if (CommonHooks.canCropGrow(level, pos, state, random.nextInt(13) == 0)) {
                 level.setBlock(pos, getStateForAge(getAge(state) + 1), 2);
                 CommonHooks.fireCropGrowPost(level, pos, state);
             }
+
+        if (posFail >= 9) {
+            state.setValue(FERTILE, false);
+            return;
+        }
+
+        if (getAge(state) >= 3 && state.getValue(FERTILE)) {
+            if (LevelUtil.chance(25, level))
+                spreadSpores(pos, level, state);
+        }
 
     }
 
