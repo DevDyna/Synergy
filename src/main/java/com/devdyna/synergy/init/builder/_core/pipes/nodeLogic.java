@@ -227,14 +227,18 @@ public interface nodeLogic {
                             false);
                     break;
                 } else {
+                    // if output is full skip
+                    if (outItem.getMaxStackSize() == outItem.getCount())
+                        continue;
+
                     // if output match input
-                    if (inItem.is(outItem.getItem()) && outItem.getCount() != outItem.getMaxStackSize()) {
+                    if (inItem.is(outItem.getItem())) {
                         output.insertItem(slot,
                                 input.extractItem(index,
                                         Math.min(inItem.getCount(), outItem.getMaxStackSize() - outItem.getCount()),
                                         false),
                                 false);
-                        break;
+                        continue;
                     }
                 }
             }
