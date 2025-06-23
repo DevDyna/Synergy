@@ -76,7 +76,7 @@ public class NodeBaseBlock extends BaseBlockBE implements nodeType {
     @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
-        return new NodeBaseBE(p, s);
+        return null;
     }
 
 }
