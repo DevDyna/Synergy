@@ -5,15 +5,9 @@ import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.init.types.zBlocks;
-import com.devdyna.synergy.utils.LevelUtil;
-
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
