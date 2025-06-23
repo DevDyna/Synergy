@@ -17,6 +17,6 @@ public class zItemTag {
 
 public static final TagKey<Item> SMASHER = Material.tagItem("smasher");
 
-    //TODO all pipe tools datadriven
+public static final TagKey<Item> AZALEA_BUSHES = Material.tagItem("azalea");
 
 }
