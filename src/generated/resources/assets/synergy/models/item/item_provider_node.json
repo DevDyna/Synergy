@@ -1,3 +1,8 @@
 {
-  "parent": "synergy:block/node/basic/item_model"
+  "parent": "synergy:block/node/_template/item",
+  "textures": {
+    "back": "synergy:block/node/back",
+    "node": "synergy:block/node/aqua",
+    "pipe": "synergy:block/pipe/black"
+  }
 }

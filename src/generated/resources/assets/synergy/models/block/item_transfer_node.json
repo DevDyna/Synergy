@@ -1,5 +1,5 @@
 {
-  "parent": "synergy:block/node/_template/item",
+  "parent": "synergy:block/node/_template/block",
   "textures": {
     "back": "synergy:block/node/back",
     "node": "synergy:block/node/red",

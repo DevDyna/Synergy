@@ -60,7 +60,7 @@
     },
     {
       "apply": {
-        "model": "synergy:block/node/basic/plate"
+        "model": "synergy:block/item_transfer_node"
       },
       "when": {
         "facing": "north"
@@ -68,7 +68,7 @@
     },
     {
       "apply": {
-        "model": "synergy:block/node/basic/plate",
+        "model": "synergy:block/item_transfer_node",
         "y": 90
       },
       "when": {
@@ -77,7 +77,7 @@
     },
     {
       "apply": {
-        "model": "synergy:block/node/basic/plate",
+        "model": "synergy:block/item_transfer_node",
         "y": 180
       },
       "when": {
@@ -86,7 +86,7 @@
     },
     {
       "apply": {
-        "model": "synergy:block/node/basic/plate",
+        "model": "synergy:block/item_transfer_node",
         "y": 270
       },
       "when": {
@@ -95,7 +95,7 @@
     },
     {
       "apply": {
-        "model": "synergy:block/node/basic/plate",
+        "model": "synergy:block/item_transfer_node",
         "x": 270
       },
       "when": {
@@ -104,7 +104,7 @@
     },
     {
       "apply": {
-        "model": "synergy:block/node/basic/plate",
+        "model": "synergy:block/item_transfer_node",
         "x": 90
       },
       "when": {
