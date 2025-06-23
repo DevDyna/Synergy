@@ -11,10 +11,16 @@ public class BaseBE extends BlockEntity {
         super(type, pos, blockState);
     }
 
+    /** Server only ticking */
     public void tickServer() {
     }
 
+    /** Client only ticking */
     public void tickClient() {
+    }
+
+    /** Client and Server ticking */
+    public void tickBoth() {
     }
 
 }
