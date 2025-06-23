@@ -33,7 +33,7 @@ public class DataBlockModelState extends BlockStateProvider {
 
                 crop(zBlocks.RICE.get(), 7,true, CropBlock.AGE);
                 crop(zBlocks.CAVE_WHEAT.get(), 5,true, BaseShortCropBlock.AGE);
-                crop(zBlocks.VIOLET_WEBCAP_MUSHROOM.get(), 5,true, BaseShortCropBlock.AGE);
+                crop(zBlocks.VIOLET_WEBCAP_MUSHROOM.get(), 5,false, BaseShortCropBlock.AGE);
                 crop(zBlocks.COTTON.get(), 5,false, BaseShortCropBlock.AGE);
                 growPlantWithVariants(zBlocks.BLUE_CUP_MUSHROOM.get(), 5,false, BaseShortCropBlock.AGE);
 
@@ -97,7 +97,7 @@ public class DataBlockModelState extends BlockStateProvider {
         // .addModel();
         // }
 
-        // TODO make it dynamic deja vù?
+        // TODO optimize and make it dynamic
         private void growPlantWithVariants(Block b, int max, boolean isCrop, IntegerProperty property) {
                 var name = b.getDescriptionId().replace("block." + ID + ".", "");
 
