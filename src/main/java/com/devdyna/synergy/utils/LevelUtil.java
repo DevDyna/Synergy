@@ -92,6 +92,11 @@ public class LevelUtil {
         popItemFromPos(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
     }
 
+    
+    /** 
+     * @deprecated use Block.getDrops()
+    */
+    @Deprecated
     @SuppressWarnings("null")
     public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, float luck) {
 
@@ -108,14 +113,26 @@ public class LevelUtil {
 
     }
 
+    /** 
+     * @deprecated use Block.getDrops()
+    */
+    @Deprecated
     public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name) {
         return getItemStackFromLootTable(level, raw_ore_name, 1);
     }
 
+    /** 
+     * @deprecated use Block.getDrops()
+    */
+    @Deprecated
     public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, Player player) {
         return getItemStackFromLootTable(level, raw_ore_name, player.getLuck());
     }
 
+    /** 
+     * @deprecated use Block.getDrops()
+    */
+    @Deprecated
     public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, BlockState state) {
         return getItemStackFromLootTable(level, state.getBlock().getDescriptionId(), 1);
     }
