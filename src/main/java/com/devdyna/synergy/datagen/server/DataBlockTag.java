@@ -5,9 +5,15 @@ import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.utils.LevelUtil;
+
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -26,12 +32,15 @@ public class DataBlockTag extends BlockTagsProvider {
 
         tag(zBlockTag.CROPS).addTag(BlockTags.CROPS);
 
-        tag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.PIPE.get(), zBlocks.ITEM_TRANSFER.get(), zBlocks.ITEM_PROVIDER.get());
+        tag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.PIPE.get(), zBlocks.ITEM_TRANSFER.get(),
+                zBlocks.ITEM_PROVIDER.get());
 
         tag(zBlockTag.MASHABLE).addTag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.SPRINKLER.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(zBlocks.SPRINKLER.get());
-        // tag(zBlockTag.WILD_CROP_BLOCKS).addTag(BlockTags.DIRT);
+
+        tag(zBlockTag.MUSHROOMS)
+                .add(zBlocks.BLUE_CUP_MUSHROOM.get(), zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
 
         // tag(zBlockTag.EXTRACTORS).add(zBlocks.EXTRACTOR.get());
 
