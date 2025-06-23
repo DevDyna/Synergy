@@ -32,6 +32,7 @@ public class DataLang extends LanguageProvider {
                 zItems.zFoods.getEntries().forEach(b -> addItem(b, named(b)));
                 zItems.zSeeds.getEntries().forEach(b -> addItem(b, named(b)));
                 zBlocks.zWildCrop.getEntries().forEach(b -> addBlock(b, named(b)));
+                zBlocks.zDecorative.getEntries().forEach(b -> addBlock(b, named(b)));
 
                 // tools
                 add(Main.ID + "." + zStatic.PipeStuff.tools.visualizer,
