@@ -7,7 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class NodeBaseBE extends BaseBE implements nodeLogic{
+public abstract class NodeBaseBE extends BaseBE implements nodeLogic{
 
     public NodeBaseBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -20,5 +20,7 @@ public class NodeBaseBE extends BaseBE implements nodeLogic{
     @Override
     public void tickServer() {
     }
+
+    public abstract int getTickDelay();
 
 }
