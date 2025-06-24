@@ -25,21 +25,23 @@ A casual mod without a main focus
 - [ ] smill trees
 
 ### Machines&Blocks
-
 - [x] Sprinkler
 - [ ] Healer
 - [ ] Fluid nodes
 - [ ] (Meka) Gas nodes
-- [ ] Extractor
-- [ ] Generators
-- [ ] Deposits
-- [ ] Buddings
 - [ ] Tiered/Stacked nodes
 - [ ] Provider Customizable (?)
 - [ ] Pipe Blocker (?)
 - [ ] Modular Reactor
 - [ ] Cookie clicker machines (randomtick generator)
 - [ ] Item Duct (item transfer with rendering)
+
+### ResourceGen
+- [ ] Growable Crystals
+- [ ] Extractor
+- [ ] Generators
+- [ ] Deposits
+- [ ] Buddings
 
 ### Unsorted
 - [ ] dye essence (?)
