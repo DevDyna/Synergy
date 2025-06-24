@@ -1,7 +1,5 @@
 {
   "values": [
-    "synergy:pipe",
-    "synergy:item_transfer_node",
     "synergy:item_provider_node"
   ]
 }
