@@ -39,7 +39,7 @@ public class PipeRefactorizer extends Item {
                 state = pipeType.updatePipeOnPlace(state, level, pos);
 
             if (state.is(zBlockTag.NODE))
-                state = nodeType.updateNodeOnPlace(state, level, pos, state.getValue(nodeType.FACING));
+                state = nodeType.updateNodeOnPlace(state, level, pos, state.getValue(nodeType.FACING).getOpposite());
 
             level.setBlockAndUpdate(pos, state);
 
