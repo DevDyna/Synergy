@@ -38,6 +38,7 @@ A casual mod without a main focus
 - [ ] Pipe Blocker (?)
 - [ ] Modular Reactor
 - [ ] Cookie clicker machines (randomtick generator)
+- [ ] Item Duct (item transfer with rendering)
 
 ### Unsorted
 - [ ] dye essence (?)
