@@ -31,14 +31,14 @@
   "item.synergy.violet_webcap_pod": "Violet Webcap Pod",
   "item.synergy.wooden_crook": "Wooden Crook",
   "synergy.creative_tab": "Synergy Stuff",
-  "synergy.pipe.desc": "§7Can connected at any #synergy:pipe_connector",
+  "synergy.pipe.desc": "§7Can connected at any #synergy:can_connect",
   "synergy.pipe.extend": "§7Can be extended using pipes",
   "synergy.pipe.safe": "§7Safe for decoration",
-  "synergy.pipe_refactorizer": "§7[WIP] Update all states of a specific pipe/node block",
+  "synergy.pipe_refactorizer": "§7Force update blockstates of any #synergy:can_connect",
   "synergy.pipe_visualizer": "§7Show the debug vision of I/O foreach node",
   "synergy.provider_node": "§7Generate resources and deposit it",
   "synergy.smasher": "§7Quick break any #synergy:mashable",
   "synergy.transfer_node": "§7Extract and deposit stuff from containers",
-  "synergy.wild_.tip": "§7Item unobtainable",
+  "synergy.wild_.tip": "§7Item-Form unobtainable",
   "synergy.wooden_crook": "§7Increase the chance to obtain saplings"
 }
