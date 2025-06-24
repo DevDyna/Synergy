@@ -38,13 +38,13 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.PipeStuff.tools.visualizer,
                                 TIP_COLOR + "Show the debug vision of I/O foreach node");
                 add(Main.ID + "." + zStatic.PipeStuff.tools.refactorizer,
-                                TIP_COLOR + "[WIP] Update all states of a specific pipe/node block");
+                                TIP_COLOR + "Force update blockstates of any #synergy:can_connect");
                 add(Main.ID + "." + zStatic.Items.smasher, TIP_COLOR + "Quick break any #synergy:mashable");
                 add(Main.ID + "." + zStatic.Items.wooden_crook, TIP_COLOR + "Increase the chance to obtain saplings");
 
                 // pipe stuff
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".desc",
-                                TIP_COLOR + "Can connected at any #synergy:pipe_connector");
+                                TIP_COLOR + "Can connected at any #synergy:can_connect");
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".safe",
                                 TIP_COLOR + "Safe for decoration");
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".extend",
