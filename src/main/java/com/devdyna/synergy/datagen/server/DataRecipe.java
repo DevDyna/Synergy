@@ -89,7 +89,7 @@ public class DataRecipe extends RecipeProvider {
                                                                 zBlocks.PIPE.get()))
                                 .group(ID).save(c);
 
-                                ShapedRecipeBuilder.shaped(MISC, zBlocks.ITEM_TRANSFER.get().asItem(), 4)
+                                ShapedRecipeBuilder.shaped(MISC, zBlocks.ITEM_PROVIDER.get().asItem(), 4)
                                 .pattern(" P ")
                                 .pattern("RBR")
                                 .pattern("SCS")
