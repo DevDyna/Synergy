@@ -36,6 +36,7 @@ A casual mod without a main focus
 - [ ] Cookie clicker machines (randomtick generator)
 - [ ] Item Duct (item transfer with rendering)
 - [ ] Chimney & smoke tubes
+- [ ] Wireless Nodes
 
 ### ResourceGen
 - [ ] Growable Crystals
