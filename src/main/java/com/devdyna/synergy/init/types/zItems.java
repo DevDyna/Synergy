@@ -99,28 +99,4 @@ public class zItems {
         public static final DeferredHolder<Item, Item> PIPE_VISUALIZER = zTool
                         .register(zStatic.PipeStuff.tools.visualizer, () -> new PipeVisualizer());
 
-        /*
-         * TODO
-         * flax|
-         * corn|
-         * pigtail | (texture not completed)
-         * mullberries | (bush)
-         * grapple wild | (bush)
-         * grapple cultivated | (multiblock)
-         * quarrybush | (idk)
-         * giant plants | (no texture)
-         * blight spores | (todo model and logic) (vanilla?)
-         * 
-         * strawberries wild | (bush) (no texture)
-         * strawberries cultivated | (pole-plant) (no texture)
-         * blackberries wild | (bush) (no texture)
-         * blackberries cultivated | (pole-plant) (no texture)
-         * Nerium oleander (no texture)
-         * Macrolepiota procera mushroom (double) (no texture)
-         * 
-         * dye essence
-         *
-         * mushroom Desarmillaria tabescens like candles
-         */
-
 }
