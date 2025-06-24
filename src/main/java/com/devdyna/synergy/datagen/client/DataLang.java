@@ -58,7 +58,7 @@ public class DataLang extends LanguageProvider {
 
                 //wild crops warning
                 add(Main.ID + "." + zStatic.Wild.WILD + ".tip",
-                                TIP_COLOR + "Item unobtainable");
+                                TIP_COLOR + "Item-Form unobtainable");
 
 
         }
