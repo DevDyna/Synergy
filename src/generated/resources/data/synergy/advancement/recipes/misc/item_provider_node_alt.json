@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:item_provider_node"
+        "recipe": "synergy:item_provider_node_alt"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -14,10 +14,10 @@
             "items": "minecraft:redstone"
           },
           {
-            "items": "minecraft:iron_pickaxe"
+            "items": "minecraft:ender_pearl"
           },
           {
-            "items": "minecraft:redstone_block"
+            "items": "minecraft:iron_pickaxe"
           },
           {
             "items": "synergy:pipe"
@@ -35,7 +35,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:item_provider_node"
+      "synergy:item_provider_node_alt"
     ]
   }
 }
