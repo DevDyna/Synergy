@@ -10,9 +10,6 @@ import com.devdyna.synergy.init.builder._core.pipes.pipeType;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -25,10 +22,8 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.Tags;
 
 @SuppressWarnings("null")
 public class pipeBlock extends Block implements pipeType {
@@ -62,20 +57,8 @@ public class pipeBlock extends Block implements pipeType {
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
             BlockPos neighborPos, boolean movedByPiston) {
-        pipeType.updatePipeOnPlace(state, level, pos);
+        level.setBlockAndUpdate(pos, pipeType.updatePipeOnPlace(state, level, pos));
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
-    }
-
-    @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
-            Player player, InteractionHand hand, BlockHitResult hitResult) {
-
-        if (stack.is(Tags.Items.TOOLS_WRENCH)) {
-            state = pipeType.updatePipeOnPlace(state, level, pos);
-            return ItemInteractionResult.SUCCESS;
-        }
-
-        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     @Override
