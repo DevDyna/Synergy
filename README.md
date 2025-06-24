@@ -2,7 +2,7 @@
 
 A casual mod without a main focus
 
-## TODO
+## TODO - DONT INCLUDE ALREADY DONE FEATURES
 ### Plants
 - [ ] flax (double)
 - [ ] corn (double)
@@ -22,6 +22,7 @@ A casual mod without a main focus
 - [ ] magic beans (giant plant)
 - [ ] blight spore (thorny giant plant)
 - [ ] grapple cultivated (multiblock)
+- [ ] smill trees
 
 ### Machines&Blocks
 
