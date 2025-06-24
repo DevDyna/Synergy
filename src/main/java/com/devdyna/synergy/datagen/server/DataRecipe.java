@@ -52,8 +52,8 @@ public class DataRecipe extends RecipeProvider {
                                 .pattern("SCS")
                                 .define('P', zBlocks.PIPE.get().asItem())
                                 .define('R', Tags.Items.DUSTS_REDSTONE)
-                                .define('C', Items.ENDER_PEARL)
-                                .define('B', Tags.Items.STORAGE_BLOCKS_REDSTONE)
+                                .define('C', Items.CHEST)
+                                .define('B', Items.ENDER_PEARL)
                                 .define('S', Tags.Items.STONES)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.REDSTONE, Items.ENDER_PEARL, Items.REDSTONE_BLOCK,
