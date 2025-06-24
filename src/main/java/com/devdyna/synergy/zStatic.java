@@ -1,5 +1,7 @@
 package com.devdyna.synergy;
 
+import com.devdyna.synergy.utils.ModAddonUtil;
+
 public class zStatic {
     public static String CreativeTab = "creative_tab";
 
@@ -188,6 +190,14 @@ public class zStatic {
             public static final String SULFUR = "sulfur";
         }
 
+    }
+
+    public class Mods {
+        public static String GuideMe = "guideme";
+    }
+
+    public class checkMods {
+        public static boolean GuideMe = ModAddonUtil.checkMod(Mods.GuideMe);
     }
 
 }

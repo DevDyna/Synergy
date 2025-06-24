@@ -107,7 +107,7 @@ public class LevelUtil {
         LootTable lootTable = level.getServer().reloadableRegistries()
                 .getLootTable(ResourceKey
                         .create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(
-                                IDUtil.getModName(raw_ore_name), "blocks/"
+                                StringUtil.getModName(raw_ore_name), "blocks/"
                                         + raw_ore_name.substring(raw_ore_name.lastIndexOf('.') + 1))));
         return lootTable.getRandomItems(params);
 

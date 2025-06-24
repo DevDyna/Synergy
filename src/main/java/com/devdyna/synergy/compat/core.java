@@ -1,14 +1,30 @@
 package com.devdyna.synergy.compat;
 
-import net.neoforged.fml.ModList;
+import static com.devdyna.synergy.Main.ID;
+
+import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.utils.LogUtil;
+import com.devdyna.synergy.utils.StringUtil;
+
+import guideme.Guide;
+import net.minecraft.resources.ResourceLocation;
 
 public class core {
 
     public static void registerCompat() {
-        if (checkMod("modname")){}
+        LogUtil.decor(20);
+        LogUtil.info(StringUtil.getModName(ID)+" Compatibility Checker started");
+        LogUtil.decor(20);
+        core.createGuide();
+        LogUtil.decor(20);
     }
 
-    public static boolean checkMod(String s) {
-        return ModList.get().isLoaded(s);
+    private static void createGuide() {
+
+        LogUtil.info("GuideMe"
+                + (zStatic.checkMods.GuideMe ? " found" : " not found"));
+        if (zStatic.checkMods.GuideMe)
+            Guide.builder(ResourceLocation.parse(ID + ":guide")).build();
+
     }
 }
