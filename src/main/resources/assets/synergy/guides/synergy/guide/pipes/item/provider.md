@@ -20,6 +20,8 @@ It can be extended the result output using <ItemLink id="synergy:pipe" />
 
 <RecipeFor id="synergy:item_provider_node" />
 
+<Recipe id="synergy:item_provider_node_alt" />
+
 ## Example #1 : Cobblestone gen
 
 A simple example of how to generate cobblestone
