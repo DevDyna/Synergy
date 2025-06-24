@@ -1,23 +1,16 @@
-package com.devdyna.synergy.client.core;
+package com.devdyna.synergy.api.client;
 
-import com.devdyna.synergy.init.builder._core.renderItem;
-import com.devdyna.synergy.init.builder._core.pipes.pipeProperties;
-import com.devdyna.synergy.init.builder._core.pipes.pipeType;
+import com.devdyna.synergy.api.pipe.pipeProperties;
+import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItemTag;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -27,6 +20,7 @@ import net.minecraft.world.phys.Vec3;
 @SuppressWarnings("null")
 public interface TypeRenders<T> {
 
+    @SuppressWarnings("unused")
     private int getLightLevel(Level level, BlockPos pos) {
         return LightTexture.pack(level.getBrightness(LightLayer.BLOCK, pos), level.getBrightness(LightLayer.SKY, pos));
     }
@@ -39,22 +33,22 @@ public interface TypeRenders<T> {
         return new Vec3(0.5f, 0.5f, 0.5f);
     }
 
-    default void renderItem(ItemStack itemStack, Vec3 offset, Vec3 scale, BlockEntity be, float tick, PoseStack stack,
-            MultiBufferSource bufferSource, int packedLight,
-            int packedOverlay) {
-        if (!(be instanceof renderItem))
-            return;
+    // default void renderItem(ItemStack itemStack, Vec3 offset, Vec3 scale, BlockEntity be, float tick, PoseStack stack,
+    //         MultiBufferSource bufferSource, int packedLight,
+    //         int packedOverlay) {
+    //     if (!(be instanceof renderItem))
+    //         return;
 
-        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-        stack.pushPose();
-        stack.translate(offset.x, offset.y, offset.z);
-        stack.scale((float) scale.x, (float) scale.y, (float) scale.z);
-        stack.mulPose(Axis.YP.rotationDegrees(((renderItem) be).getAngle()));
+    //     ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+    //     stack.pushPose();
+    //     stack.translate(offset.x, offset.y, offset.z);
+    //     stack.scale((float) scale.x, (float) scale.y, (float) scale.z);
+    //     stack.mulPose(Axis.YP.rotationDegrees(((renderItem) be).getAngle()));
 
-        itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIXED, getLightLevel(be.getLevel(),
-                be.getBlockPos()), OverlayTexture.NO_OVERLAY, stack, bufferSource, be.getLevel(), 0);
-        stack.popPose();
-    }
+    //     itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIXED, getLightLevel(be.getLevel(),
+    //             be.getBlockPos()), OverlayTexture.NO_OVERLAY, stack, bufferSource, be.getLevel(), 0);
+    //     stack.popPose();
+    // }
 
     default void createPipeRender(int x, int y, int z, PoseStack stack, BlockEntity be, MultiBufferSource bufferSource,
             int packedLight,
