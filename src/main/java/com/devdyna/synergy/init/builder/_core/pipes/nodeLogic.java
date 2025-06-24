@@ -65,7 +65,7 @@ public interface nodeLogic {
                     break;
                 }
 
-                if (offset.is(zBlockTag.PIPE_CONNECTORS)
+                if (offset.is(zBlockTag.CAN_CONNECT)
                         && validPath.indexOf(variablePos.relative(dir)) == -1
                         && actual.getValue(pipeType.D2P(dir)) == pipeProperties.TRUE) {
 
@@ -109,7 +109,8 @@ public interface nodeLogic {
             for (Direction dir : Direction.values()) {
                 actual = level.getBlockState(variablePos);
                 offset = level.getBlockState(variablePos.relative(dir));
-                if (actual.is(zBlockTag.PIPE_CONNECTORS) &&
+                //TODO re-routing when fail
+                if (actual.is(zBlockTag.CAN_CONNECT) &&
                         actual.getValue(pipeType.D2P(dir)) == pipeProperties.OUTPUT) {
                     outputPos = variablePos;
                     outputSide = dir;
@@ -117,7 +118,7 @@ public interface nodeLogic {
                     break;
                 }
 
-                if (offset.is(zBlockTag.PIPE_CONNECTORS) && actual.is(zBlockTag.PIPE_CONNECTORS)
+                if (offset.is(zBlockTag.CAN_CONNECT) && actual.is(zBlockTag.CAN_CONNECT)
                         && validPath.indexOf(variablePos.relative(dir)) == -1
                         && actual.getValue(pipeType.D2P(dir)) == pipeProperties.TRUE) {
 
@@ -188,70 +189,75 @@ public interface nodeLogic {
 
     /**
      * move one at time of all possible input item to an output
+     * <br/>
+     * <br/>
+     * 
      * default stack = 1
-     * -1 -> full stack
      */
-    default void moveItems(IItemHandler input, IItemHandler output, int stacksize) {
-
-        // LogUtil.info("try to move item");
+    default void moveItems(IItemHandler input, IItemHandler output, int pipeRate
+    ) {
 
         var inputitems = getSlotsOfItems(input);
+
+        // no valid input provided
         if (inputitems.isEmpty() || inputitems == null) {
-            // LogUtil.info("no valid input");
-            // LogUtil.info(inputitems.toString());
-            return;// no valid input provided
+            return;
         }
 
-        for (Integer index : inputitems) {
-            // LogUtil.info("index: "+index);
+        for (int inputIndex = 0; inputIndex < input.getSlots(); inputIndex++) {
 
-            int insize = stacksize == -1 ? getCount(input, index) : 1;
+            ItemStack inItem = input.extractItem(inputIndex, pipeRate, true);
 
-            ItemStack inItem = input.extractItem(index, insize, true);
+            // if input is empty
+            // skip
+            if (inItem.isEmpty())
+                continue;
 
-            for (int slot = 0; slot < output.getSlots(); slot++) {
+            for (int outputIndex = 0; outputIndex < output.getSlots(); outputIndex++) {
 
-                int outsize = stacksize == -1 ? getCount(output, slot) : 1;
+                ItemStack outItem = output.extractItem(outputIndex, getCount(output, outputIndex), true);
 
-                ItemStack outItem = output.extractItem(slot,
-                        outsize, true);
+                // if output is full
+                // skip
+                if (outItem.getMaxStackSize() == outItem.getCount())
+                    continue;
 
-                // LogUtil.info(index + " -> " + inItem.getDescriptionId());
-                // LogUtil.info(slot + " -> " + outItem.getDescriptionId());
-
-                if (output.getStackInSlot(slot).isEmpty()) {
-                    // if output is empty
-                    output.insertItem(slot,
-                            input.extractItem(index, insize,
+                // if output is empty
+                // merge
+                if (outItem.isEmpty()) {
+                    output.insertItem(outputIndex,
+                            input.extractItem(inputIndex, pipeRate,
                                     false),
                             false);
-                    break;
-                } else {
-                    // if output is full skip
-                    if (outItem.getMaxStackSize() == outItem.getCount())
-                        continue;
-
-                    // if output match input
-                    if (inItem.is(outItem.getItem())) {
-                        output.insertItem(slot,
-                                input.extractItem(index,
-                                        Math.min(inItem.getCount(), outItem.getMaxStackSize() - outItem.getCount()),
-                                        false),
-                                false);
-                        continue;
-                    }
+                    break; // break output due input empty and try next input slot
                 }
+
+                // if output match input
+                // merge
+                if (inItem.is(outItem.getItem())) {
+                    output.insertItem(outputIndex,
+                            input.extractItem(inputIndex,
+                                    Math.min(pipeRate, outItem.getMaxStackSize() - outItem.getCount()),
+                                    false),
+                            false);
+                    break; // break output due input empty and try next input slot
+                }
+
+                // if output dont match input
+                // skip (nothing)
             }
         }
     }
 
     /**
      * move one at time of all possible input item to an output
+     * <br/>
+     * <br/>
+     * 
      * default stack = 1
-     * -1 -> full stack
      */
     default void moveItems(IItemHandler input, IItemHandler output) {
-        moveItems(input, output, 1);
+    moveItems(input, output, 1);
     }
 
     /**
@@ -271,8 +277,8 @@ public interface nodeLogic {
             ItemStack outItem = output.extractItem(slot,
                     getCount(output, slot), true);
 
+            // if output is empty
             if (output.getStackInSlot(slot).isEmpty()) {
-                // if output is empty
                 output.insertItem(slot,
                         input,
                         false);

@@ -90,7 +90,7 @@ public interface pipeType {
         for (Direction face : DIRECTIONS) {
 
             var offset = level.getBlockState(pos.relative(face));
-            if (offset.is(zBlockTag.PIPE_CONNECTORS)) {
+            if (offset.is(zBlockTag.CAN_CONNECT)) {
                 // TIP. default is true
 
                 // connect to another pipe connector
@@ -120,7 +120,7 @@ public interface pipeType {
         for (Direction face : DIRECTIONS) {
 
             var offset = level.getBlockState(pos.relative(face));
-            if (offset.is(zBlockTag.PIPE_CONNECTORS)) {
+            if (offset.is(zBlockTag.CAN_CONNECT)) {
                 // TIP. default is true
 
                 // connect to another pipe connector
@@ -149,7 +149,7 @@ public interface pipeType {
     static void onDestroyPipe(BlockState state, Level level, BlockPos pos) {
         for (Direction face : DIRECTIONS) {
             var offset = level.getBlockState(pos.relative(face));
-            if (offset.is(zBlockTag.PIPE_CONNECTORS)
+            if (offset.is(zBlockTag.CAN_CONNECT)
                     && offset.getValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite()))) != pipeProperties.NODE) {
                 level.setBlock(pos.relative(face),
                         offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
