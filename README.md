@@ -42,9 +42,9 @@ A casual mod without a main focus
 
 ### Unsorted
 - [ ] dye essence (?)
-
-
-
+- [ ] rice scope
+- [ ] violet webcap scope
+- [ ] blue cup scope
 
 Download Link : [src](https://legacy.curseforge.com/minecraft/mc-mods/synergy)
 
