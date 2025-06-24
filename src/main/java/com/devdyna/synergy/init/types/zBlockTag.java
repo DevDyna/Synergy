@@ -15,13 +15,18 @@ public class zBlockTag {
 
     public static final TagKey<Block> CAN_CONNECT = Material.tagBlock("can_connect");
 
+    public static final TagKey<Block> PIPE = Material.tagBlock("can_connect/pipe");
+
+    public static final TagKey<Block> NODE = Material.tagBlock("can_connect/node");
+
+    public static final TagKey<Block> NODE_PROVIDER = Material.tagBlock("can_connect/node/provider");
+
+    public static final TagKey<Block> NODE_TRANSFER = Material.tagBlock("can_connect/node/transfer");
+
     public static final TagKey<Block> EXTRACTORS = Material.tagBlock("extractors");
 
     public static final TagKey<Block> MASHABLE = Material.tagBlock("mashable");
 
-public static final TagKey<Block> MUSHROOMS = Material.tagBlock("mushrooms","c");
-
-    // public static final TagKey<Block> WILD_CROP_BLOCKS =
-    // Material.tagBlock("wildcrop_blocks");
+    public static final TagKey<Block> MUSHROOMS = Material.tagBlock("mushrooms", "c");
 
 }

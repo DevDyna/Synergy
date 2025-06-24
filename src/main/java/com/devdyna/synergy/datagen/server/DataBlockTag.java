@@ -26,15 +26,18 @@ public class DataBlockTag extends BlockTagsProvider {
 
         tag(zBlockTag.CROPS).addTag(BlockTags.CROPS);
 
-        tag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.PIPE.get(), zBlocks.ITEM_TRANSFER.get(),
-                zBlocks.ITEM_PROVIDER.get());
-
-        tag(zBlockTag.MASHABLE).addTag(zBlockTag.PIPE_CONNECTORS).add(zBlocks.SPRINKLER.get());
+        tag(zBlockTag.MASHABLE).addTag(zBlockTag.CAN_CONNECT).add(zBlocks.SPRINKLER.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(zBlocks.SPRINKLER.get());
 
         tag(zBlockTag.MUSHROOMS)
                 .add(zBlocks.BLUE_CUP_MUSHROOM.get(), zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
+
+        tag(zBlockTag.PIPE).add(zBlocks.PIPE.get());
+        tag(zBlockTag.NODE_TRANSFER).add(zBlocks.ITEM_TRANSFER.get());
+        tag(zBlockTag.NODE_PROVIDER).add(zBlocks.ITEM_PROVIDER.get());
+        tag(zBlockTag.NODE).addTag(zBlockTag.NODE_TRANSFER).addTag(zBlockTag.NODE_PROVIDER);
+        tag(zBlockTag.CAN_CONNECT).addTag(zBlockTag.PIPE).addTag(zBlockTag.NODE);
 
         // tag(zBlockTag.EXTRACTORS).add(zBlocks.EXTRACTOR.get());
 
