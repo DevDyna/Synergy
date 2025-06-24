@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBaseBlock;
+import com.devdyna.synergy.api.node.builder.NodeBaseBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemProviderBE;
 
 import net.minecraft.core.BlockPos;

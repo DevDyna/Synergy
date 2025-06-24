@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities;
 
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBaseBE;
+import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;

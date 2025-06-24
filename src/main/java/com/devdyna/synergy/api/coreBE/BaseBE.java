@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder._core;
+package com.devdyna.synergy.api.coreBE;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder._core.crops;
+package com.devdyna.synergy.api.plants.builder;
 
 import com.mojang.serialization.MapCodec;
 

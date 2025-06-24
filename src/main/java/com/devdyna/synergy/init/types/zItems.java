@@ -1,13 +1,12 @@
 package com.devdyna.synergy.init.types;
 
 import com.devdyna.synergy.zStatic;
-
+import com.devdyna.synergy.api.plants.builder.BaseSeedItem;
 import com.devdyna.synergy.Main;
-import com.devdyna.synergy.init.builder.CroockItem;
-import com.devdyna.synergy.init.builder.Smasher;
-import com.devdyna.synergy.init.builder._core.seeds.BaseSeedItem;
-import com.devdyna.synergy.init.builder.pipeTools.PipeRefactorizer;
-import com.devdyna.synergy.init.builder.pipeTools.PipeVisualizer;
+import com.devdyna.synergy.init.builder.tools.Croock;
+import com.devdyna.synergy.init.builder.tools.PipeRefactorizer;
+import com.devdyna.synergy.init.builder.tools.PipeVisualizer;
+import com.devdyna.synergy.init.builder.tools.Smasher;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -55,8 +54,8 @@ public class zItems {
         public static final DeferredHolder<Item, Item> SMALL_AZALEA_ROOTS = zCropExtra
                         .registerSimpleItem(zStatic.Items.Azalea.roots);
 
-        public static final DeferredHolder<Item, CroockItem> WOODEN_CROOK = zTool.register(zStatic.Items.wooden_crook,
-                        () -> new CroockItem(BlockTags.LEAVES, Tiers.NETHERITE));
+        public static final DeferredHolder<Item, Croock> WOODEN_CROOK = zTool.register(zStatic.Items.wooden_crook,
+                        () -> new Croock(BlockTags.LEAVES, Tiers.NETHERITE));
 
         public static final DeferredHolder<Item, ?> CAVE_WHEAT_SEEDS = zSeeds.register(zStatic.Seeds.CAVE_WHEAT_SEED,
                         () -> new BaseSeedItem(zBlocks.CAVE_WHEAT.get()));

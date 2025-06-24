@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder._core.pipes;
+package com.devdyna.synergy.api.pipe;
 
 import net.minecraft.util.StringRepresentable;
 

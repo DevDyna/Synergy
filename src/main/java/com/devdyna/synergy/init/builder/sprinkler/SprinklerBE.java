@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.sprinkler;
 
-import com.devdyna.synergy.init.builder._core.BaseBE;
+import com.devdyna.synergy.api.coreBE.BaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.utils.LevelUtil;
 import net.minecraft.core.BlockPos;

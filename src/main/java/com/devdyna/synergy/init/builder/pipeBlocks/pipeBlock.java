@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.builder._core.pipes.pipeType;
+import com.devdyna.synergy.api.pipe.pipeType;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

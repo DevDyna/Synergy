@@ -1,5 +1,6 @@
-package com.devdyna.synergy.client.core;
+package com.devdyna.synergy.client.nodes;
 
+import com.devdyna.synergy.api.client.TypeRenders;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemProviderBE;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;

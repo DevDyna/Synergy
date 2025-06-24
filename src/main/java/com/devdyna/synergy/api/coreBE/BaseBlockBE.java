@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder._core;
+package com.devdyna.synergy.api.coreBE;
 
 import javax.annotation.Nullable;
 

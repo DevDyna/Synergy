@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder._core.crops;
+package com.devdyna.synergy.api.plants.builder;
 
 import com.devdyna.synergy.utils.LevelUtil;
 import net.minecraft.core.BlockPos;

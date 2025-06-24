@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.crops.cultivated;
 
-import com.devdyna.synergy.init.builder._core.crops.BaseShortCropBlock;
+import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.core.BlockPos;

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder._core.pipes;
+package com.devdyna.synergy.api.node;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,8 @@ import java.util.Map.Entry;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.pipe.pipeProperties;
+import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.init.types.zBlockTag;
 // import com.devdyna.synergy.utils.LogUtil;
 

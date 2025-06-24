@@ -11,7 +11,6 @@ import com.devdyna.synergy.zStatic;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
-import com.devdyna.synergy.init.builder.PottedAzalea;
 import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.*;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
@@ -42,8 +41,8 @@ public class zBlocks {
 
         // ---------------------------------------------------------------------------------------//
 
-        public static final DeferredHolder<Block, PottedAzalea> AZALEA = zBlock.register(zStatic.Blocks.azalea,
-                        () -> new PottedAzalea());
+        public static final DeferredHolder<Block, azalea> AZALEA = zBlock.register(zStatic.Blocks.azalea,
+                        () -> new azalea());
 
         public static final DeferredHolder<Block, ?> SPRINKLER = Material.registerItemBlock(zStatic.Blocks.sprinkler,
                         () -> new SprinklerBLK());

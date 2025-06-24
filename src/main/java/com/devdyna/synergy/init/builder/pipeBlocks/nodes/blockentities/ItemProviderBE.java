@@ -1,8 +1,9 @@
 package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities;
 
 import java.util.ArrayList;
-import com.devdyna.synergy.init.builder._core.pipes.nodeType;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.NodeBaseBE;
+
+import com.devdyna.synergy.api.node.nodeType;
+import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

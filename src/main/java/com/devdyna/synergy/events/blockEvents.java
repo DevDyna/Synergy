@@ -1,6 +1,6 @@
 package com.devdyna.synergy.events;
 
-import com.devdyna.synergy.init.builder.PottedAzalea;
+import com.devdyna.synergy.init.builder.crops.cultivated.azalea;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 
@@ -15,7 +15,7 @@ public class blockEvents {
         if (event.getLevel().getBlockState(event.getPos()).is(Blocks.FLOWER_POT)
                 && event.getItemStack().is(zItems.AZALEA_SEEDS.get())) {
             event.getLevel().setBlockAndUpdate(event.getPos(),
-                    zBlocks.AZALEA.get().defaultBlockState().setValue(PottedAzalea.AGE, 0));
+                    zBlocks.AZALEA.get().defaultBlockState().setValue(azalea.AGE, 0));
             event.getEntity().swing(event.getHand());
             if (!event.getEntity().isCreative())
                 event.getItemStack().shrink(1);

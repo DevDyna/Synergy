@@ -1,9 +1,9 @@
-package com.devdyna.synergy.init.builder.pipeBlocks.nodes;
+package com.devdyna.synergy.api.node.builder;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.init.builder._core.BaseBlockBE;
-import com.devdyna.synergy.init.builder._core.pipes.nodeType;
+import com.devdyna.synergy.api.coreBE.BaseBlockBE;
+import com.devdyna.synergy.api.node.nodeType;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;

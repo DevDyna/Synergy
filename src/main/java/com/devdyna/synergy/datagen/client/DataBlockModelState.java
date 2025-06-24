@@ -2,9 +2,9 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
-import com.devdyna.synergy.init.builder._core.crops.BaseShortCropBlock;
-import com.devdyna.synergy.init.builder._core.pipes.nodeType;
-import com.devdyna.synergy.init.builder._core.pipes.pipeType;
+import com.devdyna.synergy.api.node.nodeType;
+import com.devdyna.synergy.api.pipe.pipeType;
+import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.utils.DataGenUtil;
 

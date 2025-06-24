@@ -1,12 +1,12 @@
-package com.devdyna.synergy.init.builder.pipeTools;
+package com.devdyna.synergy.init.builder.tools;
 
 import java.util.List;
 
-import com.devdyna.synergy.init.builder._core.pipes.nodeType;
-import com.devdyna.synergy.init.builder._core.pipes.pipeType;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.node.nodeType;
+import com.devdyna.synergy.api.pipe.pipeType;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;

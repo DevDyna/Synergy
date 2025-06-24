@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.pipeTools;
+package com.devdyna.synergy.init.builder.tools;
 
 import java.util.List;
 

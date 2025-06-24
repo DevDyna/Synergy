@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.builder._core.crops.BaseWildCropBlock;
+import com.devdyna.synergy.api.plants.builder.BaseWildCropBlock;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item.TooltipContext;

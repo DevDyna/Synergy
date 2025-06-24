@@ -1,8 +1,8 @@
-package com.devdyna.synergy.init.builder;
+package com.devdyna.synergy.init.builder.crops.cultivated;
 
 import java.util.List;
 
-import com.devdyna.synergy.init.builder._core.crops.BaseCropBlock;
+import com.devdyna.synergy.api.plants.builder.BaseCropBlock;
 import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.core.BlockPos;
@@ -18,7 +18,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class PottedAzalea extends BaseCropBlock {
+public class azalea extends BaseCropBlock {
 
     protected static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] {
             Block.box(5.0, 0.0, 5.0, 11.0, 12.0, 11.0),
@@ -32,7 +32,7 @@ public class PottedAzalea extends BaseCropBlock {
 
     };
 
-    public PottedAzalea() {
+    public azalea() {
         super(Properties.of());
     }
 

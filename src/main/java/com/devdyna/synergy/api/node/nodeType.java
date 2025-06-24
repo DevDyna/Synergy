@@ -1,5 +1,7 @@
-package com.devdyna.synergy.init.builder._core.pipes;
+package com.devdyna.synergy.api.node;
 
+import com.devdyna.synergy.api.pipe.pipeProperties;
+import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.ItemTranfer;
 
 import net.minecraft.core.BlockPos;

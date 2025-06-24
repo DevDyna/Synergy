@@ -1,6 +1,6 @@
 package com.devdyna.synergy;
 
-import com.devdyna.synergy.client.core.*;
+import com.devdyna.synergy.client.nodes.*;
 import com.devdyna.synergy.init.types.zBlockEntities;
 
 import net.neoforged.api.distmarker.Dist;

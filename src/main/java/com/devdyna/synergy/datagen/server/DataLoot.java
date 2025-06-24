@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import com.devdyna.synergy.init.builder._core.crops.BaseCropBlock;
-import com.devdyna.synergy.init.builder._core.crops.BaseShortCropBlock;
+import com.devdyna.synergy.api.plants.builder.BaseCropBlock;
+import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.utils.DataGenUtil;

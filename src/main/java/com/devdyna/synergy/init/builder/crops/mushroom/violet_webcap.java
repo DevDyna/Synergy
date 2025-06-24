@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.crops.mushroom;
 
-import com.devdyna.synergy.init.builder._core.crops.BaseCropMushroom;
+import com.devdyna.synergy.api.plants.builder.BaseCropMushroom;
 import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.world.level.ItemLike;

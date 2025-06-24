@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder;
+package com.devdyna.synergy.init.builder.tools;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.Block;
 
 @SuppressWarnings("null")
-public class CroockItem extends DiggerItem {
+public class Croock extends DiggerItem {
 
-    public CroockItem(TagKey<Block> tag, Tier tier) {
+    public Croock(TagKey<Block> tag, Tier tier) {
         super(tier, tag,
                 new Item.Properties()
                         .attributes(HoeItem.createAttributes(tier, -3.0F, 0.0F)));

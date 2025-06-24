@@ -2,7 +2,7 @@ package com.devdyna.synergy.init.builder.sprinkler;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.init.builder._core.BaseBlockBE;
+import com.devdyna.synergy.api.coreBE.BaseBlockBE;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.SoundType;
