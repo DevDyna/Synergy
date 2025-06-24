@@ -50,6 +50,7 @@ A casual mod without a main focus
 - [ ] rice scope
 - [ ] violet webcap scope
 - [ ] blue cup scope
+- [ ] decorative devices
 
 Download Link : [src](https://legacy.curseforge.com/minecraft/mc-mods/synergy)
 
