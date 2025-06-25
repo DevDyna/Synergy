@@ -1,6 +1,6 @@
 # Synergy
 
-A casual mod without a main focus
+A bunch of Magic-Tech and fun-made gadgets
 
 ## TODO - DONT INCLUDE ALREADY DONE FEATURES
 ### Plants
