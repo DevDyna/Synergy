@@ -38,6 +38,7 @@ A bunch of Magic-Tech and fun-made gadgets
 - [ ] Chimney & smoke tubes
 - [ ] Wireless Nodes
 - [ ] Fans & Wind (fluid-like)
+- [ ] Jukebox Network (jukebox that consume discs)
 
 ### ResourceGen
 - [ ] Growable Crystals
