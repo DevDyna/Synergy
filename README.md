@@ -37,6 +37,7 @@ A bunch of Magic-Tech and fun-made gadgets
 - [ ] Item Duct (item transfer with rendering)
 - [ ] Chimney & smoke tubes
 - [ ] Wireless Nodes
+- [ ] Fans & Wind (fluid-like)
 
 ### ResourceGen
 - [ ] Growable Crystals
