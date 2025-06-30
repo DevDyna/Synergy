@@ -13,6 +13,7 @@ A bunch of Magic-Tech and fun-made gadgets
 - [ ] wild blackberries (bush)
 - [ ] blackberries cultivated (pole-plant)
 - [ ] nerium oleander (pole-plant)
+- [ ] sisal (double/multiple plant) -> paper
 
 ### Mushrooms
 - [ ] desarmillaria tabescens mushroom (like candles)
@@ -53,6 +54,7 @@ A bunch of Magic-Tech and fun-made gadgets
 - [ ] violet webcap scope
 - [ ] blue cup scope
 - [ ] decorative devices
+- [ ] shells (functional/storage block)
 
 Download Link : [src](https://legacy.curseforge.com/minecraft/mc-mods/synergy)
 
