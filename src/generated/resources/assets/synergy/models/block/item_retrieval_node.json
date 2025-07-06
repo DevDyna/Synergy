@@ -2,7 +2,7 @@
   "parent": "synergy:block/node/_template/block",
   "textures": {
     "back": "synergy:block/node/back",
-    "node": "synergy:block/node/green",
+    "node": "synergy:block/node/aqua",
     "pipe": "synergy:block/pipe/black"
   }
 }

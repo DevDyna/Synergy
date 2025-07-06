@@ -6,6 +6,7 @@
   "block.synergy.cotton": "Cotton",
   "block.synergy.industrial_metal": "Industrial Metal",
   "block.synergy.item_provider_node": "Item Provider Node",
+  "block.synergy.item_retrieval_node": "Item Retrieval Node",
   "block.synergy.item_transfer_node": "Item Transfer Node",
   "block.synergy.pipe": "Pipe",
   "block.synergy.rice": "Rice",
@@ -37,8 +38,9 @@
   "synergy.pipe_refactorizer": "§7Force update blockstates of any #synergy:can_connect",
   "synergy.pipe_visualizer": "§7Show the debug vision of I/O foreach node",
   "synergy.provider_node": "§7Generate resources and deposit it",
+  "synergy.retrieval_node": "§7Import and deposit stuff from containers",
   "synergy.smasher": "§7Quick break any #synergy:mashable",
-  "synergy.transfer_node": "§7Extract and deposit stuff from containers",
+  "synergy.transfer_node": "§7Export and deposit stuff from containers",
   "synergy.wild_.tip": "§7Item-Form unobtainable",
   "synergy.wooden_crook": "§7Increase the chance to obtain saplings"
 }

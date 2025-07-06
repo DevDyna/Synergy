@@ -1,6 +1,7 @@
 {
   "values": [
     "#synergy:can_connect/node/transfer",
-    "#synergy:can_connect/node/provider"
+    "#synergy:can_connect/node/provider",
+    "#synergy:can_connect/node/retrieval"
   ]
 }
