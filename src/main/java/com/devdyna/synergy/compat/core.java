@@ -13,7 +13,7 @@ public class core {
 
     public static void registerCompat() {
         LogUtil.decor(20);
-        LogUtil.info(StringUtil.getModName(ID)+" Compatibility Checker started");
+        LogUtil.info(StringUtil.nameCapitalized(ID)+" Compatibility Checker started");
         LogUtil.decor(20);
         core.createGuide();
         LogUtil.decor(20);
