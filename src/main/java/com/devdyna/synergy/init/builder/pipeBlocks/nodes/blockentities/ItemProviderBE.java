@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
+import com.devdyna.synergy.init.dataMaps.zDataMaps;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -40,6 +40,8 @@ public class ItemProviderBE extends NodeBaseBE {
         if (output == null)
             return;
 
+        // TODO probably it could be more optimized
+
         var direction = getBlockState().getValue(nodeType.FACING);
         var blockGen = getBlockPos().relative(direction);
         var belowGen = blockGen.relative(direction);
@@ -47,39 +49,47 @@ public class ItemProviderBE extends NodeBaseBE {
         ArrayList<Block> conditions = new ArrayList<>();
         ArrayList<Boolean> resultCheck = new ArrayList<>();
 
-        Item resulItem = null;
+        Item resulItem = level.getBlockState(blockGen).getBlock().asItem();
 
-        if (level.getBlockState(blockGen).is(Blocks.COBBLESTONE)) {
-            conditions.add(Blocks.LAVA);
-            conditions.add(Blocks.WATER);
-            resulItem = Blocks.COBBLESTONE.asItem();
-        }
+        var dataHolder = new ItemStack(resulItem).getItemHolder()
+                .getData(zDataMaps.PROVIDER_RECIPES);
 
-        if (level.getBlockState(blockGen).is(Blocks.BASALT) && level.getBlockState(belowGen).is(Blocks.SOUL_SOIL)) {
-            conditions.add(Blocks.LAVA);
-            conditions.add(Blocks.BLUE_ICE);
-            resulItem = Blocks.BASALT.asItem();
-        }
-        boolean found = false;
-        for (Block blockToCheck : conditions) {
-            for (Direction dir : Direction.values()) {
-                if (dir != direction && dir != direction.getOpposite()) {
-                    if (level.getBlockState(blockGen.relative(dir)).is(blockToCheck)) {
-                        found = true;
-                        break;
-                    }
-                }
+        if (dataHolder != null) {
+
+            for (BlockState blocks : dataHolder.blocksToCheck()) {
+                conditions.add(blocks.getBlock());
             }
-            resultCheck.add(found);
-            found = false;
+
+        } else {
+            resulItem = null;
         }
 
-        var finalValue = resultCheck.stream().allMatch(Boolean::booleanValue);
+        boolean found = false;
 
-        if (resulItem != null && finalValue)
-            if (level.getGameTime() % getTickDelay() == 0)
-                itemToOutput(new ItemStack(resulItem, 1), output);
+        if (resulItem != null) {
+            for (Block blockToCheck : conditions) {
+                for (Direction dir : Direction.values())
+                    if (dir != direction && dir != direction.getOpposite()) {
+                        if (level.getBlockState(blockGen.relative(dir)).is(blockToCheck)) {
+                            found = true;
+                            break;
+                        }
+                    }
 
+                resultCheck.add(found);
+                found = false;
+            }
+
+            // DONT MIX OTHER CONDITIONS OR IT WILL BREAK!
+            var finalValue = resultCheck.stream().allMatch(Boolean::booleanValue);
+
+            var below = dataHolder.belowBlock().isAir() ? true
+                    : level.getBlockState(belowGen).is(dataHolder.belowBlock().getBlock());
+
+            if (finalValue && below)
+                if (level.getGameTime() % getTickDelay() == 0)
+                    itemToOutput(new ItemStack(resulItem, 1), output);
+        }
     }
 
 }
