@@ -3,6 +3,7 @@ package com.devdyna.synergy;
 import com.devdyna.synergy.compat.core;
 import com.devdyna.synergy.events.blockEvents;
 import com.devdyna.synergy.init.Material;
+import com.devdyna.synergy.init.dataMaps.zDataMaps;
 import com.devdyna.synergy.utils.LogUtil;
 
 import net.neoforged.bus.api.IEventBus;
@@ -23,6 +24,9 @@ public class Main {
         core.registerCompat();
 
         NeoForge.EVENT_BUS.register(blockEvents.class);
+
+        bus.addListener(zDataMaps::register);
+
 
     }
 }

@@ -12,6 +12,7 @@ import com.devdyna.synergy.datagen.client.DataLang;
 import com.devdyna.synergy.datagen.server.DataBlockTag;
 import com.devdyna.synergy.datagen.server.DataItemTag;
 import com.devdyna.synergy.datagen.server.DataLoot;
+import com.devdyna.synergy.datagen.server.DataMaps;
 import com.devdyna.synergy.datagen.server.DataRecipe;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -46,6 +47,7 @@ public class Controller {
         providerGen(e, g, new LootTableProvider(po, Set.of(),
                 List.of(new LootTableProvider.SubProviderEntry(DataLoot::new, LootContextParamSets.BLOCK)), pr));
         providerGen(e, g, new DataRecipe(po, pr));
+        providerGen(e, g, new DataMaps(po,pr));
 
     }
 
