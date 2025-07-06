@@ -2,7 +2,7 @@
 navigation:
   title: Machines
   icon: "minecraft:crafter"
-  position: 3
+  position: 5
 ---
 
 # Machines
