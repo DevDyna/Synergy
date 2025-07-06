@@ -26,7 +26,8 @@ public class DataBlockModelState extends BlockStateProvider {
         protected void registerStatesAndModels() {
                 rotableBlock(zBlocks.SPRINKLER.get());
                 node(zBlocks.ITEM_TRANSFER.get(),"red");
-                node(zBlocks.ITEM_PROVIDER.get(),"aqua");
+                node(zBlocks.ITEM_PROVIDER.get(),"green");
+                node(zBlocks.ITEM_RETRIEVAL.get(),"aqua");
                 pipe(zBlocks.PIPE.get());
 
                 simpleBlock(zBlocks.ADOBE.get());

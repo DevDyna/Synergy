@@ -10,8 +10,10 @@ import com.devdyna.synergy.utils.DataGenUtil;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class DataItemModel extends ItemModelProvider {
 
@@ -38,14 +40,10 @@ public class DataItemModel extends ItemModelProvider {
                                 ID + ":block/" + DataGenUtil.getPath(zBlocks.SPRINKLER.get()));
 
                 withExistingParent(zBlocks.PIPE.getRegisteredName(), modLoc("block/pipe/basic/item_model"));
-                withExistingParent(zBlocks.ITEM_TRANSFER.getRegisteredName(), modLoc("block/node/_template/item"))
-                                .texture("pipe", ID + ":block/pipe/black")
-                                .texture("node", ID + ":block/node/red")
-                                .texture("back", ID + ":block/node/back");
-                withExistingParent(zBlocks.ITEM_PROVIDER.getRegisteredName(), modLoc("block/node/_template/item"))
-                                .texture("pipe", ID + ":block/pipe/black")
-                                .texture("node", ID + ":block/node/aqua")
-                                .texture("back", ID + ":block/node/back");
+
+                node(zBlocks.ITEM_TRANSFER, "red");
+                node(zBlocks.ITEM_PROVIDER, "green");
+                node(zBlocks.ITEM_RETRIEVAL, "aqua");
 
                 zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "tools/"));
 
@@ -58,6 +56,13 @@ public class DataItemModel extends ItemModelProvider {
                                                 modLoc("block/" + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
                                                                 ""))));
 
+        }
+
+        private void node(DeferredHolder<Block, ?> b, String color) {
+                withExistingParent(b.getRegisteredName(), modLoc("block/node/_template/item"))
+                                .texture("pipe", ID + ":block/pipe/black")
+                                .texture("node", ID + ":block/node/" + color)
+                                .texture("back", ID + ":block/node/back");
         }
 
 }

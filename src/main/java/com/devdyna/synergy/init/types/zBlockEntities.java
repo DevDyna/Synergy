@@ -30,14 +30,20 @@ public class zBlockEntities {
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ItemTransferBE>> ITEM_TRANSFER = zBE
                         .register(
-                                        zStatic.PipeStuff.nodes.ITransfer,
+                                        zStatic.PipeStuff.nodes.ItemTransfer,
                                         () -> BlockEntityType.Builder.of(ItemTransferBE::new,
                                                         zBlocks.ITEM_TRANSFER.get()).build(null));
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ItemProviderBE>> ITEM_PROVIDER = zBE
                         .register(
-                                        zStatic.PipeStuff.nodes.IGen,
+                                        zStatic.PipeStuff.nodes.ItemProvider,
                                         () -> BlockEntityType.Builder.of(ItemProviderBE::new,
                                                         zBlocks.ITEM_PROVIDER.get()).build(null));
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ItemRetrievalBE>> ITEM_RETRIEVAL = zBE
+                        .register(
+                                        zStatic.PipeStuff.nodes.ItemRetrieval,
+                                        () -> BlockEntityType.Builder.of(ItemRetrievalBE::new,
+                                                        zBlocks.ITEM_RETRIEVAL.get()).build(null));
 
 }

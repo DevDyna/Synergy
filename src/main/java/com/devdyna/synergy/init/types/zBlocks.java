@@ -51,12 +51,16 @@ public class zBlocks {
                         () -> new pipeBlock());
 
         public static final DeferredHolder<Block, ?> ITEM_TRANSFER = Material.registerItemBlock(
-                        zStatic.PipeStuff.nodes.ITransfer,
+                        zStatic.PipeStuff.nodes.ItemTransfer,
                         () -> new ItemTranfer());
 
         public static final DeferredHolder<Block, ?> ITEM_PROVIDER = Material.registerItemBlock(
-                        zStatic.PipeStuff.nodes.IGen,
+                        zStatic.PipeStuff.nodes.ItemProvider,
                         () -> new ItemProvider());
+
+        public static final DeferredHolder<Block, ?> ITEM_RETRIEVAL = Material.registerItemBlock(
+                        zStatic.PipeStuff.nodes.ItemRetrieval,
+                        () -> new ItemRetrieval());
 
         public static final DeferredHolder<Block, ?> RICE = zCrop.register(zStatic.Plants.RICE,
                         () -> new rice());

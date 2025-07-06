@@ -51,17 +51,19 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "Can be extended using pipes");
 
                 add(Main.ID + "." + zStatic.PipeStuff.nodes.type_transfer,
-                                TIP_COLOR + "Extract and deposit stuff from containers");
+                                TIP_COLOR + "Export and deposit stuff from containers");
+
+                add(Main.ID + "." + zStatic.PipeStuff.nodes.type_retrieval,
+                                TIP_COLOR + "Import and deposit stuff from containers");
 
                 add(Main.ID + "." + zStatic.PipeStuff.nodes.type_provider,
                                 TIP_COLOR + "Generate resources and deposit it");
 
-                //wild crops warning
+                // wild crops warning
                 add(Main.ID + "." + zStatic.Wild.WILD + ".tip",
                                 TIP_COLOR + "Item-Form unobtainable");
 
-
-                                //TODO sprinkler tip and guideme
+                // TODO sprinkler tip and guideme
 
         }
 

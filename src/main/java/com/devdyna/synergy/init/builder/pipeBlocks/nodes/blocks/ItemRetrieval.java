@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.node.builder.NodeBaseBlock;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemTransferBE;
+import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemRetrievalBE;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -18,21 +18,21 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
-public class ItemTranfer extends NodeBaseBlock {
+public class ItemRetrieval extends NodeBaseBlock {
 
-    public ItemTranfer() {
+    public ItemRetrieval() {
     }
 
     @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
-        return new ItemTransferBE(p, s);
+        return new ItemRetrievalBE(p, s);
     }
 
     @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.nodes.type_transfer));
+        t.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.nodes.type_retrieval));
         t.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.pipe + ".extend"));
     }
 

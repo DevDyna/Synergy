@@ -34,10 +34,24 @@ public class DataBlockTag extends BlockTagsProvider {
                 .add(zBlocks.BLUE_CUP_MUSHROOM.get(), zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
 
         tag(zBlockTag.PIPE).add(zBlocks.PIPE.get());
-        tag(zBlockTag.NODE_TRANSFER).add(zBlocks.ITEM_TRANSFER.get());
-        tag(zBlockTag.NODE_PROVIDER).add(zBlocks.ITEM_PROVIDER.get());
-        tag(zBlockTag.NODE).addTag(zBlockTag.NODE_TRANSFER).addTag(zBlockTag.NODE_PROVIDER);
-        tag(zBlockTag.CAN_CONNECT).addTag(zBlockTag.PIPE).addTag(zBlockTag.NODE);
+
+        tag(zBlockTag.NODE_RETRIEVAL)
+                .add(zBlocks.ITEM_RETRIEVAL.get());
+
+        tag(zBlockTag.NODE_TRANSFER)
+                .add(zBlocks.ITEM_TRANSFER.get());
+
+        tag(zBlockTag.NODE_PROVIDER)
+                .add(zBlocks.ITEM_PROVIDER.get());
+
+        tag(zBlockTag.NODE)
+                .addTag(zBlockTag.NODE_TRANSFER)
+                .addTag(zBlockTag.NODE_PROVIDER)
+                .addTag(zBlockTag.NODE_RETRIEVAL);
+
+        tag(zBlockTag.CAN_CONNECT)
+                .addTag(zBlockTag.PIPE)
+                .addTag(zBlockTag.NODE);
 
         // tag(zBlockTag.EXTRACTORS).add(zBlocks.EXTRACTOR.get());
 

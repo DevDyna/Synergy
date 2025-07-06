@@ -23,6 +23,8 @@ public class zBlockTag {
 
     public static final TagKey<Block> NODE_TRANSFER = Material.tagBlock("can_connect/node/transfer");
 
+    public static final TagKey<Block> NODE_RETRIEVAL = Material.tagBlock("can_connect/node/retrieval");
+
     public static final TagKey<Block> EXTRACTORS = Material.tagBlock("extractors");
 
     public static final TagKey<Block> MASHABLE = Material.tagBlock("mashable");

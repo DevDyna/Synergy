@@ -37,6 +37,7 @@ public class zStatic {
         public class types {
             private static String item = "item_";
             private static String fluid = "fluid_";
+            private static String energy = "energy_";
             private static String chemical = "chemical_";
         }
 
@@ -44,19 +45,33 @@ public class zStatic {
 
             private static String node = "_node";
 
-            // only used for tooltips atm
-            public static String type_transfer = "transfer" + node;
-            public static String type_provider = "provider" + node;
+            private static String transfer = "transfer";
+            private static String provider = "provider";
+            private static String retrieval = "retrieval";
 
-            public static String ITransfer = types.item + "transfer" + node;
-            public static String IGen = types.item + "provider" + node;
+            // only used for tooltips atm
+            public static String type_transfer = transfer + node;
+            public static String type_provider = provider + node;
+            public static String type_retrieval = retrieval + node;
+
+            public static String ItemTransfer = types.item + transfer + node;
+            public static String ItemProvider = types.item + provider + node;
+            public static String ItemRetrieval = types.item + retrieval + node;
 
             // TODO fluid nodes
-            public static String FTransfer = types.fluid + "transfer" + node;
-            public static String FGen = types.fluid + "provider" + node;
+            public static String FluidTransfer = types.fluid + transfer + node;
+            public static String FluidProvider = types.fluid + provider + node;
+            public static String FluidRetrieval = types.fluid + retrieval + node;
+
+            // TODO FE nodes
+            public static String EnergyTransfer = types.energy + transfer + node;
+            public static String EnergyProvider = types.energy + provider + node;
+            public static String EnergyRetrieval = types.energy + retrieval + node;
+
             // TODO chem nodes (meka compat)
-            public static String CTransfer = types.chemical + "transfer" + node;
-            public static String CGen = types.chemical + "provider" + node;
+            public static String GasTransfer = types.chemical + transfer + node;
+            public static String GasProvider = types.chemical + provider + node;
+            public static String GasRetrieval = types.chemical + retrieval + node;
         }
 
         public class tools {

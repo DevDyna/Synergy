@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Con
 @SuppressWarnings("null")
 public class ItemProviderDebugRender<T extends ItemProviderBE> implements BlockEntityRenderer<T> , TypeRenders<T> {
 
-        public ItemProviderDebugRender(Context context) {
+        public ItemProviderDebugRender(Context c) {
                 super();
         }
 

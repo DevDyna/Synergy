@@ -2,7 +2,6 @@ package com.devdyna.synergy.datagen.server;
 
 import static com.devdyna.synergy.Main.ID;
 import static net.minecraft.data.recipes.RecipeCategory.MISC;
-import static net.minecraft.world.item.Items.*;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.init.types.zBlocks;
@@ -15,54 +14,26 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.SmeltingRecipe;
-import net.minecraft.world.level.storage.loot.functions.SmeltItemFunction;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 
-@SuppressWarnings({ "null", "unused" })
+@SuppressWarnings({ "null" })
 public class DataRecipe extends RecipeProvider {
 
-        public DataRecipe(PackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
-                super(output, completableFuture);
+        public DataRecipe(PackOutput o, CompletableFuture<HolderLookup.Provider> c) {
+                super(o, c);
         }
 
         @Override
         protected void buildRecipes(RecipeOutput c) {
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.ITEM_TRANSFER.get().asItem(), 1)
-                                .pattern(" P ")
-                                .pattern("RBR")
-                                .pattern("SCS")
-                                .define('P', zBlocks.PIPE.get().asItem())
-                                .define('R', Tags.Items.DUSTS_REDSTONE)
-                                .define('C', Items.CHEST)
-                                .define('B', Tags.Items.STORAGE_BLOCKS_REDSTONE)
-                                .define('S', Tags.Items.STONES)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.REDSTONE, Items.CHEST, Items.REDSTONE_BLOCK,
-                                                                zBlocks.PIPE.get()))
-                                .group(ID).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.ITEM_TRANSFER.get().asItem(), 4)
-                                .pattern(" P ")
-                                .pattern("RBR")
-                                .pattern("SCS")
-                                .define('P', zBlocks.PIPE.get().asItem())
-                                .define('R', Tags.Items.DUSTS_REDSTONE)
-                                .define('C', Items.CHEST)
-                                .define('B', Items.ENDER_PEARL)
-                                .define('S', Tags.Items.STONES)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.REDSTONE, Items.ENDER_PEARL, Items.CHEST,
-                                                                zBlocks.PIPE.get()))
-                                .group(ID)
-                                .save(c, DataGenUtil.getResource(
-                                                zBlocks.ITEM_TRANSFER.get().getDescriptionId()
-                                                                .replace("block." + ID + ".", "")
-                                                                + "_alt"));
+                nodeRecipe(zBlocks.ITEM_TRANSFER.get(), Blocks.CHEST, c);
+                nodeRecipe(zBlocks.ITEM_PROVIDER.get(), Items.IRON_PICKAXE, c);
+                nodeRecipe(zBlocks.ITEM_RETRIEVAL.get(), Blocks.HOPPER, c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.PIPE.get().asItem(), 16)
                                 .pattern("SSS")
@@ -74,38 +45,6 @@ public class DataRecipe extends RecipeProvider {
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.REDSTONE, Items.GLASS, Items.STONE_SLAB))
                                 .group(ID).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.ITEM_PROVIDER.get().asItem(), 1)
-                                .pattern(" P ")
-                                .pattern("RBR")
-                                .pattern("SCS")
-                                .define('P', zBlocks.PIPE.get().asItem())
-                                .define('R', Tags.Items.DUSTS_REDSTONE)
-                                .define('C', Items.IRON_PICKAXE)
-                                .define('B', Tags.Items.STORAGE_BLOCKS_REDSTONE)
-                                .define('S', Tags.Items.STONES)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.REDSTONE, Items.IRON_PICKAXE, Items.REDSTONE_BLOCK,
-                                                                zBlocks.PIPE.get()))
-                                .group(ID).save(c);
-
-                                ShapedRecipeBuilder.shaped(MISC, zBlocks.ITEM_PROVIDER.get().asItem(), 4)
-                                .pattern(" P ")
-                                .pattern("RBR")
-                                .pattern("SCS")
-                                .define('P', zBlocks.PIPE.get().asItem())
-                                .define('R', Tags.Items.DUSTS_REDSTONE)
-                                .define('C', Items.IRON_PICKAXE)
-                                .define('B', Items.ENDER_PEARL)
-                                .define('S', Tags.Items.STONES)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.REDSTONE, Items.ENDER_PEARL, Items.IRON_PICKAXE,
-                                                                zBlocks.PIPE.get()))
-                                .group(ID)
-                                .save(c, DataGenUtil.getResource(
-                                                zBlocks.ITEM_PROVIDER.get().getDescriptionId()
-                                                                .replace("block." + ID + ".", "")
-                                                                + "_alt"));
 
                 ShapelessRecipeBuilder.shapeless(MISC, Items.BLUE_DYE, 4)
                                 .requires(zItems.BLUE_CUP_MUSHROOM.get())
@@ -195,20 +134,20 @@ public class DataRecipe extends RecipeProvider {
                                 .requires(zItems.COTTON.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.COTTON.get()))
-                                .group(ID).save(c,DataGenUtil.getResource(
+                                .group(ID).save(c, DataGenUtil.getResource(
                                                 Items.STRING.getDescriptionId()
                                                                 .replace("block.minecraft.", "")
-                                                                +ID+ "_alt"));
+                                                                + ID + "_alt"));
 
                 ShapedRecipeBuilder.shaped(MISC, Items.HANGING_ROOTS, 1)
                                 .pattern("RR")
                                 .define('R', zItems.SMALL_AZALEA_ROOTS.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.SMALL_AZALEA_ROOTS.get()))
-                                .group(ID).save(c,DataGenUtil.getResource(
+                                .group(ID).save(c, DataGenUtil.getResource(
                                                 Items.HANGING_ROOTS.getDescriptionId()
                                                                 .replace("block.minecraft.", "")
-                                                                +ID+ "_alt"));
+                                                                + ID + "_alt"));
 
                 ShapedRecipeBuilder.shaped(MISC, Items.FLOWERING_AZALEA_LEAVES, 1)
                                 .pattern("LL")
@@ -216,20 +155,20 @@ public class DataRecipe extends RecipeProvider {
                                 .define('L', zItems.SMALL_AZALEA_LEAF.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.SMALL_AZALEA_LEAF.get()))
-                                .group(ID).save(c,DataGenUtil.getResource(
+                                .group(ID).save(c, DataGenUtil.getResource(
                                                 Items.FLOWERING_AZALEA_LEAVES.getDescriptionId()
                                                                 .replace("block.minecraft.", "")
-                                                                +ID+ "_alt"));
+                                                                + ID + "_alt"));
 
                 ShapelessRecipeBuilder.shapeless(MISC, Items.FLOWERING_AZALEA, 1)
                                 .requires(zItems.SMALL_AZALEA_LEAF.get())
                                 .requires(Items.AZALEA)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.AZALEA, zItems.SMALL_AZALEA_LEAF.get()))
-                                .group(ID).save(c,DataGenUtil.getResource(
+                                .group(ID).save(c, DataGenUtil.getResource(
                                                 Items.FLOWERING_AZALEA.getDescriptionId()
                                                                 .replace("block.minecraft.", "")
-                                                                +ID+ "_alt"));
+                                                                + ID + "_alt"));
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.SPRINKLER.get(), 1)
                                 .pattern("WWW")
@@ -240,7 +179,7 @@ public class DataRecipe extends RecipeProvider {
                                 .define('R', Items.REDSTONE)
                                 .define('I', Items.IRON_INGOT)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zBlocks.WAXED_PLANKS.get(),zBlocks.ADOBE.get()))
+                                                .hasItems(zBlocks.WAXED_PLANKS.get(), zBlocks.ADOBE.get()))
                                 .group(ID).save(c);
 
                 SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.IRON_BLOCK), MISC,
@@ -253,10 +192,10 @@ public class DataRecipe extends RecipeProvider {
                                 zBlocks.INDUSTRIAL_METAL.get().asItem(), 0.01f, 100)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.IRON_BLOCK))
-                                .group(ID).save(c,DataGenUtil.getResource(
+                                .group(ID).save(c, DataGenUtil.getResource(
                                                 zBlocks.INDUSTRIAL_METAL.get().getDescriptionId()
-                                                                .replace("block."+ID+".", "")
-                                                                +ID+ "_alt"));
+                                                                .replace("block." + ID + ".", "")
+                                                                + ID + "_alt"));
 
                 ShapelessRecipeBuilder.shapeless(MISC, zBlocks.WAXED_PLANKS.get(), 8)
                                 .requires(ItemTags.PLANKS)
@@ -280,6 +219,41 @@ public class DataRecipe extends RecipeProvider {
                                                 .hasItems(Items.DIORITE, Items.MUD, Items.CLAY))
                                 .group(ID).save(c);
 
+        }
+
+        private void nodeRecipe(Block b, ItemLike catalyst, RecipeOutput c) {
+
+                ShapedRecipeBuilder.shaped(MISC, b.asItem(), 1)
+                                .pattern(" P ")
+                                .pattern("RBR")
+                                .pattern("SCS")
+                                .define('P', zBlocks.PIPE.get().asItem())
+                                .define('R', Tags.Items.DUSTS_REDSTONE)
+                                .define('C', catalyst)
+                                .define('B', Tags.Items.STORAGE_BLOCKS_REDSTONE)
+                                .define('S', Tags.Items.STONES)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(Items.REDSTONE, catalyst, Items.REDSTONE_BLOCK,
+                                                                zBlocks.PIPE.get()))
+                                .group(ID).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, b.asItem(), 4)
+                                .pattern(" P ")
+                                .pattern("RBR")
+                                .pattern("SCS")
+                                .define('P', zBlocks.PIPE.get().asItem())
+                                .define('R', Tags.Items.DUSTS_REDSTONE)
+                                .define('C', catalyst)
+                                .define('B', Items.ENDER_PEARL)
+                                .define('S', Tags.Items.STONES)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(Items.REDSTONE, Items.ENDER_PEARL, catalyst,
+                                                                zBlocks.PIPE.get()))
+                                .group(ID)
+                                .save(c, DataGenUtil.getResource(
+                                                b.getDescriptionId()
+                                                                .replace("block." + ID + ".", "")
+                                                                + "_alt"));
         }
 
 }

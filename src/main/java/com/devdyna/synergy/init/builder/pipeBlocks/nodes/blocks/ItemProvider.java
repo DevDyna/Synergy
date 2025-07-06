@@ -30,10 +30,10 @@ public class ItemProvider extends NodeBaseBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
-            TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.nodes.type_provider));
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.pipe + ".extend"));
+    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+            TooltipFlag f) {
+        t.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.nodes.type_provider));
+        t.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.pipe + ".extend"));
     }
 
 }

@@ -14,12 +14,8 @@ public class Client {
     @SubscribeEvent
     public static void render(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(zBlockEntities.ITEM_TRANSFER.get(), ItemTransferDebugRender::new);
-    
-
-       
-
-        event.registerBlockEntityRenderer(zBlockEntities.ITEM_TRANSFER.get(), ItemTransferDebugRender::new);
-        event.registerBlockEntityRenderer(zBlockEntities.ITEM_PROVIDER.get(),ItemProviderDebugRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.ITEM_RETRIEVAL.get(), ItemRetrievalDebugRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.ITEM_PROVIDER.get(), ItemProviderDebugRender::new);
     }
 
 }

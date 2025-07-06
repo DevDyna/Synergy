@@ -1,16 +1,16 @@
 package com.devdyna.synergy.client.nodes;
 
 import com.devdyna.synergy.api.client.TypeRenders;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemTransferBE;
+import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.ItemRetrievalBE;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Context;
 
 @SuppressWarnings("null")
-public class ItemTransferDebugRender<T extends ItemTransferBE> implements BlockEntityRenderer<T> , TypeRenders<T> {
+public class ItemRetrievalDebugRender<T extends ItemRetrievalBE> implements BlockEntityRenderer<T> , TypeRenders<T> {
 
-        public ItemTransferDebugRender(Context c) {
+        public ItemRetrievalDebugRender(Context c) {
                 super();
         }
 
