@@ -96,7 +96,7 @@ public class zItems {
         public static final DeferredHolder<Item, Item> SMASHER = zTool
                         .register(zStatic.Items.smasher, () -> new Smasher());
 
-        public static final DeferredHolder<Item, Item> PIPE_VISUALIZER = zTool
+        public static final DeferredHolder<Item, Item> DEBUG_VISUALIZER = zTool
                         .register(zStatic.PipeStuff.tools.visualizer, () -> new PipeVisualizer());
 
 }

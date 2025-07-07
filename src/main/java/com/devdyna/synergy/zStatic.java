@@ -14,6 +14,7 @@ public class zStatic {
         }
 
         public static String wooden_crook = "wooden_crook";
+        public static String area_configurator = "area_configurator";
         public static String smasher = "smasher";
     }
 
@@ -26,6 +27,7 @@ public class zStatic {
     public class Blocks {
         public static String azalea = "azalea";
         public static String sprinkler = "sprinkler";
+        public static String harvester = "harvester";
 
         // TODO WIP
         public static String generator = "generator";

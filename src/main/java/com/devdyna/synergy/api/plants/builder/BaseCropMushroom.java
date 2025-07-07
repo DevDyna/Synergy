@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -43,12 +44,16 @@ public class BaseCropMushroom extends BaseShortCropBlock {
 
     @Override
     protected boolean isRandomlyTicking(BlockState state) {
-        return true; // TODO nerf while(true) loop
+        return !isMaxAge(state);
+    }
+
+    public TagKey<Block> getSpawnFilter() {
+        return null;
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.isSolidRender(level, pos);
+    protected boolean mayPlaceOn(BlockState s, BlockGetter l, BlockPos p) {
+        return s.isSolidRender(l, p);
     }
 
     @Override
@@ -57,6 +62,7 @@ public class BaseCropMushroom extends BaseShortCropBlock {
                 : (level.getBlockState(pos.below()).canSustainPlant(level, pos.below(), Direction.UP, state).isDefault()
                         ? level.getRawBrightness(pos, 0) < maxBrightnessSustainable()
                                 && mayPlaceOn(level.getBlockState(pos.below()), level, pos.below())
+                                && level.getBlockState(pos.below()).is(getSpawnFilter())
                         : level.getBlockState(pos.below()).canSustainPlant(level, pos.below(), Direction.UP, state)
                                 .isTrue());
     }
@@ -68,10 +74,9 @@ public class BaseCropMushroom extends BaseShortCropBlock {
     }
 
     public BlockPos getSpreadPos(BlockPos pos, Level level) {
-        // TODO mycelium and other condition placement
         if (pos == null)
             return null;
-        var spots = BlockPos.randomBetweenClosed(level.random, 1,
+        var spots = BlockPos.randomBetweenClosed(level.random, 6,
                 pos.getX() - 3, pos.getY() - 3, pos.getZ() - 3,
                 pos.getX() + 3, pos.getY() + 3, pos.getZ() + 3);
 
@@ -89,15 +94,14 @@ public class BaseCropMushroom extends BaseShortCropBlock {
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 
-        if (!isMaxAge(state)) {
-            if (CommonHooks.canCropGrow(level, pos, state, random.nextInt(40) == 0)) {
-                level.setBlock(pos, getStateForAge(getAge(state) + 1), 2);
-                CommonHooks.fireCropGrowPost(level, pos, state);
-            }
-        } else {
-            if (LevelUtil.chance(25, level))
-                spreadSpores(pos, level, state);
+        if (CommonHooks.canCropGrow(level, pos, state, random.nextInt(40) == 0)) {
+            level.setBlock(pos, getStateForAge(getAge(state) + 1), 2);
+            CommonHooks.fireCropGrowPost(level, pos, state);
         }
+
+        if (!isMaxAge(state))
+            if (LevelUtil.chance(2 + getMaxAge() - getAge(state), level))
+                spreadSpores(pos, level, state);
 
     }
 

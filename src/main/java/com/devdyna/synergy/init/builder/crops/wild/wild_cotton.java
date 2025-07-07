@@ -6,14 +6,17 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.CropEntityInteraction;
 import com.devdyna.synergy.api.plants.builder.BaseWildCropBlock;
+import com.devdyna.synergy.init.types.zBlockTag;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
@@ -22,6 +25,11 @@ public class wild_cotton extends BaseWildCropBlock implements CropEntityInteract
 
     public wild_cotton() {
         super(Properties.of());
+    }
+
+    @Override
+    public TagKey<Block> getSpawnFilter() {
+        return zBlockTag.CAN_SUSTAIN_COTTON;
     }
 
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
