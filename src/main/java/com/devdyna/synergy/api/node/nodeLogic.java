@@ -111,7 +111,7 @@ public interface nodeLogic {
             for (Direction dir : Direction.values()) {
                 actual = level.getBlockState(variablePos);
                 offset = level.getBlockState(variablePos.relative(dir));
-                //TODO re-routing when fail
+                // TODO re-routing when fail
                 if (actual.is(zBlockTag.CAN_CONNECT) &&
                         actual.getValue(pipeType.D2P(dir)) == pipeProperties.OUTPUT) {
                     outputPos = variablePos;
@@ -189,6 +189,8 @@ public interface nodeLogic {
         return items;
     }
 
+    // TODO convert to ItemHandlerHelper.insertItemStacked
+
     /**
      * move one at time of all possible input item to an output
      * <br/>
@@ -196,8 +198,7 @@ public interface nodeLogic {
      * 
      * default stack = 1
      */
-    default void moveItems(IItemHandler input, IItemHandler output, int pipeRate
-    ) {
+    default void moveItems(IItemHandler input, IItemHandler output, int pipeRate) {
 
         var inputitems = getSlotsOfItems(input);
 
@@ -259,7 +260,7 @@ public interface nodeLogic {
      * default stack = 1
      */
     default void moveItems(IItemHandler input, IItemHandler output) {
-    moveItems(input, output, 1);
+        moveItems(input, output, 1);
     }
 
     /**
@@ -268,6 +269,8 @@ public interface nodeLogic {
     default int getCount(IItemHandler be, int index) {
         return be.getStackInSlot(index).getCount();
     }
+
+    // TODO convert to ItemHandlerHelper.insertItemStacked
 
     /**
      * add an itemstack to the output
