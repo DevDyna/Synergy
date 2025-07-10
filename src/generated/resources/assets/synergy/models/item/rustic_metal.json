@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "synergy:block/decorative/industrial_metal"
+    "all": "synergy:block/decorative/rustic_metal"
   }
 }

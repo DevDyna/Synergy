@@ -3,12 +3,12 @@
   "category": "blocks",
   "cookingtime": 100,
   "experience": 0.01,
-  "group": "industrial_metal",
+  "group": "rustic_metal",
   "ingredient": {
     "item": "minecraft:iron_block"
   },
   "result": {
     "count": 1,
-    "id": "synergy:industrial_metal"
+    "id": "synergy:rustic_metal"
   }
 }

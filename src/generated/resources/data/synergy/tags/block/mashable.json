@@ -2,6 +2,7 @@
   "values": [
     "#synergy:can_connect",
     "synergy:sprinkler",
-    "synergy:harvester"
+    "synergy:harvester",
+    "synergy:solar_panel"
   ]
 }

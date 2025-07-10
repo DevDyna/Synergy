@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:industrial_metal"
+          "name": "synergy:machine_frame"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "synergy:blocks/industrial_metal"
+  "random_sequence": "synergy:blocks/machine_frame"
 }

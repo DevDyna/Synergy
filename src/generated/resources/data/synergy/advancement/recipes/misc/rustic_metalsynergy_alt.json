@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:industrial_metalsynergy_alt"
+        "recipe": "synergy:rustic_metalsynergy_alt"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:industrial_metalsynergy_alt"
+      "synergy:rustic_metalsynergy_alt"
     ]
   }
 }
