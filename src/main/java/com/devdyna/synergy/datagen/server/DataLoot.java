@@ -63,7 +63,7 @@ public class DataLoot extends BlockLootSubProvider {
 
         @Override
         protected void generate() {
-
+                dropSelf(zBlocks.MACHINE_FRAME.get());
                 dropSelf(zBlocks.PIPE.get());
                 dropSelf(zBlocks.ITEM_TRANSFER.get());
                 dropSelf(zBlocks.ITEM_PROVIDER.get());

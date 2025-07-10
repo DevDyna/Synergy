@@ -227,16 +227,16 @@ public class DataRecipe extends RecipeProvider {
                                 Ingredient.of(zBlocks.WAXED_PLANKS.get()));
 
 //TODO
-ShapedRecipeBuilder.shaped(MISC, zBlocks.SOLAR_PANEL.get(), 1)
-                                .pattern("LLL")
-                                .pattern("RIR")
-                                .define('A', zBlocks.ADOBE.get())
-                                .define('W', zBlocks.WAXED_PLANKS.get())
-                                .define('R', Items.REDSTONE)
-                                .define('I', Items.IRON_INGOT)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zBlocks.WAXED_PLANKS.get(), zBlocks.ADOBE.get()))
-                                .group(zStatic.Blocks.sprinkler).save(c);
+// ShapedRecipeBuilder.shaped(MISC, zBlocks.SOLAR_PANEL.get(), 1)
+//                                 .pattern("LLL")
+//                                 .pattern("RIR")
+//                                 .define('A', zBlocks.ADOBE.get())
+//                                 .define('W', zBlocks.WAXED_PLANKS.get())
+//                                 .define('R', Items.REDSTONE)
+//                                 .define('I', Items.IRON_INGOT)
+//                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+//                                                 .hasItems(zBlocks.WAXED_PLANKS.get(), zBlocks.ADOBE.get()))
+//                                 .group(zStatic.Blocks.sprinkler).save(c);
 
         }
 
