@@ -68,6 +68,11 @@ public class DataBlockModelState extends BlockStateProvider {
                                                                 "").replace("_stair",
                                                                                 ""))));
 
+                directionalBlock(zBlocks.MACHINE_FRAME.get(),
+                                models().cubeBottomTop(zBlocks.MACHINE_FRAME.getRegisteredName(),
+                                                modLoc("block/harvester/side"), modLoc("block/harvester/bottom"),
+                                                modLoc("block/harvester/top")));
+
         }
 
         private void simpleBlock2(Block b) {
