@@ -20,11 +20,13 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -51,7 +53,7 @@ public class SolarPanelBLK extends BaseBlockBE {
                     Direction.WEST));
 
     public SolarPanelBLK() {
-        super(Properties.of());
+        super(Properties.of().strength(1.0f).destroyTime(1.0f).sound(SoundType.METAL).mapColor(MapColor.METAL));
     }
 
     @Override
