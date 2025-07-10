@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "synergy:block/waxed_planks"
+    "all": "synergy:block/decorative/waxed_planks"
   }
 }

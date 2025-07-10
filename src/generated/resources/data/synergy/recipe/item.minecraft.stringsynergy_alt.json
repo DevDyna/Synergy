@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "synergy",
+  "group": "cotton",
   "ingredients": [
     {
       "item": "synergy:cotton"

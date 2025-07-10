@@ -1,6 +1,7 @@
 {
   "values": [
     "#synergy:can_connect",
-    "synergy:sprinkler"
+    "synergy:sprinkler",
+    "synergy:harvester"
   ]
 }

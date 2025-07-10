@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "bone_meal_mixture",
+  "ingredients": [
+    {
+      "tag": "c:slime_balls"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "tag": "c:dusts/redstone"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "id": "synergy:bone_meal_mixture"
+  }
+}

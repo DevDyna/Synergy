@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "synergy",
+  "group": "configurator",
   "key": {
     "E": {
       "item": "minecraft:emerald"
@@ -23,6 +23,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "synergy:pipe_visualizer"
+    "id": "synergy:configurator"
   }
 }

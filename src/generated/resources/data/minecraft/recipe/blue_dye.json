@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "synergy",
+  "group": "blue_cup_mushroom",
   "ingredients": [
     {
       "item": "synergy:blue_cup_mushroom"

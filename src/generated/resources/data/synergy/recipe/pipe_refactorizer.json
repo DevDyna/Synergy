@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "synergy",
+  "group": "pipe_refactorizer",
   "key": {
     "I": {
       "item": "minecraft:iron_nugget"

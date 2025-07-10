@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "synergy:block/harvester/bottom",
+    "front": "synergy:block/harvester/front",
+    "side": "synergy:block/harvester/side",
+    "top": "synergy:block/harvester/top"
+  }
+}

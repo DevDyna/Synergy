@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:pipe_visualizer"
+        "recipe": "synergy:bone_meal_mixture"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,16 +11,16 @@
       "conditions": {
         "items": [
           {
+            "items": "minecraft:bone_meal"
+          },
+          {
+            "items": "minecraft:blaze_powder"
+          },
+          {
             "items": "minecraft:redstone"
           },
           {
-            "items": "minecraft:emerald"
-          },
-          {
-            "items": "minecraft:iron_ingot"
-          },
-          {
-            "items": "minecraft:iron_nugget"
+            "items": "minecraft:slime_ball"
           }
         ]
       },
@@ -35,7 +35,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:pipe_visualizer"
+      "synergy:bone_meal_mixture"
     ]
   }
 }

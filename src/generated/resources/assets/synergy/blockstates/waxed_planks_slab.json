@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "synergy:block/waxed_planks_slab"
+    },
+    "type=double": {
+      "model": "synergy:block/waxed_planks"
+    },
+    "type=top": {
+      "model": "synergy:block/waxed_planks_slab_top"
+    }
+  }
+}

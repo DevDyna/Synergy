@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "synergy",
+  "group": "pipe",
   "key": {
     "G": {
       "tag": "c:glass_blocks/colorless"

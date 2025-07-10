@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "synergy",
+  "group": "small_azalea_leaf",
   "ingredients": [
     {
       "item": "synergy:small_azalea_leaf"

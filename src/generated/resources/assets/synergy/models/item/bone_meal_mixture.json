@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "synergy:item/tools/bone_meal_mixture"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "synergy",
+  "group": "wooden_crook",
   "key": {
     "S": {
       "item": "minecraft:stick"
