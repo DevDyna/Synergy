@@ -94,6 +94,13 @@ public class DataItemModel extends ItemModelProvider {
                                                                 "").replace("_stair",
                                                                                 ""))));
 
+
+
+                cubeBottomTop(zBlocks.MACHINE_FRAME.getRegisteredName(),
+                                                modLoc("block/harvester/side"), modLoc("block/harvester/bottom"),
+                                                modLoc("block/harvester/top"));
+
+
         }
 
         private void node(DeferredHolder<Block, ?> b, String color) {
