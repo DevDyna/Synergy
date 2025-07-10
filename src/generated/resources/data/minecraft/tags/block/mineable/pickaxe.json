@@ -1,5 +1,10 @@
 {
   "values": [
-    "synergy:sprinkler"
+    "synergy:sprinkler",
+    "synergy:harvester",
+    "synergy:solar_panel",
+    "synergy:adobe",
+    "synergy:rustic_metal",
+    "synergy:machine_frame"
   ]
 }
