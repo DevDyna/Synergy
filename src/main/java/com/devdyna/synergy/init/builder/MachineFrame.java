@@ -18,8 +18,10 @@ public class MachineFrame extends DirectionalBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext c) {
+
         return this.defaultBlockState()
-                .setValue(BlockStateProperties.FACING, c.getClickedFace().getOpposite());
+                .setValue(BlockStateProperties.FACING,
+                        (c.getPlayer().isCrouching() ? c.getClickedFace().getOpposite() : c.getClickedFace()));
     }
 
     @Override
