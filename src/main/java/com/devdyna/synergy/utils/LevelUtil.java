@@ -1,18 +1,17 @@
 package com.devdyna.synergy.utils;
 
 import java.util.List;
-
 import com.devdyna.synergy.init.Material;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -75,27 +74,17 @@ public class LevelUtil {
         return BlockByTag(tag).size() - 1;
     }
 
-    public static void popItemFromPos(Level level, double x, double y, double z, ItemStack itemStack) {
-        ItemEntity itementity = new ItemEntity(level, x, y, z, itemStack);
-        level.addFreshEntity(itementity);
+    public static void popItemFromPos(Level level, BlockPos pos, ItemStack itemStack) {
+        Block.popResource(level, pos, itemStack);
     }
 
     public static void popItemFromPos(Level level, int x, int y, int z, ItemStack itemStack) {
-        popItemFromPos(level, (double) x, (double) y, (double) z, itemStack);
+        popItemFromPos(level, new BlockPos(x, y, z), itemStack);
     }
 
-    public static void popItemFromPos(LevelAccessor level, double x, double y, double z, ItemStack itemStack) {
-        popItemFromPos((Level) level, x, y, z, itemStack);
-    }
-
-    public static void popItemFromPos(Level level, BlockPos pos, ItemStack itemStack) {
-        popItemFromPos(level, pos.getX(), pos.getY(), pos.getZ(), itemStack);
-    }
-
-    
-    /** 
+    /**
      * @deprecated use Block.getDrops()
-    */
+     */
     @Deprecated
     @SuppressWarnings("null")
     public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, float luck) {
@@ -113,25 +102,25 @@ public class LevelUtil {
 
     }
 
-    /** 
+    /**
      * @deprecated use Block.getDrops()
-    */
+     */
     @Deprecated
     public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name) {
         return getItemStackFromLootTable(level, raw_ore_name, 1);
     }
 
-    /** 
+    /**
      * @deprecated use Block.getDrops()
-    */
+     */
     @Deprecated
     public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, Player player) {
         return getItemStackFromLootTable(level, raw_ore_name, player.getLuck());
     }
 
-    /** 
+    /**
      * @deprecated use Block.getDrops()
-    */
+     */
     @Deprecated
     public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, BlockState state) {
         return getItemStackFromLootTable(level, state.getBlock().getDescriptionId(), 1);
@@ -165,6 +154,18 @@ public class LevelUtil {
             return false;
 
         return getRandomValue(100, l) <= value;
+    }
+
+    /**
+     * require server
+     */
+    public static void addParticle(ServerLevel level, BlockPos pos, ParticleOptions type, boolean isRandom) {
+        level.sendParticles(type,
+                (double) pos.getX() + 0.5,
+                (double) pos.getY() + 0.5,
+                (double) pos.getZ() + 0.5,
+                10, (isRandom ? level.random.nextDouble() / 2.5 : 0), (isRandom ? level.random.nextDouble() / 2.5 : 0),
+                (isRandom ? level.random.nextDouble() / 2.5 : 0), (isRandom ? level.random.nextDouble() * 0.025 : 0));
     }
 
 }
