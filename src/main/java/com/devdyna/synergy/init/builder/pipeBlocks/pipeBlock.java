@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -30,7 +31,7 @@ public class pipeBlock extends Block implements pipeType {
 
     public pipeBlock() {
         super(BlockBehaviour.Properties.of().destroyTime(0.125f).forceSolidOn()
-                .sound(SoundType.WOOL));
+                .sound(SoundType.WOOL).mapColor(MapColor.TERRACOTTA_GRAY));
     }
 
     @Override
