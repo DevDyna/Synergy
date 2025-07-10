@@ -8,12 +8,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("null")
 public class SprinklerBLK extends BaseBlockBE {
 
     public SprinklerBLK() {
-        super(Properties.of().forceSolidOn().destroyTime(1.0f).sound(SoundType.TUFF_BRICKS));
+        super(Properties.of().forceSolidOn().destroyTime(1.0f).sound(SoundType.TUFF_BRICKS).mapColor(MapColor.TERRACOTTA_BROWN));
     }
 
     @Nullable
