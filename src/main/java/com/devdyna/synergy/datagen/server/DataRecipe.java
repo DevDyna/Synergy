@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 
-@SuppressWarnings({ "null" })
 public class DataRecipe extends RecipeProvider {
 
         public DataRecipe(PackOutput o, CompletableFuture<HolderLookup.Provider> c) {
