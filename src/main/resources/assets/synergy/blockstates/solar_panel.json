@@ -1,0 +1,215 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "synergy:block/solar_panel/core_cell"
+      }
+    },
+
+
+
+
+    {
+      "when": {
+        "north": "false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side"
+      }
+    },
+    {
+      "when": {
+        "east": "false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south": "false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side",
+        "y": 270
+      }
+    },
+
+
+
+
+
+    {
+      "when": {
+        "north": "true",
+        "east": "false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side_half_alt"
+      }
+    },
+    {
+      "when": {
+        "east": "true",
+        "north":"false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side_half",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "east": "false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side_half",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "true",
+        "north":"false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side_half_alt",
+        "y": 270
+      }
+    },
+
+
+    
+
+    {
+      "when": {
+        "north": "true",
+        "west": "false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side_half"
+      }
+    },
+    {
+      "when": {
+        "east": "true",
+        "south":"false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side_half_alt",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "west": "false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side_half_alt",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "true",
+        "south":"false"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/side_half",
+        "y": 270
+      }
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+      "when": {
+        "north": "true"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/cell/north"
+      }
+    },
+    {
+      "when": {
+        "east": "true"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/cell/east"
+      }
+    },
+    {
+      "when": {
+        "south": "true"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/cell/south"
+      }
+    },
+    {
+      "when": {
+        "west": "true"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/cell/west"
+      }
+    },
+    {
+      "when": {
+        "north": "true",
+        "east": "true"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/angle/north_east"
+      }
+    },
+    {
+      "when": {
+        "north": "true",
+        "west": "true"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/angle/north_west"
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "east": "true"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/angle/south_east"
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "west": "true"
+      },
+      "apply": {
+        "model": "synergy:block/solar_panel/angle/south_west"
+      }
+    }
+  ]
+}

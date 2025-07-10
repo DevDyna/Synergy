@@ -1,0 +1,27 @@
+{
+  "parent": "block/block",
+  "credit": "Made with Blockbench",
+  "render_type": "cutout",
+  "texture_size": [32, 32],
+  "textures": {
+    "1": "synergy:block/solar_panel/case",
+    "3": "synergy:block/solar_panel/shell",
+    "particle": "synergy:block/solar_panel/shell"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 4, 1],
+      "rotation": { "angle": 0, "axis": "y", "origin": [8, 8, 8] },
+      "faces": {
+        "north": { "uv": [0, 12, 16, 16], "texture": "#1" },
+        "south": { "uv": [0, 12, 16, 16], "texture": "#1" },
+        "up": { "uv": [0, 15, 16, 16], "texture": "#3" },
+        "down": { "uv": [0, 15, 16, 16], "texture": "#1" }
+      }
+    }
+  ],
+  "groups": [
+    { "name": "group", "origin": [0, 0, 0], "color": 0, "children": [0] }
+  ]
+}
