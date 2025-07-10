@@ -16,6 +16,7 @@ import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.*;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
+import com.devdyna.synergy.init.builder.DecorativeBlock;
 import com.devdyna.synergy.init.builder.MachineFrame;
 import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.crops.mushroom.*;
@@ -106,20 +107,20 @@ public class zBlocks {
 
         public static final DeferredHolder<Block, ?> RUSTIC_METAL = Material
                         .registerItemBlock(zStatic.DecorativeBlocks.rustic_metal,
-                                        () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL)
+                                        () -> new DecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)
                                                         .strength(2.5f).mapColor(MapColor.RAW_IRON)),
                                         zDecorative);
 
         public static final DeferredHolder<Block, ?> WAXED_PLANKS = Material
                         .registerItemBlock(zStatic.DecorativeBlocks.waxed_planks,
-                                        () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.WOOD)
+                                        () -> new DecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOD)
                                                         .strength(1.5f).mapColor(MapColor.COLOR_BROWN)),
                                         zDecorative);
 
         // TODO make a method on Material
         public static final DeferredHolder<Block, ?> ADOBE = Material
                         .registerItemBlock(zStatic.DecorativeBlocks.adobe,
-                                        () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE)
+                                        () -> new DecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)
                                                         .strength(1.0f).mapColor(MapColor.SAND)),
                                         zDecorative);
 

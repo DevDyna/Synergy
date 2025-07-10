@@ -2,11 +2,19 @@ package com.devdyna.synergy.init.builder.solar_panel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.Main;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.coreBE.BaseBlockBE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item.TooltipContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -132,6 +140,12 @@ public class SolarPanelBLK extends BaseBlockBE {
         if (PROPRTIES.size() < i)
             return null;
         return PROPRTIES.get(i);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+            TooltipFlag f) {
+        t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.solar_panel));
     }
 
 }

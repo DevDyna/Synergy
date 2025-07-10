@@ -3,6 +3,7 @@ package com.devdyna.synergy.init.types;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseSeedItem;
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.init.builder.ItemComponents;
 import com.devdyna.synergy.init.builder.tools.Battery;
 import com.devdyna.synergy.init.builder.tools.BoneMealMixture;
 import com.devdyna.synergy.init.builder.tools.Configurator;
@@ -114,13 +115,13 @@ public class zItems {
                         .register(zStatic.Items.Batteries.red, () -> new Battery(100000));
 
         public static final DeferredHolder<Item, Item> CHIP = zCraftingComponents
-                        .registerSimpleItem(zStatic.Items.CraftingComponents.chip);
+                        .register(zStatic.Items.CraftingComponents.chip, () -> new ItemComponents());
 
         public static final DeferredHolder<Item, Item> RESISTOR = zCraftingComponents
-                        .registerSimpleItem(zStatic.Items.CraftingComponents.resistor);
+                        .register(zStatic.Items.CraftingComponents.resistor, () -> new ItemComponents());
 
         public static final DeferredHolder<Item, Item> CONDENSER = zCraftingComponents
-                        .registerSimpleItem(zStatic.Items.CraftingComponents.condenser);
+                        .register(zStatic.Items.CraftingComponents.condenser, () -> new ItemComponents());
 
         public static final DeferredHolder<Item, Item> BONE_MEAL_MIXTURE = zTool
                         .register(zStatic.Items.bone_meal_mixture, () -> new BoneMealMixture());
