@@ -254,6 +254,7 @@ public class DataRecipe extends RecipeProvider {
                                                                 .replace("item.minecraft.", "")
                                                                 + "_from_rice"));
 
+                // TODO probably it will change on later
                 ShapedRecipeBuilder.shaped(MISC, zItems.RED_BATTERY.get(), 1)
                                 .pattern(" R ")
                                 .pattern("RHR")
@@ -284,7 +285,7 @@ public class DataRecipe extends RecipeProvider {
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.SLIME_BALL, zItems.CONDENSER.get(), Items.REDSTONE))
                                 .group(ID).save(c);
-
+                // TODO maybe will reduce recipe cost and item output
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.SOLAR_PANEL.get(), 8)
                                 .pattern("LLL")
                                 .pattern("FRF")
