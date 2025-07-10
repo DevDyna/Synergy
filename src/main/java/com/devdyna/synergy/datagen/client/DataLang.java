@@ -88,6 +88,14 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Items.Batteries.TYPE_BATTERY + ".energy",
                                 TIP_COLOR + "Energy Stored: ");
 
+                add(Main.ID + "." + zStatic.Blocks.harvester, TIP_COLOR + "Harvest crops and tree");
+
+                add(Main.ID + "." + zStatic.Blocks.solar_panel,
+                                TIP_COLOR + "Produce FE when daytime and can see the sky");
+                add(Main.ID + ".safe_building", TIP_COLOR + "Safe for Building");
+                add(Main.ID + "." + zStatic.Blocks.sprinkler, TIP_COLOR + "Randomly speed the grow of crops around");
+                add(Main.ID + ".crafting_ingredient", TIP_COLOR + "Crafting components");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {
