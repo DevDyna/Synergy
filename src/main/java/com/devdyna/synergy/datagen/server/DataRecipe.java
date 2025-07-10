@@ -285,15 +285,15 @@ public class DataRecipe extends RecipeProvider {
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.SLIME_BALL, zItems.CONDENSER.get(), Items.REDSTONE))
                                 .group(ID).save(c);
-                // TODO maybe will reduce recipe cost and item output
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.SOLAR_PANEL.get(), 8)
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.SOLAR_PANEL.get(), 1)
                                 .pattern("LLL")
                                 .pattern("FRF")
                                 .define('L', Items.LAPIS_LAZULI)
-                                .define('F', zBlocks.RUSTIC_METAL.get())
-                                .define('R', zItems.RESISTOR.get())
+                                .define('F', zItems.RESISTOR.get())
+                                .define('R', zItems.BLUE_BATTERY.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zBlocks.RUSTIC_METAL.get(), zItems.RESISTOR.get(),
+                                                .hasItems(zItems.BLUE_BATTERY.get(), zItems.RESISTOR.get(),
                                                                 Items.LAPIS_LAZULI))
                                 .group(ID).save(c);
 
