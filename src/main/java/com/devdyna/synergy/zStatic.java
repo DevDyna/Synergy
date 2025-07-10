@@ -16,6 +16,23 @@ public class zStatic {
         public static String wooden_crook = "wooden_crook";
         public static String area_configurator = "area_configurator";
         public static String smasher = "smasher";
+        public static String bone_meal_mixture = "bone_meal_mixture";
+        //TODO need to rework
+        public static String refactorizer = "pipe_refactorizer";
+
+        public class Batteries {
+            public static String TYPE_BATTERY = "_battery";
+            public static String red = "red" + TYPE_BATTERY;
+            public static String green = "green" + TYPE_BATTERY;
+            public static String blue = "blue" + TYPE_BATTERY;
+        }
+
+        public class CraftingComponents {
+            public static String chip = "chip";
+            public static String condenser = "condenser";
+            public static String resistor = "resistor";
+        }
+
     }
 
     public class DecorativeBlocks {
@@ -28,11 +45,6 @@ public class zStatic {
         public static String azalea = "azalea";
         public static String sprinkler = "sprinkler";
         public static String harvester = "harvester";
-
-        // TODO WIP
-        public static String generator = "generator";
-        public static String deposit = "deposit";
-        public static String extractor = "extractor";
     }
 
     public class PipeStuff {
@@ -41,44 +53,47 @@ public class zStatic {
             private static String fluid = "fluid_";
             private static String energy = "energy_";
             private static String chemical = "chemical_";
+
+            public static String item_node = "item_" + nodes.node;
+            public static String fluid_node = "fluid_" + nodes.node;
+            public static String energy_node = "energy_" + nodes.node;
+            public static String chemical_node = "chemical_" + nodes.node;
         }
 
         public class nodes {
 
-            private static String node = "_node";
+            private static String node = "node";
+            private static String node2 = "_" + node;
 
             private static String transfer = "transfer";
             private static String provider = "provider";
             private static String retrieval = "retrieval";
 
-            // only used for tooltips atm
-            public static String type_transfer = transfer + node;
-            public static String type_provider = provider + node;
-            public static String type_retrieval = retrieval + node;
+            public static String type_transfer = transfer + node2;
+            public static String type_provider = provider + node2;
+            public static String type_retrieval = retrieval + node2;
 
-            public static String ItemTransfer = types.item + transfer + node;
-            public static String ItemProvider = types.item + provider + node;
-            public static String ItemRetrieval = types.item + retrieval + node;
+            public static String ItemTransfer = types.item + transfer + node2;
+            public static String ItemProvider = types.item + provider + node2;
+            public static String ItemRetrieval = types.item + retrieval + node2;
 
             // TODO fluid nodes
-            public static String FluidTransfer = types.fluid + transfer + node;
-            public static String FluidProvider = types.fluid + provider + node;
-            public static String FluidRetrieval = types.fluid + retrieval + node;
+            public static String FluidTransfer = types.fluid + transfer + node2;
+            public static String FluidProvider = types.fluid + provider + node2;
+            public static String FluidRetrieval = types.fluid + retrieval + node2;
 
             // TODO FE nodes
-            public static String EnergyTransfer = types.energy + transfer + node;
-            public static String EnergyProvider = types.energy + provider + node;
-            public static String EnergyRetrieval = types.energy + retrieval + node;
+            public static String EnergyTransfer = types.energy + transfer + node2;
+            public static String EnergyProvider = types.energy + provider + node2;
+            public static String EnergyRetrieval = types.energy + retrieval + node2;
 
             // TODO chem nodes (meka compat)
-            public static String GasTransfer = types.chemical + transfer + node;
-            public static String GasProvider = types.chemical + provider + node;
-            public static String GasRetrieval = types.chemical + retrieval + node;
-        }
-
         public class tools {
             public static String refactorizer = pipe + "_refactorizer";
             public static String visualizer = pipe + "_visualizer";
+            public static String GasTransfer = types.chemical + transfer + node2;
+            public static String GasProvider = types.chemical + provider + node2;
+            public static String GasRetrieval = types.chemical + retrieval + node2;
         }
 
         public static String pipe = "pipe";
