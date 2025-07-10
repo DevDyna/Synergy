@@ -33,7 +33,7 @@ public class blockEvents {
     }
 
     @SubscribeEvent
-    public static void cookBreakLeave(BlockEvent.BreakEvent event) {
+    public static void crookBreakLeaves(BlockEvent.BreakEvent event) {
         var player = event.getPlayer();
         var item = player.getMainHandItem();
         var block = event.getState();
@@ -41,10 +41,9 @@ public class blockEvents {
         var pos = event.getPos();
 
         if (block.is(zBlockTag.LEAVES) && item.is(zItems.WOODEN_CROOK) && !player.isCreative())
-            for (int i = 0; i < 10; i++) 
+            for (int i = 0; i < 10; i++)
                 Block.getDrops(block, (ServerLevel) level, pos, null)
                         .forEach(s -> Block.popResource((Level) level, pos, s));
-            
 
     }
 
