@@ -42,15 +42,6 @@ public class azalea extends BaseCropBlock {
         return SHAPE_BY_AGE[state.getValue(AGE)];
     }
 
-    // @Override
-    // public List<ItemStack> getItemResult(Level level, BlockState state, BlockPos
-    // pos, Player player, ItemStack tool) {
-    // return List.of(
-    // new ItemStack(zItems.AZALEA_SEEDS, level.random.nextInt(2)),
-    // new ItemStack(zItems.SMALL_AZALEA_LEAF, level.random.nextInt(3) + 1),
-    // new ItemStack(zItems.SMALL_AZALEA_ROOTS, level.random.nextInt(1) + 1));
-    // }
-
     @Override
     protected ItemLike getBaseSeedId() {
         return zItems.AZALEA_SEEDS.get();
@@ -65,14 +56,6 @@ public class azalea extends BaseCropBlock {
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
         return false;
     }
-
-    // @Override
-    // public List<ItemStack> itemResult(Level level, BlockPos pos) {
-    // return List.of(
-    // new ItemStack(zItems.AZALEA_SEEDS, level.random.nextInt(2)),
-    // new ItemStack(zItems.SMALL_AZALEA_LEAF, level.random.nextInt(3) + 1),
-    // new ItemStack(zItems.SMALL_AZALEA_ROOTS, level.random.nextInt(1) + 1));
-    // }
 
     @Override
     protected List<ItemStack> getDrops(BlockState arg0, Builder arg1) {
