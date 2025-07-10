@@ -2,7 +2,7 @@
  
 A bunch of Magic-Tech and fun-made gadgets
 
-## TODO - DONT INCLUDE ALREADY DONE FEATURES
+## TODO
 ### Plants
 - [ ] flax (double)
 - [ ] corn (double)
