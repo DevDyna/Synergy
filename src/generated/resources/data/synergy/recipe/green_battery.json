@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "H": {
+      "item": "synergy:condenser"
+    },
+    "R": {
+      "item": "minecraft:slime_ball"
+    },
+    "S": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    " S ",
+    "RHR",
+    " R "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:green_battery"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "G": {
+      "item": "synergy:bone_meal_mixture"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "M": {
+      "item": "synergy:violet_webcap_mushroom"
+    },
+    "N": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "N N",
+    "GMG",
+    " I "
+  ],
+  "result": {
+    "count": 4,
+    "id": "synergy:condenser"
+  }
+}

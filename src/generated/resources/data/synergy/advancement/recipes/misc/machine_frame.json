@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:sprinkler"
+        "recipe": "synergy:machine_frame"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,13 +11,13 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:waxed_planks"
-          },
-          {
             "items": "synergy:adobe"
           },
           {
-            "items": "synergy:blue_battery"
+            "items": "synergy:chip"
+          },
+          {
+            "items": "minecraft:iron_nugget"
           }
         ]
       },
@@ -32,7 +32,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:sprinkler"
+      "synergy:machine_frame"
     ]
   }
 }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "H": {
+      "item": "synergy:green_battery"
+    },
+    "R": {
+      "item": "synergy:blue_cup_mushroom"
+    }
+  },
+  "pattern": [
+    " R ",
+    "RHR",
+    " R "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:blue_battery"
+  }
+}

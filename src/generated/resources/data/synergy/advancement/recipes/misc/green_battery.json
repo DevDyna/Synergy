@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:sprinkler"
+        "recipe": "synergy:green_battery"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,13 +11,13 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:waxed_planks"
+            "items": "minecraft:slime_ball"
           },
           {
-            "items": "synergy:adobe"
+            "items": "synergy:condenser"
           },
           {
-            "items": "synergy:blue_battery"
+            "items": "minecraft:redstone"
           }
         ]
       },
@@ -32,7 +32,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:sprinkler"
+      "synergy:green_battery"
     ]
   }
 }

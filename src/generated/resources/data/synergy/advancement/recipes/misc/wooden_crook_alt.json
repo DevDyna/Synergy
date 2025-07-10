@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:flowering_azaleasynergy_alt"
+        "recipe": "synergy:wooden_crook_alt"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,10 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:azalea"
-          },
-          {
-            "items": "synergy:small_azalea_leaf"
+            "items": "minecraft:stick"
           }
         ]
       },
@@ -29,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:flowering_azaleasynergy_alt"
+      "synergy:wooden_crook_alt"
     ]
   }
 }

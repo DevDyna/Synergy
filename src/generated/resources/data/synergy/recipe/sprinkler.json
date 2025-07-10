@@ -6,6 +6,9 @@
     "A": {
       "item": "synergy:adobe"
     },
+    "B": {
+      "item": "synergy:blue_battery"
+    },
     "I": {
       "item": "minecraft:iron_ingot"
     },
@@ -18,7 +21,7 @@
   },
   "pattern": [
     "WWW",
-    "RIR",
+    "RBR",
     "AIA"
   ],
   "result": {

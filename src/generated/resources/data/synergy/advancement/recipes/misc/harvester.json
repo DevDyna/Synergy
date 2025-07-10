@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:sprinkler"
+        "recipe": "synergy:harvester"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,13 +11,19 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:waxed_planks"
+            "items": "minecraft:iron_hoe"
           },
           {
-            "items": "synergy:adobe"
+            "items": "synergy:resistor"
+          },
+          {
+            "items": "synergy:machine_frame"
           },
           {
             "items": "synergy:blue_battery"
+          },
+          {
+            "items": "minecraft:iron_axe"
           }
         ]
       },
@@ -32,7 +38,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:sprinkler"
+      "synergy:harvester"
     ]
   }
 }

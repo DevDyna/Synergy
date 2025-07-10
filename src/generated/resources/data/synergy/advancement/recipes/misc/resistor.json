@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:item.synergy.wooden_crook_alt"
+        "recipe": "synergy:resistor"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,13 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stick"
+            "items": "minecraft:iron_nugget"
+          },
+          {
+            "items": "synergy:blue_cup_mushroom"
+          },
+          {
+            "items": "synergy:bone_meal_mixture"
           }
         ]
       },
@@ -26,7 +32,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:item.synergy.wooden_crook_alt"
+      "synergy:resistor"
     ]
   }
 }

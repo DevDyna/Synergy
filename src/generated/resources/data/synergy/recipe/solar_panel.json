@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "F": {
+      "item": "synergy:rustic_metal"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "R": {
+      "item": "synergy:resistor"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "FRF"
+  ],
+  "result": {
+    "count": 8,
+    "id": "synergy:solar_panel"
+  }
+}

@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:hanging_rootssynergy_alt"
+        "recipe": "synergy:string_from_cotton"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:small_azalea_roots"
+            "items": "synergy:cotton"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:hanging_rootssynergy_alt"
+      "synergy:string_from_cotton"
     ]
   }
 }

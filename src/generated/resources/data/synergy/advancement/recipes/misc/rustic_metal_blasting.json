@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:blue_dye"
+        "recipe": "synergy:rustic_metal_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:blue_cup_mushroom"
+            "items": "minecraft:iron_block"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:blue_dye"
+      "synergy:rustic_metal_blasting"
     ]
   }
 }

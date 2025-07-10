@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:brown_dye"
+        "recipe": "synergy:red_battery"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,10 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:violet_webcap_mushroom"
+            "items": "synergy:blue_battery"
+          },
+          {
+            "items": "synergy:bone_meal_mixture"
           }
         ]
       },
@@ -26,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:brown_dye"
+      "synergy:red_battery"
     ]
   }
 }

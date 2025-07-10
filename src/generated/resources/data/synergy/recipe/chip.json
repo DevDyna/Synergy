@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "G": {
+      "item": "synergy:bone_meal_mixture"
+    },
+    "N": {
+      "item": "minecraft:iron_nugget"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    " N ",
+    " GN",
+    "Q  "
+  ],
+  "result": {
+    "count": 4,
+    "id": "synergy:chip"
+  }
+}

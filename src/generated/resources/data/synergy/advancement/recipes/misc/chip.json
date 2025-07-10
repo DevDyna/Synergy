@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:sprinkler"
+        "recipe": "synergy:chip"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,13 +11,13 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:waxed_planks"
+            "items": "synergy:bone_meal_mixture"
           },
           {
-            "items": "synergy:adobe"
+            "items": "minecraft:iron_nugget"
           },
           {
-            "items": "synergy:blue_battery"
+            "items": "minecraft:quartz"
           }
         ]
       },
@@ -32,7 +32,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:sprinkler"
+      "synergy:chip"
     ]
   }
 }

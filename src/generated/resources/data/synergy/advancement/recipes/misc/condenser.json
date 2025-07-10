@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:sprinkler"
+        "recipe": "synergy:condenser"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,13 +11,16 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:waxed_planks"
+            "items": "minecraft:iron_nugget"
           },
           {
-            "items": "synergy:adobe"
+            "items": "synergy:bone_meal_mixture"
           },
           {
-            "items": "synergy:blue_battery"
+            "items": "minecraft:iron_ingot"
+          },
+          {
+            "items": "synergy:violet_webcap_mushroom"
           }
         ]
       },
@@ -32,7 +35,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:sprinkler"
+      "synergy:condenser"
     ]
   }
 }

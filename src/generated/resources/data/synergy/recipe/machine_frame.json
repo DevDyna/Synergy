@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "C": {
+      "item": "synergy:chip"
+    },
+    "F": {
+      "item": "minecraft:iron_nugget"
+    },
+    "R": {
+      "item": "synergy:adobe"
+    }
+  },
+  "pattern": [
+    " C ",
+    "FRF",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:machine_frame"
+  }
+}

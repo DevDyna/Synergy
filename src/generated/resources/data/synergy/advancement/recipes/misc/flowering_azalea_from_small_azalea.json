@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:item.minecraft.stringsynergy_alt"
+        "recipe": "synergy:flowering_azalea_from_small_azalea"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,10 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:cotton"
+            "items": "minecraft:azalea"
+          },
+          {
+            "items": "synergy:small_azalea_leaf"
           }
         ]
       },
@@ -26,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:item.minecraft.stringsynergy_alt"
+      "synergy:flowering_azalea_from_small_azalea"
     ]
   }
 }

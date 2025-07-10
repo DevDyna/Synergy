@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_axe"
+    },
+    "C": {
+      "item": "synergy:blue_battery"
+    },
+    "H": {
+      "item": "minecraft:iron_hoe"
+    },
+    "M": {
+      "item": "synergy:machine_frame"
+    },
+    "R": {
+      "item": "synergy:resistor"
+    }
+  },
+  "pattern": [
+    " R ",
+    "AMH",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:harvester"
+  }
+}

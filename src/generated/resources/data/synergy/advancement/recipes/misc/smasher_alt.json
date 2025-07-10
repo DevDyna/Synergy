@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:flowering_azalea_leavessynergy_alt"
+        "recipe": "synergy:smasher_alt"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,10 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:small_azalea_leaf"
+            "items": "minecraft:iron_ingot"
+          },
+          {
+            "items": "minecraft:iron_nugget"
           }
         ]
       },
@@ -26,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:flowering_azalea_leavessynergy_alt"
+      "synergy:smasher_alt"
     ]
   }
 }

@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:sprinkler"
+        "recipe": "synergy:slime_ball_from_rice"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,13 +11,10 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:waxed_planks"
+            "items": "minecraft:honeycomb"
           },
           {
-            "items": "synergy:adobe"
-          },
-          {
-            "items": "synergy:blue_battery"
+            "items": "synergy:rice_seed"
           }
         ]
       },
@@ -32,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:sprinkler"
+      "synergy:slime_ball_from_rice"
     ]
   }
 }

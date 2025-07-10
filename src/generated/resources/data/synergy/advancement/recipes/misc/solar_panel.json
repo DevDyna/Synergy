@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:rustic_metalsynergy_alt"
+        "recipe": "synergy:solar_panel"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,13 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_block"
+            "items": "synergy:rustic_metal"
+          },
+          {
+            "items": "synergy:resistor"
+          },
+          {
+            "items": "minecraft:lapis_lazuli"
           }
         ]
       },
@@ -26,7 +32,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:rustic_metalsynergy_alt"
+      "synergy:solar_panel"
     ]
   }
 }
