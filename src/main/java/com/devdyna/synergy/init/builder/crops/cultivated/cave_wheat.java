@@ -9,12 +9,13 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("null")
 public class cave_wheat extends BaseShortCropBlock {
 
     public cave_wheat() {
-        super(Properties.of());
+        super(Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY));
     }
 
     @Override

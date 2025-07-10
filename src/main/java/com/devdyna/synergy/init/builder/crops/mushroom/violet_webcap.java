@@ -7,11 +7,12 @@ import com.devdyna.synergy.init.types.zItems;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.MapColor;
 
 public class violet_webcap extends BaseCropMushroom {
 
     public violet_webcap() {
-        super(Properties.of().lightLevel(s -> 4));
+        super(Properties.of().lightLevel(s -> 4).mapColor(MapColor.COLOR_MAGENTA));
     }
 
     @Override

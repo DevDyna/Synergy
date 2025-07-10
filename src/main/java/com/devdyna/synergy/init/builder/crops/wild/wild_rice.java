@@ -13,12 +13,13 @@ import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("null")
 public class wild_rice extends BaseWildCropBlock {
 
     public wild_rice() {
-        super(Properties.of());
+        super(Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN));
     }
 
         @Override

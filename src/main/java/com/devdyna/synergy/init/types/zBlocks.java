@@ -92,19 +92,20 @@ public class zBlocks {
         public static final DeferredHolder<Block, ?> INDUSTRIAL_METAL = Material
                         .registerItemBlock(zStatic.DecorativeBlocks.industrial_metal,
                                         () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL)
-                                                        .strength(2.5f)),
+                                                        .strength(2.5f).mapColor(MapColor.RAW_IRON)),
                                         zDecorative);
 
         public static final DeferredHolder<Block, ?> WAXED_PLANKS = Material
                         .registerItemBlock(zStatic.DecorativeBlocks.waxed_planks,
                                         () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.WOOD)
-                                                        .strength(1.5f)),
+                                                        .strength(1.5f).mapColor(MapColor.COLOR_BROWN)),
                                         zDecorative);
 
+        // TODO make a method on Material
         public static final DeferredHolder<Block, ?> ADOBE = Material
                         .registerItemBlock(zStatic.DecorativeBlocks.adobe,
                                         () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE)
-                                                        .strength(1.0f)),
+                                                        .strength(1.0f).mapColor(MapColor.SAND)),
                                         zDecorative);
 
         // public static final DeferredHolder<Block, ?> EXTRACTOR =
