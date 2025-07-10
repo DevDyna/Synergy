@@ -28,8 +28,9 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(zBlockTag.CROPS).addTag(BlockTags.CROPS);
 
+                //solar panels atm will cause rendering issues
                 tag(zBlockTag.MASHABLE).addTag(zBlockTag.CAN_CONNECT).add(zBlocks.SPRINKLER.get(),
-                                zBlocks.HARVESTER.get(),zBlocks.SOLAR_PANEL.get());
+                                zBlocks.HARVESTER.get());
 
                 tag(BlockTags.MINEABLE_WITH_PICKAXE).add(zBlocks.SPRINKLER.get());
 
