@@ -31,9 +31,9 @@ public class zCreativeTab {
                                         .icon(() -> Items.DIAMOND.getDefaultInstance())
                                         .displayItems((parameters, output) -> {
 
-                                                zItems.zItem.getEntries().forEach(e -> {
-                                                        output.accept((Item) e.get());
-                                                });
+                                                // zItems.zItem.getEntries().forEach(e -> {
+                                                //         output.accept((Item) e.get());
+                                                // });
 
                                                 zItems.zBlockItem.getEntries().forEach(e -> {
                                                         output.accept((Item) e.get());
