@@ -1,54 +1,34 @@
 package com.devdyna.synergy.api.client;
 
+import com.devdyna.synergy.api.components.ModeTypes;
 import com.devdyna.synergy.api.pipe.pipeProperties;
 import com.devdyna.synergy.api.pipe.pipeType;
+import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
 import com.devdyna.synergy.init.types.zBlocks;
-import com.devdyna.synergy.init.types.zItemTag;
+import com.devdyna.synergy.init.types.zComponents;
+import com.devdyna.synergy.init.types.zItems;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
+import net.minecraft.core.Direction;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.Vec3;
 
 @SuppressWarnings("null")
 public interface TypeRenders<T> {
 
-    @SuppressWarnings("unused")
-    private int getLightLevel(Level level, BlockPos pos) {
-        return LightTexture.pack(level.getBrightness(LightLayer.BLOCK, pos), level.getBrightness(LightLayer.SKY, pos));
+    /*
+     * Distance of player from BE to render
+     */
+    default int getPlayerDistance() {
+        return 16;
     }
-
-    default Vec3 BaseOffset() {
-        return new Vec3(0.5f, 1.15f, 0.5f);
-    }
-
-    default Vec3 BaseScale() {
-        return new Vec3(0.5f, 0.5f, 0.5f);
-    }
-
-    // default void renderItem(ItemStack itemStack, Vec3 offset, Vec3 scale, BlockEntity be, float tick, PoseStack stack,
-    //         MultiBufferSource bufferSource, int packedLight,
-    //         int packedOverlay) {
-    //     if (!(be instanceof renderItem))
-    //         return;
-
-    //     ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-    //     stack.pushPose();
-    //     stack.translate(offset.x, offset.y, offset.z);
-    //     stack.scale((float) scale.x, (float) scale.y, (float) scale.z);
-    //     stack.mulPose(Axis.YP.rotationDegrees(((renderItem) be).getAngle()));
-
-    //     itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIXED, getLightLevel(be.getLevel(),
-    //             be.getBlockPos()), OverlayTexture.NO_OVERLAY, stack, bufferSource, be.getLevel(), 0);
-    //     stack.popPose();
-    // }
 
     default void createPipeRender(int x, int y, int z, PoseStack stack, BlockEntity be, MultiBufferSource bufferSource,
             int packedLight,
@@ -70,11 +50,75 @@ public interface TypeRenders<T> {
 
         var player = be.getLevel().getNearestPlayer(be.getBlockPos().getX(),
                 be.getBlockPos().getY(),
-                be.getBlockPos().getZ(), 8, false);
+                be.getBlockPos().getZ(), getPlayerDistance(), false);
 
-        if (player != null && ((LivingEntity) player).getMainHandItem().is(zItemTag.VISUALIZER))
+        if (checkTool(ModeTypes.SHOW_TRACK, player, be.getBlockPos()))
             render.renderBatched(pipe, be.getBlockPos(), be.getLevel(), stack, color, false, be.getLevel().getRandom());
         stack.popPose();
+    }
+
+    @SuppressWarnings("deprecation")
+    default void renderDebugBox(BlockEntity be, BlockPos start, BlockPos end, Direction dir, PoseStack stack,
+            MultiBufferSource bufferIn) {
+
+        var player = be.getLevel().getNearestPlayer(be.getBlockPos().getX(),
+                be.getBlockPos().getY(),
+                be.getBlockPos().getZ(), getPlayerDistance(), false);
+
+        VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.lines());
+
+        switch (dir) {
+            case Direction.NORTH:
+                start = HarvesterBE.move(start, Direction.SOUTH, 1);
+                start = HarvesterBE.move(start, Direction.EAST, 1);
+                break;
+            case Direction.SOUTH:
+                start = HarvesterBE.move(start, Direction.EAST, 1);
+                end = HarvesterBE.move(end, Direction.SOUTH, 1);
+                break;
+            case Direction.EAST:
+                end = HarvesterBE.move(end, Direction.SOUTH, 1);
+                end = HarvesterBE.move(end, Direction.EAST, 1);
+                break;
+            case Direction.WEST:
+                start = HarvesterBE.move(start, Direction.EAST, 1);
+                end= HarvesterBE.move(end, Direction.SOUTH, 1);
+                break;
+            default:
+                break;
+        }
+
+        if (checkTool(ModeTypes.SHOW_AOE, player, be.getBlockPos())) {
+            stack.pushPose();
+            LevelRenderer.renderLineBox(stack, vertexconsumer,
+                    start.getX(), start.getY(), start.getZ(), end.getX(), end.getY() + 1, end.getZ(),
+                    0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
+            stack.popPose();
+        }
+    }
+
+    default boolean checkTool(String mode, Player player, BlockPos pos) {
+        if (player == null)
+            return false;
+
+        var item = player.getMainHandItem();
+
+        if (!item.is(zItems.CONFIGURATOR))
+            return false;
+
+        if (item.get(zComponents.MODE) == null || item.get(zComponents.BLOCKPOS) == null)
+            return false;
+
+        if (item.get(zComponents.MODE) != mode)
+            return false;
+
+        if (item.get(zComponents.BLOCKPOS).getX() != pos.getX()
+                || item.get(zComponents.BLOCKPOS).getY() != pos.getY()
+                || item.get(zComponents.BLOCKPOS).getZ() != pos.getZ())
+            return false;
+
+        return true;
+
     }
 
 }
