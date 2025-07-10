@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -24,7 +25,7 @@ public class NodeBaseBlock extends BaseBlockBE implements nodeType {
 
     public NodeBaseBlock() {
         super(BlockBehaviour.Properties.of().destroyTime(0.5f).forceSolidOn()
-                .sound(SoundType.WOOL));
+                .sound(SoundType.WOOL).mapColor(MapColor.TERRACOTTA_GRAY));
     }
 
     @Override
