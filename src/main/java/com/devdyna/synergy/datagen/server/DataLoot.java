@@ -42,6 +42,8 @@ public class DataLoot extends BlockLootSubProvider {
                         zBlocks.zCrop,
                         zBlocks.zWildCrop,
                         zBlocks.zDecorative,
+                        zBlocks.zBlockStair,
+                        zBlocks.zBlockSlab,
                         // wip
                         zBlocks.zDepositBlocks,
                         zBlocks.zDepositOres);
@@ -66,9 +68,15 @@ public class DataLoot extends BlockLootSubProvider {
                 dropSelf(zBlocks.ITEM_TRANSFER.get());
                 dropSelf(zBlocks.ITEM_PROVIDER.get());
                 dropSelf(zBlocks.ITEM_RETRIEVAL.get());
+                dropSelf(zBlocks.SOLAR_PANEL.get());
+                dropSelf(zBlocks.HARVESTER.get());
+
+                zBlocks.zBlockSlab.getEntries().forEach(b -> dropSelf(b.get()));
+                zBlocks.zBlockStair.getEntries().forEach(b -> dropSelf(b.get()));
+
                 azalea();
                 dropSelf(zBlocks.SPRINKLER.get());
-                zBlocks.zDecorative.getEntries().forEach(b->dropSelf(b.get()));
+                zBlocks.zDecorative.getEntries().forEach(b -> dropSelf(b.get()));
 
                 cropDrop7(zBlocks.RICE.get(), zItems.RICE_SEED.get(),
                                 zItems.RICE_SEED.get());

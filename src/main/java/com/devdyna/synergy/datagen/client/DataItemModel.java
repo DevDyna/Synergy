@@ -28,7 +28,7 @@ public class DataItemModel extends ItemModelProvider {
                                 zBlocks.WILD_COTTON.get().asItem(),
                                 zBlocks.WILD_RICE.get().asItem());
 
-                zItems.zItem.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
+                // zItems.zItem.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
                 zItems.zCropExtra.getEntries()
                                 .forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/results/"));
                 zItems.zFoods.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "foods/"));
@@ -40,6 +40,8 @@ public class DataItemModel extends ItemModelProvider {
                                 ID + ":block/" + DataGenUtil.getPath(zBlocks.SPRINKLER.get()));
 
                 withExistingParent(zBlocks.PIPE.getRegisteredName(), modLoc("block/pipe/basic/item_model"));
+
+                withExistingParent(zBlocks.SOLAR_PANEL.getRegisteredName(), modLoc("block/solar_panel/item_model"));
 
                 node(zBlocks.ITEM_TRANSFER, "red");
                 node(zBlocks.ITEM_PROVIDER, "green");
@@ -53,8 +55,44 @@ public class DataItemModel extends ItemModelProvider {
 
                 zBlocks.zDecorative.getEntries()
                                 .forEach(bk -> cubeAll(bk.getRegisteredName().replace(ID + ":block/", ""),
-                                                modLoc("block/" + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
-                                                                ""))));
+                                                modLoc("block/decorative/"
+                                                                + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
+                                                                                ""))));
+
+                zItems.zCraftingComponents.getEntries()
+                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "components/"));
+
+                orientableWithBottom(zBlocks.HARVESTER.get().getDescriptionId().replace("block." + ID + ".", ""),
+                                modLoc("block/harvester/side"), modLoc("block/harvester/front"),
+                                modLoc("block/harvester/bottom"), modLoc("block/harvester/top"));
+
+                zBlocks.zBlockSlab.getEntries().forEach(bk -> slab(
+                                bk.getRegisteredName().replace(ID + ":block/", ""), modLoc("block/decorative/"
+                                                + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
+                                                                "").replace("_slab",
+                                                                                "")),
+                                modLoc("block/decorative/"
+                                                + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
+                                                                "").replace("_slab",
+                                                                                "")),
+                                modLoc("block/decorative/"
+                                                + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
+                                                                "").replace("_slab",
+                                                                                ""))));
+
+                zBlocks.zBlockStair.getEntries().forEach(bk -> stairs(
+                                bk.getRegisteredName().replace(ID + ":block/", ""), modLoc("block/decorative/"
+                                                + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
+                                                                "").replace("_stair",
+                                                                                "")),
+                                modLoc("block/decorative/"
+                                                + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
+                                                                "").replace("_stair",
+                                                                                "")),
+                                modLoc("block/decorative/"
+                                                + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
+                                                                "").replace("_stair",
+                                                                                ""))));
 
         }
 

@@ -11,6 +11,8 @@ import com.devdyna.synergy.utils.DataGenUtil;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -24,15 +26,16 @@ public class DataBlockModelState extends BlockStateProvider {
 
         @Override
         protected void registerStatesAndModels() {
+
                 rotableBlock(zBlocks.SPRINKLER.get());
-                node(zBlocks.ITEM_TRANSFER.get(),"red");
-                node(zBlocks.ITEM_PROVIDER.get(),"green");
-                node(zBlocks.ITEM_RETRIEVAL.get(),"aqua");
+                node(zBlocks.ITEM_TRANSFER.get(), "red");
+                node(zBlocks.ITEM_PROVIDER.get(), "green");
+                node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
                 pipe(zBlocks.PIPE.get());
 
-                simpleBlock(zBlocks.ADOBE.get());
-                simpleBlock(zBlocks.INDUSTRIAL_METAL.get());
-                simpleBlock(zBlocks.WAXED_PLANKS.get());
+                simpleBlock2(zBlocks.ADOBE.get());
+                simpleBlock2(zBlocks.RUSTIC_METAL.get());
+                simpleBlock2(zBlocks.WAXED_PLANKS.get());
 
                 crop(zBlocks.RICE.get(), 7, true, CropBlock.AGE);
                 crop(zBlocks.CAVE_WHEAT.get(), 5, true, BaseShortCropBlock.AGE);
@@ -44,6 +47,32 @@ public class DataBlockModelState extends BlockStateProvider {
                 crossORcropStatic(zBlocks.WILD_COTTON.get(), false, "block/crops/cotton/5");
                 crossORcropStatic(zBlocks.WILD_RICE.get(), true, "block/crops/rice/7");
 
+                horizontalBlock(zBlocks.HARVESTER.get(), models()
+                                .orientableWithBottom(
+                                                zBlocks.HARVESTER.get().getDescriptionId().replace("block." + ID + ".",
+                                                                ""),
+                                                modLoc("block/harvester/side"), modLoc("block/harvester/front"),
+                                                modLoc("block/harvester/bottom"), modLoc("block/harvester/top")));
+
+                zBlocks.zBlockSlab.getEntries().forEach(b -> slabBlock((SlabBlock) b.get(), modLoc("block/"
+                                + DataGenUtil.getPath(b.get()).replace(ID + ":block/",
+                                                "").replace("_slab",
+                                                                "")),
+                                modLoc("block/decorative/"
+                                                + DataGenUtil.getPath(b.get()).replace(ID + ":block/",
+                                                                "").replace("_slab",
+                                                                                ""))));
+                zBlocks.zBlockStair.getEntries()
+                                .forEach(b -> stairsBlock((StairBlock) b.get(), modLoc("block/decorative/"
+                                                + DataGenUtil.getPath(b.get()).replace(ID + ":block/",
+                                                                "").replace("_stair",
+                                                                                ""))));
+
+        }
+
+        private void simpleBlock2(Block b) {
+                simpleBlock(b, models().cubeAll(b.getDescriptionId().replace("block." + ID + ".", ""),
+                                modLoc("block/decorative/" + b.getDescriptionId().replace("block." + ID + ".", ""))));
         }
 
         private void pipe(Block b) {
@@ -87,24 +116,6 @@ public class DataBlockModelState extends BlockStateProvider {
                                                         modLoc("block/crops/" + name + "/" + index)))
                                         .addModel();
         }
-
-        // private void growPlant(Block b, int max, IntegerProperty property) {
-        // var name = b.getDescriptionId().replace("block." + ID + ".", "");
-
-        // var model = getVariantBuilder(b).partialState().with(property,
-        // 0).modelForState()
-        // .modelFile(models().cross("crops/" + name + "/0", modLoc("block/crops/" +
-        // name + "/0"))
-        // .renderType("minecraft:cutout"))
-        // .addModel();
-
-        // for (int index = 1; index <= max; index++)
-        // model.partialState().with(property, index).modelForState().modelFile(models()
-        // .cross("crops/" + name + "/" + index,
-        // modLoc("block/crops/" + name + "/" + index))
-        // .renderType("minecraft:cutout"))
-        // .addModel();
-        // }
 
         // TODO optimize and make it dynamic
         private void growPlantWithVariants(Block b, int max, boolean isCrop, IntegerProperty property) {
@@ -160,18 +171,5 @@ public class DataBlockModelState extends BlockStateProvider {
                                                 modLoc(texturePath)))
                                 .build());
         }
-
-        // @SuppressWarnings("unused")
-        // private void demosimpleBlock(Block b) {
-        // simpleBlock(b,
-        // models().getExistingFile(modLoc("block/dynamo/off")));
-        // }
-
-        // @SuppressWarnings("unused")
-        // private void demoBiState(Block b, BooleanProperty p) {
-        // DataGenUtil.BiStateBlock(this, b, p, models()
-        // .getExistingFile(modLoc("block/dynamo/on")),
-        // models().getExistingFile(modLoc("block/dynamo/off")));
-        // }
 
 }

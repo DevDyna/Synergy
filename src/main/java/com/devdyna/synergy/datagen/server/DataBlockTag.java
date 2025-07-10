@@ -28,7 +28,8 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(zBlockTag.CROPS).addTag(BlockTags.CROPS);
 
-                tag(zBlockTag.MASHABLE).addTag(zBlockTag.CAN_CONNECT).add(zBlocks.SPRINKLER.get());
+                tag(zBlockTag.MASHABLE).addTag(zBlockTag.CAN_CONNECT).add(zBlocks.SPRINKLER.get(),
+                                zBlocks.HARVESTER.get(),zBlocks.SOLAR_PANEL.get());
 
                 tag(BlockTags.MINEABLE_WITH_PICKAXE).add(zBlocks.SPRINKLER.get());
 
@@ -88,13 +89,16 @@ public class DataBlockTag extends BlockTagsProvider {
                                 .addTags(BlockTags.DIRT, Tags.Blocks.SANDS, Tags.Blocks.GRAVELS,
                                                 Tags.Blocks.SANDSTONE_BLOCKS);
 
-                // TODO
-                // tag(zBlockTag.EXTRACTORS).add(zBlocks.EXTRACTOR.get());
+                tag(zBlockTag.AOE_RENDER).add(zBlocks.HARVESTER.get());
+                tag(zBlockTag.NODE_RENDER).addTag(zBlockTag.NODE);
 
-                // zMultiTags.ALL_DEPOSITS.forEach(
-                // depo -> tag(depo.block()).add(
-                // zBlocks.deposits.get(zMultiTags.ALL_DEPOSITS.indexOf(depo)).get())
-                // );
+                tag(zBlockTag.HARVESTER_TREE_BREAK)
+                                .add(Blocks.SHROOMLIGHT)
+                                .addTags(BlockTags.COMPLETES_FIND_TREE_TUTORIAL,
+                                                BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH,
+                                                BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH);
+
+                
 
         }
 

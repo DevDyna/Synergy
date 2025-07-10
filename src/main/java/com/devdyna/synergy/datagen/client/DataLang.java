@@ -26,21 +26,40 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zBlockItem.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zBlock.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCrop.getEntries().forEach(b -> addBlock(b, named(b)));
-                zItems.zItem.getEntries().forEach(b -> addItem(b, named(b)));
+                // zItems.zItem.getEntries().forEach(b -> addItem(b, named(b)));
                 zItems.zTool.getEntries().forEach(b -> addItem(b, named(b)));
                 zItems.zCropExtra.getEntries().forEach(b -> addItem(b, named(b)));
                 zItems.zFoods.getEntries().forEach(b -> addItem(b, named(b)));
                 zItems.zSeeds.getEntries().forEach(b -> addItem(b, named(b)));
                 zBlocks.zWildCrop.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zDecorative.getEntries().forEach(b -> addBlock(b, named(b)));
+                zBlocks.zBlockSlab.getEntries().forEach(b -> addBlock(b, named(b)));
+                zBlocks.zBlockStair.getEntries().forEach(b -> addBlock(b, named(b)));
+                zItems.zCraftingComponents.getEntries().forEach(b -> addItem(b, named(b)));
 
                 // tools
-                add(Main.ID + "." + zStatic.PipeStuff.tools.visualizer,
-                                TIP_COLOR + "Show the debug vision of I/O foreach node");
-                add(Main.ID + "." + zStatic.PipeStuff.tools.refactorizer,
+                add(Main.ID + "." + zStatic.Items.configurator + ".tip",
+                                TIP_COLOR + "Show the debug vision");
+
+                add(Main.ID + "." + zStatic.Items.configurator + ".modetype",
+                                TIP_COLOR + "Mode : ");
+
+                add(Main.ID + "." + zStatic.Items.configurator + ".mode.show_area",
+                                "§aMachine AOE");
+
+                add(Main.ID + "." + zStatic.Items.configurator + ".mode.show_track",
+                                "§aNode Track");
+
+                add(Main.ID + "." + zStatic.Items.configurator + ".blockpos",
+                                TIP_COLOR + "BlockPos : ");
+
+                add(Main.ID + "." + zStatic.Items.refactorizer,
                                 TIP_COLOR + "Force update blockstates of any #synergy:can_connect");
                 add(Main.ID + "." + zStatic.Items.smasher, TIP_COLOR + "Quick break any #synergy:mashable");
                 add(Main.ID + "." + zStatic.Items.wooden_crook, TIP_COLOR + "Increase the chance to obtain saplings");
+
+                add(Main.ID + "." + zStatic.Items.bone_meal_mixture,
+                                TIP_COLOR + "Can be used to speed the grow of any plant");
 
                 // pipe stuff
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".desc",
@@ -63,7 +82,11 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Wild.WILD + ".tip",
                                 TIP_COLOR + "Item-Form unobtainable");
 
-                // TODO sprinkler tip and guideme
+                add(Main.ID + "." + zStatic.Items.Batteries.TYPE_BATTERY + ".tip",
+                                TIP_COLOR + "Can be used to hand-transfer FE");
+
+                add(Main.ID + "." + zStatic.Items.Batteries.TYPE_BATTERY + ".energy",
+                                TIP_COLOR + "Energy Stored: ");
 
         }
 
