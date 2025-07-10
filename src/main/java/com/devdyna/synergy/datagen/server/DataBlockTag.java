@@ -28,11 +28,26 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(zBlockTag.CROPS).addTag(BlockTags.CROPS);
 
-                //solar panels atm will cause rendering issues
+                // solar panels atm will cause rendering issues
                 tag(zBlockTag.MASHABLE).addTag(zBlockTag.CAN_CONNECT).add(zBlocks.SPRINKLER.get(),
                                 zBlocks.HARVESTER.get());
 
-                tag(BlockTags.MINEABLE_WITH_PICKAXE).add(zBlocks.SPRINKLER.get());
+                tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                                .add(
+                                                zBlocks.SPRINKLER.get(),
+                                                zBlocks.HARVESTER.get(),
+                                                zBlocks.SOLAR_PANEL.get(),
+                                                zBlocks.ADOBE.get(),
+                                                zBlocks.RUSTIC_METAL.get(),
+                                                zBlocks.MACHINE_FRAME.get()
+                                );
+
+                tag(BlockTags.MINEABLE_WITH_AXE)
+                                .add(
+                                                zBlocks.WAXED_PLANKS.get(),
+                                                zBlocks.WAXED_PLANKS_SLAB.get(),
+                                                zBlocks.WAXED_PLANKS_STAIR.get()
+                                );
 
                 tag(zBlockTag.MUSHROOMS)
                                 .add(zBlocks.BLUE_CUP_MUSHROOM.get(), zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
@@ -98,8 +113,6 @@ public class DataBlockTag extends BlockTagsProvider {
                                 .addTags(BlockTags.COMPLETES_FIND_TREE_TUTORIAL,
                                                 BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH,
                                                 BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH);
-
-                
 
         }
 
