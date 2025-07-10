@@ -96,7 +96,7 @@ public interface pipeType {
                 // connect to another pipe connector
                 if (offset.getValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite()))) != pipeProperties.NODE)
                     level.setBlockAndUpdate(pos.relative(face),
-                            offset = offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
+                             offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
                                     pipeProperties.TRUE));
             } else {
 
