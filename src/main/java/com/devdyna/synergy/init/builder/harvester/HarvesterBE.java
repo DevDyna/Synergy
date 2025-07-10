@@ -53,7 +53,7 @@ public class HarvesterBE extends BaseBE implements EnergyBlock {
     public void tickServer() {
 
         if (canExtract()) {
-            extractFE(1, false);
+            extractFE(25, false);
 
             if (areaFound) {
                 checkBlocks(level);

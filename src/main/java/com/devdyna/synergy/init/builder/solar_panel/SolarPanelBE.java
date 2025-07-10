@@ -31,10 +31,10 @@ public class SolarPanelBE extends BaseBE implements EnergyBlock {
     @Override
     public void tickServer() {
         if (canReceive() && level.isDay() && checkSky()) {
-            increaseFE(128, false);
+            increaseFE(16, false);
         }
         if (canExtract()) {
-            providePowerAdjacent(level, getBlockPos(), cache, 128);
+            providePowerAdjacent(level, getBlockPos(), cache, 16);
         }
     }
 

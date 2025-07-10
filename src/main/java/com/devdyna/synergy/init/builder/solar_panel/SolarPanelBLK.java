@@ -5,8 +5,6 @@ import java.util.Arrays;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.coreBE.BaseBlockBE;
-import com.devdyna.synergy.utils.LogUtil;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -60,7 +58,7 @@ public class SolarPanelBLK extends BaseBlockBE {
         var level = c.getLevel();
         var pos = c.getClickedPos();
 
-        LogUtil.info("pos "+pos);
+        // LogUtil.info("pos "+pos);
 
         for (Direction face : DIRECTIONS) {
 
