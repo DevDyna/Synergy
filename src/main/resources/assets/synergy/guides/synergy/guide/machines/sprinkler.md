@@ -14,6 +14,8 @@ item_ids:
 
 A block that will speed up the growing of crops around it
 
+It require FE to work
+
 <BlockImage id="synergy:sprinkler" scale="4.0"/>
 
 <RecipeFor id="synergy:sprinkler" />

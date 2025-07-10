@@ -1,11 +1,11 @@
 ---
 navigation:
-  title: Synergy - Introduction
+  title: Synergy
   icon: "minecraft:redstone"
   position: 1
 ---
 
-# Synergy - Introduction
+# Synergy - A Magi/Tech mod
 
 A collection of random stuff without a main theme
 

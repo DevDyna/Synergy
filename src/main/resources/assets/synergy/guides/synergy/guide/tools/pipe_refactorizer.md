@@ -3,7 +3,7 @@ navigation:
   title: Pipe Refactorizer
   icon: "synergy:pipe_refactorizer"
   parent: tools.md
-  position: 1
+  position: 3
 categories:
   - tools
 item_ids:

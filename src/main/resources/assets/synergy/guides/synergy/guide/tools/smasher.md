@@ -3,7 +3,7 @@ navigation:
   title: Smasher
   icon: "synergy:smasher"
   parent: tools.md
-  position: 1
+  position: 4
 categories:
   - tools
 item_ids:

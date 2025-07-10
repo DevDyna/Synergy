@@ -1,7 +1,7 @@
 ---
 navigation:
   title: Tools and Gadgets
-  icon: "minecraft:iron_axe"
+  icon: "synergy:green_battery"
   position: 3
 ---
 
