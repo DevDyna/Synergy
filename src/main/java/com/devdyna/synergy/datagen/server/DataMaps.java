@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 
-@SuppressWarnings({ "null", "deprecation" })
+@SuppressWarnings({ "deprecation" })
 public class DataMaps extends DataMapProvider {
 
     public DataMaps(PackOutput o, CompletableFuture<Provider> p) {
