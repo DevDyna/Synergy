@@ -2,24 +2,29 @@ package com.devdyna.synergy.init.builder;
 
 import com.mojang.serialization.MapCodec;
 
-import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DirectionalBlock;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
+@SuppressWarnings("null")
 public class MachineFrame extends DirectionalBlock {
 
     public MachineFrame(Properties p) {
-        super(
-            p
-        //     .mapColor((s) -> {
-        //     return switch (s.getValue(DirectionalBlock.FACING)) {
-        //         case Direction.DOWN -> MapColor.TERRACOTTA_LIGHT_GRAY;
-        //         case Direction.UP -> MapColor.COLOR_GRAY;
-        //         case Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST -> MapColor.TERRACOTTA_GRAY;
-        //         default -> null;
-        //     };
-        // })
-        );
+        super(p);
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext c) {
+        return this.defaultBlockState()
+                .setValue(BlockStateProperties.FACING, c.getClickedFace().getOpposite());
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
+        b.add(BlockStateProperties.FACING);
     }
 
     @Override
