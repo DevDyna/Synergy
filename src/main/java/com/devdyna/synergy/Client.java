@@ -1,5 +1,6 @@
 package com.devdyna.synergy;
 
+import com.devdyna.synergy.client.aoe.HarvesterAOE;
 import com.devdyna.synergy.client.nodes.*;
 import com.devdyna.synergy.init.types.zBlockEntities;
 
@@ -16,6 +17,9 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.ITEM_TRANSFER.get(), ItemTransferDebugRender::new);
         event.registerBlockEntityRenderer(zBlockEntities.ITEM_RETRIEVAL.get(), ItemRetrievalDebugRender::new);
         event.registerBlockEntityRenderer(zBlockEntities.ITEM_PROVIDER.get(), ItemProviderDebugRender::new);
+
+        event.registerBlockEntityRenderer(zBlockEntities.HARVESTER.get(), HarvesterAOE::new);
+
     }
 
 }

@@ -1,5 +1,7 @@
 package com.devdyna.synergy.init;
 
+import static com.devdyna.synergy.Main.ID;
+
 import java.util.function.Supplier;
 
 import com.devdyna.synergy.Main;
@@ -12,6 +14,8 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.IEventBus;
@@ -33,6 +37,7 @@ public class Material {
                 zItems.register(bus);
                 zItemTag.register(bus);
                 zProperties.register(bus);
+                zComponents.register(bus);
         }
 
         /**
@@ -122,10 +127,17 @@ public class Material {
                                 () -> new ItemNameBlockItem(b, new Item.Properties()));
         }
 
-        // public static DeferredBlock<BaseCropBlock> seedBlock(String name, Item
-        // seedItem) {
-        // return zBlocks.zCrop.register(name,
-        // () -> new BaseCropBlock(seedItem));
-        // }
+        public static DeferredHolder<Block, ?> stair(DeferredHolder<Block, ?> b) {
+                return registerItemBlock(b.getRegisteredName().replace(ID + ":", "") + "_stair",
+                                () -> new StairBlock(b.get().defaultBlockState(),
+                                                BlockBehaviour.Properties.ofFullCopy(b.get())),
+                                zBlocks.zBlockStair);
+        }
+
+        public static DeferredHolder<Block, ?> slab(DeferredHolder<Block, ?> b) {
+                return registerItemBlock(b.getRegisteredName().replace(ID + ":", "") + "_slab",
+                                () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(b.get())), zBlocks.zBlockSlab);
+
+        }
 
 }

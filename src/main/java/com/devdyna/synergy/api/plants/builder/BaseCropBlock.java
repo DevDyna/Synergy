@@ -1,7 +1,10 @@
 package com.devdyna.synergy.api.plants.builder;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.devdyna.synergy.api.harvester.HarvestModes;
+import com.devdyna.synergy.api.harvester.PlantHandler;
 import com.devdyna.synergy.api.plants.Harvestable;
 
 import net.minecraft.core.BlockPos;
@@ -21,7 +24,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 
 @SuppressWarnings("null")
-public class BaseCropBlock extends CropBlock implements Harvestable {
+public class BaseCropBlock extends CropBlock implements Harvestable, PlantHandler {
 
     public BaseCropBlock(Properties properties) {
         super(properties.mapColor(MapColor.PLANT)
@@ -59,7 +62,37 @@ public class BaseCropBlock extends CropBlock implements Harvestable {
     }
 
     @Override
-    public IntegerProperty property() {
+    public IntegerProperty getPublicAgeProperty() {
+        return getAgeProperty();
+    }
+
+    @Override
+    public List<ItemStack> itemResult(Level level, BlockPos pos) {
+        return Block.getDrops(level.getBlockState(pos), (ServerLevel) level, pos, null);
+    }
+
+    @Override
+    public void blockReplanted(Level level, BlockPos pos) {
+        level.setBlockAndUpdate(pos, level.getBlockState(pos).setValue(getAgeProperty(), 0));
+    }
+
+    @Override
+    public ArrayList<Block> blockTree() {
+        return null;
+    }
+
+    @Override
+    public HarvestModes getMode() {
+        return HarvestModes.BLOCK_REPLANT;
+    }
+
+    @Override
+    public boolean whenCanBeHarvested(Level level, BlockPos pos) {
+        return isMaxAge(level.getBlockState(pos));
+    }
+
+    @Override
+    public IntegerProperty getProperty() {
         return getAgeProperty();
     }
 

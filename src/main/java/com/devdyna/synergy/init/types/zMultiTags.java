@@ -5,7 +5,7 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.List;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.core.MultiTag;
+import com.devdyna.synergy.api.MultiTag;
 
 public class zMultiTags {
 

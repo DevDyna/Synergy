@@ -51,6 +51,6 @@ public class PipeRefactorizer extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
             TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.tools.refactorizer));
+        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Items.refactorizer));
     }
 }

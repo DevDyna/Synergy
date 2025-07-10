@@ -25,8 +25,8 @@ public class Main {
 
         NeoForge.EVENT_BUS.register(blockEvents.class);
 
+        bus.addListener(Capabilities::register);
         bus.addListener(zDataMaps::register);
-
 
     }
 }

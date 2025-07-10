@@ -13,10 +13,8 @@ public class zItemTag {
 
     public static final TagKey<Item> STONE_SLABS = Material.tagItem("stone_slabs");
 
-    public static final TagKey<Item> VISUALIZER = Material.tagItem("visualizer");
+    // public static final TagKey<Item> SMASHER = Material.tagItem("smasher");
 
-public static final TagKey<Item> SMASHER = Material.tagItem("smasher");
-
-public static final TagKey<Item> AZALEA_BUSHES = Material.tagItem("azalea");
+    public static final TagKey<Item> AZALEA_BUSHES = Material.tagItem("azalea");
 
 }

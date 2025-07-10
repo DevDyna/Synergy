@@ -1,0 +1,139 @@
+package com.devdyna.synergy.init.builder.solar_panel;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.annotation.Nullable;
+
+import com.devdyna.synergy.api.coreBE.BaseBlockBE;
+import com.devdyna.synergy.utils.LogUtil;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
+@SuppressWarnings("null")
+public class SolarPanelBLK extends BaseBlockBE {
+
+    public int NORTH = 0;
+    public int SOUTH = 1;
+    public int EAST = 2;
+    public int WEST = 3;
+
+    protected static ArrayList<BooleanProperty> PROPRTIES = new ArrayList<>(
+            Arrays.asList(
+                    BlockStateProperties.NORTH,
+                    BlockStateProperties.SOUTH,
+                    BlockStateProperties.EAST,
+                    BlockStateProperties.WEST));
+
+    protected static ArrayList<Direction> DIRECTIONS = new ArrayList<>(
+            Arrays.asList(
+                    Direction.NORTH,
+                    Direction.SOUTH,
+                    Direction.EAST,
+                    Direction.WEST));
+
+    public SolarPanelBLK() {
+        super(Properties.of());
+    }
+
+    @Override
+    protected void createBlockStateDefinition(Builder<Block, BlockState> b) {
+        PROPRTIES.forEach(p -> b.add(p));
+    }
+
+    @Override
+    @Nullable
+    public BlockState getStateForPlacement(BlockPlaceContext c) {
+        BlockState state = defaultBlockState();
+        var level = c.getLevel();
+        var pos = c.getClickedPos();
+
+        LogUtil.info("pos "+pos);
+
+        for (Direction face : DIRECTIONS) {
+
+            var offset = level.getBlockState(pos.relative(face));
+            if (offset.is(state.getBlock())) {
+
+                level.setBlockAndUpdate(pos.relative(face),
+                        offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
+                                true));
+            } else {
+
+                // remove connection
+
+                state = state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), false);
+
+            }
+        }
+        return state;
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
+        return Block.box(0, 0, 0, 16, 4, 16);
+    }
+
+    @Override
+    public void destroy(LevelAccessor l, BlockPos p, BlockState s) {
+        for (Direction face : DIRECTIONS) {
+            var offset = l.getBlockState(p.relative(face));
+            if (offset.is(s.getBlock())) {
+                l.setBlock(p.relative(face),
+                        offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
+                                false),
+                        Block.UPDATE_ALL);
+            }
+        }
+
+    }
+
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
+            BlockPos neighborPos, boolean movedByPiston) {
+
+        for (Direction face : DIRECTIONS) {
+
+            var offset = level.getBlockState(pos.relative(face));
+            if (offset.is(state.getBlock())) {
+
+                level.setBlockAndUpdate(pos.relative(face),
+                        offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
+                                true));
+                level.setBlockAndUpdate(pos, state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), true));
+
+            } else {
+
+                level.setBlockAndUpdate(pos, state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), false));
+
+            }
+        }
+
+        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
+        return new SolarPanelBE(p, s);
+    }
+
+    public BooleanProperty getProp(int i) {
+        if (PROPRTIES.size() < i)
+            return null;
+        return PROPRTIES.get(i);
+    }
+
+}

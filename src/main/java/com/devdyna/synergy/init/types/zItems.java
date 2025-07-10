@@ -3,9 +3,11 @@ package com.devdyna.synergy.init.types;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseSeedItem;
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.init.builder.tools.Battery;
+import com.devdyna.synergy.init.builder.tools.BoneMealMixture;
+import com.devdyna.synergy.init.builder.tools.Configurator;
 import com.devdyna.synergy.init.builder.tools.Croock;
 import com.devdyna.synergy.init.builder.tools.PipeRefactorizer;
-import com.devdyna.synergy.init.builder.tools.PipeVisualizer;
 import com.devdyna.synergy.init.builder.tools.Smasher;
 
 import net.minecraft.tags.BlockTags;
@@ -20,19 +22,22 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class zItems {
         public static void register(IEventBus bus) {
-                zItem.register(bus);
+                // zItem.register(bus);
                 zTool.register(bus);
                 zBlockItem.register(bus);
                 zSeeds.register(bus);
                 zCropExtra.register(bus);
                 zFoods.register(bus);
+                zCraftingComponents.register(bus);
         }
 
         // ---------------------------------------------------------------------------------------//
         // DONT USE IT , ONLY FUNCTIONAL
         public static final DeferredRegister.Items zBlockItem = DeferredRegister.createItems(Main.ID);
-        public static final DeferredRegister.Items zItem = DeferredRegister.createItems(Main.ID);
+        // public static final DeferredRegister.Items zItem =
+        // DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zTool = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zCraftingComponents = DeferredRegister.createItems(Main.ID);
 
         //
         public static final DeferredRegister.Items zDecorative = DeferredRegister.createItems(Main.ID);
@@ -91,12 +96,33 @@ public class zItems {
                                                         .build()));
 
         public static final DeferredHolder<Item, Item> PIPE_REFARCTORIZER = zTool
-                        .register(zStatic.PipeStuff.tools.refactorizer, () -> new PipeRefactorizer());
+                        .register(zStatic.Items.refactorizer, () -> new PipeRefactorizer());
 
         public static final DeferredHolder<Item, Item> SMASHER = zTool
                         .register(zStatic.Items.smasher, () -> new Smasher());
 
-        public static final DeferredHolder<Item, Item> DEBUG_VISUALIZER = zTool
-                        .register(zStatic.PipeStuff.tools.visualizer, () -> new PipeVisualizer());
+        public static final DeferredHolder<Item, Item> CONFIGURATOR = zTool
+                        .register(zStatic.Items.configurator, () -> new Configurator());
+
+        public static final DeferredHolder<Item, Item> GREEN_BATTERY = zTool
+                        .register(zStatic.Items.Batteries.green, () -> new Battery(1000));
+
+        public static final DeferredHolder<Item, Item> BLUE_BATTERY = zTool
+                        .register(zStatic.Items.Batteries.blue, () -> new Battery(10000));
+
+        public static final DeferredHolder<Item, Item> RED_BATTERY = zTool
+                        .register(zStatic.Items.Batteries.red, () -> new Battery(100000));
+
+        public static final DeferredHolder<Item, Item> CHIP = zCraftingComponents
+                        .registerSimpleItem(zStatic.Items.CraftingComponents.chip);
+
+        public static final DeferredHolder<Item, Item> RESISTOR = zCraftingComponents
+                        .registerSimpleItem(zStatic.Items.CraftingComponents.resistor);
+
+        public static final DeferredHolder<Item, Item> CONDENSER = zCraftingComponents
+                        .registerSimpleItem(zStatic.Items.CraftingComponents.condenser);
+
+        public static final DeferredHolder<Item, Item> BONE_MEAL_MIXTURE = zTool
+                        .register(zStatic.Items.bone_meal_mixture, () -> new BoneMealMixture());
 
 }

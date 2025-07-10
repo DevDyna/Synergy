@@ -20,7 +20,7 @@ public interface Harvestable {
 
     boolean canBeHarvested(BlockState state);
 
-    IntegerProperty property();
+    IntegerProperty getPublicAgeProperty();
 
     default boolean harvestCrop(Level level, BlockState state, BlockPos pos, Player player, ItemStack tool) {
         if (!level.isClientSide && canBeHarvested(state)) {
@@ -29,7 +29,7 @@ public interface Harvestable {
                     .forEach(item -> ItemHandlerHelper.giveItemToPlayer(player, item));
 
             level.setBlockAndUpdate(pos,
-                    state.setValue(property(), LevelUtil.getRandomValue(maxAge() - 2, level)));
+                    state.setValue(getPublicAgeProperty(), LevelUtil.getRandomValue(maxAge() - 2, level)));
             return true;
         }
         return false;

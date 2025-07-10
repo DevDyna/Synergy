@@ -55,6 +55,10 @@ public class zCreativeTab {
                                                         output.accept((Item) e.get());
                                                 });
 
+                                                zItems.zCraftingComponents.getEntries().forEach(e -> {
+                                                        output.accept((Item) e.get());
+                                                });
+
                                         }).build());
 
 }

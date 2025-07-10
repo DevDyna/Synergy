@@ -1,19 +1,20 @@
 package com.devdyna.synergy.init.builder.crops.cultivated;
 
 import java.util.List;
+import java.util.Random;
 
 import com.devdyna.synergy.api.plants.builder.BaseCropBlock;
 import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.LootParams.Builder;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -33,7 +34,7 @@ public class azalea extends BaseCropBlock {
     };
 
     public azalea() {
-        super(Properties.of());
+        super(Properties.of().mapColor(MapColor.COLOR_GREEN));
     }
 
     @Override
@@ -41,15 +42,14 @@ public class azalea extends BaseCropBlock {
         return SHAPE_BY_AGE[state.getValue(AGE)];
     }
 
-    @Override
-    public List<ItemStack> getItemResult(Level level, BlockState state, BlockPos pos, Player player, ItemStack tool) {
-
-        // TODO convert removing pot
-        return List.of(
-                new ItemStack(zItems.AZALEA_SEEDS, level.random.nextInt(2)),
-                new ItemStack(zItems.SMALL_AZALEA_LEAF, level.random.nextInt(3)+1),
-                new ItemStack(zItems.SMALL_AZALEA_ROOTS, level.random.nextInt(1)+1));
-    }
+    // @Override
+    // public List<ItemStack> getItemResult(Level level, BlockState state, BlockPos
+    // pos, Player player, ItemStack tool) {
+    // return List.of(
+    // new ItemStack(zItems.AZALEA_SEEDS, level.random.nextInt(2)),
+    // new ItemStack(zItems.SMALL_AZALEA_LEAF, level.random.nextInt(3) + 1),
+    // new ItemStack(zItems.SMALL_AZALEA_ROOTS, level.random.nextInt(1) + 1));
+    // }
 
     @Override
     protected ItemLike getBaseSeedId() {
@@ -66,4 +66,19 @@ public class azalea extends BaseCropBlock {
         return false;
     }
 
+    // @Override
+    // public List<ItemStack> itemResult(Level level, BlockPos pos) {
+    // return List.of(
+    // new ItemStack(zItems.AZALEA_SEEDS, level.random.nextInt(2)),
+    // new ItemStack(zItems.SMALL_AZALEA_LEAF, level.random.nextInt(3) + 1),
+    // new ItemStack(zItems.SMALL_AZALEA_ROOTS, level.random.nextInt(1) + 1));
+    // }
+
+    @Override
+    protected List<ItemStack> getDrops(BlockState arg0, Builder arg1) {
+        return List.of(
+                new ItemStack(zItems.AZALEA_SEEDS, new Random().nextInt(2)),
+                new ItemStack(zItems.SMALL_AZALEA_LEAF, new Random().nextInt(3) + 1),
+                new ItemStack(zItems.SMALL_AZALEA_ROOTS, new Random().nextInt(1) + 1));
+    }
 }

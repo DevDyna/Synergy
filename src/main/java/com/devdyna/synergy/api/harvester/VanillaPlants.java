@@ -1,0 +1,185 @@
+package com.devdyna.synergy.api.harvester;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+
+import com.devdyna.synergy.init.types.zBlockTag;
+import com.devdyna.synergy.utils.LevelUtil;
+import com.devdyna.synergy.utils.LogUtil;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BambooStalkBlock;
+import net.minecraft.world.level.block.BeetrootBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CactusBlock;
+import net.minecraft.world.level.block.CocoaBlock;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.NetherWartBlock;
+import net.minecraft.world.level.block.PumpkinBlock;
+import net.minecraft.world.level.block.SugarCaneBlock;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+
+public class VanillaPlants {
+
+    public static List<List<Integer>> getTreeDirections() {
+        ArrayList<List<Integer>> coordinates = new ArrayList<>();
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                for (int z = -1; z <= 1; z++) {
+                    if (x == 0 && y == 0 && z == 0)
+                        continue;
+                    coordinates.add(List.of(x, y, z));
+                }
+            }
+        }
+        return coordinates;
+
+    }
+
+    public static List<ItemStack> checkReplant(Level level, BlockPos pos) {
+
+        var state = level.getBlockState(pos);
+        var block = state.getBlock();
+
+        if (block instanceof CropBlock crop) {
+
+            if (crop.isMaxAge(state)) {
+                // custom crops
+                if (crop instanceof PlantHandler handler) {
+                    level.setBlockAndUpdate(pos, state.setValue(handler.getProperty(), 0));
+                    return Block.getDrops(state, (ServerLevel) level, pos, null);
+
+                } else {
+                    // vanilla crops
+                    try {
+                        if (block instanceof BeetrootBlock)
+                            level.setBlockAndUpdate(pos, state.setValue(BeetrootBlock.AGE, 0));
+                        else
+                            level.setBlockAndUpdate(pos, state.setValue(CropBlock.AGE, 0));
+
+                        return Block.getDrops(state, (ServerLevel) level, pos, null);
+
+                    } catch (Exception e) {
+                        // custom crops with special props(?)
+                        LogUtil.error("Unsupported crop at : " + pos.toString() + " id: " + block.getDescriptionId());
+                        LevelUtil.addParticle((ServerLevel) level, pos.above(), ParticleTypes.ANGRY_VILLAGER, false);
+                    }
+                }
+            }
+        }
+
+        if (block instanceof NetherWartBlock) {
+            if (state.getValue(BlockStateProperties.AGE_3).intValue() == 3) {
+                level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.AGE_3, 0));
+                return Block.getDrops(state, (ServerLevel) level, pos, null);
+            }
+        }
+
+        if (block instanceof SweetBerryBushBlock) {
+            if (state.getValue(BlockStateProperties.AGE_3).intValue() > 1) {
+                level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.AGE_3, 1));
+                return Block.getDrops(state, (ServerLevel) level, pos, null);
+            }
+        }
+
+        if (block instanceof CocoaBlock) {
+            if (state.getValue(BlockStateProperties.AGE_2).intValue() == 2) {
+                level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.AGE_2, 0));
+                return Block.getDrops(state, (ServerLevel) level, pos, null);
+            }
+        }
+
+        return null;
+
+    }
+
+    public static List<ItemStack> checkNoReplant(Level level, BlockPos pos) {
+        var state = level.getBlockState(pos);
+        var block = state.getBlock();
+        if (block instanceof PumpkinBlock || state.is(Blocks.MELON)) {
+            level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+            return Block.getDrops(state, (ServerLevel) level, pos, null);
+        }
+        return null;
+    }
+
+    public static List<ItemStack> checkTree(Level level, BlockPos pos) {
+        var state = level.getBlockState(pos);
+
+        boolean canProcede = false;
+
+        if (state.is(zBlockTag.HARVESTER_TREE_BREAK))
+            for (Direction dir : Direction.values()) {
+                if (level.getBlockState(pos.relative(dir)).is(zBlockTag.HARVESTER_TREE_BREAK)) {
+                    canProcede = true;
+                    break;
+                }
+            }
+
+        if (canProcede) {
+
+            ArrayList<ItemStack> itemList = new ArrayList<>();
+
+            Queue<BlockPos> queue = new LinkedList<>();
+            Set<BlockPos> visited = new HashSet<>();
+
+            queue.add(pos);
+            visited.add(pos);
+
+            while (!queue.isEmpty()) {
+                BlockPos currentPos = queue.poll();
+
+                for (List<Integer> off : getTreeDirections()) {
+                    BlockPos adjacentPos = currentPos.offset(off.get(0), off.get(1), off.get(2));
+                    BlockState adjacentState = level.getBlockState(adjacentPos);
+
+                    if (adjacentState.is(zBlockTag.HARVESTER_TREE_BREAK) && !visited.contains(adjacentPos)) {
+                        queue.add(adjacentPos);
+                        visited.add(adjacentPos);
+                        level.setBlockAndUpdate(adjacentPos, Blocks.AIR.defaultBlockState());
+                        Block.getDrops(adjacentState, (ServerLevel) level, adjacentPos, null)
+                                .forEach(t -> itemList.add(t));
+                    }
+                }
+
+            }
+            level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+            Block.getDrops(state, (ServerLevel) level, pos, null).forEach(t -> itemList.add(t));
+
+            return itemList;
+        }
+
+        return null;
+    }
+
+    public static List<ItemStack> checkBigPlant(Level level, BlockPos pos) {
+
+        var state = level.getBlockState(pos);
+        var block = state.getBlock();
+
+        if (block instanceof CactusBlock || block instanceof SugarCaneBlock || block instanceof BambooStalkBlock) {
+            var tempPos = pos;
+            ArrayList<ItemStack> list = new ArrayList<>();
+            while (level.getBlockState(tempPos.above()).is(block)) {
+                tempPos = tempPos.above();
+                level.setBlockAndUpdate(tempPos, Blocks.AIR.defaultBlockState());
+                Block.getDrops(state, (ServerLevel) level, pos, null).forEach(t -> list.add(t));
+            }
+            return list;
+
+        }
+        return null;
+    }
+}

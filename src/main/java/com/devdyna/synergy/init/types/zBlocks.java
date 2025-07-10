@@ -3,6 +3,7 @@ package com.devdyna.synergy.init.types;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -13,10 +14,13 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.*;
+import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
+import com.devdyna.synergy.init.builder.MachineFrame;
 import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.crops.mushroom.*;
 import com.devdyna.synergy.init.builder.crops.wild.*;
+import com.devdyna.synergy.init.builder.harvester.HarvesterBLK;
 
 public class zBlocks {
         public static void register(IEventBus bus) {
@@ -27,6 +31,8 @@ public class zBlocks {
                 zCrop.register(bus);
                 zWildCrop.register(bus);
                 zDecorative.register(bus);
+                zBlockSlab.register(bus);
+                zBlockStair.register(bus);
                 registerLists();
         }
 
@@ -38,6 +44,8 @@ public class zBlocks {
         public static final DeferredRegister.Blocks zCrop = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zWildCrop = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zDecorative = DeferredRegister.createBlocks(Main.ID);
+        public static final DeferredRegister.Blocks zBlockSlab = DeferredRegister.createBlocks(Main.ID);
+        public static final DeferredRegister.Blocks zBlockStair = DeferredRegister.createBlocks(Main.ID);
 
         // ---------------------------------------------------------------------------------------//
 
@@ -46,6 +54,13 @@ public class zBlocks {
 
         public static final DeferredHolder<Block, ?> SPRINKLER = Material.registerItemBlock(zStatic.Blocks.sprinkler,
                         () -> new SprinklerBLK());
+
+        public static final DeferredHolder<Block, ?> SOLAR_PANEL = Material.registerItemBlock(
+                        zStatic.Blocks.solar_panel,
+                        () -> new SolarPanelBLK());
+
+        public static final DeferredHolder<Block, ?> HARVESTER = Material.registerItemBlock(zStatic.Blocks.harvester,
+                        () -> new HarvesterBLK());
 
         public static final DeferredHolder<Block, ?> PIPE = Material.registerItemBlock(zStatic.PipeStuff.pipe,
                         () -> new pipeBlock());
@@ -89,8 +104,8 @@ public class zBlocks {
         public static final DeferredHolder<Block, ?> WILD_COTTON = Material.registerItemBlock(zStatic.Wild.COTTON,
                         () -> new wild_cotton(), zWildCrop);
 
-        public static final DeferredHolder<Block, ?> INDUSTRIAL_METAL = Material
-                        .registerItemBlock(zStatic.DecorativeBlocks.industrial_metal,
+        public static final DeferredHolder<Block, ?> RUSTIC_METAL = Material
+                        .registerItemBlock(zStatic.DecorativeBlocks.rustic_metal,
                                         () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL)
                                                         .strength(2.5f).mapColor(MapColor.RAW_IRON)),
                                         zDecorative);
@@ -108,30 +123,17 @@ public class zBlocks {
                                                         .strength(1.0f).mapColor(MapColor.SAND)),
                                         zDecorative);
 
-        // public static final DeferredHolder<Block, ?> EXTRACTOR =
-        // Material.registerItemBlock(zStatic.Blocks.extractor,
-        // () -> new Extractor());
+        public static final DeferredHolder<Block, ?> WAXED_PLANKS_SLAB = Material.slab(WAXED_PLANKS);
+        public static final DeferredHolder<Block, ?> WAXED_PLANKS_STAIR = Material.stair(WAXED_PLANKS);
+
+        public static final DeferredHolder<Block, ?> MACHINE_FRAME = Material.registerItemBlock(
+                        zStatic.DecorativeBlocks.machine_frame,
+                        () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)));
 
         // ---------------------------------------------------------------------------------------//
 
-        // public static List<DeferredHolder<Block, ?>> deposit_block = new
-        // ArrayList<>(List.of());
-        // public static List<DeferredHolder<Block, ?>> deposit_ores = new
-        // ArrayList<>(List.of());
-
-        // public static List<DeferredHolder<Block, ?>> generators = new
-        // ArrayList<>(List.of());
-
         public static void registerLists() {
 
-                // TODO NYI
-                // zMultiTags.BLOCKS.forEach(de -> Material.registerItemBlock(
-                // zStatic.Blocks.deposit + "_" + de.suffix(),
-                // () -> new Deposit(), zDepositBlocks));
-
-                // zMultiTags.ORES.forEach(de -> Material.registerItemBlock(
-                // zStatic.Blocks.deposit + "_" + de.suffix(),
-                // () -> new Deposit(), zDepositOres));
         }
 
 }

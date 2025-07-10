@@ -14,7 +14,7 @@ public class zStatic {
         }
 
         public static String wooden_crook = "wooden_crook";
-        public static String area_configurator = "area_configurator";
+        public static String configurator = "configurator";
         public static String smasher = "smasher";
         public static String bone_meal_mixture = "bone_meal_mixture";
         //TODO need to rework
@@ -36,15 +36,17 @@ public class zStatic {
     }
 
     public class DecorativeBlocks {
-        public static String industrial_metal = "industrial_metal";
+        public static String rustic_metal = "rustic_metal";
         public static String waxed_planks = "waxed_planks";
         public static String adobe = "adobe";
+        public static String machine_frame = "machine_frame";
     }
 
     public class Blocks {
         public static String azalea = "azalea";
         public static String sprinkler = "sprinkler";
         public static String harvester = "harvester";
+        public static String solar_panel = "solar_panel";
     }
 
     public class PipeStuff {
@@ -88,9 +90,6 @@ public class zStatic {
             public static String EnergyRetrieval = types.energy + retrieval + node2;
 
             // TODO chem nodes (meka compat)
-        public class tools {
-            public static String refactorizer = pipe + "_refactorizer";
-            public static String visualizer = pipe + "_visualizer";
             public static String GasTransfer = types.chemical + transfer + node2;
             public static String GasProvider = types.chemical + provider + node2;
             public static String GasRetrieval = types.chemical + retrieval + node2;

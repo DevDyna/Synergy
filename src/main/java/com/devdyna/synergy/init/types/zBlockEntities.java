@@ -2,7 +2,9 @@ package com.devdyna.synergy.init.types;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
+import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -27,6 +29,18 @@ public class zBlockEntities {
                                         zStatic.Blocks.sprinkler,
                                         () -> BlockEntityType.Builder.of(SprinklerBE::new,
                                                         zBlocks.SPRINKLER.get()).build(null));
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<HarvesterBE>> HARVESTER = zBE
+                        .register(
+                                        zStatic.Blocks.harvester,
+                                        () -> BlockEntityType.Builder.of(HarvesterBE::new,
+                                                        zBlocks.HARVESTER.get()).build(null));
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SolarPanelBE>> SOLAR_PANEL = zBE
+                        .register(
+                                        zStatic.Blocks.solar_panel,
+                                        () -> BlockEntityType.Builder.of(SolarPanelBE::new,
+                                                        zBlocks.SOLAR_PANEL.get()).build(null));
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ItemTransferBE>> ITEM_TRANSFER = zBE
                         .register(
