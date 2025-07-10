@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:rustic_metal"
+            "items": "synergy:blue_battery"
           },
           {
             "items": "synergy:resistor"

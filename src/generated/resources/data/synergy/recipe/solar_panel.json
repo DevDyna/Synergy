@@ -4,13 +4,13 @@
   "group": "synergy",
   "key": {
     "F": {
-      "item": "synergy:rustic_metal"
+      "item": "synergy:resistor"
     },
     "L": {
       "item": "minecraft:lapis_lazuli"
     },
     "R": {
-      "item": "synergy:resistor"
+      "item": "synergy:blue_battery"
     }
   },
   "pattern": [
@@ -18,7 +18,7 @@
     "FRF"
   ],
   "result": {
-    "count": 8,
+    "count": 1,
     "id": "synergy:solar_panel"
   }
 }
