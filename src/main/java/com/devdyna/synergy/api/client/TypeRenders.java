@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 
@@ -82,7 +83,7 @@ public interface TypeRenders<T> {
                 break;
             case Direction.WEST:
                 start = HarvesterBE.move(start, Direction.EAST, 1);
-                end= HarvesterBE.move(end, Direction.SOUTH, 1);
+                end = HarvesterBE.move(end, Direction.SOUTH, 1);
                 break;
             default:
                 break;
@@ -101,7 +102,19 @@ public interface TypeRenders<T> {
         if (player == null)
             return false;
 
-        var item = player.getMainHandItem();
+        var mainH = player.getMainHandItem();
+        var offH = player.getOffhandItem();
+        ItemStack item;
+
+        if (mainH != null && mainH.is(zItems.CONFIGURATOR)) {
+            item = mainH;
+        } else {
+            if (offH != null && offH.is(zItems.CONFIGURATOR)) {
+                item = offH;
+            } else {
+                return false;
+            }
+        }
 
         if (!item.is(zItems.CONFIGURATOR))
             return false;
