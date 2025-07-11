@@ -86,7 +86,6 @@ public class LevelUtil {
      * @deprecated use Block.getDrops()
      */
     @Deprecated
-    @SuppressWarnings("null")
     public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, float luck) {
 
         Builder builder = new LootParams.Builder((ServerLevel) level);
