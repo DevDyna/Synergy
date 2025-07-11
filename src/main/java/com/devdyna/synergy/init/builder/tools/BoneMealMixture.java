@@ -46,14 +46,15 @@ public class BoneMealMixture extends BoneMealItem {
 
         if (block instanceof NetherWartBlock
                 || ((block instanceof SugarCaneBlock || block instanceof CactusBlock)
-                        && level.getBlockState(pos.above()).isAir() && !level.getBlockState(pos.below().below()).is(block))
+                        && level.getBlockState(pos.above()).isAir()
+                        && !level.getBlockState(pos.below().below()).is(block))
                 || block instanceof VineBlock || (block instanceof StemBlock && state.getValue(StemBlock.AGE) == 7))
 
             if (state.isRandomlyTicking()) {
                 item.shrink(1);
 
                 if (!level.isClientSide) {
-                    LevelUtil.addParticle((ServerLevel) level, pos, ParticleTypes.HAPPY_VILLAGER, true);
+                    LevelUtil.addParticle((ServerLevel) level, pos, ParticleTypes.HAPPY_VILLAGER, true, 10);
 
                     for (int i = 0; i < 10; i++)
                         state.randomTick((ServerLevel) level, pos, random);
@@ -66,7 +67,7 @@ public class BoneMealMixture extends BoneMealItem {
 
         if (block instanceof FlowerBlock) {
             if (!level.isClientSide) {
-                LevelUtil.addParticle((ServerLevel) level, pos, ParticleTypes.HAPPY_VILLAGER, true);
+                LevelUtil.addParticle((ServerLevel) level, pos, ParticleTypes.HAPPY_VILLAGER, true, 10);
                 BlockPos.randomBetweenClosed(random, LevelUtil.getRandomValue(12, level),
                         x - GRASS_SPREAD_WIDTH, y, z - GRASS_SPREAD_WIDTH,
                         x + GRASS_SPREAD_WIDTH, y + GRASS_SPREAD_HEIGHT, z + GRASS_SPREAD_WIDTH).forEach(ps -> {
