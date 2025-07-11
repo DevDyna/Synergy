@@ -1,9 +1,10 @@
 package com.devdyna.synergy.api.client;
 
+import javax.annotation.Nullable;
+
 import com.devdyna.synergy.api.components.ModeTypes;
 import com.devdyna.synergy.api.pipe.pipeProperties;
 import com.devdyna.synergy.api.pipe.pipeType;
-import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zComponents;
 import com.devdyna.synergy.init.types.zItems;
@@ -58,8 +59,7 @@ public interface TypeRenders<T> {
         stack.popPose();
     }
 
-    @SuppressWarnings("deprecation")
-    default void renderDebugBox(BlockEntity be, BlockPos start, BlockPos end, Direction dir, PoseStack stack,
+    default void renderDebugBox(BlockEntity be, BlockPos start, BlockPos end,@Nullable Direction dir, PoseStack stack,
             MultiBufferSource bufferIn) {
 
         var player = be.getLevel().getNearestPlayer(be.getBlockPos().getX(),
@@ -68,26 +68,27 @@ public interface TypeRenders<T> {
 
         VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.lines());
 
-        switch (dir) {
-            case Direction.NORTH:
-                start = HarvesterBE.move(start, Direction.SOUTH, 1);
-                start = HarvesterBE.move(start, Direction.EAST, 1);
-                break;
-            case Direction.SOUTH:
-                start = HarvesterBE.move(start, Direction.EAST, 1);
-                end = HarvesterBE.move(end, Direction.SOUTH, 1);
-                break;
-            case Direction.EAST:
-                end = HarvesterBE.move(end, Direction.SOUTH, 1);
-                end = HarvesterBE.move(end, Direction.EAST, 1);
-                break;
-            case Direction.WEST:
-                start = HarvesterBE.move(start, Direction.EAST, 1);
-                end = HarvesterBE.move(end, Direction.SOUTH, 1);
-                break;
-            default:
-                break;
-        }
+        if (dir != null)
+            switch (dir) {
+                case Direction.NORTH:
+                    start = start.relative( Direction.SOUTH, 1);
+                    start = start.relative( Direction.EAST, 1);
+                    break;
+                case Direction.SOUTH:
+                    start = start.relative( Direction.EAST, 1);
+                    end = end.relative( Direction.SOUTH, 1);
+                    break;
+                case Direction.EAST:
+                    end = end.relative( Direction.SOUTH, 1);
+                    end = end.relative( Direction.EAST, 1);
+                    break;
+                case Direction.WEST:
+                    start = start.relative( Direction.EAST, 1);
+                    end = end.relative( Direction.SOUTH, 1);
+                    break;
+                default:
+                    break;
+            }
 
         if (checkTool(ModeTypes.SHOW_AOE, player, be.getBlockPos())) {
             stack.pushPose();
