@@ -30,13 +30,14 @@ public class SprinklerBE extends BaseBE implements EnergyBlock {
         var z = getBlockPos().getZ();
 
         if (canExtract())
-            BlockPos.randomBetweenClosed(level.random, 3,
+            BlockPos.randomBetweenClosed(level.random, 1,
                     x - radius, y, z - radius,
                     x + radius, y + 2, z + radius)
                     .forEach(pos -> {
                         BlockState state = level.getBlockState(pos);
-                        if (state.isRandomlyTicking() && LevelUtil.chance(25, level)) {
-                            LevelUtil.addParticle((ServerLevel) level, pos, ParticleTypes.HAPPY_VILLAGER, true);
+                        if (state.isRandomlyTicking() && LevelUtil.chance(75, level)) {
+                            if (LevelUtil.chance(25, level))
+                                LevelUtil.addParticle((ServerLevel) level, pos, ParticleTypes.HAPPY_VILLAGER, true);
                             state.randomTick((ServerLevel) level, pos, level.random);
                             extractFE(25, false);
                         }
