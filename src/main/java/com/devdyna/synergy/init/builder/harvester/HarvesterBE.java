@@ -36,7 +36,7 @@ public class HarvesterBE extends BaseBE implements EnergyBlock {
 
     private final Map<Direction, BlockCapabilityCache<IItemHandler, Direction>> cache = new HashMap<>();
 
-    public int radius = 5;
+    public int radius = 4;
 
     public HarvesterBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.HARVESTER.get(), pos, state);
@@ -56,8 +56,10 @@ public class HarvesterBE extends BaseBE implements EnergyBlock {
             extractFE(25, false);
 
             if (areaFound) {
+                level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, true));
                 checkBlocks(level);
             } else {
+                level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, false));
                 calculateArea(level, getBlockState(), getBlockPos());
             }
         }
@@ -139,8 +141,8 @@ public class HarvesterBE extends BaseBE implements EnergyBlock {
 
         ArrayList<Direction> horizontalDirs = getDirPoints(dir);
 
-        return Map.entry(move(relPos, horizontalDirs.get(0), radius - 1),
-                move(move(relPos, horizontalDirs.get(1), radius - 1), dir, (radius - 1) * 2));
+        return Map.entry(move(relPos, horizontalDirs.get(0), radius),
+                move(move(relPos, horizontalDirs.get(1), radius), dir, (radius) * 2));
     }
 
     public ArrayList<Direction> getDirPoints(Direction dir) {
@@ -164,7 +166,7 @@ public class HarvesterBE extends BaseBE implements EnergyBlock {
     public BlockPos getCenter(BlockState state, BlockPos baseBlock) {
         Direction dir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
         BlockPos relPos = baseBlock.relative(dir);
-        return move(relPos, dir, radius - 1);
+        return move(relPos, dir, radius);
     }
 
     public void calculateArea(Level level, BlockState state, BlockPos baseBlock) {

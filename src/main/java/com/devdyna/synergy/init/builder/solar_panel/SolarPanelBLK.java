@@ -30,7 +30,6 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-@SuppressWarnings("null")
 public class SolarPanelBLK extends BaseBlockBE {
 
     public int NORTH = 0;
@@ -58,13 +57,14 @@ public class SolarPanelBLK extends BaseBlockBE {
 
     @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> b) {
+        b.add(BlockStateProperties.ENABLED);
         PROPRTIES.forEach(p -> b.add(p));
     }
 
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext c) {
-        BlockState state = defaultBlockState();
+        BlockState state = defaultBlockState().setValue(BlockStateProperties.ENABLED, false);
         var level = c.getLevel();
         var pos = c.getClickedPos();
 

@@ -14,12 +14,12 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
-@SuppressWarnings("null")
 public class SolarPanelBE extends BaseBE implements EnergyBlock {
 
     private final Map<Direction, BlockCapabilityCache<IEnergyStorage, Direction>> cache = new HashMap<>();
@@ -31,7 +31,10 @@ public class SolarPanelBE extends BaseBE implements EnergyBlock {
     @Override
     public void tickServer() {
         if (canReceive() && level.isDay() && checkSky()) {
+            level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, true));
             increaseFE(64, false);
+        } else {
+            level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, false));
         }
         if (canExtract()) {
             providePowerAdjacent(level, getBlockPos(), cache, 64);

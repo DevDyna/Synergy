@@ -31,12 +31,13 @@ public class HarvesterBLK extends BaseBlockBE {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext c) {
         return this.defaultBlockState()
+                .setValue(BlockStateProperties.ENABLED, false)
                 .setValue(BlockStateProperties.HORIZONTAL_FACING, c.getHorizontalDirection());
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
-        b.add(BlockStateProperties.HORIZONTAL_FACING);
+        b.add(BlockStateProperties.HORIZONTAL_FACING,BlockStateProperties.ENABLED);
     }
 
     @Nullable
