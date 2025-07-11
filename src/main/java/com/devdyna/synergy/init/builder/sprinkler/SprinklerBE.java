@@ -16,7 +16,7 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 @SuppressWarnings("null")
 public class SprinklerBE extends BaseBE implements EnergyBlock {
 
-    private static int radius = 5;
+    private static int radius = 4;
 
     public SprinklerBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.SPRINKLER.get(), pos, state);
@@ -35,7 +35,7 @@ public class SprinklerBE extends BaseBE implements EnergyBlock {
                     x + radius, y + 2, z + radius)
                     .forEach(pos -> {
                         BlockState state = level.getBlockState(pos);
-                        if (state.isRandomlyTicking()) {
+                        if (state.isRandomlyTicking() && LevelUtil.chance(25, level)) {
                             LevelUtil.addParticle((ServerLevel) level, pos, ParticleTypes.HAPPY_VILLAGER, true);
                             state.randomTick((ServerLevel) level, pos, level.random);
                             extractFE(25, false);
@@ -43,7 +43,7 @@ public class SprinklerBE extends BaseBE implements EnergyBlock {
                     });
     }
 
-    public static int getRadius(){
+    public static int getRadius() {
         return radius;
     }
 
