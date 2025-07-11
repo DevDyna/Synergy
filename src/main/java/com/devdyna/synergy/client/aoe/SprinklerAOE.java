@@ -20,7 +20,7 @@ public class SprinklerAOE<T extends SprinklerBE> implements BlockEntityRenderer<
 
         var radius = SprinklerBE.getRadius();
 
-        renderDebugBox(be, new BlockPos(-radius, 0, -radius), new BlockPos(radius, 2, radius), null, stack, bufferIn);
+        renderDebugBox(be, new BlockPos(-radius, 0, -radius), new BlockPos(radius+1, 2, radius+1), null, stack, bufferIn);
 
     }
 
