@@ -26,7 +26,6 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-@SuppressWarnings("null")
 public class pipeBlock extends Block implements pipeType {
 
     public pipeBlock() {
@@ -66,7 +65,7 @@ public class pipeBlock extends Block implements pipeType {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
             TooltipFlag tooltipFlag) {
         tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.pipe + ".desc"));
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.pipe + ".safe"));
+        tooltipComponents.add(Component.translatable(Main.ID + ".safe_building"));
     }
 
 }
