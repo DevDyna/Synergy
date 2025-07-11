@@ -156,16 +156,18 @@ public class LevelUtil {
         return getRandomValue(100, l) <= value;
     }
 
-    /**
-     * require server
-     */
-    public static void addParticle(ServerLevel level, BlockPos pos, ParticleOptions type, boolean isRandom) {
+    public static void addParticle(ServerLevel level, BlockPos pos, ParticleOptions type, boolean isRandom, int count) {
         level.sendParticles(type,
                 (double) pos.getX() + 0.5,
                 (double) pos.getY() + 0.5,
                 (double) pos.getZ() + 0.5,
-                10, (isRandom ? level.random.nextDouble() / 2.5 : 0), (isRandom ? level.random.nextDouble() / 2.5 : 0),
+                count, (isRandom ? level.random.nextDouble() / 2.5 : 0),
+                (isRandom ? level.random.nextDouble() / 2.5 : 0),
                 (isRandom ? level.random.nextDouble() / 2.5 : 0), (isRandom ? level.random.nextDouble() * 0.025 : 0));
+    }
+
+    public static void addParticle(ServerLevel level, BlockPos pos, ParticleOptions type, boolean isRandom) {
+        addParticle(level, pos, type, isRandom, 1);
     }
 
 }
