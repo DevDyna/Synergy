@@ -13,7 +13,7 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-@SuppressWarnings({ "null", "unchecked" })
+@SuppressWarnings({ "unchecked" })
 
 public class DataBlockTag extends BlockTagsProvider {
 
@@ -39,15 +39,13 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.SOLAR_PANEL.get(),
                                                 zBlocks.ADOBE.get(),
                                                 zBlocks.RUSTIC_METAL.get(),
-                                                zBlocks.MACHINE_FRAME.get()
-                                );
+                                                zBlocks.MACHINE_FRAME.get());
 
                 tag(BlockTags.MINEABLE_WITH_AXE)
                                 .add(
                                                 zBlocks.WAXED_PLANKS.get(),
                                                 zBlocks.WAXED_PLANKS_SLAB.get(),
-                                                zBlocks.WAXED_PLANKS_STAIR.get()
-                                );
+                                                zBlocks.WAXED_PLANKS_STAIR.get());
 
                 tag(zBlockTag.MUSHROOMS)
                                 .add(zBlocks.BLUE_CUP_MUSHROOM.get(), zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
@@ -105,7 +103,8 @@ public class DataBlockTag extends BlockTagsProvider {
                                 .addTags(BlockTags.DIRT, Tags.Blocks.SANDS, Tags.Blocks.GRAVELS,
                                                 Tags.Blocks.SANDSTONE_BLOCKS);
 
-                tag(zBlockTag.AOE_RENDER).add(zBlocks.HARVESTER.get());
+                tag(zBlockTag.AOE_RENDER).add(zBlocks.HARVESTER.get(), zBlocks.SPRINKLER.get());
+                
                 tag(zBlockTag.NODE_RENDER).addTag(zBlockTag.NODE);
 
                 tag(zBlockTag.HARVESTER_TREE_BREAK)
