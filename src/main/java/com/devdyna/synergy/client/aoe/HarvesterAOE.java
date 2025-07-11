@@ -9,7 +9,6 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Con
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
-@SuppressWarnings("null")
 public class HarvesterAOE<T extends HarvesterBE> implements BlockEntityRenderer<T>, TypeRenders<T> {
 
     public HarvesterAOE(Context c) {
