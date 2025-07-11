@@ -43,6 +43,10 @@ public class SprinklerBE extends BaseBE implements EnergyBlock {
                     });
     }
 
+    public static int getRadius(){
+        return radius;
+    }
+
     @Override
     public ContainerData getContainerData() {
         return new SimpleContainerData(getMaxFE());
