@@ -32,6 +32,7 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 
+@SuppressWarnings("null")
 public class HarvesterBE extends BaseBE implements EnergyBlock {
 
     private final Map<Direction, BlockCapabilityCache<IItemHandler, Direction>> cache = new HashMap<>();
