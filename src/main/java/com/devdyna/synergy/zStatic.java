@@ -17,7 +17,7 @@ public class zStatic {
         public static String configurator = "configurator";
         public static String smasher = "smasher";
         public static String bone_meal_mixture = "bone_meal_mixture";
-        //TODO need to rework
+        // TODO need to rework
         public static String refactorizer = "pipe_refactorizer";
 
         public class Batteries {
@@ -47,6 +47,9 @@ public class zStatic {
         public static String sprinkler = "sprinkler";
         public static String harvester = "harvester";
         public static String solar_panel = "solar_panel";
+        public static String healer = "healer";
+
+        public static String pipe = "pipe";
     }
 
     public class PipeStuff {

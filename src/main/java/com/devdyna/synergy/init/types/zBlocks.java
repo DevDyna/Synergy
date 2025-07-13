@@ -62,7 +62,7 @@ public class zBlocks {
         public static final DeferredHolder<Block, ?> HARVESTER = Material.registerItemBlock(zStatic.Blocks.harvester,
                         () -> new HarvesterBLK());
 
-        public static final DeferredHolder<Block, ?> PIPE = Material.registerItemBlock(zStatic.PipeStuff.pipe,
+        public static final DeferredHolder<Block, ?> PIPE = Material.registerItemBlock(zStatic.Blocks.pipe,
                         () -> new pipeBlock());
 
         public static final DeferredHolder<Block, ?> ITEM_TRANSFER = Material.registerItemBlock(
@@ -116,7 +116,6 @@ public class zBlocks {
                                                         .strength(1.5f).mapColor(MapColor.COLOR_BROWN),
                                         zDecorative);
 
-        // TODO make a method on Material
         public static final DeferredHolder<Block, ?> ADOBE = Material
                         .DecoBlock(zStatic.DecorativeBlocks.adobe,
                                         BlockBehaviour.Properties.of().sound(SoundType.STONE)
