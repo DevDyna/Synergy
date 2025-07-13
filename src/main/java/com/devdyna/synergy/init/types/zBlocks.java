@@ -105,22 +105,22 @@ public class zBlocks {
                         () -> new wild_cotton(), zWildCrop);
 
         public static final DeferredHolder<Block, ?> RUSTIC_METAL = Material
-                        .registerItemBlock(zStatic.DecorativeBlocks.rustic_metal,
-                                        () -> new DecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)
-                                                        .strength(2.5f).mapColor(MapColor.RAW_IRON)),
+                        .DecoBlock(zStatic.DecorativeBlocks.rustic_metal,
+                                        BlockBehaviour.Properties.of().sound(SoundType.METAL)
+                                                        .strength(2.5f).mapColor(MapColor.RAW_IRON),
                                         zDecorative);
 
         public static final DeferredHolder<Block, ?> WAXED_PLANKS = Material
-                        .registerItemBlock(zStatic.DecorativeBlocks.waxed_planks,
-                                        () -> new DecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOD)
-                                                        .strength(1.5f).mapColor(MapColor.COLOR_BROWN)),
+                        .DecoBlock(zStatic.DecorativeBlocks.waxed_planks,
+                                        BlockBehaviour.Properties.of().sound(SoundType.WOOD)
+                                                        .strength(1.5f).mapColor(MapColor.COLOR_BROWN),
                                         zDecorative);
 
         // TODO make a method on Material
         public static final DeferredHolder<Block, ?> ADOBE = Material
-                        .registerItemBlock(zStatic.DecorativeBlocks.adobe,
-                                        () -> new DecorativeBlock(BlockBehaviour.Properties.of().sound(SoundType.STONE)
-                                                        .strength(1.0f).mapColor(MapColor.SAND)),
+                        .DecoBlock(zStatic.DecorativeBlocks.adobe,
+                                        BlockBehaviour.Properties.of().sound(SoundType.STONE)
+                                                        .strength(1.0f).mapColor(MapColor.SAND),
                                         zDecorative);
 
         public static final DeferredHolder<Block, ?> WAXED_PLANKS_SLAB = Material.slab(WAXED_PLANKS);
@@ -130,6 +130,9 @@ public class zBlocks {
                         zStatic.DecorativeBlocks.machine_frame,
                         () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)));
 
+        public static final DeferredHolder<Block, ?> HEALER = Material.registerItemBlock(
+                        zStatic.Blocks.healer,
+                        () -> new Healer(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.WOOL)));
         // ---------------------------------------------------------------------------------------//
 
         public static void registerLists() {
