@@ -27,6 +27,8 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
  */
 public interface PlantHandler {
 
+    int treeHarvestingBlockLimit = 16384;
+
     /**
      * the result item after be broken a single block
      * <br/>
@@ -166,6 +168,8 @@ public interface PlantHandler {
             queue.add(pos);
             visited.add(pos);
 
+            int checkBlocks = 0;
+
             while (!queue.isEmpty()) {
                 BlockPos currentPos = queue.poll();
 
@@ -181,7 +185,8 @@ public interface PlantHandler {
                                 .forEach(t -> itemList.add(t));
                     }
                 }
-
+                checkBlocks++;
+                if(checkBlocks >= treeHarvestingBlockLimit)break;
             }
             level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
             Block.getDrops(state, (ServerLevel) level, pos, null).forEach(t -> itemList.add(t));

@@ -33,6 +33,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class VanillaPlants {
 
+    static int treeHarvestingBlockLimit = 16384;
+
     public static List<List<Integer>> getTreeDirections() {
         ArrayList<List<Integer>> coordinates = new ArrayList<>();
         for (int x = -1; x <= 1; x++) {
@@ -138,6 +140,8 @@ public class VanillaPlants {
             queue.add(pos);
             visited.add(pos);
 
+            int checkBlocks = 0;
+
             while (!queue.isEmpty()) {
                 BlockPos currentPos = queue.poll();
 
@@ -153,7 +157,9 @@ public class VanillaPlants {
                                 .forEach(t -> itemList.add(t));
                     }
                 }
-
+                checkBlocks++;
+                if (checkBlocks >= treeHarvestingBlockLimit)
+                    break;
             }
             level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
             Block.getDrops(state, (ServerLevel) level, pos, null).forEach(t -> itemList.add(t));
