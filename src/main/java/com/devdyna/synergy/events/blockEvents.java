@@ -14,6 +14,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 
 public class blockEvents {
+    
     @SubscribeEvent
     public static void potAction(PlayerInteractEvent.RightClickBlock event) {
         var pos = event.getPos();
