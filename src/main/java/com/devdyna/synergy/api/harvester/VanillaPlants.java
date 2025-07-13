@@ -33,7 +33,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class VanillaPlants {
 
-    static int treeHarvestingBlockLimit = 16384;
+    static int treeHarvestingBlockLimit = 2048;
 
     public static List<List<Integer>> getTreeDirections() {
         ArrayList<List<Integer>> coordinates = new ArrayList<>();

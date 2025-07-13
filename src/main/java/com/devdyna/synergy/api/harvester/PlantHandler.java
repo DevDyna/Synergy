@@ -27,7 +27,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
  */
 public interface PlantHandler {
 
-    int treeHarvestingBlockLimit = 16384;
+    int treeHarvestingBlockLimit = 2048;
 
     /**
      * the result item after be broken a single block
