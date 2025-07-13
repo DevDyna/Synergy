@@ -25,7 +25,6 @@ import net.minecraft.world.level.block.SugarCaneBlock;
 import net.minecraft.world.level.block.VineBlock;
 import net.neoforged.neoforge.common.CommonHooks;
 
-@SuppressWarnings("null")
 public class BoneMealMixture extends BoneMealItem {
 
     public BoneMealMixture() {
