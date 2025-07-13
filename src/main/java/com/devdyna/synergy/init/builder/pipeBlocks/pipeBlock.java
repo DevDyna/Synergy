@@ -64,7 +64,7 @@ public class pipeBlock extends Block implements pipeType {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
             TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.PipeStuff.pipe + ".desc"));
+        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Blocks.pipe + ".desc"));
         tooltipComponents.add(Component.translatable(Main.ID + ".safe_building"));
     }
 
