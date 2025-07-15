@@ -5,6 +5,7 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.function.Supplier;
 
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.init.builder.DecorativeBlock;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -17,11 +18,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredRegister.Blocks;
 
 public class Material {
         public static void register(IEventBus bus) {
@@ -138,6 +141,10 @@ public class Material {
                 return registerItemBlock(b.getRegisteredName().replace(ID + ":", "") + "_slab",
                                 () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(b.get())), zBlocks.zBlockSlab);
 
+        }
+
+        public static DeferredHolder<Block, ?> DecoBlock(String name, Properties prop, Blocks blockSets) {
+                return registerItemBlock(name, () -> new DecorativeBlock(prop), blockSets);
         }
 
 }
