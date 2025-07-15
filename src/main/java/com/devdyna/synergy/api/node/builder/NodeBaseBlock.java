@@ -28,7 +28,6 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-@SuppressWarnings("null")
 public class NodeBaseBlock extends BaseBlockBE implements nodeType {
 
     public NodeBaseBlock() {
