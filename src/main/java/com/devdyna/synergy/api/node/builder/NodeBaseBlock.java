@@ -1,5 +1,7 @@
 package com.devdyna.synergy.api.node.builder;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
