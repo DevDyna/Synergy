@@ -1,17 +1,32 @@
 {
   "variants": {
-    "facing=east": {
+    "enabled=false,facing=east": {
       "model": "synergy:block/harvester",
       "y": 90
     },
-    "facing=north": {
+    "enabled=false,facing=north": {
       "model": "synergy:block/harvester"
     },
-    "facing=south": {
+    "enabled=false,facing=south": {
       "model": "synergy:block/harvester",
       "y": 180
     },
-    "facing=west": {
+    "enabled=false,facing=west": {
+      "model": "synergy:block/harvester",
+      "y": 270
+    },
+    "enabled=true,facing=east": {
+      "model": "synergy:block/harvester",
+      "y": 90
+    },
+    "enabled=true,facing=north": {
+      "model": "synergy:block/harvester"
+    },
+    "enabled=true,facing=south": {
+      "model": "synergy:block/harvester",
+      "y": 180
+    },
+    "enabled=true,facing=west": {
       "model": "synergy:block/harvester",
       "y": 270
     }
