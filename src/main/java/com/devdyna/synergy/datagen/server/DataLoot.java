@@ -55,27 +55,26 @@ public class DataLoot extends BlockLootSubProvider {
                 return blocks;
         }
 
-        // @SuppressWarnings("unchecked")
-        // private List<Block> getList(DeferredRegister.Blocks c) {
-        // return (List<Block>)
-        // c.getEntries().stream().map(DeferredHolder::get).toList();
-        // }
-
         @Override
         protected void generate() {
-                dropSelf(zBlocks.MACHINE_FRAME.get());
-                dropSelf(zBlocks.PIPE.get());
-                dropSelf(zBlocks.ITEM_TRANSFER.get());
-                dropSelf(zBlocks.ITEM_PROVIDER.get());
-                dropSelf(zBlocks.ITEM_RETRIEVAL.get());
-                dropSelf(zBlocks.SOLAR_PANEL.get());
-                dropSelf(zBlocks.HARVESTER.get());
+
+                var dropSelfBlocks = List.of(
+                                zBlocks.MACHINE_FRAME,
+                                zBlocks.PIPE,
+                                zBlocks.ITEM_TRANSFER,
+                                zBlocks.ITEM_PROVIDER,
+                                zBlocks.ITEM_RETRIEVAL,
+                                zBlocks.SOLAR_PANEL,
+                                zBlocks.HARVESTER,
+                                zBlocks.SPRINKLER,
+                                zBlocks.HEALER);
+                dropSelfBlocks.forEach(b -> dropSelf(b.get()));
 
                 zBlocks.zBlockSlab.getEntries().forEach(b -> dropSelf(b.get()));
                 zBlocks.zBlockStair.getEntries().forEach(b -> dropSelf(b.get()));
 
                 azalea();
-                dropSelf(zBlocks.SPRINKLER.get());
+
                 zBlocks.zDecorative.getEntries().forEach(b -> dropSelf(b.get()));
 
                 cropDrop7(zBlocks.RICE.get(), zItems.RICE_SEED.get(),
