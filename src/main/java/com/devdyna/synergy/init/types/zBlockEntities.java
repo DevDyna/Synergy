@@ -6,6 +6,7 @@ import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBE;
+import com.devdyna.synergy.init.builder.windStuff.fan.FanBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -59,5 +60,12 @@ public class zBlockEntities {
                                         zStatic.PipeStuff.nodes.ItemRetrieval,
                                         () -> BlockEntityType.Builder.of(ItemRetrievalBE::new,
                                                         zBlocks.ITEM_RETRIEVAL.get()).build(null));
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FanBE>> FAN = zBE
+                        .register(
+                                        zStatic.Blocks.fan,
+                                        () -> BlockEntityType.Builder.of(FanBE::new,
+                                                        zBlocks.FAN.get()).build(null));
+
 
 }
