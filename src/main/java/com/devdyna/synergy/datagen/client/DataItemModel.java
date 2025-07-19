@@ -28,7 +28,8 @@ public class DataItemModel extends ItemModelProvider {
                                 zBlocks.WILD_COTTON.get().asItem(),
                                 zBlocks.WILD_RICE.get().asItem());
 
-                // zItems.zItem.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this));
+                // zItems.zItem.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(),
+                // this));
                 zItems.zCropExtra.getEntries()
                                 .forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/results/"));
                 zItems.zFoods.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "foods/"));
@@ -66,6 +67,10 @@ public class DataItemModel extends ItemModelProvider {
                                 modLoc("block/harvester/side"), modLoc("block/harvester/front"),
                                 modLoc("block/harvester/bottom"), modLoc("block/harvester/top"));
 
+                cubeBottomTop(zBlocks.FAN.get().getDescriptionId().replace("block." + ID + ".", ""),
+                                modLoc("block/fan/side"), modLoc("block/fan/off"),
+                                modLoc("block/fan/back"));
+
                 zBlocks.zBlockSlab.getEntries().forEach(bk -> slab(
                                 bk.getRegisteredName().replace(ID + ":block/", ""), modLoc("block/decorative/"
                                                 + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
@@ -94,13 +99,18 @@ public class DataItemModel extends ItemModelProvider {
                                                                 "").replace("_stair",
                                                                                 ""))));
 
-
-
                 cubeBottomTop(zBlocks.MACHINE_FRAME.getRegisteredName(),
-                                                modLoc("block/harvester/side"), modLoc("block/harvester/bottom"),
-                                                modLoc("block/harvester/top"));
+                                modLoc("block/harvester/side"), modLoc("block/harvester/bottom"),
+                                modLoc("block/harvester/top"));
 
+                simpleFullBlock(zBlocks.HEALER.get(), "");
 
+        }
+
+        private void simpleFullBlock(Block b, String prefix) {
+                cubeAll(b.getDescriptionId().replace("block." + ID + ".", ""),
+                                modLoc("block/" + prefix
+                                                + b.getDescriptionId().replace("block." + ID + ".", "")));
         }
 
         private void node(DeferredHolder<Block, ?> b, String color) {

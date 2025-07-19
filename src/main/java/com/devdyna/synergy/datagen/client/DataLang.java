@@ -64,7 +64,7 @@ public class DataLang extends LanguageProvider {
                 // pipe stuff
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".desc",
                                 TIP_COLOR + "Can connected at any #synergy:can_connect");
-                                
+
                 add(Main.ID + "." + zStatic.PipeStuff.pipe + ".extend",
                                 TIP_COLOR + "Can be extended using pipes");
 
@@ -94,6 +94,11 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".safe_building", TIP_COLOR + "Safe for decoration");
                 add(Main.ID + "." + zStatic.Blocks.sprinkler, TIP_COLOR + "Randomly speed the grow of crops around");
                 add(Main.ID + ".crafting_ingredient", TIP_COLOR + "Crafting components");
+
+                add(Main.ID + "." + zStatic.Blocks.healer,
+                                TIP_COLOR + "Heal and remove fire effect at all entities above it");
+
+                add(Main.ID + "." + zStatic.Blocks.fan, TIP_COLOR + "When powered it can generate wind");
 
         }
 

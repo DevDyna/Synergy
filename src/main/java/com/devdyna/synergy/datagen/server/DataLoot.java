@@ -67,7 +67,8 @@ public class DataLoot extends BlockLootSubProvider {
                                 zBlocks.SOLAR_PANEL,
                                 zBlocks.HARVESTER,
                                 zBlocks.SPRINKLER,
-                                zBlocks.HEALER);
+                                zBlocks.HEALER,
+                                zBlocks.FAN);
                 dropSelfBlocks.forEach(b -> dropSelf(b.get()));
 
                 zBlocks.zBlockSlab.getEntries().forEach(b -> dropSelf(b.get()));

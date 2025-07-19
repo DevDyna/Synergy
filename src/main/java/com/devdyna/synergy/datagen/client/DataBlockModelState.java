@@ -8,14 +8,17 @@ import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.utils.DataGenUtil;
 
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class DataBlockModelState extends BlockStateProvider {
@@ -33,9 +36,11 @@ public class DataBlockModelState extends BlockStateProvider {
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
                 pipe(zBlocks.PIPE.get());
 
-                simpleBlock2(zBlocks.ADOBE.get());
-                simpleBlock2(zBlocks.RUSTIC_METAL.get());
-                simpleBlock2(zBlocks.WAXED_PLANKS.get());
+                simpleBlockDecorative(zBlocks.ADOBE.get());
+                simpleBlockDecorative(zBlocks.RUSTIC_METAL.get());
+                simpleBlockDecorative(zBlocks.WAXED_PLANKS.get());
+
+                simpleFullBlock(zBlocks.HEALER.get(), "");
 
                 crop(zBlocks.RICE.get(), 7, true, CropBlock.AGE);
                 crop(zBlocks.CAVE_WHEAT.get(), 5, true, BaseShortCropBlock.AGE);
@@ -46,6 +51,8 @@ public class DataBlockModelState extends BlockStateProvider {
                 crossORcropStatic(zBlocks.WILD_CAVE_WHEAT.get(), true, "block/crops/cave_wheat/5");
                 crossORcropStatic(zBlocks.WILD_COTTON.get(), false, "block/crops/cotton/5");
                 crossORcropStatic(zBlocks.WILD_RICE.get(), true, "block/crops/rice/7");
+
+                fan(zBlocks.FAN.get());
 
                 horizontalBlock(zBlocks.HARVESTER.get(), models()
                                 .orientableWithBottom(
@@ -75,9 +82,31 @@ public class DataBlockModelState extends BlockStateProvider {
 
         }
 
-        private void simpleBlock2(Block b) {
+        private void simpleBlockDecorative(Block b) {
+                simpleFullBlock(b, "decorative/");
+        }
+
+        private void simpleFullBlock(Block b, String prefix) {
                 simpleBlock(b, models().cubeAll(b.getDescriptionId().replace("block." + ID + ".", ""),
-                                modLoc("block/decorative/" + b.getDescriptionId().replace("block." + ID + ".", ""))));
+                                modLoc("block/" + prefix
+                                                + b.getDescriptionId().replace("block." + ID + ".", ""))));
+        }
+
+        private void fan(Block b) {
+                this.getVariantBuilder(b).forAllStates((state) -> {
+                        Direction dir = state.getValue(BlockStateProperties.FACING);
+                        boolean isEnable = state.getValue(BlockStateProperties.ENABLED);
+                        return ConfiguredModel.builder().modelFile(models().cubeBottomTop(
+                                        zBlocks.FAN.get().getDescriptionId().replace("block." + ID + ".", "")
+                                                        +"_"+ (isEnable ? "on" : "off"),
+                                        modLoc("block/fan/side"), modLoc("block/fan/back"),
+                                        modLoc("block/fan/" + (isEnable ? "on" : "off"))))
+                                        .rotationX(dir == Direction.DOWN ? 180
+                                                        : (dir.getAxis().isHorizontal() ? 90 : 0))
+                                        .rotationY(dir.getAxis().isVertical() ? 0
+                                                        : ((int) dir.toYRot() + 180) % 360)
+                                        .build();
+                });
         }
 
         private void pipe(Block b) {
