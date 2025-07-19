@@ -27,7 +27,7 @@ A bunch of Magic-Tech and fun-made gadgets
 
 ### Machines&Blocks
 - [x] Sprinkler
-- [ ] Healer
+- [x] Healer
 - [ ] Fluid nodes
 - [ ] (Meka) Gas nodes
 - [ ] Tiered/Stacked nodes
