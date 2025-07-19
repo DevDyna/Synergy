@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.capabilities;
+package com.devdyna.synergy.api.beLogic;
 
 import net.minecraft.world.inventory.ContainerData;
 import net.neoforged.neoforge.energy.EnergyStorage;

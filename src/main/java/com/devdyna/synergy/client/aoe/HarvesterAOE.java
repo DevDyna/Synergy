@@ -19,12 +19,12 @@ public class HarvesterAOE<T extends HarvesterBE> implements BlockEntityRenderer<
     public void render(T be, float partialTicks, PoseStack stack, MultiBufferSource bufferIn,
             int combinedLightsIn, int combinedOverlayIn) {
 
-        var points = be.getPoints(be.getLevel(), be.getBlockState(), BlockPos.ZERO);
-        var start = be.getStartPoit(points);
-        var end = be.getEndPoit(points);
         var dir = be.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
+        var points = be.getHorizontalPoints(be.getLevel(), BlockPos.ZERO, dir);
+        var start = be.getStartPoint(points);
+        var end = be.getEndPoint(points);
 
-        renderDebugBox(be, start, end,dir, stack, bufferIn);
+        renderDebugBox(be, start, end, dir, stack, bufferIn);
 
     }
 

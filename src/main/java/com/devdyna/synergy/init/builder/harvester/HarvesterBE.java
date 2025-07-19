@@ -1,21 +1,17 @@
 package com.devdyna.synergy.init.builder.harvester;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import com.devdyna.synergy.api.capabilities.EnergyBlock;
+import java.util.*;
+import com.devdyna.synergy.api.beLogic.EnergyBlock;
+import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.coreBE.BaseBE;
 import com.devdyna.synergy.api.harvester.PlantHandler;
 import com.devdyna.synergy.api.harvester.VanillaPlants;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
+import com.devdyna.synergy.utils.ColorUtil;
 import com.devdyna.synergy.utils.LevelUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -32,38 +28,44 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 
-@SuppressWarnings("null")
-public class HarvesterBE extends BaseBE implements EnergyBlock {
+public class HarvesterBE extends BaseBE implements EnergyBlock, AreaOfEffect {
 
     private final Map<Direction, BlockCapabilityCache<IItemHandler, Direction>> cache = new HashMap<>();
 
-    public int radius = 4;
-
     public HarvesterBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.HARVESTER.get(), pos, state);
+        var random = new Random();
+
+        var color = ColorUtil.colorfulColorList.get(random.nextInt(ColorUtil.colorfulColorList.size()));
+
+        rgbColor = List.of(color.getRed(), color.getGreen(), color.getBlue());
     }
 
-    int i;
+    int i = 0;
     List<BlockPos> area = null;
-    boolean areaFound = false;
-    boolean toggle = false;
+    boolean soundToggle = false;
+    List<Integer> rgbColor;
 
     int delay = 5;
 
     @Override
     public void tickServer() {
 
-        if (canExtract()) {
+        level.setBlockAndUpdate(getBlockPos(),
+                getBlockState().setValue(BlockStateProperties.ENABLED,
+                        area != null && canExtract() && !level.hasNeighborSignal(getBlockPos())));
+
+        if (area == null) {
+            area = getAreaSelection(level, getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING),
+                    getBlockPos());
+        }
+
+        if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
+            checkBlocks(level);
             extractFE(25, false);
 
-            if (areaFound) {
-                level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, true));
-                checkBlocks(level);
-            } else {
-                level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, false));
-                calculateArea(level, getBlockState(), getBlockPos());
-            }
         }
+
     }
 
     public List<ItemStack> tryHarvestAndGetDrops(Level level, BlockPos pos) {
@@ -136,52 +138,13 @@ public class HarvesterBE extends BaseBE implements EnergyBlock {
 
     }
 
-    public Entry<BlockPos, BlockPos> getPoints(Level level, BlockState state, BlockPos baseBlock) {
-        Direction dir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-        BlockPos relPos = baseBlock.relative(dir);
-
-        ArrayList<Direction> horizontalDirs = getDirPoints(dir);
-
-        return Map.entry(move(relPos, horizontalDirs.get(0), radius),
-                move(move(relPos, horizontalDirs.get(1), radius), dir, (radius) * 2));
-    }
-
-    public ArrayList<Direction> getDirPoints(Direction dir) {
-        ArrayList<Direction> horizontalDirs = new ArrayList<>(
-                Arrays.asList(Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST));
-
-        for (Direction axis : Direction.Plane.HORIZONTAL)
-            if (axis == dir || axis == dir.getOpposite())
-                horizontalDirs.remove(axis);
-        return horizontalDirs;
-    }
-
-    public BlockPos getStartPoit(Entry<BlockPos, BlockPos> map) {
-        return map.getKey();
-    }
-
-    public BlockPos getEndPoit(Entry<BlockPos, BlockPos> map) {
-        return map.getValue();
-    }
-
-    public BlockPos getCenter(BlockState state, BlockPos baseBlock) {
-        Direction dir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-        BlockPos relPos = baseBlock.relative(dir);
-        return move(relPos, dir, radius);
-    }
-
-    public void calculateArea(Level level, BlockState state, BlockPos baseBlock) {
-        var points = getPoints(level, state, baseBlock);
-        area = getAreaSelection(getStartPoit(points), getEndPoit(points));
-        i = 0;
-        areaFound = true;
-    }
-
     private void checkBlocks(Level level) {
         int size = area.size();
 
         if (i < size && level.getGameTime() % delay == 0) {
-            LevelUtil.addParticle((ServerLevel) level, area.get(i), ParticleTypes.END_ROD, false);
+
+            LevelUtil.addDustParticle(rgbColor.get(0), rgbColor.get(1), rgbColor.get(2),
+                    (ServerLevel) level, area.get(i), false, 4);
 
             var items = tryHarvestAndGetDrops(level, area.get(i));
 
@@ -190,9 +153,9 @@ public class HarvesterBE extends BaseBE implements EnergyBlock {
                     tryExportOrDrop(itemStack, level, getBlockPos(), cache);
 
             level.playSound(null, getBlockPos(),
-                    (toggle ? SoundEvents.COPPER_BULB_TURN_ON : SoundEvents.COPPER_BULB_TURN_OFF),
+                    (soundToggle ? SoundEvents.COPPER_BULB_TURN_ON : SoundEvents.COPPER_BULB_TURN_OFF),
                     SoundSource.BLOCKS);
-            toggle = !toggle;
+            soundToggle = !soundToggle;
             i++;
         }
 
@@ -206,16 +169,6 @@ public class HarvesterBE extends BaseBE implements EnergyBlock {
         return actualPos.relative(dir, times);
     }
 
-    public List<BlockPos> getAreaSelection(BlockPos start, BlockPos end) {
-        List<BlockPos> slots = new ArrayList<>();
-
-        for (int x = Math.min(start.getX(), end.getX()); x <= Math.max(start.getX(), end.getX()); x++)
-            for (int z = Math.min(start.getZ(), end.getZ()); z <= Math.max(start.getZ(), end.getZ()); z++)
-                slots.add(new BlockPos(x, start.getY(), z));
-
-        return slots;
-    }
-
     @Override
     public ContainerData getContainerData() {
         return new SimpleContainerData(getMaxFE());
@@ -224,6 +177,16 @@ public class HarvesterBE extends BaseBE implements EnergyBlock {
     @Override
     public EnergyStorage getCapEnergy() {
         return getData(zHandlers.ENERGY_STORAGE);
+    }
+
+    @Override
+    public int radius() {
+        return 4;
+    }
+
+    @Override
+    public int height() {
+        return 1;
     }
 
 }

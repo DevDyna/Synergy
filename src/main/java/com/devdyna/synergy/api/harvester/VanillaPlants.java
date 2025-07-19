@@ -76,7 +76,7 @@ public class VanillaPlants {
                     } catch (Exception e) {
                         // custom crops with special props(?)
                         LogUtil.error("Unsupported crop at : " + pos.toString() + " id: " + block.getDescriptionId());
-                        LevelUtil.addParticle((ServerLevel) level, pos.above(), ParticleTypes.ANGRY_VILLAGER, false);
+                        LevelUtil.addParticle(ParticleTypes.ANGRY_VILLAGER, (ServerLevel) level, pos.above(), false);
                     }
                 }
             }

@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.builder.solar_panel;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.devdyna.synergy.api.capabilities.EnergyBlock;
+import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.coreBE.BaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
@@ -20,7 +20,6 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
-@SuppressWarnings("null")
 public class SolarPanelBE extends BaseBE implements EnergyBlock {
 
     private final Map<Direction, BlockCapabilityCache<IEnergyStorage, Direction>> cache = new HashMap<>();
@@ -31,12 +30,14 @@ public class SolarPanelBE extends BaseBE implements EnergyBlock {
 
     @Override
     public void tickServer() {
-        if (canReceive() && level.isDay() && checkSky()) {
-            level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, true));
+
+        level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED,
+                canReceive() && level.isDay() && checkSky() && !level.hasNeighborSignal(getBlockPos())));
+
+        if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
             increaseFE(64, false);
-        } else {
-            level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, false));
         }
+
         if (canExtract()) {
             providePowerAdjacent(level, getBlockPos(), cache, 64);
         }

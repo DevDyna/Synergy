@@ -53,7 +53,7 @@ public class BoneMealMixture extends BoneMealItem {
                 item.shrink(1);
 
                 if (!level.isClientSide) {
-                    LevelUtil.addParticle((ServerLevel) level, pos, ParticleTypes.HAPPY_VILLAGER, true,
+                    LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER,(ServerLevel) level, pos, true,
                             LevelUtil.getRandomValue(7, level) + 5);
 
                     for (int i = 0; i < 10; i++)
@@ -68,7 +68,7 @@ public class BoneMealMixture extends BoneMealItem {
 
         if (block instanceof FlowerBlock) {
             if (!level.isClientSide) {
-                LevelUtil.addParticle((ServerLevel) level, pos, ParticleTypes.HAPPY_VILLAGER, true,
+                LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER,(ServerLevel) level, pos,  true,
                         LevelUtil.getRandomValue(7, level) + 3);
                 BlockPos.randomBetweenClosed(random, LevelUtil.getRandomValue(12, level),
                         x - GRASS_SPREAD_WIDTH, y, z - GRASS_SPREAD_WIDTH,

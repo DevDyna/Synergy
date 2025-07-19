@@ -1,10 +1,13 @@
 package com.devdyna.synergy.utils;
 
 import java.util.List;
+import java.util.Random;
+
 import com.devdyna.synergy.init.Material;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -23,6 +26,7 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootParams.Builder;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.phys.Vec3;
 
 public class LevelUtil {
     public static boolean isDimension(Level level, ResourceKey<Level> dim) {
@@ -155,7 +159,7 @@ public class LevelUtil {
         return getRandomValue(100, l) <= value;
     }
 
-    public static void addParticle(ServerLevel level, BlockPos pos, ParticleOptions type, boolean isRandom, int count) {
+    public static void addParticle(ParticleOptions type, ServerLevel level, BlockPos pos, boolean isRandom, int count) {
         level.sendParticles(type,
                 (double) pos.getX() + 0.5,
                 (double) pos.getY() + 0.5,
@@ -165,8 +169,73 @@ public class LevelUtil {
                 (isRandom ? level.random.nextDouble() / 2.5 : 0), (isRandom ? level.random.nextDouble() * 0.025 : 0));
     }
 
-    public static void addParticle(ServerLevel level, BlockPos pos, ParticleOptions type, boolean isRandom) {
-        addParticle(level, pos, type, isRandom, 1);
+    public static void addParticle(ParticleOptions type, ServerLevel level, BlockPos pos, boolean isRandom) {
+        addParticle(type, level, pos, isRandom, 1);
     }
+
+    /**
+     * @param red   0 -> 255
+     * @param green 0 -> 255
+     * @param blue  0 -> 255
+     */
+    public static void addDustParticle(int red, int green, int blue, ServerLevel level, BlockPos pos, boolean isRandom,
+            int count) {
+
+        level.sendParticles(
+                new DustParticleOptions(Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(), 1.0F),
+                (double) pos.getX() + 0.5,
+                (double) pos.getY() + 0.5,
+                (double) pos.getZ() + 0.5,
+                count, (isRandom ? level.random.nextDouble() / 2.5 : 0),
+                (isRandom ? level.random.nextDouble() / 2.5 : 0),
+                (isRandom ? level.random.nextDouble() / 2.5 : 0), (isRandom ? level.random.nextDouble() * 0.025 : 0));
+    }
+
+    /**
+     * @param rgbColor like 16711680 [redstone | RGB(255, 0, 0)]
+     */
+    public static void addDustParticle(int rgbColor, ServerLevel level, BlockPos pos, boolean isRandom,
+            int count) {
+
+        level.sendParticles(
+                new DustParticleOptions(Vec3.fromRGB24(rgbColor).toVector3f(), 1.0F),
+                (double) pos.getX() + 0.5,
+                (double) pos.getY() + 0.5,
+                (double) pos.getZ() + 0.5,
+                count, (isRandom ? level.random.nextDouble() / 2.5 : 0),
+                (isRandom ? level.random.nextDouble() / 2.5 : 0),
+                (isRandom ? level.random.nextDouble() / 2.5 : 0), (isRandom ? level.random.nextDouble() * 0.025 : 0));
+    }
+
+    /**
+     * spawn a dust particle that will change color randomly
+     */
+    public static void addDustParticle(ServerLevel level, BlockPos pos, boolean isRandom) {
+        var random = new Random();
+        addDustParticle(random.nextInt(256), random.nextInt(256), random.nextInt(256), level, pos, isRandom, 1);
+    }
+
+    /**
+     * spawn a dust particle that will change color like rainbow!
+     */
+    public static void addRainbowDustParticle(ServerLevel level, BlockPos pos, boolean isRandom) {
+        addDustParticle(ColorUtil.rgbColor(level), level, pos, isRandom, 1);
+    }
+
+    /**
+     * spawn a dust particle that will change color like rainbow!
+     */
+    public static void addRainbowDustParticle(ServerLevel level, BlockPos pos, boolean isRandom,int count) {
+        addDustParticle(ColorUtil.rgbColor(level), level, pos, isRandom, count);
+    }
+
+    /**
+     * spawn a dust particle that will change color like rainbow!
+     */
+    public static void addRainbowDustParticle(int delay, ServerLevel level, BlockPos pos, boolean isRandom, int count) {
+        addDustParticle(ColorUtil.rgbColor(level, delay), level, pos, isRandom, count);
+    }
+
+
 
 }

@@ -59,7 +59,7 @@ public interface TypeRenders<T> {
         stack.popPose();
     }
 
-    default void renderDebugBox(BlockEntity be, BlockPos start, BlockPos end,@Nullable Direction dir, PoseStack stack,
+    default void renderDebugBox(BlockEntity be, BlockPos start, BlockPos end, @Nullable Direction dir, PoseStack stack,
             MultiBufferSource bufferIn) {
 
         var player = be.getLevel().getNearestPlayer(be.getBlockPos().getX(),
@@ -71,20 +71,20 @@ public interface TypeRenders<T> {
         if (dir != null)
             switch (dir) {
                 case Direction.NORTH:
-                    start = start.relative( Direction.SOUTH, 1);
-                    start = start.relative( Direction.EAST, 1);
+                    start = start.relative(Direction.SOUTH, 1);
+                    end = end.relative(Direction.EAST, 1);
                     break;
                 case Direction.SOUTH:
-                    start = start.relative( Direction.EAST, 1);
-                    end = end.relative( Direction.SOUTH, 1);
+                    // start = start.relative(Direction.EAST, 2);
+                    end = end.relative(Direction.SOUTH, 1).relative(Direction.EAST, 1);
                     break;
                 case Direction.EAST:
-                    end = end.relative( Direction.SOUTH, 1);
-                    end = end.relative( Direction.EAST, 1);
+                    end = end.relative(Direction.SOUTH, 1);
+                    end = end.relative(Direction.EAST, 1);
                     break;
                 case Direction.WEST:
-                    start = start.relative( Direction.EAST, 1);
-                    end = end.relative( Direction.SOUTH, 1);
+                    start = start.relative(Direction.EAST, 1);
+                    end = end.relative(Direction.SOUTH, 1);
                     break;
                 default:
                     break;

@@ -4,7 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.function.Supplier;
 
-import com.devdyna.synergy.api.capabilities.EnergyBlock;
+import com.devdyna.synergy.api.beLogic.EnergyBlock;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;

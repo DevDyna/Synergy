@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.sprinkler;
 
-import com.devdyna.synergy.api.capabilities.EnergyBlock;
+import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.coreBE.BaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
@@ -32,8 +32,10 @@ public class SprinklerBE extends BaseBE implements EnergyBlock {
         var y = getBlockPos().getY();
         var z = getBlockPos().getZ();
 
-        if (canExtract()) {
-            level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, true));
+        level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, canExtract() && !level.hasNeighborSignal(getBlockPos())));
+
+        if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
+            
 
             BlockPos.randomBetweenClosed(level.random, 1,
                     x - radius, y, z - radius,
@@ -42,7 +44,7 @@ public class SprinklerBE extends BaseBE implements EnergyBlock {
                         BlockState state = level.getBlockState(pos);
                         if (state.isRandomlyTicking() && LevelUtil.chance(75, level)) {
                             if (LevelUtil.chance(25, level))
-                                LevelUtil.addParticle((ServerLevel) level, pos, ParticleTypes.HAPPY_VILLAGER, true);
+                                LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER,(ServerLevel) level, pos,  true);
 
                             if (LevelUtil.chance(25, level))
                                 level.playSound(null, getBlockPos(), SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,
@@ -53,8 +55,7 @@ public class SprinklerBE extends BaseBE implements EnergyBlock {
                             extractFE(25, false);
                         }
                     });
-        } else
-            level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, false));
+        }
 
     }
 

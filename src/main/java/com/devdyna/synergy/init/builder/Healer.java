@@ -4,9 +4,12 @@ import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.utils.LevelUtil;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -28,12 +31,12 @@ public class Healer extends Block {
         if (entity instanceof LivingEntity livingEntity) {
             if (livingEntity.getMaxHealth() > livingEntity.getHealth() && entity.isAlive()) {
                 livingEntity.heal(1);
+                if (!level.isClientSide)
+                    LevelUtil.addParticle(ParticleTypes.HEART, (ServerLevel) level, pos.above(), true,3);
                 if (entity.isOnFire())
                     entity.clearFire();
             }
         }
-
-
 
     }
 

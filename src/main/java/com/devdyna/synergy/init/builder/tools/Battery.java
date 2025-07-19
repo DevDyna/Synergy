@@ -6,7 +6,7 @@ import java.util.Locale;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.capabilities.EnergyBlock;
+import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.init.types.zComponents;
 import com.devdyna.synergy.init.types.zHandlers;
 
