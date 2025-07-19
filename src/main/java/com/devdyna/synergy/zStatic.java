@@ -48,6 +48,7 @@ public class zStatic {
         public static String harvester = "harvester";
         public static String solar_panel = "solar_panel";
         public static String healer = "healer";
+        public static String fan = "fan";
 
         public static String pipe = "pipe";
     }
