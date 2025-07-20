@@ -16,7 +16,6 @@ import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.*;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
-import com.devdyna.synergy.init.builder.windStuff.fan.FanBlock;
 import com.devdyna.synergy.init.builder.*;
 import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.crops.mushroom.*;
@@ -133,10 +132,6 @@ public class zBlocks {
         public static final DeferredHolder<Block, ?> HEALER = Material.registerItemBlock(
                         zStatic.Blocks.healer,
                         () -> new Healer(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.WOOL)));
-
-        public static final DeferredHolder<Block, ?> FAN = Material.registerItemBlock(
-                        zStatic.Blocks.fan,
-                        () -> new FanBlock());
 
         // ---------------------------------------------------------------------------------------//
 

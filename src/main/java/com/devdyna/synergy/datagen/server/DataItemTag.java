@@ -9,8 +9,6 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 
-@SuppressWarnings("null")
-
 public class DataItemTag extends ItemTagsProvider {
 
     public DataItemTag(PackOutput o, CompletableFuture<Provider> p, CompletableFuture<TagLookup<Block>> b) {

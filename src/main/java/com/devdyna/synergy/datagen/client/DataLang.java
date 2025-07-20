@@ -98,7 +98,7 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Blocks.healer,
                                 TIP_COLOR + "Heal and remove fire effect at all entities above it");
 
-                add(Main.ID + "." + zStatic.Blocks.fan, TIP_COLOR + "When powered it can generate wind");
+                // add(Main.ID + "." + zStatic.Blocks.fan, TIP_COLOR + "When powered it can generate wind");
 
         }
 

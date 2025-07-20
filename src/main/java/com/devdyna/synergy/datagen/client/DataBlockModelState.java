@@ -52,7 +52,7 @@ public class DataBlockModelState extends BlockStateProvider {
                 crossORcropStatic(zBlocks.WILD_COTTON.get(), false, "block/crops/cotton/5");
                 crossORcropStatic(zBlocks.WILD_RICE.get(), true, "block/crops/rice/7");
 
-                fan(zBlocks.FAN.get());
+                // fan(zBlocks.FAN.get());
 
                 horizontalBlock(zBlocks.HARVESTER.get(), models()
                                 .orientableWithBottom(
@@ -92,22 +92,22 @@ public class DataBlockModelState extends BlockStateProvider {
                                                 + b.getDescriptionId().replace("block." + ID + ".", ""))));
         }
 
-        private void fan(Block b) {
-                this.getVariantBuilder(b).forAllStates((state) -> {
-                        Direction dir = state.getValue(BlockStateProperties.FACING);
-                        boolean isEnable = state.getValue(BlockStateProperties.ENABLED);
-                        return ConfiguredModel.builder().modelFile(models().cubeBottomTop(
-                                        zBlocks.FAN.get().getDescriptionId().replace("block." + ID + ".", "")
-                                                        +"_"+ (isEnable ? "on" : "off"),
-                                        modLoc("block/fan/side"), modLoc("block/fan/back"),
-                                        modLoc("block/fan/" + (isEnable ? "on" : "off"))))
-                                        .rotationX(dir == Direction.DOWN ? 180
-                                                        : (dir.getAxis().isHorizontal() ? 90 : 0))
-                                        .rotationY(dir.getAxis().isVertical() ? 0
-                                                        : ((int) dir.toYRot() + 180) % 360)
-                                        .build();
-                });
-        }
+        // private void fan(Block b) {
+        //         this.getVariantBuilder(b).forAllStates((state) -> {
+        //                 Direction dir = state.getValue(BlockStateProperties.FACING);
+        //                 boolean isEnable = state.getValue(BlockStateProperties.ENABLED);
+        //                 return ConfiguredModel.builder().modelFile(models().cubeBottomTop(
+        //                                 zBlocks.FAN.get().getDescriptionId().replace("block." + ID + ".", "")
+        //                                                 +"_"+ (isEnable ? "on" : "off"),
+        //                                 modLoc("block/fan/side"), modLoc("block/fan/back"),
+        //                                 modLoc("block/fan/" + (isEnable ? "on" : "off"))))
+        //                                 .rotationX(dir == Direction.DOWN ? 180
+        //                                                 : (dir.getAxis().isHorizontal() ? 90 : 0))
+        //                                 .rotationY(dir.getAxis().isVertical() ? 0
+        //                                                 : ((int) dir.toYRot() + 180) % 360)
+        //                                 .build();
+        //         });
+        // }
 
         private void pipe(Block b) {
                 var model = getMultipartBuilder(b);

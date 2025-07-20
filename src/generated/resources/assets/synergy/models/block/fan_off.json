@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "bottom": "synergy:block/fan/back",
-    "side": "synergy:block/fan/side",
-    "top": "synergy:block/fan/off"
-  }
-}
