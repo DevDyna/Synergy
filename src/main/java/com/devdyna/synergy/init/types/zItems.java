@@ -30,6 +30,7 @@ public class zItems {
                 zCropExtra.register(bus);
                 zFoods.register(bus);
                 zCraftingComponents.register(bus);
+                zNodeModules.register(bus);
         }
 
         // ---------------------------------------------------------------------------------------//
@@ -39,6 +40,7 @@ public class zItems {
         // DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zTool = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zCraftingComponents = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zNodeModules = DeferredRegister.createItems(Main.ID);
 
         //
         public static final DeferredRegister.Items zDecorative = DeferredRegister.createItems(Main.ID);
@@ -125,5 +127,7 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> BONE_MEAL_MIXTURE = zTool
                         .register(zStatic.Items.bone_meal_mixture, () -> new BoneMealMixture());
+
+
 
 }
