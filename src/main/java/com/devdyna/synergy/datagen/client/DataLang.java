@@ -91,14 +91,45 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + "." + zStatic.Blocks.solar_panel,
                                 TIP_COLOR + "Produce FE when daytime and can see the sky");
-                add(Main.ID + ".safe_building", TIP_COLOR + "Safe for decoration");
+
+                add(Main.ID + "." + zStatic.tips.SAFE_BUILD, TIP_COLOR + "Safe for decoration");
+
                 add(Main.ID + "." + zStatic.Blocks.sprinkler, TIP_COLOR + "Randomly speed the grow of crops around");
-                add(Main.ID + ".crafting_ingredient", TIP_COLOR + "Crafting components");
+
+                add(Main.ID + "." + zStatic.tips.INGREDIENT, TIP_COLOR + "Crafting components");
 
                 add(Main.ID + "." + zStatic.Blocks.healer,
                                 TIP_COLOR + "Heal and remove fire effect at all entities above it");
 
-                // add(Main.ID + "." + zStatic.Blocks.fan, TIP_COLOR + "When powered it can generate wind");
+                add(Main.ID + "." + zStatic.tips.SHIFT,
+                                "§8Hold [§7Shift§8] to see more details");
+
+                add(Main.ID + "." + zStatic.ReactorStuff.cooler+".desc",
+                                TIP_COLOR + "DESC");
+
+                add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".off",
+                                TIP_COLOR + "Deactive");
+
+                add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".on",
+                                TIP_COLOR + "Active");
+
+                                add(Main.ID + "." + zStatic.ReactorStuff.moderator+".multiplier" ,
+                                TIP_COLOR + "Multiplier");//TODO
+
+                                add(Main.ID + "." + zStatic.ReactorStuff.fuel_cell ,
+                                TIP_COLOR + "DESC");//TODO
+
+                                add(Main.ID + "." + zStatic.ReactorStuff.controller ,
+                                TIP_COLOR + "DESC");//TODO
+
+                                add(Main.ID + "." + zStatic.ReactorStuff.port ,
+                                TIP_COLOR + "DESC");//TODO
+
+                                add(Main.ID + "." + zStatic.ReactorStuff.moderator ,
+                                TIP_COLOR + "DESC");//TODO
+
+                // add(Main.ID + "." + zStatic.Blocks.fan, TIP_COLOR + "When powered it can
+                // generate wind");
 
         }
 

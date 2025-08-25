@@ -13,7 +13,7 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-@SuppressWarnings({ "unchecked" })
+@SuppressWarnings({ "unchecked", "null" })
 
 public class DataBlockTag extends BlockTagsProvider {
 
@@ -103,8 +103,8 @@ public class DataBlockTag extends BlockTagsProvider {
                                 .addTags(BlockTags.DIRT, Tags.Blocks.SANDS, Tags.Blocks.GRAVELS,
                                                 Tags.Blocks.SANDSTONE_BLOCKS);
 
-                tag(zBlockTag.AOE_RENDER).add(zBlocks.HARVESTER.get(), zBlocks.SPRINKLER.get());
-                
+                tag(zBlockTag.AOE_RENDER).add(zBlocks.HARVESTER.get(), zBlocks.SPRINKLER.get(),zBlocks.REACTOR_CONTROLLER.get());
+
                 tag(zBlockTag.NODE_RENDER).addTag(zBlockTag.NODE);
 
                 tag(zBlockTag.HARVESTER_TREE_BREAK)

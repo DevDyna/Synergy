@@ -61,14 +61,20 @@ public class DataLoot extends BlockLootSubProvider {
                 var dropSelfBlocks = List.of(
                                 zBlocks.MACHINE_FRAME,
                                 zBlocks.PIPE,
+
                                 zBlocks.ITEM_TRANSFER,
                                 zBlocks.ITEM_PROVIDER,
                                 zBlocks.ITEM_RETRIEVAL,
+
                                 zBlocks.SOLAR_PANEL,
                                 zBlocks.HARVESTER,
                                 zBlocks.SPRINKLER,
-                                zBlocks.HEALER
-                                );
+                                zBlocks.HEALER,
+
+                                zBlocks.REACTOR_PORT,
+                                zBlocks.REACTOR_CONTROLLER,
+                                zBlocks.IRON_COOLER,
+                                zBlocks.GRAPHITE_MODERATOR);
                 dropSelfBlocks.forEach(b -> dropSelf(b.get()));
 
                 zBlocks.zBlockSlab.getEntries().forEach(b -> dropSelf(b.get()));
