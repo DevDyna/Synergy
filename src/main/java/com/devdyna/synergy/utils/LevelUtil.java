@@ -28,6 +28,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.phys.Vec3;
 
+@SuppressWarnings("null")
 public class LevelUtil {
     public static boolean isDimension(Level level, ResourceKey<Level> dim) {
         return level.dimension().equals(dim);
@@ -225,7 +226,7 @@ public class LevelUtil {
     /**
      * spawn a dust particle that will change color like rainbow!
      */
-    public static void addRainbowDustParticle(ServerLevel level, BlockPos pos, boolean isRandom,int count) {
+    public static void addRainbowDustParticle(ServerLevel level, BlockPos pos, boolean isRandom, int count) {
         addDustParticle(ColorUtil.rgbColor(level), level, pos, isRandom, count);
     }
 
@@ -235,7 +236,5 @@ public class LevelUtil {
     public static void addRainbowDustParticle(int delay, ServerLevel level, BlockPos pos, boolean isRandom, int count) {
         addDustParticle(ColorUtil.rgbColor(level, delay), level, pos, isRandom, count);
     }
-
-
 
 }
