@@ -1,9 +1,11 @@
 # Synergy
- 
+
 A bunch of Magic-Tech and fun-made gadgets
 
 ## TODO
+
 ### Plants
+
 - [ ] flax (double)
 - [ ] corn (double)
 - [ ] grapple wild (bush)
@@ -16,16 +18,19 @@ A bunch of Magic-Tech and fun-made gadgets
 - [ ] sisal (double/multiple plant) -> paper
 
 ### Mushrooms
+
 - [ ] desarmillaria tabescens mushroom (like candles)
 - [ ] macrolepiota procera mushroom (double)
 
 ### Special Plants
+
 - [ ] magic beans (giant plant)
 - [ ] blight spore (thorny giant plant)
 - [ ] grapple cultivated (multiblock)
 - [ ] smill trees
 
 ### Machines&Blocks
+
 - [x] Sprinkler
 - [x] Healer
 - [ ] Fluid nodes
@@ -42,6 +47,7 @@ A bunch of Magic-Tech and fun-made gadgets
 - [ ] Jukebox Network (jukebox that consume discs)
 
 ### ResourceGen
+
 - [ ] Growable Crystals
 - [ ] Extractor
 - [ ] Generators
@@ -49,12 +55,27 @@ A bunch of Magic-Tech and fun-made gadgets
 - [ ] Buddings
 
 ### Unsorted
+
 - [ ] dye essence (?)
 - [ ] rice scope
 - [ ] violet webcap scope
 - [ ] blue cup scope
 - [ ] decorative devices
 - [ ] shells (functional/storage block)
+- [ ] metal scraps (like deposits but return metal things)
+- [ ] Energy (like FE but a completly new Capability type) that allow E->FE
+
+_IC2 like_
+
+- [ ] Macerator (standard) Item->(Item|Item)
+- [ ] Electric Furnace (standard) Item->Item
+- [ ] Extractor (special recipes like honey) Item->(Item|Item)
+- [ ] Compressor (special recipes like blocks of X) Item->Item
+- [ ] Energy Converter (only FE->E)
+- [ ] Tiered Cables (transfer rate and capacity)
+- [ ] Alloy Smelter (Item|Item) -> Item
+- [ ] Scrap Generator (recycle items to scraps and item used to craft)
+- [ ]
 
 Download Link : [src](https://legacy.curseforge.com/minecraft/mc-mods/synergy)
 
