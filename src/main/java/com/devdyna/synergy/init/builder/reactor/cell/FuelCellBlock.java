@@ -24,7 +24,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("null")
-public abstract class FuelCellBlock extends Block {
+public class FuelCellBlock extends Block {
 
     public final static IntegerProperty MODERATORS = IntegerProperty.create("moderators", 0, 6);
     public final static IntegerProperty CELLS = IntegerProperty.create("cells", 0, 6);
