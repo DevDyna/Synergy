@@ -29,13 +29,8 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
+@SuppressWarnings("null")
 public class SolarPanelBLK extends BaseBlockBE {
-
-    public int NORTH = 0;
-    public int SOUTH = 1;
-    public int EAST = 2;
-    public int WEST = 3;
 
     protected static ArrayList<BooleanProperty> PROPRTIES = new ArrayList<>(
             Arrays.asList(
