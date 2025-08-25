@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
+@SuppressWarnings("null")
 public class MachineFrame extends DirectionalBlock {
 
     public MachineFrame(Properties p) {
@@ -40,7 +41,7 @@ public class MachineFrame extends DirectionalBlock {
         return simpleCodec((p) -> new MachineFrame(p));
     }
 
-        @Override
+    @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
         t.add(Component.translatable(Main.ID + ".safe_building"));
