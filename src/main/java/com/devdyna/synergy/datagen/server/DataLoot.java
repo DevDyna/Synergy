@@ -74,7 +74,8 @@ public class DataLoot extends BlockLootSubProvider {
                                 zBlocks.REACTOR_PORT,
                                 zBlocks.REACTOR_CONTROLLER,
                                 zBlocks.IRON_COOLER,
-                                zBlocks.GRAPHITE_MODERATOR);
+                                zBlocks.GRAPHITE_MODERATOR,
+                                zBlocks.REACTOR_FUEL_CELL);
                 dropSelfBlocks.forEach(b -> dropSelf(b.get()));
 
                 zBlocks.zBlockSlab.getEntries().forEach(b -> dropSelf(b.get()));
