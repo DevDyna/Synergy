@@ -2,6 +2,10 @@ package com.devdyna.synergy.init.types;
 
 import static com.devdyna.synergy.Main.ID;
 
+import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.client.gui.reactor_port.portGUI;
+import com.devdyna.synergy.client.gui.reactor_port.portScreen;
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.bus.api.IEventBus;
@@ -17,7 +21,7 @@ public class zContainer {
 
         public static final DeferredRegister<MenuType<?>> zCTNR = DeferredRegister.create(Registries.MENU, ID);
 
-        // public static final DeferredHolder<MenuType<?>, MenuType<GUI>> GUI = zCTNR
-        //                 .register("name",
-        //                                 () -> IMenuTypeExtension.create(GUI::new));
+        public static final DeferredHolder<MenuType<?>, MenuType<portGUI>> REACTORPORT_GUI = zCTNR
+                        .register(zStatic.ReactorStuff.port,
+                                        () -> IMenuTypeExtension.create(portGUI::new));
 }

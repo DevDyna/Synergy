@@ -4,6 +4,9 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
+import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBE;
+import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
+import com.devdyna.synergy.init.builder.reactor.port.ReactorPortBE;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBE;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -65,4 +68,9 @@ public class zBlockEntities {
                                         () -> BlockEntityType.Builder.of(ReactorPortBE::new,
                                                         zBlocks.REACTOR_PORT.get()).build(null));
 
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ReactorControllerBE>> REACTOR_CONTROLLER = zBE
+                        .register(
+                                        zStatic.ReactorStuff.controller,
+                                        () -> BlockEntityType.Builder.of(ReactorControllerBE::new,
+                                                        zBlocks.REACTOR_CONTROLLER.get()).build(null));
 }

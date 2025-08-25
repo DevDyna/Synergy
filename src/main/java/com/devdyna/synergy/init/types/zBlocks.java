@@ -14,6 +14,10 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.*;
+import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
+import com.devdyna.synergy.init.builder.reactor.cooler.IronCooler;
+import com.devdyna.synergy.init.builder.reactor.moderator.GraphiteModerator;
+import com.devdyna.synergy.init.builder.reactor.port.ReactorPortBlock;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.*;
@@ -134,6 +138,22 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> HEALER = Material.registerItemBlock(
                         zStatic.Blocks.healer,
                         () -> new Healer(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.WOOL)));
+
+        public static final DeferredHolder<Block, Block> IRON_COOLER = Material.registerItemBlock(
+                        zStatic.ReactorStuff.CoolerTypes.IRON,
+                        () -> new IronCooler());
+
+        public static final DeferredHolder<Block, Block> GRAPHITE_MODERATOR = Material.registerItemBlock(
+                        zStatic.ReactorStuff.ModeratorTypes.GRAPHITE,
+                        () -> new GraphiteModerator());
+
+        public static final DeferredHolder<Block, Block> REACTOR_PORT = Material.registerItemBlock(
+                        zStatic.ReactorStuff.port,
+                        () -> new ReactorPortBlock());
+
+        public static final DeferredHolder<Block, Block> REACTOR_CONTROLLER = Material.registerItemBlock(
+                        zStatic.ReactorStuff.controller,
+                        () -> new ReactorControllerBlock());
 
         // ---------------------------------------------------------------------------------------//
 
