@@ -52,84 +52,86 @@ public class zBlocks {
         public static final DeferredHolder<Block, azalea> AZALEA = zBlock.register(zStatic.Blocks.azalea,
                         () -> new azalea());
 
-        public static final DeferredHolder<Block, ?> SPRINKLER = Material.registerItemBlock(zStatic.Blocks.sprinkler,
+        public static final DeferredHolder<Block, Block> SPRINKLER = Material.registerItemBlock(
+                        zStatic.Blocks.sprinkler,
                         () -> new SprinklerBLK());
 
-        public static final DeferredHolder<Block, ?> SOLAR_PANEL = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> SOLAR_PANEL = Material.registerItemBlock(
                         zStatic.Blocks.solar_panel,
                         () -> new SolarPanelBLK());
 
-        public static final DeferredHolder<Block, ?> HARVESTER = Material.registerItemBlock(zStatic.Blocks.harvester,
+        public static final DeferredHolder<Block, Block> HARVESTER = Material.registerItemBlock(
+                        zStatic.Blocks.harvester,
                         () -> new HarvesterBLK());
 
-        public static final DeferredHolder<Block, ?> PIPE = Material.registerItemBlock(zStatic.Blocks.pipe,
+        public static final DeferredHolder<Block, Block> PIPE = Material.registerItemBlock(zStatic.Blocks.pipe,
                         () -> new pipeBlock());
 
-        public static final DeferredHolder<Block, ?> ITEM_TRANSFER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ITEM_TRANSFER = Material.registerItemBlock(
                         zStatic.PipeStuff.nodes.ItemTransfer,
                         () -> new ItemTranfer());
 
-        public static final DeferredHolder<Block, ?> ITEM_PROVIDER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ITEM_PROVIDER = Material.registerItemBlock(
                         zStatic.PipeStuff.nodes.ItemProvider,
                         () -> new ItemProvider());
 
-        public static final DeferredHolder<Block, ?> ITEM_RETRIEVAL = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ITEM_RETRIEVAL = Material.registerItemBlock(
                         zStatic.PipeStuff.nodes.ItemRetrieval,
                         () -> new ItemRetrieval());
 
-        public static final DeferredHolder<Block, ?> RICE = zCrop.register(zStatic.Plants.RICE,
+        public static final DeferredHolder<Block, Block> RICE = zCrop.register(zStatic.Plants.RICE,
                         () -> new rice());
 
-        public static final DeferredHolder<Block, ?> CAVE_WHEAT = zCrop.register(zStatic.Plants.CAVE_WHEAT,
+        public static final DeferredHolder<Block, Block> CAVE_WHEAT = zCrop.register(zStatic.Plants.CAVE_WHEAT,
                         () -> new cave_wheat());
 
-        public static final DeferredHolder<Block, ?> COTTON = zCrop.register(zStatic.Plants.COTTON,
+        public static final DeferredHolder<Block, Block> COTTON = zCrop.register(zStatic.Plants.COTTON,
                         () -> new cotton());
 
-        public static final DeferredHolder<Block, ?> BLUE_CUP_MUSHROOM = zCrop.register(
+        public static final DeferredHolder<Block, Block> BLUE_CUP_MUSHROOM = zCrop.register(
                         zStatic.Plants.BLUE_CUP_MUSHROOM,
                         () -> new blue_cup());
 
-        public static final DeferredHolder<Block, ?> VIOLET_WEBCAP_MUSHROOM = zCrop.register(
+        public static final DeferredHolder<Block, Block> VIOLET_WEBCAP_MUSHROOM = zCrop.register(
                         zStatic.Plants.VIOLET_WEBCAP_MUSHROOM,
                         () -> new violet_webcap());
 
-        public static final DeferredHolder<Block, ?> WILD_RICE = Material.registerItemBlock(zStatic.Wild.RICE,
+        public static final DeferredHolder<Block, Block> WILD_RICE = Material.registerItemBlock(zStatic.Wild.RICE,
                         () -> new wild_rice(), zWildCrop);
 
-        public static final DeferredHolder<Block, ?> WILD_CAVE_WHEAT = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> WILD_CAVE_WHEAT = Material.registerItemBlock(
                         zStatic.Wild.CAVE_WHEAT,
                         () -> new wild_cave_wheat(), zWildCrop);
 
-        public static final DeferredHolder<Block, ?> WILD_COTTON = Material.registerItemBlock(zStatic.Wild.COTTON,
+        public static final DeferredHolder<Block, Block> WILD_COTTON = Material.registerItemBlock(zStatic.Wild.COTTON,
                         () -> new wild_cotton(), zWildCrop);
 
-        public static final DeferredHolder<Block, ?> RUSTIC_METAL = Material
+        public static final DeferredHolder<Block, Block> RUSTIC_METAL = Material
                         .DecoBlock(zStatic.DecorativeBlocks.rustic_metal,
                                         BlockBehaviour.Properties.of().sound(SoundType.METAL)
                                                         .strength(2.5f).mapColor(MapColor.RAW_IRON),
                                         zDecorative);
 
-        public static final DeferredHolder<Block, ?> WAXED_PLANKS = Material
+        public static final DeferredHolder<Block, Block> WAXED_PLANKS = Material
                         .DecoBlock(zStatic.DecorativeBlocks.waxed_planks,
                                         BlockBehaviour.Properties.of().sound(SoundType.WOOD)
                                                         .strength(1.5f).mapColor(MapColor.COLOR_BROWN),
                                         zDecorative);
 
-        public static final DeferredHolder<Block, ?> ADOBE = Material
+        public static final DeferredHolder<Block, Block> ADOBE = Material
                         .DecoBlock(zStatic.DecorativeBlocks.adobe,
                                         BlockBehaviour.Properties.of().sound(SoundType.STONE)
                                                         .strength(1.0f).mapColor(MapColor.SAND),
                                         zDecorative);
 
-        public static final DeferredHolder<Block, ?> WAXED_PLANKS_SLAB = Material.slab(WAXED_PLANKS);
-        public static final DeferredHolder<Block, ?> WAXED_PLANKS_STAIR = Material.stair(WAXED_PLANKS);
+        public static final DeferredHolder<Block, Block> WAXED_PLANKS_SLAB = Material.slab(WAXED_PLANKS);
+        public static final DeferredHolder<Block, Block> WAXED_PLANKS_STAIR = Material.stair(WAXED_PLANKS);
 
-        public static final DeferredHolder<Block, ?> MACHINE_FRAME = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> MACHINE_FRAME = Material.registerItemBlock(
                         zStatic.DecorativeBlocks.machine_frame,
                         () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)));
 
-        public static final DeferredHolder<Block, ?> HEALER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> HEALER = Material.registerItemBlock(
                         zStatic.Blocks.healer,
                         () -> new Healer(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.WOOL)));
 

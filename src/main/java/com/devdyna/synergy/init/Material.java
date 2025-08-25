@@ -48,7 +48,7 @@ public class Material {
          * 
          * @param sup () -> new Builder
          */
-        public static DeferredHolder<Block, ?> registerItemBlock(String blockname, Supplier<? extends Block> sup) {
+        public static DeferredHolder<Block, Block> registerItemBlock(String blockname, Supplier<Block> sup) {
                 return registerItemBlock(blockname, sup, zBlocks.zBlockItem);
         }
 
@@ -58,14 +58,14 @@ public class Material {
          * @param sup () -> new Builder
          * @param b   Blocks.zBlock
          */
-        public static DeferredHolder<Block, ?> registerItemBlock(String blockname, Supplier<? extends Block> sup,
+        public static DeferredHolder<Block, Block> registerItemBlock(String blockname, Supplier<Block> sup,
                         DeferredRegister.Blocks b) {
-                DeferredHolder<Block, ?> block = b.register(blockname, sup);
+                DeferredHolder<Block, Block> block = b.register(blockname, sup);
                 zItems.zBlockItem.registerSimpleBlockItem(block);
                 return block;
         }
 
-        public static DeferredHolder<Block, ?> registerItemBlock(String blockname, DeferredRegister.Blocks b) {
+        public static DeferredHolder<Block, Block> registerItemBlock(String blockname, DeferredRegister.Blocks b) {
                 return registerItemBlock(blockname, () -> new Block(BlockBehaviour.Properties.of()), b);
         }
 
@@ -130,20 +130,20 @@ public class Material {
                                 () -> new ItemNameBlockItem(b, new Item.Properties()));
         }
 
-        public static DeferredHolder<Block, ?> stair(DeferredHolder<Block, ?> b) {
+        public static DeferredHolder<Block, Block> stair(DeferredHolder<Block, Block> b) {
                 return registerItemBlock(b.getRegisteredName().replace(ID + ":", "") + "_stair",
                                 () -> new StairBlock(b.get().defaultBlockState(),
                                                 BlockBehaviour.Properties.ofFullCopy(b.get())),
                                 zBlocks.zBlockStair);
         }
 
-        public static DeferredHolder<Block, ?> slab(DeferredHolder<Block, ?> b) {
+        public static DeferredHolder<Block, Block> slab(DeferredHolder<Block, Block> b) {
                 return registerItemBlock(b.getRegisteredName().replace(ID + ":", "") + "_slab",
                                 () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(b.get())), zBlocks.zBlockSlab);
 
         }
 
-        public static DeferredHolder<Block, ?> DecoBlock(String name, Properties prop, Blocks blockSets) {
+        public static DeferredHolder<Block, Block> DecoBlock(String name, Properties prop, Blocks blockSets) {
                 return registerItemBlock(name, () -> new DecorativeBlock(prop), blockSets);
         }
 
