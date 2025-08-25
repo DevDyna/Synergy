@@ -9,7 +9,7 @@ import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.Block;
-
+@SuppressWarnings("null")
 public class DecorativeBlock extends Block {
 
     public DecorativeBlock(Properties properties) {
