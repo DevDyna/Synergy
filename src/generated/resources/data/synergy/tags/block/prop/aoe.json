@@ -1,6 +1,7 @@
 {
   "values": [
     "synergy:harvester",
-    "synergy:sprinkler"
+    "synergy:sprinkler",
+    "synergy:reactor_controller"
   ]
 }
