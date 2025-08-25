@@ -26,6 +26,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+@SuppressWarnings("null")
 public class pipeBlock extends Block implements pipeType {
 
     public pipeBlock() {
