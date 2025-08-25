@@ -27,7 +27,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class ReactorPortBE extends BaseBE implements  ItemStorageBlock{
+public class ReactorPortBE extends BaseBE implements ItemStorageBlock {
 
     public ReactorPortBE(BlockPos pos, BlockState blockState) {
         super(zBlockEntities.REACTOR_PORT.get(), pos, blockState);
@@ -45,7 +45,7 @@ public class ReactorPortBE extends BaseBE implements  ItemStorageBlock{
 
     public void drops() {
         SimpleContainer inv = new SimpleContainer(getStorage().getSlots());
-        for (int i = 0; i < getStorage().getSlots(); i++) 
+        for (int i = 0; i < getStorage().getSlots(); i++)
             inv.setItem(i, getStorage().getStackInSlot(i));
         Containers.dropContents(this.level, this.worldPosition, inv);
     }
@@ -80,12 +80,12 @@ public class ReactorPortBE extends BaseBE implements  ItemStorageBlock{
 
     @Override
     public int MachineSlots() {
-        return 1;    
+        return 1;
     }
 
     @Override
     public Component getContainerName() {
-       return Component.translatable(Main.ID + "." + zStatic.ReactorStuff.port);
+        return Component.translatable("block." + Main.ID + "." + zStatic.ReactorStuff.port);
     }
 
 }
