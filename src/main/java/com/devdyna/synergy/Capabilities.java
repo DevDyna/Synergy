@@ -8,7 +8,7 @@ public class Capabilities {
 
     public static void register(RegisterCapabilitiesEvent event) {
 
-        // TODO if it will return null , probably was a MY mistake!
+        //  if it will return null , probably was a MY mistake!
         // :p
 
         event.registerBlock(net.neoforged.neoforge.capabilities.Capabilities.EnergyStorage.BLOCK,
