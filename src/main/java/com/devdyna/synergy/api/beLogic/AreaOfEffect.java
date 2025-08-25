@@ -21,33 +21,39 @@ public interface AreaOfEffect {
     int height();
 
     /**
+     * probably not necessary atm
      * @return map<Start,End>
      */
-    default Entry<BlockPos, BlockPos> getHorizontalPoints(Level level,BlockPos baseBlock, Direction dir) {
-        BlockPos relPos = baseBlock.relative(dir);
+    // default Entry<BlockPos, BlockPos> getHorizontalPoints(Level level,BlockPos
+    // baseBlock, Direction dir) {
+    // BlockPos relPos = baseBlock.relative(dir);
 
-        ArrayList<Direction> validDirs = getHorizontalDirections(dir);
+    // ArrayList<Direction> validDirs = getHorizontalDirections(dir);
 
-        return Map.entry(relPos.relative(validDirs.get(0), radius()),
-                relPos.relative(validDirs.get(1), radius()).relative(dir, (radius()) * 2));
-    }
+    // return Map.entry(relPos.relative(validDirs.get(0), radius()),
+    // relPos.relative(validDirs.get(1), radius()).relative(dir, (radius()) * 2));
+    // }
 
     /**
      * @return map<Start,End>
      */
-    default Entry<BlockPos, BlockPos> getPoints(Level level, BlockPos baseBlock,Direction dir,boolean isUp) {
+    default Entry<BlockPos, BlockPos> getPoints(Level level, BlockPos baseBlock, Direction dir, boolean isUp) {
         BlockPos relPos = baseBlock.relative(dir);
         Direction upDown = isUp ? Direction.UP : Direction.DOWN;
 
-        ArrayList<Direction> validDirs = getDirections(new ArrayList<>(List.of(dir, dir.getOpposite())));
+        ArrayList<Direction> validDirs = getHorizontalDirections(dir);
 
         return Map.entry(relPos.relative(validDirs.get(0), radius()),
-                relPos.relative(validDirs.get(1), radius()).relative(dir, (radius()) * 2).relative(upDown,height()));
+                relPos.relative(validDirs.get(1), radius()).relative(dir, (radius()) * 2).relative(upDown,
+                        height() - 1));
     }
 
     /**
      * check all directions and remove all blacklisted
      * NORTH -> EAST | WEST | UP | DOWN
+     * <br/>
+     * <br/>
+     * Edit. DONT WORK AS INTENDED BUT WORK SO THIS IS FINE!
      */
     default ArrayList<Direction> getDirections(ArrayList<Direction> blacklist) {
 
@@ -95,8 +101,8 @@ public interface AreaOfEffect {
     default List<BlockPos> getAreaSelection(BlockPos start, BlockPos end) {
         List<BlockPos> slots = new ArrayList<>();
 
-        for (int x = Math.min(start.getX(), end.getX()); x <= Math.max(start.getX(), end.getX()); x++)
-            for (int y = Math.min(start.getY(), end.getY()); y <= Math.max(start.getY(), end.getY()); y++)
+        for (int y = Math.min(start.getY(), end.getY()); y <= Math.max(start.getY(), end.getY()); y++)
+            for (int x = Math.min(start.getX(), end.getX()); x <= Math.max(start.getX(), end.getX()); x++)
                 for (int z = Math.min(start.getZ(), end.getZ()); z <= Math.max(start.getZ(), end.getZ()); z++)
                     slots.add(new BlockPos(x, y, z));
 
@@ -104,10 +110,22 @@ public interface AreaOfEffect {
     }
 
     /**
+     * probably not necessary atm
+     * return a list of blockpos inside the AOE
+     */
+    // default List<BlockPos> getHorizontalAreaSelection(Level level, Direction dir,
+    // BlockPos baseBlock) {
+    // var points = getHorizontalPoints(level, baseBlock,dir);
+    // return getAreaSelection(getStartPoint(points), getEndPoint(points));
+    // }
+
+    /**
      * return a list of blockpos inside the AOE
      */
     default List<BlockPos> getAreaSelection(Level level, Direction dir, BlockPos baseBlock) {
-        var points = getHorizontalPoints(level, baseBlock,dir);
+        var points = getPoints(level, baseBlock, dir, true);
         return getAreaSelection(getStartPoint(points), getEndPoint(points));
     }
+
+
 }

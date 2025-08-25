@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Con
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
+@SuppressWarnings("null")
 public class HarvesterAOE<T extends HarvesterBE> implements BlockEntityRenderer<T>, TypeRenders<T> {
 
     public HarvesterAOE(Context c) {
@@ -20,7 +21,7 @@ public class HarvesterAOE<T extends HarvesterBE> implements BlockEntityRenderer<
             int combinedLightsIn, int combinedOverlayIn) {
 
         var dir = be.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
-        var points = be.getHorizontalPoints(be.getLevel(), BlockPos.ZERO, dir);
+        var points = be.getPoints(be.getLevel(), BlockPos.ZERO, dir, true);
         var start = be.getStartPoint(points);
         var end = be.getEndPoint(points);
 

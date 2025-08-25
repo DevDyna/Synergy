@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.builder.harvester;
 
 import java.util.*;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
+import com.devdyna.synergy.api.beLogic.ItemProducer;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.coreBE.BaseBE;
 import com.devdyna.synergy.api.harvester.PlantHandler;
@@ -18,17 +19,15 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
-import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 
-public class HarvesterBE extends BaseBE implements EnergyBlock, AreaOfEffect {
+@SuppressWarnings("null")
+public class HarvesterBE extends BaseBE implements EnergyBlock, AreaOfEffect, ItemProducer {
 
     private final Map<Direction, BlockCapabilityCache<IItemHandler, Direction>> cache = new HashMap<>();
 
@@ -68,7 +67,7 @@ public class HarvesterBE extends BaseBE implements EnergyBlock, AreaOfEffect {
 
     }
 
-    public List<ItemStack> tryHarvestAndGetDrops(Level level, BlockPos pos) {
+    public List<ItemStack> collectItemDrops(Level level, BlockPos pos) {
         ArrayList<List<ItemStack>> list = new ArrayList<>(Arrays.asList(
                 VanillaPlants.checkReplant(level, pos),
                 VanillaPlants.checkNoReplant(level, pos),
@@ -94,50 +93,6 @@ public class HarvesterBE extends BaseBE implements EnergyBlock, AreaOfEffect {
         return null;
     }
 
-    public void tryExportOrDrop(ItemStack item, Level level, BlockPos pos,
-            Map<Direction, BlockCapabilityCache<IItemHandler, Direction>> cache) {
-        var dirToExclude = getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
-        var totalDir = Direction.values().length;
-        for (Direction dir : Direction.values()) {
-            if (dir == dirToExclude) {
-                totalDir--;
-                continue;
-            }
-            var cachedData = cache.get(dir);
-            if (cachedData == null)
-                cachedData = BlockCapabilityCache.create(
-                        Capabilities.ItemHandler.BLOCK,
-                        (ServerLevel) level,
-                        pos.relative(dir),
-                        dir.getOpposite());
-            cache.put(dir, cachedData);
-
-            IItemHandler cap = cachedData.getCapability();
-
-            if (cap == null || !(cap instanceof IItemHandler)) {
-                totalDir--;
-                continue;
-            } else {
-
-                var items = ItemHandlerHelper.insertItemStacked(cap, item, false);
-
-                if (item.is(items.getItem()) && item.getCount() == items.getCount()
-                        && items != new ItemStack(Items.AIR)) {
-                    LevelUtil.popItemFromPos(level, pos.above(), item);
-                    level.playSound(null, pos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 1F, 0.75F);
-                }
-
-                break;
-            }
-
-        }
-
-        if (totalDir <= 0) {
-            LevelUtil.popItemFromPos(level, pos.above(), item);
-        }
-
-    }
-
     private void checkBlocks(Level level) {
         int size = area.size();
 
@@ -146,11 +101,14 @@ public class HarvesterBE extends BaseBE implements EnergyBlock, AreaOfEffect {
             LevelUtil.addDustParticle(rgbColor.get(0), rgbColor.get(1), rgbColor.get(2),
                     (ServerLevel) level, area.get(i), false, 4);
 
-            var items = tryHarvestAndGetDrops(level, area.get(i));
+            List<ItemStack> items = collectItemDrops(level, area.get(i));
 
-            if (items != null)
-                for (ItemStack itemStack : items)
-                    tryExportOrDrop(itemStack, level, getBlockPos(), cache);
+            if (items != null) {
+
+                for (ItemStack itemStack : unifyDrops(items))
+                    exportItems(itemStack, List.of(getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING)),
+                            level, getBlockPos(), cache);
+            }
 
             level.playSound(null, getBlockPos(),
                     (soundToggle ? SoundEvents.COPPER_BULB_TURN_ON : SoundEvents.COPPER_BULB_TURN_OFF),
@@ -162,11 +120,6 @@ public class HarvesterBE extends BaseBE implements EnergyBlock, AreaOfEffect {
         if (i >= size) {
             i = 0;
         }
-    }
-
-    @Deprecated
-    public static BlockPos move(BlockPos actualPos, Direction dir, int times) {
-        return actualPos.relative(dir, times);
     }
 
     @Override
@@ -187,6 +140,11 @@ public class HarvesterBE extends BaseBE implements EnergyBlock, AreaOfEffect {
     @Override
     public int height() {
         return 1;
+    }
+
+    @Override
+    public boolean dropWhenFail() {
+        return true;
     }
 
 }
