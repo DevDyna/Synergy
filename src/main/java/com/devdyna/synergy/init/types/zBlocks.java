@@ -14,6 +14,7 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.*;
+import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.reactor.cooler.IronCooler;
 import com.devdyna.synergy.init.builder.reactor.moderator.GraphiteModerator;
@@ -154,6 +155,10 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> REACTOR_CONTROLLER = Material.registerItemBlock(
                         zStatic.ReactorStuff.controller,
                         () -> new ReactorControllerBlock());
+
+                        public static final DeferredHolder<Block, Block> REACTOR_FUEL_CELL = Material.registerItemBlock(
+                        zStatic.ReactorStuff.fuel_cell,
+                        () -> new FuelCellBlock());
 
         // ---------------------------------------------------------------------------------------//
 
