@@ -59,4 +59,10 @@ public class zBlockEntities {
                                         () -> BlockEntityType.Builder.of(ItemRetrievalBE::new,
                                                         zBlocks.ITEM_RETRIEVAL.get()).build(null));
 
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ReactorPortBE>> REACTOR_PORT = zBE
+                        .register(
+                                        zStatic.ReactorStuff.port,
+                                        () -> BlockEntityType.Builder.of(ReactorPortBE::new,
+                                                        zBlocks.REACTOR_PORT.get()).build(null));
+
 }
