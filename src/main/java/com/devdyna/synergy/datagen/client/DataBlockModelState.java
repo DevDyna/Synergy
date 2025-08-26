@@ -8,17 +8,15 @@ import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.utils.DataGenUtil;
 
-import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class DataBlockModelState extends BlockStateProvider {
@@ -31,6 +29,8 @@ public class DataBlockModelState extends BlockStateProvider {
         protected void registerStatesAndModels() {
 
                 rotableBlock(zBlocks.SPRINKLER.get());
+                horizontalBlock(zBlocks.WOODEN_TINY_CHEST.get(), models()
+                                .getExistingFile(ResourceLocation.fromNamespaceAndPath(ID, "block/tiny_chest/wooden/base")));
                 node(zBlocks.ITEM_TRANSFER.get(), "red");
                 node(zBlocks.ITEM_PROVIDER.get(), "green");
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
@@ -93,20 +93,20 @@ public class DataBlockModelState extends BlockStateProvider {
         }
 
         // private void fan(Block b) {
-        //         this.getVariantBuilder(b).forAllStates((state) -> {
-        //                 Direction dir = state.getValue(BlockStateProperties.FACING);
-        //                 boolean isEnable = state.getValue(BlockStateProperties.ENABLED);
-        //                 return ConfiguredModel.builder().modelFile(models().cubeBottomTop(
-        //                                 zBlocks.FAN.get().getDescriptionId().replace("block." + ID + ".", "")
-        //                                                 +"_"+ (isEnable ? "on" : "off"),
-        //                                 modLoc("block/fan/side"), modLoc("block/fan/back"),
-        //                                 modLoc("block/fan/" + (isEnable ? "on" : "off"))))
-        //                                 .rotationX(dir == Direction.DOWN ? 180
-        //                                                 : (dir.getAxis().isHorizontal() ? 90 : 0))
-        //                                 .rotationY(dir.getAxis().isVertical() ? 0
-        //                                                 : ((int) dir.toYRot() + 180) % 360)
-        //                                 .build();
-        //         });
+        // this.getVariantBuilder(b).forAllStates((state) -> {
+        // Direction dir = state.getValue(BlockStateProperties.FACING);
+        // boolean isEnable = state.getValue(BlockStateProperties.ENABLED);
+        // return ConfiguredModel.builder().modelFile(models().cubeBottomTop(
+        // zBlocks.FAN.get().getDescriptionId().replace("block." + ID + ".", "")
+        // +"_"+ (isEnable ? "on" : "off"),
+        // modLoc("block/fan/side"), modLoc("block/fan/back"),
+        // modLoc("block/fan/" + (isEnable ? "on" : "off"))))
+        // .rotationX(dir == Direction.DOWN ? 180
+        // : (dir.getAxis().isHorizontal() ? 90 : 0))
+        // .rotationY(dir.getAxis().isVertical() ? 0
+        // : ((int) dir.toYRot() + 180) % 360)
+        // .build();
+        // });
         // }
 
         private void pipe(Block b) {
@@ -186,15 +186,18 @@ public class DataBlockModelState extends BlockStateProvider {
         }
 
         private void rotableBlock(Block b) {
+                rotableBlock(b, DataGenUtil.getResource(b));
+        }
+
+        private void rotableBlock(Block b, ResourceLocation path) {
                 var model = getVariantBuilder(b);
                 model.partialState().addModels(ConfiguredModel.builder()
-                                .modelFile(models().getExistingFile(DataGenUtil.getResource(b))).nextModel()
-                                .modelFile(models().getExistingFile(DataGenUtil.getResource(b))).rotationY(90)
+                                .modelFile(models().getExistingFile(path)).nextModel()
+                                .modelFile(models().getExistingFile(path)).rotationY(90)
                                 .nextModel()
-                                .modelFile(models().getExistingFile(DataGenUtil.getResource(b))).rotationY(180)
+                                .modelFile(models().getExistingFile(path)).rotationY(180)
                                 .nextModel()
-                                .modelFile(models().getExistingFile(DataGenUtil.getResource(b))).rotationY(270)
-
+                                .modelFile(models().getExistingFile(path)).rotationY(270)
                                 .build());
         }
 

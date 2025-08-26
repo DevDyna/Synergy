@@ -48,6 +48,9 @@ public class zStatic {
         public static String harvester = "harvester";
         public static String solar_panel = "solar_panel";
         public static String healer = "healer";
+        public static String tiny_wooden_chest = "tiny_wooden_chest";
+        public static String tiny_stone_chest = "tiny_stone_chest";
+        public static String tiny_wooden_chest_ornated = "tiny_wooden_chest_ornated";
         // public static String fan = "fan";
         // public static String wind = "wind";
 

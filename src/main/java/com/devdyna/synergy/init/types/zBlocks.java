@@ -22,6 +22,7 @@ import com.devdyna.synergy.init.builder.reactor.port.ReactorPortBlock;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.*;
+import com.devdyna.synergy.init.builder.chests.wchestTinyBK;
 import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.crops.mushroom.*;
 import com.devdyna.synergy.init.builder.crops.wild.*;
@@ -159,6 +160,10 @@ public class zBlocks {
                         public static final DeferredHolder<Block, Block> REACTOR_FUEL_CELL = Material.registerItemBlock(
                         zStatic.ReactorStuff.fuel_cell,
                         () -> new FuelCellBlock());
+
+                        public static final DeferredHolder<Block, Block> WOODEN_TINY_CHEST = Material.registerItemBlock(
+                        zStatic.Blocks.tiny_wooden_chest,
+                        () -> new wchestTinyBK());
 
         // ---------------------------------------------------------------------------------------//
 

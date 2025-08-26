@@ -67,9 +67,10 @@ public class DataItemModel extends ItemModelProvider {
                                 modLoc("block/harvester/side"), modLoc("block/harvester/front"),
                                 modLoc("block/harvester/bottom"), modLoc("block/harvester/top"));
 
-                // cubeBottomTop(zBlocks.FAN.get().getDescriptionId().replace("block." + ID + ".", ""),
-                //                 modLoc("block/fan/side"), modLoc("block/fan/off"),
-                //                 modLoc("block/fan/back"));
+                // cubeBottomTop(zBlocks.FAN.get().getDescriptionId().replace("block." + ID +
+                // ".", ""),
+                // modLoc("block/fan/side"), modLoc("block/fan/off"),
+                // modLoc("block/fan/back"));
 
                 zBlocks.zBlockSlab.getEntries().forEach(bk -> slab(
                                 bk.getRegisteredName().replace(ID + ":block/", ""), modLoc("block/decorative/"
@@ -104,6 +105,9 @@ public class DataItemModel extends ItemModelProvider {
                                 modLoc("block/harvester/top"));
 
                 simpleFullBlock(zBlocks.HEALER.get(), "");
+
+                withExistingParent(zBlocks.WOODEN_TINY_CHEST.getRegisteredName(),
+                                modLoc("block/tiny_chest/wooden/base"));
 
         }
 
