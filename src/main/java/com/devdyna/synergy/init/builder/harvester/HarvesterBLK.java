@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 
+@SuppressWarnings("null")
 public class HarvesterBLK extends BaseBlockBE {
 
     public HarvesterBLK() {
@@ -37,7 +38,7 @@ public class HarvesterBLK extends BaseBlockBE {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
-        b.add(BlockStateProperties.HORIZONTAL_FACING,BlockStateProperties.ENABLED);
+        b.add(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.ENABLED);
     }
 
     @Nullable
