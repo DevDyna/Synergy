@@ -43,7 +43,6 @@ public abstract class CoolerBlockBase extends Block {
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
             BlockPos neighborPos, boolean movedByPiston) {
-
         level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.ENABLED, activeWhen(state, level, pos)));
     }
 
