@@ -1,12 +1,12 @@
 ---
 navigation:
   title: Machines
-  icon: "minecraft:crafter"
+  icon: "synergy:pipe"
   position: 5
 ---
 
 # Machines
 
-Functional Machines to simplify boring stuff
+Functional blocks with unique features
 
 <CategoryIndex category="machines"></CategoryIndex>
