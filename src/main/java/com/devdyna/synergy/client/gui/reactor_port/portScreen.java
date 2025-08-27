@@ -23,7 +23,7 @@ public class portScreen extends AbstractContainerScreen<portGUI> implements scre
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
-        var textures = Set.of(PLAYER_INVENTORY, MACHINE_SINGLE_SLOT);
+        var textures = Set.of(PLAYER_INVENTORY, MACHINE_SINGLE_SLOT);//TODO change machine single slot
 
         textures.forEach(t -> RenderSystem.setShaderTexture(0, t));
 
