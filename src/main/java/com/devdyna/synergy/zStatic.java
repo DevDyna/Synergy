@@ -46,6 +46,7 @@ public class zStatic {
         public static String smasher = "smasher";
         public static String bone_meal_mixture = "bone_meal_mixture";
         public static String glowstone_mixture = "glowstone_mixture";
+        public static String amethyst_mixture = "amethyst_mixture";
 
         // TODO need to rework
         public static String refactorizer = "pipe_refactorizer";
