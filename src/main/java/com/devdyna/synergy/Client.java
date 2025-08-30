@@ -3,7 +3,6 @@ package com.devdyna.synergy;
 import com.devdyna.synergy.client.aoe.HarvesterAOE;
 import com.devdyna.synergy.client.aoe.ReactorAOE;
 import com.devdyna.synergy.client.aoe.SprinklerAOE;
-import com.devdyna.synergy.client.gui.reactor_port.portScreen;
 import com.devdyna.synergy.client.gui.tiny_chest.chestScreen;
 import com.devdyna.synergy.client.nodes.*;
 import com.devdyna.synergy.init.types.zBlockEntities;
@@ -32,7 +31,6 @@ public class Client {
 
     @SubscribeEvent
     public static void registerScreens(RegisterMenuScreensEvent event) {
-        event.register(zContainer.REACTORPORT_GUI.get(), portScreen::new);
         event.register(zContainer.CHEST_GUI.get(), chestScreen::new);
     }
 
