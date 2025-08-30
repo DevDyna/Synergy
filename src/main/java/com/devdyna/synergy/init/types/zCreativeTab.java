@@ -1,17 +1,20 @@
 package com.devdyna.synergy.init.types;
 
 import com.devdyna.synergy.zStatic;
+
+import java.util.List;
+
 import com.devdyna.synergy.Main;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredRegister.Items;
 
 public class zCreativeTab {
         public static void register(IEventBus bus) {
@@ -24,40 +27,40 @@ public class zCreativeTab {
                         .create(Registries.CREATIVE_MODE_TAB, Main.ID);
         // ---------------------------------------------------------------------------------------//
 
+        private static List<Items> types = List.of(
+
+                        zItems.zBlockItem,
+                        zItems.zTool,
+
+                        zItems.zFoods,
+                        zItems.zCropExtra,
+                        zItems.zSeeds,
+
+                        zItems.zCraftingComponents,
+
+                        zItems.zResources,
+
+                        zItems.zDusts,
+                        zItems.zFoils,
+                        zItems.zGems,
+                        zItems.zIngots,
+                        zItems.zNuggets,
+                        zItems.zPlates,
+                        zItems.zRawOres,
+                        zItems.zShards
+
+        );
+
         public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = zCreative
                         .register(Main.ID, () -> CreativeModeTab.builder()
-                                        .title(Component.translatable(Main.ID + "."+zStatic.CreativeTab))
+                                        .title(Component.translatable(Main.ID + "." + zStatic.CreativeTab))
                                         .withTabsBefore(CreativeModeTabs.COMBAT)
-                                        .icon(() -> Items.DIAMOND.getDefaultInstance())
+                                        .icon(() -> zItems.CONFIGURATOR.get().getDefaultInstance())
                                         .displayItems((parameters, output) -> {
 
-                                                // zItems.zItem.getEntries().forEach(e -> {
-                                                //         output.accept((Item) e.get());
-                                                // });
-
-                                                zItems.zBlockItem.getEntries().forEach(e -> {
+                                                types.forEach(t -> t.getEntries().forEach(e -> {
                                                         output.accept((Item) e.get());
-                                                });
-
-                                                zItems.zTool.getEntries().forEach(e -> {
-                                                        output.accept((Item) e.get());
-                                                });
-
-                                                zItems.zFoods.getEntries().forEach(e -> {
-                                                        output.accept((Item) e.get());
-                                                });
-
-                                                zItems.zCropExtra.getEntries().forEach(e -> {
-                                                        output.accept((Item) e.get());
-                                                });
-
-                                                zItems.zSeeds.getEntries().forEach(e -> {
-                                                        output.accept((Item) e.get());
-                                                });
-
-                                                zItems.zCraftingComponents.getEntries().forEach(e -> {
-                                                        output.accept((Item) e.get());
-                                                });
+                                                }));
 
                                         }).build());
 
