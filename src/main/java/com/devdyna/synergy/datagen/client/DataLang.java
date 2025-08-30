@@ -108,10 +108,10 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "DESC");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".off",
-                                TIP_COLOR + "Deactive");
+                                TIP_COLOR + "Deactive ");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".on",
-                                TIP_COLOR + "Active");
+                                TIP_COLOR + "Active ");
 
                                 add(Main.ID + "." + zStatic.ReactorStuff.moderator+".multiplier" ,
                                 TIP_COLOR + "Multiplier");//TODO
@@ -122,8 +122,8 @@ public class DataLang extends LanguageProvider {
                                 add(Main.ID + "." + zStatic.ReactorStuff.controller ,
                                 TIP_COLOR + "DESC");//TODO
 
-                                add(Main.ID + "." + zStatic.ReactorStuff.port ,
-                                TIP_COLOR + "DESC");//TODO
+                                // add(Main.ID + "." + zStatic.ReactorStuff.port ,
+                                // TIP_COLOR + "DESC");//TODO
 
                                 add(Main.ID + "." + zStatic.ReactorStuff.moderator ,
                                 TIP_COLOR + "DESC");//TODO

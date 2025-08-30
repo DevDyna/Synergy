@@ -5,6 +5,8 @@ import static com.devdyna.synergy.Main.ID;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
+import com.devdyna.synergy.api.reactor.ControllerProperties;
+import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.utils.DataGenUtil;
 
@@ -14,10 +16,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class DataBlockModelState extends BlockStateProvider {
 
@@ -30,17 +34,21 @@ public class DataBlockModelState extends BlockStateProvider {
 
                 rotableBlock(zBlocks.SPRINKLER.get());
                 horizontalBlock(zBlocks.WOODEN_TINY_CHEST.get(), models()
-                                .getExistingFile(ResourceLocation.fromNamespaceAndPath(ID, "block/tiny_chest/wooden/base")));
+                                .getExistingFile(ResourceLocation.fromNamespaceAndPath(ID,
+                                                "block/tiny_chest/wooden")));
                 node(zBlocks.ITEM_TRANSFER.get(), "red");
                 node(zBlocks.ITEM_PROVIDER.get(), "green");
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
                 pipe(zBlocks.PIPE.get());
 
-                simpleBlockDecorative(zBlocks.ADOBE.get());
-                simpleBlockDecorative(zBlocks.RUSTIC_METAL.get());
-                simpleBlockDecorative(zBlocks.WAXED_PLANKS.get());
+                simpleBlockDecorative(zBlocks.ADOBE);
+                simpleBlockDecorative(zBlocks.RUSTIC_METAL);
+                simpleBlockDecorative(zBlocks.WAXED_PLANKS);
 
-                simpleFullBlock(zBlocks.HEALER.get(), "");
+                simpleFullBlock(zBlocks.HEALER, "");
+                simpleFullBlock(zBlocks.REACTOR_FUEL_CELL, "reactor/");
+                simpleFlexibleBlock(zBlocks.IRON_COOLER, "reactor/cooler/on");
+                simpleFlexibleBlock(zBlocks.GRAPHITE_MODERATOR, "reactor/moderator/casing");
 
                 crop(zBlocks.RICE.get(), 7, true, CropBlock.AGE);
                 crop(zBlocks.CAVE_WHEAT.get(), 5, true, BaseShortCropBlock.AGE);
@@ -56,10 +64,11 @@ public class DataBlockModelState extends BlockStateProvider {
 
                 horizontalBlock(zBlocks.HARVESTER.get(), models()
                                 .orientableWithBottom(
-                                                zBlocks.HARVESTER.get().getDescriptionId().replace("block." + ID + ".",
-                                                                ""),
+                                                zBlocks.HARVESTER.getRegisteredName(),
                                                 modLoc("block/harvester/side"), modLoc("block/harvester/front"),
                                                 modLoc("block/harvester/bottom"), modLoc("block/harvester/top")));
+
+                reactorController(zBlocks.REACTOR_CONTROLLER);
 
                 zBlocks.zBlockSlab.getEntries().forEach(b -> slabBlock((SlabBlock) b.get(), modLoc("block/"
                                 + DataGenUtil.getPath(b.get()).replace(ID + ":block/",
@@ -80,16 +89,25 @@ public class DataBlockModelState extends BlockStateProvider {
                                                 modLoc("block/harvester/side"), modLoc("block/harvester/bottom"),
                                                 modLoc("block/harvester/top")));
 
+                directionalBlock(zBlocks.ADVANCED_MACHINE_FRAME.get(),
+                                models().cubeBottomTop(zBlocks.ADVANCED_MACHINE_FRAME.getRegisteredName(),
+                                                modLoc("block/reactor/controller/side"),
+                                                modLoc("block/reactor/controller/bottom"),
+                                                modLoc("block/reactor/controller/top")));
+
         }
 
-        private void simpleBlockDecorative(Block b) {
+        private void simpleBlockDecorative(DeferredHolder<Block, Block> b) {
                 simpleFullBlock(b, "decorative/");
         }
 
-        private void simpleFullBlock(Block b, String prefix) {
-                simpleBlock(b, models().cubeAll(b.getDescriptionId().replace("block." + ID + ".", ""),
-                                modLoc("block/" + prefix
-                                                + b.getDescriptionId().replace("block." + ID + ".", ""))));
+        private void simpleFullBlock(DeferredHolder<Block, Block> b, String prefix) {
+                simpleFlexibleBlock(b, b.getRegisteredName().replace(ID + ":", prefix));
+        }
+
+        private void simpleFlexibleBlock(DeferredHolder<Block, Block> b, String loc) {
+                simpleBlock(b.get(), models().cubeAll(b.getRegisteredName(),
+                                modLoc("block/" + loc)));
         }
 
         // private void fan(Block b) {
@@ -108,6 +126,32 @@ public class DataBlockModelState extends BlockStateProvider {
         // .build();
         // });
         // }
+
+        private void reactorController(DeferredHolder<Block, Block> b) {
+
+                getVariantBuilder(b.get()).forAllStates((state) -> {
+
+                        String front = switch (state.getValue(ReactorControllerBlock.STATUS)) {
+                                case ControllerProperties.WAITING -> "front_off";
+                                case ControllerProperties.NOCELLS -> "front_nocell";
+                                case ControllerProperties.OVERHEATED -> "front_overheated";
+                                case ControllerProperties.PRODUCTION -> "front_on";
+                                default -> "";
+                        };
+
+                        return ConfiguredModel.builder().modelFile(models()
+                                        .orientableWithBottom(b.getRegisteredName()+front,
+                                                        modLoc("block/reactor/controller/side"),
+                                                        modLoc("block/reactor/controller/"+front),
+                                                        modLoc("block/reactor/controller/bottom"),
+                                                        modLoc("block/reactor/controller/top")))
+                                        .rotationY(
+                                                        ((int) (state.getValue(BlockStateProperties.HORIZONTAL_FACING))
+                                                                        .toYRot() + 0) % 360)
+                                        .build();
+                });
+
+        }
 
         private void pipe(Block b) {
                 var model = getMultipartBuilder(b);

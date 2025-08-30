@@ -63,7 +63,7 @@ public class DataItemModel extends ItemModelProvider {
                 zItems.zCraftingComponents.getEntries()
                                 .forEach(item -> DataGenUtil.itemModel(item.get(), this, "components/"));
 
-                orientableWithBottom(zBlocks.HARVESTER.get().getDescriptionId().replace("block." + ID + ".", ""),
+                orientableWithBottom(zBlocks.HARVESTER.getRegisteredName(),
                                 modLoc("block/harvester/side"), modLoc("block/harvester/front"),
                                 modLoc("block/harvester/bottom"), modLoc("block/harvester/top"));
 
@@ -100,21 +100,36 @@ public class DataItemModel extends ItemModelProvider {
                                                                 "").replace("_stair",
                                                                                 ""))));
 
+                orientableWithBottom(zBlocks.REACTOR_CONTROLLER.getRegisteredName(),
+                                modLoc("block/reactor/controller/side"), modLoc("block/reactor/controller/front_off"),
+                                modLoc("block/reactor/controller/bottom"), modLoc("block/reactor/controller/top"));
+
+                cubeBottomTop(zBlocks.ADVANCED_MACHINE_FRAME.getRegisteredName(),
+                                modLoc("block/reactor/controller/side"), modLoc("block/reactor/controller/bottom"),
+                                modLoc("block/reactor/controller/top"));
+
                 cubeBottomTop(zBlocks.MACHINE_FRAME.getRegisteredName(),
                                 modLoc("block/harvester/side"), modLoc("block/harvester/bottom"),
                                 modLoc("block/harvester/top"));
 
-                simpleFullBlock(zBlocks.HEALER.get(), "");
+                simpleFullBlock(zBlocks.HEALER, "");
+                simpleFullBlock(zBlocks.REACTOR_FUEL_CELL, "reactor/");
+                simpleFlexibleBlock(zBlocks.IRON_COOLER, "reactor/cooler/on");
+                simpleFlexibleBlock(zBlocks.GRAPHITE_MODERATOR, "reactor/moderator/casing");
 
                 withExistingParent(zBlocks.WOODEN_TINY_CHEST.getRegisteredName(),
-                                modLoc("block/tiny_chest/wooden/base"));
+                                modLoc("block/tiny_chest/wooden"));
 
         }
 
-        private void simpleFullBlock(Block b, String prefix) {
-                cubeAll(b.getDescriptionId().replace("block." + ID + ".", ""),
-                                modLoc("block/" + prefix
-                                                + b.getDescriptionId().replace("block." + ID + ".", "")));
+        private void simpleFlexibleBlock(DeferredHolder<Block, Block> b, String loc) {
+                cubeAll(b.getRegisteredName(),
+                                modLoc("block/"+loc));
+        }
+
+        private void simpleFullBlock(DeferredHolder<Block, Block> b, String prefix) {
+                cubeAll(b.getRegisteredName(),
+                                modLoc("block/" + b.getRegisteredName().replace(ID + ":", prefix)));
         }
 
         private void node(DeferredHolder<Block, ?> b, String color) {
