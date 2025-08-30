@@ -241,6 +241,17 @@ public class DataRecipe extends RecipeProvider {
                                                                 Items.SLIME_BALL))
                                 .group(zStatic.tips.MIXTURE_TIP).save(c);
 
+                ShapelessRecipeBuilder.shapeless(MISC, zItems.AMETHYST_MIXTURE.get(), 4)
+                                .requires(Items.FERMENTED_SPIDER_EYE)
+                                .requires(Items.QUARTZ)
+                                .requires(Tags.Items.GEMS_AMETHYST)
+                                .requires(Items.HONEYCOMB)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(Items.QUARTZ, Items.FERMENTED_SPIDER_EYE,
+                                                                Items.AMETHYST_SHARD,
+                                                                Items.HONEYCOMB))
+                                .group(zStatic.tips.MIXTURE_TIP).save(c);
+
                 stairBuilder(zBlocks.WAXED_PLANKS_STAIR.get(), Ingredient.of(zBlocks.WAXED_PLANKS.get()))
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zBlocks.WAXED_PLANKS.get()))
