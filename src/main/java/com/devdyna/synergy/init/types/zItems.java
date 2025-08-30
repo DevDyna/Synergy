@@ -176,6 +176,9 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> GLOWSTONE_MIXTURE = zTool
                         .register(zStatic.Items.glowstone_mixture, () -> new PlantMixture());
+        
+                        public static final DeferredHolder<Item, Item> AMETHYST_MIXTURE = zTool
+                        .register(zStatic.Items.amethyst_mixture, () -> new PlantMixture());
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> RESISTIVE_STONE_CIRCUIT = Material
                         .craftingItem(zStatic.Items.CraftingComponents.resistive_stone_circuit);
