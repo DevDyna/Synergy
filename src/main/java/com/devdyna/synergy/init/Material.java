@@ -6,7 +6,9 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.builder.DecorativeBlock;
+import com.devdyna.synergy.init.builder.ItemComponents;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -156,7 +158,7 @@ public class Material {
         }
 
         /**
-         * @param factory Class::new
+         * @param factory     Class::new
          * @param validBlocks BLOCK1,BLOCK2
          */
         public static <T extends BlockEntity> DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> createBlockEntity(
@@ -166,6 +168,56 @@ public class Material {
                                 () -> BlockEntityType.Builder.of(factory, Arrays.stream(validBlocks)
                                                 .map(Supplier::get)
                                                 .toArray(Block[]::new)).build(null));
+        }
+
+        public static DeferredHolder<Item, Item> craftingItem(String name) {
+                return zItems.zCraftingComponents
+                                .register(name, () -> new ItemComponents());
+        }
+
+        public static DeferredHolder<Item, Item> resourceItem(String name) {
+                return zItems.zResources
+                                .registerSimpleItem(name);
+        }
+
+        public static DeferredHolder<Item, Item> resourceFoil(String name) {
+                return zItems.zFoils
+                                .registerSimpleItem(name + zStatic.ResourceType.foil);
+        }
+
+        public static DeferredHolder<Item, Item> resourceGem(String name) {
+                return zItems.zGems
+                                .registerSimpleItem(name + zStatic.ResourceType.gem);
+        }
+
+        public static DeferredHolder<Item, Item> resourceIngot(String name) {
+                return zItems.zIngots
+                                .registerSimpleItem(name + zStatic.ResourceType.ingot);
+        }
+
+        public static DeferredHolder<Item, Item> resourceNugget(String name) {
+                return zItems.zNuggets
+                                .registerSimpleItem(name + zStatic.ResourceType.nugget);
+        }
+
+        public static DeferredHolder<Item, Item> resourcePlate(String name) {
+                return zItems.zPlates
+                                .registerSimpleItem(name + zStatic.ResourceType.plate);
+        }
+
+        public static DeferredHolder<Item, Item> resourceRaw(String name) {
+                return zItems.zRawOres
+                                .registerSimpleItem(zStatic.ResourceType.raw + name);
+        }
+
+                public static DeferredHolder<Item, Item> resourceShard(String name) {
+                return zItems.zShards
+                                .registerSimpleItem(name + zStatic.ResourceType.shard);
+        }
+
+                        public static DeferredHolder<Item, Item> resourceDust(String name) {
+                return zItems.zDusts
+                                .registerSimpleItem(name + zStatic.ResourceType.dust);
         }
 
 }

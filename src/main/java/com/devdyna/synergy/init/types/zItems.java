@@ -3,9 +3,9 @@ package com.devdyna.synergy.init.types;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseSeedItem;
 import com.devdyna.synergy.Main;
-import com.devdyna.synergy.init.builder.ItemComponents;
+import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.tools.Battery;
-import com.devdyna.synergy.init.builder.tools.BoneMealMixture;
+import com.devdyna.synergy.init.builder.tools.PlantMixture;
 import com.devdyna.synergy.init.builder.tools.Configurator;
 import com.devdyna.synergy.init.builder.tools.Croock;
 import com.devdyna.synergy.init.builder.tools.PipeRefactorizer;
@@ -23,63 +23,105 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class zItems {
         public static void register(IEventBus bus) {
-                // zItem.register(bus);
-                zTool.register(bus);
+
                 zBlockItem.register(bus);
-                zSeeds.register(bus);
-                zCropExtra.register(bus);
-                zFoods.register(bus);
+                zTool.register(bus);
                 zCraftingComponents.register(bus);
                 zNodeModules.register(bus);
+
+                zFoods.register(bus);
+                zCropExtra.register(bus);
+                zSeeds.register(bus);
+
+                zResources.register(bus);
+
+                zDusts.register(bus);
+                zFoils.register(bus);
+                zGems.register(bus);
+                zIngots.register(bus);
+                zNuggets.register(bus);
+                zPlates.register(bus);
+                zRawOres.register(bus);
+                zShards.register(bus);
+
         }
 
         // ---------------------------------------------------------------------------------------//
-        // DONT USE IT , ONLY FUNCTIONAL
+        /**
+         * Block-Items
+         * <br/>
+         * <br/>
+         * DONT USE THIS TO REGISTER STUFF
+         */
         public static final DeferredRegister.Items zBlockItem = DeferredRegister.createItems(Main.ID);
-        // public static final DeferredRegister.Items zItem =
-        // DeferredRegister.createItems(Main.ID);
+        /**
+         * Item with abilities
+         */
         public static final DeferredRegister.Items zTool = DeferredRegister.createItems(Main.ID);
+        /**
+         * Item only for recipes
+         */
         public static final DeferredRegister.Items zCraftingComponents = DeferredRegister.createItems(Main.ID);
+        /**
+         * Nodes upgrades
+         */
         public static final DeferredRegister.Items zNodeModules = DeferredRegister.createItems(Main.ID);
-
-        //
-        public static final DeferredRegister.Items zDecorative = DeferredRegister.createItems(Main.ID);
-
+        /**
+         * Edible items
+         */
         public static final DeferredRegister.Items zFoods = DeferredRegister.createItems(Main.ID);
+        /**
+         * Crop result items
+         */
         public static final DeferredRegister.Items zCropExtra = DeferredRegister.createItems(Main.ID);
+        /**
+         * Crop seed items
+         */
         public static final DeferredRegister.Items zSeeds = DeferredRegister.createItems(Main.ID);
-        // public static final DeferredRegister.Items zSpores =
-        // DeferredRegister.createItems(Main.ID);
 
+        /**
+         * Generic resource type
+         */
+        public static final DeferredRegister.Items zResources = DeferredRegister.createItems(Main.ID);
+        // Dedicated resource types
+        public static final DeferredRegister.Items zFoils = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zGems = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zIngots = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zNuggets = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zPlates = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zRawOres = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zShards = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zDusts = DeferredRegister.createItems(Main.ID);
         // ---------------------------------------------------------------------------------------//
-
         public static final DeferredHolder<Item, Item> AZALEA_SEEDS = zSeeds
                         .registerSimpleItem(zStatic.Items.Azalea.seeds);
-
+        // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> SMALL_AZALEA_LEAF = zCropExtra
                         .registerSimpleItem(zStatic.Items.Azalea.leaf);
 
         public static final DeferredHolder<Item, Item> SMALL_AZALEA_ROOTS = zCropExtra
                         .registerSimpleItem(zStatic.Items.Azalea.roots);
 
-        public static final DeferredHolder<Item, Croock> WOODEN_CROOK = zTool.register(zStatic.Items.wooden_crook,
-                        () -> new Croock(BlockTags.LEAVES, Tiers.NETHERITE));
-
+        // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, ?> CAVE_WHEAT_SEEDS = zSeeds.register(zStatic.Seeds.CAVE_WHEAT_SEED,
                         () -> new BaseSeedItem(zBlocks.CAVE_WHEAT.get()));
+
         public static final DeferredHolder<Item, ?> RICE_SEED = zSeeds.register(zStatic.Seeds.RICE_SEED,
                         () -> new BaseSeedItem(zBlocks.RICE.get(),
                                         new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().fast()
                                                         .nutrition(1).saturationModifier(1).build())));
+
         public static final DeferredHolder<Item, ?> COTTON_SEEDS = zSeeds.register(zStatic.Seeds.COTTON_SEED,
                         () -> new BaseSeedItem(zBlocks.COTTON.get()));
+
         public static final DeferredHolder<Item, ?> BLUE_CUP_SPORE = zSeeds.register(
                         zStatic.Seeds.BLUE_CUP_SPORE,
                         () -> new BaseSeedItem(zBlocks.BLUE_CUP_MUSHROOM.get()));
+
         public static final DeferredHolder<Item, ?> VIOLET_WEBCAP_SPORE = zSeeds.register(
                         zStatic.Seeds.VIOLET_WEBCAP_SPORE,
                         () -> new BaseSeedItem(zBlocks.VIOLET_WEBCAP_MUSHROOM.get()));
-
+        // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, ?> COTTON = zCropExtra.registerSimpleItem(zStatic.Plants.COTTON);
 
         public static final DeferredHolder<Item, ?> BLUE_CUP_MUSHROOM = zCropExtra
@@ -97,6 +139,9 @@ public class zItems {
                                                                         0),
                                                                         25)
                                                         .build()));
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Croock> WOODEN_CROOK = zTool.register(zStatic.Items.wooden_crook,
+                        () -> new Croock(BlockTags.LEAVES, Tiers.NETHERITE));
 
         public static final DeferredHolder<Item, Item> PIPE_REFARCTORIZER = zTool
                         .register(zStatic.Items.refactorizer, () -> new PipeRefactorizer());
@@ -116,18 +161,127 @@ public class zItems {
         public static final DeferredHolder<Item, Item> RED_BATTERY = zTool
                         .register(zStatic.Items.Batteries.red, () -> new Battery(100000));
 
-        public static final DeferredHolder<Item, Item> CHIP = zCraftingComponents
-                        .register(zStatic.Items.CraftingComponents.chip, () -> new ItemComponents());
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> CHIP = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.chip);
 
-        public static final DeferredHolder<Item, Item> RESISTOR = zCraftingComponents
-                        .register(zStatic.Items.CraftingComponents.resistor, () -> new ItemComponents());
+        public static final DeferredHolder<Item, Item> RESISTOR = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.resistor);
 
-        public static final DeferredHolder<Item, Item> CONDENSER = zCraftingComponents
-                        .register(zStatic.Items.CraftingComponents.condenser, () -> new ItemComponents());
-
+        public static final DeferredHolder<Item, Item> CONDENSER = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.condenser);
+        // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> BONE_MEAL_MIXTURE = zTool
-                        .register(zStatic.Items.bone_meal_mixture, () -> new BoneMealMixture());
+                        .register(zStatic.Items.bone_meal_mixture, () -> new PlantMixture());
 
+        public static final DeferredHolder<Item, Item> GLOWSTONE_MIXTURE = zTool
+                        .register(zStatic.Items.glowstone_mixture, () -> new PlantMixture());
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> RESISTIVE_STONE_CIRCUIT = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.resistive_stone_circuit);
 
+        public static final DeferredHolder<Item, Item> COPPER_COIL = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.copper_coil);
+
+        public static final DeferredHolder<Item, Item> LIGHT_BULB = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.light_bulb);
+
+        public static final DeferredHolder<Item, Item> MAGNETIC_STONE_CIRCUIT = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.magnetic_stone_circuit);
+
+        public static final DeferredHolder<Item, Item> NETHER_CIRCUIT = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.nether_circuit);
+
+        public static final DeferredHolder<Item, Item> METAL_BOLTS = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.metal_bolts);
+
+        public static final DeferredHolder<Item, Item> STONE_CIRCUIT = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.stone_circuit);
+
+        public static final DeferredHolder<Item, Item> SUPERCONDUCTOR = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.superconductor);
+
+        public static final DeferredHolder<Item, Item> WIRED_NETHER_PLATE = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.wired_nether_plate);
+
+        public static final DeferredHolder<Item, Item> WIRED_STONE_PLATE = Material
+                        .craftingItem(zStatic.Items.CraftingComponents.wired_stone_plate);
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> CARBON_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.carbon);
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> COPPER_FOIL = Material
+                        .resourceFoil(zStatic.ResourceMaterial.copper);
+
+        public static final DeferredHolder<Item, Item> GOLD_FOIL = Material.resourceFoil(zStatic.ResourceMaterial.gold);
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> AQUAMARINE = Material
+                        .resourceGem(zStatic.ResourceMaterial.aquamarine);
+
+        public static final DeferredHolder<Item, Item> ONYX = Material.resourceGem(zStatic.ResourceMaterial.onyx);
+
+        public static final DeferredHolder<Item, Item> SILICON = Material.resourceGem(zStatic.ResourceMaterial.silicon);
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> ADVANCED_ALLOY_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.advanced_alloy);
+
+        public static final DeferredHolder<Item, Item> STEEL_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.steel);
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> ADVANCED_ALLOY_NUGGET = Material
+                        .resourceNugget(zStatic.ResourceMaterial.advanced_alloy);
+
+        public static final DeferredHolder<Item, Item> STEEL_NUGGET = Material
+                        .resourceNugget(zStatic.ResourceMaterial.steel);
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> ADVANCED_ALLOY_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.advanced_alloy);
+
+        public static final DeferredHolder<Item, Item> CARBON_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.carbon);
+
+        public static final DeferredHolder<Item, Item> COPPER_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.copper);
+
+        public static final DeferredHolder<Item, Item> GOLD_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.gold);
+
+        public static final DeferredHolder<Item, Item> IRON_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.iron);
+
+        public static final DeferredHolder<Item, Item> MATRIX_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.matrix);
+
+        public static final DeferredHolder<Item, Item> MIXED_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.mixed);
+
+        public static final DeferredHolder<Item, Item> NETHERRACK_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.netherrack);
+
+        public static final DeferredHolder<Item, Item> STEEL_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.steel);
+
+        public static final DeferredHolder<Item, Item> STONE_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.stone);
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> RAW_SILICON = Material
+                        .resourceRaw(zStatic.ResourceMaterial.silicon);
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> SILICON_SHARD = Material
+                        .resourceShard(zStatic.ResourceMaterial.silicon);
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> CARBON_FIBER = Material
+                        .resourceItem("carbon_fiber");
+
+        public static final DeferredHolder<Item, Item> INFERNAL_EMBER = Material
+                        .resourceItem("infernal_ember");
+
+        public static final DeferredHolder<Item, Item> RUBBER = Material.resourceItem("rubber");
+
+        public static final DeferredHolder<Item, Item> OIL = Material.resourceItem("oil");
+
+        public static final DeferredHolder<Item, Item> WOODEN_GEAR = Material
+                        .resourceItem("wooden_gear");
+        // ---------------------------------------------------------------------------------------//
 
 }
