@@ -147,4 +147,9 @@ public class HarvesterBE extends BaseBE implements EnergyBlock, AreaOfEffect, It
         return true;
     }
 
+    @Override
+    public int MaxFE() {
+        return 10000;
+    }
+
 }
