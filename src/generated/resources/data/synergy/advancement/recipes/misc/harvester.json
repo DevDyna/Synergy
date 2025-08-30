@@ -17,7 +17,7 @@
             "items": "synergy:resistor"
           },
           {
-            "items": "synergy:machine_frame"
+            "items": "synergy:basic_machine_frame"
           },
           {
             "items": "synergy:blue_battery"

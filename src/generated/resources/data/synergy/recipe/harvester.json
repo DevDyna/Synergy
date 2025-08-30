@@ -13,7 +13,7 @@
       "item": "minecraft:iron_hoe"
     },
     "M": {
-      "item": "synergy:machine_frame"
+      "item": "synergy:basic_machine_frame"
     },
     "R": {
       "item": "synergy:resistor"

@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "synergy:block/reactor/controller/bottom",
+    "front": "synergy:block/reactor/controller/front_off",
+    "side": "synergy:block/reactor/controller/side",
+    "top": "synergy:block/reactor/controller/top"
+  }
+}

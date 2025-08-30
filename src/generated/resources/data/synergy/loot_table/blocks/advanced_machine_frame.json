@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:reactor_port"
+          "name": "synergy:advanced_machine_frame"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "synergy:blocks/reactor_port"
+  "random_sequence": "synergy:blocks/advanced_machine_frame"
 }

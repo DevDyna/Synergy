@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:machine_frame"
+        "recipe": "synergy:basic_machine_frame"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -32,7 +32,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:machine_frame"
+      "synergy:basic_machine_frame"
     ]
   }
 }

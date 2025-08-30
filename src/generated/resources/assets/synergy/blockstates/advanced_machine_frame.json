@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "synergy:block/advanced_machine_frame",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "synergy:block/advanced_machine_frame",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "synergy:block/advanced_machine_frame",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "synergy:block/advanced_machine_frame",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "synergy:block/advanced_machine_frame"
+    },
+    "facing=west": {
+      "model": "synergy:block/advanced_machine_frame",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
