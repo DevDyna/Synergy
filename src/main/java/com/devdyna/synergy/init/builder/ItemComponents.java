@@ -8,13 +8,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 
+@SuppressWarnings("null")
 public class ItemComponents extends Item {
 
     public ItemComponents(Properties properties) {
         super(properties);
     }
 
-        public ItemComponents() {
+    public ItemComponents() {
         super(new Item.Properties());
     }
 
