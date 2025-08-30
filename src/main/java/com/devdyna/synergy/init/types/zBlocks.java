@@ -134,7 +134,11 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> WAXED_PLANKS_STAIR = Material.stair(WAXED_PLANKS);
 
         public static final DeferredHolder<Block, Block> MACHINE_FRAME = Material.registerItemBlock(
-                        zStatic.DecorativeBlocks.machine_frame,
+                        zStatic.DecorativeBlocks.MachineFrame.basic,
+                        () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)));
+
+                public static final DeferredHolder<Block, Block> ADVANCED_MACHINE_FRAME = Material.registerItemBlock(
+                        zStatic.DecorativeBlocks.MachineFrame.advanced,
                         () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)));
 
         public static final DeferredHolder<Block, Block> HEALER = Material.registerItemBlock(
