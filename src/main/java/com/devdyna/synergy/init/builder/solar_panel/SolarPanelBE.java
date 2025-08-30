@@ -41,6 +41,11 @@ public class SolarPanelBE extends BaseBE implements EnergyProvider {
         }
     }
 
+    public boolean checkSky() {
+        return level.canSeeSkyFromBelowWater(getBlockPos().above())
+                && level.getBlockState(getBlockPos().above()).isAir();
+    }
+
     @Override
     public ContainerData getContainerData() {
         return new SimpleContainerData(getMaxFE());
@@ -51,9 +56,9 @@ public class SolarPanelBE extends BaseBE implements EnergyProvider {
         return getData(zHandlers.ENERGY_STORAGE);
     }
 
-    public boolean checkSky() {
-        return level.canSeeSkyFromBelowWater(getBlockPos().above())
-                && level.getBlockState(getBlockPos().above()).isAir();
+    @Override
+    public int MaxFE() {
+        return 10000;
     }
 
 }
