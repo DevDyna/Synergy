@@ -2,10 +2,12 @@ package com.devdyna.synergy.utils;
 
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 
 import com.devdyna.synergy.init.Material;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
@@ -235,6 +237,21 @@ public class LevelUtil {
      */
     public static void addRainbowDustParticle(int delay, ServerLevel level, BlockPos pos, boolean isRandom, int count) {
         addDustParticle(ColorUtil.rgbColor(level, delay), level, pos, isRandom, count);
+    }
+
+    /**
+     * Check foreach side based on a predicate
+     * 
+     * @param predicate x -> x instanceof BlockToCheck
+     */
+    public static int predicateNeighborMatch(Level level, BlockPos pos, Predicate<Block> predicate) {
+        int counter = 0;
+        for (Direction dir : Direction.values()) {
+            Block block = level.getBlockState(pos.relative(dir)).getBlock();
+            if (predicate.test(block))
+                counter++;
+        }
+        return counter;
     }
 
 }
