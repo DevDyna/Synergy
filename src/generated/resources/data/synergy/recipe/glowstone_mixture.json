@@ -7,17 +7,17 @@
       "tag": "c:slime_balls"
     },
     {
-      "item": "minecraft:bone_meal"
+      "item": "minecraft:glowstone_dust"
     },
     {
-      "tag": "c:dusts/redstone"
+      "tag": "c:gems/lapis"
     },
     {
-      "item": "minecraft:blaze_powder"
+      "item": "minecraft:prismarine_crystals"
     }
   ],
   "result": {
-    "count": 3,
-    "id": "synergy:bone_meal_mixture"
+    "count": 6,
+    "id": "synergy:glowstone_mixture"
   }
 }
