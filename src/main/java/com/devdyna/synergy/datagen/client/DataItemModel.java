@@ -4,6 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.List;
 
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.utils.DataGenUtil;
@@ -21,15 +22,16 @@ public class DataItemModel extends ItemModelProvider {
                 super(o, ID, f);
         }
 
+        List<Item> wild_plants = List.of(zBlocks.WILD_CAVE_WHEAT.get().asItem(),
+                        zBlocks.WILD_COTTON.get().asItem(),
+                        zBlocks.WILD_RICE.get().asItem());
+
         @Override
         protected void registerModels() {
+                // -----------------------//
 
-                List<Item> wild_plants = List.of(zBlocks.WILD_CAVE_WHEAT.get().asItem(),
-                                zBlocks.WILD_COTTON.get().asItem(),
-                                zBlocks.WILD_RICE.get().asItem());
-
-                // zItems.zItem.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(),
-                // this));
+                zItems.zCraftingComponents.getEntries()
+                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "components/"));
                 zItems.zCropExtra.getEntries()
                                 .forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/results/"));
                 zItems.zFoods.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "foods/"));
@@ -37,40 +39,33 @@ public class DataItemModel extends ItemModelProvider {
                 zItems.zSeeds.getEntries().stream().filter(f -> !wild_plants.contains(f.get()))
                                 .forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/seeds/"));
 
-                DataGenUtil.itemBlockwithParent(zBlocks.SPRINKLER.get(), this,
-                                ID + ":block/" + DataGenUtil.getPath(zBlocks.SPRINKLER.get()));
-
-                withExistingParent(zBlocks.PIPE.getRegisteredName(), modLoc("block/pipe/basic/item_model"));
-
-                withExistingParent(zBlocks.SOLAR_PANEL.getRegisteredName(), modLoc("block/solar_panel/item_model"));
-
-                node(zBlocks.ITEM_TRANSFER, "red");
-                node(zBlocks.ITEM_PROVIDER, "green");
-                node(zBlocks.ITEM_RETRIEVAL, "aqua");
-
                 zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "tools/"));
 
-                wild_plants.forEach(w -> withExistingParent(DataGenUtil.getPath(w), "minecraft:item/generated")
-                                .texture("layer0", DataGenUtil.getResource(
-                                                "item/plants/bush/" + DataGenUtil.getPath(w).replace("wild_", ""))));
+                zItems.zResources.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/"));
+                zItems.zDusts.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/dust/",
+                                DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.dust, "")));
+                zItems.zFoils.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/foil/",
+                                DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.foil, "")));
+                zItems.zGems.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/gem/",
+                                DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.gem, "")));
+                zItems.zIngots.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/ingot/",
+                                DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.ingot, "")));
+                zItems.zNuggets.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this,
+                                "resources/nugget/",
+                                DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.nugget, "")));
+                zItems.zPlates.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/plate/",
+                                DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.plate, "")));
+                zItems.zRawOres.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/raw/",
+                                DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.raw, "")));
+                zItems.zShards.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/shard/",
+                                DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.shard, "")));
 
+                // -----------------------//
                 zBlocks.zDecorative.getEntries()
                                 .forEach(bk -> cubeAll(bk.getRegisteredName().replace(ID + ":block/", ""),
                                                 modLoc("block/decorative/"
                                                                 + DataGenUtil.getPath(bk.get()).replace(ID + ":block/",
                                                                                 ""))));
-
-                zItems.zCraftingComponents.getEntries()
-                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "components/"));
-
-                orientableWithBottom(zBlocks.HARVESTER.getRegisteredName(),
-                                modLoc("block/harvester/side"), modLoc("block/harvester/front"),
-                                modLoc("block/harvester/bottom"), modLoc("block/harvester/top"));
-
-                // cubeBottomTop(zBlocks.FAN.get().getDescriptionId().replace("block." + ID +
-                // ".", ""),
-                // modLoc("block/fan/side"), modLoc("block/fan/off"),
-                // modLoc("block/fan/back"));
 
                 zBlocks.zBlockSlab.getEntries().forEach(bk -> slab(
                                 bk.getRegisteredName().replace(ID + ":block/", ""), modLoc("block/decorative/"
@@ -100,6 +95,32 @@ public class DataItemModel extends ItemModelProvider {
                                                                 "").replace("_stair",
                                                                                 ""))));
 
+                // -----------------------//
+
+                DataGenUtil.itemBlockwithParent(zBlocks.SPRINKLER.get(), this,
+                                ID + ":block/" + DataGenUtil.getPath(zBlocks.SPRINKLER.get()));
+
+                withExistingParent(zBlocks.PIPE.getRegisteredName(), modLoc("block/pipe/basic/item_model"));
+
+                withExistingParent(zBlocks.SOLAR_PANEL.getRegisteredName(), modLoc("block/solar_panel/item_model"));
+
+                node(zBlocks.ITEM_TRANSFER, "red");
+                node(zBlocks.ITEM_PROVIDER, "green");
+                node(zBlocks.ITEM_RETRIEVAL, "aqua");
+
+                wild_plants.forEach(w -> withExistingParent(DataGenUtil.getPath(w), "minecraft:item/generated")
+                                .texture("layer0", DataGenUtil.getResource(
+                                                "item/plants/bush/" + DataGenUtil.getPath(w).replace("wild_", ""))));
+
+                orientableWithBottom(zBlocks.HARVESTER.getRegisteredName(),
+                                modLoc("block/harvester/side"), modLoc("block/harvester/front"),
+                                modLoc("block/harvester/bottom"), modLoc("block/harvester/top"));
+
+                // cubeBottomTop(zBlocks.FAN.get().getDescriptionId().replace("block." + ID +
+                // ".", ""),
+                // modLoc("block/fan/side"), modLoc("block/fan/off"),
+                // modLoc("block/fan/back"));
+
                 orientableWithBottom(zBlocks.REACTOR_CONTROLLER.getRegisteredName(),
                                 modLoc("block/reactor/controller/side"), modLoc("block/reactor/controller/front_off"),
                                 modLoc("block/reactor/controller/bottom"), modLoc("block/reactor/controller/top"));
@@ -124,7 +145,7 @@ public class DataItemModel extends ItemModelProvider {
 
         private void simpleFlexibleBlock(DeferredHolder<Block, Block> b, String loc) {
                 cubeAll(b.getRegisteredName(),
-                                modLoc("block/"+loc));
+                                modLoc("block/" + loc));
         }
 
         private void simpleFullBlock(DeferredHolder<Block, Block> b, String prefix) {
