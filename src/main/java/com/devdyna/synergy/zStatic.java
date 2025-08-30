@@ -39,7 +39,12 @@ public class zStatic {
         public static String rustic_metal = "rustic_metal";
         public static String waxed_planks = "waxed_planks";
         public static String adobe = "adobe";
-        public static String machine_frame = "machine_frame";
+
+        public class MachineFrame {
+            public static String basic = "basic_machine_frame";
+            public static String advanced = "advanced_machine_frame";
+        }
+
     }
 
     public class Blocks {
@@ -62,26 +67,26 @@ public class zStatic {
         public static String cooler = "cooler";
         public static String fuel_cell = "fuel_cell";
         public static String moderator = "moderator";
-        public static String port = "reactor_port";
+        // public static String port = "reactor_port";
+
         public class CoolerTypes {
-            public static String IRON = "iron_"+cooler;
-            public static String GOLD = "gold_"+cooler;
-            public static String DIAMOND = "diamond_"+cooler;
-            public static String REDSTONE = "redstone_"+cooler;
-            public static String LAPIS = "lapis_"+cooler;
-            public static String NETHERITE = "netherite_"+cooler;
+            public static String IRON = "iron_" + cooler;
+            public static String GOLD = "gold_" + cooler;
+            public static String DIAMOND = "diamond_" + cooler;
+            public static String REDSTONE = "redstone_" + cooler;
+            public static String LAPIS = "lapis_" + cooler;
+            public static String NETHERITE = "netherite_" + cooler;
         }
 
         public class ModeratorTypes {
-            public static String COAL = "coal_"+moderator;
-            public static String GRAPHITE = "graphite_"+moderator;
-            public static String WATER = "water_"+moderator;
-            public static String HEAVY_WATER = "heavy_water_"+moderator;
-            public static String BERYLLIUM = "beryllium_"+moderator;
-            public static String HYDROCARBON = "hydrocarbon_"+moderator;
+            public static String COAL = "coal_" + moderator;
+            public static String GRAPHITE = "graphite_" + moderator;
+            public static String WATER = "water_" + moderator;
+            public static String HEAVY_WATER = "heavy_water_" + moderator;
+            public static String BERYLLIUM = "beryllium_" + moderator;
+            public static String HYDROCARBON = "hydrocarbon_" + moderator;
         }
     }
-
 
     public class PipeStuff {
         public class types {
