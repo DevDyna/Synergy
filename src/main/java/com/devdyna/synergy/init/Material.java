@@ -2,6 +2,7 @@ package com.devdyna.synergy.init;
 
 import static com.devdyna.synergy.Main.ID;
 
+import java.util.Arrays;
 import java.util.function.Supplier;
 
 import com.devdyna.synergy.Main;
@@ -17,6 +18,9 @@ import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityType.BlockEntitySupplier;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.material.Fluid;
@@ -26,6 +30,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredRegister.Blocks;
 
+@SuppressWarnings({ "null", "unchecked" })
 public class Material {
         public static void register(IEventBus bus) {
                 zBlockEntities.register(bus);
@@ -109,6 +114,9 @@ public class Material {
                                 ResourceLocation.fromNamespaceAndPath(Main.ID, name));
         }
 
+        /**
+         * like rice
+         */
         public static DeferredItem<ItemNameBlockItem> seedFoodItem(String name, Block b, int nutrition,
                         float saturationModifier, boolean fastToEat, boolean isAlwaysEdible) {
                 var food = (new FoodProperties.Builder())
@@ -145,6 +153,19 @@ public class Material {
 
         public static DeferredHolder<Block, Block> DecoBlock(String name, Properties prop, Blocks blockSets) {
                 return registerItemBlock(name, () -> new DecorativeBlock(prop), blockSets);
+        }
+
+        /**
+         * @param factory Class::new
+         * @param validBlocks BLOCK1,BLOCK2
+         */
+        public static <T extends BlockEntity> DeferredHolder<BlockEntityType<?>, BlockEntityType<T>> createBlockEntity(
+                        String name,
+                        BlockEntitySupplier<T> factory, Supplier<? extends Block>... validBlocks) {
+                return zBlockEntities.zBE.register(name,
+                                () -> BlockEntityType.Builder.of(factory, Arrays.stream(validBlocks)
+                                                .map(Supplier::get)
+                                                .toArray(Block[]::new)).build(null));
         }
 
 }
