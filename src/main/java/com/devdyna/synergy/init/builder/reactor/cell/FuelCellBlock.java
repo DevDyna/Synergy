@@ -6,10 +6,9 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.builder.reactor.moderator.ModeratorBase;
+import com.devdyna.synergy.utils.LevelUtil;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
@@ -26,7 +25,8 @@ import net.minecraft.world.level.material.MapColor;
 @SuppressWarnings("null")
 public class FuelCellBlock extends Block {
 
-    public final static IntegerProperty MODERATORS = IntegerProperty.create("moderators", 0, 6);
+    // public final static IntegerProperty MODERATORS =
+    // IntegerProperty.create("moderators", 0, 6);
     public final static IntegerProperty CELLS = IntegerProperty.create("cells", 0, 6);
 
     public FuelCellBlock() {
@@ -35,16 +35,15 @@ public class FuelCellBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> b) {
-        b.add(MODERATORS, CELLS);
+        b.add(CELLS);
     }
 
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext c) {
         return defaultBlockState()
-                .setValue(MODERATORS, getModerators(c.getLevel(), c.getClickedPos()))
-                .setValue(CELLS,
-                        getCells(c.getLevel(), c.getClickedPos()));
+                // .setValue(MODERATORS, getModerators(c.getLevel(), c.getClickedPos()))
+                .setValue(CELLS, getCells(c.getLevel(), c.getClickedPos()));
     }
 
     @Override
@@ -52,23 +51,26 @@ public class FuelCellBlock extends Block {
             BlockPos neighborPos, boolean movedByPiston) {
 
         level.setBlockAndUpdate(pos,
-                state.setValue(MODERATORS, getModerators(level, pos))
+                state
+                        // .setValue(MODERATORS, getModerators(level, pos))
                         .setValue(CELLS, getCells(level, pos)));
     }
 
-    // TODO need to be optimized
     public int getCells(Level level, BlockPos pos) {
-        int counter = 0;
-        for (Direction dir : Direction.values())
-            counter += (level.getBlockState(pos.relative(dir)).getBlock() instanceof FuelCellBlock ? 1 : 0);
-        return counter;
+        return LevelUtil.predicateNeighborMatch(level, pos, b -> b instanceof FuelCellBlock);
     }
 
-    public int getModerators(Level level, BlockPos pos) {
-        int counter = 0;
-        for (Direction dir : Direction.values())
-            counter += (level.getBlockState(pos.relative(dir)).getBlock() instanceof ModeratorBase ? 1 : 0);
-        return counter;
+    // public int getModerators(Level level, BlockPos pos) {
+    // return LevelUtil.predicateNeighborMatch(level, pos, b -> b instanceof
+    // ModeratorBase);
+    // }
+
+    public float cellsFEMultiplier() {
+        return 0.25F;
+    }
+
+    public float cellsHeatMultiplier() {
+        return 0.25F;
     }
 
     @Override
@@ -77,7 +79,6 @@ public class FuelCellBlock extends Block {
 
         t.add(Component.translatable(Main.ID + "." +
                 zStatic.ReactorStuff.fuel_cell));
-
     }
 
 }

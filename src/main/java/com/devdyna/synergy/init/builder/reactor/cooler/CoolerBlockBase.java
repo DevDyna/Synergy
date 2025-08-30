@@ -56,20 +56,24 @@ public abstract class CoolerBlockBase extends Block {
      */
     public abstract int getActiveCooling();
 
-    /**
-     * Override to set OFF cooling
-     */
-    public abstract int getBaseCooling();
+    // /**
+    // * Override to set OFF cooling
+    // */
+    public int getBaseCooling() {
+        return 0;
+    }
+
+    public abstract Component conditions();
 
     @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
 
-        // OVERRIDE IT
-        // t.add(Component.translatable(Main.ID + "." +
-        // zStatic.ReactorStuff.cooler+".desc"));
+        t.add(Component.translatable(Main.ID + "." +
+                zStatic.ReactorStuff.cooler));
 
         if (f.hasShiftDown()) {
+            t.add(conditions());
             t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.cooler + ".off")
                     .append(" " + getBaseCooling()));
             t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.cooler + ".on")

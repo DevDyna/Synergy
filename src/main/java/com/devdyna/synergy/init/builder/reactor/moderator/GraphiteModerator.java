@@ -3,8 +3,8 @@ package com.devdyna.synergy.init.builder.reactor.moderator;
 public class GraphiteModerator extends ModeratorBase {
 
     @Override
-    public int getMultiplier() {
-        return 10;
+    public float getMultiplier() {
+        return 1.0F;
     }
 
 }
