@@ -15,9 +15,7 @@ public interface EnergyBlock {
      */
     EnergyStorage getCapEnergy();
 
-    default int MaxFE() {
-        return 10000;
-    }
+    int MaxFE();
 
     /**
      * Block -> Energy
