@@ -5,6 +5,34 @@ import com.devdyna.synergy.utils.ModAddonUtil;
 public class zStatic {
     public static String CreativeTab = "creative_tab";
 
+    public class ResourceMaterial {
+        public static String iron = "iron";
+        public static String copper = "copper";
+        public static String gold = "gold";
+        public static String aquamarine = "aquamarine";
+        public static String onyx = "onyx";
+        public static String silicon = "silicon";
+        public static String advanced_alloy = "advanced_alloy";
+        public static String steel = "steel";
+        public static String carbon = "carbon";
+        public static String matrix = "matrix";
+        public static String mixed = "mixed";
+        public static String netherrack = "netherrack";
+        public static String stone = "stone";
+    }
+
+    public class ResourceType {
+        public static String foil = "_foil";
+        public static String gem = "_gem";
+        public static String ingot = "_ingot";
+        public static String nugget = "_nugget";
+        public static String block = "_block";
+        public static String plate = "_plate";
+        public static String raw = "raw_";
+        public static String shard = "_shard";
+        public static String dust = "_dust";
+    }
+
     public class Items {
 
         public class Azalea {
@@ -17,6 +45,8 @@ public class zStatic {
         public static String configurator = "configurator";
         public static String smasher = "smasher";
         public static String bone_meal_mixture = "bone_meal_mixture";
+        public static String glowstone_mixture = "glowstone_mixture";
+
         // TODO need to rework
         public static String refactorizer = "pipe_refactorizer";
 
@@ -31,7 +61,28 @@ public class zStatic {
             public static String chip = "chip";
             public static String condenser = "condenser";
             public static String resistor = "resistor";
+            public static String copper_coil = "copper_coil";
+            public static String light_bulb = "light_bulb";
+            public static String magnetic_stone_circuit = "magnetic_stone_circuit";
+            public static String metal_bolts = "metal_bolts";
+            public static String nether_circuit = "nether_circuit";
+            public static String resistive_stone_circuit = "resistive_stone_circuit";
+            public static String stone_circuit = "stone_circuit";
+            public static String superconductor = "superconductor";
+            public static String wired_nether_plate = "wired_nether_plate";
+            public static String wired_stone_plate = "wired_stone_plate";
         }
+
+        public class SteelItems {
+            public static String steel = "infernal_steel";
+            public static String ingot = steel + "_ingot";
+            public static String block = steel + "_block";
+            public static String nugget = steel + "_nugget";
+        }
+
+        public static String coal_mixture = "coal_mixture";
+
+        public static String ember_coal_mixture = "coal_mixture";
 
     }
 
@@ -178,99 +229,102 @@ public class zStatic {
 
     }
 
-    // TODO WIP
-    public class Resources {
+    // // TODO WIP
+    // public class Resources {
 
-        public static class Soils {
-            public static final String ANDESITE = "andesite";
-            public static final String BASALT = "basalt";
-            public static final String BLACKSTONE = "blackstone";
-            public static final String BLUE_ICE = "blue_ice";
-            public static final String CALCITE = "calcite";
-            public static final String CLAY = "clay";
-            public static final String COBBLESTONE = "cobblestone";
-            public static final String COBBLED_DEEPSLATE = "cobbled_deepslate";
-            public static final String COARSE_DIRT = "coarse_dirt";
-            public static final String DEEPSLATE = "deepslate";
-            public static final String DIORITE = "diorite";
-            public static final String DRIPSTONE_BLOCK = "dripstone_block";
-            public static final String DIRT = "dirt";
-            public static final String END_STONE = "end_stone";
-            public static final String GRAVEL = "gravel";
-            public static final String GRANITE = "granite";
-            public static final String GILDED_BLACKSTONE = "gilded_blackstone";
-            public static final String ICE = "ice";
-            public static final String MAGMA_BLOCK = "magma_block";
-            public static final String MOSS_BLOCK = "moss_block";
-            public static final String MOSSY_COBBLESTONE = "mossy_cobblestone";
-            public static final String MUD = "mud";
-            public static final String NETHERRACK = "netherrack";
-            public static final String OBSIDIAN = "obsidian";
-            public static final String PACKED_ICE = "packed_ice";
-            public static final String PACKED_MUD = "packed_mud";
-            public static final String PRISMARINE = "prismarine";
-            public static final String RED_SAND = "red_sand";
-            public static final String ROOTED_DIRT = "rooted_dirt";
-            public static final String SCULK = "sculk";
-            public static final String SOUL_SAND = "soul_sand";
-            public static final String SOUL_SOIL = "soul_soil";
-            public static final String SAND = "sand";
-            public static final String SANDSTONE = "sandstone";
-            public static final String SNOW_BLOCK = "snow_block";
-            public static final String STONE = "stone";
-            public static final String TUFF = "tuff";
-            public static final String CRYING_OBSIDIAN = "crying_obsidian";
-        }
+    // public static class Soils {
+    // public static final String ANDESITE = "andesite";
+    // public static final String BASALT = "basalt";
+    // public static final String BLACKSTONE = "blackstone";
+    // public static final String BLUE_ICE = "blue_ice";
+    // public static final String CALCITE = "calcite";
+    // public static final String CLAY = "clay";
+    // public static final String COBBLESTONE = "cobblestone";
+    // public static final String COBBLED_DEEPSLATE = "cobbled_deepslate";
+    // public static final String COARSE_DIRT = "coarse_dirt";
+    // public static final String DEEPSLATE = "deepslate";
+    // public static final String DIORITE = "diorite";
+    // public static final String DRIPSTONE_BLOCK = "dripstone_block";
+    // public static final String DIRT = "dirt";
+    // public static final String END_STONE = "end_stone";
+    // public static final String GRAVEL = "gravel";
+    // public static final String GRANITE = "granite";
+    // public static final String GILDED_BLACKSTONE = "gilded_blackstone";
+    // public static final String ICE = "ice";
+    // public static final String MAGMA_BLOCK = "magma_block";
+    // public static final String MOSS_BLOCK = "moss_block";
+    // public static final String MOSSY_COBBLESTONE = "mossy_cobblestone";
+    // public static final String MUD = "mud";
+    // public static final String NETHERRACK = "netherrack";
+    // public static final String OBSIDIAN = "obsidian";
+    // public static final String PACKED_ICE = "packed_ice";
+    // public static final String PACKED_MUD = "packed_mud";
+    // public static final String PRISMARINE = "prismarine";
+    // public static final String RED_SAND = "red_sand";
+    // public static final String ROOTED_DIRT = "rooted_dirt";
+    // public static final String SCULK = "sculk";
+    // public static final String SOUL_SAND = "soul_sand";
+    // public static final String SOUL_SOIL = "soul_soil";
+    // public static final String SAND = "sand";
+    // public static final String SANDSTONE = "sandstone";
+    // public static final String SNOW_BLOCK = "snow_block";
+    // public static final String STONE = "stone";
+    // public static final String TUFF = "tuff";
+    // public static final String CRYING_OBSIDIAN = "crying_obsidian";
+    // }
 
-        public static class RawMaterials {
-            public static final String COPPER = "copper";
-            public static final String IRON = "iron";
-            public static final String GOLD = "gold";
-            public static final String ALUMINUM = "aluminum";
-            public static final String TIN = "tin";
-            public static final String NICKEL = "nickel";
-            public static final String ZINC = "zinc";
-            public static final String SILVER = "silver";
-            public static final String LEAD = "lead";
-            public static final String OSMIUM = "osmium";
-            public static final String URANIUM = "uranium";
-            public static final String IRIDIUM = "iridium";
-            public static final String PLATINUM = "platinum";
-        }
+    // public static class RawMaterials {
+    // public static final String COPPER = "copper";
+    // public static final String IRON = "iron";
+    // public static final String GOLD = "gold";
+    // public static final String ALUMINUM = "aluminum";
+    // public static final String TIN = "tin";
+    // public static final String NICKEL = "nickel";
+    // public static final String ZINC = "zinc";
+    // public static final String SILVER = "silver";
+    // public static final String LEAD = "lead";
+    // public static final String OSMIUM = "osmium";
+    // public static final String URANIUM = "uranium";
+    // public static final String IRIDIUM = "iridium";
+    // public static final String PLATINUM = "platinum";
+    // }
 
-        public static class Gems {
-            public static final String COAL = "coal";
-            public static final String QUARTZ = "quartz";
-            public static final String AMETHYST_SHARD = "amethyst_shard";
-            public static final String LAPIS_LAZULI = "lapis_lazuli";
-            public static final String DIAMOND = "diamond";
-            public static final String EMERALD = "emerald";
-            public static final String NETHERITE_SCRAP = "netherite_scrap";
-            public static final String RUBY = "ruby";
-            public static final String SAPPHIRE = "sapphire";
-            public static final String PERIDOT = "peridot";
-            public static final String FLUORITE = "fluorite";
-            public static final String CINNABAR = "cinnabar";
-        }
+    // public static class Gems {
+    // public static final String COAL = "coal";
+    // public static final String QUARTZ = "quartz";
+    // public static final String AMETHYST_SHARD = "amethyst_shard";
+    // public static final String LAPIS_LAZULI = "lapis_lazuli";
+    // public static final String DIAMOND = "diamond";
+    // public static final String EMERALD = "emerald";
+    // public static final String NETHERITE_SCRAP = "netherite_scrap";
+    // public static final String RUBY = "ruby";
+    // public static final String SAPPHIRE = "sapphire";
+    // public static final String PERIDOT = "peridot";
+    // public static final String FLUORITE = "fluorite";
+    // public static final String CINNABAR = "cinnabar";
+    // }
 
-        public static class Dusts {
-            public static final String GLOWSTONE = "glowstone";
-            public static final String REDSTONE = "redstone";
-            public static final String SALT = "salt";
-            public static final String SULFUR = "sulfur";
-        }
+    // public static class Dusts {
+    // public static final String GLOWSTONE = "glowstone";
+    // public static final String REDSTONE = "redstone";
+    // public static final String SALT = "salt";
+    // public static final String SULFUR = "sulfur";
+    // }
 
-    }
+    // }
 
     public class Mods {
         public static String GuideMe = "guideme";
+        public static String Mekanism = "mekanism";
     }
 
     public class checkMods {
         public static boolean GuideMe = ModAddonUtil.checkMod(Mods.GuideMe);
+        public static boolean Mekanism = ModAddonUtil.checkMod(Mods.Mekanism);
     }
 
     public class tips {
+        public static String MIXTURE_TIP = "mixture_tip";
         public static String SHIFT = "shift";
         public static String SAFE_BUILD = "safe_building";
         public static String INGREDIENT = "crafting_ingredient";
