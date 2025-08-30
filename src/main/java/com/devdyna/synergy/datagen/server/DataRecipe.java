@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 
+@SuppressWarnings("null")
 public class DataRecipe extends RecipeProvider {
 
         public DataRecipe(PackOutput o, CompletableFuture<HolderLookup.Provider> c) {
@@ -227,7 +228,18 @@ public class DataRecipe extends RecipeProvider {
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.BONE_MEAL, Items.BLAZE_POWDER, Items.REDSTONE,
                                                                 Items.SLIME_BALL))
-                                .group(zStatic.Items.bone_meal_mixture).save(c);
+                                .group(zStatic.tips.MIXTURE_TIP).save(c);
+
+                ShapelessRecipeBuilder.shapeless(MISC, zItems.GLOWSTONE_MIXTURE.get(), 6)
+                                .requires(Tags.Items.SLIME_BALLS)
+                                .requires(Items.GLOWSTONE_DUST)
+                                .requires(Tags.Items.GEMS_LAPIS)
+                                .requires(Items.PRISMARINE_CRYSTALS)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(Items.PRISMARINE_CRYSTALS, Items.GLOWSTONE_DUST,
+                                                                Items.LAPIS_LAZULI,
+                                                                Items.SLIME_BALL))
+                                .group(zStatic.tips.MIXTURE_TIP).save(c);
 
                 stairBuilder(zBlocks.WAXED_PLANKS_STAIR.get(), Ingredient.of(zBlocks.WAXED_PLANKS.get()))
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
