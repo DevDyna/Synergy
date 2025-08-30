@@ -76,7 +76,6 @@ _IC2 like_
 - [ ] Tiered Cables (transfer rate and capacity)
 - [ ] Alloy Smelter (Item|Item) -> Item
 - [ ] Scrap Generator (recycle items to scraps and item used to craft)
-- [ ]
 
 Download Link : [src](https://legacy.curseforge.com/minecraft/mc-mods/synergy)
 
