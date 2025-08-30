@@ -22,7 +22,7 @@ public class DataLang extends LanguageProvider {
         @Override
         protected void addTranslations() {
 
-                add(Main.ID + "." + zStatic.CreativeTab, "Synergy Stuff");
+                add(Main.ID + "." + zStatic.CreativeTab, "Synergy : MagiTech Collection");
                 zBlocks.zBlockItem.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zBlock.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCrop.getEntries().forEach(b -> addBlock(b, named(b)));
