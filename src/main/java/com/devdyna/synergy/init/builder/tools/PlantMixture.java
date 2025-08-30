@@ -25,9 +25,10 @@ import net.minecraft.world.level.block.SugarCaneBlock;
 import net.minecraft.world.level.block.VineBlock;
 import net.neoforged.neoforge.common.CommonHooks;
 
-public class BoneMealMixture extends BoneMealItem {
+@SuppressWarnings("null")
+public class PlantMixture extends BoneMealItem {
 
-    public BoneMealMixture() {
+    public PlantMixture() {
         super(new Properties());
     }
 
@@ -53,11 +54,11 @@ public class BoneMealMixture extends BoneMealItem {
                 item.shrink(1);
 
                 if (!level.isClientSide) {
-                    LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER,(ServerLevel) level, pos, true,
+                    LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER, (ServerLevel) level, pos, true,
                             LevelUtil.getRandomValue(7, level) + 5);
 
                     for (int i = 0; i < 10; i++)
-                        if (state.isRandomlyTicking())//this should prevent over-ticking
+                        if (state.isRandomlyTicking())// this should prevent over-ticking
                             state.randomTick((ServerLevel) level, pos, random);
 
                 }
@@ -68,7 +69,7 @@ public class BoneMealMixture extends BoneMealItem {
 
         if (block instanceof FlowerBlock) {
             if (!level.isClientSide) {
-                LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER,(ServerLevel) level, pos,  true,
+                LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER, (ServerLevel) level, pos, true,
                         LevelUtil.getRandomValue(7, level) + 3);
                 BlockPos.randomBetweenClosed(random, LevelUtil.getRandomValue(12, level),
                         x - GRASS_SPREAD_WIDTH, y, z - GRASS_SPREAD_WIDTH,
@@ -90,7 +91,7 @@ public class BoneMealMixture extends BoneMealItem {
     @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Items.bone_meal_mixture));
+        t.add(Component.translatable(Main.ID + "." + zStatic.tips.MIXTURE_TIP));
     }
 
 }
