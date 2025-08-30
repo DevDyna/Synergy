@@ -26,16 +26,27 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zBlockItem.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zBlock.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCrop.getEntries().forEach(b -> addBlock(b, named(b)));
-                // zItems.zItem.getEntries().forEach(b -> addItem(b, named(b)));
+                
                 zItems.zTool.getEntries().forEach(b -> addItem(b, named(b)));
                 zItems.zCropExtra.getEntries().forEach(b -> addItem(b, named(b)));
                 zItems.zFoods.getEntries().forEach(b -> addItem(b, named(b)));
                 zItems.zSeeds.getEntries().forEach(b -> addItem(b, named(b)));
+                zItems.zCraftingComponents.getEntries().forEach(b -> addItem(b, named(b)));
+                zItems.zResources.getEntries().forEach(b -> addItem(b, named(b)));
+
+                zItems.zDusts.getEntries().forEach(b -> addItem(b, named(b)));
+                zItems.zFoils.getEntries().forEach(b -> addItem(b, named(b)));
+                zItems.zGems.getEntries().forEach(b -> addItem(b, named(b)));
+                zItems.zIngots.getEntries().forEach(b -> addItem(b, named(b)));
+                zItems.zNuggets.getEntries().forEach(b -> addItem(b, named(b)));
+                zItems.zPlates.getEntries().forEach(b -> addItem(b, named(b)));
+                zItems.zRawOres.getEntries().forEach(b -> addItem(b, named(b)));
+                zItems.zShards.getEntries().forEach(b -> addItem(b, named(b)));
+
                 zBlocks.zWildCrop.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zDecorative.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zBlockSlab.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zBlockStair.getEntries().forEach(b -> addBlock(b, named(b)));
-                zItems.zCraftingComponents.getEntries().forEach(b -> addItem(b, named(b)));
 
                 // tools
                 add(Main.ID + "." + zStatic.Items.configurator + ".tip",
@@ -58,7 +69,7 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Items.smasher, TIP_COLOR + "Quick break any #synergy:mashable");
                 add(Main.ID + "." + zStatic.Items.wooden_crook, TIP_COLOR + "Increase the chance to obtain saplings");
 
-                add(Main.ID + "." + zStatic.Items.bone_meal_mixture,
+                add(Main.ID + "." + zStatic.tips.MIXTURE_TIP,
                                 TIP_COLOR + "Can be used to speed the grow of any plant");
 
                 // pipe stuff
@@ -104,7 +115,7 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.tips.SHIFT,
                                 "§8Hold [§7Shift§8] to see more details");
 
-                add(Main.ID + "." + zStatic.ReactorStuff.cooler+".desc",
+                add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".desc",
                                 TIP_COLOR + "DESC");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".off",
@@ -113,20 +124,20 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".on",
                                 TIP_COLOR + "Active ");
 
-                                add(Main.ID + "." + zStatic.ReactorStuff.moderator+".multiplier" ,
-                                TIP_COLOR + "Multiplier");//TODO
+                add(Main.ID + "." + zStatic.ReactorStuff.moderator + ".multiplier",
+                                TIP_COLOR + "Multiplier");// TODO
 
-                                add(Main.ID + "." + zStatic.ReactorStuff.fuel_cell ,
-                                TIP_COLOR + "DESC");//TODO
+                add(Main.ID + "." + zStatic.ReactorStuff.fuel_cell,
+                                TIP_COLOR + "DESC");// TODO
 
-                                add(Main.ID + "." + zStatic.ReactorStuff.controller ,
-                                TIP_COLOR + "DESC");//TODO
+                add(Main.ID + "." + zStatic.ReactorStuff.controller,
+                                TIP_COLOR + "DESC");// TODO
 
-                                // add(Main.ID + "." + zStatic.ReactorStuff.port ,
-                                // TIP_COLOR + "DESC");//TODO
+                // add(Main.ID + "." + zStatic.ReactorStuff.port ,
+                // TIP_COLOR + "DESC");//TODO
 
-                                add(Main.ID + "." + zStatic.ReactorStuff.moderator ,
-                                TIP_COLOR + "DESC");//TODO
+                add(Main.ID + "." + zStatic.ReactorStuff.moderator,
+                                TIP_COLOR + "DESC");// TODO
 
                 // add(Main.ID + "." + zStatic.Blocks.fan, TIP_COLOR + "When powered it can
                 // generate wind");
