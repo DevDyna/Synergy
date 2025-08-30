@@ -64,6 +64,7 @@ A bunch of Magic-Tech and fun-made gadgets
 - [ ] shells (functional/storage block)
 - [ ] metal scraps (like deposits but return metal things)
 - [ ] Energy (like FE but a completly new Capability type) that allow E->FE
+- [ ] Lasers and Lens
 
 _IC2 like_
 
