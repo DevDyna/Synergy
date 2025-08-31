@@ -23,7 +23,6 @@ public class zCreativeTab {
         }
 
         // ---------------------------------------------------------------------------------------//
-
         public static final DeferredRegister<CreativeModeTab> zCreative = DeferredRegister
                         .create(Registries.CREATIVE_MODE_TAB, Main.ID);
         // ---------------------------------------------------------------------------------------//
@@ -58,6 +57,10 @@ public class zCreativeTab {
                                         .withTabsBefore(CreativeModeTabs.COMBAT)
                                         .icon(() -> zItems.CONFIGURATOR.get().getDefaultInstance())
                                         .displayItems((parameters, output) -> {
+
+                                                zItems.zBlockItem.getEntries().forEach(e -> {
+                                                        output.accept((Item) e.get());
+                                                });
 
                                                 getAllzItems().forEach(e -> {
                                                         output.accept((Item) e.get());
