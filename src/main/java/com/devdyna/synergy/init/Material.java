@@ -36,6 +36,7 @@ import net.neoforged.neoforge.registries.DeferredRegister.Blocks;
 public class Material {
         public static void register(IEventBus bus) {
                 zBlockEntities.register(bus);
+                zItems.register(bus);
                 zBlocks.register(bus);
                 zBlockTag.register(bus);
                 zContainer.register(bus);
@@ -43,7 +44,6 @@ public class Material {
                 zFluidTypes.register(bus);
                 zFluids.register(bus);
                 zHandlers.register(bus);
-                zItems.register(bus);
                 zItemTag.register(bus);
                 zProperties.register(bus);
                 zComponents.register(bus);
