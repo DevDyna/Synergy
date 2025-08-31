@@ -103,7 +103,7 @@ public class DataBlockModelState extends BlockStateProvider {
         private void tinyChest(DeferredHolder<Block, Block> b, ResourceLocation texture) {
                 horizontalBlock(b.get(),
                                 models()
-                                                .withExistingParent(b.getRegisteredName(), "block/tiny_chest/template")
+                                                .withExistingParent(b.getRegisteredName(), modLoc("block/tiny_chest/template"))
                                                 .texture("type", texture));
 
         }
