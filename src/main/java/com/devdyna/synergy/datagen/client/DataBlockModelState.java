@@ -36,6 +36,12 @@ public class DataBlockModelState extends BlockStateProvider {
                 horizontalBlock(zBlocks.WOODEN_TINY_CHEST.get(), models()
                                 .getExistingFile(ResourceLocation.fromNamespaceAndPath(ID,
                                                 "block/tiny_chest/wooden")));
+                horizontalBlock(zBlocks.STONE_TINY_CHEST.get(), models()
+                                .getExistingFile(ResourceLocation.fromNamespaceAndPath(ID,
+                                                "block/tiny_chest/stone")));
+                horizontalBlock(zBlocks.ORNATE_TINY_CHEST.get(), models()
+                                .getExistingFile(ResourceLocation.fromNamespaceAndPath(ID,
+                                                "block/tiny_chest/ornate")));
                 node(zBlocks.ITEM_TRANSFER.get(), "red");
                 node(zBlocks.ITEM_PROVIDER.get(), "green");
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
@@ -47,6 +53,7 @@ public class DataBlockModelState extends BlockStateProvider {
 
                 simpleFullBlock(zBlocks.HEALER, "");
                 simpleFullBlock(zBlocks.REACTOR_FUEL_CELL, "reactor/");
+                simpleFullBlock(zBlocks.REACTOR_PORT, "reactor/");
                 simpleFlexibleBlock(zBlocks.IRON_COOLER, "reactor/cooler/on");
                 simpleFlexibleBlock(zBlocks.GRAPHITE_MODERATOR, "reactor/moderator/casing");
 
@@ -140,9 +147,9 @@ public class DataBlockModelState extends BlockStateProvider {
                         };
 
                         return ConfiguredModel.builder().modelFile(models()
-                                        .orientableWithBottom(b.getRegisteredName()+front,
+                                        .orientableWithBottom(b.getRegisteredName() + front,
                                                         modLoc("block/reactor/controller/side"),
-                                                        modLoc("block/reactor/controller/"+front),
+                                                        modLoc("block/reactor/controller/" + front),
                                                         modLoc("block/reactor/controller/bottom"),
                                                         modLoc("block/reactor/controller/top")))
                                         .rotationY(
