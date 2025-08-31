@@ -39,7 +39,6 @@ public class Material {
                 zBlocks.register(bus);
                 zBlockTag.register(bus);
                 zContainer.register(bus);
-                zCreativeTab.register(bus);
                 zFluidTags.register(bus);
                 zFluidTypes.register(bus);
                 zFluids.register(bus);
@@ -48,6 +47,7 @@ public class Material {
                 zItemTag.register(bus);
                 zProperties.register(bus);
                 zComponents.register(bus);
+                zCreativeTab.register(bus);
         }
 
         /**
