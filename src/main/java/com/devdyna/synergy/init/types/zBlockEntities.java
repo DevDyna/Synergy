@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.types;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
-import com.devdyna.synergy.init.builder.chests.wchestTinyBE;
+import com.devdyna.synergy.init.builder.chests.TinyChestBE;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBE;
@@ -52,8 +52,8 @@ public class zBlockEntities {
                         .createBlockEntity(zStatic.ReactorStuff.controller, ReactorControllerBE::new,
                                         zBlocks.REACTOR_CONTROLLER);
 
-        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<wchestTinyBE>> WOODEN_TINY_CHEST = Material
-                        .createBlockEntity(zStatic.Blocks.tiny_wooden_chest, wchestTinyBE::new,
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TinyChestBE>> WOODEN_TINY_CHEST = Material
+                        .createBlockEntity(zStatic.Blocks.tiny_wooden_chest, TinyChestBE::new,
                                         zBlocks.WOODEN_TINY_CHEST);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ReactorPortBE>> REACTOR_PORT = Material
