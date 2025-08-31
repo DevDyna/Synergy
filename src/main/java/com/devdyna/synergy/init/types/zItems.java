@@ -43,6 +43,7 @@ public class zItems {
                 zPlates.register(bus);
                 zRawOres.register(bus);
                 zShards.register(bus);
+                zMobDrop.register(bus);
 
         }
 
@@ -92,6 +93,7 @@ public class zItems {
         public static final DeferredRegister.Items zRawOres = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zShards = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zDusts = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zMobDrop = DeferredRegister.createItems(Main.ID);
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> AZALEA_SEEDS = zSeeds
                         .registerSimpleItem(zStatic.Items.Azalea.seeds);
@@ -176,8 +178,8 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> GLOWSTONE_MIXTURE = zTool
                         .register(zStatic.Items.glowstone_mixture, () -> new PlantMixture());
-        
-                        public static final DeferredHolder<Item, Item> AMETHYST_MIXTURE = zTool
+
+        public static final DeferredHolder<Item, Item> AMETHYST_MIXTURE = zTool
                         .register(zStatic.Items.amethyst_mixture, () -> new PlantMixture());
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> RESISTIVE_STONE_CIRCUIT = Material
@@ -272,6 +274,27 @@ public class zItems {
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> SILICON_SHARD = Material
                         .resourceShard(zStatic.ResourceMaterial.silicon);
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> CREEPER_GALL = zMobDrop
+                        .registerSimpleItem(zStatic.MobDrop.creeper_gall);
+        public static final DeferredHolder<Item, Item> ENDERMAN_HEART = zMobDrop
+                        .registerSimpleItem(zStatic.MobDrop.enderman_heart);
+        public static final DeferredHolder<Item, Item> GHAST_BLADDER = zMobDrop
+                        .registerSimpleItem(zStatic.MobDrop.ghast_bladder);
+        public static final DeferredHolder<Item, Item> GUARDIAN_SCALE = zMobDrop
+                        .registerSimpleItem(zStatic.MobDrop.guardian_scale);
+        public static final DeferredHolder<Item, Item> RED_HEART = zMobDrop
+                        .registerSimpleItem(zStatic.MobDrop.red_heart);
+        public static final DeferredHolder<Item, Item> SILVERFISH_DUST = zMobDrop
+                        .registerSimpleItem(zStatic.MobDrop.silverfish_dust);
+        public static final DeferredHolder<Item, Item> SLIME_BOLUS = zMobDrop
+                        .registerSimpleItem(zStatic.MobDrop.slime_bolus);
+        public static final DeferredHolder<Item, Item> VENOM_SAC = zMobDrop
+                        .registerSimpleItem(zStatic.MobDrop.venom_sac);
+        public static final DeferredHolder<Item, Item> WITHERFLESH = zMobDrop
+                        .registerSimpleItem(zStatic.MobDrop.witherflesh);
+        public static final DeferredHolder<Item, Item> ZOMBIE_LIVER = zMobDrop
+                        .registerSimpleItem(zStatic.MobDrop.zombie_liver);
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> CARBON_FIBER = Material
                         .resourceItem("carbon_fiber");
