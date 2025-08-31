@@ -3,6 +3,7 @@ package com.devdyna.synergy.init.types;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.client.gui.reactor_port.portGUI;
 import com.devdyna.synergy.client.gui.tiny_chest.chestGUI;
 
 import net.minecraft.core.registries.Registries;
@@ -18,6 +19,10 @@ public class zContainer {
     }
 
     public static final DeferredRegister<MenuType<?>> zCTNR = DeferredRegister.create(Registries.MENU, ID);
+
+    public static final DeferredHolder<MenuType<?>, MenuType<portGUI>> REACTORPORT_GUI = zCTNR
+            .register(zStatic.ReactorStuff.port,
+                    () -> IMenuTypeExtension.create(portGUI::new));
 
     public static final DeferredHolder<MenuType<?>, MenuType<chestGUI>> CHEST_GUI = zCTNR
             .register(zStatic.Blocks.tiny_wooden_chest,
