@@ -71,12 +71,14 @@ public class DataLoot extends BlockLootSubProvider {
                                 zBlocks.SPRINKLER,
                                 zBlocks.HEALER,
 
-                                // zBlocks.REACTOR_PORT,
+                                zBlocks.REACTOR_PORT,
                                 zBlocks.REACTOR_CONTROLLER,
                                 zBlocks.IRON_COOLER,
                                 zBlocks.GRAPHITE_MODERATOR,
                                 zBlocks.REACTOR_FUEL_CELL,
                                 zBlocks.WOODEN_TINY_CHEST,
+                                zBlocks.ORNATE_TINY_CHEST,
+                                zBlocks.STONE_TINY_CHEST,
                                 zBlocks.ADVANCED_MACHINE_FRAME);
                 dropSelfBlocks.forEach(b -> dropSelf(b.get()));
 
