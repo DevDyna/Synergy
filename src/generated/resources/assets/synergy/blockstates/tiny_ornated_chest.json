@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "synergy:block/tiny_ornated_chest",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "synergy:block/tiny_ornated_chest"
+    },
+    "facing=south": {
+      "model": "synergy:block/tiny_ornated_chest",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "synergy:block/tiny_ornated_chest",
+      "y": 270
+    }
+  }
+}

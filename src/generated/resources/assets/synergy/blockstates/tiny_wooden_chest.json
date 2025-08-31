@@ -1,18 +1,18 @@
 {
   "variants": {
     "facing=east": {
-      "model": "synergy:block/tiny_chest/wooden",
+      "model": "synergy:block/tiny_wooden_chest",
       "y": 90
     },
     "facing=north": {
-      "model": "synergy:block/tiny_chest/wooden"
+      "model": "synergy:block/tiny_wooden_chest"
     },
     "facing=south": {
-      "model": "synergy:block/tiny_chest/wooden",
+      "model": "synergy:block/tiny_wooden_chest",
       "y": 180
     },
     "facing=west": {
-      "model": "synergy:block/tiny_chest/wooden",
+      "model": "synergy:block/tiny_wooden_chest",
       "y": 270
     }
   }
