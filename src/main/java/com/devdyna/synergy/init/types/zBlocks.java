@@ -22,7 +22,7 @@ import com.devdyna.synergy.init.builder.reactor.port.ReactorPortBlock;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.*;
-import com.devdyna.synergy.init.builder.chests.wchestTinyBK;
+import com.devdyna.synergy.init.builder.chests.TinyChestBK;
 import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.crops.mushroom.*;
 import com.devdyna.synergy.init.builder.crops.wild.*;
@@ -124,6 +124,18 @@ public class zBlocks {
                                                         .strength(1.5f).mapColor(MapColor.COLOR_BROWN),
                                         zDecorative);
 
+        public static final DeferredHolder<Block, Block> ADVANCED_ALLOY_BLOCK = Material
+                        .DecoBlock(zStatic.ResourceMaterial.advanced_alloy + "_" + zStatic.ResourceType.block,
+                                        BlockBehaviour.Properties.of().sound(SoundType.METAL)
+                                                        .strength(2f).mapColor(MapColor.METAL),
+                                        zDecorative);
+
+        public static final DeferredHolder<Block, Block> STEEL_BLOCK = Material
+                        .DecoBlock(zStatic.ResourceMaterial.steel + "_" + zStatic.ResourceType.block,
+                                        BlockBehaviour.Properties.of().sound(SoundType.METAL)
+                                                        .strength(2f).mapColor(MapColor.METAL),
+                                        zDecorative);
+
         public static final DeferredHolder<Block, Block> ADOBE = Material
                         .DecoBlock(zStatic.DecorativeBlocks.adobe,
                                         BlockBehaviour.Properties.of().sound(SoundType.STONE)
@@ -137,7 +149,7 @@ public class zBlocks {
                         zStatic.DecorativeBlocks.MachineFrame.basic,
                         () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)));
 
-                public static final DeferredHolder<Block, Block> ADVANCED_MACHINE_FRAME = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ADVANCED_MACHINE_FRAME = Material.registerItemBlock(
                         zStatic.DecorativeBlocks.MachineFrame.advanced,
                         () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)));
 
@@ -161,13 +173,22 @@ public class zBlocks {
                         zStatic.ReactorStuff.controller,
                         () -> new ReactorControllerBlock());
 
-                        public static final DeferredHolder<Block, Block> REACTOR_FUEL_CELL = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> REACTOR_FUEL_CELL = Material.registerItemBlock(
                         zStatic.ReactorStuff.fuel_cell,
                         () -> new FuelCellBlock());
 
-                        public static final DeferredHolder<Block, Block> WOODEN_TINY_CHEST = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> WOODEN_TINY_CHEST = Material.registerItemBlock(
                         zStatic.Blocks.tiny_wooden_chest,
-                        () -> new wchestTinyBK());
+                        () -> new TinyChestBK());
+
+                public static final DeferredHolder<Block, Block> ORNATE_TINY_CHEST = Material.registerItemBlock(
+                        zStatic.Blocks.tiny_ornated_chest,
+                        () -> new TinyChestBK());
+
+                                public static final DeferredHolder<Block, Block> STONE_TINY_CHEST = Material.registerItemBlock(
+                        zStatic.Blocks.tiny_stone_chest,
+                        () -> new TinyChestBK());
+
 
         // ---------------------------------------------------------------------------------------//
 
