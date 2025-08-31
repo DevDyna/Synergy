@@ -143,11 +143,14 @@ public class DataItemModel extends ItemModelProvider {
                 simpleFlexibleBlock(zBlocks.GRAPHITE_MODERATOR, "reactor/moderator/casing");
 
                 withExistingParent(zBlocks.WOODEN_TINY_CHEST.getRegisteredName(),
-                                modLoc("block/tiny_chest/wooden"));
-                withExistingParent(zBlocks.ORNATE_TINY_CHEST.getRegisteredName(),
-                                modLoc("block/tiny_chest/ornate"));
+                                modLoc("block/tiny_chest/template"))
+                                .texture("type", modLoc("block/tiny_chest/wooden"));
                 withExistingParent(zBlocks.STONE_TINY_CHEST.getRegisteredName(),
-                                modLoc("block/tiny_chest/stone"));
+                                modLoc("block/tiny_chest/template"))
+                                .texture("type", modLoc("block/tiny_chest/stone"));
+                withExistingParent(zBlocks.ORNATE_TINY_CHEST.getRegisteredName(),
+                                modLoc("block/tiny_chest/template"))
+                                .texture("type", modLoc("block/tiny_chest/ornate"));
 
         }
 
