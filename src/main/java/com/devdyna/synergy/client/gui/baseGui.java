@@ -102,12 +102,21 @@ public abstract class baseGui extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return stillValid(ContainerLevelAccess.create(getLevel(), getBlockEntity().getBlockPos()),
-                player, getValidBlock());
+        return ContainerLevelAccess.create(getLevel(), getBlockEntity().getBlockPos())
+                .evaluate((lvl, pos) -> {
+                    for (Block b : getValidBlock()) {
+                        if (lvl.getBlockState(pos).is(b)) {
+                            return player.canInteractWithBlock(pos, 4.0);
+                        }
+                    }
+                    return false;
+                }, true);
     }
 
-    public abstract Block getValidBlock();
+    public abstract Block[] getValidBlock();
+
     public abstract BlockEntity getBlockEntity();
+
     public abstract Level getLevel();
 
 }
