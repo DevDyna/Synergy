@@ -5,6 +5,19 @@ import com.devdyna.synergy.utils.ModAddonUtil;
 public class zStatic {
     public static String CreativeTab = "creative_tab";
 
+    public class MobDrop {
+        public static String creeper_gall = "creeper_gall";
+        public static String enderman_heart = "enderman_heart";
+        public static String ghast_bladder = "ghast_bladder";
+        public static String guardian_scale = "guardian_scale";
+        public static String red_heart = "red_heart";
+        public static String silverfish_dust = "silverfish_dust";
+        public static String slime_bolus = "slime_bolus";
+        public static String venom_sac = "venom_sac";
+        public static String witherflesh = "witherflesh";
+        public static String zombie_liver = "zombie_liver";
+    }
+
     public class ResourceMaterial {
         public static String iron = "iron";
         public static String copper = "copper";
@@ -107,7 +120,7 @@ public class zStatic {
         public static String healer = "healer";
         public static String tiny_wooden_chest = "tiny_wooden_chest";
         public static String tiny_stone_chest = "tiny_stone_chest";
-        public static String tiny_wooden_chest_ornated = "tiny_wooden_chest_ornated";
+        public static String tiny_ornated_chest = "tiny_ornated_chest";
         // public static String fan = "fan";
         // public static String wind = "wind";
 
@@ -119,7 +132,7 @@ public class zStatic {
         public static String cooler = "cooler";
         public static String fuel_cell = "fuel_cell";
         public static String moderator = "moderator";
-        // public static String port = "reactor_port";
+        public static String port = "reactor_port";
 
         public class CoolerTypes {
             public static String IRON = "iron_" + cooler;
