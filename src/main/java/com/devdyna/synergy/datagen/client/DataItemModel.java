@@ -59,6 +59,8 @@ public class DataItemModel extends ItemModelProvider {
                                 DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.raw, "")));
                 zItems.zShards.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/shard/",
                                 DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.shard, "")));
+                zItems.zMobDrop.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/mob_drop/",
+                                DataGenUtil.getPath(item.get())));
 
                 // -----------------------//
                 zBlocks.zDecorative.getEntries()
