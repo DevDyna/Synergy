@@ -125,13 +125,13 @@ public class zBlocks {
                                         zDecorative);
 
         public static final DeferredHolder<Block, Block> ADVANCED_ALLOY_BLOCK = Material
-                        .DecoBlock(zStatic.ResourceMaterial.advanced_alloy + "_" + zStatic.ResourceType.block,
+                        .DecoBlock(zStatic.ResourceMaterial.advanced_alloy + zStatic.ResourceType.block,
                                         BlockBehaviour.Properties.of().sound(SoundType.METAL)
                                                         .strength(2f).mapColor(MapColor.METAL),
                                         zDecorative);
 
         public static final DeferredHolder<Block, Block> STEEL_BLOCK = Material
-                        .DecoBlock(zStatic.ResourceMaterial.steel + "_" + zStatic.ResourceType.block,
+                        .DecoBlock(zStatic.ResourceMaterial.steel + zStatic.ResourceType.block,
                                         BlockBehaviour.Properties.of().sound(SoundType.METAL)
                                                         .strength(2f).mapColor(MapColor.METAL),
                                         zDecorative);
