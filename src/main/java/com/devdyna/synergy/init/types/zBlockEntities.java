@@ -54,7 +54,7 @@ public class zBlockEntities {
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TinyChestBE>> WOODEN_TINY_CHEST = Material
                         .createBlockEntity(zStatic.Blocks.tiny_wooden_chest, TinyChestBE::new,
-                                        zBlocks.WOODEN_TINY_CHEST);
+                                        zBlocks.WOODEN_TINY_CHEST,zBlocks.STONE_TINY_CHEST,zBlocks.ORNATE_TINY_CHEST);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ReactorPortBE>> REACTOR_PORT = Material
                         .createBlockEntity(zStatic.ReactorStuff.port, ReactorPortBE::new,
