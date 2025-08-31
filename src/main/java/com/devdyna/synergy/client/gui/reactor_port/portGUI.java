@@ -29,8 +29,8 @@ public class portGUI extends baseGui {
     }
 
     @Override
-    public Block getValidBlock() {
-        return zBlocks.REACTOR_PORT.get();
+    public Block[] getValidBlock() {
+        return new Block[]{zBlocks.REACTOR_PORT.get()};
     }
 
     @Override
