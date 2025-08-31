@@ -59,8 +59,9 @@ public class DataItemModel extends ItemModelProvider {
                                 DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.raw, "")));
                 zItems.zShards.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/shard/",
                                 DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.shard, "")));
-                zItems.zMobDrop.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/mob_drop/",
-                                DataGenUtil.getPath(item.get())));
+                zItems.zMobDrop.getEntries()
+                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/mob_drop/",
+                                                DataGenUtil.getPath(item.get())));
 
                 // -----------------------//
                 zBlocks.zDecorative.getEntries()
@@ -137,11 +138,16 @@ public class DataItemModel extends ItemModelProvider {
 
                 simpleFullBlock(zBlocks.HEALER, "");
                 simpleFullBlock(zBlocks.REACTOR_FUEL_CELL, "reactor/");
+                simpleFullBlock(zBlocks.REACTOR_PORT, "reactor/");
                 simpleFlexibleBlock(zBlocks.IRON_COOLER, "reactor/cooler/on");
                 simpleFlexibleBlock(zBlocks.GRAPHITE_MODERATOR, "reactor/moderator/casing");
 
                 withExistingParent(zBlocks.WOODEN_TINY_CHEST.getRegisteredName(),
                                 modLoc("block/tiny_chest/wooden"));
+                withExistingParent(zBlocks.ORNATE_TINY_CHEST.getRegisteredName(),
+                                modLoc("block/tiny_chest/ornate"));
+                withExistingParent(zBlocks.STONE_TINY_CHEST.getRegisteredName(),
+                                modLoc("block/tiny_chest/stone"));
 
         }
 
