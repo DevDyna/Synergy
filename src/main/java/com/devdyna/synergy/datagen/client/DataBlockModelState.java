@@ -43,6 +43,8 @@ public class DataBlockModelState extends BlockStateProvider {
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
                 pipe(zBlocks.PIPE.get());
 
+                simpleBlockDecorative(zBlocks.ADVANCED_ALLOY_BLOCK);
+                simpleBlockDecorative(zBlocks.STEEL_BLOCK);
                 simpleBlockDecorative(zBlocks.ADOBE);
                 simpleBlockDecorative(zBlocks.RUSTIC_METAL);
                 simpleBlockDecorative(zBlocks.WAXED_PLANKS);
