@@ -29,8 +29,9 @@ public class chestGUI extends baseGui {
     }
 
     @Override
-    public Block getValidBlock() {
-        return zBlocks.WOODEN_TINY_CHEST.get();
+    public Block[] getValidBlock() {
+        return new Block[] { zBlocks.WOODEN_TINY_CHEST.get(), zBlocks.STONE_TINY_CHEST.get(),
+                zBlocks.ORNATE_TINY_CHEST.get() };
     }
 
     @Override
