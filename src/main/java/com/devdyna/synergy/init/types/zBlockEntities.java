@@ -3,13 +3,14 @@ package com.devdyna.synergy.init.types;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
-import com.devdyna.synergy.init.builder.chests.TinyChestBE;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBE;
 import com.devdyna.synergy.init.builder.reactor.port.ReactorPortBE;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBE;
+import com.devdyna.synergy.init.builder.tinychests.TinyChestBE;
+
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
