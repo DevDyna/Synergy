@@ -283,8 +283,8 @@ public class zItems {
                         .registerSimpleItem(zStatic.MobDrop.ghast_bladder);
         public static final DeferredHolder<Item, Item> GUARDIAN_SCALE = zMobDrop
                         .registerSimpleItem(zStatic.MobDrop.guardian_scale);
-        public static final DeferredHolder<Item, Item> RED_HEART = zMobDrop
-                        .registerSimpleItem(zStatic.MobDrop.red_heart);
+        // public static final DeferredHolder<Item, Item> RED_HEART = zMobDrop
+        //                 .registerSimpleItem(zStatic.MobDrop.red_heart);
         public static final DeferredHolder<Item, Item> SILVERFISH_DUST = zMobDrop
                         .registerSimpleItem(zStatic.MobDrop.silverfish_dust);
         public static final DeferredHolder<Item, Item> SLIME_BOLUS = zMobDrop
