@@ -3,6 +3,8 @@ package com.devdyna.synergy.init.builder.harvester;
 import java.util.*;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.ItemProducer;
+import com.devdyna.synergy.api.BiBool;
+import com.devdyna.synergy.api.Range;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.coreBE.BaseBE;
 import com.devdyna.synergy.api.harvester.PlantHandler;
@@ -150,6 +152,16 @@ public class HarvesterBE extends BaseBE implements EnergyBlock, AreaOfEffect, It
     @Override
     public int MaxFE() {
         return 10000;
+    }
+
+    @Override
+    public Range radiusLimit() {
+        return Range.of(1, 6, BiBool.of(true, false));
+    }
+
+    @Override
+    public Range heightLimit() {
+       return Range.of(1, 8, BiBool.of(true, false));
     }
 
 }
