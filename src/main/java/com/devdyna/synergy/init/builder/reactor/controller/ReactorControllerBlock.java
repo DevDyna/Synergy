@@ -36,14 +36,14 @@ public class ReactorControllerBlock extends BaseBlockBE {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext c) {
         return this.defaultBlockState()
-        .setValue(BlockStateProperties.ENABLED, false)
+                .setValue(BlockStateProperties.ENABLED, false)
                 .setValue(STATUS, ControllerProperties.WAITING)
                 .setValue(BlockStateProperties.HORIZONTAL_FACING, c.getHorizontalDirection());
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
-        b.add(BlockStateProperties.HORIZONTAL_FACING, STATUS,BlockStateProperties.ENABLED);
+        b.add(BlockStateProperties.HORIZONTAL_FACING, STATUS, BlockStateProperties.ENABLED);
     }
 
     @Nullable
