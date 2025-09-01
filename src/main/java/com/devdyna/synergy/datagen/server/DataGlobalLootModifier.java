@@ -79,11 +79,11 @@ public class DataGlobalLootModifier extends GlobalLootModifierProvider {
             var index = DataAnyLoot.MOB_DROPS.indexOf(item);
 
             DataGenUtil.modifyLootTables(this,
-                    DataAnyLoot.PREFIX_DROPS + item.getRegisteredName().replace(ID + ":", ""),
+                     item.getRegisteredName().replace(ID + ":", DataAnyLoot.PREFIX_DROPS),
                     MOB_TYPES.get(index).toArray(new EntityType<?>[0]));
 
             DataGenUtil.modifyLootTables(this,
-                    DataAnyLoot.PREFIX_DROPS + item.getRegisteredName().replace(ID + ":", ""),
+                    item.getRegisteredName().replace(ID + ":", DataAnyLoot.PREFIX_DROPS),
                     CHEST_TYPES.get(index).toArray(new ResourceKey[0]));
 
         });
