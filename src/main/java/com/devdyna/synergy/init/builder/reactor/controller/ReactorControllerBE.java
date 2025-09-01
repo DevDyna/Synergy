@@ -51,6 +51,7 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
     long heat = areaTemp;
 
     boolean foundCell;
+    boolean forceOverHeat;
 
     @Override
     public void tickServer() {
@@ -60,7 +61,7 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
                         .setValue(BlockStateProperties.ENABLED,
                                 canReceive() && area != null && level.hasNeighborSignal(getBlockPos()))
                         .setValue(ReactorControllerBlock.STATUS,
-                                enable() ? (heat > areaTemp ? ControllerProperties.OVERHEATED
+                                enable() ? ((heat > areaTemp || forceOverHeat) ? ControllerProperties.OVERHEATED
                                         : (foundCell ? ControllerProperties.PRODUCTION : ControllerProperties.NOCELLS))
                                         : ControllerProperties.WAITING));
 
@@ -101,6 +102,11 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
             var state = level.getBlockState(pos);
             var block = state.getBlock();
 
+            if (block instanceof ReactorControllerBlock) {
+                forceOverHeat = true;
+                return;
+            }
+
             if (block instanceof CoolerBlockBase cooler) {
                 heat -= level.getBlockState(pos).getValue(BlockStateProperties.ENABLED)
                         ? cooler.getActiveCooling()
@@ -127,13 +133,10 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
         // heat efficiency calc
         fe *= 1.0 - (heat - areaTemp) * 0.001F;
 
-        // if (!foundCell) {
-        // resetStats();
-        // }
-
     }
 
     private void resetStats() {
+        forceOverHeat = false;
         foundCell = false;
         fe = 20;
         heat = areaTemp;
