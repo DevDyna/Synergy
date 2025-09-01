@@ -10,24 +10,15 @@
         },
         {
           "type": "minecraft:item",
+          "name": "synergy:blue_cup_mushroom"
+        },
+        {
+          "type": "minecraft:item",
           "name": "synergy:violet_webcap_pod"
         },
         {
           "type": "minecraft:item",
-          "conditions": [
-            {
-              "chance": 0.3,
-              "condition": "minecraft:random_chance"
-            }
-          ],
-          "functions": [
-            {
-              "add": false,
-              "count": 1.0,
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "minecraft:ender_pearl"
+          "name": "synergy:violet_webcap_mushroom"
         }
       ],
       "rolls": {
@@ -37,5 +28,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/mob_drop"
+  "random_sequence": "synergy:chests/mushrooms"
 }

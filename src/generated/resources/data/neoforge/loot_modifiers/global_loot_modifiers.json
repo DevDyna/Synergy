@@ -1,6 +1,16 @@
 {
   "entries": [
-    "synergy:entities/mob_drop"
+    "synergy:chests/mushrooms",
+    "synergy:chests/mobdrop",
+    "synergy:entities/drop/creeper_gall",
+    "synergy:entities/drop/enderman_heart",
+    "synergy:entities/drop/slime_bolus",
+    "synergy:entities/drop/guardian_scale",
+    "synergy:entities/drop/witherflesh",
+    "synergy:entities/drop/venom_sac",
+    "synergy:entities/drop/silverfish_dust",
+    "synergy:entities/drop/ghast_bladder",
+    "synergy:entities/drop/zombie_liver"
   ],
   "replace": false
 }

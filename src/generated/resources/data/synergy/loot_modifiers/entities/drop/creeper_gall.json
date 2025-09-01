@@ -6,10 +6,10 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/jungle_temple"
+          "loot_table_id": "minecraft:chests/abandoned_mineshaft"
         }
       ]
     }
   ],
-  "table": "synergy:entities/mob_drop"
+  "table": "synergy:entities/drop/creeper_gall"
 }

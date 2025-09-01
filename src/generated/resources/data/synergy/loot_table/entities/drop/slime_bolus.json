@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "synergy:creeper_gall"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "synergy:enderman_heart"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "synergy:slime_bolus"
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 3.0,
+        "min": 1.0
+      }
+    }
+  ],
+  "random_sequence": "synergy:entities/drop/slime_bolus"
+}
