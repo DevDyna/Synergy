@@ -2,6 +2,8 @@ package com.devdyna.synergy.init.builder.reactor.controller;
 
 import java.util.*;
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
+import com.devdyna.synergy.api.BiBool;
+import com.devdyna.synergy.api.Range;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.coreBE.BaseBE;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
@@ -16,6 +18,8 @@ import com.devdyna.synergy.utils.PlayerUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -33,8 +37,13 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
 
     private final Map<Direction, BlockCapabilityCache<IEnergyStorage, Direction>> cache = new HashMap<>();
 
+    public final static String RADIUS = "aoe";
+
+    private int radius;
+
     public ReactorControllerBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.REACTOR_CONTROLLER.get(), pos, state);
+        this.radius = 4;
         var random = new Random();
         var color = ColorUtil.colorfulColorList.get(random.nextInt(ColorUtil.colorfulColorList.size()));
         rgbColor = List.of(color.getRed(), color.getGreen(), color.getBlue());
@@ -44,11 +53,11 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
     List<BlockPos> area = null;
     List<Integer> rgbColor;
 
-    int areaTemp = 95; // approx 35°C as °F
+    double areaTemp = 0;
 
     // TODO change to depend on fuel insered
     int fe = 20;
-    long heat = areaTemp;
+    double heat = areaTemp;
 
     boolean foundCell;
     boolean forceOverHeat;
@@ -162,17 +171,46 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
 
     @Override
     public int radius() {
-        return 4;
+        return radius;
     }
 
     @Override
     public int height() {
-        return 4;
+        return radius;
     }
 
     @Override
     public int MaxFE() {
         return 1_000_000;
     }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag, Provider registries) {
+        super.saveAdditional(tag, registries);
+        tag.putInt(RADIUS, radius);
+    }
+
+    @Override
+    protected void loadAdditional(CompoundTag tag, Provider registries) {
+        super.loadAdditional(tag, registries);
+        if (tag.contains(RADIUS))
+            radius = tag.getInt(RADIUS);
+        area = null;
+    }
+
+    @Override
+    public Range radiusLimit() {
+        return getRange();
+    }
+
+    @Override
+    public Range heightLimit() {
+        return getRange();
+    }
+
+    public Range getRange(){
+        return Range.of(1, 8, BiBool.of(true, false));
+    }
+
 
 }
