@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
+@SuppressWarnings("null")
 public abstract class BaseBlockBE extends Block implements EntityBlock {
 
     public BaseBlockBE(Properties properties) {
