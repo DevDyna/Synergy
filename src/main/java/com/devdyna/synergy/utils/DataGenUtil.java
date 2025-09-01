@@ -2,21 +2,34 @@ package com.devdyna.synergy.utils;
 
 import static com.devdyna.synergy.Main.ID;
 
+import java.util.Arrays;
+import java.util.function.BiConsumer;
+
 import com.devdyna.synergy.datagen.client.DataBlockModelState;
+import com.devdyna.synergy.datagen.server.DataGlobalLootModifier;
 
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
+import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.loot.AddTableLootModifier;
+import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 
 public class DataGenUtil {
 
@@ -70,7 +83,7 @@ public class DataGenUtil {
                 getResource("item/" + pathSuffix + getPath(item)));
     }
 
-        public static ItemModelBuilder itemModel(Item item, ItemModelProvider b, String pathSuffix,String itemPath) {
+    public static ItemModelBuilder itemModel(Item item, ItemModelProvider b, String pathSuffix, String itemPath) {
         return b.withExistingParent(getPath(item), ITEM).texture("layer0",
                 getResource("item/" + pathSuffix + itemPath));
     }
@@ -125,4 +138,60 @@ public class DataGenUtil {
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(prop, age_limit));
     }
 
+    /**
+     * @param lootModifier like "chests/jungle_temple"
+     * @param lootTables   like "chests/jungle_temple"
+     */
+    public static void modifyLootTables(DataGlobalLootModifier g, String lootModifier, String... lootTables) {
+        g.add(lootModifier,
+                new AddTableLootModifier(
+                        new LootItemCondition[] { AnyOfCondition.anyOf(Arrays.asList(lootTables).stream()
+                                .map(r -> LootTableIdCondition.builder(ResourceLocation.parse(r)))
+                                .toArray(LootTableIdCondition.Builder[]::new)).build() },
+                        ResourceKey.create(Registries.LOOT_TABLE, modLoc(lootModifier))));
+
+    }
+
+    public static ResourceLocation modLoc(String path) {
+        return ResourceLocation.fromNamespaceAndPath(ID, path);
+    }
+
+    /**
+     * Apply a rool<br/>
+     * 
+     * <pre>
+     * .setRolls(UniformGenerator.between(0f,1f))
+     * </pre>
+     * 
+     * <br/>
+     * <br/>
+     * Add lootItems<br/>
+     * 
+     * <pre>
+     * .add(LootItem.lootTableItem(Items.STONE))
+     * </pre>
+     */
+    public static LootPool.Builder createPool() {
+        return LootPool.lootPool();
+    }
+
+    /**
+     * 
+     * @param pool
+     * 
+     *             <pre>
+     *             DataGenUtil.createPool()
+     *             </pre>
+     */
+    public static LootTable.Builder createTable(LootPool.Builder pool) {
+        return LootTable
+                .lootTable()
+                .withPool(pool)
+                .setParamSet(LootContextParamSet.builder().build());
+    }
+
+    public static void regTable(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> c, ResourceLocation tableLocation,
+            LootTable.Builder table) {
+        c.accept(ResourceKey.create(Registries.LOOT_TABLE, tableLocation), table);
+    }
 }
