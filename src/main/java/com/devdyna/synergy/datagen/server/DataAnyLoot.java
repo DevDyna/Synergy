@@ -22,7 +22,7 @@ public class DataAnyLoot implements LootTableSubProvider {
 
     public final static String GENERIC_MOB_DROPS = "chests/mobdrop";
 
-    public final static String PREFIX_DROPS = "entities/drop/";
+    public final static String PREFIX_DROPS = "entities/";
 
     
     public final static List<DeferredHolder<Item, Item>> MOB_DROPS = List.of(
@@ -46,7 +46,7 @@ public class DataAnyLoot implements LootTableSubProvider {
 
         var mobDropRate = DataGenUtil.createPool().setRolls(UniformGenerator.between(1.0f, 3.0f));
 
-        for (DeferredHolder<Item, Item> items : MOB_DROPS) {
+        for (DeferredHolder<Item, Item> items : MOB_DROPS) {//TODO DONT WORK
             var temp = mobDropRate;
             temp.add(LootItem.lootTableItem(items.get()));
 
