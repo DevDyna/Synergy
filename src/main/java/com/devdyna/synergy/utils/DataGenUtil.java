@@ -13,6 +13,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -31,6 +32,7 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.loot.AddTableLootModifier;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 
+@SuppressWarnings("unchecked")
 public class DataGenUtil {
 
     public static final ResourceLocation CUTOUT = ResourceLocation.withDefaultNamespace("cutout");
@@ -139,6 +141,8 @@ public class DataGenUtil {
     }
 
     /**
+     * Apply a loot modifier at all of specific loot tables
+     * 
      * @param lootModifier like "chests/jungle_temple"
      * @param lootTables   like "chests/jungle_temple"
      */
@@ -150,6 +154,19 @@ public class DataGenUtil {
                                 .toArray(LootTableIdCondition.Builder[]::new)).build() },
                         ResourceKey.create(Registries.LOOT_TABLE, modLoc(lootModifier))));
 
+    }
+
+    public static void modifyLootTables(DataGlobalLootModifier g, String lootModifier,
+            ResourceKey<LootTable>... lootTables) {
+        modifyLootTables(g, lootModifier,
+                Arrays.asList(lootTables).stream().map(r -> r.location().getPath()).toArray(String[]::new));
+    }
+
+    public static void modifyLootTables(DataGlobalLootModifier g, String lootModifier,
+            EntityType<?>... lootTables) {
+        modifyLootTables(g, lootModifier,
+                Arrays.asList(lootTables).stream().map(r -> r.getDefaultLootTable().location().getPath())
+                        .toArray(String[]::new));
     }
 
     public static ResourceLocation modLoc(String path) {
@@ -190,7 +207,8 @@ public class DataGenUtil {
                 .setParamSet(LootContextParamSet.builder().build());
     }
 
-    public static void regTable(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> c, ResourceLocation tableLocation,
+    public static void registerTable(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> c,
+            ResourceLocation tableLocation,
             LootTable.Builder table) {
         c.accept(ResourceKey.create(Registries.LOOT_TABLE, tableLocation), table);
     }
