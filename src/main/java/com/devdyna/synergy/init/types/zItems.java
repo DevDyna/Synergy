@@ -10,6 +10,7 @@ import com.devdyna.synergy.init.builder.tools.Configurator;
 import com.devdyna.synergy.init.builder.tools.Croock;
 import com.devdyna.synergy.init.builder.tools.PipeRefactorizer;
 import com.devdyna.synergy.init.builder.tools.Smasher;
+import com.devdyna.synergy.init.builder.tools.SolderingGun;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -150,6 +151,9 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> SMASHER = zTool
                         .register(zStatic.Items.smasher, () -> new Smasher());
+
+        public static final DeferredHolder<Item, Item> SOLDERING_GUN = zTool
+                        .register(zStatic.Items.soldering_gun, () -> new SolderingGun());
 
         public static final DeferredHolder<Item, Item> CONFIGURATOR = zTool
                         .register(zStatic.Items.configurator, () -> new Configurator());
