@@ -35,10 +35,6 @@
         {
           "type": "minecraft:item",
           "name": "synergy:ghast_bladder"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "synergy:zombie_liver"
         }
       ],
       "rolls": {
@@ -48,5 +44,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/drop/zombie_liver"
+  "random_sequence": "synergy:entities/ghast_bladder"
 }

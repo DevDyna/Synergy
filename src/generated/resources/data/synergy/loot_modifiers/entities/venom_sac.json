@@ -10,14 +10,10 @@
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/stronghold_corridor"
-        },
-        {
-          "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/shipwreck_supply"
+          "loot_table_id": "minecraft:chests/desert_pyramid"
         }
       ]
     }
   ],
-  "table": "synergy:entities/drop/slime_bolus"
+  "table": "synergy:entities/venom_sac"
 }

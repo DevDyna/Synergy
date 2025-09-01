@@ -7,9 +7,13 @@
         {
           "condition": "neoforge:loot_table_id",
           "loot_table_id": "minecraft:chests/abandoned_mineshaft"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:chests/jungle_temple"
         }
       ]
     }
   ],
-  "table": "synergy:entities/drop/creeper_gall"
+  "table": "synergy:entities/zombie_liver"
 }

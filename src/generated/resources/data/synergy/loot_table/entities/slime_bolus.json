@@ -15,10 +15,6 @@
         {
           "type": "minecraft:item",
           "name": "synergy:slime_bolus"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "synergy:guardian_scale"
         }
       ],
       "rolls": {
@@ -28,5 +24,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/drop/guardian_scale"
+  "random_sequence": "synergy:entities/slime_bolus"
 }

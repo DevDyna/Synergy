@@ -6,7 +6,7 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:gameplay/cat_morning_gift"
+          "loot_table_id": "minecraft:chests/jungle_temple"
         },
         {
           "condition": "neoforge:loot_table_id",
@@ -14,10 +14,10 @@
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/stronghold_crossing"
+          "loot_table_id": "minecraft:chests/shipwreck_supply"
         }
       ]
     }
   ],
-  "table": "synergy:entities/drop/silverfish_dust"
+  "table": "synergy:entities/slime_bolus"
 }

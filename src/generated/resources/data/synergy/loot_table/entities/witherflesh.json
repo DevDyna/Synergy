@@ -23,18 +23,6 @@
         {
           "type": "minecraft:item",
           "name": "synergy:witherflesh"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "synergy:venom_sac"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "synergy:silverfish_dust"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "synergy:ghast_bladder"
         }
       ],
       "rolls": {
@@ -44,5 +32,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/drop/ghast_bladder"
+  "random_sequence": "synergy:entities/witherflesh"
 }

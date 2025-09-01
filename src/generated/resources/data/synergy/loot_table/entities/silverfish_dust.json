@@ -15,6 +15,22 @@
         {
           "type": "minecraft:item",
           "name": "synergy:slime_bolus"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "synergy:guardian_scale"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "synergy:witherflesh"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "synergy:venom_sac"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "synergy:silverfish_dust"
         }
       ],
       "rolls": {
@@ -24,5 +40,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/drop/slime_bolus"
+  "random_sequence": "synergy:entities/silverfish_dust"
 }

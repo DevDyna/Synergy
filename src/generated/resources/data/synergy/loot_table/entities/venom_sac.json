@@ -27,10 +27,6 @@
         {
           "type": "minecraft:item",
           "name": "synergy:venom_sac"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "synergy:silverfish_dust"
         }
       ],
       "rolls": {
@@ -40,5 +36,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/drop/silverfish_dust"
+  "random_sequence": "synergy:entities/venom_sac"
 }

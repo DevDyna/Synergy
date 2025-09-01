@@ -19,10 +19,6 @@
         {
           "type": "minecraft:item",
           "name": "synergy:guardian_scale"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "synergy:witherflesh"
         }
       ],
       "rolls": {
@@ -32,5 +28,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/drop/witherflesh"
+  "random_sequence": "synergy:entities/guardian_scale"
 }

@@ -27,6 +27,18 @@
         {
           "type": "minecraft:item",
           "name": "synergy:venom_sac"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "synergy:silverfish_dust"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "synergy:ghast_bladder"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "synergy:zombie_liver"
         }
       ],
       "rolls": {
@@ -36,5 +48,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/drop/venom_sac"
+  "random_sequence": "synergy:entities/zombie_liver"
 }
