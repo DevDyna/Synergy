@@ -65,6 +65,7 @@ A bunch of Magic-Tech and fun-made gadgets
 - [ ] metal scraps (like deposits but return metal things)
 - [ ] Energy (like FE but a completly new Capability type) that allow E->FE
 - [ ] Lasers and Lens
+- [ ] Rocket Launcher
 
 _IC2 like_
 
