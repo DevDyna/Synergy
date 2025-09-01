@@ -6,14 +6,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-import com.devdyna.synergy.datagen.client.DataBlockModelState;
-import com.devdyna.synergy.datagen.client.DataItemModel;
-import com.devdyna.synergy.datagen.client.DataLang;
-import com.devdyna.synergy.datagen.server.DataBlockTag;
-import com.devdyna.synergy.datagen.server.DataItemTag;
-import com.devdyna.synergy.datagen.server.DataLoot;
-import com.devdyna.synergy.datagen.server.DataMaps;
-import com.devdyna.synergy.datagen.server.DataRecipe;
+import com.devdyna.synergy.datagen.client.*;
+import com.devdyna.synergy.datagen.server.*;
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -45,9 +40,14 @@ public class Controller {
         providerGen(e, g, blocktag);
         providerGen(e, g, new DataItemTag(po, pr, blocktag.contentsGetter()));
         providerGen(e, g, new LootTableProvider(po, Set.of(),
-                List.of(new LootTableProvider.SubProviderEntry(DataLoot::new, LootContextParamSets.BLOCK)), pr));
+                List.of(
+                        new LootTableProvider.SubProviderEntry(DataLootBlock::new, LootContextParamSets.BLOCK),
+                        new LootTableProvider.SubProviderEntry(DataAnyLoot::new, LootContextParamSets.ENTITY)),
+                pr));
+
         providerGen(e, g, new DataRecipe(po, pr));
-        providerGen(e, g, new DataMaps(po,pr));
+        providerGen(e, g, new DataMaps(po, pr));
+        providerGen(e, g, new DataGlobalLootModifier(po, pr));
 
     }
 
