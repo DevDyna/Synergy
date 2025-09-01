@@ -10,7 +10,7 @@ public class zStatic {
         public static String enderman_heart = "enderman_heart";
         public static String ghast_bladder = "ghast_bladder";
         public static String guardian_scale = "guardian_scale";
-        public static String red_heart = "red_heart";
+        // public static String red_heart = "red_heart";
         public static String silverfish_dust = "silverfish_dust";
         public static String slime_bolus = "slime_bolus";
         public static String venom_sac = "venom_sac";
