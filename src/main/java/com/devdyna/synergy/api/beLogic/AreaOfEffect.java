@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+import com.devdyna.synergy.api.Range;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -21,18 +23,14 @@ public interface AreaOfEffect {
     int height();
 
     /**
-     * probably not necessary atm
-     * @return map<Start,End>
+     * Limits of <code>int radius();</code>
      */
-    // default Entry<BlockPos, BlockPos> getHorizontalPoints(Level level,BlockPos
-    // baseBlock, Direction dir) {
-    // BlockPos relPos = baseBlock.relative(dir);
+    Range radiusLimit();
 
-    // ArrayList<Direction> validDirs = getHorizontalDirections(dir);
-
-    // return Map.entry(relPos.relative(validDirs.get(0), radius()),
-    // relPos.relative(validDirs.get(1), radius()).relative(dir, (radius()) * 2));
-    // }
+    /**
+     * Limits of <code>int height();</code>
+     */
+    Range heightLimit();
 
     /**
      * @return map<Start,End>
@@ -126,6 +124,5 @@ public interface AreaOfEffect {
         var points = getPoints(level, baseBlock, dir, true);
         return getAreaSelection(getStartPoint(points), getEndPoint(points));
     }
-
 
 }
