@@ -212,11 +212,11 @@ public class zStatic {
         public static final String CAVE_WHEAT = "cave_wheat";
         public static final String COTTON = "cotton";
 
-        protected static final String BLUE_CUP = "blue_cup";
-        protected static final String VIOLET_WEBCAP = "violet_webcap";
+        public static final String TYPE_BLUE_CUP = "blue_cup";
+        public static final String TYPE_VIOLET_WEBCAP = "violet_webcap";
 
-        public static final String BLUE_CUP_MUSHROOM = BLUE_CUP + MUSH;
-        public static final String VIOLET_WEBCAP_MUSHROOM = VIOLET_WEBCAP + MUSH;
+        public static final String BLUE_CUP_MUSHROOM = TYPE_BLUE_CUP + MUSH;
+        public static final String VIOLET_WEBCAP_MUSHROOM = TYPE_VIOLET_WEBCAP + MUSH;
 
     }
 
@@ -239,8 +239,8 @@ public class zStatic {
         public static final String CAVE_WHEAT_SEED = Plants.CAVE_WHEAT + SEED;
         public static final String COTTON_SEED = Plants.COTTON + SEED;
 
-        public static final String BLUE_CUP_SPORE = Plants.BLUE_CUP + SPORE;
-        public static final String VIOLET_WEBCAP_SPORE = Plants.VIOLET_WEBCAP + SPORE;
+        public static final String BLUE_CUP_SPORE = Plants.TYPE_BLUE_CUP + SPORE;
+        public static final String VIOLET_WEBCAP_SPORE = Plants.TYPE_VIOLET_WEBCAP + SPORE;
 
     }
 
