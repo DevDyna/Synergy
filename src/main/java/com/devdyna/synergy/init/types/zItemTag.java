@@ -16,10 +16,12 @@ public class zItemTag {
 
     public static final TagKey<Item> AZALEA_BUSHES = Material.tagItem("azalea");
 
-    public static final TagKey<Item> CROP_BLUE_CUP = Material.tagItem("crops/"+zStatic.Plants.TYPE_BLUE_CUP,"c");
-    public static final TagKey<Item> CROP_VIOLET_WEBCAP = Material.tagItem("crops/"+zStatic.Plants.TYPE_VIOLET_WEBCAP,"c");
-    public static final TagKey<Item> CROP_RICE = Material.tagItem("crops/"+zStatic.Plants.RICE,"c");
-    public static final TagKey<Item> CROP_COTTON = Material.tagItem("crops/"+zStatic.Plants.COTTON,"c");
-    public static final TagKey<Item> CROP_CAVE_WHEAT = Material.tagItem("crops/"+zStatic.Plants.CAVE_WHEAT,"c");
-    public static final TagKey<Item> CROP_AZALEA = Material.tagItem("crops/potted_"+zStatic.Blocks.azalea,"c");
+    public static final TagKey<Item> CROP_BLUE_CUP = Material.tagItem("crops/" + zStatic.Plants.TYPE_BLUE_CUP, "c");
+    public static final TagKey<Item> CROP_VIOLET_WEBCAP = Material.tagItem("crops/" + zStatic.Plants.TYPE_VIOLET_WEBCAP,
+            "c");
+    public static final TagKey<Item> CROP_RICE = Material.tagItem("crops/" + zStatic.Plants.RICE, "c");
+    public static final TagKey<Item> CROP_COTTON = Material.tagItem("crops/" + zStatic.Plants.COTTON, "c");
+    public static final TagKey<Item> CROP_CAVE_WHEAT = Material.tagItem("crops/" + zStatic.Plants.CAVE_WHEAT, "c");
+    public static final TagKey<Item> CROP_AZALEA = Material.tagItem("crops/potted_" + zStatic.Blocks.azalea, "c");
+
 }
