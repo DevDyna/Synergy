@@ -1,0 +1,37 @@
+{
+  "values": {
+    "synergy:azalea_seeds": {
+      "chance": 0.1
+    },
+    "synergy:blue_cup_mushroom": {
+      "chance": 0.25
+    },
+    "synergy:blue_cup_pod": {
+      "chance": 0.15
+    },
+    "synergy:cave_wheat_seed": {
+      "chance": 0.6
+    },
+    "synergy:cotton": {
+      "chance": 0.25
+    },
+    "synergy:cotton_seed": {
+      "chance": 0.1
+    },
+    "synergy:rice_seed": {
+      "chance": 0.2
+    },
+    "synergy:small_azalea_leaf": {
+      "chance": 0.105
+    },
+    "synergy:small_azalea_roots": {
+      "chance": 0.15
+    },
+    "synergy:violet_webcap_mushroom": {
+      "chance": 0.25
+    },
+    "synergy:violet_webcap_pod": {
+      "chance": 0.155
+    }
+  }
+}
