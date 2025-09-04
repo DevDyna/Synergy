@@ -64,6 +64,7 @@
 - [ ] Lasers and Lens
 - [ ] Rocket Launcher
 - [ ] Planter (farmland like but bypass conditions)
+- [ ] Truffles
 
 _IC2 like_
 
