@@ -56,6 +56,9 @@ public class DataItemTag extends ItemTagsProvider {
         tag(zItemTag.CROP_VIOLET_WEBCAP).add(zItems.VIOLET_WEBCAP_MUSHROOM.get());
         tag(zItemTag.CROP_CAVE_WHEAT).add(zItems.CAVE_WHEAT_SEEDS.get());
 
+        tag(Tags.Items.FERTILIZERS).add(zItems.AMETHYST_MIXTURE.get(), zItems.BONE_MEAL_MIXTURE.get(),
+                zItems.GLOWSTONE_MIXTURE.get());
+
     }
 
 }
