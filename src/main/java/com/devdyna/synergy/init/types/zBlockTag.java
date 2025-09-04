@@ -51,4 +51,7 @@ public class zBlockTag {
         public static final TagKey<Block> HARVESTER_TREE_BREAK = Material
                         .tagBlock("harvester_can_break");
 
+        public static final TagKey<Block> FERMERS_DELIGHT_COMPOSTING = Material
+                        .tagBlock("compost_activators", "farmersdelight");
+
 }
