@@ -6,18 +6,18 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/cave_spider"
+          "loot_table_id": "minecraft:chests/simple_dungeon"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/bogged"
+          "loot_table_id": "minecraft:chests/abandoned_mineshaft"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/bat"
+          "loot_table_id": "minecraft:chests/village/village_weaponsmith"
         }
       ]
     }
   ],
-  "table": "synergy:entities/venom_sac"
+  "table": "synergy:chests/mobdropcreeper_gall"
 }

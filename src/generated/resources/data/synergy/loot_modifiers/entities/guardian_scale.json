@@ -6,15 +6,11 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/woodland_mansion"
+          "loot_table_id": "minecraft:entities/guardian"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/buried_treasure"
-        },
-        {
-          "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/shipwreck_treasure"
+          "loot_table_id": "minecraft:entities/elder_guardian"
         }
       ]
     }

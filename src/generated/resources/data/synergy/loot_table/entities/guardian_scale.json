@@ -3,28 +3,33 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "chance": 0.25,
+          "condition": "minecraft:random_chance"
+        }
+      ],
       "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "synergy:creeper_gall"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "synergy:enderman_heart"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "synergy:slime_bolus"
-        },
         {
           "type": "minecraft:item",
           "name": "synergy:guardian_scale"
         }
       ],
+      "functions": [
+        {
+          "add": false,
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 3.0,
+            "min": 1.0
+          },
+          "function": "minecraft:set_count"
+        }
+      ],
       "rolls": {
         "type": "minecraft:uniform",
-        "max": 3.0,
-        "min": 1.0
+        "max": 1.0,
+        "min": 0.0
       }
     }
   ],

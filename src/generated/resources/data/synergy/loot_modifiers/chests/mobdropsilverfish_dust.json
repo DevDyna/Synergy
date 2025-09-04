@@ -6,30 +6,30 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/zombie"
+          "loot_table_id": "minecraft:chests/abandoned_mineshaft"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/zoglin"
+          "loot_table_id": "minecraft:chests/simple_dungeon"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/husk"
+          "loot_table_id": "minecraft:gameplay/cat_morning_gift"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/zombie_horse"
+          "loot_table_id": "minecraft:chests/stronghold_corridor"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/zombie_villager"
+          "loot_table_id": "minecraft:chests/stronghold_crossing"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/zombified_piglin"
+          "loot_table_id": "minecraft:chests/village/village_weaponsmith"
         }
       ]
     }
   ],
-  "table": "synergy:entities/zombie_liver"
+  "table": "synergy:chests/mobdropsilverfish_dust"
 }

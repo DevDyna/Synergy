@@ -14,7 +14,15 @@
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/village/village_weaponsmith"
+          "loot_table_id": "minecraft:chests/jungle_temple"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:chests/stronghold_corridor"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:chests/shipwreck_supply"
         },
         {
           "condition": "neoforge:loot_table_id",
@@ -23,5 +31,5 @@
       ]
     }
   ],
-  "table": "synergy:chests/mobdrop"
+  "table": "synergy:chests/mobdropslime_bolus"
 }

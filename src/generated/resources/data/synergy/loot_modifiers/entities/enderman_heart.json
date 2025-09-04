@@ -6,11 +6,7 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/ancient_city"
-        },
-        {
-          "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/end_city_treasure"
+          "loot_table_id": "minecraft:entities/enderman"
         }
       ]
     }

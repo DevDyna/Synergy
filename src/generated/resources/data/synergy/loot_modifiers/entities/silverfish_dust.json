@@ -6,15 +6,7 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:gameplay/cat_morning_gift"
-        },
-        {
-          "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/stronghold_corridor"
-        },
-        {
-          "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/stronghold_crossing"
+          "loot_table_id": "minecraft:entities/silverfish"
         }
       ]
     }
