@@ -186,7 +186,7 @@ public class DataLootBlock extends BlockLootSubProvider {
                 var table = LootTable.lootTable()
                                 .withPool(LootPool.lootPool().add(LootItem.lootTableItem(seed)
                                                 .when(builder)
-                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 5)))
                                                 .apply(ApplyBonusCount.addUniformBonusCount(EnchantUtil
                                                                 .getEnchantHolder(registries, Enchantments.FORTUNE)))));
 
