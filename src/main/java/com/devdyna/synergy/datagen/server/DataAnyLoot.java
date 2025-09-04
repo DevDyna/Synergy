@@ -7,13 +7,13 @@ import java.util.function.BiConsumer;
 
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.utils.DataGenUtil;
-
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
@@ -23,8 +23,14 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 public class DataAnyLoot implements LootTableSubProvider {
 
         public final static String CHEST_DROPS = "chests/mobdrop";
-
         public final static String PREFIX_DROPS = "entities/";
+        public final static String MUSHROOMS = "chests/mushrooms";
+
+        private HolderLookup.Provider p;
+
+        public DataAnyLoot(HolderLookup.Provider p) {
+                this.p = p;
+        }
 
         public final static List<DeferredHolder<Item, Item>> MOB_DROPS = List.of(
                         zItems.CREEPER_GALL,
@@ -36,11 +42,6 @@ public class DataAnyLoot implements LootTableSubProvider {
                         zItems.SILVERFISH_DUST,
                         zItems.GHAST_BLADDER,
                         zItems.ZOMBIE_LIVER);
-
-        public final static String MUSHROOMS = "chests/mushrooms";
-
-        public DataAnyLoot(HolderLookup.Provider p) {
-        }
 
         @Override
         public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> c) {
@@ -55,7 +56,9 @@ public class DataAnyLoot implements LootTableSubProvider {
                                                         .add(LootItem.lootTableItem(items.get()))
                                                         .when(LootItemRandomChanceCondition.randomChance(0.25f))
                                                         .apply(SetItemCountFunction.setCount(
-                                                                        UniformGenerator.between(1.0f, 3.0f)))));
+                                                                        UniformGenerator.between(1.0f, 3.0f)))
+                                                        .apply(EnchantedCountIncreaseFunction.lootingMultiplier(p,
+                                                                        UniformGenerator.between(1, 3)))));
 
                 }
 
