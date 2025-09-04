@@ -103,7 +103,8 @@ public class DataBlockTag extends BlockTagsProvider {
                                 .addTags(BlockTags.DIRT, Tags.Blocks.SANDS, Tags.Blocks.GRAVELS,
                                                 Tags.Blocks.SANDSTONE_BLOCKS);
 
-                tag(zBlockTag.AOE_RENDER).add(zBlocks.HARVESTER.get(), zBlocks.SPRINKLER.get(),zBlocks.REACTOR_CONTROLLER.get());
+                tag(zBlockTag.AOE_RENDER).add(zBlocks.HARVESTER.get(), zBlocks.SPRINKLER.get(),
+                                zBlocks.REACTOR_CONTROLLER.get());
 
                 tag(zBlockTag.NODE_RENDER).addTag(zBlockTag.NODE);
 
@@ -112,6 +113,26 @@ public class DataBlockTag extends BlockTagsProvider {
                                 .addTags(BlockTags.COMPLETES_FIND_TREE_TUTORIAL,
                                                 BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH,
                                                 BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH);
+
+                tag(BlockTags.SWORD_EFFICIENT)
+                                .add(zBlocks.AZALEA.get(), zBlocks.CAVE_WHEAT.get(), zBlocks.COTTON.get(),
+                                                zBlocks.RICE.get(), zBlocks.BLUE_CUP_MUSHROOM.get(),
+                                                zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
+                tag(BlockTags.BEE_GROWABLES)
+                                .add(zBlocks.AZALEA.get(), zBlocks.CAVE_WHEAT.get(), zBlocks.COTTON.get(),
+                                                zBlocks.RICE.get(), zBlocks.BLUE_CUP_MUSHROOM.get(),
+                                                zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
+                tag(BlockTags.MAINTAINS_FARMLAND)
+                                .add(zBlocks.AZALEA.get(), zBlocks.CAVE_WHEAT.get(), zBlocks.COTTON.get(),
+                                                zBlocks.RICE.get(), zBlocks.BLUE_CUP_MUSHROOM.get(),
+                                                zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
+                tag(BlockTags.MINEABLE_WITH_AXE)
+                                .add(zBlocks.AZALEA.get(), zBlocks.CAVE_WHEAT.get(), zBlocks.COTTON.get(),
+                                                zBlocks.RICE.get(), zBlocks.BLUE_CUP_MUSHROOM.get(),
+                                                zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
+
+                tag(zBlockTag.FERMERS_DELIGHT_COMPOSTING).add(zBlocks.BLUE_CUP_MUSHROOM.get(),
+                                zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
 
         }
 
