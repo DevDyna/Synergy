@@ -51,7 +51,7 @@ public class DataBlockModelState extends BlockStateProvider {
 
                 simpleFullBlock(zBlocks.HEALER, "");
                 simpleFullBlock(zBlocks.REACTOR_FUEL_CELL, "reactor/");
-                simpleFullBlock(zBlocks.REACTOR_PORT, "reactor/");
+                // simpleFullBlock(zBlocks.REACTOR_PORT, "reactor/");
                 simpleFlexibleBlock(zBlocks.IRON_COOLER, "reactor/cooler/on");
                 simpleFlexibleBlock(zBlocks.GRAPHITE_MODERATOR, "reactor/moderator/casing");
 
