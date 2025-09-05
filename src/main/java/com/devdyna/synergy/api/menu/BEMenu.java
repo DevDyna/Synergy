@@ -71,9 +71,8 @@ public abstract class BEMenu extends BaseBE implements ItemStorageBlock {
         return 1;
     }
 
-        @Override
+    @Override
     public Component getContainerName() {
         return Component.translatable(this.getBlockState().getBlock().getDescriptionId());
     }
-
 }
