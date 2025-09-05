@@ -76,7 +76,7 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.SPRINKLER,
                                 zBlocks.HEALER,
 
-                                zBlocks.REACTOR_PORT,
+                                // zBlocks.REACTOR_PORT,
                                 zBlocks.REACTOR_CONTROLLER,
                                 zBlocks.IRON_COOLER,
                                 zBlocks.GRAPHITE_MODERATOR,
