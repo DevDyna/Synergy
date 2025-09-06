@@ -18,7 +18,7 @@ public class Capabilities {
 
         event.registerBlock(net.neoforged.neoforge.capabilities.Capabilities.ItemHandler.BLOCK,
                 (level, pos, state, be, side) -> be.getData(zHandlers.ITEM_STORAGE),
-                zBlocks.REACTOR_CONTROLLER.get(),zBlocks.REACTOR_PORT.get(), zBlocks.WOODEN_TINY_CHEST.get(), zBlocks.ORNATE_TINY_CHEST.get(), zBlocks.STONE_TINY_CHEST.get());
+                zBlocks.REACTOR_FUEL_CELL.get(), zBlocks.WOODEN_TINY_CHEST.get(), zBlocks.ORNATE_TINY_CHEST.get(), zBlocks.STONE_TINY_CHEST.get());
 
     }
 
