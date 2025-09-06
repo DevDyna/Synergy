@@ -53,8 +53,6 @@ public abstract class ModeratorBase extends Block {
         return 0 < LevelUtil.predicateNeighborMatch(level, pos, b -> b instanceof FuelCellBlock);
     }
 
-    public abstract float getMultiplier();
-
     @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
@@ -63,19 +61,17 @@ public abstract class ModeratorBase extends Block {
                 zStatic.ReactorStuff.moderator));
 
         if (f.hasShiftDown()) {
-            t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".multiplier")
-                    .append(" " + getMultiplier()));
+            t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".fe")
+                    .append(" " + FEReducer()));
+            t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".heat")
+                    .append(" " + HeatReducer()));
         } else {
             t.add(Component.translatable(Main.ID + "." + zStatic.tips.SHIFT));
         }
     }
 
-    public float getBaseFEReducer() {
-        return 0.025F;
-    }
+    public abstract float FEReducer();
 
-    public float getBaseHeatReducer() {
-        return 0.20F;
-    }
+    public abstract float HeatReducer();
 
 }

@@ -48,6 +48,7 @@ public class Material {
                 zProperties.register(bus);
                 zComponents.register(bus);
                 zCreativeTab.register(bus);
+                zRecipeTypes.register(bus);
         }
 
         /**

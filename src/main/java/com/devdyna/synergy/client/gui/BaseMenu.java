@@ -1,6 +1,5 @@
 package com.devdyna.synergy.client.gui;
 
-import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.utils.LogUtil;
 
 import net.minecraft.world.entity.player.Inventory;
@@ -17,9 +16,9 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 
 @SuppressWarnings("null")
-public abstract class baseGui extends AbstractContainerMenu {
+public abstract class BaseMenu extends AbstractContainerMenu {
 
-    protected baseGui(MenuType<?> menuType, int containerId) {
+    protected BaseMenu(MenuType<?> menuType, int containerId) {
         super(menuType, containerId);
     }
 
@@ -61,7 +60,8 @@ public abstract class baseGui extends AbstractContainerMenu {
         addSlot(a);
     }
 
-    protected ItemStack shiftMoveStack(Player playerIn, int pIndex, int machineSlots) {
+    @Override
+    public ItemStack quickMoveStack(Player playerIn, int pIndex) {
 
         Slot sourceSlot = slots.get(pIndex);
         if (sourceSlot == null || !sourceSlot.hasItem())
@@ -72,10 +72,10 @@ public abstract class baseGui extends AbstractContainerMenu {
         if (pIndex < Inventory.INVENTORY_SIZE)
             // This is a vanilla container slot so merge the stack into the tile inventory
             if (!moveItemStackTo(sourceStack, Inventory.INVENTORY_SIZE, Inventory.INVENTORY_SIZE
-                    + machineSlots, false))
+                    + MachineSlots(), false))
                 return ItemStack.EMPTY;
 
-            else if (pIndex < Inventory.INVENTORY_SIZE + machineSlots)
+            else if (pIndex < Inventory.INVENTORY_SIZE + MachineSlots())
                 // This is a TE slot so merge the stack into the players inventory
                 if (!moveItemStackTo(sourceStack, 0, Inventory.INVENTORY_SIZE,
                         false))
@@ -96,11 +96,6 @@ public abstract class baseGui extends AbstractContainerMenu {
     }
 
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int pIndex) {
-        return shiftMoveStack(playerIn, pIndex, ((ItemStorageBlock) getBlockEntity()).MachineSlots());
-    }
-
-    @Override
     public boolean stillValid(Player player) {
         return ContainerLevelAccess.create(getLevel(), getBlockEntity().getBlockPos())
                 .evaluate((lvl, pos) -> {
@@ -118,5 +113,7 @@ public abstract class baseGui extends AbstractContainerMenu {
     public abstract BlockEntity getBlockEntity();
 
     public abstract Level getLevel();
+
+    public abstract int MachineSlots();
 
 }

@@ -1,7 +1,7 @@
 package com.devdyna.synergy.client.gui.tiny_chest;
 
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
-import com.devdyna.synergy.client.gui.baseGui;
+import com.devdyna.synergy.client.gui.*;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zContainer;
 
@@ -11,16 +11,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
-public class chestGUI extends baseGui {
+public class TinyChestMenu extends BaseMenu {
     public final ItemStorageBlock blockEntity;
     private final Level level;
 
-    public chestGUI(int containerId, Inventory inv, FriendlyByteBuf extraData) {
+    public TinyChestMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
         this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
     }
 
-    public chestGUI(int containerId, Inventory inv, BlockEntity blockEntity) {
-        super(zContainer.CHEST_GUI.get(), containerId);
+    public TinyChestMenu(int containerId, Inventory inv, BlockEntity blockEntity) {
+        super(zContainer.CHEST_MENU.get(), containerId);
         this.blockEntity = ((ItemStorageBlock) blockEntity);
         inv.player.getInventory();
         this.level = inv.player.level();
@@ -42,6 +42,11 @@ public class chestGUI extends baseGui {
     @Override
     public Level getLevel() {
         return level;
+    }
+
+    @Override
+    public int MachineSlots() {
+        return blockEntity.MachineSlots();
     }
 
 }

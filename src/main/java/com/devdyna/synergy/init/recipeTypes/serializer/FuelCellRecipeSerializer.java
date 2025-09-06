@@ -1,0 +1,43 @@
+package com.devdyna.synergy.init.recipeTypes.serializer;
+
+import com.devdyna.synergy.init.recipeTypes.FuelCellRecipe;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+
+public class FuelCellRecipeSerializer implements RecipeSerializer<FuelCellRecipe> {
+
+    public static final MapCodec<FuelCellRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
+            ItemStack.CODEC.fieldOf("ingredient").forGetter(FuelCellRecipe::getInput),
+            ItemStack.CODEC.fieldOf("result").forGetter(FuelCellRecipe::getOutput),
+            Codec.INT.fieldOf("time").forGetter(FuelCellRecipe::getDuration),
+            Codec.INT.fieldOf("production").forGetter(FuelCellRecipe::getFe),
+            Codec.DOUBLE.fieldOf("heat").forGetter(FuelCellRecipe::getHeat)
+            ).apply(inst, FuelCellRecipe::new));
+
+    public static final StreamCodec<RegistryFriendlyByteBuf, FuelCellRecipe> STREAM_CODEC =
+            StreamCodec.composite(
+                    ItemStack.STREAM_CODEC, FuelCellRecipe::getInput,
+                    ItemStack.STREAM_CODEC, FuelCellRecipe::getOutput,
+                    ByteBufCodecs.INT,FuelCellRecipe::getDuration,
+                    ByteBufCodecs.INT,FuelCellRecipe::getFe,
+                    ByteBufCodecs.DOUBLE,FuelCellRecipe::getHeat,
+                    FuelCellRecipe::new);
+
+    @Override
+    public MapCodec<FuelCellRecipe> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public StreamCodec<RegistryFriendlyByteBuf, FuelCellRecipe> streamCodec() {
+        return STREAM_CODEC;
+    }
+
+}

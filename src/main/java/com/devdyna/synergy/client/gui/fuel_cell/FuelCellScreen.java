@@ -1,10 +1,9 @@
-package com.devdyna.synergy.client.gui.reactor_port;
+package com.devdyna.synergy.client.gui.fuel_cell;
 
 import java.util.Set;
 
 import com.devdyna.synergy.client.gui.screenLocations;
 import com.mojang.blaze3d.systems.RenderSystem;
-
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -12,18 +11,18 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
 @SuppressWarnings("null")
-public class portScreen extends AbstractContainerScreen<portGUI> implements screenLocations {
+public class FuelCellScreen extends AbstractContainerScreen<FuelCellMenu> implements screenLocations {
 
-    public portScreen(portGUI menu, Inventory playerInventory, Component title) {
+    public FuelCellScreen(FuelCellMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
     }
 
     @Override
-    protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
+    protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
-        var textures = Set.of(PLAYER_INVENTORY, MACHINE_SINGLE_SLOT);//TODO change machine single slot
+        var textures = Set.of(PLAYER_INVENTORY, GUI_DOUBLE_WITH_SMART_ARROW, MACHINE_LABEL);
 
         textures.forEach(t -> RenderSystem.setShaderTexture(0, t));
 
@@ -31,6 +30,14 @@ public class portScreen extends AbstractContainerScreen<portGUI> implements scre
         int y = (height - imageHeight) / 2;
 
         textures.forEach(t -> guiGraphics.blit(t, x, y, 0, 0, imageWidth, imageHeight));
+
+        renderProgressArrow(guiGraphics, x, y);
+    }
+
+    private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
+        if (menu.isCrafting()) {
+            guiGraphics.blit(PROGRESS_ARROW, x + 73, y + 35, 0, 0, menu.getScaledArrowProgress(), 16, 24, 16);
+        }
     }
 
     @Override
@@ -38,5 +45,4 @@ public class portScreen extends AbstractContainerScreen<portGUI> implements scre
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         renderTooltip(pGuiGraphics, pMouseX, pMouseY);
     }
-
 }

@@ -125,8 +125,11 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".on",
                                 TIP_COLOR + "Active ");
 
-                add(Main.ID + "." + zStatic.ReactorStuff.moderator + ".multiplier",
-                                TIP_COLOR + "Multiplier");// TODO
+                add(Main.ID + "." + zStatic.ReactorStuff.moderator + ".heat",
+                                TIP_COLOR + "FE");// TODO
+
+                add(Main.ID + "." + zStatic.ReactorStuff.moderator + ".fe",
+                                TIP_COLOR + "HEAT");// TODO
 
                 add(Main.ID + "." + zStatic.ReactorStuff.fuel_cell,
                                 TIP_COLOR + "DESC");// TODO

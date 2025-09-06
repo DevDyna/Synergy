@@ -12,9 +12,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
 @SuppressWarnings("null")
-public class chestScreen extends AbstractContainerScreen<chestGUI> implements screenLocations {
+public class TinyChestScreen extends AbstractContainerScreen<TinyChestMenu> implements screenLocations {
 
-    public chestScreen(chestGUI menu, Inventory playerInventory, Component title) {
+    public TinyChestScreen(TinyChestMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
     }
 
@@ -23,7 +23,7 @@ public class chestScreen extends AbstractContainerScreen<chestGUI> implements sc
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
-        var textures = Set.of(PLAYER_INVENTORY, MACHINE_SINGLE_SLOT);
+        var textures = Set.of(PLAYER_INVENTORY, GUI_MONO_TINY,MACHINE_LABEL);
 
         textures.forEach(t -> RenderSystem.setShaderTexture(0, t));
 

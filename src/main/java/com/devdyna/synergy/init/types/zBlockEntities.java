@@ -5,8 +5,8 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
+import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBE;
-import com.devdyna.synergy.init.builder.reactor.port.ReactorPortBE;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBE;
 import com.devdyna.synergy.init.builder.tinychests.TinyChestBE;
@@ -57,7 +57,7 @@ public class zBlockEntities {
                         .createBlockEntity(zStatic.Blocks.tiny_wooden_chest, TinyChestBE::new,
                                         zBlocks.WOODEN_TINY_CHEST,zBlocks.STONE_TINY_CHEST,zBlocks.ORNATE_TINY_CHEST);
 
-        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ReactorPortBE>> REACTOR_PORT = Material
-                        .createBlockEntity(zStatic.ReactorStuff.port, ReactorPortBE::new,
-                                        zBlocks.REACTOR_PORT);
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FuelCellBE>> FUEL_CELL = Material
+                        .createBlockEntity(zStatic.ReactorStuff.fuel_cell, FuelCellBE::new,
+                                        zBlocks.REACTOR_FUEL_CELL);
 }

@@ -7,14 +7,13 @@ import com.devdyna.synergy.api.Range;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.coreBE.BaseBE;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
+import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.reactor.cooler.CoolerBlockBase;
 import com.devdyna.synergy.init.builder.reactor.moderator.ModeratorBase;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
-import com.devdyna.synergy.utils.ColorUtil;
-import com.devdyna.synergy.utils.LevelUtil;
-import com.devdyna.synergy.utils.PlayerUtil;
+import com.devdyna.synergy.utils.*;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -53,14 +52,12 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
     List<BlockPos> area = null;
     List<Integer> rgbColor;
 
-    double areaTemp = 0;
-
     // TODO change to depend on fuel insered
-    int fe = 20;
-    double heat = areaTemp;
+    int fe = 1;
+    double heat = 0;
 
-    boolean foundCell;
-    boolean forceOverHeat;
+    boolean isOverHeated;
+    List<BlockPos> cells = null;
 
     @Override
     public void tickServer() {
@@ -70,8 +67,9 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
                         .setValue(BlockStateProperties.ENABLED,
                                 canReceive() && area != null && level.hasNeighborSignal(getBlockPos()))
                         .setValue(ReactorControllerBlock.STATUS,
-                                enable() ? ((heat > areaTemp || forceOverHeat) ? ControllerProperties.OVERHEATED
-                                        : (foundCell ? ControllerProperties.PRODUCTION : ControllerProperties.NOCELLS))
+                                enable() ? (isOverHeated ? ControllerProperties.OVERHEATED
+                                        : (cellFound() ? ControllerProperties.PRODUCTION
+                                                : ControllerProperties.NOFUEL))
                                         : ControllerProperties.WAITING));
 
         if (area == null)
@@ -101,6 +99,13 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
         level.players().forEach(p -> PlayerUtil.messageActionBar("Heat: " + heat, p));
     }
 
+    private void resetStats() {
+        isOverHeated = false;
+        fe = 1;
+        heat = 0;
+        cells = new ArrayList<>();
+    }
+
     private void checkBlocks(Level level) {
 
         for (BlockPos pos : area) {
@@ -108,11 +113,10 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
                 LevelUtil.addDustParticle(rgbColor.get(0), rgbColor.get(1), rgbColor.get(2),
                         (ServerLevel) level, pos, false, 1);
 
-            var state = level.getBlockState(pos);
-            var block = state.getBlock();
+            var block = level.getBlockState(pos).getBlock();
 
             if (block instanceof ReactorControllerBlock) {
-                forceOverHeat = true;
+                isOverHeated = true;
                 return;
             }
 
@@ -122,33 +126,50 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
                         : cooler.getBaseCooling();
             }
 
-            if (block instanceof FuelCellBlock fuelcell) {
-                foundCell = true;
-                var cells = level.getBlockState(pos).getValue(FuelCellBlock.CELLS);
+            if (level.getBlockEntity(pos) instanceof FuelCellBE fuelcell) {
+                var c = level.getBlockState(pos).getValue(FuelCellBlock.CELLS);
 
-                cells = cells == 0 ? 1 : cells;
+                if (fuelcell.hasRecipe()) {
+                    cells.add(pos);
 
-                fe *= (1 + (cells * fuelcell.cellsFEMultiplier()));
-                heat *= (1 + (cells * fuelcell.cellsHeatMultiplier()));
+                    var recipe = fuelcell.getRecipe().get().value();
+
+                    fe += (1 + c) * recipe.getFe();
+                    heat += (1 + c) * recipe.getHeat();
+                }
+
             }
 
             if (block instanceof ModeratorBase moderator) {
-                fe /= (1 + (moderator.getMultiplier() * moderator.getBaseFEReducer()));
-                heat /= (1 + (moderator.getMultiplier() * moderator.getBaseHeatReducer()));
+                if (level.getBlockState(pos).getValue(BlockStateProperties.ENABLED)) {
+                    fe -= moderator.FEReducer();
+                    heat -= moderator.HeatReducer();
+                }
             }
 
         }
 
         // heat efficiency calc
-        fe *= 1.0 - (heat - areaTemp) * 0.001F;
+        fe *= 1.0 - (heat) * 0.001F;
+
+        isOverHeated = heat > 0;
+
+        // LogUtil.info("heat " + heat);
+        // LogUtil.info("fe " + fe);
+
+        updateCells(is(ControllerProperties.PRODUCTION));
 
     }
 
-    private void resetStats() {
-        forceOverHeat = false;
-        foundCell = false;
-        fe = 20;
-        heat = areaTemp;
+    public boolean cellFound() {
+        return cells != null && !cells.isEmpty();
+    }
+
+    public void updateCells(boolean state) {
+        if (cellFound())
+            for (BlockPos pos : cells) 
+                level.setBlockAndUpdate(pos, level.getBlockState(pos).setValue(BlockStateProperties.ENABLED, state));
+            
     }
 
     public boolean is(ControllerProperties prop) {
@@ -208,9 +229,8 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
         return getRange();
     }
 
-    public Range getRange(){
+    public Range getRange() {
         return Range.of(1, 8, BiBool.of(true, false));
     }
-
 
 }

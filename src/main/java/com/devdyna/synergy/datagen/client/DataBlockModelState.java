@@ -146,7 +146,7 @@ public class DataBlockModelState extends BlockStateProvider {
 
                         String front = switch (state.getValue(ReactorControllerBlock.STATUS)) {
                                 case ControllerProperties.WAITING -> "front_off";
-                                case ControllerProperties.NOCELLS -> "front_nocell";
+                                case ControllerProperties.NOFUEL -> "front_nocell";
                                 case ControllerProperties.OVERHEATED -> "front_overheated";
                                 case ControllerProperties.PRODUCTION -> "front_on";
                                 default -> "";

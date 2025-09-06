@@ -4,7 +4,7 @@ import net.minecraft.util.StringRepresentable;
 
 public enum ControllerProperties implements StringRepresentable {
     
-    NOCELLS("nocells"),
+    NOFUEL("nofuel"),
     WAITING("waiting"),
     OVERHEATED("overheated"),
     PRODUCTION("production");

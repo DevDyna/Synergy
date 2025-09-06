@@ -14,6 +14,7 @@ import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -44,6 +45,18 @@ public class ReactorControllerBlock extends BaseBlockBE {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
         b.add(BlockStateProperties.HORIZONTAL_FACING, STATUS, BlockStateProperties.ENABLED);
+    }
+
+    @Override
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+
+        var be = (ReactorControllerBE) level.getBlockEntity(pos);
+
+        if (be.area != null) {
+            be.updateCells(false);
+        }
+        super.onRemove(state, level, pos, newState, movedByPiston);
+
     }
 
     @Nullable
