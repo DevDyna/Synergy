@@ -1,0 +1,14 @@
+{
+  "type": "synergy:fuel_cell",
+  "heat": 10.5,
+  "ingredient": {
+    "count": 1,
+    "id": "minecraft:iron_ingot"
+  },
+  "production": 4,
+  "result": {
+    "count": 2,
+    "id": "synergy:iron_plate"
+  },
+  "time": 100
+}

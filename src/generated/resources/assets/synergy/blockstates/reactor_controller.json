@@ -1,6 +1,6 @@
 {
   "variants": {
-    "enabled=false,facing=east,status=nocells": {
+    "enabled=false,facing=east,status=nofuel": {
       "model": "synergy:block/reactor_controllerfront_nocell",
       "y": 270
     },
@@ -16,7 +16,7 @@
       "model": "synergy:block/reactor_controllerfront_off",
       "y": 270
     },
-    "enabled=false,facing=north,status=nocells": {
+    "enabled=false,facing=north,status=nofuel": {
       "model": "synergy:block/reactor_controllerfront_nocell",
       "y": 180
     },
@@ -32,7 +32,7 @@
       "model": "synergy:block/reactor_controllerfront_off",
       "y": 180
     },
-    "enabled=false,facing=south,status=nocells": {
+    "enabled=false,facing=south,status=nofuel": {
       "model": "synergy:block/reactor_controllerfront_nocell"
     },
     "enabled=false,facing=south,status=overheated": {
@@ -44,7 +44,7 @@
     "enabled=false,facing=south,status=waiting": {
       "model": "synergy:block/reactor_controllerfront_off"
     },
-    "enabled=false,facing=west,status=nocells": {
+    "enabled=false,facing=west,status=nofuel": {
       "model": "synergy:block/reactor_controllerfront_nocell",
       "y": 90
     },
@@ -60,7 +60,7 @@
       "model": "synergy:block/reactor_controllerfront_off",
       "y": 90
     },
-    "enabled=true,facing=east,status=nocells": {
+    "enabled=true,facing=east,status=nofuel": {
       "model": "synergy:block/reactor_controllerfront_nocell",
       "y": 270
     },
@@ -76,7 +76,7 @@
       "model": "synergy:block/reactor_controllerfront_off",
       "y": 270
     },
-    "enabled=true,facing=north,status=nocells": {
+    "enabled=true,facing=north,status=nofuel": {
       "model": "synergy:block/reactor_controllerfront_nocell",
       "y": 180
     },
@@ -92,7 +92,7 @@
       "model": "synergy:block/reactor_controllerfront_off",
       "y": 180
     },
-    "enabled=true,facing=south,status=nocells": {
+    "enabled=true,facing=south,status=nofuel": {
       "model": "synergy:block/reactor_controllerfront_nocell"
     },
     "enabled=true,facing=south,status=overheated": {
@@ -104,7 +104,7 @@
     "enabled=true,facing=south,status=waiting": {
       "model": "synergy:block/reactor_controllerfront_off"
     },
-    "enabled=true,facing=west,status=nocells": {
+    "enabled=true,facing=west,status=nofuel": {
       "model": "synergy:block/reactor_controllerfront_nocell",
       "y": 90
     },
