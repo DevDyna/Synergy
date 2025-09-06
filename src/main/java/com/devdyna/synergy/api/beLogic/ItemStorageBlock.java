@@ -4,7 +4,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.MenuConstructor;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
-public interface ItemStorageBlock extends MenuConstructor{
+public interface ItemStorageBlock extends MenuConstructor {
 
     Component getContainerName();
 
