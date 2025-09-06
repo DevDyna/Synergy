@@ -82,3 +82,4 @@ _IC2 like_
 - [ ] Cave wheat will grow fast on cave ambients
 - [ ] Farmer delight compat
 - [ ] Nodes can void items with furnaces
+- [ ] Shift-action on some GUI will cause game-freeze
