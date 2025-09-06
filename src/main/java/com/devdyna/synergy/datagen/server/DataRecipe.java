@@ -5,6 +5,7 @@ import static net.minecraft.data.recipes.RecipeCategory.*;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.builders.FuelCellRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.DataGenUtil;
 
@@ -13,6 +14,8 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -382,6 +385,22 @@ public class DataRecipe extends RecipeProvider {
                                                                 Items.IRON_INGOT, zItems.VIOLET_WEBCAP_MUSHROOM.get()))
                                 .group(ID).save(c);
 
+
+                                //TODO DEMO RECIPES , THIS NEED TO BE CHANGED!
+                FuelCellRecipeBuilder.of(zItems.RAW_SILICON.get(),
+                                zItems.SILICON.get(), 10, 20, 50)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.RAW_SILICON.get()))
+
+                                .save(c);
+
+                FuelCellRecipeBuilder.of(Items.IRON_INGOT,
+                                item(zItems.IRON_PLATE.get(), 2), 100,4,10.5)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(Items.IRON_INGOT))
+
+                                .save(c);
+
         }
 
         // nodes
@@ -419,6 +438,10 @@ public class DataRecipe extends RecipeProvider {
                                                                 .replace("block." + ID + ".", "")
                                                                 + "_alt"));
 
+        }
+
+        private ItemStack item(Item item, int count) {
+                return new ItemStack(item, count);
         }
 
 }
