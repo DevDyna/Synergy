@@ -18,7 +18,6 @@ import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.reactor.cooler.IronCooler;
 import com.devdyna.synergy.init.builder.reactor.moderator.GraphiteModerator;
-import com.devdyna.synergy.init.builder.reactor.port.ReactorPortBlock;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.tinychests.TinyChestBK;
@@ -164,10 +163,6 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> GRAPHITE_MODERATOR = Material.registerItemBlock(
                         zStatic.ReactorStuff.ModeratorTypes.GRAPHITE,
                         () -> new GraphiteModerator());
-
-        public static final DeferredHolder<Block, Block> REACTOR_PORT = Material.registerItemBlock(
-                        zStatic.ReactorStuff.port,
-                        () -> new ReactorPortBlock());
 
         public static final DeferredHolder<Block, Block> REACTOR_CONTROLLER = Material.registerItemBlock(
                         zStatic.ReactorStuff.controller,
