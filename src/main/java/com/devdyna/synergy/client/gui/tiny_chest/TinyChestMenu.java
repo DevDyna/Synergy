@@ -19,9 +19,9 @@ public class TinyChestMenu extends BaseMenu {
         this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
     }
 
-    public TinyChestMenu(int containerId, Inventory inv, BlockEntity blockEntity) {
-        super(zContainer.CHEST_MENU.get(), containerId);
-        this.blockEntity = ((ItemStorageBlock) blockEntity);
+    public TinyChestMenu(int containerId, Inventory inv, BlockEntity be) {
+        super(zContainer.CHEST_MENU.get(), containerId, be);
+        this.blockEntity = ((ItemStorageBlock) be);
         inv.player.getInventory();
         this.level = inv.player.level();
         addPlayerSlots(inv);
@@ -42,11 +42,6 @@ public class TinyChestMenu extends BaseMenu {
     @Override
     public Level getLevel() {
         return level;
-    }
-
-    @Override
-    public int MachineSlots() {
-        return blockEntity.MachineSlots();
     }
 
 }
