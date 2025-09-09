@@ -17,8 +17,6 @@ import com.devdyna.synergy.utils.*;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup.Provider;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -35,10 +33,6 @@ import net.neoforged.neoforge.energy.IEnergyStorage;
 public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaOfEffect {
 
     private final Map<Direction, BlockCapabilityCache<IEnergyStorage, Direction>> cache = new HashMap<>();
-
-    public final static String RADIUS = "aoe";
-
-    private int radius;
 
     public ReactorControllerBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.REACTOR_CONTROLLER.get(), pos, state);
@@ -167,9 +161,9 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
 
     public void updateCells(boolean state) {
         if (cellFound())
-            for (BlockPos pos : cells) 
+            for (BlockPos pos : cells)
                 level.setBlockAndUpdate(pos, level.getBlockState(pos).setValue(BlockStateProperties.ENABLED, state));
-            
+
     }
 
     public boolean is(ControllerProperties prop) {
@@ -203,20 +197,6 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
     @Override
     public int MaxFE() {
         return 1_000_000;
-    }
-
-    @Override
-    protected void saveAdditional(CompoundTag tag, Provider registries) {
-        super.saveAdditional(tag, registries);
-        tag.putInt(RADIUS, radius);
-    }
-
-    @Override
-    protected void loadAdditional(CompoundTag tag, Provider registries) {
-        super.loadAdditional(tag, registries);
-        if (tag.contains(RADIUS))
-            radius = tag.getInt(RADIUS);
-        area = null;
     }
 
     @Override
