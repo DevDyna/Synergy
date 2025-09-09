@@ -4,8 +4,10 @@ import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.zRecipe;
-import com.devdyna.synergy.init.recipeTypes.FuelCellRecipe;
 import com.devdyna.synergy.init.recipeTypes.serializer.FuelCellRecipeSerializer;
+import com.devdyna.synergy.init.recipeTypes.serializer.UrnRitualRecipeSerializer;
+import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
+import com.devdyna.synergy.init.recipeTypes.type.UrnRitualRecipe;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -29,6 +31,16 @@ public class zRecipeTypes {
                                 @Override
                                 public String toString() {
                                         return FUEL_CELL_RECIPE.getId();
+                                }
+                        });
+
+
+        public static final zRecipe<UrnRitualRecipe> URN_RITUAL_RECIPE = new zRecipe<UrnRitualRecipe>(
+                        zStatic.Blocks.urn, UrnRitualRecipeSerializer::new,
+                        () -> new RecipeType<UrnRitualRecipe>() {
+                                @Override
+                                public String toString() {
+                                        return URN_RITUAL_RECIPE.getId();
                                 }
                         });
 

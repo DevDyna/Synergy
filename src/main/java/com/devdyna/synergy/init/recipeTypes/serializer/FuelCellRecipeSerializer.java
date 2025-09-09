@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.recipeTypes.serializer;
 
-import com.devdyna.synergy.init.recipeTypes.FuelCellRecipe;
+import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

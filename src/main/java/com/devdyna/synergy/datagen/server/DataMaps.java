@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
+import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 
 @SuppressWarnings({ "deprecation", "null" })
@@ -61,6 +62,9 @@ public class DataMaps extends DataMapProvider {
                                                 false)
                                 .add(zItems.SMALL_AZALEA_ROOTS.get().builtInRegistryHolder(), new Compostable(0.15F),
                                                 false);
+
+                        builder(NeoForgeDataMaps.FURNACE_FUELS)
+                        .add(zItems.INFERNAL_EMBER.get().builtInRegistryHolder(), new FurnaceFuel(200), false);
 
         }
 

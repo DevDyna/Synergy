@@ -220,5 +220,9 @@ public class Material {
                 return zItems.zDusts
                                 .registerSimpleItem(name + zStatic.ResourceType.dust);
         }
+                        public static DeferredHolder<Item, Item> resourcePellet(String name) {
+                return zItems.zPellets
+                                .registerSimpleItem(name + zStatic.ResourceType.pellet);
+        }
 
 }

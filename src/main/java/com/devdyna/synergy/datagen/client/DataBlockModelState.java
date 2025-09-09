@@ -34,9 +34,10 @@ public class DataBlockModelState extends BlockStateProvider {
 
                 rotableBlock(zBlocks.SPRINKLER.get());
 
-                tinyChest(zBlocks.WOODEN_TINY_CHEST, modLoc("block/tiny_chest/wooden"));
-                tinyChest(zBlocks.STONE_TINY_CHEST, modLoc("block/tiny_chest/stone"));
-                tinyChest(zBlocks.ORNATE_TINY_CHEST, modLoc("block/tiny_chest/ornate"));
+                tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
+                tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
+                tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
+                tinyUrn(zBlocks.URN);
 
                 node(zBlocks.ITEM_TRANSFER.get(), "red");
                 node(zBlocks.ITEM_PROVIDER.get(), "green");
@@ -102,12 +103,30 @@ public class DataBlockModelState extends BlockStateProvider {
 
         }
 
-        private void tinyChest(DeferredHolder<Block, Block> b, ResourceLocation texture) {
-                horizontalBlock(b.get(),
-                                models()
-                                                .withExistingParent(b.getRegisteredName(), modLoc("block/tiny_chest/template"))
-                                                .texture("type", texture));
 
+        private void tinyChestAll(DeferredHolder<Block, Block> b,String texture){
+                tinyChest(b, texture, texture, texture, texture, texture, texture, texture);
+        }
+
+
+        private void tinyChest(DeferredHolder<Block, Block> b, String particles, String north, String south,
+                        String east, String west, String up, String down) {
+                horizontalBlock(b.get(),
+                                models().withExistingParent(b.getRegisteredName(),
+                                                modLoc("block/tiny_block/chest"))
+                                                .texture("particle", particles)
+                                                .texture("north", north)
+                                                .texture("south", south)
+                                                .texture("east", east)
+                                                .texture("west", west)
+                                                .texture("up", up)
+                                                .texture("down", down));
+        }
+
+                private void tinyUrn(DeferredHolder<Block, Block> b) {
+                simpleBlock(b.get(),
+                                models().withExistingParent(b.getRegisteredName(),
+                                                modLoc("block/tiny_block/urn")));
         }
 
         private void simpleBlockDecorative(DeferredHolder<Block, Block> b) {

@@ -45,7 +45,7 @@ public class zItems {
                 zRawOres.register(bus);
                 zShards.register(bus);
                 zMobDrop.register(bus);
-
+                zPellets.register(bus);
         }
 
         // ---------------------------------------------------------------------------------------//
@@ -95,6 +95,7 @@ public class zItems {
         public static final DeferredRegister.Items zShards = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zDusts = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zMobDrop = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zPellets = DeferredRegister.createItems(Main.ID);
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> AZALEA_SEEDS = zSeeds
                         .registerSimpleItem(zStatic.Items.Azalea.seeds);
@@ -227,7 +228,7 @@ public class zItems {
         public static final DeferredHolder<Item, Item> AQUAMARINE = Material
                         .resourceGem(zStatic.ResourceMaterial.aquamarine);
 
-        public static final DeferredHolder<Item, Item> ONYX = Material.resourceGem(zStatic.ResourceMaterial.onyx);
+        // public static final DeferredHolder<Item, Item> ONYX = Material.resourceGem(zStatic.ResourceMaterial.onyx);
 
         public static final DeferredHolder<Item, Item> SILICON = Material.resourceGem(zStatic.ResourceMaterial.silicon);
         // ---------------------------------------------------------------------------------------//
@@ -279,6 +280,23 @@ public class zItems {
         public static final DeferredHolder<Item, Item> SILICON_SHARD = Material
                         .resourceShard(zStatic.ResourceMaterial.silicon);
         // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> AMERICIUM = Material
+                        .resourcePellet(zStatic.ResourceMaterial.americium);
+        public static final DeferredHolder<Item, Item> BERKELIUM = Material
+                        .resourcePellet(zStatic.ResourceMaterial.berkelium);
+        public static final DeferredHolder<Item, Item> CALIFORNIUM = Material
+                        .resourcePellet(zStatic.ResourceMaterial.californium);
+        public static final DeferredHolder<Item, Item> CURIUM = Material
+                        .resourcePellet(zStatic.ResourceMaterial.curium);
+        public static final DeferredHolder<Item, Item> NEPTUNIUM = Material
+                        .resourcePellet(zStatic.ResourceMaterial.neptunium);
+        public static final DeferredHolder<Item, Item> PLUTONIUM = Material
+                        .resourcePellet(zStatic.ResourceMaterial.plutonium);
+        public static final DeferredHolder<Item, Item> THORIUM = Material
+                        .resourcePellet(zStatic.ResourceMaterial.thorium);
+        public static final DeferredHolder<Item, Item> URANIUM = Material
+                        .resourcePellet(zStatic.ResourceMaterial.uranium);
+        // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> CREEPER_GALL = zMobDrop
                         .registerSimpleItem(zStatic.MobDrop.creeper_gall);
         public static final DeferredHolder<Item, Item> ENDERMAN_HEART = zMobDrop
@@ -310,8 +328,18 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> OIL = Material.resourceItem("oil");
 
+        public static final DeferredHolder<Item, Item> SAP = Material.resourceItem("sap");
+
         public static final DeferredHolder<Item, Item> WOODEN_GEAR = Material
                         .resourceItem("wooden_gear");
+        public static final DeferredHolder<Item, Item> WASTE_FRAGMENT = Material
+                        .resourceItem("waste_fragment");
+        public static final DeferredHolder<Item, Item> WASTE = Material
+                        .resourceItem("waste");
+        public static final DeferredHolder<Item, Item> GHOUL_HEART = Material
+                        .resourceItem("ghoul_heart");
+        public static final DeferredHolder<Item, Item> STONE_PEBBLE = Material
+                        .resourceItem("stone_pebble");
         // ---------------------------------------------------------------------------------------//
 
 }

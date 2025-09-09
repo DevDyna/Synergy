@@ -2,10 +2,13 @@ package com.devdyna.synergy.datagen.server;
 
 import static com.devdyna.synergy.Main.ID;
 import static net.minecraft.data.recipes.RecipeCategory.*;
+
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.builders.FuelCellRecipeBuilder;
+import com.devdyna.synergy.api.builders.UrnRitualRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.DataGenUtil;
 
@@ -385,21 +388,51 @@ public class DataRecipe extends RecipeProvider {
                                                                 Items.IRON_INGOT, zItems.VIOLET_WEBCAP_MUSHROOM.get()))
                                 .group(ID).save(c);
 
+                // TODO JEI HIDE
+                List.of(
 
-                                //TODO DEMO RECIPES , THIS NEED TO BE CHANGED!
+                                zItems.RED_BATTERY,
+                                zItems.BLUE_BATTERY,
+                                zItems.GREEN_BATTERY
+
+                ).forEach(i -> {
+                        ShapelessRecipeBuilder.shapeless(MISC, i.get())
+                                        .requires(i.get())
+                                        .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance.hasItems(i.get()))
+                                        .group(ID)
+                                        .save(c, i.getRegisteredName() + "_alt");
+                });
+
+                // TODO DEMO RECIPES , THIS NEED TO BE CHANGED!
                 FuelCellRecipeBuilder.of(zItems.RAW_SILICON.get(),
                                 zItems.SILICON.get(), 10, 20, 50)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.RAW_SILICON.get()))
-
                                 .save(c);
 
                 FuelCellRecipeBuilder.of(Items.IRON_INGOT,
-                                item(zItems.IRON_PLATE.get(), 2), 100,4,10.5)
+                                item(zItems.IRON_PLATE.get(), 2), 100, 4, 10.5)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.IRON_INGOT))
 
                                 .save(c);
+
+                UrnRitualRecipeBuilder.of(Items.COAL, 2, zItems.INFERNAL_EMBER, 1)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(Items.COAL))
+                                .save(c);
+
+
+                UrnRitualRecipeBuilder.of(zItems.STONE_PEBBLE.get(), 4, zItems.SILVERFISH_DUST, 1)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.STONE_PEBBLE.get()))
+                                .save(c);
+
+                UrnRitualRecipeBuilder.of(zItems.ENDERMAN_HEART.get(), 1, zItems.GHOUL_HEART, 1)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.ENDERMAN_HEART.get()))
+                                .save(c);
+
 
         }
 

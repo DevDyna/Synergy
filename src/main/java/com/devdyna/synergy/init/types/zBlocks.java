@@ -21,6 +21,7 @@ import com.devdyna.synergy.init.builder.reactor.moderator.GraphiteModerator;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.tinychests.TinyChestBK;
+import com.devdyna.synergy.init.builder.urn.UrnBlock;
 import com.devdyna.synergy.init.builder.*;
 import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.crops.mushroom.*;
@@ -176,14 +177,17 @@ public class zBlocks {
                         zStatic.Blocks.tiny_wooden_chest,
                         () -> new TinyChestBK());
 
-                public static final DeferredHolder<Block, Block> ORNATE_TINY_CHEST = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ORNATE_TINY_CHEST = Material.registerItemBlock(
                         zStatic.Blocks.tiny_ornated_chest,
                         () -> new TinyChestBK());
 
-                                public static final DeferredHolder<Block, Block> STONE_TINY_CHEST = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> STONE_TINY_CHEST = Material.registerItemBlock(
                         zStatic.Blocks.tiny_stone_chest,
                         () -> new TinyChestBK());
 
+        public static final DeferredHolder<Block, Block> URN = Material.registerItemBlock(
+                        zStatic.Blocks.urn,
+                        () -> new UrnBlock());
 
         // ---------------------------------------------------------------------------------------//
 

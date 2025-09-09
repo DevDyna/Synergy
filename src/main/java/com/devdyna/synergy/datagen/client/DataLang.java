@@ -5,7 +5,7 @@ import static com.devdyna.synergy.Main.ID;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.types.zBlocks;
-import com.devdyna.synergy.init.types.zItems;
+import com.devdyna.synergy.utils.ClazzUtil;
 
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
@@ -26,23 +26,10 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zBlockItem.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zBlock.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCrop.getEntries().forEach(b -> addBlock(b, named(b)));
-                
-                zItems.zTool.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zCropExtra.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zFoods.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zSeeds.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zCraftingComponents.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zResources.getEntries().forEach(b -> addItem(b, named(b)));
 
-                zItems.zDusts.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zFoils.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zGems.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zIngots.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zNuggets.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zPlates.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zRawOres.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zShards.getEntries().forEach(b -> addItem(b, named(b)));
-                zItems.zMobDrop.getEntries().forEach(b -> addItem(b, named(b)));
+                ClazzUtil.getAllzItems().forEach(c -> {
+                        addItem(c, named(c));
+                });
 
                 zBlocks.zWildCrop.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zDecorative.getEntries().forEach(b -> addBlock(b, named(b)));

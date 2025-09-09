@@ -58,11 +58,6 @@ public class DataLootBlock extends BlockLootSubProvider {
         @Override
         protected void generate() {
 
-
-
-
-
-
                 var dropSelfBlocks = List.of(
                                 zBlocks.MACHINE_FRAME,
                                 zBlocks.PIPE,
@@ -84,7 +79,10 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.WOODEN_TINY_CHEST,
                                 zBlocks.ORNATE_TINY_CHEST,
                                 zBlocks.STONE_TINY_CHEST,
-                                zBlocks.ADVANCED_MACHINE_FRAME);
+                                zBlocks.ADVANCED_MACHINE_FRAME,
+                                zBlocks.URN
+
+                );
                 dropSelfBlocks.forEach(b -> dropSelf(b.get()));
 
                 zBlocks.zBlockSlab.getEntries().forEach(b -> dropSelf(b.get()));

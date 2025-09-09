@@ -3,6 +3,7 @@ package com.devdyna.synergy.api.menu;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
+import com.devdyna.synergy.api.beLogic.MenuProvider;
 import com.devdyna.synergy.api.coreBE.BaseBE;
 import com.devdyna.synergy.init.types.zHandlers;
 
@@ -21,7 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public abstract class BEMenu extends BaseBE implements ItemStorageBlock {
+public abstract class BEMenu extends BaseBE implements ItemStorageBlock, MenuProvider {
 
     public BEMenu(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);

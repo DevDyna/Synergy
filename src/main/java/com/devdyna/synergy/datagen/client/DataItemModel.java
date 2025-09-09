@@ -62,6 +62,9 @@ public class DataItemModel extends ItemModelProvider {
                 zItems.zMobDrop.getEntries()
                                 .forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/mob_drop/",
                                                 DataGenUtil.getPath(item.get())));
+                zItems.zPellets.getEntries()
+                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/pellet/",
+                                                DataGenUtil.getPath(item.get()).replace(zStatic.ResourceType.pellet, "")));
 
                 // -----------------------//
                 zBlocks.zDecorative.getEntries()
@@ -142,16 +145,28 @@ public class DataItemModel extends ItemModelProvider {
                 simpleFlexibleBlock(zBlocks.IRON_COOLER, "reactor/cooler/on");
                 simpleFlexibleBlock(zBlocks.GRAPHITE_MODERATOR, "reactor/moderator/casing");
 
-                withExistingParent(zBlocks.WOODEN_TINY_CHEST.getRegisteredName(),
-                                modLoc("block/tiny_chest/template"))
-                                .texture("type", modLoc("block/tiny_chest/wooden"));
-                withExistingParent(zBlocks.STONE_TINY_CHEST.getRegisteredName(),
-                                modLoc("block/tiny_chest/template"))
-                                .texture("type", modLoc("block/tiny_chest/stone"));
-                withExistingParent(zBlocks.ORNATE_TINY_CHEST.getRegisteredName(),
-                                modLoc("block/tiny_chest/template"))
-                                .texture("type", modLoc("block/tiny_chest/ornate"));
+                tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
+                tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
+                tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
+                withExistingParent(zBlocks.URN.getRegisteredName(),
+                                modLoc("block/tiny_block/urn"));
+        }
 
+        private void tinyChestAll(DeferredHolder<Block, Block> b, String texture) {
+                tinyChest(b, texture, texture, texture, texture, texture, texture, texture);
+        }
+
+        private void tinyChest(DeferredHolder<Block, Block> b, String particles, String north, String south,
+                        String east, String west, String up, String down) {
+                withExistingParent(b.getRegisteredName(),
+                                modLoc("block/tiny_block/chest"))
+                                .texture("particle", particles)
+                                .texture("north", north)
+                                .texture("south", south)
+                                .texture("east", east)
+                                .texture("west", west)
+                                .texture("up", up)
+                                .texture("down", down);
         }
 
         private void simpleFlexibleBlock(DeferredHolder<Block, Block> b, String loc) {

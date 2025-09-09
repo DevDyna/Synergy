@@ -10,6 +10,7 @@ import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBE;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBE;
 import com.devdyna.synergy.init.builder.tinychests.TinyChestBE;
+import com.devdyna.synergy.init.builder.urn.UrnBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -60,4 +61,8 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FuelCellBE>> FUEL_CELL = Material
                         .createBlockEntity(zStatic.ReactorStuff.fuel_cell, FuelCellBE::new,
                                         zBlocks.REACTOR_FUEL_CELL);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<UrnBE>> URN = Material
+                        .createBlockEntity(zStatic.Blocks.urn, UrnBE::new,
+                                        zBlocks.URN);
 }

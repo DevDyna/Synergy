@@ -1,6 +1,6 @@
-package com.devdyna.synergy.init.recipeTypes;
+package com.devdyna.synergy.init.recipeTypes.type;
 
-import com.devdyna.synergy.init.recipeTypes.input.FuelCellRecipeInput;
+import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -14,7 +14,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 @SuppressWarnings("null")
-public class FuelCellRecipe implements Recipe<FuelCellRecipeInput> {
+public class FuelCellRecipe implements Recipe<MonoItemInput> {
 
     protected final ItemStack input;
     protected final ItemStack output;
@@ -31,11 +31,11 @@ public class FuelCellRecipe implements Recipe<FuelCellRecipeInput> {
         this.fe = fe;
     }
 
-    public boolean matches(FuelCellRecipeInput i, Level l) {
+    public boolean matches(MonoItemInput i, Level l) {
         return this.input.is(i.input().getItem());
     }
 
-    public ItemStack assemble(FuelCellRecipeInput i, HolderLookup.Provider r) {
+    public ItemStack assemble(MonoItemInput i, HolderLookup.Provider r) {
         return this.output.copy();
     }
 
