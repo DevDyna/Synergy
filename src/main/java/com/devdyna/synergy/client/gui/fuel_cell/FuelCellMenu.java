@@ -25,7 +25,7 @@ public class FuelCellMenu extends BaseMenu {
     }
 
     public FuelCellMenu(int i, Inventory inv, BlockEntity be, ContainerData data) {
-        super(zContainer.FUEL_CELL_MENU.get(), i);
+        super(zContainer.FUEL_CELL_MENU.get(), i, be);
         this.blockEntity = ((FuelCellBE) be);
         this.level = inv.player.level();
         this.data = data;
@@ -63,8 +63,4 @@ public class FuelCellMenu extends BaseMenu {
         return level;
     }
 
-    @Override
-    public int MachineSlots() {
-        return blockEntity.MachineSlots();
-    }
 }
