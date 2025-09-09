@@ -1,10 +1,11 @@
 package com.devdyna.synergy.client.gui;
 
-import com.devdyna.synergy.utils.LogUtil;
+import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
@@ -18,8 +19,14 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 @SuppressWarnings("null")
 public abstract class BaseMenu extends AbstractContainerMenu {
 
-    protected BaseMenu(MenuType<?> menuType, int containerId) {
+    public int MACHINE_SLOT;
+
+    protected BaseMenu(MenuType<?> menuType, int containerId, BlockEntity blockEntity) {
         super(menuType, containerId);
+        if (blockEntity instanceof ItemStorageBlock be)
+            this.MACHINE_SLOT = be.MachineSlots();
+        else
+            this.MACHINE_SLOT = 0;
     }
 
     protected void addPlayerSlots(Inventory inventory) {
@@ -60,39 +67,30 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         addSlot(a);
     }
 
+    //TODO DONT WORK PROPRERLY
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int pIndex) {
-
-        Slot sourceSlot = slots.get(pIndex);
-        if (sourceSlot == null || !sourceSlot.hasItem())
+    public ItemStack quickMoveStack(Player playerIn, int index) {
+      ItemStack itemstack = ItemStack.EMPTY;
+      Slot slot = (Slot)this.slots.get(index);
+      if (slot != null && slot.hasItem()) {
+         ItemStack itemstack1 = slot.getItem();
+         itemstack = itemstack1.copy();
+         if (index < this.MACHINE_SLOT) {
+            if (!this.moveItemStackTo(itemstack1, this.MACHINE_SLOT, this.slots.size(), true)) {
+               return ItemStack.EMPTY;
+            }
+         } else if (!this.moveItemStackTo(itemstack1, 0, this.MACHINE_SLOT, false)) {
             return ItemStack.EMPTY;
-        ItemStack sourceStack = sourceSlot.getItem();
-        ItemStack copyOfSourceStack = sourceStack.copy();
-        // Check if the slot clicked is one of the vanilla container slots
-        if (pIndex < Inventory.INVENTORY_SIZE)
-            // This is a vanilla container slot so merge the stack into the tile inventory
-            if (!moveItemStackTo(sourceStack, Inventory.INVENTORY_SIZE, Inventory.INVENTORY_SIZE
-                    + MachineSlots(), false))
-                return ItemStack.EMPTY;
+         }
 
-            else if (pIndex < Inventory.INVENTORY_SIZE + MachineSlots())
-                // This is a TE slot so merge the stack into the players inventory
-                if (!moveItemStackTo(sourceStack, 0, Inventory.INVENTORY_SIZE,
-                        false))
-                    return ItemStack.EMPTY;
+         if (itemstack1.isEmpty()) {
+            slot.setByPlayer(ItemStack.EMPTY);
+         } else {
+            slot.setChanged();
+         }
+      }
 
-                else {
-                    LogUtil.error("Invalid index:" + pIndex);
-                    return ItemStack.EMPTY;
-                }
-        // If stack size == 0 (the entire stack was moved) set slot contents to null
-        if (sourceStack.getCount() == 0)
-            sourceSlot.set(ItemStack.EMPTY);
-        else
-            sourceSlot.setChanged();
-
-        sourceSlot.onTake(playerIn, sourceStack);
-        return copyOfSourceStack;
+      return itemstack;
     }
 
     @Override
@@ -113,7 +111,5 @@ public abstract class BaseMenu extends AbstractContainerMenu {
     public abstract BlockEntity getBlockEntity();
 
     public abstract Level getLevel();
-
-    public abstract int MachineSlots();
 
 }
