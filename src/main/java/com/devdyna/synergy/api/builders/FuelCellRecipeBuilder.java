@@ -4,7 +4,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.init.recipeTypes.FuelCellRecipe;
+import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
+
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
@@ -16,7 +17,6 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 
 @SuppressWarnings({ "null" })
 public class FuelCellRecipeBuilder implements RecipeBuilder {
@@ -39,40 +39,42 @@ public class FuelCellRecipeBuilder implements RecipeBuilder {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static <T extends AbstractCookingRecipe> FuelCellRecipeBuilder of(
+    public static <T> FuelCellRecipeBuilder of(
             ItemStack input, ItemStack output, int duration, int fe, double heat) {
         return new FuelCellRecipeBuilder(input, output, duration, fe, heat);
     }
 
-    public static <T extends AbstractCookingRecipe> FuelCellRecipeBuilder of(
+    public static <T> FuelCellRecipeBuilder of(
             ItemStack input, ItemStack output, int duration, int fe, int heat) {
         return of(input, output, duration, fe, (double) heat);
     }
 
-    public static <T extends AbstractCookingRecipe> FuelCellRecipeBuilder of(
+    public static <T> FuelCellRecipeBuilder of(
             Item input, Item output, int duration, int fe, double heat) {
         return of(new ItemStack(input), new ItemStack(output), duration, fe, heat);
     }
 
-    public static <T extends AbstractCookingRecipe> FuelCellRecipeBuilder of(
+    public static <T> FuelCellRecipeBuilder of(
             Item input, Item output, int duration, int fe, int heat) {
         return of(new ItemStack(input), new ItemStack(output), duration, fe, (double) heat);
     }
-    public static <T extends AbstractCookingRecipe> FuelCellRecipeBuilder of(
+
+    public static <T> FuelCellRecipeBuilder of(
             ItemStack input, Item output, int duration, int fe, double heat) {
         return of(input, new ItemStack(output), duration, fe, heat);
     }
 
-    public static <T extends AbstractCookingRecipe> FuelCellRecipeBuilder of(
+    public static <T> FuelCellRecipeBuilder of(
             ItemStack input, Item output, int duration, int fe, int heat) {
         return of(input, new ItemStack(output), duration, fe, (double) heat);
     }
-    public static <T extends AbstractCookingRecipe> FuelCellRecipeBuilder of(
+
+    public static <T> FuelCellRecipeBuilder of(
             Item input, ItemStack output, int duration, int fe, double heat) {
         return of(new ItemStack(input), output, duration, fe, heat);
     }
 
-    public static <T extends AbstractCookingRecipe> FuelCellRecipeBuilder of(
+    public static <T> FuelCellRecipeBuilder of(
             Item input, ItemStack output, int duration, int fe, int heat) {
         return of(new ItemStack(input), output, duration, fe, (double) heat);
     }
