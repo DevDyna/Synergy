@@ -6,8 +6,8 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.menu.BEMenu;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellMenu;
-import com.devdyna.synergy.init.recipeTypes.FuelCellRecipe;
-import com.devdyna.synergy.init.recipeTypes.input.FuelCellRecipeInput;
+import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
+import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -130,7 +130,7 @@ public class FuelCellBE extends BEMenu {
             return null;
         return level.getRecipeManager()
                 .getRecipeFor(zRecipeTypes.FUEL_CELL_RECIPE.getType(),
-                        new FuelCellRecipeInput(getStorage().getStackInSlot(INPUT_SLOT)), level);
+                        new MonoItemInput(getStorage().getStackInSlot(INPUT_SLOT)), level);
     }
 
     public boolean hasRecipe() {
