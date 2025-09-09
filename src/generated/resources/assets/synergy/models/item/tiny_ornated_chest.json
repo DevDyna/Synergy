@@ -1,6 +1,12 @@
 {
-  "parent": "synergy:block/tiny_chest/template",
+  "parent": "synergy:block/tiny_block/chest",
   "textures": {
-    "type": "synergy:block/tiny_chest/ornate"
+    "down": "synergy:block/tiny_block/chest/ornate",
+    "east": "synergy:block/tiny_block/chest/ornate",
+    "north": "synergy:block/tiny_block/chest/ornate",
+    "particle": "synergy:block/tiny_block/chest/ornate",
+    "south": "synergy:block/tiny_block/chest/ornate",
+    "up": "synergy:block/tiny_block/chest/ornate",
+    "west": "synergy:block/tiny_block/chest/ornate"
   }
 }

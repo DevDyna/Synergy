@@ -1,0 +1,11 @@
+{
+  "type": "synergy:urn",
+  "ingredient": {
+    "count": 1,
+    "id": "synergy:enderman_heart"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:ghoul_heart"
+  }
+}

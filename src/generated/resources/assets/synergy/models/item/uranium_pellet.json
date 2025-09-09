@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "synergy:item/resources/gem/onyx"
+    "layer0": "synergy:item/resources/pellet/uranium"
   }
 }

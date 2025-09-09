@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "synergy",
+  "ingredients": [
+    {
+      "item": "synergy:red_battery"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:red_battery"
+  }
+}
