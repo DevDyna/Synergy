@@ -32,6 +32,14 @@ public class zStatic {
         public static String mixed = "mixed";
         public static String netherrack = "netherrack";
         public static String stone = "stone";
+        public static String americium = "americium";
+        public static String berkelium = "berkelium";
+        public static String californium = "californium";
+        public static String curium = "curium";
+        public static String neptunium = "neptunium";
+        public static String plutonium = "plutonium";
+        public static String thorium = "thorium";
+        public static String uranium = "uranium";
     }
 
     public class ResourceType {
@@ -44,6 +52,7 @@ public class zStatic {
         public static String raw = "raw_";
         public static String shard = "_shard";
         public static String dust = "_dust";
+        public static String pellet = "_pellet";
     }
 
     public class Items {
@@ -122,6 +131,7 @@ public class zStatic {
         public static String tiny_wooden_chest = "tiny_wooden_chest";
         public static String tiny_stone_chest = "tiny_stone_chest";
         public static String tiny_ornated_chest = "tiny_ornated_chest";
+        public static String urn = "urn";
         // public static String fan = "fan";
         // public static String wind = "wind";
 
