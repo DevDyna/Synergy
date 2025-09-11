@@ -83,3 +83,5 @@ _IC2 like_
 - [ ] Farmer delight compat
 - [ ] Nodes can void items with furnaces
 - [ ] Shift-action on some GUI will cause game-freeze
+- [ ] Farmer delight Rice cannot be harvested with Harvester
+- [ ] Farmer delight auto-harvest toggle
