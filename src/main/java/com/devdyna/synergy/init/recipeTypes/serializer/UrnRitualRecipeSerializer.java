@@ -5,20 +5,22 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 
 public class UrnRitualRecipeSerializer implements RecipeSerializer<UrnRitualRecipe> {
 
     public static final MapCodec<UrnRitualRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-            ItemStack.CODEC.listOf().fieldOf("ingredient").forGetter(UrnRitualRecipe::getInputItemStacks),
+            Ingredient.LIST_CODEC_NONEMPTY.fieldOf("ingredient").forGetter(UrnRitualRecipe::getIngredients),
             ItemStack.CODEC.fieldOf("result").forGetter(UrnRitualRecipe::getResultItem)
             ).apply(inst, UrnRitualRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, UrnRitualRecipe> STREAM_CODEC =
             StreamCodec.composite(
-                    ItemStack.LIST_STREAM_CODEC, UrnRitualRecipe::getInputItemStacks,
+                    Ingredient.CONTENTS_STREAM_CODEC.apply(ByteBufCodecs.list()), UrnRitualRecipe::getIngredients,
                     ItemStack.STREAM_CODEC, UrnRitualRecipe::getResultItem,
                     UrnRitualRecipe::new);
 

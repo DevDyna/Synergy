@@ -14,6 +14,7 @@ import com.devdyna.synergy.utils.LevelUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -21,6 +22,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -116,15 +118,15 @@ public class UrnBE extends BaseBE implements ItemStorageBlock {
                                 new ItemListInput(getInventory()), level);
 
                 if (!recipe.isEmpty()) {
-                    var input = recipe.get().value().getInputItemStacks();
+                    var input = recipe.get().value().getIngredients();
                     var output = recipe.get().value().getResultItem();
                     LevelUtil.popItemFromPos(level, getBlockPos(), output.copy());
 
                     extractItems(input);
 
                     level.playSound(null, getBlockPos(),
-                            SoundEvents.ITEM_FRAME_REMOVE_ITEM,
-                            SoundSource.BLOCKS, 1F * (LevelUtil.chance(50, level) ? 1f : 0.75f), 1);
+                            SoundEvents.FIRE_EXTINGUISH,
+                            SoundSource.BLOCKS, 0.5F * (LevelUtil.chance(50, level) ? 1f : 0.75f), 1);
 
                     setChanged(level, getBlockPos(), getBlockState());
 
@@ -133,12 +135,12 @@ public class UrnBE extends BaseBE implements ItemStorageBlock {
 
     }
 
-    private void extractItems(List<ItemStack> recipe) {
-        for (int i = 0; i < recipe.size(); i++) {
+    private void extractItems(NonNullList<Ingredient> input) {
+        for (int i = 0; i < input.size(); i++) {
             for (int j = 0; j < getStorage().getSlots(); j++) {
                 var storedItem = getStorage().getStackInSlot(j);
-                if (recipe.get(i).is(storedItem.getItem()) && storedItem.getCount() >= recipe.get(i).getCount()) {
-                    getStorage().extractItem(j, recipe.get(i).getCount(), false);
+                if (input.get(i).test(storedItem)) {
+                    getStorage().extractItem(j, 1, false);
                     continue;
                 }
             }

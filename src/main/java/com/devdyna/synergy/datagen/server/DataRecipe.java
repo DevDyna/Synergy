@@ -3,9 +3,7 @@ package com.devdyna.synergy.datagen.server;
 import static com.devdyna.synergy.Main.ID;
 import static net.minecraft.data.recipes.RecipeCategory.*;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.zStatic;
@@ -16,9 +14,6 @@ import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
@@ -26,13 +21,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings("null")
 public class DataRecipe extends RecipeProvider {
@@ -40,6 +33,11 @@ public class DataRecipe extends RecipeProvider {
         public DataRecipe(PackOutput o, CompletableFuture<HolderLookup.Provider> c) {
                 super(o, c);
         }
+
+        public static final List<DeferredHolder<Item, Item>> clearNBT = List.of(
+                        zItems.RED_BATTERY,
+                        zItems.BLUE_BATTERY,
+                        zItems.GREEN_BATTERY);
 
         @Override
         protected void buildRecipes(RecipeOutput c) {
@@ -397,18 +395,12 @@ public class DataRecipe extends RecipeProvider {
                                 .group(ID).save(c);
 
                 // TODO JEI HIDE
-                List.of(
-
-                                zItems.RED_BATTERY,
-                                zItems.BLUE_BATTERY,
-                                zItems.GREEN_BATTERY
-
-                ).forEach(i -> {
+                clearNBT.forEach(i -> {
                         ShapelessRecipeBuilder.shapeless(MISC, i.get())
                                         .requires(i.get())
                                         .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance.hasItems(i.get()))
                                         .group(ID)
-                                        .save(c, i.getRegisteredName() + "_alt");
+                                        .save(c, i.getRegisteredName() + "_clear_nbt");
                 });
 
                 // TODO DEMO RECIPES , THIS NEED TO BE CHANGED!
@@ -424,18 +416,18 @@ public class DataRecipe extends RecipeProvider {
                                                 .hasItems(Items.IRON_INGOT))
                                 .save(c);
 
-                urn(c, "urn/", new ItemStack(zItems.INFERNAL_EMBER, 2),
-                x.item(Items.COAL, 1),x.item(Items.BLAZE_POWDER, 1)
-                                );
+                urn(c, "urn/", x.item(zItems.INFERNAL_EMBER, 2),
+                                x.ingredient(Items.COAL), x.ingredient(Items.BLAZE_POWDER),
+                                x.ingredient(Items.BLAZE_POWDER));
 
-                urn(c, "urn/", new ItemStack(zItems.SILICON_SHARD, 4),
-                                new ItemStack(zItems.SILVERFISH_DUST, 1));
+                urn(c, "urn/", x.item(zItems.SILICON_SHARD, 4),
+                                x.ingredient(zItems.SILVERFISH_DUST));
 
-                urn(c, "urn/", new ItemStack(zItems.GHOUL_HEART, 1),
-                                new ItemStack(zItems.ENDERMAN_HEART.get(), 1));
+                urn(c, "urn/", x.item(zItems.GHOUL_HEART, 1),
+                                x.ingredient(zItems.ENDERMAN_HEART));
         }
 
-        private void urn(RecipeOutput c, String id, ItemStack output, ItemStack... input) {
+        private void urn(RecipeOutput c, String id, ItemStack output, Ingredient... input) {
                 c.accept(x.rl(id + x.path(output.getItem())), UrnRitualRecipe.of(output, input), null);
         }
 
@@ -475,6 +467,5 @@ public class DataRecipe extends RecipeProvider {
                                                                 + "_alt"));
 
         }
-
 
 }

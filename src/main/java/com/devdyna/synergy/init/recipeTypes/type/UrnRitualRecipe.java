@@ -22,20 +22,20 @@ import net.neoforged.neoforge.common.util.RecipeMatcher;
 public class UrnRitualRecipe implements Recipe<ItemListInput> {
 
     public static final int INPUT_COUNT = 9;
-    public final List<ItemStack> inputs;
+    public final NonNullList<Ingredient> inputs;
     public final ItemStack output;
 
-    public UrnRitualRecipe(List<ItemStack> inputs,
+    public UrnRitualRecipe(List<Ingredient> inputs,
             ItemStack output) {
-        this.inputs = inputs;
+        this.inputs = NonNullList.copyOf(inputs);
         this.output = output;
     }
 
-    public static UrnRitualRecipe of(List<ItemStack> inputs, ItemStack output) {
+    public static UrnRitualRecipe of(NonNullList<Ingredient> inputs, ItemStack output) {
         return new UrnRitualRecipe(inputs, output);
     }
 
-        public static UrnRitualRecipe of(ItemStack output,ItemStack... inputs ) {
+        public static UrnRitualRecipe of(ItemStack output,Ingredient... inputs ) {
         return new UrnRitualRecipe(Arrays.asList(inputs), output);
     }
 
@@ -55,7 +55,7 @@ public class UrnRitualRecipe implements Recipe<ItemListInput> {
 
         }
         return temp.size() == this.inputs.size() && RecipeMatcher.findMatches(temp,
-                List.copyOf(this.inputs.stream().map(e -> Ingredient.of(e)).toList())) != null;
+                this.inputs) != null;
     }
 
     public ItemStack assemble(ItemListInput i, HolderLookup.Provider r) {
@@ -80,11 +80,7 @@ public class UrnRitualRecipe implements Recipe<ItemListInput> {
     }
 
     public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.copyOf(this.inputs.stream().map(e -> Ingredient.of(e)).toList());
-    }
-
-    public List<ItemStack> getInputItemStacks() {
-        return inputs;
+        return this.inputs;
     }
 
     public ItemStack getResultItem() {
