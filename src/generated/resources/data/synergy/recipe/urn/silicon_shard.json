@@ -1,0 +1,13 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "count": 1,
+      "id": "synergy:silverfish_dust"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "synergy:silicon_shard"
+  }
+}
