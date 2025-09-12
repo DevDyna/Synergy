@@ -23,12 +23,13 @@ public class Main {
         Material.register(bus);
         core.registerCompat();
 
-        // Config.register(mc);
-        
+        // Config.register(mc);TODO
+
         NeoForge.EVENT_BUS.register(blockEvents.class);
 
         bus.addListener(Capabilities::register);
         bus.addListener(zDataMaps::register);
 
     }
+
 }
