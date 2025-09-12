@@ -64,7 +64,7 @@ public class DataMaps extends DataMapProvider {
                                                 false);
 
                         builder(NeoForgeDataMaps.FURNACE_FUELS)
-                        .add(zItems.INFERNAL_EMBER.get().builtInRegistryHolder(), new FurnaceFuel(200), false);
+                        .add(zItems.INFERNAL_EMBER.get().builtInRegistryHolder(), new FurnaceFuel(3200), false);
 
         }
 
