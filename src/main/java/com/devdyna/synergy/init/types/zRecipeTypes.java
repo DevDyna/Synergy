@@ -26,14 +26,13 @@ public class zRecipeTypes {
         public static final DeferredRegister<RecipeType<?>> TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, ID);
 
         public static final zRecipe<FuelCellRecipe> FUEL_CELL_RECIPE = new zRecipe<FuelCellRecipe>(
-                        zStatic.ReactorStuff.fuel_cell, FuelCellRecipeSerializer::new,
+                zStatic.ReactorStuff.fuel_cell, FuelCellRecipeSerializer::new,
                         () -> new RecipeType<FuelCellRecipe>() {
                                 @Override
                                 public String toString() {
                                         return FUEL_CELL_RECIPE.getId();
                                 }
                         });
-
 
         public static final zRecipe<UrnRitualRecipe> URN_RITUAL_RECIPE = new zRecipe<UrnRitualRecipe>(
                         zStatic.Blocks.urn, UrnRitualRecipeSerializer::new,
