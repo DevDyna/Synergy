@@ -42,30 +42,58 @@ public class DataGenUtil {
     public static String ITEM = mc + "item/generated";
     private static String mod = ID + ":";
 
+    /**
+     * @deprecated use <code> x.get() </code>
+     */
+    @Deprecated
     public static Block getBlock(String id) {
         return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ID, id));
     }
 
+    /**
+     * @deprecated use <code> x.get() </code>
+     */
+    @Deprecated
     public static Block getBlock(String id, String modid) {
         return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(modid, id));
     }
 
+    /**
+     * @deprecated use <code> x.path() </code>
+     */
+    @Deprecated
     public static String getPath(Block b) {
         return BuiltInRegistries.BLOCK.getKey(b).getPath();
     }
 
+    /**
+     * @deprecated use <code> x.path() </code>
+     */
+    @Deprecated
     public static String getPath(Item i) {
         return BuiltInRegistries.ITEM.getKey(i).getPath();
     }
 
+    /**
+     * @deprecated use <code> x.rl() </code>
+     */
+    @Deprecated
     public static ResourceLocation getResource(String s) {
         return ResourceLocation.fromNamespaceAndPath(ID, s);
     }
 
+    /**
+     * @deprecated use <code> x.rl() </code>
+     */
+    @Deprecated
     public static ResourceLocation getResource(Block b) {
         return ResourceLocation.fromNamespaceAndPath(ID, getPath(b));
     }
 
+    /**
+     * @deprecated use <code> x.rl() </code>
+     */
+    @Deprecated
     public static ResourceLocation getResource(Item i) {
         return ResourceLocation.fromNamespaceAndPath(ID, getPath(i));
     }
