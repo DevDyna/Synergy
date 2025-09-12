@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:green_battery_alt"
+        "recipe": "synergy:green_battery_clear_nbt"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:green_battery_alt"
+      "synergy:green_battery_clear_nbt"
     ]
   }
 }

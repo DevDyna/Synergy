@@ -2,12 +2,13 @@
   "type": "synergy:urn",
   "ingredient": [
     {
-      "count": 1,
-      "id": "minecraft:coal"
+      "item": "minecraft:coal"
     },
     {
-      "count": 1,
-      "id": "minecraft:blaze_powder"
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:blaze_powder"
     }
   ],
   "result": {

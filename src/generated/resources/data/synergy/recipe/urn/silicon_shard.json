@@ -2,8 +2,7 @@
   "type": "synergy:urn",
   "ingredient": [
     {
-      "count": 1,
-      "id": "synergy:silverfish_dust"
+      "item": "synergy:silverfish_dust"
     }
   ],
   "result": {
