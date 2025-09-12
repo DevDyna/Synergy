@@ -28,6 +28,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+@SuppressWarnings("null")
 public class NodeBaseBlock extends BaseBlockBE implements nodeType {
 
     public NodeBaseBlock() {
@@ -69,7 +70,6 @@ public class NodeBaseBlock extends BaseBlockBE implements nodeType {
     public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
         return null;
     }
-
 
     @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
