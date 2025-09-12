@@ -9,6 +9,7 @@ import com.devdyna.synergy.api.reactor.ControllerProperties;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.utils.DataGenUtil;
+import com.devdyna.synergy.utils.x;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -77,16 +78,16 @@ public class DataBlockModelState extends BlockStateProvider {
                 reactorController(zBlocks.REACTOR_CONTROLLER);
 
                 zBlocks.zBlockSlab.getEntries().forEach(b -> slabBlock((SlabBlock) b.get(), modLoc("block/"
-                                + DataGenUtil.getPath(b.get()).replace(ID + ":block/",
+                                + x.path(b.get()).replace(ID + ":block/",
                                                 "").replace("_slab",
                                                                 "")),
                                 modLoc("block/decorative/"
-                                                + DataGenUtil.getPath(b.get()).replace(ID + ":block/",
+                                                + x.path(b.get()).replace(ID + ":block/",
                                                                 "").replace("_slab",
                                                                                 ""))));
                 zBlocks.zBlockStair.getEntries()
                                 .forEach(b -> stairsBlock((StairBlock) b.get(), modLoc("block/decorative/"
-                                                + DataGenUtil.getPath(b.get()).replace(ID + ":block/",
+                                                + x.path(b.get()).replace(ID + ":block/",
                                                                 "").replace("_stair",
                                                                                 ""))));
 
@@ -262,7 +263,7 @@ public class DataBlockModelState extends BlockStateProvider {
         }
 
         private void rotableBlock(Block b) {
-                rotableBlock(b, DataGenUtil.getResource(b));
+                rotableBlock(b, x.rl(b));
         }
 
         private void rotableBlock(Block b, ResourceLocation path) {
@@ -280,7 +281,7 @@ public class DataBlockModelState extends BlockStateProvider {
         private void crossORcropStatic(Block b, boolean isCrop, String texturePath) {
                 var model = getVariantBuilder(b);
                 model.partialState().addModels(ConfiguredModel.builder()
-                                .modelFile(DataGenUtil.crossORcrop(this, isCrop, DataGenUtil.getPath(b),
+                                .modelFile(DataGenUtil.crossORcrop(this, isCrop, x.path(b),
                                                 modLoc(texturePath)))
                                 .build());
         }
