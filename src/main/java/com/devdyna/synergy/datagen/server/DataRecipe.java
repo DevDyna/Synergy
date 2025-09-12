@@ -3,17 +3,22 @@ package com.devdyna.synergy.datagen.server;
 import static com.devdyna.synergy.Main.ID;
 import static net.minecraft.data.recipes.RecipeCategory.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.builders.FuelCellRecipeBuilder;
-import com.devdyna.synergy.api.builders.UrnRitualRecipeBuilder;
+import com.devdyna.synergy.init.recipeTypes.type.UrnRitualRecipe;
 import com.devdyna.synergy.init.types.*;
-import com.devdyna.synergy.utils.DataGenUtil;
+import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
@@ -21,10 +26,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 @SuppressWarnings("null")
 public class DataRecipe extends RecipeProvider {
@@ -55,7 +63,7 @@ public class DataRecipe extends RecipeProvider {
                                 .requires(zItems.BLUE_CUP_MUSHROOM.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.BLUE_CUP_MUSHROOM.get()))
-                                .group(zStatic.Plants.BLUE_CUP_MUSHROOM).save(c, DataGenUtil.getResource(
+                                .group(zStatic.Plants.BLUE_CUP_MUSHROOM).save(c, x.rl(
                                                 Items.BLUE_DYE.getDescriptionId()
                                                                 .replace("item.minecraft.", "")
                                                                 + "_from_mushrooms"));
@@ -64,7 +72,7 @@ public class DataRecipe extends RecipeProvider {
                                 .requires(zItems.VIOLET_WEBCAP_MUSHROOM.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.VIOLET_WEBCAP_MUSHROOM.get()))
-                                .group(zStatic.Plants.VIOLET_WEBCAP_MUSHROOM).save(c, DataGenUtil.getResource(
+                                .group(zStatic.Plants.VIOLET_WEBCAP_MUSHROOM).save(c, x.rl(
                                                 Items.BROWN_DYE.getDescriptionId()
                                                                 .replace("item.minecraft.", "")
                                                                 + "_from_mushrooms"));
@@ -85,7 +93,7 @@ public class DataRecipe extends RecipeProvider {
                                 .define('S', Items.STICK)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.STICK))
-                                .group(zStatic.Items.wooden_crook).save(c, DataGenUtil.getResource(
+                                .group(zStatic.Items.wooden_crook).save(c, x.rl(
                                                 zItems.WOODEN_CROOK.get().getDescriptionId()
                                                                 .replace("item." + ID + ".", "")
                                                                 + "_alt"));
@@ -108,7 +116,7 @@ public class DataRecipe extends RecipeProvider {
                                 .define('N', Items.IRON_NUGGET)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.IRON_INGOT, Items.IRON_NUGGET))
-                                .group(zStatic.Items.smasher).save(c, DataGenUtil.getResource(
+                                .group(zStatic.Items.smasher).save(c, x.rl(
                                                 zItems.SMASHER.get().getDescriptionId()
                                                                 .replace("item." + ID + ".", "")
                                                                 + "_alt"));
@@ -145,7 +153,7 @@ public class DataRecipe extends RecipeProvider {
                                 .requires(zItems.COTTON.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.COTTON.get()))
-                                .group(zStatic.Plants.COTTON).save(c, DataGenUtil.getResource(
+                                .group(zStatic.Plants.COTTON).save(c, x.rl(
                                                 Items.STRING.getDescriptionId()
                                                                 .replace("item.minecraft.", "")
                                                                 + "_from_cotton"));
@@ -155,7 +163,7 @@ public class DataRecipe extends RecipeProvider {
                                 .define('R', zItems.SMALL_AZALEA_ROOTS.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.SMALL_AZALEA_ROOTS.get()))
-                                .group(zStatic.Items.Azalea.roots).save(c, DataGenUtil.getResource(
+                                .group(zStatic.Items.Azalea.roots).save(c, x.rl(
                                                 Items.HANGING_ROOTS.getDescriptionId()
                                                                 .replace("block.minecraft.", "")
                                                                 + "_from_small_azalea"));
@@ -166,7 +174,7 @@ public class DataRecipe extends RecipeProvider {
                                 .define('L', zItems.SMALL_AZALEA_LEAF.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.SMALL_AZALEA_LEAF.get()))
-                                .group(zStatic.Items.Azalea.leaf).save(c, DataGenUtil.getResource(
+                                .group(zStatic.Items.Azalea.leaf).save(c, x.rl(
                                                 Items.FLOWERING_AZALEA_LEAVES.getDescriptionId()
                                                                 .replace("block.minecraft.", "")
                                                                 + "_from_small_azalea"));
@@ -176,7 +184,7 @@ public class DataRecipe extends RecipeProvider {
                                 .requires(Items.AZALEA)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.AZALEA, zItems.SMALL_AZALEA_LEAF.get()))
-                                .group(zStatic.Items.Azalea.leaf).save(c, DataGenUtil.getResource(
+                                .group(zStatic.Items.Azalea.leaf).save(c, x.rl(
                                                 Items.FLOWERING_AZALEA.getDescriptionId()
                                                                 .replace("block.minecraft.", "")
                                                                 + "_from_small_azalea"));
@@ -199,7 +207,7 @@ public class DataRecipe extends RecipeProvider {
                                 zBlocks.RUSTIC_METAL.get().asItem(), 0.01f, 100)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.IRON_BLOCK))
-                                .group(zStatic.DecorativeBlocks.rustic_metal).save(c, DataGenUtil.getResource(
+                                .group(zStatic.DecorativeBlocks.rustic_metal).save(c, x.rl(
                                                 zBlocks.RUSTIC_METAL.get().getDescriptionId()
                                                                 .replace("block." + ID + ".", "")
                                                                 + "_blasting"));
@@ -277,7 +285,7 @@ public class DataRecipe extends RecipeProvider {
                                 .define('H', Items.HONEYCOMB)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.HONEYCOMB, zItems.RICE_SEED.get()))
-                                .group(ID).save(c, DataGenUtil.getResource(
+                                .group(ID).save(c, x.rl(
                                                 Items.SLIME_BALL.getDescriptionId()
                                                                 .replace("item.minecraft.", "")
                                                                 + "_from_rice"));
@@ -411,29 +419,24 @@ public class DataRecipe extends RecipeProvider {
                                 .save(c);
 
                 FuelCellRecipeBuilder.of(Items.IRON_INGOT,
-                                item(zItems.IRON_PLATE.get(), 2), 100, 4, 10.5)
+                                x.item(zItems.IRON_PLATE.get(), 2), 100, 4, 10.5)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.IRON_INGOT))
-
                                 .save(c);
 
-                UrnRitualRecipeBuilder.of(Items.COAL, 2, zItems.INFERNAL_EMBER, 1)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.COAL))
-                                .save(c);
+                urn(c, "urn/", new ItemStack(zItems.INFERNAL_EMBER, 2),
+                x.item(Items.COAL, 1),x.item(Items.BLAZE_POWDER, 1)
+                                );
 
+                urn(c, "urn/", new ItemStack(zItems.SILICON_SHARD, 4),
+                                new ItemStack(zItems.SILVERFISH_DUST, 1));
 
-                UrnRitualRecipeBuilder.of(zItems.STONE_PEBBLE.get(), 4, zItems.SILVERFISH_DUST, 1)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.STONE_PEBBLE.get()))
-                                .save(c);
+                urn(c, "urn/", new ItemStack(zItems.GHOUL_HEART, 1),
+                                new ItemStack(zItems.ENDERMAN_HEART.get(), 1));
+        }
 
-                UrnRitualRecipeBuilder.of(zItems.ENDERMAN_HEART.get(), 1, zItems.GHOUL_HEART, 1)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.ENDERMAN_HEART.get()))
-                                .save(c);
-
-
+        private void urn(RecipeOutput c, String id, ItemStack output, ItemStack... input) {
+                c.accept(x.rl(id + x.path(output.getItem())), UrnRitualRecipe.of(output, input), null);
         }
 
         // nodes
@@ -466,15 +469,12 @@ public class DataRecipe extends RecipeProvider {
                                                 .hasItems(Items.REDSTONE, Items.ENDER_PEARL, catalyst,
                                                                 zBlocks.PIPE.get()))
                                 .group(zStatic.PipeStuff.types.item_node)
-                                .save(c, DataGenUtil.getResource(
+                                .save(c, x.rl(
                                                 b.getDescriptionId()
                                                                 .replace("block." + ID + ".", "")
                                                                 + "_alt"));
 
         }
 
-        private ItemStack item(Item item, int count) {
-                return new ItemStack(item, count);
-        }
 
 }
