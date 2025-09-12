@@ -12,14 +12,14 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 public class UrnRitualRecipeSerializer implements RecipeSerializer<UrnRitualRecipe> {
 
     public static final MapCodec<UrnRitualRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-            ItemStack.CODEC.fieldOf("ingredient").forGetter(UrnRitualRecipe::getInput),
-            ItemStack.CODEC.fieldOf("result").forGetter(UrnRitualRecipe::getOutput)
+            ItemStack.CODEC.listOf().fieldOf("ingredient").forGetter(UrnRitualRecipe::getInputItemStacks),
+            ItemStack.CODEC.fieldOf("result").forGetter(UrnRitualRecipe::getResultItem)
             ).apply(inst, UrnRitualRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, UrnRitualRecipe> STREAM_CODEC =
             StreamCodec.composite(
-                    ItemStack.STREAM_CODEC, UrnRitualRecipe::getInput,
-                    ItemStack.STREAM_CODEC, UrnRitualRecipe::getOutput,
+                    ItemStack.LIST_STREAM_CODEC, UrnRitualRecipe::getInputItemStacks,
+                    ItemStack.STREAM_CODEC, UrnRitualRecipe::getResultItem,
                     UrnRitualRecipe::new);
 
     @Override

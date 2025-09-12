@@ -1,6 +1,10 @@
 package com.devdyna.synergy.init.recipeTypes.type;
 
-import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.devdyna.synergy.init.recipeTypes.input.ItemListInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -12,37 +16,54 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.util.RecipeMatcher;
 
 @SuppressWarnings("null")
-public class UrnRitualRecipe implements Recipe<MonoItemInput> {
+public class UrnRitualRecipe implements Recipe<ItemListInput> {
 
-    protected final ItemStack input;
-    protected final ItemStack output;
+    public static final int INPUT_COUNT = 9;
+    public final List<ItemStack> inputs;
+    public final ItemStack output;
 
-    public UrnRitualRecipe(ItemStack input,
+    public UrnRitualRecipe(List<ItemStack> inputs,
             ItemStack output) {
-        this.input = input;
+        this.inputs = inputs;
         this.output = output;
     }
 
-    public boolean matches(MonoItemInput i, Level l) {
-        return this.input.is(i.input().getItem());
+    public static UrnRitualRecipe of(List<ItemStack> inputs, ItemStack output) {
+        return new UrnRitualRecipe(inputs, output);
     }
 
-    public ItemStack assemble(MonoItemInput i, HolderLookup.Provider r) {
+        public static UrnRitualRecipe of(ItemStack output,ItemStack... inputs ) {
+        return new UrnRitualRecipe(Arrays.asList(inputs), output);
+    }
+
+    public boolean matches(ItemListInput r, Level l) {
+        List<ItemStack> temp = new ArrayList<>();
+        if (r.size() < temp.size())
+            return false;
+        for (int j = 0; j < r.size(); ++j) {
+            try {
+                ItemStack item = r.getItem(j);
+                if (!item.isEmpty()) {
+                    temp.add(item);
+                }
+            } catch (Exception e) {
+
+            }
+
+        }
+        return temp.size() == this.inputs.size() && RecipeMatcher.findMatches(temp,
+                List.copyOf(this.inputs.stream().map(e -> Ingredient.of(e)).toList())) != null;
+    }
+
+    public ItemStack assemble(ItemListInput i, HolderLookup.Provider r) {
         return this.output.copy();
     }
 
     public boolean canCraftInDimensions(int xz, int y) {
         return false;
-    }
-
-    public ItemStack getInput() {
-        return this.input;
-    }
-
-    public ItemStack getOutput() {
-        return this.output;
     }
 
     public RecipeType<?> getType() {
@@ -58,14 +79,20 @@ public class UrnRitualRecipe implements Recipe<MonoItemInput> {
         return zRecipeTypes.URN_RITUAL_RECIPE.getSerializer();
     }
 
-    // NoOp
     public NonNullList<Ingredient> getIngredients() {
-        NonNullList<Ingredient> list = NonNullList.create();
-        list.add(Ingredient.of(this.input));
-        return list;
+        return NonNullList.copyOf(this.inputs.stream().map(e -> Ingredient.of(e)).toList());
     }
 
-    public ItemStack getResultItem(HolderLookup.Provider r) {
-        return ItemStack.EMPTY;
+    public List<ItemStack> getInputItemStacks() {
+        return inputs;
+    }
+
+    public ItemStack getResultItem() {
+        return output;
+    }
+
+    @Override
+    public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
+        return this.output;
     }
 }
