@@ -1,6 +1,7 @@
 package com.devdyna.synergy.init.builder.reactor.controller;
 
 import java.util.*;
+
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
 import com.devdyna.synergy.api.BiBool;
 import com.devdyna.synergy.api.Range;
@@ -46,12 +47,12 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
     List<BlockPos> area = null;
     List<Integer> rgbColor;
 
-    // TODO change to depend on fuel insered
-    int fe = 1;
-    double heat = 0;
+    public int fe = 1;
+    public double heat = 1;
 
     boolean isOverHeated;
-    List<BlockPos> cells = null;
+    private List<BlockPos> cells = null;
+    public int cellsCount = cells != null ? cells.size() : 0;
 
     @Override
     public void tickServer() {
@@ -87,16 +88,12 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
         if (canExtract()) {
             providePowerAdjacent(level, getBlockPos(), cache, getStoredFE());
         }
-
-        // TODO REMOVE THIS AS FAST AS POSSIBLE
-        // AND REPLACE WITH A ITEM LINKER
-        level.players().forEach(p -> PlayerUtil.messageActionBar("Heat: " + heat, p));
     }
 
     private void resetStats() {
         isOverHeated = false;
         fe = 1;
-        heat = 0;
+        heat = 1;
         cells = new ArrayList<>();
     }
 
@@ -115,9 +112,9 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
             }
 
             if (block instanceof CoolerBlockBase cooler) {
-                heat -= level.getBlockState(pos).getValue(BlockStateProperties.ENABLED)
+                heat -= (level.getBlockState(pos).getValue(BlockStateProperties.ENABLED)
                         ? cooler.getActiveCooling()
-                        : cooler.getBaseCooling();
+                        : cooler.getBaseCooling());
             }
 
             if (level.getBlockEntity(pos) instanceof FuelCellBE fuelcell) {
@@ -136,20 +133,19 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
 
             if (block instanceof ModeratorBase moderator) {
                 if (level.getBlockState(pos).getValue(BlockStateProperties.ENABLED)) {
-                    fe -= moderator.FEReducer();
-                    heat -= moderator.HeatReducer();
+                    fe *= moderator.FEReducer();
+                    heat *= moderator.HeatReducer();
                 }
             }
 
         }
 
+        heat = ((int) (heat * 1000)) / 1000.0;
+
         // heat efficiency calc
         fe *= 1.0 - (heat) * 0.001F;
 
         isOverHeated = heat > 0;
-
-        // LogUtil.info("heat " + heat);
-        // LogUtil.info("fe " + fe);
 
         updateCells(is(ControllerProperties.PRODUCTION));
 
