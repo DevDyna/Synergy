@@ -11,6 +11,7 @@ import com.devdyna.synergy.utils.DataGenUtil;
 import com.devdyna.synergy.utils.x;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -123,11 +124,6 @@ public class DataItemModel extends ItemModelProvider {
                                 modLoc("block/harvester/side"), modLoc("block/harvester/front"),
                                 modLoc("block/harvester/bottom"), modLoc("block/harvester/top"));
 
-                // cubeBottomTop(zBlocks.FAN.get().getDescriptionId().replace("block." + ID +
-                // ".", ""),
-                // modLoc("block/fan/side"), modLoc("block/fan/off"),
-                // modLoc("block/fan/back"));
-
                 orientableWithBottom(zBlocks.REACTOR_CONTROLLER.getRegisteredName(),
                                 modLoc("block/reactor/controller/side"), modLoc("block/reactor/controller/front_off"),
                                 modLoc("block/reactor/controller/bottom"), modLoc("block/reactor/controller/top"));
@@ -143,14 +139,41 @@ public class DataItemModel extends ItemModelProvider {
                 simpleFullBlock(zBlocks.HEALER, "");
                 simpleFullBlock(zBlocks.REACTOR_FUEL_CELL, "reactor/");
                 // simpleFullBlock(zBlocks.REACTOR_PORT, "reactor/");
-                simpleFlexibleBlock(zBlocks.IRON_COOLER, "reactor/cooler/on");
-                simpleFlexibleBlock(zBlocks.GRAPHITE_MODERATOR, "reactor/moderator/casing");
+
+                // simpleFlexibleBlock(zBlocks.COOLER_BASE, "reactor/cooler/base");
+
+                CoolerBlock(zBlocks.COPPER_COOLER, mcLoc("block/copper_block"));
+                CoolerBlock(zBlocks.GOLD_COOLER, mcLoc("block/gold_block"));
+                CoolerBlock(zBlocks.IRON_COOLER, mcLoc("block/iron_block"));
+                CoolerBlock(zBlocks.ENDER_COOLER, mcLoc("block/purpur_block"));
+                CoolerBlock(zBlocks.FROST_COOLER, mcLoc("block/blue_ice"));
+                CoolerBlock(zBlocks.LAPIS_COOLER, mcLoc("block/lapis_block"));
+                CoolerBlock(zBlocks.SCULK_COOLER, mcLoc("block/sculk"));
+                CoolerBlock(zBlocks.WATER_COOLER, mcLoc("block/ice"));
+                CoolerBlock(zBlocks.QUARTZ_COOLER, mcLoc("block/quartz_block_top"));
+                CoolerBlock(zBlocks.BIOMASS_COOLER, mcLoc("block/soul_sand"));
+                CoolerBlock(zBlocks.DIAMOND_COOLER, mcLoc("block/diamond_block"));
+                CoolerBlock(zBlocks.EMERALD_COOLER, mcLoc("block/emerald_block"));
+                CoolerBlock(zBlocks.REDSTONE_COOLER, mcLoc("block/redstone_block"));
+                CoolerBlock(zBlocks.GLOWSTONE_COOLER, mcLoc("block/glowstone"));
+                CoolerBlock(zBlocks.NETHERITE_COOLER, mcLoc("block/netherite_block"));
+
+                simpleFlexibleBlock(zBlocks.SIMPLE_MODERATOR, "reactor/moderator/simple/off");
+                simpleFlexibleBlock(zBlocks.IMPROVED_MODERATOR, "reactor/moderator/improved/off");
+                simpleFlexibleBlock(zBlocks.ADVANCED_MODERATOR, "reactor/moderator/advanced/off");
+                simpleFlexibleBlock(zBlocks.ELITE_MODERATOR, "reactor/moderator/elite/off");
 
                 tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
                 tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
                 tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
                 withExistingParent(zBlocks.URN.getRegisteredName(),
                                 modLoc("block/tiny_block/urn"));
+        }
+
+        private void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
+                withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
+                                .texture("top", "block/reactor/cooler/casing")
+                                .texture("below", below);
         }
 
         private void tinyChestAll(DeferredHolder<Block, Block> b, String texture) {
