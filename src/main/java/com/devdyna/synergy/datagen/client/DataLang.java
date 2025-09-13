@@ -2,6 +2,8 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
+import java.util.List;
+
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -35,6 +37,8 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zDecorative.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zBlockSlab.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zBlockStair.getEntries().forEach(b -> addBlock(b, named(b)));
+                zBlocks.zModerators.getEntries().forEach(b -> addBlock(b, named(b)));
+                zBlocks.zCoolers.getEntries().forEach(b -> addBlock(b, named(b)));
 
                 // tools
                 add(Main.ID + "." + zStatic.Items.configurator + ".tip",
@@ -104,34 +108,77 @@ public class DataLang extends LanguageProvider {
                                 "§8Hold [§7Shift§8] to see more details");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".desc",
-                                TIP_COLOR + "DESC");
+                                TIP_COLOR + "Reduce Heat based on some conditions");
+
+                // add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".condition",
+                // TIP_COLOR + "DESC");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".off",
-                                TIP_COLOR + "Deactive ");
+                                TIP_COLOR + "Deactive: -");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".on",
-                                TIP_COLOR + "Active ");
-
-                add(Main.ID + "." + zStatic.ReactorStuff.moderator + ".heat",
-                                TIP_COLOR + "FE");// TODO
+                                TIP_COLOR + "Active: -");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.moderator + ".fe",
-                                TIP_COLOR + "HEAT");// TODO
-
-                add(Main.ID + "." + zStatic.ReactorStuff.fuel_cell,
-                                TIP_COLOR + "DESC");// TODO
-
-                add(Main.ID + "." + zStatic.ReactorStuff.controller,
-                                TIP_COLOR + "DESC");// TODO
-
-                // add(Main.ID + "." + zStatic.ReactorStuff.port ,
-                // TIP_COLOR + "DESC");//TODO
+                                TIP_COLOR + "Fe: x");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.moderator,
-                                TIP_COLOR + "DESC");// TODO
+                                TIP_COLOR + "Increase Heat and FE production");
 
-                // add(Main.ID + "." + zStatic.Blocks.fan, TIP_COLOR + "When powered it can
-                // generate wind");
+                add(Main.ID + "." + zStatic.ReactorStuff.moderator + ".condition",
+                                TIP_COLOR + "Active when near to a Fuel Cell");
+
+                add(Main.ID + "." + zStatic.ReactorStuff.moderator + ".heat",
+                                TIP_COLOR + "Heat: x");
+
+                add(Main.ID + "." + zStatic.ReactorStuff.fuel_cell,
+                                TIP_COLOR + "Create Heat , FE and execute recipes when heat below 0");
+
+                add(Main.ID + "." + zStatic.ReactorStuff.controller,
+                                TIP_COLOR + "Generate FE based on Fuel Cell recipes and heat when below 0");
+
+                add(Main.ID + ".jei." + zStatic.ReactorStuff.fuel_cell,
+                                "Reactor Reactions");
+
+                List<String> coolerTypes = List.of(
+                                zStatic.ReactorStuff.CoolerTypes.BIOMASS,
+                                zStatic.ReactorStuff.CoolerTypes.COPPER,
+                                zStatic.ReactorStuff.CoolerTypes.DIAMOND,
+                                zStatic.ReactorStuff.CoolerTypes.EMERALD,
+                                zStatic.ReactorStuff.CoolerTypes.ENDER,
+                                zStatic.ReactorStuff.CoolerTypes.FROST,
+                                zStatic.ReactorStuff.CoolerTypes.GLOWSTONE,
+                                zStatic.ReactorStuff.CoolerTypes.GOLD,
+                                zStatic.ReactorStuff.CoolerTypes.IRON,
+                                zStatic.ReactorStuff.CoolerTypes.LAPIS,
+                                zStatic.ReactorStuff.CoolerTypes.NETHERITE,
+                                zStatic.ReactorStuff.CoolerTypes.QUARTZ,
+                                zStatic.ReactorStuff.CoolerTypes.REDSTONE,
+                                zStatic.ReactorStuff.CoolerTypes.SCULK,
+                                zStatic.ReactorStuff.CoolerTypes.WATER);
+
+                List<String> langCooler = List.of(
+                                "one Reactor Controller and one Fuel Cell",
+                                "one Glowstone Cooler",
+                                "one active Water Cooler and one active Quartz Cooler",
+                                "one Fuel Cell and one Moderator",
+                                "three Cooler",
+                                "two Fuel Cell",
+                                "two active Moderators",
+                                "one active Water Cooler and one active Redstone Cooler",
+                                "one active Gold Cooler",
+                                "one Fuel Cell and one Cooler",
+                                "one active gold Cooler and one active Sculk Cooler",
+                                "one Moderator",
+                                "one Fuel Cell",
+                                "two active Lapis Cooler on same axis",
+                                "one Fuel Cell or one Moderator");
+
+                coolerTypes.forEach(t -> {
+                        add(
+                                        Main.ID + "." + zStatic.ReactorStuff.cooler + "." + t,
+                                        TIP_COLOR+"Require at least " + langCooler.get(coolerTypes.indexOf(t)));
+                });
 
         }
 
