@@ -1,0 +1,14 @@
+{
+  "type": "synergy:fuel_cell",
+  "heat": 50.0,
+  "ingredient": {
+    "count": 1,
+    "id": "synergy:uranium_pellet"
+  },
+  "production": 20,
+  "result": {
+    "count": 3,
+    "id": "synergy:waste_fragment"
+  },
+  "time": 10000
+}

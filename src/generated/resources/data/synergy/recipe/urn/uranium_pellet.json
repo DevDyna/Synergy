@@ -1,0 +1,12 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "item": "synergy:waste"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:uranium_pellet"
+  }
+}

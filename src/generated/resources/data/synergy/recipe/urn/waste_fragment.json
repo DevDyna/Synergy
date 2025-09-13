@@ -1,0 +1,12 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "item": "synergy:creeper_gall"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "synergy:waste_fragment"
+  }
+}

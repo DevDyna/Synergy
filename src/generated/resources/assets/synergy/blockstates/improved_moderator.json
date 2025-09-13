@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "enabled=false": {
+      "model": "synergy:block/improved_moderatoroff"
+    },
+    "enabled=true": {
+      "model": "synergy:block/improved_moderatoron"
+    }
+  }
+}

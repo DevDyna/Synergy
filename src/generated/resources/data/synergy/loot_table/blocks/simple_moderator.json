@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:reactor_controller"
+          "name": "synergy:simple_moderator"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "synergy:blocks/reactor_controller"
+  "random_sequence": "synergy:blocks/simple_moderator"
 }

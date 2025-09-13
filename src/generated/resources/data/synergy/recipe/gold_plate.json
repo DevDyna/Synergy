@@ -4,7 +4,7 @@
   "group": "synergy",
   "key": {
     "I": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:gold_ingot"
     }
   },
   "pattern": [
@@ -12,6 +12,6 @@
   ],
   "result": {
     "count": 3,
-    "id": "synergy:iron_plate"
+    "id": "synergy:gold_plate"
   }
 }

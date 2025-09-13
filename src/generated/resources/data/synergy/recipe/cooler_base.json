@@ -5,13 +5,18 @@
   "key": {
     "I": {
       "item": "minecraft:iron_ingot"
+    },
+    "P": {
+      "item": "synergy:iron_plate"
     }
   },
   "pattern": [
-    "III"
+    "IPI",
+    "P P",
+    "IPI"
   ],
   "result": {
-    "count": 3,
-    "id": "synergy:iron_plate"
+    "count": 4,
+    "id": "synergy:cooler_base"
   }
 }

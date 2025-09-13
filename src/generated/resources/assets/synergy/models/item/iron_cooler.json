@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "synergy:block/double_layer",
   "textures": {
-    "all": "synergy:block/reactor/cooler/on"
+    "below": "minecraft:block/iron_block",
+    "top": "synergy:block/reactor/cooler/casing"
   }
 }

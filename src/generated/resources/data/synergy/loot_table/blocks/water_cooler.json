@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:graphite_moderator"
+          "name": "synergy:water_cooler"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "synergy:blocks/graphite_moderator"
+  "random_sequence": "synergy:blocks/water_cooler"
 }
