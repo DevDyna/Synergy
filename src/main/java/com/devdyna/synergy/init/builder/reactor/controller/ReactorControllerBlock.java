@@ -8,8 +8,14 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.coreBE.BaseBlockBE;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
+import com.devdyna.synergy.init.types.zItemTag;
+import com.devdyna.synergy.utils.PlayerUtil;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -23,6 +29,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.phys.BlockHitResult;
 
 @SuppressWarnings("null")
 public class ReactorControllerBlock extends BaseBlockBE {
@@ -45,6 +52,17 @@ public class ReactorControllerBlock extends BaseBlockBE {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
         b.add(BlockStateProperties.HORIZONTAL_FACING, STATUS, BlockStateProperties.ENABLED);
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (!player.isCrouching() && !level.isClientSide && hand.equals(InteractionHand.MAIN_HAND) && !stack.is(zItemTag.TOOLS_INTERACTIVE)
+                && level.getBlockEntity(pos) instanceof ReactorControllerBE be) {
+            PlayerUtil.messageActionBar("Heat: " + be.heat + " | FE: " + be.fe, player);
+            return ItemInteractionResult.SUCCESS;
+        }
+        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     @Override
