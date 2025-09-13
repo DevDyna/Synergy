@@ -27,4 +27,5 @@ public class zContainer {
     public static final DeferredHolder<MenuType<?>, MenuType<FuelCellMenu>> FUEL_CELL_MENU = zCTNR
             .register(zStatic.ReactorStuff.fuel_cell,
                     () -> IMenuTypeExtension.create(FuelCellMenu::new));
+
 }
