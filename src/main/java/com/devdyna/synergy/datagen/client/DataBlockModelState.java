@@ -47,15 +47,36 @@ public class DataBlockModelState extends BlockStateProvider {
 
                 simpleBlockDecorative(zBlocks.ADVANCED_ALLOY_BLOCK);
                 simpleBlockDecorative(zBlocks.STEEL_BLOCK);
+                simpleBlockDecorative(zBlocks.COOLER_BASE);
                 simpleBlockDecorative(zBlocks.ADOBE);
                 simpleBlockDecorative(zBlocks.RUSTIC_METAL);
                 simpleBlockDecorative(zBlocks.WAXED_PLANKS);
 
                 simpleFullBlock(zBlocks.HEALER, "");
                 simpleFullBlock(zBlocks.REACTOR_FUEL_CELL, "reactor/");
-                // simpleFullBlock(zBlocks.REACTOR_PORT, "reactor/");
-                simpleFlexibleBlock(zBlocks.IRON_COOLER, "reactor/cooler/on");
-                simpleFlexibleBlock(zBlocks.GRAPHITE_MODERATOR, "reactor/moderator/casing");
+
+                // simpleFlexibleBlock(zBlocks.COOLER_BASE, "reactor/cooler/base");
+
+                CoolerBlock(zBlocks.COPPER_COOLER, mcLoc("block/copper_block"));
+                CoolerBlock(zBlocks.GOLD_COOLER, mcLoc("block/gold_block"));
+                CoolerBlock(zBlocks.IRON_COOLER, mcLoc("block/iron_block"));
+                CoolerBlock(zBlocks.ENDER_COOLER, mcLoc("block/purpur_block"));
+                CoolerBlock(zBlocks.FROST_COOLER, mcLoc("block/blue_ice"));
+                CoolerBlock(zBlocks.LAPIS_COOLER, mcLoc("block/lapis_block"));
+                CoolerBlock(zBlocks.SCULK_COOLER, mcLoc("block/sculk"));
+                CoolerBlock(zBlocks.WATER_COOLER, mcLoc("block/ice"));
+                CoolerBlock(zBlocks.QUARTZ_COOLER, mcLoc("block/quartz_block_top"));
+                CoolerBlock(zBlocks.BIOMASS_COOLER, mcLoc("block/soul_sand"));
+                CoolerBlock(zBlocks.DIAMOND_COOLER, mcLoc("block/diamond_block"));
+                CoolerBlock(zBlocks.EMERALD_COOLER, mcLoc("block/emerald_block"));
+                CoolerBlock(zBlocks.REDSTONE_COOLER, mcLoc("block/redstone_block"));
+                CoolerBlock(zBlocks.GLOWSTONE_COOLER, mcLoc("block/glowstone"));
+                CoolerBlock(zBlocks.NETHERITE_COOLER, mcLoc("block/netherite_block"));
+
+                simpleBiState(zBlocks.SIMPLE_MODERATOR, "reactor/moderator/simple/");
+                simpleBiState(zBlocks.IMPROVED_MODERATOR, "reactor/moderator/improved/");
+                simpleBiState(zBlocks.ADVANCED_MODERATOR, "reactor/moderator/advanced/");
+                simpleBiState(zBlocks.ELITE_MODERATOR, "reactor/moderator/elite/");
 
                 crop(zBlocks.RICE.get(), 7, true, CropBlock.AGE);
                 crop(zBlocks.CAVE_WHEAT.get(), 5, true, BaseShortCropBlock.AGE);
@@ -104,11 +125,9 @@ public class DataBlockModelState extends BlockStateProvider {
 
         }
 
-
-        private void tinyChestAll(DeferredHolder<Block, Block> b,String texture){
+        private void tinyChestAll(DeferredHolder<Block, Block> b, String texture) {
                 tinyChest(b, texture, texture, texture, texture, texture, texture, texture);
         }
-
 
         private void tinyChest(DeferredHolder<Block, Block> b, String particles, String north, String south,
                         String east, String west, String up, String down) {
@@ -124,7 +143,7 @@ public class DataBlockModelState extends BlockStateProvider {
                                                 .texture("down", down));
         }
 
-                private void tinyUrn(DeferredHolder<Block, Block> b) {
+        private void tinyUrn(DeferredHolder<Block, Block> b) {
                 simpleBlock(b.get(),
                                 models().withExistingParent(b.getRegisteredName(),
                                                 modLoc("block/tiny_block/urn")));
@@ -143,22 +162,21 @@ public class DataBlockModelState extends BlockStateProvider {
                                 modLoc("block/" + loc)));
         }
 
-        // private void fan(Block b) {
-        // this.getVariantBuilder(b).forAllStates((state) -> {
-        // Direction dir = state.getValue(BlockStateProperties.FACING);
-        // boolean isEnable = state.getValue(BlockStateProperties.ENABLED);
-        // return ConfiguredModel.builder().modelFile(models().cubeBottomTop(
-        // zBlocks.FAN.get().getDescriptionId().replace("block." + ID + ".", "")
-        // +"_"+ (isEnable ? "on" : "off"),
-        // modLoc("block/fan/side"), modLoc("block/fan/back"),
-        // modLoc("block/fan/" + (isEnable ? "on" : "off"))))
-        // .rotationX(dir == Direction.DOWN ? 180
-        // : (dir.getAxis().isHorizontal() ? 90 : 0))
-        // .rotationY(dir.getAxis().isVertical() ? 0
-        // : ((int) dir.toYRot() + 180) % 360)
-        // .build();
-        // });
-        // }
+        private void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
+                simpleBlock(b.get(), models().withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
+                                .texture("top", "block/reactor/cooler/casing")
+                                .texture("below", below));
+        }
+
+        private void simpleBiState(DeferredHolder<Block, Block> b, String location) {
+
+                getVariantBuilder(b.get()).forAllStates((state) -> {
+                        String front = state.getValue(BlockStateProperties.ENABLED) ? "on" : "off";
+                        return ConfiguredModel.builder().modelFile(
+                                        models().cubeAll(b.getRegisteredName() + front, modLoc("block/"+location + front)))
+                                        .build();
+                });
+        }
 
         private void reactorController(DeferredHolder<Block, Block> b) {
 
