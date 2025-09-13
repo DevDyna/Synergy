@@ -9,16 +9,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class IronCooler extends CoolerBlockBase {
+public class CopperCooler extends CoolerBlockBase {
 
     @Override
     public boolean activeWhen(BlockState state, Level level, BlockPos pos) {
-        for (int i = 0; i < Direction.values().length; i++) {
-            var block = level.getBlockState(pos.relative(Direction.values()[i])).getBlock();
-            if (block instanceof GoldCooler g)
-                if (g.isActive(level, pos.relative(Direction.values()[i])))
-                   return true;
-        }
+        for (int i = 0; i < Direction.values().length; i++)
+            if (level.getBlockState(pos.relative(Direction.values()[i])).getBlock() instanceof GlowstoneCooler)
+                return true;
         return false;
     }
 
@@ -29,7 +26,8 @@ public class IronCooler extends CoolerBlockBase {
 
     @Override
     public Component conditions() {
-        return Component.translatable(Main.ID + "." + zStatic.ReactorStuff.cooler +"." + zStatic.ReactorStuff.CoolerTypes.IRON);
+        return Component
+                .translatable(Main.ID + "." + zStatic.ReactorStuff.cooler +"." + zStatic.ReactorStuff.CoolerTypes.COPPER);
     }
 
 }

@@ -9,27 +9,32 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class IronCooler extends CoolerBlockBase {
+public class NetheriteCooler extends CoolerBlockBase {
 
     @Override
     public boolean activeWhen(BlockState state, Level level, BlockPos pos) {
+        var s = false;
+        var gold = false;
         for (int i = 0; i < Direction.values().length; i++) {
             var block = level.getBlockState(pos.relative(Direction.values()[i])).getBlock();
+            if (block instanceof SculkCooler r)
+                if (r.isActive(level, pos.relative(Direction.values()[i])))
+                    s = true;
             if (block instanceof GoldCooler g)
                 if (g.isActive(level, pos.relative(Direction.values()[i])))
-                   return true;
+                    gold = true;
         }
-        return false;
+        return s && gold;
     }
 
     @Override
     public int getActiveCooling() {
-        return 80;
+        return 140;
     }
 
     @Override
     public Component conditions() {
-        return Component.translatable(Main.ID + "." + zStatic.ReactorStuff.cooler +"." + zStatic.ReactorStuff.CoolerTypes.IRON);
+        return Component.translatable(Main.ID + "." + zStatic.ReactorStuff.cooler+"." + zStatic.ReactorStuff.CoolerTypes.NETHERITE);
     }
 
 }

@@ -65,19 +65,23 @@ public abstract class CoolerBlockBase extends Block {
 
     public abstract Component conditions();
 
+    public boolean isActive(Level level,BlockPos pos){
+        return level.getBlockState(pos).getValue(BlockStateProperties.ENABLED);
+    }
+
     @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
 
         t.add(Component.translatable(Main.ID + "." +
-                zStatic.ReactorStuff.cooler));
+                zStatic.ReactorStuff.cooler+".desc"));
 
         if (f.hasShiftDown()) {
             t.add(conditions());
             t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.cooler + ".off")
-                    .append(" " + getBaseCooling()));
+                    .append("" + getBaseCooling()));
             t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.cooler + ".on")
-                    .append(" " + getActiveCooling()));
+                    .append("" + getActiveCooling()));
         } else {
             t.add(Component.translatable(Main.ID + "." + zStatic.tips.SHIFT));
         }

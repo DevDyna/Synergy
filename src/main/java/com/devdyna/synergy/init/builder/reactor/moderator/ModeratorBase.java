@@ -42,6 +42,10 @@ public abstract class ModeratorBase extends Block {
                 checkForCells(c.getLevel(), c.getClickedPos()));
     }
 
+    public boolean isActive(Level level,BlockPos pos){
+        return level.getBlockState(pos).getValue(BlockStateProperties.ENABLED);
+    }
+
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
             BlockPos neighborPos, boolean movedByPiston) {
@@ -61,13 +65,18 @@ public abstract class ModeratorBase extends Block {
                 zStatic.ReactorStuff.moderator));
 
         if (f.hasShiftDown()) {
+            t.add(conditions());
             t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".fe")
-                    .append(" " + FEReducer()));
+                    .append("" + FEReducer()));
             t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".heat")
-                    .append(" " + HeatReducer()));
+                    .append("" + HeatReducer()));
         } else {
             t.add(Component.translatable(Main.ID + "." + zStatic.tips.SHIFT));
         }
+    }
+
+    protected Component conditions(){
+        return Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".condition");
     }
 
     public abstract float FEReducer();
