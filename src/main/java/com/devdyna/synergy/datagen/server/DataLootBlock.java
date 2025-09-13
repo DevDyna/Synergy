@@ -44,6 +44,8 @@ public class DataLootBlock extends BlockLootSubProvider {
                         zBlocks.zDecorative,
                         zBlocks.zBlockStair,
                         zBlocks.zBlockSlab,
+                        zBlocks.zCoolers,
+                        zBlocks.zModerators,
                         // wip
                         zBlocks.zDepositBlocks,
                         zBlocks.zDepositOres);
@@ -58,7 +60,7 @@ public class DataLootBlock extends BlockLootSubProvider {
         @Override
         protected void generate() {
 
-                var dropSelfBlocks = List.of(
+                Set<DeferredHolder<Block, ? extends Block>> dropSelfBlocks = Set.of(
                                 zBlocks.MACHINE_FRAME,
                                 zBlocks.PIPE,
 
@@ -73,24 +75,29 @@ public class DataLootBlock extends BlockLootSubProvider {
 
                                 // zBlocks.REACTOR_PORT,
                                 zBlocks.REACTOR_CONTROLLER,
-                                zBlocks.IRON_COOLER,
-                                zBlocks.GRAPHITE_MODERATOR,
                                 zBlocks.REACTOR_FUEL_CELL,
+                                zBlocks.COOLER_BASE,
+
                                 zBlocks.WOODEN_TINY_CHEST,
                                 zBlocks.ORNATE_TINY_CHEST,
                                 zBlocks.STONE_TINY_CHEST,
+
                                 zBlocks.ADVANCED_MACHINE_FRAME,
                                 zBlocks.URN
 
                 );
+
                 dropSelfBlocks.forEach(b -> dropSelf(b.get()));
 
-                zBlocks.zBlockSlab.getEntries().forEach(b -> dropSelf(b.get()));
-                zBlocks.zBlockStair.getEntries().forEach(b -> dropSelf(b.get()));
+                var types = List.of(
+                                zBlocks.zModerators, zBlocks.zCoolers, zBlocks.zBlockSlab, zBlocks.zBlockStair,
+                                zBlocks.zDecorative
+
+                );
+
+                types.forEach(t -> t.getEntries().forEach(b -> dropSelf(b.get())));
 
                 azalea();
-
-                zBlocks.zDecorative.getEntries().forEach(b -> dropSelf(b.get()));
 
                 cropDrop7(zBlocks.RICE.get(), zItems.RICE_SEED.get(),
                                 zItems.RICE_SEED.get());
