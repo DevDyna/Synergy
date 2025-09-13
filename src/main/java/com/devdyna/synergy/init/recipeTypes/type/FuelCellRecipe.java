@@ -26,7 +26,7 @@ public class FuelCellRecipe implements Recipe<MonoItemInput> {
             ItemStack output, int duration, int fe, double heat) {
         this.input = input;
         this.output = output;
-        this.duration = duration;
+        this.duration = (duration < 1 ? 1 : duration);
         this.heat = heat;
         this.fe = fe;
     }
