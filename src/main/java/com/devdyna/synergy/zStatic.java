@@ -139,28 +139,38 @@ public class zStatic {
     }
 
     public class ReactorStuff {
-        public static String controller = "reactor_controller";
+        public static String controller = "quantum_reactor_controller";
         public static String cooler = "cooler";
         public static String fuel_cell = "fuel_cell";
         public static String moderator = "moderator";
-        public static String port = "reactor_port";
+        // public static String port = "reactor_port";
 
         public class CoolerTypes {
+
+            public static String base = cooler+"_base";
+
+            public static String BIOMASS = "biomass_" + cooler;
             public static String IRON = "iron_" + cooler;
             public static String GOLD = "gold_" + cooler;
-            public static String DIAMOND = "diamond_" + cooler;
             public static String REDSTONE = "redstone_" + cooler;
+            public static String GLOWSTONE = "glowstone_" + cooler;
             public static String LAPIS = "lapis_" + cooler;
+            public static String DIAMOND = "diamond_" + cooler;
+            public static String EMERALD = "emerald_" + cooler;
             public static String NETHERITE = "netherite_" + cooler;
+            public static String WATER = "water_" + cooler;
+            public static String SCULK = "sculk_" + cooler;
+            public static String QUARTZ = "quartz_" + cooler;
+            public static String FROST = "frost_" + cooler;
+            public static String ENDER = "ender_" + cooler;
+            public static String COPPER = "copper_" + cooler;
         }
 
         public class ModeratorTypes {
-            public static String COAL = "coal_" + moderator;
-            public static String GRAPHITE = "graphite_" + moderator;
-            public static String WATER = "water_" + moderator;
-            public static String HEAVY_WATER = "heavy_water_" + moderator;
-            public static String BERYLLIUM = "beryllium_" + moderator;
-            public static String HYDROCARBON = "hydrocarbon_" + moderator;
+            public static String SIMPLE = "simple_" + moderator;
+            public static String IMPROVED = "improved_" + moderator;
+            public static String ADVANCED = "advanced_" + moderator;
+            public static String ELITE = "elite_" + moderator;
         }
     }
 
