@@ -1,6 +1,6 @@
 package com.devdyna.synergy.client.gui.fuel_cell;
 
-import java.util.Set;
+import java.util.List;
 
 import com.devdyna.synergy.client.gui.screenLocations;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -22,9 +22,9 @@ public class FuelCellScreen extends AbstractContainerScreen<FuelCellMenu> implem
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
-        var textures = Set.of(PLAYER_INVENTORY, GUI_DOUBLE_WITH_SMART_ARROW, MACHINE_LABEL);
+        var textures = List.of(PLAYER_INVENTORY, MACHINE_LABEL, DARK_WINDOW, DARK_SLOTS);
 
-        textures.forEach(t -> RenderSystem.setShaderTexture(0, t));
+        textures.forEach(t -> RenderSystem.setShaderTexture(textures.indexOf(t), t));
 
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
@@ -36,7 +36,7 @@ public class FuelCellScreen extends AbstractContainerScreen<FuelCellMenu> implem
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if (menu.isCrafting()) {
-            guiGraphics.blit(PROGRESS_ARROW, x + 73, y + 35, 0, 0, menu.getScaledArrowProgress(), 16, 24, 16);
+            guiGraphics.blit(GREEN_PROGRESS_ARROW, x + 73, y + 35, 0, 0, menu.getScaledArrowProgress(), 16, 24, 16);
         }
     }
 

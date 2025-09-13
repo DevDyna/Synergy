@@ -11,15 +11,30 @@ public interface screenLocations {
                         "textures/gui/player.png");
 
         public static final ResourceLocation GUI_MONO_TINY = x.rl(ID,
-                        "textures/gui/mono/tiny.png");
+                        "textures/gui/tiny.png");
 
         public static final ResourceLocation MACHINE_LABEL = x.rl(ID,
                         "textures/gui/label.png");
 
-        public static final ResourceLocation GUI_DOUBLE_WITH_SMART_ARROW = x.rl(ID,
-                        "textures/gui/dual/with_smart_arrow.png");
+        public static final ResourceLocation DARK_WINDOW = x.rl(ID,
+                        "textures/gui/dark_window.png");
 
-        public static final ResourceLocation PROGRESS_ARROW = x.rl(ID,
-                        "textures/gui/progress_arrow.png");
+        public static final ResourceLocation DARK_SLOTS = x.rl(ID,
+                        "textures/gui/dark_slots.png");
+
+        public static final ResourceLocation JEI_DARK_SLOTS = x.rl(ID,
+                        "textures/gui/jei/dark_slots.png");
+
+        public static final ResourceLocation GREEN_PROGRESS_ARROW = x.rl(ID,
+                        "textures/gui/green_progress_arrow.png");
+
+        public static final ResourceLocation URN_WINDOW = x.rl(ID,
+                        "textures/gui/urn_window.png");
+
+        public static final ResourceLocation URN_ARROW = x.rl(ID,
+                        "textures/gui/urn_arrow.png");
+                        
+        public static final ResourceLocation BIG_DARK_WINDOW = x.rl(ID,
+                        "textures/gui/big_dark_window.png");
 
 }
