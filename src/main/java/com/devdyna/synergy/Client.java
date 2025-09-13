@@ -1,8 +1,6 @@
 package com.devdyna.synergy;
 
-import com.devdyna.synergy.client.aoe.HarvesterAOE;
-import com.devdyna.synergy.client.aoe.ReactorAOE;
-import com.devdyna.synergy.client.aoe.SprinklerAOE;
+import com.devdyna.synergy.client.aoe.*;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.client.gui.tiny_chest.TinyChestScreen;
 import com.devdyna.synergy.client.nodes.*;
