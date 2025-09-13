@@ -42,6 +42,14 @@ public class DataRecipe extends RecipeProvider {
         @Override
         protected void buildRecipes(RecipeOutput c) {
 
+                clearNBT.forEach(i -> {
+                        ShapelessRecipeBuilder.shapeless(MISC, i.get())
+                                        .requires(i.get())
+                                        .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance.hasItems(i.get()))
+                                        .group(ID)
+                                        .save(c, i.getRegisteredName() + "_clear_nbt");
+                });
+
                 nodeRecipe(zBlocks.ITEM_TRANSFER.get(), Blocks.CHEST, c);
                 nodeRecipe(zBlocks.ITEM_PROVIDER.get(), Items.IRON_PICKAXE, c);
                 nodeRecipe(zBlocks.ITEM_RETRIEVAL.get(), Blocks.HOPPER, c);
@@ -394,15 +402,6 @@ public class DataRecipe extends RecipeProvider {
                                                                 Items.IRON_INGOT, zItems.VIOLET_WEBCAP_MUSHROOM.get()))
                                 .group(ID).save(c);
 
-                // TODO JEI HIDE
-                clearNBT.forEach(i -> {
-                        ShapelessRecipeBuilder.shapeless(MISC, i.get())
-                                        .requires(i.get())
-                                        .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance.hasItems(i.get()))
-                                        .group(ID)
-                                        .save(c, i.getRegisteredName() + "_clear_nbt");
-                });
-
                 // TODO DEMO RECIPES , THIS NEED TO BE CHANGED!
                 FuelCellRecipeBuilder.of(zItems.RAW_SILICON.get(),
                                 zItems.SILICON.get(), 10, 20, 50)
@@ -410,10 +409,10 @@ public class DataRecipe extends RecipeProvider {
                                                 .hasItems(zItems.RAW_SILICON.get()))
                                 .save(c);
 
-                FuelCellRecipeBuilder.of(Items.IRON_INGOT,
-                                x.item(zItems.IRON_PLATE.get(), 2), 100, 4, 10.5)
+                FuelCellRecipeBuilder.of(zItems.URANIUM.get(),
+                                x.item(zItems.WASTE_FRAGMENT.get(), 3), 10000, 20, 50)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.IRON_INGOT))
+                                                .hasItems(zItems.URANIUM.get()))
                                 .save(c);
 
                 urn(c, "urn/", x.item(zItems.INFERNAL_EMBER, 2),
@@ -425,6 +424,39 @@ public class DataRecipe extends RecipeProvider {
 
                 urn(c, "urn/", x.item(zItems.GHOUL_HEART, 1),
                                 x.ingredient(zItems.ENDERMAN_HEART));
+
+                urn(c, "urn/", x.item(zItems.WASTE_FRAGMENT, 2),
+                                x.ingredient(zItems.CREEPER_GALL));
+
+                urn(c, "urn/", x.item(zItems.URANIUM, 1),
+                                x.ingredient(zItems.WASTE));
+
+                plate(Items.IRON_INGOT, zItems.IRON_PLATE.get(), c);
+                plate(Items.GOLD_INGOT, zItems.GOLD_PLATE.get(), c);
+                plate(Items.COPPER_INGOT, zItems.COPPER_PLATE.get(), c);
+                plate(zItems.STEEL_INGOT.get(), zItems.STEEL_PLATE.get(), c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.COOLER_BASE.get(), 4)
+                                .pattern("IPI")
+                                .pattern("P P")
+                                .pattern("IPI")
+                                .define('P', zItems.IRON_PLATE.get())
+                                .define('I', Items.IRON_INGOT)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.IRON_PLATE.get(),
+                                                                Items.IRON_INGOT))
+                                .group(ID).save(c);
+
+                nineBlockStorageRecipes(c, MISC, zItems.WASTE_FRAGMENT.get(), MISC, zItems.WASTE.get());
+        }
+
+        private void plate(Item input, Item output, RecipeOutput c) {
+                ShapedRecipeBuilder.shaped(MISC, output, 3)
+                                .pattern("III")
+                                .define('I', input)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(input))
+                                .group(ID).save(c);
         }
 
         private void urn(RecipeOutput c, String id, ItemStack output, Ingredient... input) {
