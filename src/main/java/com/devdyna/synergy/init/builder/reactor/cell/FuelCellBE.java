@@ -100,8 +100,6 @@ public class FuelCellBE extends BEMenu {
 
     private void resetProgress() {
         progress = 0;
-        // maxProgress =
-        // level.getBlockEntity(getBlockPos()).saveWithFullMetadata(level.registryAccess()).getInt(MAX_PROGRESS);
     }
 
     @Override
@@ -149,7 +147,6 @@ public class FuelCellBE extends BEMenu {
     protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         pTag.put("inventory", getStorage().serializeNBT(pRegistries));
         pTag.putInt(PROGRESS, progress);
-        // pTag.putInt(MAX_PROGRESS, maxProgress);
         super.saveAdditional(pTag, pRegistries);
     }
 
@@ -158,6 +155,5 @@ public class FuelCellBE extends BEMenu {
         super.loadAdditional(pTag, pRegistries);
         getStorage().deserializeNBT(pRegistries, pTag.getCompound("inventory"));
         progress = pTag.getInt(PROGRESS);
-        // maxProgress = pTag.getInt(MAX_PROGRESS);
     }
 }
