@@ -416,7 +416,7 @@ public class DataRecipe extends RecipeProvider {
                                 .duration(10_000)
                                 .energy(20)
                                 .heat(50)
-                                .group(ID).unlockedBy().save(c,true);
+                                .group(ID).unlockedBy().save(c, "_from_uranium");
 
                 ReactorCellBuilder.of()
                                 .input(zItemTag.THORIUM)
@@ -424,7 +424,7 @@ public class DataRecipe extends RecipeProvider {
                                 .duration(25_000)
                                 .energy(80)
                                 .heat(90)
-                                .group(ID).unlockedBy().save(c,true);
+                                .group(ID).unlockedBy().save(c, "_from_thorium");
 
                 ReactorCellBuilder.of()
                                 .input(zItemTag.PLUTONIUM)
@@ -432,7 +432,7 @@ public class DataRecipe extends RecipeProvider {
                                 .duration(50_000)
                                 .energy(160)
                                 .heat(180)
-                                .group(ID).unlockedBy().save(c,true);
+                                .group(ID).unlockedBy().save(c, "_from_plutonium");
 
                 ReactorCellBuilder.of()
                                 .input(zItemTag.NEPTUNIUM)
@@ -440,7 +440,7 @@ public class DataRecipe extends RecipeProvider {
                                 .duration(75_000)
                                 .energy(300)
                                 .heat(350)
-                                .group(ID).unlockedBy().save(c,true);
+                                .group(ID).unlockedBy().save(c, "_from_neptunium");
 
                 ReactorCellBuilder.of()
                                 .input(zItemTag.AMERICIUM)
@@ -448,7 +448,7 @@ public class DataRecipe extends RecipeProvider {
                                 .duration(150_000)
                                 .energy(750)
                                 .heat(1040)
-                                .group(ID).unlockedBy().save(c,true);
+                                .group(ID).unlockedBy().save(c, "_from_americium");
 
                 ReactorCellBuilder.of()
                                 .input(zItemTag.BERKELIUM)
@@ -456,7 +456,7 @@ public class DataRecipe extends RecipeProvider {
                                 .duration(300_000)
                                 .energy(1500)
                                 .heat(1700)
-                                .group(ID).unlockedBy().save(c,true);
+                                .group(ID).unlockedBy().save(c, "_from_berkelium");
 
                 ReactorCellBuilder.of()
                                 .input(zItemTag.CALIFORNIUM)
@@ -464,7 +464,7 @@ public class DataRecipe extends RecipeProvider {
                                 .duration(750_000)
                                 .energy(2700)
                                 .heat(3500)
-                                .group(ID).unlockedBy().save(c,true);
+                                .group(ID).unlockedBy().save(c, "_from_californium");
 
                 ReactorCellBuilder.of()
                                 .input(zItemTag.CURIUM)
@@ -472,7 +472,7 @@ public class DataRecipe extends RecipeProvider {
                                 .duration(1_250_000)
                                 .energy(3500)
                                 .heat(7500)
-                                .group(ID).unlockedBy().save(c,true);
+                                .group(ID).unlockedBy().save(c, "_from_curium");
 
                 UrnRitualBuilder.of()
                                 .add(Items.BLAZE_POWDER)
