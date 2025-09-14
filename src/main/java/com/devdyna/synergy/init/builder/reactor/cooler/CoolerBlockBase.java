@@ -52,7 +52,8 @@ public abstract class CoolerBlockBase extends Block {
     public abstract boolean activeWhen(BlockState state, Level level, BlockPos pos);
 
     /**
-     * Override to set ON cooling
+     * Override to set ON cooling <br/><br/>
+     * <strong>NOTE:</strong> This should return a negative value <i>else will increase heat value</i>!
      */
     public abstract int getActiveCooling();
 
