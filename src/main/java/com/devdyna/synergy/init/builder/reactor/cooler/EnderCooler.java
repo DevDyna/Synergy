@@ -15,8 +15,9 @@ public class EnderCooler extends CoolerBlockBase {
         var cool = 0;
         for (int i = 0; i < Direction.values().length; i++) {
             var block = level.getBlockState(pos.relative(Direction.values()[i])).getBlock();
-            if (block instanceof CoolerBlockBase)
-                cool++;
+            if (block instanceof CoolerBlockBase cooler)
+                if (!(cooler instanceof EnderCooler))
+                    cool++;
         }
         return cool >= 3;
     }
@@ -29,7 +30,8 @@ public class EnderCooler extends CoolerBlockBase {
     @Override
     public Component conditions() {
         return Component
-                .translatable(Main.ID + "." + zStatic.ReactorStuff.cooler +"." + zStatic.ReactorStuff.CoolerTypes.ENDER);
+                .translatable(
+                        Main.ID + "." + zStatic.ReactorStuff.cooler + "." + zStatic.ReactorStuff.CoolerTypes.ENDER);
     }
 
 }
