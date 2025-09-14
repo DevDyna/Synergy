@@ -88,6 +88,14 @@ public class x {
         return item(i.get(), c);
     }
 
+    public static ItemStack item(Item i) {
+        return new ItemStack(i);
+    }
+
+    public static ItemStack item(DeferredHolder<Item, Item> i) {
+        return item(i.get());
+    }
+
     public static Ingredient ingredient(Item i) {
         return Ingredient.of(i);
     }
