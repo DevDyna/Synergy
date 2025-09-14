@@ -1,5 +1,8 @@
 package com.devdyna.synergy.utils;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class StringUtil {
     public static String getModName(String traslationName) {
         String[] parts = traslationName.split("\\.");
@@ -10,8 +13,16 @@ public class StringUtil {
         }
     }
 
-    //example string -> String
+    // example string -> String
     public static String nameCapitalized(String name) {
         return name.substring(0, 1).toUpperCase() + name.substring(1);
     }
+
+    public static NumberFormat getFormat(){
+        NumberFormat format = NumberFormat.getCompactNumberInstance(Locale.US, NumberFormat.Style.SHORT);
+        format.setMaximumFractionDigits(1);
+        format.setMinimumFractionDigits(1);
+        return format;
+    }
+
 }
