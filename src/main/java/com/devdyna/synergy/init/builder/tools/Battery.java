@@ -1,14 +1,12 @@
 package com.devdyna.synergy.init.builder.tools;
 
-import java.text.NumberFormat;
 import java.util.List;
-import java.util.Locale;
-
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.init.types.zComponents;
 import com.devdyna.synergy.init.types.zHandlers;
+import com.devdyna.synergy.utils.StringUtil;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -70,13 +68,6 @@ public class Battery extends Item {
         return super.useOn(c);
     }
 
-    private String decorateNumbers(int number) {
-        NumberFormat format = NumberFormat.getCompactNumberInstance(Locale.US, NumberFormat.Style.SHORT);
-        format.setMaximumFractionDigits(1);
-        format.setMinimumFractionDigits(1);
-        return format.format(number);
-    }
-
     @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
@@ -86,9 +77,9 @@ public class Battery extends Item {
                 .append(Component.literal(
                         (i.get(zComponents.FE_STORED) == null ? "0"
                                 : (f.hasShiftDown() ? i.get(zComponents.FE_STORED).intValue()
-                                        : decorateNumbers(i.get(zComponents.FE_STORED).intValue())) + "")
+                                        : StringUtil.getFormat().format(i.get(zComponents.FE_STORED).intValue())) + "")
                                 + "/"
-                                + (f.hasShiftDown() ? capacity : decorateNumbers(capacity)))
+                                + (f.hasShiftDown() ? capacity : StringUtil.getFormat().format(capacity)))
                         .withStyle(ChatFormatting.RED)));
     }
 }
