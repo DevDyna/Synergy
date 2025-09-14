@@ -65,6 +65,7 @@
 - [ ] Rocket Launcher
 - [ ] Planter (farmland like but bypass conditions)
 - [ ] Truffles
+- [ ] Mindustry/DE like Fusion Reactor (?)
 
 _IC2 like_
 
