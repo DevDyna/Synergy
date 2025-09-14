@@ -29,7 +29,7 @@ public class BiomassCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return 10;
+        return -10;
     }
 
     @Override

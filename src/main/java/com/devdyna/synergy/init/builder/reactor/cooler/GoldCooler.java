@@ -28,7 +28,7 @@ public class GoldCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return 120;
+        return -120;
     }
 
     @Override

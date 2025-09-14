@@ -26,7 +26,7 @@ public class GlowstoneCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return 130;
+        return -130;
     }
 
     @Override

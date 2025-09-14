@@ -28,7 +28,7 @@ public class DiamondCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return 150;
+        return -150;
     }
 
     @Override

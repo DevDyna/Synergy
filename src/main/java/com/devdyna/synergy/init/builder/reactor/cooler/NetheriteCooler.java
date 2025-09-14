@@ -29,7 +29,7 @@ public class NetheriteCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return 140;
+        return -140;
     }
 
     @Override

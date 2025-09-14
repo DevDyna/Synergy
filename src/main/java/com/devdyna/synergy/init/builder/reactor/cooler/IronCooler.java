@@ -24,7 +24,7 @@ public class IronCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return 80;
+        return -80;
     }
 
     @Override

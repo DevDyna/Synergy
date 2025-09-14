@@ -23,7 +23,7 @@ public class RedstoneCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return 90;
+        return -90;
     }
 
     @Override

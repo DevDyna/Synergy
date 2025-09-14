@@ -24,7 +24,7 @@ public class SculkCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return 120;
+        return -120;
     }
 
     @Override

@@ -25,7 +25,7 @@ public class WaterCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return 60;
+        return -60;
     }
 
     @Override

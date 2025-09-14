@@ -29,7 +29,7 @@ public class EmeraldCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return 160;
+        return -160;
     }
 
     @Override
