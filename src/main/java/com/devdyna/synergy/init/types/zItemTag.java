@@ -36,4 +36,6 @@ public class zItemTag {
     public static final TagKey<Item> THORIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.thorium, "c");
     public static final TagKey<Item> URANIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.uranium, "c");
 
+public static final TagKey<Item> COAL_LIKE = Material.tagItem("coal_like", "c");
+
 }
