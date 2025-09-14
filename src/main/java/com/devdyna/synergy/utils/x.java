@@ -7,6 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -92,8 +93,8 @@ public class x {
         return new ItemStack(i);
     }
 
-    public static ItemStack item(DeferredHolder<Item, Item> i) {
-        return item(i.get());
+    public static ItemStack item(DeferredHolder<? extends ItemLike, ?> holder) {
+        return x.item(holder.get().asItem());
     }
 
     public static Ingredient ingredient(Item i) {
