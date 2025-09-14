@@ -400,8 +400,6 @@ public class DataRecipe extends RecipeProvider {
                                                                 Items.IRON_INGOT, zItems.VIOLET_WEBCAP_MUSHROOM.get()))
                                 .group(ID).save(c);
 
-                // TODO DEMO RECIPES , THIS NEED TO BE CHANGED!
-
                 ReactorCellBuilder.of()
                                 .input(zItems.RAW_SILICON)
                                 .output(zItems.SILICON)
