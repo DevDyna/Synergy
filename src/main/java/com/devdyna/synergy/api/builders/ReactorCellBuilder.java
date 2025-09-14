@@ -117,7 +117,7 @@ public class ReactorCellBuilder implements RecipeBuilder {
 
     public void save(RecipeOutput recipeOutput, Boolean applyInput) {
         this.save(recipeOutput, x.rl("reactor_reaction/" + x.path(output.getItem())
-                + (applyInput ? "_from_" + x.path(input.getItems()[0].getItem()) : "")));
+                + (applyInput ? "_from_" + input.toString() : "")));
     }
 
     @Override
