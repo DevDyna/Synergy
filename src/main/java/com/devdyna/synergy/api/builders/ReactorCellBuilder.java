@@ -115,9 +115,14 @@ public class ReactorCellBuilder implements RecipeBuilder {
         return this.output.getItem();
     }
 
+    public void save(RecipeOutput recipeOutput, Boolean applyInput) {
+        this.save(recipeOutput, x.rl("reactor_reaction/" + x.path(output.getItem())
+                + (applyInput ? "_from_" + x.path(input.getItems()[0].getItem()) : "")));
+    }
+
     @Override
     public void save(RecipeOutput recipeOutput) {
-        this.save(recipeOutput, x.rl("reactor_reaction/" + x.path(output.getItem())));
+        save(recipeOutput, false);
     }
 
     public void save(RecipeOutput pRecipeOutput, ResourceLocation pId) {
