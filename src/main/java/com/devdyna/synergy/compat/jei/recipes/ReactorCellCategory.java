@@ -82,11 +82,11 @@ public class ReactorCellCategory implements IRecipeCategory<FuelCellRecipe> {
                                 : recipe.getDuration() + " tick" + (recipe.getDuration() > 1 ? "s" : ""))),
                 45, 5, 0xA0A0A0);
 
-        guiGraphics.drawString(font, (recipe.getHeat() >= 0 ? "+" : "") + recipe.getHeat() + "°",
-                5, 40, 0xA0A0A0);
+        guiGraphics.drawString(font, (recipe.getHeat() >= 0 ? "Heat +" : "") + recipe.getHeat() + "°/t",
+                25, 40, 0xA0A0A0);
 
-        guiGraphics.drawString(font, (recipe.getFe() >= 0 ? "+" : "") + recipe.getFe() + " fe",
-                5, 50, 0xA0A0A0);
+        guiGraphics.drawString(font, (recipe.getFe() >= 0 ? "FE +" : "") + recipe.getFe() + " /t",
+                25, 50, 0xA0A0A0);
 
     }
 
