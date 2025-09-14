@@ -86,3 +86,4 @@ _IC2 like_
 - [ ] Farmer delight Rice cannot be harvested with Harvester
 - [ ] Farmer delight auto-harvest toggle
 - [ ] Mushrooms can replace water
+- [ ] Hold Shift tooltips dont work on JEI (need to investigate)
