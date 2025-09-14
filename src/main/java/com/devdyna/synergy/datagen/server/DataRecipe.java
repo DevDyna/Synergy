@@ -405,52 +405,106 @@ public class DataRecipe extends RecipeProvider {
                 ReactorCellBuilder.of()
                                 .input(zItems.RAW_SILICON)
                                 .output(zItems.SILICON)
-                                .duration(10000)
-                                .energy(20)
-                                .heat(50)
-                                .unlockedBy()
-                                .save(c);
+                                .duration(1_000)
+                                .energy(5)
+                                .heat(10)
+                                .group(ID).unlockedBy().save(c);
 
                 ReactorCellBuilder.of()
-                                .input(zItems.URANIUM)
+                                .input(zItemTag.URANIUM)
                                 .output(zItems.WASTE_FRAGMENT, 3)
-                                .duration(10000)
+                                .duration(10_000)
                                 .energy(20)
                                 .heat(50)
-                                .unlockedBy()
-                                .save(c);
+                                .group(ID).unlockedBy().save(c);
+
+                ReactorCellBuilder.of()
+                                .input(zItemTag.THORIUM)
+                                .output(zItems.WASTE_FRAGMENT, 6)
+                                .duration(25_000)
+                                .energy(80)
+                                .heat(90)
+                                .group(ID).unlockedBy().save(c);
+
+                ReactorCellBuilder.of()
+                                .input(zItemTag.PLUTONIUM)
+                                .output(zItems.WASTE_FRAGMENT, 9)
+                                .duration(50_000)
+                                .energy(160)
+                                .heat(180)
+                                .group(ID).unlockedBy().save(c);
+
+                ReactorCellBuilder.of()
+                                .input(zItemTag.NEPTUNIUM)
+                                .output(zItems.WASTE_FRAGMENT, 12)
+                                .duration(75_000)
+                                .energy(300)
+                                .heat(350)
+                                .group(ID).unlockedBy().save(c);
+
+                ReactorCellBuilder.of()
+                                .input(zItemTag.AMERICIUM)
+                                .output(zItems.WASTE_FRAGMENT, 15)
+                                .duration(150_000)
+                                .energy(750)
+                                .heat(1040)
+                                .group(ID).unlockedBy().save(c);
+
+                ReactorCellBuilder.of()
+                                .input(zItemTag.BERKELIUM)
+                                .output(zItems.WASTE_FRAGMENT, 18)
+                                .duration(300_000)
+                                .energy(1500)
+                                .heat(1700)
+                                .group(ID).unlockedBy().save(c);
+
+                ReactorCellBuilder.of()
+                                .input(zItemTag.CALIFORNIUM)
+                                .output(zItems.WASTE_FRAGMENT, 21)
+                                .duration(750_000)
+                                .energy(2700)
+                                .heat(3500)
+                                .group(ID).unlockedBy().save(c);
+
+                ReactorCellBuilder.of()
+                                .input(zItemTag.CURIUM)
+                                .output(zItems.WASTE_FRAGMENT, 24)
+                                .duration(1_250_000)
+                                .energy(3500)
+                                .heat(7500)
+                                .group(ID).unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
                                 .add(Items.BLAZE_POWDER)
-                                .add(Items.BLAZE_POWDER)
-                                .add(Items.COAL)
+                                .add(zItemTag.COAL_LIKE)
                                 .output(zItems.INFERNAL_EMBER, 2)
-                                .unlockedBy().save(c);
+                                .group(ID).unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
                                 .add(zItems.SILVERFISH_DUST)
                                 .output(zItems.SILICON_SHARD, 4)
-                                .unlockedBy().save(c);
+                                .group(ID).unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
                                 .add(zItems.CREEPER_GALL)
                                 .output(zItems.WASTE_FRAGMENT, 2)
-                                .unlockedBy().save(c);
+                                .group(ID).unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
                                 .add(zItems.ENDERMAN_HEART)
                                 .output(zItems.GHOUL_HEART, 1)
-                                .unlockedBy().save(c);
+                                .group(ID).unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
                                 .add(zItems.WASTE)
                                 .output(zItems.URANIUM, 1)
-                                .unlockedBy().save(c);
+                                .group(ID).unlockedBy().save(c);
 
                 plate(Items.IRON_INGOT, zItems.IRON_PLATE.get(), c);
                 plate(Items.GOLD_INGOT, zItems.GOLD_PLATE.get(), c);
                 plate(Items.COPPER_INGOT, zItems.COPPER_PLATE.get(), c);
                 plate(zItems.STEEL_INGOT.get(), zItems.STEEL_PLATE.get(), c);
+                nineBlockStorageRecipes(c, MISC, zItems.WASTE_FRAGMENT.get(), MISC, zItems.WASTE.get());
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.COOLER_BASE.get(), 4)
                                 .pattern("IPI")
@@ -463,7 +517,6 @@ public class DataRecipe extends RecipeProvider {
                                                                 Items.IRON_INGOT))
                                 .group(ID).save(c);
 
-                nineBlockStorageRecipes(c, MISC, zItems.WASTE_FRAGMENT.get(), MISC, zItems.WASTE.get());
         }
 
         private void plate(Item input, Item output, RecipeOutput c) {
