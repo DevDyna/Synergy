@@ -162,7 +162,7 @@ public class DataLang extends LanguageProvider {
                                 "one Glowstone Cooler",
                                 "one active Water Cooler and one active Quartz Cooler",
                                 "one Fuel Cell and one Moderator",
-                                "three Cooler",
+                                "three Cooler but not this",
                                 "two Fuel Cell",
                                 "two active Moderators",
                                 "one active Water Cooler and one active Redstone Cooler",
