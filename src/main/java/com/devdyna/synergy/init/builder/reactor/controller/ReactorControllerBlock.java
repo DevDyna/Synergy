@@ -8,7 +8,6 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.coreBE.BaseBlockBE;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
-import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.utils.PlayerUtil;
 import com.devdyna.synergy.utils.StringUtil;
 
@@ -59,14 +58,14 @@ public class ReactorControllerBlock extends BaseBlockBE {
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!player.isCrouching() && !level.isClientSide && hand.equals(InteractionHand.MAIN_HAND)
-                && !stack.is(zItemTag.TOOLS_INTERACTIVE)
+                && stack.isEmpty()
                 && level.getBlockEntity(pos) instanceof ReactorControllerBE be) {
 
-            PlayerUtil.messageActionBar("Heat: "
-                    + (be.heat > 0 ? "§c" : "§2") +
+            PlayerUtil.messageActionBar(
+                     (be.heat > 0 ? "§c" : "§a") +
                     StringUtil.getFormat().format(be.heat)
-                    + "§f | FE: " +
-                    StringUtil.getFormat().format(be.fe), player);
+                    + "°/t§f | §6" +
+                    StringUtil.getFormat().format(be.fe)+"fe/t", player);
 
             return ItemInteractionResult.SUCCESS;
         }
