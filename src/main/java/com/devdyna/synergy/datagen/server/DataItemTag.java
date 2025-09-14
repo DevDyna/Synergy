@@ -73,6 +73,8 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.THORIUM).add(zItems.THORIUM.get());
                 tag(zItemTag.URANIUM).add(zItems.URANIUM.get());
 
+                tag(zItemTag.COAL_LIKE).add(Items.COAL, Items.CHARCOAL);
+
         }
 
 }
