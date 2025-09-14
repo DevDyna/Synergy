@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.builders.FuelCellRecipeBuilder;
-import com.devdyna.synergy.init.recipeTypes.type.UrnRitualRecipe;
+import com.devdyna.synergy.api.builders.*;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.x;
 
@@ -18,7 +17,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -403,33 +401,51 @@ public class DataRecipe extends RecipeProvider {
                                 .group(ID).save(c);
 
                 // TODO DEMO RECIPES , THIS NEED TO BE CHANGED!
-                FuelCellRecipeBuilder.of(zItems.RAW_SILICON.get(),
-                                zItems.SILICON.get(), 10, 20, 50)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.RAW_SILICON.get()))
+
+                ReactorCellBuilder.of()
+                                .input(zItems.RAW_SILICON)
+                                .output(zItems.SILICON)
+                                .duration(10000)
+                                .energy(20)
+                                .heat(50)
+                                .unlockedBy()
                                 .save(c);
 
-                FuelCellRecipeBuilder.of(zItems.URANIUM.get(),
-                                x.item(zItems.WASTE_FRAGMENT.get(), 3), 10000, 20, 50)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.URANIUM.get()))
+                ReactorCellBuilder.of()
+                                .input(zItems.URANIUM)
+                                .output(zItems.WASTE_FRAGMENT, 3)
+                                .duration(10000)
+                                .energy(20)
+                                .heat(50)
+                                .unlockedBy()
                                 .save(c);
 
-                urn(c, "urn/", x.item(zItems.INFERNAL_EMBER, 2),
-                                x.ingredient(Items.COAL), x.ingredient(Items.BLAZE_POWDER),
-                                x.ingredient(Items.BLAZE_POWDER));
+                UrnRitualBuilder.of()
+                                .add(Items.BLAZE_POWDER)
+                                .add(Items.BLAZE_POWDER)
+                                .add(Items.COAL)
+                                .output(zItems.INFERNAL_EMBER, 2)
+                                .unlockedBy().save(c);
 
-                urn(c, "urn/", x.item(zItems.SILICON_SHARD, 4),
-                                x.ingredient(zItems.SILVERFISH_DUST));
+                UrnRitualBuilder.of()
+                                .add(zItems.SILVERFISH_DUST)
+                                .output(zItems.SILICON_SHARD, 4)
+                                .unlockedBy().save(c);
 
-                urn(c, "urn/", x.item(zItems.GHOUL_HEART, 1),
-                                x.ingredient(zItems.ENDERMAN_HEART));
+                UrnRitualBuilder.of()
+                                .add(zItems.CREEPER_GALL)
+                                .output(zItems.WASTE_FRAGMENT, 2)
+                                .unlockedBy().save(c);
 
-                urn(c, "urn/", x.item(zItems.WASTE_FRAGMENT, 2),
-                                x.ingredient(zItems.CREEPER_GALL));
+                UrnRitualBuilder.of()
+                                .add(zItems.ENDERMAN_HEART)
+                                .output(zItems.GHOUL_HEART, 1)
+                                .unlockedBy().save(c);
 
-                urn(c, "urn/", x.item(zItems.URANIUM, 1),
-                                x.ingredient(zItems.WASTE));
+                UrnRitualBuilder.of()
+                                .add(zItems.WASTE)
+                                .output(zItems.URANIUM, 1)
+                                .unlockedBy().save(c);
 
                 plate(Items.IRON_INGOT, zItems.IRON_PLATE.get(), c);
                 plate(Items.GOLD_INGOT, zItems.GOLD_PLATE.get(), c);
@@ -457,10 +473,6 @@ public class DataRecipe extends RecipeProvider {
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(input))
                                 .group(ID).save(c);
-        }
-
-        private void urn(RecipeOutput c, String id, ItemStack output, Ingredient... input) {
-                c.accept(x.rl(id + x.path(output.getItem())), UrnRitualRecipe.of(output, input), null);
         }
 
         // nodes
