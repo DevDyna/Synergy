@@ -10,6 +10,7 @@ import com.devdyna.synergy.api.coreBE.BaseBlockBE;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
 import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.utils.PlayerUtil;
+import com.devdyna.synergy.utils.StringUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -57,9 +58,16 @@ public class ReactorControllerBlock extends BaseBlockBE {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (!player.isCrouching() && !level.isClientSide && hand.equals(InteractionHand.MAIN_HAND) && !stack.is(zItemTag.TOOLS_INTERACTIVE)
+        if (!player.isCrouching() && !level.isClientSide && hand.equals(InteractionHand.MAIN_HAND)
+                && !stack.is(zItemTag.TOOLS_INTERACTIVE)
                 && level.getBlockEntity(pos) instanceof ReactorControllerBE be) {
-            PlayerUtil.messageActionBar("Heat: " + be.heat + " | FE: " + be.fe, player);
+
+            PlayerUtil.messageActionBar("Heat: "
+                    + (be.heat > 0 ? "§c" : "§2") +
+                    StringUtil.getFormat().format(be.heat)
+                    + "§f | FE: " +
+                    StringUtil.getFormat().format(be.fe), player);
+
             return ItemInteractionResult.SUCCESS;
         }
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
