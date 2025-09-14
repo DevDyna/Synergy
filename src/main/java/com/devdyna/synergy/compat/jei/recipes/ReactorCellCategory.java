@@ -30,12 +30,13 @@ import net.minecraft.world.item.ItemStack;
 public class ReactorCellCategory implements IRecipeCategory<FuelCellRecipe> {
 
     private final IGuiHelper helper;
-    public static final RecipeType<FuelCellRecipe> TYPE = new RecipeType<>(x.rl(ID, zRecipeTypes.FUEL_CELL_RECIPE.getId()),
+    public static final RecipeType<FuelCellRecipe> TYPE = new RecipeType<>(
+            x.rl(ID, zRecipeTypes.FUEL_CELL_RECIPE.getId()),
             FuelCellRecipe.class);
 
     public ReactorCellCategory(IGuiHelper helper) {
         this.helper = helper;
-        //TODO arrow animation return
+        // TODO arrow animation return
     }
 
     @Override
@@ -60,7 +61,7 @@ public class ReactorCellCategory implements IRecipeCategory<FuelCellRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, FuelCellRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 34, 17).addItemStack(recipe.getInput());
+        builder.addSlot(RecipeIngredientRole.INPUT, 34, 17).addIngredients(recipe.getInput());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 84, 17).addItemStack(recipe.getOutput());
     }
 
