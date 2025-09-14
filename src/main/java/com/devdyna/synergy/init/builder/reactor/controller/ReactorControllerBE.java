@@ -112,7 +112,7 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
             }
 
             if (block instanceof CoolerBlockBase cooler) {
-                heat -= (level.getBlockState(pos).getValue(BlockStateProperties.ENABLED)
+                heat += (level.getBlockState(pos).getValue(BlockStateProperties.ENABLED)
                         ? cooler.getActiveCooling()
                         : cooler.getBaseCooling());
             }
