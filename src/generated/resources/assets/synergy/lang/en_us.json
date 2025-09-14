@@ -146,7 +146,7 @@
   "synergy.cooler.desc": "§7Reduce Heat based on some conditions",
   "synergy.cooler.diamond_cooler": "§7Require at least one active Water Cooler and one active Quartz Cooler",
   "synergy.cooler.emerald_cooler": "§7Require at least one Fuel Cell and one Moderator",
-  "synergy.cooler.ender_cooler": "§7Require at least three Cooler",
+  "synergy.cooler.ender_cooler": "§7Require at least three Cooler but not this",
   "synergy.cooler.frost_cooler": "§7Require at least two Fuel Cell",
   "synergy.cooler.glowstone_cooler": "§7Require at least two active Moderators",
   "synergy.cooler.gold_cooler": "§7Require at least one active Water Cooler and one active Redstone Cooler",
