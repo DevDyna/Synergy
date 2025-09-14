@@ -114,10 +114,10 @@ public class DataLang extends LanguageProvider {
                 // TIP_COLOR + "DESC");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".off",
-                                TIP_COLOR + "Deactive: -");
+                                TIP_COLOR + "Deactive: ");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".on",
-                                TIP_COLOR + "Active: -");
+                                TIP_COLOR + "Active: ");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.moderator + ".fe",
                                 TIP_COLOR + "Fe: x");
@@ -177,7 +177,7 @@ public class DataLang extends LanguageProvider {
                 coolerTypes.forEach(t -> {
                         add(
                                         Main.ID + "." + zStatic.ReactorStuff.cooler + "." + t,
-                                        TIP_COLOR+"Require at least " + langCooler.get(coolerTypes.indexOf(t)));
+                                        TIP_COLOR + "Require at least " + langCooler.get(coolerTypes.indexOf(t)));
                 });
 
         }
