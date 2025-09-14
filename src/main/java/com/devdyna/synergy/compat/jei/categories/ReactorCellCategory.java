@@ -1,4 +1,4 @@
-package com.devdyna.synergy.compat.jei.recipes;
+package com.devdyna.synergy.compat.jei.categories;
 
 import static com.devdyna.synergy.Main.ID;
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
-import com.devdyna.synergy.compat.jei.recipes.ReactorCellCategory;
+import com.devdyna.synergy.compat.jei.categories.ReactorCellCategory;
 import com.devdyna.synergy.datagen.server.DataRecipe;
 import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
