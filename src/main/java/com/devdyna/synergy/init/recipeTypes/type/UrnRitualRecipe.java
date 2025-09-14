@@ -35,7 +35,7 @@ public class UrnRitualRecipe implements Recipe<ItemListInput> {
         return new UrnRitualRecipe(inputs, output);
     }
 
-        public static UrnRitualRecipe of(ItemStack output,Ingredient... inputs ) {
+    public static UrnRitualRecipe of(ItemStack output, Ingredient... inputs) {
         return new UrnRitualRecipe(Arrays.asList(inputs), output);
     }
 
