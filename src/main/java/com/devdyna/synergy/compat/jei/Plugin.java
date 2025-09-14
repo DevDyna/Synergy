@@ -27,7 +27,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 
-@SuppressWarnings("null")
+@SuppressWarnings({ "unchecked", "unlikely-arg-type", "null" })
 @JeiPlugin
 public class Plugin implements IModPlugin {
 
@@ -36,7 +36,6 @@ public class Plugin implements IModPlugin {
         return x.rl(ID, "jei_plugin");
     }
 
-    @SuppressWarnings({ "unchecked", "unlikely-arg-type" })
     @Override
     public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
 
@@ -55,6 +54,7 @@ public class Plugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration r) {
+        r.addRecipeCatalyst(x.item(zBlocks.REACTOR_CONTROLLER.get().asItem(), 1), ReactorCellCategory.TYPE);
         r.addRecipeCatalyst(x.item(zBlocks.REACTOR_FUEL_CELL.get().asItem(), 1), ReactorCellCategory.TYPE);
     }
 
