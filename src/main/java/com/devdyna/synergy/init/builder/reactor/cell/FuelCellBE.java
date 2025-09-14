@@ -92,6 +92,7 @@ public class FuelCellBE extends BEMenu {
     }
 
     private void craftItem() {
+        //TODO implement item caching to prevent fe extraction loop
         ItemStack output = getRecipe().get().value().getOutput();
         getStorage().extractItem(INPUT_SLOT, 1, false);
         getStorage().setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
