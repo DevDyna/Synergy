@@ -104,14 +104,14 @@ public class UrnRitualBuilder implements RecipeBuilder {
         return this.output.getItem();
     }
 
-    @Override
-    public void save(RecipeOutput recipeOutput, String extra) {
-        this.save(recipeOutput, x.rl("urn_ritual/" + x.path(output.getItem()) + extra));
+    public void save(RecipeOutput recipeOutput, Boolean applyInput) {
+        this.save(recipeOutput, x.rl("urn_ritual/" + x.path(output.getItem())
+                + (applyInput ? "_from_" + input.toString() : "")));
     }
 
     @Override
     public void save(RecipeOutput recipeOutput) {
-        save(recipeOutput, "");
+        save(recipeOutput, false);
     }
 
     public void save(RecipeOutput pRecipeOutput, ResourceLocation pId) {
