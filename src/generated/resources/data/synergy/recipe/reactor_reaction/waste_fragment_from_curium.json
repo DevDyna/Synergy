@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 3500,
+  "heat": 7500.0,
+  "ingredient": {
+    "tag": "c:pellets/curium"
+  },
+  "result": {
+    "count": 24,
+    "id": "synergy:waste_fragment"
+  },
+  "ticks": 1250000
+}

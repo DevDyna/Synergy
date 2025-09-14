@@ -2,13 +2,10 @@
   "type": "synergy:urn",
   "ingredient": [
     {
-      "item": "minecraft:coal"
-    },
-    {
       "item": "minecraft:blaze_powder"
     },
     {
-      "item": "minecraft:blaze_powder"
+      "tag": "c:coal_like"
     }
   ],
   "result": {

@@ -1,14 +1,13 @@
 {
   "type": "synergy:fuel_cell",
-  "heat": 50.0,
+  "fe": 5,
+  "heat": 10.0,
   "ingredient": {
-    "count": 1,
-    "id": "synergy:raw_silicon"
+    "item": "synergy:raw_silicon"
   },
-  "production": 20,
   "result": {
     "count": 1,
     "id": "synergy:silicon_gem"
   },
-  "time": 10
+  "ticks": 1000
 }

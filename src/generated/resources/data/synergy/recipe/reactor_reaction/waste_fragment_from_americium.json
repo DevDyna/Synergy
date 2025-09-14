@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 750,
+  "heat": 1040.0,
+  "ingredient": {
+    "tag": "c:pellets/americium"
+  },
+  "result": {
+    "count": 15,
+    "id": "synergy:waste_fragment"
+  },
+  "ticks": 150000
+}

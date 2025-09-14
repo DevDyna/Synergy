@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 160,
+  "heat": 180.0,
+  "ingredient": {
+    "tag": "c:pellets/plutonium"
+  },
+  "result": {
+    "count": 9,
+    "id": "synergy:waste_fragment"
+  },
+  "ticks": 50000
+}

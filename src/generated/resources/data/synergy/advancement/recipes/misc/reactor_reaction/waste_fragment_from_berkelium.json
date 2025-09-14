@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:silicon_gem"
+        "recipe": "synergy:reactor_reaction/waste_fragment_from_berkelium"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:raw_silicon"
+            "items": "minecraft:barrier"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:silicon_gem"
+      "synergy:reactor_reaction/waste_fragment_from_berkelium"
     ]
   }
 }

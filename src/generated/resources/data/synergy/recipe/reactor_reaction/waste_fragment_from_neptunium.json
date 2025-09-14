@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 300,
+  "heat": 350.0,
+  "ingredient": {
+    "tag": "c:pellets/neptunium"
+  },
+  "result": {
+    "count": 12,
+    "id": "synergy:waste_fragment"
+  },
+  "ticks": 75000
+}

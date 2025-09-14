@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 2700,
+  "heat": 3500.0,
+  "ingredient": {
+    "tag": "c:pellets/californium"
+  },
+  "result": {
+    "count": 21,
+    "id": "synergy:waste_fragment"
+  },
+  "ticks": 750000
+}

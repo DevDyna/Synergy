@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:waste_fragment"
+        "recipe": "synergy:urn_ritual/waste_fragment"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:uranium_pellet"
+            "items": "synergy:creeper_gall"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:waste_fragment"
+      "synergy:urn_ritual/waste_fragment"
     ]
   }
 }
