@@ -16,13 +16,13 @@ import net.minecraft.world.level.Level;
 @SuppressWarnings("null")
 public class FuelCellRecipe implements Recipe<MonoItemInput> {
 
-    protected final ItemStack input;
+    protected final Ingredient input;
     protected final ItemStack output;
     protected final int duration;
     protected final double heat;
     protected final int fe;
 
-    public FuelCellRecipe(ItemStack input,
+    public FuelCellRecipe(Ingredient input,
             ItemStack output, int duration, int fe, double heat) {
         this.input = input;
         this.output = output;
@@ -32,7 +32,7 @@ public class FuelCellRecipe implements Recipe<MonoItemInput> {
     }
 
     public boolean matches(MonoItemInput i, Level l) {
-        return this.input.is(i.input().getItem());
+        return this.input.test(i.input());
     }
 
     public ItemStack assemble(MonoItemInput i, HolderLookup.Provider r) {
@@ -43,11 +43,21 @@ public class FuelCellRecipe implements Recipe<MonoItemInput> {
         return false;
     }
 
-    public ItemStack getInput() {
+    public NonNullList<Ingredient> getIngredients() {
+        NonNullList<Ingredient> list = NonNullList.create();
+        list.add(this.input);
+        return list;
+    }
+
+    public ItemStack getResultItem(HolderLookup.Provider r) {
+        return this.output;
+    }
+
+    public Ingredient getInput() {
         return this.input;
     }
 
-    public ItemStack getOutput() {
+    public ItemStack getOutput(){
         return this.output;
     }
 
@@ -76,14 +86,4 @@ public class FuelCellRecipe implements Recipe<MonoItemInput> {
         return zRecipeTypes.FUEL_CELL_RECIPE.getSerializer();
     }
 
-    // NoOp
-    public NonNullList<Ingredient> getIngredients() {
-        NonNullList<Ingredient> list = NonNullList.create();
-        list.add(Ingredient.of(this.input));
-        return list;
-    }
-
-    public ItemStack getResultItem(HolderLookup.Provider r) {
-        return ItemStack.EMPTY;
-    }
 }
