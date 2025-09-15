@@ -89,6 +89,18 @@ public class zBlocks {
                         zStatic.PipeStuff.nodes.ItemRetrieval,
                         () -> new ItemRetrieval());
 
+        public static final DeferredHolder<Block, Block> ENERGY_TRANSFER = Material.registerItemBlock(
+                        zStatic.PipeStuff.nodes.EnergyTransfer,
+                        () -> new EnergyTranfer());
+
+        public static final DeferredHolder<Block, Block> ENERGY_PROVIDER = Material.registerItemBlock(
+                        zStatic.PipeStuff.nodes.EnergyProvider,
+                        () -> new EnergyProvider());
+
+        public static final DeferredHolder<Block, Block> ENERGY_RETRIEVAL = Material.registerItemBlock(
+                        zStatic.PipeStuff.nodes.EnergyRetrieval,
+                        () -> new EnergyRetrieval());
+
         public static final DeferredHolder<Block, Block> RICE = zCrop.register(zStatic.Plants.RICE,
                         () -> new rice());
 

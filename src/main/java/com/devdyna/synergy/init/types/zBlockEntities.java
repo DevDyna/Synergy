@@ -50,13 +50,25 @@ public class zBlockEntities {
                         .createBlockEntity(zStatic.PipeStuff.nodes.ItemRetrieval, ItemRetrievalBE::new,
                                         zBlocks.ITEM_RETRIEVAL);
 
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EnergyTransferBE>> ENERGY_TRANSFER = Material
+                        .createBlockEntity(zStatic.PipeStuff.nodes.EnergyTransfer, EnergyTransferBE::new,
+                                        zBlocks.ENERGY_TRANSFER);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EnergyProviderBE>> ENERGY_PROVIDER = Material
+                        .createBlockEntity(zStatic.PipeStuff.nodes.EnergyProvider, EnergyProviderBE::new,
+                                        zBlocks.ENERGY_PROVIDER);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EnergyRetrievalBE>> ENERGY_RETRIEVAL = Material
+                        .createBlockEntity(zStatic.PipeStuff.nodes.EnergyRetrieval, EnergyRetrievalBE::new,
+                                        zBlocks.ENERGY_RETRIEVAL);
+
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ReactorControllerBE>> REACTOR_CONTROLLER = Material
                         .createBlockEntity(zStatic.ReactorStuff.controller, ReactorControllerBE::new,
                                         zBlocks.REACTOR_CONTROLLER);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TinyChestBE>> WOODEN_TINY_CHEST = Material
                         .createBlockEntity(zStatic.Blocks.tiny_wooden_chest, TinyChestBE::new,
-                                        zBlocks.WOODEN_TINY_CHEST,zBlocks.STONE_TINY_CHEST,zBlocks.ORNATE_TINY_CHEST);
+                                        zBlocks.WOODEN_TINY_CHEST, zBlocks.STONE_TINY_CHEST, zBlocks.ORNATE_TINY_CHEST);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FuelCellBE>> FUEL_CELL = Material
                         .createBlockEntity(zStatic.ReactorStuff.fuel_cell, FuelCellBE::new,

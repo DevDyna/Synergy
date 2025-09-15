@@ -5,6 +5,7 @@ import java.util.*;
 import javax.annotation.Nullable;
 
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 
 @SuppressWarnings("null")
@@ -136,4 +137,19 @@ public interface nodeLogic {
         }
 
     }
+
+    default void provideFE(IEnergyStorage input, IEnergyStorage output, int rate) {
+
+        if (!input.canExtract() || !output.canReceive() || output.getMaxEnergyStored() == output.getEnergyStored())
+            return;
+
+        output.receiveEnergy(Math.min(output.getMaxEnergyStored() - output.getEnergyStored(),
+                Math.min(input.getEnergyStored(), input.extractEnergy(rate, false))), false);
+
+    }
+
+    default void provideFE(IEnergyStorage input, IEnergyStorage output) {
+        provideFE(input, output, 128);
+    }
+
 }

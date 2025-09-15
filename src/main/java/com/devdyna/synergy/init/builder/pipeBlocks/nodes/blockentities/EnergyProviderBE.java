@@ -18,14 +18,14 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 
 @SuppressWarnings({ "null", "unchecked" })
-public class ItemProviderBE extends NodeBaseBE {
+public class EnergyProviderBE extends NodeBaseBE {
 
-    public ItemProviderBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public EnergyProviderBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
-    public ItemProviderBE(BlockPos pos, BlockState blockState) {
-        super(zBlockEntities.ITEM_PROVIDER.get(), pos, blockState);
+    public EnergyProviderBE(BlockPos pos, BlockState blockState) {
+        super(zBlockEntities.ENERGY_PROVIDER.get(), pos, blockState);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ItemProviderBE extends NodeBaseBE {
         if (outCap == null)
             return;
 
-        // TODO probably it could be more optimized
+        // TODO change to FE
         // TODO recipetype and jei
 
         var direction = getBlockState().getValue(nodeType.FACING);
@@ -94,7 +94,7 @@ public class ItemProviderBE extends NodeBaseBE {
 
     @Override
     public BlockCapability<?, Direction> getCapType() {
-        return Capabilities.ItemHandler.BLOCK;
+        return Capabilities.EnergyStorage.BLOCK;
     }
 
 }
