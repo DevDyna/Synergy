@@ -211,16 +211,17 @@ public class Material {
                                 .registerSimpleItem(zStatic.ResourceType.raw + name);
         }
 
-                public static DeferredHolder<Item, Item> resourceShard(String name) {
+        public static DeferredHolder<Item, Item> resourceShard(String name) {
                 return zItems.zShards
                                 .registerSimpleItem(name + zStatic.ResourceType.shard);
         }
 
-                        public static DeferredHolder<Item, Item> resourceDust(String name) {
+        public static DeferredHolder<Item, Item> resourceDust(String name) {
                 return zItems.zDusts
                                 .registerSimpleItem(name + zStatic.ResourceType.dust);
         }
-                        public static DeferredHolder<Item, Item> resourcePellet(String name) {
+
+        public static DeferredHolder<Item, Item> resourcePellet(String name) {
                 return zItems.zPellets
                                 .registerSimpleItem(name + zStatic.ResourceType.pellet);
         }
