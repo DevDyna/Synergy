@@ -1,5 +1,6 @@
 {
   "values": [
-    "synergy:item_retrieval_node"
+    "synergy:item_retrieval_node",
+    "synergy:energy_retrieval_node"
   ]
 }

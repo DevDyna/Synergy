@@ -1,5 +1,6 @@
 {
   "values": [
-    "synergy:item_transfer_node"
+    "synergy:item_transfer_node",
+    "synergy:energy_transfer_node"
   ]
 }
