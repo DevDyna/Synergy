@@ -25,6 +25,9 @@ public interface screenLocations {
         public static final ResourceLocation JEI_DARK_SLOTS = x.rl(ID,
                         "textures/gui/jei/dark_slots.png");
 
+        public static final ResourceLocation JEI_LABEL = x.rl(ID,
+                        "textures/gui/jei/labelled.png");
+
         public static final ResourceLocation GREEN_PROGRESS_ARROW = x.rl(ID,
                         "textures/gui/green_progress_arrow.png");
 
