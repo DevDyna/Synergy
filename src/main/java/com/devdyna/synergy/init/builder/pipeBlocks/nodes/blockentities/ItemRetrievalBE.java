@@ -3,10 +3,14 @@ package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities;
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.capabilities.BlockCapability;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.items.IItemHandler;
 
-@SuppressWarnings("null")
+@SuppressWarnings({ "null", "unchecked" })
 public class ItemRetrievalBE extends NodeBaseBE {
 
     public ItemRetrievalBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
@@ -17,31 +21,25 @@ public class ItemRetrievalBE extends NodeBaseBE {
         super(zBlockEntities.ITEM_RETRIEVAL.get(), pos, blockState);
     }
 
-    @Override
-    public void tickServer() {
-
-        if (level == null)
+     @Override
+    protected void execute(BlockPos input, BlockPos output) {
+        var inState = level.getBlockState(input);
+        var outState = level.getBlockState(output);
+        var inBE = level.getBlockEntity(input);
+        var outBE = level.getBlockEntity(output);
+        if (inBE == null || outBE == null)
+            return;
+        var inCap = getCapType().getCapability(level, input, inState, inBE, null);
+        var outCap = getCapType().getCapability(level, output, outState, outBE, null);
+        if (inCap == null || outCap == null)
             return;
 
-        var input = getInputBlock(getBlockState(), level, getBlockPos());
-        var output = getOutputBlock(getBlockState(), level, getBlockPos());
-
-        if (input == null) {
-            return;
-        }
-
-        if (output == null) {
-            return;
-        }
-
-        if (level.getGameTime() % getTickDelay() == 0)
-            moveItems(output, input);
-
+        moveItems((IItemHandler) outCap, (IItemHandler) inCap);
     }
 
     @Override
-    public int getTickDelay() {
-        return 20;
+    public BlockCapability<?, Direction> getCapType() {
+        return Capabilities.ItemHandler.BLOCK;
     }
 
 }

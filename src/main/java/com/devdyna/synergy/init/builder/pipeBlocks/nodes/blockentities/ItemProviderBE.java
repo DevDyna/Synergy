@@ -13,8 +13,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.capabilities.BlockCapability;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.items.IItemHandler;
 
-@SuppressWarnings("null")
+@SuppressWarnings({ "null", "unchecked" })
 public class ItemProviderBE extends NodeBaseBE {
 
     public ItemProviderBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
@@ -25,19 +28,15 @@ public class ItemProviderBE extends NodeBaseBE {
         super(zBlockEntities.ITEM_PROVIDER.get(), pos, blockState);
     }
 
-    public int getTickDelay() {
-        return 20;
-    }
-
     @Override
-    public void tickServer() {
+    protected void execute(BlockPos input, BlockPos output) {
 
-        if (level == null)
+        var outState = level.getBlockState(output);
+        var outBE = level.getBlockEntity(output);
+        if ( outBE == null)
             return;
-
-        var output = getOutputBlock(getBlockState(), level, getBlockPos());
-
-        if (output == null)
+        var outCap = getCapType().getCapability(level, output, outState, outBE, null);
+        if ( outCap == null)
             return;
 
         // TODO probably it could be more optimized
@@ -87,9 +86,15 @@ public class ItemProviderBE extends NodeBaseBE {
                     : level.getBlockState(belowGen).is(dataHolder.belowBlock().getBlock());
 
             if (finalValue && below)
-                if (level.getGameTime() % getTickDelay() == 0)
-                    itemToOutput(new ItemStack(resulItem, 1), output);
+                // if (level.getGameTime() % getTickDelay() == 0)
+                    itemToOutput(new ItemStack(resulItem, 1), (IItemHandler) outCap);
         }
+    }
+
+
+    @Override
+    public BlockCapability<?, Direction> getCapType() {
+        return Capabilities.ItemHandler.BLOCK;
     }
 
 }

@@ -15,7 +15,6 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 
@@ -55,23 +54,23 @@ public interface pipeType {
 
     static VoxelShape getPipeBaseShape(BlockState s) {
         VoxelShape model = BASE;
-        if (s.getValue(DOWN) == pipeProperties.TRUE || s.getValue(DOWN) == pipeProperties.OUTPUT)
+        if (s.getValue(DOWN) == pipeProperties.TRUE )
             model = Shapes.or(model, VoxelShapes.DOWN);
-        if (s.getValue(UP) == pipeProperties.TRUE || s.getValue(UP) == pipeProperties.OUTPUT)
+        if (s.getValue(UP) == pipeProperties.TRUE )
             model = Shapes.or(model, VoxelShapes.UP);
-        if (s.getValue(SOUTH) == pipeProperties.TRUE || s.getValue(SOUTH) == pipeProperties.OUTPUT)
+        if (s.getValue(SOUTH) == pipeProperties.TRUE )
             model = Shapes.or(model, VoxelShapes.SOUTH);
-        if (s.getValue(NORTH) == pipeProperties.TRUE || s.getValue(NORTH) == pipeProperties.OUTPUT)
+        if (s.getValue(NORTH) == pipeProperties.TRUE )
             model = Shapes.or(model, VoxelShapes.NORTH);
-        if (s.getValue(EAST) == pipeProperties.TRUE || s.getValue(EAST) == pipeProperties.OUTPUT)
+        if (s.getValue(EAST) == pipeProperties.TRUE )
             model = Shapes.or(model, VoxelShapes.EAST);
-        if (s.getValue(WEST) == pipeProperties.TRUE || s.getValue(WEST) == pipeProperties.OUTPUT)
+        if (s.getValue(WEST) == pipeProperties.TRUE )
             model = Shapes.or(model, VoxelShapes.WEST);
         return model.optimize();
     }
 
     // TODO need to define differents model parts
-    static pipeProperties[] allTrue = { pipeProperties.TRUE, pipeProperties.NODE, pipeProperties.OUTPUT };
+    static pipeProperties[] allTrue = { pipeProperties.TRUE, pipeProperties.NODE };
 
     static void getPipeMultiPart(Block b, MultiPartBlockStateBuilder model, ModelFile core, ModelFile pipe) {
         model.part().modelFile(core).addModel();
@@ -101,11 +100,8 @@ public interface pipeType {
             } else {
 
                 // connect to BE itemhandler
-                if (level.getBlockEntity(pos.relative(face)) != null
-                        && Capabilities.ItemHandler.BLOCK.getCapability(level, pos.relative(face),
-                                level.getBlockState(pos.relative(face)),
-                                level.getBlockEntity(pos.relative(face)), face.getOpposite()) != null) {
-                    state = state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), pipeProperties.OUTPUT);
+                if (level.getBlockEntity(pos.relative(face)) != null) {
+                    state = state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), pipeProperties.TRUE);
                 } else {
                     // remove connection
 
@@ -131,11 +127,8 @@ public interface pipeType {
             } else {
 
                 // connect to BE itemhandler
-                if (level.getBlockEntity(pos.relative(face)) != null
-                        && Capabilities.ItemHandler.BLOCK.getCapability(level, pos.relative(face),
-                                level.getBlockState(pos.relative(face)),
-                                level.getBlockEntity(pos.relative(face)), face.getOpposite()) != null) {
-                    state = state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), pipeProperties.OUTPUT);
+                if (level.getBlockEntity(pos.relative(face)) != null) {
+                    state = state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), pipeProperties.TRUE);
                 } else {
                     // remove connection
 

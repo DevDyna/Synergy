@@ -6,7 +6,6 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.coreBE.BaseBlockBE;
 import com.devdyna.synergy.api.node.nodeType;
 
 import net.minecraft.core.BlockPos;
@@ -19,8 +18,11 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
@@ -29,7 +31,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class NodeBaseBlock extends BaseBlockBE implements nodeType {
+public class NodeBaseBlock extends Block implements nodeType , EntityBlock {
 
     public NodeBaseBlock() {
         super(BlockBehaviour.Properties.of().destroyTime(0.5f).forceSolidOn()
@@ -75,5 +77,20 @@ public class NodeBaseBlock extends BaseBlockBE implements nodeType {
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
         t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.pipe + ".extend"));
+    }
+
+        @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l, BlockState s,
+            BlockEntityType<T> ty) {
+        return (lvl, pos, b, t) -> {
+            if (t instanceof NodeBaseBE be) {
+                be.tickBoth();
+                if (l.isClientSide())
+                    be.tickClient();
+                else
+                    be.tickServer();
+            }
+        };
     }
 }
