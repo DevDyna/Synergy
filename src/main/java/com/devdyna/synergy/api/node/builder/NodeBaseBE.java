@@ -83,6 +83,7 @@ public abstract class NodeBaseBE extends BlockEntity implements nodeLogic {
     public boolean match(Level level, BlockPos currentPos, BlockState currentState, Direction dir,
             BlockPos nextPos,
             BlockState nextState) {
+//TODO implement when container full , add it to reroute
         return getCapType().getCapability(level, nextPos,
                 nextState,
                 level.getBlockEntity(nextPos),
