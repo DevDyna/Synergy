@@ -209,7 +209,6 @@ public class zStatic {
             public static String FluidProvider = types.fluid + provider + node2;
             public static String FluidRetrieval = types.fluid + retrieval + node2;
 
-            // TODO FE nodes
             public static String EnergyTransfer = types.energy + transfer + node2;
             public static String EnergyProvider = types.energy + provider + node2;
             public static String EnergyRetrieval = types.energy + retrieval + node2;
