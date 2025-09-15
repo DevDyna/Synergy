@@ -112,9 +112,13 @@ public class DataItemModel extends ItemModelProvider {
 
                 withExistingParent(zBlocks.SOLAR_PANEL.getRegisteredName(), modLoc("block/solar_panel/item_model"));
 
-                node(zBlocks.ITEM_TRANSFER, "red");
                 node(zBlocks.ITEM_PROVIDER, "green");
                 node(zBlocks.ITEM_RETRIEVAL, "aqua");
+                node(zBlocks.ITEM_TRANSFER, "red");
+
+                node(zBlocks.ENERGY_PROVIDER, "green");
+                node(zBlocks.ENERGY_RETRIEVAL, "aqua");
+                node(zBlocks.ENERGY_TRANSFER, "red");
 
                 wild_plants.forEach(w -> withExistingParent(x.path(w), "minecraft:item/generated")
                                 .texture("layer0", x.rl(

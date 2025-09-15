@@ -40,9 +40,14 @@ public class DataBlockModelState extends BlockStateProvider {
                 tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
                 tinyUrn(zBlocks.URN);
 
-                node(zBlocks.ITEM_TRANSFER.get(), "red");
                 node(zBlocks.ITEM_PROVIDER.get(), "green");
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
+                node(zBlocks.ITEM_TRANSFER.get(), "red");
+
+                node(zBlocks.ENERGY_PROVIDER.get(), "green");
+                node(zBlocks.ENERGY_RETRIEVAL.get(), "aqua");
+                node(zBlocks.ENERGY_TRANSFER.get(), "red");
+
                 pipe(zBlocks.PIPE.get());
 
                 simpleBlockDecorative(zBlocks.ADVANCED_ALLOY_BLOCK);
@@ -173,7 +178,8 @@ public class DataBlockModelState extends BlockStateProvider {
                 getVariantBuilder(b.get()).forAllStates((state) -> {
                         String front = state.getValue(BlockStateProperties.ENABLED) ? "on" : "off";
                         return ConfiguredModel.builder().modelFile(
-                                        models().cubeAll(b.getRegisteredName() + front, modLoc("block/"+location + front)))
+                                        models().cubeAll(b.getRegisteredName() + front,
+                                                        modLoc("block/" + location + front)))
                                         .build();
                 });
         }
