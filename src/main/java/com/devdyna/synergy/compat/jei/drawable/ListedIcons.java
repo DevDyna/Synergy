@@ -9,6 +9,8 @@ import mezz.jei.api.helpers.IGuiHelper;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 /**
  * 
@@ -71,6 +73,16 @@ public class ListedIcons implements IDrawable {
     public void draw(GuiGraphics guiGraphics, int xOffset, int yOffset) {
         this.icons.get(this.timer.getValue()).draw(guiGraphics, xOffset, yOffset);
     }
+
+    /**
+     * @param r zBlocks.zBlock
+     */
+    public <T> ListedIcons fromTypes(IGuiHelper guiHelper,DeferredRegister<T> r){
+       return of().setDelay(delay).setIcons(r.getEntries().stream()
+                        .<T>map(DeferredHolder::get)
+                        .toArray(Item[]::new)).setup(guiHelper);
+    }
+
 
     @Override
     public int getWidth() {
