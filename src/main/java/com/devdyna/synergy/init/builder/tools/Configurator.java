@@ -6,7 +6,6 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.init.types.zComponents;
-import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.GlobalPos;
@@ -24,7 +23,6 @@ public class Configurator extends Item {
 
         public Configurator() {
                 super(new Properties().stacksTo(1)
-                .craftRemainder(zItems.CONFIGURATOR.get())
                                 .component(zComponents.GLOBAL_POS, null)
 
                 );
