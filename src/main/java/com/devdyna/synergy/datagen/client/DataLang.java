@@ -44,17 +44,22 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Items.configurator + ".tip",
                                 TIP_COLOR + "Show the debug vision");
 
-                add(Main.ID + "." + zStatic.Items.configurator + ".modetype",
-                                TIP_COLOR + "Mode : ");
+                add(Main.ID + "." + zStatic.Items.configurator + ".link",
+                                 "§aBound to ");
 
-                add(Main.ID + "." + zStatic.Items.configurator + ".mode.show_area",
-                                "§aMachine AOE");
+                // add(Main.ID + "." + zStatic.Items.configurator + ".modetype",
+                //                 TIP_COLOR + "Mode : ");
 
-                add(Main.ID + "." + zStatic.Items.configurator + ".mode.show_track",
-                                "§aNode Track");
+                // add(Main.ID + "." + zStatic.Items.configurator + ".mode.show_area",
+                //                 "§aMachine AOE");
+
+                // add(Main.ID + "." + zStatic.Items.configurator + ".mode.show_track",
+                //                 "§aNode Track");
 
                 add(Main.ID + "." + zStatic.Items.configurator + ".blockpos",
                                 TIP_COLOR + "BlockPos : ");
+                add(Main.ID + "." + zStatic.Items.configurator + ".dim",
+                                TIP_COLOR + "Dimension : ");
 
                 add(Main.ID + "." + zStatic.Items.refactorizer,
                                 TIP_COLOR + "Force update blockstates of any #synergy:can_connect");

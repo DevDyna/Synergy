@@ -3,8 +3,8 @@ package com.devdyna.synergy.init.types;
 import static com.devdyna.synergy.Main.ID;
 
 import com.mojang.serialization.Codec;
-
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.GlobalPos;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.neoforged.bus.api.IEventBus;
@@ -26,21 +26,22 @@ public class zComponents {
         public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> FE_STORED = zComponents
                         .register(
                                         "fe_stored",
-                                        () -> DataComponentType.<Integer>builder().persistent(Codec.INT.orElse(0))
+                                        () -> DataComponentType.<Integer>builder()
+                                                        .persistent(Codec.INT.orElse(0))
                                                         .networkSynchronized(ByteBufCodecs.VAR_INT)
                                                         .build());
 
-        public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> MODE = zComponents
-                        .register(
-                                        "mode",
-                                        () -> DataComponentType.<String>builder().persistent(Codec.STRING)
-                                                        .networkSynchronized(ByteBufCodecs.STRING_UTF8)
+        public static final DeferredHolder<DataComponentType<?>, DataComponentType<GlobalPos>> GLOBAL_POS = zComponents
+                        .register("global_pos",
+                                        () -> DataComponentType.<GlobalPos>builder()
+                                                        .persistent(GlobalPos.CODEC)
+                                                        .networkSynchronized(GlobalPos.STREAM_CODEC)
                                                         .build());
-                                                        
+
         public static final DeferredHolder<DataComponentType<?>, DataComponentType<BlockPos>> BLOCKPOS = zComponents
-                        .register(
-                                        "blockpos",
-                                        () -> DataComponentType.<BlockPos>builder().persistent(BlockPos.CODEC)
+                        .register("blockpos",
+                                        () -> DataComponentType.<BlockPos>builder()
+                                                        .persistent(BlockPos.CODEC)
                                                         .networkSynchronized(BlockPos.STREAM_CODEC)
                                                         .build());
 
