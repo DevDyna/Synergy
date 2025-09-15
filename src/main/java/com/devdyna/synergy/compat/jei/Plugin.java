@@ -59,6 +59,10 @@ public class Plugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration r) {
         r.addRecipeCategories(new ReactorCellCategory(
                 r.getJeiHelpers().getGuiHelper()));
+
+        // r.addRecipeCategories(new CoolerCategory(
+        //         r.getJeiHelpers().getGuiHelper()));
+
     }
 
     @Override
@@ -67,6 +71,8 @@ public class Plugin implements IModPlugin {
                 .getAllRecipesFor(zRecipeTypes.FUEL_CELL_RECIPE.getType()).stream().map(RecipeHolder::value).toList();
 
         r.addRecipes(ReactorCellCategory.TYPE, recipes);
+
+        // r.addRecipes(CoolerCategory.TYPE, List.of(CoolerCategory.Coolers.values()));
     }
 
     @Override
