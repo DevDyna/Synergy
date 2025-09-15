@@ -21,19 +21,15 @@ public abstract class BaseBlockBE extends Block implements EntityBlock {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l, BlockState s,
             BlockEntityType<T> ty) {
-
         return (lvl, pos, b, t) -> {
             if (t instanceof BaseBE be) {
                 be.tickBoth();
-
                 if (l.isClientSide())
                     be.tickClient();
                 else
                     be.tickServer();
-
             }
         };
-
     }
 
 }
