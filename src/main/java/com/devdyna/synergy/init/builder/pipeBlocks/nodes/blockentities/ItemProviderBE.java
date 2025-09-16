@@ -40,7 +40,7 @@ public class ItemProviderBE extends NodeBaseBE {
             return;
 
         // TODO probably it could be more optimized
-        // TODO recipetype and jei
+        // TODO jei
 
         var direction = getBlockState().getValue(nodeType.FACING);
         var blockGen = getBlockPos().relative(direction);
