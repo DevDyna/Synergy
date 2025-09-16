@@ -40,7 +40,7 @@ public class EnergyProviderBE extends NodeBaseBE {
             return;
 
         // TODO change to FE
-        // TODO recipetype and jei
+        // TODO jei
 
         var direction = getBlockState().getValue(nodeType.FACING);
         var blockGen = getBlockPos().relative(direction);
