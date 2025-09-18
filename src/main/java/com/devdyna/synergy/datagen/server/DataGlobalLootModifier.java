@@ -84,11 +84,12 @@ public class DataGlobalLootModifier extends GlobalLootModifierProvider {
 
                         DataGenUtil.modifyLootTables(this,
                                         item.getRegisteredName().replace(ID + ":", DataAnyLoot.PREFIX_DROPS),
-                                        MOB_TYPES.get(index).toArray(new EntityType<?>[0]));
+                                        CHEST_TYPES.get(index).toArray(ResourceKey[]::new),
+                                        MOB_TYPES.get(index).toArray(EntityType<?>[]::new));
 
-                        DataGenUtil.modifyLootTables(this,
-                                        item.getRegisteredName().replace(ID + ":", DataAnyLoot.CHEST_DROPS),
-                                        CHEST_TYPES.get(index).toArray(new ResourceKey[0]));
+                        // DataGenUtil.modifyLootTables(this,
+                        // item.getRegisteredName().replace(ID + ":", DataAnyLoot.PREFIX_DROPS),
+                        // );
 
                 });
 

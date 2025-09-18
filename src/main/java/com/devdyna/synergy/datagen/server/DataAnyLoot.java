@@ -7,6 +7,8 @@ import java.util.function.BiConsumer;
 
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.utils.DataGenUtil;
+import com.devdyna.synergy.utils.x;
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
@@ -22,8 +24,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 @SuppressWarnings("null")
 public class DataAnyLoot implements LootTableSubProvider {
 
-        public final static String CHEST_DROPS = "chests/mobdrop";
-        public final static String PREFIX_DROPS = "entities/";
+        // public final static String CHEST_DROPS = "chests/";
+        public final static String PREFIX_DROPS = "entities/extra_mob_drops/";
         public final static String MUSHROOMS = "chests/mushrooms";
 
         private HolderLookup.Provider p;
@@ -49,7 +51,7 @@ public class DataAnyLoot implements LootTableSubProvider {
                 for (DeferredHolder<Item, Item> items : MOB_DROPS) {
 
                         DataGenUtil.registerTable(c,
-                                        DataGenUtil.modLoc(items.getRegisteredName().replace(ID + ":", PREFIX_DROPS)),
+                                        x.rl(items.getRegisteredName().replace(ID + ":", PREFIX_DROPS)),
 
                                         DataGenUtil.createTable(DataGenUtil.createPool()
                                                         .setRolls(UniformGenerator.between(0.0f, 1.0f))
@@ -73,7 +75,7 @@ public class DataAnyLoot implements LootTableSubProvider {
 
                 var mushtable = DataGenUtil.createTable(mushLoot);
 
-                DataGenUtil.registerTable(c, DataGenUtil.modLoc(MUSHROOMS), mushtable);
+                DataGenUtil.registerTable(c, x.rl(MUSHROOMS), mushtable);
 
         }
 
