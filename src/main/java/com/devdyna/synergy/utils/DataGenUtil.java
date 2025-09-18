@@ -197,6 +197,16 @@ public class DataGenUtil {
                         .toArray(String[]::new));
     }
 
+    public static void modifyLootTables(DataGlobalLootModifier g, String lootModifier,
+            ResourceKey<LootTable>[] chestTables, EntityType<?>... entityTables) {
+        modifyLootTables(g, lootModifier,
+                 ArrayUtils.concat(
+                        Arrays.asList(entityTables).stream().map(r -> r.getDefaultLootTable().location().getPath())
+                                .toArray(String[]::new),
+                        Arrays.asList(chestTables).stream().map(r -> r.location().getPath()).toArray(String[]::new)));
+
+    }
+
     /**
      * 
      * @deprecated
