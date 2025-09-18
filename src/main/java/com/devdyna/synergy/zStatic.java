@@ -263,6 +263,15 @@ public class zStatic {
 
     }
 
+    public class Fluids {
+        public static String OIL = "oil";
+        public static String GLUE = "glue";
+        public static String SAP = "sap";
+
+        public static String AFFIX_DROPLETT="droplet_";
+    }
+
+
     // // TODO WIP
     // public class Resources {
 
