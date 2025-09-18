@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.ClazzUtil;
 
 import net.minecraft.data.PackOutput;
@@ -25,13 +25,20 @@ public class DataLang extends LanguageProvider {
         protected void addTranslations() {
 
                 add(Main.ID + "." + zStatic.CreativeTab, "Synergy : MagiTech Collection");
+
+                zFluids.zFluidTypes.getEntries()
+                                .forEach(f -> add(f.get().getDescriptionId(), named(f).replace(" Type", "")));
+
                 zBlocks.zBlockItem.getEntries().forEach(b -> addBlock(b, named(b)));
+                zBlocks.zBlockFluids.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zBlock.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCrop.getEntries().forEach(b -> addBlock(b, named(b)));
 
                 ClazzUtil.getAllzItems().forEach(c -> {
                         addItem(c, named(c));
                 });
+
+                zItems.zBucketItems.getEntries().forEach(b -> addItem(b, named(b)));
 
                 zBlocks.zWildCrop.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zDecorative.getEntries().forEach(b -> addBlock(b, named(b)));
@@ -45,16 +52,16 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "Show the debug vision");
 
                 add(Main.ID + "." + zStatic.Items.configurator + ".link",
-                                 "§aBound to ");
+                                "§aBound to ");
 
                 // add(Main.ID + "." + zStatic.Items.configurator + ".modetype",
-                //                 TIP_COLOR + "Mode : ");
+                // TIP_COLOR + "Mode : ");
 
                 // add(Main.ID + "." + zStatic.Items.configurator + ".mode.show_area",
-                //                 "§aMachine AOE");
+                // "§aMachine AOE");
 
                 // add(Main.ID + "." + zStatic.Items.configurator + ".mode.show_track",
-                //                 "§aNode Track");
+                // "§aNode Track");
 
                 add(Main.ID + "." + zStatic.Items.configurator + ".blockpos",
                                 TIP_COLOR + "BlockPos : ");
@@ -145,6 +152,9 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei." + zStatic.ReactorStuff.fuel_cell,
                                 "Reactor Reactions");
 
+                add(Main.ID + ".jei." + zStatic.Blocks.urn,
+                                "Urn Rituals");
+
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.BIOMASS,
                                 zStatic.ReactorStuff.CoolerTypes.COPPER,
@@ -184,6 +194,21 @@ public class DataLang extends LanguageProvider {
                                         Main.ID + "." + zStatic.ReactorStuff.cooler + "." + t,
                                         TIP_COLOR + "Require at least " + langCooler.get(coolerTypes.indexOf(t)));
                 });
+
+                var droptype = List.of(
+                                "Creepers",
+                                "Endermans",
+                                "Ghasts",
+                                "Guardians",
+                                "Silverfishes",
+                                "Slimes",
+                                "Poison Creatures",
+                                "Wither Skeletons",
+                                "Zombie-like Creatures"
+                );
+
+                zItems.zMobDrop.getEntries().forEach(d -> add(d.getRegisteredName().replace(":", ".") + ".tip",
+                               TIP_COLOR+"Obtained as mobdrop from "+ droptype.get(zItems.zMobDrop.getEntries().stream().toList().indexOf(d))));
 
         }
 
