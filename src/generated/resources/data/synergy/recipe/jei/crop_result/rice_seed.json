@@ -1,0 +1,12 @@
+{
+  "type": "synergy:crop_result",
+  "crop": {
+    "count": 1,
+    "id": "synergy:rice_seed"
+  },
+  "result": [
+    {
+      "item": "synergy:rice_seed"
+    }
+  ]
+}

@@ -6,15 +6,19 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/cave_spider"
+          "loot_table_id": "minecraft:chests/simple_dungeon"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/bogged"
+          "loot_table_id": "minecraft:chests/trial_chambers/supply"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:entities/bat"
+          "loot_table_id": "minecraft:chests/jungle_temple"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:chests/desert_pyramid"
         }
       ]
     }

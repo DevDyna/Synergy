@@ -1,0 +1,15 @@
+{
+  "type": "synergy:crop_result",
+  "crop": {
+    "count": 1,
+    "id": "synergy:violet_webcap_pod"
+  },
+  "result": [
+    {
+      "item": "synergy:violet_webcap_pod"
+    },
+    {
+      "item": "synergy:violet_webcap_mushroom"
+    }
+  ]
+}

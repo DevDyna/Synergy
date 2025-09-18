@@ -1,0 +1,15 @@
+{
+  "type": "synergy:crop_result",
+  "crop": {
+    "count": 1,
+    "id": "synergy:cave_wheat_seed"
+  },
+  "result": [
+    {
+      "item": "synergy:cave_wheat_seed"
+    },
+    {
+      "item": "minecraft:wheat"
+    }
+  ]
+}
