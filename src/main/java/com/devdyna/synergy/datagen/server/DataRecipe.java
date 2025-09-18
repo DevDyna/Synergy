@@ -502,7 +502,9 @@ public class DataRecipe extends RecipeProvider {
                 plate(Items.GOLD_INGOT, zItems.GOLD_PLATE.get(), c);
                 plate(Items.COPPER_INGOT, zItems.COPPER_PLATE.get(), c);
                 plate(zItems.STEEL_INGOT.get(), zItems.STEEL_PLATE.get(), c);
+
                 nineBlockStorageRecipes(c, MISC, zItems.WASTE_FRAGMENT.get(), MISC, zItems.WASTE.get());
+                nineBlockStorageRecipes(c, MISC, zItems.SILICON_SHARD.get(), MISC, zItems.SILICON.get());
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.COOLER_BASE.get(), 4)
                                 .pattern("IPI")
@@ -513,6 +515,17 @@ public class DataRecipe extends RecipeProvider {
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.IRON_PLATE.get(),
                                                                 Items.IRON_INGOT))
+                                .group(ID).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.URN.get())
+                                .pattern("B B")
+                                .pattern("BHB")
+                                .pattern("BBB")
+                                .define('H', zItems.ENDERMAN_HEART.get())
+                                .define('B', Tags.Items.BRICKS_NORMAL)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.ENDERMAN_HEART.get(),
+                                                                Items.BRICK))
                                 .group(ID).save(c);
 
         }
