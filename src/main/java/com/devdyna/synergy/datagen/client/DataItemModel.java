@@ -12,10 +12,13 @@ import com.devdyna.synergy.utils.x;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class DataItemModel extends ItemModelProvider {
@@ -32,6 +35,13 @@ public class DataItemModel extends ItemModelProvider {
         protected void registerModels() {
                 // -----------------------//
 
+                zItems.zBucketItems.getEntries().forEach(b -> withExistingParent(
+                                x.path(b.get()),
+                                x.rl(NeoForgeVersion.MOD_ID, "item/bucket"))
+                                .customLoader(DynamicFluidContainerModelBuilder::begin)
+                                .fluid(((BucketItem) b.get()).content));
+
+                //
                 zItems.zCraftingComponents.getEntries()
                                 .forEach(item -> DataGenUtil.itemModel(item.get(), this, "components/"));
                 zItems.zCropExtra.getEntries()
@@ -67,6 +77,10 @@ public class DataItemModel extends ItemModelProvider {
                 zItems.zPellets.getEntries()
                                 .forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/pellet/",
                                                 x.path(item.get()).replace(zStatic.ResourceType.pellet, "")));
+
+                zItems.zDropLets.getEntries()
+                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/droplet/",
+                                                x.path(item.get())));
 
                 // -----------------------//
                 zBlocks.zDecorative.getEntries()
