@@ -11,6 +11,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -82,7 +83,7 @@ public class BaseCropMushroom extends BaseShortCropBlock {
 
         if (spots != null)
             for (BlockPos offpos : spots) {
-                if (level.getBlockState(offpos).is(BlockTags.AIR)
+                if (level.getBlockState(offpos).is(BlockTags.AIR) && !(level.getBlockState(offpos).getBlock() instanceof LiquidBlock)
                         && this.canSurvive(level.getBlockState(offpos), level, pos)
                         && this.mayPlaceOn(level.getBlockState(offpos.below()), level, pos.below())
                         && level.getRawBrightness(offpos, 0) < maxBrightnessSustainable())

@@ -82,10 +82,11 @@ _IC2 like_
 
 - [ ] Cave wheat will grow fast on cave ambients
 - [ ] Farmer delight compat
+
+## ISSUES
 - [ ] Nodes can void items with furnaces
-- [ ] Shift-action on some GUI will cause game-freeze
+- [ ] Shift-action on some GUI will cause issues
 - [ ] Farmer delight Rice cannot be harvested with Harvester
 - [ ] Farmer delight auto-harvest toggle
-- [ ] Mushrooms can replace water
 - [ ] Hold Shift tooltips dont work on JEI (need to investigate)
 - [ ] Nodes doesn't support Mekanism
