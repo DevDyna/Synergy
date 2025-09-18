@@ -101,11 +101,12 @@ public class x {
         return Ingredient.of(i);
     }
 
-    public static Ingredient ingredient(DeferredHolder<Item, Item> i) {
+    public static Ingredient ingredient(DeferredHolder<Item, ?> i) {
         return ingredient(i.get());
     }
 
     public static Ingredient ingredient(TagKey<Item> i) {
         return Ingredient.of(i);
     }
+
 }
