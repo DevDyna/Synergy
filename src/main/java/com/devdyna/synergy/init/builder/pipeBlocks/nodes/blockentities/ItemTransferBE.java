@@ -10,7 +10,7 @@ import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 
-@SuppressWarnings({ "null", "unchecked" })
+@SuppressWarnings({ "null" })
 public class ItemTransferBE extends NodeBaseBE {
 
     public ItemTransferBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
@@ -22,24 +22,18 @@ public class ItemTransferBE extends NodeBaseBE {
     }
 
     @Override
-    protected void execute(BlockPos input, BlockPos output) {
-        var inState = level.getBlockState(input);
-        var outState = level.getBlockState(output);
-        var inBE = level.getBlockEntity(input);
-        var outBE = level.getBlockEntity(output);
-        if (inBE == null || outBE == null)
-            return;
-        var inCap = getCapType().getCapability(level, input, inState, inBE, null);
-        var outCap = getCapType().getCapability(level, output, outState, outBE, null);
-        if (inCap == null || outCap == null)
-            return;
-
-        moveItems((IItemHandler) inCap, (IItemHandler) outCap);
+    protected void executeItem(BlockPos inputPos, IItemHandler input, BlockPos outputPos, IItemHandler output) {
+        moveItems(input, output, 1);
     }
 
     @Override
     public BlockCapability<?, Direction> getCapType() {
         return Capabilities.ItemHandler.BLOCK;
+    }
+
+    @Override
+    public BlockPos defineOutput() {
+        return getOutput();
     }
 
 }

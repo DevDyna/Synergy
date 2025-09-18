@@ -10,7 +10,7 @@ import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
-@SuppressWarnings({ "null", "unchecked" })
+@SuppressWarnings({ "null" })
 public class EnergyTransferBE extends NodeBaseBE {
 
     public EnergyTransferBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
@@ -22,24 +22,18 @@ public class EnergyTransferBE extends NodeBaseBE {
     }
 
     @Override
-    protected void execute(BlockPos input, BlockPos output) {
-        var inState = level.getBlockState(input);
-        var outState = level.getBlockState(output);
-        var inBE = level.getBlockEntity(input);
-        var outBE = level.getBlockEntity(output);
-        if (inBE == null || outBE == null)
-            return;
-        var inCap = getCapType().getCapability(level, input, inState, inBE, null);
-        var outCap = getCapType().getCapability(level, output, outState, outBE, null);
-        if (inCap == null || outCap == null)
-            return;
-
-        provideFE((IEnergyStorage) inCap, (IEnergyStorage) outCap);
+    protected void executeEnergy(BlockPos inputPos, IEnergyStorage input, BlockPos outputPos, IEnergyStorage output) {
+        moveEnergy(input, output, 100);
     }
 
     @Override
     public BlockCapability<?, Direction> getCapType() {
         return Capabilities.EnergyStorage.BLOCK;
+    }
+
+    @Override
+    public BlockPos defineOutput() {
+        return getOutput();
     }
 
 }

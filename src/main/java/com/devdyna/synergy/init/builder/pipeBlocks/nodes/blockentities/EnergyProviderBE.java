@@ -1,23 +1,15 @@
 package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities;
 
-import java.util.ArrayList;
-
-import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
-import com.devdyna.synergy.init.dataMaps.zDataMaps;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.IItemHandler;
 
-@SuppressWarnings({ "null", "unchecked" })
+@SuppressWarnings({ "null" })
 public class EnergyProviderBE extends NodeBaseBE {
 
     public EnergyProviderBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
@@ -28,73 +20,83 @@ public class EnergyProviderBE extends NodeBaseBE {
         super(zBlockEntities.ENERGY_PROVIDER.get(), pos, blockState);
     }
 
-    @Override
-    protected void execute(BlockPos input, BlockPos output) {
+    // TODO NEED TO BE RECREATED USING A RECIPETYPE
 
-        var outState = level.getBlockState(output);
-        var outBE = level.getBlockEntity(output);
-        if (outBE == null)
-            return;
-        var outCap = getCapType().getCapability(level, output, outState, outBE, null);
-        if (outCap == null)
-            return;
+    // @Override
+    // protected void executeItem(BlockPos inputPos, IItemHandler input, BlockPos
+    // outputPos, IItemHandler output) {
 
-        // TODO change to FE
-        // TODO jei
+    // var outState = level.getBlockState(outputPos);
+    // var outBE = level.getBlockEntity(outputPos);
+    // if (outBE == null)
+    // return;
+    // var outCap = getCapType().getCapability(level, outputPos, outState, outBE,
+    // null);
+    // if (outCap == null)
+    // return;
 
-        var direction = getBlockState().getValue(nodeType.FACING);
-        var blockGen = getBlockPos().relative(direction);
-        var belowGen = blockGen.relative(direction);
+    // // TODO probably it could be more optimized
+    // // TODO jei
 
-        ArrayList<Block> conditions = new ArrayList<>();
-        ArrayList<Boolean> resultCheck = new ArrayList<>();
+    // var direction = getBlockState().getValue(nodeType.FACING);
+    // var blockGen = getBlockPos().relative(direction);
+    // var belowGen = blockGen.relative(direction);
 
-        Item resulItem = level.getBlockState(blockGen).getBlock().asItem();
+    // ArrayList<Block> conditions = new ArrayList<>();
+    // ArrayList<Boolean> resultCheck = new ArrayList<>();
 
-        var dataHolder = new ItemStack(resulItem).getItemHolder()
-                .getData(zDataMaps.PROVIDER_RECIPES);
+    // Item resulItem = level.getBlockState(blockGen).getBlock().asItem();
 
-        if (dataHolder != null) {
+    // var dataHolder = new ItemStack(resulItem).getItemHolder()
+    // .getData(zDataMaps.PROVIDER_RECIPES);
 
-            for (BlockState blocks : dataHolder.blocksToCheck()) {
-                conditions.add(blocks.getBlock());
-            }
+    // if (dataHolder != null) {
 
-        } else {
-            resulItem = null;
-        }
+    // for (BlockState blocks : dataHolder.blocksToCheck()) {
+    // conditions.add(blocks.getBlock());
+    // }
 
-        boolean found = false;
+    // } else {
+    // resulItem = null;
+    // }
 
-        if (resulItem != null) {
-            for (Block blockToCheck : conditions) {
-                for (Direction dir : Direction.values())
-                    if (dir != direction && dir != direction.getOpposite()) {
-                        if (level.getBlockState(blockGen.relative(dir)).is(blockToCheck)) {
-                            found = true;
-                            break;
-                        }
-                    }
+    // boolean found = false;
 
-                resultCheck.add(found);
-                found = false;
-            }
+    // if (resulItem != null) {
+    // for (Block blockToCheck : conditions) {
+    // for (Direction dir : Direction.values())
+    // if (dir != direction && dir != direction.getOpposite()) {
+    // if (level.getBlockState(blockGen.relative(dir)).is(blockToCheck)) {
+    // found = true;
+    // break;
+    // }
+    // }
 
-            // DONT MIX OTHER CONDITIONS OR IT WILL BREAK!
-            var finalValue = resultCheck.stream().allMatch(Boolean::booleanValue);
+    // resultCheck.add(found);
+    // found = false;
+    // }
 
-            var below = dataHolder.belowBlock().isAir() ? true
-                    : level.getBlockState(belowGen).is(dataHolder.belowBlock().getBlock());
+    // // DONT MIX OTHER CONDITIONS OR IT WILL BREAK!
+    // var finalValue = resultCheck.stream().allMatch(Boolean::booleanValue);
 
-            if (finalValue && below)
-                // if (level.getGameTime() % getTickDelay() == 0)
-                itemToOutput(new ItemStack(resulItem, 1), (IItemHandler) outCap);
-        }
-    }
+    // var below = dataHolder.belowBlock().isAir() ? true
+    // : level.getBlockState(belowGen).is(dataHolder.belowBlock().getBlock());
+
+    // if (finalValue && below)
+    // ItemHandlerHelper.insertItemStacked((IItemHandler) outCap, new
+    // ItemStack(resulItem, 1), false);
+
+    // }
+    // }
 
     @Override
     public BlockCapability<?, Direction> getCapType() {
         return Capabilities.EnergyStorage.BLOCK;
+    }
+
+    @Override
+    public BlockPos defineOutput() {
+        return getOutput();
     }
 
 }
