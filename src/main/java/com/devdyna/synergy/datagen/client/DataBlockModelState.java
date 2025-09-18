@@ -2,12 +2,14 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
+import com.devdyna.synergy.api.zFluid;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.utils.ClazzUtil;
 import com.devdyna.synergy.utils.DataGenUtil;
 import com.devdyna.synergy.utils.x;
 
@@ -32,6 +34,8 @@ public class DataBlockModelState extends BlockStateProvider {
 
         @Override
         protected void registerStatesAndModels() {
+
+                ClazzUtil.getAllzFluids().forEach(f -> fluid(f));
 
                 rotableBlock(zBlocks.SPRINKLER.get());
 
@@ -308,6 +312,14 @@ public class DataBlockModelState extends BlockStateProvider {
                                 .modelFile(DataGenUtil.crossORcrop(this, isCrop, x.path(b),
                                                 modLoc(texturePath)))
                                 .build());
+        }
+
+        private void fluid(zFluid fluid) {
+                getVariantBuilder(fluid.getBlock().get())
+                                .partialState().modelForState()
+                                .modelFile(models().getBuilder("block/" + fluid.getId())
+                                                .texture("particle", fluid.getStill()))
+                                .addModel();
         }
 
 }
