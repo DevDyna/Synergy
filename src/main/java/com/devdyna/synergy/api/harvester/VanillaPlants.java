@@ -50,6 +50,7 @@ public class VanillaPlants {
 
     }
 
+    // TODO add BlockStateProperties.X try-catch to include any possible plants
     public static List<ItemStack> checkReplant(Level level, BlockPos pos) {
 
         var state = level.getBlockState(pos);
