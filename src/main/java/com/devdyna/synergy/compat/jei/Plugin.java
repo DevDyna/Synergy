@@ -8,8 +8,7 @@ import java.util.List;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.compat.jei.categories.*;
 import com.devdyna.synergy.datagen.server.DataRecipe;
-import com.devdyna.synergy.init.types.zBlocks;
-import com.devdyna.synergy.init.types.zRecipeTypes;
+import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.ClazzUtil;
 import com.devdyna.synergy.utils.x;
 
@@ -58,11 +57,11 @@ public class Plugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration r) {
-        r.addRecipeCategories(new ReactorCellCategory(
-                r.getJeiHelpers().getGuiHelper()));
+        var helper = r.getJeiHelpers().getGuiHelper();
 
-        r.addRecipeCategories(new UrnCategory(
-                r.getJeiHelpers().getGuiHelper()));
+        r.addRecipeCategories(new ReactorCellCategory(helper));
+        r.addRecipeCategories(new UrnCategory(helper));
+        r.addRecipeCategories(new CropResultCategory(helper));
 
     }
 
@@ -73,7 +72,11 @@ public class Plugin implements IModPlugin {
 
         r.addRecipes(ReactorCellCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.FUEL_CELL_RECIPE.getType())
                 .stream().map(RecipeHolder::value).toList());
+
         r.addRecipes(UrnCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.URN_RITUAL_RECIPE.getType()).stream()
+                .map(RecipeHolder::value).toList());
+
+        r.addRecipes(CropResultCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.CROP_RESULT.getType()).stream()
                 .map(RecipeHolder::value).toList());
     }
 

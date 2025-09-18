@@ -5,7 +5,6 @@ import static net.minecraft.data.recipes.RecipeCategory.*;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.builders.*;
 import com.devdyna.synergy.init.types.*;
@@ -39,6 +38,8 @@ public class DataRecipe extends RecipeProvider {
 
         @Override
         protected void buildRecipes(RecipeOutput c) {
+
+                cropResultRecipes(c);
 
                 clearNBT.forEach(i -> {
                         ShapelessRecipeBuilder.shapeless(MISC, i.get())
@@ -576,4 +577,30 @@ public class DataRecipe extends RecipeProvider {
 
         }
 
+        private void cropResultRecipes(RecipeOutput c) {
+
+                List<DeferredHolder<Item, ? extends Item>> seeds = List.of(
+                                zItems.RICE_SEED,
+                                zItems.AZALEA_SEEDS,
+                                zItems.COTTON_SEEDS,
+                                zItems.CAVE_WHEAT_SEEDS,
+                                zItems.BLUE_CUP_SPORE,
+                                zItems.VIOLET_WEBCAP_SPORE);
+
+                List<List<Item>> result = List.of(
+                                List.of(zItems.RICE_SEED.get()),
+                                List.of(zItems.AZALEA_SEEDS.get(), zItems.SMALL_AZALEA_LEAF.get(),
+                                                zItems.SMALL_AZALEA_ROOTS.get()),
+                                List.of(zItems.COTTON_SEEDS.get(), zItems.COTTON.get()),
+                                List.of(zItems.CAVE_WHEAT_SEEDS.get(), Items.WHEAT),
+                                List.of(zItems.BLUE_CUP_SPORE.get(), zItems.BLUE_CUP_MUSHROOM.get()),
+                                List.of(zItems.VIOLET_WEBCAP_SPORE.get(), zItems.VIOLET_WEBCAP_MUSHROOM.get()));
+
+                seeds.forEach(s -> CropResultBuilder
+                                .of().input(s.get()).output(result.get(seeds.indexOf(s)).stream()
+                                                .map(i -> x.ingredient(i)).toList())
+                                .group(ID).unlockedBy().save(c)
+                );
+
+        }
 }

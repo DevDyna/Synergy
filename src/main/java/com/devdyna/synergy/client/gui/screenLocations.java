@@ -40,4 +40,7 @@ public interface screenLocations {
         public static final ResourceLocation BIG_DARK_WINDOW = x.rl(ID,
                         "textures/gui/big_dark_window.png");
 
+        public static final ResourceLocation CROP_RESULT = x.rl(ID,
+                        "textures/gui/jei/crop_result.png");
+
 }

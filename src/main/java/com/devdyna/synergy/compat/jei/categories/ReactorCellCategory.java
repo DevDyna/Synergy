@@ -1,7 +1,5 @@
 package com.devdyna.synergy.compat.jei.categories;
 
-import static com.devdyna.synergy.Main.ID;
-
 import org.jetbrains.annotations.Nullable;
 
 import com.devdyna.synergy.Main;
@@ -30,7 +28,7 @@ public class ReactorCellCategory implements IRecipeCategory<FuelCellRecipe> {
 
     private final IGuiHelper helper;
     public static final RecipeType<FuelCellRecipe> TYPE = new RecipeType<>(
-            x.rl(ID, zRecipeTypes.FUEL_CELL_RECIPE.getId()),
+            x.rl(zRecipeTypes.FUEL_CELL_RECIPE.getId()),
             FuelCellRecipe.class);
 
     public ReactorCellCategory(IGuiHelper helper) {
@@ -81,10 +79,10 @@ public class ReactorCellCategory implements IRecipeCategory<FuelCellRecipe> {
                                 : recipe.getDuration() + " tick" + (recipe.getDuration() > 1 ? "s" : ""))),
                 45, 5, 0xA0A0A0);
 
-        guiGraphics.drawString(font, "Heat "+(recipe.getHeat() >= 0 ? "+" : "") + recipe.getHeat() + "°/t",
+        guiGraphics.drawString(font, "Heat " + (recipe.getHeat() >= 0 ? "+" : "") + recipe.getHeat() + "°/t",
                 25, 40, 0xA0A0A0);
 
-        guiGraphics.drawString(font, "Gen  "+(recipe.getFe() >= 0 ? "+" : "") + recipe.getFe() + "fe/t",
+        guiGraphics.drawString(font, "Gen  " + (recipe.getFe() >= 0 ? "+" : "") + recipe.getFe() + "fe/t",
                 25, 50, 0xA0A0A0);
 
     }

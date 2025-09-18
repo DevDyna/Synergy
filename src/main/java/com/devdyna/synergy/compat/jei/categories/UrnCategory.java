@@ -1,7 +1,5 @@
 package com.devdyna.synergy.compat.jei.categories;
 
-import static com.devdyna.synergy.Main.ID;
-
 import org.jetbrains.annotations.Nullable;
 
 import com.devdyna.synergy.Main;
@@ -27,7 +25,7 @@ public class UrnCategory implements IRecipeCategory<UrnRitualRecipe> {
 
     private final IGuiHelper helper;
     public static final RecipeType<UrnRitualRecipe> TYPE = new RecipeType<>(
-            x.rl(ID, zRecipeTypes.URN_RITUAL_RECIPE.getId()),
+            x.rl(zRecipeTypes.URN_RITUAL_RECIPE.getId()),
             UrnRitualRecipe.class);
 
     public UrnCategory(IGuiHelper helper) {
