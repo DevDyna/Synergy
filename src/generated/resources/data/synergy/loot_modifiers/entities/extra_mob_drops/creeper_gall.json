@@ -6,6 +6,10 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:entities/creeper"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
           "loot_table_id": "minecraft:chests/simple_dungeon"
         },
         {
@@ -19,5 +23,5 @@
       ]
     }
   ],
-  "table": "synergy:entities/creeper_gall"
+  "table": "synergy:entities/extra_mob_drops/creeper_gall"
 }

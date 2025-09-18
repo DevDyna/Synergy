@@ -6,26 +6,26 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/nether_bridge"
+          "loot_table_id": "minecraft:entities/enderman"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/bastion_bridge"
+          "loot_table_id": "minecraft:chests/abandoned_mineshaft"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/bastion_other"
+          "loot_table_id": "minecraft:chests/simple_dungeon"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/bastion_treasure"
+          "loot_table_id": "minecraft:chests/ancient_city"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/bastion_hoglin_stable"
+          "loot_table_id": "minecraft:chests/end_city_treasure"
         }
       ]
     }
   ],
-  "table": "synergy:entities/ghast_bladder"
+  "table": "synergy:entities/extra_mob_drops/enderman_heart"
 }

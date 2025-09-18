@@ -6,6 +6,18 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:entities/cave_spider"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:entities/bogged"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:entities/bat"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
           "loot_table_id": "minecraft:chests/simple_dungeon"
         },
         {
@@ -23,5 +35,5 @@
       ]
     }
   ],
-  "table": "synergy:entities/venom_sac"
+  "table": "synergy:entities/extra_mob_drops/venom_sac"
 }

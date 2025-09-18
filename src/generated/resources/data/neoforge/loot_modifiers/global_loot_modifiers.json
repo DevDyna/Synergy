@@ -1,15 +1,15 @@
 {
   "entries": [
     "synergy:chests/mushrooms",
-    "synergy:entities/creeper_gall",
-    "synergy:entities/enderman_heart",
-    "synergy:entities/slime_bolus",
-    "synergy:entities/guardian_scale",
-    "synergy:entities/witherflesh",
-    "synergy:entities/venom_sac",
-    "synergy:entities/silverfish_dust",
-    "synergy:entities/ghast_bladder",
-    "synergy:entities/zombie_liver"
+    "synergy:entities/extra_mob_drops/creeper_gall",
+    "synergy:entities/extra_mob_drops/enderman_heart",
+    "synergy:entities/extra_mob_drops/slime_bolus",
+    "synergy:entities/extra_mob_drops/guardian_scale",
+    "synergy:entities/extra_mob_drops/witherflesh",
+    "synergy:entities/extra_mob_drops/venom_sac",
+    "synergy:entities/extra_mob_drops/silverfish_dust",
+    "synergy:entities/extra_mob_drops/ghast_bladder",
+    "synergy:entities/extra_mob_drops/zombie_liver"
   ],
   "replace": false
 }

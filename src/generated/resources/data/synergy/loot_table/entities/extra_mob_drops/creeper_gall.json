@@ -12,7 +12,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:silverfish_dust"
+          "name": "synergy:creeper_gall"
         }
       ],
       "functions": [
@@ -42,5 +42,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/silverfish_dust"
+  "random_sequence": "synergy:entities/extra_mob_drops/creeper_gall"
 }

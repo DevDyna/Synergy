@@ -12,7 +12,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:guardian_scale"
+          "name": "synergy:witherflesh"
         }
       ],
       "functions": [
@@ -42,5 +42,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/guardian_scale"
+  "random_sequence": "synergy:entities/extra_mob_drops/witherflesh"
 }

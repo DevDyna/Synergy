@@ -12,7 +12,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:slime_bolus"
+          "name": "synergy:venom_sac"
         }
       ],
       "functions": [
@@ -42,5 +42,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/slime_bolus"
+  "random_sequence": "synergy:entities/extra_mob_drops/venom_sac"
 }

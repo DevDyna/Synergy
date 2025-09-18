@@ -6,6 +6,14 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:entities/guardian"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:entities/elder_guardian"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
           "loot_table_id": "minecraft:chests/woodland_mansion"
         },
         {
@@ -19,5 +27,5 @@
       ]
     }
   ],
-  "table": "synergy:entities/guardian_scale"
+  "table": "synergy:entities/extra_mob_drops/guardian_scale"
 }

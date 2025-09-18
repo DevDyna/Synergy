@@ -6,30 +6,30 @@
       "terms": [
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/abandoned_mineshaft"
+          "loot_table_id": "minecraft:entities/wither_skeleton"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/simple_dungeon"
+          "loot_table_id": "minecraft:chests/nether_bridge"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/jungle_temple"
+          "loot_table_id": "minecraft:chests/bastion_bridge"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/stronghold_corridor"
+          "loot_table_id": "minecraft:chests/bastion_other"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/shipwreck_supply"
+          "loot_table_id": "minecraft:chests/bastion_treasure"
         },
         {
           "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/trial_chambers/supply"
+          "loot_table_id": "minecraft:chests/bastion_hoglin_stable"
         }
       ]
     }
   ],
-  "table": "synergy:entities/slime_bolus"
+  "table": "synergy:entities/extra_mob_drops/witherflesh"
 }

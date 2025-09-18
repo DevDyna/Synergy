@@ -12,7 +12,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:zombie_liver"
+          "name": "synergy:enderman_heart"
         }
       ],
       "functions": [
@@ -42,5 +42,5 @@
       }
     }
   ],
-  "random_sequence": "synergy:entities/zombie_liver"
+  "random_sequence": "synergy:entities/extra_mob_drops/enderman_heart"
 }
