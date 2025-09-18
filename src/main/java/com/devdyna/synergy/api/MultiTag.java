@@ -22,12 +22,16 @@ public class MultiTag {
         this.suffix = suffix;
     }
 
-    public MultiTag(String modname, String full_name) {
-        this(modname, full_name,"");
+    public MultiTag(String modname, String name) {
+        this(modname, name,"");
     }
 
     public MultiTag(String name) {
         this(ID, name);
+    }
+
+    public static MultiTag of(String name){
+        return new MultiTag(name);
     }
 
     public TagKey<Item> item() {
