@@ -37,6 +37,10 @@ public class zCreativeTab {
                                                         output.accept((Item) e.get());
                                                 });
 
+                                                zItems.zBucketItems.getEntries().forEach(e -> {
+                                                        output.accept((Item) e.get());
+                                                });
+
                                                 ClazzUtil.getAllzItems().forEach(e -> {
                                                         output.accept((Item) e.get());
                                                 });

@@ -9,6 +9,7 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.builder.DecorativeBlock;
 import com.devdyna.synergy.init.builder.ItemComponents;
+import com.devdyna.synergy.init.builder.ItemToolTipped;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -41,11 +42,11 @@ public class Material {
                 zBlockTag.register(bus);
                 zContainer.register(bus);
                 zFluidTags.register(bus);
-                zFluidTypes.register(bus);
+                // zFluidTypes.register(bus);
                 zFluids.register(bus);
                 zHandlers.register(bus);
                 zItemTag.register(bus);
-                zProperties.register(bus);
+                // zProperties.register(bus);
                 zComponents.register(bus);
                 zCreativeTab.register(bus);
                 zRecipeTypes.register(bus);
@@ -176,8 +177,18 @@ public class Material {
                                 .register(name, () -> new ItemComponents());
         }
 
+        public static DeferredHolder<Item, Item> tooltippedItem(String name,
+                        DeferredRegister.Items i) {
+                return i.register(name, () -> new ItemToolTipped(name+".tip"));
+        }
+
         public static DeferredHolder<Item, Item> resourceItem(String name) {
                 return zItems.zResources
+                                .registerSimpleItem(name);
+        }
+
+        public static DeferredHolder<Item, Item> droplet(String name) {
+                return zItems.zDropLets
                                 .registerSimpleItem(name);
         }
 

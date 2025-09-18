@@ -34,6 +34,10 @@ public class zItems {
                 zCropExtra.register(bus);
                 zSeeds.register(bus);
 
+                zBucketItems.register(bus);
+
+                zDropLets.register(bus);
+
                 zResources.register(bus);
 
                 zDusts.register(bus);
@@ -80,6 +84,15 @@ public class zItems {
          * Crop seed items
          */
         public static final DeferredRegister.Items zSeeds = DeferredRegister.createItems(Main.ID);
+        /**
+         * BucketItems
+         */
+        public static final DeferredRegister.Items zBucketItems = DeferredRegister.createItems(Main.ID);
+
+        /**
+         * Fluid Resource items
+         */
+        public static final DeferredRegister.Items zDropLets = DeferredRegister.createItems(Main.ID);
 
         /**
          * Generic resource type
@@ -228,7 +241,8 @@ public class zItems {
         public static final DeferredHolder<Item, Item> AQUAMARINE = Material
                         .resourceGem(zStatic.ResourceMaterial.aquamarine);
 
-        // public static final DeferredHolder<Item, Item> ONYX = Material.resourceGem(zStatic.ResourceMaterial.onyx);
+        // public static final DeferredHolder<Item, Item> ONYX =
+        // Material.resourceGem(zStatic.ResourceMaterial.onyx);
 
         public static final DeferredHolder<Item, Item> SILICON = Material.resourceGem(zStatic.ResourceMaterial.silicon);
         // ---------------------------------------------------------------------------------------//
@@ -297,26 +311,24 @@ public class zItems {
         public static final DeferredHolder<Item, Item> URANIUM = Material
                         .resourcePellet(zStatic.ResourceMaterial.uranium);
         // ---------------------------------------------------------------------------------------//
-        public static final DeferredHolder<Item, Item> CREEPER_GALL = zMobDrop
-                        .registerSimpleItem(zStatic.MobDrop.creeper_gall);
-        public static final DeferredHolder<Item, Item> ENDERMAN_HEART = zMobDrop
-                        .registerSimpleItem(zStatic.MobDrop.enderman_heart);
-        public static final DeferredHolder<Item, Item> GHAST_BLADDER = zMobDrop
-                        .registerSimpleItem(zStatic.MobDrop.ghast_bladder);
-        public static final DeferredHolder<Item, Item> GUARDIAN_SCALE = zMobDrop
-                        .registerSimpleItem(zStatic.MobDrop.guardian_scale);
-        // public static final DeferredHolder<Item, Item> RED_HEART = zMobDrop
-        //                 .registerSimpleItem(zStatic.MobDrop.red_heart);
-        public static final DeferredHolder<Item, Item> SILVERFISH_DUST = zMobDrop
-                        .registerSimpleItem(zStatic.MobDrop.silverfish_dust);
-        public static final DeferredHolder<Item, Item> SLIME_BOLUS = zMobDrop
-                        .registerSimpleItem(zStatic.MobDrop.slime_bolus);
-        public static final DeferredHolder<Item, Item> VENOM_SAC = zMobDrop
-                        .registerSimpleItem(zStatic.MobDrop.venom_sac);
-        public static final DeferredHolder<Item, Item> WITHERFLESH = zMobDrop
-                        .registerSimpleItem(zStatic.MobDrop.witherflesh);
-        public static final DeferredHolder<Item, Item> ZOMBIE_LIVER = zMobDrop
-                        .registerSimpleItem(zStatic.MobDrop.zombie_liver);
+        public static final DeferredHolder<Item, Item> CREEPER_GALL = Material
+                        .tooltippedItem(zStatic.MobDrop.creeper_gall, zMobDrop);
+        public static final DeferredHolder<Item, Item> ENDERMAN_HEART = Material
+                        .tooltippedItem(zStatic.MobDrop.enderman_heart, zMobDrop);
+        public static final DeferredHolder<Item, Item> GHAST_BLADDER = Material
+                        .tooltippedItem(zStatic.MobDrop.ghast_bladder, zMobDrop);
+        public static final DeferredHolder<Item, Item> GUARDIAN_SCALE = Material
+                        .tooltippedItem(zStatic.MobDrop.guardian_scale, zMobDrop);
+        public static final DeferredHolder<Item, Item> SILVERFISH_DUST = Material
+                        .tooltippedItem(zStatic.MobDrop.silverfish_dust, zMobDrop);
+        public static final DeferredHolder<Item, Item> SLIME_BOLUS = Material
+                        .tooltippedItem(zStatic.MobDrop.slime_bolus, zMobDrop);
+        public static final DeferredHolder<Item, Item> VENOM_SAC = Material.tooltippedItem(zStatic.MobDrop.venom_sac,
+                        zMobDrop);
+        public static final DeferredHolder<Item, Item> WITHERFLESH = Material
+                        .tooltippedItem(zStatic.MobDrop.witherflesh, zMobDrop);
+        public static final DeferredHolder<Item, Item> ZOMBIE_LIVER = Material
+                        .tooltippedItem(zStatic.MobDrop.zombie_liver, zMobDrop);
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> CARBON_FIBER = Material
                         .resourceItem("carbon_fiber");
@@ -324,11 +336,11 @@ public class zItems {
         public static final DeferredHolder<Item, Item> INFERNAL_EMBER = Material
                         .resourceItem("infernal_ember");
 
-        public static final DeferredHolder<Item, Item> RUBBER = Material.resourceItem("rubber");
+        public static final DeferredHolder<Item, Item> GLUE = Material.droplet(zStatic.Fluids.GLUE);
 
-        public static final DeferredHolder<Item, Item> OIL = Material.resourceItem("oil");
+        public static final DeferredHolder<Item, Item> OIL = Material.droplet(zStatic.Fluids.OIL);
 
-        public static final DeferredHolder<Item, Item> SAP = Material.resourceItem("sap");
+        public static final DeferredHolder<Item, Item> SAP = Material.droplet(zStatic.Fluids.SAP);
 
         public static final DeferredHolder<Item, Item> WOODEN_GEAR = Material
                         .resourceItem("wooden_gear");

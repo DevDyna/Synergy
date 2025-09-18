@@ -32,6 +32,7 @@ import com.devdyna.synergy.init.builder.harvester.HarvesterBLK;
 public class zBlocks {
         public static void register(IEventBus bus) {
                 zBlock.register(bus);
+                zBlockFluids.register(bus);
                 zBlockItem.register(bus);
                 zDepositBlocks.register(bus);
                 zDepositOres.register(bus);
@@ -46,15 +47,38 @@ public class zBlocks {
         }
 
         // ---------------------------------------------------------------------------------------//
+        /**
+         * generic blocks
+         */
         public static final DeferredRegister.Blocks zBlock = DeferredRegister.createBlocks(Main.ID);
+        /**
+         * generic fluid blocks
+         */
+        public static final DeferredRegister.Blocks zBlockFluids = DeferredRegister.createBlocks(Main.ID);
+        /**
+         * generic item blocks
+         */
         public static final DeferredRegister.Blocks zBlockItem = DeferredRegister.createBlocks(Main.ID);
+        /**
+         * wip
+         */
         public static final DeferredRegister.Blocks zDepositBlocks = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zDepositOres = DeferredRegister.createBlocks(Main.ID);
+        /**
+         * crop stuff
+         */
         public static final DeferredRegister.Blocks zCrop = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zWildCrop = DeferredRegister.createBlocks(Main.ID);
+        /**
+         * decorative stuff
+         */
         public static final DeferredRegister.Blocks zDecorative = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zBlockSlab = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zBlockStair = DeferredRegister.createBlocks(Main.ID);
+
+        /**
+         * reactor stuff
+         */
         public static final DeferredRegister.Blocks zModerators = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zCoolers = DeferredRegister.createBlocks(Main.ID);
         // ---------------------------------------------------------------------------------------//
@@ -265,6 +289,8 @@ public class zBlocks {
         // ---------------------------------------------------------------------------------------//
 
         public static void registerLists() {
+
+              
 
         }
 
