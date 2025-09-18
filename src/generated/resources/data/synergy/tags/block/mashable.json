@@ -1,7 +1,12 @@
 {
   "values": [
     "#synergy:can_connect",
+    "#synergy:cooler",
+    "#synergy:moderator",
     "synergy:sprinkler",
-    "synergy:harvester"
+    "synergy:harvester",
+    "synergy:urn",
+    "synergy:quantum_reactor_controller",
+    "synergy:fuel_cell"
   ]
 }

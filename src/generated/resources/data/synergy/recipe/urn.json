@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "B": {
+      "tag": "c:bricks/normal"
+    },
+    "H": {
+      "item": "synergy:enderman_heart"
+    }
+  },
+  "pattern": [
+    "B B",
+    "BHB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:urn"
+  }
+}

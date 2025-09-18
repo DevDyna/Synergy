@@ -1,10 +1,20 @@
 {
   "values": [
+    "#synergy:cooler",
+    "#synergy:moderator",
     "synergy:sprinkler",
     "synergy:harvester",
     "synergy:solar_panel",
     "synergy:adobe",
     "synergy:rustic_metal",
-    "synergy:basic_machine_frame"
+    "synergy:basic_machine_frame",
+    "synergy:urn",
+    "synergy:advanced_machine_frame",
+    "synergy:advanced_alloy_block",
+    "synergy:steel_block",
+    "synergy:healer",
+    "synergy:cooler_base",
+    "synergy:fuel_cell",
+    "synergy:quantum_reactor_controller"
   ]
 }
