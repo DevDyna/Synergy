@@ -8,7 +8,6 @@ import java.util.List;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.compat.jei.categories.*;
 import com.devdyna.synergy.datagen.server.DataRecipe;
-import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.ClazzUtil;
@@ -23,6 +22,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
 
 @SuppressWarnings({ "unchecked", "unlikely-arg-type", "null" })
 @JeiPlugin
@@ -51,8 +51,9 @@ public class Plugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration r) {
-        r.addRecipeCatalyst(x.item(zBlocks.REACTOR_CONTROLLER.get().asItem(), 1), ReactorCellCategory.TYPE);
-        r.addRecipeCatalyst(x.item(zBlocks.REACTOR_FUEL_CELL.get().asItem(), 1), ReactorCellCategory.TYPE);
+        r.addRecipeCatalyst(x.item(zBlocks.REACTOR_CONTROLLER), ReactorCellCategory.TYPE);
+        r.addRecipeCatalyst(x.item(zBlocks.REACTOR_FUEL_CELL), ReactorCellCategory.TYPE);
+        r.addRecipeCatalyst(x.item(zBlocks.URN), UrnCategory.TYPE);
     }
 
     @Override
@@ -60,19 +61,20 @@ public class Plugin implements IModPlugin {
         r.addRecipeCategories(new ReactorCellCategory(
                 r.getJeiHelpers().getGuiHelper()));
 
-        // r.addRecipeCategories(new CoolerCategory(
-        //         r.getJeiHelpers().getGuiHelper()));
+        r.addRecipeCategories(new UrnCategory(
+                r.getJeiHelpers().getGuiHelper()));
 
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration r) {
-        List<FuelCellRecipe> recipes = Minecraft.getInstance().level.getRecipeManager()
-                .getAllRecipesFor(zRecipeTypes.FUEL_CELL_RECIPE.getType()).stream().map(RecipeHolder::value).toList();
 
-        r.addRecipes(ReactorCellCategory.TYPE, recipes);
+        RecipeManager recipes = Minecraft.getInstance().level.getRecipeManager();
 
-        // r.addRecipes(CoolerCategory.TYPE, List.of(CoolerCategory.Coolers.values()));
+        r.addRecipes(ReactorCellCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.FUEL_CELL_RECIPE.getType())
+                .stream().map(RecipeHolder::value).toList());
+        r.addRecipes(UrnCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.URN_RITUAL_RECIPE.getType()).stream()
+                .map(RecipeHolder::value).toList());
     }
 
     @Override
