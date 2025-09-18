@@ -4,6 +4,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.devdyna.synergy.api.zFluid;
+import com.devdyna.synergy.init.types.zFluids;
 import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.world.item.Item;
@@ -59,6 +61,27 @@ public class ClazzUtil {
             }
         }
         return blocks;
+    }
+
+    /**
+     * Dont use on LootTableProviders
+     */
+    public static List<zFluid> getAllzFluids() {
+        List<zFluid> l = new ArrayList<>();
+
+        for (Field field : zFluids.class.getDeclaredFields()) {
+            try {
+                if (zFluid.class.isAssignableFrom(field.getType())) {
+                    Object value = field.get(null);
+                    if (value instanceof zFluid f) {
+                        l.add(f);
+                    }
+                }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return l;
     }
 
 }
