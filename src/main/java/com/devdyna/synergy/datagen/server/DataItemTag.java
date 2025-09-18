@@ -2,13 +2,16 @@ package com.devdyna.synergy.datagen.server;
 
 import java.util.concurrent.CompletableFuture;
 
+import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.init.types.zItems;
+import com.devdyna.synergy.init.types.zMultiTags;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
@@ -74,6 +77,17 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.URANIUM).add(zItems.URANIUM.get());
 
                 tag(zItemTag.COAL_LIKE).add(Items.COAL, Items.CHARCOAL);
+
+                tag(zItemTag.MOB_DROP)
+                                .add(zItems.zMobDrop.getEntries().stream().map(i -> i.get()).toArray(Item[]::new));
+
+                tag(zMultiTags.COOLERS.item())
+                                .add(zBlocks.zCoolers.getEntries().stream().map(i -> i.get().asItem())
+                                                .toArray(Item[]::new));
+
+                tag(zMultiTags.MODERATORS.item())
+                                .add(zBlocks.zModerators.getEntries().stream().map(i -> i.get().asItem())
+                                                .toArray(Item[]::new));
 
         }
 
