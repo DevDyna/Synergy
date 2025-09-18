@@ -38,4 +38,6 @@ public class zItemTag {
 
 public static final TagKey<Item> COAL_LIKE = Material.tagItem("coal_like", "c");
 
+public static final TagKey<Item> MOB_DROP = Material.tagItem("mob_drops");
+
 }
