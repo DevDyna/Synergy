@@ -5,9 +5,12 @@ import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.init.types.zMultiTags;
+
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
@@ -28,18 +31,25 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(zBlockTag.CROPS).addTag(BlockTags.CROPS);
 
-                // solar panels atm will cause rendering issues
-                tag(zBlockTag.MASHABLE).addTag(zBlockTag.CAN_CONNECT).add(zBlocks.SPRINKLER.get(),
-                                zBlocks.HARVESTER.get());
-
                 tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                                .addTag(zMultiTags.COOLERS.block())
+                                .addTag(zMultiTags.MODERATORS.block())
                                 .add(
                                                 zBlocks.SPRINKLER.get(),
                                                 zBlocks.HARVESTER.get(),
                                                 zBlocks.SOLAR_PANEL.get(),
                                                 zBlocks.ADOBE.get(),
                                                 zBlocks.RUSTIC_METAL.get(),
-                                                zBlocks.MACHINE_FRAME.get());
+                                                zBlocks.MACHINE_FRAME.get(),
+                                                zBlocks.URN.get(),
+                                                zBlocks.ADVANCED_MACHINE_FRAME.get(),
+                                                zBlocks.ADVANCED_ALLOY_BLOCK.get(),
+                                                zBlocks.STEEL_BLOCK.get(),
+                                                zBlocks.HEALER.get(),
+                                                zBlocks.COOLER_BASE.get(),
+                                                zBlocks.REACTOR_FUEL_CELL.get(),
+                                                zBlocks.REACTOR_CONTROLLER.get()
+                                );
 
                 tag(BlockTags.MINEABLE_WITH_AXE)
                                 .add(
@@ -53,13 +63,13 @@ public class DataBlockTag extends BlockTagsProvider {
                 tag(zBlockTag.PIPE).add(zBlocks.PIPE.get());
 
                 tag(zBlockTag.NODE_RETRIEVAL)
-                                .add(zBlocks.ITEM_RETRIEVAL.get(),zBlocks.ENERGY_RETRIEVAL.get());
+                                .add(zBlocks.ITEM_RETRIEVAL.get(), zBlocks.ENERGY_RETRIEVAL.get());
 
                 tag(zBlockTag.NODE_TRANSFER)
-                                .add(zBlocks.ITEM_TRANSFER.get(),zBlocks.ENERGY_TRANSFER.get());
+                                .add(zBlocks.ITEM_TRANSFER.get(), zBlocks.ENERGY_TRANSFER.get());
 
                 tag(zBlockTag.NODE_PROVIDER)
-                                .add(zBlocks.ITEM_PROVIDER.get(),zBlocks.ENERGY_PROVIDER.get());
+                                .add(zBlocks.ITEM_PROVIDER.get(), zBlocks.ENERGY_PROVIDER.get());
 
                 tag(zBlockTag.NODE)
                                 .addTag(zBlockTag.NODE_TRANSFER)
@@ -133,6 +143,24 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(zBlockTag.FERMERS_DELIGHT_COMPOSTING).add(zBlocks.BLUE_CUP_MUSHROOM.get(),
                                 zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
+
+                tag(zMultiTags.COOLERS.block())
+                                .add(zBlocks.zCoolers.getEntries().stream().map(i -> i.get()).toArray(Block[]::new));
+
+                tag(zMultiTags.MODERATORS.block())
+                                .add(zBlocks.zModerators.getEntries().stream().map(i -> i.get()).toArray(Block[]::new));
+
+                // solar panels atm will cause rendering issues
+                tag(zBlockTag.MASHABLE)
+                                .addTag(zBlockTag.CAN_CONNECT)
+                                .addTag(zMultiTags.COOLERS.block())
+                                .addTag(zMultiTags.MODERATORS.block())
+                                .add(
+                                                zBlocks.SPRINKLER.get(),
+                                                zBlocks.HARVESTER.get(),
+                                                zBlocks.URN.get(),
+                                                zBlocks.REACTOR_CONTROLLER.get(),
+                                                zBlocks.REACTOR_FUEL_CELL.get());
 
         }
 
