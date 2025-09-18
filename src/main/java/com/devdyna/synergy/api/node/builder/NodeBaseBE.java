@@ -40,7 +40,12 @@ public abstract class NodeBaseBE extends BlockEntity {
     private BlockPos input;
     private BlockPos output;
 
-    /** * Server only ticking * Useful for block events */
+    /**
+     * Server only ticking
+     * <br/>
+     * <br/>
+     * Useful for block events
+     */
     public void tickServer() {
         this.failedRoutes = new HashSet<>();
         var input = getInputPos(getBlockState(), level, getBlockPos());
@@ -84,9 +89,9 @@ public abstract class NodeBaseBE extends BlockEntity {
     }
 
     /**
-     * * Exclude this position to be used and cancel the event * <br/>
-     * * <br/>
-     * * Useful when containers are full
+     * Exclude this position to be used and cancel the event <br/>
+     * <br/>
+     * Useful when containers are full
      */
     public void excludePos(BlockPos pos) {
         if (pos != null)
@@ -94,9 +99,9 @@ public abstract class NodeBaseBE extends BlockEntity {
     }
 
     /**
-     * * Exclude this position to be used and cancel the event * <br/>
-     * * <br/>
-     * * Useful when containers are full
+     * Exclude this position to be used and cancel the event <br/>
+     * <br/>
+     * Useful when containers are full
      */
     public void excludePos() {
         excludePos(defineOutput());
@@ -119,7 +124,8 @@ public abstract class NodeBaseBE extends BlockEntity {
         var blockEntity = level.getBlockEntity(nextPos);
         if (capType == Capabilities.ItemHandler.BLOCK) {
             var itemHandler = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
-            if (itemHandler instanceof IItemHandler handler) { // Check if any slot can accept an item (simulate insert)
+            if (itemHandler instanceof IItemHandler handler) {
+                // Check if any slot can accept an item (simulate insert)
                 for (int slot = 0; slot < handler.getSlots(); slot++) {
                     if (handler.insertItem(slot, new ItemStack(Items.STONE, 1), true).isEmpty()) {
                         return true;
@@ -128,14 +134,16 @@ public abstract class NodeBaseBE extends BlockEntity {
             }
         } else if (capType == Capabilities.EnergyStorage.BLOCK) {
             var energy = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
-            if (energy instanceof IEnergyStorage storage) { // Check if it can receive at least 1 energy
+            if (energy instanceof IEnergyStorage storage) {
+                // Check if it can receive at least 1 energy
                 if (storage.receiveEnergy(1, true) > 0) {
                     return true;
                 }
             }
         } else if (capType == Capabilities.FluidHandler.BLOCK) {
             var fluid = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
-            if (fluid instanceof IFluidHandler handler) { // Try to simulate inserting 1 bucket of water
+            if (fluid instanceof IFluidHandler handler) {
+                // Try to simulate inserting 1 bucket of water
                 if (handler.fill(new FluidStack(Fluids.WATER, 1000), IFluidHandler.FluidAction.SIMULATE) > 0) {
                     return true;
                 }
@@ -147,15 +155,27 @@ public abstract class NodeBaseBE extends BlockEntity {
         return false;
     }
 
-    /** * Client only ticking * Useful for player events */
+    /**
+     * Client only ticking
+     * <br/>
+     * <br/>
+     * Useful for player events
+     */
     public void tickClient() {
     }
 
-    /** * Client and Server ticking * * Usefull for particles */
+    /**
+     * Client and Server ticking
+     * <br/>
+     * <br/>
+     * Usefull for particles
+     */
     public void tickBoth() {
     }
 
-    /** * return the output blockpos */
+    /**
+     * return the output blockpos
+     */
     @Nullable
     private BlockPos getOutputPos(Level level, BlockPos start) {
         Queue<BlockPos> queue = new ArrayDeque<>();
@@ -168,29 +188,30 @@ public abstract class NodeBaseBE extends BlockEntity {
             visited.add(current);
             BlockState state = level.getBlockState(current);
             for (Direction dir : Direction.values()) {
-                BlockPos next = current.relative(dir); // LogUtil.info(dir+" ->
-                                                       // "+state.getValue(pipeType.D2P(dir)).name());
-                if (!visited.contains(next) && state.getValue(pipeType.D2P(dir)) == pipeProperties.TRUE) { // check if
-                                                                                                           // pipe is
-                                                                                                           // connected
-                                                                                                           // and not
-                                                                                                           // included
-                    BlockState neighbor = level.getBlockState(next); // LogUtil.info("block
-                                                                     // "+neighbor.getBlock().toString());
+                BlockPos next = current.relative(dir);
+
+                if (!visited.contains(next) &&
+                        state.getValue(pipeType.D2P(dir)) == pipeProperties.TRUE) {
+                    // check if pipe is connected and not included
+                    BlockState neighbor = level.getBlockState(next);
+
                     if (match(level, current, state, dir, next, neighbor)) {
                         return next;
                     }
-                    if (neighbor.is(zBlockTag.CAN_CONNECT)) { // valid pipe connection // LogUtil.info("continue");
+
+                    if (neighbor.is(zBlockTag.CAN_CONNECT)) {
                         queue.add(next);
                     }
                 }
             }
-        } // LogUtil.info("fail");
+        }
         failedRoutes.add(start);
         return null;
     }
 
-    /** * return the input blockpos */
+    /**
+     * return the input blockpos
+     */
     @Nullable
     private BlockPos getInputPos(BlockState state, Level level, BlockPos nodePos) {
         return nodePos.relative(state.getValue(nodeType.FACING));
@@ -254,7 +275,7 @@ public abstract class NodeBaseBE extends BlockEntity {
                 // Return the leftover back to input
                 drained.setAmount(drained.getAmount() - filled);
                 input.fill(drained, IFluidHandler.FluidAction.EXECUTE);
-                // break;
+
             }
         }
     }
