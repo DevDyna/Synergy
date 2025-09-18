@@ -197,6 +197,11 @@ public class DataGenUtil {
                         .toArray(String[]::new));
     }
 
+    /**
+     * 
+     * @deprecated
+     */
+    @Deprecated
     public static ResourceLocation modLoc(String path) {
         return ResourceLocation.fromNamespaceAndPath(ID, path);
     }
