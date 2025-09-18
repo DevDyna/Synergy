@@ -5,7 +5,6 @@ import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.client.gui.tiny_chest.TinyChestScreen;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zContainer;
-
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -17,9 +16,6 @@ public class Client {
 
     @SubscribeEvent
     public static void render(EntityRenderersEvent.RegisterRenderers event) {
-        // event.registerBlockEntityRenderer(zBlockEntities.ITEM_TRANSFER.get(), ItemTransferDebugRender::new);
-        // event.registerBlockEntityRenderer(zBlockEntities.ITEM_RETRIEVAL.get(), ItemRetrievalDebugRender::new);
-        // event.registerBlockEntityRenderer(zBlockEntities.ITEM_PROVIDER.get(), ItemProviderDebugRender::new);
 
         event.registerBlockEntityRenderer(zBlockEntities.HARVESTER.get(), HarvesterAOE::new);
         event.registerBlockEntityRenderer(zBlockEntities.SPRINKLER.get(), SprinklerAOE::new);
