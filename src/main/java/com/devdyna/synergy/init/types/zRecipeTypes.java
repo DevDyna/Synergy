@@ -51,5 +51,14 @@ public class zRecipeTypes {
                                         return CROP_RESULT.getId();
                                 }
                         });
+
+        public static final zRecipe<ItemUseRecipe> ITEM_USE = new zRecipe<ItemUseRecipe>(
+                        "item_use", ItemUseRecipeSerializer::new,
+                        () -> new RecipeType<ItemUseRecipe>() {
+                                @Override
+                                public String toString() {
+                                        return ITEM_USE.getId();
+                                }
+                        });
         // ------------------------------------------------------------------------------------------------------------------------------------//
 }
