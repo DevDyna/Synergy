@@ -41,14 +41,14 @@ public abstract class BEMenu extends BaseBE implements ItemStorageBlock, MenuPro
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.saveAdditional(tag, registries);
         tag.put("inventory", getStorage().serializeNBT(registries));
+        super.saveAdditional(tag, registries);
     }
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.loadAdditional(tag, registries);
         getStorage().deserializeNBT(registries, tag.getCompound("inventory"));
+        super.loadAdditional(tag, registries);
     }
 
     @Nullable

@@ -44,17 +44,19 @@ public class BaseBE extends BlockEntity {
 
     @Override
     protected void saveAdditional(CompoundTag tag, Provider registries) {
-        super.saveAdditional(tag, registries);
+
         if (this instanceof AreaOfEffect)
             tag.putInt(RADIUS, radius);
+        super.saveAdditional(tag, registries);
     }
 
     @Override
     protected void loadAdditional(CompoundTag tag, Provider registries) {
-        super.loadAdditional(tag, registries);
+
         if (this instanceof AreaOfEffect)
             if (tag.contains(RADIUS))
                 radius = tag.getInt(RADIUS);
+        super.loadAdditional(tag, registries);
     }
 
 }
