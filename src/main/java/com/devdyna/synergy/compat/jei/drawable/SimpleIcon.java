@@ -1,37 +1,66 @@
 package com.devdyna.synergy.compat.jei.drawable;
 
+import com.devdyna.synergy.utils.TimeUtil;
 import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
 @SuppressWarnings("null")
-public class SimpleIcon implements IDrawable {
-    private final IDrawable items;
+public class SimpleIcon {
 
-    public SimpleIcon(IDrawable items) {
-        this.items = items;
+    public static IDrawable of(IGuiHelper guiHelper, Item item) {
+        return guiHelper.createDrawableItemStack(x.item(item));
     }
 
-    public static SimpleIcon of(IGuiHelper guiHelper, Item item) {
-        return new SimpleIcon(guiHelper.createDrawableItemStack(x.item(item)));
+    //TODO dont work , require to investigate why
+    public static IDrawable of(IGuiHelper guiHelper, ResourceLocation rl, int x, int y) {
+        return new IDrawable() {
+
+            @Override
+            public int getWidth() {
+                return x;
+            }
+
+            @Override
+            public int getHeight() {
+                return y;
+            }
+
+            @Override
+            public void draw(GuiGraphics guiGraphics, int xOffset, int yOffset) {
+                guiGraphics.blitSprite(rl, 0, 0, x, y);
+            }
+
+        };
     }
 
-    @Override
-    public void draw(GuiGraphics guiGraphics, int xOffset, int yOffset) {
-        items.draw(guiGraphics, xOffset, yOffset);
-    }
+    public static IDrawable dual(IGuiHelper guiHelper, ResourceLocation on, ResourceLocation off, int x, int y) {
+        return new IDrawable() {
 
-    @Override
-    public int getWidth() {
-        return 16;
-    }
+            @Override
+            public int getWidth() {
+                return x;
+            }
 
-    @Override
-    public int getHeight() {
-        return 16;
+            @Override
+            public int getHeight() {
+                return y;
+            }
+
+            @Override
+            public void draw(GuiGraphics guiGraphics, int xOffset, int yOffset) {
+                if (TimeUtil.fireAt(1500)) {
+                    guiGraphics.blitSprite(on, 0, 0, x, y);
+                } else {
+                    guiGraphics.blitSprite(off, 0, 0, x, y);
+                }
+            }
+
+        };
     }
 
 }
