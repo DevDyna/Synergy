@@ -10,7 +10,6 @@ import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -29,10 +28,12 @@ public class FuelCellBE extends BEMenu {
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
     public static final String PROGRESS = "progress";
-    // public static final String MAX_PROGRESS = "max_progress";
+    public static final String RECIPE_INPUT = "recipe_input";
     private int progress = 0;
     private int maxProgress;
     private final ContainerData data;
+
+    private ItemStack inputStack;
 
     public FuelCellBE(BlockPos pos, BlockState blockState) {
         super(zBlockEntities.FUEL_CELL.get(), pos, blockState);
@@ -70,9 +71,12 @@ public class FuelCellBE extends BEMenu {
         return new FuelCellMenu(i, inventory, this, this.data);
     }
 
-    public void tickServer() {
+    // require both due client-gui extraction
+    public void tickBoth() {
         if (level == null)
             return;
+
+        saveItemInput();
 
         if (isReadyToWork()) {
 
@@ -88,7 +92,31 @@ public class FuelCellBE extends BEMenu {
         }
     }
 
-    public boolean isReadyToWork(){
+    public void saveItemInput() {
+        // LogUtil.info("fired");
+        var item = getStorage().getStackInSlot(INPUT_SLOT).copy();
+        var nbt = saveWithFullMetadata(level.registryAccess());
+        // var storedItem = ItemStack.parseOptional(this.level.registryAccess(),
+        // nbt.getCompound(RECIPE_INPUT));
+        if (!item.isEmpty() && !nbt.contains(RECIPE_INPUT)) {
+            var recipe = level.getRecipeManager()
+                    .getRecipeFor(zRecipeTypes.FUEL_CELL_RECIPE.getType(),
+                            new MonoItemInput(item), level);
+
+            // LogUtil.info("isempty " + recipe.isEmpty());
+
+            if (!recipe.isEmpty() && canInsert(OUTPUT_SLOT, recipe.get().value().getOutput())) {
+                item.setCount(1);
+                nbt.put(RECIPE_INPUT, item.save(level.registryAccess()));
+                loadWithComponents(nbt, level.registryAccess());
+                setChanged(level, getBlockPos(), getBlockState());
+                getStorage().extractItem(INPUT_SLOT, 1, false);
+            }
+        }
+
+    }
+
+    public boolean isReadyToWork() {
         return hasRecipe() && getBlockState().getValue(BlockStateProperties.ENABLED);
     }
 
@@ -97,11 +125,14 @@ public class FuelCellBE extends BEMenu {
     }
 
     private void craftItem() {
-        //TODO implement item caching to prevent fe extraction loop
         ItemStack output = getRecipe().get().value().getOutput();
-        getStorage().extractItem(INPUT_SLOT, 1, false);
         getStorage().setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
                 getStorage().getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
+        var nbt = saveWithFullMetadata(level.registryAccess());
+        nbt.remove(RECIPE_INPUT);
+        inputStack = ItemStack.EMPTY;
+        loadWithComponents(nbt, level.registryAccess());
+        setChanged(level, getBlockPos(), getBlockState());
     }
 
     private void resetProgress() {
@@ -130,11 +161,16 @@ public class FuelCellBE extends BEMenu {
     }
 
     public Optional<RecipeHolder<FuelCellRecipe>> getRecipe() {
-        if (level == null)
-            return null;
-        return level.getRecipeManager()
-                .getRecipeFor(zRecipeTypes.FUEL_CELL_RECIPE.getType(),
-                        new MonoItemInput(getStorage().getStackInSlot(INPUT_SLOT)), level);
+
+        var nbt = this.saveWithFullMetadata(level.registryAccess());
+        if (nbt.contains(RECIPE_INPUT)) {
+            var item = ItemStack.parseOptional(this.level.registryAccess(), nbt.getCompound(RECIPE_INPUT));
+
+            return level.getRecipeManager()
+                    .getRecipeFor(zRecipeTypes.FUEL_CELL_RECIPE.getType(),
+                            new MonoItemInput(item), level);
+        } else
+            return Optional.empty();
     }
 
     public boolean hasRecipe() {
@@ -150,16 +186,23 @@ public class FuelCellBE extends BEMenu {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        pTag.put("inventory", getStorage().serializeNBT(pRegistries));
-        pTag.putInt(PROGRESS, progress);
-        super.saveAdditional(pTag, pRegistries);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider pRegistries) {
+        // tag.put("inventory", getStorage().serializeNBT(pRegistries));
+        tag.putInt(PROGRESS, progress);
+        if (inputStack != null && !inputStack.isEmpty())
+            tag.put(RECIPE_INPUT, inputStack.save(pRegistries));
+        super.saveAdditional(tag, pRegistries);
+
     }
 
     @Override
-    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(pTag, pRegistries);
-        getStorage().deserializeNBT(pRegistries, pTag.getCompound("inventory"));
-        progress = pTag.getInt(PROGRESS);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider pRegistries) {
+        super.loadAdditional(tag, pRegistries);
+        // getStorage().deserializeNBT(pRegistries, tag.getCompound("inventory"));
+        // if (tag.contains(PROGRESS))
+        progress = tag.getInt(PROGRESS);
+        // if (tag.contains(RECIPE_INPUT))
+        inputStack = ItemStack.parseOptional(pRegistries, tag.getCompound(RECIPE_INPUT));
+
     }
 }
