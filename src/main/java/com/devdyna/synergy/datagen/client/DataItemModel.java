@@ -35,6 +35,8 @@ public class DataItemModel extends ItemModelProvider {
         protected void registerModels() {
                 // -----------------------//
 
+                withExistingParent(x.path(zBlocks.AZALEA.get().asItem()), x.rl( "block/azalea/item"));
+
                 zItems.zBucketItems.getEntries().forEach(b -> withExistingParent(
                                 x.path(b.get()),
                                 x.rl(NeoForgeVersion.MOD_ID, "item/bucket"))
