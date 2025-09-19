@@ -158,6 +158,9 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei.crop",
                                 "Crop Result");
 
+                add(Main.ID + ".jei.itemuse",
+                                "Item Use Recipes");
+
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.BIOMASS,
                                 zStatic.ReactorStuff.CoolerTypes.COPPER,
