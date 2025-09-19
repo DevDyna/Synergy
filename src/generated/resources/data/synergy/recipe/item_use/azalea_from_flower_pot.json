@@ -1,0 +1,15 @@
+{
+  "type": "synergy:item_use",
+  "base": {
+    "Name": "minecraft:flower_pot"
+  },
+  "item": {
+    "item": "synergy:azalea_seeds"
+  },
+  "result": {
+    "Name": "synergy:azalea",
+    "Properties": {
+      "age": "0"
+    }
+  }
+}
