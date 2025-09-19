@@ -36,8 +36,8 @@ public class FuelCellBE extends BEMenu {
 
     public FuelCellBE(BlockPos pos, BlockState blockState) {
         super(zBlockEntities.FUEL_CELL.get(), pos, blockState);
-         data = new ContainerData() {
-      
+        data = new ContainerData() {
+
             @Override
             public int get(int i) {
                 return switch (i) {
@@ -46,13 +46,17 @@ public class FuelCellBE extends BEMenu {
                     default -> 0;
                 };
             }
+
             @Override
             public void set(int i, int value) {
                 switch (i) {
-                    case 0: setProgress(value);
-                    case 1: setMaxProgress(value);
+                    case 0:
+                        setProgress(value);
+                    case 1:
+                        setMaxProgress(value);
                 }
             }
+
             @Override
             public int getCount() {
                 return MachineSlots();
@@ -88,7 +92,7 @@ public class FuelCellBE extends BEMenu {
     }
 
     public boolean isWorking() {
-        return isReadyToWork()  && progress < maxProgress && progress > 0;
+        return isReadyToWork() && progress < maxProgress && progress > 0;
     }
 
     private void craftItem() {
