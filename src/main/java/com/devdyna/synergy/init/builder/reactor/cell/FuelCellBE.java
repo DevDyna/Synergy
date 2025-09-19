@@ -67,7 +67,7 @@ public class FuelCellBE extends BEMenu {
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return new FuelCellMenu(i, inventory, this,this.data);
+        return new FuelCellMenu(i, inventory, this, this.data);
     }
 
     public void tickServer() {
@@ -75,6 +75,7 @@ public class FuelCellBE extends BEMenu {
             return;
 
         if (isReadyToWork()) {
+
             maxProgress = getRecipe().get().value().getDuration();
             progress++;
             setChanged(level, getBlockPos(), getBlockState());
