@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.builders.*;
+import com.devdyna.synergy.init.builder.crops.cultivated.azalea;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.x;
 
@@ -529,6 +530,12 @@ public class DataRecipe extends RecipeProvider {
                                                                 Items.BRICK))
                                 .group(ID).save(c);
 
+                ItemUseBuilder.of()
+                                .inputItem(zItems.AZALEA_SEEDS)
+                                .inputBlock(Blocks.FLOWER_POT)
+                                .outputBlock(zBlocks.AZALEA.get().defaultBlockState().setValue(azalea.AGE, 0))
+                                .unlockedBy().save(c);
+
         }
 
         private void plate(Item input, Item output, RecipeOutput c) {
@@ -599,8 +606,7 @@ public class DataRecipe extends RecipeProvider {
                 seeds.forEach(s -> CropResultBuilder
                                 .of().input(s.get()).output(result.get(seeds.indexOf(s)).stream()
                                                 .map(i -> x.ingredient(i)).toList())
-                                .group(ID).unlockedBy().save(c)
-                );
+                                .group(ID).unlockedBy().save(c));
 
         }
 }
