@@ -36,11 +36,14 @@ public interface screenLocations {
 
         public static final ResourceLocation URN_ARROW = x.rl(ID,
                         "textures/gui/urn_arrow.png");
-                        
+
         public static final ResourceLocation BIG_DARK_WINDOW = x.rl(ID,
                         "textures/gui/big_dark_window.png");
 
         public static final ResourceLocation CROP_RESULT = x.rl(ID,
                         "textures/gui/jei/crop_result.png");
+
+        public static final ResourceLocation ITEM_USE = x.rl(ID,
+                        "textures/gui/jei/click_event.png");
 
 }
