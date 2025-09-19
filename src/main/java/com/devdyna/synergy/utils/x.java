@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static com.devdyna.synergy.Main.ID;
@@ -89,16 +90,24 @@ public class x {
         return item(i.get(), c);
     }
 
-    public static ItemStack item(Item i) {
+    public static ItemStack item(ItemLike i) {
         return new ItemStack(i);
+    }
+
+        public static ItemStack item(BlockState i) {
+        return item(i.getBlock());
     }
 
     public static ItemStack item(DeferredHolder<? extends ItemLike, ?> holder) {
         return x.item(holder.get().asItem());
     }
 
-    public static Ingredient ingredient(Item i) {
+    public static Ingredient ingredient(ItemStack i) {
         return Ingredient.of(i);
+    }
+
+    public static Ingredient ingredient(Item i) {
+        return ingredient(x.item(i));
     }
 
     public static Ingredient ingredient(DeferredHolder<Item, ?> i) {
@@ -107,6 +116,18 @@ public class x {
 
     public static Ingredient ingredient(TagKey<Item> i) {
         return Ingredient.of(i);
+    }
+
+        public static Block block(DeferredHolder<Block, ?> b) {
+        return b.get();
+    }
+
+        public static BlockState state(DeferredHolder<Block, ?> b) {
+        return block(b).defaultBlockState();
+    }
+
+        public static Block block(BlockState b) {
+        return b.getBlock();
     }
 
 }
