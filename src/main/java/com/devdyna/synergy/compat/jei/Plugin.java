@@ -62,6 +62,7 @@ public class Plugin implements IModPlugin {
         r.addRecipeCategories(new ReactorCellCategory(helper));
         r.addRecipeCategories(new UrnCategory(helper));
         r.addRecipeCategories(new CropResultCategory(helper));
+        r.addRecipeCategories(new ItemUseCategory(helper));
 
     }
 
@@ -77,6 +78,9 @@ public class Plugin implements IModPlugin {
                 .map(RecipeHolder::value).toList());
 
         r.addRecipes(CropResultCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.CROP_RESULT.getType()).stream()
+                .map(RecipeHolder::value).toList());
+
+        r.addRecipes(ItemUseCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.ITEM_USE.getType()).stream()
                 .map(RecipeHolder::value).toList());
     }
 
