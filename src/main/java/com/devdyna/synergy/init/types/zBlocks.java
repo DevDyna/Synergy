@@ -83,8 +83,8 @@ public class zBlocks {
         public static final DeferredRegister.Blocks zCoolers = DeferredRegister.createBlocks(Main.ID);
         // ---------------------------------------------------------------------------------------//
 
-        public static final DeferredHolder<Block, azalea> AZALEA = zBlock.register(zStatic.Blocks.azalea,
-                        () -> new azalea());
+        public static final DeferredHolder<Block, Block> AZALEA = Material.registerItemBlock(zStatic.Blocks.azalea,
+                        () -> new azalea(),zBlock);
 
         public static final DeferredHolder<Block, Block> SPRINKLER = Material.registerItemBlock(
                         zStatic.Blocks.sprinkler,
