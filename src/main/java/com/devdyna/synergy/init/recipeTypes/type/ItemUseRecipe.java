@@ -2,7 +2,7 @@ package com.devdyna.synergy.init.recipeTypes.type;
 
 import java.util.List;
 
-import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
+import com.devdyna.synergy.init.recipeTypes.input.UseItemInput;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.x;
 
@@ -18,25 +18,30 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
-public class ItemUseRecipe implements Recipe<MonoItemInput> {
+public class ItemUseRecipe implements Recipe<UseItemInput> {
 
     private final Ingredient inputItem;
     private final BlockState inputState;
     private final BlockState outputState;
+    // private final boolean requireShift;
+    // private final boolean consumeItem;
 
     public ItemUseRecipe(Ingredient inputItem,
-            BlockState inputState, BlockState outputState) {
+            //  boolean requireShift, boolean consumeItem,
+              BlockState inputState, BlockState outputState) {
         this.inputItem = inputItem;
         this.inputState = inputState;
         this.outputState = outputState;
+        // this.consumeItem = consumeItem;
+        // this.requireShift = requireShift;
     }
 
-    public boolean matches(MonoItemInput r, Level l) {
-        return true;
+    public boolean matches(UseItemInput r, Level l) {
+        return inputItem.test(r.input()) && inputState.is(r.block().getBlock());
     }
 
-    public ItemStack assemble(MonoItemInput i, HolderLookup.Provider r) {
-        return x.item(this.outputState.getBlock().asItem());
+    public ItemStack assemble(UseItemInput i, HolderLookup.Provider r) {
+        return x.item(this.outputState.getBlock());
     }
 
     public boolean canCraftInDimensions(int xz, int y) {
@@ -57,12 +62,12 @@ public class ItemUseRecipe implements Recipe<MonoItemInput> {
     }
 
     public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.copyOf(List.of(x.ingredient(this.inputState.getBlock().asItem())));
+        return NonNullList.copyOf(List.of(x.ingredient(this.inputState.getBlock().asItem()), this.inputItem));
     }
 
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
-        return x.item(this.outputState.getBlock().asItem());
+        return x.item(this.outputState.getBlock());
     }
 
     public Ingredient getInputItem() {
@@ -76,4 +81,13 @@ public class ItemUseRecipe implements Recipe<MonoItemInput> {
     public BlockState getOutputState() {
         return outputState;
     }
+
+    // public boolean getRequireShift() {
+    //     return requireShift;
+    // }
+
+    // public boolean getConsumeItem() {
+    //     return consumeItem;
+    // }
+
 }

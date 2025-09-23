@@ -15,12 +15,16 @@ public class ItemUseRecipeSerializer implements RecipeSerializer<ItemUseRecipe> 
 
     public static final MapCodec<ItemUseRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
             Ingredient.CODEC.fieldOf("item").forGetter(ItemUseRecipe::getInputItem),
+            // Codec.BOOL.fieldOf("consume_item").forGetter(ItemUseRecipe::getConsumeItem),
+            // Codec.BOOL.fieldOf("require_shift").forGetter(ItemUseRecipe::getRequireShift),
             BlockState.CODEC.fieldOf("base").forGetter(ItemUseRecipe::getInputState),
             BlockState.CODEC.fieldOf("result").forGetter(ItemUseRecipe::getOutputState))
             .apply(inst, ItemUseRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, ItemUseRecipe> STREAM_CODEC = StreamCodec.composite(
             Ingredient.CONTENTS_STREAM_CODEC, ItemUseRecipe::getInputItem,
+            // ByteBufCodecs.BOOL, ItemUseRecipe::getConsumeItem,
+            // ByteBufCodecs.BOOL, ItemUseRecipe::getRequireShift,
             BetterThanBlockStates.STREAM_CODEC, ItemUseRecipe::getInputState,
             BetterThanBlockStates.STREAM_CODEC, ItemUseRecipe::getOutputState,
             ItemUseRecipe::new);

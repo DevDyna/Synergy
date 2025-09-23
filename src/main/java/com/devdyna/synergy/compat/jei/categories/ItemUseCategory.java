@@ -43,7 +43,7 @@ public class ItemUseCategory implements IRecipeCategory<ItemUseRecipe> {
 
     @Override
     public @Nullable IDrawable getIcon() {
-        return SimpleIcon.of(helper,Items.WOODEN_PICKAXE);
+        return SimpleIcon.of(helper, Items.WOODEN_PICKAXE);
     }
 
     @Override

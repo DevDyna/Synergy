@@ -1,14 +1,15 @@
-package com.devdyna.synergy.api.builders;
+package com.devdyna.synergy.init.recipeTypes.builders;
 
 import static com.devdyna.synergy.Main.ID;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.init.recipeTypes.type.CropResultRecipe;
+import com.devdyna.synergy.init.recipeTypes.type.UrnRitualRecipe;
 import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.Advancement;
@@ -21,64 +22,90 @@ import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-@SuppressWarnings("null")
-public class CropResultBuilder implements RecipeBuilder {
+@SuppressWarnings({ "null" })
+public class UrnRitualBuilder implements RecipeBuilder {
 
-    private ItemStack input;
-    private List<Ingredient> output;
+    private List<Ingredient> input;
+    private ItemStack output;
+
     private final Map<String, Criterion<?>> criteria;
 
-    public CropResultBuilder() {
+    private UrnRitualBuilder() {
+        this.input = new ArrayList<>();
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static CropResultBuilder of() {
-        return new CropResultBuilder();
+    public static UrnRitualBuilder of() {
+        return new UrnRitualBuilder();
     }
 
-    public CropResultBuilder input(ItemStack input) {
-        this.input = input;
+    public UrnRitualBuilder add(Ingredient input) {
+        this.input.add(input);
         return this;
     }
 
-    public CropResultBuilder input(Item input) {
-        return input(x.item(input));
+    public UrnRitualBuilder add(Item input) {
+        return add(x.ingredient(input));
     }
 
-    public CropResultBuilder input(DeferredHolder<Item, Item> input) {
-        return input(input.get());
+    public UrnRitualBuilder add(DeferredHolder<Item, Item> input) {
+        return add(input.get());
     }
 
-    public CropResultBuilder output(List<Ingredient> output) {
+    public UrnRitualBuilder add(TagKey<Item> input) {
+        return add(x.ingredient(input));
+    }
+
+    public UrnRitualBuilder output(ItemStack output) {
         this.output = output;
         return this;
     }
 
-    public CropResultBuilder unlockedBy() {
-        return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                .hasItems(this.input.getItem()));
+    public UrnRitualBuilder output(Item output) {
+        return output(x.item(output));
     }
 
-    public CropResultBuilder unlockedBy(String name, Criterion<?> criterion) {
+    public UrnRitualBuilder output(DeferredHolder<Item, Item> output) {
+        return output(output.get());
+    }
+
+    public UrnRitualBuilder output(Item output, int count) {
+        return output(x.item(output, count));
+    }
+
+    public UrnRitualBuilder output(DeferredHolder<Item, Item> output, int count) {
+        return output(output.get(), count);
+    }
+
+    public UrnRitualBuilder unlockedBy() {
+        return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                .hasItems(this.input.stream()
+                        .flatMap(i -> Arrays.stream(i.getItems())
+                                .map(ItemStack::getItem))
+                        .toArray(Item[]::new)));
+    }
+
+    public UrnRitualBuilder unlockedBy(String name, Criterion<?> criterion) {
         this.criteria.put(name, criterion);
         return this;
     }
 
-    public CropResultBuilder group(@Nullable String groupName) {
+    public UrnRitualBuilder group(@Nullable String groupName) {
         return this;
     }
 
     public Item getResult() {
-        return this.output.get(0).getItems()[0].getItem();
+        return this.output.getItem();
     }
 
     public void save(RecipeOutput recipeOutput, String extra) {
-        this.save(recipeOutput, x.rl("jei/crop_result/" + x.path(input.getItem())
+        this.save(recipeOutput, x.rl("urn_ritual/" + x.path(output.getItem())
                 + extra));
     }
 
@@ -95,7 +122,7 @@ public class CropResultBuilder implements RecipeBuilder {
                 .rewards(AdvancementRewards.Builder.recipe(pId))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement$builder::addCriterion);
-        CropResultRecipe shapelessrecipe = new CropResultRecipe(input, output);
+        UrnRitualRecipe shapelessrecipe = new UrnRitualRecipe(input, output);
         pRecipeOutput.accept(pId, shapelessrecipe,
                 advancement$builder.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
     }

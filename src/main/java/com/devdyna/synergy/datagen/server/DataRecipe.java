@@ -6,8 +6,8 @@ import static net.minecraft.data.recipes.RecipeCategory.*;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.builders.*;
 import com.devdyna.synergy.init.builder.crops.cultivated.azalea;
+import com.devdyna.synergy.init.recipeTypes.builders.*;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.x;
 
@@ -532,10 +532,18 @@ public class DataRecipe extends RecipeProvider {
 
                 ItemUseBuilder.of()
                                 .inputItem(zItems.AZALEA_SEEDS)
+                                // .consumeItemOnUse()
                                 .inputBlock(Blocks.FLOWER_POT)
                                 .outputBlock(zBlocks.AZALEA.get().defaultBlockState().setValue(azalea.AGE, 0))
                                 .unlockedBy().save(c);
 
+                ItemUseBuilder.of()
+                                .inputItem(Items.DIAMOND)
+                                // .consumeItemOnUse()
+                                // .requireShift()
+                                .inputBlock(zBlocks.COOLER_BASE)
+                                .outputBlock(zBlocks.DIAMOND_COOLER)
+                                .unlockedBy().save(c);
         }
 
         private void plate(Item input, Item output, RecipeOutput c) {

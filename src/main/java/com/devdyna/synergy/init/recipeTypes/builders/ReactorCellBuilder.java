@@ -1,15 +1,12 @@
-package com.devdyna.synergy.api.builders;
+package com.devdyna.synergy.init.recipeTypes.builders;
 
 import static com.devdyna.synergy.Main.ID;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.init.recipeTypes.type.UrnRitualRecipe;
+import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.Advancement;
@@ -29,74 +26,88 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings({ "null" })
-public class UrnRitualBuilder implements RecipeBuilder {
+public class ReactorCellBuilder implements RecipeBuilder {
 
-    private List<Ingredient> input;
+    private Ingredient input;
     private ItemStack output;
+    private int duration;
+    private double heat;
+    private int fe;
 
     private final Map<String, Criterion<?>> criteria;
 
-    private UrnRitualBuilder() {
-        this.input = new ArrayList<>();
+    private ReactorCellBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static UrnRitualBuilder of() {
-        return new UrnRitualBuilder();
+    public static ReactorCellBuilder of() {
+        return new ReactorCellBuilder();
     }
 
-    public UrnRitualBuilder add(Ingredient input) {
-        this.input.add(input);
+    public ReactorCellBuilder input(Ingredient input) {
+        this.input = input;
         return this;
     }
 
-    public UrnRitualBuilder add(Item input) {
-        return add(x.ingredient(input));
+    public ReactorCellBuilder input(Item input) {
+        return input(x.ingredient(input));
     }
 
-    public UrnRitualBuilder add(DeferredHolder<Item, Item> input) {
-        return add(input.get());
+    public ReactorCellBuilder input(DeferredHolder<Item, Item> input) {
+        return input(input.get());
     }
 
-    public UrnRitualBuilder add(TagKey<Item> input) {
-        return add(x.ingredient(input));
+    public ReactorCellBuilder input(TagKey<Item> input) {
+        return input(x.ingredient(input));
     }
 
-    public UrnRitualBuilder output(ItemStack output) {
+    public ReactorCellBuilder output(ItemStack output) {
         this.output = output;
         return this;
     }
 
-    public UrnRitualBuilder output(Item output) {
+    public ReactorCellBuilder output(Item output) {
         return output(x.item(output));
     }
 
-    public UrnRitualBuilder output(DeferredHolder<Item, Item> output) {
+    public ReactorCellBuilder output(DeferredHolder<Item, Item> output) {
         return output(output.get());
     }
 
-    public UrnRitualBuilder output(Item output, int count) {
+    public ReactorCellBuilder output(Item output, int count) {
         return output(x.item(output, count));
     }
 
-    public UrnRitualBuilder output(DeferredHolder<Item, Item> output, int count) {
+    public ReactorCellBuilder output(DeferredHolder<Item, Item> output, int count) {
         return output(output.get(), count);
     }
 
-    public UrnRitualBuilder unlockedBy() {
-        return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                .hasItems(this.input.stream()
-                        .flatMap(i -> Arrays.stream(i.getItems())
-                                .map(ItemStack::getItem))
-                        .toArray(Item[]::new)));
+    public ReactorCellBuilder energy(int fe) {
+        this.fe = fe;
+        return this;
     }
 
-    public UrnRitualBuilder unlockedBy(String name, Criterion<?> criterion) {
+    public ReactorCellBuilder duration(int ticks) {
+        this.duration = ticks;
+        return this;
+    }
+
+    public ReactorCellBuilder heat(double heat) {
+        this.heat = heat;
+        return this;
+    }
+
+    public ReactorCellBuilder unlockedBy() {
+        return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                .hasItems(this.input.getItems()[0].getItem()));
+    }
+
+    public ReactorCellBuilder unlockedBy(String name, Criterion<?> criterion) {
         this.criteria.put(name, criterion);
         return this;
     }
 
-    public UrnRitualBuilder group(@Nullable String groupName) {
+    public ReactorCellBuilder group(@Nullable String groupName) {
         return this;
     }
 
@@ -105,7 +116,7 @@ public class UrnRitualBuilder implements RecipeBuilder {
     }
 
     public void save(RecipeOutput recipeOutput, String extra) {
-        this.save(recipeOutput, x.rl("urn_ritual/" + x.path(output.getItem())
+        this.save(recipeOutput, x.rl("reactor_reaction/" + x.path(output.getItem())
                 + extra));
     }
 
@@ -122,7 +133,7 @@ public class UrnRitualBuilder implements RecipeBuilder {
                 .rewards(AdvancementRewards.Builder.recipe(pId))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement$builder::addCriterion);
-        UrnRitualRecipe shapelessrecipe = new UrnRitualRecipe(input, output);
+        FuelCellRecipe shapelessrecipe = new FuelCellRecipe(input, output, duration, fe, heat);
         pRecipeOutput.accept(pId, shapelessrecipe,
                 advancement$builder.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
     }

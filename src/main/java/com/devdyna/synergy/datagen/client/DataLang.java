@@ -216,6 +216,7 @@ public class DataLang extends LanguageProvider {
                 zItems.zMobDrop.getEntries().forEach(d -> add(d.getRegisteredName().replace(":", ".") + ".tip",
                                TIP_COLOR+"Obtained as mobdrop from "+ droptype.get(zItems.zMobDrop.getEntries().stream().toList().indexOf(d))));
 
+
         }
 
         private String named(DeferredHolder<?, ?> b) {
