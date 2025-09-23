@@ -276,9 +276,6 @@ public class zItems {
         public static final DeferredHolder<Item, Item> MATRIX_PLATE = Material
                         .resourcePlate(zStatic.ResourceMaterial.matrix);
 
-        public static final DeferredHolder<Item, Item> MIXED_PLATE = Material
-                        .resourcePlate(zStatic.ResourceMaterial.mixed);
-
         public static final DeferredHolder<Item, Item> NETHERRACK_PLATE = Material
                         .resourcePlate(zStatic.ResourceMaterial.netherrack);
 
