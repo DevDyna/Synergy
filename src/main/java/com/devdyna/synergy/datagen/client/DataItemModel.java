@@ -171,7 +171,7 @@ public class DataItemModel extends ItemModelProvider {
                 CoolerBlock(zBlocks.SCULK_COOLER, mcLoc("block/sculk"));
                 CoolerBlock(zBlocks.WATER_COOLER, mcLoc("block/ice"));
                 CoolerBlock(zBlocks.QUARTZ_COOLER, mcLoc("block/quartz_block_top"));
-                CoolerBlock(zBlocks.BIOMASS_COOLER, mcLoc("block/soul_sand"));
+                CoolerBlock(zBlocks.SHADOW_COOLER, modLoc("block/reactor/cooler/shadow"));
                 CoolerBlock(zBlocks.DIAMOND_COOLER, mcLoc("block/diamond_block"));
                 CoolerBlock(zBlocks.EMERALD_COOLER, mcLoc("block/emerald_block"));
                 CoolerBlock(zBlocks.REDSTONE_COOLER, mcLoc("block/redstone_block"));
@@ -188,6 +188,9 @@ public class DataItemModel extends ItemModelProvider {
                 tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
                 withExistingParent(zBlocks.URN.getRegisteredName(),
                                 modLoc("block/tiny_block/urn"));
+
+                withExistingParent(zBlocks.QUERN.getRegisteredName(),
+                                modLoc("block/quern/item"));
         }
 
         private void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
