@@ -48,8 +48,7 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.HEALER.get(),
                                                 zBlocks.COOLER_BASE.get(),
                                                 zBlocks.REACTOR_FUEL_CELL.get(),
-                                                zBlocks.REACTOR_CONTROLLER.get()
-                                );
+                                                zBlocks.REACTOR_CONTROLLER.get());
 
                 tag(BlockTags.MINEABLE_WITH_AXE)
                                 .add(
@@ -161,6 +160,15 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.URN.get(),
                                                 zBlocks.REACTOR_CONTROLLER.get(),
                                                 zBlocks.REACTOR_FUEL_CELL.get());
+
+                tag(Tags.Blocks.STORAGE_BLOCKS)
+                                .add(zBlocks.ADVANCED_ALLOY_BLOCK.get(), zBlocks.STEEL_BLOCK.get());
+
+                tag(zBlockTag.BLOCK_ADVANCED_ALLOY)
+                                .add(zBlocks.ADVANCED_ALLOY_BLOCK.get());
+
+                tag(zBlockTag.BLOCK_STEEL)
+                                .add(zBlocks.STEEL_BLOCK.get());
 
         }
 
