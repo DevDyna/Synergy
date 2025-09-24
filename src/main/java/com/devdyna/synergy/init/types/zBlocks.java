@@ -32,6 +32,7 @@ import com.devdyna.synergy.init.builder.harvester.HarvesterBLK;
 public class zBlocks {
         public static void register(IEventBus bus) {
                 zBlock.register(bus);
+                zOnlyBlock.register(bus);
                 zBlockFluids.register(bus);
                 zBlockItem.register(bus);
                 zDepositBlocks.register(bus);
@@ -51,6 +52,10 @@ public class zBlocks {
          * generic blocks
          */
         public static final DeferredRegister.Blocks zBlock = DeferredRegister.createBlocks(Main.ID);
+        /**
+         * blocks not items
+         */
+        public static final DeferredRegister.Blocks zOnlyBlock = DeferredRegister.createBlocks(Main.ID);
         /**
          * generic fluid blocks
          */
@@ -84,7 +89,7 @@ public class zBlocks {
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Block, Block> AZALEA = Material.registerItemBlock(zStatic.Blocks.azalea,
-                        () -> new azalea(),zBlock);
+                        () -> new azalea(), zBlock);
 
         public static final DeferredHolder<Block, Block> SPRINKLER = Material.registerItemBlock(
                         zStatic.Blocks.sprinkler,
@@ -218,9 +223,9 @@ public class zBlocks {
                         zStatic.ReactorStuff.fuel_cell,
                         () -> new FuelCellBlock());
 
-        public static final DeferredHolder<Block, Block> BIOMASS_COOLER = Material.registerItemBlock(
-                        zStatic.ReactorStuff.CoolerTypes.BIOMASS,
-                        () -> new BiomassCooler(), zCoolers);
+        public static final DeferredHolder<Block, Block> SHADOW_COOLER = Material.registerItemBlock(
+                        zStatic.ReactorStuff.CoolerTypes.SHADOW,
+                        () -> new ShadowCooler(), zCoolers);
         public static final DeferredHolder<Block, Block> COPPER_COOLER = Material.registerItemBlock(
                         zStatic.ReactorStuff.CoolerTypes.COPPER,
                         () -> new CopperCooler(), zCoolers);
@@ -289,8 +294,6 @@ public class zBlocks {
         // ---------------------------------------------------------------------------------------//
 
         public static void registerLists() {
-
-              
 
         }
 
