@@ -232,6 +232,28 @@ public class zItems {
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> CARBON_DUST = Material
                         .resourceDust(zStatic.ResourceMaterial.carbon);
+        public static final DeferredHolder<Item, Item> AMETHYST_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.amethyst);
+        public static final DeferredHolder<Item, Item> ANCIENT_DEBRIS_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.ancient_debris);
+        public static final DeferredHolder<Item, Item> COPPER_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.copper);
+        public static final DeferredHolder<Item, Item> DIAMOND_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.diamond);
+        public static final DeferredHolder<Item, Item> EMERALD_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.emerald);
+        public static final DeferredHolder<Item, Item> ENERGIZED_REDSTONE = Material
+                        .resourceDust(zStatic.ResourceMaterial.energized_redstone);
+        public static final DeferredHolder<Item, Item> GOLD_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.gold);
+        public static final DeferredHolder<Item, Item> IRON_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.iron);
+        public static final DeferredHolder<Item, Item> LAPIS_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.lapis);
+        public static final DeferredHolder<Item, Item> SAWDUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.sawdust);
+        public static final DeferredHolder<Item, Item> QUARTZ_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.quartz);
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> COPPER_FOIL = Material
                         .resourceFoil(zStatic.ResourceMaterial.copper);
@@ -240,9 +262,6 @@ public class zItems {
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> AQUAMARINE = Material
                         .resourceGem(zStatic.ResourceMaterial.aquamarine);
-
-        // public static final DeferredHolder<Item, Item> ONYX =
-        // Material.resourceGem(zStatic.ResourceMaterial.onyx);
 
         public static final DeferredHolder<Item, Item> SILICON = Material.resourceGem(zStatic.ResourceMaterial.silicon);
         // ---------------------------------------------------------------------------------------//
