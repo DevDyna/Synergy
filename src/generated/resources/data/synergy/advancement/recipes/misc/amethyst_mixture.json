@@ -11,13 +11,13 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:quartz"
+            "items": "synergy:quartz_dust"
           },
           {
             "items": "minecraft:fermented_spider_eye"
           },
           {
-            "items": "minecraft:amethyst_shard"
+            "items": "synergy:amethyst_dust"
           },
           {
             "items": "minecraft:honeycomb"

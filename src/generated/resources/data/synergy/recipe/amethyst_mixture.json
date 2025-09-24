@@ -7,10 +7,10 @@
       "item": "minecraft:fermented_spider_eye"
     },
     {
-      "item": "minecraft:quartz"
+      "item": "synergy:quartz_dust"
     },
     {
-      "tag": "c:gems/amethyst"
+      "item": "synergy:amethyst_dust"
     },
     {
       "item": "minecraft:honeycomb"

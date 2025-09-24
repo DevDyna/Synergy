@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:glowstone_mixture"
+        "recipe": "synergy:quern"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,16 +11,13 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:prismarine_crystals"
+            "items": "minecraft:stone_slab"
           },
           {
-            "items": "synergy:energized_redstone_dust"
+            "items": "minecraft:stick"
           },
           {
-            "items": "synergy:lapis_dust"
-          },
-          {
-            "items": "minecraft:slime_ball"
+            "items": "synergy:wooden_gear"
           }
         ]
       },
@@ -35,7 +32,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:glowstone_mixture"
+      "synergy:quern"
     ]
   }
 }

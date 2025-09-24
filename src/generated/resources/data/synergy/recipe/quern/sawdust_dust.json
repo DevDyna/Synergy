@@ -1,0 +1,11 @@
+{
+  "type": "synergy:quern",
+  "frequence": 60,
+  "ingredient": {
+    "tag": "minecraft:logs"
+  },
+  "result": {
+    "count": 4,
+    "id": "synergy:sawdust_dust"
+  }
+}

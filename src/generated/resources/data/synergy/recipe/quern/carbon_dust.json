@@ -1,0 +1,11 @@
+{
+  "type": "synergy:quern",
+  "frequence": 60,
+  "ingredient": {
+    "tag": "minecraft:coals"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:carbon_dust"
+  }
+}

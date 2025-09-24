@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "advanced_alloy_ingot",
+  "key": {
+    "#": {
+      "item": "synergy:advanced_alloy_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:advanced_alloy_block"
+  }
+}

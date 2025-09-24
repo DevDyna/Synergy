@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_advanced_alloy_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:advanced_alloy_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:advanced_alloy_nugget"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_advanced_alloy_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:advanced_alloy_nugget"
+    ]
+  }
+}

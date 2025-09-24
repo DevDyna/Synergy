@@ -1,0 +1,12 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "tag": "c:gravels"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "synergy:stone_pebble"
+  }
+}

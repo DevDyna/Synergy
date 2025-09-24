@@ -7,10 +7,10 @@
       "tag": "c:slime_balls"
     },
     {
-      "item": "minecraft:glowstone_dust"
+      "item": "synergy:energized_redstone_dust"
     },
     {
-      "tag": "c:gems/lapis"
+      "item": "synergy:lapis_dust"
     },
     {
       "item": "minecraft:prismarine_crystals"

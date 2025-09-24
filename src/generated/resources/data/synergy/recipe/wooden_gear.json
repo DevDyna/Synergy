@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "T": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " T ",
+    "T T",
+    " T "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:wooden_gear"
+  }
+}

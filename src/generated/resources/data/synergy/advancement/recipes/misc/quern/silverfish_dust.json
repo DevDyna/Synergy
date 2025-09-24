@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:glowstone_mixture"
+        "recipe": "synergy:quern/silverfish_dust"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,16 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:prismarine_crystals"
-          },
-          {
-            "items": "synergy:energized_redstone_dust"
-          },
-          {
-            "items": "synergy:lapis_dust"
-          },
-          {
-            "items": "minecraft:slime_ball"
+            "items": "synergy:stone_pebble"
           }
         ]
       },
@@ -35,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:glowstone_mixture"
+      "synergy:quern/silverfish_dust"
     ]
   }
 }

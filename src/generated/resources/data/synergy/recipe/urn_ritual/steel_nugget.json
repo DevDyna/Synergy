@@ -1,0 +1,15 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "item": "synergy:carbon_dust"
+    },
+    {
+      "item": "synergy:iron_dust"
+    }
+  ],
+  "result": {
+    "count": 6,
+    "id": "synergy:steel_nugget"
+  }
+}

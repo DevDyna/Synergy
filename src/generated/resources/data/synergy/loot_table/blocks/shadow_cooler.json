@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:biomass_cooler"
+          "name": "synergy:shadow_cooler"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "synergy:blocks/biomass_cooler"
+  "random_sequence": "synergy:blocks/shadow_cooler"
 }

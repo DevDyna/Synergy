@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:urn_ritual/waste_fragment"
+        "recipe": "synergy:urn_ritual/steel_nugget"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,10 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:creeper_gall"
+            "items": "synergy:carbon_dust"
+          },
+          {
+            "items": "synergy:iron_dust"
           }
         ]
       },
@@ -26,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:urn_ritual/waste_fragment"
+      "synergy:urn_ritual/steel_nugget"
     ]
   }
 }

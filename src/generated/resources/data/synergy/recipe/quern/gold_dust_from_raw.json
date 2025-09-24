@@ -1,0 +1,11 @@
+{
+  "type": "synergy:quern",
+  "frequence": 60,
+  "ingredient": {
+    "item": "minecraft:raw_gold"
+  },
+  "result": {
+    "count": 3,
+    "id": "synergy:gold_dust"
+  }
+}

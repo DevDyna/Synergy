@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "S": {
+      "item": "minecraft:stone_slab"
+    },
+    "T": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "synergy:wooden_gear"
+    }
+  },
+  "pattern": [
+    "TS ",
+    "SWS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:quern"
+  }
+}

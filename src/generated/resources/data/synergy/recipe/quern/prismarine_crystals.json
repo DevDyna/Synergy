@@ -1,0 +1,11 @@
+{
+  "type": "synergy:quern",
+  "frequence": 60,
+  "ingredient": {
+    "item": "minecraft:prismarine_shard"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:prismarine_crystals"
+  }
+}
