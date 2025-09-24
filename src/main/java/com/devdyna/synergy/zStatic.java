@@ -139,6 +139,7 @@ public class zStatic {
         public static String tiny_stone_chest = "tiny_stone_chest";
         public static String tiny_ornated_chest = "tiny_ornated_chest";
         public static String urn = "urn";
+        public static String quern = "quern";
         // public static String fan = "fan";
         // public static String wind = "wind";
 
