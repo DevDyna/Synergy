@@ -5,6 +5,7 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
+import com.devdyna.synergy.init.builder.quern.QuernBE;
 import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBE;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
@@ -77,4 +78,8 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<UrnBE>> URN = Material
                         .createBlockEntity(zStatic.Blocks.urn, UrnBE::new,
                                         zBlocks.URN);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<QuernBE>> QUERN = Material
+                        .createBlockEntity(zStatic.Blocks.quern, QuernBE::new,
+                                        zBlocks.QUERN);
 }
