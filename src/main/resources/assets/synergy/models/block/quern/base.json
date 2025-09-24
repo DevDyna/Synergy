@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.6",
+  "credit": "Made with Blockbench",
+  "parent": "block/block",
+  "render_type": "cutout",
+  "textures": {
+    "round": "block/grindstone_round",
+    "particle": "synergy:block/quern/large_blade_top",
+    "basetop": "synergy:block/quern/large_blade_top"
+  },
+  "elements": [
+    {
+      "from": [2, 0, 2],
+      "to": [14, 4, 14],
+      "rotation": { "angle": 0, "axis": "z", "origin": [8, 4, 8] },
+      "faces": {
+        "north": { "uv": [0, 0, 4, 12], "rotation": 270, "texture": "#round" },
+        "east": { "uv": [0, 0, 4, 12], "rotation": 270, "texture": "#round" },
+        "south": { "uv": [0, 0, 4, 12], "rotation": 270, "texture": "#round" },
+        "west": { "uv": [0, 0, 4, 12], "rotation": 270, "texture": "#round" },
+        "up": { "uv": [0, 0, 12, 12], "rotation": 270, "texture": "#basetop" },
+        "down": { "uv": [0, 0, 12, 12], "rotation": 270, "texture": "#basetop" }
+      }
+    }
+  ],
+  "groups": [
+    { "name": "blades", "origin": [8, 4, 8], "color": 0, "children": [0] }
+  ]
+}
