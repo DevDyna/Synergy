@@ -252,23 +252,23 @@ public class DataRecipe extends RecipeProvider {
 
                 ShapelessRecipeBuilder.shapeless(MISC, zItems.GLOWSTONE_MIXTURE.get(), 6)
                                 .requires(Tags.Items.SLIME_BALLS)
-                                .requires(Items.GLOWSTONE_DUST)
-                                .requires(Tags.Items.GEMS_LAPIS)
+                                .requires(zItems.ENERGIZED_REDSTONE.get())
+                                .requires(zItems.LAPIS_DUST.get())
                                 .requires(Items.PRISMARINE_CRYSTALS)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.PRISMARINE_CRYSTALS, Items.GLOWSTONE_DUST,
-                                                                Items.LAPIS_LAZULI,
+                                                .hasItems(Items.PRISMARINE_CRYSTALS, zItems.ENERGIZED_REDSTONE.get(),
+                                                                zItems.LAPIS_DUST.get(),
                                                                 Items.SLIME_BALL))
                                 .group(zStatic.tips.MIXTURE_TIP).save(c);
 
                 ShapelessRecipeBuilder.shapeless(MISC, zItems.AMETHYST_MIXTURE.get(), 4)
                                 .requires(Items.FERMENTED_SPIDER_EYE)
-                                .requires(Items.QUARTZ)
-                                .requires(Tags.Items.GEMS_AMETHYST)
+                                .requires(zItems.QUARTZ_DUST.get())
+                                .requires(zItems.AMETHYST_DUST.get())
                                 .requires(Items.HONEYCOMB)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.QUARTZ, Items.FERMENTED_SPIDER_EYE,
-                                                                Items.AMETHYST_SHARD,
+                                                .hasItems(zItems.QUARTZ_DUST.get(), Items.FERMENTED_SPIDER_EYE,
+                                                                zItems.AMETHYST_DUST.get(),
                                                                 Items.HONEYCOMB))
                                 .group(zStatic.tips.MIXTURE_TIP).save(c);
 
@@ -485,10 +485,10 @@ public class DataRecipe extends RecipeProvider {
                                 .output(zItems.SILICON_SHARD, 4)
                                 .group(ID).unlockedBy().save(c);
 
-                UrnRitualBuilder.of()
-                                .add(zItems.CREEPER_GALL)
-                                .output(zItems.WASTE_FRAGMENT, 2)
-                                .group(ID).unlockedBy().save(c);
+                // UrnRitualBuilder.of()
+                // .add(zItems.CREEPER_GALL)
+                // .output(zItems.WASTE_FRAGMENT, 2)
+                // .group(ID).unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
                                 .add(zItems.ENDERMAN_HEART)
@@ -544,6 +544,164 @@ public class DataRecipe extends RecipeProvider {
                                 .inputBlock(zBlocks.COOLER_BASE)
                                 .outputBlock(zBlocks.DIAMOND_COOLER)
                                 .unlockedBy().save(c);
+
+                ItemUseBuilder.of()
+                                .inputItem(Items.STONE)
+                                // .consumeItemOnUse()
+                                // .requireShift()
+                                .inputBlock(zBlocks.COOLER_BASE)
+                                .outputBlock(zBlocks.ENDER_COOLER)
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(ItemTags.COALS)
+                                .output(zItems.CARBON_DUST).unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(zItems.CREEPER_GALL)
+                                .output(x.item(zItems.WASTE_FRAGMENT, 3))
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(Items.DIAMOND)
+                                .output(x.item(zItems.DIAMOND_DUST, 1))
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(Items.EMERALD)
+                                .output(x.item(zItems.EMERALD_DUST, 1))
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(Items.AMETHYST_SHARD)
+                                .output(x.item(zItems.AMETHYST_DUST, 1))
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(Items.LAPIS_LAZULI)
+                                .output(x.item(zItems.LAPIS_DUST, 1))
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(Items.ANCIENT_DEBRIS)
+                                .output(x.item(zItems.ANCIENT_DEBRIS_DUST, 1))
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(ItemTags.LOGS)
+                                .output(x.item(zItems.SAWDUST, 4))
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(Items.QUARTZ)
+                                .output(x.item(zItems.QUARTZ_DUST, 1))
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(Items.PRISMARINE_SHARD)
+                                .output(x.item(Items.PRISMARINE_CRYSTALS, 1))
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(Tags.Items.COBBLESTONES)
+                                .output(x.item(Items.GRAVEL, 1))
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(Tags.Items.GRAVELS)
+                                .output(x.item(Items.SAND, 1))
+                                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of().add(Tags.Items.GRAVELS)
+                                .output(x.item(zItems.STONE_PEBBLE, 4))
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of()
+                                .input(zItems.STONE_PEBBLE)
+                                .output(zItems.SILVERFISH_DUST, 1)
+                                .group(ID)
+                                .unlockedBy()
+                                .save(c);
+
+                UrnRitualBuilder.of()
+                                .add(zItems.CARBON_DUST)
+                                .add(zItems.IRON_DUST)
+                                .output(zItems.STEEL_NUGGET, 6)
+                                .group(ID)
+                                .unlockedBy()
+                                .save(c);
+
+                UrnRitualBuilder.of()
+                                .add(zItems.DIAMOND_DUST)
+                                .add(zItems.LAPIS_DUST)
+                                .add(zItems.SILVERFISH_DUST)
+                                .output(zItems.AQUAMARINE, 2)
+                                .group(ID)
+                                .unlockedBy()
+                                .save(c);
+
+                raw_dust_smelt(c, Items.RAW_COPPER, zItems.COPPER_DUST.get(), Items.COPPER_INGOT);
+                raw_dust_smelt(c, Items.RAW_GOLD, zItems.GOLD_DUST.get(), Items.GOLD_INGOT);
+                raw_dust_smelt(c, Items.RAW_IRON, zItems.IRON_DUST.get(), Items.IRON_INGOT);
+
+                doubleSmelt(c, zItems.ANCIENT_DEBRIS_DUST.get(), Items.NETHERITE_SCRAP);
+
+                UrnRitualBuilder.of()
+                                .add(Items.REDSTONE)
+                                .add(Items.GLOWSTONE_DUST)
+                                .output(zItems.ENERGIZED_REDSTONE, 2)
+                                .group(ID)
+                                .unlockedBy()
+                                .save(c);
+
+                twoByTwoPacker(c, MISC, zItems.CARBON_FIBER.get(), zItems.CARBON_DUST.get());
+
+                twoByTwoPacker(c, MISC, zItems.CARBON_PLATE.get(), zItems.CARBON_FIBER.get());
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.QUERN.get(), 1)
+                                .pattern("TS ")
+                                .pattern("SWS")
+                                .define('W', zItems.WOODEN_GEAR.get())
+                                .define('S', Items.STONE_SLAB)
+                                .define('T', Items.STICK)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(Items.STONE_SLAB,
+                                                                Items.STICK, zItems.WOODEN_GEAR.get()))
+                                .group(ID).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.WOODEN_GEAR.get(), 1)
+                                .pattern(" T ")
+                                .pattern("T T")
+                                .pattern(" T ")
+                                .define('T', Items.STICK)
+                                .unlockedBy(ID, has(Items.STICK))
+                                .group(ID).save(c);
+
+                nuggetIngotBlock(c, zItems.STEEL_NUGGET.get(), zItems.STEEL_INGOT.get(), zBlocks.STEEL_BLOCK.get());
+                nuggetIngotBlock(c, zItems.ADVANCED_ALLOY_NUGGET.get(), zItems.ADVANCED_ALLOY_INGOT.get(),
+                                zBlocks.ADVANCED_ALLOY_BLOCK.get());
+
+        }
+
+        private void nuggetIngotBlock(RecipeOutput c, ItemLike nugget, ItemLike ingot, ItemLike block) {
+                nineBlockStorageRecipesWithCustomPacking(
+                                c, RecipeCategory.MISC, nugget, RecipeCategory.MISC, ingot,
+                                x.path(nugget.asItem()) + "_from_" + x.path(ingot.asItem()), x.path(ingot.asItem()));
+
+                nineBlockStorageRecipesWithCustomPacking(
+                                c, RecipeCategory.MISC, ingot, RecipeCategory.MISC, block,
+                                x.path(ingot.asItem()) + "_from_" + x.path(block.asItem()), x.path(ingot.asItem()));
+
+        }
+
+        private void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot) {
+
+                QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
+                                .output(x.item(dust.asItem(), 3))
+                                .unlockedBy().save(c, "_from_raw");
+
+                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+                                .output(x.item(dust.asItem(), 1))
+                                .unlockedBy().save(c, "_from_ingot");
+
+                doubleSmelt(c, dust, ingot);
+        }
+
+        private void doubleSmelt(RecipeOutput c, ItemLike input, ItemLike output) {
+                SimpleCookingRecipeBuilder.blasting(x.ingredient(input.asItem()), MISC, output.asItem(), 0.1F, 100)
+                                .unlockedBy(getHasName(input), has(output))
+                                .save(c, x.path(output.asItem()) + "_from_" + x.path(input.asItem()) + "_blasting");
+                SimpleCookingRecipeBuilder.smelting(x.ingredient(input.asItem()), MISC, output.asItem(), 0.1F, 200)
+                                .unlockedBy(getHasName(input), has(output))
+                                .save(c, x.path(output.asItem()) + "_from_" + x.path(input.asItem()) + "_smelting");
         }
 
         private void plate(Item input, Item output, RecipeOutput c) {
