@@ -9,7 +9,7 @@ public class GameEvents {
     public static void register() {
 
         NeoForge.EVENT_BUS.register(CrookBreakBlocks.class);
-        NeoForge.EVENT_BUS.register(UrnInjection.class);
+        NeoForge.EVENT_BUS.register(BlockInjection.class);
         NeoForge.EVENT_BUS.register(ItemUseRecipeEvent.class);
     }
 
