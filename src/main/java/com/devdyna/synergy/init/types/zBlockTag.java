@@ -54,4 +54,11 @@ public class zBlockTag {
         public static final TagKey<Block> FERMERS_DELIGHT_COMPOSTING = Material
                         .tagBlock("compost_activators", "farmersdelight");
 
+
+        public static final TagKey<Block> BLOCK_STEEL = Material
+                        .tagBlock("storage_blocks/steel", "c");
+
+        public static final TagKey<Block> BLOCK_ADVANCED_ALLOY = Material
+                        .tagBlock("storage_blocks/advanced_alloy", "c");
+
 }
