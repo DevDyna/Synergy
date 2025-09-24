@@ -34,9 +34,15 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zBlock.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCrop.getEntries().forEach(b -> addBlock(b, named(b)));
 
+                var denyList = List.of(
+                                zItems.SAWDUST);
+
                 ClazzUtil.getAllzItems().forEach(c -> {
-                        addItem(c, named(c));
+                        if (!denyList.contains(c))
+                                addItem(c, named(c));
                 });
+
+                addItem(zItems.SAWDUST, "Sawdust");
 
                 zItems.zBucketItems.getEntries().forEach(b -> addItem(b, named(b)));
 
@@ -46,6 +52,8 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zBlockStair.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zModerators.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCoolers.getEntries().forEach(b -> addBlock(b, named(b)));
+
+                zBlocks.zOnlyBlock.getEntries().forEach(b -> addBlock(b, "Unobtainable block"));
 
                 // tools
                 add(Main.ID + "." + zStatic.Items.configurator + ".tip",
@@ -155,6 +163,9 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei." + zStatic.Blocks.urn,
                                 "Urn Rituals");
 
+                add(Main.ID + ".jei." + zStatic.Blocks.quern,
+                                "Quern Milling");
+
                 add(Main.ID + ".jei.crop",
                                 "Crop Result");
 
@@ -162,7 +173,7 @@ public class DataLang extends LanguageProvider {
                                 "Item Use Recipes");
 
                 List<String> coolerTypes = List.of(
-                                zStatic.ReactorStuff.CoolerTypes.BIOMASS,
+                                zStatic.ReactorStuff.CoolerTypes.SHADOW,
                                 zStatic.ReactorStuff.CoolerTypes.COPPER,
                                 zStatic.ReactorStuff.CoolerTypes.DIAMOND,
                                 zStatic.ReactorStuff.CoolerTypes.EMERALD,
@@ -210,12 +221,11 @@ public class DataLang extends LanguageProvider {
                                 "Slimes",
                                 "Poison Creatures",
                                 "Wither Skeletons",
-                                "Zombie-like Creatures"
-                );
+                                "Zombie-like Creatures");
 
                 zItems.zMobDrop.getEntries().forEach(d -> add(d.getRegisteredName().replace(":", ".") + ".tip",
-                               TIP_COLOR+"Obtained as mobdrop from "+ droptype.get(zItems.zMobDrop.getEntries().stream().toList().indexOf(d))));
-
+                                TIP_COLOR + "Obtained from " + droptype
+                                                .get(zItems.zMobDrop.getEntries().stream().toList().indexOf(d))));
 
         }
 
