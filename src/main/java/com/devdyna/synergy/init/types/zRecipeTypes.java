@@ -43,6 +43,15 @@ public class zRecipeTypes {
                                 }
                         });
 
+        public static final zRecipe<QuernMillingRecipe> QUERN_MILLING = new zRecipe<QuernMillingRecipe>(
+                        zStatic.Blocks.quern, QuernMillingRecipeSerializer::new,
+                        () -> new RecipeType<QuernMillingRecipe>() {
+                                @Override
+                                public String toString() {
+                                        return QUERN_MILLING.getId();
+                                }
+                        });
+
         public static final zRecipe<CropResultRecipe> CROP_RESULT = new zRecipe<CropResultRecipe>(
                         "crop_result", CropResultRecipeSerializer::new,
                         () -> new RecipeType<CropResultRecipe>() {

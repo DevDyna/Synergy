@@ -3,6 +3,7 @@ package com.devdyna.synergy;
 import com.devdyna.synergy.client.aoe.*;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.client.gui.tiny_chest.TinyChestScreen;
+import com.devdyna.synergy.client.quern.QuernRendering;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zContainer;
 import net.neoforged.api.distmarker.Dist;
@@ -20,7 +21,7 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.HARVESTER.get(), HarvesterAOE::new);
         event.registerBlockEntityRenderer(zBlockEntities.SPRINKLER.get(), SprinklerAOE::new);
         event.registerBlockEntityRenderer(zBlockEntities.REACTOR_CONTROLLER.get(), ReactorAOE::new);
-
+        event.registerBlockEntityRenderer(zBlockEntities.QUERN.get(), QuernRendering::new);
     }
 
     @SubscribeEvent

@@ -37,6 +37,9 @@ public interface screenLocations {
         public static final ResourceLocation URN_ARROW = x.rl(ID,
                         "textures/gui/urn_arrow.png");
 
+        public static final ResourceLocation QUERN = x.rl(ID,
+                        "textures/gui/jei/quern.png");
+
         public static final ResourceLocation BIG_DARK_WINDOW = x.rl(ID,
                         "textures/gui/big_dark_window.png");
 

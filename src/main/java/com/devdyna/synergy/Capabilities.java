@@ -12,13 +12,20 @@ public class Capabilities {
         // :p
 
         event.registerBlock(net.neoforged.neoforge.capabilities.Capabilities.EnergyStorage.BLOCK,
-                (level, pos, state, be, side) -> be.getData(zHandlers.ENERGY_STORAGE),
-                zBlocks.HARVESTER.get(), zBlocks.SPRINKLER.get(), zBlocks.SOLAR_PANEL.get(),
+                (level, pos, state, be, side) -> (be != null ? be.getData(zHandlers.ENERGY_STORAGE) : null),
+                zBlocks.HARVESTER.get(),
+                zBlocks.SPRINKLER.get(),
+                zBlocks.SOLAR_PANEL.get(),
                 zBlocks.REACTOR_CONTROLLER.get());
 
         event.registerBlock(net.neoforged.neoforge.capabilities.Capabilities.ItemHandler.BLOCK,
-                (level, pos, state, be, side) -> be.getData(zHandlers.ITEM_STORAGE),
-                zBlocks.REACTOR_FUEL_CELL.get(),zBlocks.URN.get(), zBlocks.WOODEN_TINY_CHEST.get(), zBlocks.ORNATE_TINY_CHEST.get(), zBlocks.STONE_TINY_CHEST.get());
+                (level, pos, state, be, side) -> (be != null ? be.getData(zHandlers.ITEM_STORAGE) : null),
+                zBlocks.REACTOR_FUEL_CELL.get(),
+                zBlocks.URN.get(),
+                zBlocks.WOODEN_TINY_CHEST.get(),
+                zBlocks.ORNATE_TINY_CHEST.get(),
+                zBlocks.STONE_TINY_CHEST.get(),
+                zBlocks.QUERN.get());
 
     }
 
