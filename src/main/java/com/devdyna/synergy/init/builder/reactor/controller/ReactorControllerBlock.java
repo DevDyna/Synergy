@@ -57,7 +57,7 @@ public class ReactorControllerBlock extends BaseBlockBE {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (!player.isCrouching() && !level.isClientSide && hand.equals(InteractionHand.MAIN_HAND)
+        if (!player.isShiftKeyDown() && !level.isClientSide && hand.equals(InteractionHand.MAIN_HAND)
                 && stack.isEmpty()
                 && level.getBlockEntity(pos) instanceof ReactorControllerBE be) {
 
