@@ -1,0 +1,58 @@
+{
+  "format_version": "1.21.6",
+  "credit": "Made with Blockbench",
+  "render_type": "cutout",
+  "parent": "block/block",
+  "textures": {
+    "round": "minecraft:block/grindstone_round",
+    "pivot": "minecraft:block/grindstone_pivot",
+    "blade": "synergy:block/quern/small_blade",
+    "basetop": "synergy:block/quern/large_blade_top",
+    "particle": "synergy:block/quern/large_blade_top"
+  },
+  "elements": [
+    {
+      "from": [9.75, 8, 9.75],
+      "to": [11.75, 12, 11.75],
+      "rotation": { "angle": 0, "axis": "y", "origin": [-2.25, 8, 1.75] },
+      "faces": {
+        "north": { "uv": [6, 2, 8, 6], "texture": "#pivot" },
+        "east": { "uv": [3, 2, 1, 6], "texture": "#pivot" },
+        "south": { "uv": [5, 2, 3, 6], "texture": "#pivot" },
+        "west": { "uv": [3, 1, 5, 5], "texture": "#pivot" },
+        "up": { "uv": [6, 1, 8, 3], "texture": "#pivot" },
+        "down": { "uv": [6, 1, 8, 3], "texture": "#pivot" }
+      }
+    },
+    {
+      "from": [4, 4, 4],
+      "to": [12, 8, 12],
+      "rotation": { "angle": 0, "axis": "y", "origin": [8, 6, 8] },
+      "faces": {
+        "north": { "uv": [0, 0, 4, 8], "rotation": 90, "texture": "#blade" },
+        "east": { "uv": [0, 0, 4, 8], "rotation": 90, "texture": "#blade" },
+        "south": { "uv": [0, 0, 4, 8], "rotation": 90, "texture": "#blade" },
+        "west": { "uv": [0, 0, 4, 8], "rotation": 90, "texture": "#blade" },
+        "up": { "uv": [4, 0, 12, 8], "rotation": 90, "texture": "#blade" },
+        "down": { "uv": [4, 0, 12, 8], "rotation": 90, "texture": "#blade" }
+      }
+    },
+    {
+      "from": [2, 0, 2],
+      "to": [14, 4, 14],
+      "rotation": { "angle": 0, "axis": "z", "origin": [8, 4, 8] },
+      "faces": {
+        "north": { "uv": [0, 0, 4, 12], "rotation": 270, "texture": "#round" },
+        "east": { "uv": [0, 0, 4, 12], "rotation": 270, "texture": "#round" },
+        "south": { "uv": [0, 0, 4, 12], "rotation": 270, "texture": "#round" },
+        "west": { "uv": [0, 0, 4, 12], "rotation": 270, "texture": "#round" },
+        "up": { "uv": [0, 0, 12, 12], "rotation": 270, "texture": "#basetop" },
+        "down": { "uv": [0, 0, 12, 12], "rotation": 270, "texture": "#basetop" }
+      }
+    }
+  ],
+  "groups": [
+    0,
+    { "name": "blades", "origin": [8, 4, 8], "color": 0, "children": [1, 2] }
+  ]
+}
