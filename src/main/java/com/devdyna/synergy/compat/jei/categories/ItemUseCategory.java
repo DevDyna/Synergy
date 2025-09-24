@@ -17,6 +17,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.LiquidBlock;
 
 @SuppressWarnings("null")
 public class ItemUseCategory implements IRecipeCategory<ItemUseRecipe> {
@@ -60,12 +61,22 @@ public class ItemUseCategory implements IRecipeCategory<ItemUseRecipe> {
         }
 
         try {
-            builder.addInputSlot(45, 27).addItemStack(x.item(recipe.getInputState()));
+            var in = recipe.getInputState();
+            if (in.getBlock() instanceof LiquidBlock fluid)
+                builder.addInputSlot(45, 27).addFluidStack(fluid.fluid);
+            else
+                builder.addInputSlot(45, 27).addItemStack(x.item(in));
         } catch (Exception e) {
         }
 
         try {
-            builder.addOutputSlot(81, 49).addItemStack(x.item(recipe.getOutputState()));
+
+            var out = recipe.getOutputState();
+            if (out.getBlock() instanceof LiquidBlock fluid)
+                builder.addOutputSlot(81, 49).addFluidStack(fluid.fluid);
+            else
+                builder.addOutputSlot(81, 49).addItemStack(x.item(out));
+
         } catch (Exception e) {
         }
     }
