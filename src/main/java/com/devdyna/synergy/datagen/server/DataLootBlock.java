@@ -87,7 +87,8 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.STONE_TINY_CHEST,
 
                                 zBlocks.ADVANCED_MACHINE_FRAME,
-                                zBlocks.URN
+                                zBlocks.URN,
+                                zBlocks.QUERN
 
                 );
 
@@ -100,6 +101,8 @@ public class DataLootBlock extends BlockLootSubProvider {
                 );
 
                 types.forEach(t -> t.getEntries().forEach(b -> dropSelf(b.get())));
+
+                // zBlocks.zOnlyBlock.getEntries().forEach(b -> dropOther(b.get(), Items.AIR));
 
                 azalea();
 
