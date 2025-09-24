@@ -42,7 +42,11 @@ public class DataBlockModelState extends BlockStateProvider {
                 tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
                 tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
                 tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
-                tinyUrn(zBlocks.URN);
+
+                block(zBlocks.URN, "block/tiny_block/urn");
+                
+                block(zBlocks.QUERN, "block/quern/base");
+                block(zBlocks.QUERN_MOVING, "block/quern/moving");
 
                 node(zBlocks.ITEM_PROVIDER.get(), "green");
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
@@ -75,7 +79,7 @@ public class DataBlockModelState extends BlockStateProvider {
                 CoolerBlock(zBlocks.SCULK_COOLER, mcLoc("block/sculk"));
                 CoolerBlock(zBlocks.WATER_COOLER, mcLoc("block/ice"));
                 CoolerBlock(zBlocks.QUARTZ_COOLER, mcLoc("block/quartz_block_top"));
-                CoolerBlock(zBlocks.BIOMASS_COOLER, mcLoc("block/soul_sand"));
+                CoolerBlock(zBlocks.SHADOW_COOLER, modLoc("block/reactor/cooler/shadow"));
                 CoolerBlock(zBlocks.DIAMOND_COOLER, mcLoc("block/diamond_block"));
                 CoolerBlock(zBlocks.EMERALD_COOLER, mcLoc("block/emerald_block"));
                 CoolerBlock(zBlocks.REDSTONE_COOLER, mcLoc("block/redstone_block"));
@@ -152,10 +156,10 @@ public class DataBlockModelState extends BlockStateProvider {
                                                 .texture("down", down));
         }
 
-        private void tinyUrn(DeferredHolder<Block, Block> b) {
+        private void block(DeferredHolder<Block, Block> b,String rl) {
                 simpleBlock(b.get(),
                                 models().withExistingParent(b.getRegisteredName(),
-                                                modLoc("block/tiny_block/urn")));
+                                                modLoc(rl)));
         }
 
         private void simpleBlockDecorative(DeferredHolder<Block, Block> b) {
