@@ -1,4 +1,3 @@
-
 # TODO
 
 ### Plants
@@ -84,9 +83,14 @@ _IC2 like_
 - [ ] Farmer delight compat
 
 ## ISSUES
+
 - [ ] Nodes can void items with furnaces
 - [ ] Shift-action on some GUI will cause issues
 - [ ] Farmer delight Rice cannot be harvested with Harvester
 - [ ] Farmer delight auto-harvest toggle
 - [ ] Hold Shift tooltips dont work on JEI (need to investigate)
 - [ ] Nodes doesn't support Mekanism
+
+## CODEBASE
+
+- [ ] datagen/DataRecipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
