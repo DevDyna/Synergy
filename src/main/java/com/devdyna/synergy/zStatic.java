@@ -39,6 +39,14 @@ public class zStatic {
         public static String plutonium = "plutonium";
         public static String thorium = "thorium";
         public static String uranium = "uranium";
+        public static String amethyst = "amethyst";
+        public static String diamond = "diamond";
+        public static String emerald = "emerald";
+        public static String ancient_debris = "ancient_debris";
+        public static String energized_redstone = "energized_redstone";
+        public static String lapis = "lapis";
+        public static String sawdust = "sawdust";
+        public static String quartz = "quartz";
     }
 
     public class ResourceType {
@@ -148,7 +156,7 @@ public class zStatic {
 
             public static String base = cooler+"_base";
 
-            public static String BIOMASS = "biomass_" + cooler;
+            public static String SHADOW = "shadow_" + cooler;
             public static String IRON = "iron_" + cooler;
             public static String GOLD = "gold_" + cooler;
             public static String REDSTONE = "redstone_" + cooler;
