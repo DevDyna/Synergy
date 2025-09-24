@@ -15,6 +15,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -106,6 +107,14 @@ public class UrnBE extends BaseBE implements ItemStorageBlock {
     }
 
     @Override
+    public void tickClient() {
+        var pos = getBlockPos();
+        if (LevelUtil.chance(25, level))
+            level.addParticle(ParticleTypes.SMOKE, pos.getX() + 0.5, pos.getY() + 0.65, pos.getZ() + 0.5,
+                    0, 0, 0);
+    }
+
+    @Override
     public void tickServer() {
 
         if (!getInventory().isEmpty()
@@ -124,9 +133,10 @@ public class UrnBE extends BaseBE implements ItemStorageBlock {
 
                     extractItems(input);
 
-                    level.playSound(null, getBlockPos(),
-                            SoundEvents.FIRE_EXTINGUISH,
-                            SoundSource.BLOCKS, 0.5F * (LevelUtil.chance(50, level) ? 1f : 0.75f), 1);
+                    if (LevelUtil.chance(25, level))
+                        level.playSound(null, getBlockPos(),
+                                SoundEvents.BREWING_STAND_BREW,
+                                SoundSource.BLOCKS, 0.5F * (LevelUtil.chance(50, level) ? 1f : 0.75f), 1);
 
                     setChanged(level, getBlockPos(), getBlockState());
 
@@ -156,17 +166,6 @@ public class UrnBE extends BaseBE implements ItemStorageBlock {
                     items.add(cap.getStackInSlot(i));
             }
         return items;
-    }
-
-    public boolean hasAnyItemsCached() {
-        IItemHandler handler = this.cache.getCapability(); // may be null
-        if (handler == null)
-            return false;
-        for (int i = 0; i < handler.getSlots(); i++) {
-            if (!handler.getStackInSlot(i).isEmpty())
-                return true;
-        }
-        return false;
     }
 
 }
