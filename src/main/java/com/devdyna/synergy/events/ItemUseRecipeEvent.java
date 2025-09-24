@@ -68,6 +68,8 @@ public class ItemUseRecipeEvent {
             }
             player.swing(hand);
             level.setBlockAndUpdate(pos, output);
+            event.isCanceled();
+            event.setCanceled(true);
 
         }
     }
