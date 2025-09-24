@@ -15,6 +15,7 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.*;
+import com.devdyna.synergy.init.builder.quern.QuernBlock;
 import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.reactor.cooler.*;
@@ -290,6 +291,13 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> URN = Material.registerItemBlock(
                         zStatic.Blocks.urn,
                         () -> new UrnBlock());
+
+        public static final DeferredHolder<Block, Block> QUERN = Material.registerItemBlock(
+                        zStatic.Blocks.quern,
+                        () -> new QuernBlock());
+
+        public static final DeferredHolder<Block, Block> QUERN_MOVING = zOnlyBlock.registerSimpleBlock(
+                        zStatic.Blocks.quern + "_moving");
 
         // ---------------------------------------------------------------------------------------//
 
