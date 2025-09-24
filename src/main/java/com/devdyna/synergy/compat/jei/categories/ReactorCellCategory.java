@@ -4,6 +4,7 @@ import org.jetbrains.annotations.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.jei.BaseJEICategory;
 import com.devdyna.synergy.client.gui.screenLocations;
 import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
@@ -19,12 +20,11 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 @SuppressWarnings("null")
-public class ReactorCellCategory implements IRecipeCategory<FuelCellRecipe> {
+public class ReactorCellCategory extends BaseJEICategory implements IRecipeCategory<FuelCellRecipe> {
 
     private final IGuiHelper helper;
     public static final RecipeType<FuelCellRecipe> TYPE = new RecipeType<>(
@@ -65,8 +65,6 @@ public class ReactorCellCategory implements IRecipeCategory<FuelCellRecipe> {
     @Override
     public void draw(FuelCellRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
             double mouseY) {
-
-        var font = Minecraft.getInstance().font;
 
         guiGraphics.drawString(font,
                 (recipe.getDuration() == 1 ? "no tick delay"
