@@ -53,6 +53,7 @@ public class Plugin implements IModPlugin {
         r.addRecipeCatalyst(x.item(zBlocks.REACTOR_CONTROLLER), ReactorCellCategory.TYPE);
         r.addRecipeCatalyst(x.item(zBlocks.REACTOR_FUEL_CELL), ReactorCellCategory.TYPE);
         r.addRecipeCatalyst(x.item(zBlocks.URN), UrnCategory.TYPE);
+        r.addRecipeCatalyst(x.item(zBlocks.QUERN), QuernCategory.TYPE);
     }
 
     @Override
@@ -63,6 +64,7 @@ public class Plugin implements IModPlugin {
         r.addRecipeCategories(new UrnCategory(helper));
         r.addRecipeCategories(new CropResultCategory(helper));
         r.addRecipeCategories(new ItemUseCategory(helper));
+        r.addRecipeCategories(new QuernCategory(helper));
 
     }
 
@@ -81,6 +83,9 @@ public class Plugin implements IModPlugin {
                 .map(RecipeHolder::value).toList());
 
         r.addRecipes(ItemUseCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.ITEM_USE.getType()).stream()
+                .map(RecipeHolder::value).toList());
+
+        r.addRecipes(QuernCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.QUERN_MILLING.getType()).stream()
                 .map(RecipeHolder::value).toList());
     }
 
