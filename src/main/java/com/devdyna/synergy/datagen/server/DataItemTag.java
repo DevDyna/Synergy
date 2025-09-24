@@ -89,6 +89,45 @@ public class DataItemTag extends ItemTagsProvider {
                                 .add(zBlocks.zModerators.getEntries().stream().map(i -> i.get().asItem())
                                                 .toArray(Item[]::new));
 
+                tag(Tags.Items.DUSTS).add(
+                                zItems.GOLD_DUST.get(),
+                                zItems.IRON_DUST.get(),
+                                zItems.LAPIS_DUST.get(),
+                                zItems.CARBON_DUST.get(),
+                                zItems.COPPER_DUST.get(),
+                                zItems.QUARTZ_DUST.get(),
+                                zItems.DIAMOND_DUST.get(),
+                                zItems.EMERALD_DUST.get(),
+                                zItems.AMETHYST_DUST.get(),
+                                zItems.ANCIENT_DEBRIS_DUST.get(),
+                                zItems.SAWDUST.get());
+
+                tag(zItemTag.DUST_AMETHYST).add(zItems.AMETHYST_DUST.get());
+                tag(zItemTag.DUST_ANCIENT_DEBRIS).add(zItems.ANCIENT_DEBRIS_DUST.get());
+                tag(zItemTag.DUST_COAL).add(zItems.CARBON_DUST.get());
+                tag(zItemTag.DUST_COPPER).add(zItems.COPPER_DUST.get());
+                tag(zItemTag.DUST_DIAMOND).add(zItems.DIAMOND_DUST.get());
+                tag(zItemTag.DUST_EMERALD).add(zItems.EMERALD_DUST.get());
+                tag(zItemTag.DUST_GOLD).add(zItems.GOLD_DUST.get());
+                tag(zItemTag.DUST_IRON).add(zItems.IRON_DUST.get());
+                tag(zItemTag.DUST_LAPIS).add(zItems.LAPIS_DUST.get());
+                tag(zItemTag.DUST_QUARTZ).add(zItems.QUARTZ_DUST.get());
+                tag(zItemTag.SAWDUST).add(zItems.SAWDUST.get());
+
+                tag(ItemTags.PIGLIN_LOVED).add(zItems.GOLD_DUST.get(), zItems.GOLD_FOIL.get(), zItems.GOLD_PLATE.get());
+
+                tag(Tags.Items.INGOTS)
+                .add(zItems.STEEL_INGOT.get(),zItems.ADVANCED_ALLOY_INGOT.get());
+
+                tag(Tags.Items.NUGGETS)
+                .add(zItems.STEEL_NUGGET.get(),zItems.ADVANCED_ALLOY_NUGGET.get());
+
+                tag(zItemTag.INGOT_STEEL).add(zItems.STEEL_INGOT.get());
+                tag(zItemTag.INGOT_ADVANCEDALLOY).add(zItems.ADVANCED_ALLOY_INGOT.get());
+                tag(zItemTag.NUGGET_STEEL).add(zItems.STEEL_NUGGET.get());
+                tag(zItemTag.NUGGET_ADVANCEDALLOY).add(zItems.ADVANCED_ALLOY_NUGGET.get());
+
+
         }
 
 }
