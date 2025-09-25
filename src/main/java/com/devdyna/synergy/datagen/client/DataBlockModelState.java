@@ -52,7 +52,7 @@ public class DataBlockModelState extends BlockStateProvider {
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
                 node(zBlocks.ITEM_TRANSFER.get(), "red");
 
-                node(zBlocks.ENERGY_PROVIDER.get(), "green");
+                // node(zBlocks.ENERGY_PROVIDER.get(), "green");
                 node(zBlocks.ENERGY_RETRIEVAL.get(), "aqua");
                 node(zBlocks.ENERGY_TRANSFER.get(), "red");
 
