@@ -123,10 +123,6 @@ public class zBlocks {
                         zStatic.PipeStuff.nodes.EnergyTransfer,
                         () -> new EnergyTranfer());
 
-        public static final DeferredHolder<Block, Block> ENERGY_PROVIDER = Material.registerItemBlock(
-                        zStatic.PipeStuff.nodes.EnergyProvider,
-                        () -> new EnergyProvider());
-
         public static final DeferredHolder<Block, Block> ENERGY_RETRIEVAL = Material.registerItemBlock(
                         zStatic.PipeStuff.nodes.EnergyRetrieval,
                         () -> new EnergyRetrieval());
