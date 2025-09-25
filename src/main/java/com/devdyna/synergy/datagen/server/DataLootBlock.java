@@ -68,7 +68,7 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.ITEM_RETRIEVAL,
                                 zBlocks.ITEM_TRANSFER,
 
-                                zBlocks.ENERGY_PROVIDER,
+                                // zBlocks.ENERGY_PROVIDER,
                                 zBlocks.ENERGY_RETRIEVAL,
                                 zBlocks.ENERGY_TRANSFER,
 
