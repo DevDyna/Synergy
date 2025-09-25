@@ -109,11 +109,12 @@ public class ItemProviderBuilder implements RecipeBuilder {
     }
 
     public void save(RecipeOutput recipeOutput, String extra) {
+
         this.save(recipeOutput,
                 x.rl("provider/item/" +
-                        x.path(output)
-                        + "_from_" +
-                        x.path(core)
+                        (x.path(output) == x.path(core)
+                                ? x.path(core)
+                                : x.path(output) + "_from_" + x.path(core))
                         + extra));
     }
 
