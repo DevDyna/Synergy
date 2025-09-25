@@ -47,9 +47,9 @@ public class ItemProviderBE extends NodeBaseBE {
 
         var recipe = r.get().value();
 
-        var requireBelow = recipe.getBelow() != null;
-        var requireLeft = recipe.getLeft() != null;
-        var requireRight = recipe.getRight() != null;
+        var requireBelow = !(recipe.getBelow() == null || recipe.getBelow().isAir());
+        var requireLeft = !(recipe.getLeft() == null || recipe.getLeft().isAir());
+        var requireRight = !(recipe.getRight() == null || recipe.getRight().isAir());
 
         if (requireBelow)
             if (!check(inputPos.relative(dir), recipe.getBelow()))
