@@ -132,7 +132,7 @@ public class DataItemModel extends ItemModelProvider {
                 node(zBlocks.ITEM_RETRIEVAL, "aqua");
                 node(zBlocks.ITEM_TRANSFER, "red");
 
-                node(zBlocks.ENERGY_PROVIDER, "green");
+                // node(zBlocks.ENERGY_PROVIDER, "green");
                 node(zBlocks.ENERGY_RETRIEVAL, "aqua");
                 node(zBlocks.ENERGY_TRANSFER, "red");
 
