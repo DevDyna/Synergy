@@ -2,6 +2,8 @@ package com.devdyna.synergy.init.recipeTypes.type;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.devdyna.synergy.init.recipeTypes.input.ProviderInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -26,7 +28,8 @@ public class ItemProviderRecipe implements Recipe<ProviderInput> {
     private final BlockState right;
     private final ItemStack output;
 
-    public ItemProviderRecipe(BlockState below, BlockState core, BlockState left, BlockState right, ItemStack output) {
+    public ItemProviderRecipe(@Nullable BlockState below, BlockState core, @Nullable BlockState left,
+            @Nullable BlockState right, ItemStack output) {
         this.core = core;
         this.below = below;
         this.left = left;
@@ -72,14 +75,17 @@ public class ItemProviderRecipe implements Recipe<ProviderInput> {
         return core;
     }
 
+    @Nullable
     public BlockState getBelow() {
         return below;
     }
 
+    @Nullable
     public BlockState getLeft() {
         return left;
     }
 
+    @Nullable
     public BlockState getRight() {
         return right;
     }
