@@ -23,15 +23,16 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
 public class ItemProviderBuilder implements RecipeBuilder {
 
     private BlockState core;
-    private BlockState below = null;
-    private BlockState left = null;
-    private BlockState right = null;
+    private BlockState below = Blocks.AIR.defaultBlockState();
+    private BlockState left = Blocks.AIR.defaultBlockState();
+    private BlockState right = Blocks.AIR.defaultBlockState();
     private ItemStack output;
 
     private final Map<String, Criterion<?>> criteria;
