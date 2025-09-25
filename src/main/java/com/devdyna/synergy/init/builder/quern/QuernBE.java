@@ -141,7 +141,7 @@ public class QuernBE extends BaseBE implements ItemStorageBlock {
                     if (level.getGameTime() % 15 + (LevelUtil.chance(50, level) ? 0 : 5) == 0) {
                         level.playSound(null, getBlockPos(),
                                 SoundEvents.GRINDSTONE_USE,
-                                SoundSource.BLOCKS, 0.5F * (LevelUtil.chance(50, level) ? 1f : 0.75f), 1);
+                                SoundSource.BLOCKS, 0.25F * (LevelUtil.chance(50, level) ? 1f : 0.75f), 1);
                     }
 
                     if (minDelay >= recipe.get().value().getTime() && minDelay % recipe.get().value().getTime() == 0) {
