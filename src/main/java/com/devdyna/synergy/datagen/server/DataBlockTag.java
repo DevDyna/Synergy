@@ -68,7 +68,7 @@ public class DataBlockTag extends BlockTagsProvider {
                                 .add(zBlocks.ITEM_TRANSFER.get(), zBlocks.ENERGY_TRANSFER.get());
 
                 tag(zBlockTag.NODE_PROVIDER)
-                                .add(zBlocks.ITEM_PROVIDER.get(), zBlocks.ENERGY_PROVIDER.get());
+                                .add(zBlocks.ITEM_PROVIDER.get());
 
                 tag(zBlockTag.NODE)
                                 .addTag(zBlockTag.NODE_TRANSFER)
