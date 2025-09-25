@@ -71,7 +71,7 @@ public class zRecipeTypes {
                         });
 
         public static final zRecipe<ItemProviderRecipe> ITEM_PROVIDER = new zRecipe<ItemProviderRecipe>(
-                        "item_provider", ItemProviderRecipeSerializer::new,
+                        "provider/item", ItemProviderRecipeSerializer::new,
                         () -> new RecipeType<ItemProviderRecipe>() {
                                 @Override
                                 public String toString() {
