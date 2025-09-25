@@ -60,8 +60,16 @@ public class x {
         return path(BuiltInRegistries.ITEM, i);
     }
 
+    public static String path(ItemStack i) {
+        return path(i.getItem());
+    }
+
     public static String path(Block i) {
         return path(BuiltInRegistries.BLOCK, i);
+    }
+
+    public static String path(BlockState i) {
+        return path(i.getBlock());
     }
 
     /**
@@ -94,7 +102,7 @@ public class x {
         return new ItemStack(i);
     }
 
-        public static ItemStack item(BlockState i) {
+    public static ItemStack item(BlockState i) {
         return item(i.getBlock());
     }
 
@@ -118,15 +126,15 @@ public class x {
         return Ingredient.of(i);
     }
 
-        public static Block block(DeferredHolder<Block, ?> b) {
+    public static Block block(DeferredHolder<Block, ?> b) {
         return b.get();
     }
 
-        public static BlockState state(DeferredHolder<Block, ?> b) {
+    public static BlockState state(DeferredHolder<Block, ?> b) {
         return block(b).defaultBlockState();
     }
 
-        public static Block block(BlockState b) {
+    public static Block block(BlockState b) {
         return b.getBlock();
     }
 
