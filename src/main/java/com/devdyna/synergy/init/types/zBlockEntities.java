@@ -55,10 +55,6 @@ public class zBlockEntities {
                         .createBlockEntity(zStatic.PipeStuff.nodes.EnergyTransfer, EnergyTransferBE::new,
                                         zBlocks.ENERGY_TRANSFER);
 
-        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EnergyProviderBE>> ENERGY_PROVIDER = Material
-                        .createBlockEntity(zStatic.PipeStuff.nodes.EnergyProvider, EnergyProviderBE::new,
-                                        zBlocks.ENERGY_PROVIDER);
-
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EnergyRetrievalBE>> ENERGY_RETRIEVAL = Material
                         .createBlockEntity(zStatic.PipeStuff.nodes.EnergyRetrieval, EnergyRetrievalBE::new,
                                         zBlocks.ENERGY_RETRIEVAL);
