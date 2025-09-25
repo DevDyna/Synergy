@@ -669,6 +669,21 @@ public class DataRecipe extends RecipeProvider {
                 nuggetIngotBlock(c, zItems.ADVANCED_ALLOY_NUGGET.get(), zItems.ADVANCED_ALLOY_INGOT.get(),
                                 zBlocks.ADVANCED_ALLOY_BLOCK.get());
 
+                ItemProviderBuilder.of()
+                                .core(Blocks.COBBLESTONE)
+                                .left(Blocks.LAVA)
+                                .right(Blocks.WATER)
+                                .output(Items.COBBLESTONE)
+                                .unlockedBy().save(c);
+
+                ItemProviderBuilder.of()
+                                .core(Blocks.BASALT)
+                                .left(Blocks.LAVA)
+                                .right(Blocks.BLUE_ICE)
+                                .below(Blocks.SOUL_SOIL)
+                                .output(Items.BASALT)
+                                .unlockedBy().save(c);
+
         }
 
         private void nuggetIngotBlock(RecipeOutput c, ItemLike nugget, ItemLike ingot, ItemLike block) {

@@ -69,5 +69,14 @@ public class zRecipeTypes {
                                         return ITEM_USE.getId();
                                 }
                         });
+
+        public static final zRecipe<ItemProviderRecipe> ITEM_PROVIDER = new zRecipe<ItemProviderRecipe>(
+                        "item_provider", ItemProviderRecipeSerializer::new,
+                        () -> new RecipeType<ItemProviderRecipe>() {
+                                @Override
+                                public String toString() {
+                                        return ITEM_PROVIDER.getId();
+                                }
+                        });
         // ------------------------------------------------------------------------------------------------------------------------------------//
 }

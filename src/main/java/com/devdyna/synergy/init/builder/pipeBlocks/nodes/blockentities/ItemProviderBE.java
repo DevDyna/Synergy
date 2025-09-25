@@ -1,13 +1,23 @@
 package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities;
 
+import java.util.Arrays;
+import java.util.Optional;
+
+import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
+import com.devdyna.synergy.init.recipeTypes.input.ProviderInput;
+import com.devdyna.synergy.init.recipeTypes.type.ItemProviderRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
+import com.devdyna.synergy.init.types.zRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 @SuppressWarnings({ "null" })
 public class ItemProviderBE extends NodeBaseBE {
@@ -20,74 +30,74 @@ public class ItemProviderBE extends NodeBaseBE {
         super(zBlockEntities.ITEM_PROVIDER.get(), pos, blockState);
     }
 
-    // TODO NEED TO BE RECREATED USING A RECIPETYPE
+    @Override
+    protected void executeItem(BlockPos inputPos, IItemHandler input, BlockPos outputPos, IItemHandler output) {
+        var state = getBlockState();
+        var dir = state.getValue(nodeType.FACING);
 
-    // @Override
-    // protected boolean executeItem(BlockPos inputPos, IItemHandler input, BlockPos
-    // outputPos, IItemHandler output) {
+        if (level == null)
+            return;
 
-    // var outState = level.getBlockState(outputPos);
-    // var outBE = level.getBlockEntity(outputPos);
-    // if (outBE == null)
-    // return;
-    // var outCap = getCapType().getCapability(level, outputPos, outState, outBE,
-    // null);
-    // if (outCap == null)
-    // return;
+        Optional<RecipeHolder<ItemProviderRecipe>> r = level.getRecipeManager()
+                .getRecipeFor(zRecipeTypes.ITEM_PROVIDER.getType(),
+                        new ProviderInput(level.getBlockState(inputPos)), level);
 
-    // // TODO probably it could be more optimized
-    // // TODO jei
+        if (r.isEmpty())
+            return;
 
-    // var direction = getBlockState().getValue(nodeType.FACING);
-    // var blockGen = getBlockPos().relative(direction);
-    // var belowGen = blockGen.relative(direction);
+        var recipe = r.get().value();
 
-    // ArrayList<Block> conditions = new ArrayList<>();
-    // ArrayList<Boolean> resultCheck = new ArrayList<>();
+        var requireBelow = recipe.getBelow() != null;
+        var requireLeft = recipe.getLeft() != null;
+        var requireRight = recipe.getRight() != null;
 
-    // Item resulItem = level.getBlockState(blockGen).getBlock().asItem();
+        if (requireBelow)
+            if (!check(inputPos.relative(dir), recipe.getBelow()))
+                return;
 
-    // var dataHolder = new ItemStack(resulItem).getItemHolder()
-    // .getData(zDataMaps.PROVIDER_RECIPES);
+        var dirs = Arrays.asList(Direction.values());
 
-    // if (dataHolder != null) {
+        dirs.removeIf(d -> d.equals(dir) || d.equals(dir.getOpposite()));
 
-    // for (BlockState blocks : dataHolder.blocksToCheck()) {
-    // conditions.add(blocks.getBlock());
-    // }
+        BlockPos rightPos = null;
+        BlockPos leftPos = null;
 
-    // } else {
-    // resulItem = null;
-    // }
+        if (requireLeft || requireRight)
+            for (Direction direction : dirs) {
+                if (requireRight)
+                    if (check(inputPos.relative(direction), recipe.getRight())
+                            && !inputPos.relative(direction).equals(leftPos)) {
+                        rightPos = inputPos.relative(direction);
+                        continue;
+                    }
 
-    // boolean found = false;
+                if (requireLeft)
+                    if (check(inputPos.relative(direction), recipe.getLeft())
+                            && !inputPos.relative(direction).equals(rightPos)) {
+                        leftPos = inputPos.relative(direction);
+                        continue;
+                    }
+            }
 
-    // if (resulItem != null) {
-    // for (Block blockToCheck : conditions) {
-    // for (Direction dir : Direction.values())
-    // if (dir != direction && dir != direction.getOpposite()) {
-    // if (level.getBlockState(blockGen.relative(dir)).is(blockToCheck)) {
-    // found = true;
-    // break;
-    // }
-    // }
+        if (requireLeft && leftPos == null)
+            return;
+        if (requireRight && rightPos == null)
+            return;
 
-    // resultCheck.add(found);
-    // found = false;
-    // }
+        if (level.getGameTime() % 20 == 0)
+            ItemHandlerHelper.insertItemStacked(output, recipe.getOutput(), false);
 
-    // // DONT MIX OTHER CONDITIONS OR IT WILL BREAK!
-    // var finalValue = resultCheck.stream().allMatch(Boolean::booleanValue);
+    }
 
-    // var below = dataHolder.belowBlock().isAir() ? true
-    // : level.getBlockState(belowGen).is(dataHolder.belowBlock().getBlock());
+    private boolean check(BlockPos pos, BlockState state) {
 
-    // if (finalValue && below)
-    // ItemHandlerHelper.insertItemStacked((IItemHandler) outCap, new
-    // ItemStack(resulItem, 1), false);
+        var cond = level.getBlockState(pos).is(state.getBlock());
 
-    // }
-    // }
+        if (!state.getFluidState().isEmpty())
+            cond &= state.getFluidState().isSource();
+
+        return cond;
+    }
 
     @Override
     public BlockCapability<?, Direction> getCapType() {
