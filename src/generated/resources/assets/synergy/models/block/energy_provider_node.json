@@ -1,8 +1,0 @@
-{
-  "parent": "synergy:block/node/_template/block",
-  "textures": {
-    "back": "synergy:block/node/back",
-    "node": "synergy:block/node/green",
-    "pipe": "synergy:block/pipe/black"
-  }
-}

@@ -1,6 +1,5 @@
 {
   "values": [
-    "synergy:item_provider_node",
-    "synergy:energy_provider_node"
+    "synergy:item_provider_node"
   ]
 }
