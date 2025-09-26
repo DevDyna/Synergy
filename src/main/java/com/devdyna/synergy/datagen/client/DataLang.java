@@ -172,6 +172,10 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei.itemuse",
                                 "Item Use Recipes");
 
+
+                add(Main.ID + ".jei.provider.item",
+                                "Item Provider Pattern");
+
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.SHADOW,
                                 zStatic.ReactorStuff.CoolerTypes.COPPER,
