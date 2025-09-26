@@ -14,6 +14,7 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
@@ -48,23 +49,23 @@ public class ItemProviderCategory implements IRecipeCategory<ItemProviderRecipe>
     }
 
     @Override
-    public @Nullable IDrawable getBackground() {//TODO change
-        return helper.createDrawable(screenLocations.ITEM_USE, 0, 0, 103, 70);
+    public @Nullable IDrawable getBackground() {
+        return helper.createDrawable(screenLocations.ITEM_PROVIDER, 0, 0, 80, 100);
     }
 
-    @Override//TODO move to align with background
+    @Override
     public void setRecipe(IRecipeLayoutBuilder builder, ItemProviderRecipe recipe, IFocusGroup focuses) {
 
+        builder.addOutputSlot(33, 10).addItemStack(recipe.getOutput());
 
-
-        builder.addOutputSlot(5, 4).addItemStack(recipe.getOutput());
+        builder.addSlot(RecipeIngredientRole.RENDER_ONLY,33, 45).addIngredients(x.ingredient(zBlocks.ITEM_PROVIDER.get()));
 
         try {
             var core = recipe.getCore();
             if (core.getBlock() instanceof LiquidBlock fluid)
-                builder.addInputSlot(20, 4).addFluidStack(fluid.fluid);
+                builder.addInputSlot(33, 62).addFluidStack(fluid.fluid);
             else
-                builder.addInputSlot(20, 4).addItemStack(x.item(core));
+                builder.addInputSlot(33, 62).addItemStack(x.item(core));
         } catch (Exception e) {
         }
 
@@ -72,9 +73,9 @@ public class ItemProviderCategory implements IRecipeCategory<ItemProviderRecipe>
             var below = recipe.getBelow();
             if (!below.isAir()) {
                 if (below.getBlock() instanceof LiquidBlock fluid)
-                    builder.addOutputSlot(5, 20).addFluidStack(fluid.fluid);
+                    builder.addInputSlot(33, 79).addFluidStack(fluid.fluid);
                 else
-                    builder.addOutputSlot(5, 20).addItemStack(x.item(below));
+                    builder.addInputSlot(33, 79).addItemStack(x.item(below));
             }
         } catch (Exception e) {
         }
@@ -83,9 +84,9 @@ public class ItemProviderCategory implements IRecipeCategory<ItemProviderRecipe>
             var right = recipe.getRight();
             if (!right.isAir()) {
                 if (right.getBlock() instanceof LiquidBlock fluid)
-                    builder.addOutputSlot(60, 20).addFluidStack(fluid.fluid);
+                    builder.addInputSlot(50, 62).addFluidStack(fluid.fluid);
                 else
-                    builder.addOutputSlot(60, 20).addItemStack(x.item(right));
+                    builder.addInputSlot(50, 62).addItemStack(x.item(right));
             }
         } catch (Exception e) {
         }
@@ -94,9 +95,9 @@ public class ItemProviderCategory implements IRecipeCategory<ItemProviderRecipe>
             var left = recipe.getLeft();
             if (!left.isAir()) {
                 if (left.getBlock() instanceof LiquidBlock fluid)
-                    builder.addOutputSlot(20, 60).addFluidStack(fluid.fluid);
+                    builder.addInputSlot(16,62).addFluidStack(fluid.fluid);
                 else
-                    builder.addOutputSlot(20, 60).addItemStack(x.item(left));
+                    builder.addInputSlot(16,62).addItemStack(x.item(left));
             }
         } catch (Exception e) {
         }
