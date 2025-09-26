@@ -262,10 +262,10 @@ public class DataGenUtil {
     public static Item[] getItems(DeferredRegister<?> register) {
         return register.getEntries().stream()
                 .map(DeferredHolder::get)
-                .flatMap(obj -> {
-                    if (obj instanceof Item item) {
+                .flatMap(i -> {
+                    if (i instanceof Item item) {
                         return Stream.of(item);
-                    } else if (obj instanceof Block block) {
+                    } else if (i instanceof Block block) {
                         Item item = Item.BY_BLOCK.get(block);
                         return item != null ? Stream.of(item) : Stream.empty(); // check if block has blockitem
                     }
