@@ -22,7 +22,7 @@ public class EnergyTransferBE extends NodeBaseBE {
     }
 
     @Override
-    protected void executeEnergy(BlockPos inputPos, IEnergyStorage input, BlockPos outputPos, IEnergyStorage output) {
+    protected void executeEnergy(IEnergyStorage input, IEnergyStorage output) {
         moveEnergy(input, output, 100);
     }
 
@@ -33,7 +33,7 @@ public class EnergyTransferBE extends NodeBaseBE {
 
     @Override
     public BlockPos defineOutput() {
-        return getOutput();
+        return getOutputPos();
     }
 
 }
