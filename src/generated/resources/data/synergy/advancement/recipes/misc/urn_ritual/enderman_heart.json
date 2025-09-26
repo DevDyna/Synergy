@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:urn_ritual/plutonium_pellet"
+        "recipe": "synergy:urn_ritual/enderman_heart"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,13 +11,16 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:barrier"
+            "items": "synergy:infernal_ember"
+          },
+          {
+            "items": "minecraft:ender_eye"
           },
           {
             "items": "minecraft:barrier"
           },
           {
-            "items": "minecraft:barrier"
+            "items": "synergy:silicon_shard"
           }
         ]
       },
@@ -32,7 +35,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:urn_ritual/plutonium_pellet"
+      "synergy:urn_ritual/enderman_heart"
     ]
   }
 }

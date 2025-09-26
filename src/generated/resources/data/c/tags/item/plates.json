@@ -1,0 +1,13 @@
+{
+  "values": [
+    "synergy:advanced_alloy_plate",
+    "synergy:carbon_plate",
+    "synergy:copper_plate",
+    "synergy:gold_plate",
+    "synergy:iron_plate",
+    "synergy:matrix_plate",
+    "synergy:netherrack_plate",
+    "synergy:steel_plate",
+    "synergy:stone_plate"
+  ]
+}

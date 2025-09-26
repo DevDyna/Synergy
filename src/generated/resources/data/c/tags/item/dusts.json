@@ -1,15 +1,16 @@
 {
   "values": [
+    "synergy:carbon_dust",
+    "synergy:amethyst_dust",
+    "synergy:ancient_debris_dust",
+    "synergy:copper_dust",
+    "synergy:diamond_dust",
+    "synergy:emerald_dust",
+    "synergy:energized_redstone_dust",
     "synergy:gold_dust",
     "synergy:iron_dust",
     "synergy:lapis_dust",
-    "synergy:carbon_dust",
-    "synergy:copper_dust",
-    "synergy:quartz_dust",
-    "synergy:diamond_dust",
-    "synergy:emerald_dust",
-    "synergy:amethyst_dust",
-    "synergy:ancient_debris_dust",
-    "synergy:sawdust_dust"
+    "synergy:sawdust_dust",
+    "synergy:quartz_dust"
   ]
 }

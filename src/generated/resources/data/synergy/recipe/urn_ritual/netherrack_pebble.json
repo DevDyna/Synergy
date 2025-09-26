@@ -1,0 +1,12 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "tag": "c:netherracks"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "synergy:netherrack_pebble"
+  }
+}
