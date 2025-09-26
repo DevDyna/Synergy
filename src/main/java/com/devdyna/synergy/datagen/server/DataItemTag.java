@@ -117,16 +117,24 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(ItemTags.PIGLIN_LOVED).add(zItems.GOLD_DUST.get(), zItems.GOLD_FOIL.get(), zItems.GOLD_PLATE.get());
 
                 tag(Tags.Items.INGOTS)
-                .add(zItems.STEEL_INGOT.get(),zItems.ADVANCED_ALLOY_INGOT.get());
+                                .add(zItems.STEEL_INGOT.get(), zItems.ADVANCED_ALLOY_INGOT.get());
 
                 tag(Tags.Items.NUGGETS)
-                .add(zItems.STEEL_NUGGET.get(),zItems.ADVANCED_ALLOY_NUGGET.get());
+                                .add(zItems.STEEL_NUGGET.get(), zItems.ADVANCED_ALLOY_NUGGET.get());
 
                 tag(zItemTag.INGOT_STEEL).add(zItems.STEEL_INGOT.get());
                 tag(zItemTag.INGOT_ADVANCEDALLOY).add(zItems.ADVANCED_ALLOY_INGOT.get());
                 tag(zItemTag.NUGGET_STEEL).add(zItems.STEEL_NUGGET.get());
                 tag(zItemTag.NUGGET_ADVANCEDALLOY).add(zItems.ADVANCED_ALLOY_NUGGET.get());
 
+                tag(zItemTag.CAPACITOR_ACTIVATOR).add(zItems.VIOLET_WEBCAP_MUSHROOM.get(), zItems.ZOMBIE_LIVER.get());
+
+                tag(zItemTag.CHIP_CORE).add(zItems.SILVERFISH_DUST.get(), zItems.AMETHYST_MIXTURE.get(),
+                                zItems.BONE_MEAL_MIXTURE.get(),
+                                zItems.GLOWSTONE_MIXTURE.get());
+
+                tag(zItemTag.RESISTOR_SHELL).add(zItems.BLUE_CUP_MUSHROOM.get(), zItems.GUARDIAN_SCALE.get(),
+                                zItems.AQUAMARINE.get());
 
         }
 
