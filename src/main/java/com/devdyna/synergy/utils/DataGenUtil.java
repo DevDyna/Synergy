@@ -31,6 +31,7 @@ import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.loot.AddTableLootModifier;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 @SuppressWarnings("unchecked")
 public class DataGenUtil {
@@ -200,7 +201,7 @@ public class DataGenUtil {
     public static void modifyLootTables(DataGlobalLootModifier g, String lootModifier,
             ResourceKey<LootTable>[] chestTables, EntityType<?>... entityTables) {
         modifyLootTables(g, lootModifier,
-                 ArrayUtils.concat(
+                ArrayUtils.concat(
                         Arrays.asList(entityTables).stream().map(r -> r.getDefaultLootTable().location().getPath())
                                 .toArray(String[]::new),
                         Arrays.asList(chestTables).stream().map(r -> r.location().getPath()).toArray(String[]::new)));
@@ -254,5 +255,10 @@ public class DataGenUtil {
             ResourceLocation tableLocation,
             LootTable.Builder table) {
         c.accept(ResourceKey.create(Registries.LOOT_TABLE, tableLocation), table);
+    }
+
+    public static Item[] getItems(DeferredRegister<?> t) {
+        return t.getEntries().stream().map(i -> i.get())
+                .toArray(Item[]::new);
     }
 }
