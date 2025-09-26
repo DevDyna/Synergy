@@ -193,6 +193,7 @@
   "synergy.jei.crop": "Crop Result",
   "synergy.jei.fuel_cell": "Reactor Reactions",
   "synergy.jei.itemuse": "Item Use Recipes",
+  "synergy.jei.provider.item": "Item Provider Pattern",
   "synergy.jei.quern": "Quern Milling",
   "synergy.jei.urn": "Urn Rituals",
   "synergy.mixture_tip": "§7Can be used to speed the grow of any plant",
