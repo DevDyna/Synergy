@@ -70,6 +70,8 @@ public class zItemTag {
         public static final TagKey<Item> CAPACITOR_ACTIVATOR = Material.tagItem("capacitor_activator");
 
         public static final TagKey<Item> FOILS = Material.tagItem("foils", "c");
+        public static final TagKey<Item> FOIL_COPPER = Material.tagItem("foils/copper", "c");
+        public static final TagKey<Item> FOIL_GOLD = Material.tagItem("foils/gold", "c");
         public static final TagKey<Item> PLATES = Material.tagItem("plates", "c");
 
         public static final TagKey<Item> PLATE_COPPER = Material.tagItem("plates/copper", "c");
@@ -77,5 +79,8 @@ public class zItemTag {
         public static final TagKey<Item> PLATE_IRON = Material.tagItem("plates/iron", "c");
         public static final TagKey<Item> PLATE_STEEL = Material.tagItem("plates/steel", "c");
         public static final TagKey<Item> PLATE_COAL = Material.tagItem("plates/coal", "c");
+
+
+
 
 }
