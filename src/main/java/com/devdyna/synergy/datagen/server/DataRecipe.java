@@ -689,13 +689,13 @@ public class DataRecipe extends RecipeProvider {
                 UrnRitualBuilder.of()
                                 .add(zItems.ZOMBIE_LIVER)
                                 .add(Items.GHAST_TEAR)
-                                .output(zItems.GHAST_BLADDER,2)
+                                .output(zItems.GHAST_BLADDER, 2)
                                 .unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
                                 .add(Items.BONE)
                                 .add(Items.SLIME_BALL)
-                                .output(zItems.SLIME_BOLUS,2)
+                                .output(zItems.SLIME_BOLUS, 2)
                                 .unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
@@ -712,57 +712,64 @@ public class DataRecipe extends RecipeProvider {
                                 .unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
-                .add(zItemTag.URANIUM)
-                .add(zItemTag.DUST_COAL)
-                .output(zItems.THORIUM,2)
-                .unlockedBy().save(c);
+                                .add(zItemTag.URANIUM)
+                                .add(zItemTag.DUST_COAL)
+                                .output(zItems.THORIUM, 2)
+                                .unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
-                .add(zItemTag.THORIUM)
-                .add(zItemTag.DUST_DIAMOND)
-                .output(zItems.PLUTONIUM,2)
-                .unlockedBy().save(c);
+                                .add(zItemTag.THORIUM)
+                                .add(zItemTag.DUST_DIAMOND)
+                                .add(zItemTag.DUST_QUARTZ)
+                                .output(zItems.PLUTONIUM, 2)
+                                .unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
-                .add(zItemTag.PLUTONIUM)
-                .add(zItemTag.DUST_LAPIS)
-                .add(zItemTag.DUST_AMETHYST)
-                .output(zItems.NEPTUNIUM,2)
-                .unlockedBy().save(c);
+                                .add(zItemTag.PLUTONIUM)
+                                .add(zItemTag.DUST_LAPIS)
+                                .add(zItemTag.DUST_AMETHYST)
+                                .output(zItems.NEPTUNIUM, 2)
+                                .unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
-                .add(zItemTag.NEPTUNIUM)
-                .add(zItems.INFERNAL_EMBER)
-                .add(Tags.Items.DUSTS_REDSTONE)
-                .output(zItems.AMERICIUM,2)
-                .unlockedBy().save(c);
+                                .add(zItemTag.NEPTUNIUM)
+                                .add(zItems.INFERNAL_EMBER)
+                                .add(Tags.Items.DUSTS_REDSTONE)
+                                .output(zItems.AMERICIUM, 2)
+                                .unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
-                .add(zItemTag.AMERICIUM)
-                .add(zItemTag.DUST_COPPER)
-                .add(zItemTag.DUST_GOLD)
-                .add(zItemTag.DUST_EMERALD)
-                .output(zItems.BERKELIUM,2)
-                .unlockedBy().save(c);
+                                .add(zItemTag.AMERICIUM)
+                                .add(zItemTag.DUST_COPPER)
+                                .add(zItemTag.DUST_GOLD)
+                                .add(zItemTag.DUST_EMERALD)
+                                .output(zItems.BERKELIUM, 2)
+                                .unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
-                .add(zItemTag.BERKELIUM)
-                .add(zItemTag.DUST_ANCIENT_DEBRIS)
-                .add(zItems.ENERGIZED_REDSTONE)
-                .output(zItems.CURIUM,2)
-                .unlockedBy().save(c);
+                                .add(zItemTag.BERKELIUM)
+                                .add(zItemTag.DUST_ANCIENT_DEBRIS)
+                                .add(zItems.ENERGIZED_REDSTONE)
+                                .output(zItems.CURIUM, 2)
+                                .unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
-                .add(Items.ROTTEN_FLESH)
-                .add(zItemTag.NUGGET_STEEL)
-                .add(zItemTag.SAWDUST)
-                .output(zItems.ZOMBIE_LIVER)
-                .unlockedBy().save(c);
+                                .add(Items.ROTTEN_FLESH)
+                                .add(zItemTag.NUGGET_STEEL)
+                                .add(zItemTag.SAWDUST)
+                                .output(zItems.ZOMBIE_LIVER)
+                                .unlockedBy().save(c);
 
+                UrnRitualBuilder.of().add(Tags.Items.NETHERRACKS)
+                                .output(zItems.NETHERRACK_PEBBLE, 4)
+                                .unlockedBy().save(c);
 
-
-
-
+                UrnRitualBuilder.of().add(zItems.INFERNAL_EMBER)
+                                .add(Items.ENDER_EYE)
+                                .add(zItemTag.DUST_COAL)
+                                .add(zItems.SILICON_SHARD)
+                                .output(zItems.ENDERMAN_HEART)
+                                .unlockedBy().save(c);
 
         }
 
