@@ -26,6 +26,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings({ "null" })
@@ -62,12 +64,20 @@ public class UrnRitualBuilder implements RecipeBuilder {
         return add(x.ingredient(input));
     }
 
+    public UrnRitualBuilder add(ItemLike input) {
+        return add(x.ingredient(input));
+    }
+
     public UrnRitualBuilder output(ItemStack output) {
         this.output = output;
         return this;
     }
 
     public UrnRitualBuilder output(Item output) {
+        return output(x.item(output));
+    }
+
+    public UrnRitualBuilder output(ItemLike output) {
         return output(x.item(output));
     }
 
@@ -117,13 +127,16 @@ public class UrnRitualBuilder implements RecipeBuilder {
     public void save(RecipeOutput pRecipeOutput, ResourceLocation pId) {
         if (this.criteria.isEmpty())
             throw new IllegalStateException("Missing/Null Criteria " + String.valueOf(pId));
-        Advancement.Builder advancement$builder = pRecipeOutput.advancement()
+        Advancement.Builder advancement = pRecipeOutput.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pId))
                 .rewards(AdvancementRewards.Builder.recipe(pId))
                 .requirements(AdvancementRequirements.Strategy.OR);
-        this.criteria.forEach(advancement$builder::addCriterion);
+        this.criteria.forEach(advancement::addCriterion);
         UrnRitualRecipe shapelessrecipe = new UrnRitualRecipe(input, output);
         pRecipeOutput.accept(pId, shapelessrecipe,
-                advancement$builder.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
+                advancement.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
     }
+
+    
+
 }
