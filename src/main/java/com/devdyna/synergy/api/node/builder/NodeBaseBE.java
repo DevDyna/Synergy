@@ -8,6 +8,7 @@ import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeProperties;
 import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.init.types.zBlockTag;
+import com.devdyna.synergy.utils.LogUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -49,14 +50,15 @@ public abstract class NodeBaseBE extends BlockEntity {
     public void tickServer() {
         this.failedRoutes = new HashSet<>();
         var input = getInputPos(getBlockState(), level, getBlockPos());
+
         if (input == null)
             return;
-        // fail
+
         this.input = input;
         this.failedRoutes.add(input);
         var output = getOutputPos(level, getBlockPos());
         if (output == null)
-            return;// fail
+            return;
         this.output = output;
         var inState = level.getBlockState(input);
         var outState = level.getBlockState(output);
@@ -66,11 +68,11 @@ public abstract class NodeBaseBE extends BlockEntity {
         var outCap = getCapType().getCapability(level, output, outState, outBE, null);
         var capType = getCapType();
         if (capType == Capabilities.ItemHandler.BLOCK) {
-            executeItem(input, (IItemHandler) inCap, output, (IItemHandler) outCap);
+            executeItem((IItemHandler) inCap, (IItemHandler) outCap);
         } else if (capType == Capabilities.EnergyStorage.BLOCK) {
-            executeEnergy(input, (IEnergyStorage) inCap, output, (IEnergyStorage) outCap);
+            executeEnergy((IEnergyStorage) inCap, (IEnergyStorage) outCap);
         } else if (capType == Capabilities.FluidHandler.BLOCK) {
-            executeFluid(input, (IFluidHandler) inCap, output, (IFluidHandler) outCap);
+            executeFluid((IFluidHandler) inCap, (IFluidHandler) outCap);
         } else {
             // TODO
         }
@@ -80,12 +82,16 @@ public abstract class NodeBaseBE extends BlockEntity {
         this.output = null;
     }
 
-    public BlockPos getInput() {
+    public BlockPos getInputPos() {
         return this.input;
     }
 
-    public BlockPos getOutput() {
+    public BlockPos getOutputPos() {
         return this.output;
+    }
+
+    public boolean allowInputNull() {
+        return false;
     }
 
     /**
@@ -107,13 +113,13 @@ public abstract class NodeBaseBE extends BlockEntity {
         excludePos(defineOutput());
     }
 
-    protected void executeItem(BlockPos inputPos, IItemHandler input, BlockPos outputPos, IItemHandler output) {
+    protected void executeItem(IItemHandler input, IItemHandler output) {
     }
 
-    protected void executeEnergy(BlockPos inputPos, IEnergyStorage input, BlockPos outputPos, IEnergyStorage output) {
+    protected void executeEnergy(IEnergyStorage input, IEnergyStorage output) {
     }
 
-    protected void executeFluid(BlockPos inputPos, IFluidHandler input, BlockPos outputPos, IFluidHandler output) {
+    protected void executeFluid(IFluidHandler input, IFluidHandler output) {
     }
 
     public abstract BlockCapability<?, Direction> getCapType();
