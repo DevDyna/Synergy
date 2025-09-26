@@ -64,4 +64,10 @@ public class zItemTag {
         public static final TagKey<Item> NUGGET_STEEL = Material.tagItem("nuggets/steel", "c");
         public static final TagKey<Item> NUGGET_ADVANCEDALLOY = Material.tagItem("nuggets/advanced_alloy", "c");
 
+        public static final TagKey<Item> RESISTOR_SHELL = Material.tagItem("resistor_shell" );
+        public static final TagKey<Item> CHIP_CORE = Material.tagItem("chip_core");
+        
+        public static final TagKey<Item> CAPACITOR_ACTIVATOR = Material.tagItem("capacitor_activator");
+
+
 }
