@@ -4,6 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.Arrays;
 import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
 import com.devdyna.synergy.datagen.client.DataBlockModelState;
 import com.devdyna.synergy.datagen.server.DataGlobalLootModifier;
@@ -31,6 +32,7 @@ import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.loot.AddTableLootModifier;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 @SuppressWarnings("unchecked")
@@ -257,8 +259,19 @@ public class DataGenUtil {
         c.accept(ResourceKey.create(Registries.LOOT_TABLE, tableLocation), table);
     }
 
-    public static Item[] getItems(DeferredRegister<?> t) {
-        return t.getEntries().stream().map(i -> i.get())
+    public static Item[] getItems(DeferredRegister<?> register) {
+        return register.getEntries().stream()
+                .map(DeferredHolder::get)
+                .flatMap(obj -> {
+                    if (obj instanceof Item item) {
+                        return Stream.of(item);
+                    } else if (obj instanceof Block block) {
+                        Item item = Item.BY_BLOCK.get(block);
+                        return item != null ? Stream.of(item) : Stream.empty(); // check if block has blockitem
+                    }
+                    return Stream.empty();
+                })
                 .toArray(Item[]::new);
     }
+
 }
