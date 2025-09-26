@@ -49,4 +49,7 @@ public interface screenLocations {
         public static final ResourceLocation ITEM_USE = x.rl(ID,
                         "textures/gui/jei/click_event.png");
 
+        public static final ResourceLocation ITEM_PROVIDER = x.rl(ID,
+                        "textures/gui/jei/provider.png");
+
 }
