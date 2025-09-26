@@ -4,7 +4,7 @@
   "group": "synergy",
   "key": {
     "G": {
-      "item": "synergy:bone_meal_mixture"
+      "tag": "synergy:chip_core"
     },
     "N": {
       "item": "minecraft:iron_nugget"

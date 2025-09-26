@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:silicon_gem"
+        "recipe": "minecraft:raw_silicon"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:silicon_gem"
+      "minecraft:raw_silicon"
     ]
   }
 }

@@ -2,14 +2,17 @@
   "type": "synergy:urn",
   "ingredient": [
     {
-      "item": "synergy:enderman_heart"
+      "tag": "c:pellets/neptunium"
     },
     {
       "item": "synergy:infernal_ember"
+    },
+    {
+      "tag": "c:dusts/redstone"
     }
   ],
   "result": {
-    "count": 1,
-    "id": "synergy:ghoul_heart"
+    "count": 2,
+    "id": "synergy:americium_pellet"
   }
 }

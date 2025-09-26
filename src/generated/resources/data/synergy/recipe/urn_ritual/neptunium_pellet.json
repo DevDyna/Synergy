@@ -1,0 +1,18 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "tag": "c:pellets/plutonium"
+    },
+    {
+      "tag": "c:dusts/lapis"
+    },
+    {
+      "tag": "c:dusts/amethyst"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "synergy:neptunium_pellet"
+  }
+}

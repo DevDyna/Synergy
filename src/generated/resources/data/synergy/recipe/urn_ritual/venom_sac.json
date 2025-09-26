@@ -2,14 +2,14 @@
   "type": "synergy:urn",
   "ingredient": [
     {
-      "item": "synergy:enderman_heart"
+      "item": "minecraft:spider_eye"
     },
     {
-      "item": "synergy:infernal_ember"
+      "item": "synergy:waste_fragment"
     }
   ],
   "result": {
     "count": 1,
-    "id": "synergy:ghoul_heart"
+    "id": "synergy:venom_sac"
   }
 }

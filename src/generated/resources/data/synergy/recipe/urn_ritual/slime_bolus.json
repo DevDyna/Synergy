@@ -1,0 +1,15 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "item": "minecraft:bone"
+    },
+    {
+      "item": "minecraft:slime_ball"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "synergy:slime_bolus"
+  }
+}

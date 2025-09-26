@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:urn_ritual/ghoul_heart"
+        "recipe": "synergy:urn_ritual/ghast_bladder"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,10 +11,10 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:enderman_heart"
+            "items": "synergy:zombie_liver"
           },
           {
-            "items": "synergy:infernal_ember"
+            "items": "minecraft:ghast_tear"
           }
         ]
       },
@@ -29,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:urn_ritual/ghoul_heart"
+      "synergy:urn_ritual/ghast_bladder"
     ]
   }
 }

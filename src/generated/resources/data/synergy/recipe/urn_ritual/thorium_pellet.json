@@ -1,0 +1,15 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "tag": "c:pellets/uranium"
+    },
+    {
+      "tag": "c:dusts/coal"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "synergy:thorium_pellet"
+  }
+}
