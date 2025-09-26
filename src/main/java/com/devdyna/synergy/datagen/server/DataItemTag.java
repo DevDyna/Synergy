@@ -126,6 +126,9 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.FOILS)
                                 .add(DataGenUtil.getItems(zItems.zFoils));
 
+                tag(zItemTag.FOIL_COPPER).add(zItems.COPPER_FOIL.get());
+                tag(zItemTag.FOIL_GOLD).add(zItems.GOLD_FOIL.get());
+
                 tag(zItemTag.PLATES)
                                 .add(DataGenUtil.getItems(zItems.zPlates));
 
