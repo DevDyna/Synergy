@@ -8,7 +8,6 @@ import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeProperties;
 import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.init.types.zBlockTag;
-import com.devdyna.synergy.utils.LogUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
