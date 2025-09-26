@@ -31,7 +31,7 @@ public class ItemProviderBE extends NodeBaseBE {
     }
 
     @Override
-    protected void executeItem(BlockPos inputPos, IItemHandler input, BlockPos outputPos, IItemHandler output) {
+    protected void executeItem(IItemHandler input, IItemHandler output) {
         var state = getBlockState();
         var dir = state.getValue(nodeType.FACING);
 
@@ -106,7 +106,7 @@ public class ItemProviderBE extends NodeBaseBE {
 
     @Override
     public BlockPos defineOutput() {
-        return getOutput();
+        return getOutputPos();
     }
 
 }
