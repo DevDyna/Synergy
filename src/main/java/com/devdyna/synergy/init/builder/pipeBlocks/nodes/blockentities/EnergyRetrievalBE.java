@@ -8,8 +8,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 
-@SuppressWarnings({ "null" })
 public class EnergyRetrievalBE extends NodeBaseBE {
 
     public EnergyRetrievalBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
@@ -21,13 +21,18 @@ public class EnergyRetrievalBE extends NodeBaseBE {
     }
 
     @Override
+    protected void executeEnergy(IEnergyStorage input, IEnergyStorage output) {
+        moveEnergy(output, input, 100);
+    }
+
+    @Override
     public BlockCapability<?, Direction> getCapType() {
         return Capabilities.EnergyStorage.BLOCK;
     }
 
     @Override
     public BlockPos defineOutput() {
-        return getInput();
+        return getInputPos();
     }
 
 }
