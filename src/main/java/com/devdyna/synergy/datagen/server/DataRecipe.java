@@ -16,6 +16,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -370,8 +371,8 @@ public class DataRecipe extends RecipeProvider {
                                 .pattern("MGM")
                                 .pattern("NM ")
                                 .define('N', Items.IRON_NUGGET)
-                                .define('M', zItems.BLUE_CUP_MUSHROOM.get())
-                                .define('G', zItems.BONE_MEAL_MIXTURE.get())
+                                .define('M', zItemTag.RESISTOR_SHELL)
+                                .define('G', zItemTag.CHIP_CORE)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.IRON_NUGGET, zItems.BLUE_CUP_MUSHROOM.get(),
                                                                 zItems.BONE_MEAL_MIXTURE.get()))
@@ -381,7 +382,7 @@ public class DataRecipe extends RecipeProvider {
                                 .pattern(" N ")
                                 .pattern(" GN")
                                 .pattern("Q  ")
-                                .define('G', zItems.BONE_MEAL_MIXTURE.get())
+                                .define('G', zItemTag.CHIP_CORE)
                                 .define('N', Items.IRON_NUGGET)
                                 .define('Q', Items.QUARTZ)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
@@ -394,8 +395,8 @@ public class DataRecipe extends RecipeProvider {
                                 .pattern("GMG")
                                 .pattern(" I ")
                                 .define('N', Items.IRON_NUGGET)
-                                .define('G', zItems.BONE_MEAL_MIXTURE.get())
-                                .define('M', zItems.VIOLET_WEBCAP_MUSHROOM.get())
+                                .define('G', zItemTag.CHIP_CORE)
+                                .define('M', zItemTag.CAPACITOR_ACTIVATOR)
                                 .define('I', Items.IRON_INGOT)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.IRON_NUGGET, zItems.BONE_MEAL_MIXTURE.get(),
@@ -492,6 +493,7 @@ public class DataRecipe extends RecipeProvider {
 
                 UrnRitualBuilder.of()
                                 .add(zItems.ENDERMAN_HEART)
+                                .add(zItems.INFERNAL_EMBER)
                                 .output(zItems.GHOUL_HEART, 1)
                                 .group(ID).unlockedBy().save(c);
 
@@ -506,7 +508,7 @@ public class DataRecipe extends RecipeProvider {
                 plate(zItems.STEEL_INGOT.get(), zItems.STEEL_PLATE.get(), c);
 
                 nineBlockStorageRecipes(c, MISC, zItems.WASTE_FRAGMENT.get(), MISC, zItems.WASTE.get());
-                nineBlockStorageRecipes(c, MISC, zItems.SILICON_SHARD.get(), MISC, zItems.SILICON.get());
+                nineBlockStorageRecipes(c, MISC, zItems.SILICON_SHARD.get(), MISC, zItems.RAW_SILICON.get());
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.COOLER_BASE.get(), 4)
                                 .pattern("IPI")
@@ -642,7 +644,7 @@ public class DataRecipe extends RecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                twoByTwoPacker(c, MISC, zItems.CARBON_FIBER.get(), zItems.CARBON_DUST.get());
+                twoByTwoPacker(c, zItems.CARBON_FIBER.get(), zItemTag.DUST_COAL);
 
                 twoByTwoPacker(c, MISC, zItems.CARBON_PLATE.get(), zItems.CARBON_FIBER.get());
 
@@ -684,6 +686,84 @@ public class DataRecipe extends RecipeProvider {
                                 .output(Items.BASALT)
                                 .unlockedBy().save(c);
 
+                UrnRitualBuilder.of()
+                                .add(zItems.ZOMBIE_LIVER)
+                                .add(Items.GHAST_TEAR)
+                                .output(zItems.GHAST_BLADDER,2)
+                                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                                .add(Items.BONE)
+                                .add(Items.SLIME_BALL)
+                                .output(zItems.SLIME_BOLUS,2)
+                                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                                .add(Items.SPIDER_EYE)
+                                .add(zItems.WASTE_FRAGMENT)
+                                .output(zItems.VENOM_SAC)
+                                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                                .add(Items.ROTTEN_FLESH)
+                                .add(Items.BONE)
+                                .add(zItemTag.DUST_COAL)
+                                .output(zItems.WITHERFLESH)
+                                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                .add(zItemTag.URANIUM)
+                .add(zItemTag.DUST_COAL)
+                .output(zItems.THORIUM,2)
+                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                .add(zItemTag.THORIUM)
+                .add(zItemTag.DUST_DIAMOND)
+                .output(zItems.PLUTONIUM,2)
+                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                .add(zItemTag.PLUTONIUM)
+                .add(zItemTag.DUST_LAPIS)
+                .add(zItemTag.DUST_AMETHYST)
+                .output(zItems.NEPTUNIUM,2)
+                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                .add(zItemTag.NEPTUNIUM)
+                .add(zItems.INFERNAL_EMBER)
+                .add(Tags.Items.DUSTS_REDSTONE)
+                .output(zItems.AMERICIUM,2)
+                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                .add(zItemTag.AMERICIUM)
+                .add(zItemTag.DUST_COPPER)
+                .add(zItemTag.DUST_GOLD)
+                .add(zItemTag.DUST_EMERALD)
+                .output(zItems.BERKELIUM,2)
+                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                .add(zItemTag.BERKELIUM)
+                .add(zItemTag.DUST_ANCIENT_DEBRIS)
+                .add(zItems.ENERGIZED_REDSTONE)
+                .output(zItems.CURIUM,2)
+                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                .add(Items.ROTTEN_FLESH)
+                .add(zItemTag.NUGGET_STEEL)
+                .add(zItemTag.SAWDUST)
+                .output(zItems.ZOMBIE_LIVER)
+                .unlockedBy().save(c);
+
+
+
+
+
+
         }
 
         private void nuggetIngotBlock(RecipeOutput c, ItemLike nugget, ItemLike ingot, ItemLike block) {
@@ -717,6 +797,15 @@ public class DataRecipe extends RecipeProvider {
                 SimpleCookingRecipeBuilder.smelting(x.ingredient(input.asItem()), MISC, output.asItem(), 0.1F, 200)
                                 .unlockedBy(getHasName(input), has(output))
                                 .save(c, x.path(output.asItem()) + "_from_" + x.path(input.asItem()) + "_smelting");
+        }
+
+        protected static void twoByTwoPacker(RecipeOutput c, ItemLike output, TagKey<Item> tag) {
+                ShapedRecipeBuilder.shaped(MISC, output, 1)
+                                .define('#', tag)
+                                .pattern("##")
+                                .pattern("##")
+                                .unlockedBy(ID, has(tag))
+                                .save(c);
         }
 
         private void plate(Item input, Item output, RecipeOutput c) {
