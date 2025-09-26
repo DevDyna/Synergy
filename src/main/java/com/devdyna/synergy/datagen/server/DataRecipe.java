@@ -302,7 +302,7 @@ public class DataRecipe extends RecipeProvider {
                                 .pattern(" R ")
                                 .pattern("RHR")
                                 .pattern(" R ")
-                                .define('R', zItems.BONE_MEAL_MIXTURE.get())
+                                .define('R', zItemTag.CHIP_CORE)
                                 .define('H', zItems.BLUE_BATTERY.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.BLUE_BATTERY.get(), zItems.BONE_MEAL_MIXTURE.get()))
@@ -312,7 +312,7 @@ public class DataRecipe extends RecipeProvider {
                                 .pattern(" R ")
                                 .pattern("RHR")
                                 .pattern(" R ")
-                                .define('R', zItems.BLUE_CUP_MUSHROOM.get())
+                                .define('R', zItemTag.RESISTOR_SHELL)
                                 .define('H', zItems.GREEN_BATTERY.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zItems.GREEN_BATTERY.get(), zItems.BLUE_CUP_MUSHROOM.get()))
@@ -493,7 +493,8 @@ public class DataRecipe extends RecipeProvider {
 
                 UrnRitualBuilder.of()
                                 .add(zItems.ENDERMAN_HEART)
-                                .add(zItems.INFERNAL_EMBER)
+                                .add(zItems.ENERGIZED_REDSTONE)
+                                .add(zItemTag.DUST_LAPIS)
                                 .output(zItems.GHOUL_HEART, 1)
                                 .group(ID).unlockedBy().save(c);
 
@@ -769,6 +770,23 @@ public class DataRecipe extends RecipeProvider {
                                 .add(zItemTag.DUST_COAL)
                                 .add(zItems.SILICON_SHARD)
                                 .output(zItems.ENDERMAN_HEART)
+                                .unlockedBy().save(c);
+
+                ShapelessRecipeBuilder.shapeless(MISC, zBlocks.WOODEN_TINY_CHEST.get(), 4)
+                                .requires(Items.CHEST)
+                                .unlockedBy(ID, has(Items.CHEST))
+                                .save(c);
+
+                UrnRitualBuilder.of()
+                                .add(zBlocks.WOODEN_TINY_CHEST.get())
+                                .add(Tags.Items.NUGGETS_GOLD)
+                                .output(zBlocks.ORNATE_TINY_CHEST.get())
+                                .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                                .add(zBlocks.WOODEN_TINY_CHEST.get())
+                                .add(zItems.STONE_PEBBLE)
+                                .output(zBlocks.STONE_TINY_CHEST.get())
                                 .unlockedBy().save(c);
 
         }
