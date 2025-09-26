@@ -6,12 +6,12 @@ import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zMultiTags;
+import com.devdyna.synergy.utils.DataGenUtil;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
@@ -79,28 +79,15 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.COAL_LIKE).add(Items.COAL, Items.CHARCOAL);
 
                 tag(zItemTag.MOB_DROP)
-                                .add(zItems.zMobDrop.getEntries().stream().map(i -> i.get()).toArray(Item[]::new));
+                                .add(DataGenUtil.getItems(zItems.zMobDrop));
 
                 tag(zMultiTags.COOLERS.item())
-                                .add(zBlocks.zCoolers.getEntries().stream().map(i -> i.get().asItem())
-                                                .toArray(Item[]::new));
+                                .add(DataGenUtil.getItems(zBlocks.zCoolers));
 
                 tag(zMultiTags.MODERATORS.item())
-                                .add(zBlocks.zModerators.getEntries().stream().map(i -> i.get().asItem())
-                                                .toArray(Item[]::new));
+                                .add(DataGenUtil.getItems(zBlocks.zModerators));
 
-                tag(Tags.Items.DUSTS).add(
-                                zItems.GOLD_DUST.get(),
-                                zItems.IRON_DUST.get(),
-                                zItems.LAPIS_DUST.get(),
-                                zItems.CARBON_DUST.get(),
-                                zItems.COPPER_DUST.get(),
-                                zItems.QUARTZ_DUST.get(),
-                                zItems.DIAMOND_DUST.get(),
-                                zItems.EMERALD_DUST.get(),
-                                zItems.AMETHYST_DUST.get(),
-                                zItems.ANCIENT_DEBRIS_DUST.get(),
-                                zItems.SAWDUST.get());
+                tag(Tags.Items.DUSTS).add(DataGenUtil.getItems(zItems.zDusts));
 
                 tag(zItemTag.DUST_AMETHYST).add(zItems.AMETHYST_DUST.get());
                 tag(zItemTag.DUST_ANCIENT_DEBRIS).add(zItems.ANCIENT_DEBRIS_DUST.get());
@@ -117,10 +104,10 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(ItemTags.PIGLIN_LOVED).add(zItems.GOLD_DUST.get(), zItems.GOLD_FOIL.get(), zItems.GOLD_PLATE.get());
 
                 tag(Tags.Items.INGOTS)
-                                .add(zItems.STEEL_INGOT.get(), zItems.ADVANCED_ALLOY_INGOT.get());
+                                .add(DataGenUtil.getItems(zItems.zIngots));
 
                 tag(Tags.Items.NUGGETS)
-                                .add(zItems.STEEL_NUGGET.get(), zItems.ADVANCED_ALLOY_NUGGET.get());
+                                .add(DataGenUtil.getItems(zItems.zNuggets));
 
                 tag(zItemTag.INGOT_STEEL).add(zItems.STEEL_INGOT.get());
                 tag(zItemTag.INGOT_ADVANCEDALLOY).add(zItems.ADVANCED_ALLOY_INGOT.get());
@@ -135,6 +122,18 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.RESISTOR_SHELL).add(zItems.BLUE_CUP_MUSHROOM.get(), zItems.GUARDIAN_SCALE.get(),
                                 zItems.AQUAMARINE.get());
+
+                tag(zItemTag.FOILS)
+                                .add(DataGenUtil.getItems(zItems.zFoils));
+
+                tag(zItemTag.PLATES)
+                                .add(DataGenUtil.getItems(zItems.zPlates));
+
+                tag(zItemTag.PLATE_COAL).add(zItems.CARBON_PLATE.get());
+                tag(zItemTag.PLATE_COPPER).add(zItems.COPPER_PLATE.get());
+                tag(zItemTag.PLATE_GOLD).add(zItems.GOLD_PLATE.get());
+                tag(zItemTag.PLATE_IRON).add(zItems.IRON_PLATE.get());
+                tag(zItemTag.PLATE_STEEL).add(zItems.STEEL_PLATE.get());
 
         }
 
