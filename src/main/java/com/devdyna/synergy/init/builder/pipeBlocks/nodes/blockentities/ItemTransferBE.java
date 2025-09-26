@@ -22,7 +22,7 @@ public class ItemTransferBE extends NodeBaseBE {
     }
 
     @Override
-    protected void executeItem(BlockPos inputPos, IItemHandler input, BlockPos outputPos, IItemHandler output) {
+    protected void executeItem(IItemHandler input, IItemHandler output) {
         moveItems(input, output, 1);
     }
 
@@ -33,7 +33,7 @@ public class ItemTransferBE extends NodeBaseBE {
 
     @Override
     public BlockPos defineOutput() {
-        return getOutput();
+        return getOutputPos();
     }
 
 }
