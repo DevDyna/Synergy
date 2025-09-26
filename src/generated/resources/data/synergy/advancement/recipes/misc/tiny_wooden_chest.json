@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:urn_ritual/ghoul_heart"
+        "recipe": "synergy:tiny_wooden_chest"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,13 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:enderman_heart"
-          },
-          {
-            "items": "synergy:energized_redstone_dust"
-          },
-          {
-            "items": "minecraft:barrier"
+            "items": "minecraft:chest"
           }
         ]
       },
@@ -32,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:urn_ritual/ghoul_heart"
+      "synergy:tiny_wooden_chest"
     ]
   }
 }

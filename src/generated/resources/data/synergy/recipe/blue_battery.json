@@ -7,7 +7,7 @@
       "item": "synergy:green_battery"
     },
     "R": {
-      "item": "synergy:blue_cup_mushroom"
+      "tag": "synergy:resistor_shell"
     }
   },
   "pattern": [

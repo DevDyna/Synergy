@@ -1,0 +1,15 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "item": "synergy:tiny_wooden_chest"
+    },
+    {
+      "item": "synergy:stone_pebble"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:tiny_stone_chest"
+  }
+}

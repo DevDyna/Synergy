@@ -5,7 +5,10 @@
       "item": "synergy:enderman_heart"
     },
     {
-      "item": "synergy:infernal_ember"
+      "item": "synergy:energized_redstone_dust"
+    },
+    {
+      "tag": "c:dusts/lapis"
     }
   ],
   "result": {
