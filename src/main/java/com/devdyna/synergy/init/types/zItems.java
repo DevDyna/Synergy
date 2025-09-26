@@ -368,6 +368,8 @@ public class zItems {
                         .resourceItem("ghoul_heart");
         public static final DeferredHolder<Item, Item> STONE_PEBBLE = Material
                         .resourceItem("stone_pebble");
+        public static final DeferredHolder<Item, Item> NETHERRACK_PEBBLE = Material
+                        .resourceItem("netherrack_pebble");
         // ---------------------------------------------------------------------------------------//
 
 }
