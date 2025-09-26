@@ -55,10 +55,7 @@ public class ItemUseCategory implements IRecipeCategory<ItemUseRecipe> {
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, ItemUseRecipe recipe, IFocusGroup focuses) {
 
-        try {
-            builder.addInputSlot(5, 4).addIngredients(recipe.getInputItem());
-        } catch (Exception e) {
-        }
+        builder.addInputSlot(5, 4).addIngredients(recipe.getInputItem());
 
         try {
             var in = recipe.getInputState();
