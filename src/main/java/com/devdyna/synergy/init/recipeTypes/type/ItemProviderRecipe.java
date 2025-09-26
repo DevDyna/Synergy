@@ -28,7 +28,7 @@ public class ItemProviderRecipe implements Recipe<ProviderInput> {
     private final BlockState right;
     private final ItemStack output;
 
-    public ItemProviderRecipe(@Nullable BlockState below, BlockState core, @Nullable BlockState left,
+    public ItemProviderRecipe(BlockState core,@Nullable BlockState below,  @Nullable BlockState left,
             @Nullable BlockState right, ItemStack output) {
         this.core = core;
         this.below = below;
@@ -38,11 +38,11 @@ public class ItemProviderRecipe implements Recipe<ProviderInput> {
     }
 
     public boolean matches(ProviderInput r, Level l) {
-        return r.core().is(x.block(core));
+        return this.core.is(x.block(r.core()));
     }
 
     public ItemStack assemble(ProviderInput i, HolderLookup.Provider r) {
-        return output;
+        return this.output;
     }
 
     public boolean canCraftInDimensions(int xz, int y) {
@@ -68,7 +68,7 @@ public class ItemProviderRecipe implements Recipe<ProviderInput> {
 
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
-        return x.item(core);
+        return output;
     }
 
     public BlockState getCore() {

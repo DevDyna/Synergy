@@ -131,7 +131,7 @@ public class ItemProviderBuilder implements RecipeBuilder {
                 .rewards(AdvancementRewards.Builder.recipe(pId))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement$builder::addCriterion);
-        var shapelessrecipe = new ItemProviderRecipe(below, core, left, right, output);
+        var shapelessrecipe = new ItemProviderRecipe(core,below,  left, right, output);
         pRecipeOutput.accept(pId, shapelessrecipe,
                 advancement$builder.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
     }

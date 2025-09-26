@@ -9,6 +9,7 @@ import com.devdyna.synergy.init.recipeTypes.input.ProviderInput;
 import com.devdyna.synergy.init.recipeTypes.type.ItemProviderRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zRecipeTypes;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -34,13 +35,14 @@ public class ItemProviderBE extends NodeBaseBE {
     protected void executeItem(IItemHandler input, IItemHandler output) {
         var state = getBlockState();
         var dir = state.getValue(nodeType.FACING);
+        var pos = getInputPos();
 
         if (level == null)
             return;
 
         Optional<RecipeHolder<ItemProviderRecipe>> r = level.getRecipeManager()
                 .getRecipeFor(zRecipeTypes.ITEM_PROVIDER.getType(),
-                        new ProviderInput(level.getBlockState(inputPos)), level);
+                        new ProviderInput(level.getBlockState(pos)), level);
 
         if (r.isEmpty())
             return;
@@ -52,12 +54,11 @@ public class ItemProviderBE extends NodeBaseBE {
         var requireRight = !(recipe.getRight() == null || recipe.getRight().isAir());
 
         if (requireBelow)
-            if (!check(inputPos.relative(dir), recipe.getBelow()))
+            if (!check(getInputPos().relative(dir), recipe.getBelow()))
                 return;
 
-        var dirs = Arrays.asList(Direction.values());
-
-        dirs.removeIf(d -> d.equals(dir) || d.equals(dir.getOpposite()));
+        var dirs = Arrays.asList(Direction.values()).stream()
+                .filter(d -> !d.equals(dir) && !d.equals(dir.getOpposite())).toList();
 
         BlockPos rightPos = null;
         BlockPos leftPos = null;
@@ -65,16 +66,16 @@ public class ItemProviderBE extends NodeBaseBE {
         if (requireLeft || requireRight)
             for (Direction direction : dirs) {
                 if (requireRight)
-                    if (check(inputPos.relative(direction), recipe.getRight())
-                            && !inputPos.relative(direction).equals(leftPos)) {
-                        rightPos = inputPos.relative(direction);
+                    if (check(pos.relative(direction), recipe.getRight())
+                            && !pos.relative(direction).equals(leftPos)) {
+                        rightPos = pos.relative(direction);
                         continue;
                     }
 
                 if (requireLeft)
-                    if (check(inputPos.relative(direction), recipe.getLeft())
-                            && !inputPos.relative(direction).equals(rightPos)) {
-                        leftPos = inputPos.relative(direction);
+                    if (check(pos.relative(direction), recipe.getLeft())
+                            && !pos.relative(direction).equals(rightPos)) {
+                        leftPos = pos.relative(direction);
                         continue;
                     }
             }
@@ -84,7 +85,7 @@ public class ItemProviderBE extends NodeBaseBE {
         if (requireRight && rightPos == null)
             return;
 
-        if (level.getGameTime() % 20 == 0)
+        if (level.getGameTime() % 20 == 0)// TODO change based on upgrades
             ItemHandlerHelper.insertItemStacked(output, recipe.getOutput(), false);
 
     }
