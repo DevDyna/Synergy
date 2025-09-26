@@ -114,6 +114,10 @@ public class x {
         return Ingredient.of(i);
     }
 
+    public static Ingredient ingredient(ItemLike i) {
+        return Ingredient.of(i);
+    }
+
     public static Ingredient ingredient(Item i) {
         return ingredient(x.item(i));
     }
