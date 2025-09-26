@@ -60,14 +60,22 @@ public class zItemTag {
 
         public static final TagKey<Item> INGOT_STEEL = Material.tagItem("ingots/steel", "c");
         public static final TagKey<Item> INGOT_ADVANCEDALLOY = Material.tagItem("ingots/advanced_alloy", "c");
-     
+
         public static final TagKey<Item> NUGGET_STEEL = Material.tagItem("nuggets/steel", "c");
         public static final TagKey<Item> NUGGET_ADVANCEDALLOY = Material.tagItem("nuggets/advanced_alloy", "c");
 
-        public static final TagKey<Item> RESISTOR_SHELL = Material.tagItem("resistor_shell" );
+        public static final TagKey<Item> RESISTOR_SHELL = Material.tagItem("resistor_shell");
         public static final TagKey<Item> CHIP_CORE = Material.tagItem("chip_core");
-        
+
         public static final TagKey<Item> CAPACITOR_ACTIVATOR = Material.tagItem("capacitor_activator");
 
+        public static final TagKey<Item> FOILS = Material.tagItem("foils", "c");
+        public static final TagKey<Item> PLATES = Material.tagItem("plates", "c");
+
+        public static final TagKey<Item> PLATE_COPPER = Material.tagItem("plates/copper", "c");
+        public static final TagKey<Item> PLATE_GOLD = Material.tagItem("plates/gold", "c");
+        public static final TagKey<Item> PLATE_IRON = Material.tagItem("plates/iron", "c");
+        public static final TagKey<Item> PLATE_STEEL = Material.tagItem("plates/steel", "c");
+        public static final TagKey<Item> PLATE_COAL = Material.tagItem("plates/coal", "c");
 
 }
