@@ -22,7 +22,7 @@ public class ItemRetrievalBE extends NodeBaseBE {
     }
 
     @Override
-    protected void executeItem(BlockPos inputPos, IItemHandler input, BlockPos outputPos, IItemHandler output) {
+    protected void executeItem(IItemHandler input, IItemHandler output) {
         moveItems(output, input, 1);
     }
 
@@ -33,7 +33,7 @@ public class ItemRetrievalBE extends NodeBaseBE {
 
     @Override
     public BlockPos defineOutput() {
-        return getInput();
+        return getInputPos();
     }
 
 }
