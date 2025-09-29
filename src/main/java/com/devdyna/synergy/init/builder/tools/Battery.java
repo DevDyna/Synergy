@@ -9,6 +9,7 @@ import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.utils.StringUtil;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -76,10 +77,10 @@ public class Battery extends Item {
         t.add(Component.translatable(Main.ID + "." + zStatic.Items.Batteries.TYPE_BATTERY + ".energy")
                 .append(Component.literal(
                         (i.get(zComponents.FE_STORED) == null ? "0"
-                                : (f.hasShiftDown() ? i.get(zComponents.FE_STORED).intValue()
+                                : (Screen.hasShiftDown() ? i.get(zComponents.FE_STORED).intValue()
                                         : StringUtil.getFormat().format(i.get(zComponents.FE_STORED).intValue())) + "")
                                 + "/"
-                                + (f.hasShiftDown() ? capacity : StringUtil.getFormat().format(capacity)))
+                                + (Screen.hasShiftDown() ? capacity : StringUtil.getFormat().format(capacity)))
                         .withStyle(ChatFormatting.RED)));
     }
 }

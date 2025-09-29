@@ -9,6 +9,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBlock;
 import com.devdyna.synergy.utils.LevelUtil;
 
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item.TooltipContext;
@@ -64,7 +65,7 @@ public abstract class ModeratorBase extends Block {
         t.add(Component.translatable(Main.ID + "." +
                 zStatic.ReactorStuff.moderator));
 
-        if (f.hasShiftDown()) {
+        if (Screen.hasShiftDown()) {
             t.add(conditions());
             t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".fe")
                     .append("" + FEReducer()));

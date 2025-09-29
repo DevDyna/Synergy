@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item.TooltipContext;
@@ -77,7 +78,7 @@ public abstract class CoolerBlockBase extends Block {
         t.add(Component.translatable(Main.ID + "." +
                 zStatic.ReactorStuff.cooler+".desc"));
 
-        if (f.hasShiftDown()) {
+        if (Screen.hasShiftDown()) {
             t.add(conditions());
             t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.cooler + ".off")
                     .append("" + getBaseCooling()));
