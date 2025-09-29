@@ -94,3 +94,9 @@ _IC2 like_
 ## CODEBASE
 
 - [ ] datagen/DataRecipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
+
+
+## IDK
+
+- [ ] Patchouli compat
+- [ ] Guideme rework
