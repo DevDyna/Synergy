@@ -30,6 +30,7 @@ import net.minecraft.world.level.block.SugarCaneBlock;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class VanillaPlants {
 
@@ -50,6 +51,16 @@ public class VanillaPlants {
 
     }
 
+    public static List<IntegerProperty> allCropProperties = List.of(
+            BlockStateProperties.AGE_1,
+            BlockStateProperties.AGE_15,
+            BlockStateProperties.AGE_2,
+            BlockStateProperties.AGE_25,
+            BlockStateProperties.AGE_3,
+            BlockStateProperties.AGE_4,
+            BlockStateProperties.AGE_5,
+            BlockStateProperties.AGE_7);
+
     // TODO add BlockStateProperties.X try-catch to include any possible plants
     public static List<ItemStack> checkReplant(Level level, BlockPos pos) {
 
@@ -59,14 +70,15 @@ public class VanillaPlants {
         if (block instanceof CropBlock crop) {
 
             if (crop.isMaxAge(state)) {
-                // custom crops
+                // synergy custom crops
                 if (crop instanceof PlantHandler handler) {
                     level.setBlockAndUpdate(pos, state.setValue(handler.getProperty(), 0));
                     return Block.getDrops(state, (ServerLevel) level, pos, null);
 
                 } else {
-                    // vanilla crops
+
                     try {
+                        // vanilla crops
                         if (block instanceof BeetrootBlock)
                             level.setBlockAndUpdate(pos, state.setValue(BeetrootBlock.AGE, 0));
                         else
@@ -74,10 +86,29 @@ public class VanillaPlants {
 
                         return Block.getDrops(state, (ServerLevel) level, pos, null);
 
-                    } catch (Exception e) {
+                    } catch (Exception e1) {
+                        // crops with different properties
+                        for (IntegerProperty p : allCropProperties) {
+
+                            if (state.hasProperty(p)) {
+                                try {
+                                    level.setBlockAndUpdate(pos, state.setValue(p, 0));
+                                    return Block.getDrops(state, (ServerLevel) level, pos, null);
+                                } catch (Exception e2) {
+                                    // setblock cause issue
+                                }
+                            }
+                        }
+
+                        // no valid properties
                         // custom crops with special props(?)
-                        LogUtil.error("Unsupported crop at : " + pos.toString() + " id: " + block.getDescriptionId());
-                        LevelUtil.addParticle(ParticleTypes.ANGRY_VILLAGER, (ServerLevel) level, pos.above(), false);
+                        LogUtil.error(
+                                "Unsupported crop at : " + pos.toString() + " id: "
+                                        + block.getDescriptionId() + "\n Report it to Synergy Issue tracker!");
+                        LevelUtil.addParticle(ParticleTypes.ANGRY_VILLAGER, (ServerLevel) level,
+                                pos.above(),
+                                false);
+
                     }
                 }
             }
