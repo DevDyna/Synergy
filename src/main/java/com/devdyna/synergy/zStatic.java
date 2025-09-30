@@ -1,7 +1,5 @@
 package com.devdyna.synergy;
 
-import com.devdyna.synergy.utils.ModAddonUtil;
-
 public class zStatic {
     public static String CreativeTab = "creative_tab";
 
@@ -367,12 +365,13 @@ public class zStatic {
     public class Mods {
         public static String GuideMe = "guideme";
         public static String Mekanism = "mekanism";
+        public static String FarmersDelight = "farmersdelight";
     }
 
-    public class checkMods {
-        public static boolean GuideMe = ModAddonUtil.checkMod(Mods.GuideMe);
-        public static boolean Mekanism = ModAddonUtil.checkMod(Mods.Mekanism);
-    }
+    // public class checkMods {
+    //     public static boolean GuideMe = ModAddonUtil.checkMod(Mods.GuideMe);
+    //     public static boolean Mekanism = ModAddonUtil.checkMod(Mods.Mekanism);
+    // }
 
     public class tips {
         public static String MIXTURE_TIP = "mixture_tip";
