@@ -40,6 +40,7 @@
 
 ## NEWS
 
+- [ ] dry Bricks and oven
 - [ ] Item Duct (item transfer with rendering)
 - [ ] Chimney & smoke tubes
 - [ ] Wireless Nodes
