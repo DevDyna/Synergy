@@ -2,7 +2,9 @@ package com.devdyna.synergy.api.plants;
 
 import java.util.List;
 
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.utils.LevelUtil;
+import com.devdyna.synergy.utils.ModAddonUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +25,7 @@ public interface Harvestable {
     IntegerProperty getPublicAgeProperty();
 
     default boolean harvestCrop(Level level, BlockState state, BlockPos pos, Player player, ItemStack tool) {
-        if (!level.isClientSide && canBeHarvested(state)) {
+        if (!level.isClientSide && canBeHarvested(state) && !ModAddonUtil.checkMod(zStatic.Mods.FarmersDelight)) {
 
             getItemResult(level, state, pos, player, tool)
                     .forEach(item -> ItemHandlerHelper.giveItemToPlayer(player, item));
