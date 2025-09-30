@@ -4,6 +4,9 @@
   "ingredients": [
     {
       "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "synergy:cooler_base"
     }
   ],
   "result": {

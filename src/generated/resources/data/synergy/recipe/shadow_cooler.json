@@ -4,6 +4,9 @@
   "ingredients": [
     {
       "item": "synergy:ghoul_heart"
+    },
+    {
+      "item": "synergy:cooler_base"
     }
   ],
   "result": {

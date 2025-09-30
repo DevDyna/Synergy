@@ -4,6 +4,9 @@
   "ingredients": [
     {
       "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "synergy:cooler_base"
     }
   ],
   "result": {

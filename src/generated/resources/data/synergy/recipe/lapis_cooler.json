@@ -4,6 +4,9 @@
   "ingredients": [
     {
       "item": "minecraft:lapis_lazuli"
+    },
+    {
+      "item": "synergy:cooler_base"
     }
   ],
   "result": {

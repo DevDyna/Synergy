@@ -4,6 +4,9 @@
   "ingredients": [
     {
       "item": "minecraft:redstone"
+    },
+    {
+      "item": "synergy:cooler_base"
     }
   ],
   "result": {
