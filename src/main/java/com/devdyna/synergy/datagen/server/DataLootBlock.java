@@ -61,7 +61,7 @@ public class DataLootBlock extends BlockLootSubProvider {
         protected void generate() {
 
                 Set<DeferredHolder<Block, ? extends Block>> dropSelfBlocks = Set.of(
-                                zBlocks.MACHINE_FRAME,
+                                zBlocks.BASIC_MACHINE_FRAME,
                                 zBlocks.PIPE,
 
                                 zBlocks.ITEM_PROVIDER,

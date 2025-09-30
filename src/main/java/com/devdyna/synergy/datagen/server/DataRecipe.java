@@ -340,7 +340,7 @@ public class DataRecipe extends RecipeProvider {
                                                                 Items.LAPIS_LAZULI))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.MACHINE_FRAME.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.BASIC_MACHINE_FRAME.get(), 1)
                                 .pattern(" C ")
                                 .pattern("FRF")
                                 .pattern(" C ")
@@ -356,13 +356,14 @@ public class DataRecipe extends RecipeProvider {
                                 .pattern("AMH")
                                 .pattern(" C ")
                                 .define('C', zItems.BLUE_BATTERY.get())
-                                .define('M', zBlocks.MACHINE_FRAME.get())
+                                .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
                                 .define('H', Items.IRON_HOE)
                                 .define('A', Items.IRON_AXE)
                                 .define('R', zItems.RESISTOR.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.IRON_HOE, zItems.RESISTOR.get(),
-                                                                zBlocks.MACHINE_FRAME.get(), zItems.BLUE_BATTERY.get(),
+                                                                zBlocks.BASIC_MACHINE_FRAME.get(),
+                                                                zItems.BLUE_BATTERY.get(),
                                                                 Items.IRON_AXE))
                                 .group(ID).save(c);
 
@@ -535,25 +536,8 @@ public class DataRecipe extends RecipeProvider {
 
                 ItemUseBuilder.of()
                                 .inputItem(zItems.AZALEA_SEEDS)
-                                // .consumeItemOnUse()
                                 .inputBlock(Blocks.FLOWER_POT)
                                 .outputBlock(zBlocks.AZALEA.get().defaultBlockState().setValue(azalea.AGE, 0))
-                                .unlockedBy().save(c);
-
-                ItemUseBuilder.of()
-                                .inputItem(Items.DIAMOND)
-                                // .consumeItemOnUse()
-                                // .requireShift()
-                                .inputBlock(zBlocks.COOLER_BASE)
-                                .outputBlock(zBlocks.DIAMOND_COOLER)
-                                .unlockedBy().save(c);
-
-                ItemUseBuilder.of()
-                                .inputItem(Items.STONE)
-                                // .consumeItemOnUse()
-                                // .requireShift()
-                                .inputBlock(zBlocks.COOLER_BASE)
-                                .outputBlock(zBlocks.ENDER_COOLER)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(ItemTags.COALS)
@@ -788,6 +772,90 @@ public class DataRecipe extends RecipeProvider {
                                 .add(zItems.STONE_PEBBLE)
                                 .output(zBlocks.STONE_TINY_CHEST.get())
                                 .unlockedBy().save(c);
+
+                var coolers = List.of(
+                                zBlocks.COPPER_COOLER,
+                                zBlocks.GOLD_COOLER,
+                                zBlocks.IRON_COOLER,
+                                zBlocks.ENDER_COOLER,
+                                zBlocks.FROST_COOLER,
+                                zBlocks.LAPIS_COOLER,
+                                zBlocks.SCULK_COOLER,
+                                zBlocks.WATER_COOLER,
+                                zBlocks.QUARTZ_COOLER,
+                                zBlocks.SHADOW_COOLER,
+                                zBlocks.DIAMOND_COOLER,
+                                zBlocks.EMERALD_COOLER,
+                                zBlocks.REDSTONE_COOLER,
+                                zBlocks.GLOWSTONE_COOLER,
+                                zBlocks.NETHERITE_COOLER);
+
+                var ingredients = List.of(
+                                Items.COPPER_INGOT,
+                                Items.GOLD_INGOT,
+                                Items.IRON_INGOT,
+                                Items.ENDER_PEARL,
+                                Items.PACKED_ICE,
+                                Items.LAPIS_LAZULI,
+                                Items.SCULK,
+                                Items.WATER_BUCKET,
+                                Items.QUARTZ,
+                                zItems.GHOUL_HEART.get(),
+                                Items.DIAMOND,
+                                Items.EMERALD,
+                                Items.REDSTONE,
+                                Items.GLOWSTONE,
+                                Items.NETHERITE_INGOT);
+
+                for (DeferredHolder<Block, Block> b : coolers) {
+                        var index = coolers.indexOf(b);
+                        ShapelessRecipeBuilder.shapeless(MISC, b.get(), 1)
+                                        .requires(ingredients.get(index))
+                                        .unlockedBy(ID, has(ingredients.get(index)))
+                                        .save(c);
+                }
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.NETHERRACK_PLATE.get(), 2)
+                                .pattern(" T ")
+                                .pattern("TPT")
+                                .pattern(" T ")
+                                .define('T', zItems.NETHERRACK_PEBBLE.get())
+                                .define('P', zItemTag.PLATE_COAL)
+                                .unlockedBy(ID, has(zItemTag.PLATE_COAL))
+                                .group(ID).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.STONE_PLATE.get(), 2)
+                                .pattern(" T ")
+                                .pattern("TPT")
+                                .pattern(" T ")
+                                .define('T', zItems.STONE_PEBBLE.get())
+                                .define('P', zItemTag.PLATE_COAL)
+                                .unlockedBy(ID, has(zItemTag.PLATE_COAL))
+                                .group(ID).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_MACHINE_FRAME.get(), 1)
+                                .pattern(" C ")
+                                .pattern("FRF")
+                                .pattern(" C ")
+                                .define('C', zItems.CHIP.get())
+                                .define('F', zItemTag.PLATE_COAL)
+                                .define('R', zBlocks.BASIC_MACHINE_FRAME.get())
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zBlocks.BASIC_MACHINE_FRAME.get(), zItems.CHIP.get(),
+                                                                Items.IRON_NUGGET))
+                                .group(ID).save(c);
+
+                twoByTwoPacker(c, zItems.METAL_BOLTS.get(), Tags.Items.NUGGETS);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.MIXED_PLATE.get(), 3)
+                                .define('T', zItemTag.PLATE_COPPER)
+                                .define('C', zItemTag.PLATE_GOLD)
+                                .define('B', zItemTag.PLATE_IRON)
+                                .pattern("T")
+                                .pattern("C")
+                                .pattern("B")
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
+                                .save(c);
 
         }
 

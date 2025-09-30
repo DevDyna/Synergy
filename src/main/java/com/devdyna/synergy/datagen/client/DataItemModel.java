@@ -152,7 +152,7 @@ public class DataItemModel extends ItemModelProvider {
                                 modLoc("block/reactor/controller/side"), modLoc("block/reactor/controller/bottom"),
                                 modLoc("block/reactor/controller/top"));
 
-                cubeBottomTop(zBlocks.MACHINE_FRAME.getRegisteredName(),
+                cubeBottomTop(zBlocks.BASIC_MACHINE_FRAME.getRegisteredName(),
                                 modLoc("block/harvester/side"), modLoc("block/harvester/bottom"),
                                 modLoc("block/harvester/top"));
 

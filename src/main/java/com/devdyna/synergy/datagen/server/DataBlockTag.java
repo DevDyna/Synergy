@@ -40,7 +40,7 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.SOLAR_PANEL.get(),
                                                 zBlocks.ADOBE.get(),
                                                 zBlocks.RUSTIC_METAL.get(),
-                                                zBlocks.MACHINE_FRAME.get(),
+                                                zBlocks.BASIC_MACHINE_FRAME.get(),
                                                 zBlocks.URN.get(),
                                                 zBlocks.ADVANCED_MACHINE_FRAME.get(),
                                                 zBlocks.ADVANCED_ALLOY_BLOCK.get(),
