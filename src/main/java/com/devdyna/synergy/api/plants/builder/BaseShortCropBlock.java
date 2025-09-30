@@ -41,8 +41,18 @@ public class BaseShortCropBlock extends BaseCropBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (random.nextInt(MAX_AGE) != 0)// on grow
+        if (random.nextInt(getChanceToGrow(state, level, pos)) != 0)// on grow
             super.randomTick(state, level, pos, random);
+    }
+
+    /**
+     * Override to change chance to grow
+     * <br/>
+     * <br/>
+     * Default value MAX AGE
+     */
+    public int getChanceToGrow(BlockState state, ServerLevel level, BlockPos pos) {
+        return MAX_AGE;
     }
 
     @Override
