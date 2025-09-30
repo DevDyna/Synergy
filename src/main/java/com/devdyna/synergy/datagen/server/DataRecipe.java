@@ -811,6 +811,7 @@ public class DataRecipe extends RecipeProvider {
                         var index = coolers.indexOf(b);
                         ShapelessRecipeBuilder.shapeless(MISC, b.get(), 1)
                                         .requires(ingredients.get(index))
+                                        .requires(zBlocks.COOLER_BASE.get())
                                         .unlockedBy(ID, has(ingredients.get(index)))
                                         .save(c);
                 }
