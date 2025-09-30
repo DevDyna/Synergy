@@ -22,16 +22,17 @@
 
 
 - [ ] Nodes doesn't support Mekanism
-- [ ] Fluid nodes
-- [ ] (Meka) Gas nodes
-- [ ] Node Upgrades
-- [ ] Pipe Blocker
+
 
 ## COMPATS AND TWEAKS
 
 - [x] Cave wheat will grow fast on cave ambients
 - [ ] Patchouli compat
-
+- [ ] Fluid nodes
+- [ ] (Meka) Gas nodes
+- [ ] Node Upgrades
+- [ ] Pipe Blocker
+- [ ] Differents styles for Nodes / Node model rework
 
 ### CODEBASE
 
