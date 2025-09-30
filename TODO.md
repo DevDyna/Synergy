@@ -1,10 +1,21 @@
 # TODO
 
+## THINGS BEFORE RELEASE 0.4
+
+- [ ] tweak recipes of components
+- [ ] Fully Guideme rework
+- [ ] Moderators recipes
+- [ ] Cooler recipes
+- [ ] Fuel cell recipe
+- [ ] Reactor controller recipe
+- [ ] Advanced Machine frame recipe
+
+
 ## BUGS
 
 - [x] Hold Shift tooltips dont work on JEI (need to investigate)
 - [x] Farmer delight auto-harvest toggle
-- [ ] Farmer delight Rice cannot be harvested with Harvester
+- [x] Farmer delight Rice cannot be harvested with Harvester
 
 - [ ] Nodes can void items with furnaces
 - [ ] Shift-action on some GUI will cause issues
@@ -18,10 +29,9 @@
 
 ## COMPATS AND TWEAKS
 
-- [ ] Cave wheat will grow fast on cave ambients
-- [ ] Farmer delight compat
+- [x] Cave wheat will grow fast on cave ambients
 - [ ] Patchouli compat
-- [ ] Guideme rework
+
 
 ### CODEBASE
 
