@@ -1,5 +1,70 @@
 # TODO
 
+## BUGS
+
+- [x] Hold Shift tooltips dont work on JEI (need to investigate)
+- [x] Farmer delight auto-harvest toggle
+- [ ] Farmer delight Rice cannot be harvested with Harvester
+
+- [ ] Nodes can void items with furnaces
+- [ ] Shift-action on some GUI will cause issues
+
+
+- [ ] Nodes doesn't support Mekanism
+- [ ] Fluid nodes
+- [ ] (Meka) Gas nodes
+- [ ] Node Upgrades
+- [ ] Pipe Blocker
+
+## COMPATS AND TWEAKS
+
+- [ ] Cave wheat will grow fast on cave ambients
+- [ ] Farmer delight compat
+- [ ] Patchouli compat
+- [ ] Guideme rework
+
+### CODEBASE
+
+- [ ] datagen/DataRecipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
+
+## NEWS
+
+- [ ] Item Duct (item transfer with rendering)
+- [ ] Chimney & smoke tubes
+- [ ] Wireless Nodes
+- [ ] Fans & Wind (fluid-like)
+- [ ] Jukebox Network (jukebox that consume discs)
+- [ ] decorative devices
+- [ ] dye essence (?)
+- [ ] Energy (like FE but a completly new Capability type) that allow E->FE
+- [ ] Lasers and Lens
+- [ ] Rocket Launcher
+- [ ] Planter (farmland like but bypass conditions)
+- [ ] Truffles
+- [ ] Mindustry/DE like Fusion Reactor (?)
+
+- [ ] Rice Generator (rice->fe)
+
+- [ ] Macerator (standard) Item->(Item|Item)
+- [ ] Electric Furnace (standard) Item->Item
+- [ ] Extractor (special recipes like honey) Item->(Item|Item)
+- [ ] Compressor (special recipes like blocks of X) Item->Item
+- [ ] Energy Converter (only FE->E)
+- [ ] Tiered Cables (transfer rate and capacity)
+- [ ] Alloy Smelter (Item|Item) -> Item
+- [ ] Scrap Generator (recycle items to scraps and item used to craft)
+
+### ResourceGen
+
+- [ ] Growable Crystals
+- [ ] Extractor
+- [ ] Generators
+- [ ] Deposits
+- [ ] Buddings
+- [ ] Resource Shards
+- [ ] metal scraps (like deposits but return metal things)
+- [ ] Cookie clicker machines (randomtick generator)
+
 ### Plants
 
 - [ ] flax (double)
@@ -24,79 +89,3 @@
 - [ ] blight spore (thorny giant plant)
 - [ ] grapple cultivated (multiblock)
 - [ ] smill trees
-
-### Machines&Blocks
-
-- [x] Sprinkler
-- [x] Healer
-- [ ] Fluid nodes
-- [ ] (Meka) Gas nodes
-- [ ] Tiered/Stacked nodes
-- [ ] Provider Customizable (?)
-- [ ] Pipe Blocker (?)
-- [ ] Modular Reactor
-- [ ] Cookie clicker machines (randomtick generator)
-- [ ] Item Duct (item transfer with rendering)
-- [ ] Chimney & smoke tubes
-- [ ] Wireless Nodes
-- [ ] Fans & Wind (fluid-like)
-- [ ] Jukebox Network (jukebox that consume discs)
-
-### ResourceGen
-
-- [ ] Growable Crystals
-- [ ] Extractor
-- [ ] Generators
-- [ ] Deposits
-- [ ] Buddings
-
-### Unsorted
-
-- [ ] dye essence (?)
-- [ ] rice scope
-- [ ] violet webcap scope
-- [ ] blue cup scope
-- [ ] decorative devices
-- [ ] shells (functional/storage block)
-- [ ] metal scraps (like deposits but return metal things)
-- [ ] Energy (like FE but a completly new Capability type) that allow E->FE
-- [ ] Lasers and Lens
-- [ ] Rocket Launcher
-- [ ] Planter (farmland like but bypass conditions)
-- [ ] Truffles
-- [ ] Mindustry/DE like Fusion Reactor (?)
-
-_IC2 like_
-
-- [ ] Macerator (standard) Item->(Item|Item)
-- [ ] Electric Furnace (standard) Item->Item
-- [ ] Extractor (special recipes like honey) Item->(Item|Item)
-- [ ] Compressor (special recipes like blocks of X) Item->Item
-- [ ] Energy Converter (only FE->E)
-- [ ] Tiered Cables (transfer rate and capacity)
-- [ ] Alloy Smelter (Item|Item) -> Item
-- [ ] Scrap Generator (recycle items to scraps and item used to craft)
-
-### Tweaks
-
-- [ ] Cave wheat will grow fast on cave ambients
-- [ ] Farmer delight compat
-
-## ISSUES
-
-- [ ] Nodes can void items with furnaces
-- [ ] Shift-action on some GUI will cause issues
-- [ ] Farmer delight Rice cannot be harvested with Harvester
-- [ ] Farmer delight auto-harvest toggle
-- [ ] Hold Shift tooltips dont work on JEI (need to investigate)
-- [ ] Nodes doesn't support Mekanism
-
-## CODEBASE
-
-- [ ] datagen/DataRecipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
-
-
-## IDK
-
-- [ ] Patchouli compat
-- [ ] Guideme rework
