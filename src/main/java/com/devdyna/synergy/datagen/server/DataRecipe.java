@@ -847,7 +847,7 @@ public class DataRecipe extends RecipeProvider {
 
                 twoByTwoPacker(c, zItems.METAL_BOLTS.get(), Tags.Items.NUGGETS);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.MIXED_PLATE.get(), 3)
+                ShapedRecipeBuilder.shaped(MISC, zItems.MIXED_INGOT.get(), 3)
                                 .define('T', zItemTag.PLATE_COPPER)
                                 .define('C', zItemTag.PLATE_GOLD)
                                 .define('B', zItemTag.PLATE_IRON)
@@ -856,6 +856,8 @@ public class DataRecipe extends RecipeProvider {
                                 .pattern("B")
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
                                 .save(c);
+
+                doubleSmelt(c, zItems.MIXED_INGOT.get(), zItems.ADVANCED_ALLOY_INGOT.get());
 
         }
 
