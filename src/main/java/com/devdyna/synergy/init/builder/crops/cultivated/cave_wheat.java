@@ -4,6 +4,7 @@ import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
@@ -33,6 +34,11 @@ public class cave_wheat extends BaseShortCropBlock {
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
         return level.getBlockState(pos.below()).is(BlockTags.BASE_STONE_OVERWORLD) ? true
                 : super.mayPlaceOn(state, level, pos);
+    }
+
+    @Override
+    public int getChanceToGrow(BlockState state, ServerLevel level, BlockPos pos) {
+        return super.getChanceToGrow(state, level, pos) / (level.getRawBrightness(pos, 0) < 10 ? 3 : 1);
     }
 
 }
