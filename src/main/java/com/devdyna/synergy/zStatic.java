@@ -45,6 +45,7 @@ public class zStatic {
         public static String lapis = "lapis";
         public static String sawdust = "sawdust";
         public static String quartz = "quartz";
+        public static String mixed = "mixed";
     }
 
     public class ResourceType {
