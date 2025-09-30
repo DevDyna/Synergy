@@ -303,6 +303,9 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> STONE_PLATE = Material
                         .resourcePlate(zStatic.ResourceMaterial.stone);
+
+        public static final DeferredHolder<Item, Item> MIXED_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.mixed);
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> RAW_SILICON = Material
                         .resourceRaw(zStatic.ResourceMaterial.silicon);
