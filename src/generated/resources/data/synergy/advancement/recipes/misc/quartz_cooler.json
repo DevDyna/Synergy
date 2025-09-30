@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:item_use/ender_cooler_from_cooler_base"
+        "recipe": "synergy:quartz_cooler"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stone"
+            "items": "minecraft:quartz"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:item_use/ender_cooler_from_cooler_base"
+      "synergy:quartz_cooler"
     ]
   }
 }

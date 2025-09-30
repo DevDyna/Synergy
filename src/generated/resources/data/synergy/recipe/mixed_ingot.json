@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "tag": "c:plates/iron"
+    },
+    "C": {
+      "tag": "c:plates/gold"
+    },
+    "T": {
+      "tag": "c:plates/copper"
+    }
+  },
+  "pattern": [
+    "T",
+    "C",
+    "B"
+  ],
+  "result": {
+    "count": 3,
+    "id": "synergy:mixed_ingot"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "synergy:ghoul_heart"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:shadow_cooler"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "C": {
+      "item": "synergy:chip"
+    },
+    "F": {
+      "tag": "c:plates/coal"
+    },
+    "R": {
+      "item": "synergy:basic_machine_frame"
+    }
+  },
+  "pattern": [
+    " C ",
+    "FRF",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:advanced_machine_frame"
+  }
+}
