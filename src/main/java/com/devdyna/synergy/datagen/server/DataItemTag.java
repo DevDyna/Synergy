@@ -129,6 +129,8 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.PLATE_GOLD).add(zItems.GOLD_PLATE.get());
                 tag(zItemTag.PLATE_IRON).add(zItems.IRON_PLATE.get());
                 tag(zItemTag.PLATE_STEEL).add(zItems.STEEL_PLATE.get());
+                tag(zItemTag.PLATE_ADVANCED_ALLOY).add(zItems.ADVANCED_ALLOY_PLATE.get());
+                tag(zItemTag.PLATE_AQUAMARINE).add(zItems.AQUAMARINE_PLATE.get());
 
                 tag(zItemTag.CAVE_WHEAT_PLANT)
                                 .add(
