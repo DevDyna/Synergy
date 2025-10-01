@@ -40,6 +40,12 @@ public class DataRecipe extends ExtraRecipeProvider {
                 coolerRecipes(c);
                 chests(c);
                 tools(c);
+                moderators(c);
+
+                foil(c, zItemTag.PLATE_GOLD, zItems.GOLD_FOIL.get());
+                foil(c, zItemTag.PLATE_COPPER, zItems.COPPER_FOIL.get());
+
+                coil(c, zItemTag.FOIL_COPPER, zItems.COPPER_COIL.get());
 
                 nodeRecipe(zBlocks.ITEM_TRANSFER.get(), Blocks.CHEST, c);
                 nodeRecipe(zBlocks.ITEM_PROVIDER.get(), Items.IRON_PICKAXE, c);
@@ -253,15 +259,11 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.GHOUL_HEART, 1)
                                 .group(ID).unlockedBy().save(c);
 
-                UrnRitualBuilder.of()
-                                .add(zItems.WASTE)
-                                .output(zItems.URANIUM, 1)
-                                .group(ID).unlockedBy().save(c);
-
                 plate(Items.IRON_INGOT, zItems.IRON_PLATE.get(), c);
                 plate(Items.GOLD_INGOT, zItems.GOLD_PLATE.get(), c);
                 plate(Items.COPPER_INGOT, zItems.COPPER_PLATE.get(), c);
                 plate(zItems.STEEL_INGOT.get(), zItems.STEEL_PLATE.get(), c);
+                plate(zItems.ADVANCED_ALLOY_INGOT.get(), zItems.ADVANCED_ALLOY_PLATE.get(), c);
 
                 nineBlockStorageRecipes(c, MISC, zItems.WASTE_FRAGMENT.get(), MISC, zItems.WASTE.get());
                 nineBlockStorageRecipes(c, MISC, zItems.SILICON_SHARD.get(), MISC, zItems.RAW_SILICON.get());
@@ -451,48 +453,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
-                                .add(zItemTag.URANIUM)
-                                .add(zItemTag.DUST_COAL)
-                                .output(zItems.THORIUM, 2)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.THORIUM)
-                                .add(zItemTag.DUST_DIAMOND)
-                                .add(zItemTag.DUST_QUARTZ)
-                                .output(zItems.PLUTONIUM, 2)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.PLUTONIUM)
-                                .add(zItemTag.DUST_LAPIS)
-                                .add(zItemTag.DUST_AMETHYST)
-                                .output(zItems.NEPTUNIUM, 2)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.NEPTUNIUM)
-                                .add(zItems.INFERNAL_EMBER)
-                                .add(Tags.Items.DUSTS_REDSTONE)
-                                .output(zItems.AMERICIUM, 2)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.AMERICIUM)
-                                .add(zItemTag.DUST_COPPER)
-                                .add(zItemTag.DUST_GOLD)
-                                .add(zItemTag.DUST_EMERALD)
-                                .output(zItems.BERKELIUM, 2)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.BERKELIUM)
-                                .add(zItemTag.DUST_ANCIENT_DEBRIS)
-                                .add(zItems.ENERGIZED_REDSTONE)
-                                .output(zItems.CURIUM, 2)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
                                 .add(Items.ROTTEN_FLESH)
                                 .add(zItemTag.NUGGET_STEEL)
                                 .add(zItemTag.SAWDUST)
@@ -529,9 +489,10 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .group(ID).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_MACHINE_FRAME.get(), 1)
-                                .pattern(" C ")
+                                .pattern("PCP")
                                 .pattern("FRF")
-                                .pattern(" C ")
+                                .pattern("PCP")
+                                .define('P', zItemTag.PLATE_ADVANCED_ALLOY)
                                 .define('C', zItems.CHIP.get())
                                 .define('F', zItemTag.PLATE_COAL)
                                 .define('R', zBlocks.BASIC_MACHINE_FRAME.get())
@@ -577,6 +538,104 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.NETHER_STAR, Items.WHITE_CONCRETE, Items.RED_CONCRETE))
                                 .group(zStatic.Blocks.healer).save(c);
+
+                UrnRitualBuilder.of()
+                                .add(zItemTag.DUST_LAPIS)
+                                .add(zItems.BLUE_CUP_MUSHROOM.get())
+                                .add(zItemTag.NUGGET_ADVANCEDALLOY)
+                                .output(zItems.GUARDIAN_SCALE, 4)
+                                .group(ID).unlockedBy().save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.REACTOR_CONTROLLER.get().asItem(), 1)
+                                .pattern("PTP")
+                                .pattern("ACA")
+                                .pattern("PSP")
+                                .define('C', zBlocks.ADVANCED_MACHINE_FRAME.get())
+                                .define('P', zItemTag.PLATE_COAL)
+                                .define('A', zItemTag.GEMS_AQUAMARINE)
+                                .define('T', zItems.MAGNETIC_STONE_CIRCUIT.get())
+                                .define('S', zItems.NETHER_CIRCUIT.get())
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zBlocks.ADVANCED_MACHINE_FRAME.get()))
+                                .group(zStatic.ReactorStuff.controller).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.REACTOR_FUEL_CELL.get().asItem(), 2)
+                                .pattern(" C ")
+                                .pattern("RPR")
+                                .pattern(" C ")
+                                .define('C', zItems.MAGNETIC_STONE_CIRCUIT.get())
+                                .define('R', zItems.RESISTIVE_STONE_CIRCUIT.get())
+                                .define('P', zBlocks.ADVANCED_MACHINE_FRAME.get())
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zBlocks.ADVANCED_MACHINE_FRAME.get()))
+                                .group(zStatic.ReactorStuff.fuel_cell).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.WIRED_STONE_PLATE.get(), 1)
+                                .pattern("CPC")
+                                .pattern(" C ")
+                                .define('C', Tags.Items.DUSTS_REDSTONE)
+                                .define('P', zItems.STONE_PLATE.get())
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.STONE_PLATE.get()))
+                                .group(ID).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.STONE_CIRCUIT.get(), 1)
+                                .pattern("PB")
+                                .pattern("R ")
+                                .define('B', zItems.METAL_BOLTS.get())
+                                .define('R', Items.REPEATER)
+                                .define('P', zItems.WIRED_STONE_PLATE.get())
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.WIRED_STONE_PLATE.get()))
+                                .group(ID).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.MAGNETIC_STONE_CIRCUIT.get(), 1)
+                                .pattern("PB")
+                                .pattern("R ")
+                                .define('B', zItemTag.NUGGET_ADVANCEDALLOY)
+                                .define('R', zItems.COPPER_COIL.get())
+                                .define('P', zItems.STONE_CIRCUIT.get())
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.STONE_CIRCUIT.get()))
+                                .group(ID).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.RESISTIVE_STONE_CIRCUIT.get(), 1)
+                                .pattern("PB")
+                                .pattern("R ")
+                                .define('B', zItemTag.NUGGET_ADVANCEDALLOY)
+                                .define('R', zItems.SUPERCONDUCTOR.get())
+                                .define('P', zItems.STONE_CIRCUIT.get())
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.STONE_CIRCUIT.get()))
+                                .group(ID).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.SUPERCONDUCTOR.get(), 1)
+                                .pattern("GEG")
+                                .define('G', zItemTag.FOIL_GOLD)
+                                .define('E', zItems.ENERGIZED_REDSTONE.get())
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.STONE_CIRCUIT.get()))
+                                .group(ID).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.WIRED_NETHER_PLATE.get(), 1)
+                                .pattern("CPC")
+                                .pattern(" G ")
+                                .define('G', Tags.Items.NUGGETS_GOLD)
+                                .define('C', zItemTag.NUGGET_STEEL)
+                                .define('P', zItems.NETHERRACK_PLATE.get())
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.NETHERRACK_PLATE.get()))
+                                .group(ID).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.NETHER_CIRCUIT.get(), 1)
+                                .pattern("CPC")
+                                .pattern(" G ")
+                                .define('G', Tags.Items.NUGGETS_GOLD)
+                                .define('C', zItemTag.NUGGET_ADVANCEDALLOY)
+                                .define('P', zItems.WIRED_NETHER_PLATE.get())
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(zItems.WIRED_NETHER_PLATE.get()))
+                                .group(ID).save(c);
 
         }
 
