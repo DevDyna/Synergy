@@ -84,6 +84,9 @@ public class zItemTag {
 
         public static final TagKey<Item> GEMS_AQUAMARINE = Material.tagItem("gems/aquamarine", "c");
         public static final TagKey<Item> GEMS_SILICON = Material.tagItem("gems/silicon", "c");
+       
+       
+        public static final TagKey<Item> METAL_NUGGETS = Material.tagItem("metal_nuggets");
 
 
 }
