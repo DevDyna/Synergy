@@ -228,6 +228,7 @@ public class DataItemModel extends ItemModelProvider {
                                 .texture("down", down);
         }
 
+        @SuppressWarnings("unused")
         private void simpleFlexibleBlock(DeferredHolder<Block, Block> b, String loc) {
                 cubeAll(b.getRegisteredName(),
                                 modLoc("block/" + loc));
