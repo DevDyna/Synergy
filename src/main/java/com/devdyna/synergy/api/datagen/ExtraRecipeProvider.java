@@ -584,34 +584,34 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         protected void moderators(RecipeOutput c) {
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.SIMPLE_MODERATOR.get(), 1)
-                                .pattern("PSP")
+                                .pattern(" S ")
                                 .pattern("SFS")
-                                .pattern("PSP")
-                                .define('F', zBlocks.ADVANCED_MACHINE_FRAME.get())
-                                .define('S', zItems.STONE_CIRCUIT.get())
-                                .define('P', zItemTag.PLATE_COAL)
+                                .pattern(" S ")
+                                .define('F', Tags.Items.STORAGE_BLOCKS_COAL)
+                                .define('S', zItemTag.PLATE_AQUAMARINE)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zBlocks.ADVANCED_MACHINE_FRAME.get()))
                                 .group(ID).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_MODERATOR.get(), 1)
-                                .pattern("PSP")
+                                .pattern("CSC")
                                 .pattern("SFS")
-                                .pattern("PSP")
+                                .pattern("CSC")
                                 .define('F', zBlocks.SIMPLE_MODERATOR.get())
-                                .define('S', zItems.STONE_CIRCUIT.get())
-                                .define('P', zItemTag.PLATE_COAL)
+                                .define('S', zItemTag.PLATE_STEEL)
+                                .define('C', zItemTag.NUGGET_ADVANCEDALLOY)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zBlocks.SIMPLE_MODERATOR.get()))
                                 .group(ID).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.ELITE_MODERATOR.get(), 1)
-                                .pattern("PSP")
-                                .pattern("SFS")
-                                .pattern("PSP")
+                                .pattern("SPS")
+                                .pattern("CFC")
+                                .pattern("SPS")
                                 .define('F', zBlocks.ADVANCED_MODERATOR.get())
-                                .define('S', zItems.STONE_CIRCUIT.get())
-                                .define('P', zItemTag.PLATE_COAL)
+                                .define('P', zItems.NETHER_CIRCUIT.get())
+                                .define('C', zItems.CARBON_PLATE.get())
+                                .define('S', zItemTag.PLATE_ADVANCED_ALLOY)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zBlocks.ADVANCED_MODERATOR.get()))
                                 .group(ID).save(c);
