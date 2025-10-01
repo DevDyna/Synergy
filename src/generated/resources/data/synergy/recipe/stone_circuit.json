@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "B": {
+      "item": "synergy:metal_bolts"
+    },
+    "P": {
+      "item": "synergy:wired_stone_plate"
+    },
+    "R": {
+      "item": "minecraft:repeater"
+    }
+  },
+  "pattern": [
+    "PB",
+    "R "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:stone_circuit"
+  }
+}

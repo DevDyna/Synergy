@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "E": {
+      "item": "synergy:energized_redstone_dust"
+    },
+    "G": {
+      "tag": "c:foils/gold"
+    }
+  },
+  "pattern": [
+    "GEG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:superconductor"
+  }
+}

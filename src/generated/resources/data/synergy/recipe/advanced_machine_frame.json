@@ -9,14 +9,17 @@
     "F": {
       "tag": "c:plates/coal"
     },
+    "P": {
+      "tag": "c:plates/advanced_alloy"
+    },
     "R": {
       "item": "synergy:basic_machine_frame"
     }
   },
   "pattern": [
-    " C ",
+    "PCP",
     "FRF",
-    " C "
+    "PCP"
   ],
   "result": {
     "count": 1,

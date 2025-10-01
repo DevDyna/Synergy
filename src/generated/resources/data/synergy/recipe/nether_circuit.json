@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "C": {
+      "tag": "c:nuggets/advanced_alloy"
+    },
+    "G": {
+      "tag": "c:nuggets/gold"
+    },
+    "P": {
+      "item": "synergy:wired_nether_plate"
+    }
+  },
+  "pattern": [
+    "CPC",
+    " G "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:nether_circuit"
+  }
+}

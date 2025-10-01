@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "B": {
+      "tag": "c:nuggets/advanced_alloy"
+    },
+    "P": {
+      "item": "synergy:stone_circuit"
+    },
+    "R": {
+      "item": "synergy:superconductor"
+    }
+  },
+  "pattern": [
+    "PB",
+    "R "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:resistive_stone_circuit"
+  }
+}

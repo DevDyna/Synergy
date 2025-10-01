@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "C": {
+      "tag": "c:dusts/redstone"
+    },
+    "P": {
+      "item": "synergy:stone_plate"
+    }
+  },
+  "pattern": [
+    "CPC",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:wired_stone_plate"
+  }
+}

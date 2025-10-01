@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "quantum_reactor_controller",
+  "key": {
+    "A": {
+      "tag": "c:plates/aquamarine"
+    },
+    "C": {
+      "item": "synergy:advanced_machine_frame"
+    },
+    "P": {
+      "tag": "c:plates/coal"
+    },
+    "S": {
+      "item": "synergy:nether_circuit"
+    },
+    "T": {
+      "item": "synergy:magnetic_stone_circuit"
+    }
+  },
+  "pattern": [
+    "PTP",
+    "ACA",
+    "PSP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:quantum_reactor_controller"
+  }
+}

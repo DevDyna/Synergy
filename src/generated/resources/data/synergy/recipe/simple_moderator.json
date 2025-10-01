@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "F": {
+      "item": "synergy:advanced_machine_frame"
+    },
+    "P": {
+      "tag": "c:plates/coal"
+    },
+    "S": {
+      "item": "synergy:stone_circuit"
+    }
+  },
+  "pattern": [
+    "PSP",
+    "SFS",
+    "PSP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:simple_moderator"
+  }
+}

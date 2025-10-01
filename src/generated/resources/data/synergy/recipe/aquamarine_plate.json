@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "I": {
+      "item": "synergy:aquamarine_gem"
+    }
+  },
+  "pattern": [
+    "III"
+  ],
+  "result": {
+    "count": 3,
+    "id": "synergy:aquamarine_plate"
+  }
+}

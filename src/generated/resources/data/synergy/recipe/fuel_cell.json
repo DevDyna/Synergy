@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "fuel_cell",
+  "key": {
+    "A": {
+      "tag": "c:plates/aquamarine"
+    },
+    "C": {
+      "item": "synergy:magnetic_stone_circuit"
+    },
+    "P": {
+      "item": "synergy:advanced_machine_frame"
+    },
+    "R": {
+      "item": "synergy:resistive_stone_circuit"
+    }
+  },
+  "pattern": [
+    " C ",
+    "RPR",
+    " A "
+  ],
+  "result": {
+    "count": 2,
+    "id": "synergy:fuel_cell"
+  }
+}

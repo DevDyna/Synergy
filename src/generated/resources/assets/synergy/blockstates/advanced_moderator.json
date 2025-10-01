@@ -1,10 +1,10 @@
 {
   "variants": {
     "enabled=false": {
-      "model": "synergy:block/advanced_moderatoroff"
+      "model": "synergy:block/advanced_moderator"
     },
     "enabled=true": {
-      "model": "synergy:block/advanced_moderatoron"
+      "model": "synergy:block/advanced_moderator"
     }
   }
 }

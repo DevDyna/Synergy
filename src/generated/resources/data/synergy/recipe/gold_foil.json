@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "I": {
+      "tag": "c:plates/gold"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " IS",
+    " I ",
+    "SI "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:gold_foil"
+  }
+}

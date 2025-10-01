@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "C": {
+      "tag": "c:nuggets/steel"
+    },
+    "G": {
+      "tag": "c:nuggets/gold"
+    },
+    "P": {
+      "item": "synergy:netherrack_plate"
+    }
+  },
+  "pattern": [
+    "CPC",
+    " G "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:wired_nether_plate"
+  }
+}
