@@ -87,8 +87,8 @@ public class DataBlockModelState extends BlockStateProvider {
                 CoolerBlock(zBlocks.NETHERITE_COOLER, mcLoc("block/netherite_block"));
 
                 moderatorBlock(zBlocks.SIMPLE_MODERATOR, mcLoc("block/coal_block"));
-                moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("reactor/moderator/advanced_frame"));
-                moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("reactor/moderator/elite_frame"));
+                moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("block/reactor/moderator/advanced_frame"));
+                moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("block/reactor/moderator/elite_frame"));
 
                 crop(zBlocks.RICE.get(), 7, true, CropBlock.AGE);
                 crop(zBlocks.CAVE_WHEAT.get(), 5, true, BaseShortCropBlock.AGE);
