@@ -16,7 +16,6 @@ import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup.Provider;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
@@ -560,21 +559,15 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .group(zStatic.Items.configurator).save(c);
         }
 
-        protected void foil(RecipeOutput c, Item input, Item output) {
-                ShapedRecipeBuilder.shaped(MISC, output, 1)
-                                .pattern("III")
-                                .define('I', input)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(input))
-                                .group(ID).save(c);
-        }
-
         protected void foil(RecipeOutput c, TagKey<Item> input, Item output) {
                 ShapedRecipeBuilder.shaped(MISC, output, 1)
-                                .pattern("III")
+                                .pattern(" IS")
+                                .pattern(" I ")
+                                .pattern("SI ")
                                 .define('I', input)
+                                .define('I', Items.STICK)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(BuiltInRegistries.ITEM.get(input.location())))
+                                                .hasItems(Items.STICK))
                                 .group(ID).save(c);
         }
 
@@ -584,7 +577,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern("I")
                                 .define('I', input)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(BuiltInRegistries.ITEM.get(input.location())))
+                                                .hasItems(Items.STICK))
                                 .group(ID).save(c);
         }
 
