@@ -44,7 +44,7 @@ public class DataBlockModelState extends BlockStateProvider {
                 tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
 
                 block(zBlocks.URN, "block/tiny_block/urn");
-                
+
                 block(zBlocks.QUERN, "block/quern/base");
                 block(zBlocks.QUERN_MOVING, "block/quern/moving");
 
@@ -86,10 +86,9 @@ public class DataBlockModelState extends BlockStateProvider {
                 CoolerBlock(zBlocks.GLOWSTONE_COOLER, mcLoc("block/glowstone"));
                 CoolerBlock(zBlocks.NETHERITE_COOLER, mcLoc("block/netherite_block"));
 
-                simpleBiState(zBlocks.SIMPLE_MODERATOR, "reactor/moderator/simple/");
-                simpleBiState(zBlocks.IMPROVED_MODERATOR, "reactor/moderator/improved/");
-                simpleBiState(zBlocks.ADVANCED_MODERATOR, "reactor/moderator/advanced/");
-                simpleBiState(zBlocks.ELITE_MODERATOR, "reactor/moderator/elite/");
+                moderatorBlock(zBlocks.SIMPLE_MODERATOR, mcLoc("block/coal_block"));
+                moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("reactor/moderator/advanced_frame"));
+                moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("reactor/moderator/elite_frame"));
 
                 crop(zBlocks.RICE.get(), 7, true, CropBlock.AGE);
                 crop(zBlocks.CAVE_WHEAT.get(), 5, true, BaseShortCropBlock.AGE);
@@ -156,7 +155,7 @@ public class DataBlockModelState extends BlockStateProvider {
                                                 .texture("down", down));
         }
 
-        private void block(DeferredHolder<Block, Block> b,String rl) {
+        private void block(DeferredHolder<Block, Block> b, String rl) {
                 simpleBlock(b.get(),
                                 models().withExistingParent(b.getRegisteredName(),
                                                 modLoc(rl)));
@@ -188,6 +187,18 @@ public class DataBlockModelState extends BlockStateProvider {
                         return ConfiguredModel.builder().modelFile(
                                         models().cubeAll(b.getRegisteredName() + front,
                                                         modLoc("block/" + location + front)))
+                                        .build();
+                });
+        }
+
+        private void moderatorBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
+
+                getVariantBuilder(b.get()).forAllStates((state) -> {
+                        String front = state.getValue(BlockStateProperties.ENABLED) ? "on" : "off";
+                        return ConfiguredModel.builder().modelFile(
+                                        models().withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
+                                                        .texture("top", "block/reactor/moderator/base_" + front)
+                                                        .texture("below", below))
                                         .build();
                 });
         }

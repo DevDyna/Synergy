@@ -594,7 +594,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 .hasItems(zBlocks.ADVANCED_MACHINE_FRAME.get()))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.IMPROVED_MODERATOR.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_MODERATOR.get(), 1)
                                 .pattern("PSP")
                                 .pattern("SFS")
                                 .pattern("PSP")
@@ -603,17 +603,6 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('P', zItemTag.PLATE_COAL)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zBlocks.SIMPLE_MODERATOR.get()))
-                                .group(ID).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_MODERATOR.get(), 1)
-                                .pattern("PSP")
-                                .pattern("SFS")
-                                .pattern("PSP")
-                                .define('F', zBlocks.IMPROVED_MODERATOR.get())
-                                .define('S', zItems.STONE_CIRCUIT.get())
-                                .define('P', zItemTag.PLATE_COAL)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zBlocks.IMPROVED_MODERATOR.get()))
                                 .group(ID).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.ELITE_MODERATOR.get(), 1)

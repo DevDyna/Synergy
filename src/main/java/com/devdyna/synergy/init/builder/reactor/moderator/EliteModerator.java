@@ -4,12 +4,12 @@ public class EliteModerator extends ModeratorBase {
 
     @Override
     public float FEReducer() {
-        return 2.0F;
+        return 3.0F;
     }
 
     @Override
     public float HeatReducer() {
-        return 2.5F;
+        return 4.5F;
     }
 
 }

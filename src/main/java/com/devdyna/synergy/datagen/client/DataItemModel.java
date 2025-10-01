@@ -178,10 +178,15 @@ public class DataItemModel extends ItemModelProvider {
                 CoolerBlock(zBlocks.GLOWSTONE_COOLER, mcLoc("block/glowstone"));
                 CoolerBlock(zBlocks.NETHERITE_COOLER, mcLoc("block/netherite_block"));
 
-                simpleFlexibleBlock(zBlocks.SIMPLE_MODERATOR, "reactor/moderator/simple/off");
-                simpleFlexibleBlock(zBlocks.IMPROVED_MODERATOR, "reactor/moderator/improved/off");
-                simpleFlexibleBlock(zBlocks.ADVANCED_MODERATOR, "reactor/moderator/advanced/off");
-                simpleFlexibleBlock(zBlocks.ELITE_MODERATOR, "reactor/moderator/elite/off");
+                // simpleFlexibleBlock(zBlocks.SIMPLE_MODERATOR, "reactor/moderator/simple/off");
+                // simpleFlexibleBlock(zBlocks.IMPROVED_MODERATOR, "reactor/moderator/improved/off");
+                // simpleFlexibleBlock(zBlocks.ADVANCED_MODERATOR, "reactor/moderator/advanced/off");
+                // simpleFlexibleBlock(zBlocks.ELITE_MODERATOR, "reactor/moderator/elite/off");
+
+                moderatorBlock(zBlocks.SIMPLE_MODERATOR, mcLoc("block/coal_block"));
+                moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("reactor/moderator/advanced_frame"));
+                moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("reactor/moderator/elite_frame"));
+
 
                 tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
                 tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
@@ -196,6 +201,13 @@ public class DataItemModel extends ItemModelProvider {
         private void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
                 withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
                                 .texture("top", "block/reactor/cooler/casing")
+                                .texture("below", below);
+        }
+
+
+        private void moderatorBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
+                withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
+                                .texture("top", "block/reactor/moderator/base_off")
                                 .texture("below", below);
         }
 
