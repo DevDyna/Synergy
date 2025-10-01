@@ -1,12 +1,12 @@
 {
   "type": "synergy:crop_result",
   "crop": {
-    "count": 1,
-    "id": "synergy:rice_seed"
+    "tag": "synergy:plant/rice"
   },
   "result": [
     {
-      "item": "synergy:rice_seed"
+      "count": 1,
+      "id": "synergy:rice_seed"
     }
   ]
 }

@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:glowstone_mixture"
+        "recipe": "synergy:urn_ritual/glowstone_mixture"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:prismarine_crystals"
+            "items": "minecraft:barrier"
           },
           {
             "items": "synergy:energized_redstone_dust"
@@ -20,7 +20,7 @@
             "items": "synergy:lapis_dust"
           },
           {
-            "items": "minecraft:slime_ball"
+            "items": "minecraft:prismarine_crystals"
           }
         ]
       },
@@ -35,7 +35,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:glowstone_mixture"
+      "synergy:urn_ritual/glowstone_mixture"
     ]
   }
 }

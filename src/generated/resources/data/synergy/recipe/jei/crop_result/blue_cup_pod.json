@@ -1,15 +1,16 @@
 {
   "type": "synergy:crop_result",
   "crop": {
-    "count": 1,
-    "id": "synergy:blue_cup_pod"
+    "item": "synergy:blue_cup_pod"
   },
   "result": [
     {
-      "item": "synergy:blue_cup_pod"
+      "count": 1,
+      "id": "synergy:blue_cup_pod"
     },
     {
-      "item": "synergy:blue_cup_mushroom"
+      "count": 1,
+      "id": "synergy:blue_cup_mushroom"
     }
   ]
 }

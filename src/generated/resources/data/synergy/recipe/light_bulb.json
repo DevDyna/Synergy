@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "synergy:condenser"
+    },
+    "D": {
+      "tag": "c:dusts/glowstone"
+    },
+    "G": {
+      "tag": "c:glass_blocks/colorless"
+    },
+    "N": {
+      "tag": "c:nuggets/iron"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    },
+    "S": {
+      "item": "synergy:resistor"
+    }
+  },
+  "pattern": [
+    "GN ",
+    "NDS",
+    " CR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:light_bulb"
+  }
+}

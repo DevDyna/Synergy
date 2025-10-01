@@ -1,10 +1,8 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "mixture_tip",
-  "ingredients": [
+  "type": "synergy:urn",
+  "ingredient": [
     {
-      "item": "minecraft:fermented_spider_eye"
+      "tag": "c:gems/silicon"
     },
     {
       "item": "synergy:quartz_dust"
@@ -17,7 +15,7 @@
     }
   ],
   "result": {
-    "count": 4,
+    "count": 9,
     "id": "synergy:amethyst_mixture"
   }
 }

@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:amethyst_mixture"
+        "recipe": "synergy:light_bulb"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,16 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:quartz_dust"
-          },
-          {
-            "items": "minecraft:fermented_spider_eye"
-          },
-          {
-            "items": "synergy:amethyst_dust"
-          },
-          {
-            "items": "minecraft:honeycomb"
+            "items": "minecraft:iron_nugget"
           }
         ]
       },
@@ -35,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:amethyst_mixture"
+      "synergy:light_bulb"
     ]
   }
 }

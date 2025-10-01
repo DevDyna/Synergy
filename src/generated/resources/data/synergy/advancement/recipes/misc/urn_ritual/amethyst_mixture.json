@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:configurator"
+        "recipe": "synergy:urn_ritual/amethyst_mixture"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,16 +11,16 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:redstone"
+            "items": "minecraft:barrier"
           },
           {
-            "items": "minecraft:emerald"
+            "items": "synergy:quartz_dust"
           },
           {
-            "items": "minecraft:iron_ingot"
+            "items": "synergy:amethyst_dust"
           },
           {
-            "items": "minecraft:iron_nugget"
+            "items": "minecraft:honeycomb"
           }
         ]
       },
@@ -35,7 +35,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:configurator"
+      "synergy:urn_ritual/amethyst_mixture"
     ]
   }
 }

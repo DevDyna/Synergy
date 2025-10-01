@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:cave_wheat_seed"
+            "items": "minecraft:barrier"
           }
         ]
       },

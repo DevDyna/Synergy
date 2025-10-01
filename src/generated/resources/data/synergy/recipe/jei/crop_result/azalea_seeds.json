@@ -1,18 +1,20 @@
 {
   "type": "synergy:crop_result",
   "crop": {
-    "count": 1,
-    "id": "synergy:azalea_seeds"
+    "item": "synergy:azalea"
   },
   "result": [
     {
-      "item": "synergy:azalea_seeds"
+      "count": 1,
+      "id": "synergy:azalea_seeds"
     },
     {
-      "item": "synergy:small_azalea_leaf"
+      "count": 1,
+      "id": "synergy:small_azalea_leaf"
     },
     {
-      "item": "synergy:small_azalea_roots"
+      "count": 1,
+      "id": "synergy:small_azalea_roots"
     }
   ]
 }

@@ -4,10 +4,10 @@
   "group": "synergy",
   "key": {
     "G": {
-      "tag": "synergy:chip_core"
+      "item": "synergy:bone_meal_mixture"
     },
     "M": {
-      "tag": "synergy:resistor_shell"
+      "item": "synergy:guardian_scale"
     },
     "N": {
       "item": "minecraft:iron_nugget"

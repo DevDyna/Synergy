@@ -1,15 +1,16 @@
 {
   "type": "synergy:crop_result",
   "crop": {
-    "count": 1,
-    "id": "synergy:cave_wheat_seed"
+    "tag": "synergy:plant/cave_wheat"
   },
   "result": [
     {
-      "item": "synergy:cave_wheat_seed"
+      "count": 1,
+      "id": "synergy:cave_wheat_seed"
     },
     {
-      "item": "minecraft:wheat"
+      "count": 1,
+      "id": "minecraft:wheat"
     }
   ]
 }

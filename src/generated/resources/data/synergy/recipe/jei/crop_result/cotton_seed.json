@@ -1,15 +1,16 @@
 {
   "type": "synergy:crop_result",
   "crop": {
-    "count": 1,
-    "id": "synergy:cotton_seed"
+    "tag": "synergy:plant/cotton"
   },
   "result": [
     {
-      "item": "synergy:cotton_seed"
+      "count": 1,
+      "id": "synergy:cotton_seed"
     },
     {
-      "item": "synergy:cotton"
+      "count": 1,
+      "id": "synergy:cotton"
     }
   ]
 }

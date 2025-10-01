@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:smasher_alt"
+        "recipe": "minecraft:resistor_improved"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,10 +11,13 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_ingot"
+            "items": "synergy:steel_nugget"
           },
           {
-            "items": "minecraft:iron_nugget"
+            "items": "synergy:aquamarine_gem"
+          },
+          {
+            "items": "synergy:amethyst_mixture"
           }
         ]
       },
@@ -29,7 +32,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:smasher_alt"
+      "minecraft:resistor_improved"
     ]
   }
 }

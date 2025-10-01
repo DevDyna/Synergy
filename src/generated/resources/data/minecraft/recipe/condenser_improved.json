@@ -4,16 +4,16 @@
   "group": "synergy",
   "key": {
     "G": {
-      "item": "synergy:bone_meal_mixture"
+      "tag": "synergy:urn_mixtures"
     },
     "I": {
-      "item": "minecraft:iron_ingot"
+      "item": "synergy:steel_ingot"
     },
     "M": {
-      "item": "synergy:violet_webcap_mushroom"
+      "tag": "c:gems/silicon"
     },
     "N": {
-      "item": "minecraft:iron_nugget"
+      "item": "synergy:steel_nugget"
     }
   },
   "pattern": [
@@ -22,7 +22,7 @@
     " I "
   ],
   "result": {
-    "count": 4,
+    "count": 8,
     "id": "synergy:condenser"
   }
 }

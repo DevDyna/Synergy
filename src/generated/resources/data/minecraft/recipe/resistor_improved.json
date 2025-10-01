@@ -3,20 +3,23 @@
   "category": "misc",
   "group": "synergy",
   "key": {
-    "H": {
-      "item": "synergy:green_battery"
+    "G": {
+      "tag": "synergy:urn_mixtures"
     },
-    "R": {
+    "M": {
       "tag": "c:gems/aquamarine"
+    },
+    "N": {
+      "tag": "c:nuggets/steel"
     }
   },
   "pattern": [
-    " R ",
-    "RHR",
-    " R "
+    " MN",
+    "MGM",
+    "NM "
   ],
   "result": {
-    "count": 1,
-    "id": "synergy:blue_battery"
+    "count": 8,
+    "id": "synergy:resistor"
   }
 }

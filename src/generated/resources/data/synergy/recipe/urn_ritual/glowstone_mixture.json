@@ -1,8 +1,6 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "group": "mixture_tip",
-  "ingredients": [
+  "type": "synergy:urn",
+  "ingredient": [
     {
       "tag": "c:slime_balls"
     },
@@ -17,7 +15,7 @@
     }
   ],
   "result": {
-    "count": 6,
+    "count": 5,
     "id": "synergy:glowstone_mixture"
   }
 }

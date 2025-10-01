@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:cotton_seed"
+            "items": "minecraft:barrier"
           }
         ]
       },
