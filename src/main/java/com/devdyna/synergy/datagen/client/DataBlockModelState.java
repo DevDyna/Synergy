@@ -186,7 +186,7 @@ public class DataBlockModelState extends BlockStateProvider {
                 getVariantBuilder(b.get()).forAllStates((state) -> {
                         String front = state.getValue(BlockStateProperties.ENABLED) ? "on" : "off";
                         return ConfiguredModel.builder().modelFile(
-                                        models().cubeAll(b.getRegisteredName() + front,
+                                        models().cubeAll(b.getRegisteredName() +"_"+ front,
                                                         modLoc("block/" + location + front)))
                                         .build();
                 });
@@ -197,7 +197,7 @@ public class DataBlockModelState extends BlockStateProvider {
                 getVariantBuilder(b.get()).forAllStates((state) -> {
                         String front = state.getValue(BlockStateProperties.ENABLED) ? "on" : "off";
                         return ConfiguredModel.builder().modelFile(
-                                        models().withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
+                                        models().withExistingParent(b.getRegisteredName()+"_"+ front, modLoc("block/double_layer"))
                                                         .texture("top", "block/reactor/moderator/base_" + front)
                                                         .texture("below", below))
                                         .build();
