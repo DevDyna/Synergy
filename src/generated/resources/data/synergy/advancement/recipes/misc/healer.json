@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:metal_bolts"
+        "recipe": "synergy:healer"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,13 @@
       "conditions": {
         "items": [
           {
-            "items": "#synergy:metal_nuggets"
+            "items": "minecraft:nether_star"
+          },
+          {
+            "items": "minecraft:white_concrete"
+          },
+          {
+            "items": "minecraft:red_concrete"
           }
         ]
       },
@@ -26,7 +32,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:metal_bolts"
+      "synergy:healer"
     ]
   }
 }

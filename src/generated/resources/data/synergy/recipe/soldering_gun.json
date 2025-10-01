@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "soldering_gun",
+  "key": {
+    "G": {
+      "tag": "c:foils/gold"
+    },
+    "I": {
+      "item": "minecraft:iron_nugget"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  I",
+    " G ",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:soldering_gun"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "healer",
+  "key": {
+    "R": {
+      "item": "minecraft:red_concrete"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "W": {
+      "item": "minecraft:white_concrete"
+    }
+  },
+  "pattern": [
+    "RWR",
+    "WSW",
+    "RWR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:healer"
+  }
+}

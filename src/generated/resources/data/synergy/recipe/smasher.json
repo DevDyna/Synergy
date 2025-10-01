@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "smasher",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "N": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "NI ",
+    " I ",
+    " IN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:smasher"
+  }
+}
