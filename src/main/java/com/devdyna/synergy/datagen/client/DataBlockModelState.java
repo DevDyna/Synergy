@@ -180,6 +180,7 @@ public class DataBlockModelState extends BlockStateProvider {
                                 .texture("below", below));
         }
 
+        @SuppressWarnings("unused")
         private void simpleBiState(DeferredHolder<Block, Block> b, String location) {
 
                 getVariantBuilder(b.get()).forAllStates((state) -> {
