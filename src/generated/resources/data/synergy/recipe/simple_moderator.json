@@ -4,19 +4,16 @@
   "group": "synergy",
   "key": {
     "F": {
-      "item": "synergy:advanced_machine_frame"
-    },
-    "P": {
-      "tag": "c:plates/coal"
+      "tag": "c:storage_blocks/coal"
     },
     "S": {
-      "item": "synergy:stone_circuit"
+      "tag": "c:plates/aquamarine"
     }
   },
   "pattern": [
-    "PSP",
+    " S ",
     "SFS",
-    "PSP"
+    " S "
   ],
   "result": {
     "count": 1,

@@ -3,20 +3,20 @@
   "category": "misc",
   "group": "synergy",
   "key": {
+    "C": {
+      "tag": "c:nuggets/advanced_alloy"
+    },
     "F": {
       "item": "synergy:simple_moderator"
     },
-    "P": {
-      "tag": "c:plates/coal"
-    },
     "S": {
-      "item": "synergy:stone_circuit"
+      "tag": "c:plates/steel"
     }
   },
   "pattern": [
-    "PSP",
+    "CSC",
     "SFS",
-    "PSP"
+    "CSC"
   ],
   "result": {
     "count": 1,

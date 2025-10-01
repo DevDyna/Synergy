@@ -3,20 +3,23 @@
   "category": "misc",
   "group": "synergy",
   "key": {
+    "C": {
+      "item": "synergy:carbon_plate"
+    },
     "F": {
       "item": "synergy:advanced_moderator"
     },
     "P": {
-      "tag": "c:plates/coal"
+      "item": "synergy:nether_circuit"
     },
     "S": {
-      "item": "synergy:stone_circuit"
+      "tag": "c:plates/advanced_alloy"
     }
   },
   "pattern": [
-    "PSP",
-    "SFS",
-    "PSP"
+    "SPS",
+    "CFC",
+    "SPS"
   ],
   "result": {
     "count": 1,
