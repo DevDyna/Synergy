@@ -7,6 +7,8 @@ import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zMultiTags;
 import com.devdyna.synergy.utils.DataGenUtil;
+import com.devdyna.synergy.utils.LevelUtil;
+import com.devdyna.synergy.utils.x;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
@@ -147,8 +149,12 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(Tags.Items.GEMS).add(DataGenUtil.getItems(zItems.zGems));
 
-                tag(zItemTag.GEMS_AQUAMARINE).add(DataGenUtil.getItems(zItems.zGems));
+                tag(zItemTag.GEMS_AQUAMARINE).add(zItems.AQUAMARINE.get());
                 tag(zItemTag.GEMS_SILICON).add(zItems.SILICON.get());
+
+                tag(zItemTag.METAL_NUGGETS)
+                                .addTag(Tags.Items.NUGGETS)
+                                .remove(x.rl("create", "experience_nugget"));
 
         }
 
