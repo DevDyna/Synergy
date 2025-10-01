@@ -202,9 +202,9 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> SIMPLE_MODERATOR = Material.registerItemBlock(
                         zStatic.ReactorStuff.ModeratorTypes.SIMPLE,
                         () -> new SimpleModerator(), zModerators);
-        public static final DeferredHolder<Block, Block> IMPROVED_MODERATOR = Material.registerItemBlock(
-                        zStatic.ReactorStuff.ModeratorTypes.IMPROVED,
-                        () -> new ImprovedModerator(), zModerators);
+        // public static final DeferredHolder<Block, Block> IMPROVED_MODERATOR = Material.registerItemBlock(
+        //                 zStatic.ReactorStuff.ModeratorTypes.IMPROVED,
+        //                 () -> new ImprovedModerator(), zModerators);
         public static final DeferredHolder<Block, Block> ADVANCED_MODERATOR = Material.registerItemBlock(
                         zStatic.ReactorStuff.ModeratorTypes.ADVANCED,
                         () -> new AdvancedModerator(), zModerators);
