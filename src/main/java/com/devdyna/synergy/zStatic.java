@@ -26,7 +26,7 @@ public class zStatic {
         public static String advanced_alloy = "advanced_alloy";
         public static String steel = "steel";
         public static String carbon = "carbon";
-        public static String matrix = "matrix";
+        // public static String matrix = "matrix";
         public static String netherrack = "netherrack";
         public static String stone = "stone";
         public static String americium = "americium";
