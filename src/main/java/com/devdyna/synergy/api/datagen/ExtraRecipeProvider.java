@@ -565,7 +565,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern(" I ")
                                 .pattern("SI ")
                                 .define('I', input)
-                                .define('I', Items.STICK)
+                                .define('S', Items.STICK)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(Items.STICK))
                                 .group(ID).save(c);
