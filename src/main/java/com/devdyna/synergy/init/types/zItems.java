@@ -295,8 +295,8 @@ public class zItems {
         public static final DeferredHolder<Item, Item> IRON_PLATE = Material
                         .resourcePlate(zStatic.ResourceMaterial.iron);
 
-        public static final DeferredHolder<Item, Item> MATRIX_PLATE = Material
-                        .resourcePlate(zStatic.ResourceMaterial.matrix);
+        public static final DeferredHolder<Item, Item> AQUAMARINE_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.aquamarine);
 
         public static final DeferredHolder<Item, Item> NETHERRACK_PLATE = Material
                         .resourcePlate(zStatic.ResourceMaterial.netherrack);
