@@ -39,6 +39,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 mixtures(c);
                 coolerRecipes(c);
                 chests(c);
+                tools(c);
 
                 nodeRecipe(zBlocks.ITEM_TRANSFER.get(), Blocks.CHEST, c);
                 nodeRecipe(zBlocks.ITEM_PROVIDER.get(), Items.IRON_PICKAXE, c);
@@ -72,7 +73,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 Items.BROWN_DYE.getDescriptionId()
                                                                 .replace("item.minecraft.", "")
                                                                 + "_from_mushrooms"));
-
 
                 ShapelessRecipeBuilder.shapeless(MISC, zItems.AZALEA_SEEDS.get(), 3)
                                 .requires(zItemTag.AZALEA_BUSHES)
@@ -540,7 +540,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                                 Items.IRON_NUGGET))
                                 .group(ID).save(c);
 
-                twoByTwoPacker(c, zItems.METAL_BOLTS.get(), Tags.Items.NUGGETS);
+                twoByTwoPacker(c, zItems.METAL_BOLTS.get(), zItemTag.METAL_NUGGETS);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.MIXED_INGOT.get(), 3)
                                 .define('T', zItemTag.PLATE_COPPER)
@@ -566,6 +566,17 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern(" CR")
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_NUGGET))
                                 .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.HEALER.get().asItem(), 1)
+                                .pattern("RWR")
+                                .pattern("WSW")
+                                .pattern("RWR")
+                                .define('R', Items.RED_CONCRETE)
+                                .define('W', Items.WHITE_CONCRETE)
+                                .define('S', Items.NETHER_STAR)
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                                                .hasItems(Items.NETHER_STAR, Items.WHITE_CONCRETE, Items.RED_CONCRETE))
+                                .group(zStatic.Blocks.healer).save(c);
 
         }
 
