@@ -5,9 +5,9 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.devdyna.synergy.api.datagen.ExtraRecipeProvider;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.compat.jei.categories.*;
-import com.devdyna.synergy.datagen.server.DataRecipe;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.ClazzUtil;
 import com.devdyna.synergy.utils.x;
@@ -38,7 +38,7 @@ public class Plugin implements IModPlugin {
         List<RecipeHolder<CraftingRecipe>> toHide = new ArrayList<>();
 
         ClazzUtil.getAllzItems().forEach(b -> {
-            if (!DataRecipe.clearNBT.contains(b.get())) {
+            if (!ExtraRecipeProvider.clearNBT.contains(b.get())) {
                 Minecraft.getInstance().level.getRecipeManager()
                         .byKey(ResourceLocation.parse(b.getId() + "_clear_nbt"))
                         .ifPresent(r -> toHide.add((RecipeHolder<CraftingRecipe>) r));

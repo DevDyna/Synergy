@@ -54,11 +54,11 @@ public class CropResultCategory implements IRecipeCategory<CropResultRecipe> {
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CropResultRecipe recipe, IFocusGroup focuses) {
 
-        builder.addInputSlot(12, 17).addItemStack(recipe.getInput());
+        builder.addInputSlot(12, 17).addIngredients(recipe.getInput());
 
         recipe.getOutputs().forEach(s -> {
             var index = recipe.getOutputs().indexOf(s);
-            builder.addOutputSlot(53 + (index % 3 * 22), 6 + (index > 2 ? 22 : 0)).addIngredients(s);
+            builder.addOutputSlot(53 + (index % 3 * 22), 6 + (index > 2 ? 22 : 0)).addItemStack(s);
         });
 
     }

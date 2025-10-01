@@ -114,15 +114,6 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.NUGGET_STEEL).add(zItems.STEEL_NUGGET.get());
                 tag(zItemTag.NUGGET_ADVANCEDALLOY).add(zItems.ADVANCED_ALLOY_NUGGET.get());
 
-                tag(zItemTag.CAPACITOR_ACTIVATOR).add(zItems.VIOLET_WEBCAP_MUSHROOM.get(), zItems.ZOMBIE_LIVER.get());
-
-                tag(zItemTag.CHIP_CORE).add(zItems.SILVERFISH_DUST.get(), zItems.AMETHYST_MIXTURE.get(),
-                                zItems.BONE_MEAL_MIXTURE.get(),
-                                zItems.GLOWSTONE_MIXTURE.get());
-
-                tag(zItemTag.RESISTOR_SHELL).add(zItems.BLUE_CUP_MUSHROOM.get(), zItems.GUARDIAN_SCALE.get(),
-                                zItems.AQUAMARINE.get());
-
                 tag(zItemTag.FOILS)
                                 .add(DataGenUtil.getItems(zItems.zFoils));
 
@@ -137,6 +128,27 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.PLATE_GOLD).add(zItems.GOLD_PLATE.get());
                 tag(zItemTag.PLATE_IRON).add(zItems.IRON_PLATE.get());
                 tag(zItemTag.PLATE_STEEL).add(zItems.STEEL_PLATE.get());
+
+                tag(zItemTag.CAVE_WHEAT_PLANT)
+                                .add(
+                                                zItems.CAVE_WHEAT_SEEDS.get(),
+                                                zBlocks.WILD_CAVE_WHEAT.get().asItem());
+                tag(zItemTag.RICE_PLANT)
+                                .add(
+                                                zItems.RICE_SEED.get(),
+                                                zBlocks.WILD_RICE.get().asItem());
+                tag(zItemTag.COTTON_PLANT)
+                                .add(
+                                                zItems.COTTON_SEEDS.get(),
+                                                zBlocks.WILD_COTTON.get().asItem());
+
+                tag(zItemTag.URN_MIXTURES).add(zItems.AMETHYST_MIXTURE.get(),
+                                zItems.GLOWSTONE_MIXTURE.get());
+
+                tag(Tags.Items.GEMS).add(DataGenUtil.getItems(zItems.zGems));
+
+                tag(zItemTag.GEMS_AQUAMARINE).add(DataGenUtil.getItems(zItems.zGems));
+                tag(zItemTag.GEMS_SILICON).add(zItems.SILICON.get());
 
         }
 

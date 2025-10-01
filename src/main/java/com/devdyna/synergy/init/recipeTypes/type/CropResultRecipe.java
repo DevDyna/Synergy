@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.devdyna.synergy.init.recipeTypes.input.ItemListInput;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -20,11 +19,11 @@ import net.minecraft.world.level.Level;
 public class CropResultRecipe implements Recipe<ItemListInput> {
 
     public static final int INPUT_COUNT = 9;
-    public final ItemStack input;
-    public final List<Ingredient> outputs;
+    public final Ingredient input;
+    public final List<ItemStack> outputs;
 
-    public CropResultRecipe(ItemStack input,
-            List<Ingredient> outputs) {
+    public CropResultRecipe(Ingredient input,
+            List<ItemStack> outputs) {
         this.input = input;
         this.outputs = outputs;
     }
@@ -34,7 +33,7 @@ public class CropResultRecipe implements Recipe<ItemListInput> {
     }
 
     public ItemStack assemble(ItemListInput i, HolderLookup.Provider r) {
-        return this.outputs.get(0).getItems()[0];
+        return this.outputs.get(0);
     }
 
     public boolean canCraftInDimensions(int xz, int y) {
@@ -55,19 +54,19 @@ public class CropResultRecipe implements Recipe<ItemListInput> {
     }
 
     public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.copyOf(List.of(x.ingredient(this.input.getItem())));
+        return NonNullList.copyOf(List.of(input));
     }
 
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
-        return this.outputs.get(0).getItems()[0];
+        return this.outputs.get(0);
     }
 
-    public ItemStack getInput() {
+    public Ingredient getInput() {
         return input;
     }
 
-    public List<Ingredient> getOutputs() {
+    public List<ItemStack> getOutputs() {
         return outputs;
     }
 }

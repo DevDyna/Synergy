@@ -119,7 +119,7 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + "." + zStatic.Blocks.sprinkler, TIP_COLOR + "Randomly speed the grow of crops around");
 
-                add(Main.ID + "." + zStatic.tips.INGREDIENT, TIP_COLOR + "Crafting components");
+                add(Main.ID + "." + zStatic.tips.INGREDIENT, TIP_COLOR + "Crafting component");
 
                 add(Main.ID + "." + zStatic.Blocks.healer,
                                 TIP_COLOR + "Heal and remove fire effect at all entities above it");

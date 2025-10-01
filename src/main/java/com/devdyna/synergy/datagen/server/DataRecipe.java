@@ -3,9 +3,9 @@ package com.devdyna.synergy.datagen.server;
 import static com.devdyna.synergy.Main.ID;
 import static net.minecraft.data.recipes.RecipeCategory.*;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.datagen.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.crops.cultivated.azalea;
 import com.devdyna.synergy.init.recipeTypes.builders.*;
 import com.devdyna.synergy.init.types.*;
@@ -16,40 +16,29 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings("null")
-public class DataRecipe extends RecipeProvider {
+public class DataRecipe extends ExtraRecipeProvider {
 
         public DataRecipe(PackOutput o, CompletableFuture<HolderLookup.Provider> c) {
                 super(o, c);
         }
 
-        public static final List<DeferredHolder<Item, Item>> clearNBT = List.of(
-                        zItems.RED_BATTERY,
-                        zItems.BLUE_BATTERY,
-                        zItems.GREEN_BATTERY);
-
         @Override
         protected void buildRecipes(RecipeOutput c) {
 
                 cropResultRecipes(c);
-
-                clearNBT.forEach(i -> {
-                        ShapelessRecipeBuilder.shapeless(MISC, i.get())
-                                        .requires(i.get())
-                                        .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance.hasItems(i.get()))
-                                        .group(ID)
-                                        .save(c, i.getRegisteredName() + "_clear_nbt");
-                });
+                clearNBT(c);
+                bacteries(c);
+                legacyItemComponents(c);
+                fuelCellNuclearReactions(c);
+                mixtures(c);
+                coolerRecipes(c);
+                chests(c);
 
                 nodeRecipe(zBlocks.ITEM_TRANSFER.get(), Blocks.CHEST, c);
                 nodeRecipe(zBlocks.ITEM_PROVIDER.get(), Items.IRON_PICKAXE, c);
@@ -84,71 +73,6 @@ public class DataRecipe extends RecipeProvider {
                                                                 .replace("item.minecraft.", "")
                                                                 + "_from_mushrooms"));
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.WOODEN_CROOK.get(), 1)
-                                .pattern("SS")
-                                .pattern(" S")
-                                .pattern(" S")
-                                .define('S', Items.STICK)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.STICK))
-                                .group(zStatic.Items.wooden_crook).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.WOODEN_CROOK.get(), 1)
-                                .pattern("SS")
-                                .pattern("S ")
-                                .pattern("S ")
-                                .define('S', Items.STICK)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.STICK))
-                                .group(zStatic.Items.wooden_crook).save(c, x.rl(
-                                                zItems.WOODEN_CROOK.get().getDescriptionId()
-                                                                .replace("item." + ID + ".", "")
-                                                                + "_alt"));
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.SMASHER.get(), 1)
-                                .pattern("NI ")
-                                .pattern(" I ")
-                                .pattern(" IN")
-                                .define('I', Items.IRON_INGOT)
-                                .define('N', Items.IRON_NUGGET)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.IRON_INGOT, Items.IRON_NUGGET))
-                                .group(zStatic.Items.smasher).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.SMASHER.get(), 1)
-                                .pattern(" IN")
-                                .pattern(" I ")
-                                .pattern("NI ")
-                                .define('I', Items.IRON_INGOT)
-                                .define('N', Items.IRON_NUGGET)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.IRON_INGOT, Items.IRON_NUGGET))
-                                .group(zStatic.Items.smasher).save(c, x.rl(
-                                                zItems.SMASHER.get().getDescriptionId()
-                                                                .replace("item." + ID + ".", "")
-                                                                + "_alt"));
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.PIPE_REFARCTORIZER.get(), 1)
-                                .pattern(" I")
-                                .pattern("S ")
-                                .define('S', Items.STICK)
-                                .define('I', Items.IRON_NUGGET)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.IRON_INGOT, Items.IRON_NUGGET))
-                                .group(zStatic.Items.refactorizer).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.CONFIGURATOR.get(), 1)
-                                .pattern("N N")
-                                .pattern("IEI")
-                                .pattern("RIR")
-                                .define('R', Items.REDSTONE)
-                                .define('N', Items.IRON_NUGGET)
-                                .define('E', Items.EMERALD)
-                                .define('I', Items.IRON_INGOT)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.REDSTONE, Items.EMERALD, Items.IRON_INGOT,
-                                                                Items.IRON_NUGGET))
-                                .group(zStatic.Items.configurator).save(c);
 
                 ShapelessRecipeBuilder.shapeless(MISC, zItems.AZALEA_SEEDS.get(), 3)
                                 .requires(zItemTag.AZALEA_BUSHES)
@@ -241,38 +165,6 @@ public class DataRecipe extends RecipeProvider {
                                                 .hasItems(Items.DIORITE, Items.MUD, Items.CLAY))
                                 .group(zStatic.DecorativeBlocks.adobe).save(c);
 
-                ShapelessRecipeBuilder.shapeless(MISC, zItems.BONE_MEAL_MIXTURE.get(), 3)
-                                .requires(Tags.Items.SLIME_BALLS)
-                                .requires(Items.BONE_MEAL)
-                                .requires(Tags.Items.DUSTS_REDSTONE)
-                                .requires(Items.BLAZE_POWDER)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.BONE_MEAL, Items.BLAZE_POWDER, Items.REDSTONE,
-                                                                Items.SLIME_BALL))
-                                .group(zStatic.tips.MIXTURE_TIP).save(c);
-
-                ShapelessRecipeBuilder.shapeless(MISC, zItems.GLOWSTONE_MIXTURE.get(), 6)
-                                .requires(Tags.Items.SLIME_BALLS)
-                                .requires(zItems.ENERGIZED_REDSTONE.get())
-                                .requires(zItems.LAPIS_DUST.get())
-                                .requires(Items.PRISMARINE_CRYSTALS)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.PRISMARINE_CRYSTALS, zItems.ENERGIZED_REDSTONE.get(),
-                                                                zItems.LAPIS_DUST.get(),
-                                                                Items.SLIME_BALL))
-                                .group(zStatic.tips.MIXTURE_TIP).save(c);
-
-                ShapelessRecipeBuilder.shapeless(MISC, zItems.AMETHYST_MIXTURE.get(), 4)
-                                .requires(Items.FERMENTED_SPIDER_EYE)
-                                .requires(zItems.QUARTZ_DUST.get())
-                                .requires(zItems.AMETHYST_DUST.get())
-                                .requires(Items.HONEYCOMB)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.QUARTZ_DUST.get(), Items.FERMENTED_SPIDER_EYE,
-                                                                zItems.AMETHYST_DUST.get(),
-                                                                Items.HONEYCOMB))
-                                .group(zStatic.tips.MIXTURE_TIP).save(c);
-
                 stairBuilder(zBlocks.WAXED_PLANKS_STAIR.get(), Ingredient.of(zBlocks.WAXED_PLANKS.get()))
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zBlocks.WAXED_PLANKS.get()))
@@ -296,38 +188,6 @@ public class DataRecipe extends RecipeProvider {
                                                 Items.SLIME_BALL.getDescriptionId()
                                                                 .replace("item.minecraft.", "")
                                                                 + "_from_rice"));
-
-                // TODO probably it will change on later
-                ShapedRecipeBuilder.shaped(MISC, zItems.RED_BATTERY.get(), 1)
-                                .pattern(" R ")
-                                .pattern("RHR")
-                                .pattern(" R ")
-                                .define('R', zItemTag.CHIP_CORE)
-                                .define('H', zItems.BLUE_BATTERY.get())
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.BLUE_BATTERY.get(), zItems.BONE_MEAL_MIXTURE.get()))
-                                .group(ID).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.BLUE_BATTERY.get(), 1)
-                                .pattern(" R ")
-                                .pattern("RHR")
-                                .pattern(" R ")
-                                .define('R', zItemTag.RESISTOR_SHELL)
-                                .define('H', zItems.GREEN_BATTERY.get())
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.GREEN_BATTERY.get(), zItems.BLUE_CUP_MUSHROOM.get()))
-                                .group(ID).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.GREEN_BATTERY.get(), 1)
-                                .pattern(" S ")
-                                .pattern("RHR")
-                                .pattern(" R ")
-                                .define('S', Items.REDSTONE)
-                                .define('R', Items.SLIME_BALL)
-                                .define('H', zItems.CONDENSER.get())
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.SLIME_BALL, zItems.CONDENSER.get(), Items.REDSTONE))
-                                .group(ID).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.SOLAR_PANEL.get(), 1)
                                 .pattern("LLL")
@@ -367,43 +227,6 @@ public class DataRecipe extends RecipeProvider {
                                                                 Items.IRON_AXE))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.RESISTOR.get(), 4)
-                                .pattern(" MN")
-                                .pattern("MGM")
-                                .pattern("NM ")
-                                .define('N', Items.IRON_NUGGET)
-                                .define('M', zItemTag.RESISTOR_SHELL)
-                                .define('G', zItemTag.CHIP_CORE)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.IRON_NUGGET, zItems.BLUE_CUP_MUSHROOM.get(),
-                                                                zItems.BONE_MEAL_MIXTURE.get()))
-                                .group(ID).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.CHIP.get(), 4)
-                                .pattern(" N ")
-                                .pattern(" GN")
-                                .pattern("Q  ")
-                                .define('G', zItemTag.CHIP_CORE)
-                                .define('N', Items.IRON_NUGGET)
-                                .define('Q', Items.QUARTZ)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.BONE_MEAL_MIXTURE.get(), Items.IRON_NUGGET,
-                                                                Items.QUARTZ))
-                                .group(ID).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.CONDENSER.get(), 4)
-                                .pattern("N N")
-                                .pattern("GMG")
-                                .pattern(" I ")
-                                .define('N', Items.IRON_NUGGET)
-                                .define('G', zItemTag.CHIP_CORE)
-                                .define('M', zItemTag.CAPACITOR_ACTIVATOR)
-                                .define('I', Items.IRON_INGOT)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.IRON_NUGGET, zItems.BONE_MEAL_MIXTURE.get(),
-                                                                Items.IRON_INGOT, zItems.VIOLET_WEBCAP_MUSHROOM.get()))
-                                .group(ID).save(c);
-
                 ReactorCellBuilder.of()
                                 .input(zItems.RAW_SILICON)
                                 .output(zItems.SILICON)
@@ -411,70 +234,6 @@ public class DataRecipe extends RecipeProvider {
                                 .energy(5)
                                 .heat(10)
                                 .group(ID).unlockedBy().save(c);
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.URANIUM)
-                                .output(zItems.WASTE_FRAGMENT, 3)
-                                .duration(10_000)
-                                .energy(20)
-                                .heat(50)
-                                .group(ID).unlockedBy().save(c, "_from_uranium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.THORIUM)
-                                .output(zItems.WASTE_FRAGMENT, 6)
-                                .duration(25_000)
-                                .energy(80)
-                                .heat(90)
-                                .group(ID).unlockedBy().save(c, "_from_thorium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.PLUTONIUM)
-                                .output(zItems.WASTE_FRAGMENT, 9)
-                                .duration(50_000)
-                                .energy(160)
-                                .heat(180)
-                                .group(ID).unlockedBy().save(c, "_from_plutonium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.NEPTUNIUM)
-                                .output(zItems.WASTE_FRAGMENT, 12)
-                                .duration(75_000)
-                                .energy(300)
-                                .heat(350)
-                                .group(ID).unlockedBy().save(c, "_from_neptunium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.AMERICIUM)
-                                .output(zItems.WASTE_FRAGMENT, 15)
-                                .duration(150_000)
-                                .energy(750)
-                                .heat(1040)
-                                .group(ID).unlockedBy().save(c, "_from_americium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.BERKELIUM)
-                                .output(zItems.WASTE_FRAGMENT, 18)
-                                .duration(300_000)
-                                .energy(1500)
-                                .heat(1700)
-                                .group(ID).unlockedBy().save(c, "_from_berkelium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.CALIFORNIUM)
-                                .output(zItems.WASTE_FRAGMENT, 21)
-                                .duration(750_000)
-                                .energy(2700)
-                                .heat(3500)
-                                .group(ID).unlockedBy().save(c, "_from_californium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.CURIUM)
-                                .output(zItems.WASTE_FRAGMENT, 24)
-                                .duration(1_250_000)
-                                .energy(3500)
-                                .heat(7500)
-                                .group(ID).unlockedBy().save(c, "_from_curium");
 
                 UrnRitualBuilder.of()
                                 .add(Items.BLAZE_POWDER)
@@ -486,11 +245,6 @@ public class DataRecipe extends RecipeProvider {
                                 .add(zItems.SILVERFISH_DUST)
                                 .output(zItems.SILICON_SHARD, 4)
                                 .group(ID).unlockedBy().save(c);
-
-                // UrnRitualBuilder.of()
-                // .add(zItems.CREEPER_GALL)
-                // .output(zItems.WASTE_FRAGMENT, 2)
-                // .group(ID).unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
                                 .add(zItems.ENDERMAN_HEART)
@@ -756,66 +510,6 @@ public class DataRecipe extends RecipeProvider {
                                 .output(zItems.ENDERMAN_HEART)
                                 .unlockedBy().save(c);
 
-                ShapelessRecipeBuilder.shapeless(MISC, zBlocks.WOODEN_TINY_CHEST.get(), 4)
-                                .requires(Items.CHEST)
-                                .unlockedBy(ID, has(Items.CHEST))
-                                .save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zBlocks.WOODEN_TINY_CHEST.get())
-                                .add(Tags.Items.NUGGETS_GOLD)
-                                .output(zBlocks.ORNATE_TINY_CHEST.get())
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zBlocks.WOODEN_TINY_CHEST.get())
-                                .add(zItems.STONE_PEBBLE)
-                                .output(zBlocks.STONE_TINY_CHEST.get())
-                                .unlockedBy().save(c);
-
-                var coolers = List.of(
-                                zBlocks.COPPER_COOLER,
-                                zBlocks.GOLD_COOLER,
-                                zBlocks.IRON_COOLER,
-                                zBlocks.ENDER_COOLER,
-                                zBlocks.FROST_COOLER,
-                                zBlocks.LAPIS_COOLER,
-                                zBlocks.SCULK_COOLER,
-                                zBlocks.WATER_COOLER,
-                                zBlocks.QUARTZ_COOLER,
-                                zBlocks.SHADOW_COOLER,
-                                zBlocks.DIAMOND_COOLER,
-                                zBlocks.EMERALD_COOLER,
-                                zBlocks.REDSTONE_COOLER,
-                                zBlocks.GLOWSTONE_COOLER,
-                                zBlocks.NETHERITE_COOLER);
-
-                var ingredients = List.of(
-                                Items.COPPER_INGOT,
-                                Items.GOLD_INGOT,
-                                Items.IRON_INGOT,
-                                Items.ENDER_PEARL,
-                                Items.PACKED_ICE,
-                                Items.LAPIS_LAZULI,
-                                Items.SCULK,
-                                Items.WATER_BUCKET,
-                                Items.QUARTZ,
-                                zItems.GHOUL_HEART.get(),
-                                Items.DIAMOND,
-                                Items.EMERALD,
-                                Items.REDSTONE,
-                                Items.GLOWSTONE,
-                                Items.NETHERITE_INGOT);
-
-                for (DeferredHolder<Block, Block> b : coolers) {
-                        var index = coolers.indexOf(b);
-                        ShapelessRecipeBuilder.shapeless(MISC, b.get(), 1)
-                                        .requires(ingredients.get(index))
-                                        .requires(zBlocks.COOLER_BASE.get())
-                                        .unlockedBy(ID, has(ingredients.get(index)))
-                                        .save(c);
-                }
-
                 ShapedRecipeBuilder.shaped(MISC, zItems.NETHERRACK_PLATE.get(), 2)
                                 .pattern(" T ")
                                 .pattern("TPT")
@@ -860,119 +554,19 @@ public class DataRecipe extends RecipeProvider {
 
                 doubleSmelt(c, zItems.MIXED_INGOT.get(), zItems.ADVANCED_ALLOY_INGOT.get());
 
-        }
-
-        private void nuggetIngotBlock(RecipeOutput c, ItemLike nugget, ItemLike ingot, ItemLike block) {
-                nineBlockStorageRecipesWithCustomPacking(
-                                c, RecipeCategory.MISC, nugget, RecipeCategory.MISC, ingot,
-                                x.path(nugget.asItem()) + "_from_" + x.path(ingot.asItem()), x.path(ingot.asItem()));
-
-                nineBlockStorageRecipesWithCustomPacking(
-                                c, RecipeCategory.MISC, ingot, RecipeCategory.MISC, block,
-                                x.path(ingot.asItem()) + "_from_" + x.path(block.asItem()), x.path(ingot.asItem()));
-
-        }
-
-        private void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot) {
-
-                QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
-                                .output(x.item(dust.asItem(), 3))
-                                .unlockedBy().save(c, "_from_raw");
-
-                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
-                                .output(x.item(dust.asItem(), 1))
-                                .unlockedBy().save(c, "_from_ingot");
-
-                doubleSmelt(c, dust, ingot);
-        }
-
-        private void doubleSmelt(RecipeOutput c, ItemLike input, ItemLike output) {
-                SimpleCookingRecipeBuilder.blasting(x.ingredient(input.asItem()), MISC, output.asItem(), 0.1F, 100)
-                                .unlockedBy(getHasName(input), has(output))
-                                .save(c, x.path(output.asItem()) + "_from_" + x.path(input.asItem()) + "_blasting");
-                SimpleCookingRecipeBuilder.smelting(x.ingredient(input.asItem()), MISC, output.asItem(), 0.1F, 200)
-                                .unlockedBy(getHasName(input), has(output))
-                                .save(c, x.path(output.asItem()) + "_from_" + x.path(input.asItem()) + "_smelting");
-        }
-
-        protected static void twoByTwoPacker(RecipeOutput c, ItemLike output, TagKey<Item> tag) {
-                ShapedRecipeBuilder.shaped(MISC, output, 1)
-                                .define('#', tag)
-                                .pattern("##")
-                                .pattern("##")
-                                .unlockedBy(ID, has(tag))
+                ShapedRecipeBuilder.shaped(MISC, zItems.LIGHT_BULB.get(), 1)
+                                .define('G', Tags.Items.GLASS_BLOCKS_COLORLESS)
+                                .define('N', Tags.Items.NUGGETS_IRON)
+                                .define('D', Tags.Items.DUSTS_GLOWSTONE)
+                                .define('S', zItems.RESISTOR.get())
+                                .define('C', zItems.CONDENSER.get())
+                                .define('R', Tags.Items.DUSTS_REDSTONE)
+                                .pattern("GN ")
+                                .pattern("NDS")
+                                .pattern(" CR")
+                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_NUGGET))
                                 .save(c);
-        }
-
-        private void plate(Item input, Item output, RecipeOutput c) {
-                ShapedRecipeBuilder.shaped(MISC, output, 3)
-                                .pattern("III")
-                                .define('I', input)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(input))
-                                .group(ID).save(c);
-        }
-
-        // nodes
-        private void nodeRecipe(Block b, ItemLike catalyst, RecipeOutput c) {
-
-                ShapedRecipeBuilder.shaped(MISC, b.asItem(), 1)
-                                .pattern(" P ")
-                                .pattern("RBR")
-                                .pattern("SCS")
-                                .define('P', zBlocks.PIPE.get().asItem())
-                                .define('R', Tags.Items.DUSTS_REDSTONE)
-                                .define('C', catalyst)
-                                .define('B', Tags.Items.STORAGE_BLOCKS_REDSTONE)
-                                .define('S', Tags.Items.STONES)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.REDSTONE, catalyst, Items.REDSTONE_BLOCK,
-                                                                zBlocks.PIPE.get()))
-                                .group(zStatic.PipeStuff.types.item_node).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, b.asItem(), 4)
-                                .pattern(" P ")
-                                .pattern("RBR")
-                                .pattern("SCS")
-                                .define('P', zBlocks.PIPE.get().asItem())
-                                .define('R', Tags.Items.DUSTS_REDSTONE)
-                                .define('C', catalyst)
-                                .define('B', Items.ENDER_PEARL)
-                                .define('S', Tags.Items.STONES)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.REDSTONE, Items.ENDER_PEARL, catalyst,
-                                                                zBlocks.PIPE.get()))
-                                .group(zStatic.PipeStuff.types.item_node)
-                                .save(c, x.rl(
-                                                b.getDescriptionId()
-                                                                .replace("block." + ID + ".", "")
-                                                                + "_alt"));
 
         }
 
-        private void cropResultRecipes(RecipeOutput c) {
-
-                List<DeferredHolder<Item, ? extends Item>> seeds = List.of(
-                                zItems.RICE_SEED,
-                                zItems.AZALEA_SEEDS,
-                                zItems.COTTON_SEEDS,
-                                zItems.CAVE_WHEAT_SEEDS,
-                                zItems.BLUE_CUP_SPORE,
-                                zItems.VIOLET_WEBCAP_SPORE);
-
-                List<List<Item>> result = List.of(
-                                List.of(zItems.RICE_SEED.get()),
-                                List.of(zItems.AZALEA_SEEDS.get(), zItems.SMALL_AZALEA_LEAF.get(),
-                                                zItems.SMALL_AZALEA_ROOTS.get()),
-                                List.of(zItems.COTTON_SEEDS.get(), zItems.COTTON.get()),
-                                List.of(zItems.CAVE_WHEAT_SEEDS.get(), Items.WHEAT),
-                                List.of(zItems.BLUE_CUP_SPORE.get(), zItems.BLUE_CUP_MUSHROOM.get()),
-                                List.of(zItems.VIOLET_WEBCAP_SPORE.get(), zItems.VIOLET_WEBCAP_MUSHROOM.get()));
-
-                seeds.forEach(s -> CropResultBuilder
-                                .of().input(s.get()).output(result.get(seeds.indexOf(s)).stream()
-                                                .map(i -> x.ingredient(i)).toList())
-                                .group(ID).unlockedBy().save(c));
-
-        }
 }
