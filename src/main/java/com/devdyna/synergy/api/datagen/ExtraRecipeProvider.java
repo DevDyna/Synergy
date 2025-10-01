@@ -12,11 +12,11 @@ import com.devdyna.synergy.init.recipeTypes.builders.QuernMillingBuilder;
 import com.devdyna.synergy.init.recipeTypes.builders.ReactorCellBuilder;
 import com.devdyna.synergy.init.recipeTypes.builders.UrnRitualBuilder;
 import com.devdyna.synergy.init.types.*;
-import com.devdyna.synergy.utils.LevelUtil;
 import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
@@ -574,7 +574,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern("III")
                                 .define('I', input)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems((ItemLike[]) LevelUtil.getItemByTag(input).toArray()))
+                                                .hasItems(BuiltInRegistries.ITEM.get(input.location())))
                                 .group(ID).save(c);
         }
 
@@ -584,7 +584,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern("I")
                                 .define('I', input)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems((ItemLike[]) LevelUtil.getItemByTag(input).toArray()))
+                                                .hasItems(BuiltInRegistries.ITEM.get(input.location())))
                                 .group(ID).save(c);
         }
 
