@@ -78,6 +78,7 @@ public class zItemTag {
         public static final TagKey<Item> PLATE_STEEL = Material.tagItem("plates/steel", "c");
         public static final TagKey<Item> PLATE_COAL = Material.tagItem("plates/coal", "c");
         public static final TagKey<Item> PLATE_ADVANCED_ALLOY = Material.tagItem("plates/advanced_alloy", "c");
+        public static final TagKey<Item> PLATE_AQUAMARINE = Material.tagItem("plates/aquamarine", "c");
 
         public static final TagKey<Item> RICE_PLANT = Material.tagItem("plant/rice");
         public static final TagKey<Item> COTTON_PLANT = Material.tagItem("plant/cotton");
