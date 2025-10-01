@@ -69,6 +69,10 @@ public class LevelUtil {
         return BuiltInRegistries.ITEM.getOrCreateTag(tag).stream().toList();
     }
 
+    public static List<Item> getItemByTag(TagKey<Item> tag) {
+        return BuiltInRegistries.ITEM.getOrCreateTag(tag).stream().map(Holder::value).toList();
+    }
+
     public static Item ItemByTag(TagKey<Item> tag, int index) {
         return ItemByTag(tag).get(index).value();
     }
