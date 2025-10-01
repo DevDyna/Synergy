@@ -184,8 +184,8 @@ public class DataItemModel extends ItemModelProvider {
                 // simpleFlexibleBlock(zBlocks.ELITE_MODERATOR, "reactor/moderator/elite/off");
 
                 moderatorBlock(zBlocks.SIMPLE_MODERATOR, mcLoc("block/coal_block"));
-                moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("reactor/moderator/advanced_frame"));
-                moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("reactor/moderator/elite_frame"));
+                moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("block/reactor/moderator/advanced_frame"));
+                moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("block/reactor/moderator/elite_frame"));
 
 
                 tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
