@@ -264,6 +264,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 plate(Items.COPPER_INGOT, zItems.COPPER_PLATE.get(), c);
                 plate(zItems.STEEL_INGOT.get(), zItems.STEEL_PLATE.get(), c);
                 plate(zItems.ADVANCED_ALLOY_INGOT.get(), zItems.ADVANCED_ALLOY_PLATE.get(), c);
+                plate(zItems.AQUAMARINE.get(), zItems.AQUAMARINE_PLATE.get(), c);
 
                 nineBlockStorageRecipes(c, MISC, zItems.WASTE_FRAGMENT.get(), MISC, zItems.WASTE.get());
                 nineBlockStorageRecipes(c, MISC, zItems.SILICON_SHARD.get(), MISC, zItems.RAW_SILICON.get());
@@ -552,7 +553,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern("PSP")
                                 .define('C', zBlocks.ADVANCED_MACHINE_FRAME.get())
                                 .define('P', zItemTag.PLATE_COAL)
-                                .define('A', zItemTag.GEMS_AQUAMARINE)
+                                .define('A', zItemTag.PLATE_AQUAMARINE)
                                 .define('T', zItems.MAGNETIC_STONE_CIRCUIT.get())
                                 .define('S', zItems.NETHER_CIRCUIT.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
@@ -562,10 +563,11 @@ public class DataRecipe extends ExtraRecipeProvider {
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.REACTOR_FUEL_CELL.get().asItem(), 2)
                                 .pattern(" C ")
                                 .pattern("RPR")
-                                .pattern(" C ")
+                                .pattern(" A ")
                                 .define('C', zItems.MAGNETIC_STONE_CIRCUIT.get())
                                 .define('R', zItems.RESISTIVE_STONE_CIRCUIT.get())
                                 .define('P', zBlocks.ADVANCED_MACHINE_FRAME.get())
+                                .define('A', zItemTag.PLATE_AQUAMARINE)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                                                 .hasItems(zBlocks.ADVANCED_MACHINE_FRAME.get()))
                                 .group(zStatic.ReactorStuff.fuel_cell).save(c);
