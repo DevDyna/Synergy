@@ -13,16 +13,12 @@ public class zItemTag {
 
         }
 
-
         public static final TagKey<Item> COOLERS = Material
-                        .tagItem("coolers");
-                        public static final TagKey<Item> MODERATORS = Material
-                        .tagItem("moderators");
+                        .tagItem("cooler");
+        public static final TagKey<Item> MODERATORS = Material
+                        .tagItem("moderator");
 
-
-
-
-                public static final TagKey<Item> CAN_SUSTAIN_RICE = Material.tagItem("can_sustain/" + zStatic.Plants.RICE);
+        public static final TagKey<Item> CAN_SUSTAIN_RICE = Material.tagItem("can_sustain/" + zStatic.Plants.RICE);
         public static final TagKey<Item> CAN_SUSTAIN_COTTON = Material
                         .tagItem("can_sustain/" + zStatic.Plants.COTTON);
         public static final TagKey<Item> CAN_SUSTAIN_CAVE_WHEAT = Material
@@ -34,7 +30,6 @@ public class zItemTag {
 
         public static final TagKey<Item> INFESTED_BLOCKS = Material
                         .tagItem("infested_blocks", "c");
-
 
         public static final TagKey<Item> STONE_SLABS = Material.tagItem("stone_slabs");
 
@@ -90,7 +85,6 @@ public class zItemTag {
 
         public static final TagKey<Item> URN_MIXTURES = Material.tagItem("urn_mixtures");
 
-
         public static final TagKey<Item> FOILS = Material.tagItem("foils", "c");
         public static final TagKey<Item> FOIL_COPPER = Material.tagItem("foils/copper", "c");
         public static final TagKey<Item> FOIL_GOLD = Material.tagItem("foils/gold", "c");
@@ -110,9 +104,7 @@ public class zItemTag {
 
         public static final TagKey<Item> GEMS_AQUAMARINE = Material.tagItem("gems/aquamarine", "c");
         public static final TagKey<Item> GEMS_SILICON = Material.tagItem("gems/silicon", "c");
-       
-       
-        public static final TagKey<Item> METAL_NUGGETS = Material.tagItem("metal_nuggets");
 
+        public static final TagKey<Item> METAL_NUGGETS = Material.tagItem("metal_nuggets");
 
 }
