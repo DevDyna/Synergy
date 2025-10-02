@@ -4,6 +4,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.Material;
 
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 
@@ -54,11 +55,15 @@ public class zBlockTag {
         public static final TagKey<Block> FERMERS_DELIGHT_COMPOSTING = Material
                         .tagBlock("compost_activators", "farmersdelight");
 
-
         public static final TagKey<Block> BLOCK_STEEL = Material
                         .tagBlock("storage_blocks/steel", "c");
 
         public static final TagKey<Block> BLOCK_ADVANCED_ALLOY = Material
                         .tagBlock("storage_blocks/advanced_alloy", "c");
+
+        public static final TagKey<Block> COOLERS = Material
+                        .tagBlock("coolers");
+        public static final TagKey<Block> MODERATORS = Material
+                        .tagBlock("moderators");
 
 }
