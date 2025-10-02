@@ -172,7 +172,6 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei.itemuse",
                                 "Item Use Recipes");
 
-
                 add(Main.ID + ".jei.provider.item",
                                 "Item Provider Pattern");
 
@@ -230,6 +229,8 @@ public class DataLang extends LanguageProvider {
                 zItems.zMobDrop.getEntries().forEach(d -> add(d.getRegisteredName().replace(":", ".") + ".tip",
                                 TIP_COLOR + "Obtained from " + droptype
                                                 .get(zItems.zMobDrop.getEntries().stream().toList().indexOf(d))));
+
+                add(Main.ID + "." + zStatic.Items.soldering_gun, TIP_COLOR + "Change the size of AOE");
 
         }
 
