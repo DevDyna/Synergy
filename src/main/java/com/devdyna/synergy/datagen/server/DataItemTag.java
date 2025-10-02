@@ -24,8 +24,43 @@ public class DataItemTag extends ItemTagsProvider {
                 super(o, p, b);
         }
 
+        
         @Override
         protected void addTags(Provider p) {
+
+tag(zMultiTags.INFESTED_BLOCKS.item())
+                                .add(Items.INFESTED_CHISELED_STONE_BRICKS,
+                                                Items.INFESTED_COBBLESTONE,
+                                                Items.INFESTED_CRACKED_STONE_BRICKS,
+                                                Items.INFESTED_DEEPSLATE,
+                                                Items.INFESTED_MOSSY_STONE_BRICKS,
+                                                Items.INFESTED_STONE,
+                                                Items.INFESTED_STONE_BRICKS);
+
+                tag(zMultiTags.CAN_SUSTAIN_BLUE_CUP.item())
+                                .add(Items.DRIPSTONE_BLOCK, Items.CLAY, Items.CALCITE)
+                                .addTags(ItemTags.DIRT, Tags.Items.STONES, Tags.Items.ORES,
+                                                zMultiTags.INFESTED_BLOCKS.item(), Tags.Items.GRAVELS);
+
+                tag(zMultiTags.CAN_SUSTAIN_VIOLET_WEBCAP.item())
+                                .add(Items.DRIPSTONE_BLOCK, Items.CLAY, Items.CALCITE)
+                                .addTags(ItemTags.DIRT, Tags.Items.STONES, Tags.Items.ORES,
+                                                zMultiTags.INFESTED_BLOCKS.item(), Tags.Items.GRAVELS);
+
+                tag(zMultiTags.CAN_SUSTAIN_CAVE_WHEAT.item())
+                                .add(Items.DRIPSTONE_BLOCK, Items.CLAY, Items.CALCITE)
+                                .addTags(ItemTags.DIRT, Tags.Items.STONES, Tags.Items.ORES,
+                                                zMultiTags.INFESTED_BLOCKS.item(), Tags.Items.GRAVELS);
+
+                tag(zMultiTags.CAN_SUSTAIN_COTTON.item())
+                                .add(Items.FARMLAND)
+                                .addTag(ItemTags.DIRT);
+
+                tag(zMultiTags.CAN_SUSTAIN_RICE.item())
+                                .add(Items.CLAY, Items.FARMLAND)
+                                .addTags(ItemTags.DIRT, Tags.Items.SANDS, Tags.Items.GRAVELS,
+                                                Tags.Items.SANDSTONE_BLOCKS);
+
                 tag(zItemTag.STONE_SLABS).add(Items.STONE_SLAB, Items.SMOOTH_STONE_SLAB);
 
                 tag(zItemTag.AZALEA_BUSHES).add(Items.FLOWERING_AZALEA, Items.AZALEA);
