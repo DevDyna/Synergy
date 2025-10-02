@@ -18,15 +18,15 @@ public class core {
         LogUtil.decor(20);
 
         LogUtil.info("GuideMe"
-                + (!ModAddonUtil.checkMod(zStatic.Mods.GuideMe) ? " " : " not") + " found");
-        if (!ModAddonUtil.checkMod(zStatic.Mods.GuideMe))
+                + (ModAddonUtil.checkMod(zStatic.Mods.GuideMe) ? " " : " not") + " found");
+        if (ModAddonUtil.checkMod(zStatic.Mods.GuideMe))
             Guide.builder(ResourceLocation.parse(ID + ":guide")).build();
 
         LogUtil.info("FarmersDelight"
-                + (!ModAddonUtil.checkMod(zStatic.Mods.FarmersDelight) ? " " : " not") + " found");
+                + (ModAddonUtil.checkMod(zStatic.Mods.FarmersDelight) ? " " : " not") + " found");
 
         LogUtil.info("Mekanism"
-                + (!ModAddonUtil.checkMod(zStatic.Mods.Mekanism) ? " " : " not") + " found");
+                + (ModAddonUtil.checkMod(zStatic.Mods.Mekanism) ? " " : " not") + " found");
 
         LogUtil.decor(20);
     }
