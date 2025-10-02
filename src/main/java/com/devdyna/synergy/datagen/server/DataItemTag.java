@@ -32,9 +32,14 @@ public class DataItemTag extends ItemTagsProvider {
                 // copy(zBlockTag.CAN_SUSTAIN_CAVE_WHEAT, zItemTag.CAN_SUSTAIN_CAVE_WHEAT);
                 // copy(zBlockTag.CAN_SUSTAIN_COTTON, zItemTag.CAN_SUSTAIN_COTTON);
                 // copy(zBlockTag.CAN_SUSTAIN_RICE, zItemTag.CAN_SUSTAIN_RICE);
-                // copy(zBlockTag.CAN_SUSTAIN_VIOLET_WEBCAP, zItemTag.CAN_SUSTAIN_VIOLET_WEBCAP);
+                // copy(zBlockTag.CAN_SUSTAIN_VIOLET_WEBCAP,
+                // zItemTag.CAN_SUSTAIN_VIOLET_WEBCAP);
                 // copy(zBlockTag.INFESTED_BLOCKS, zItemTag.INFESTED_BLOCKS);
 
+                // Caused by: java.util.concurrent.CompletionException:
+                // java.lang.IllegalArgumentException: Couldn't define tag
+                // synergy:can_sustain/blue_cup_mushroom as it is missing following references:
+                // #c:stones
                 tag(zItemTag.CAN_SUSTAIN_BLUE_CUP).addTag(Tags.Items.STONES);
 
                 tag(zItemTag.STONE_SLABS).add(Items.STONE_SLAB, Items.SMOOTH_STONE_SLAB);
