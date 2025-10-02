@@ -79,7 +79,7 @@ public class DataBlockTag extends BlockTagsProvider {
                                 .addTag(zBlockTag.PIPE)
                                 .addTag(zBlockTag.NODE);
 
-                tag(zBlockTag.INFESTED_BLOCKS)
+                tag(zMultiTags.INFESTED_BLOCKS.block())
                                 .add(Blocks.INFESTED_CHISELED_STONE_BRICKS,
                                                 Blocks.INFESTED_COBBLESTONE,
                                                 Blocks.INFESTED_CRACKED_STONE_BRICKS,
@@ -88,26 +88,26 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 Blocks.INFESTED_STONE,
                                                 Blocks.INFESTED_STONE_BRICKS);
 
-                tag(zBlockTag.CAN_SUSTAIN_BLUE_CUP)
+                tag(zMultiTags.CAN_SUSTAIN_BLUE_CUP.block())
                                 .add(Blocks.DRIPSTONE_BLOCK, Blocks.CLAY, Blocks.CALCITE)
                                 .addTags(BlockTags.DIRT, Tags.Blocks.STONES, Tags.Blocks.ORES,
-                                                zBlockTag.INFESTED_BLOCKS, Tags.Blocks.GRAVELS);
+                                                zMultiTags.INFESTED_BLOCKS.block(), Tags.Blocks.GRAVELS);
 
-                tag(zBlockTag.CAN_SUSTAIN_VIOLET_WEBCAP)
+                tag(zMultiTags.CAN_SUSTAIN_VIOLET_WEBCAP.block())
                                 .add(Blocks.DRIPSTONE_BLOCK, Blocks.CLAY, Blocks.CALCITE)
                                 .addTags(BlockTags.DIRT, Tags.Blocks.STONES, Tags.Blocks.ORES,
-                                                zBlockTag.INFESTED_BLOCKS, Tags.Blocks.GRAVELS);
+                                                zMultiTags.INFESTED_BLOCKS.block(), Tags.Blocks.GRAVELS);
 
-                tag(zBlockTag.CAN_SUSTAIN_CAVE_WHEAT)
+                tag(zMultiTags.CAN_SUSTAIN_CAVE_WHEAT.block())
                                 .add(Blocks.DRIPSTONE_BLOCK, Blocks.CLAY, Blocks.CALCITE)
                                 .addTags(BlockTags.DIRT, Tags.Blocks.STONES, Tags.Blocks.ORES,
-                                                zBlockTag.INFESTED_BLOCKS, Tags.Blocks.GRAVELS);
+                                                zMultiTags.INFESTED_BLOCKS.block(), Tags.Blocks.GRAVELS);
 
-                tag(zBlockTag.CAN_SUSTAIN_COTTON)
+                tag(zMultiTags.CAN_SUSTAIN_COTTON.block())
                                 .add(Blocks.FARMLAND)
                                 .addTag(BlockTags.DIRT);
 
-                tag(zBlockTag.CAN_SUSTAIN_RICE)
+                tag(zMultiTags.CAN_SUSTAIN_RICE.block())
                                 .add(Blocks.CLAY, Blocks.FARMLAND)
                                 .addTags(BlockTags.DIRT, Tags.Blocks.SANDS, Tags.Blocks.GRAVELS,
                                                 Tags.Blocks.SANDSTONE_BLOCKS);
