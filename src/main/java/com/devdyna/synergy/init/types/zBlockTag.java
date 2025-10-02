@@ -62,8 +62,8 @@ public class zBlockTag {
                         .tagBlock("storage_blocks/advanced_alloy", "c");
 
         public static final TagKey<Block> COOLERS = Material
-                        .tagBlock("coolers");
+                        .tagBlock("cooler");
         public static final TagKey<Block> MODERATORS = Material
-                        .tagBlock("moderators");
+                        .tagBlock("moderator");
 
 }
