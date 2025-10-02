@@ -132,6 +132,10 @@ dependencies {
     //guideme
     implementation "curse.maven:guideme-1173950:6688687"
 
+    //compat
+    implementation "curse.maven:meka-268560:7017663"
+    implementation "curse.maven:patchouli-306770:6842247"
+
     //jei integration
     compileOnly "mezz.jei:jei-1.21.1-common-api:19.18.10.218"
     compileOnly "mezz.jei:jei-1.21.1-neoforge-api:19.18.10.218"
