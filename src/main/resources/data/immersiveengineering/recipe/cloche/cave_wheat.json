@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "type": "immersiveengineering:cloche",
+  "input": {
+    "item": "synergy:cave_wheat_seed"
+  },
+  "render": {
+    "type": "immersiveengineering:crop",
+    "block": "synergy:cave_wheat"
+  },
+  "results": [
+    {
+      "count": 1,
+      "id": "minecraft:wheat"
+    },
+    {
+      "chance": 0.75,
+      "output": {
+        "id": "synergy:cave_wheat_seed"
+      }
+    }
+  ],
+  "soil": {
+    "tag": "c:stones"
+  },
+  "time": 800
+}

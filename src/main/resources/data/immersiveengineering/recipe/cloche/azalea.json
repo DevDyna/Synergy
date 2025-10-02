@@ -1,0 +1,40 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "type": "immersiveengineering:cloche",
+  "input": {
+    "item": "synergy:azalea_seeds"
+  },
+  "render": {
+    "type": "immersiveengineering:crop",
+    "block": "synergy:azalea"
+  },
+  "results": [
+    {
+      "chance": 0.5,
+      "output": {
+        "id": "synergy:small_azalea_roots"
+      }
+    },
+    {
+      "chance": 0.5,
+      "output": {
+        "id": "synergy:small_azalea_leaf"
+      }
+    },
+    {
+      "chance": 0.5,
+      "output": {
+        "id": "synergy:azalea_seeds"
+      }
+    }
+  ],
+  "soil": {
+    "item": "minecraft:flower_pot"
+  },
+  "time": 800
+}

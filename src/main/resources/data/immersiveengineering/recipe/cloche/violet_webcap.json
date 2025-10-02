@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "type": "immersiveengineering:cloche",
+  "input": {
+    "item": "synergy:violet_webcap_pod"
+  },
+  "render": {
+    "type": "immersiveengineering:crop",
+    "block": "synergy:violet_webcap_mushroom"
+  },
+  "results": [
+    {
+      "count": 2,
+      "id": "synergy:violet_webcap_mushroom"
+    },
+    {
+      "chance": 0.75,
+      "output": {
+        "id": "synergy:violet_webcap_pod"
+      }
+    }
+  ],
+  "soil": {
+    "tag": "c:stones"
+  },
+  "time": 800
+}

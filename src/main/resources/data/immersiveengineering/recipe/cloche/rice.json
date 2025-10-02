@@ -1,0 +1,44 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "type": "immersiveengineering:cloche",
+  "input": {
+    "item": "synergy:rice_seed"
+  },
+  "render": {
+    "type": "immersiveengineering:crop",
+    "block": "synergy:rice"
+  },
+  "results": [
+    {
+      "count": 2,
+      "id": "synergy:rice_seed"
+    },
+    {
+      "chance": 0.9,
+      "output": {
+        "id": "synergy:rice_seed"
+      }
+    },
+    {
+      "chance": 0.75,
+      "output": {
+        "id": "synergy:rice_seed"
+      }
+    },
+    {
+      "chance": 0.5,
+      "output": {
+        "id": "synergy:rice_seed"
+      }
+    }
+  ],
+  "soil": {
+    "tag": "minecraft:dirt"
+  },
+  "time": 800
+}
