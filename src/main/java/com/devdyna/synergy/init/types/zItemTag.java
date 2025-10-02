@@ -5,7 +5,6 @@ import com.devdyna.synergy.init.Material;
 
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 
 public class zItemTag {
