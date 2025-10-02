@@ -33,7 +33,6 @@ public class QuernCategory extends BaseJEICategory implements IRecipeCategory<Qu
 
     public QuernCategory(IGuiHelper helper) {
         this.helper = helper;
-        // TODO arrow animation return
     }
 
     @Override
