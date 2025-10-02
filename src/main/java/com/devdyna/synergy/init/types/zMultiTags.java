@@ -1,5 +1,6 @@
 package com.devdyna.synergy.init.types;
 
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.MultiTag;
 
 public class zMultiTags {
@@ -80,5 +81,14 @@ public class zMultiTags {
 
     public static MultiTag COOLERS = MultiTag.of("cooler");
     public static MultiTag MODERATORS = MultiTag.of("moderator");
+
+    public static MultiTag CAN_SUSTAIN_RICE = MultiTag.of("can_sustain/" + zStatic.Plants.RICE);
+    public static MultiTag CAN_SUSTAIN_COTTON = MultiTag.of("can_sustain/" + zStatic.Plants.COTTON);
+    public static MultiTag CAN_SUSTAIN_CAVE_WHEAT = MultiTag.of("can_sustain/" + zStatic.Plants.CAVE_WHEAT);
+    public static MultiTag CAN_SUSTAIN_BLUE_CUP = MultiTag.of("can_sustain/" + zStatic.Plants.BLUE_CUP_MUSHROOM);
+    public static MultiTag CAN_SUSTAIN_VIOLET_WEBCAP = MultiTag
+            .of("can_sustain/" + zStatic.Plants.VIOLET_WEBCAP_MUSHROOM);
+
+    public static MultiTag INFESTED_BLOCKS = MultiTag.of("c", "infested_blocks");
 
 }
