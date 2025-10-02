@@ -80,8 +80,8 @@ public class zMultiTags {
     // return new MultiTag(ID, "deposit/", name);
     // }
 
-    public static MultiTag COOLERS = MultiTag.of("cooler");
-    public static MultiTag MODERATORS = MultiTag.of("moderator");
+    // public static MultiTag COOLERS = MultiTag.of("cooler");
+    // public static MultiTag MODERATORS = MultiTag.of("moderator");
 
     // public static MultiTag CAN_SUSTAIN_RICE = MultiTag.of("can_sustain/" + zStatic.Plants.RICE);
     // public static MultiTag CAN_SUSTAIN_COTTON = MultiTag.of("can_sustain/" + zStatic.Plants.COTTON);
