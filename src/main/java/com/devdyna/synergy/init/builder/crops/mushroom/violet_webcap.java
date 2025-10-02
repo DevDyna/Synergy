@@ -1,8 +1,7 @@
 package com.devdyna.synergy.init.builder.crops.mushroom;
 
 import com.devdyna.synergy.api.plants.builder.BaseCropMushroom;
-import com.devdyna.synergy.init.types.zBlockTag;
-import com.devdyna.synergy.init.types.zItems;
+import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.ItemLike;
@@ -27,7 +26,7 @@ public class violet_webcap extends BaseCropMushroom {
 
     @Override
     public TagKey<Block> getSpawnFilter() {
-        return zBlockTag.CAN_SUSTAIN_VIOLET_WEBCAP;
+        return zMultiTags.CAN_SUSTAIN_VIOLET_WEBCAP.block();
     }
 
 }
