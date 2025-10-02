@@ -5,23 +5,20 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.List;
 
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.datagen.ExtraItemModelProvider;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.utils.DataGenUtil;
 import com.devdyna.synergy.utils.x;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
-import net.neoforged.neoforge.registries.DeferredHolder;
 
-public class DataItemModel extends ItemModelProvider {
+public class DataItemModel extends ExtraItemModelProvider {
 
         public DataItemModel(PackOutput o, ExistingFileHelper f) {
                 super(o, ID, f);
@@ -33,9 +30,8 @@ public class DataItemModel extends ItemModelProvider {
 
         @Override
         protected void registerModels() {
-                // -----------------------//
 
-                withExistingParent(x.path(zBlocks.AZALEA.get().asItem()), x.rl( "block/azalea/item"));
+                withExistingParent(x.path(zBlocks.AZALEA.get().asItem()), x.rl("block/azalea/item"));
 
                 zItems.zBucketItems.getEntries().forEach(b -> withExistingParent(
                                 x.path(b.get()),
@@ -43,7 +39,6 @@ public class DataItemModel extends ItemModelProvider {
                                 .customLoader(DynamicFluidContainerModelBuilder::begin)
                                 .fluid(((BucketItem) b.get()).content));
 
-                //
                 zItems.zCraftingComponents.getEntries()
                                 .forEach(item -> DataGenUtil.itemModel(item.get(), this, "components/"));
                 zItems.zCropExtra.getEntries()
@@ -84,7 +79,6 @@ public class DataItemModel extends ItemModelProvider {
                                 .forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/droplet/",
                                                 x.path(item.get())));
 
-                // -----------------------//
                 zBlocks.zDecorative.getEntries()
                                 .forEach(bk -> cubeAll(bk.getRegisteredName().replace(ID + ":block/", ""),
                                                 modLoc("block/decorative/"
@@ -119,8 +113,6 @@ public class DataItemModel extends ItemModelProvider {
                                                                 "").replace("_stair",
                                                                                 ""))));
 
-                // -----------------------//
-
                 DataGenUtil.itemBlockwithParent(zBlocks.SPRINKLER.get(), this,
                                 ID + ":block/" + x.path(zBlocks.SPRINKLER.get()));
 
@@ -141,26 +133,29 @@ public class DataItemModel extends ItemModelProvider {
                                                 "item/plants/bush/" + x.path(w).replace("wild_", ""))));
 
                 orientableWithBottom(zBlocks.HARVESTER.getRegisteredName(),
-                                modLoc("block/harvester/side"), modLoc("block/harvester/front"),
-                                modLoc("block/harvester/bottom"), modLoc("block/harvester/top"));
+                                modLoc("block/harvester/side"),
+                                modLoc("block/harvester/front"),
+                                modLoc("block/harvester/bottom"),
+                                modLoc("block/harvester/top"));
 
                 orientableWithBottom(zBlocks.REACTOR_CONTROLLER.getRegisteredName(),
-                                modLoc("block/reactor/controller/side"), modLoc("block/reactor/controller/front_off"),
-                                modLoc("block/reactor/controller/bottom"), modLoc("block/reactor/controller/top"));
+                                modLoc("block/reactor/controller/side"),
+                                modLoc("block/reactor/controller/front_off"),
+                                modLoc("block/reactor/controller/bottom"),
+                                modLoc("block/reactor/controller/top"));
 
                 cubeBottomTop(zBlocks.ADVANCED_MACHINE_FRAME.getRegisteredName(),
-                                modLoc("block/reactor/controller/side"), modLoc("block/reactor/controller/bottom"),
+                                modLoc("block/reactor/controller/side"),
+                                modLoc("block/reactor/controller/bottom"),
                                 modLoc("block/reactor/controller/top"));
 
                 cubeBottomTop(zBlocks.BASIC_MACHINE_FRAME.getRegisteredName(),
-                                modLoc("block/harvester/side"), modLoc("block/harvester/bottom"),
+                                modLoc("block/harvester/side"),
+                                modLoc("block/harvester/bottom"),
                                 modLoc("block/harvester/top"));
 
                 simpleFullBlock(zBlocks.HEALER, "");
                 simpleFullBlock(zBlocks.REACTOR_FUEL_CELL, "reactor/");
-                // simpleFullBlock(zBlocks.REACTOR_PORT, "reactor/");
-
-                // simpleFlexibleBlock(zBlocks.COOLER_BASE, "reactor/cooler/base");
 
                 CoolerBlock(zBlocks.COPPER_COOLER, mcLoc("block/copper_block"));
                 CoolerBlock(zBlocks.GOLD_COOLER, mcLoc("block/gold_block"));
@@ -178,72 +173,19 @@ public class DataItemModel extends ItemModelProvider {
                 CoolerBlock(zBlocks.GLOWSTONE_COOLER, mcLoc("block/glowstone"));
                 CoolerBlock(zBlocks.NETHERITE_COOLER, mcLoc("block/netherite_block"));
 
-                // simpleFlexibleBlock(zBlocks.SIMPLE_MODERATOR, "reactor/moderator/simple/off");
-                // simpleFlexibleBlock(zBlocks.IMPROVED_MODERATOR, "reactor/moderator/improved/off");
-                // simpleFlexibleBlock(zBlocks.ADVANCED_MODERATOR, "reactor/moderator/advanced/off");
-                // simpleFlexibleBlock(zBlocks.ELITE_MODERATOR, "reactor/moderator/elite/off");
-
                 moderatorBlock(zBlocks.SIMPLE_MODERATOR, mcLoc("block/coal_block"));
                 moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("block/reactor/moderator/advanced_frame"));
                 moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("block/reactor/moderator/elite_frame"));
 
-
                 tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
                 tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
                 tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
+
                 withExistingParent(zBlocks.URN.getRegisteredName(),
                                 modLoc("block/tiny_block/urn"));
 
                 withExistingParent(zBlocks.QUERN.getRegisteredName(),
                                 modLoc("block/quern/item"));
-        }
-
-        private void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
-                withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
-                                .texture("top", "block/reactor/cooler/casing")
-                                .texture("below", below);
-        }
-
-
-        private void moderatorBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
-                withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
-                                .texture("top", "block/reactor/moderator/base_off")
-                                .texture("below", below);
-        }
-
-        private void tinyChestAll(DeferredHolder<Block, Block> b, String texture) {
-                tinyChest(b, texture, texture, texture, texture, texture, texture, texture);
-        }
-
-        private void tinyChest(DeferredHolder<Block, Block> b, String particles, String north, String south,
-                        String east, String west, String up, String down) {
-                withExistingParent(b.getRegisteredName(),
-                                modLoc("block/tiny_block/chest"))
-                                .texture("particle", particles)
-                                .texture("north", north)
-                                .texture("south", south)
-                                .texture("east", east)
-                                .texture("west", west)
-                                .texture("up", up)
-                                .texture("down", down);
-        }
-
-        @SuppressWarnings("unused")
-        private void simpleFlexibleBlock(DeferredHolder<Block, Block> b, String loc) {
-                cubeAll(b.getRegisteredName(),
-                                modLoc("block/" + loc));
-        }
-
-        private void simpleFullBlock(DeferredHolder<Block, Block> b, String prefix) {
-                cubeAll(b.getRegisteredName(),
-                                modLoc("block/" + b.getRegisteredName().replace(ID + ":", prefix)));
-        }
-
-        private void node(DeferredHolder<Block, ?> b, String color) {
-                withExistingParent(b.getRegisteredName(), modLoc("block/node/_template/item"))
-                                .texture("pipe", ID + ":block/pipe/black")
-                                .texture("node", ID + ":block/node/" + color)
-                                .texture("back", ID + ":block/node/back");
         }
 
 }
