@@ -34,13 +34,11 @@ public class ItemUseBuilder implements RecipeBuilder {
     private Ingredient inputItem;
     private BlockState inputState;
     private BlockState outputState;
-    // private boolean shift;
-    // private boolean consume;
+    private boolean canBeDisabled;
     private final Map<String, Criterion<?>> criteria;
 
     public ItemUseBuilder() {
-        // this.shift = false;
-        // this.consume = false;
+        this.canBeDisabled = false;
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
@@ -66,15 +64,10 @@ public class ItemUseBuilder implements RecipeBuilder {
         return this;
     }
 
-    // public ItemUseBuilder requireShift() {
-    //     this.shift = true;
-    //     return this;
-    // }
-
-    // public ItemUseBuilder consumeItemOnUse() {
-    //     this.consume = true;
-    //     return this;
-    // }
+    public ItemUseBuilder canBeDisabled() {
+        this.canBeDisabled = true;
+        return this;
+    }
 
     public ItemUseBuilder outputBlock(BlockState b) {
         this.outputState = b;
@@ -139,9 +132,8 @@ public class ItemUseBuilder implements RecipeBuilder {
                 .rewards(AdvancementRewards.Builder.recipe(pId))
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement$builder::addCriterion);
-        ItemUseRecipe shapelessrecipe = new ItemUseRecipe(inputItem, 
-        // shift, consume,
-         inputState, outputState);
+        ItemUseRecipe shapelessrecipe = new ItemUseRecipe(inputItem,
+                inputState, outputState, canBeDisabled);
         pRecipeOutput.accept(pId, shapelessrecipe,
                 advancement$builder.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
     }
