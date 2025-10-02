@@ -12,7 +12,7 @@ public class Common {
 
     private static final ModConfigSpec.Builder qCOMMON = new ModConfigSpec.Builder();
 
-    public static BooleanValue TOGGLE_POT_EVENT;
+    public static BooleanValue DISABLE_ITEM_USE_RECIPE;
 
     public static BooleanValue TOGGLE_CROOK_EVENT;
 
@@ -28,9 +28,9 @@ public class Common {
     private static void events() {
         qCOMMON.comment("Events").push("1-events");
 
-        TOGGLE_POT_EVENT = qCOMMON
-                .comment("Enable/Disable Azalea interaction o Flower Pots")
-                .define("pot_event_status", false);
+        DISABLE_ITEM_USE_RECIPE = qCOMMON
+                .comment("Enable/Disable Toggleable Item-Use recipes")
+                .define("item_use_recipe_toggleable", false);
 
         TOGGLE_CROOK_EVENT = qCOMMON
                 .comment("Enable/Disable Crook behavior on breaking leaves")
