@@ -32,8 +32,8 @@ public class DataBlockTag extends BlockTagsProvider {
                 tag(zBlockTag.CROPS).addTag(BlockTags.CROPS);
 
                 tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                                .addTag(zMultiTags.COOLERS.block())
-                                .addTag(zMultiTags.MODERATORS.block())
+                                .addTag(zBlockTag.COOLERS)
+                                .addTag(zBlockTag.MODERATORS)
                                 .add(
                                                 zBlocks.SPRINKLER.get(),
                                                 zBlocks.HARVESTER.get(),
@@ -143,17 +143,17 @@ public class DataBlockTag extends BlockTagsProvider {
                 tag(zBlockTag.FERMERS_DELIGHT_COMPOSTING).add(zBlocks.BLUE_CUP_MUSHROOM.get(),
                                 zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
 
-                tag(zMultiTags.COOLERS.block())
+                tag(zBlockTag.COOLERS)
                                 .add(zBlocks.zCoolers.getEntries().stream().map(i -> i.get()).toArray(Block[]::new));
 
-                tag(zMultiTags.MODERATORS.block())
+                tag(zBlockTag.MODERATORS)
                                 .add(zBlocks.zModerators.getEntries().stream().map(i -> i.get()).toArray(Block[]::new));
 
                 // solar panels atm will cause rendering issues
                 tag(zBlockTag.MASHABLE)
                                 .addTag(zBlockTag.CAN_CONNECT)
-                                .addTag(zMultiTags.COOLERS.block())
-                                .addTag(zMultiTags.MODERATORS.block())
+                                .addTag(zBlockTag.COOLERS)
+                                .addTag(zBlockTag.MODERATORS)
                                 .add(
                                                 zBlocks.SPRINKLER.get(),
                                                 zBlocks.HARVESTER.get(),
