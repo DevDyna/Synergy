@@ -31,7 +31,11 @@ public class MultiTag {
     }
 
     public static MultiTag of(String name){
-        return new MultiTag(name);
+        return of(ID,name);
+    }
+
+    public static MultiTag of(String modid,String name){
+        return new MultiTag(modid,name);
     }
 
     public TagKey<Item> item() {
