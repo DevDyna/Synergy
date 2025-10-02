@@ -2,11 +2,7 @@ package com.devdyna.synergy.datagen.server;
 
 import java.util.concurrent.CompletableFuture;
 
-import com.devdyna.synergy.init.types.zBlockTag;
-import com.devdyna.synergy.init.types.zBlocks;
-import com.devdyna.synergy.init.types.zItemTag;
-import com.devdyna.synergy.init.types.zItems;
-import com.devdyna.synergy.init.types.zMultiTags;
+import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.DataGenUtil;
 import com.devdyna.synergy.utils.x;
 
@@ -28,6 +24,7 @@ public class DataItemTag extends ItemTagsProvider {
         @Override
         protected void addTags(Provider p) {
 
+                //TODO check issue before 
                 // copy(zBlockTag.CAN_SUSTAIN_BLUE_CUP, zItemTag.CAN_SUSTAIN_BLUE_CUP);
                 // copy(zBlockTag.CAN_SUSTAIN_CAVE_WHEAT, zItemTag.CAN_SUSTAIN_CAVE_WHEAT);
                 // copy(zBlockTag.CAN_SUSTAIN_COTTON, zItemTag.CAN_SUSTAIN_COTTON);
@@ -35,12 +32,6 @@ public class DataItemTag extends ItemTagsProvider {
                 // copy(zBlockTag.CAN_SUSTAIN_VIOLET_WEBCAP,
                 // zItemTag.CAN_SUSTAIN_VIOLET_WEBCAP);
                 // copy(zBlockTag.INFESTED_BLOCKS, zItemTag.INFESTED_BLOCKS);
-
-                // Caused by: java.util.concurrent.CompletionException:
-                // java.lang.IllegalArgumentException: Couldn't define tag
-                // synergy:can_sustain/blue_cup_mushroom as it is missing following references:
-                // #c:stones
-                tag(zItemTag.CAN_SUSTAIN_BLUE_CUP).addTag(Tags.Items.STONES);
 
                 tag(zItemTag.STONE_SLABS).add(Items.STONE_SLAB, Items.SMOOTH_STONE_SLAB);
 
