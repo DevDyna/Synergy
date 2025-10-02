@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-import com.devdyna.synergy.datagen.client.DataBlockModelState;
 import com.devdyna.synergy.datagen.server.DataGlobalLootModifier;
 
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -125,17 +124,17 @@ public class DataGenUtil {
         return b.withExistingParent(getPath(block), mod + "block/" + getPath(block));
     }
 
-    public static BlockModelBuilder cross(DataBlockModelState t, String filePath, ResourceLocation texturePath) {
+    public static BlockModelBuilder cross(BlockStateProvider t, String filePath, ResourceLocation texturePath) {
         return t.models().withExistingParent(filePath, t.mcLoc("block/cross")).texture("cross", texturePath)
                 .renderType("minecraft:cutout");
     }
 
-    public static BlockModelBuilder crop(DataBlockModelState t, String filePath, ResourceLocation texturePath) {
+    public static BlockModelBuilder crop(BlockStateProvider t, String filePath, ResourceLocation texturePath) {
         return t.models().withExistingParent(filePath, t.mcLoc("block/crop")).texture("crop", texturePath)
                 .renderType("minecraft:cutout");
     }
 
-    public static BlockModelBuilder crossORcrop(DataBlockModelState t, boolean isCrop, String filePath,
+    public static BlockModelBuilder crossORcrop(BlockStateProvider t, boolean isCrop, String filePath,
             ResourceLocation texturePath) {
         return t.models().withExistingParent(filePath, t.mcLoc("block/" + (isCrop ? "crop" : "cross")))
                 .texture((isCrop ? "crop" : "cross"), texturePath)
@@ -152,7 +151,7 @@ public class DataGenUtil {
         return b.models().withExistingParent(getPath(block), parent);
     }
 
-    public static void BiStateBlock(DataBlockModelState t, Block b, BooleanProperty p, ModelFile on,
+    public static void BiStateBlock(BlockStateProvider t, Block b, BooleanProperty p, ModelFile on,
             ModelFile off) {
         t.getVariantBuilder(b).partialState().with(p, true).modelForState()
                 .modelFile(on)
