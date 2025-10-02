@@ -3,6 +3,7 @@
   "base": {
     "Name": "minecraft:flower_pot"
   },
+  "can_be_disabled": true,
   "item": {
     "item": "synergy:azalea_seeds"
   },
