@@ -84,4 +84,25 @@ public class ClazzUtil {
         return l;
     }
 
+    public static String[] getAllStrings(Class<?> clazz) {
+        try {
+            Field[] fields = clazz.getDeclaredFields();
+            return java.util.Arrays.stream(fields)
+                    .filter(f -> f.getType() == String.class) // only String fields
+                    .map(f -> {
+                        try {
+                            f.setAccessible(true);
+                            return (String) f.get(null); // works for static fields
+                        } catch (Exception e) {
+                            return null;
+                        }
+                    })
+                    .filter(s -> s != null) // ignore null values
+                    .toArray(String[]::new);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new String[0];
+        }
+    }
+
 }
