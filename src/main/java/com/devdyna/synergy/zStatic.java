@@ -367,12 +367,9 @@ public class zStatic {
         public static String GuideMe = "guideme";
         public static String Mekanism = "mekanism";
         public static String FarmersDelight = "farmersdelight";
+        public static String ImmersiveEngineering = "immersiveengineering";
+        public static String Patchouli = "patchouli";
     }
-
-    // public class checkMods {
-    //     public static boolean GuideMe = ModAddonUtil.checkMod(Mods.GuideMe);
-    //     public static boolean Mekanism = ModAddonUtil.checkMod(Mods.Mekanism);
-    // }
 
     public class tips {
         public static String MIXTURE_TIP = "mixture_tip";
