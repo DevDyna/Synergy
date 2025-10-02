@@ -618,4 +618,26 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
+        protected void droplets(RecipeOutput c) {
+
+                var droplets = List.of(
+                                zItems.SAP,
+                                zItems.OIL,
+                                zItems.GLUE);
+
+                var fluids = List.of(
+                                zFluids.SAP,
+                                zFluids.OIL,
+                                zFluids.GLUE);
+
+                droplets.forEach(d -> {
+                        var bucket = fluids.get(droplets.indexOf(d)).getItemBucket().get();
+                        ShapelessRecipeBuilder.shapeless(MISC, d.get(), 3)
+                                        .requires(bucket)
+                                        .unlockedBy(ID, has(bucket))
+                                        .save(c);
+                });
+
+        }
+
 }
