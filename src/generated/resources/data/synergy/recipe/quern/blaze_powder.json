@@ -1,0 +1,11 @@
+{
+  "type": "synergy:quern",
+  "frequence": 120,
+  "ingredient": {
+    "item": "minecraft:torchflower"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:blaze_powder"
+  }
+}

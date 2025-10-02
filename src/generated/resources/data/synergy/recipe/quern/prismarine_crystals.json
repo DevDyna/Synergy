@@ -1,6 +1,6 @@
 {
   "type": "synergy:quern",
-  "frequence": 60,
+  "frequence": 20,
   "ingredient": {
     "item": "minecraft:prismarine_shard"
   },
