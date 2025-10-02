@@ -13,6 +13,15 @@ public class zItemTag {
 
         }
 
+
+        public static final TagKey<Item> COOLERS = Material
+                        .tagItem("coolers");
+                        public static final TagKey<Item> MODERATORS = Material
+                        .tagItem("moderators");
+
+
+
+
                 public static final TagKey<Item> CAN_SUSTAIN_RICE = Material.tagItem("can_sustain/" + zStatic.Plants.RICE);
         public static final TagKey<Item> CAN_SUSTAIN_COTTON = Material
                         .tagItem("can_sustain/" + zStatic.Plants.COTTON);
