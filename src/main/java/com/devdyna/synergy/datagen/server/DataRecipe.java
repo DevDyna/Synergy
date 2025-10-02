@@ -639,6 +639,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 .hasItems(zItems.WIRED_NETHER_PLATE.get()))
                                 .group(ID).save(c);
 
+                QuernMillingBuilder.of()
+                                .input(Items.TORCHFLOWER)
+                                .output(Items.BLAZE_POWDER)
+                                .delay(120)
+                                .group(ID)
+                                .unlockedBy()
+                                .save(c);
+
         }
 
 }
