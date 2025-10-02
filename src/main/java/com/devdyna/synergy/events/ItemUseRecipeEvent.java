@@ -2,6 +2,7 @@ package com.devdyna.synergy.events;
 
 import java.util.Optional;
 
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.recipeTypes.input.UseItemInput;
 import com.devdyna.synergy.init.recipeTypes.type.ItemUseRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -24,7 +25,6 @@ public class ItemUseRecipeEvent {
         var item = event.getItemStack();
         var hand = event.getHand();
         var state = level.getBlockState(pos);
-        // var shift = player.isCrouching();
 
         Optional<RecipeHolder<ItemUseRecipe>> recipe = level.getRecipeManager()
                 .getRecipeFor(zRecipeTypes.ITEM_USE.getType(),
@@ -34,15 +34,10 @@ public class ItemUseRecipeEvent {
 
             var rcp = recipe.get().value();
 
-            // if (rcp.getRequireShift()) {
-            // if (!shift)
-            // return;
-            // }
+            if (rcp.canBeDisabled() && Common.DISABLE_ITEM_USE_RECIPE.get())
+                return;
 
-            //
-            if (
-            // rcp.getConsumeItem() &&
-            !player.isCreative()) {
+            if (!player.isCreative()) {
                 item.shrink(1);
             }
             var output = rcp.getOutputState();
