@@ -1,0 +1,93 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "synergy:azalea",
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "botanypots:botanypots/azalea"
+    }
+  ],
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "synergy:azalea",
+          "properties": {
+            "age": "0"
+          }
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "synergy:azalea",
+          "properties": {
+            "age": "1"
+          }
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "synergy:azalea",
+          "properties": {
+            "age": "2"
+          }
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "synergy:azalea",
+          "properties": {
+            "age": "3"
+          }
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "synergy:azalea",
+          "properties": {
+            "age": "4"
+          }
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "synergy:azalea",
+          "properties": {
+            "age": "5"
+          }
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "synergy:azalea",
+          "properties": {
+            "age": "6"
+          }
+        }
+      },
+      {
+        "type": "botanypots:simple",
+        "block_state": {
+          "block": "synergy:azalea",
+          "properties": {
+            "age": "7"
+          }
+        }
+      }
+    ]
+  }
+}
