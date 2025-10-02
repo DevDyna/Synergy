@@ -2,6 +2,7 @@ package com.devdyna.synergy.datagen.server;
 
 import java.util.concurrent.CompletableFuture;
 
+import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.init.types.zItems;
@@ -24,42 +25,15 @@ public class DataItemTag extends ItemTagsProvider {
                 super(o, p, b);
         }
 
-        
         @Override
         protected void addTags(Provider p) {
 
-tag(zMultiTags.INFESTED_BLOCKS.item())
-                                .add(Items.INFESTED_CHISELED_STONE_BRICKS,
-                                                Items.INFESTED_COBBLESTONE,
-                                                Items.INFESTED_CRACKED_STONE_BRICKS,
-                                                Items.INFESTED_DEEPSLATE,
-                                                Items.INFESTED_MOSSY_STONE_BRICKS,
-                                                Items.INFESTED_STONE,
-                                                Items.INFESTED_STONE_BRICKS);
-
-                tag(zMultiTags.CAN_SUSTAIN_BLUE_CUP.item())
-                                .add(Items.DRIPSTONE_BLOCK, Items.CLAY, Items.CALCITE)
-                                .addTags(ItemTags.DIRT, Tags.Items.STONES, Tags.Items.ORES,
-                                                zMultiTags.INFESTED_BLOCKS.item(), Tags.Items.GRAVELS);
-
-                tag(zMultiTags.CAN_SUSTAIN_VIOLET_WEBCAP.item())
-                                .add(Items.DRIPSTONE_BLOCK, Items.CLAY, Items.CALCITE)
-                                .addTags(ItemTags.DIRT, Tags.Items.STONES, Tags.Items.ORES,
-                                                zMultiTags.INFESTED_BLOCKS.item(), Tags.Items.GRAVELS);
-
-                tag(zMultiTags.CAN_SUSTAIN_CAVE_WHEAT.item())
-                                .add(Items.DRIPSTONE_BLOCK, Items.CLAY, Items.CALCITE)
-                                .addTags(ItemTags.DIRT, Tags.Items.STONES, Tags.Items.ORES,
-                                                zMultiTags.INFESTED_BLOCKS.item(), Tags.Items.GRAVELS);
-
-                tag(zMultiTags.CAN_SUSTAIN_COTTON.item())
-                                .add(Items.FARMLAND)
-                                .addTag(ItemTags.DIRT);
-
-                tag(zMultiTags.CAN_SUSTAIN_RICE.item())
-                                .add(Items.CLAY, Items.FARMLAND)
-                                .addTags(ItemTags.DIRT, Tags.Items.SANDS, Tags.Items.GRAVELS,
-                                                Tags.Items.SANDSTONE_BLOCKS);
+                copy(zBlockTag.CAN_SUSTAIN_BLUE_CUP, zItemTag.CAN_SUSTAIN_BLUE_CUP);
+                copy(zBlockTag.CAN_SUSTAIN_CAVE_WHEAT, zItemTag.CAN_SUSTAIN_CAVE_WHEAT);
+                copy(zBlockTag.CAN_SUSTAIN_COTTON, zItemTag.CAN_SUSTAIN_COTTON);
+                copy(zBlockTag.CAN_SUSTAIN_RICE, zItemTag.CAN_SUSTAIN_RICE);
+                copy(zBlockTag.CAN_SUSTAIN_VIOLET_WEBCAP, zItemTag.CAN_SUSTAIN_VIOLET_WEBCAP);
+                copy(zBlockTag.INFESTED_BLOCKS, zItemTag.INFESTED_BLOCKS);
 
                 tag(zItemTag.STONE_SLABS).add(Items.STONE_SLAB, Items.SMOOTH_STONE_SLAB);
 
@@ -117,11 +91,8 @@ tag(zMultiTags.INFESTED_BLOCKS.item())
                 tag(zItemTag.MOB_DROP)
                                 .add(DataGenUtil.getItems(zItems.zMobDrop));
 
-                tag(zMultiTags.COOLERS.item())
-                                .add(DataGenUtil.getItems(zBlocks.zCoolers));
-
-                tag(zMultiTags.MODERATORS.item())
-                                .add(DataGenUtil.getItems(zBlocks.zModerators));
+                copy(zBlockTag.COOLERS, zItemTag.COOLERS);
+                copy(zBlockTag.MODERATORS, zItemTag.MODERATORS);
 
                 tag(Tags.Items.DUSTS).add(DataGenUtil.getItems(zItems.zDusts));
 
