@@ -33,7 +33,6 @@ public class ReactorCellCategory extends BaseJEICategory implements IRecipeCateg
 
     public ReactorCellCategory(IGuiHelper helper) {
         this.helper = helper;
-        // TODO arrow animation return
     }
 
     @Override
