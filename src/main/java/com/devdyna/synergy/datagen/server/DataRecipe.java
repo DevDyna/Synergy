@@ -296,6 +296,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .inputItem(zItems.AZALEA_SEEDS)
                                 .inputBlock(Blocks.FLOWER_POT)
                                 .outputBlock(zBlocks.AZALEA.get().defaultBlockState().setValue(azalea.AGE, 0))
+                                .canBeDisabled()
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(ItemTags.COALS)
@@ -651,6 +652,8 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .group(ID)
                                 .unlockedBy()
                                 .save(c);
+
+                                //TODO energy nodes
 
         }
 
