@@ -6,7 +6,7 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.CropEntityInteraction;
 import com.devdyna.synergy.api.plants.builder.BaseWildCropBlock;
-import com.devdyna.synergy.init.types.*;
+import com.devdyna.synergy.init.types.zBlockTag;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -30,7 +30,7 @@ public class wild_cotton extends BaseWildCropBlock implements CropEntityInteract
 
     @Override
     public TagKey<Block> getSpawnFilter() {
-        return zMultiTags.CAN_SUSTAIN_COTTON.block();
+        return zBlockTag.CAN_SUSTAIN_COTTON;
     }
 
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {

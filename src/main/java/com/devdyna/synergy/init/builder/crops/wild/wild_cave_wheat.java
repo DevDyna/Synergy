@@ -5,7 +5,7 @@ import java.util.List;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseWildCropBlock;
-import com.devdyna.synergy.init.types.*;
+import com.devdyna.synergy.init.types.zBlockTag;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
@@ -24,7 +24,7 @@ public class wild_cave_wheat extends BaseWildCropBlock {
 
     @Override
     public TagKey<Block> getSpawnFilter() {
-        return zMultiTags.CAN_SUSTAIN_CAVE_WHEAT.block();
+        return zBlockTag.CAN_SUSTAIN_CAVE_WHEAT;
     }
 
     @Override
