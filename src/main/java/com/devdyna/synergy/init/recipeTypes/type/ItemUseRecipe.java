@@ -23,21 +23,18 @@ public class ItemUseRecipe implements Recipe<UseItemInput> {
     private final Ingredient inputItem;
     private final BlockState inputState;
     private final BlockState outputState;
-    // private final boolean requireShift;
-    // private final boolean consumeItem;
+    private final boolean canBeDisabled;
 
     public ItemUseRecipe(Ingredient inputItem,
-            //  boolean requireShift, boolean consumeItem,
-              BlockState inputState, BlockState outputState) {
+            BlockState inputState, BlockState outputState, boolean canBeDisabled) {
         this.inputItem = inputItem;
         this.inputState = inputState;
         this.outputState = outputState;
-        // this.consumeItem = consumeItem;
-        // this.requireShift = requireShift;
+        this.canBeDisabled = canBeDisabled;
     }
 
     public boolean matches(UseItemInput r, Level l) {
-        return inputItem.test(r.input()) && inputState.is(r.block().getBlock());
+        return inputItem.test(r.input()) && inputState.is(r.block().getBlock()) && !canBeDisabled;
     }
 
     public ItemStack assemble(UseItemInput i, HolderLookup.Provider r) {
@@ -82,12 +79,8 @@ public class ItemUseRecipe implements Recipe<UseItemInput> {
         return outputState;
     }
 
-    // public boolean getRequireShift() {
-    //     return requireShift;
-    // }
-
-    // public boolean getConsumeItem() {
-    //     return consumeItem;
-    // }
+    public boolean canBeDisabled() {
+        return canBeDisabled;
+    }
 
 }
