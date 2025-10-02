@@ -5,12 +5,27 @@ import com.devdyna.synergy.init.Material;
 
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 
 public class zItemTag {
         public static void register(IEventBus bus) {
 
         }
+
+                public static final TagKey<Item> CAN_SUSTAIN_RICE = Material.tagItem("can_sustain/" + zStatic.Plants.RICE);
+        public static final TagKey<Item> CAN_SUSTAIN_COTTON = Material
+                        .tagItem("can_sustain/" + zStatic.Plants.COTTON);
+        public static final TagKey<Item> CAN_SUSTAIN_CAVE_WHEAT = Material
+                        .tagItem("can_sustain/" + zStatic.Plants.CAVE_WHEAT);
+        public static final TagKey<Item> CAN_SUSTAIN_BLUE_CUP = Material
+                        .tagItem("can_sustain/" + zStatic.Plants.BLUE_CUP_MUSHROOM);
+        public static final TagKey<Item> CAN_SUSTAIN_VIOLET_WEBCAP = Material
+                        .tagItem("can_sustain/" + zStatic.Plants.VIOLET_WEBCAP_MUSHROOM);
+
+        public static final TagKey<Item> INFESTED_BLOCKS = Material
+                        .tagItem("infested_blocks", "c");
+
 
         public static final TagKey<Item> STONE_SLABS = Material.tagItem("stone_slabs");
 
