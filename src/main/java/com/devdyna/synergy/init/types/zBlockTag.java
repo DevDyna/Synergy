@@ -1,6 +1,5 @@
 package com.devdyna.synergy.init.types;
 
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.Material;
 
 import net.minecraft.tags.TagKey;
@@ -34,19 +33,6 @@ public class zBlockTag {
         public static final TagKey<Block> MASHABLE = Material.tagBlock("mashable");
 
         public static final TagKey<Block> MUSHROOMS = Material.tagBlock("mushrooms", "c");
-
-        public static final TagKey<Block> CAN_SUSTAIN_RICE = Material.tagBlock("can_sustain/" + zStatic.Plants.RICE);
-        public static final TagKey<Block> CAN_SUSTAIN_COTTON = Material
-                        .tagBlock("can_sustain/" + zStatic.Plants.COTTON);
-        public static final TagKey<Block> CAN_SUSTAIN_CAVE_WHEAT = Material
-                        .tagBlock("can_sustain/" + zStatic.Plants.CAVE_WHEAT);
-        public static final TagKey<Block> CAN_SUSTAIN_BLUE_CUP = Material
-                        .tagBlock("can_sustain/" + zStatic.Plants.BLUE_CUP_MUSHROOM);
-        public static final TagKey<Block> CAN_SUSTAIN_VIOLET_WEBCAP = Material
-                        .tagBlock("can_sustain/" + zStatic.Plants.VIOLET_WEBCAP_MUSHROOM);
-
-        public static final TagKey<Block> INFESTED_BLOCKS = Material
-                        .tagBlock("infested_blocks", "c");
 
         public static final TagKey<Block> HARVESTER_TREE_BREAK = Material
                         .tagBlock("harvester_can_break");
