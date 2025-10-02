@@ -1,7 +1,7 @@
 {
   "values": [
-    "#synergy:coolers",
-    "#synergy:moderators",
+    "#synergy:cooler",
+    "#synergy:moderator",
     "synergy:sprinkler",
     "synergy:harvester",
     "synergy:solar_panel",

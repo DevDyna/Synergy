@@ -1,8 +1,8 @@
 {
   "values": [
     "#synergy:can_connect",
-    "#synergy:coolers",
-    "#synergy:moderators",
+    "#synergy:cooler",
+    "#synergy:moderator",
     "synergy:sprinkler",
     "synergy:harvester",
     "synergy:urn",
