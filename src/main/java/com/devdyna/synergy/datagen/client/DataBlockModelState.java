@@ -42,14 +42,14 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 pipe(zBlocks.PIPE.get());
 
-                decorativeBlocks();
-
                 simpleBlockDecorative(zBlocks.ADVANCED_ALLOY_BLOCK);
                 simpleBlockDecorative(zBlocks.STEEL_BLOCK);
                 simpleBlockDecorative(zBlocks.COOLER_BASE);
                 simpleBlockDecorative(zBlocks.ADOBE);
                 simpleBlockDecorative(zBlocks.RUSTIC_METAL);
                 simpleBlockDecorative(zBlocks.WAXED_PLANKS);
+
+                decorativeBlocks();
 
                 simpleFullBlock(zBlocks.HEALER, "");
                 simpleFullBlock(zBlocks.REACTOR_FUEL_CELL, "reactor/");
