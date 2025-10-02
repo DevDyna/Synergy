@@ -95,7 +95,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                                 .replace("item.minecraft.", "")
                                                                 + "_from_cotton"));
 
-                ShapedRecipeBuilder.shaped(MISC, Items.HANGING_ROOTS, 1)
+                ShapedRecipeBuilder.shaped(MISC, Items.HANGING_ROOTS)
                                 .pattern("RR")
                                 .define('R', zItems.SMALL_AZALEA_ROOTS.get())
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
@@ -105,7 +105,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                                 .replace("block.minecraft.", "")
                                                                 + "_from_small_azalea"));
 
-                ShapedRecipeBuilder.shaped(MISC, Items.FLOWERING_AZALEA_LEAVES, 1)
+                ShapedRecipeBuilder.shaped(MISC, Items.FLOWERING_AZALEA_LEAVES)
                                 .pattern("LL")
                                 .pattern("LL")
                                 .define('L', zItems.SMALL_AZALEA_LEAF.get())
@@ -116,7 +116,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                                 .replace("block.minecraft.", "")
                                                                 + "_from_small_azalea"));
 
-                ShapelessRecipeBuilder.shapeless(MISC, Items.FLOWERING_AZALEA, 1)
+                ShapelessRecipeBuilder.shapeless(MISC, Items.FLOWERING_AZALEA)
                                 .requires(zItems.SMALL_AZALEA_LEAF.get())
                                 .requires(Items.AZALEA)
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
@@ -126,7 +126,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                                 .replace("block.minecraft.", "")
                                                                 + "_from_small_azalea"));
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.SPRINKLER.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.SPRINKLER.get())
                                 .pattern("WWW")
                                 .pattern("RBR")
                                 .pattern("AIA")
@@ -195,7 +195,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                                 .replace("item.minecraft.", "")
                                                                 + "_from_rice"));
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.SOLAR_PANEL.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.SOLAR_PANEL.get())
                                 .pattern("LLL")
                                 .pattern("FRF")
                                 .define('L', Items.LAPIS_LAZULI)
@@ -206,7 +206,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                                 Items.LAPIS_LAZULI))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.BASIC_MACHINE_FRAME.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.BASIC_MACHINE_FRAME.get())
                                 .pattern(" C ")
                                 .pattern("FRF")
                                 .pattern(" C ")
@@ -217,7 +217,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 .hasItems(zBlocks.ADOBE.get(), zItems.CHIP.get(), Items.IRON_NUGGET))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.HARVESTER.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.HARVESTER.get())
                                 .pattern(" R ")
                                 .pattern("AMH")
                                 .pattern(" C ")
@@ -256,7 +256,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .add(zItems.ENDERMAN_HEART)
                                 .add(zItems.ENERGIZED_REDSTONE)
                                 .add(zItemTag.DUST_LAPIS)
-                                .output(zItems.GHOUL_HEART, 1)
+                                .output(zItems.GHOUL_HEART)
                                 .group(ID).unlockedBy().save(c);
 
                 plate(Items.IRON_INGOT, zItems.IRON_PLATE.get(), c);
@@ -305,23 +305,23 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(Items.DIAMOND)
-                                .output(x.item(zItems.DIAMOND_DUST, 1))
+                                .output(zItems.DIAMOND_DUST)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(Items.EMERALD)
-                                .output(x.item(zItems.EMERALD_DUST, 1))
+                                .output(zItems.EMERALD_DUST)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(Items.AMETHYST_SHARD)
-                                .output(x.item(zItems.AMETHYST_DUST, 1))
+                                .output(zItems.AMETHYST_DUST)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(Items.LAPIS_LAZULI)
-                                .output(x.item(zItems.LAPIS_DUST, 1))
+                                .output(zItems.LAPIS_DUST)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(Items.ANCIENT_DEBRIS)
-                                .output(x.item(zItems.ANCIENT_DEBRIS_DUST, 1))
+                                .output(zItems.ANCIENT_DEBRIS_DUST)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(ItemTags.LOGS)
@@ -329,28 +329,32 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(Items.QUARTZ)
-                                .output(x.item(zItems.QUARTZ_DUST, 1))
+                                .output(zItems.QUARTZ_DUST)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(Items.PRISMARINE_SHARD)
-                                .output(x.item(Items.PRISMARINE_CRYSTALS, 1))
+                                .output(Items.PRISMARINE_CRYSTALS)
+                                .delay(20)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(Tags.Items.COBBLESTONES)
-                                .output(x.item(Items.GRAVEL, 1))
+                                .output(Items.GRAVEL)
+                                .delay(20)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(Tags.Items.GRAVELS)
-                                .output(x.item(Items.SAND, 1))
+                                .output(Items.SAND)
+                                .delay(20)
                                 .unlockedBy().save(c);
 
                 UrnRitualBuilder.of().add(Tags.Items.GRAVELS)
-                                .output(x.item(zItems.STONE_PEBBLE, 4))
+                                .output(zItems.STONE_PEBBLE, 4)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of()
                                 .input(zItems.STONE_PEBBLE)
-                                .output(zItems.SILVERFISH_DUST, 1)
+                                .output(zItems.SILVERFISH_DUST)
+                                .delay(20)
                                 .group(ID)
                                 .unlockedBy()
                                 .save(c);
@@ -390,7 +394,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 twoByTwoPacker(c, MISC, zItems.CARBON_PLATE.get(), zItems.CARBON_FIBER.get());
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.QUERN.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.QUERN.get())
                                 .pattern("TS ")
                                 .pattern("SWS")
                                 .define('W', zItems.WOODEN_GEAR.get())
@@ -401,7 +405,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                                 Items.STICK, zItems.WOODEN_GEAR.get()))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.WOODEN_GEAR.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zItems.WOODEN_GEAR.get())
                                 .pattern(" T ")
                                 .pattern("T T")
                                 .pattern(" T ")
@@ -489,7 +493,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItemTag.PLATE_COAL))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_MACHINE_FRAME.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_MACHINE_FRAME.get())
                                 .pattern("PCP")
                                 .pattern("FRF")
                                 .pattern("PCP")
@@ -516,7 +520,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 doubleSmelt(c, zItems.MIXED_INGOT.get(), zItems.ADVANCED_ALLOY_INGOT.get());
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.LIGHT_BULB.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zItems.LIGHT_BULB.get())
                                 .define('G', Tags.Items.GLASS_BLOCKS_COLORLESS)
                                 .define('N', Tags.Items.NUGGETS_IRON)
                                 .define('D', Tags.Items.DUSTS_GLOWSTONE)
@@ -529,7 +533,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_NUGGET))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.HEALER.get().asItem(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.HEALER.get().asItem())
                                 .pattern("RWR")
                                 .pattern("WSW")
                                 .pattern("RWR")
@@ -547,7 +551,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.GUARDIAN_SCALE, 4)
                                 .group(ID).unlockedBy().save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.REACTOR_CONTROLLER.get().asItem(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.REACTOR_CONTROLLER.get().asItem())
                                 .pattern("PTP")
                                 .pattern("ACA")
                                 .pattern("PSP")
@@ -572,7 +576,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 .hasItems(zBlocks.ADVANCED_MACHINE_FRAME.get()))
                                 .group(zStatic.ReactorStuff.fuel_cell).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.WIRED_STONE_PLATE.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zItems.WIRED_STONE_PLATE.get())
                                 .pattern("CPC")
                                 .pattern(" C ")
                                 .define('C', Tags.Items.DUSTS_REDSTONE)
@@ -581,7 +585,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 .hasItems(zItems.STONE_PLATE.get()))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.STONE_CIRCUIT.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zItems.STONE_CIRCUIT.get())
                                 .pattern("PB")
                                 .pattern("R ")
                                 .define('B', zItems.METAL_BOLTS.get())
@@ -591,7 +595,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 .hasItems(zItems.WIRED_STONE_PLATE.get()))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.MAGNETIC_STONE_CIRCUIT.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zItems.MAGNETIC_STONE_CIRCUIT.get())
                                 .pattern("PB")
                                 .pattern("R ")
                                 .define('B', zItemTag.NUGGET_ADVANCEDALLOY)
@@ -601,7 +605,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 .hasItems(zItems.STONE_CIRCUIT.get()))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.RESISTIVE_STONE_CIRCUIT.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zItems.RESISTIVE_STONE_CIRCUIT.get())
                                 .pattern("PB")
                                 .pattern("R ")
                                 .define('B', zItemTag.NUGGET_ADVANCEDALLOY)
@@ -611,7 +615,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 .hasItems(zItems.STONE_CIRCUIT.get()))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.SUPERCONDUCTOR.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zItems.SUPERCONDUCTOR.get())
                                 .pattern("GEG")
                                 .define('G', zItemTag.FOIL_GOLD)
                                 .define('E', zItems.ENERGIZED_REDSTONE.get())
@@ -619,7 +623,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 .hasItems(zItems.STONE_CIRCUIT.get()))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.WIRED_NETHER_PLATE.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zItems.WIRED_NETHER_PLATE.get())
                                 .pattern("CPC")
                                 .pattern(" G ")
                                 .define('G', Tags.Items.NUGGETS_GOLD)
@@ -629,7 +633,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 .hasItems(zItems.NETHERRACK_PLATE.get()))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.NETHER_CIRCUIT.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zItems.NETHER_CIRCUIT.get())
                                 .pattern("CPC")
                                 .pattern(" G ")
                                 .define('G', Tags.Items.NUGGETS_GOLD)
