@@ -20,6 +20,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
+@SuppressWarnings({ "removal", "deprecation" })
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = ID)
 public class Controller {
     @SubscribeEvent
