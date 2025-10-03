@@ -52,6 +52,7 @@ public class zFluid {
     private boolean canSwim;
     private boolean canPushEntity;
     private boolean canConvertToSource;
+    private ResourceLocation ui_inside;
 
     public zFluid(String id, int color) {
         this.color = color;
@@ -60,6 +61,7 @@ public class zFluid {
         this.still = x.rl("minecraft", "block/water_still");
         this.flowing = x.rl("minecraft", "block/water_flow");
         this.overlay = x.rl("minecraft", "block/water_overlay");
+        this.ui_inside = ResourceLocation.parse("textures/misc/underwater.png");
         this.viscosity = 1000;// approx water
         this.canDrown = false;
         this.canSwim = false;
@@ -100,8 +102,13 @@ public class zFluid {
                             }
 
                             @Override
-                            public ResourceLocation getRenderOverlayTexture(Minecraft mc) {
+                            public ResourceLocation getOverlayTexture() {
                                 return overlay;
+                            }
+
+                            @Override
+                            public ResourceLocation getRenderOverlayTexture(Minecraft mc) {
+                                return ui_inside;
                             }
 
                         });
@@ -155,19 +162,15 @@ public class zFluid {
         return itemBucket;
     }
 
-    // public ResourceLocation getFlowing() {
-    // return flowing;
-    // }
+    public ResourceLocation getFlowingTexture() {
+    return flowing;
+    }
 
-    // public ResourceLocation getOverlay() {
-    // return overlay;
-    // }
+    public ResourceLocation getOverlayTexture() {
+    return overlay;
+    }
 
-    // public BaseFlowingFluid.Properties getProp() {
-    // return prop;
-    // }
-
-    public ResourceLocation getStill() {
+    public ResourceLocation getStillTexture() {
         return still;
     }
 
@@ -203,6 +206,10 @@ public class zFluid {
     public zFluid setOverlayTexture(ResourceLocation rl) {
         this.overlay = rl;
         return this;
+    }
+
+    public ResourceLocation getUiInsideTexture() {
+        return ui_inside;
     }
 
     public zFluid swim() {
