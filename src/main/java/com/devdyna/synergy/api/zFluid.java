@@ -27,11 +27,10 @@ import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
-import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-@SuppressWarnings({ "null" })
+@SuppressWarnings("null")
 public class zFluid {
 
     private int color;
@@ -53,7 +52,6 @@ public class zFluid {
     private boolean canSwim;
     private boolean canPushEntity;
     private boolean canConvertToSource;
-    private ResourceLocation ui_inside;
 
     public zFluid(String id, int color) {
         this.color = color;
@@ -62,14 +60,12 @@ public class zFluid {
         this.still = x.rl("minecraft", "block/water_still");
         this.flowing = x.rl("minecraft", "block/water_flow");
         this.overlay = x.rl("minecraft", "block/water_overlay");
-        this.ui_inside = x.rl("minecraft", "misc/underwater.png");
         this.viscosity = 1000;// approx water
         this.canDrown = false;
         this.canSwim = false;
         this.canPushEntity = false;
         this.canConvertToSource = false;
 
-        // Fluid type registration
         this.type = zFluids.zFluidTypes.register(
                 id + "_type",
                 () -> new FluidType(FluidType.Properties.create()
@@ -80,38 +76,67 @@ public class zFluid {
                         .canPushEntity(canPushEntity)
                         .canConvertToSource(canConvertToSource)
                         .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
-                        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)));
+                        .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)) {
 
-        // Build fluid properties using Suppliers, not direct objects
-        this.prop = new BaseFlowingFluid.Properties(
-                this.type,
-                () -> this.fluidsource.get(),
-                () -> this.fluidflowing.get());
+                    @SuppressWarnings({ "null", "removal" })
+                    @Override
+                    public void initializeClient(Consumer<IClientFluidTypeExtensions> c) {
 
-        // Register fluids with prop
+                        c.accept(new IClientFluidTypeExtensions() {
+
+                            @Override
+                            public ResourceLocation getStillTexture() {
+                                return still;
+                            }
+
+                            @Override
+                            public int getTintColor(FluidState s, BlockAndTintGetter g, BlockPos p) {
+                                return color;
+                            }
+
+                            @Override
+                            public ResourceLocation getFlowingTexture() {
+                                return flowing;
+                            }
+
+                            @Override
+                            public ResourceLocation getRenderOverlayTexture(Minecraft mc) {
+                                return overlay;
+                            }
+
+                        });
+                        super.initializeClient(c);
+                    }
+                });
+
+        this.prop = new BaseFlowingFluid.Properties(this.type, null, null);
+
         this.fluidsource = zFluids.zFluids.register(id + "_source",
                 () -> new BaseFlowingFluid.Source(this.prop));
 
         this.fluidflowing = zFluids.zFluids.register(id + "_flowing",
                 () -> new BaseFlowingFluid.Flowing(this.prop));
 
-        // Register bucket and block
         this.itemBucket = zItems.zBucketItems.register(id + "_bucket",
                 () -> new BucketItem(this.fluidsource.get(),
                         new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
         this.block = zBlocks.zBlockFluids.register(
                 id,
-                () -> new LiquidBlock(this.fluidsource.get(),
-                        BlockBehaviour.Properties.of().mapColor(MapColor.WATER).replaceable()
-                                .noCollission().strength(100.0F)
-                                .pushReaction(PushReaction.DESTROY)
-                                .noLootTable().liquid()
-                                .sound(SoundType.EMPTY)));
+                () -> new LiquidBlock(this.fluidflowing.value(),
+                        BlockBehaviour.Properties.of().mapColor(MapColor.WATER).replaceable().noCollission()
+                                .strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid()
+                                .sound(SoundType.EMPTY)
+                                .liquid()
+                                .lightLevel(value -> 10)
+                                .emissiveRendering((s, g, p) -> true)));
 
-        // Now finish wiring up
-        this.prop.bucket(this.itemBucket).block(this.block);
-
+        this.prop = new BaseFlowingFluid.Properties(
+                this.type,
+                this.fluidsource,
+                this.fluidflowing)
+                .bucket(this.itemBucket)
+                .block(this.block);
     }
 
     public DeferredHolder<Block, LiquidBlock> getBlock() {
@@ -122,7 +147,7 @@ public class zFluid {
         return fluidflowing;
     }
 
-    public DeferredHolder<Fluid, ?> getSource() {
+    public DeferredHolder<Fluid, BaseFlowingFluid.Source> getSource() {
         return fluidsource;
     }
 
@@ -130,15 +155,7 @@ public class zFluid {
         return itemBucket;
     }
 
-    public ResourceLocation getFlowingTexture() {
-        return flowing;
-    }
-
-    public ResourceLocation getOverlayTexture() {
-        return overlay;
-    }
-
-    public ResourceLocation getStillTexture() {
+    public ResourceLocation getStill() {
         return still;
     }
 
@@ -173,15 +190,6 @@ public class zFluid {
 
     public zFluid setOverlayTexture(ResourceLocation rl) {
         this.overlay = rl;
-        return this;
-    }
-
-    public ResourceLocation getUiInsideTexture() {
-        return ui_inside;
-    }
-
-    public zFluid setUiInsideTexture(ResourceLocation rl) {
-        this.ui_inside = rl;
         return this;
     }
 
@@ -224,6 +232,5 @@ public class zFluid {
     public static zFluid create(String id, int color) {
         return new zFluid(id, color);
     }
-
 
 }

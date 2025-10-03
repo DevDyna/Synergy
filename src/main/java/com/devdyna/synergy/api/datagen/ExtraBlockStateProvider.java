@@ -226,7 +226,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(fluid.getBlock().get())
                 .partialState().modelForState()
                 .modelFile(models().getBuilder("block/" + fluid.getId())
-                        .texture("particle", fluid.getStillTexture()))
+                        .texture("particle", fluid.getStill()))
                 .addModel();
     }
 
