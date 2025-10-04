@@ -43,7 +43,7 @@ public abstract class ModeratorBase extends Block {
                 checkForCells(c.getLevel(), c.getClickedPos()));
     }
 
-    public boolean isActive(Level level,BlockPos pos){
+    public boolean isActive(Level level, BlockPos pos) {
         return level.getBlockState(pos).getValue(BlockStateProperties.ENABLED);
     }
 
@@ -62,9 +62,6 @@ public abstract class ModeratorBase extends Block {
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
 
-        t.add(Component.translatable(Main.ID + "." +
-                zStatic.ReactorStuff.moderator));
-
         if (Screen.hasShiftDown()) {
             t.add(conditions());
             t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".fe")
@@ -72,11 +69,14 @@ public abstract class ModeratorBase extends Block {
             t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".heat")
                     .append("" + HeatReducer()));
         } else {
+            t.add(Component.translatable(Main.ID + "." +
+                    zStatic.ReactorStuff.moderator));
             t.add(Component.translatable(Main.ID + "." + zStatic.tips.SHIFT));
+
         }
     }
 
-    protected Component conditions(){
+    protected Component conditions() {
         return Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".condition");
     }
 
