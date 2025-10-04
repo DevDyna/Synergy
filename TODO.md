@@ -3,12 +3,13 @@
 ## THINGS BEFORE RELEASE 0.4
 
 - [x] tweak recipes of components
-- [ ] Fully Guideme rework
 - [x] Moderators recipes
 - [x] Cooler recipes
 - [x] Fuel cell recipe
 - [x] Reactor controller recipe
 - [x] Advanced Machine frame recipe
+- [ ] Fuel cell output can conflict with input
+- [ ] quickMoveStack
 
 ## BUGS
 
@@ -31,6 +32,8 @@
 - [ ] Node Upgrades
 - [ ] Pipe Blocker
 - [ ] Differents styles for Nodes / Node model rework
+
+- [ ] GuideMe quantum reactor GameScene
 
 ### CODEBASE
 
