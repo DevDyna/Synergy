@@ -11,7 +11,7 @@ import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 public class BlockInjection {
 
-    // TODO unify event
+    // TODO unify events
 
     @SubscribeEvent
     public static void urnInjection(PlayerInteractEvent.RightClickBlock event) {
