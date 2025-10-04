@@ -7,7 +7,6 @@ import com.devdyna.synergy.client.quern.QuernRendering;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zContainer;
 import com.devdyna.synergy.init.types.zItems;
-import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.world.item.BucketItem;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -17,7 +16,7 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 
-@SuppressWarnings({ "removal", "deprecation", "null" })
+@SuppressWarnings({ "removal", "deprecation" })
 @EventBusSubscriber(modid = Main.ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class Client {
 
@@ -38,7 +37,7 @@ public class Client {
 
     @SubscribeEvent
     public static void registerItemColor(RegisterColorHandlersEvent.Item event) {
-
+        // TODO idk if it work but i will keep it
         for (var bucket : zItems.zBucketItems.getEntries()) {
             event.getItemColors().register((s, i) -> (i == 1 && s.getItem() instanceof BucketItem)
                     ? IClientFluidTypeExtensions.of(((BucketItem) s.getItem()).content).getTintColor()
