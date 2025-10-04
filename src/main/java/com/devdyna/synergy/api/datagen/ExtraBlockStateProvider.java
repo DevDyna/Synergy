@@ -72,7 +72,6 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                 .texture("below", below));
     }
 
-    @SuppressWarnings("unused")
     protected void simpleBiState(DeferredHolder<Block, Block> b, String location) {
 
         getVariantBuilder(b.get()).forAllStates((state) -> {
