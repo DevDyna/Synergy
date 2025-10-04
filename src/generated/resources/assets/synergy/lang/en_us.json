@@ -197,6 +197,7 @@
   "synergy.jei.provider.item": "Item Provider Pattern",
   "synergy.jei.quern": "Quern Milling",
   "synergy.jei.urn": "Urn Rituals",
+  "synergy.jei.warning.config": "Can be overriden via config",
   "synergy.mixture_tip": "§7Can be used to speed the grow of any plant",
   "synergy.moderator": "§7Increase Heat and FE production",
   "synergy.moderator.condition": "§7Active when near to a Fuel Cell",

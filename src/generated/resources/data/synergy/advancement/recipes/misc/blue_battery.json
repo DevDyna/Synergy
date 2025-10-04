@@ -11,9 +11,6 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:green_battery"
-          },
-          {
             "items": "synergy:aquamarine_gem"
           }
         ]

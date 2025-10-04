@@ -11,13 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stick"
-          },
-          {
             "items": "synergy:gold_foil"
-          },
-          {
-            "items": "minecraft:iron_nugget"
           }
         ]
       },

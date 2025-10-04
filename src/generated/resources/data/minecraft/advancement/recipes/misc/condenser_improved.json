@@ -11,15 +11,6 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:steel_nugget"
-          },
-          {
-            "items": "synergy:bone_meal_mixture"
-          },
-          {
-            "items": "synergy:steel_ingot"
-          },
-          {
             "items": "synergy:silicon_gem"
           }
         ]

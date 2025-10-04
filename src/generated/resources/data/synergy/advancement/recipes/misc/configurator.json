@@ -12,15 +12,6 @@
         "items": [
           {
             "items": "minecraft:redstone"
-          },
-          {
-            "items": "minecraft:emerald"
-          },
-          {
-            "items": "minecraft:iron_ingot"
-          },
-          {
-            "items": "minecraft:iron_nugget"
           }
         ]
       },

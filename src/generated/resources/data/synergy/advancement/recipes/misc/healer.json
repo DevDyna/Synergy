@@ -12,12 +12,6 @@
         "items": [
           {
             "items": "minecraft:nether_star"
-          },
-          {
-            "items": "minecraft:white_concrete"
-          },
-          {
-            "items": "minecraft:red_concrete"
           }
         ]
       },

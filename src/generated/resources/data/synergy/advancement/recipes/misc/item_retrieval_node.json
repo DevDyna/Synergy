@@ -11,15 +11,6 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:redstone"
-          },
-          {
-            "items": "minecraft:hopper"
-          },
-          {
-            "items": "minecraft:redstone_block"
-          },
-          {
             "items": "synergy:pipe"
           }
         ]

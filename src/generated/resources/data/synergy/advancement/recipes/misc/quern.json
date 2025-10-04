@@ -11,12 +11,6 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stone_slab"
-          },
-          {
-            "items": "minecraft:stick"
-          },
-          {
             "items": "synergy:wooden_gear"
           }
         ]

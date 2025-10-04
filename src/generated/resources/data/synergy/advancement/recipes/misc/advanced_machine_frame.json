@@ -12,12 +12,6 @@
         "items": [
           {
             "items": "synergy:basic_machine_frame"
-          },
-          {
-            "items": "synergy:chip"
-          },
-          {
-            "items": "minecraft:iron_nugget"
           }
         ]
       },

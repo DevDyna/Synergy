@@ -11,15 +11,6 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:redstone"
-          },
-          {
-            "items": "minecraft:ender_pearl"
-          },
-          {
-            "items": "minecraft:chest"
-          },
-          {
             "items": "synergy:pipe"
           }
         ]

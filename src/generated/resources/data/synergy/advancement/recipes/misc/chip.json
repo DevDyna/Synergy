@@ -12,12 +12,6 @@
         "items": [
           {
             "items": "synergy:bone_meal_mixture"
-          },
-          {
-            "items": "minecraft:iron_nugget"
-          },
-          {
-            "items": "minecraft:quartz"
           }
         ]
       },

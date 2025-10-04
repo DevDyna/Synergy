@@ -11,12 +11,6 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:waxed_planks"
-          },
-          {
-            "items": "synergy:adobe"
-          },
-          {
             "items": "synergy:blue_battery"
           }
         ]

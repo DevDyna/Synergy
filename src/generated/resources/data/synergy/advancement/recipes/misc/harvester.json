@@ -11,19 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_hoe"
-          },
-          {
-            "items": "synergy:resistor"
-          },
-          {
             "items": "synergy:basic_machine_frame"
-          },
-          {
-            "items": "synergy:blue_battery"
-          },
-          {
-            "items": "minecraft:iron_axe"
           }
         ]
       },

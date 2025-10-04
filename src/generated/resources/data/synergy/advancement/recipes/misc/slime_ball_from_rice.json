@@ -11,9 +11,6 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:honeycomb"
-          },
-          {
             "items": "synergy:rice_seed"
           }
         ]

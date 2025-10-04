@@ -11,12 +11,6 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_nugget"
-          },
-          {
-            "items": "synergy:guardian_scale"
-          },
-          {
             "items": "synergy:bone_meal_mixture"
           }
         ]

@@ -11,16 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_nugget"
-          },
-          {
             "items": "synergy:bone_meal_mixture"
-          },
-          {
-            "items": "minecraft:iron_ingot"
-          },
-          {
-            "items": "synergy:violet_webcap_mushroom"
           }
         ]
       },

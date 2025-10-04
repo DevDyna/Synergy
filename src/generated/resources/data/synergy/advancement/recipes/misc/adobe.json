@@ -12,12 +12,6 @@
         "items": [
           {
             "items": "minecraft:diorite"
-          },
-          {
-            "items": "minecraft:mud"
-          },
-          {
-            "items": "minecraft:clay"
           }
         ]
       },

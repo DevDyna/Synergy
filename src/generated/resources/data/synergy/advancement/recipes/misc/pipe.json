@@ -12,12 +12,6 @@
         "items": [
           {
             "items": "minecraft:redstone"
-          },
-          {
-            "items": "minecraft:glass"
-          },
-          {
-            "items": "minecraft:stone_slab"
           }
         ]
       },

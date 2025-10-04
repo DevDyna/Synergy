@@ -12,12 +12,6 @@
         "items": [
           {
             "items": "synergy:blue_battery"
-          },
-          {
-            "items": "synergy:resistor"
-          },
-          {
-            "items": "minecraft:lapis_lazuli"
           }
         ]
       },

@@ -12,12 +12,6 @@
         "items": [
           {
             "items": "synergy:bone_meal_mixture"
-          },
-          {
-            "items": "synergy:steel_nugget"
-          },
-          {
-            "items": "synergy:quartz_dust"
           }
         ]
       },
