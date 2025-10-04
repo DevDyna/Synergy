@@ -1,15 +1,22 @@
 package com.devdyna.synergy.init.builder.tinychests;
 
+import java.util.List;
 import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.Main;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.menu.BlockMenu;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -65,6 +72,12 @@ public class TinyChestBK extends BlockMenu {
     @Override
     protected void onClickAction(BlockState state, Level level, BlockPos pos, Player player) {
         level.playSound(player, pos, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 1, 1.75f);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
+            TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Blocks.tiny_wooden_chest));
     }
 
 }
