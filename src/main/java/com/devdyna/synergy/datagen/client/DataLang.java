@@ -232,6 +232,9 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + "." + zStatic.Items.soldering_gun, TIP_COLOR + "Change the size of AOE");
 
+                add(Main.ID + ".jei.warning.config",
+                                "Can be overriden via config");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {

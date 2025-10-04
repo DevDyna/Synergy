@@ -14,6 +14,7 @@ import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -26,13 +27,18 @@ import net.minecraft.network.chat.Component;
 @SuppressWarnings("null")
 public class ReactorCellCategory extends BaseJEICategory implements IRecipeCategory<FuelCellRecipe> {
 
-    private final IGuiHelper helper;
+    private IGuiHelper helper;
+    private IDrawableAnimated arrow;
     public static final RecipeType<FuelCellRecipe> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.FUEL_CELL_RECIPE.getId()),
             FuelCellRecipe.class);
 
     public ReactorCellCategory(IGuiHelper helper) {
         this.helper = helper;
+        // TODO change timespan based on duration
+        this.arrow = helper.drawableBuilder(screenLocations.GREEN_PROGRESS_ARROW, 0, 0, 24, 16)
+                .setTextureSize(24, 16).buildAnimated(200,
+                        IDrawableAnimated.StartDirection.LEFT, false);
     }
 
     @Override
@@ -81,6 +87,8 @@ public class ReactorCellCategory extends BaseJEICategory implements IRecipeCateg
 
         guiGraphics.drawString(font, "Gen  " + (recipe.getFe() >= 0 ? "+" : "") + recipe.getFe() + "fe/t",
                 25, 50, 0xA0A0A0);
+
+        arrow.draw(guiGraphics, 53, 17);
 
     }
 

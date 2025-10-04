@@ -3,6 +3,7 @@ package com.devdyna.synergy.compat.jei.categories;
 import org.jetbrains.annotations.Nullable;
 
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.api.Pos;
 import com.devdyna.synergy.client.gui.screenLocations;
 import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.ItemUseRecipe;
@@ -10,11 +11,14 @@ import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -76,6 +80,22 @@ public class ItemUseCategory implements IRecipeCategory<ItemUseRecipe> {
 
         } catch (Exception e) {
         }
+    }
+
+    @Override
+    public void draw(ItemUseRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
+            double mouseY) {
+        if (recipe.canBeDisabled())
+            helper.drawableBuilder(screenLocations.WARNING, 0,0, 10, 10).setTextureSize(10, 10).build()
+                    .draw(guiGraphics, 81, 7);
+    }
+
+    @Override
+    public void getTooltip(ITooltipBuilder tooltip, ItemUseRecipe recipe, IRecipeSlotsView recipeSlotsView,
+            double mouseX, double mouseY) {
+        if (Pos.of(81, 7).setSize(10, 10).test((int) mouseX, (int) mouseY))
+            tooltip.add(Component.translatable(Main.ID + ".jei.warning.config"));
+
     }
 
 }
