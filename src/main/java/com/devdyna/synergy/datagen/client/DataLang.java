@@ -124,6 +124,10 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Blocks.healer,
                                 TIP_COLOR + "Heal and remove fire effect at all entities above it");
 
+                add(Main.ID + "." + zStatic.Blocks.tiny_wooden_chest,
+                                TIP_COLOR + "Small chests useful to store a single stack");
+
+
                 add(Main.ID + "." + zStatic.tips.SHIFT,
                                 "§8Hold [§7Shift§8] to see more details");
 
@@ -230,7 +234,7 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "Obtained from " + droptype
                                                 .get(zItems.zMobDrop.getEntries().stream().toList().indexOf(d))));
 
-                add(Main.ID + "." + zStatic.Items.soldering_gun, TIP_COLOR + "Change the size of AOE");
+                add(Main.ID + "." + zStatic.Items.soldering_gun, TIP_COLOR + "Change the size of AOE on specific blocks");
 
                 add(Main.ID + ".jei.warning.config",
                                 "Can be overriden via config");
