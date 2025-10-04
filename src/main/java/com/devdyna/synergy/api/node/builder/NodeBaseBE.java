@@ -227,6 +227,9 @@ public abstract class NodeBaseBE extends BlockEntity {
     public void moveItems(IItemHandler input, IItemHandler output, int maxCount) {
         int remaining = maxCount;
 
+        if (input == null || output == null)
+            return;
+
         for (int inSlot = 0; inSlot < input.getSlots() && remaining > 0; inSlot++) {
             ItemStack inStack = input.getStackInSlot(inSlot);
             if (inStack.isEmpty())
