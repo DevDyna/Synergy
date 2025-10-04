@@ -53,8 +53,10 @@ public abstract class CoolerBlockBase extends Block {
     public abstract boolean activeWhen(BlockState state, Level level, BlockPos pos);
 
     /**
-     * Override to set ON cooling <br/><br/>
-     * <strong>NOTE:</strong> This should return a negative value <i>else will increase heat value</i>!
+     * Override to set ON cooling <br/>
+     * <br/>
+     * <strong>NOTE:</strong> This should return a negative value <i>else will
+     * increase heat value</i>!
      */
     public abstract int getActiveCooling();
 
@@ -67,16 +69,13 @@ public abstract class CoolerBlockBase extends Block {
 
     public abstract Component conditions();
 
-    public boolean isActive(Level level,BlockPos pos){
+    public boolean isActive(Level level, BlockPos pos) {
         return level.getBlockState(pos).getValue(BlockStateProperties.ENABLED);
     }
 
     @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
-
-        t.add(Component.translatable(Main.ID + "." +
-                zStatic.ReactorStuff.cooler+".desc"));
 
         if (Screen.hasShiftDown()) {
             t.add(conditions());
@@ -85,7 +84,10 @@ public abstract class CoolerBlockBase extends Block {
             t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.cooler + ".on")
                     .append("" + getActiveCooling()));
         } else {
+            t.add(Component.translatable(Main.ID + "." +
+                    zStatic.ReactorStuff.cooler + ".desc"));
             t.add(Component.translatable(Main.ID + "." + zStatic.tips.SHIFT));
+
         }
     }
 
