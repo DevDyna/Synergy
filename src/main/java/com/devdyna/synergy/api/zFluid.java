@@ -78,7 +78,7 @@ public class zFluid {
                         .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
                         .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)) {
 
-                    @SuppressWarnings({ "null", "removal" })
+                    @SuppressWarnings({ "removal" })
                     @Override
                     public void initializeClient(Consumer<IClientFluidTypeExtensions> c) {
 
