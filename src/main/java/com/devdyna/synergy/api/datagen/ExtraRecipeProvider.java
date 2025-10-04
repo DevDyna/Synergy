@@ -14,8 +14,8 @@ import com.devdyna.synergy.init.recipeTypes.builders.UrnRitualBuilder;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.x;
 
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
@@ -78,13 +78,13 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 ShapedRecipeBuilder.shaped(MISC, output, 3)
                                 .pattern("III")
                                 .define('I', input)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(input))
+                                .unlockedBy(ID,
+                                                has(input))
                                 .group(ID).save(c);
         }
 
         // nodes
-        protected void nodeRecipe(Block b, ItemLike catalyst, RecipeOutput c) {
+        protected void nodeRecipe(RecipeOutput c, Block b, ItemLike catalyst) {
 
                 ShapedRecipeBuilder.shaped(MISC, b.asItem())
                                 .pattern(" P ")
@@ -95,8 +95,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('C', catalyst)
                                 .define('B', Tags.Items.STORAGE_BLOCKS_REDSTONE)
                                 .define('S', Tags.Items.STONES)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.REDSTONE, catalyst, Items.REDSTONE_BLOCK,
+                                .unlockedBy(ID,
+                                                has(
                                                                 zBlocks.PIPE.get()))
                                 .group(zStatic.PipeStuff.types.item_node).save(c);
 
@@ -109,15 +109,27 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('C', catalyst)
                                 .define('B', Items.ENDER_PEARL)
                                 .define('S', Tags.Items.STONES)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.REDSTONE, Items.ENDER_PEARL, catalyst,
+                                .unlockedBy(ID,
+                                                has(
                                                                 zBlocks.PIPE.get()))
                                 .group(zStatic.PipeStuff.types.item_node)
-                                .save(c, x.rl(
-                                                b.getDescriptionId()
-                                                                .replace("block." + ID + ".", "")
-                                                                + "_alt"));
+                                .save(c, BuiltInRegistries.ITEM.getKey(b.asItem())
+                                                + "_alt");
 
+        }
+
+        protected void node_alt(RecipeOutput c, ItemLike input, ItemLike output) {
+                ShapelessRecipeBuilder.shapeless(MISC, output)
+                                .requires(input)
+                                .unlockedBy(ID, has(input))
+                                .group(zStatic.PipeStuff.types.item_node)
+                                .save(c, BuiltInRegistries.ITEM.getKey(input.asItem()) + "_alt2");
+
+                ShapelessRecipeBuilder.shapeless(MISC, input)
+                                .requires(output)
+                                .unlockedBy(ID, has(output))
+                                .group(zStatic.PipeStuff.types.item_node)
+                                .save(c, BuiltInRegistries.ITEM.getKey(output.asItem()) + "_alt2");
         }
 
         protected void cropResultRecipes(RecipeOutput c) {
@@ -156,7 +168,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 clearNBT.forEach(i -> {
                         ShapelessRecipeBuilder.shapeless(MISC, i.get())
                                         .requires(i.get())
-                                        .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance.hasItems(i.get()))
+                                        .unlockedBy(ID, has(i.get()))
                                         .group(ID)
                                         .save(c, i.getRegisteredName() + "_clear_nbt");
                 });
@@ -214,8 +226,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern(" R ")
                                 .define('R', zItemTag.URN_MIXTURES)
                                 .define('H', zItems.BLUE_BATTERY.get())
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.BLUE_BATTERY.get(), zItems.BONE_MEAL_MIXTURE.get()))
+                                .unlockedBy(ID,
+                                                has(zItems.BLUE_BATTERY.get()))
                                 .group(ID).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.BLUE_BATTERY.get())
@@ -224,8 +236,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern(" R ")
                                 .define('R', zItemTag.GEMS_AQUAMARINE)
                                 .define('H', zItems.GREEN_BATTERY.get())
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.GREEN_BATTERY.get(), zItems.AQUAMARINE.get()))
+                                .unlockedBy(ID,
+                                                has(zItems.AQUAMARINE.get()))
                                 .group(ID).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.GREEN_BATTERY.get())
@@ -235,8 +247,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('S', Items.REDSTONE)
                                 .define('R', Items.SLIME_BALL)
                                 .define('H', zItems.CONDENSER.get())
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.SLIME_BALL, zItems.CONDENSER.get(), Items.REDSTONE))
+                                .unlockedBy(ID,
+                                                has(zItems.CONDENSER.get()))
                                 .group(ID).save(c);
         }
 
@@ -249,8 +261,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('N', Items.IRON_NUGGET)
                                 .define('M', zItems.GUARDIAN_SCALE.get())
                                 .define('G', zItems.BONE_MEAL_MIXTURE.get())
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.IRON_NUGGET, zItems.GUARDIAN_SCALE.get(),
+                                .unlockedBy(ID,
+                                                has(
                                                                 zItems.BONE_MEAL_MIXTURE.get()))
                                 .group(ID).save(c);
 
@@ -261,9 +273,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('N', zItemTag.NUGGET_STEEL)
                                 .define('M', zItemTag.GEMS_AQUAMARINE)
                                 .define('G', zItemTag.URN_MIXTURES)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.STEEL_NUGGET.get(), zItems.AQUAMARINE.get(),
-                                                                zItems.AMETHYST_MIXTURE.get()))
+                                .unlockedBy(ID,
+                                                has(zItems.STEEL_NUGGET.get()))
                                 .group(ID).save(c, x.path(zItems.RESISTOR.get()) + "_improved");
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.CHIP.get(), 4)
@@ -273,9 +284,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('G', zItems.BONE_MEAL_MIXTURE.get())
                                 .define('N', Items.IRON_NUGGET)
                                 .define('Q', Items.QUARTZ)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.BONE_MEAL_MIXTURE.get(), Items.IRON_NUGGET,
-                                                                Items.QUARTZ))
+                                .unlockedBy(ID,
+                                                has(zItems.BONE_MEAL_MIXTURE.get()))
                                 .group(ID).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.CHIP.get(), 8)
@@ -285,9 +295,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('G', zItemTag.URN_MIXTURES)
                                 .define('N', zItems.STEEL_NUGGET.get())
                                 .define('Q', zItemTag.DUST_QUARTZ)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.BONE_MEAL_MIXTURE.get(), zItems.STEEL_NUGGET.get(),
-                                                                zItems.QUARTZ_DUST.get()))
+                                .unlockedBy(ID,
+                                                has(zItems.BONE_MEAL_MIXTURE.get()))
                                 .group(ID).save(c, x.path(zItems.CHIP.get()) + "_improved");
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.CONDENSER.get(), 4)
@@ -298,9 +307,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('G', zItems.BONE_MEAL_MIXTURE.get())
                                 .define('M', zItems.VIOLET_WEBCAP_MUSHROOM.get())
                                 .define('I', Items.IRON_INGOT)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.IRON_NUGGET, zItems.BONE_MEAL_MIXTURE.get(),
-                                                                Items.IRON_INGOT, zItems.VIOLET_WEBCAP_MUSHROOM.get()))
+                                .unlockedBy(ID,
+                                                has(zItems.BONE_MEAL_MIXTURE.get()))
                                 .group(ID).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.CONDENSER.get(), 8)
@@ -311,9 +319,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('G', zItemTag.URN_MIXTURES)
                                 .define('M', zItemTag.GEMS_SILICON)
                                 .define('I', zItems.STEEL_INGOT.get())
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zItems.STEEL_NUGGET.get(), zItems.BONE_MEAL_MIXTURE.get(),
-                                                                zItems.STEEL_INGOT.get(), zItems.SILICON.get()))
+                                .unlockedBy(ID,
+                                                has(zItems.SILICON.get()))
                                 .group(ID).save(c, x.path(zItems.CONDENSER.get()) + "_improved");
         }
 
@@ -438,9 +445,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .requires(Items.BONE_MEAL)
                                 .requires(Tags.Items.DUSTS_REDSTONE)
                                 .requires(Items.BLAZE_POWDER)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.BONE_MEAL, Items.BLAZE_POWDER, Items.REDSTONE,
-                                                                Items.SLIME_BALL))
+                                .unlockedBy(ID,
+                                                has(Items.BLAZE_POWDER))
                                 .group(zStatic.tips.MIXTURE_TIP).save(c);
 
                 UrnRitualBuilder.of()
@@ -486,8 +492,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern(" S")
                                 .pattern(" S")
                                 .define('S', Items.STICK)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.STICK))
+                                .unlockedBy(ID,
+                                                has(Items.STICK))
                                 .group(zStatic.Items.wooden_crook).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.WOODEN_CROOK.get())
@@ -495,8 +501,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern("S ")
                                 .pattern("S ")
                                 .define('S', Items.STICK)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.STICK))
+                                .unlockedBy(ID,
+                                                has(Items.STICK))
                                 .group(zStatic.Items.wooden_crook).save(c, x.rl(
                                                 zItems.WOODEN_CROOK.get().getDescriptionId()
                                                                 .replace("item." + ID + ".", "")
@@ -508,8 +514,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern(" IN")
                                 .define('I', Items.IRON_INGOT)
                                 .define('N', Items.IRON_NUGGET)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.IRON_INGOT, Items.IRON_NUGGET))
+                                .unlockedBy(ID,
+                                                has(Items.IRON_INGOT))
                                 .group(zStatic.Items.smasher).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.SMASHER.get())
@@ -518,8 +524,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern("NI ")
                                 .define('I', Items.IRON_INGOT)
                                 .define('N', Items.IRON_NUGGET)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.IRON_INGOT, Items.IRON_NUGGET))
+                                .unlockedBy(ID,
+                                                has(Items.IRON_INGOT))
                                 .group(zStatic.Items.smasher).save(c, x.rl(
                                                 zItems.SMASHER.get().getDescriptionId()
                                                                 .replace("item." + ID + ".", "")
@@ -532,8 +538,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('S', Items.STICK)
                                 .define('G', zItemTag.FOIL_GOLD)
                                 .define('I', Items.IRON_NUGGET)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.STICK, zItems.GOLD_FOIL.get(), Items.IRON_NUGGET))
+                                .unlockedBy(ID,
+                                                has(zItems.GOLD_FOIL.get()))
                                 .group(zStatic.Items.soldering_gun).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.PIPE_REFARCTORIZER.get())
@@ -541,8 +547,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern("S ")
                                 .define('S', Items.STICK)
                                 .define('I', Items.IRON_NUGGET)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.IRON_INGOT, Items.IRON_NUGGET))
+                                .unlockedBy(ID,
+                                                has(Items.IRON_INGOT))
                                 .group(zStatic.Items.refactorizer).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.CONFIGURATOR.get())
@@ -553,9 +559,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('N', Items.IRON_NUGGET)
                                 .define('E', Items.EMERALD)
                                 .define('I', Items.IRON_INGOT)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.REDSTONE, Items.EMERALD, Items.IRON_INGOT,
-                                                                Items.IRON_NUGGET))
+                                .unlockedBy(ID,
+                                                has(Items.REDSTONE))
                                 .group(zStatic.Items.configurator).save(c);
         }
 
@@ -566,8 +571,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern("SI ")
                                 .define('I', input)
                                 .define('S', Items.STICK)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.STICK))
+                                .unlockedBy(ID,
+                                                has(Items.STICK))
                                 .group(ID).save(c);
         }
 
@@ -576,8 +581,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern("I")
                                 .pattern("I")
                                 .define('I', input)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(Items.STICK))
+                                .unlockedBy(ID,
+                                                has(Items.STICK))
                                 .group(ID).save(c);
         }
 
@@ -589,8 +594,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern(" S ")
                                 .define('F', Tags.Items.STORAGE_BLOCKS_COAL)
                                 .define('S', zItemTag.PLATE_AQUAMARINE)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zBlocks.ADVANCED_MACHINE_FRAME.get()))
+                                .unlockedBy(ID,
+                                                has(zBlocks.ADVANCED_MACHINE_FRAME.get()))
                                 .group(ID).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_MODERATOR.get())
@@ -600,8 +605,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('F', zBlocks.SIMPLE_MODERATOR.get())
                                 .define('S', zItemTag.PLATE_STEEL)
                                 .define('C', zItemTag.NUGGET_ADVANCEDALLOY)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zBlocks.SIMPLE_MODERATOR.get()))
+                                .unlockedBy(ID,
+                                                has(zBlocks.SIMPLE_MODERATOR.get()))
                                 .group(ID).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.ELITE_MODERATOR.get())
@@ -612,8 +617,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('P', zItems.NETHER_CIRCUIT.get())
                                 .define('C', zItems.CARBON_PLATE.get())
                                 .define('S', zItemTag.PLATE_ADVANCED_ALLOY)
-                                .unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                                                .hasItems(zBlocks.ADVANCED_MODERATOR.get()))
+                                .unlockedBy(ID,
+                                                has(zBlocks.ADVANCED_MODERATOR.get()))
                                 .group(ID).save(c);
 
         }
@@ -639,7 +644,5 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 });
 
         }
-
-
 
 }
