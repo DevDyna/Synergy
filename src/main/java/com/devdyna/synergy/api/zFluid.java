@@ -100,9 +100,20 @@ public class zFluid {
                             }
 
                             @Override
-                            public ResourceLocation getRenderOverlayTexture(Minecraft mc) {
+                            public ResourceLocation getOverlayTexture() {
                                 return overlay;
+                            };
+
+                            @Override
+                            public ResourceLocation getRenderOverlayTexture(Minecraft mc) {
+                                return ResourceLocation.parse("textures/misc/underwater.png");
                             }
+
+                            @Override
+                            public int getTintColor() {
+                                return color;
+                            }
+
 
                         });
                         super.initializeClient(c);
