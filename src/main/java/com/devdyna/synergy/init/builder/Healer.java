@@ -18,6 +18,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+
 @SuppressWarnings("null")
 public class Healer extends Block {
 
@@ -32,7 +33,7 @@ public class Healer extends Block {
             if (livingEntity.getMaxHealth() > livingEntity.getHealth() && entity.isAlive()) {
                 livingEntity.heal(1);
                 if (!level.isClientSide)
-                    LevelUtil.addParticle(ParticleTypes.HEART, (ServerLevel) level, pos.above(), true,3);
+                    LevelUtil.addParticle(ParticleTypes.HEART, (ServerLevel) level, pos.above(), true, 3);
                 if (entity.isOnFire())
                     entity.clearFire();
             }
