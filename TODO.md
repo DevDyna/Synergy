@@ -2,14 +2,13 @@
 
 ## THINGS BEFORE RELEASE 0.4
 
-- [ ] tweak recipes of components
+- [x] tweak recipes of components
 - [ ] Fully Guideme rework
-- [ ] Moderators recipes
-- [ ] Cooler recipes
-- [ ] Fuel cell recipe
-- [ ] Reactor controller recipe
-- [ ] Advanced Machine frame recipe
-
+- [x] Moderators recipes
+- [x] Cooler recipes
+- [x] Fuel cell recipe
+- [x] Reactor controller recipe
+- [x] Advanced Machine frame recipe
 
 ## BUGS
 
@@ -20,14 +19,13 @@
 - [ ] Nodes can void items with furnaces
 - [ ] Shift-action on some GUI will cause issues
 
-
 - [ ] Nodes doesn't support Mekanism
-
 
 ## COMPATS AND TWEAKS
 
-- [x] Cave wheat will grow fast on cave ambients
 - [ ] Patchouli compat
+
+- [x] Cave wheat will grow fast on cave ambients
 - [ ] Fluid nodes
 - [ ] (Meka) Gas nodes
 - [ ] Node Upgrades
@@ -36,10 +34,17 @@
 
 ### CODEBASE
 
-- [ ] datagen/DataRecipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
+- [ ] datagen recipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
+
+- [ ] datagen recipes with namespace minecraft intend of synergy
+
+- [ ] datagen recipes ids x.path(...).replace(...) -> BuiltInRegistries.ITEM.getKey(item)
+
+- [ ] datagen recipes group id rework
 
 ## NEWS
 
+- [ ] platform network (industry indiegame like)
 - [ ] dry Bricks and oven
 - [ ] Item Duct (item transfer with rendering)
 - [ ] Chimney & smoke tubes
