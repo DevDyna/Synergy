@@ -8,10 +8,11 @@
 - [x] Fuel cell recipe
 - [x] Reactor controller recipe
 - [x] Advanced Machine frame recipe
-- [ ] Fuel cell output can conflict with input
-- [ ] quickMoveStack
 
 ## BUGS
+
+- [ ] Fuel cell output can conflict with input
+- [ ] quickMoveStack
 
 - [x] Hold Shift tooltips dont work on JEI (need to investigate)
 - [x] Farmer delight auto-harvest toggle
@@ -21,6 +22,7 @@
 - [ ] Shift-action on some GUI will cause issues
 
 - [ ] Nodes doesn't support Mekanism
+- [ ] FuelCell doesn't support Mekanism pipes
 
 ## COMPATS AND TWEAKS
 
