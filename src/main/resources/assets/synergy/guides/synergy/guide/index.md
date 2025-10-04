@@ -9,4 +9,6 @@ navigation:
 
 A collection of random stuff without a main theme
 
-<SubPages />
+## Modules
+
+<CategoryIndex category="main"></CategoryIndex>

@@ -3,6 +3,8 @@ navigation:
   title: Tools and Gadgets
   icon: "synergy:green_battery"
   position: 3
+categories:
+  - main
 ---
 
 # Tools and Gadgets

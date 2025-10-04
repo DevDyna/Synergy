@@ -2,10 +2,10 @@
 navigation:
   title: Solar Panel
   icon: "synergy:solar_panel"
-  parent: machines.md
+  parent: automation.md
   position: 3
 categories:
-  - machines
+  - automation
 item_ids:
   - synergy:solar_panel
 ---

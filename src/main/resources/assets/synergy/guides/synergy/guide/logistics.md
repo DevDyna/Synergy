@@ -1,13 +1,15 @@
 ---
 navigation:
-  title: Pipes and Nodes
+  title: Logistics
   icon: "synergy:pipe"
   position: 2
 item_ids:
   - synergy:pipe
+categories:
+  - main
 ---
 
-# Pipes and Nodes
+# Logistics
 
 ## Nodes
 

@@ -1,39 +1,20 @@
 ---
 navigation:
-  title: Harvester
-  icon: "synergy:harvester"
-  parent: machines.md
-  position: 2
+  title: Sprinkler
+  icon: "synergy:sprinkler"
+  parent: automation.md
+  position: 1
 categories:
-  - machines
+  - automation
 item_ids:
-  - synergy:harvester
+  - synergy:sprinkler
 ---
 
-# Harvester
+# Sprinkler
 
-A block that harvest and chop stuff
-
-It will automatically export items to the nearest storage placed at one of the face of it else it will drop everything harvested!
-
-Configurator can allow to show AOE of this machine
+A block that will speed up the growing of crops around it
 
 It require FE to work
-
-<BlockImage id="synergy:harvester" scale="4.0" p:enabled="true"/>
-
-What can harvest :
-
-- any crop mono-block
-- any type of tree and nether fungus
-- any tall-crop (<ItemLink id="minecraft:sugar_cane"/> , <ItemLink id="minecraft:cactus"/> , <ItemLink id="minecraft:bamboo"/>)
-- <ItemLink id="minecraft:cocoa_beans"/>
-- <ItemLink id="minecraft:melon"/> and <ItemLink id="minecraft:pumpkin"/>
-- <ItemLink id="minecraft:sweet_berries"/>
-- <ItemLink id="synergy:azalea_seeds"/>
-- <ItemLink id="minecraft:nether_wart"/>
-
-Note: It can harvest trees but dont replant the saplings!
 
 <GameScene zoom="2" interactive={true}>
 
@@ -127,7 +108,7 @@ Note: It can harvest trees but dont replant the saplings!
 <Block x="8" y="0" z="9" id="minecraft:white_terracotta"/>
 <Block x="9" y="0" z="9" id="minecraft:light_gray_terracotta"/>
 
-  <Block x="5" y="1" z="10" id="synergy:harvester" p:facing="north" p:enabled="true"/>
+  <Block x="5" y="1" z="5" id="synergy:sprinkler" p:enabled="true"/>
 
 <Block x="7" y="1" z="3" id="synergy:azalea" p:age="5"/>
 <Block x="2" y="1" z="1" id="synergy:azalea" p:age="6"/>
@@ -161,12 +142,13 @@ Note: It can harvest trees but dont replant the saplings!
 <Block x="3" y="1" z="7" id="synergy:azalea" p:age="4"/>
 <Block x="7" y="1" z="6" id="synergy:azalea" p:age="1"/>
 
-  <BoxAnnotation color="#00FF00" min="1.0 1.0 1.0" max="10.0 2.0 10.0">
+  <BoxAnnotation color="#00FF00" min="1.0 1.0 1.0" max="10.0 4.0 10.0">
        Area of Effect (9x9) <br/> Can be unlocked in-game using a <ItemImage id="synergy:configurator" scale="0.75"/> <ItemLink id="synergy:configurator"/>
   </BoxAnnotation>
 
 </GameScene>
 
-<RecipeFor id="synergy:harvester" />
 
-_Also Harvester include an entire custom API to allow other mods to add support without need to use mixing_
+<BlockImage id="synergy:sprinkler" scale="4.0"/>
+
+<RecipeFor id="synergy:sprinkler" />

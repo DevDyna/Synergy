@@ -1,26 +1,23 @@
 ---
 navigation:
-  title: Item Retrieval Nodes
+  title: Retrieval Nodes
   icon: "synergy:item_retrieval_node"
-  parent: pipes.md
+  parent: logistics.md
   position: 3
 categories:
-  - pipes
+  - logistics
 item_ids:
   - synergy:item_retrieval_node
+  - synergy:energy_retrieval_node
 ---
 
-# Item Retrieval Nodes
+# Retrieval Nodes
 
-Like <ItemLink id="synergy:item_transfer_node" /> it can transfer item across blocks but it works exactly the other way
+Like <ItemLink id="synergy:item_transfer_node" /> it can transfer things across blocks but it works exactly the other way
 
-It extract items and insert at the storage where it was placed
+It extract things and insert at the storage where it was placed
 
 <BlockImage id="synergy:item_retrieval_node" scale="4.0" p:north="false" p:south="false" p:east="false" p:west="false" p:up="false"/>
-
-<RecipeFor id="synergy:item_retrieval_node" />
-
-<Recipe id="synergy:item_retrieval_node_alt" />
 
 ## How it work
 
@@ -61,3 +58,7 @@ It will extract items from the first storage available and insert it at the stor
   </BoxAnnotation>
 
 </GameScene>
+
+<RecipeFor id="synergy:item_retrieval_node" />
+
+<Recipe id="synergy:item_retrieval_node_alt" />

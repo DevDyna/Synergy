@@ -3,6 +3,8 @@ navigation:
   title: Crops and Mushrooms
   icon: "minecraft:sweet_berries"
   position: 4
+categories:
+  - main
 ---
 
 # Crops and Mushrooms

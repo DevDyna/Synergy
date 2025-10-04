@@ -1,26 +1,22 @@
 ---
 navigation:
-  title: Item Provider Nodes
+  title: Provider Nodes
   icon: "synergy:item_provider_node"
-  parent: pipes.md
+  parent: logistics.md
   position: 2
 categories:
-  - pipes
+  - logistics
 item_ids:
   - synergy:item_provider_node
 ---
 
-# Item Provider Nodes
+# Provider Nodes
 
 A block that allow to generate resorces based on block patterns
 
 It can be extended the result output using <ItemLink id="synergy:pipe" />
 
 <BlockImage id="synergy:item_provider_node" scale="4.0" p:north="false" p:south="false" p:east="false" p:west="false" p:up="false"/>
-
-<RecipeFor id="synergy:item_provider_node" />
-
-<Recipe id="synergy:item_provider_node_alt" />
 
 ## Example #1 : Cobblestone gen
 
@@ -98,3 +94,7 @@ However it has found <ItemImage id="minecraft:water_bucket" scale="0.75" /> and 
   </BoxAnnotation>
 
 </GameScene>
+
+<RecipeFor id="synergy:item_provider_node" />
+
+<Recipe id="synergy:item_provider_node_alt" />

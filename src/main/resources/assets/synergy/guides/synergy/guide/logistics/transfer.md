@@ -1,26 +1,23 @@
 ---
 navigation:
-  title: Item Transfer Node
+  title: Transfer Nodes
   icon: "synergy:item_transfer_node"
-  parent: pipes.md
+  parent: logistics.md
   position: 1
 categories:
-  - pipes
+  - logistics
 item_ids:
   - synergy:item_transfer_node
+  - synergy:energy_transfer_node
 ---
 
-# Item Transfer Node
+# Transfer Nodes
 
-A block that allow to extract and insert items across containers
+A block that allow to extract and insert things across containers
 
 It can be extended using <ItemLink id="synergy:pipe" />
 
 <BlockImage id="synergy:item_transfer_node" scale="4.0" p:north="false" p:south="false" p:east="false" p:west="false" p:up="false"/>
-
-<RecipeFor id="synergy:item_transfer_node" />
-
-<Recipe id="synergy:item_transfer_node_alt" />
 
 ## How it work
 
@@ -61,6 +58,10 @@ It will extract items from any storage and insert it at the first storage path-f
   </BoxAnnotation>
 
 </GameScene>
+
+<RecipeFor id="synergy:item_transfer_node" />
+
+<Recipe id="synergy:item_transfer_node_alt" />
 
 ### FunFact
 
