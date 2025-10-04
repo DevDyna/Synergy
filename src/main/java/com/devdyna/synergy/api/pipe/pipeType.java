@@ -18,7 +18,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 
-@SuppressWarnings("null")
 public interface pipeType {
 
     static EnumProperty<pipeProperties> NORTH = EnumProperty.create("north", pipeProperties.class);
