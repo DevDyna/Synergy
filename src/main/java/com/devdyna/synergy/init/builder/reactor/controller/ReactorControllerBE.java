@@ -90,6 +90,12 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
         }
     }
 
+    public void updateAOE(){
+        area = null;
+        resetStats();
+    }
+
+
     private void resetStats() {
         isOverHeated = false;
         fe = 1;
