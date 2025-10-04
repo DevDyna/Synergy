@@ -10,6 +10,9 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 public class BlockInjection {
+
+    // TODO unify event
+
     @SubscribeEvent
     public static void urnInjection(PlayerInteractEvent.RightClickBlock event) {
         var level = event.getLevel();
@@ -18,7 +21,8 @@ public class BlockInjection {
         var hand = event.getHand();
         var stack = event.getItemStack();
 
-        if (hand.equals(InteractionHand.MAIN_HAND) && level != null && !level.isClientSide && !player.isShiftKeyDown()) {
+        if (hand.equals(InteractionHand.MAIN_HAND) && level != null && !level.isClientSide
+                && !player.isShiftKeyDown()) {
             var be = level.getBlockEntity(pos);
 
             if (be instanceof UrnBE urn) {
@@ -36,6 +40,7 @@ public class BlockInjection {
                         ItemHandlerHelper.giveItemToPlayer(player, extracted);
                     }
                 }
+                player.swing(hand);
 
                 urn.setChanged();
             }
@@ -50,7 +55,8 @@ public class BlockInjection {
         var hand = event.getHand();
         var stack = event.getItemStack();
 
-        if (hand.equals(InteractionHand.MAIN_HAND) && level != null && !level.isClientSide && !player.isShiftKeyDown()) {
+        if (hand.equals(InteractionHand.MAIN_HAND) && level != null && !level.isClientSide
+                && !player.isShiftKeyDown()) {
             var be = level.getBlockEntity(pos);
 
             if (be instanceof QuernBE quern) {
@@ -68,6 +74,7 @@ public class BlockInjection {
                         ItemHandlerHelper.giveItemToPlayer(player, extracted);
                     }
                 }
+                player.swing(hand);
 
                 quern.setChanged();
             }
