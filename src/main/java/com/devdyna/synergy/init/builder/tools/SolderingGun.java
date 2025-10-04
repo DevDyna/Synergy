@@ -53,6 +53,8 @@ public class SolderingGun extends Item {
 
             be.setChanged();
 
+            be.updateAOE();
+
             player.playSound(SoundEvents.ITEM_FRAME_ROTATE_ITEM);
 
             return InteractionResult.SUCCESS_NO_ITEM_USED;
