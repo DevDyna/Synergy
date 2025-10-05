@@ -11,6 +11,9 @@
 
 ## BUGS
 
+
+- [ ] Reactor Controller dont save aoe
+- [ ] BE radius doesn't sync with AOE
 - [ ] Fuel cell output can conflict with input
 - [ ] quickMoveStack
 
