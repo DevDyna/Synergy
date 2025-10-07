@@ -2,10 +2,12 @@ package com.devdyna.synergy.datagen.server;
 
 import java.util.concurrent.CompletableFuture;
 
+import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.DataGenUtil;
 import com.devdyna.synergy.utils.x;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -13,25 +15,26 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 @SuppressWarnings("null")
 public class DataItemTag extends ItemTagsProvider {
 
-        public DataItemTag(PackOutput o, CompletableFuture<Provider> p, CompletableFuture<TagLookup<Block>> b) {
-                super(o, p, b);
-        }
+    public DataItemTag(PackOutput o, CompletableFuture<HolderLookup.Provider> p, CompletableFuture<TagLookup<Block>> b, ExistingFileHelper h) {
+        super(o, p, b, Main.ID, h);
+    }
+
 
         @Override
         protected void addTags(Provider p) {
 
-                //TODO check issue before 
-                // copy(zBlockTag.CAN_SUSTAIN_BLUE_CUP, zItemTag.CAN_SUSTAIN_BLUE_CUP);
-                // copy(zBlockTag.CAN_SUSTAIN_CAVE_WHEAT, zItemTag.CAN_SUSTAIN_CAVE_WHEAT);
-                // copy(zBlockTag.CAN_SUSTAIN_COTTON, zItemTag.CAN_SUSTAIN_COTTON);
-                // copy(zBlockTag.CAN_SUSTAIN_RICE, zItemTag.CAN_SUSTAIN_RICE);
-                // copy(zBlockTag.CAN_SUSTAIN_VIOLET_WEBCAP,
-                // zItemTag.CAN_SUSTAIN_VIOLET_WEBCAP);
-                // copy(zBlockTag.INFESTED_BLOCKS, zItemTag.INFESTED_BLOCKS);
+                copy(zBlockTag.CAN_SUSTAIN_BLUE_CUP, zItemTag.CAN_SUSTAIN_BLUE_CUP);
+                copy(zBlockTag.CAN_SUSTAIN_CAVE_WHEAT, zItemTag.CAN_SUSTAIN_CAVE_WHEAT);
+                copy(zBlockTag.CAN_SUSTAIN_COTTON, zItemTag.CAN_SUSTAIN_COTTON);
+                copy(zBlockTag.CAN_SUSTAIN_RICE, zItemTag.CAN_SUSTAIN_RICE);
+                copy(zBlockTag.CAN_SUSTAIN_VIOLET_WEBCAP,
+                zItemTag.CAN_SUSTAIN_VIOLET_WEBCAP);
+                copy(zBlockTag.INFESTED_BLOCKS, zItemTag.INFESTED_BLOCKS);
 
                 tag(zItemTag.STONE_SLABS).add(Items.STONE_SLAB, Items.SMOOTH_STONE_SLAB);
 
