@@ -1,0 +1,10 @@
+{
+  "values": [
+    "minecraft:clay",
+    "minecraft:farmland",
+    "#minecraft:dirt",
+    "#c:sands",
+    "#c:gravels",
+    "#c:sandstone/blocks"
+  ]
+}
