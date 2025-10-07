@@ -1,25 +1,15 @@
 # TODO
 
-## THINGS BEFORE RELEASE 0.4
+## THINGS BEFORE RELEASE 0.5
 
-- [x] tweak recipes of components
-- [x] Moderators recipes
-- [x] Cooler recipes
-- [x] Fuel cell recipe
-- [x] Reactor controller recipe
-- [x] Advanced Machine frame recipe
 
 ## BUGS
 
 
-- [ ] Reactor Controller dont save aoe
+- [x] Reactor Controller dont save aoe
 - [ ] BE radius doesn't sync with AOE
 - [ ] Fuel cell output can conflict with input
 - [ ] quickMoveStack
-
-- [x] Hold Shift tooltips dont work on JEI (need to investigate)
-- [x] Farmer delight auto-harvest toggle
-- [x] Farmer delight Rice cannot be harvested with Harvester
 
 - [ ] Nodes can void items with furnaces
 - [ ] Shift-action on some GUI will cause issues
@@ -31,7 +21,6 @@
 
 - [ ] Patchouli compat
 
-- [x] Cave wheat will grow fast on cave ambients
 - [ ] Fluid nodes
 - [ ] (Meka) Gas nodes
 - [ ] Node Upgrades
@@ -52,6 +41,7 @@
 
 ## NEWS
 
+- [ ] puzzle fossils
 - [ ] platform network (industry indiegame like)
 - [ ] dry Bricks and oven
 - [ ] Item Duct (item transfer with rendering)
