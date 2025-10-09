@@ -1,6 +1,6 @@
 # Synergy
 
-![](https://cf.way2muchnoise.eu/versions/1189855.svg) ![](https://img.shields.io/badge/NeoForge-lime?style=plastic&amp;link=https%3A%2F%2Fneoforged.net%2F)
+![](https://cf.way2muchnoise.eu/versions/1286770.svg) ![](https://img.shields.io/badge/NeoForge-lime?style=plastic&amp;link=https%3A%2F%2Fneoforged.net%2F)
 
 ![](https://tokei.rs/b1/github/DevDyna/Synergy?category=code) 
 
