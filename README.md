@@ -1,4 +1,5 @@
 # Synergy
+![](https://tokei.rs/b1/github/DevDyna/Synergy?category=code) 
 
 A bunch of Magic-Tech and fun-made gadgets
 
