@@ -52,6 +52,15 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         addSlot(new SlotItemHandler(beSlot, id, x, y));
     }
 
+    protected void addMachineOutputSlot(ItemStackHandler beSlot, int id, int x, int y) {
+        addSlot(new SlotItemHandler(beSlot, id, x, y) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return false;
+            }
+        });
+    }
+
     // TODO need to be verified
     protected void addMachineSlots(ItemStackHandler beSlot, int baseId,
             int x, int y, int count, int xOf, int yOf) {
@@ -66,30 +75,30 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         addSlot(a);
     }
 
-    //TODO DONT WORK PROPRERLY
+    // TODO DONT WORK PROPRERLY
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
-      ItemStack itemstack = ItemStack.EMPTY;
-      Slot slot = (Slot)this.slots.get(index);
-      if (slot != null && slot.hasItem()) {
-         ItemStack itemstack1 = slot.getItem();
-         itemstack = itemstack1.copy();
-         if (index < this.MACHINE_SLOT) {
-            if (!this.moveItemStackTo(itemstack1, this.MACHINE_SLOT, this.slots.size(), true)) {
-               return ItemStack.EMPTY;
+        ItemStack itemstack = ItemStack.EMPTY;
+        Slot slot = (Slot) this.slots.get(index);
+        if (slot != null && slot.hasItem()) {
+            ItemStack itemstack1 = slot.getItem();
+            itemstack = itemstack1.copy();
+            if (index < this.MACHINE_SLOT) {
+                if (!this.moveItemStackTo(itemstack1, this.MACHINE_SLOT, this.slots.size(), true)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (!this.moveItemStackTo(itemstack1, 0, this.MACHINE_SLOT, false)) {
+                return ItemStack.EMPTY;
             }
-         } else if (!this.moveItemStackTo(itemstack1, 0, this.MACHINE_SLOT, false)) {
-            return ItemStack.EMPTY;
-         }
 
-         if (itemstack1.isEmpty()) {
-            slot.setByPlayer(ItemStack.EMPTY);
-         } else {
-            slot.setChanged();
-         }
-      }
+            if (itemstack1.isEmpty()) {
+                slot.setByPlayer(ItemStack.EMPTY);
+            } else {
+                slot.setChanged();
+            }
+        }
 
-      return itemstack;
+        return itemstack;
     }
 
     @Override
