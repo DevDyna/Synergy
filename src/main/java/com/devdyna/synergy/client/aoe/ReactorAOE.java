@@ -2,6 +2,7 @@ package com.devdyna.synergy.client.aoe;
 
 import com.devdyna.synergy.api.client.TypeRenders;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBE;
+import com.devdyna.synergy.utils.LogUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -21,11 +22,14 @@ public class ReactorAOE<T extends ReactorControllerBE> implements BlockEntityRen
             int combinedLightsIn, int combinedOverlayIn) {
 
         var dir = be.getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING);
-        var points = be.getPoints(be.getLevel(), BlockPos.ZERO, dir, true);
-        var start = be.getStartPoint(points);
-        var end = be.getEndPoint(points);
 
-        renderDebugBox(be, start, end, dir, stack, bufferIn);
+        var level = be.getLevel();
+        var xz = be.radius();
+        var y = be.height();
+
+        var points = be.getPoints(level, BlockPos.ZERO, dir, true, xz, y);
+
+        renderDebugBox(be, be.getStartPoint(points), be.getEndPoint(points), dir, stack, bufferIn);
 
     }
 
