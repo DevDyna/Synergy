@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.coreBE.BaseBlockBE;
+import com.devdyna.synergy.api.coreBE.block.TickingBlock;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
 import com.devdyna.synergy.utils.PlayerUtil;
 import com.devdyna.synergy.utils.StringUtil;
@@ -32,7 +32,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 
 @SuppressWarnings("null")
-public class ReactorControllerBlock extends BaseBlockBE {
+public class ReactorControllerBlock extends TickingBlock {
 
     public final static EnumProperty<ControllerProperties> STATUS = EnumProperty.create("status",
             ControllerProperties.class);

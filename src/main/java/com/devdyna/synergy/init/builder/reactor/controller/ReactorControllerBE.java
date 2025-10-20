@@ -3,10 +3,10 @@ package com.devdyna.synergy.init.builder.reactor.controller;
 import java.util.*;
 
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
+import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.api.BiBool;
 import com.devdyna.synergy.api.Range;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
-import com.devdyna.synergy.api.coreBE.BaseBE;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
 import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBlock;
@@ -31,19 +31,21 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
 @SuppressWarnings("null")
-public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaOfEffect {
+public class ReactorControllerBE extends TickingBE implements EnergyProvider, AreaOfEffect {
 
     private final Map<Direction, BlockCapabilityCache<IEnergyStorage, Direction>> cache = new HashMap<>();
 
     public ReactorControllerBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.REACTOR_CONTROLLER.get(), pos, state);
-        this.radius = 4;
+        if (radius == 0)
+            this.radius = 4;
         var random = new Random();
         var color = ColorUtil.colorfulColorList.get(random.nextInt(ColorUtil.colorfulColorList.size()));
         rgbColor = List.of(color.getRed(), color.getGreen(), color.getBlue());
     }
 
     int i = 0;
+
     List<BlockPos> area = null;
     List<Integer> rgbColor;
 
@@ -85,16 +87,15 @@ public class ReactorControllerBE extends BaseBE implements EnergyProvider, AreaO
 
         }
 
-        if (canExtract()) {
+        if (canExtract())
             providePowerAdjacent(level, getBlockPos(), cache, getStoredFE());
-        }
+
     }
 
-    public void updateAOE(){
+    public void updateAOE() {
         area = null;
         resetStats();
     }
-
 
     private void resetStats() {
         isOverHeated = false;
