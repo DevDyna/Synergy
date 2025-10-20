@@ -1,7 +1,7 @@
 package com.devdyna.synergy.init.builder.sprinkler;
 
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
-import com.devdyna.synergy.api.coreBE.BaseBE;
+import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.utils.LevelUtil;
@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class SprinklerBE extends BaseBE implements EnergyBlock {
+public class SprinklerBE extends TickingBE implements EnergyBlock {
 
     public SprinklerBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.SPRINKLER.get(), pos, state);

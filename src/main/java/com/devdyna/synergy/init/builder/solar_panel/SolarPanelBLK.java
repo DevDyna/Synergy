@@ -8,7 +8,8 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.coreBE.BaseBlockBE;
+import com.devdyna.synergy.api.coreBE.block.TickingBlock;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -30,7 +31,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 @SuppressWarnings("null")
-public class SolarPanelBLK extends BaseBlockBE {
+public class SolarPanelBLK extends TickingBlock {
 
     protected static ArrayList<BooleanProperty> PROPRTIES = new ArrayList<>(
             Arrays.asList(

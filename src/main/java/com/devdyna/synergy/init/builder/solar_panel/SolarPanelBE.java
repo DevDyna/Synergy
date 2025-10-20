@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
-import com.devdyna.synergy.api.coreBE.BaseBE;
+import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import net.minecraft.core.BlockPos;
@@ -18,7 +18,7 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
 @SuppressWarnings("null")
-public class SolarPanelBE extends BaseBE implements EnergyProvider {
+public class SolarPanelBE extends TickingBE implements EnergyProvider {
 
     private final Map<Direction, BlockCapabilityCache<IEnergyStorage, Direction>> cache = new HashMap<>();
 

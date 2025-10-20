@@ -7,8 +7,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.menu.BlockMenu;
-
+import com.devdyna.synergy.api.coreBE.block.BlockStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -31,7 +30,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class TinyChestBK extends BlockMenu {
+public class TinyChestBK extends BlockStorage {
 
     public TinyChestBK() {
         super(Properties.of().strength(1.0f).destroyTime(1.0f).sound(SoundType.WOOD).mapColor(MapColor.WOOD));

@@ -2,7 +2,8 @@ package com.devdyna.synergy.init.builder.urn;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.coreBE.BaseBlockBE;
+import com.devdyna.synergy.api.coreBE.block.TickingBlock;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -15,7 +16,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class UrnBlock extends BaseBlockBE {
+public class UrnBlock extends TickingBlock {
 
     public UrnBlock() {
         super(Properties.of().strength(0.4f).destroyTime(0.4f).sound(SoundType.DECORATED_POT)

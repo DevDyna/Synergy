@@ -2,7 +2,7 @@ package com.devdyna.synergy.init.builder.tinychests;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.menu.BEMenu;
+import com.devdyna.synergy.api.coreBE.be.BEStorage;
 import com.devdyna.synergy.client.gui.tiny_chest.TinyChestMenu;
 import com.devdyna.synergy.init.types.zBlockEntities;
 
@@ -13,7 +13,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
-public class TinyChestBE extends BEMenu {
+public class TinyChestBE extends BEStorage {
 
     public TinyChestBE(BlockPos pos, BlockState blockState) {
         super(zBlockEntities.WOODEN_TINY_CHEST.get(), pos, blockState);
@@ -23,11 +23,6 @@ public class TinyChestBE extends BEMenu {
     @Nullable
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
         return new TinyChestMenu(i, inventory, this);
-    }
-
-    @Override
-    public int MachineSlots() {
-        return 1;
     }
 
 }

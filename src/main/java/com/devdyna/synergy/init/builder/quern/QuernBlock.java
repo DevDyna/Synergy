@@ -2,7 +2,7 @@ package com.devdyna.synergy.init.builder.quern;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.coreBE.BaseBlockBE;
+import com.devdyna.synergy.api.coreBE.block.TickingBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -19,7 +19,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class QuernBlock extends BaseBlockBE {
+public class QuernBlock extends TickingBlock {
 
     public QuernBlock() {
         super(Properties.of().strength(0.4f).destroyTime(0.4f).sound(SoundType.STONE)
