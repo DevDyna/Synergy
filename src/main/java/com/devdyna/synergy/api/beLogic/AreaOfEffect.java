@@ -46,6 +46,20 @@ public interface AreaOfEffect {
                         height() - 1));
     }
 
+        /**
+     * @return map<Start,End>
+     */
+    default Entry<BlockPos, BlockPos> getPoints(Level level, BlockPos baseBlock, Direction dir, boolean isUp,int height,int radius) {
+        BlockPos relPos = baseBlock.relative(dir);
+        Direction upDown = isUp ? Direction.UP : Direction.DOWN;
+
+        ArrayList<Direction> validDirs = getHorizontalDirections(dir);
+
+        return Map.entry(relPos.relative(validDirs.get(0), radius),
+                relPos.relative(validDirs.get(1), radius).relative(dir, (radius) * 2).relative(upDown,
+                        height - 1));
+    }
+
     /**
      * check all directions and remove all blacklisted
      * NORTH -> EAST | WEST | UP | DOWN
