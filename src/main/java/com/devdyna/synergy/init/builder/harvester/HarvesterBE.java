@@ -3,10 +3,10 @@ package com.devdyna.synergy.init.builder.harvester;
 import java.util.*;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.ItemProducer;
+import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.api.BiBool;
 import com.devdyna.synergy.api.Range;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
-import com.devdyna.synergy.api.coreBE.BaseBE;
 import com.devdyna.synergy.api.harvester.PlantHandler;
 import com.devdyna.synergy.api.harvester.VanillaPlants;
 import com.devdyna.synergy.init.types.zBlockEntities;
@@ -29,7 +29,7 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 
 @SuppressWarnings("null")
-public class HarvesterBE extends BaseBE implements EnergyBlock, AreaOfEffect, ItemProducer {
+public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect, ItemProducer {
 
     private final Map<Direction, BlockCapabilityCache<IItemHandler, Direction>> cache = new HashMap<>();
 
