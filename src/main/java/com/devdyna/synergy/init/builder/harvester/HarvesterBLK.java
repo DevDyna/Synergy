@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.coreBE.BaseBlockBE;
+import com.devdyna.synergy.api.coreBE.block.TickingBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -23,7 +23,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("null")
-public class HarvesterBLK extends BaseBlockBE {
+public class HarvesterBLK extends TickingBlock {
 
     public HarvesterBLK() {
         super(Properties.of().forceSolidOn().destroyTime(1.0f).sound(SoundType.METAL).mapColor(MapColor.METAL));
