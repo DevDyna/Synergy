@@ -2,6 +2,8 @@ package com.devdyna.synergy.api.coreBE;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.coreBE.be.TickingBE;
+
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -22,7 +24,7 @@ public abstract class BaseBlockBE extends Block implements EntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l, BlockState s,
             BlockEntityType<T> ty) {
         return (lvl, pos, b, t) -> {
-            if (t instanceof BaseBE be) {
+            if (t instanceof TickingBE be) {
                 be.tickBoth();
                 if (l.isClientSide())
                     be.tickClient();
