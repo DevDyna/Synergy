@@ -1,32 +1,42 @@
 package com.devdyna.synergy.init.builder.reactor.cell;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.menu.BEMenu;
+import com.devdyna.synergy.api.coreBE.be.BEMachineIO;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellMenu;
 import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
+import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class FuelCellBE extends BEMenu {
+public class FuelCellBE extends BaseContainerBlockEntity implements WorldlyContainer {
 
-    private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
+    private int INPUT = 0;
+    private int OUTPUT = 1;
+
     public static final String PROGRESS = "progress";
     public static final String RECIPE_INPUT = "recipe_input";
     private int progress = 0;
@@ -37,6 +47,7 @@ public class FuelCellBE extends BEMenu {
 
     public FuelCellBE(BlockPos pos, BlockState blockState) {
         super(zBlockEntities.FUEL_CELL.get(), pos, blockState);
+
         data = new ContainerData() {
 
             @Override
@@ -60,16 +71,16 @@ public class FuelCellBE extends BEMenu {
 
             @Override
             public int getCount() {
-                return MachineSlots();
+                return getContainerSize();
             }
         };
     }
 
-    @Nullable
-    @Override
-    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return new FuelCellMenu(i, inventory, this, this.data);
-    }
+    // @Nullable
+    // @Override
+    // public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
+    //     return new FuelCellMenu(i, inventory, this, this.data);
+    // }
 
     // require both due client-gui extraction
     public void tickBoth() {
@@ -93,24 +104,19 @@ public class FuelCellBE extends BEMenu {
     }
 
     public void saveItemInput() {
-        // LogUtil.info("fired");
-        var item = getStorage().getStackInSlot(INPUT_SLOT).copy();
+        var item = items.get(INPUT).copy();
         var nbt = saveWithFullMetadata(level.registryAccess());
-        // var storedItem = ItemStack.parseOptional(this.level.registryAccess(),
-        // nbt.getCompound(RECIPE_INPUT));
         if (!item.isEmpty() && !nbt.contains(RECIPE_INPUT)) {
             var recipe = level.getRecipeManager()
                     .getRecipeFor(zRecipeTypes.FUEL_CELL_RECIPE.getType(),
                             new MonoItemInput(item), level);
 
-            // LogUtil.info("isempty " + recipe.isEmpty());
-
-            if (!recipe.isEmpty() && canInsert(OUTPUT_SLOT, recipe.get().value().getOutput())) {
+            if (!recipe.isEmpty() && canInsert(OUTPUT, recipe.get().value().getOutput())) {
                 item.setCount(1);
                 nbt.put(RECIPE_INPUT, item.save(level.registryAccess()));
                 loadWithComponents(nbt, level.registryAccess());
                 setChanged(level, getBlockPos(), getBlockState());
-                getStorage().extractItem(INPUT_SLOT, 1, false);
+                items.get(INPUT).shrink(1);
             }
         }
 
@@ -126,8 +132,7 @@ public class FuelCellBE extends BEMenu {
 
     private void craftItem() {
         ItemStack output = getRecipe().get().value().getOutput();
-        getStorage().setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
-                getStorage().getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
+        items.get(OUTPUT).setCount(items.get(OUTPUT).getCount() + output.getCount());
         var nbt = saveWithFullMetadata(level.registryAccess());
         nbt.remove(RECIPE_INPUT);
         inputStack = ItemStack.EMPTY;
@@ -137,11 +142,6 @@ public class FuelCellBE extends BEMenu {
 
     private void resetProgress() {
         progress = 0;
-    }
-
-    @Override
-    public int MachineSlots() {
-        return 2;
     }
 
     public int getProgress() {
@@ -174,20 +174,19 @@ public class FuelCellBE extends BEMenu {
     }
 
     public boolean hasRecipe() {
-        return !getRecipe().isEmpty() && canInsert(OUTPUT_SLOT, getRecipe().get().value().getOutput());
+        return !getRecipe().isEmpty() && canInsert(OUTPUT, getRecipe().get().value().getOutput());
     }
 
-    private boolean canInsert(int slotID, ItemStack output) {
-        var slot = getStorage().getStackInSlot(slotID);
+    private boolean canInsert(int slotID, ItemStack item) {
+        var slot = items.get(INPUT);
         return (slot.isEmpty() ||
-                slot.getItem() == output.getItem()) &&
+                slot.getItem() == item.getItem()) &&
                 (slot.isEmpty() ? 64
-                        : slot.getMaxStackSize()) >= slot.getCount() + output.getCount();
+                        : slot.getMaxStackSize()) >= slot.getCount() + item.getCount();
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider pRegistries) {
-        // tag.put("inventory", getStorage().serializeNBT(pRegistries));
         tag.putInt(PROGRESS, progress);
         if (inputStack != null && !inputStack.isEmpty())
             tag.put(RECIPE_INPUT, inputStack.save(pRegistries));
@@ -198,11 +197,61 @@ public class FuelCellBE extends BEMenu {
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider pRegistries) {
         super.loadAdditional(tag, pRegistries);
-        // getStorage().deserializeNBT(pRegistries, tag.getCompound("inventory"));
-        // if (tag.contains(PROGRESS))
         progress = tag.getInt(PROGRESS);
-        // if (tag.contains(RECIPE_INPUT))
         inputStack = ItemStack.parseOptional(pRegistries, tag.getCompound(RECIPE_INPUT));
-
     }
+
+    public static final int SIZE = 2;
+    // Our item stack list. This is not final due to #setItems existing.
+    private NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
+
+    // The container size, like before.
+    @Override
+    public int getContainerSize() {
+        return SIZE;
+    }
+
+    // The getter for our item stack list.
+    @Override
+    protected NonNullList<ItemStack> getItems() {
+        return items;
+    }
+
+    public NonNullList<ItemStack> getStorage() {
+        return items;
+    }
+
+    // The setter for our item stack list.
+    @Override
+    protected void setItems(NonNullList<ItemStack> items) {
+        this.items = items;
+    }
+
+    @Override
+    protected AbstractContainerMenu createMenu(int arg0, Inventory arg1) {
+        return new FuelCellMenu(arg0, arg1, this, this.data);
+    }
+
+    @Override
+    protected Component getDefaultName() {
+        return Component.translatable(this.getBlockState().getBlock().getDescriptionId());
+    }
+
+    @Override
+    public boolean canPlaceItemThroughFace(int slot, ItemStack itemStack,
+            @Nullable Direction direction) {
+        return INPUT == slot;
+    }
+
+    @Override
+    public boolean canTakeItemThroughFace(int slot, ItemStack itemStack,
+            Direction direction) {
+        return OUTPUT == slot;
+    }
+
+    @Override
+    public int[] getSlotsForFace(Direction direction) {
+        return new int[] { INPUT, OUTPUT };
+    }
+
 }

@@ -11,6 +11,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.neoforge.items.ItemStackHandler;
 
 public class FuelCellMenu extends BaseMenu {
 
@@ -29,8 +30,8 @@ public class FuelCellMenu extends BaseMenu {
         this.level = inv.player.level();
         this.data = data;
         addPlayerSlots(inv);
-        addMachineSlot(blockEntity.getStorage(), 0, 54, 34);
-        addMachineSlot(blockEntity.getStorage(), 1, 104, 34);
+        addMachineSlot(new ItemStackHandler(blockEntity.getStorage()), 0, 54, 34);
+        addMachineSlot(new ItemStackHandler(blockEntity.getStorage()), 1, 104, 34);
         addDataSlots(data);
     }
 

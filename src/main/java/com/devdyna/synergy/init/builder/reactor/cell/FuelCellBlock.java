@@ -7,11 +7,14 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.menu.BlockMenu;
+import com.devdyna.synergy.api.coreBE.be.BEMachineIO;
+import com.devdyna.synergy.api.coreBE.block.BlockMachineIO;
 import com.devdyna.synergy.utils.LevelUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
@@ -26,9 +29,10 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.phys.BlockHitResult;
 
 @SuppressWarnings("null")
-public class FuelCellBlock extends BlockMenu {
+public class FuelCellBlock extends BlockMachineIO {
 
     public final static IntegerProperty CELLS = IntegerProperty.create("cells", 0, 6);
 
@@ -38,6 +42,18 @@ public class FuelCellBlock extends BlockMenu {
 
     public FuelCellBlock(Properties p) {
         this();
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
+            BlockHitResult hitResult) {
+
+        if (level.getBlockEntity(pos) instanceof FuelCellBE be) {
+            onClickAction(state, level, pos, player);
+            player.openMenu(new SimpleMenuProvider(be, be.getDisplayName()), pos);
+            return InteractionResult.SUCCESS;
+        }
+        return super.useWithoutItem(state, level, pos, player, hitResult);
     }
 
     @Override
