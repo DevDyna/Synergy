@@ -23,9 +23,9 @@ public class zItemTag {
         public static final TagKey<Item> CAN_SUSTAIN_CAVE_WHEAT = Material
                         .tagItem("can_sustain/" + zStatic.Plants.CAVE_WHEAT);
         public static final TagKey<Item> CAN_SUSTAIN_BLUE_CUP = Material
-                        .tagItem("can_sustain/" + zStatic.Plants.BLUE_CUP_MUSHROOM);
+                        .tagItem("can_sustain/" + zStatic.Plants.BLUE_CUP_MUSHROOM.replace("_mushroom", ""));
         public static final TagKey<Item> CAN_SUSTAIN_VIOLET_WEBCAP = Material
-                        .tagItem("can_sustain/" + zStatic.Plants.VIOLET_WEBCAP_MUSHROOM);
+                        .tagItem("can_sustain/" + zStatic.Plants.VIOLET_WEBCAP_MUSHROOM.replace("_mushroom", ""));
 
         public static final TagKey<Item> INFESTED_BLOCKS = Material
                         .tagItem("infested_blocks", "c");
@@ -110,6 +110,7 @@ public class zItemTag {
         public static final TagKey<Item> MUSHROOM_SEED = Material.tagItem("mushroom/seed");
         public static final TagKey<Item> PLANT_SEED = Material.tagItem("crop/seed");
 
+        public static final TagKey<Item> SILICON = Material.tagItem("silicon","c");
 
 
 }
