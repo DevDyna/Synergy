@@ -1,11 +1,7 @@
 {
   "values": [
-    "minecraft:dripstone_block",
-    "minecraft:clay",
-    "minecraft:calcite",
     "#minecraft:dirt",
     "#c:stones",
-    "#c:ores",
     "#c:infested_blocks",
     "#c:gravels"
   ]
