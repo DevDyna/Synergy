@@ -97,8 +97,7 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlockTag.INFESTED_BLOCKS, Tags.Blocks.GRAVELS);
 
                 tag(zBlockTag.CAN_SUSTAIN_CAVE_WHEAT)
-                                .add(Blocks.DRIPSTONE_BLOCK, Blocks.CLAY, Blocks.CALCITE)
-                                .addTags(BlockTags.DIRT, Tags.Blocks.STONES, Tags.Blocks.ORES,
+                                .addTags(BlockTags.DIRT, Tags.Blocks.STONES,
                                                 zBlockTag.INFESTED_BLOCKS, Tags.Blocks.GRAVELS);
 
                 tag(zBlockTag.CAN_SUSTAIN_COTTON)
