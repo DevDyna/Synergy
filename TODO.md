@@ -19,15 +19,11 @@
 
 ## COMPATS AND TWEAKS
 
-- [ ] silicon gem to c:silicon
-
-- [ ] BBL mod compat
-
-- [ ] IE garden cloche fertilizers
-
-- [ ] sqeezer plant oil | fermenter ethanol compat
-
-- [ ] Farming for BlockHeads compat
+- [x] silicon gem to c:silicon
+- [x] BBL mod compat
+- [x] IE garden cloche fertilizers
+- [x] squeezer plant oil | fermenter ethanol compat
+- [x] Farming for BlockHeads compat
 - [ ] Patchouli compat
 
 - [ ] Fluid nodes
