@@ -20,10 +20,11 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 @SuppressWarnings("null")
 public class DataItemTag extends ItemTagsProvider {
 
-    public DataItemTag(PackOutput o, CompletableFuture<HolderLookup.Provider> p, CompletableFuture<TagLookup<Block>> b, ExistingFileHelper h) {
-        super(o, p, b, Main.ID, h);
-    }
-
+        public DataItemTag(PackOutput o, CompletableFuture<HolderLookup.Provider> p,
+                        CompletableFuture<TagLookup<Block>> b,
+                        ExistingFileHelper h) {
+                super(o, p, b, Main.ID, h);
+        }
 
         @Override
         protected void addTags(Provider p) {
@@ -33,7 +34,7 @@ public class DataItemTag extends ItemTagsProvider {
                 copy(zBlockTag.CAN_SUSTAIN_COTTON, zItemTag.CAN_SUSTAIN_COTTON);
                 copy(zBlockTag.CAN_SUSTAIN_RICE, zItemTag.CAN_SUSTAIN_RICE);
                 copy(zBlockTag.CAN_SUSTAIN_VIOLET_WEBCAP,
-                zItemTag.CAN_SUSTAIN_VIOLET_WEBCAP);
+                                zItemTag.CAN_SUSTAIN_VIOLET_WEBCAP);
                 copy(zBlockTag.INFESTED_BLOCKS, zItemTag.INFESTED_BLOCKS);
 
                 tag(zItemTag.STONE_SLABS).add(Items.STONE_SLAB, Items.SMOOTH_STONE_SLAB);
@@ -163,6 +164,12 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.METAL_NUGGETS)
                                 .addTag(Tags.Items.NUGGETS)
                                 .remove(x.rl("create", "experience_nugget"));
+
+                tag(zItemTag.MUSHROOM_RESULT).add(zItems.VIOLET_WEBCAP_MUSHROOM.get(), zItems.BLUE_CUP_MUSHROOM.get());
+                tag(zItemTag.MUSHROOM_SEED).add(zItems.VIOLET_WEBCAP_SPORE.get(), zItems.BLUE_CUP_SPORE.get());
+
+                tag(zItemTag.PLANT_SEED).add(zItems.RICE_SEED.get(), zItems.AZALEA_SEEDS.get(),
+                                zItems.COTTON_SEEDS.get(), zItems.CAVE_WHEAT_SEEDS.get());
 
         }
 
