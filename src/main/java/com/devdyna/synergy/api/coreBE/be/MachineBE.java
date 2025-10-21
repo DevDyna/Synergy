@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.coreBE;
+package com.devdyna.synergy.api.coreBE.be;
 
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 
@@ -10,13 +10,13 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
-public class BaseBE extends BlockEntity {
+public abstract class MachineBE extends BEStorage {
 
     public final static String RADIUS = "aoe";
 
     protected int radius;
 
-    public BaseBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public MachineBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
@@ -44,7 +44,6 @@ public class BaseBE extends BlockEntity {
 
     @Override
     protected void saveAdditional(CompoundTag tag, Provider registries) {
-
         if (this instanceof AreaOfEffect)
             tag.putInt(RADIUS, radius);
         super.saveAdditional(tag, registries);

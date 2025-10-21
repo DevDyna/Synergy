@@ -19,8 +19,8 @@ public class FuelCellMenu extends BaseMenu {
     private final ContainerData data;
 
     public FuelCellMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), 
-        new SimpleContainerData(2));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()),
+                new SimpleContainerData(2));
     }
 
     public FuelCellMenu(int i, Inventory inv, BlockEntity be, ContainerData data) {
@@ -30,7 +30,7 @@ public class FuelCellMenu extends BaseMenu {
         this.data = data;
         addPlayerSlots(inv);
         addMachineSlot(blockEntity.getStorage(), 0, 54, 34);
-        addMachineSlot(blockEntity.getStorage(), 1, 104, 34);
+        addMachineOutputSlot(blockEntity.getStorage(), 1, 104, 34);
         addDataSlots(data);
     }
 

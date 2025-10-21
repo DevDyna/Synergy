@@ -5,11 +5,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.coreBE.be.BEStorage;
+import com.devdyna.synergy.api.coreBE.be.MachineBE;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellMenu;
 import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zRecipeTypes;
+import com.devdyna.synergy.utils.LogUtil;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -23,7 +26,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 @SuppressWarnings("null")
-public class FuelCellBE extends BEStorage{
+public class FuelCellBE extends MachineBE{
 
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
@@ -72,6 +75,7 @@ public class FuelCellBE extends BEStorage{
     }
 
     // require both due client-gui extraction
+    @Override
     public void tickBoth() {
         if (level == null)
             return;
@@ -187,7 +191,6 @@ public class FuelCellBE extends BEStorage{
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider pRegistries) {
-        // tag.put("inventory", getStorage().serializeNBT(pRegistries));
         tag.putInt(PROGRESS, progress);
         if (inputStack != null && !inputStack.isEmpty())
             tag.put(RECIPE_INPUT, inputStack.save(pRegistries));
@@ -198,10 +201,7 @@ public class FuelCellBE extends BEStorage{
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider pRegistries) {
         super.loadAdditional(tag, pRegistries);
-        // getStorage().deserializeNBT(pRegistries, tag.getCompound("inventory"));
-        // if (tag.contains(PROGRESS))
         progress = tag.getInt(PROGRESS);
-        // if (tag.contains(RECIPE_INPUT))
         inputStack = ItemStack.parseOptional(pRegistries, tag.getCompound(RECIPE_INPUT));
 
     }

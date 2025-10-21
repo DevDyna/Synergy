@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.coreBE.block.BlockStorage;
+import com.devdyna.synergy.api.coreBE.block.MachineBlock;
 import com.devdyna.synergy.utils.LevelUtil;
 
 import net.minecraft.core.BlockPos;
@@ -28,7 +29,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("null")
-public class FuelCellBlock extends BlockStorage {
+public class FuelCellBlock extends MachineBlock {
 
     public final static IntegerProperty CELLS = IntegerProperty.create("cells", 0, 6);
 

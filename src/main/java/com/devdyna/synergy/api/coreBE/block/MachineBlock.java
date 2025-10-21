@@ -1,8 +1,8 @@
-package com.devdyna.synergy.api.coreBE;
+package com.devdyna.synergy.api.coreBE.block;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.coreBE.be.TickingBE;
+import com.devdyna.synergy.api.coreBE.be.*;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -13,9 +13,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
-public abstract class BaseBlockBE extends Block implements EntityBlock {
+public abstract class MachineBlock extends BlockStorage {
 
-    public BaseBlockBE(Properties properties) {
+    public MachineBlock(Properties properties) {
         super(properties);
     }
 
@@ -24,7 +24,7 @@ public abstract class BaseBlockBE extends Block implements EntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l, BlockState s,
             BlockEntityType<T> ty) {
         return (lvl, pos, b, t) -> {
-            if (t instanceof TickingBE be) {
+            if (t instanceof MachineBE be) {
                 be.tickBoth();
                 if (l.isClientSide())
                     be.tickClient();
