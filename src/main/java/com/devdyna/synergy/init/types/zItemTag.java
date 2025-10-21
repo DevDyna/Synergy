@@ -106,4 +106,10 @@ public class zItemTag {
 
         public static final TagKey<Item> METAL_NUGGETS = Material.tagItem("metal_nuggets");
 
+        public static final TagKey<Item> MUSHROOM_RESULT = Material.tagItem("mushroom/result");
+        public static final TagKey<Item> MUSHROOM_SEED = Material.tagItem("mushroom/seed");
+        public static final TagKey<Item> PLANT_SEED = Material.tagItem("crop/seed");
+
+
+
 }
