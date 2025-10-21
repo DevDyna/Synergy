@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "cloche"
+    }
+  ],
+  "type": "cloche:cloche",
+  "duration": 800,
+  "results": [
+    {
+      "item": {
+        "count": 2,
+        "id": "minecraft:wheat"
+      }
+    },
+    {
+      "chance": 0.75,
+      "item": {
+        "count": 1,
+        "id": "synergy:cave_wheat_seed"
+      }
+    }
+  ],
+  "seed": {
+    "item": "synergy:cave_wheat_seed"
+  },
+  "soil": {
+    "tag": "synergy:can_sustain/cave_wheat"
+  }
+}

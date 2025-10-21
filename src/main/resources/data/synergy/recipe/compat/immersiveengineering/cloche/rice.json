@@ -7,26 +7,38 @@
   ],
   "type": "immersiveengineering:cloche",
   "input": {
-    "item": "synergy:violet_webcap_pod"
+    "item": "synergy:rice_seed"
   },
   "render": {
     "type": "immersiveengineering:crop",
-    "block": "synergy:violet_webcap_mushroom"
+    "block": "synergy:rice"
   },
   "results": [
     {
       "count": 2,
-      "id": "synergy:violet_webcap_mushroom"
+      "id": "synergy:rice_seed"
+    },
+    {
+      "chance": 0.9,
+      "output": {
+        "id": "synergy:rice_seed"
+      }
     },
     {
       "chance": 0.75,
       "output": {
-        "id": "synergy:violet_webcap_pod"
+        "id": "synergy:rice_seed"
+      }
+    },
+    {
+      "chance": 0.5,
+      "output": {
+        "id": "synergy:rice_seed"
       }
     }
   ],
   "soil": {
-    "tag": "c:stones"
+    "tag": "synergy:can_sustain/rice"
   },
   "time": 800
 }

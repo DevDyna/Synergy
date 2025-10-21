@@ -7,38 +7,26 @@
   ],
   "type": "immersiveengineering:cloche",
   "input": {
-    "item": "synergy:rice_seed"
+    "item": "synergy:cave_wheat_seed"
   },
   "render": {
     "type": "immersiveengineering:crop",
-    "block": "synergy:rice"
+    "block": "synergy:cave_wheat"
   },
   "results": [
     {
       "count": 2,
-      "id": "synergy:rice_seed"
-    },
-    {
-      "chance": 0.9,
-      "output": {
-        "id": "synergy:rice_seed"
-      }
+      "id": "minecraft:wheat"
     },
     {
       "chance": 0.75,
       "output": {
-        "id": "synergy:rice_seed"
-      }
-    },
-    {
-      "chance": 0.5,
-      "output": {
-        "id": "synergy:rice_seed"
+        "id": "synergy:cave_wheat_seed"
       }
     }
   ],
   "soil": {
-    "tag": "minecraft:dirt"
+    "tag": "synergy:can_sustain/cave_wheat"
   },
   "time": 800
 }

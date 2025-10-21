@@ -7,26 +7,26 @@
   ],
   "type": "immersiveengineering:cloche",
   "input": {
-    "item": "synergy:cave_wheat_seed"
+    "item": "synergy:violet_webcap_pod"
   },
   "render": {
     "type": "immersiveengineering:crop",
-    "block": "synergy:cave_wheat"
+    "block": "synergy:violet_webcap_mushroom"
   },
   "results": [
     {
-      "count": 1,
-      "id": "minecraft:wheat"
+      "count": 2,
+      "id": "synergy:violet_webcap_mushroom"
     },
     {
       "chance": 0.75,
       "output": {
-        "id": "synergy:cave_wheat_seed"
+        "id": "synergy:violet_webcap_pod"
       }
     }
   ],
   "soil": {
-    "tag": "c:stones"
+    "tag": "synergy:can_sustain/violet_webcap"
   },
   "time": 800
 }

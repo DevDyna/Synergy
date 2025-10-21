@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "cloche"
+    }
+  ],
+  "type": "cloche:cloche",
+  "duration": 800,
+  "results": [
+    {
+      "chance": 0.5,
+      "item": {
+        "count": 1,
+        "id": "synergy:small_azalea_roots"
+      }
+    },
+    {
+      "chance": 0.5,
+      "item": {
+        "count": 1,
+        "id": "synergy:small_azalea_leaf"
+      }
+    },
+    {
+      "chance": 0.5,
+      "item": {
+        "count": 1,
+        "id": "synergy:azalea_seeds"
+      }
+    }
+  ],
+  "seed": {
+    "item": "synergy:azalea_seeds"
+  },
+  "soil": {
+    "item": "minecraft:flower_pot"
+  }
+}
