@@ -170,6 +170,16 @@ public class DataGenUtil {
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(prop, age_limit));
     }
 
+    public static LootItemBlockStatePropertyCondition.Builder lootTableCondition(Block block, BooleanProperty prop) {
+        return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(prop, true));
+    }
+    
+    public static LootItemBlockStatePropertyCondition.Builder lootTableConditionInverse(Block block, BooleanProperty prop) {
+        return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(prop, true));
+    }
+
     /**
      * Apply a loot modifier at all of specific loot tables
      * 
