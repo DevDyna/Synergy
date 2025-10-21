@@ -41,9 +41,9 @@ public class zBlockTag {
         public static final TagKey<Block> CAN_SUSTAIN_CAVE_WHEAT = Material
                         .tagBlock("can_sustain/" + zStatic.Plants.CAVE_WHEAT);
         public static final TagKey<Block> CAN_SUSTAIN_BLUE_CUP = Material
-                        .tagBlock("can_sustain/" + zStatic.Plants.BLUE_CUP_MUSHROOM);
+                        .tagBlock("can_sustain/" + zStatic.Plants.BLUE_CUP_MUSHROOM.replace("_mushroom", ""));
         public static final TagKey<Block> CAN_SUSTAIN_VIOLET_WEBCAP = Material
-                        .tagBlock("can_sustain/" + zStatic.Plants.VIOLET_WEBCAP_MUSHROOM);
+                        .tagBlock("can_sustain/" + zStatic.Plants.VIOLET_WEBCAP_MUSHROOM.replace("_mushroom", ""));
 
         public static final TagKey<Block> INFESTED_BLOCKS = Material
                         .tagBlock("infested_blocks", "c");
