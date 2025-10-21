@@ -2,7 +2,6 @@ package com.devdyna.synergy.client.aoe;
 
 import com.devdyna.synergy.api.client.TypeRenders;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBE;
-import com.devdyna.synergy.utils.LogUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
