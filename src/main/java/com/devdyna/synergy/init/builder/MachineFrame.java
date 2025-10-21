@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 @SuppressWarnings("null")
 public class MachineFrame extends DirectionalBlock {
@@ -26,19 +25,19 @@ public class MachineFrame extends DirectionalBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext c) {
 
-        return this.defaultBlockState()
-                .setValue(BlockStateProperties.FACING,
+        return defaultBlockState()
+                .setValue(FACING,
                         (c.getPlayer().isCrouching() ? c.getClickedFace().getOpposite() : c.getClickedFace()));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
-        b.add(BlockStateProperties.FACING);
+        b.add(FACING);
     }
 
     @Override
     protected MapCodec<? extends DirectionalBlock> codec() {
-        return simpleCodec((p) -> new MachineFrame(p));
+        return simpleCodec((p) -> this);
     }
 
     @Override
