@@ -28,22 +28,15 @@ public class zHandlers {
 
     public static final Supplier<AttachmentType<EnergyStorage>> ENERGY_STORAGE = zHandler.register(
             "energy_storage",
-            () -> AttachmentType.serializable(h -> (h instanceof EnergyBlock be)
+            () -> AttachmentType.serializable(b -> (b instanceof EnergyBlock be)
                     ? new EnergyStorage(be.MaxFE())
                     : null).build());
 
     public static final Supplier<AttachmentType<ItemStackHandler>> ITEM_STORAGE = zHandler.register(
-            "item_storage",
-            () -> AttachmentType.serializable(h ->{ 
-                
-             if(h instanceof ItemStorageBlock be)
-             return new ItemStackHandler(be.MachineSlots());
-             if(h instanceof ItemStorageWithOutput be)
-             return new ItemStackHandler(be.MachineSlots());
-             
-                
-                            return new ItemStackHandler(1);
-                            })
-                    .build());
+            "item_storage", () -> AttachmentType.serializable(holder -> {
+                if (holder instanceof ItemStorageBlock baseMachineBE)
+                    return new ItemStackHandler(baseMachineBE.MachineSlots());
+                return new ItemStackHandler(1);
+            }).build());
 
 }
