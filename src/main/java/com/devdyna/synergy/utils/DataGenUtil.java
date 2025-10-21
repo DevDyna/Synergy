@@ -177,7 +177,7 @@ public class DataGenUtil {
     
     public static LootItemBlockStatePropertyCondition.Builder lootTableConditionInverse(Block block, BooleanProperty prop) {
         return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(prop, true));
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(prop, false));
     }
 
     /**
