@@ -4,15 +4,12 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.coreBE.be.BEStorage;
 import com.devdyna.synergy.api.coreBE.be.MachineBE;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellMenu;
 import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-import com.devdyna.synergy.utils.LogUtil;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -26,7 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 @SuppressWarnings("null")
-public class FuelCellBE extends MachineBE{
+public class FuelCellBE extends MachineBE {
 
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
