@@ -171,6 +171,8 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.PLANT_SEED).add(zItems.RICE_SEED.get(), zItems.AZALEA_SEEDS.get(),
                                 zItems.COTTON_SEEDS.get(), zItems.CAVE_WHEAT_SEEDS.get());
 
+                tag(zItemTag.SILICON).add(zItems.SILICON.get());
+
         }
 
 }
