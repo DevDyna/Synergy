@@ -128,6 +128,23 @@ public class zStatic {
 
     }
 
+    public class DryableBricks {
+        public static String BALL = "_ball";
+        public static String BRICK = "_brick";
+
+        public class brick {
+            public static String clay = "clay" + BRICK;
+            public static String packed_mud = "packed_mud" + BRICK;
+        }
+
+        public class ball {
+            public static String clay = "clay" + BALL;
+            public static String mud = "mud" + BALL;
+            public static String packed_mud = "packed_mud" + BALL;
+        }
+
+    }
+
     public class Blocks {
         public static String azalea = "azalea";
         public static String sprinkler = "sprinkler";
@@ -154,7 +171,7 @@ public class zStatic {
 
         public class CoolerTypes {
 
-            public static String base = cooler+"_base";
+            public static String base = cooler + "_base";
 
             public static String SHADOW = "shadow_" + cooler;
             public static String IRON = "iron_" + cooler;
@@ -275,9 +292,8 @@ public class zStatic {
         public static String GLUE = "glue";
         public static String SAP = "sap";
 
-        public static String AFFIX_DROPLETT="droplet_";
+        public static String AFFIX_DROPLETT = "droplet_";
     }
-
 
     // // TODO WIP
     // public class Resources {
