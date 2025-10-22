@@ -25,8 +25,8 @@ public class zFluids {
 
     // public static final zFluid CRYSTALLINE = zFluid.create("crystalline",
     // 0x7cefe3);
-    public static final zFluid OIL = zFluid.create(zStatic.Fluids.OIL, 0x20202001).pushEntity();
-    public static final zFluid SAP = zFluid.create(zStatic.Fluids.SAP, 0xe6ad3a00).pushEntity();
-    public static final zFluid GLUE = zFluid.create(zStatic.Fluids.GLUE, 0xfde9a601).pushEntity();
+    public static final zFluid OIL = zFluid.create(zStatic.Fluids.OIL, 0.125f, 0.125f, 0.125f, 1f).pushEntity();
+    public static final zFluid SAP = zFluid.create(zStatic.Fluids.SAP, 0.95f, 0.65f, 0.1f, 1f).pushEntity();
+    public static final zFluid GLUE = zFluid.create(zStatic.Fluids.GLUE, 0.9f, 0.95f, 0.9f, 1f).pushEntity();
 
 }

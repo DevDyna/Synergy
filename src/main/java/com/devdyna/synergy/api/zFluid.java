@@ -53,6 +53,10 @@ public class zFluid {
     private boolean canPushEntity;
     private boolean canConvertToSource;
 
+    public zFluid(String id, float r, float g, float b, float a) {
+        this(id, rgba(r, g, b, a));
+    }
+
     public zFluid(String id, int color) {
         this.color = color;
         this.id = id;
@@ -113,7 +117,6 @@ public class zFluid {
                             public int getTintColor() {
                                 return color;
                             }
-
 
                         });
                         super.initializeClient(c);
@@ -242,6 +245,17 @@ public class zFluid {
 
     public static zFluid create(String id, int color) {
         return new zFluid(id, color);
+    }
+
+    public static zFluid create(String id, float r, float g, float b, float a) {
+        return new zFluid(id, r, g, b, a);
+    }
+
+    public static int rgba(float r, float g, float b, float a) {
+        return ((int) (a * 255) << 24)
+                | ((int) (r * 255) << 16)
+                | ((int) (g * 255) << 8)
+                | ((int) (b * 255));
     }
 
 }
