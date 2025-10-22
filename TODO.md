@@ -40,7 +40,7 @@
 
 - [ ] datagen recipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
 
-- [ ] datagen recipes with namespace minecraft intend of synergy
+- [ ] datagen recipes with namespace minecraft intend of synergy (can cause issues)
 
 - [ ] datagen recipes ids x.path(...).replace(...) -> BuiltInRegistries.ITEM.getKey(item)
 
