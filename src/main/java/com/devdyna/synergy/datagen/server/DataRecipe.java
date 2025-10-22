@@ -267,7 +267,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern("B B")
                                 .pattern("BHB")
                                 .pattern("BBB")
-                                .define('H', zItems.ENDERMAN_HEART.get())
+                                .define('H', zItemTag.MOB_DROP)
                                 .define('B', Tags.Items.BRICKS_NORMAL)
                                 .unlockedBy(ID, has(zItems.ENDERMAN_HEART.get()))
                                 .group(ID).save(c);
