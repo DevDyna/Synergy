@@ -3,7 +3,6 @@ package com.devdyna.synergy.init.builder.crops.wild;
 import java.util.List;
 
 import com.devdyna.synergy.Main;
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseWildCropBlock;
 import com.devdyna.synergy.init.types.zBlockTag;
 
@@ -30,7 +29,7 @@ public class wild_rice extends BaseWildCropBlock {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
             TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Wild.WILD + ".tip"));
+        tooltipComponents.add(Component.translatable(Main.ID +".disabled"));
     }
 
 }

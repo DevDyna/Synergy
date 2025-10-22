@@ -101,7 +101,7 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "Produce and deposit on containers");
 
                 // wild crops warning
-                add(Main.ID + "." + zStatic.Wild.WILD + ".tip",
+                add(Main.ID +".disabled",
                                 TIP_COLOR + "Item-Form unobtainable");
 
                 add(Main.ID + "." + zStatic.Items.Batteries.TYPE_BATTERY + ".tip",
