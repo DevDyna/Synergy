@@ -5,6 +5,10 @@ import com.devdyna.synergy.utils.x;
 import net.minecraft.resources.ResourceLocation;
 
 public interface screenLocations {
+
+
+        public static final String CUSTOM_JEI_GUI = "textures/gui/jei/";
+
         public static final ResourceLocation PLAYER_INVENTORY = x.rl(
                         "textures/gui/player.png");
 

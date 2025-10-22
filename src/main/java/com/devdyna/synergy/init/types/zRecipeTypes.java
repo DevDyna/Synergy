@@ -78,5 +78,14 @@ public class zRecipeTypes {
                                         return ITEM_PROVIDER.getId();
                                 }
                         });
+
+        public static final zRecipe<DryableBricksRecipe> DRYABLE_BRICKS = new zRecipe<DryableBricksRecipe>(
+                        "dryable_bricks", DryableBricksRecipeSerializer::new,
+                        () -> new RecipeType<DryableBricksRecipe>() {
+                                @Override
+                                public String toString() {
+                                        return DRYABLE_BRICKS.getId();
+                                }
+                        });
         // ------------------------------------------------------------------------------------------------------------------------------------//
 }

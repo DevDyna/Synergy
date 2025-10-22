@@ -186,6 +186,15 @@ public class DataItemModel extends ExtraItemModelProvider {
 
                 withExistingParent(zBlocks.QUERN.getRegisteredName(),
                                 modLoc("block/quern/item"));
+
+                withExistingParent(zBlocks.CLAY_BRICK.getRegisteredName(),
+                                mcLoc("item/clay_ball"));
+
+                withExistingParent(zBlocks.PACKED_MUD_BRICK.getRegisteredName(),
+                                mcLoc("minecraft:item/generated"))
+                                .texture("layer0",
+                                                modLoc("item/resources/packed_mud_ball"));
+
         }
 
 }

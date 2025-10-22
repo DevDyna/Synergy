@@ -301,6 +301,18 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> QUERN_MOVING = zOnlyBlock.registerSimpleBlock(
                         zStatic.Blocks.quern + "_moving");
 
+        public static final DeferredHolder<Block, Block> CLAY_BRICK = Material.registerItemBlock(
+                        zStatic.DryableBricks.brick.clay + "_block",
+                        () -> new DryableBricks(BlockBehaviour.Properties.of()
+                                        .sound(SoundType.GRAVEL).mapColor(MapColor.CLAY)),
+                        zHiddenBlock);
+
+        public static final DeferredHolder<Block, Block> PACKED_MUD_BRICK = Material.registerItemBlock(
+                        zStatic.DryableBricks.brick.packed_mud + "_block",
+                        () -> new DryableBricks(BlockBehaviour.Properties.of()
+                                        .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
+                        zHiddenBlock);
+
         // ---------------------------------------------------------------------------------------//
 
         public static void registerLists() {

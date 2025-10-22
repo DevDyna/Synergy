@@ -106,6 +106,9 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 modLoc("block/reactor/controller/bottom"),
                                                 modLoc("block/reactor/controller/top")));
 
+                brick(zBlocks.CLAY_BRICK, mcLoc("block/clay"), mcLoc("block/terracotta"));
+                brick(zBlocks.PACKED_MUD_BRICK, mcLoc("block/packed_mud"), mcLoc("block/mud_bricks"));
+
         }
 
 }

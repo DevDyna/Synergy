@@ -68,6 +68,7 @@ public class Plugin implements IModPlugin {
         r.addRecipeCategories(new QuernCategory(helper));
 
         r.addRecipeCategories(new ItemProviderCategory(helper));
+        r.addRecipeCategories(new DryableBricksCategory(helper));
 
     }
 
@@ -93,6 +94,10 @@ public class Plugin implements IModPlugin {
 
         r.addRecipes(ItemProviderCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.ITEM_PROVIDER.getType()).stream()
                 .map(RecipeHolder::value).toList());
+
+        r.addRecipes(DryableBricksCategory.TYPE,
+                recipes.getAllRecipesFor(zRecipeTypes.DRYABLE_BRICKS.getType()).stream()
+                        .map(RecipeHolder::value).toList());
     }
 
     @Override

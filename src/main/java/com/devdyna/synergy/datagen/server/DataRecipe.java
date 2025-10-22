@@ -41,6 +41,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 tools(c);
                 moderators(c);
                 droplets(c);
+                brickRecipes(c);
 
                 foil(c, zItemTag.PLATE_GOLD, zItems.GOLD_FOIL.get());
                 foil(c, zItemTag.PLATE_COPPER, zItems.COPPER_FOIL.get());
@@ -52,10 +53,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                 nodeRecipe(c, zBlocks.ITEM_RETRIEVAL.get(), Blocks.HOPPER);
                 node_alt(c, zBlocks.ITEM_RETRIEVAL.get(), zBlocks.ENERGY_RETRIEVAL.get());
                 node_alt(c, zBlocks.ITEM_TRANSFER.get(), zBlocks.ENERGY_TRANSFER.get());
-
-                
-
-
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.PIPE.get().asItem(), 16)
                                 .pattern("SSS")
@@ -619,7 +616,17 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                // TODO energy nodes
+                ShapedRecipeBuilder.shaped(MISC, Items.MUD_BRICKS, 1).define('#', zItems.PACKED_MUD_BRICK.get())
+                                .pattern("##").pattern("##").unlockedBy(getHasName(zItems.PACKED_MUD_BRICK.get()),
+                                                has(zItems.PACKED_MUD_BRICK.get()))
+                                .save(c, getConversionRecipeName(Items.MUD_BRICKS, zItems.PACKED_MUD_BRICK.get()));
+
+                unpacker(c, Items.MUD, zItems.MUD_BALL.get(), 4);
+
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, zItems.PACKED_MUD_BALL.get(), 4)
+                                .requires(zItems.MUD_BALL.get(), 4).requires(Items.WHEAT)
+                                .group(ID).unlockedBy(ID, has(zItems.MUD_BALL.get()))
+                                .save(c, getConversionRecipeName(zItems.PACKED_MUD_BALL.get(), zItems.MUD_BALL.get()));
 
         }
 

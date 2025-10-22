@@ -8,6 +8,7 @@ import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.recipeTypes.builders.CropResultBuilder;
+import com.devdyna.synergy.init.recipeTypes.builders.DryableBricksBuilder;
 import com.devdyna.synergy.init.recipeTypes.builders.QuernMillingBuilder;
 import com.devdyna.synergy.init.recipeTypes.builders.ReactorCellBuilder;
 import com.devdyna.synergy.init.recipeTypes.builders.UrnRitualBuilder;
@@ -64,6 +65,33 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(getHasName(input), has(output))
                                 .save(c, x.path(output.asItem()) + "_from_" + x.path(input.asItem()) + "_smelting");
         }
+
+        protected static void unpacker(RecipeOutput c, ItemLike input, ItemLike output, int count) {
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, output, count).requires(input)
+                                .group(ID).unlockedBy(getHasName(input), has(input))
+                                .save(c, getConversionRecipeName(output, input));
+        }
+
+  
+        protected static void brickRecipes(RecipeOutput c){
+                DryableBricksBuilder.of()
+                .input(Items.CLAY_BALL)
+                .block(zBlocks.CLAY_BRICK.get())
+                .output(Items.BRICK)
+                .unlockedBy()
+                .group(ID)
+                .save(c);
+
+                DryableBricksBuilder.of()
+                .input(zItems.PACKED_MUD_BALL)
+                .block(zBlocks.PACKED_MUD_BRICK.get())
+                .output(zItems.PACKED_MUD_BRICK)
+                .unlockedBy()
+                .group(ID)
+                .save(c);
+                
+        }
+
 
         protected static void twoByTwoPacker(RecipeOutput c, ItemLike output, TagKey<Item> tag) {
                 ShapedRecipeBuilder.shaped(MISC, output)

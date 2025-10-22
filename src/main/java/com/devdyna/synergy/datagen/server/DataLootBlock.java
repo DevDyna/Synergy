@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.devdyna.synergy.api.plants.builder.BaseCropBlock;
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
+import com.devdyna.synergy.init.builder.DryableBricks;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.utils.DataGenUtil;
@@ -142,6 +143,28 @@ public class DataLootBlock extends BlockLootSubProvider {
                 // zBlocks.deposits.forEach(e -> dropSelf(e.get()));
                 // zBlocks.generators.forEach(e->dropSelf(e.get()));
 
+                brick(zBlocks.CLAY_BRICK, Items.CLAY_BALL, Items.BRICK);
+                brick(zBlocks.PACKED_MUD_BRICK, zItems.PACKED_MUD_BALL.get(), zItems.PACKED_MUD_BRICK.get());
+
+        }
+
+        private void brick(DeferredHolder<Block, Block> b, Item fail, Item success) {
+                add(b.get(),
+                                LootTable.lootTable()
+                                                .withPool(DataGenUtil.createPool()
+                                                                .add(LootItem.lootTableItem(fail))
+                                                                .when(DataGenUtil.lootTableConditionInverse(
+                                                                                b.get(),
+                                                                                DryableBricks.DRIED))
+                                                                .apply(SetItemCountFunction
+                                                                                .setCount(ConstantValue.exactly(1))))
+                                                .withPool(DataGenUtil.createPool()
+                                                                .add(LootItem.lootTableItem(success))
+                                                                .when(DataGenUtil.lootTableCondition(
+                                                                                b.get(),
+                                                                                DryableBricks.DRIED))
+                                                                .apply(SetItemCountFunction
+                                                                                .setCount(ConstantValue.exactly(1)))));
         }
 
         // TODO add fortune and age condition

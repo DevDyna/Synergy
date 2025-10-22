@@ -374,6 +374,15 @@ public class zItems {
                         .resourceItem("stone_pebble");
         public static final DeferredHolder<Item, Item> NETHERRACK_PEBBLE = Material
                         .resourceItem("netherrack_pebble");
+
+        public static final DeferredHolder<Item, Item> MUD_BALL = Material
+                        .resourceItem(zStatic.DryableBricks.ball.mud);
+
+        public static final DeferredHolder<Item, Item> PACKED_MUD_BALL = Material
+                        .resourceItem(zStatic.DryableBricks.ball.packed_mud);
+                        
+        public static final DeferredHolder<Item, Item> PACKED_MUD_BRICK = Material
+                        .resourceItem(zStatic.DryableBricks.brick.packed_mud);
         // ---------------------------------------------------------------------------------------//
 
 }

@@ -181,6 +181,9 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei.provider.item",
                                 "Item Provider Pattern");
 
+                add(Main.ID + ".jei.drying_bricks",
+                                "Dryable Brick Recipes");
+
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.SHADOW,
                                 zStatic.ReactorStuff.CoolerTypes.COPPER,
