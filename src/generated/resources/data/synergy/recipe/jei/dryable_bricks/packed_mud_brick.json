@@ -1,0 +1,20 @@
+{
+  "type": "synergy:dryable_bricks",
+  "block": {
+    "Name": "synergy:packed_mud_brick_block",
+    "Properties": {
+      "dried": "true",
+      "facing": "north",
+      "stage": "0",
+      "wet": "true"
+    }
+  },
+  "input": {
+    "count": 1,
+    "id": "synergy:packed_mud_ball"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:packed_mud_brick"
+  }
+}

@@ -1,0 +1,364 @@
+{
+  "variants": {
+    "dried=false,facing=east,stage=0,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=east,stage=0,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=east,stage=1,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=east,stage=1,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=east,stage=2,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=east,stage=2,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=east,stage=3,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=east,stage=3,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=east,stage=4,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=east,stage=4,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=east,stage=5,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=east,stage=5,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 90
+    },
+    "dried=false,facing=north,stage=0,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=north,stage=0,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=north,stage=1,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=north,stage=1,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=north,stage=2,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=north,stage=2,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=north,stage=3,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=north,stage=3,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=north,stage=4,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=north,stage=4,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=north,stage=5,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=north,stage=5,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried"
+    },
+    "dried=false,facing=south,stage=0,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=south,stage=0,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=south,stage=1,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=south,stage=1,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=south,stage=2,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=south,stage=2,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=south,stage=3,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=south,stage=3,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=south,stage=4,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=south,stage=4,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=south,stage=5,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=south,stage=5,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 180
+    },
+    "dried=false,facing=west,stage=0,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=false,facing=west,stage=0,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=false,facing=west,stage=1,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=false,facing=west,stage=1,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=false,facing=west,stage=2,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=false,facing=west,stage=2,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=false,facing=west,stage=3,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=false,facing=west,stage=3,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=false,facing=west,stage=4,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=false,facing=west,stage=4,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=false,facing=west,stage=5,wet=false": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=false,facing=west,stage=5,wet=true": {
+      "model": "synergy:block/clay_brick_block_not_dried",
+      "y": 270
+    },
+    "dried=true,facing=east,stage=0,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=east,stage=0,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=east,stage=1,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=east,stage=1,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=east,stage=2,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=east,stage=2,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=east,stage=3,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=east,stage=3,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=east,stage=4,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=east,stage=4,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=east,stage=5,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=east,stage=5,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 90
+    },
+    "dried=true,facing=north,stage=0,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=north,stage=0,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=north,stage=1,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=north,stage=1,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=north,stage=2,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=north,stage=2,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=north,stage=3,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=north,stage=3,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=north,stage=4,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=north,stage=4,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=north,stage=5,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=north,stage=5,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried"
+    },
+    "dried=true,facing=south,stage=0,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=south,stage=0,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=south,stage=1,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=south,stage=1,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=south,stage=2,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=south,stage=2,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=south,stage=3,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=south,stage=3,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=south,stage=4,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=south,stage=4,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=south,stage=5,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=south,stage=5,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 180
+    },
+    "dried=true,facing=west,stage=0,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    },
+    "dried=true,facing=west,stage=0,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    },
+    "dried=true,facing=west,stage=1,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    },
+    "dried=true,facing=west,stage=1,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    },
+    "dried=true,facing=west,stage=2,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    },
+    "dried=true,facing=west,stage=2,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    },
+    "dried=true,facing=west,stage=3,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    },
+    "dried=true,facing=west,stage=3,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    },
+    "dried=true,facing=west,stage=4,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    },
+    "dried=true,facing=west,stage=4,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    },
+    "dried=true,facing=west,stage=5,wet=false": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    },
+    "dried=true,facing=west,stage=5,wet=true": {
+      "model": "synergy:block/clay_brick_block_dried",
+      "y": 270
+    }
+  }
+}

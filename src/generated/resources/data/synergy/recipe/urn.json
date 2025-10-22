@@ -7,7 +7,7 @@
       "tag": "c:bricks/normal"
     },
     "H": {
-      "item": "synergy:enderman_heart"
+      "tag": "synergy:mob_drops"
     }
   },
   "pattern": [
