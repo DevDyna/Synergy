@@ -45,6 +45,12 @@ public class DataMaps extends DataMapProvider {
                 builder(NeoForgeDataMaps.FURNACE_FUELS)
                                 .add(zItems.INFERNAL_EMBER.get().builtInRegistryHolder(), new FurnaceFuel(3200), false);
 
+                // builder(zDataMaps.ITEM_TO_BRICK)
+                //                 .add(Items.CLAY_BALL.builtInRegistryHolder(),
+                //                                 new ItemToBrickMap(zBlocks.CLAY_BRICK.get().defaultBlockState(),Items.BRICK), false)
+                //                 .add(zItems.PACKED_MUD_BALL.get().builtInRegistryHolder(),
+                //                                 new ItemToBrickMap(zBlocks.PACKED_MUD_BRICK.get().defaultBlockState(),zItems.PACKED_MUD_BRICK.get()), false);
+
         }
 
 }

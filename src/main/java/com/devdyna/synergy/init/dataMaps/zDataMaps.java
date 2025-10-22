@@ -6,13 +6,14 @@ import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
 public class zDataMaps {
         @SubscribeEvent
         public static void register(RegisterDataMapTypesEvent event) {
-                // event.register(CROP_RESULT);
+                // event.register(ITEM_TO_BRICK);
         }
 
-        // public static final DataMapType<Item, CropResultMap> CROP_RESULT =
-        // DataMapType.builder(
-        // x.rl(ID, "crop_result"),
-        // Integer.TYPE,
-        // CropResultMap.CODEC).synced(CropResultMap.CODEC, false).build();
+        // public static final DataMapType<Item, ItemToBrickMap> ITEM_TO_BRICK = DataMapType.builder(
+        //                 x.rl(ID, "item_to_block"),
+        //                 Registries.ITEM,
+        //                 ItemToBrickMap.CODEC)
+        //                 .synced(ItemToBrickMap.CODEC, false)
+        //                 .build();
 
 }
