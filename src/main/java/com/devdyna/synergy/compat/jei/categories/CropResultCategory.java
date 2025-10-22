@@ -4,6 +4,7 @@ import org.jetbrains.annotations.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.client.gui.screenLocations;
+import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.CropResultRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -14,21 +15,18 @@ import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
 
 @SuppressWarnings("null")
-public class CropResultCategory implements IRecipeCategory<CropResultRecipe> {
-
-    private IGuiHelper helper;
+public class CropResultCategory extends BaseRecipeCategory<CropResultRecipe> {
 
     public static final RecipeType<CropResultRecipe> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.CROP_RESULT.getId()),
             CropResultRecipe.class);
 
     public CropResultCategory(IGuiHelper helper) {
-        this.helper = helper;
+        super(helper);
     }
 
     @Override

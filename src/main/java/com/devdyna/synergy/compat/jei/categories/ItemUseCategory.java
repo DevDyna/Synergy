@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Nullable;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.api.Pos;
 import com.devdyna.synergy.client.gui.screenLocations;
+import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.ItemUseRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -17,23 +18,20 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.LiquidBlock;
 
 @SuppressWarnings("null")
-public class ItemUseCategory implements IRecipeCategory<ItemUseRecipe> {
-
-    private IGuiHelper helper;
+public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
 
     public static final RecipeType<ItemUseRecipe> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.ITEM_USE.getId()),
             ItemUseRecipe.class);
 
     public ItemUseCategory(IGuiHelper helper) {
-        this.helper = helper;
+        super(helper);
     }
 
     @Override
@@ -86,7 +84,7 @@ public class ItemUseCategory implements IRecipeCategory<ItemUseRecipe> {
     public void draw(ItemUseRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
             double mouseY) {
         if (recipe.canBeDisabled())
-            helper.drawableBuilder(screenLocations.WARNING, 0,0, 10, 10).setTextureSize(10, 10).build()
+            helper.drawableBuilder(screenLocations.WARNING, 0, 0, 10, 10).setTextureSize(10, 10).build()
                     .draw(guiGraphics, 81, 7);
     }
 

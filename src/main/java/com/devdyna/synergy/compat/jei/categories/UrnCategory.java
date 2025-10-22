@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Nullable;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.client.gui.screenLocations;
+import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.UrnRitualRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -17,20 +18,17 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 
 @SuppressWarnings("null")
-public class UrnCategory implements IRecipeCategory<UrnRitualRecipe> {
+public class UrnCategory extends BaseRecipeCategory<UrnRitualRecipe> {
 
-    private final IGuiHelper helper;
     public static final RecipeType<UrnRitualRecipe> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.URN_RITUAL_RECIPE.getId()),
             UrnRitualRecipe.class);
 
     public UrnCategory(IGuiHelper helper) {
-        this.helper = helper;
-        // TODO arrow animation return
+        super(helper);
     }
 
     @Override

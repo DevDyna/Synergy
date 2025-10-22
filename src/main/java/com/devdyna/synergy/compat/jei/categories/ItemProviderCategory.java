@@ -4,6 +4,7 @@ import org.jetbrains.annotations.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.client.gui.screenLocations;
+import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.ItemProviderRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -16,21 +17,18 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.LiquidBlock;
 
 @SuppressWarnings("null")
-public class ItemProviderCategory implements IRecipeCategory<ItemProviderRecipe> {
-
-    private IGuiHelper helper;
+public class ItemProviderCategory extends BaseRecipeCategory<ItemProviderRecipe> {
 
     public static final RecipeType<ItemProviderRecipe> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.ITEM_PROVIDER.getId()),
             ItemProviderRecipe.class);
 
     public ItemProviderCategory(IGuiHelper helper) {
-        this.helper = helper;
+        super(helper);
     }
 
     @Override
@@ -58,7 +56,8 @@ public class ItemProviderCategory implements IRecipeCategory<ItemProviderRecipe>
 
         builder.addOutputSlot(33, 10).addItemStack(recipe.getOutput());
 
-        builder.addSlot(RecipeIngredientRole.RENDER_ONLY,33, 45).addIngredients(x.ingredient(zBlocks.ITEM_PROVIDER.get()));
+        builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 33, 45)
+                .addIngredients(x.ingredient(zBlocks.ITEM_PROVIDER.get()));
 
         try {
             var core = recipe.getCore();
@@ -95,9 +94,9 @@ public class ItemProviderCategory implements IRecipeCategory<ItemProviderRecipe>
             var left = recipe.getLeft();
             if (!left.isAir()) {
                 if (left.getBlock() instanceof LiquidBlock fluid)
-                    builder.addInputSlot(16,62).addFluidStack(fluid.fluid);
+                    builder.addInputSlot(16, 62).addFluidStack(fluid.fluid);
                 else
-                    builder.addInputSlot(16,62).addItemStack(x.item(left));
+                    builder.addInputSlot(16, 62).addItemStack(x.item(left));
             }
         } catch (Exception e) {
         }

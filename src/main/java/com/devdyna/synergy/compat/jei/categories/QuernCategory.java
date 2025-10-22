@@ -4,8 +4,8 @@ import org.jetbrains.annotations.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.jei.BaseJEICategory;
 import com.devdyna.synergy.client.gui.screenLocations;
+import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.QuernMillingRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -19,20 +19,18 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 @SuppressWarnings("null")
-public class QuernCategory extends BaseJEICategory implements IRecipeCategory<QuernMillingRecipe> {
+public class QuernCategory extends BaseRecipeCategory<QuernMillingRecipe> {
 
-    private final IGuiHelper helper;
     public static final RecipeType<QuernMillingRecipe> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.QUERN_MILLING.getId()),
             QuernMillingRecipe.class);
 
     public QuernCategory(IGuiHelper helper) {
-        this.helper = helper;
+        super(helper);
     }
 
     @Override

@@ -4,8 +4,8 @@ import org.jetbrains.annotations.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.jei.BaseJEICategory;
 import com.devdyna.synergy.client.gui.screenLocations;
+import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zItems;
@@ -20,12 +20,11 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 @SuppressWarnings("null")
-public class ReactorCellCategory extends BaseJEICategory implements IRecipeCategory<FuelCellRecipe> {
+public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
 
     private IGuiHelper helper;
     private IDrawableAnimated arrow;
@@ -34,7 +33,7 @@ public class ReactorCellCategory extends BaseJEICategory implements IRecipeCateg
             FuelCellRecipe.class);
 
     public ReactorCellCategory(IGuiHelper helper) {
-        this.helper = helper;
+        super(helper);
         // TODO change timespan based on duration
         this.arrow = helper.drawableBuilder(screenLocations.GREEN_PROGRESS_ARROW, 0, 0, 24, 16)
                 .setTextureSize(24, 16).buildAnimated(200,
