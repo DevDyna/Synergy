@@ -32,6 +32,8 @@
 - [ ] Pipe Blocker
 - [ ] Differents styles for Nodes / Node model rework
 
+- [ ] Quern crushing modded raw ores compat
+
 - [ ] GuideMe quantum reactor GameScene
 
 ### CODEBASE
@@ -46,6 +48,11 @@
 
 ## NEWS
 
+- [ ] CobbleGen
+
+- [ ] Item Collector
+
+- [ ] Decorative Pots sherds swap
 - [ ] puzzle fossils
 - [ ] platform network (industry indiegame like)
 - [ ] dry Bricks and oven
