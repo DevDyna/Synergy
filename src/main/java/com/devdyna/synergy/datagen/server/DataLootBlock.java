@@ -40,6 +40,7 @@ public class DataLootBlock extends BlockLootSubProvider {
                         zBlocks.zBlock,
                         zBlocks.zBlockItem,
                         zBlocks.zCrop,
+                        zBlocks.zHiddenBlock,
                         zBlocks.zWildCrop,
                         zBlocks.zDecorative,
                         zBlocks.zBlockStair,

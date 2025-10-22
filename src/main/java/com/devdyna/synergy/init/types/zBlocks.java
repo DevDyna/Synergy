@@ -34,6 +34,7 @@ public class zBlocks {
         public static void register(IEventBus bus) {
                 zBlock.register(bus);
                 zOnlyBlock.register(bus);
+                zHiddenBlock.register(bus);
                 zBlockFluids.register(bus);
                 zBlockItem.register(bus);
                 zDepositBlocks.register(bus);
@@ -57,6 +58,10 @@ public class zBlocks {
          * blocks not items
          */
         public static final DeferredRegister.Blocks zOnlyBlock = DeferredRegister.createBlocks(Main.ID);
+        /**
+         * blocks with hidden item
+         */
+        public static final DeferredRegister.Blocks zHiddenBlock = DeferredRegister.createBlocks(Main.ID);
         /**
          * generic fluid blocks
          */
@@ -202,9 +207,10 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> SIMPLE_MODERATOR = Material.registerItemBlock(
                         zStatic.ReactorStuff.ModeratorTypes.SIMPLE,
                         () -> new SimpleModerator(), zModerators);
-        // public static final DeferredHolder<Block, Block> IMPROVED_MODERATOR = Material.registerItemBlock(
-        //                 zStatic.ReactorStuff.ModeratorTypes.IMPROVED,
-        //                 () -> new ImprovedModerator(), zModerators);
+        // public static final DeferredHolder<Block, Block> IMPROVED_MODERATOR =
+        // Material.registerItemBlock(
+        // zStatic.ReactorStuff.ModeratorTypes.IMPROVED,
+        // () -> new ImprovedModerator(), zModerators);
         public static final DeferredHolder<Block, Block> ADVANCED_MODERATOR = Material.registerItemBlock(
                         zStatic.ReactorStuff.ModeratorTypes.ADVANCED,
                         () -> new AdvancedModerator(), zModerators);
