@@ -2,15 +2,20 @@ package com.devdyna.synergy.utils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.devdyna.synergy.api.zFluid;
 import com.devdyna.synergy.init.types.zFluids;
 import com.devdyna.synergy.init.types.zItems;
 
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 @SuppressWarnings("unchecked")
 public class ClazzUtil {
@@ -103,6 +108,22 @@ public class ClazzUtil {
             e.printStackTrace();
             return new String[0];
         }
+    }
+
+    public static List<DeferredHolder<Item, ?>> getAllzItemsFiltered(DeferredRegister.Blocks... blacklist) {
+        List<DeferredHolder<Item, ?>> allItems = ClazzUtil.getAllzItems();
+
+        Set<Block> filteredBlocks = Arrays.stream(blacklist)
+                .flatMap(reg -> reg.getEntries().stream())
+                .map(holder -> holder.get())
+                .collect(Collectors.toSet());
+
+        return allItems.stream()
+                .filter(itemHolder -> {
+                    Item item = itemHolder.get();
+                    return !(item instanceof BlockItem bi) || !filteredBlocks.contains(bi.getBlock());
+                })
+                .collect(Collectors.toList());
     }
 
 }
