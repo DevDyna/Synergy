@@ -244,6 +244,9 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei.warning.config",
                                 "Can be overriden via config");
 
+                 add(Main.ID + ".placed",
+                                TIP_COLOR + "§oCan be placed");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {
