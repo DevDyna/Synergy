@@ -18,13 +18,14 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.LiquidBlock;
 
 @SuppressWarnings("null")
-public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
+public class ItemUseCategory extends BaseRecipeCategory implements IRecipeCategory<ItemUseRecipe> {
 
     public static final RecipeType<ItemUseRecipe> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.ITEM_USE.getId()),

@@ -19,11 +19,12 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 @SuppressWarnings("null")
-public class QuernCategory extends BaseRecipeCategory<QuernMillingRecipe> {
+public class QuernCategory extends BaseRecipeCategory implements IRecipeCategory<QuernMillingRecipe> {
 
     public static final RecipeType<QuernMillingRecipe> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.QUERN_MILLING.getId()),

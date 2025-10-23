@@ -17,11 +17,12 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.LiquidBlock;
 
 @SuppressWarnings("null")
-public class ItemProviderCategory extends BaseRecipeCategory<ItemProviderRecipe> {
+public class ItemProviderCategory extends BaseRecipeCategory implements IRecipeCategory<ItemProviderRecipe> {
 
     public static final RecipeType<ItemProviderRecipe> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.ITEM_PROVIDER.getId()),
