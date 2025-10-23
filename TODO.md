@@ -40,9 +40,9 @@
 
 - [ ] datagen recipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
 
-- [ ] datagen recipes with namespace minecraft intend of synergy (can cause issues)
+- [ ] datagen recipes with namespace minecraft intend of synergy (could cause issues)
 
-- [ ] datagen recipes ids x.path(...).replace(...) -> BuiltInRegistries.ITEM.getKey(item)
+- [ ] datagen recipes ids x.path(...).replace(...) -> id(item)
 
 - [ ] datagen recipes group id rework
 
@@ -70,7 +70,7 @@
 - [ ] Truffles
 - [ ] Mindustry/DE like Fusion Reactor (?)
 
-- [ ] Rice Generator (rice->fe)
+- ~~Rice Generator (rice->fe)~~ rejected
 
 - [ ] Macerator (standard) Item->(Item|Item)
 - [ ] Electric Furnace (standard) Item->Item
@@ -86,7 +86,7 @@
 - [ ] Growable Crystals
 - [ ] Extractor
 - [ ] Generators
-- [ ] Deposits
+- [ ] Mineral Deposits
 - [ ] Buddings
 - [ ] Resource Shards
 - [ ] metal scraps (like deposits but return metal things)
