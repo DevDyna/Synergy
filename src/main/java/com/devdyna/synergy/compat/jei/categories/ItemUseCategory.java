@@ -91,7 +91,7 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
     @Override
     public void getTooltip(ITooltipBuilder tooltip, ItemUseRecipe recipe, IRecipeSlotsView recipeSlotsView,
             double mouseX, double mouseY) {
-        if (Pos.of(81, 7).setSize(10, 10).test((int) mouseX, (int) mouseY))
+        if (Pos.of(81, 7).setSize(10, 10).test(mouseX, mouseY))
             tooltip.add(Component.translatable(Main.ID + ".jei.warning.config"));
 
     }
