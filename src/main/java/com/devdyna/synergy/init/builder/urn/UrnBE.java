@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
+import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.init.recipeTypes.input.ItemListInput;
 import com.devdyna.synergy.init.recipeTypes.type.UrnRitualRecipe;
@@ -33,7 +34,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class UrnBE extends TickingBE implements ItemStorageBlock {
+public class UrnBE extends TickingBE implements ItemStorageBlock , NoGuiStorage{
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 

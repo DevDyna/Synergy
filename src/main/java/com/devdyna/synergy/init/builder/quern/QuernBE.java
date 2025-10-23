@@ -3,6 +3,7 @@ package com.devdyna.synergy.init.builder.quern;
 import java.util.Optional;
 
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
+import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.recipeTypes.type.QuernMillingRecipe;
@@ -31,7 +32,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class QuernBE extends TickingBE implements ItemStorageBlock {
+public class QuernBE extends TickingBE implements ItemStorageBlock , NoGuiStorage{
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
