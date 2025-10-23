@@ -3,6 +3,7 @@ package com.devdyna.synergy.compat.jei.categories;
 import org.jetbrains.annotations.Nullable;
 
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.api.Pos;
 import com.devdyna.synergy.client.gui.screenLocations;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
@@ -11,7 +12,9 @@ import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
@@ -54,6 +57,14 @@ public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecip
 
         builder.addInputSlot(8, 9).addItemStack(recipe.getInput());
         builder.addOutputSlot(67, 9).addItemStack(recipe.getOutput());
+
+    }
+
+    @Override
+    public void getTooltip(ITooltipBuilder tooltip, DryableBricksRecipe recipe, IRecipeSlotsView recipeSlotsView,
+            double mouseX, double mouseY) {
+        if (Pos.of(35, 9).setSize(16, 16).test(mouseX, mouseY))
+            tooltip.add(Component.translatable(Main.ID + ".jei.dryable.tip"));
 
     }
 
