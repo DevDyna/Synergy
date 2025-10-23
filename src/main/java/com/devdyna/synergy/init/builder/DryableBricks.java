@@ -44,6 +44,13 @@ public class DryableBricks extends HorizontalDirectionalBlock {
 
     public DryableBricks(Properties p) {
         super(p.randomTicks().instabreak().pushReaction(PushReaction.DESTROY));
+        this.registerDefaultState(
+                defaultBlockState()
+                        .setValue(FACING, Direction.NORTH)
+                        .setValue(DRIED, false)
+                        .setValue(WET, false)
+                        .setValue(DRY_STAGE, 0)
+        );
     }
 
     @Override
@@ -109,7 +116,7 @@ public class DryableBricks extends HorizontalDirectionalBlock {
     }
 
     public static boolean getConditions(Level level, BlockPos pos) {
-        return (level.getBiome(pos).is(Tags.Biomes.IS_WET) || level.isRaining() || !level.isDay()
+        return (!level.getBiome(pos).is(Tags.Biomes.IS_DRY) || level.isRaining() || !level.isDay()
                 || !level.canSeeSkyFromBelowWater(pos.above()));
     }
 
@@ -141,7 +148,7 @@ public class DryableBricks extends HorizontalDirectionalBlock {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
             TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID +".disabled"));
+        tooltipComponents.add(Component.translatable(Main.ID + ".disabled"));
     }
 
 }
