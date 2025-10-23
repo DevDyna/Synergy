@@ -53,7 +53,7 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zModerators.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCoolers.getEntries().forEach(b -> addBlock(b, named(b)));
 
-                zBlocks.zHiddenBlock.getEntries().forEach(b -> addBlock(b, named(b)));
+                zBlocks.zHiddenBlock.getEntries().forEach(b -> addBlock(b, named(b).replace(" Block", "")));
 
                 zBlocks.zOnlyBlock.getEntries().forEach(b -> addBlock(b, "Unobtainable block"));
 
