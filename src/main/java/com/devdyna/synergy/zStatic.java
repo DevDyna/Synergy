@@ -141,6 +141,7 @@ public class zStatic {
             public static String clay = "clay" + BALL;
             public static String mud = "mud" + BALL;
             public static String packed_mud = "packed_mud" + BALL;
+            public static String adobe = "adobe" + BALL;
         }
 
     }

@@ -383,6 +383,9 @@ public class zItems {
                         
         public static final DeferredHolder<Item, Item> PACKED_MUD_BRICK = Material
                         .resourceItem(zStatic.DryableBricks.brick.packed_mud);
+
+        public static final DeferredHolder<Item, Item> ADOBE_BALL = Material
+                        .resourceItem(zStatic.DryableBricks.ball.adobe);
         // ---------------------------------------------------------------------------------------//
 
 }

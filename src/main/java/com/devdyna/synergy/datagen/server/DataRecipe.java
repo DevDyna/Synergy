@@ -155,12 +155,20 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(Items.HONEYCOMB))
                                 .group(zStatic.DecorativeBlocks.waxed_planks).save(c);
 
-                ShapelessRecipeBuilder.shapeless(MISC, zBlocks.ADOBE.get(), 3)
-                                .requires(Items.MUD)
-                                .requires(Items.DIORITE)
-                                .requires(Items.CLAY)
-                                .unlockedBy(ID, has(Items.DIORITE))
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ADOBE.get(), 2)
+                                .pattern("AAA")
+                                .pattern("ABA")
+                                .pattern("AAA")
+                                .define('A', zItems.ADOBE_BALL.get())
+                                .define('B', Items.DIORITE)
+                                .unlockedBy(ID, has(zItems.ADOBE_BALL.get()))
                                 .group(zStatic.DecorativeBlocks.adobe).save(c);
+
+                ShapelessRecipeBuilder.shapeless(MISC, zItems.ADOBE_BALL.get(), 3)
+                                .requires(zItems.PACKED_MUD_BALL.get(),2)
+                                .requires(Items.CLAY_BALL)
+                                .unlockedBy(ID, has(Items.CLAY_BALL))
+                                .group(ID).save(c);
 
                 stairBuilder(zBlocks.WAXED_PLANKS_STAIR.get(), Ingredient.of(zBlocks.WAXED_PLANKS.get()))
                                 .unlockedBy(ID, has(zBlocks.WAXED_PLANKS.get()))
