@@ -247,6 +247,8 @@ public class DataLang extends LanguageProvider {
                  add(Main.ID + ".placed",
                                 TIP_COLOR + "Can be placed");
 
+                add(Main.ID + ".jei.dryable.tip","Require to be in the sun and placed in a dry biome");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {
