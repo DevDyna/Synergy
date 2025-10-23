@@ -173,6 +173,8 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.SILICON).add(zItems.SILICON.get());
 
+                tag(zItemTag.PLACEABLE).add(Items.CLAY_BALL, zItems.PACKED_MUD_BALL.get());
+
         }
 
 }
