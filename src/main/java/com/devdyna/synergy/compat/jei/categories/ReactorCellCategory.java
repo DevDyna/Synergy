@@ -20,14 +20,12 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 
 @SuppressWarnings("null")
-public class ReactorCellCategory extends BaseRecipeCategory implements IRecipeCategory<FuelCellRecipe> {
+public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
 
-    private IGuiHelper helper;
     private IDrawableAnimated arrow;
     public static final RecipeType<FuelCellRecipe> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.FUEL_CELL_RECIPE.getId()),

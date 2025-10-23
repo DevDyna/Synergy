@@ -15,12 +15,11 @@ import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
 
 @SuppressWarnings("null")
-public class DryableBricksCategory extends BaseRecipeCategory implements IRecipeCategory<DryableBricksRecipe> {
+public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecipe> {
 
     public static final RecipeType<DryableBricksRecipe> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.DRYABLE_BRICKS.getId()),
