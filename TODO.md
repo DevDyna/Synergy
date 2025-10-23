@@ -51,7 +51,7 @@
 - [ ] CobbleGen
 
 - [ ] Item Collector
-
+- [ ] Crucible (BTW like but require to stay connected at a support)
 - [ ] Decorative Pots sherds swap
 - [ ] puzzle fossils
 - [ ] platform network (industry indiegame like)
