@@ -111,6 +111,8 @@ public class zItemTag {
         public static final TagKey<Item> PLANT_SEED = Material.tagItem("crop/seed");
 
         public static final TagKey<Item> SILICON = Material.tagItem("silicon","c");
+       
+        public static final TagKey<Item> PLACEABLE = Material.tagItem("placeable");
 
 
 }
