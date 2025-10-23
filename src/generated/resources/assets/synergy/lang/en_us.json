@@ -213,6 +213,7 @@
   "synergy.pipe.desc": "§7Can connected at any #synergy:can_connect",
   "synergy.pipe.extend": "§7Can be extended using pipes",
   "synergy.pipe_refactorizer": "§7Force update blockstates of any #synergy:can_connect",
+  "synergy.placed": "§7Can be placed",
   "synergy.provider_node": "§7Produce and deposit on containers",
   "synergy.quantum_reactor_controller": "§7Generate FE based on Fuel Cell recipes and heat when below 0",
   "synergy.retrieval_node": "§7Import and deposit from containers",
