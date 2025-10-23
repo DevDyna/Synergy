@@ -38,6 +38,12 @@ public class Pos {
         return x0 <= x && x < x1 && y0 <= y && y < y1;
     }
 
+    public boolean test(double x, double y) {
+        x = (int) x;
+        y = (int) y;
+        return x0 <= x && x < x1 && y0 <= y && y < y1;
+    }
+
     public static Pos of(int x0, int y0, int x1, int y1) {
         return new Pos(x0, y0).setSize(x1, y1);
     }
