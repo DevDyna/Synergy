@@ -141,4 +141,8 @@ public class x {
     public static Block block(BlockState b) {
         return b.getBlock();
     }
+
+    public static ResourceLocation id(Item item){
+        return BuiltInRegistries.ITEM.getKey(item);
+    }
 }
