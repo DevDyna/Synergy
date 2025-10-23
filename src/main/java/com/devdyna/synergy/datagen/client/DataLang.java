@@ -245,7 +245,7 @@ public class DataLang extends LanguageProvider {
                                 "Can be overriden via config");
 
                  add(Main.ID + ".placed",
-                                TIP_COLOR + "§oCan be placed");
+                                TIP_COLOR + "Can be placed");
 
         }
 
