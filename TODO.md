@@ -48,7 +48,7 @@
 
 ## NEWS
 
-- [ ] CobbleGen
+- ~~CobbleGen~~ *item provider superiority*
 
 - [ ] Item Collector
 - [ ] Crucible (BTW like but require to stay connected at a support)
