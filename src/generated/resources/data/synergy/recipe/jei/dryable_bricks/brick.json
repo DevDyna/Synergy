@@ -3,10 +3,10 @@
   "block": {
     "Name": "synergy:clay_brick_block",
     "Properties": {
-      "dried": "true",
+      "dried": "false",
       "facing": "north",
       "stage": "0",
-      "wet": "true"
+      "wet": "false"
     }
   },
   "input": {

@@ -1,20 +1,22 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "adobe",
-  "ingredients": [
-    {
-      "item": "minecraft:mud"
+  "key": {
+    "A": {
+      "item": "synergy:adobe_ball"
     },
-    {
+    "B": {
       "item": "minecraft:diorite"
-    },
-    {
-      "item": "minecraft:clay"
     }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
   ],
   "result": {
-    "count": 3,
+    "count": 2,
     "id": "synergy:adobe"
   }
 }
