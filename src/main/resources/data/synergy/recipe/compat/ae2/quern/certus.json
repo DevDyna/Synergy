@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ae2"
+    }
+  ],
+  "type": "synergy:quern",
+  "frequence": 60,
+  "ingredient": {
+    "tag": "c:gems/certus_quartz"
+  },
+  "result": {
+    "count": 1,
+    "id": "ae2:certus_quartz_dust"
+  }
+}
