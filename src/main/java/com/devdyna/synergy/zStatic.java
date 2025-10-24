@@ -21,7 +21,7 @@ public class zStatic {
         public static String copper = "copper";
         public static String gold = "gold";
         public static String aquamarine = "aquamarine";
-        public static String onyx = "onyx";
+        // public static String onyx = "onyx";
         public static String silicon = "silicon";
         public static String advanced_alloy = "advanced_alloy";
         public static String steel = "steel";
@@ -46,6 +46,15 @@ public class zStatic {
         public static String sawdust = "sawdust";
         public static String quartz = "quartz";
         public static String mixed = "mixed";
+
+        public static String nickel = "nickel";
+        public static String silver = "silver";
+        public static String tin = "tin";
+        public static String aluminum = "aluminum";
+        public static String iridium = "iridium";
+        public static String platinum = "platinum";
+        public static String osmium = "osmium";
+        public static String lead = "lead";
     }
 
     public class ResourceType {
@@ -386,6 +395,11 @@ public class zStatic {
         public static String FarmersDelight = "farmersdelight";
         public static String ImmersiveEngineering = "immersiveengineering";
         public static String Patchouli = "patchouli";
+        public static String AllTheOres = "alltheores";
+        public static String FTBMaterials = "ftbmaterials";
+        public static String Evilcraft = "evilcraft";
+        public static String AE2 = "ae2";
+        public static String DraconicEvolution = "draconicevolution";
     }
 
     public class tips {
