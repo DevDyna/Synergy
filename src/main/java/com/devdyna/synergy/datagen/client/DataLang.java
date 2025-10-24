@@ -34,15 +34,7 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zBlock.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCrop.getEntries().forEach(b -> addBlock(b, named(b)));
 
-                var denyList = List.of(
-                                zItems.SAWDUST);
-
-                ClazzUtil.getAllzItems().forEach(c -> {
-                        if (!denyList.contains(c))
-                                addItem(c, named(c));
-                });
-
-                addItem(zItems.SAWDUST, "Sawdust");
+                ClazzUtil.getAllzItems().forEach(c -> addItem(c, named(c)));
 
                 zItems.zBucketItems.getEntries().forEach(b -> addItem(b, named(b)));
 
@@ -63,15 +55,6 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + "." + zStatic.Items.configurator + ".link",
                                 "§aBound to ");
-
-                // add(Main.ID + "." + zStatic.Items.configurator + ".modetype",
-                // TIP_COLOR + "Mode : ");
-
-                // add(Main.ID + "." + zStatic.Items.configurator + ".mode.show_area",
-                // "§aMachine AOE");
-
-                // add(Main.ID + "." + zStatic.Items.configurator + ".mode.show_track",
-                // "§aNode Track");
 
                 add(Main.ID + "." + zStatic.Items.configurator + ".blockpos",
                                 TIP_COLOR + "BlockPos : ");
@@ -103,7 +86,7 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "Produce and deposit on containers");
 
                 // wild crops warning
-                add(Main.ID +".disabled",
+                add(Main.ID + ".disabled",
                                 TIP_COLOR + "Item-Form unobtainable");
 
                 add(Main.ID + "." + zStatic.Items.Batteries.TYPE_BATTERY + ".tip",
@@ -129,15 +112,11 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Blocks.tiny_wooden_chest,
                                 TIP_COLOR + "Small chests useful to store a single stack");
 
-
                 add(Main.ID + "." + zStatic.tips.SHIFT,
                                 "§8Hold [§7Shift§8] to see more details");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".desc",
                                 TIP_COLOR + "Reduce Heat based on some conditions");
-
-                // add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".condition",
-                // TIP_COLOR + "DESC");
 
                 add(Main.ID + "." + zStatic.ReactorStuff.cooler + ".off",
                                 TIP_COLOR + "Deactive: ");
@@ -239,15 +218,16 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "Obtained from " + droptype
                                                 .get(zItems.zMobDrop.getEntries().stream().toList().indexOf(d))));
 
-                add(Main.ID + "." + zStatic.Items.soldering_gun, TIP_COLOR + "Change the size of AOE on specific blocks");
+                add(Main.ID + "." + zStatic.Items.soldering_gun,
+                                TIP_COLOR + "Change the size of AOE on specific blocks");
 
                 add(Main.ID + ".jei.warning.config",
                                 "Can be overriden via config");
 
-                 add(Main.ID + ".placed",
+                add(Main.ID + ".placed",
                                 TIP_COLOR + "Can be placed");
 
-                add(Main.ID + ".jei.dryable.tip","Require to be in the sun and placed in a dry biome");
+                add(Main.ID + ".jei.dryable.tip", "Require to be in the sun and placed in a dry biome");
 
         }
 
