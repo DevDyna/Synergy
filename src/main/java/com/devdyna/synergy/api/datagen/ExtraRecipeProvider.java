@@ -19,18 +19,43 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.conditions.ICondition;
+import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
+import net.neoforged.neoforge.common.conditions.NotCondition;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         public ExtraRecipeProvider(PackOutput output, CompletableFuture<Provider> registries) {
                 super(output, registries);
+        }
+
+        protected void compatIngotsAndDusts(RecipeOutput c) {
+                raw_dust_smelt(c, x.rl("c", "raw_materials/tin"), zItems.TIN_DUST.get(),
+                                zItems.TIN_INGOT.get(), x.rl("c", "ingots/tin"));
+                raw_dust_smelt(c, x.rl("c", "raw_materials/silver"), zItems.SILVER_DUST.get(),
+                                zItems.SILVER_INGOT.get(), x.rl("c", "ingots/silver"));
+                raw_dust_smelt(c, x.rl("c", "raw_materials/nickel"), zItems.NICKEL_DUST.get(),
+                                zItems.NICKEL_INGOT.get(), x.rl("c", "ingots/nickel"));
+                raw_dust_smelt(c, x.rl("c", "raw_materials/iridium"), zItems.IRIDIUM_DUST.get(),
+                                zItems.IRIDIUM_INGOT.get(), x.rl("c", "ingots/iridium"));
+                raw_dust_smelt(c, x.rl("c", "raw_materials/uranium"), zItems.URANIUM_DUST.get(),
+                                zItems.URANIUM_INGOT.get(), x.rl("c", "ingots/uranium"));
+                raw_dust_smelt(c, x.rl("c", "raw_materials/platinum"), zItems.PLATINUM_DUST.get(),
+                                zItems.PLATINUM_INGOT.get(), x.rl("c", "ingots/platinum"));
+                raw_dust_smelt(c, x.rl("c", "raw_materials/osmium"), zItems.OSMIUM_DUST.get(),
+                                zItems.OSMIUM_INGOT.get(), x.rl("c", "ingots/osmium"));
+                raw_dust_smelt(c, x.rl("c", "raw_materials/aluminum"), zItems.ALUMINUM_DUST.get(),
+                                zItems.ALUMINUM_INGOT.get(), x.rl("c", "ingots/aluminum"));
+                raw_dust_smelt(c, x.rl("c", "raw_materials/lead"), zItems.LEAD_DUST.get(),
+                                zItems.LEAD_INGOT.get(), x.rl("c", "ingots/lead"));
         }
 
         protected void nuggetIngotBlock(RecipeOutput c, ItemLike nugget, ItemLike ingot, ItemLike block) {
@@ -57,6 +82,45 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 doubleSmelt(c, dust, ingot);
         }
 
+        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot) {
+
+                QuernMillingBuilder.of().input(x.ingredient(raw))
+                                .output(x.item(dust.asItem(), 3))
+                                .unlockedBy().save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(raw)) }),
+                                                "_from_raw");
+
+                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+                                .output(x.item(dust.asItem()))
+                                .unlockedBy().save(c, "_from_ingot");
+
+                doubleSmelt(c, dust, ingot);
+        }
+
+        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot,
+                        ResourceLocation ingotTag) {
+
+                QuernMillingBuilder.of().input(x.ingredient(raw))
+                                .output(x.item(dust.asItem(), 3))
+                                .unlockedBy().save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(raw)) }),
+                                                "_from_raw");
+
+                QuernMillingBuilder.of().input(x.ingredient(ingotTag))
+                                .output(x.item(dust.asItem()))
+                                .unlockedBy().save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(ingotTag)) }),
+                                                "_from_ingot");
+
+                doubleSmelt(c, dust, ingot);
+        }
+
         protected void doubleSmelt(RecipeOutput c, ItemLike input, ItemLike output) {
                 SimpleCookingRecipeBuilder.blasting(x.ingredient(input.asItem()), MISC, output.asItem(), 0.1F, 100)
                                 .unlockedBy(getHasName(input), has(output))
@@ -72,26 +136,24 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c, getConversionRecipeName(output, input));
         }
 
-  
-        protected static void brickRecipes(RecipeOutput c){
+        protected static void brickRecipes(RecipeOutput c) {
                 DryableBricksBuilder.of()
-                .input(Items.CLAY_BALL)
-                .block(zBlocks.CLAY_BRICK.get())
-                .output(Items.BRICK)
-                .unlockedBy()
-                .group(ID)
-                .save(c);
+                                .input(Items.CLAY_BALL)
+                                .block(zBlocks.CLAY_BRICK.get())
+                                .output(Items.BRICK)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
 
                 DryableBricksBuilder.of()
-                .input(zItems.PACKED_MUD_BALL)
-                .block(zBlocks.PACKED_MUD_BRICK.get())
-                .output(zItems.PACKED_MUD_BRICK)
-                .unlockedBy()
-                .group(ID)
-                .save(c);
-                
+                                .input(zItems.PACKED_MUD_BALL)
+                                .block(zBlocks.PACKED_MUD_BRICK.get())
+                                .output(zItems.PACKED_MUD_BRICK)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
+
         }
-
 
         protected static void twoByTwoPacker(RecipeOutput c, ItemLike output, TagKey<Item> tag) {
                 ShapedRecipeBuilder.shaped(MISC, output)
