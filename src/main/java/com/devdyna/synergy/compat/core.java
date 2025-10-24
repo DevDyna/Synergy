@@ -20,9 +20,17 @@ public class core {
 
         compatInfo(zStatic.Mods.GuideMe, "GuideMe");
         compatInfo(zStatic.Mods.Patchouli, "Patchouli");
+
         compatInfo(zStatic.Mods.FarmersDelight, "FarmersDelight");
         compatInfo(zStatic.Mods.Mekanism, "Mekanism");
         compatInfo(zStatic.Mods.ImmersiveEngineering, "ImmersiveEngineering");
+        
+        compatInfo(zStatic.Mods.AE2, "AppliedEnergistics2");
+        compatInfo(zStatic.Mods.AllTheOres, "AllTheOres");
+        compatInfo(zStatic.Mods.Evilcraft, "Evilcraft");
+        compatInfo(zStatic.Mods.FTBMaterials, "FTBMaterials");
+
+        compatInfo(zStatic.Mods.DraconicEvolution, "DraconicEvolution");
 
         LogUtil.decor(20);
     }
