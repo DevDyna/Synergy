@@ -30,6 +30,7 @@ public class DataRecipe extends ExtraRecipeProvider {
         @Override
         protected void buildRecipes(RecipeOutput c) {
 
+                compatIngotsAndDusts(c);
                 cropResultRecipes(c);
                 clearNBT(c);
                 bacteries(c);
