@@ -38,6 +38,8 @@
 
 ### CODEBASE
 
+- [ ] All Recipe Types compat with GuideMe
+
 - [ ] datagen recipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
 
 - [ ] datagen recipes with namespace minecraft intend of synergy (could cause issues)
@@ -50,12 +52,14 @@
 
 - ~~CobbleGen~~ *item provider superiority*
 
+- [ ] block placer (harvester like but place blocks)
+- [x] dry bricks
 - [ ] Item Collector
 - [ ] Crucible (BTW like but require to stay connected at a support)
 - [ ] Decorative Pots sherds swap
 - [ ] puzzle fossils
 - [ ] platform network (industry indiegame like)
-- [ ] dry Bricks and oven
+- [ ] brick oven
 - [ ] Item Duct (item transfer with rendering)
 - [ ] Chimney & smoke tubes
 - [ ] Wireless Nodes
