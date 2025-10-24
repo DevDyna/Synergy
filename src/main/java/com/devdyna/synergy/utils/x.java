@@ -2,6 +2,7 @@ package com.devdyna.synergy.utils;
 
 import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -128,6 +129,10 @@ public class x {
 
     public static Ingredient ingredient(TagKey<Item> i) {
         return Ingredient.of(i);
+    }
+
+    public static Ingredient ingredient(ResourceLocation tag) {
+        return Ingredient.of(TagKey.create(Registries.ITEM, tag));
     }
 
     public static Block block(DeferredHolder<Block, ?> b) {
