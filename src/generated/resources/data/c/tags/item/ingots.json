@@ -2,6 +2,15 @@
   "values": [
     "synergy:advanced_alloy_ingot",
     "synergy:steel_ingot",
-    "synergy:mixed_ingot"
+    "synergy:mixed_ingot",
+    "synergy:nickel_ingot",
+    "synergy:silver_ingot",
+    "synergy:iridium_ingot",
+    "synergy:platinum_ingot",
+    "synergy:osmium_ingot",
+    "synergy:tin_ingot",
+    "synergy:lead_ingot",
+    "synergy:uranium_ingot",
+    "synergy:aluminum_ingot"
   ]
 }

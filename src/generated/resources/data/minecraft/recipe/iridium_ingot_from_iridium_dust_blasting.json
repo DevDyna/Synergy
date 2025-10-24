@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "synergy:iridium_dust"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:iridium_ingot"
+  }
+}

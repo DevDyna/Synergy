@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aluminum_dust": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:aluminum_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:aluminum_ingot_from_aluminum_dust_blasting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_aluminum_dust"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:aluminum_ingot_from_aluminum_dust_blasting"
+    ]
+  }
+}
