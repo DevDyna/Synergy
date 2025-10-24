@@ -110,9 +110,28 @@ public class zItemTag {
         public static final TagKey<Item> MUSHROOM_SEED = Material.tagItem("mushroom/seed");
         public static final TagKey<Item> PLANT_SEED = Material.tagItem("crop/seed");
 
-        public static final TagKey<Item> SILICON = Material.tagItem("silicon","c");
-       
+        public static final TagKey<Item> SILICON = Material.tagItem("silicon", "c");
+
         public static final TagKey<Item> PLACEABLE = Material.tagItem("placeable");
 
+        public static final TagKey<Item> DUST_NICKEL = Material.tagItem("dusts/nickel", "c");
+        public static final TagKey<Item> DUST_SILVER = Material.tagItem("dusts/silver", "c");
+        public static final TagKey<Item> DUST_IRIDIUM = Material.tagItem("dusts/iridium", "c");
+        public static final TagKey<Item> DUST_PLATINUM = Material.tagItem("dusts/platinum", "c");
+        public static final TagKey<Item> DUST_OSMIUM = Material.tagItem("dusts/osmium", "c");
+        public static final TagKey<Item> DUST_TIN = Material.tagItem("dusts/tin", "c");
+        public static final TagKey<Item> DUST_LEAD = Material.tagItem("dusts/lead", "c");
+        public static final TagKey<Item> DUST_URANIUM = Material.tagItem("dusts/uranium", "c");
+        public static final TagKey<Item> DUST_ALUMINUM = Material.tagItem("dusts/aluminum", "c");
+
+        public static final TagKey<Item> INGOT_NICKEL = Material.tagItem("ingots/nickel", "c");
+        public static final TagKey<Item> INGOT_SILVER = Material.tagItem("ingots/silver", "c");
+        public static final TagKey<Item> INGOT_IRIDIUM = Material.tagItem("ingots/iridium", "c");
+        public static final TagKey<Item> INGOT_PLATINUM = Material.tagItem("ingots/platinum", "c");
+        public static final TagKey<Item> INGOT_OSMIUM = Material.tagItem("ingots/osmium", "c");
+        public static final TagKey<Item> INGOT_TIN = Material.tagItem("ingots/tin", "c");
+        public static final TagKey<Item> INGOT_LEAD = Material.tagItem("ingots/lead", "c");
+        public static final TagKey<Item> INGOT_URANIUM = Material.tagItem("ingots/uranium", "c");
+        public static final TagKey<Item> INGOT_ALUMINUM = Material.tagItem("ingots/aluminum", "c");
 
 }
