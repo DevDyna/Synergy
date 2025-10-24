@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:quern/sawdust_dust"
+        "recipe": "synergy:quern/sawdust"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:quern/sawdust_dust"
+      "synergy:quern/sawdust"
     ]
   }
 }

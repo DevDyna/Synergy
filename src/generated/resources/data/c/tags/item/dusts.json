@@ -10,7 +10,6 @@
     "synergy:gold_dust",
     "synergy:iron_dust",
     "synergy:lapis_dust",
-    "synergy:sawdust_dust",
     "synergy:quartz_dust",
     "synergy:nickel_dust",
     "synergy:silver_dust",
@@ -20,6 +19,7 @@
     "synergy:tin_dust",
     "synergy:lead_dust",
     "synergy:uranium_dust",
-    "synergy:aluminum_dust"
+    "synergy:aluminum_dust",
+    "synergy:sawdust"
   ]
 }
