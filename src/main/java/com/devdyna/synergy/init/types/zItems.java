@@ -95,6 +95,10 @@ public class zItems {
         public static final DeferredRegister.Items zDropLets = DeferredRegister.createItems(Main.ID);
 
         /**
+         * Item with tinted layers
+         */
+        public static final DeferredRegister.Items zTintedItem = DeferredRegister.createItems(Main.ID);
+        /**
          * Generic resource type
          */
         public static final DeferredRegister.Items zResources = DeferredRegister.createItems(Main.ID);
@@ -254,6 +258,37 @@ public class zItems {
                         .resourceDust(zStatic.ResourceMaterial.sawdust);
         public static final DeferredHolder<Item, Item> QUARTZ_DUST = Material
                         .resourceDust(zStatic.ResourceMaterial.quartz);
+
+
+
+        public static final DeferredHolder<Item, Item> NICKEL_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.nickel);
+        public static final DeferredHolder<Item, Item> SILVER_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.silver);
+        public static final DeferredHolder<Item, Item> IRIDIUM_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.iridium);
+        public static final DeferredHolder<Item, Item> PLATINUM_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.platinum);
+        public static final DeferredHolder<Item, Item> OSMIUM_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.osmium);
+        public static final DeferredHolder<Item, Item> TIN_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.tin);
+        public static final DeferredHolder<Item, Item> LEAD_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.lead);
+        public static final DeferredHolder<Item, Item> URANIUM_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.uranium);
+        public static final DeferredHolder<Item, Item> ALUMINUM_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.aluminum);
+
+
+
+
+
+
+
+
+
+
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> COPPER_FOIL = Material
                         .resourceFoil(zStatic.ResourceMaterial.copper);
@@ -273,6 +308,36 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> MIXED_INGOT = Material
                         .resourceIngot(zStatic.ResourceMaterial.mixed);
+
+
+
+
+
+        public static final DeferredHolder<Item, Item> NICKEL_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.nickel);
+        public static final DeferredHolder<Item, Item> SILVER_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.silver);
+        public static final DeferredHolder<Item, Item> IRIDIUM_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.iridium);
+        public static final DeferredHolder<Item, Item> PLATINUM_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.platinum);
+        public static final DeferredHolder<Item, Item> OSMIUM_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.osmium);
+        public static final DeferredHolder<Item, Item> TIN_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.tin);
+        public static final DeferredHolder<Item, Item> LEAD_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.lead);
+        public static final DeferredHolder<Item, Item> URANIUM_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.uranium);
+        public static final DeferredHolder<Item, Item> ALUMINUM_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.aluminum);
+
+
+
+
+
+
+
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> ADVANCED_ALLOY_NUGGET = Material
                         .resourceNugget(zStatic.ResourceMaterial.advanced_alloy);
