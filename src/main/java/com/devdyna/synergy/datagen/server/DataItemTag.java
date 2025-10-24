@@ -98,6 +98,8 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(Tags.Items.DUSTS).add(DataGenUtil.getItems(zItems.zDusts));
 
+                tag(Tags.Items.DUSTS).add(zItems.SAWDUST.get());
+
                 tag(zItemTag.DUST_AMETHYST).add(zItems.AMETHYST_DUST.get());
                 tag(zItemTag.DUST_ANCIENT_DEBRIS).add(zItems.ANCIENT_DEBRIS_DUST.get());
                 tag(zItemTag.DUST_COAL).add(zItems.CARBON_DUST.get());
