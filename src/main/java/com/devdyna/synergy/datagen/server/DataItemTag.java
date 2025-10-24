@@ -175,6 +175,26 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.PLACEABLE).add(Items.CLAY_BALL, zItems.PACKED_MUD_BALL.get());
 
+                tag(zItemTag.INGOT_NICKEL).add(zItems.NICKEL_INGOT.get());
+                tag(zItemTag.INGOT_SILVER).add(zItems.SILVER_INGOT.get());
+                tag(zItemTag.INGOT_IRIDIUM).add(zItems.IRIDIUM_INGOT.get());
+                tag(zItemTag.INGOT_PLATINUM).add(zItems.PLATINUM_INGOT.get());
+                tag(zItemTag.INGOT_OSMIUM).add(zItems.OSMIUM_INGOT.get());
+                tag(zItemTag.INGOT_TIN).add(zItems.TIN_INGOT.get());
+                tag(zItemTag.INGOT_LEAD).add(zItems.LEAD_INGOT.get());
+                tag(zItemTag.INGOT_URANIUM).add(zItems.URANIUM_INGOT.get());
+                tag(zItemTag.INGOT_ALUMINUM).add(zItems.ALUMINUM_INGOT.get());
+
+                tag(zItemTag.DUST_NICKEL).add(zItems.NICKEL_DUST.get());
+                tag(zItemTag.DUST_SILVER).add(zItems.SILVER_DUST.get());
+                tag(zItemTag.DUST_IRIDIUM).add(zItems.IRIDIUM_DUST.get());
+                tag(zItemTag.DUST_PLATINUM).add(zItems.PLATINUM_DUST.get());
+                tag(zItemTag.DUST_OSMIUM).add(zItems.OSMIUM_DUST.get());
+                tag(zItemTag.DUST_TIN).add(zItems.TIN_DUST.get());
+                tag(zItemTag.DUST_LEAD).add(zItems.LEAD_DUST.get());
+                tag(zItemTag.DUST_URANIUM).add(zItems.URANIUM_DUST.get());
+                tag(zItemTag.DUST_ALUMINUM).add(zItems.ALUMINUM_DUST.get());
+
         }
 
 }
