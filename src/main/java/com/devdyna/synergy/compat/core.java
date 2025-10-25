@@ -31,6 +31,7 @@ public class core {
         compatInfo(zStatic.Mods.FTBMaterials, "FTBMaterials");
 
         compatInfo(zStatic.Mods.DraconicEvolution, "DraconicEvolution");
+        compatInfo(zStatic.Mods.EnderIO, "EnderIO");
 
         LogUtil.decor(20);
     }
