@@ -73,7 +73,7 @@ public abstract class NodeBaseBE extends BlockEntity {
         } else if (capType == Capabilities.FluidHandler.BLOCK) {
             executeFluid((IFluidHandler) inCap, (IFluidHandler) outCap);
         } else {
-            // TODO
+            // TODO meka compats
         }
         // refresh
         this.failedRoutes.removeAll(this.failedRoutes);
@@ -154,7 +154,7 @@ public abstract class NodeBaseBE extends BlockEntity {
                 }
             }
         } else {
-            // TODO: handle other capabilities
+            // TODO: meka compat
 
         }
         return false;
