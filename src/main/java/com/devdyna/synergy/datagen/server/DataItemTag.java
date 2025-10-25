@@ -110,7 +110,7 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.DUST_IRON).add(zItems.IRON_DUST.get());
                 tag(zItemTag.DUST_LAPIS).add(zItems.LAPIS_DUST.get());
                 tag(zItemTag.DUST_QUARTZ).add(zItems.QUARTZ_DUST.get());
-                tag(zItemTag.SAWDUST).add(zItems.SAWDUST.get());
+                tag(zItemTag.SAWDUST).add(zItems.SAWDUST.get()).addOptionalTag(zItemTag.SAWDUST2);
 
                 tag(ItemTags.PIGLIN_LOVED).add(zItems.GOLD_DUST.get(), zItems.GOLD_FOIL.get(), zItems.GOLD_PLATE.get());
 
