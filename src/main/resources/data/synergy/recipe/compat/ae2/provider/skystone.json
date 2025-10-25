@@ -1,0 +1,27 @@
+{
+  "type": "synergy:provider/item",
+  "below": {
+    "Name": "ae2:sky_stone_block",
+    "Properties": {
+    }
+  },
+  "core": {
+    "Name": "ae2:not_so_mysterious_cube",
+    "Properties": {
+    }
+  },
+  "left": {
+    "Name": "ae2:sky_stone_block",
+    "Properties": {
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "ae2:sky_dust"
+  },
+  "right": {
+    "Name": "ae2:sky_stone_block",
+    "Properties": {
+    }
+  }
+}

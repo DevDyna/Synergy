@@ -1,0 +1,27 @@
+{
+  "type": "synergy:provider/item",
+  "below": {
+    "Name": "minecraft:air",
+    "Properties": {
+    }
+  },
+  "core": {
+    "Name": "ae2:flawless_budding_quartz",
+    "Properties": {
+    }
+  },
+  "left": {
+    "Name": "minecraft:air",
+    "Properties": {
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "ae2:certus_quartz_dust"
+  },
+  "right": {
+    "Name": "minecraft:air",
+    "Properties": {
+    }
+  }
+}

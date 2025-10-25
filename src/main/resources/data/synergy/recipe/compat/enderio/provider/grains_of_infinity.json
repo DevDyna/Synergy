@@ -1,0 +1,27 @@
+{
+  "type": "synergy:provider/item",
+  "below": {
+    "Name": "minecraft:bedrock",
+    "Properties": {
+    }
+  },
+  "core": {
+    "Name": "enderio:void_chassis",
+    "Properties": {
+    }
+  },
+  "left": {
+    "Name": "enderio:reinforced_obsidian_block",
+    "Properties": {
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "enderio:grains_of_infinity"
+  },
+  "right": {
+    "Name": "enderio:reinforced_obsidian_block",
+    "Properties": {
+    }
+  }
+}
