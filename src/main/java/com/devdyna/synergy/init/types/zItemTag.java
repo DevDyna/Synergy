@@ -63,6 +63,8 @@ public class zItemTag {
         public static final TagKey<Item> COAL_LIKE = Material.tagItem("coal_like", "c");
 
         public static final TagKey<Item> SAWDUST = Material.tagItem("dusts/wood", "c");
+        public static final TagKey<Item> SAWDUST2 = Material.tagItem("dusts/saw", "c");
+
         public static final TagKey<Item> DUST_GOLD = Material.tagItem("dusts/gold", "c");
         public static final TagKey<Item> DUST_IRON = Material.tagItem("dusts/iron", "c");
         public static final TagKey<Item> DUST_EMERALD = Material.tagItem("dusts/emerald", "c");
