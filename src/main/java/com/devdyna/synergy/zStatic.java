@@ -400,6 +400,7 @@ public class zStatic {
         public static String Evilcraft = "evilcraft";
         public static String AE2 = "ae2";
         public static String DraconicEvolution = "draconicevolution";
+        public static String EnderIO = "enderio";
     }
 
     public class tips {
