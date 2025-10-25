@@ -1,5 +1,9 @@
 {
   "values": [
-    "synergy:sawdust"
+    "synergy:sawdust",
+    {
+      "id": "#c:dusts/saw",
+      "required": false
+    }
   ]
 }
