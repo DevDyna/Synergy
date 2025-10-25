@@ -24,6 +24,10 @@
 - [x] IE garden cloche fertilizers
 - [x] squeezer plant oil | fermenter ethanol compat
 - [x] Farming for BlockHeads compat
+- [x] EnderIO compat
+- [x] DraconicEvolution compat
+- [x] AE2 compat
+- [x] Basic Resources/Ingots compat (ATM ores | FTB materials | other mods)
 - [ ] Patchouli compat
 
 - [ ] Fluid nodes
