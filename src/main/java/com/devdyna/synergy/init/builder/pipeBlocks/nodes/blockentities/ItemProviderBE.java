@@ -9,7 +9,6 @@ import com.devdyna.synergy.init.recipeTypes.input.ProviderInput;
 import com.devdyna.synergy.init.recipeTypes.type.ItemProviderRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -67,14 +66,14 @@ public class ItemProviderBE extends NodeBaseBE {
             for (Direction direction : dirs) {
                 if (requireRight)
                     if (check(pos.relative(direction), recipe.getRight())
-                            && !pos.relative(direction).equals(leftPos)) {
+                            && !pos.relative(direction).equals(leftPos) && rightPos == null) {
                         rightPos = pos.relative(direction);
                         continue;
                     }
 
                 if (requireLeft)
                     if (check(pos.relative(direction), recipe.getLeft())
-                            && !pos.relative(direction).equals(rightPos)) {
+                            && !pos.relative(direction).equals(rightPos) && leftPos == null) {
                         leftPos = pos.relative(direction);
                         continue;
                     }
