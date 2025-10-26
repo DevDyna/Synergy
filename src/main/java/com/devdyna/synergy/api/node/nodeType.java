@@ -1,8 +1,8 @@
 package com.devdyna.synergy.api.node;
 
+import com.devdyna.synergy.api.node.builder.NodeBaseBlock;
 import com.devdyna.synergy.api.pipe.pipeProperties;
 import com.devdyna.synergy.api.pipe.pipeType;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.ItemTranfer;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -83,12 +83,12 @@ public interface nodeType extends pipeType {
     static void getNodeMultiPart(Block b, MultiPartBlockStateBuilder model, ModelFile core, ModelFile pipe,
             ModelFile node) {
         pipeType.getPipeMultiPart(b, model, core, pipe);
-        model.part().modelFile(node).addModel().condition(ItemTranfer.FACING, Direction.NORTH);
-        model.part().modelFile(node).rotationY(90).addModel().condition(ItemTranfer.FACING, Direction.EAST);
-        model.part().modelFile(node).rotationY(180).addModel().condition(ItemTranfer.FACING, Direction.SOUTH);
-        model.part().modelFile(node).rotationY(270).addModel().condition(ItemTranfer.FACING, Direction.WEST);
-        model.part().modelFile(node).rotationX(270).addModel().condition(ItemTranfer.FACING, Direction.UP);
-        model.part().modelFile(node).rotationX(90).addModel().condition(ItemTranfer.FACING, Direction.DOWN);
+        model.part().modelFile(node).addModel().condition(NodeBaseBlock.FACING, Direction.NORTH);
+        model.part().modelFile(node).rotationY(90).addModel().condition(NodeBaseBlock.FACING, Direction.EAST);
+        model.part().modelFile(node).rotationY(180).addModel().condition(NodeBaseBlock.FACING, Direction.SOUTH);
+        model.part().modelFile(node).rotationY(270).addModel().condition(NodeBaseBlock.FACING, Direction.WEST);
+        model.part().modelFile(node).rotationX(270).addModel().condition(NodeBaseBlock.FACING, Direction.UP);
+        model.part().modelFile(node).rotationX(90).addModel().condition(NodeBaseBlock.FACING, Direction.DOWN);
     }
 
     static void onDestroyNode(BlockState state, Level level, BlockPos pos) {
