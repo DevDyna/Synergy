@@ -379,7 +379,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern(" GN")
                                 .pattern("Q  ")
                                 .define('G', zItemTag.URN_MIXTURES)
-                                .define('N', zItems.STEEL_NUGGET.get())
+                                .define('N', zItemTag.NUGGET_STEEL)
                                 .define('Q', zItemTag.DUST_QUARTZ)
                                 .unlockedBy(ID,
                                                 has(zItems.BONE_MEAL_MIXTURE.get()))
@@ -401,10 +401,10 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern("N N")
                                 .pattern("GMG")
                                 .pattern(" I ")
-                                .define('N', zItems.STEEL_NUGGET.get())
+                                .define('N', zItemTag.NUGGET_STEEL)
                                 .define('G', zItemTag.URN_MIXTURES)
                                 .define('M', zItemTag.GEMS_SILICON)
-                                .define('I', zItems.STEEL_INGOT.get())
+                                .define('I', zItemTag.INGOT_STEEL)
                                 .unlockedBy(ID,
                                                 has(zItems.SILICON.get()))
                                 .group(ID).save(c, ID + ":" + x.path(zItems.CONDENSER.get()) + "_improved");
