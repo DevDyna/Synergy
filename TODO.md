@@ -14,8 +14,7 @@
 - [ ] Nodes can void items with furnaces
 - [ ] Shift-action on some GUI will cause issues
 
-- [ ] Nodes doesn't support Mekanism
-- [ ] FuelCell doesn't support Mekanism pipes
+- [ ] Mekanism IO will void/break many stuff (nodes , fuel cell , etc)
 
 ## COMPATS AND TWEAKS
 
@@ -30,7 +29,7 @@
 - [x] Basic Resources/Ingots compat (ATM ores | FTB materials | other mods)
 - [ ] Patchouli compat
 
-- [ ] Fluid nodes
+- [x] Fluid nodes
 - [ ] (Meka) Gas nodes
 - [ ] Node Upgrades
 - [ ] Pipe Blocker
