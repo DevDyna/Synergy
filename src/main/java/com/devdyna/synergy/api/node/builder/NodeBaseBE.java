@@ -21,6 +21,7 @@ import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidUtil;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -113,13 +114,13 @@ public abstract class NodeBaseBE extends BlockEntity {
         excludePos(defineOutput());
     }
 
-    protected void executeItem(IItemHandler input, IItemHandler output) {
+    protected void executeItem(@Nullable IItemHandler input, @Nullable IItemHandler output) {
     }
 
-    protected void executeEnergy(IEnergyStorage input, IEnergyStorage output) {
+    protected void executeEnergy(@Nullable IEnergyStorage input, @Nullable IEnergyStorage output) {
     }
 
-    protected void executeFluid(IFluidHandler input, IFluidHandler output) {
+    protected void executeFluid(@Nullable IFluidHandler input, @Nullable IFluidHandler output) {
     }
 
     public abstract BlockCapability<?, Direction> getCapType();
@@ -253,10 +254,11 @@ public abstract class NodeBaseBE extends BlockEntity {
     public abstract BlockPos defineOutput();
 
     public void moveItems(IItemHandler input, IItemHandler output, int maxCount) {
-        int remaining = maxCount;
 
         if (input == null || output == null)
             return;
+
+        int remaining = maxCount;
 
         for (int inSlot = 0; inSlot < input.getSlots() && remaining > 0; inSlot++) {
             ItemStack inStack = input.getStackInSlot(inSlot);
@@ -286,34 +288,12 @@ public abstract class NodeBaseBE extends BlockEntity {
         }
     }
 
-    protected void moveFluids(IFluidHandler input, IFluidHandler output, int maxMilliBuckets) {
+    protected void moveFluids(IFluidHandler input, IFluidHandler output, int rate) {
+        if (input == null || output == null)
+            return;
 
-        int remaining = maxMilliBuckets;
+        FluidUtil.tryFluidTransfer(output, input, rate, true);
 
-        for (int tank = 0; tank < input.getTanks() && remaining > 0; tank++) {
-            FluidStack stack = input.getFluidInTank(tank);
-            if (stack.isEmpty())
-                continue;
-
-            int transfer = Math.min(stack.getAmount(), remaining);
-            FluidStack toMove = stack.copy();
-            toMove.setAmount(transfer);
-
-            // Actually drain from input
-            FluidStack drained = input.drain(transfer, IFluidHandler.FluidAction.EXECUTE);
-            if (drained.isEmpty())
-                continue;
-
-            int filled = output.fill(drained, IFluidHandler.FluidAction.EXECUTE);
-            remaining -= filled;
-
-            if (filled < drained.getAmount()) {
-                // Return the leftover back to input
-                drained.setAmount(drained.getAmount() - filled);
-                input.fill(drained, IFluidHandler.FluidAction.EXECUTE);
-
-            }
-        }
     }
 
     public static ItemStack insertItemStacked(IItemHandler handler, ItemStack stack, boolean simOn) {
@@ -352,6 +332,9 @@ public abstract class NodeBaseBE extends BlockEntity {
 
     // TODO meka compat
     protected void moveEnergy(IEnergyStorage input, IEnergyStorage output, int maxEnergy) {
+
+        if (input == null || output == null)
+            return;
 
         int remaining = maxEnergy;
 

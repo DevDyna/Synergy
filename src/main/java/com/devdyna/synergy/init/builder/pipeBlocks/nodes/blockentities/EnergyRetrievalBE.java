@@ -10,6 +10,7 @@ import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
+@SuppressWarnings("null")
 public class EnergyRetrievalBE extends NodeBaseBE {
 
     public EnergyRetrievalBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {

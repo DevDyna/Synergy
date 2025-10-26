@@ -23,7 +23,7 @@ public class FluidTransferBE extends NodeBaseBE {
 
     @Override
     protected void executeFluid(IFluidHandler input, IFluidHandler output) {
-        moveFluids(output, input, 1);
+        moveFluids(input, output, 1);
     }
 
     @Override
