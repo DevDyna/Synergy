@@ -1,0 +1,28 @@
+package com.devdyna.synergy.compat.guideme;
+
+import com.devdyna.synergy.init.recipeTypes.type.DryableBricksRecipe;
+import com.devdyna.synergy.init.types.zRecipeTypes;
+import com.devdyna.synergy.utils.x;
+
+import guideme.compiler.tags.RecipeTypeMappingSupplier;
+import guideme.document.block.recipes.LytStandardRecipeBox;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
+
+public class RecipeTypesRender implements RecipeTypeMappingSupplier {
+
+    @Override
+    public void collect(RecipeTypeMappings mappings) {
+        mappings.add(zRecipeTypes.DRYABLE_BRICKS.getType(), RecipeTypesRender::dryableBricks);
+    }
+
+    private static LytStandardRecipeBox<DryableBricksRecipe> dryableBricks(RecipeHolder<DryableBricksRecipe> r) {
+        return LytStandardRecipeBox.builder()
+                .icon(Items.BRICK)
+                .title("Dryable Bricks")
+                .input(x.ingredient(r.value().getInput()))
+                .output(r.value().getOutput())
+                .build(r);
+    }
+
+}
