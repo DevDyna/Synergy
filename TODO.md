@@ -45,7 +45,7 @@
 
 - [ ] datagen recipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
 
-- [ ] datagen recipes with namespace minecraft intend of synergy (could cause issues)
+- [x] datagen recipes with namespace minecraft intend of synergy (could cause issues)
 
 - [ ] datagen recipes ids x.path(...).replace(...) -> id(item)
 
@@ -53,8 +53,7 @@
 
 ## NEWS
 
-- ~~CobbleGen~~ *item provider superiority*
-
+- [ ] CobbleGen
 - [ ] block placer (harvester like but place blocks)
 - [x] dry bricks
 - [ ] Item Collector
