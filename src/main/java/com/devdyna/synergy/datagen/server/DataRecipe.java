@@ -633,7 +633,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c, ID + ":" + getConversionRecipeName(Items.MUD_BRICKS,
                                                 zItems.PACKED_MUD_BRICK.get()));
 
-                packUnpack(c, Items.MUD, zItems.MUD_BALL.get(), true);
+                packUnpack(c, zItems.MUD_BALL.get(), Items.MUD, true);
 
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, zItems.PACKED_MUD_BALL.get(), 4)
                                 .requires(zItems.MUD_BALL.get(), 4).requires(Items.WHEAT)
