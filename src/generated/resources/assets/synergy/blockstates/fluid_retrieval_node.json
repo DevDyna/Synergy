@@ -1,0 +1,115 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/core"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe"
+      },
+      "when": {
+        "north": "true|node"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe",
+        "y": 90
+      },
+      "when": {
+        "east": "true|node"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe",
+        "x": 180
+      },
+      "when": {
+        "south": "true|node"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe",
+        "y": 270
+      },
+      "when": {
+        "west": "true|node"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe",
+        "x": 270
+      },
+      "when": {
+        "up": "true|node"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe",
+        "x": 90
+      },
+      "when": {
+        "down": "true|node"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/fluid_retrieval_node"
+      },
+      "when": {
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/fluid_retrieval_node",
+        "y": 90
+      },
+      "when": {
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/fluid_retrieval_node",
+        "y": 180
+      },
+      "when": {
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/fluid_retrieval_node",
+        "y": 270
+      },
+      "when": {
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/fluid_retrieval_node",
+        "x": 270
+      },
+      "when": {
+        "facing": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/fluid_retrieval_node",
+        "x": 90
+      },
+      "when": {
+        "facing": "down"
+      }
+    }
+  ]
+}

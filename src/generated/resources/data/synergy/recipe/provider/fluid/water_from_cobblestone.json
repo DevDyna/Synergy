@@ -1,0 +1,25 @@
+{
+  "type": "synergy:provider/fluid",
+  "below": {
+    "Name": "minecraft:air"
+  },
+  "core": {
+    "Name": "minecraft:cobblestone"
+  },
+  "left": {
+    "Name": "minecraft:water",
+    "Properties": {
+      "level": "0"
+    }
+  },
+  "result": {
+    "amount": 1000,
+    "id": "minecraft:water"
+  },
+  "right": {
+    "Name": "minecraft:water",
+    "Properties": {
+      "level": "0"
+    }
+  }
+}

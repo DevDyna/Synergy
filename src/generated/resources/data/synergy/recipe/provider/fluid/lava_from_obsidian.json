@@ -1,0 +1,25 @@
+{
+  "type": "synergy:provider/fluid",
+  "below": {
+    "Name": "minecraft:air"
+  },
+  "core": {
+    "Name": "minecraft:obsidian"
+  },
+  "left": {
+    "Name": "minecraft:lava",
+    "Properties": {
+      "level": "0"
+    }
+  },
+  "result": {
+    "amount": 1,
+    "id": "minecraft:lava"
+  },
+  "right": {
+    "Name": "minecraft:lava",
+    "Properties": {
+      "level": "0"
+    }
+  }
+}
