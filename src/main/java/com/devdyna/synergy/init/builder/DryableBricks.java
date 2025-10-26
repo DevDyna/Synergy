@@ -49,8 +49,7 @@ public class DryableBricks extends HorizontalDirectionalBlock {
                         .setValue(FACING, Direction.NORTH)
                         .setValue(DRIED, false)
                         .setValue(WET, false)
-                        .setValue(DRY_STAGE, 0)
-        );
+                        .setValue(DRY_STAGE, 0));
     }
 
     @Override
@@ -115,9 +114,18 @@ public class DryableBricks extends HorizontalDirectionalBlock {
         return !state.getValue(DRIED);
     }
 
+    /**
+     * FALSE -> can dry -> conditions match<br/>
+     * <br/>
+     * TRUE -> is wet -> conditions dont match
+     */
     public static boolean getConditions(Level level, BlockPos pos) {
-        return (!level.getBiome(pos).is(Tags.Biomes.IS_DRY) || level.isRaining() || !level.isDay()
-                || !level.canSeeSkyFromBelowWater(pos.above()));
+
+        var drybiome = level.getBiome(pos).is(Tags.Biomes.IS_DRY);
+        var seesky = level.canSeeSkyFromBelowWater(pos.above()) ? !level.isRaining() : level.isRaining();
+
+        return LevelUtil.chance(25, level) ? (!drybiome || !seesky) : false;
+
     }
 
     @Override
