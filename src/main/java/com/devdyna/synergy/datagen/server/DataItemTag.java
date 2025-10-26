@@ -215,6 +215,12 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.PIPE).add(zBlocks.PIPE.get().asItem());
 
+                tag(Tags.Items.BRICKS).add(zItems.PACKED_MUD_BRICK.get());
+                tag(zItemTag.SUPPLEMENTARIES_BRICKS).add(zItems.PACKED_MUD_BRICK.get());
+
+                tag(zItemTag.GEARS).add(zItems.WOODEN_GEAR.get());
+                tag(zItemTag.GEAR_WOODEN).add(zItems.WOODEN_GEAR.get());
+
         }
 
 }

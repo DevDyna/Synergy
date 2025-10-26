@@ -145,4 +145,10 @@ public class zItemTag {
 
         public static final TagKey<Item> NODES_RETRIEVAL = Material.tagItem("nodes/retrieval");
 
+        public static final TagKey<Item> SUPPLEMENTARIES_BRICKS = Material.tagItem("throwable_bricks",
+                        "supplementaries");
+
+        public static final TagKey<Item> GEARS = Material.tagItem("gears", "c");
+        public static final TagKey<Item> GEAR_WOODEN = Material.tagItem("gears/wooden", "c");
+
 }
