@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "enderio"
+    }
+  ],
   "type": "synergy:provider/item",
   "below": {
     "Name": "minecraft:bedrock",

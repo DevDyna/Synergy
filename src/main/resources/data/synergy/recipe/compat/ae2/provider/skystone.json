@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ae2"
+    }
+  ],
   "type": "synergy:provider/item",
   "below": {
     "Name": "ae2:sky_stone_block",
