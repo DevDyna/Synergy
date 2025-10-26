@@ -36,6 +36,10 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
                 node(zBlocks.ITEM_TRANSFER.get(), "red");
 
+                node(zBlocks.FLUID_PROVIDER.get(), "green");
+                node(zBlocks.FLUID_RETRIEVAL.get(), "aqua");
+                node(zBlocks.FLUID_TRANSFER.get(), "red");
+
                 // node(zBlocks.ENERGY_PROVIDER.get(), "green");
                 node(zBlocks.ENERGY_RETRIEVAL.get(), "aqua");
                 node(zBlocks.ENERGY_TRANSFER.get(), "red");

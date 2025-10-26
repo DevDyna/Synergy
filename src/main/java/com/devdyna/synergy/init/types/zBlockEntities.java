@@ -40,24 +40,36 @@ public class zBlockEntities {
                         .createBlockEntity(zStatic.Blocks.solar_panel, SolarPanelBE::new, zBlocks.SOLAR_PANEL);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ItemTransferBE>> ITEM_TRANSFER = Material
-                        .createBlockEntity(zStatic.PipeStuff.nodes.ItemTransfer, ItemTransferBE::new,
+                        .createBlockEntity(zStatic.PipeStuff.nodes.Transfer.Item, ItemTransferBE::new,
                                         zBlocks.ITEM_TRANSFER);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ItemProviderBE>> ITEM_PROVIDER = Material
-                        .createBlockEntity(zStatic.PipeStuff.nodes.ItemProvider, ItemProviderBE::new,
+                        .createBlockEntity(zStatic.PipeStuff.nodes.Provider.Item, ItemProviderBE::new,
                                         zBlocks.ITEM_PROVIDER);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ItemRetrievalBE>> ITEM_RETRIEVAL = Material
-                        .createBlockEntity(zStatic.PipeStuff.nodes.ItemRetrieval, ItemRetrievalBE::new,
+                        .createBlockEntity(zStatic.PipeStuff.nodes.Retrieval.Item, ItemRetrievalBE::new,
                                         zBlocks.ITEM_RETRIEVAL);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EnergyTransferBE>> ENERGY_TRANSFER = Material
-                        .createBlockEntity(zStatic.PipeStuff.nodes.EnergyTransfer, EnergyTransferBE::new,
+                        .createBlockEntity(zStatic.PipeStuff.nodes.Transfer.Energy, EnergyTransferBE::new,
                                         zBlocks.ENERGY_TRANSFER);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EnergyRetrievalBE>> ENERGY_RETRIEVAL = Material
-                        .createBlockEntity(zStatic.PipeStuff.nodes.EnergyRetrieval, EnergyRetrievalBE::new,
+                        .createBlockEntity(zStatic.PipeStuff.nodes.Retrieval.Energy, EnergyRetrievalBE::new,
                                         zBlocks.ENERGY_RETRIEVAL);
+
+                public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FluidTransferBE>> FLUID_TRANSFER = Material
+                        .createBlockEntity(zStatic.PipeStuff.nodes.Transfer.Fluid, FluidTransferBE::new,
+                                        zBlocks.FLUID_TRANSFER);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FluidProviderBE>> FLUID_PROVIDER = Material
+                        .createBlockEntity(zStatic.PipeStuff.nodes.Provider.Fluid, FluidProviderBE::new,
+                                        zBlocks.FLUID_PROVIDER);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FluidRetrievalBE>> FLUID_RETRIEVAL = Material
+                        .createBlockEntity(zStatic.PipeStuff.nodes.Retrieval.Fluid, FluidRetrievalBE::new,
+                                        zBlocks.FLUID_RETRIEVAL);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ReactorControllerBE>> REACTOR_CONTROLLER = Material
                         .createBlockEntity(zStatic.ReactorStuff.controller, ReactorControllerBE::new,

@@ -124,6 +124,10 @@ public class DataItemModel extends ExtraItemModelProvider {
                 node(zBlocks.ITEM_RETRIEVAL, "aqua");
                 node(zBlocks.ITEM_TRANSFER, "red");
 
+                node(zBlocks.FLUID_PROVIDER, "green");
+                node(zBlocks.FLUID_RETRIEVAL, "aqua");
+                node(zBlocks.FLUID_TRANSFER, "red");
+
                 // node(zBlocks.ENERGY_PROVIDER, "green");
                 node(zBlocks.ENERGY_RETRIEVAL, "aqua");
                 node(zBlocks.ENERGY_TRANSFER, "red");

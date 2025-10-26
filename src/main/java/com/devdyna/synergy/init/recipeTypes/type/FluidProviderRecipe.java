@@ -1,0 +1,98 @@
+package com.devdyna.synergy.init.recipeTypes.type;
+
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import com.devdyna.synergy.init.recipeTypes.input.ProviderInput;
+import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.init.types.zRecipeTypes;
+import com.devdyna.synergy.utils.x;
+
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.fluids.FluidStack;
+
+@SuppressWarnings("null")
+public class FluidProviderRecipe implements Recipe<ProviderInput> {
+
+    private final BlockState core;
+    private final BlockState below;
+    private final BlockState left;
+    private final BlockState right;
+    private final FluidStack output;
+
+    public FluidProviderRecipe(BlockState core,@Nullable BlockState below,  @Nullable BlockState left,
+            @Nullable BlockState right, FluidStack output) {
+        this.core = core;
+        this.below = below;
+        this.left = left;
+        this.right = right;
+        this.output = output;
+    }
+
+    public boolean matches(ProviderInput r, Level l) {
+        return this.core.is(x.block(r.core()));
+    }
+
+    public ItemStack assemble(ProviderInput i, HolderLookup.Provider r) {
+        return x.item(this.output.getFluid().getBucket());
+    }
+
+    public boolean canCraftInDimensions(int xz, int y) {
+        return false;
+    }
+
+    public RecipeType<?> getType() {
+        return zRecipeTypes.FLUID_PROVIDER.getType();
+    }
+
+    public ItemStack getToastSymbol() {
+        return new ItemStack(zBlocks.FLUID_PROVIDER.get());
+    }
+
+    @Override
+    public RecipeSerializer<?> getSerializer() {
+        return zRecipeTypes.FLUID_PROVIDER.getSerializer();
+    }
+
+    public NonNullList<Ingredient> getIngredients() {
+        return NonNullList.copyOf(List.of(x.ingredient(x.item(core))));
+    }
+
+    @Override
+    public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
+        return x.item(this.output.getFluid().getBucket());
+    }
+
+    public BlockState getCore() {
+        return core;
+    }
+
+    @Nullable
+    public BlockState getBelow() {
+        return below;
+    }
+
+    @Nullable
+    public BlockState getLeft() {
+        return left;
+    }
+
+    @Nullable
+    public BlockState getRight() {
+        return right;
+    }
+
+    public FluidStack getOutput() {
+        return output;
+    }
+
+}

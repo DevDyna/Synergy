@@ -74,6 +74,10 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.ENERGY_RETRIEVAL,
                                 zBlocks.ENERGY_TRANSFER,
 
+                                zBlocks.FLUID_PROVIDER,
+                                zBlocks.FLUID_RETRIEVAL,
+                                zBlocks.FLUID_TRANSFER,
+
                                 zBlocks.SOLAR_PANEL,
                                 zBlocks.HARVESTER,
                                 zBlocks.SPRINKLER,

@@ -136,4 +136,13 @@ public class zItemTag {
         public static final TagKey<Item> INGOT_URANIUM = Material.tagItem("ingots/uranium", "c");
         public static final TagKey<Item> INGOT_ALUMINUM = Material.tagItem("ingots/aluminum", "c");
 
+        public static final TagKey<Item> PIPE = Material.tagItem("pipe");
+        public static final TagKey<Item> NODES = Material.tagItem("nodes");
+
+        public static final TagKey<Item> NODES_PROVIDER = Material.tagItem("nodes/provider");
+
+        public static final TagKey<Item> NODES_TRANSFER = Material.tagItem("nodes/transfer");
+
+        public static final TagKey<Item> NODES_RETRIEVAL = Material.tagItem("nodes/retrieval");
+
 }

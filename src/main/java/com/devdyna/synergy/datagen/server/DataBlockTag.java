@@ -60,13 +60,15 @@ public class DataBlockTag extends BlockTagsProvider {
                 tag(zBlockTag.PIPE).add(zBlocks.PIPE.get());
 
                 tag(zBlockTag.NODE_RETRIEVAL)
-                                .add(zBlocks.ITEM_RETRIEVAL.get(), zBlocks.ENERGY_RETRIEVAL.get());
+                                .add(zBlocks.ITEM_RETRIEVAL.get(), zBlocks.ENERGY_RETRIEVAL.get(),
+                                                zBlocks.FLUID_RETRIEVAL.get());
 
                 tag(zBlockTag.NODE_TRANSFER)
-                                .add(zBlocks.ITEM_TRANSFER.get(), zBlocks.ENERGY_TRANSFER.get());
+                                .add(zBlocks.ITEM_TRANSFER.get(), zBlocks.ENERGY_TRANSFER.get(),
+                                                zBlocks.FLUID_TRANSFER.get());
 
                 tag(zBlockTag.NODE_PROVIDER)
-                                .add(zBlocks.ITEM_PROVIDER.get());
+                                .add(zBlocks.ITEM_PROVIDER.get(), zBlocks.FLUID_PROVIDER.get());
 
                 tag(zBlockTag.NODE)
                                 .addTag(zBlockTag.NODE_TRANSFER)

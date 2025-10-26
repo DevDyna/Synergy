@@ -79,6 +79,15 @@ public class zRecipeTypes {
                                 }
                         });
 
+        public static final zRecipe<FluidProviderRecipe> FLUID_PROVIDER = new zRecipe<FluidProviderRecipe>(
+                        "provider/fluid", FluidProviderRecipeSerializer::new,
+                        () -> new RecipeType<FluidProviderRecipe>() {
+                                @Override
+                                public String toString() {
+                                        return FLUID_PROVIDER.getId();
+                                }
+                        });
+
         public static final zRecipe<DryableBricksRecipe> DRYABLE_BRICKS = new zRecipe<DryableBricksRecipe>(
                         "dryable_bricks", DryableBricksRecipeSerializer::new,
                         () -> new RecipeType<DryableBricksRecipe>() {

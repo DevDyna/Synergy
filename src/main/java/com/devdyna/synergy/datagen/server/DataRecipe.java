@@ -18,6 +18,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.Tags;
 
 @SuppressWarnings("null")
@@ -636,6 +637,23 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .requires(zItems.MUD_BALL.get(), 4).requires(Items.WHEAT)
                                 .group(ID).unlockedBy(ID, has(zItems.MUD_BALL.get()))
                                 .save(c, getConversionRecipeName(zItems.PACKED_MUD_BALL.get(), zItems.MUD_BALL.get()));
+
+
+
+                FluidProviderBuilder.of()
+                                .core(Blocks.COBBLESTONE)
+                                .left(Blocks.WATER)
+                                .right(Blocks.WATER)
+                                .output(Fluids.WATER.getSource())
+                                .unlockedBy().save(c);
+
+                FluidProviderBuilder.of()
+                                .core(Blocks.OBSIDIAN)
+                                .left(Blocks.LAVA)
+                                .right(Blocks.LAVA)
+                                .output(Fluids.LAVA.getSource(),1)
+                                .unlockedBy().save(c);
+
 
         }
 

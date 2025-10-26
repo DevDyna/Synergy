@@ -1,0 +1,101 @@
+package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities;
+
+import java.util.Arrays;
+import java.util.Optional;
+
+import com.devdyna.synergy.api.node.nodeType;
+import com.devdyna.synergy.api.node.builder.NodeBaseBE;
+import com.devdyna.synergy.init.recipeTypes.input.ProviderInput;
+import com.devdyna.synergy.init.recipeTypes.type.FluidProviderRecipe;
+import com.devdyna.synergy.init.types.zBlockEntities;
+import com.devdyna.synergy.init.types.zRecipeTypes;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.capabilities.BlockCapability;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+
+@SuppressWarnings({ "null" })
+public class FluidProviderBE extends NodeBaseBE {
+
+    public FluidProviderBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+        super(type, pos, blockState);
+    }
+
+    public FluidProviderBE(BlockPos pos, BlockState blockState) {
+        super(zBlockEntities.FLUID_PROVIDER.get(), pos, blockState);
+    }
+
+    @Override
+    protected void executeFluid(IFluidHandler input, IFluidHandler output) {
+        var state = getBlockState();
+        var dir = state.getValue(nodeType.FACING);
+        var pos = getInputPos();
+
+        if (level == null)
+            return;
+
+        Optional<RecipeHolder<FluidProviderRecipe>> r = level.getRecipeManager()
+                .getRecipeFor(zRecipeTypes.FLUID_PROVIDER.getType(),
+                        new ProviderInput(level.getBlockState(pos)), level);
+
+        if (r.isEmpty())
+            return;
+
+        var recipe = r.get().value();
+
+        var requireBelow = !(recipe.getBelow() == null || recipe.getBelow().isAir());
+        var requireLeft = !(recipe.getLeft() == null || recipe.getLeft().isAir());
+        var requireRight = !(recipe.getRight() == null || recipe.getRight().isAir());
+
+        if (requireBelow)
+            if (!check(getInputPos().relative(dir), recipe.getBelow()))
+                return;
+
+        var dirs = Arrays.asList(Direction.values()).stream()
+                .filter(d -> !d.equals(dir) && !d.equals(dir.getOpposite())).toList();
+
+        BlockPos rightPos = null;
+        BlockPos leftPos = null;
+
+        if (requireLeft || requireRight)
+            for (Direction direction : dirs) {
+                if (requireRight)
+                    if (check(pos.relative(direction), recipe.getRight())
+                            && !pos.relative(direction).equals(leftPos) && rightPos == null) {
+                        rightPos = pos.relative(direction);
+                        continue;
+                    }
+
+                if (requireLeft)
+                    if (check(pos.relative(direction), recipe.getLeft())
+                            && !pos.relative(direction).equals(rightPos) && leftPos == null) {
+                        leftPos = pos.relative(direction);
+                        continue;
+                    }
+            }
+
+        if (requireLeft && leftPos == null)
+            return;
+        if (requireRight && rightPos == null)
+            return;
+
+        if (level.getGameTime() % 20 == 0)// TODO change based on upgrades
+            insertFluidStacked(output, recipe.getOutput(), false);
+
+    }
+
+    @Override
+    public BlockCapability<?, Direction> getCapType() {
+        return Capabilities.FluidHandler.BLOCK;
+    }
+
+    @Override
+    public BlockPos defineOutput() {
+        return getOutputPos();
+    }
+
+}

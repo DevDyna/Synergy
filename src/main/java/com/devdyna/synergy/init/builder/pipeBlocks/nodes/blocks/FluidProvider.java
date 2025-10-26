@@ -8,6 +8,7 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.node.builder.NodeBaseBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item.TooltipContext;
@@ -16,15 +17,15 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class ItemProvider extends NodeBaseBlock {
+public class FluidProvider extends NodeBaseBlock {
 
-    public ItemProvider() {
+    public FluidProvider() {
     }
 
     @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
-        return new ItemProviderBE(p, s);
+        return new FluidProviderBE(p, s);
     }
 
     @Override

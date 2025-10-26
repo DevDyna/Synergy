@@ -113,24 +113,36 @@ public class zBlocks {
                         () -> new pipeBlock());
 
         public static final DeferredHolder<Block, Block> ITEM_TRANSFER = Material.registerItemBlock(
-                        zStatic.PipeStuff.nodes.ItemTransfer,
-                        () -> new ItemTranfer());
+                        zStatic.PipeStuff.nodes.Transfer.Item,
+                        () -> new ItemTransfer());
 
         public static final DeferredHolder<Block, Block> ITEM_PROVIDER = Material.registerItemBlock(
-                        zStatic.PipeStuff.nodes.ItemProvider,
+                        zStatic.PipeStuff.nodes.Provider.Item,
                         () -> new ItemProvider());
 
         public static final DeferredHolder<Block, Block> ITEM_RETRIEVAL = Material.registerItemBlock(
-                        zStatic.PipeStuff.nodes.ItemRetrieval,
+                        zStatic.PipeStuff.nodes.Retrieval.Item,
                         () -> new ItemRetrieval());
 
         public static final DeferredHolder<Block, Block> ENERGY_TRANSFER = Material.registerItemBlock(
-                        zStatic.PipeStuff.nodes.EnergyTransfer,
-                        () -> new EnergyTranfer());
+                        zStatic.PipeStuff.nodes.Transfer.Energy,
+                        () -> new EnergyTransfer());
 
         public static final DeferredHolder<Block, Block> ENERGY_RETRIEVAL = Material.registerItemBlock(
-                        zStatic.PipeStuff.nodes.EnergyRetrieval,
+                        zStatic.PipeStuff.nodes.Retrieval.Energy,
                         () -> new EnergyRetrieval());
+
+        public static final DeferredHolder<Block, Block> FLUID_TRANSFER = Material.registerItemBlock(
+                        zStatic.PipeStuff.nodes.Transfer.Fluid,
+                        () -> new FluidTransfer());
+
+        public static final DeferredHolder<Block, Block> FLUID_PROVIDER = Material.registerItemBlock(
+                        zStatic.PipeStuff.nodes.Provider.Fluid,
+                        () -> new FluidProvider());
+
+        public static final DeferredHolder<Block, Block> FLUID_RETRIEVAL = Material.registerItemBlock(
+                        zStatic.PipeStuff.nodes.Retrieval.Fluid,
+                        () -> new FluidRetrieval());
 
         public static final DeferredHolder<Block, Block> RICE = zCrop.register(zStatic.Plants.RICE,
                         () -> new rice());

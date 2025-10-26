@@ -197,6 +197,24 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.DUST_URANIUM).add(zItems.URANIUM_DUST.get());
                 tag(zItemTag.DUST_ALUMINUM).add(zItems.ALUMINUM_DUST.get());
 
+                tag(zItemTag.NODES_RETRIEVAL)
+                                .add(zBlocks.ITEM_RETRIEVAL.get().asItem(), zBlocks.ENERGY_RETRIEVAL.get().asItem(),
+                                                zBlocks.FLUID_RETRIEVAL.get().asItem());
+
+                tag(zItemTag.NODES_TRANSFER)
+                                .add(zBlocks.ITEM_TRANSFER.get().asItem(), zBlocks.ENERGY_TRANSFER.get().asItem(),
+                                                zBlocks.FLUID_TRANSFER.get().asItem());
+
+                tag(zItemTag.NODES_PROVIDER)
+                                .add(zBlocks.ITEM_PROVIDER.get().asItem(), zBlocks.FLUID_PROVIDER.get().asItem());
+
+                tag(zItemTag.NODES)
+                                .addTag(zItemTag.NODES_TRANSFER)
+                                .addTag(zItemTag.NODES_PROVIDER)
+                                .addTag(zItemTag.NODES_RETRIEVAL);
+
+                tag(zItemTag.PIPE).add(zBlocks.PIPE.get().asItem());
+
         }
 
 }

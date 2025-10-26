@@ -229,28 +229,31 @@ public class zStatic {
             private static String transfer = "transfer";
             private static String provider = "provider";
             private static String retrieval = "retrieval";
-
             public static String type_transfer = transfer + node2;
             public static String type_provider = provider + node2;
             public static String type_retrieval = retrieval + node2;
 
-            public static String ItemTransfer = types.item + transfer + node2;
-            public static String ItemProvider = types.item + provider + node2;
-            public static String ItemRetrieval = types.item + retrieval + node2;
+            public class Transfer {
+                public static String Item = types.item + transfer + node2;
+                public static String Fluid = types.fluid + transfer + node2;
+                public static String Energy = types.energy + transfer + node2;
+                public static String Chemical = types.chemical + transfer + node2;
+            }
 
-            // TODO fluid nodes
-            public static String FluidTransfer = types.fluid + transfer + node2;
-            public static String FluidProvider = types.fluid + provider + node2;
-            public static String FluidRetrieval = types.fluid + retrieval + node2;
+            public class Provider {
+                public static String Item = types.item + provider + node2;
+                public static String Fluid = types.fluid + provider + node2;
+                public static String Energy = types.energy + provider + node2;
+                public static String Chemical = types.chemical + provider + node2;
+            }
 
-            public static String EnergyTransfer = types.energy + transfer + node2;
-            public static String EnergyProvider = types.energy + provider + node2;
-            public static String EnergyRetrieval = types.energy + retrieval + node2;
+            public class Retrieval {
+                public static String Item = types.item + retrieval + node2;
+                public static String Fluid = types.fluid + retrieval + node2;
+                public static String Energy = types.energy + retrieval + node2;
+                public static String Chemical = types.chemical + retrieval + node2;
+            }
 
-            // TODO chem nodes (meka compat)
-            public static String GasTransfer = types.chemical + transfer + node2;
-            public static String GasProvider = types.chemical + provider + node2;
-            public static String GasRetrieval = types.chemical + retrieval + node2;
         }
 
         public static String pipe = "pipe";

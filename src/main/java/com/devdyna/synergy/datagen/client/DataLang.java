@@ -159,6 +159,9 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + ".jei.provider.item",
                                 "Item Provider Pattern");
+                                
+                add(Main.ID + ".jei.provider.fluid",
+                                "Fluid Provider Pattern");
 
                 add(Main.ID + ".jei.drying_bricks",
                                 "Dryable Brick Recipes");
