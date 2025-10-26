@@ -8,7 +8,6 @@ import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeProperties;
 import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.init.types.zBlockTag;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
@@ -222,6 +221,23 @@ public abstract class NodeBaseBE extends BlockEntity {
         return nodePos.relative(state.getValue(nodeType.FACING));
     }
 
+    /**
+     * check if the blockstate at specific input <code>BlockPos pos</code> <br/>
+     * <br/>
+     * is the same of input
+     * <code>BlockState state</code>
+     * 
+     */
+    protected boolean check(BlockPos pos, BlockState state) {
+
+        var cond = level.getBlockState(pos).is(state.getBlock());
+
+        if (!state.getFluidState().isEmpty())
+            cond &= state.getFluidState().isSource();
+
+        return cond;
+    }
+
     public abstract BlockPos defineOutput();
 
     public void moveItems(IItemHandler input, IItemHandler output, int maxCount) {
@@ -286,6 +302,30 @@ public abstract class NodeBaseBE extends BlockEntity {
 
             }
         }
+    }
+
+    // Only water can increase inside tanks from other mods!?
+    public static FluidStack insertFluidStacked(IFluidHandler handler, FluidStack stack, boolean simulate) {
+        if (handler == null || stack.isEmpty()) {
+            return stack;
+        }
+
+        FluidStack remaining = stack.copy();
+        IFluidHandler.FluidAction action = simulate ? IFluidHandler.FluidAction.SIMULATE
+                : IFluidHandler.FluidAction.EXECUTE;
+
+        int tankCount = handler.getTanks();
+        for (int i = 0; i < tankCount && !remaining.isEmpty(); i++) {
+
+            FluidStack toFill = remaining.copy();
+            int filled = handler.fill(toFill, action);
+
+            if (filled > 0)
+                remaining.shrink(filled);
+
+        }
+
+        return remaining;
     }
 
     // TODO meka compat
