@@ -89,16 +89,6 @@ public class ItemProviderBE extends NodeBaseBE {
 
     }
 
-    private boolean check(BlockPos pos, BlockState state) {
-
-        var cond = level.getBlockState(pos).is(state.getBlock());
-
-        if (!state.getFluidState().isEmpty())
-            cond &= state.getFluidState().isSource();
-
-        return cond;
-    }
-
     @Override
     public BlockCapability<?, Direction> getCapType() {
         return Capabilities.ItemHandler.BLOCK;
