@@ -2,9 +2,7 @@
 
 ## THINGS BEFORE RELEASE 0.5
 
-
 ## BUGS
-
 
 - [x] Reactor Controller dont save aoe
 - [ ] BE radius doesn't sync with AOE
@@ -53,7 +51,9 @@
 
 ## NEWS
 
-- [ ] CobbleGen
+- [ ] Rice Generator (rice->fe)
+- [ ] CobbleGen (like NC)
+- [ ] WaterGen (like NC)
 - [ ] block placer (harvester like but place blocks)
 - [x] dry bricks
 - [ ] Item Collector
@@ -75,8 +75,6 @@
 - [ ] Planter (farmland like but bypass conditions)
 - [ ] Truffles
 - [ ] Mindustry/DE like Fusion Reactor (?)
-
-- ~~Rice Generator (rice->fe)~~ rejected
 
 - [ ] Macerator (standard) Item->(Item|Item)
 - [ ] Electric Furnace (standard) Item->Item
