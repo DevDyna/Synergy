@@ -1,0 +1,40 @@
+---
+navigation:
+  title: Dryable Bricks
+  icon: "minecraft:brick"
+  parent: magic.md
+  position: 3
+categories:
+  - magic
+item_ids:
+  - minecraft:brick
+  - minecraft:clay_ball
+  - minecraft:packed_mud_ball
+  - minecraft:packed_mud_brick
+---
+
+# Dryable Bricks
+
+A new mechanic to smelt bricks
+
+<GameScene zoom="2" interactive={true}>
+  <Block x="0" z="0" id="synergy:clay_brick_block" p:facing="north" p:wet="false" p:dried="false" p:stage="0"/>
+  <Block x="0" z="1" id="synergy:clay_brick_block" p:facing="north" p:wet="false" p:dried="true" p:stage="5"/>
+  <Block x="0" z="2" id="synergy:packed_mud_brick_block" p:facing="north" p:wet="false" p:dried="false" p:stage="0"/>
+  <Block x="0" z="3" id="synergy:packed_mud_brick_block" p:facing="north" p:wet="false" p:dried="true" p:stage="5"/>
+</GameScene>
+
+### How it work
+
+When placed , if it isn't wet will dry until be fully dried
+
+When fully dried can be broken or right-clicked to be collected
+
+When is wet and not fully dried will decay the stage of drying
+
+Require to see the sky to dry but if start to rain it require a cover!
+
+Require a dry biome to dry
+
+
+<Recipe id="synergy:dryable_bricks/packed_mud_brick" />
