@@ -1,56 +1,35 @@
 package com.devdyna.synergy.init.recipeTypes.type;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.zRecipe;
+import com.devdyna.synergy.api.node.BaseProviderRecipe;
 import com.devdyna.synergy.init.recipeTypes.input.ProviderInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-import com.devdyna.synergy.utils.x;
-
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-@SuppressWarnings("null")
-public class ItemProviderRecipe implements Recipe<ProviderInput> {
+@SuppressWarnings({ "null" })
+public class ItemProviderRecipe<T> extends BaseProviderRecipe<ItemStack> {
 
-    private final BlockState core;
-    private final BlockState below;
-    private final BlockState left;
-    private final BlockState right;
     private final ItemStack output;
 
-    public ItemProviderRecipe(BlockState core,@Nullable BlockState below,  @Nullable BlockState left,
+    public ItemProviderRecipe(BlockState core, @Nullable BlockState below, @Nullable BlockState left,
             @Nullable BlockState right, ItemStack output) {
-        this.core = core;
-        this.below = below;
-        this.left = left;
-        this.right = right;
+        super(core, below, left, right, output);
         this.output = output;
-    }
 
-    public boolean matches(ProviderInput r, Level l) {
-        return this.core.is(x.block(r.core()));
     }
 
     public ItemStack assemble(ProviderInput i, HolderLookup.Provider r) {
         return this.output;
     }
 
-    public boolean canCraftInDimensions(int xz, int y) {
-        return false;
-    }
-
-    public RecipeType<?> getType() {
-        return zRecipeTypes.ITEM_PROVIDER.getType();
+    @Override
+    public zRecipe<?> getRecipe() {
+        return zRecipeTypes.ITEM_PROVIDER;
     }
 
     public ItemStack getToastSymbol() {
@@ -58,40 +37,8 @@ public class ItemProviderRecipe implements Recipe<ProviderInput> {
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
-        return zRecipeTypes.ITEM_PROVIDER.getSerializer();
-    }
-
-    public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.copyOf(List.of(x.ingredient(x.item(core))));
-    }
-
-    @Override
     public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
-        return output;
-    }
-
-    public BlockState getCore() {
-        return core;
-    }
-
-    @Nullable
-    public BlockState getBelow() {
-        return below;
-    }
-
-    @Nullable
-    public BlockState getLeft() {
-        return left;
-    }
-
-    @Nullable
-    public BlockState getRight() {
-        return right;
-    }
-
-    public ItemStack getOutput() {
-        return output;
+        return this.output;
     }
 
 }

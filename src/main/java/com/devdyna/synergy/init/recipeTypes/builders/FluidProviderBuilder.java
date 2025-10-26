@@ -27,7 +27,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.FluidStack;
 
-@SuppressWarnings("null")
+@SuppressWarnings({ "rawtypes", "null" })
 public class FluidProviderBuilder implements RecipeBuilder {
 
     private BlockState core;

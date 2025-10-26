@@ -8,9 +8,11 @@ import com.devdyna.synergy.init.recipeTypes.serializer.*;
 import com.devdyna.synergy.init.recipeTypes.type.*;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class zRecipeTypes {
@@ -70,18 +72,18 @@ public class zRecipeTypes {
                                 }
                         });
 
-        public static final zRecipe<ItemProviderRecipe> ITEM_PROVIDER = new zRecipe<ItemProviderRecipe>(
+        public static final zRecipe<ItemProviderRecipe<ItemStack>> ITEM_PROVIDER = new zRecipe<ItemProviderRecipe<ItemStack>>(
                         "provider/item", ItemProviderRecipeSerializer::new,
-                        () -> new RecipeType<ItemProviderRecipe>() {
+                        () -> new RecipeType<ItemProviderRecipe<ItemStack>>() {
                                 @Override
                                 public String toString() {
                                         return ITEM_PROVIDER.getId();
                                 }
                         });
 
-        public static final zRecipe<FluidProviderRecipe> FLUID_PROVIDER = new zRecipe<FluidProviderRecipe>(
+        public static final zRecipe<FluidProviderRecipe<FluidStack>> FLUID_PROVIDER = new zRecipe<FluidProviderRecipe<FluidStack>>(
                         "provider/fluid", FluidProviderRecipeSerializer::new,
-                        () -> new RecipeType<FluidProviderRecipe>() {
+                        () -> new RecipeType<FluidProviderRecipe<FluidStack>>() {
                                 @Override
                                 public String toString() {
                                         return FLUID_PROVIDER.getId();

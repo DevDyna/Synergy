@@ -22,7 +22,9 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 @SuppressWarnings("null")
 public abstract class NodeBaseBE extends BlockEntity {
@@ -238,6 +240,16 @@ public abstract class NodeBaseBE extends BlockEntity {
         return cond;
     }
 
+    public static boolean check(Level level, BlockPos pos, BlockState state) {
+
+        var cond = level.getBlockState(pos).is(state.getBlock());
+
+        if (!state.getFluidState().isEmpty())
+            cond &= state.getFluidState().isSource();
+
+        return cond;
+    }
+
     public abstract BlockPos defineOutput();
 
     public void moveItems(IItemHandler input, IItemHandler output, int maxCount) {
@@ -304,28 +316,38 @@ public abstract class NodeBaseBE extends BlockEntity {
         }
     }
 
+    public static ItemStack insertItemStacked(IItemHandler handler, ItemStack stack, boolean simOn) {
+        return ItemHandlerHelper.insertItemStacked(handler, stack, simOn);
+    }
+
     // Only water can increase inside tanks from other mods!?
-    public static FluidStack insertFluidStacked(IFluidHandler handler, FluidStack stack, boolean simulate) {
-        if (handler == null || stack.isEmpty()) {
-            return stack;
-        }
+    public static FluidStack insertFluidStacked(IFluidHandler handler, FluidStack stack, Boolean simOn) {
 
-        FluidStack remaining = stack.copy();
-        IFluidHandler.FluidAction action = simulate ? IFluidHandler.FluidAction.SIMULATE
-                : IFluidHandler.FluidAction.EXECUTE;
+        if (handler != null)
+            for (int i = 0; i < handler.getTanks(); i++) {
 
-        int tankCount = handler.getTanks();
-        for (int i = 0; i < tankCount && !remaining.isEmpty(); i++) {
+                var tank = handler.getFluidInTank(i);
+                var diff = tank.getAmount();
+                var max = handler.getTankCapacity(i);
 
-            FluidStack toFill = remaining.copy();
-            int filled = handler.fill(toFill, action);
+                if (FluidStack.isSameFluidSameComponents(stack, tank)
+                        && max > diff) {
 
-            if (filled > 0)
-                remaining.shrink(filled);
+                    tank.setAmount(Math.min(max, diff + stack.getAmount()));
 
-        }
+                    stack.setAmount(Math.min(max - diff, stack.getAmount()));
 
-        return remaining;
+                    return stack;
+                }
+
+                if (tank.isEmpty()) {
+                    stack.setAmount(handler.fill(stack, simOn ? FluidAction.SIMULATE : FluidAction.EXECUTE));
+                    return FluidStack.EMPTY;
+                }
+
+            }
+
+        return stack;
     }
 
     // TODO meka compat

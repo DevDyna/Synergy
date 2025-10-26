@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.devdyna.synergy.api.datagen.ExtraRecipeProvider;
+import com.devdyna.synergy.api.node.BaseProviderRecipe;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.compat.jei.categories.*;
 import com.devdyna.synergy.init.types.*;
@@ -19,9 +20,11 @@ import mezz.jei.api.registration.*;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings({ "unchecked", "unlikely-arg-type", "null" })
 @JeiPlugin
@@ -97,11 +100,13 @@ public class Plugin implements IModPlugin {
                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(ItemProviderCategory.TYPE,
-                                recipes.getAllRecipesFor(zRecipeTypes.ITEM_PROVIDER.getType()).stream()
+                                (List<BaseProviderRecipe<ItemStack>>) (List<?>) recipes
+                                                .getAllRecipesFor(zRecipeTypes.ITEM_PROVIDER.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(FluidProviderCategory.TYPE,
-                                recipes.getAllRecipesFor(zRecipeTypes.FLUID_PROVIDER.getType()).stream()
+                                (List<BaseProviderRecipe<FluidStack>>) (List<?>) recipes
+                                                .getAllRecipesFor(zRecipeTypes.FLUID_PROVIDER.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(DryableBricksCategory.TYPE,

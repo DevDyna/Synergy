@@ -1,0 +1,83 @@
+package com.devdyna.synergy.api.node;
+
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import com.devdyna.synergy.api.zRecipe;
+import com.devdyna.synergy.init.recipeTypes.input.ProviderInput;
+import com.devdyna.synergy.utils.x;
+
+import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+
+@SuppressWarnings("null")
+public abstract class BaseProviderRecipe<T> implements Recipe<ProviderInput> {
+
+    protected final BlockState core;
+    protected final BlockState below;
+    protected final BlockState left;
+    protected final BlockState right;
+    protected final T output;
+
+    public BaseProviderRecipe(BlockState core, @Nullable BlockState below, @Nullable BlockState left,
+            @Nullable BlockState right, T output) {
+        this.core = core;
+        this.below = below;
+        this.left = left;
+        this.right = right;
+        this.output = output;
+    }
+
+    public boolean matches(ProviderInput r, Level l) {
+        return this.core.is(x.block(r.core()));
+    }
+
+    public boolean canCraftInDimensions(int xz, int y) {
+        return false;
+    }
+
+    public abstract zRecipe<?> getRecipe();
+
+    public RecipeType<?> getType() {
+        return getRecipe().getType();
+    }
+
+    @Override
+    public RecipeSerializer<?> getSerializer() {
+        return getRecipe().getSerializer();
+    }
+
+    public NonNullList<Ingredient> getIngredients() {
+        return NonNullList.copyOf(List.of(x.ingredient(x.item(core))));
+    }
+
+    public BlockState getCore() {
+        return core;
+    }
+
+    @Nullable
+    public BlockState getBelow() {
+        return below;
+    }
+
+    @Nullable
+    public BlockState getLeft() {
+        return left;
+    }
+
+    @Nullable
+    public BlockState getRight() {
+        return right;
+    }
+
+    public T getOutput() {
+        return output;
+    }
+
+}
