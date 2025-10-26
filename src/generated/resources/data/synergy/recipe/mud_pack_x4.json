@@ -1,14 +1,18 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "synergy",
-  "ingredients": [
-    {
+  "key": {
+    "#": {
       "item": "synergy:mud_ball"
     }
+  },
+  "pattern": [
+    "##",
+    "##"
   ],
   "result": {
-    "count": 4,
+    "count": 1,
     "id": "minecraft:mud"
   }
 }

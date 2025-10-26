@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mud_ball": {
+    "has_mud": {
       "conditions": {
         "items": [
           {
-            "items": "synergy:mud_ball"
+            "items": "minecraft:mud"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:mud_unpack_4"
+        "recipe": "synergy:mud_ball_unpack_4"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_mud_ball"
+      "has_mud"
     ]
   ],
   "rewards": {
     "recipes": [
-      "synergy:mud_unpack_4"
+      "synergy:mud_ball_unpack_4"
     ]
   }
 }

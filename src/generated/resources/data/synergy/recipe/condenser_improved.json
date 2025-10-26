@@ -7,13 +7,13 @@
       "tag": "synergy:urn_mixtures"
     },
     "I": {
-      "item": "synergy:steel_ingot"
+      "tag": "c:ingots/steel"
     },
     "M": {
       "tag": "c:gems/silicon"
     },
     "N": {
-      "item": "synergy:steel_nugget"
+      "tag": "c:nuggets/steel"
     }
   },
   "pattern": [

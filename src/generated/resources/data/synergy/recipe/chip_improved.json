@@ -7,7 +7,7 @@
       "tag": "synergy:urn_mixtures"
     },
     "N": {
-      "item": "synergy:steel_nugget"
+      "tag": "c:nuggets/steel"
     },
     "Q": {
       "tag": "c:dusts/quartz"
