@@ -167,7 +167,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .group(zStatic.DecorativeBlocks.adobe).save(c);
 
                 ShapelessRecipeBuilder.shapeless(MISC, zItems.ADOBE_BALL.get(), 3)
-                                .requires(zItems.PACKED_MUD_BALL.get(),2)
+                                .requires(zItems.PACKED_MUD_BALL.get(), 2)
                                 .requires(Items.CLAY_BALL)
                                 .unlockedBy(ID, has(Items.CLAY_BALL))
                                 .group(ID).save(c);
@@ -258,8 +258,8 @@ public class DataRecipe extends ExtraRecipeProvider {
                 plate(zItems.ADVANCED_ALLOY_INGOT.get(), zItems.ADVANCED_ALLOY_PLATE.get(), c);
                 plate(zItems.AQUAMARINE.get(), zItems.AQUAMARINE_PLATE.get(), c);
 
-                nineBlockStorageRecipes(c, MISC, zItems.WASTE_FRAGMENT.get(), MISC, zItems.WASTE.get());
-                nineBlockStorageRecipes(c, MISC, zItems.SILICON_SHARD.get(), MISC, zItems.RAW_SILICON.get());
+                packUnpack(c, zItems.WASTE_FRAGMENT.get(), zItems.WASTE.get(), false);
+                packUnpack(c, zItems.SILICON_SHARD.get(), zItems.RAW_SILICON.get(), false);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.COOLER_BASE.get(), 4)
                                 .pattern("IPI")
@@ -400,9 +400,10 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(Items.STICK))
                                 .group(ID).save(c);
 
-                nuggetIngotBlock(c, zItems.STEEL_NUGGET.get(), zItems.STEEL_INGOT.get(), zBlocks.STEEL_BLOCK.get());
+                nuggetIngotBlock(c, zItems.STEEL_NUGGET.get(), zItems.STEEL_INGOT.get(),
+                                zBlocks.STEEL_BLOCK.get().asItem());
                 nuggetIngotBlock(c, zItems.ADVANCED_ALLOY_NUGGET.get(), zItems.ADVANCED_ALLOY_INGOT.get(),
-                                zBlocks.ADVANCED_ALLOY_BLOCK.get());
+                                zBlocks.ADVANCED_ALLOY_BLOCK.get().asItem());
 
                 ItemProviderBuilder.of()
                                 .core(Blocks.COBBLESTONE)
@@ -629,16 +630,16 @@ public class DataRecipe extends ExtraRecipeProvider {
                 ShapedRecipeBuilder.shaped(MISC, Items.MUD_BRICKS, 1).define('#', zItems.PACKED_MUD_BRICK.get())
                                 .pattern("##").pattern("##").unlockedBy(getHasName(zItems.PACKED_MUD_BRICK.get()),
                                                 has(zItems.PACKED_MUD_BRICK.get()))
-                                .save(c, getConversionRecipeName(Items.MUD_BRICKS, zItems.PACKED_MUD_BRICK.get()));
+                                .save(c, ID + ":" + getConversionRecipeName(Items.MUD_BRICKS,
+                                                zItems.PACKED_MUD_BRICK.get()));
 
-                unpacker(c, Items.MUD, zItems.MUD_BALL.get(), 4);
+                packUnpack(c, Items.MUD, zItems.MUD_BALL.get(), true);
 
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, zItems.PACKED_MUD_BALL.get(), 4)
                                 .requires(zItems.MUD_BALL.get(), 4).requires(Items.WHEAT)
                                 .group(ID).unlockedBy(ID, has(zItems.MUD_BALL.get()))
-                                .save(c, getConversionRecipeName(zItems.PACKED_MUD_BALL.get(), zItems.MUD_BALL.get()));
-
-
+                                .save(c, ID + ":" + getConversionRecipeName(zItems.PACKED_MUD_BALL.get(),
+                                                zItems.MUD_BALL.get()));
 
                 FluidProviderBuilder.of()
                                 .core(Blocks.COBBLESTONE)
@@ -651,9 +652,8 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .core(Blocks.OBSIDIAN)
                                 .left(Blocks.LAVA)
                                 .right(Blocks.LAVA)
-                                .output(Fluids.LAVA.getSource(),1)
+                                .output(Fluids.LAVA.getSource(), 1)
                                 .unlockedBy().save(c);
-
 
         }
 

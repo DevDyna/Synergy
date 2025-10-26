@@ -59,14 +59,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected void nuggetIngotBlock(RecipeOutput c, ItemLike nugget, ItemLike ingot, ItemLike block) {
-                nineBlockStorageRecipesWithCustomPacking(
-                                c, RecipeCategory.MISC, nugget, RecipeCategory.MISC, ingot,
-                                x.path(nugget.asItem()) + "_from_" + x.path(ingot.asItem()), x.path(ingot.asItem()));
-
-                nineBlockStorageRecipesWithCustomPacking(
-                                c, RecipeCategory.MISC, ingot, RecipeCategory.MISC, block,
-                                x.path(ingot.asItem()) + "_from_" + x.path(block.asItem()), x.path(ingot.asItem()));
-
+                packUnpack(c, nugget, ingot,false);
+                packUnpack(c, ingot, block,false);
         }
 
         protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot) {
@@ -124,10 +118,12 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         protected void doubleSmelt(RecipeOutput c, ItemLike input, ItemLike output) {
                 SimpleCookingRecipeBuilder.blasting(x.ingredient(input.asItem()), MISC, output.asItem(), 0.1F, 100)
                                 .unlockedBy(getHasName(input), has(output))
-                                .save(c, x.path(output.asItem()) + "_from_" + x.path(input.asItem()) + "_blasting");
+                                .save(c, ID + ":" + x.path(output.asItem()) + "_from_" + x.path(input.asItem())
+                                                + "_blasting");
                 SimpleCookingRecipeBuilder.smelting(x.ingredient(input.asItem()), MISC, output.asItem(), 0.1F, 200)
                                 .unlockedBy(getHasName(input), has(output))
-                                .save(c, x.path(output.asItem()) + "_from_" + x.path(input.asItem()) + "_smelting");
+                                .save(c, ID + ":" + x.path(output.asItem()) + "_from_" + x.path(input.asItem())
+                                                + "_smelting");
         }
 
         protected static void unpacker(RecipeOutput c, ItemLike input, ItemLike output, int count) {
@@ -365,7 +361,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('G', zItemTag.URN_MIXTURES)
                                 .unlockedBy(ID,
                                                 has(zItems.STEEL_NUGGET.get()))
-                                .group(ID).save(c, x.path(zItems.RESISTOR.get()) + "_improved");
+                                .group(ID).save(c, ID + ":" + x.path(zItems.RESISTOR.get()) + "_improved");
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.CHIP.get(), 4)
                                 .pattern(" N ")
@@ -387,7 +383,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('Q', zItemTag.DUST_QUARTZ)
                                 .unlockedBy(ID,
                                                 has(zItems.BONE_MEAL_MIXTURE.get()))
-                                .group(ID).save(c, x.path(zItems.CHIP.get()) + "_improved");
+                                .group(ID).save(c, ID + ":" + x.path(zItems.CHIP.get()) + "_improved");
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.CONDENSER.get(), 4)
                                 .pattern("N N")
@@ -411,7 +407,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('I', zItems.STEEL_INGOT.get())
                                 .unlockedBy(ID,
                                                 has(zItems.SILICON.get()))
-                                .group(ID).save(c, x.path(zItems.CONDENSER.get()) + "_improved");
+                                .group(ID).save(c, ID + ":" + x.path(zItems.CONDENSER.get()) + "_improved");
         }
 
         protected void fuelCellNuclearReactions(RecipeOutput c) {
@@ -732,6 +728,24 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                         .unlockedBy(ID, has(bucket))
                                         .save(c);
                 });
+
+        }
+
+        protected static void packUnpack(RecipeOutput c, ItemLike unpacked, ItemLike packed, boolean isSmall) {
+                ShapelessRecipeBuilder.shapeless(MISC, unpacked, isSmall ? 4 : 9)
+                                .requires(packed)
+                                .group(ID)
+                                .unlockedBy(getHasName(packed), has(packed))
+                                .save(c, ID + ":" + x.path((Item) unpacked) + "_unpack" + (isSmall ? "_4" : "_9"));
+                var temp = ShapedRecipeBuilder.shaped(MISC, packed)
+                                .define('#', unpacked)
+                                .pattern("##" + (!isSmall ? "#" : "")).pattern("##" + (!isSmall ? "#" : ""));
+
+                if (!isSmall)
+                        temp = temp.pattern("###");
+
+                temp.group(ID).unlockedBy(getHasName(unpacked), has(unpacked))
+                                .save(c, ID + ":" + x.path((Item) packed) + "_pack" + (isSmall ? "_x4" : "_x9"));
 
         }
 
