@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mixed_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:advanced_alloy_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:advanced_alloy_ingot_from_mixed_ingot_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mixed_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:advanced_alloy_ingot_from_mixed_ingot_smelting"
+    ]
+  }
+}

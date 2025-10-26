@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "synergy",
+  "ingredients": [
+    {
+      "item": "synergy:advanced_alloy_ingot"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "synergy:advanced_alloy_nugget"
+  }
+}

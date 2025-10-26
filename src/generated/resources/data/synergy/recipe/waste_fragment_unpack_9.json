@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "synergy",
+  "ingredients": [
+    {
+      "item": "synergy:waste"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "synergy:waste_fragment"
+  }
+}

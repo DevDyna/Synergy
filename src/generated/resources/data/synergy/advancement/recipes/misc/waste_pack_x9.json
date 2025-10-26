@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:waste_pack_x9"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_waste_fragment": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:waste_fragment"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_waste_fragment"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:waste_pack_x9"
+    ]
+  }
+}
