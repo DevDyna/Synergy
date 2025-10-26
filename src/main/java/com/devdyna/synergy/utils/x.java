@@ -11,6 +11,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static com.devdyna.synergy.Main.ID;
@@ -59,6 +61,9 @@ public class x {
 
     public static String path(Item i) {
         return path(BuiltInRegistries.ITEM, i);
+    }
+    public static String path(Fluid i) {
+        return path(BuiltInRegistries.FLUID, i);
     }
 
     public static String path(ItemStack i) {
@@ -147,7 +152,15 @@ public class x {
         return b.getBlock();
     }
 
-    public static ResourceLocation id(Item item){
+    public static ResourceLocation id(Item item) {
         return BuiltInRegistries.ITEM.getKey(item);
+    }
+
+    public static FluidStack fluid(Fluid f) {
+        return fluid(f, 1000);
+    }
+
+    public static FluidStack fluid(Fluid f,int amount) {
+        return new FluidStack(f, amount);
     }
 }
