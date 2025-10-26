@@ -96,7 +96,7 @@ public class DryableBricksBuilder implements RecipeBuilder {
     }
 
     public void save(RecipeOutput recipeOutput, String extra) {
-        this.save(recipeOutput, x.rl("jei/dryable_bricks/" + x.path(output)
+        this.save(recipeOutput, x.rl("dryable_bricks/" + x.path(output)
                 + extra));
     }
 
