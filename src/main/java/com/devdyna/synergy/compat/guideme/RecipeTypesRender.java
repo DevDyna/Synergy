@@ -1,6 +1,7 @@
 package com.devdyna.synergy.compat.guideme;
 
 import com.devdyna.synergy.init.recipeTypes.type.DryableBricksRecipe;
+import com.devdyna.synergy.init.recipeTypes.type.ItemUseRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.x;
 
@@ -14,6 +15,7 @@ public class RecipeTypesRender implements RecipeTypeMappingSupplier {
     @Override
     public void collect(RecipeTypeMappings mappings) {
         mappings.add(zRecipeTypes.DRYABLE_BRICKS.getType(), RecipeTypesRender::dryableBricks);
+        mappings.add(zRecipeTypes.ITEM_USE.getType(), RecipeTypesRender::itemUse);
     }
 
     private static LytStandardRecipeBox<DryableBricksRecipe> dryableBricks(RecipeHolder<DryableBricksRecipe> r) {
@@ -22,6 +24,15 @@ public class RecipeTypesRender implements RecipeTypeMappingSupplier {
                 .title("Dryable Bricks")
                 .input(x.ingredient(r.value().getInput()))
                 .output(r.value().getOutput())
+                .build(r);
+    }
+
+    private static LytStandardRecipeBox<ItemUseRecipe> itemUse(RecipeHolder<ItemUseRecipe> r) {
+        return LytStandardRecipeBox.builder()
+                .icon(Items.WOODEN_PICKAXE)
+                .title("Item Use")
+                .input(r.value().getInputItem())
+                .output(x.item(r.value().getOutputState()))
                 .build(r);
     }
 
