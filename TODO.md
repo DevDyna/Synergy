@@ -33,13 +33,16 @@
 - [ ] Pipe Blocker
 - [ ] Differents styles for Nodes / Node model rework
 
-- [ ] Quern crushing modded raw ores compat
+- [x] Quern crushing modded raw ores compat
 
 - [ ] GuideMe quantum reactor GameScene
 
+- [ ] SilentGear raw ores compat quern
+- [ ] Create Zinc compat quern
+
 ### CODEBASE
 
-- [ ] All Recipe Types compat with GuideMe
+- [ ] All Recipe Types compat with GuideMe (?)
 
 - [ ] datagen recipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
 
@@ -51,6 +54,9 @@
 
 ## NEWS
 
+- [ ] weed crop plant (unwanted plant) -> farmland spreaddable crop -> fibers(?)
+- [ ] Archaeologist villager profession
+- [ ] Ceramic Bottles (drawer like)
 - [ ] Rice Generator (rice->fe)
 - [ ] CobbleGen (like NC)
 - [ ] WaterGen (like NC)
