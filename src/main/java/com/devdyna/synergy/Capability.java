@@ -1,0 +1,48 @@
+package com.devdyna.synergy;
+
+import com.devdyna.synergy.api.beLogic.MachineIO;
+import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.init.types.zHandlers;
+import com.devdyna.synergy.utils.ClazzUtil;
+
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+@SuppressWarnings("null")
+public class Capability {
+
+        public static void register(RegisterCapabilitiesEvent event) {
+
+                // if it will return null , probably was a MY mistake!
+                // :p
+
+                event.registerBlock(Capabilities.EnergyStorage.BLOCK,
+                                (level, pos, state, be,
+                                                side) -> (be != null ? be.getData(zHandlers.ENERGY_STORAGE) : null),
+                                zBlocks.HARVESTER.get(),
+                                zBlocks.SPRINKLER.get(),
+                                zBlocks.SOLAR_PANEL.get(),
+                                zBlocks.REACTOR_CONTROLLER.get(),
+                                zBlocks.LASER_MACHINE.get());
+
+                event.registerBlock(Capabilities.ItemHandler.BLOCK,
+                                (level, pos, state, be,
+                                                side) -> (be != null ? be.getData(zHandlers.ITEM_STORAGE) : null),
+                                zBlocks.REACTOR_FUEL_CELL.get(),
+                                zBlocks.URN.get(),
+                                zBlocks.WOODEN_TINY_CHEST.get(),
+                                zBlocks.ORNATE_TINY_CHEST.get(),
+                                zBlocks.STONE_TINY_CHEST.get(),
+                                zBlocks.QUERN.get());
+
+                event.registerBlock(
+                                Capabilities.ItemHandler.BLOCK,
+                                (level, pos, state, be, side) -> ((be instanceof MachineIO m)
+                                                ? m.getStorage()
+                                                : null),
+                                ClazzUtil.getAllMachineTypes().stream().map(b -> b.block().get())
+                                                .toArray(Block[]::new));
+
+        }
+
+}

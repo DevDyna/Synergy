@@ -29,7 +29,9 @@ import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
-
+/**
+ * Utility class to create fluids
+ */
 @SuppressWarnings("null")
 public class zFluid {
 

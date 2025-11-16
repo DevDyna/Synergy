@@ -258,4 +258,30 @@ public class LevelUtil {
         return counter;
     }
 
+    public static void addDustParticleLine(int red, int green, int blue, ServerLevel level, BlockPos pos,
+            Direction direction) {
+        int maxParticles = 9;
+        double step = 0.2;
+
+        double dx = direction.getStepX();
+        double dy = direction.getStepY();
+        double dz = direction.getStepZ();
+
+        for (int i = 0; i < maxParticles; i++) {
+            double offsetMultiplier = i * step;
+            double x = pos.getX() + 0.5 + dx * offsetMultiplier;
+            double y = pos.getY() + 0.25 + dy * offsetMultiplier;
+            double z = pos.getZ() + 0.5 + dz * offsetMultiplier;
+
+            level.sendParticles(
+                    new DustParticleOptions(Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(), 0.35F),
+                    x, y, z,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0);
+        }
+    }
+
 }

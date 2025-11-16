@@ -10,7 +10,6 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import com.devdyna.synergy.zStatic;
-
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
@@ -29,6 +28,7 @@ import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.crops.mushroom.*;
 import com.devdyna.synergy.init.builder.crops.wild.*;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBLK;
+import com.devdyna.synergy.init.builder.laser.transmitter.LaserMachineBlock;
 
 public class zBlocks {
         public static void register(IEventBus bus) {
@@ -324,6 +324,11 @@ public class zBlocks {
                         () -> new DryableBricks(BlockBehaviour.Properties.of()
                                         .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
                         zHiddenBlock);
+
+
+                                public static final DeferredHolder<Block, Block> LASER_MACHINE = Material.registerItemBlock(
+                        zStatic.Blocks.laser_machine_gun,
+                        () -> new LaserMachineBlock());
 
         // ---------------------------------------------------------------------------------------//
 

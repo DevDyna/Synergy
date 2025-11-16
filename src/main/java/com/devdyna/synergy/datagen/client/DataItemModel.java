@@ -17,7 +17,7 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
-
+@SuppressWarnings("null")
 public class DataItemModel extends ExtraItemModelProvider {
 
         public DataItemModel(PackOutput o, ExistingFileHelper f) {
@@ -198,6 +198,8 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 mcLoc("minecraft:item/generated"))
                                 .texture("layer0",
                                                 modLoc("item/resources/packed_mud_ball"));
+
+                withExistingParent(zBlocks.LASER_MACHINE.getRegisteredName(),modLoc("block/laser_machine"));
 
         }
 

@@ -7,23 +7,37 @@ import com.devdyna.synergy.init.types.zRecipeTypes;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
 /**
  * Utility class to create recipes and recipe serializers at once
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"null"})
 public class zRecipe<T extends Recipe<?>> {
 
     private final String id;
-    private final Supplier<? extends RecipeSerializer<T>> finalserializer;
-    private final Supplier<? extends RecipeType<T>> finaltype;
+    private final Supplier<? extends RecipeSerializer<T>> serializer;
+    private final Supplier<? extends RecipeType<T>> type;
+
+    private DeferredRegister<RecipeSerializer<?>> SERIALIZER_TYPE;
+    private DeferredRegister<RecipeType<?>> RECIPE_TYPE;
+
+    public zRecipe(String id,
+            Supplier<? extends RecipeSerializer<T>> serializer,
+            Supplier<? extends RecipeType<T>> type, DeferredRegister<RecipeSerializer<?>> serializer_type,
+            DeferredRegister<RecipeType<?>> recipetype_type) {
+        this.id = id;
+        this.SERIALIZER_TYPE = serializer_type;
+        this.RECIPE_TYPE = recipetype_type;
+        this.serializer = SERIALIZER_TYPE.register(id, serializer);
+        this.type = RECIPE_TYPE.register(id, type);
+
+    }
 
     public zRecipe(String id,
             Supplier<? extends RecipeSerializer<T>> serializer,
             Supplier<? extends RecipeType<T>> type) {
-        this.id = id;
-        this.finalserializer = zRecipeTypes.SERIALIZERS.register(id, serializer);
-        this.finaltype = zRecipeTypes.TYPES.register(id, type);
+        this(id, serializer, type, zRecipeTypes.SERIALIZERS, zRecipeTypes.TYPES);
     }
 
     public String getId() {
@@ -31,10 +45,32 @@ public class zRecipe<T extends Recipe<?>> {
     }
 
     public RecipeSerializer<T> getSerializer() {
-        return finalserializer.get();
+        return serializer.get();
     }
 
     public RecipeType<T> getType() {
-        return finaltype.get();
+        return type.get();
     }
+
+    public static <T extends Recipe<?>> zRecipe<T> of(String id,
+            Supplier<? extends RecipeSerializer<T>> serializer, DeferredRegister<RecipeSerializer<?>> serializer_type,
+            DeferredRegister<RecipeType<?>> recipetype_type) {
+        return new zRecipe<>(id, serializer, () -> new RecipeType<T>() {
+            @Override
+            public String toString() {
+                return id;
+            }
+        }, serializer_type, recipetype_type);
+    }
+
+    public static <T extends Recipe<?>> zRecipe<T> of(String id,
+            Supplier<? extends RecipeSerializer<T>> serializer) {
+        return new zRecipe<>(id, serializer, () -> new RecipeType<T>() {
+            @Override
+            public String toString() {
+                return id;
+            }
+        });
+    }
+
 }

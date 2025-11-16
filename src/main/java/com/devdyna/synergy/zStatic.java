@@ -166,6 +166,12 @@ public class zStatic {
         public static String tiny_ornated_chest = "tiny_ornated_chest";
         public static String urn = "urn";
         public static String quern = "quern";
+
+        public static String laser_machine_gun="laser_machine_gun";
+
+
+
+        public static String macerator = "macerator";
         // public static String fan = "fan";
         // public static String wind = "wind";
 

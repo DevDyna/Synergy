@@ -9,7 +9,7 @@ import com.devdyna.synergy.utils.ClazzUtil;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.CropBlock;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-
+@SuppressWarnings("null")
 public class DataBlockModelState extends ExtraBlockStateProvider {
 
         public DataBlockModelState(PackOutput o, ExistingFileHelper f) {
@@ -112,6 +112,9 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 brick(zBlocks.CLAY_BRICK, mcLoc("block/clay"), mcLoc("block/terracotta"));
                 brick(zBlocks.PACKED_MUD_BRICK, mcLoc("block/packed_mud"), mcLoc("block/mud_bricks"));
+
+                horizontalBlock(zBlocks.LASER_MACHINE.get(), models()
+                                .getExistingFile(modLoc("block/laser_machine")));
 
         }
 

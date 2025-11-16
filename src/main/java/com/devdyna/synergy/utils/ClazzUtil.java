@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.zFluid;
 import com.devdyna.synergy.init.types.zFluids;
 import com.devdyna.synergy.init.types.zItems;
+import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -17,7 +19,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked","rawtypes"})
 public class ClazzUtil {
 
     /**
@@ -124,6 +126,23 @@ public class ClazzUtil {
                     return !(item instanceof BlockItem bi) || !filteredBlocks.contains(bi.getBlock());
                 })
                 .collect(Collectors.toList());
+    }
+
+        
+        public static List<MachineType> getAllMachineTypes() {
+        
+        List<MachineType> types = new ArrayList<>();
+        Field[] fields = zMachines.class.getDeclaredFields();
+        for (Field field : fields) {
+            if (field.getType() == MachineType.class) {
+                try {
+                    types.add((MachineType) field.get(null));
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return types;
     }
 
 }

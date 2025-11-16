@@ -23,7 +23,7 @@ public class Main {
 
         GameEvents.register();
 
-        bus.addListener(Capabilities::register);
+        bus.addListener(Capability::register);
         bus.addListener(zDataMaps::register);
 
     }

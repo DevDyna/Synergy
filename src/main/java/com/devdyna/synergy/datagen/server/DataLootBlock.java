@@ -30,7 +30,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
+@SuppressWarnings("null")
 public class DataLootBlock extends BlockLootSubProvider {
 
         public DataLootBlock(HolderLookup.Provider l) {
@@ -94,7 +94,8 @@ public class DataLootBlock extends BlockLootSubProvider {
 
                                 zBlocks.ADVANCED_MACHINE_FRAME,
                                 zBlocks.URN,
-                                zBlocks.QUERN
+                                zBlocks.QUERN,
+                                zBlocks.LASER_MACHINE
 
                 );
 

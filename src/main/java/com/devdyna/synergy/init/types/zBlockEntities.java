@@ -4,6 +4,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
+import com.devdyna.synergy.init.builder.laser.transmitter.LaserMachineBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.quern.QuernBE;
 import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBE;
@@ -59,7 +60,7 @@ public class zBlockEntities {
                         .createBlockEntity(zStatic.PipeStuff.nodes.Retrieval.Energy, EnergyRetrievalBE::new,
                                         zBlocks.ENERGY_RETRIEVAL);
 
-                public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FluidTransferBE>> FLUID_TRANSFER = Material
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FluidTransferBE>> FLUID_TRANSFER = Material
                         .createBlockEntity(zStatic.PipeStuff.nodes.Transfer.Fluid, FluidTransferBE::new,
                                         zBlocks.FLUID_TRANSFER);
 
@@ -90,4 +91,9 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<QuernBE>> QUERN = Material
                         .createBlockEntity(zStatic.Blocks.quern, QuernBE::new,
                                         zBlocks.QUERN);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LaserMachineBE>> LASER_MACHINE = Material
+                        .createBlockEntity(zStatic.Blocks.laser_machine_gun, LaserMachineBE::new,
+                                        zBlocks.LASER_MACHINE);
+
 }

@@ -32,7 +32,7 @@ public class zCreativeTab {
                                         .icon(() -> zItems.CONFIGURATOR.get().getDefaultInstance())
                                         .displayItems((parameters, output) -> {
 
-                                                //filter block-item excluding zHiddenBlocks
+                                                // filter block-item excluding zHiddenBlocks
                                                 zItems.zBlockItem.getEntries().stream()
                                                                 .filter(i -> i.get() instanceof BlockItem bi
                                                                                 &&
@@ -44,15 +44,16 @@ public class zCreativeTab {
                                                                         output.accept((Item) e.get());
                                                                 });
 
-                                                
+                                                ClazzUtil.getAllMachineTypes()
+                                                                .forEach(b -> output.accept((Item) b.item().get()));
 
-                                                //filter all items excluding zHiddenBlocks
+                                                // filter all items excluding zHiddenBlocks
                                                 ClazzUtil.getAllzItemsFiltered(zBlocks.zHiddenBlock)
                                                                 .forEach(e -> {
                                                                         output.accept((Item) e.get());
                                                                 });
 
-                                                                zItems.zBucketItems.getEntries().forEach(e -> {
+                                                zItems.zBucketItems.getEntries().forEach(e -> {
                                                         output.accept((Item) e.get());
                                                 });
 

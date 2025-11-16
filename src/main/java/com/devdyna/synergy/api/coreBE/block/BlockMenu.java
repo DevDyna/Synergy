@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
 @SuppressWarnings("null")
-public abstract class BlockMenu extends Block implements EntityBlock{
+public abstract class BlockMenu extends Block implements EntityBlock {
 
     public BlockMenu(Properties p) {
         super(p);
@@ -44,6 +44,8 @@ public abstract class BlockMenu extends Block implements EntityBlock{
     /**
      * Event to allow to set animations or events when menu was opened
      */
-    protected abstract void onClickAction(BlockState state, Level level, BlockPos pos, Player player);
+    protected void onClickAction(BlockState state, Level level, BlockPos pos, Player player) {
+
+    }
 
 }
