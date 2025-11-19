@@ -12,6 +12,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
+import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.energy.EnergyStorage;
@@ -51,7 +52,11 @@ public class SprinklerBE extends TickingBE implements EnergyBlock {
                                         0.75F,
                                         1F);
 
-                            state.randomTick((ServerLevel) level, pos, level.random);
+                            if (state.getBlock() instanceof CropBlock cropBlock) {
+                                if (!cropBlock.isMaxAge(state))
+                                    cropBlock.performBonemeal((ServerLevel) level, level.random, pos, state);
+                            } else
+                                state.randomTick((ServerLevel) level, pos, level.random);
                             extractFE(25, false);
                         }
                     });
