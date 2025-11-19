@@ -54,6 +54,10 @@
 
 ## NEWS
 
+- [ ] EnderLilly
+
+- [ ] LootBox opening (classic animation)
+
 - [ ] weed crop plant (unwanted plant) -> farmland spreaddable crop -> fibers(?)
 - [ ] Archaeologist villager profession
 - [ ] Ceramic Bottles (drawer like)
