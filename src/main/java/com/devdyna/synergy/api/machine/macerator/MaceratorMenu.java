@@ -20,10 +20,7 @@ public class MaceratorMenu extends BaseMenu {
 
     public MaceratorMenu(int c, Inventory i, FriendlyByteBuf d) {
         this(c, i, i.player.level().getBlockEntity(d.readBlockPos()),
-                new SimpleContainerData(
-                        ((MachineIO) i.player.level()
-                                .getBlockEntity(d.readBlockPos()))
-                                .getMachineSlots()));
+                new SimpleContainerData(2));
     }
 
     public MaceratorMenu(int i, Inventory inv, BlockEntity be, ContainerData data) {
