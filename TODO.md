@@ -54,6 +54,10 @@
 
 ## NEWS
 
+- [ ] Forever young treatment (item use on entity)
+- [ ] cave mushroom -> press -> liquidi lapis/ liquid coal
+- [ ] temporal hourglass (like unique crops)
+
 - [ ] EnderLilly
 
 - [ ] LootBox opening (classic animation)
