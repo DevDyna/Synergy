@@ -2,13 +2,17 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
+import com.devdyna.synergy.api.coreBE.be.MachineBE;
 import com.devdyna.synergy.api.datagen.ExtraBlockStateProvider;
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.init.types.zMachines;
 import com.devdyna.synergy.utils.ClazzUtil;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+
 @SuppressWarnings("null")
 public class DataBlockModelState extends ExtraBlockStateProvider {
 
@@ -115,6 +119,17 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 horizontalBlock(zBlocks.LASER_MACHINE.get(), models()
                                 .getExistingFile(modLoc("block/laser_machine")));
+
+                ClazzUtil.getAllMachineTypes()
+                                .forEach(m -> {
+                                        horizontalBlock((Block) m.block().get(), models()
+                                                        .orientableWithBottom(
+                                                                        m.id(),
+                                                                        modLoc("block/harvester/side"), // TODO rework
+                                                                        modLoc("block/machines/" + m.id()),
+                                                                        modLoc("block/harvester/bottom"),
+                                                                        modLoc("block/harvester/top")));
+                                });
 
         }
 

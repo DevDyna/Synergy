@@ -8,6 +8,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.datagen.ExtraItemModelProvider;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
+import com.devdyna.synergy.utils.ClazzUtil;
 import com.devdyna.synergy.utils.DataGenUtil;
 import com.devdyna.synergy.utils.x;
 
@@ -17,6 +18,7 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
+
 @SuppressWarnings("null")
 public class DataItemModel extends ExtraItemModelProvider {
 
@@ -199,7 +201,15 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("layer0",
                                                 modLoc("item/resources/packed_mud_ball"));
 
-                withExistingParent(zBlocks.LASER_MACHINE.getRegisteredName(),modLoc("block/laser_machine"));
+                withExistingParent(zBlocks.LASER_MACHINE.getRegisteredName(), modLoc("block/laser_machine"));
+
+                ClazzUtil.getAllMachineTypes().forEach(m -> {
+                        orientableWithBottom(m.id(),
+                                        modLoc("block/harvester/side"), // TODO rework
+                                        modLoc("block/machines/" + m.id()),
+                                        modLoc("block/harvester/bottom"),
+                                        modLoc("block/harvester/top"));
+                });
 
         }
 
