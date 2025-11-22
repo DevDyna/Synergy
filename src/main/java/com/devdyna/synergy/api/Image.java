@@ -1,4 +1,4 @@
-package com.devdyna.synergy.utils;
+package com.devdyna.synergy.api;
 
 import static com.devdyna.synergy.Main.ID;
 
