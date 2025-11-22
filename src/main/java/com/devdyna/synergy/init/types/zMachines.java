@@ -5,10 +5,10 @@ import static com.devdyna.synergy.Main.ID;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.machine.core.MaceratorBE;
-import com.devdyna.synergy.api.machine.core.MaceratorBlock;
-import com.devdyna.synergy.api.machine.core.MaceratorMenu;
-import com.devdyna.synergy.api.machine.core.recipe.recipetype;
+import com.devdyna.synergy.api.machine.macerator.MaceratorBE;
+import com.devdyna.synergy.api.machine.macerator.MaceratorBlock;
+import com.devdyna.synergy.api.machine.macerator.MaceratorMenu;
+import com.devdyna.synergy.api.machine.macerator.recipe.MaceratorRecipeType;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -43,13 +43,13 @@ public class zMachines {
         MaceratorBlock,
         MaceratorBE,
         MaceratorMenu,
-        recipetype
+        MaceratorRecipeType
         > MACERATOR = new MachineType<>(
                 zStatic.Blocks.macerator,
                 MaceratorBlock::new,
                 MaceratorBE::new,
                 MaceratorMenu::new,
-                recipetype.serializer::new
+                MaceratorRecipeType.Serializer::new
         );
 
 

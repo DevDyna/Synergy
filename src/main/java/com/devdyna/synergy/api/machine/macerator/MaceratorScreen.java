@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.machine.core;
+package com.devdyna.synergy.api.machine.macerator;
 
 import java.util.List;
 

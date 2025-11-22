@@ -2,72 +2,32 @@ package com.devdyna.synergy.api.machine.core;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import com.devdyna.synergy.api.beLogic.MachineIO;
 import com.devdyna.synergy.api.coreBE.be.BEMenu;
-import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
-@SuppressWarnings("null")
-public class MaceratorBE extends BEMenu implements MachineIO {
 
-    private MachineItemHandler storage;
-    private int progress = 0;
-    private int maxProgress;
+@SuppressWarnings("null")
+public abstract class BaseMachineBE extends BEMenu implements MachineIO {
+
+    protected int progress = 0;
+    protected int maxProgress;
+    protected MachineItemHandler storage;
     /**
      * Server side data sended to client side render
      */
-    private final ContainerData networkData;
+    protected ContainerData networkData;
 
-    public MaceratorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public BaseMachineBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-        this.storage = new MachineItemHandler(getMachineSlots());
-        networkData = new ContainerData() {
-
-            @Override
-            public int get(int i) {
-                return switch (i) {
-                    case 0 -> progress;
-                    case 1 -> maxProgress;
-                    default -> 0;
-                };
-            }
-
-            @Override
-            public void set(int i, int value) {
-                switch (i) {
-                    case 0 -> progress = value;
-                    case 1 -> maxProgress = progress;
-                }
-            }
-
-            @Override
-            public int getCount() {
-                return getMachineSlots();
-            }
-        };
-    }
-
-    public MaceratorBE(BlockPos pos, BlockState blockState) {
-        this(zMachines.MACERATOR.blockentity().get(), pos, blockState);
-    }
-
-    @Override
-    @Nullable
-    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return new MaceratorMenu(i, inventory, this, this.networkData);
     }
 
     @Override

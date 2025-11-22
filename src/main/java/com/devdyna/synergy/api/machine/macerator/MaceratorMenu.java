@@ -1,5 +1,6 @@
-package com.devdyna.synergy.api.machine.core;
+package com.devdyna.synergy.api.machine.macerator;
 
+import com.devdyna.synergy.api.beLogic.MachineIO;
 import com.devdyna.synergy.client.gui.BaseMenu;
 import com.devdyna.synergy.init.types.zMachines;
 
@@ -9,6 +10,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
+
 @SuppressWarnings("null")
 public class MaceratorMenu extends BaseMenu {
 
@@ -16,9 +18,12 @@ public class MaceratorMenu extends BaseMenu {
     private final Level level;
     private final ContainerData data;
 
-    public MaceratorMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()),
-                new SimpleContainerData(2));
+    public MaceratorMenu(int c, Inventory i, FriendlyByteBuf d) {
+        this(c, i, i.player.level().getBlockEntity(d.readBlockPos()),
+                new SimpleContainerData(
+                        ((MachineIO) i.player.level()
+                                .getBlockEntity(d.readBlockPos()))
+                                .getMachineSlots()));
     }
 
     public MaceratorMenu(int i, Inventory inv, BlockEntity be, ContainerData data) {

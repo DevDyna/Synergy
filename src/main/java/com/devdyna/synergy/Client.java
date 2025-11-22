@@ -1,7 +1,7 @@
 package com.devdyna.synergy;
 
-import com.devdyna.synergy.api.machine.core.MaceratorMenu;
-import com.devdyna.synergy.api.machine.core.MaceratorScreen;
+import com.devdyna.synergy.api.machine.macerator.MaceratorMenu;
+import com.devdyna.synergy.api.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.client.aoe.*;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.client.gui.tiny_chest.TinyChestScreen;

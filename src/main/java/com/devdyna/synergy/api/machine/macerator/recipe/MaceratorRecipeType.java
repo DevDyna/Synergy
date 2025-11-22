@@ -1,8 +1,8 @@
-package com.devdyna.synergy.api.machine.core.recipe;
+package com.devdyna.synergy.api.machine.macerator.recipe;
 
 import java.util.List;
 import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
-import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.init.types.zMachines;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -20,14 +20,14 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 @SuppressWarnings("null")
-public class recipetype implements Recipe<MonoItemInput> {
+public class MaceratorRecipeType implements Recipe<MonoItemInput> {
 
     private final Ingredient input;
     private final int ticks;
     private final int energy;
     private final ItemStack output;
 
-    public recipetype(Ingredient input,
+    public MaceratorRecipeType(Ingredient input,
             ItemStack output, int ticks, int energy) {
         this.input = input;
         this.ticks = ticks;
@@ -35,11 +35,11 @@ public class recipetype implements Recipe<MonoItemInput> {
         this.energy = energy;
     }
 
-    public static recipetype of(Ingredient input, ItemStack output, int ticks, int energy) {
-        return new recipetype(input, output, ticks, energy);
+    public static MaceratorRecipeType of(Ingredient input, ItemStack output, int ticks, int energy) {
+        return new MaceratorRecipeType(input, output, ticks, energy);
     }
 
-    public recipetype of() {
+    public MaceratorRecipeType of() {
         return this;
     }
 
@@ -56,21 +56,21 @@ public class recipetype implements Recipe<MonoItemInput> {
     }
 
     public RecipeType<?> getType() {
-        return new RecipeType<recipetype>() {
+        return new RecipeType<MaceratorRecipeType>() {
             @Override
             public String toString() {
-                return "id";// TODO
+                return zMachines.MACERATOR.id();
             }
         };
     }
 
     public ItemStack getToastSymbol() {
-        return new ItemStack(zBlocks.QUERN.get());
+        return new ItemStack(zMachines.MACERATOR.block().get());
     }
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return new serializer();
+        return new Serializer();
     }
 
     public NonNullList<Ingredient> getIngredients() {
@@ -94,33 +94,33 @@ public class recipetype implements Recipe<MonoItemInput> {
     }
 
     @Override
-    public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
+    public ItemStack getResultItem(HolderLookup.Provider a) {
         return this.output;
     }
 
-    public static class serializer implements RecipeSerializer<recipetype> {
+    public static class Serializer implements RecipeSerializer<MaceratorRecipeType> {
 
-        public static final MapCodec<recipetype> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.CODEC.fieldOf("ingredient").forGetter(recipetype::getInput),
-                ItemStack.CODEC.fieldOf("result").forGetter(recipetype::getOutput),
-                Codec.intRange(1, Integer.MAX_VALUE).fieldOf("ticks").forGetter(recipetype::getTicks),
-                Codec.intRange(1, Integer.MAX_VALUE).fieldOf("energy").forGetter(recipetype::getEnergy))
-                .apply(inst, recipetype::new));
+        public static final MapCodec<MaceratorRecipeType> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
+                Ingredient.CODEC.fieldOf("ingredient").forGetter(MaceratorRecipeType::getInput),
+                ItemStack.CODEC.fieldOf("result").forGetter(MaceratorRecipeType::getOutput),
+                Codec.intRange(1, Integer.MAX_VALUE).fieldOf("ticks").forGetter(MaceratorRecipeType::getTicks),
+                Codec.intRange(1, Integer.MAX_VALUE).fieldOf("energy").forGetter(MaceratorRecipeType::getEnergy))
+                .apply(inst, MaceratorRecipeType::new));
 
-        public static final StreamCodec<RegistryFriendlyByteBuf, recipetype> STREAM_CODEC = StreamCodec.composite(
-                Ingredient.CONTENTS_STREAM_CODEC, recipetype::getInput,
-                ItemStack.STREAM_CODEC, recipetype::getOutput,
-                ByteBufCodecs.INT, recipetype::getTicks,
-                ByteBufCodecs.INT, recipetype::getEnergy,
-                recipetype::new);
+        public static final StreamCodec<RegistryFriendlyByteBuf, MaceratorRecipeType> STREAM_CODEC = StreamCodec.composite(
+                Ingredient.CONTENTS_STREAM_CODEC, MaceratorRecipeType::getInput,
+                ItemStack.STREAM_CODEC, MaceratorRecipeType::getOutput,
+                ByteBufCodecs.INT, MaceratorRecipeType::getTicks,
+                ByteBufCodecs.INT, MaceratorRecipeType::getEnergy,
+                MaceratorRecipeType::new);
 
         @Override
-        public MapCodec<recipetype> codec() {
+        public MapCodec<MaceratorRecipeType> codec() {
             return CODEC;
         }
 
         @Override
-        public StreamCodec<RegistryFriendlyByteBuf, recipetype> streamCodec() {
+        public StreamCodec<RegistryFriendlyByteBuf, MaceratorRecipeType> streamCodec() {
             return STREAM_CODEC;
         }
 
