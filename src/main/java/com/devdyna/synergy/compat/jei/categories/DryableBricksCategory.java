@@ -1,25 +1,23 @@
 package com.devdyna.synergy.compat.jei.categories;
 
-import org.jetbrains.annotations.Nullable;
-
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.api.Pos;
+import com.devdyna.synergy.api.Size;
 import com.devdyna.synergy.client.gui.screenLocations;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.DryableBricksRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.ITooltipBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
 public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecipe> {
@@ -36,22 +34,7 @@ public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecip
     public RecipeType<DryableBricksRecipe> getRecipeType() {
         return TYPE;
     }
-
-    @Override
-    public Component getTitle() {
-        return Component.translatable(Main.ID + ".jei.drying_bricks");
-    }
-
-    @Override
-    public @Nullable IDrawable getIcon() {
-        return SimpleIcon.of(helper, Items.BRICK);
-    }
-
-    @Override
-    public @Nullable IDrawable getBackground() {
-        return helper.createDrawable(x.rl(screenLocations.CUSTOM_JEI_GUI + "delay.png"), 0, 0, 93, 33);
-    }
-
+    
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, DryableBricksRecipe recipe, IFocusGroup focuses) {
 
@@ -66,6 +49,27 @@ public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecip
         if (Pos.of(35, 9).setSize(16, 16).test(mouseX, mouseY))
             tooltip.add(Component.translatable(Main.ID + ".jei.dryable.tip"));
 
+    }
+
+
+    @Override
+    public String getTitleKey() {
+        return "drying_bricks";
+    }
+
+    @Override
+    public ItemLike getIconItem() {
+        return Items.BRICK;
+    }
+
+    @Override
+    public Size setXY() {
+        return Size.of(93, 33);
+    }
+
+    @Override
+    public String setBackGround() {
+        return screenLocations.CUSTOM_JEI_GUI + "delay.png";
     }
 
 }

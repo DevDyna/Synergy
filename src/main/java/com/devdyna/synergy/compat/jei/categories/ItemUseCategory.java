@@ -1,19 +1,16 @@
 package com.devdyna.synergy.compat.jei.categories;
 
-import org.jetbrains.annotations.Nullable;
-
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.api.Pos;
+import com.devdyna.synergy.api.Size;
 import com.devdyna.synergy.client.gui.screenLocations;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.ItemUseRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.ITooltipBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -21,6 +18,7 @@ import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.LiquidBlock;
 
 @SuppressWarnings("null")
@@ -40,18 +38,23 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
     }
 
     @Override
-    public Component getTitle() {
-        return Component.translatable(Main.ID + ".jei.itemuse");
+    public String getTitleKey() {
+        return "item_use";
     }
 
     @Override
-    public @Nullable IDrawable getIcon() {
-        return SimpleIcon.of(helper, Items.WOODEN_PICKAXE);
+    public ItemLike getIconItem() {
+        return Items.WOODEN_PICKAXE;
     }
 
     @Override
-    public @Nullable IDrawable getBackground() {
-        return helper.createDrawable(screenLocations.ITEM_USE, 0, 0, 103, 70);
+    public Size setXY() {
+        return Size.of(103, 70);
+    }
+
+    @Override
+    public String setBackGround() {
+        return "textures/gui/jei/click_event.png";
     }
 
     @Override

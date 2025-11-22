@@ -31,12 +31,12 @@ public class ItemProviderCategory extends BaseProviderCategory<ItemProviderRecip
     }
 
     @Override
-    protected String setTKType() {
+    protected String getProviderType() {
         return "item";
     }
 
     @Override
-    protected Item getItemIcon() {
+    public Item getIconItem() {
         return zBlocks.ITEM_PROVIDER.get().asItem();
     }
 
@@ -45,5 +45,6 @@ public class ItemProviderCategory extends BaseProviderCategory<ItemProviderRecip
             IFocusGroup focuses) {
         builder.addOutputSlot(33, 10).addItemStack(recipe.getOutput());
     }
+
 
 }

@@ -154,7 +154,7 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei.crop",
                                 "Crop Result");
 
-                add(Main.ID + ".jei.itemuse",
+                add(Main.ID + ".jei.item_use",
                                 "Item Use Recipes");
 
                 add(Main.ID + ".jei.provider.item",

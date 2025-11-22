@@ -1,24 +1,19 @@
 package com.devdyna.synergy.compat.jei.categories;
 
-import org.jetbrains.annotations.Nullable;
-
-import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.client.gui.screenLocations;
+import com.devdyna.synergy.api.Size;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.UrnRitualRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
-import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
 public class UrnCategory extends BaseRecipeCategory<UrnRitualRecipe> {
@@ -37,18 +32,23 @@ public class UrnCategory extends BaseRecipeCategory<UrnRitualRecipe> {
     }
 
     @Override
-    public Component getTitle() {
-        return Component.translatable(Main.ID + ".jei." + zStatic.Blocks.urn);
+    public String getTitleKey() {
+        return zStatic.Blocks.urn;
     }
 
     @Override
-    public @Nullable IDrawable getIcon() {
-        return SimpleIcon.of(helper, zBlocks.URN.get().asItem());
+    public ItemLike getIconItem() {
+        return zBlocks.URN.get();
     }
 
     @Override
-    public @Nullable IDrawable getBackground() {
-        return helper.createDrawable(screenLocations.URN_WINDOW, 0, 0, 184, 82);
+    public Size setXY() {
+        return Size.of(184, 82);
+    }
+
+    @Override
+    public String setBackGround() {
+        return "textures/gui/urn_window.png";
     }
 
     @Override

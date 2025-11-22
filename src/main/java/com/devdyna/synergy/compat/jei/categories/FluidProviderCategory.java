@@ -34,12 +34,12 @@ public class FluidProviderCategory extends BaseProviderCategory<FluidProviderRec
     }
 
     @Override
-    protected String setTKType() {
+    protected String getProviderType() {
         return "fluid";
     }
 
     @Override
-    protected Item getItemIcon() {
+    public Item getIconItem() {
         return zBlocks.FLUID_PROVIDER.get().asItem();
     }
 
@@ -53,4 +53,6 @@ public class FluidProviderCategory extends BaseProviderCategory<FluidProviderRec
                         Math.max((int) (recipe.getOutput().getAmount() * 0.016), 1));
     }
 
+
+  
 }

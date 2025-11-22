@@ -1,19 +1,14 @@
 package com.devdyna.synergy.compat.jei.categories;
 
-import org.jetbrains.annotations.Nullable;
-
-import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.client.gui.screenLocations;
+import com.devdyna.synergy.api.Size;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.QuernMillingRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -21,6 +16,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
 public class QuernCategory extends BaseRecipeCategory<QuernMillingRecipe> {
@@ -39,18 +35,23 @@ public class QuernCategory extends BaseRecipeCategory<QuernMillingRecipe> {
     }
 
     @Override
-    public Component getTitle() {
-        return Component.translatable(Main.ID + ".jei." + zStatic.Blocks.quern);
+    public String getTitleKey() {
+        return zStatic.Blocks.quern;
     }
 
     @Override
-    public @Nullable IDrawable getIcon() {
-        return SimpleIcon.of(helper, zBlocks.QUERN.get().asItem());
+    public ItemLike getIconItem() {
+        return zBlocks.QUERN.get();
     }
 
     @Override
-    public @Nullable IDrawable getBackground() {
-        return helper.createDrawable(screenLocations.QUERN, 0, 0, 80, 22);
+    public Size setXY() {
+        return Size.of(80, 22);
+    }
+
+    @Override
+    public String setBackGround() {
+        return "textures/gui/jei/quern.png";
     }
 
     @Override

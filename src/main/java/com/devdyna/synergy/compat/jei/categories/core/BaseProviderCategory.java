@@ -1,21 +1,14 @@
 package com.devdyna.synergy.compat.jei.categories.core;
 
-import org.jetbrains.annotations.Nullable;
-
-import com.devdyna.synergy.Main;
+import com.devdyna.synergy.api.Size;
 import com.devdyna.synergy.api.node.BaseProviderRecipe;
-import com.devdyna.synergy.client.gui.screenLocations;
-import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.LiquidBlock;
 
 @SuppressWarnings({ "null" })
@@ -26,23 +19,21 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
         super(helper);
     }
 
-    protected abstract String setTKType();
-
-    protected abstract Item getItemIcon();
+    protected abstract String getProviderType();
 
     @Override
-    public Component getTitle() {
-        return Component.translatable(Main.ID + ".jei.provider." + setTKType());
+    public String getTitleKey() {
+        return "provider." + getProviderType();
     }
 
     @Override
-    public @Nullable IDrawable getIcon() {
-        return SimpleIcon.of(helper, getItemIcon());
+    public Size setXY() {
+        return Size.of(80, 100);
     }
 
     @Override
-    public @Nullable IDrawable getBackground() {
-        return helper.createDrawable(screenLocations.ITEM_PROVIDER, 0, 0, 80, 100);
+    public String setBackGround() {
+        return "textures/gui/jei/provider.png";
     }
 
     protected abstract void defineOutput(IRecipeLayoutBuilder builder, BaseProviderRecipe<J> recipe,

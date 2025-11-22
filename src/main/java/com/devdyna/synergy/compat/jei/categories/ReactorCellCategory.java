@@ -1,19 +1,15 @@
 package com.devdyna.synergy.compat.jei.categories;
 
-import org.jetbrains.annotations.Nullable;
-
-import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.Size;
 import com.devdyna.synergy.client.gui.screenLocations;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.compat.jei.drawable.SimpleIcon;
 import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -21,7 +17,7 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
 public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
@@ -45,18 +41,23 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
     }
 
     @Override
-    public Component getTitle() {
-        return Component.translatable(Main.ID + ".jei." + zStatic.ReactorStuff.fuel_cell);
+    public String getTitleKey() {
+        return zStatic.ReactorStuff.fuel_cell;
     }
 
     @Override
-    public @Nullable IDrawable getIcon() {
-        return SimpleIcon.of(helper, zItems.URANIUM.get());
+    public ItemLike getIconItem() {
+        return zItems.URANIUM.get();
     }
 
     @Override
-    public @Nullable IDrawable getBackground() {
-        return helper.createDrawable(screenLocations.JEI_DARK_SLOTS, 0, 0, 128, 64);
+    public Size setXY() {
+        return Size.of(128, 64);
+    }
+
+    @Override
+    public String setBackGround() {
+        return "textures/gui/jei/dark_slots.png";
     }
 
     @Override
