@@ -31,7 +31,7 @@ public abstract class BaseMachineBlock extends BlockMenu {
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext c) {
-        return defaultBlockState().setValue(FACING, c.getHorizontalDirection()).setValue(ENABLED, false);
+        return defaultBlockState().setValue(FACING, c.getHorizontalDirection().getOpposite()).setValue(ENABLED, false);
     }
 
     @Override
