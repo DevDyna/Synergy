@@ -167,17 +167,20 @@ public class zStatic {
         public static String urn = "urn";
         public static String quern = "quern";
 
-        public static String laser_machine_gun="laser_machine_gun";
-        public static String laser_mirror="mirror";
-        public static String laser_lens="lens";
-
-
+        
 
         public static String macerator = "macerator";
         // public static String fan = "fan";
         // public static String wind = "wind";
 
         public static String pipe = "pipe";
+    }
+
+    public class Lazers{
+public static String machine_gun = "laser_machine_gun";
+        public static String mirror = "laser_mirror";
+        public static String lens = "laser_lens";
+        public static String sensor = "laser_sensor";
     }
 
     public class ReactorStuff {
