@@ -1,6 +1,5 @@
 package com.devdyna.synergy.api.machine.macerator;
 
-import com.devdyna.synergy.api.beLogic.MachineIO;
 import com.devdyna.synergy.client.gui.BaseMenu;
 import com.devdyna.synergy.init.types.zMachines;
 
