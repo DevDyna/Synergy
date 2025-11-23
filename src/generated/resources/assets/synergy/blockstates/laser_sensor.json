@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "enabled=false,inverted=false": {
+      "model": "synergy:block/laser_sensor/off"
+    },
+    "enabled=false,inverted=true": {
+      "model": "synergy:block/laser_sensor/off",
+      "y": 90
+    },
+    "enabled=true,inverted=false": {
+      "model": "synergy:block/laser_sensor/on"
+    },
+    "enabled=true,inverted=true": {
+      "model": "synergy:block/laser_sensor/on",
+      "y": 90
+    }
+  }
+}

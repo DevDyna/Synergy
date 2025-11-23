@@ -1,33 +1,33 @@
 {
   "variants": {
     "enabled=false,facing=east": {
-      "model": "synergy:block/laser_machine",
+      "model": "synergy:block/laser_machine_gun/off",
       "y": 90
     },
     "enabled=false,facing=north": {
-      "model": "synergy:block/laser_machine"
+      "model": "synergy:block/laser_machine_gun/off"
     },
     "enabled=false,facing=south": {
-      "model": "synergy:block/laser_machine",
+      "model": "synergy:block/laser_machine_gun/off",
       "y": 180
     },
     "enabled=false,facing=west": {
-      "model": "synergy:block/laser_machine",
+      "model": "synergy:block/laser_machine_gun/off",
       "y": 270
     },
     "enabled=true,facing=east": {
-      "model": "synergy:block/laser_machine",
+      "model": "synergy:block/laser_machine_gun/on",
       "y": 90
     },
     "enabled=true,facing=north": {
-      "model": "synergy:block/laser_machine"
+      "model": "synergy:block/laser_machine_gun/on"
     },
     "enabled=true,facing=south": {
-      "model": "synergy:block/laser_machine",
+      "model": "synergy:block/laser_machine_gun/on",
       "y": 180
     },
     "enabled=true,facing=west": {
-      "model": "synergy:block/laser_machine",
+      "model": "synergy:block/laser_machine_gun/on",
       "y": 270
     }
   }

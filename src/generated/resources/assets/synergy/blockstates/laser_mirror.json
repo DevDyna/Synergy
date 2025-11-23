@@ -1,10 +1,10 @@
 {
   "variants": {
     "inverted=false": {
-      "model": "synergy:block/mirror"
+      "model": "synergy:block/laser_mirror"
     },
     "inverted=true": {
-      "model": "synergy:block/mirror",
+      "model": "synergy:block/laser_mirror",
       "y": 90
     }
   }

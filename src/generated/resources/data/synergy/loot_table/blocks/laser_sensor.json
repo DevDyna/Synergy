@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:lens"
+          "name": "synergy:laser_sensor"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "synergy:blocks/lens"
+  "random_sequence": "synergy:blocks/laser_sensor"
 }

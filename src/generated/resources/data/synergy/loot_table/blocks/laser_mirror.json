@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:mirror"
+          "name": "synergy:laser_mirror"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "synergy:blocks/mirror"
+  "random_sequence": "synergy:blocks/laser_mirror"
 }
