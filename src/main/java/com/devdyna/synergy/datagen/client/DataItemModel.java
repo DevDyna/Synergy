@@ -202,6 +202,8 @@ public class DataItemModel extends ExtraItemModelProvider {
                                                 modLoc("item/resources/packed_mud_ball"));
 
                 withExistingParent(zBlocks.LASER_MACHINE.getRegisteredName(), modLoc("block/laser_machine"));
+                withExistingParent(zBlocks.LASER_LENS.getRegisteredName(), modLoc("block/laser_lens"));
+                withExistingParent(zBlocks.LASER_MIRROR.getRegisteredName(), modLoc("block/laser_mirror"));
 
                 ClazzUtil.getAllMachineTypes().forEach(m -> {
                         orientableWithBottom(m.id(),

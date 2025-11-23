@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -95,6 +96,18 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
 
                 getVariantBuilder(b.get()).forAllStates((state) -> {
                         String front = state.getValue(BlockStateProperties.ENABLED) ? "on" : "off";
+                        return ConfiguredModel.builder().modelFile(
+                                        models().cubeAll(b.getRegisteredName() + "_" + front,
+                                                        modLoc("block/" + location + front)))
+                                        .build();
+                });
+        }
+
+        protected void simpleBiState(DeferredHolder<Block, Block> b, String location, Property<Boolean> prop,
+                        String statusOn, String statusOff) {
+
+                getVariantBuilder(b.get()).forAllStates((state) -> {
+                        String front = state.getValue(prop) ? statusOn : statusOff;
                         return ConfiguredModel.builder().modelFile(
                                         models().cubeAll(b.getRegisteredName() + "_" + front,
                                                         modLoc("block/" + location + front)))
@@ -265,4 +278,17 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                                                 "").replace("_stair",
                                                                                 ""))));
         }
+
+        protected void blockMirror() {
+
+                getVariantBuilder(zBlocks.LASER_MIRROR.get()).forAllStates((state) -> {
+
+                        return ConfiguredModel.builder().modelFile(
+                                        models().withExistingParent(zBlocks.LASER_MIRROR.getRegisteredName(),
+                                                        modLoc("block/laser_mirror")))
+                                        .rotationY(state.getValue(BlockStateProperties.INVERTED) ? 90 : 0)
+                                        .build();
+                });
+        }
+
 }

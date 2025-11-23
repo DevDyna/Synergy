@@ -30,6 +30,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
 @SuppressWarnings("null")
 public class DataLootBlock extends BlockLootSubProvider {
 
@@ -62,7 +63,7 @@ public class DataLootBlock extends BlockLootSubProvider {
         @Override
         protected void generate() {
 
-                Set<DeferredHolder<Block, ? extends Block>> dropSelfBlocks = Set.of(
+                Set.of(
                                 zBlocks.BASIC_MACHINE_FRAME,
                                 zBlocks.PIPE,
 
@@ -95,11 +96,11 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.ADVANCED_MACHINE_FRAME,
                                 zBlocks.URN,
                                 zBlocks.QUERN,
-                                zBlocks.LASER_MACHINE
+                                zBlocks.LASER_MACHINE,
+                                zBlocks.LASER_LENS,
+                                zBlocks.LASER_MIRROR
 
-                );
-
-                dropSelfBlocks.forEach(b -> dropSelf(b.get()));
+                ).forEach(b -> dropSelf(b.get()));
 
                 var types = List.of(
                                 zBlocks.zModerators, zBlocks.zCoolers, zBlocks.zBlockSlab, zBlocks.zBlockStair,

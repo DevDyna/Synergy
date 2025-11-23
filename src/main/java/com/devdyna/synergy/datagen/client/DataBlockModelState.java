@@ -2,11 +2,9 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
-import com.devdyna.synergy.api.coreBE.be.MachineBE;
 import com.devdyna.synergy.api.datagen.ExtraBlockStateProvider;
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.init.types.zBlocks;
-import com.devdyna.synergy.init.types.zMachines;
 import com.devdyna.synergy.utils.ClazzUtil;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
@@ -119,6 +117,10 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 horizontalBlock(zBlocks.LASER_MACHINE.get(), models()
                                 .getExistingFile(modLoc("block/laser_machine")));
+
+                blockMirror();
+
+                simpleBlock(zBlocks.LASER_LENS.get(), models().getExistingFile(modLoc("block/laser_lens")));
 
                 ClazzUtil.getAllMachineTypes()
                                 .forEach(m -> {
