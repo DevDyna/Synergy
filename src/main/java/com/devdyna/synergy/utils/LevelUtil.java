@@ -198,6 +198,19 @@ public class LevelUtil {
                 (isRandom ? level.random.nextDouble() / 2.5 : 0), (isRandom ? level.random.nextDouble() * 0.025 : 0));
     }
 
+    public static void addDustParticle(int red, int green, int blue, ServerLevel level, double x,double y , double z, boolean isRandom,
+            int count) {
+
+        level.sendParticles(
+                new DustParticleOptions(Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(), 1.0F),
+                (double) x + 0.5,
+                (double) y + 0.5,
+                (double) z + 0.5,
+                count, (isRandom ? level.random.nextDouble() / 2.5 : 0),
+                (isRandom ? level.random.nextDouble() / 2.5 : 0),
+                (isRandom ? level.random.nextDouble() / 2.5 : 0), (isRandom ? level.random.nextDouble() * 0.025 : 0));
+    }
+
     /**
      * @param rgbColor like 16711680 [redstone | RGB(255, 0, 0)]
      */
