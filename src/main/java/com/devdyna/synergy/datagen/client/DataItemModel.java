@@ -201,9 +201,11 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("layer0",
                                                 modLoc("item/resources/packed_mud_ball"));
 
-                withExistingParent(zBlocks.LASER_MACHINE.getRegisteredName(), modLoc("block/laser_machine"));
+                                                
+                withExistingParent(zBlocks.LASER_MACHINE.getRegisteredName(), modLoc("block/laser_machine_gun/off"));
                 withExistingParent(zBlocks.LASER_LENS.getRegisteredName(), modLoc("block/laser_lens"));
                 withExistingParent(zBlocks.LASER_MIRROR.getRegisteredName(), modLoc("block/laser_mirror"));
+                withExistingParent(zBlocks.LASER_SENSOR.getRegisteredName(), modLoc("block/laser_sensor/off"));
 
                 ClazzUtil.getAllMachineTypes().forEach(m -> {
                         orientableWithBottom(m.id(),

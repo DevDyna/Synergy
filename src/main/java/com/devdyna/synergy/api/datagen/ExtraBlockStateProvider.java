@@ -279,16 +279,41 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                                                                 ""))));
         }
 
-        protected void blockMirror() {
+        protected void laserBlocks() {
+
+                simpleBlock(zBlocks.LASER_LENS.get(), models().getExistingFile(modLoc("block/laser_lens")));
 
                 getVariantBuilder(zBlocks.LASER_MIRROR.get()).forAllStates((state) -> {
 
                         return ConfiguredModel.builder().modelFile(
-                                        models().withExistingParent(zBlocks.LASER_MIRROR.getRegisteredName(),
-                                                        modLoc("block/laser_mirror")))
+                                        models().getExistingFile(modLoc("block/laser_mirror")))
                                         .rotationY(state.getValue(BlockStateProperties.INVERTED) ? 90 : 0)
                                         .build();
                 });
+
+                getVariantBuilder(zBlocks.LASER_SENSOR.get()).forAllStates((state) -> {
+
+                        return ConfiguredModel.builder().modelFile(
+                                        models().getExistingFile(modLoc("block/laser_sensor/"
+                                                        + (state.getValue(BlockStateProperties.ENABLED)
+                                                                        ? "on"
+                                                                        : "off"))))
+                                        .rotationY(state.getValue(BlockStateProperties.INVERTED) ? 90 : 0)
+                                        .build();
+                });
+
+                getVariantBuilder(zBlocks.LASER_MACHINE.get())
+                                .forAllStates(state -> ConfiguredModel.builder()
+                                                .modelFile(models()
+                                                                .getExistingFile(modLoc("block/laser_machine_gun/"
+                                                                                + (state.getValue(
+                                                                                                BlockStateProperties.ENABLED)
+                                                                                                                ? "on"
+                                                                                                                : "off"))))
+                                                .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING)
+                                                                .toYRot() + 180) % 360)
+                                                .build());
+
         }
 
 }

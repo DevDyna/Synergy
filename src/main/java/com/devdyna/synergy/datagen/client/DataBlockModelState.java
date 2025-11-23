@@ -115,12 +115,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 brick(zBlocks.CLAY_BRICK, mcLoc("block/clay"), mcLoc("block/terracotta"));
                 brick(zBlocks.PACKED_MUD_BRICK, mcLoc("block/packed_mud"), mcLoc("block/mud_bricks"));
 
-                horizontalBlock(zBlocks.LASER_MACHINE.get(), models()
-                                .getExistingFile(modLoc("block/laser_machine")));
-
-                blockMirror();
-
-                simpleBlock(zBlocks.LASER_LENS.get(), models().getExistingFile(modLoc("block/laser_lens")));
+                laserBlocks();
 
                 ClazzUtil.getAllMachineTypes()
                                 .forEach(m -> {
