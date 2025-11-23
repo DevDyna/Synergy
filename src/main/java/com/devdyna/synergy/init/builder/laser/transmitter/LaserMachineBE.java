@@ -7,10 +7,12 @@ import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zHandlers;
-import com.devdyna.synergy.utils.ColorUtil;
 import com.devdyna.synergy.utils.LevelUtil;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
@@ -18,13 +20,21 @@ import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
 public class LaserMachineBE extends TickingBE implements EnergyBlock {
-    List<Integer> rgbColor;
+    // List<Integer> rgbColor;
 
     public boolean fused;
+
+    public int red = -1;
+    public int green = -1;
+    public int blue = -1;
+
+    protected final int MAX_LASER_LENGHT = 8;
+    protected final int RESET = 0;
 
     public LaserMachineBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -33,9 +43,14 @@ public class LaserMachineBE extends TickingBE implements EnergyBlock {
 
         fused = false;
 
-        var color = ColorUtil.colorfulColorList.get(random.nextInt(ColorUtil.colorfulColorList.size()));
+        if (red == -1)
+            red = random.nextBoolean() ? 255 : 0;
+        if (green == -1)
+            green = random.nextBoolean() ? 255 : 0;
+        if (blue == -1)
+            blue = random.nextBoolean() ? 255 : 0;
 
-        rgbColor = List.of(color.getRed(), color.getGreen(), color.getBlue());
+        // rgbColor = List.of(red, green, blue);
     }
 
     public LaserMachineBE(BlockPos p, BlockState s) {
@@ -55,46 +70,50 @@ public class LaserMachineBE extends TickingBE implements EnergyBlock {
         var state = getBlockState();
         var pos = getBlockPos();
         var facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-        // var lenght = 100;
-        // var intensify = 100;
 
         if (state.getValue(BlockStateProperties.ENABLED) && canExtract()) {
             extractFE(10, false);
 
             var currentPos = pos;
 
-            var i = 0;
+            var i = RESET;
 
             boolean isStart = true;
             var currentDir = facing;
 
-            while (i != 4) {
+            while (i < MAX_LASER_LENGHT) {
 
-                if (!isStart)
-                    LevelUtil.addDustParticleLine(rgbColor.get(0), rgbColor.get(1), rgbColor.get(2),
-                            (ServerLevel) level, currentPos, currentDir);
+                var partialState = level.getBlockState(currentPos);
 
-                var offset = level.getBlockState(currentPos);
-
-                if (offset.is(zBlocks.LASER_LENS)) {
-                    // lenght++;
-                    // intensify--;
-                    i = 0;
+                // if collide with a opaque block or a entity break
+                if (!level.getEntities(null, new AABB(currentPos)).isEmpty()
+                        || partialState.isCollisionShapeFullBlock(level, pos)) {
+                    break;
                 }
 
-                if (offset.is(zBlocks.LASER_MIRROR)) {
-                    currentDir = switch (offset.getValue(BlockStateProperties.INVERTED) ? currentDir
-                            : currentDir.getOpposite()) {
-                        case Direction.NORTH -> Direction.EAST;
-                        case Direction.SOUTH -> Direction.WEST;
-                        case Direction.EAST -> Direction.NORTH;
-                        case Direction.WEST -> Direction.SOUTH;
-                        default -> null;
-                    };
-                    i = 0;
+                if (partialState.is(zBlocks.LASER_LENS)) {
+                    i = RESET;
                 }
 
-                if (offset.is(zBlocks.LASER_MACHINE) && !isStart) {
+                if (partialState.is(zBlocks.LASER_SENSOR)) {
+
+                }
+
+                if (partialState.is(zBlocks.LASER_MIRROR)) {
+                    var newDir = getMirrorDir(currentDir, partialState);
+
+                    LevelUtil.addDustParticleDiagonalLine(red, green, blue, (ServerLevel) level, currentPos,
+                            currentDir, newDir,
+                            0.35F);
+
+                    currentDir = newDir;
+                    i = RESET;
+                } else if (!isStart)
+
+                    LevelUtil.addDustParticleLine(red, green, blue,
+                            (ServerLevel) level, currentPos, currentDir, 0.35F);// TODO change scale
+
+                if (partialState.is(zBlocks.LASER_MACHINE) && !isStart) {
 
                     if (level.getBlockEntity(currentPos) instanceof LaserMachineBE laser)
                         laser.setFused();
@@ -108,10 +127,6 @@ public class LaserMachineBE extends TickingBE implements EnergyBlock {
 
                 if (isStart)// prevent to select the initial laser machine
                     isStart = false;
-
-                if (offset.isCollisionShapeFullBlock(level, pos)) {
-                    break;
-                }
 
                 i++;
 
@@ -138,6 +153,38 @@ public class LaserMachineBE extends TickingBE implements EnergyBlock {
 
     public void setFused() {
         fused = true;
+    }
+
+    public Direction getMirrorDir(Direction dir, BlockState state) {
+        return switch (state.getValue(BlockStateProperties.INVERTED) ? dir
+                : dir.getOpposite()) {
+            case Direction.NORTH -> Direction.EAST;
+            case Direction.SOUTH -> Direction.WEST;
+            case Direction.EAST -> Direction.NORTH;
+            case Direction.WEST -> Direction.SOUTH;
+            default -> null;
+        };
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag, Provider registries) {
+
+        tag.putInt("red", red);
+        tag.putInt("green", green);
+        tag.putInt("blue", blue);
+        super.saveAdditional(tag, registries);
+    }
+
+    @Override
+    protected void loadAdditional(CompoundTag tag, Provider registries) {
+
+        if (tag.contains("red"))
+            red = tag.getInt("red");
+        if (tag.contains("green"))
+            green = tag.getInt("green");
+        if (tag.contains("blue"))
+            blue = tag.getInt("blue");
+        super.loadAdditional(tag, registries);
     }
 
 }

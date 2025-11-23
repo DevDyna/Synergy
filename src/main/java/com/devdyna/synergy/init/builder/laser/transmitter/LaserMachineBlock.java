@@ -7,6 +7,8 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.coreBE.block.TickingBlock;
+import com.devdyna.synergy.init.builder.laser.IBlockLaser;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item.TooltipContext;
@@ -18,24 +20,20 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
 @SuppressWarnings("null")
-public class LaserMachineBlock extends TickingBlock {
+public class LaserMachineBlock extends TickingBlock implements IBlockLaser {
 
     public LaserMachineBlock() {
-        super(Properties.of()
-                .noOcclusion()
-                .destroyTime(1.0f)
-                .sound(SoundType.METAL)
-                .mapColor(MapColor.METAL));
+        super(getProperties);
     }
 
     @Override
@@ -47,7 +45,12 @@ public class LaserMachineBlock extends TickingBlock {
 
     @Override
     protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
-        return Block.box(5, 0, 5, 11, 6, 11);
+        return getShape();
+    }
+
+    @Override
+    protected boolean isPathfindable(BlockState state, PathComputationType pathComputationType) {
+        return isPathfindable();
     }
 
     @Override
@@ -71,7 +74,8 @@ public class LaserMachineBlock extends TickingBlock {
     @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.laser_machine_gun));
+        t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.machine_gun));
+
     }
 
 }

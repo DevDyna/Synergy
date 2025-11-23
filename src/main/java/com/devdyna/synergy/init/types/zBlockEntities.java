@@ -93,7 +93,7 @@ public class zBlockEntities {
                                         zBlocks.QUERN);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LaserMachineBE>> LASER_MACHINE = Material
-                        .createBlockEntity(zStatic.Blocks.laser_machine_gun, LaserMachineBE::new,
+                        .createBlockEntity(zStatic.Lazers.machine_gun, LaserMachineBE::new,
                                         zBlocks.LASER_MACHINE);
 
 }
