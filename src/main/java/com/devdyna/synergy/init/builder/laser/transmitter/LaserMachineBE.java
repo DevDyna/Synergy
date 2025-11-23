@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.coreBE.be.TickingBE;
+import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zHandlers;
@@ -25,32 +26,19 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
 public class LaserMachineBE extends TickingBE implements EnergyBlock {
-    // List<Integer> rgbColor;
 
     public boolean fused;
 
-    public int red = -1;
-    public int green = -1;
-    public int blue = -1;
+    public int red = 255;
+    public int green = 0;
+    public int blue = 0;
 
     protected final int MAX_LASER_LENGHT = 8;
     protected final int RESET = 0;
 
     public LaserMachineBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-
-        var random = new Random();
-
         fused = false;
-
-        if (red == -1)
-            red = random.nextBoolean() ? 255 : 0;
-        if (green == -1)
-            green = random.nextBoolean() ? 255 : 0;
-        if (blue == -1)
-            blue = random.nextBoolean() ? 255 : 0;
-
-        // rgbColor = List.of(red, green, blue);
     }
 
     public LaserMachineBE(BlockPos p, BlockState s) {
@@ -96,7 +84,13 @@ public class LaserMachineBE extends TickingBE implements EnergyBlock {
                 }
 
                 if (partialState.is(zBlocks.LASER_SENSOR)) {
-
+                    if (canSensorHandle(currentDir, partialState)) {
+                        var be = level.getBlockEntity(currentPos);
+                        if (be != null && be instanceof LaserSensorBE ls) {
+                            ls.setActive();
+                        }
+                    } else
+                        break;
                 }
 
                 if (partialState.is(zBlocks.LASER_MIRROR)) {
@@ -166,6 +160,12 @@ public class LaserMachineBE extends TickingBE implements EnergyBlock {
         };
     }
 
+    public boolean canSensorHandle(Direction dir, BlockState state) {
+        var inverted = state.getValue(BlockStateProperties.INVERTED);
+        var dirs = inverted ? List.of(Direction.EAST, Direction.WEST) : List.of(Direction.NORTH, Direction.SOUTH);
+        return dirs.contains(dir);
+    }
+
     @Override
     protected void saveAdditional(CompoundTag tag, Provider registries) {
 
@@ -185,6 +185,18 @@ public class LaserMachineBE extends TickingBE implements EnergyBlock {
         if (tag.contains("blue"))
             blue = tag.getInt("blue");
         super.loadAdditional(tag, registries);
+    }
+
+    public void setRed(int red) {
+        this.red = red;
+    }
+
+    public void setGreen(int green) {
+        this.green = green;
+    }
+
+    public void setBlue(int blue) {
+        this.blue = blue;
     }
 
 }
