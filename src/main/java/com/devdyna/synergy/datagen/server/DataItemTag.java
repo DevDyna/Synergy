@@ -221,6 +221,17 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.GEARS).add(zItems.WOODEN_GEAR.get());
                 tag(zItemTag.GEAR_WOODEN).add(zItems.WOODEN_GEAR.get());
 
+                tag(zItemTag.DYE_RESET).add(Items.INK_SAC);
+                tag(zItemTag.DYE_RED).addTag(Tags.Items.DYES_RED);
+                tag(zItemTag.DYE_GREEN).addTag(Tags.Items.DYES_GREEN);
+                tag(zItemTag.DYE_BLUE).addTag(Tags.Items.DYES_BLUE);
+
+                tag(zItemTag.COLOR_APPLICABLE)
+                                .addTag(zItemTag.DYE_RESET)
+                                .addTag(zItemTag.DYE_RED)
+                                .addTag(zItemTag.DYE_GREEN)
+                                .addTag(zItemTag.DYE_BLUE);
+
         }
 
 }
