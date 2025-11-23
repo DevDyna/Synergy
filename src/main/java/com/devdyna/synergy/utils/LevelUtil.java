@@ -259,39 +259,69 @@ public class LevelUtil {
     }
 
     public static void addDustParticleLine(int red, int green, int blue, ServerLevel level, BlockPos pos,
-                                       Direction direction) {
-    int maxParticles = 9;
-    double step = 1.0 / (maxParticles + 1); // spread evenly inside the block
-
-    double startX = pos.getX();
-    double startY = pos.getY();
-    double startZ = pos.getZ();
-
-    for (int i = 1; i <= maxParticles; i++) {
-        double offset = i * step;
-
-        double x = startX + 0.5;
-        double y = startY + 0.25;
-        double z = startZ + 0.5;
-
-        // Apply offsets depending on the chosen direction
-        switch (direction) {
-            case NORTH, SOUTH -> z = startZ + offset; // line along Z inside block
-            case EAST, WEST -> x = startX + offset;   // line along X inside block
-            case UP, DOWN -> y = startY + offset;     // line along Y inside block
-        }
-
-        level.sendParticles(
-                new DustParticleOptions(
-                        Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(),
-                        0.35F
-                ),
-                x, y, z,
-                1,
-                0, 0, 0, 0
-        );
+            Direction direction) {
+        addDustParticleLine(red, green, blue, level, pos, direction, 0.35F);
     }
-}
 
+    public static void addDustParticleLine(int red, int green, int blue, ServerLevel level, BlockPos pos,
+            Direction direction, float scale) {
+        int maxParticles = 9;
+        double step = 1.0 / (maxParticles + 1);
+
+        double startX = pos.getX();
+        double startY = pos.getY();
+        double startZ = pos.getZ();
+
+        for (int i = 1; i <= maxParticles; i++) {
+            double offset = i * step;
+
+            double x = startX + 0.5;
+            double y = startY + 0.25;
+            double z = startZ + 0.5;
+
+            // Apply offset
+            switch (direction) {
+                case NORTH, SOUTH -> z = startZ + offset; // Z
+                case EAST, WEST -> x = startX + offset; // X
+                case UP, DOWN -> y = startY + offset; // Y
+            }
+
+            level.sendParticles(
+                    new DustParticleOptions(
+                            Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(),
+                            scale),
+                    x, y, z,
+                    1,
+                    0, 0, 0, 0);
+        }
+    }
+
+    public static void addDustParticleDiagonalLine(int red, int green, int blue, ServerLevel level, BlockPos pos,
+            Direction input, Direction output, float scale) {
+        int maxParticles = 8;
+
+        double startX = pos.getX() + 0.5;
+        double startY = pos.getY() + 0.25;
+        double startZ = pos.getZ() + 0.5;
+
+        Vec3 inputVec = Vec3.atLowerCornerOf(input.getOpposite().getNormal()).scale(0.5);
+        Vec3 outputVec = Vec3.atLowerCornerOf(output.getNormal()).scale(0.5);
+
+        for (int i = 1; i <= maxParticles; i++) {
+            double t = (double) i / (maxParticles + 1);
+
+            double x = startX + inputVec.x * (1 - t) + outputVec.x * t;
+            double y = startY + inputVec.y * (1 - t) + outputVec.y * t;
+            double z = startZ + inputVec.z * (1 - t) + outputVec.z * t;
+
+            level.sendParticles(
+                    new DustParticleOptions(
+                            Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(),
+                            scale),
+                    x, y, z,
+                    1,
+                    0, 0, 0, 0);
+        }
+    }
 
 }
