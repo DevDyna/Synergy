@@ -159,7 +159,7 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + ".jei.provider.item",
                                 "Item Provider Pattern");
-                                
+
                 add(Main.ID + ".jei.provider.fluid",
                                 "Fluid Provider Pattern");
 
@@ -231,6 +231,12 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "Can be placed");
 
                 add(Main.ID + ".jei.dryable.tip", "Require to be in the sun and placed in a dry biome");
+
+                add(Main.ID + ".laser_use.reset", TIP_COLOR + "Can reset laser beam color "
+                                + "\nCan invert the color interaction when in off-hand");
+                add(Main.ID + ".laser_use.red", TIP_COLOR + "Can increase red color on laser beam");
+                add(Main.ID + ".laser_use.green", TIP_COLOR + "Can increase green color on laser beam");
+                add(Main.ID + ".laser_use.blue", TIP_COLOR + "Can increase blue color on laser beam");
 
         }
 
