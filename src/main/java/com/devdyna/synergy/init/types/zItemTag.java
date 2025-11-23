@@ -151,4 +151,14 @@ public class zItemTag {
         public static final TagKey<Item> GEARS = Material.tagItem("gears", "c");
         public static final TagKey<Item> GEAR_WOODEN = Material.tagItem("gears/wooden", "c");
 
+        public static final TagKey<Item> COLOR_APPLICABLE = Material.tagItem("color_applicable");
+       
+        public static final TagKey<Item> DYE_RESET = Material.tagItem("laser_beam/reset");
+        public static final TagKey<Item> DYE_RED = Material.tagItem("laser_beam/red");
+        public static final TagKey<Item> DYE_GREEN = Material.tagItem("laser_beam/green");
+        public static final TagKey<Item> DYE_BLUE = Material.tagItem("laser_beam/blue");
+
+
+
+
 }
