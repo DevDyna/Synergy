@@ -8,11 +8,15 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.coreBE.block.TickingBlock;
 import com.devdyna.synergy.init.builder.laser.IBlockLaser;
-
+import com.devdyna.synergy.init.types.zItemTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.Item.TooltipContext;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -56,6 +60,41 @@ public class LaserMachineBlock extends TickingBlock implements IBlockLaser {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
         b.add(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.ENABLED);
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hitResult) {
+
+        if (stack.is(zItemTag.COLOR_APPLICABLE)) {
+
+            if (level.getBlockEntity(pos) != null && level.getBlockEntity(pos) instanceof LaserMachineBE laser) {
+
+                if (stack.is(zItemTag.DYE_RESET)) {
+                    laser.setRed(0);
+                    laser.setGreen(0);
+                    laser.setBlue(0);
+                }
+
+                var inverse = player.getItemInHand(InteractionHand.OFF_HAND).is(zItemTag.DYE_RESET) ? 0 : 255;
+
+                if (stack.is(zItemTag.DYE_RED))
+                    laser.setRed(inverse);
+
+                if (stack.is(zItemTag.DYE_GREEN))
+                    laser.setGreen(inverse);
+
+                if (stack.is(zItemTag.DYE_BLUE))
+                    laser.setBlue(inverse);
+
+                level.playSound(player, pos, SoundEvents.SHULKER_AMBIENT, SoundSource.PLAYERS, 0.25F, 1.75F);
+
+            }
+
+            return ItemInteractionResult.SUCCESS;
+        }
+
+        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     @Override
