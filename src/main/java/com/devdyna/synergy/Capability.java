@@ -23,7 +23,8 @@ public class Capability {
                                 zBlocks.SPRINKLER.get(),
                                 zBlocks.SOLAR_PANEL.get(),
                                 zBlocks.REACTOR_CONTROLLER.get(),
-                                zBlocks.LASER_MACHINE.get());
+                                zBlocks.LASER_MACHINE.get(),
+                                zBlocks.LASER_SENSOR.get());
 
                 event.registerBlock(Capabilities.ItemHandler.BLOCK,
                                 (level, pos, state, be,
