@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.laser.transmitter;
+package com.devdyna.synergy.init.builder.laser.machine_gun;
 
 import java.util.*;
 

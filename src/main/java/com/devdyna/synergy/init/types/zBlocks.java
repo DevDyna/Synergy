@@ -30,8 +30,8 @@ import com.devdyna.synergy.init.builder.crops.wild.*;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBLK;
 import com.devdyna.synergy.init.builder.laser.LaserLensBlock;
 import com.devdyna.synergy.init.builder.laser.LaserMirrorBlock;
+import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBlock;
-import com.devdyna.synergy.init.builder.laser.transmitter.LaserMachineBlock;
 
 public class zBlocks {
         public static void register(IEventBus bus) {
