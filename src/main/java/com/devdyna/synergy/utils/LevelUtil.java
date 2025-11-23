@@ -259,29 +259,39 @@ public class LevelUtil {
     }
 
     public static void addDustParticleLine(int red, int green, int blue, ServerLevel level, BlockPos pos,
-            Direction direction) {
-        int maxParticles = 9;
-        double step = 0.2;
+                                       Direction direction) {
+    int maxParticles = 9;
+    double step = 1.0 / (maxParticles + 1); // spread evenly inside the block
 
-        double dx = direction.getStepX();
-        double dy = direction.getStepY();
-        double dz = direction.getStepZ();
+    double startX = pos.getX();
+    double startY = pos.getY();
+    double startZ = pos.getZ();
 
-        for (int i = 0; i < maxParticles; i++) {
-            double offsetMultiplier = i * step;
-            double x = pos.getX() + 0.5 + dx * offsetMultiplier;
-            double y = pos.getY() + 0.25 + dy * offsetMultiplier;
-            double z = pos.getZ() + 0.5 + dz * offsetMultiplier;
+    for (int i = 1; i <= maxParticles; i++) {
+        double offset = i * step;
 
-            level.sendParticles(
-                    new DustParticleOptions(Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(), 0.35F),
-                    x, y, z,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0);
+        double x = startX + 0.5;
+        double y = startY + 0.25;
+        double z = startZ + 0.5;
+
+        // Apply offsets depending on the chosen direction
+        switch (direction) {
+            case NORTH, SOUTH -> z = startZ + offset; // line along Z inside block
+            case EAST, WEST -> x = startX + offset;   // line along X inside block
+            case UP, DOWN -> y = startY + offset;     // line along Y inside block
         }
+
+        level.sendParticles(
+                new DustParticleOptions(
+                        Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(),
+                        0.35F
+                ),
+                x, y, z,
+                1,
+                0, 0, 0, 0
+        );
     }
+}
+
 
 }

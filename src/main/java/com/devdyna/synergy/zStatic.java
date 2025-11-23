@@ -168,6 +168,8 @@ public class zStatic {
         public static String quern = "quern";
 
         public static String laser_machine_gun="laser_machine_gun";
+        public static String laser_mirror="mirror";
+        public static String laser_lens="lens";
 
 
 

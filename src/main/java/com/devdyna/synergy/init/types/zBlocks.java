@@ -28,6 +28,8 @@ import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.crops.mushroom.*;
 import com.devdyna.synergy.init.builder.crops.wild.*;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBLK;
+import com.devdyna.synergy.init.builder.laser.LaserLensBlock;
+import com.devdyna.synergy.init.builder.laser.LaserMirrorBlock;
 import com.devdyna.synergy.init.builder.laser.transmitter.LaserMachineBlock;
 
 public class zBlocks {
@@ -325,10 +327,17 @@ public class zBlocks {
                                         .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
                         zHiddenBlock);
 
-
-                                public static final DeferredHolder<Block, Block> LASER_MACHINE = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> LASER_MACHINE = Material.registerItemBlock(
                         zStatic.Blocks.laser_machine_gun,
                         () -> new LaserMachineBlock());
+
+        public static final DeferredHolder<Block, Block> LASER_LENS = Material.registerItemBlock(
+                        zStatic.Blocks.laser_lens,
+                        () -> new LaserLensBlock());
+
+        public static final DeferredHolder<Block, Block> LASER_MIRROR = Material.registerItemBlock(
+                        zStatic.Blocks.laser_mirror,
+                        () -> new LaserMirrorBlock());
 
         // ---------------------------------------------------------------------------------------//
 
