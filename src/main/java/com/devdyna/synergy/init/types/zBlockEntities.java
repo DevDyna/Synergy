@@ -4,6 +4,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
+import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
 import com.devdyna.synergy.init.builder.laser.transmitter.LaserMachineBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.quern.QuernBE;
@@ -95,5 +96,9 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LaserMachineBE>> LASER_MACHINE = Material
                         .createBlockEntity(zStatic.Lazers.machine_gun, LaserMachineBE::new,
                                         zBlocks.LASER_MACHINE);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LaserSensorBE>> LASER_SENSOR = Material
+                        .createBlockEntity(zStatic.Lazers.sensor, LaserSensorBE::new,
+                                        zBlocks.LASER_SENSOR);
 
 }
