@@ -40,6 +40,7 @@ public class Controller {
         DataBlockTag blocktag = new DataBlockTag(po, pr, f);
         providerGen(e, g, blocktag);
         providerGen(e, g, new DataItemTag(po, pr, blocktag.contentsGetter(),f));
+        providerGen(e, g, new DataEntityTag(po, pr,  f));
         providerGen(e, g, new LootTableProvider(po, Set.of(),
                 List.of(
                         new LootTableProvider.SubProviderEntry(DataLootBlock::new, LootContextParamSets.BLOCK),
