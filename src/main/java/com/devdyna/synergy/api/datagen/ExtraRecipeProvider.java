@@ -59,8 +59,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected void nuggetIngotBlock(RecipeOutput c, ItemLike nugget, ItemLike ingot, ItemLike block) {
-                packUnpack(c, nugget, ingot,false);
-                packUnpack(c, ingot, block,false);
+                packUnpack(c, nugget, ingot, false);
+                packUnpack(c, ingot, block, false);
         }
 
         protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot) {
@@ -560,15 +560,18 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                 UrnRitualBuilder.of()
                                 .add(zBlocks.WOODEN_TINY_CHEST.get())
-                                .add(Tags.Items.NUGGETS_GOLD)
+                                .add(zItemTag.DUST_GOLD)
+                                .add(zItems.GHOUL_HEART)
                                 .output(zBlocks.ORNATE_TINY_CHEST.get())
                                 .unlockedBy().save(c);
 
                 UrnRitualBuilder.of()
                                 .add(zBlocks.WOODEN_TINY_CHEST.get())
                                 .add(zItems.STONE_PEBBLE)
+                                .add(zItems.GHAST_BLADDER)
                                 .output(zBlocks.STONE_TINY_CHEST.get())
                                 .unlockedBy().save(c);
+
         }
 
         protected void tools(RecipeOutput c) {
