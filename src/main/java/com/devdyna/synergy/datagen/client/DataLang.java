@@ -242,10 +242,22 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".laser_use.green", TIP_COLOR + "Can increase green color on laser beam");
                 add(Main.ID + ".laser_use.blue", TIP_COLOR + "Can increase blue color on laser beam");
 
-                add(Main.ID + ".remove_entity_growing", TIP_COLOR + "Can be used to remove the growing-event of baby entities");
-                add(Main.ID + ".add_entity_growing", TIP_COLOR + "Can be used to re-add the growing-event of baby entities");
+                add(Main.ID + ".laser.rotate_by_click",
+                                TIP_COLOR + "Can be rotated with right-click");
 
+                add(Main.ID + ".remove_entity_growing",
+                                TIP_COLOR + "Can be used to remove the growing-event of baby entities");
+                add(Main.ID + ".add_entity_growing",
+                                TIP_COLOR + "Can be used to re-add the growing-event of baby entities");
 
+                add(Main.ID + "." + zStatic.Lazers.machine_gun,
+                                TIP_COLOR + "Generate a laser line when has ForgeEnergy and a redstone signal");
+                
+                add(Main.ID + "." + zStatic.Lazers.lens,
+                                TIP_COLOR + "Repeat the signal of any laser line when pass through");
+                add(Main.ID + "." + zStatic.Lazers.mirror, TIP_COLOR + "Rotate of 90° any laser line");
+                add(Main.ID + "." + zStatic.Lazers.sensor, TIP_COLOR
+                                + "Emit a redstone signal and generate a small amount of ForgeEnergy when a laser line pass through");
 
         }
 

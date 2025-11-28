@@ -114,6 +114,7 @@ public class LaserMachineBlock extends TickingBlock implements IBlockLaser {
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
         t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.machine_gun));
+        t.add(Component.translatable(Main.ID + ".laser.rotate_by_click"));
 
     }
 

@@ -61,6 +61,7 @@ public class LaserMirrorBlock extends Block implements IBlockLaser {
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
         t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.mirror));
+        t.add(Component.translatable(Main.ID + ".laser.rotate_by_click"));
     }
 
 }
