@@ -51,6 +51,11 @@ public class pipeBlock extends Block implements pipeType {
     }
 
     @Override
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        //TODO fix blockstates like SolarPanelBLK
+    }
+
+    @Override
     public void destroy(LevelAccessor l, BlockPos p, BlockState s) {
         pipeType.onDestroyPipe(s, (Level) l, p);
     }
