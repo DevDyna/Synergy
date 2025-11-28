@@ -33,7 +33,7 @@ public class LaserSensorBE extends TickingBE implements EnergyProvider {
         this(zBlockEntities.LASER_SENSOR.get(), p, s);
     }
 
-    public int MAX_TIMER_COOLDOWN = 20;
+    public int MAX_TIMER_COOLDOWN = 5;
 
     private int tick = 0;
 
