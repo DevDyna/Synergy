@@ -43,6 +43,8 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.ADVANCED_MACHINE_FRAME.get(),
                                                 zBlocks.ADVANCED_ALLOY_BLOCK.get(),
                                                 zBlocks.STEEL_BLOCK.get(),
+                                                zBlocks.STONE_TINY_CHEST.get(),
+                                                zBlocks.ORNATE_TINY_CHEST.get(),
                                                 zBlocks.HEALER.get(),
                                                 zBlocks.COOLER_BASE.get(),
                                                 zBlocks.REACTOR_FUEL_CELL.get(),
@@ -50,9 +52,13 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(BlockTags.MINEABLE_WITH_AXE)
                                 .add(
+                                                zBlocks.WOODEN_TINY_CHEST.get(),
                                                 zBlocks.WAXED_PLANKS.get(),
                                                 zBlocks.WAXED_PLANKS_SLAB.get(),
-                                                zBlocks.WAXED_PLANKS_STAIR.get());
+                                                zBlocks.WAXED_PLANKS_STAIR.get(),
+                                                zBlocks.AZALEA.get(), zBlocks.CAVE_WHEAT.get(), zBlocks.COTTON.get(),
+                                                zBlocks.RICE.get(), zBlocks.BLUE_CUP_MUSHROOM.get(),
+                                                zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
 
                 tag(zBlockTag.MUSHROOMS)
                                 .add(zBlocks.BLUE_CUP_MUSHROOM.get(), zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
@@ -131,10 +137,6 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.RICE.get(), zBlocks.BLUE_CUP_MUSHROOM.get(),
                                                 zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
                 tag(BlockTags.MAINTAINS_FARMLAND)
-                                .add(zBlocks.AZALEA.get(), zBlocks.CAVE_WHEAT.get(), zBlocks.COTTON.get(),
-                                                zBlocks.RICE.get(), zBlocks.BLUE_CUP_MUSHROOM.get(),
-                                                zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
-                tag(BlockTags.MINEABLE_WITH_AXE)
                                 .add(zBlocks.AZALEA.get(), zBlocks.CAVE_WHEAT.get(), zBlocks.COTTON.get(),
                                                 zBlocks.RICE.get(), zBlocks.BLUE_CUP_MUSHROOM.get(),
                                                 zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
