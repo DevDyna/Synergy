@@ -18,9 +18,10 @@ import net.minecraft.world.level.Level;
 @SuppressWarnings("null")
 public class CropResultRecipe implements Recipe<ItemListInput> {
 
-    public static final int INPUT_COUNT = 9;
+    public static final int INPUT_COUNT = 6;
     public final Ingredient input;
     public final List<ItemStack> outputs;
+    //TODO add percentuages as float values
 
     public CropResultRecipe(Ingredient input,
             List<ItemStack> outputs) {
