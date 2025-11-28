@@ -30,6 +30,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
 @SuppressWarnings("null")
 public class SolarPanelBLK extends TickingBlock {
 
@@ -59,30 +60,34 @@ public class SolarPanelBLK extends TickingBlock {
 
     @Override
     @Nullable
-    public BlockState getStateForPlacement(BlockPlaceContext c) {
-        BlockState state = defaultBlockState().setValue(BlockStateProperties.ENABLED, false);
-        var level = c.getLevel();
-        var pos = c.getClickedPos();
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        // Just return default state with all connections false
+        return defaultBlockState()
+                .setValue(BlockStateProperties.ENABLED, false)
+                .setValue(BlockStateProperties.NORTH, false)
+                .setValue(BlockStateProperties.SOUTH, false)
+                .setValue(BlockStateProperties.EAST, false)
+                .setValue(BlockStateProperties.WEST, false);
+    }
 
-        // LogUtil.info("pos "+pos);
+    @Override
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+        if (!level.isClientSide) {
+            BlockState newState = state;
+            for (Direction face : DIRECTIONS) {
+                BlockPos neighborPos = pos.relative(face);
+                BlockState neighborState = level.getBlockState(neighborPos);
 
-        for (Direction face : DIRECTIONS) {
+                if (neighborState.is(this)) {
+                    newState = newState.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), true);
 
-            var offset = level.getBlockState(pos.relative(face));
-            if (offset.is(state.getBlock())) {
-
-                level.setBlockAndUpdate(pos.relative(face),
-                        offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
-                                true));
-            } else {
-
-                // remove connection
-
-                state = state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), false);
-
+                    level.setBlock(neighborPos,
+                            neighborState.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())), true),
+                            Block.UPDATE_ALL);
+                }
             }
+            level.setBlock(pos, newState, Block.UPDATE_ALL);
         }
-        return state;
     }
 
     @Override
