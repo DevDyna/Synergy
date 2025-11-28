@@ -16,24 +16,12 @@
 
 ## COMPATS AND TWEAKS
 
-- [x] silicon gem to c:silicon
-- [x] BBL mod compat
-- [x] IE garden cloche fertilizers
-- [x] squeezer plant oil | fermenter ethanol compat
-- [x] Farming for BlockHeads compat
-- [x] EnderIO compat
-- [x] DraconicEvolution compat
-- [x] AE2 compat
-- [x] Basic Resources/Ingots compat (ATM ores | FTB materials | other mods)
 - [ ] Patchouli compat
 
-- [x] Fluid nodes
 - [ ] (Meka) Gas nodes
 - [ ] Node Upgrades
 - [ ] Pipe Blocker
 - [ ] Differents styles for Nodes / Node model rework
-
-- [x] Quern crushing modded raw ores compat
 
 - [ ] GuideMe quantum reactor GameScene
 
@@ -69,7 +57,7 @@
 - [ ] CobbleGen (like NC)
 - [ ] WaterGen (like NC)
 - [ ] block placer (harvester like but place blocks)
-- [x] dry bricks
+
 - [ ] Item Collector
 - [ ] Crucible (BTW like but require to stay connected at a support)
 - [ ] Decorative Pots sherds swap
