@@ -63,7 +63,8 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, ItemUseRecipe recipe, IFocusGroup focuses) {
 
-        if (recipe.getInputItem().test(x.item(Items.POTION)))//hardcoded jei fix , i need to investigate on future to fix
+        if (recipe.getInputItem().test(x.item(Items.POTION)))// hardcoded jei fix , i need to investigate on future to
+                                                             // fix
             builder.addInputSlot(1, 1).addItemStack(PotionContents.createItemStack(Items.POTION, Potions.WATER));
         else
             builder.addInputSlot(1, 1).addIngredients(recipe.getInputItem());
@@ -106,13 +107,13 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
                 "textures/gui/sprites/toast/" +
                         (TimeUtil.fireAt(600) ? "right_click" : "mouse") + ".png")
                 .size(20, 20)
-                .offset(1, 20).render(guiGraphics);
+                .offset(1, 20).render(helper, guiGraphics);
 
         if (recipe.getOutputitem() != null && !recipe.getOutputitem().isEmpty())
             Image.of().rl(
                     "textures/gui/item_use_output.png")
                     .size(32, 19)
-                    .offset(41, 1).render(guiGraphics);
+                    .offset(40, 0).render(helper, guiGraphics);
 
     }
 
