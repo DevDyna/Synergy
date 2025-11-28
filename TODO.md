@@ -28,7 +28,11 @@
 - [ ] SilentGear raw ores compat quern
 - [ ] Create Zinc compat quern
 
+- [ ] Modern Chisel compat (?)
+
 ### CODEBASE
+
+- [ ] Potted Azalea dirt->rotten randomtick event
 
 - [ ] All Recipe Types compat with GuideMe (?)
 
@@ -42,8 +46,21 @@
 
 ## NEWS
 
+
+- [ ] Zodiac (mdpk) Block Scrapping
+
+- [ ] Flint and flint (flint and steel like but with chance to success)
+
+- [ ] BE NBT crafting uncraft/tooltip (?)
+
+- [ ] Simple Resource Generators
+
+- [ ] Framed CobbleGen (EnderioAddons-Like)
+
 - [ ] Forever young treatment (item use on entity)
+
 - [ ] cave mushroom -> press -> liquidi lapis/ liquid coal
+
 - [ ] temporal hourglass (like unique crops)
 
 - [ ] EnderLilly
