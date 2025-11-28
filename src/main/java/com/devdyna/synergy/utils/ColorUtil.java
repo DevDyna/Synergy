@@ -42,4 +42,8 @@ public class ColorUtil {
         return rgbColor(level, 160);
     }
 
+    public static Color color(int red,int green, int blue){
+        return new Color(red, green, blue);
+    }
+
 }
