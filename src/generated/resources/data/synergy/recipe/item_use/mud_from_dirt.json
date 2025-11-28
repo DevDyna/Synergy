@@ -1,0 +1,18 @@
+{
+  "type": "synergy:item_use",
+  "base": {
+    "Name": "minecraft:dirt"
+  },
+  "can_be_disabled": false,
+  "catalyst": {
+    "item": "minecraft:potion"
+  },
+  "item_result": {
+    "count": 1,
+    "id": "minecraft:glass_bottle"
+  },
+  "render_only": true,
+  "result": {
+    "Name": "minecraft:mud"
+  }
+}

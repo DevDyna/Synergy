@@ -5,7 +5,10 @@
       "item": "synergy:tiny_wooden_chest"
     },
     {
-      "tag": "c:nuggets/gold"
+      "tag": "c:dusts/gold"
+    },
+    {
+      "item": "synergy:ghoul_heart"
     }
   ],
   "result": {

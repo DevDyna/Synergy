@@ -3,6 +3,9 @@
   "ingredient": [
     {
       "item": "synergy:silverfish_dust"
+    },
+    {
+      "tag": "c:dusts/quartz"
     }
   ],
   "result": {

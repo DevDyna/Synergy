@@ -1,0 +1,11 @@
+{
+  "type": "synergy:quern",
+  "frequence": 60,
+  "ingredient": {
+    "tag": "c:dusts/uranium"
+  },
+  "result": {
+    "count": 9,
+    "id": "synergy:waste_fragment"
+  }
+}

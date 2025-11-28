@@ -4,9 +4,10 @@
     "Name": "minecraft:flower_pot"
   },
   "can_be_disabled": true,
-  "item": {
+  "catalyst": {
     "item": "synergy:azalea_seeds"
   },
+  "render_only": false,
   "result": {
     "Name": "synergy:azalea",
     "Properties": {

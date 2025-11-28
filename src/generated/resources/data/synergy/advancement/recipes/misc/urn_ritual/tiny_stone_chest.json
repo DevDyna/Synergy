@@ -15,6 +15,9 @@
           },
           {
             "items": "synergy:stone_pebble"
+          },
+          {
+            "items": "synergy:ghast_bladder"
           }
         ]
       },
