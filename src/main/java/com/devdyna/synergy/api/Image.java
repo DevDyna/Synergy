@@ -4,6 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import mezz.jei.api.helpers.IGuiHelper;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.resources.ResourceLocation;
 
 public class Image {
 
@@ -13,6 +14,8 @@ public class Image {
     private String modid = ID;
     private int xo = 0;
     private int yo = 0;
+    private int tx = x;
+    private int ty = y;
 
     private int u = 0;
     private int v = 0;
@@ -28,6 +31,11 @@ public class Image {
     public Image size(int x, int y) {
         this.x = x;
         this.y = y;
+        return this;
+    }
+    public Image sizeTexture(int textureWidth, int textureHeight) {
+        this.tx = x;
+        this.ty = y;
         return this;
     }
 
@@ -54,6 +62,12 @@ public class Image {
         return this;
     }
 
+    public Image rl(ResourceLocation rl) {
+        this.modid = rl.getNamespace();
+        this.rl = rl.getPath();
+        return this;
+    }
+
     /**
      * JEI usage
      */
@@ -73,7 +87,7 @@ public class Image {
                 yo - 1,
                 u, v,
                 x, y,
-                x, y);
+                tx, ty);
 
     }
 
