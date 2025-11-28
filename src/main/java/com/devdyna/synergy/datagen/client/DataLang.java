@@ -242,6 +242,11 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".laser_use.green", TIP_COLOR + "Can increase green color on laser beam");
                 add(Main.ID + ".laser_use.blue", TIP_COLOR + "Can increase blue color on laser beam");
 
+                add(Main.ID + ".remove_entity_growing", TIP_COLOR + "Can be used to remove the growing-event of baby entities");
+                add(Main.ID + ".add_entity_growing", TIP_COLOR + "Can be used to re-add the growing-event of baby entities");
+
+
+
         }
 
         private String named(DeferredHolder<?, ?> b) {

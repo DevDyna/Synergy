@@ -232,6 +232,11 @@ public class DataItemTag extends ItemTagsProvider {
                                 .addTag(zItemTag.DYE_GREEN)
                                 .addTag(zItemTag.DYE_BLUE);
 
+                tag(zItemTag.REMOVE_ENTITY_GROWING)
+                                .add(zItems.VENOM_SAC.get());
+
+                tag(zItemTag.ADD_ENTITY_GROWING).add(Items.GLISTERING_MELON_SLICE);
+
         }
 
 }

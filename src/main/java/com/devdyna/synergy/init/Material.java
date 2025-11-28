@@ -13,11 +13,14 @@ import com.devdyna.synergy.init.builder.ItemToolTipped;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
@@ -52,6 +55,7 @@ public class Material {
                 zRecipeTypes.register(bus);
 
                 zMachines.register(bus);
+                zEntityTag.register(bus);
         }
 
         /**
@@ -121,6 +125,27 @@ public class Material {
         }
 
         /**
+         * create an itemtag
+         */
+        public static TagKey<EntityType<?>> tagEntity(String name) {
+                return tagEntity(ID, name);
+        }
+
+        /**
+         * create an biome tag
+         */
+        public static TagKey<Biome> tagBiome(String name) {
+                return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Main.ID, name));
+        }
+
+        /**
+         * create an entity tag
+         */
+        public static TagKey<EntityType<?>> tagEntity(String modname, String name) {
+                return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(modname, name));
+        }
+
+        /**
          * like rice
          */
         public static DeferredItem<ItemNameBlockItem> seedFoodItem(String name, Block b, int nutrition,
@@ -181,7 +206,7 @@ public class Material {
 
         public static DeferredHolder<Item, Item> tooltippedItem(String name,
                         DeferredRegister.Items i) {
-                return i.register(name, () -> new ItemToolTipped(name+".tip"));
+                return i.register(name, () -> new ItemToolTipped(name + ".tip"));
         }
 
         public static DeferredHolder<Item, Item> resourceItem(String name) {

@@ -12,6 +12,7 @@ public class GameEvents {
         NeoForge.EVENT_BUS.register(ItemUseRecipeEvent.class);
         NeoForge.EVENT_BUS.register(ClayBrickPlacement.class);
         NeoForge.EVENT_BUS.register(ItemTooltipEvents.class);
+        NeoForge.EVENT_BUS.register(EntityInteractionEvent.class);
     }
 
 }

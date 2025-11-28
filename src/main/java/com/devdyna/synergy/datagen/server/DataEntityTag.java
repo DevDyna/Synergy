@@ -23,6 +23,7 @@ public class DataEntityTag extends EntityTypeTagsProvider {
 
         @Override
         protected void addTags(Provider provider) {
+                tag(zEntityTag.DONT_LIKE_JAY_Z);
         }
 
 }

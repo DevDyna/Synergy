@@ -39,4 +39,19 @@ public class ItemTooltipEvents {
             tooltip.add(Component.translatable(Main.ID + ".laser_use.blue"));
         }
     }
+
+    @SubscribeEvent
+    public static void itemTooltipNoGrowingItems(ItemTooltipEvent event) {
+
+        var item = event.getItemStack();
+        var tooltip = event.getToolTip();
+
+        if (item.is(zItemTag.REMOVE_ENTITY_GROWING)) {
+            tooltip.add(1,Component.translatable(Main.ID + ".remove_entity_growing"));
+        }
+        if (item.is(zItemTag.ADD_ENTITY_GROWING)) {
+            tooltip.add(1,Component.translatable(Main.ID + ".add_entity_growing"));
+        }
+        
+    }
 }
