@@ -3,8 +3,10 @@ package com.devdyna.synergy;
 import com.devdyna.synergy.api.machine.macerator.MaceratorMenu;
 import com.devdyna.synergy.api.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.client.aoe.*;
+import com.devdyna.synergy.client.gui.chests.ornated.OrnatedTinyChestScreen;
+import com.devdyna.synergy.client.gui.chests.stone.StoneTinyChestScreen;
+import com.devdyna.synergy.client.gui.chests.wooden.WoodenTinyChestScreen;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
-import com.devdyna.synergy.client.gui.tiny_chest.TinyChestScreen;
 import com.devdyna.synergy.client.quern.QuernRendering;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zContainer;
@@ -21,7 +23,7 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 
-@SuppressWarnings({ "removal", "deprecation","null" })
+@SuppressWarnings({ "removal", "deprecation", "null" })
 @EventBusSubscriber(modid = Main.ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class Client {
 
@@ -37,7 +39,10 @@ public class Client {
     @SubscribeEvent
     public static void registerScreens(RegisterMenuScreensEvent event) {
         event.register(zContainer.FUEL_CELL_MENU.get(), FuelCellScreen::new);
-        event.register(zContainer.CHEST_MENU.get(), TinyChestScreen::new);
+        event.register(zContainer.WOODEN_TINY_CHEST_MENU.get(), WoodenTinyChestScreen::new);
+        event.register(zContainer.STONE_TINY_CHEST_MENU.get(), StoneTinyChestScreen::new);
+        event.register(zContainer.ORNATED_TINY_CHEST_MENU.get(), OrnatedTinyChestScreen::new);
+
         event.register((MenuType<MaceratorMenu>) zMachines.MACERATOR.menu().get(), MaceratorScreen::new);
     }
 

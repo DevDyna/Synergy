@@ -3,6 +3,9 @@ package com.devdyna.synergy.init.types;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
+import com.devdyna.synergy.init.builder.chests.ornated.OrnatedTinyChestBE;
+import com.devdyna.synergy.init.builder.chests.stone.StoneTinyChestBE;
+import com.devdyna.synergy.init.builder.chests.wooden.WoodenTinyChestBE;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBE;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
@@ -12,7 +15,6 @@ import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBE;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBE;
-import com.devdyna.synergy.init.builder.tinychests.TinyChestBE;
 import com.devdyna.synergy.init.builder.urn.UrnBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -77,9 +79,17 @@ public class zBlockEntities {
                         .createBlockEntity(zStatic.ReactorStuff.controller, ReactorControllerBE::new,
                                         zBlocks.REACTOR_CONTROLLER);
 
-        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TinyChestBE>> WOODEN_TINY_CHEST = Material
-                        .createBlockEntity(zStatic.Blocks.tiny_wooden_chest, TinyChestBE::new,
-                                        zBlocks.WOODEN_TINY_CHEST, zBlocks.STONE_TINY_CHEST, zBlocks.ORNATE_TINY_CHEST);
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WoodenTinyChestBE>> WOODEN_TINY_CHEST = Material
+                        .createBlockEntity(zStatic.Chests.WOODEN, WoodenTinyChestBE::new,
+                                        zBlocks.WOODEN_TINY_CHEST);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<StoneTinyChestBE>> STONE_TINY_CHESTS = Material
+                        .createBlockEntity(zStatic.Chests.STONE, StoneTinyChestBE::new,
+                                        zBlocks.STONE_TINY_CHEST);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OrnatedTinyChestBE>> ORNATED_TINY_CHESTS = Material
+                        .createBlockEntity(zStatic.Chests.ORNATE, OrnatedTinyChestBE::new,
+                                        zBlocks.ORNATE_TINY_CHEST);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FuelCellBE>> FUEL_CELL = Material
                         .createBlockEntity(zStatic.ReactorStuff.fuel_cell, FuelCellBE::new,

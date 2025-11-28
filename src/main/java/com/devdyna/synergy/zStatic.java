@@ -161,13 +161,9 @@ public class zStatic {
         public static String harvester = "harvester";
         public static String solar_panel = "solar_panel";
         public static String healer = "healer";
-        public static String tiny_wooden_chest = "tiny_wooden_chest";
-        public static String tiny_stone_chest = "tiny_stone_chest";
-        public static String tiny_ornated_chest = "tiny_ornated_chest";
+
         public static String urn = "urn";
         public static String quern = "quern";
-
-        
 
         public static String macerator = "macerator";
         // public static String fan = "fan";
@@ -176,8 +172,18 @@ public class zStatic {
         public static String pipe = "pipe";
     }
 
-    public class Lazers{
-public static String machine_gun = "laser_machine_gun";
+    public class Chests {
+
+        public static String TINY_GENERIC = "tiny_chest";
+
+        public static String WOODEN = "tiny_wooden_chest";
+        public static String STONE = "tiny_stone_chest";
+        public static String ORNATE = "tiny_ornated_chest";
+
+    }
+
+    public class Lazers {
+        public static String machine_gun = "laser_machine_gun";
         public static String mirror = "laser_mirror";
         public static String lens = "laser_lens";
         public static String sensor = "laser_sensor";

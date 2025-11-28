@@ -21,15 +21,16 @@ import com.devdyna.synergy.init.builder.reactor.cooler.*;
 import com.devdyna.synergy.init.builder.reactor.moderator.*;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
-import com.devdyna.synergy.init.builder.tinychests.TinyChestBK;
 import com.devdyna.synergy.init.builder.urn.UrnBlock;
 import com.devdyna.synergy.init.builder.*;
+import com.devdyna.synergy.init.builder.chests.ornated.OrnatedTinyChestBlock;
+import com.devdyna.synergy.init.builder.chests.stone.StoneTinyChestBlock;
+import com.devdyna.synergy.init.builder.chests.wooden.WoodenTinyChestBlock;
 import com.devdyna.synergy.init.builder.crops.cultivated.*;
 import com.devdyna.synergy.init.builder.crops.mushroom.*;
 import com.devdyna.synergy.init.builder.crops.wild.*;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBLK;
-import com.devdyna.synergy.init.builder.laser.LaserLensBlock;
-import com.devdyna.synergy.init.builder.laser.LaserMirrorBlock;
+import com.devdyna.synergy.init.builder.laser.*;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBlock;
 
@@ -294,16 +295,16 @@ public class zBlocks {
                         zDecorative);
 
         public static final DeferredHolder<Block, Block> WOODEN_TINY_CHEST = Material.registerItemBlock(
-                        zStatic.Blocks.tiny_wooden_chest,
-                        () -> new TinyChestBK());
+                        zStatic.Chests.WOODEN,
+                        () -> new WoodenTinyChestBlock());
 
         public static final DeferredHolder<Block, Block> ORNATE_TINY_CHEST = Material.registerItemBlock(
-                        zStatic.Blocks.tiny_ornated_chest,
-                        () -> new TinyChestBK());
+                        zStatic.Chests.ORNATE,
+                        () -> new OrnatedTinyChestBlock());
 
         public static final DeferredHolder<Block, Block> STONE_TINY_CHEST = Material.registerItemBlock(
-                        zStatic.Blocks.tiny_stone_chest,
-                        () -> new TinyChestBK());
+                        zStatic.Chests.STONE,
+                        () -> new StoneTinyChestBlock());
 
         public static final DeferredHolder<Block, Block> URN = Material.registerItemBlock(
                         zStatic.Blocks.urn,

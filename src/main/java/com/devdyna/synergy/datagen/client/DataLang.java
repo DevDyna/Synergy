@@ -109,8 +109,12 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Blocks.healer,
                                 TIP_COLOR + "Heal and remove fire effect at all entities above it");
 
-                add(Main.ID + "." + zStatic.Blocks.tiny_wooden_chest,
+                add(Main.ID + "." + zStatic.Chests.WOODEN,
                                 TIP_COLOR + "Small chests useful to store a single stack");
+                add(Main.ID + "." + zStatic.Chests.STONE,
+                                TIP_COLOR + "Like wooden but can store an entire chest");
+                add(Main.ID + "." + zStatic.Chests.ORNATE,
+                                TIP_COLOR + "Like stone but can store an entire double chest!");
 
                 add(Main.ID + "." + zStatic.tips.SHIFT,
                                 "§8Hold [§7Shift§8] to see more details");

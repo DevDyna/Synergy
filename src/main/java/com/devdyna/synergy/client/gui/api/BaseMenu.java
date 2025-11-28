@@ -1,4 +1,4 @@
-package com.devdyna.synergy.client.gui;
+package com.devdyna.synergy.client.gui.api;
 
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import java.util.function.IntUnaryOperator;
@@ -32,21 +32,33 @@ public abstract class BaseMenu extends AbstractContainerMenu {
     protected void addPlayerSlots(Inventory inventory) {
         addInventory(inventory);
         addHotbar(inventory);
-
     }
 
-    protected void addInventory(Inventory inventory) {
+    protected void addPlayerSlots(Inventory inventory, int xf, int yf) {
+        addInventory(inventory, xf, yf);
+        addHotbar(inventory, xf, yf);
+    }
+
+    protected void addInventory(Inventory inventory, int xf, int yf) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                addSlot(new Slot(inventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
+                addSlot(new Slot(inventory, l + i * 9 + 9, (8 + l * 18) + xf, (84 + i * 18) + yf));
             }
         }
     }
 
-    protected void addHotbar(Inventory inventory) {
+    protected void addHotbar(Inventory inventory, int xf, int yf) {
         for (int i = 0; i < 9; ++i) {
-            addSlot(new Slot(inventory, i, 8 + i * 18, 142));
+            addSlot(new Slot(inventory, i, (8 + i * 18) + xf, 142 + yf));
         }
+    }
+
+    protected void addInventory(Inventory inventory) {
+        addInventory(inventory, 0, 0);
+    }
+
+    protected void addHotbar(Inventory inventory) {
+        addHotbar(inventory, 0, 0);
     }
 
     protected void addMachineSlot(ItemStackHandler beSlot, int id, int x, int y) {

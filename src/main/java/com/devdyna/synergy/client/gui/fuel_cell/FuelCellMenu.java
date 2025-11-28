@@ -1,6 +1,6 @@
 package com.devdyna.synergy.client.gui.fuel_cell;
 
-import com.devdyna.synergy.client.gui.BaseMenu;
+import com.devdyna.synergy.client.gui.api.BaseMenu;
 import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBE;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zContainer;
@@ -30,7 +30,7 @@ public class FuelCellMenu extends BaseMenu {
         this.data = data;
         addPlayerSlots(inv);
         addMachineSlot(blockEntity.getStorage(), 0, 54, 34);
-        addMachineOutputSlot(blockEntity.getStorage(), 1, 104, 34);
+        addMachineOutputSlot(blockEntity.getStorage(), 1, 102, 34);
         addDataSlots(data);
     }
 

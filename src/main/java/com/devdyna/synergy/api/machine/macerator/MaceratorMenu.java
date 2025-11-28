@@ -1,6 +1,6 @@
 package com.devdyna.synergy.api.machine.macerator;
 
-import com.devdyna.synergy.client.gui.BaseMenu;
+import com.devdyna.synergy.client.gui.api.BaseMenu;
 import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.network.FriendlyByteBuf;

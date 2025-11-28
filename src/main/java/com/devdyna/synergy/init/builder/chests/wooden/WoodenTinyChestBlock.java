@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.tinychests;
+package com.devdyna.synergy.init.builder.chests.wooden;
 
 import java.util.List;
 import java.util.function.Function;
@@ -30,14 +30,14 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class TinyChestBK extends BlockStorage {
+public class WoodenTinyChestBlock extends BlockStorage {
 
-    public TinyChestBK() {
-        super(Properties.of().strength(1.0f).destroyTime(1.0f).sound(SoundType.WOOD).mapColor(MapColor.WOOD));
+    public WoodenTinyChestBlock(Properties p) {
+        super(p.strength(1.0f).destroyTime(1.0f).sound(SoundType.WOOD).mapColor(MapColor.WOOD));
     }
 
-    public TinyChestBK(Properties p) {
-        this();
+    public WoodenTinyChestBlock() {
+        this(Properties.of());
     }
 
     @Override
@@ -60,12 +60,12 @@ public class TinyChestBK extends BlockStorage {
     @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new TinyChestBE(pos, state);
+        return new WoodenTinyChestBE(pos, state);
     }
 
     @Override
     protected Function<Properties, Block> getFactory() {
-        return TinyChestBK::new;
+        return WoodenTinyChestBlock::new;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class TinyChestBK extends BlockStorage {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
             TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Blocks.tiny_wooden_chest));
+        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Chests.WOODEN));
     }
 
 }

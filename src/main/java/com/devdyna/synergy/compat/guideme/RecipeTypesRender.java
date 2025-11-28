@@ -29,7 +29,7 @@ public class RecipeTypesRender implements RecipeTypeMappingSupplier {
 
     private static LytStandardRecipeBox<ItemUseRecipe> itemUse(RecipeHolder<ItemUseRecipe> r) {
         return LytStandardRecipeBox.builder()
-                .icon(Items.WOODEN_PICKAXE)
+                .icon(Items.GLASS_BOTTLE)
                 .title("Item Use")
                 .input(r.value().getInputItem())
                 .output(x.item(r.value().getOutputState()))
