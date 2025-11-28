@@ -46,6 +46,7 @@
 
 ## NEWS
 
+- [ ] Fermenting
 
 - [ ] Zodiac (mdpk) Block Scrapping
 
