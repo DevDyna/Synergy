@@ -1,6 +1,7 @@
 package com.devdyna.synergy.client.gui;
 
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
+import java.util.function.IntUnaryOperator;
 
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -61,11 +62,30 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         });
     }
 
-    // TODO need to be verified
-    protected void addMachineSlots(ItemStackHandler beSlot, int baseId,
-            int x, int y, int count, int xOf, int yOf) {
-        for (int i = 0; i < count; ++i)
-            addSlot(new SlotItemHandler(beSlot, baseId + i, x + xOf * i, y + yOf * i));
+    /**
+     * 
+     * @param beSlot
+     * @param baseId
+     * @param x
+     * @param y
+     * @param count
+     * @param xOf    (slot_index) -> value
+     * @param yOf    (slot_index) -> value
+     */
+    protected void addMachineSlots(
+            ItemStackHandler beSlot,
+            int baseId,
+            int x, int y,
+            int count,
+            IntUnaryOperator xOf,
+            IntUnaryOperator yOf) {
+        for (int i = 0; i < count; ++i) {
+            addSlot(new SlotItemHandler(
+                    beSlot,
+                    baseId + i,
+                    x + xOf.applyAsInt(i),
+                    y + yOf.applyAsInt(i)));
+        }
     }
 
     // TODO need to be verified
