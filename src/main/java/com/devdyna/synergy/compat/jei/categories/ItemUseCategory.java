@@ -1,12 +1,13 @@
 package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.api.Image;
 import com.devdyna.synergy.api.Pos;
 import com.devdyna.synergy.api.Size;
-import com.devdyna.synergy.client.gui.screenLocations;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.recipeTypes.type.ItemUseRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
+import com.devdyna.synergy.utils.TimeUtil;
 import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -18,6 +19,8 @@ import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.LiquidBlock;
 
@@ -44,30 +47,33 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
 
     @Override
     public ItemLike getIconItem() {
-        return Items.WOODEN_PICKAXE;
+        return Items.GLASS_BOTTLE;
     }
 
     @Override
     public Size setXY() {
-        return Size.of(103, 70);
+        return Size.of(91, 41);
     }
 
     @Override
     public String setBackGround() {
-        return "textures/gui/jei/click_event.png";
+        return "textures/gui/item_use.png";
     }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, ItemUseRecipe recipe, IFocusGroup focuses) {
 
-        builder.addInputSlot(5, 4).addIngredients(recipe.getInputItem());
+        if (recipe.getInputItem().test(x.item(Items.POTION)))//hardcoded jei fix , i need to investigate on future to fix
+            builder.addInputSlot(1, 1).addItemStack(PotionContents.createItemStack(Items.POTION, Potions.WATER));
+        else
+            builder.addInputSlot(1, 1).addIngredients(recipe.getInputItem());
 
         try {
             var in = recipe.getInputState();
             if (in.getBlock() instanceof LiquidBlock fluid)
-                builder.addInputSlot(45, 27).addFluidStack(fluid.fluid);
+                builder.addInputSlot(29, 24).addFluidStack(fluid.fluid);
             else
-                builder.addInputSlot(45, 27).addItemStack(x.item(in));
+                builder.addInputSlot(29, 24).addItemStack(x.item(in));
         } catch (Exception e) {
         }
 
@@ -75,26 +81,46 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
 
             var out = recipe.getOutputState();
             if (out.getBlock() instanceof LiquidBlock fluid)
-                builder.addOutputSlot(81, 49).addFluidStack(fluid.fluid);
+                builder.addOutputSlot(74, 24).addFluidStack(fluid.fluid);
             else
-                builder.addOutputSlot(81, 49).addItemStack(x.item(out));
+                builder.addOutputSlot(74, 24).addItemStack(x.item(out));
 
         } catch (Exception e) {
         }
+
+        if (recipe.getOutputitem() != null && !recipe.getOutputitem().isEmpty())
+            builder.addOutputSlot(55, 2).addItemStack(recipe.getOutputitem());
+
     }
 
     @Override
     public void draw(ItemUseRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
             double mouseY) {
+        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
         if (recipe.canBeDisabled())
-            helper.drawableBuilder(screenLocations.WARNING, 0, 0, 10, 10).setTextureSize(10, 10).build()
-                    .draw(guiGraphics, 81, 7);
+            helper.drawableBuilder(x.rl("minecraft",
+                    "textures/gui/sprites/icon/unseen_notification.png"), 0, 0, 10, 10).setTextureSize(10, 10).build()
+                    .draw(guiGraphics, 77, 3);
+
+        Image.of().rl("minecraft",
+                "textures/gui/sprites/toast/" +
+                        (TimeUtil.fireAt(600) ? "right_click" : "mouse") + ".png")
+                .size(20, 20)
+                .offset(1, 20).render(guiGraphics);
+
+        if (recipe.getOutputitem() != null && !recipe.getOutputitem().isEmpty())
+            Image.of().rl(
+                    "textures/gui/item_use_output.png")
+                    .size(32, 19)
+                    .offset(41, 1).render(guiGraphics);
+
     }
 
     @Override
     public void getTooltip(ITooltipBuilder tooltip, ItemUseRecipe recipe, IRecipeSlotsView recipeSlotsView,
             double mouseX, double mouseY) {
-        if (Pos.of(81, 7).setSize(10, 10).test(mouseX, mouseY))
+
+        if (recipe.canBeDisabled() && Pos.of(77, 3).setSize(10, 10).test(mouseX, mouseY))
             tooltip.add(Component.translatable(Main.ID + ".jei.warning.config"));
 
     }

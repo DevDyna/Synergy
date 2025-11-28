@@ -3,7 +3,6 @@ package com.devdyna.synergy.compat.jei.categories;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.api.Pos;
 import com.devdyna.synergy.api.Size;
-import com.devdyna.synergy.client.gui.screenLocations;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.recipeTypes.type.DryableBricksRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -38,15 +37,15 @@ public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecip
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, DryableBricksRecipe recipe, IFocusGroup focuses) {
 
-        builder.addInputSlot(8, 9).addItemStack(recipe.getInput());
-        builder.addOutputSlot(67, 9).addItemStack(recipe.getOutput());
+        builder.addInputSlot(8-7, 9-8).addItemStack(recipe.getInput());
+        builder.addOutputSlot(67-7, 9-8).addItemStack(recipe.getOutput());
 
     }
 
     @Override
     public void getTooltip(ITooltipBuilder tooltip, DryableBricksRecipe recipe, IRecipeSlotsView recipeSlotsView,
             double mouseX, double mouseY) {
-        if (Pos.of(35, 9).setSize(16, 16).test(mouseX, mouseY))
+        if (Pos.of(35-7, 9-8).setSize(16, 16).test(mouseX, mouseY))
             tooltip.add(Component.translatable(Main.ID + ".jei.dryable.tip"));
 
     }
@@ -64,12 +63,12 @@ public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecip
 
     @Override
     public Size setXY() {
-        return Size.of(93, 33);
+        return Size.of(77, 18);
     }
 
     @Override
     public String setBackGround() {
-        return screenLocations.CUSTOM_JEI_GUI + "delay.png";
+        return "textures/gui/delay.png";
     }
 
 }

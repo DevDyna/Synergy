@@ -43,7 +43,7 @@ public class UrnCategory extends BaseRecipeCategory<UrnRitualRecipe> {
 
     @Override
     public Size setXY() {
-        return Size.of(184, 82);
+        return Size.of(156, 64);
     }
 
     @Override
@@ -56,11 +56,11 @@ public class UrnCategory extends BaseRecipeCategory<UrnRitualRecipe> {
         recipe.getIngredients().forEach(i -> {
             var index = recipe.getIngredients().indexOf(i);
 
-            builder.addSlot(RecipeIngredientRole.INPUT, 14 + (index * 17), 9).addIngredients(i);
+            builder.addSlot(RecipeIngredientRole.INPUT, 14-12 + (index * 17), 9-7).addIngredients(i);
 
         });
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 82, 53).addItemStack(recipe.getResultItem());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 82-12, 53-7).addItemStack(recipe.getResultItem());
     }
 
 }

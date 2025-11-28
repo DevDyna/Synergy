@@ -43,7 +43,7 @@ public class ItemProviderCategory extends BaseProviderCategory<ItemProviderRecip
     @Override
     protected void defineOutput(IRecipeLayoutBuilder builder, BaseProviderRecipe<ItemStack> recipe,
             IFocusGroup focuses) {
-        builder.addOutputSlot(33, 10).addItemStack(recipe.getOutput());
+        builder.addOutputSlot(33-15, 10-8).addItemStack(recipe.getOutput());
     }
 
 

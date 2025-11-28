@@ -47,7 +47,7 @@ public class FluidProviderCategory extends BaseProviderCategory<FluidProviderRec
     protected void defineOutput(IRecipeLayoutBuilder builder, BaseProviderRecipe<FluidStack> recipe,
             IFocusGroup focuses) {
         // FluidStack size start on top of slot!
-        builder.addOutputSlot(33, 26 - Math.max((int) (recipe.getOutput().getAmount() * 0.016), 1))
+        builder.addOutputSlot(33-15, 26-8 - Math.max((int) (recipe.getOutput().getAmount() * 0.016), 1))
                 .addIngredients(NeoForgeTypes.FLUID_STACK, List.of(recipe.getOutput()))
                 .setFluidRenderer(recipe.getOutput().getAmount(), false, 16,
                         Math.max((int) (recipe.getOutput().getAmount() * 0.016), 1));

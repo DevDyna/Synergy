@@ -28,12 +28,12 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
 
     @Override
     public Size setXY() {
-        return Size.of(80, 100);
+        return Size.of(52, 88);
     }
 
     @Override
     public String setBackGround() {
-        return "textures/gui/jei/provider.png";
+        return "textures/gui/provider.png";
     }
 
     protected abstract void defineOutput(IRecipeLayoutBuilder builder, BaseProviderRecipe<J> recipe,
@@ -44,15 +44,15 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
 
         defineOutput(builder, recipe, focuses);
 
-        builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 33, 45)
+        builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 33-15, 45-8)
                 .addIngredients(x.ingredient(zBlocks.FLUID_PROVIDER.get()));
 
         try {
             var core = recipe.getCore();
             if (core.getBlock() instanceof LiquidBlock fluid)
-                builder.addInputSlot(33, 62).addFluidStack(fluid.fluid);
+                builder.addInputSlot(33-15, 62-8).addFluidStack(fluid.fluid);
             else
-                builder.addInputSlot(33, 62).addItemStack(x.item(core));
+                builder.addInputSlot(33-15, 62-8).addItemStack(x.item(core));
         } catch (Exception e) {
         }
 
@@ -60,9 +60,9 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
             var below = recipe.getBelow();
             if (!below.isAir()) {
                 if (below.getBlock() instanceof LiquidBlock fluid)
-                    builder.addInputSlot(33, 79).addFluidStack(fluid.fluid);
+                    builder.addInputSlot(33-15, 79-8).addFluidStack(fluid.fluid);
                 else
-                    builder.addInputSlot(33, 79).addItemStack(x.item(below));
+                    builder.addInputSlot(33-15, 79-8).addItemStack(x.item(below));
             }
         } catch (Exception e) {
         }
@@ -71,9 +71,9 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
             var right = recipe.getRight();
             if (!right.isAir()) {
                 if (right.getBlock() instanceof LiquidBlock fluid)
-                    builder.addInputSlot(50, 62).addFluidStack(fluid.fluid);
+                    builder.addInputSlot(50-15, 62-8).addFluidStack(fluid.fluid);
                 else
-                    builder.addInputSlot(50, 62).addItemStack(x.item(right));
+                    builder.addInputSlot(50-15, 62-8).addItemStack(x.item(right));
             }
         } catch (Exception e) {
         }
@@ -82,9 +82,9 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
             var left = recipe.getLeft();
             if (!left.isAir()) {
                 if (left.getBlock() instanceof LiquidBlock fluid)
-                    builder.addInputSlot(16, 62).addFluidStack(fluid.fluid);
+                    builder.addInputSlot(16-15, 62-8).addFluidStack(fluid.fluid);
                 else
-                    builder.addInputSlot(16, 62).addItemStack(x.item(left));
+                    builder.addInputSlot(16-15, 62-8).addItemStack(x.item(left));
             }
         } catch (Exception e) {
         }

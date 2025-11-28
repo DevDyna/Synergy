@@ -46,26 +46,26 @@ public class QuernCategory extends BaseRecipeCategory<QuernMillingRecipe> {
 
     @Override
     public Size setXY() {
-        return Size.of(80, 22);
+        return Size.of(75, 20);
     }
 
     @Override
     public String setBackGround() {
-        return "textures/gui/jei/quern.png";
+        return "textures/gui/simple.png";
     }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, QuernMillingRecipe recipe, IFocusGroup focuses) {
 
-        builder.addSlot(RecipeIngredientRole.INPUT, 5, 4).addIngredients(recipe.getInput());
+        builder.addSlot(RecipeIngredientRole.INPUT, 5-3, 4-2).addIngredients(recipe.getInput());
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 60, 4).addItemStack(recipe.getOutput());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 60-3, 4-2).addItemStack(recipe.getOutput());
     }
 
     @Override
     public void draw(QuernMillingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
             double mouseX, double mouseY) {
-
+                super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
         guiGraphics.drawString(font,
                 Component.literal(recipe.getTime() == 1 ? "no tick delay"
                         : (recipe.getTime() >= 20 ? (recipe.getTime() >= 1200 ? (recipe.getTime() >= 72000
@@ -75,7 +75,7 @@ public class QuernCategory extends BaseRecipeCategory<QuernMillingRecipe> {
                         )
                                 : recipe.getTime() / 20 + " sec" + (recipe.getTime() > 20 ? "s" : ""))
                                 : recipe.getTime() + " tick" + (recipe.getTime() > 1 ? "s" : ""))),
-                24, 16, 0xA0A0A0);
+                24-3, 16-2, 0xA0A0A0);
 
     }
 

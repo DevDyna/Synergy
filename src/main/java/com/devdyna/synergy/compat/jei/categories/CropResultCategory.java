@@ -32,11 +32,11 @@ public class CropResultCategory extends BaseRecipeCategory<CropResultRecipe> {
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CropResultRecipe recipe, IFocusGroup focuses) {
 
-        builder.addInputSlot(12, 17).addIngredients(recipe.getInput());
+        builder.addInputSlot(16, 24).addIngredients(recipe.getInput());
 
         recipe.getOutputs().forEach(s -> {
             var index = recipe.getOutputs().indexOf(s);
-            builder.addOutputSlot(53 + (index % 3 * 22), 6 + (index > 2 ? 22 : 0)).addItemStack(s);
+            builder.addOutputSlot(65 + (index % 3 * 20), 8 + (index > 2 ? 32 : 0)).addItemStack(s);
         });
 
     }
@@ -53,12 +53,12 @@ public class CropResultCategory extends BaseRecipeCategory<CropResultRecipe> {
 
     @Override
     public Size setXY() {
-        return Size.of(144, 55);
+        return Size.of(128, 64);
     }
 
     @Override
     public String setBackGround() {
-        return "textures/gui/jei/crop_result.png";
+        return "textures/gui/crop_result.png";
     }
 
 }
