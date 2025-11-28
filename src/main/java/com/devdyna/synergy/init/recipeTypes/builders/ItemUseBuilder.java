@@ -35,10 +35,13 @@ public class ItemUseBuilder implements RecipeBuilder {
     private BlockState inputState;
     private BlockState outputState;
     private boolean canBeDisabled;
+    private ItemStack outputItem = null;
+    private boolean renderOnly;
     private final Map<String, Criterion<?>> criteria;
 
     public ItemUseBuilder() {
         this.canBeDisabled = false;
+        this.renderOnly = false;
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
@@ -69,6 +72,11 @@ public class ItemUseBuilder implements RecipeBuilder {
         return this;
     }
 
+    public ItemUseBuilder isRenderOnly() {
+        this.renderOnly = true;
+        return this;
+    }
+
     public ItemUseBuilder outputBlock(BlockState b) {
         this.outputState = b;
         return this;
@@ -80,6 +88,22 @@ public class ItemUseBuilder implements RecipeBuilder {
 
     public ItemUseBuilder outputBlock(Block b) {
         return outputBlock(b.defaultBlockState());
+    }
+
+    /**
+     * Optional
+     */
+    public ItemUseBuilder outputItem(ItemStack i) {
+        this.outputItem = i;
+        return this;
+    }
+
+    /**
+     * Optional
+     */
+    public ItemUseBuilder outputItem(Item i) {
+        this.outputItem = x.item(i);
+        return this;
     }
 
     public ItemUseBuilder inputBlock(DeferredHolder<Block, ?> b) {
@@ -133,7 +157,7 @@ public class ItemUseBuilder implements RecipeBuilder {
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement$builder::addCriterion);
         ItemUseRecipe shapelessrecipe = new ItemUseRecipe(inputItem,
-                inputState, outputState, canBeDisabled);
+                inputState, outputState, canBeDisabled, outputItem, renderOnly);
         pRecipeOutput.accept(pId, shapelessrecipe,
                 advancement$builder.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
     }

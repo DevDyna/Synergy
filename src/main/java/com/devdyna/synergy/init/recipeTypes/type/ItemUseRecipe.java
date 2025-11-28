@@ -21,16 +21,20 @@ import net.minecraft.world.level.block.state.BlockState;
 public class ItemUseRecipe implements Recipe<UseItemInput> {
 
     private final Ingredient inputItem;
+    private final ItemStack outputitem;
     private final BlockState inputState;
     private final BlockState outputState;
     private final boolean canBeDisabled;
+    private final boolean renderOnly;
 
     public ItemUseRecipe(Ingredient inputItem,
-            BlockState inputState, BlockState outputState, boolean canBeDisabled) {
+            BlockState inputState, BlockState outputState, boolean canBeDisabled,ItemStack outputitem,boolean renderOnly) {
         this.inputItem = inputItem;
         this.inputState = inputState;
         this.outputState = outputState;
         this.canBeDisabled = canBeDisabled;
+        this.outputitem = outputitem;
+        this.renderOnly = renderOnly;
     }
 
     public boolean matches(UseItemInput r, Level l) {
@@ -81,6 +85,14 @@ public class ItemUseRecipe implements Recipe<UseItemInput> {
 
     public boolean canBeDisabled() {
         return canBeDisabled;
+    }
+
+    public ItemStack getOutputitem() {
+        return outputitem;
+    }
+
+    public boolean isRenderOnly(){
+        return renderOnly;
     }
 
 }

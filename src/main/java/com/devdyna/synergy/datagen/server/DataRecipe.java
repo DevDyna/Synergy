@@ -241,6 +241,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 UrnRitualBuilder.of()
                                 .add(zItems.SILVERFISH_DUST)
+                                .add(zItemTag.DUST_QUARTZ)
                                 .output(zItems.SILICON_SHARD, 4)
                                 .group(ID).unlockedBy().save(c);
 
@@ -286,12 +287,24 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .canBeDisabled()
                                 .unlockedBy().save(c);
 
+                ItemUseBuilder.of()
+                                .inputItem(Items.POTION)
+                                .inputBlock(Blocks.DIRT)
+                                .outputBlock(Blocks.MUD)
+                                .outputItem(Items.GLASS_BOTTLE)
+                                .isRenderOnly()
+                                .unlockedBy().save(c);
+
                 QuernMillingBuilder.of().input(ItemTags.COALS)
                                 .output(zItems.CARBON_DUST).unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(zItems.CREEPER_GALL)
                                 .output(x.item(zItems.WASTE_FRAGMENT, 3))
                                 .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(zItemTag.DUST_URANIUM)
+                                .output(x.item(zItems.WASTE_FRAGMENT, 9))
+                                .unlockedBy().save(c, "_alt");
 
                 QuernMillingBuilder.of().input(Items.DIAMOND)
                                 .output(zItems.DIAMOND_DUST)

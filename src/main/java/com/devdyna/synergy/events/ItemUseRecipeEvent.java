@@ -34,7 +34,10 @@ public class ItemUseRecipeEvent {
 
             var rcp = recipe.get().value();
 
-            if (rcp.canBeDisabled() && Common.DISABLE_ITEM_USE_RECIPE.get())
+            if (rcp.canBeDisabled() && Common.DISABLE_ITEM_USE_RECIPE.get()) // disabled via config
+                return;
+
+            if (rcp.isRenderOnly()) // only jei , no event
                 return;
 
             if (!player.isCreative()) {
