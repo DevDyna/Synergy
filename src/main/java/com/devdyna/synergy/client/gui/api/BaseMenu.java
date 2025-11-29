@@ -74,6 +74,20 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         });
     }
 
+    protected void addMachineInputSlot(ItemStackHandler beSlot, int id, int x, int y) {
+        addSlot(new SlotItemHandler(beSlot, id, x, y) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return true;
+            }
+
+            @Override
+            public boolean mayPickup(Player playerIn) {
+                return true;
+            }
+        });
+    }
+
     /**
      * 
      * @param beSlot
