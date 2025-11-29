@@ -81,7 +81,7 @@ public class Configurator extends Item {
 
                         t.add(Component.translatable(Main.ID + "." + zStatic.Items.configurator + ".dim")
                                         .append(Component
-                                                        .literal(dim.location().getPath())
+                                                        .literal(dim.location().toString())
                                                         .withStyle(ChatFormatting.GREEN)));
                         t.add(Component.translatable(Main.ID + "." + zStatic.Items.configurator + ".blockpos")
 
