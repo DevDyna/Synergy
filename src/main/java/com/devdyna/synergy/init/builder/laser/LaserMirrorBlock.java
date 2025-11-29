@@ -1,10 +1,13 @@
 package com.devdyna.synergy.init.builder.laser;
 
 import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -30,6 +33,11 @@ public class LaserMirrorBlock extends Block implements IBlockLaser {
     }
 
     @Override
+    public boolean canConnectRedstone(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
+        return side.getAxis().isHorizontal();
+    }
+
+    @Override
     public boolean isPathfindable() {
         return isPathfindable();
     }
@@ -49,6 +57,22 @@ public class LaserMirrorBlock extends Block implements IBlockLaser {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
         b.add(BlockStateProperties.INVERTED);
     }
+
+    private static final Map<BlockPos, Boolean> poweredMap = new WeakHashMap<>();
+
+@Override
+public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+    boolean powered = level.hasNeighborSignal(pos);
+    boolean wasPowered = poweredMap.getOrDefault(pos, false);
+
+    if (powered && !wasPowered) {
+        level.setBlockAndUpdate(pos, state.cycle(BlockStateProperties.INVERTED));
+    }
+
+    poweredMap.put(pos, powered);
+}
+
+
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
