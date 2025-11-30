@@ -5,6 +5,7 @@ import com.devdyna.synergy.api.plants.builder.BaseSeedItem;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.tools.Battery;
+import com.devdyna.synergy.init.builder.tools.CakeStick;
 import com.devdyna.synergy.init.builder.tools.PlantMixture;
 import com.devdyna.synergy.init.builder.tools.Configurator;
 import com.devdyna.synergy.init.builder.tools.Croock;
@@ -432,6 +433,9 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> ADOBE_BALL = Material
                         .resourceItem(zStatic.DryableBricks.ball.adobe);
+
+        public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,
+                        () -> new CakeStick());
         // ---------------------------------------------------------------------------------------//
 
 }

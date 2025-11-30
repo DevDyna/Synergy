@@ -86,6 +86,8 @@ public class zStatic {
         public static String glowstone_mixture = "glowstone_mixture";
         public static String amethyst_mixture = "amethyst_mixture";
 
+        public static String cake_stick = "cake_stick";
+
         // TODO need to rework
         public static String refactorizer = "pipe_refactorizer";
 

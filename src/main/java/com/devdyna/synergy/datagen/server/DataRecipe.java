@@ -668,6 +668,15 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(Fluids.LAVA.getSource(), 1)
                                 .unlockedBy().save(c);
 
+                ShapedRecipeBuilder.shaped(MISC, zItems.CAKE_STICK.get())
+                                .pattern(" C")
+                                .pattern("S ")
+                                .define('C', Items.CAKE)
+                                .define('S', Items.STICK)
+                                .unlockedBy(getHasName(Items.CAKE),
+                                                has(Items.CAKE))
+                                .save(c);
+
         }
 
 }

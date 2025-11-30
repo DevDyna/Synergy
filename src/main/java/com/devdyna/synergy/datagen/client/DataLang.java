@@ -8,7 +8,6 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.ClazzUtil;
-
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -21,6 +20,7 @@ public class DataLang extends LanguageProvider {
 
         private String TIP_COLOR = "§7";
 
+        @SuppressWarnings("deprecation")
         @Override
         protected void addTranslations() {
 
@@ -34,7 +34,7 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zBlock.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCrop.getEntries().forEach(b -> addBlock(b, named(b)));
 
-                ClazzUtil.getAllzItems().forEach(c -> addItem(c, named(c)));
+                ClazzUtil.getAllzItems().stream().filter(d->!d.is(zItems.CAKE_STICK)).forEach(c -> addItem(c, named(c)));
 
                 zItems.zBucketItems.getEntries().forEach(b -> addItem(b, named(b)));
 
@@ -252,12 +252,16 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + "." + zStatic.Lazers.machine_gun,
                                 TIP_COLOR + "Generate a laser line when has ForgeEnergy and a redstone signal");
-                
+
                 add(Main.ID + "." + zStatic.Lazers.lens,
                                 TIP_COLOR + "Repeat the signal of any laser line when pass through");
                 add(Main.ID + "." + zStatic.Lazers.mirror, TIP_COLOR + "Rotate of 90° any laser line");
                 add(Main.ID + "." + zStatic.Lazers.sensor, TIP_COLOR
                                 + "Emit a redstone signal and generate a small amount of ForgeEnergy when a laser line pass through");
+
+                add(Main.ID + "." + zStatic.Items.cake_stick, TIP_COLOR + "Place cake slices");
+
+                addItem(zItems.CAKE_STICK, "The Cake Stick");
 
         }
 
