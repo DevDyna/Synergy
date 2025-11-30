@@ -1,0 +1,33 @@
+{
+  "format_version": "1.21.6",
+  "credit": "Made with Blockbench",
+  "ambientocclusion": false,
+  "render_type": "cutout",
+  "textures": {
+    "particle": "block/repeater_on",
+    "lit": "block/redstone_torch"
+  },
+  "elements": [
+    {
+      "from": [7, 7, 12],
+      "to": [9, 7, 14],
+      "faces": { "up": { "uv": [7, 6, 9, 8], "texture": "#lit" } }
+    },
+    {
+      "from": [7, 2, 11],
+      "to": [9, 8, 15],
+      "faces": {
+        "east": { "uv": [6, 5, 10, 11], "texture": "#lit" },
+        "west": { "uv": [6, 5, 10, 11], "texture": "#lit" }
+      }
+    },
+    {
+      "from": [6, 2, 12],
+      "to": [10, 8, 14],
+      "faces": {
+        "north": { "uv": [6, 5, 10, 11], "texture": "#lit" },
+        "south": { "uv": [6, 5, 10, 11], "texture": "#lit" }
+      }
+    }
+  ]
+}
