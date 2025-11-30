@@ -2,13 +2,12 @@ package com.devdyna.synergy.events;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.types.zItemTag;
-
 import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 public class ItemTooltipEvents {
-    
+
     @SubscribeEvent
     public static void itemTooltipPlaceable(ItemTooltipEvent event) {
 
@@ -47,11 +46,12 @@ public class ItemTooltipEvents {
         var tooltip = event.getToolTip();
 
         if (item.is(zItemTag.REMOVE_ENTITY_GROWING)) {
-            tooltip.add(1,Component.translatable(Main.ID + ".remove_entity_growing"));
+            tooltip.add(1, Component.translatable(Main.ID + ".remove_entity_growing"));
         }
         if (item.is(zItemTag.ADD_ENTITY_GROWING)) {
-            tooltip.add(1,Component.translatable(Main.ID + ".add_entity_growing"));
+            tooltip.add(1, Component.translatable(Main.ID + ".add_entity_growing"));
         }
-        
+
     }
+
 }
