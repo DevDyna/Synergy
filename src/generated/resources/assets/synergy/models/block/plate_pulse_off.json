@@ -1,0 +1,6 @@
+{
+  "parent": "synergy:block/redstone/plate_off",
+  "textures": {
+    "top": "synergy:block/redstone/pulse_off"
+  }
+}

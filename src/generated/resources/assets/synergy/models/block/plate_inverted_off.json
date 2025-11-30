@@ -1,0 +1,6 @@
+{
+  "parent": "synergy:block/redstone/plate_on",
+  "textures": {
+    "top": "minecraft:block/repeater"
+  }
+}
