@@ -99,7 +99,12 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.LASER_MACHINE,
                                 zBlocks.LASER_LENS,
                                 zBlocks.LASER_MIRROR,
-                                zBlocks.LASER_SENSOR
+                                zBlocks.LASER_SENSOR,
+
+
+
+                                zBlocks.RECURSIVE_REPEATER,
+                                zBlocks.PULSE_REPEATER
 
                 ).forEach(b -> dropSelf(b.get()));
 

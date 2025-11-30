@@ -128,6 +128,12 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                                         modLoc("block/harvester/top")));
                                 });
 
+
+
+
+                                repeater(zBlocks.PULSE_REPEATER.get());
+                                repeater(zBlocks.RECURSIVE_REPEATER.get());
+
         }
 
 }

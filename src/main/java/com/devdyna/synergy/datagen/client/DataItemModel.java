@@ -201,7 +201,6 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("layer0",
                                                 modLoc("item/resources/packed_mud_ball"));
 
-                                                
                 withExistingParent(zBlocks.LASER_MACHINE.getRegisteredName(), modLoc("block/laser_machine_gun/off"));
                 withExistingParent(zBlocks.LASER_LENS.getRegisteredName(), modLoc("block/laser_lens"));
                 withExistingParent(zBlocks.LASER_MIRROR.getRegisteredName(), modLoc("block/laser_mirror"));
@@ -214,6 +213,11 @@ public class DataItemModel extends ExtraItemModelProvider {
                                         modLoc("block/harvester/bottom"),
                                         modLoc("block/harvester/top"));
                 });
+
+                withExistingParent(x.path(zBlocks.PULSE_REPEATER.get()), "minecraft:item/generated")
+                                .texture("layer0", modLoc("item/redstone/pulse_repeater"));
+                withExistingParent(x.path(zBlocks.RECURSIVE_REPEATER.get()), "minecraft:item/generated")
+                                .texture("layer0", modLoc("item/redstone/recursive_repeater"));
 
         }
 

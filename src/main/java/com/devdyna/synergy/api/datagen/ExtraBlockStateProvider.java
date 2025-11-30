@@ -2,6 +2,8 @@ package com.devdyna.synergy.api.datagen;
 
 import static com.devdyna.synergy.Main.ID;
 
+import java.util.List;
+
 import com.devdyna.synergy.api.zFluid;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeType;
@@ -12,6 +14,7 @@ import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.utils.DataGenUtil;
 import com.devdyna.synergy.utils.x;
 
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -20,8 +23,10 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile.ExistingModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -314,6 +319,68 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                                                 .toYRot() + 180) % 360)
                                                 .build());
 
+        }
+
+        protected void repeater(Block b) {
+
+                var type = x.id(b.asItem()).getPath().replace("_repeater", "");
+                var model = getMultipartBuilder(b);
+
+                var delays = List.of(1, 2, 3, 4);
+                var powered = List.of(true, false);
+
+                var dirs = Direction.Plane.HORIZONTAL.stream().toList();
+
+                for (Direction dir : dirs) {
+                        for (boolean status : powered) {
+
+                                model.part().modelFile(plate(status, type))
+                                                .rotationY(dir.get2DDataValue() * 90)
+
+                                                .addModel()
+
+                                                .condition(BlockStateProperties.HORIZONTAL_FACING, dir)
+                                                .condition(BlockStateProperties.POWERED, status);
+
+                                model.part().modelFile(output(status, type))
+                                                .rotationY(dir.get2DDataValue() * 90).addModel()
+                                                .condition(BlockStateProperties.HORIZONTAL_FACING, dir)
+                                                .condition(BlockStateProperties.POWERED, status);
+
+                                for (int delay : delays) {
+
+                                        model.part().modelFile(input(status, delay))
+                                                        .rotationY(dir.get2DDataValue() * 90).addModel()
+                                                        .condition(BlockStateProperties.HORIZONTAL_FACING, dir)
+                                                        .condition(BlockStateProperties.POWERED, status)
+                                                        .condition(BlockStateProperties.DELAY, delay);
+
+                                }
+
+                        }
+                }
+
+        }
+
+        // "recursive"/"pulse"
+        private BlockModelBuilder plate(boolean flag, String type) {
+                return models()
+                                .withExistingParent(
+                                                "plate_" + type + "_" +
+                                                                (flag ? "on" : "off"),
+                                                modLoc("block/redstone/plate_" + (flag ? "on" : "off")))
+                                .texture("top", modLoc("block/redstone/" + type + "_" + (flag ? "on" : "off")));
+        }
+
+        private ExistingModelFile output(boolean flag, String type) {
+                return models().getExistingFile(modLoc(
+                                "block/redstone/output/" + (type.equals("pulse") ? "2_" : "1_")
+                                                + (flag ? "on" : "off")));
+        }
+
+        private ExistingModelFile input(boolean flag, int delay) {
+                return models().getExistingFile(
+                                modLoc("block/redstone/input/" + delay + "_" + (flag ? "on" : "off")));
         }
 
 }
