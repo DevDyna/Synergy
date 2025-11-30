@@ -31,8 +31,8 @@ public class PulseRepeater extends DiodeBlock {
                 this.stateDefinition
                         .any()
                         .setValue(FACING, Direction.NORTH)
-                        .setValue(DELAY, Integer.valueOf(1))
-                        .setValue(POWERED, Boolean.valueOf(false)));
+                        .setValue(DELAY, 1)
+                        .setValue(POWERED, false));
     }
 
     public PulseRepeater() {
