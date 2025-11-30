@@ -128,11 +128,21 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                                         modLoc("block/harvester/top")));
                                 });
 
+                repeater(zBlocks.PULSE_REPEATER.get());
+                repeater(zBlocks.RECURSIVE_REPEATER.get());
+                repeater(zBlocks.INVERTED_REPEATER.get(), (a, b) -> 
+                models().withExistingParent("plate_inverted_" +
+                                                                (a ? "on" : "off"),
+                                                                modLoc("block/redstone/plate_"
+                                                                                + (a ? "off" : "on")))
+                                                                                .texture("top", mcLoc("block/repeater"+(a ? "_on" : "")))
 
-
-
-                                repeater(zBlocks.PULSE_REPEATER.get());
-                                repeater(zBlocks.RECURSIVE_REPEATER.get());
+                                , (a, b) -> models().getExistingFile(modLoc(
+                                        "block/redstone/output/1_"
+                                                        + (a ? "on" : "off"))),
+                                (a, b,c) -> models().getExistingFile(modLoc(
+                                                "block/redstone/input/"+c+"_"
+                                                                + (a ? "off" : "on"))));
 
         }
 

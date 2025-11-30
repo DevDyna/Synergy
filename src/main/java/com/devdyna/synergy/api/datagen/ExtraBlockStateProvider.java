@@ -3,7 +3,7 @@ package com.devdyna.synergy.api.datagen;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.List;
-
+import java.util.function.BiFunction;
 import com.devdyna.synergy.api.zFluid;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeType;
@@ -16,6 +16,7 @@ import com.devdyna.synergy.utils.x;
 
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.blockstates.PropertyDispatch.TriFunction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
@@ -23,10 +24,9 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
-import net.neoforged.neoforge.client.model.generators.ModelFile.ExistingModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -323,7 +323,10 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
 
         protected void repeater(Block b) {
 
-                var type = x.id(b.asItem()).getPath().replace("_repeater", "");
+                var type = x.id(b.asItem()).getPath().replace("_repeater", "") ;
+
+                var index = type.equals("pulse") ? "2" : "1";
+
                 var model = getMultipartBuilder(b);
 
                 var delays = List.of(1, 2, 3, 4);
@@ -334,7 +337,13 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                 for (Direction dir : dirs) {
                         for (boolean status : powered) {
 
-                                model.part().modelFile(plate(status, type))
+                                model.part().modelFile(models()
+                                                .withExistingParent("plate_" + type + "_" +
+                                                                (status ? "on" : "off"),
+                                                                modLoc("block/redstone/plate_"
+                                                                                + (status ? "on" : "off")))
+                                                .texture("top", modLoc("block/redstone/" + type + "_"
+                                                                + (status ? "on" : "off"))))
                                                 .rotationY(dir.get2DDataValue() * 90)
 
                                                 .addModel()
@@ -342,14 +351,18 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                                 .condition(BlockStateProperties.HORIZONTAL_FACING, dir)
                                                 .condition(BlockStateProperties.POWERED, status);
 
-                                model.part().modelFile(output(status, type))
+                                model.part().modelFile(models().getExistingFile(modLoc(
+                                                "block/redstone/output/" + index + "_"
+                                                                + (status ? "on" : "off"))))
                                                 .rotationY(dir.get2DDataValue() * 90).addModel()
                                                 .condition(BlockStateProperties.HORIZONTAL_FACING, dir)
                                                 .condition(BlockStateProperties.POWERED, status);
 
                                 for (int delay : delays) {
 
-                                        model.part().modelFile(input(status, delay))
+                                        model.part().modelFile(models().getExistingFile(
+                                                        modLoc("block/redstone/input/" + delay + "_"
+                                                                        + (status ? "on" : "off"))))
                                                         .rotationY(dir.get2DDataValue() * 90).addModel()
                                                         .condition(BlockStateProperties.HORIZONTAL_FACING, dir)
                                                         .condition(BlockStateProperties.POWERED, status)
@@ -362,25 +375,68 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
 
         }
 
-        // "recursive"/"pulse"
-        private BlockModelBuilder plate(boolean flag, String type) {
-                return models()
-                                .withExistingParent(
-                                                "plate_" + type + "_" +
-                                                                (flag ? "on" : "off"),
-                                                modLoc("block/redstone/plate_" + (flag ? "on" : "off")))
-                                .texture("top", modLoc("block/redstone/" + type + "_" + (flag ? "on" : "off")));
-        }
+        protected void repeater(Block b,
+                        BiFunction<Boolean, Direction, ModelFile> plate,
+                        BiFunction<Boolean, Direction, ModelFile> output,
+                        TriFunction<Boolean, Direction, Integer, ModelFile> input) {
 
-        private ExistingModelFile output(boolean flag, String type) {
-                return models().getExistingFile(modLoc(
-                                "block/redstone/output/" + (type.equals("pulse") ? "2_" : "1_")
-                                                + (flag ? "on" : "off")));
-        }
+                var type = x.id(b.asItem()).getPath().replace("_repeater", "");
 
-        private ExistingModelFile input(boolean flag, int delay) {
-                return models().getExistingFile(
-                                modLoc("block/redstone/input/" + delay + "_" + (flag ? "on" : "off")));
+                if (plate == null)
+                        plate = (status, dir) -> models()
+                                        .withExistingParent("plate_" + type + "_" +
+                                                        (status ? "on" : "off"),
+                                                        modLoc("block/redstone/plate_"
+                                                                        + (status ? "on" : "off")))
+                                        .texture("top", modLoc("block/redstone/" + type + "_"
+                                                        + (status ? "on" : "off")));
+
+                if (output == null)
+                        output = (status, dir) -> models().getExistingFile(modLoc(
+                                        "block/redstone/output/" + type + "_"
+                                                        + (status ? "on" : "off")));
+
+                if (input == null)
+                        input = (status, dir, delay) -> models().getExistingFile(
+                                        modLoc("block/redstone/input/" + delay + "_"
+                                                        + (status ? "on" : "off")));
+
+                var model = getMultipartBuilder(b);
+
+                var delays = List.of(1, 2, 3, 4);
+                var powered = List.of(true, false);
+
+                var dirs = Direction.Plane.HORIZONTAL.stream().toList();
+
+                for (Direction dir : dirs) {
+                        for (boolean status : powered) {
+
+                                model.part().modelFile(plate.apply(status, dir))
+                                                .rotationY(dir.get2DDataValue() * 90)
+
+                                                .addModel()
+
+                                                .condition(BlockStateProperties.HORIZONTAL_FACING, dir)
+                                                .condition(BlockStateProperties.POWERED, status);
+
+                                model.part().modelFile(output.apply(status, dir))
+                                                .rotationY(dir.get2DDataValue() * 90).addModel()
+                                                .condition(BlockStateProperties.HORIZONTAL_FACING, dir)
+                                                .condition(BlockStateProperties.POWERED, status);
+
+                                for (int delay : delays) {
+
+                                        model.part().modelFile(input.apply(status, dir, delay))
+                                                        .rotationY(dir.get2DDataValue() * 90).addModel()
+                                                        .condition(BlockStateProperties.HORIZONTAL_FACING, dir)
+                                                        .condition(BlockStateProperties.POWERED, status)
+                                                        .condition(BlockStateProperties.DELAY, delay);
+
+                                }
+
+                        }
+                }
+
         }
 
 }
