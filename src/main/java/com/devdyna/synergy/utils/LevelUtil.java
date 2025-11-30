@@ -227,7 +227,8 @@ public class LevelUtil {
     }
 
     /**
-     * @param rgbColor like 16711680 [redstone | RGB(255, 0, 0)]
+     * @param rgbColor like 16711680 [redstone | RGB(255, 0, 0)] ||
+     *                 Vec3.fromRGB24(16711680).toVector3f()
      */
     public static void addDustParticle(int rgbColor, ServerLevel level, BlockPos pos, boolean isRandom,
             int count) {
@@ -350,6 +351,22 @@ public class LevelUtil {
                     1,
                     0, 0, 0, 0);
         }
+    }
+
+    public static void addRepeaterRedstoneParticles(Level level, BlockPos pos, Direction dir, int delay) {
+
+        float f = -5.0F;
+        if (level.random.nextBoolean()) {
+            f = delay * 2 - 1;
+        }
+
+        f /= 16.0F;
+
+        level.addParticle(DustParticleOptions.REDSTONE,
+                pos.getX() + 0.5 + (level.random.nextDouble() - 0.5) * 0.2 + f * dir.getStepX(),
+                pos.getY() + 0.4 + (level.random.nextDouble() - 0.5) * 0.2,
+                pos.getZ() + 0.5 + (level.random.nextDouble() - 0.5) * 0.2 + f * dir.getStepZ(),
+                0.0, 0.0, 0.0);
     }
 
 }
