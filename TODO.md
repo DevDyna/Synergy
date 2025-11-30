@@ -48,6 +48,10 @@
 
 ## NEWS
 
+- [ ] Laser Infusion RecipeType
+
+- [ ] Laser Dynamo (power gen)
+
 - [ ] Fermenting
 
 - [ ] Zodiac (mdpk) Block Scrapping
