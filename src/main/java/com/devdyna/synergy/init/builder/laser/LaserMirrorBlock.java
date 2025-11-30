@@ -34,7 +34,7 @@ public class LaserMirrorBlock extends Block implements IBlockLaser {
 
     @Override
     public boolean canConnectRedstone(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
-        return side.getAxis().isHorizontal();
+        return side != null && side.getAxis().isHorizontal();
     }
 
     @Override
