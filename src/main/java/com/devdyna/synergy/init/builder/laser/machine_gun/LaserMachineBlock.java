@@ -10,6 +10,7 @@ import com.devdyna.synergy.api.coreBE.block.TickingBlock;
 import com.devdyna.synergy.init.builder.laser.IBlockLaser;
 import com.devdyna.synergy.init.types.zItemTag;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -98,10 +99,19 @@ public class LaserMachineBlock extends TickingBlock implements IBlockLaser {
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
-            BlockHitResult hitResult) {
-        level.setBlockAndUpdate(pos, level.getBlockState(pos).cycle(BlockStateProperties.HORIZONTAL_FACING));
-        return InteractionResult.SUCCESS;
+    protected InteractionResult useWithoutItem(
+            BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+
+        if (!level.isClientSide)
+            level.setBlockAndUpdate(pos,
+                    state.setValue(BlockStateProperties.HORIZONTAL_FACING,
+                            (player.isShiftKeyDown()
+                                    ? state.getValue(BlockStateProperties.HORIZONTAL_FACING)
+                                            .getCounterClockWise(Direction.Axis.Y)
+                                    : state.getValue(BlockStateProperties.HORIZONTAL_FACING)
+                                            .getClockWise(Direction.Axis.Y))));
+
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Nullable
