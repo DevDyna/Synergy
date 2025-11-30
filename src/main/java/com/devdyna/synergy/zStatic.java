@@ -175,6 +175,7 @@ public class zStatic {
 
         public static String pulse_repeater = "pulse_repeater";
         public static String recursive_repeater = "recursive_repeater";
+        public static String inverted_repeater = "inverted_repeater";
     }
 
     public class Chests {
