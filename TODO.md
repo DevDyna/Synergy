@@ -44,6 +44,8 @@
 
 - [ ] datagen recipes group id rework
 
+- [ ] replace some "brute-force" particles to animateTick
+
 ## NEWS
 
 - [ ] Fermenting
