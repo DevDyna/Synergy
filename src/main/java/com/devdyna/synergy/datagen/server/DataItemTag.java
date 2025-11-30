@@ -237,6 +237,8 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.ADD_ENTITY_GROWING).add(Items.GLISTERING_MELON_SLICE);
 
+                tag(zItemTag.REPEATERS).add(zBlocks.INVERTED_REPEATER.get().asItem(),Items.REPEATER);
+
         }
 
 }
