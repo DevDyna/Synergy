@@ -60,25 +60,35 @@ public class LaserMirrorBlock extends Block implements IBlockLaser {
 
     private static final Map<BlockPos, Boolean> poweredMap = new WeakHashMap<>();
 
-@Override
-public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
-    boolean powered = level.hasNeighborSignal(pos);
-    boolean wasPowered = poweredMap.getOrDefault(pos, false);
+    @Override
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos,
+            boolean isMoving) {
+        boolean powered = level.hasNeighborSignal(pos);
+        boolean wasPowered = poweredMap.getOrDefault(pos, false);
 
-    if (powered && !wasPowered) {
-        level.setBlockAndUpdate(pos, state.cycle(BlockStateProperties.INVERTED));
+        if (powered && !wasPowered) {
+            level.setBlockAndUpdate(pos, state.cycle(BlockStateProperties.INVERTED));
+        }
+
+        poweredMap.put(pos, powered);
     }
-
-    poweredMap.put(pos, powered);
-}
-
-
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
             BlockHitResult hitResult) {
         level.setBlockAndUpdate(pos, level.getBlockState(pos).cycle(BlockStateProperties.INVERTED));
         return InteractionResult.SUCCESS;
+    }
+
+    public Direction getMirrorDir(Direction dir, BlockState state) {
+        return switch (state.getValue(BlockStateProperties.INVERTED) ? dir
+                : dir.getOpposite()) {
+            case Direction.NORTH -> Direction.EAST;
+            case Direction.SOUTH -> Direction.WEST;
+            case Direction.EAST -> Direction.NORTH;
+            case Direction.WEST -> Direction.SOUTH;
+            default -> null;
+        };
     }
 
     @Override
