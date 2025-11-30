@@ -160,9 +160,7 @@ public class zItemTag {
 
         public static final TagKey<Item> REMOVE_ENTITY_GROWING = Material.tagItem("remove_entity_growing");
         public static final TagKey<Item> ADD_ENTITY_GROWING = Material.tagItem("add_entity_growing");
-       
-       
-       
-        public static final TagKey<Item> REPEATERS = Material.tagItem("repeater","c");
+
+        public static final TagKey<Item> REPEATERS = Material.tagItem("repeater", "c");
 
 }
