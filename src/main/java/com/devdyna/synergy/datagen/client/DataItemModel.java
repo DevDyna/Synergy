@@ -218,6 +218,8 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("layer0", modLoc("item/redstone/pulse_repeater"));
                 withExistingParent(x.path(zBlocks.RECURSIVE_REPEATER.get()), "minecraft:item/generated")
                                 .texture("layer0", modLoc("item/redstone/recursive_repeater"));
+                withExistingParent(x.path(zBlocks.INVERTED_REPEATER.get()), "minecraft:item/generated")
+                                .texture("layer0", modLoc("item/redstone/inverted_repeater"));
 
         }
 
