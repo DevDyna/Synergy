@@ -91,9 +91,9 @@ public class RecursiveRepeater extends DiodeBlock {
         boolean powered = level.getSignal(pos.relative(input), input) > 0;
 
         if (!powered) {
-            if (state.getValue(POWERED)) {
+            if (state.getValue(POWERED)) 
                 level.setBlock(pos, state.setValue(POWERED, false), 2);
-            }
+            
             return;
         }
 
