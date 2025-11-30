@@ -19,6 +19,7 @@ import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.reactor.cooler.*;
 import com.devdyna.synergy.init.builder.reactor.moderator.*;
+import com.devdyna.synergy.init.builder.redstone.InvertedRepeater;
 import com.devdyna.synergy.init.builder.redstone.PulseRepeater;
 import com.devdyna.synergy.init.builder.redstone.RecursiveRepeater;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
@@ -354,6 +355,10 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> RECURSIVE_REPEATER = Material.registerItemBlock(
                         zStatic.Blocks.recursive_repeater,
                         () -> new RecursiveRepeater());
+
+        public static final DeferredHolder<Block, Block> INVERTED_REPEATER = Material.registerItemBlock(
+                        zStatic.Blocks.inverted_repeater,
+                        () -> new InvertedRepeater());
 
         // ---------------------------------------------------------------------------------------//
 
