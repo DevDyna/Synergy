@@ -584,7 +584,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern("PB")
                                 .pattern("R ")
                                 .define('B', zItems.METAL_BOLTS.get())
-                                .define('R', Items.REPEATER)
+                                .define('R', zItemTag.REPEATERS)
                                 .define('P', zItems.WIRED_STONE_PLATE.get())
                                 .unlockedBy(ID, has(zItems.WIRED_STONE_PLATE.get()))
                                 .group(ID).save(c);
