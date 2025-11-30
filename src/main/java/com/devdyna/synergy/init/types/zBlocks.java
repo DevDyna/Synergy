@@ -19,6 +19,8 @@ import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.reactor.cooler.*;
 import com.devdyna.synergy.init.builder.reactor.moderator.*;
+import com.devdyna.synergy.init.builder.redstone.PulseRepeater;
+import com.devdyna.synergy.init.builder.redstone.RecursiveRepeater;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.urn.UrnBlock;
@@ -344,6 +346,14 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> LASER_SENSOR = Material.registerItemBlock(
                         zStatic.Lazers.sensor,
                         () -> new LaserSensorBlock());
+
+        public static final DeferredHolder<Block, Block> PULSE_REPEATER = Material.registerItemBlock(
+                        zStatic.Blocks.pulse_repeater,
+                        () -> new PulseRepeater());
+
+        public static final DeferredHolder<Block, Block> RECURSIVE_REPEATER = Material.registerItemBlock(
+                        zStatic.Blocks.recursive_repeater,
+                        () -> new RecursiveRepeater());
 
         // ---------------------------------------------------------------------------------------//
 
