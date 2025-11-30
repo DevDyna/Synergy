@@ -9,36 +9,30 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DiodeBlock;
-import net.minecraft.world.level.block.ObserverBlock;
-import net.minecraft.world.level.block.RepeaterBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
+@SuppressWarnings("null")
 public class PulseRepeater extends DiodeBlock {
 
     private static final Map<BlockPos, Boolean> poweredMap = new WeakHashMap<>();
-        public static final IntegerProperty DELAY = BlockStateProperties.DELAY;
-
-
+    public static final IntegerProperty DELAY = BlockStateProperties.DELAY;
 
     public PulseRepeater(Properties properties) {
         super(properties);
         this.registerDefaultState(
-            this.stateDefinition
-                .any()
-                .setValue(FACING, Direction.NORTH)
-                .setValue(DELAY, Integer.valueOf(1))
-                .setValue(POWERED, Boolean.valueOf(false))
-        );
+                this.stateDefinition
+                        .any()
+                        .setValue(FACING, Direction.NORTH)
+                        .setValue(DELAY, Integer.valueOf(1))
+                        .setValue(POWERED, Boolean.valueOf(false)));
     }
 
     public PulseRepeater() {
@@ -46,7 +40,8 @@ public class PulseRepeater extends DiodeBlock {
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
+            BlockHitResult hitResult) {
         if (!player.getAbilities().mayBuild) {
             return InteractionResult.PASS;
         } else {
@@ -57,7 +52,7 @@ public class PulseRepeater extends DiodeBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, POWERED,DELAY);
+        builder.add(FACING, POWERED, DELAY);
     }
 
     @Override
@@ -91,7 +86,6 @@ public class PulseRepeater extends DiodeBlock {
             return true;
         }
 
-        // level.scheduleTick(pos, this, 2);
         poweredMap.put(pos, powered);
         return false;
     }
