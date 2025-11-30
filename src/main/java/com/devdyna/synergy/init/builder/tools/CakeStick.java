@@ -7,7 +7,6 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.utils.ColorUtil;
 import com.devdyna.synergy.utils.LevelUtil;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -78,7 +77,7 @@ public class CakeStick extends Item {
     public Component getName(ItemStack stack) {
         var level = Minecraft.getInstance().level;
         int color = (level == null ? Color.RED.getRGB() : ColorUtil.rgbColor(level));
-        return Component.translatable(this.getDescriptionId(stack)).withStyle(ChatFormatting.BOLD).withColor(color);
+        return Component.translatable(this.getDescriptionId(stack)).withColor(color);
     }
 
     @Override
