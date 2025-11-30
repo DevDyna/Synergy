@@ -28,7 +28,7 @@ public class InvertedRepeater extends DiodeBlock {
                         .any()
                         .setValue(FACING, Direction.NORTH)
                         .setValue(DELAY, 1)
-                        .setValue(POWERED, false));
+                        .setValue(POWERED, true));
     }
 
     public InvertedRepeater() {
