@@ -677,6 +677,40 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 has(Items.CAKE))
                                 .save(c);
 
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.INVERTED_REPEATER.get())
+                                .pattern("RTT")
+                                .pattern("SSS")
+                                .define('R', Items.REDSTONE)
+                                .define('T', Items.REDSTONE_TORCH)
+                                .define('S', Tags.Items.STONES)
+                                .unlockedBy(getHasName(Items.REDSTONE),
+                                                has(Items.REDSTONE))
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.RECURSIVE_REPEATER.get())
+                                .pattern(" R ")
+                                .pattern("TET")
+                                .pattern("SSS")
+                                .define('E', zItems.ENERGIZED_REDSTONE.get())
+                                .define('R', Items.REDSTONE)
+                                .define('T', Items.REDSTONE_TORCH)
+                                .define('S', Tags.Items.STONES)
+                                .unlockedBy(getHasName(zItems.ENERGIZED_REDSTONE.get()),
+                                                has(zItems.ENERGIZED_REDSTONE.get()))
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.PULSE_REPEATER.get())
+                                .pattern(" RT")
+                                .pattern("TQT")
+                                .pattern("SSS")
+                                .define('Q', Items.QUARTZ)
+                                .define('R', Items.REDSTONE)
+                                .define('T', Items.REDSTONE_TORCH)
+                                .define('S', Tags.Items.STONES)
+                                .unlockedBy(getHasName(Items.QUARTZ),
+                                                has(Items.QUARTZ))
+                                .save(c);
+
         }
 
 }
