@@ -10,7 +10,7 @@
       "item": "synergy:wired_stone_plate"
     },
     "R": {
-      "item": "minecraft:repeater"
+      "tag": "c:repeater"
     }
   },
   "pattern": [
