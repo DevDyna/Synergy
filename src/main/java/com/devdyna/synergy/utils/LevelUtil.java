@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Predicate;
 
+import org.joml.Vector3f;
+
 import com.devdyna.synergy.init.Material;
 
 import net.minecraft.core.BlockPos;
@@ -185,20 +187,33 @@ public class LevelUtil {
      * @param green 0 -> 255
      * @param blue  0 -> 255
      */
-    public static void addDustParticle(int red, int green, int blue, ServerLevel level, BlockPos pos, boolean isRandom,
-            int count) {
+    public static void addDustParticle(int red, int green, int blue,
+            ServerLevel level, BlockPos pos,
+            boolean isRandom, int count) {
+
+        Vector3f color = Vec3
+                .fromRGB24((red << 16) | (green << 8) | blue)
+                .toVector3f();
+
+        double x = pos.getX() + 0.5;
+        double y = pos.getY() + 0.5;
+        double z = pos.getZ() + 0.5;
+
+        double dx = isRandom ? level.random.nextDouble() / 2.5 : 0;
+        double dy = isRandom ? level.random.nextDouble() / 2.5 : 0;
+        double dz = isRandom ? level.random.nextDouble() / 2.5 : 0;
+        double speed = isRandom ? level.random.nextDouble() * 0.025 : 0;
 
         level.sendParticles(
-                new DustParticleOptions(Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(), 1.0F),
-                (double) pos.getX() + 0.5,
-                (double) pos.getY() + 0.5,
-                (double) pos.getZ() + 0.5,
-                count, (isRandom ? level.random.nextDouble() / 2.5 : 0),
-                (isRandom ? level.random.nextDouble() / 2.5 : 0),
-                (isRandom ? level.random.nextDouble() / 2.5 : 0), (isRandom ? level.random.nextDouble() * 0.025 : 0));
+                new DustParticleOptions(color, 1.0F),
+                x, y, z,
+                count,
+                dx, dy, dz,
+                speed);
     }
 
-    public static void addDustParticle(int red, int green, int blue, ServerLevel level, double x,double y , double z, boolean isRandom,
+    public static void addDustParticle(int red, int green, int blue, ServerLevel level, double x, double y, double z,
+            boolean isRandom,
             int count) {
 
         level.sendParticles(
