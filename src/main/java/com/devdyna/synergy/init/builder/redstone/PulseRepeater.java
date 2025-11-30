@@ -1,14 +1,21 @@
 package com.devdyna.synergy.init.builder.redstone;
 
+import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
+import com.devdyna.synergy.Main;
+import com.devdyna.synergy.zStatic;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item.TooltipContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -88,6 +95,12 @@ public class PulseRepeater extends DiodeBlock {
 
         poweredMap.put(pos, powered);
         return false;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+            TooltipFlag f) {
+        t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.pulse_repeater));
     }
 
 }
