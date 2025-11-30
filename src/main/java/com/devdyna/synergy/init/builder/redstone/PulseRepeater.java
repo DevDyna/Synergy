@@ -1,0 +1,99 @@
+package com.devdyna.synergy.init.builder.redstone;
+
+import java.util.Map;
+import java.util.WeakHashMap;
+
+import com.mojang.serialization.MapCodec;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DiodeBlock;
+import net.minecraft.world.level.block.ObserverBlock;
+import net.minecraft.world.level.block.RepeaterBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.BlockHitResult;
+
+public class PulseRepeater extends DiodeBlock {
+
+    private static final Map<BlockPos, Boolean> poweredMap = new WeakHashMap<>();
+        public static final IntegerProperty DELAY = BlockStateProperties.DELAY;
+
+
+
+    public PulseRepeater(Properties properties) {
+        super(properties);
+        this.registerDefaultState(
+            this.stateDefinition
+                .any()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(DELAY, Integer.valueOf(1))
+                .setValue(POWERED, Boolean.valueOf(false))
+        );
+    }
+
+    public PulseRepeater() {
+        this(Properties.of());
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (!player.getAbilities().mayBuild) {
+            return InteractionResult.PASS;
+        } else {
+            level.setBlock(pos, state.cycle(DELAY), 3);
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, POWERED,DELAY);
+    }
+
+    @Override
+    protected MapCodec<? extends DiodeBlock> codec() {
+        return simpleCodec(PulseRepeater::new);
+    }
+
+    @Override
+    protected boolean sideInputDiodesOnly() {
+        return true;
+    }
+
+    @Override
+    protected int getDelay(BlockState state) {
+        return state.getValue(DELAY) * 2;
+    }
+
+    @Override
+    public boolean canConnectRedstone(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
+        return state.getValue(FACING).equals(side) ||
+                state.getValue(FACING).getOpposite().equals(side);
+    }
+
+    @Override
+    protected boolean shouldTurnOn(Level level, BlockPos pos, BlockState state) {
+        boolean powered = getInputSignal(level, pos, state) > 0;
+        boolean wasPowered = poweredMap.getOrDefault(pos, false);
+
+        if (powered && !wasPowered) {
+            poweredMap.put(pos, powered);
+            return true;
+        }
+
+        // level.scheduleTick(pos, this, 2);
+        poweredMap.put(pos, powered);
+        return false;
+    }
+
+}
