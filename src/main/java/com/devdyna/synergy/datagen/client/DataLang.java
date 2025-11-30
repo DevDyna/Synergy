@@ -34,7 +34,8 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zBlock.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCrop.getEntries().forEach(b -> addBlock(b, named(b)));
 
-                ClazzUtil.getAllzItems().stream().filter(d->!d.is(zItems.CAKE_STICK)).forEach(c -> addItem(c, named(c)));
+                ClazzUtil.getAllzItems().stream().filter(d -> !d.is(zItems.CAKE_STICK))
+                                .forEach(c -> addItem(c, named(c)));
 
                 zItems.zBucketItems.getEntries().forEach(b -> addItem(b, named(b)));
 
@@ -263,9 +264,9 @@ public class DataLang extends LanguageProvider {
 
                 addItem(zItems.CAKE_STICK, "The Cake Stick");
 
-                add(Main.ID+"." + zStatic.Blocks.inverted_repeater,"Configurable NOT gate");
-                add(Main.ID+"." + zStatic.Blocks.recursive_repeater,"Configurable timer");
-                add(Main.ID+"." + zStatic.Blocks.pulse_repeater,"Configurable pulse converter");
+                add(Main.ID + "." + zStatic.Blocks.inverted_repeater, TIP_COLOR + "Configurable NOT gate");
+                add(Main.ID + "." + zStatic.Blocks.recursive_repeater, TIP_COLOR + "Configurable timer");
+                add(Main.ID + "." + zStatic.Blocks.pulse_repeater, TIP_COLOR + "Configurable pulse converter");
 
         }
 
