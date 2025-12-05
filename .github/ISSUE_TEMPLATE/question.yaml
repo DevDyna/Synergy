@@ -1,5 +1,6 @@
 name: Question
 description: You need help
+assignees: DevDyna
 labels: [question]
 body:
   - type: textarea
