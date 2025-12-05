@@ -1,5 +1,6 @@
 name: Feature Request
 description: You want more!
+assignees: DevDyna
 labels: [feature request]
 body:
   - type: textarea
