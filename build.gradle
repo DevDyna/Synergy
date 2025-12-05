@@ -135,6 +135,7 @@ dependencies {
     //compat
     implementation "curse.maven:meka-268560:7017663"
     implementation "curse.maven:patchouli-306770:6842247"
+    implementation "curse.maven:jade-324717:6853386"
 
     //jei integration
     compileOnly "mezz.jei:jei-1.21.1-common-api:19.18.10.218"
