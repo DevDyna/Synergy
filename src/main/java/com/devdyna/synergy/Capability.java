@@ -8,6 +8,7 @@ import com.devdyna.synergy.utils.ClazzUtil;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+
 @SuppressWarnings("null")
 public class Capability {
 
@@ -23,7 +24,8 @@ public class Capability {
                                 zBlocks.SPRINKLER.get(),
                                 zBlocks.SOLAR_PANEL.get(),
                                 zBlocks.REACTOR_CONTROLLER.get(),
-                                zBlocks.LASER_MACHINE.get());
+                                zBlocks.LASER_MACHINE.get(),
+                                zBlocks.ELECTROMAGNETIC_ROTOR.get());
 
                 event.registerBlock(Capabilities.ItemHandler.BLOCK,
                                 (level, pos, state, be,

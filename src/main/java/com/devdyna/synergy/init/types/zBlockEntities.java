@@ -7,6 +7,7 @@ import com.devdyna.synergy.init.builder.chests.ornated.OrnatedTinyChestBE;
 import com.devdyna.synergy.init.builder.chests.stone.StoneTinyChestBE;
 import com.devdyna.synergy.init.builder.chests.wooden.WoodenTinyChestBE;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
+import com.devdyna.synergy.init.builder.laser.dynamo.LaserRotorBE;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBE;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
@@ -110,5 +111,9 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LaserSensorBE>> LASER_SENSOR = Material
                         .createBlockEntity(zStatic.Lazers.sensor, LaserSensorBE::new,
                                         zBlocks.LASER_SENSOR);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LaserRotorBE>> ELECTROMAGNETIC_ROTOR = Material
+                        .createBlockEntity(zStatic.Lazers.electromagnetic_rotor,LaserRotorBE ::new,
+                                        zBlocks.ELECTROMAGNETIC_ROTOR);
 
 }

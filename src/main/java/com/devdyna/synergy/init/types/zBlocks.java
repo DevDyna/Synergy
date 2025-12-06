@@ -34,6 +34,7 @@ import com.devdyna.synergy.init.builder.crops.mushroom.*;
 import com.devdyna.synergy.init.builder.crops.wild.*;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBLK;
 import com.devdyna.synergy.init.builder.laser.*;
+import com.devdyna.synergy.init.builder.laser.dynamo.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBlock;
 
@@ -359,6 +360,10 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> INVERTED_REPEATER = Material.registerItemBlock(
                         zStatic.Blocks.inverted_repeater,
                         () -> new InvertedRepeater());
+
+        public static final DeferredHolder<Block, Block> ELECTROMAGNETIC_ROTOR = Material.registerItemBlock(
+                        zStatic.Lazers.electromagnetic_rotor,
+                        () -> new LaserRotorBlock());
 
         // ---------------------------------------------------------------------------------------//
 

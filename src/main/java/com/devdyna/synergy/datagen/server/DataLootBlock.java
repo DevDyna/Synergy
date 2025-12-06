@@ -105,7 +105,8 @@ public class DataLootBlock extends BlockLootSubProvider {
 
                                 zBlocks.RECURSIVE_REPEATER,
                                 zBlocks.PULSE_REPEATER,
-                                zBlocks.INVERTED_REPEATER
+                                zBlocks.INVERTED_REPEATER,
+                                zBlocks.ELECTROMAGNETIC_ROTOR
 
                 ).forEach(b -> dropSelf(b.get()));
 

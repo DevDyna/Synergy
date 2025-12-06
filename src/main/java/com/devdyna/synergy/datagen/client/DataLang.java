@@ -237,8 +237,9 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + ".jei.dryable.tip", "Require to be in the sun and placed in a dry biome");
 
-                add(Main.ID + ".laser_use.reset", TIP_COLOR + "Can reset laser beam color "
-                                + "\nCan invert the color interaction when in off-hand");
+                add(Main.ID + ".laser_use.reset", TIP_COLOR + "Can decrease all colors");
+                add(Main.ID + ".laser_use.max", TIP_COLOR + "Can increase all colors");
+
                 add(Main.ID + ".laser_use.red", TIP_COLOR + "Can increase red color on laser beam");
                 add(Main.ID + ".laser_use.green", TIP_COLOR + "Can increase green color on laser beam");
                 add(Main.ID + ".laser_use.blue", TIP_COLOR + "Can increase blue color on laser beam");
@@ -267,6 +268,17 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Blocks.inverted_repeater, TIP_COLOR + "Configurable NOT gate");
                 add(Main.ID + "." + zStatic.Blocks.recursive_repeater, TIP_COLOR + "Configurable timer");
                 add(Main.ID + "." + zStatic.Blocks.pulse_repeater, TIP_COLOR + "Configurable pulse converter");
+
+                add("config.jade.plugin_" + ID + "." + zStatic.Lazers.machine_gun, "Laser Machine Gun Color");
+                add("config.jade.plugin_" + ID + "." + zStatic.Lazers.electromagnetic_rotor, "Laser Rotor Info");
+
+                add(Main.ID + ".color", "Color: %d");
+
+                add(Main.ID + ".blockpos", TIP_COLOR + "BlockPos : ");
+                add(Main.ID + ".dirs", TIP_COLOR + "Dirs : ");
+
+                add(Main.ID + "." + zStatic.Lazers.electromagnetic_rotor, TIP_COLOR
+                                + "Generate FE when powered from the same laser machine at all of the sides\nIf used multiple laser machine it will reset!");
 
         }
 

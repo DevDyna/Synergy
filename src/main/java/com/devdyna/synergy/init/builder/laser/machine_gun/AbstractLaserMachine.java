@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.init.builder.laser.LaserMirrorBlock;
+import com.devdyna.synergy.init.builder.laser.dynamo.LaserRotorBE;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.utils.LevelUtil;
@@ -159,6 +160,12 @@ public abstract class AbstractLaserMachine extends TickingBE implements EnergyBl
                             1,
                             ExplosionInteraction.BLOCK);
                     break;
+                }
+
+                if (partialBE != null && partialBE instanceof LaserRotorBE rotor) {
+                    if (partialState.getValue(BlockStateProperties.HORIZONTAL_FACING) == currentDir.getOpposite()) {
+                        rotor.sendRotation(pos, currentDir.getOpposite());
+                    }
                 }
 
                 currentPos = currentPos.relative(currentDir);

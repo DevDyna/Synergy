@@ -44,7 +44,8 @@ public class LaserMachineBE extends AbstractLaserMachine {
     @Override
     protected boolean breakWhen(Level level, BlockState state, Direction dir, BlockPos pos,
             boolean isStart, @Nullable BlockEntity be) {
-        return isEntity(level, state, pos) || isOpaqueBlock(level, state, pos);
+        return isEntity(level, state, pos) || isOpaqueBlock(level, state, pos)
+                || level.getBlockState(pos.relative(dir.getOpposite())).is(zBlocks.ELECTROMAGNETIC_ROTOR);
     }
 
     @Override
@@ -56,12 +57,12 @@ public class LaserMachineBE extends AbstractLaserMachine {
     @Override
     protected boolean sensorActive(Level level, BlockState partialState, Direction currentDir, BlockPos currentPos,
             boolean isStart, LaserSensorBE partialBE) {
-       return partialBE.canSensorHandle(currentDir, partialState);
+        return partialBE.canSensorHandle(currentDir, partialState);
     }
 
     @Override
     protected boolean renderParticlesWhen(Level level, BlockState partialState, Direction currentDir,
-            BlockPos currentPos, boolean isStart, @Nullable BlockEntity partialBE,int lenght) {
+            BlockPos currentPos, boolean isStart, @Nullable BlockEntity partialBE, int lenght) {
         return !isStart;
     }
 
@@ -79,8 +80,7 @@ public class LaserMachineBE extends AbstractLaserMachine {
     @Override
     protected float getParticlesScale(Level level, BlockState partialState, Direction currentDir, BlockPos currentPos,
             boolean isStart, @Nullable BlockEntity partialBE, int lenght) {
-        return 0.35F - (0.025F * lenght)
-        ;
+        return 0.45F - (0.005F * lenght);
     }
 
 }

@@ -319,6 +319,18 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                                                 .toYRot() + 180) % 360)
                                                 .build());
 
+                getVariantBuilder(zBlocks.ELECTROMAGNETIC_ROTOR.get())
+                                .forAllStates(state -> ConfiguredModel.builder()
+                                                .modelFile(models()
+                                                                .getExistingFile(modLoc("block/laser_rotor/"
+                                                                                + (state.getValue(
+                                                                                                BlockStateProperties.ENABLED)
+                                                                                                                ? "on"
+                                                                                                                : "off"))))
+                                                .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING)
+                                                                .toYRot() + 180) % 360)
+                                                .build());
+
         }
 
         protected void repeater(Block b) {
