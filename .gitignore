@@ -29,3 +29,4 @@ repo
 desktop.ini
 /src/generated/resources/.cache
 /src/test
+/src/demo
