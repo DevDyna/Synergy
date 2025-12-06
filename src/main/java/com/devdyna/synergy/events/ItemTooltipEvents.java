@@ -28,6 +28,9 @@ public class ItemTooltipEvents {
         if (item.is(zItemTag.DYE_RESET)) {
             tooltip.add(Component.translatable(Main.ID + ".laser_use.reset"));
         }
+        if (item.is(zItemTag.DYE_MAX)) {
+            tooltip.add(Component.translatable(Main.ID + ".laser_use.max"));
+        }
         if (item.is(zItemTag.DYE_RED)) {
             tooltip.add(Component.translatable(Main.ID + ".laser_use.red"));
         }

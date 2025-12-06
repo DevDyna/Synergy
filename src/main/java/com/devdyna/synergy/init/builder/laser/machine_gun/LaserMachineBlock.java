@@ -71,24 +71,30 @@ public class LaserMachineBlock extends TickingBlock implements IBlockLaser {
 
             if (level.getBlockEntity(pos) != null && level.getBlockEntity(pos) instanceof LaserMachineBE laser) {
 
+                var inverse = player.getItemInHand(InteractionHand.OFF_HAND).is(zItemTag.DYE_RESET);
+
                 if (stack.is(zItemTag.DYE_RESET)) {
-                    laser.setRed(0);
-                    laser.setGreen(0);
-                    laser.setBlue(0);
+                    laser.decRed();
+                    laser.decGreen();
+                    laser.decBlue();
                 }
 
-                var inverse = player.getItemInHand(InteractionHand.OFF_HAND).is(zItemTag.DYE_RESET) ? 0 : 255;
+                if (stack.is(zItemTag.DYE_MAX)) {
+                    laser.incRed();
+                    laser.incGreen();
+                    laser.incBlue();
+                }
 
                 if (stack.is(zItemTag.DYE_RED))
-                    laser.setRed(inverse);
+                    laser.tweakRed(!inverse);
 
                 if (stack.is(zItemTag.DYE_GREEN))
-                    laser.setGreen(inverse);
+                    laser.tweakGreen(!inverse);
 
                 if (stack.is(zItemTag.DYE_BLUE))
-                    laser.setBlue(inverse);
+                    laser.tweakBlue(!inverse);
 
-                level.playSound(player, pos, SoundEvents.SHULKER_AMBIENT, SoundSource.PLAYERS, 0.25F, 1.75F);
+                    level.playSound(player, pos, SoundEvents.SHULKER_AMBIENT, SoundSource.PLAYERS, 0.15F, 1.75F);
 
             }
 

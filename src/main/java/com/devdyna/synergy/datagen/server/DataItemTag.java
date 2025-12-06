@@ -221,13 +221,15 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.GEARS).add(zItems.WOODEN_GEAR.get());
                 tag(zItemTag.GEAR_WOODEN).add(zItems.WOODEN_GEAR.get());
 
-                tag(zItemTag.DYE_RESET).add(Items.INK_SAC);
+                tag(zItemTag.DYE_RESET).addTag(Tags.Items.DYES_BLACK);
+                tag(zItemTag.DYE_MAX).addTag(Tags.Items.DYES_WHITE);
                 tag(zItemTag.DYE_RED).addTag(Tags.Items.DYES_RED);
                 tag(zItemTag.DYE_GREEN).addTag(Tags.Items.DYES_GREEN);
                 tag(zItemTag.DYE_BLUE).addTag(Tags.Items.DYES_BLUE);
 
                 tag(zItemTag.COLOR_APPLICABLE)
                                 .addTag(zItemTag.DYE_RESET)
+                                .addTag(zItemTag.DYE_MAX)
                                 .addTag(zItemTag.DYE_RED)
                                 .addTag(zItemTag.DYE_GREEN)
                                 .addTag(zItemTag.DYE_BLUE);
@@ -237,7 +239,7 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.ADD_ENTITY_GROWING).add(Items.GLISTERING_MELON_SLICE);
 
-                tag(zItemTag.REPEATERS).add(zBlocks.INVERTED_REPEATER.get().asItem(),Items.REPEATER);
+                tag(zItemTag.REPEATERS).add(zBlocks.INVERTED_REPEATER.get().asItem(), Items.REPEATER);
 
         }
 
