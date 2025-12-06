@@ -143,14 +143,14 @@ public abstract class AbstractLaserMachine extends TickingBE implements EnergyBl
 
                     currentDir = newDir;
 
-                    lenght = RESET / 2;
+                    lenght = MAX_LASER_LENGHT * 2 / 3;
                 } else // empty -> repeat
                 if (renderParticlesWhen(level, partialState, currentDir, currentPos, isStart, partialBE, lenght))
                     LevelUtil.addDustParticleLine(red, green, blue,
                             (ServerLevel) level, currentPos, currentDir,
                             getParticlesScale(level, partialState, currentDir, currentPos, isStart, partialBE, lenght));
 
-                // laser machine -> explode
+                            // laser machine -> explode
                 if (partialBE != null && partialBE instanceof AbstractLaserMachine laser
                         && explodeWhen(level, partialState, currentDir, currentPos, isStart, laser)) {
                     laser.setFused();
@@ -223,7 +223,7 @@ public abstract class AbstractLaserMachine extends TickingBE implements EnergyBl
 
     @Override
     public int MaxFE() {
-        return 1000;
+        return 10000;
     }
 
     public void setFused() {
@@ -261,6 +261,65 @@ public abstract class AbstractLaserMachine extends TickingBE implements EnergyBl
 
     public void setBlue(int blue) {
         this.blue = blue;
+    }
+
+    private int COLOR_VARIABLE = 16;
+
+    public void incRed() {
+        this.red = Math.min(this.red + COLOR_VARIABLE, 255);
+    }
+
+    public void incGreen() {
+        this.green = Math.min(this.green + COLOR_VARIABLE, 255);
+    }
+
+    public void incBlue() {
+        this.blue = Math.min(this.blue + COLOR_VARIABLE, 255);
+    }
+
+    public void decRed() {
+        this.red = Math.max(this.red - COLOR_VARIABLE, 0);
+    }
+
+    public void decGreen() {
+        this.green = Math.max(this.green - COLOR_VARIABLE, 0);
+    }
+
+    public void decBlue() {
+        this.blue = Math.max(this.blue - COLOR_VARIABLE, 0);
+    }
+
+    public void tweakRed(boolean status) {
+        if (status)
+            incRed();
+        else
+            decRed();
+    }
+
+    public void tweakGreen(boolean status) {
+        if (status)
+            incGreen();
+        else
+            decGreen();
+    }
+
+    public void tweakBlue(boolean status) {
+        if (status)
+            incBlue();
+        else
+            decBlue();
+    }
+
+    public int getRed() {
+        return red;
+    }
+
+    public int getGreen() {
+        return green;
+    }
+
+    public int getBlue() {
+        return blue;
     }
 
 }
