@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.datagen.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.crops.cultivated.azalea;
+import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.recipeTypes.builders.*;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.x;
@@ -710,6 +711,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(getHasName(Items.QUARTZ),
                                                 has(Items.QUARTZ))
                                 .save(c);
+
+                MaceratorRecipeBuilder.of()
+                                .input(Items.COAL)
+                                .output(zItems.CARBON_DUST,2)
+                                .secondary(zItems.SAWDUST)
+                                .group(ID).unlockedBy().save(c);
+
+                ;
 
         }
 
