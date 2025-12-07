@@ -261,10 +261,10 @@ public class DataRecipe extends ExtraRecipeProvider {
                 plate(Items.IRON_INGOT, zItems.IRON_PLATE.get(), c);
                 plate(Items.GOLD_INGOT, zItems.GOLD_PLATE.get(), c);
                 plate(Items.COPPER_INGOT, zItems.COPPER_PLATE.get(), c);
-                plate(zItems.SILVER_INGOT.get(), zItems.SILVER_PLATE.get(), c);
-                plate(zItems.STEEL_INGOT.get(), zItems.STEEL_PLATE.get(), c);
-                plate(zItems.ADVANCED_ALLOY_INGOT.get(), zItems.ADVANCED_ALLOY_PLATE.get(), c);
-                plate(zItems.AQUAMARINE.get(), zItems.AQUAMARINE_PLATE.get(), c);
+                plate(zItemTag.INGOT_SILVER, zItems.SILVER_PLATE.get(), c);
+                plate(zItemTag.INGOT_STEEL, zItems.STEEL_PLATE.get(), c);
+                plate(zItemTag.INGOT_ADVANCEDALLOY, zItems.ADVANCED_ALLOY_PLATE.get(), c);
+                plate(zItemTag.GEMS_AQUAMARINE, zItems.AQUAMARINE_PLATE.get(), c);
 
                 packUnpack(c, zItems.WASTE_FRAGMENT.get(), zItems.WASTE.get(), false);
                 packUnpack(c, zItems.SILICON_SHARD.get(), zItems.RAW_SILICON.get(), false);
