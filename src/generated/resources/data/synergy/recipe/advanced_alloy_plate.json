@@ -4,7 +4,7 @@
   "group": "synergy",
   "key": {
     "I": {
-      "item": "synergy:advanced_alloy_ingot"
+      "tag": "c:ingots/advanced_alloy"
     }
   },
   "pattern": [

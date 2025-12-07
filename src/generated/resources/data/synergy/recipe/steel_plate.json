@@ -4,7 +4,7 @@
   "group": "synergy",
   "key": {
     "I": {
-      "item": "synergy:steel_ingot"
+      "tag": "c:ingots/steel"
     }
   },
   "pattern": [

@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:aquamarine_gem"
+            "items": "#c:gems/aquamarine"
           }
         ]
       },
