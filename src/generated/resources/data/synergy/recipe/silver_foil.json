@@ -4,19 +4,19 @@
   "group": "synergy",
   "key": {
     "I": {
-      "tag": "c:foils/copper"
+      "tag": "c:plates/silver"
     },
     "S": {
       "item": "minecraft:stick"
     }
   },
   "pattern": [
+    " IS",
     " I ",
-    "ISI",
-    " I "
+    "SI "
   ],
   "result": {
-    "count": 4,
-    "id": "synergy:copper_coil"
+    "count": 1,
+    "id": "synergy:silver_foil"
   }
 }

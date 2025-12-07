@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "synergy:item/resources/coil/copper"
+    "layer0": "synergy:item/resources/coil/silver"
   }
 }

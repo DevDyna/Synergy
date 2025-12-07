@@ -1,6 +1,8 @@
 {
   "values": [
     "synergy:copper_foil",
-    "synergy:gold_foil"
+    "synergy:gold_foil",
+    "synergy:iron_foil",
+    "synergy:silver_foil"
   ]
 }
