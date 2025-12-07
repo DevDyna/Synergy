@@ -169,6 +169,15 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .group(ID).save(c);
         }
 
+        protected void plate(TagKey<Item> input, Item output, RecipeOutput c) {
+                ShapedRecipeBuilder.shaped(MISC, output, 3)
+                                .pattern("III")
+                                .define('I', input)
+                                .unlockedBy(ID,
+                                                has(input))
+                                .group(ID).save(c);
+        }
+
         // nodes
         protected void nodeRecipe(RecipeOutput c, Block b, ItemLike catalyst) {
 
