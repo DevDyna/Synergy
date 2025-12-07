@@ -667,9 +667,11 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         protected void coil(RecipeOutput c, TagKey<Item> input, Item output) {
                 ShapedRecipeBuilder.shaped(MISC, output, 4)
-                                .pattern("I")
-                                .pattern("I")
+                                .pattern(" I ")
+                                .pattern("ISI")
+                                .pattern(" I ")
                                 .define('I', input)
+                                .define('S', Items.STICK)
                                 .unlockedBy(ID,
                                                 has(Items.STICK))
                                 .group(ID).save(c);

@@ -48,8 +48,13 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 foil(c, zItemTag.PLATE_GOLD, zItems.GOLD_FOIL.get());
                 foil(c, zItemTag.PLATE_COPPER, zItems.COPPER_FOIL.get());
+                foil(c, zItemTag.PLATE_SILVER, zItems.SILVER_FOIL.get());
+                foil(c, zItemTag.PLATE_IRON, zItems.IRON_FOIL.get());
 
                 coil(c, zItemTag.FOIL_COPPER, zItems.COPPER_COIL.get());
+                coil(c, zItemTag.FOIL_COPPER, zItems.GOLD_COIL.get());
+                coil(c, zItemTag.FOIL_COPPER, zItems.IRON_COIL.get());
+                coil(c, zItemTag.FOIL_COPPER, zItems.SILVER_COIL.get());
 
                 nodeRecipe(c, zBlocks.ITEM_TRANSFER.get(), Blocks.CHEST);
                 nodeRecipe(c, zBlocks.ITEM_PROVIDER.get(), Items.IRON_PICKAXE);
@@ -256,6 +261,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 plate(Items.IRON_INGOT, zItems.IRON_PLATE.get(), c);
                 plate(Items.GOLD_INGOT, zItems.GOLD_PLATE.get(), c);
                 plate(Items.COPPER_INGOT, zItems.COPPER_PLATE.get(), c);
+                plate(zItems.SILVER_INGOT.get(), zItems.SILVER_PLATE.get(), c);
                 plate(zItems.STEEL_INGOT.get(), zItems.STEEL_PLATE.get(), c);
                 plate(zItems.ADVANCED_ALLOY_INGOT.get(), zItems.ADVANCED_ALLOY_PLATE.get(), c);
                 plate(zItems.AQUAMARINE.get(), zItems.AQUAMARINE_PLATE.get(), c);
@@ -715,7 +721,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 MaceratorRecipeBuilder.of()
                                 .input(Items.COAL)
                                 .output(zItems.CARBON_DUST, 2)
-                                .secondary(zItems.SAWDUST)
+                                .secondary(zItems.SULFUR_DUST)
                                 .chance(0.4f)
                                 .group(ID).unlockedBy().save(c);
 
