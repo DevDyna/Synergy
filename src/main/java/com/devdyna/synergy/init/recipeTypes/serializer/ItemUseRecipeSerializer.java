@@ -26,10 +26,8 @@ public class ItemUseRecipeSerializer implements RecipeSerializer<ItemUseRecipe> 
 
             // Make optional
             ItemStack.CODEC.optionalFieldOf("item_result", ItemStack.EMPTY)
-                    .forGetter(r -> {
-                        ItemStack s = r.getOutputitem();
-                        return (s == null || s.isEmpty()) ? ItemStack.EMPTY : s;
-                    }),
+                    .forGetter(r ->
+                    (r.getOutputitem() == null || r.getOutputitem().isEmpty()) ? ItemStack.EMPTY : r.getOutputitem()),
 
             Codec.BOOL.fieldOf("render_only").forGetter(ItemUseRecipe::isRenderOnly)).apply(inst, ItemUseRecipe::new));
 
@@ -40,10 +38,10 @@ public class ItemUseRecipeSerializer implements RecipeSerializer<ItemUseRecipe> 
             ByteBufCodecs.BOOL, ItemUseRecipe::canBeDisabled,
 
             ByteBufCodecs.optional(ItemStack.STREAM_CODEC),
-            r -> {
-                ItemStack s = r.getOutputitem();
-                return (s == null || s.isEmpty()) ? Optional.empty() : Optional.of(s);
-            },
+            r ->
+
+            (r.getOutputitem() == null || r.getOutputitem().isEmpty()) ? Optional.empty()
+                    : Optional.of(r.getOutputitem()),
 
             ByteBufCodecs.BOOL, ItemUseRecipe::isRenderOnly,
             (ing, base, result, disable, maybeStack, renderOnly) -> new ItemUseRecipe(ing, base, result, disable,
