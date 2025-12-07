@@ -52,9 +52,9 @@ public class DataRecipe extends ExtraRecipeProvider {
                 foil(c, zItemTag.PLATE_IRON, zItems.IRON_FOIL.get());
 
                 coil(c, zItemTag.FOIL_COPPER, zItems.COPPER_COIL.get());
-                coil(c, zItemTag.FOIL_COPPER, zItems.GOLD_COIL.get());
-                coil(c, zItemTag.FOIL_COPPER, zItems.IRON_COIL.get());
-                coil(c, zItemTag.FOIL_COPPER, zItems.SILVER_COIL.get());
+                coil(c, zItemTag.FOIL_GOLD, zItems.GOLD_COIL.get());
+                coil(c, zItemTag.FOIL_IRON, zItems.IRON_COIL.get());
+                coil(c, zItemTag.FOIL_SILVER, zItems.SILVER_COIL.get());
 
                 nodeRecipe(c, zBlocks.ITEM_TRANSFER.get(), Blocks.CHEST);
                 nodeRecipe(c, zBlocks.ITEM_PROVIDER.get(), Items.IRON_PICKAXE);
