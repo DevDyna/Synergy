@@ -1,6 +1,7 @@
 package com.devdyna.synergy.client.gui.api;
 
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
+import java.util.function.Function;
 import java.util.function.IntUnaryOperator;
 
 import net.minecraft.world.entity.player.Inventory;
@@ -78,7 +79,21 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         addSlot(new SlotItemHandler(beSlot, id, x, y) {
             @Override
             public boolean mayPlace(ItemStack stack) {
+                return true;//TODO investigate why it doesn't work
+            }
+
+            @Override
+            public boolean mayPickup(Player playerIn) {
                 return true;
+            }
+        });
+    }
+
+    protected void addMachineInputSlot(Function<ItemStack, Boolean> mayPlace,ItemStackHandler beSlot, int id, int x, int y) {
+        addSlot(new SlotItemHandler(beSlot, id, x, y) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return mayPlace.apply(stack);
             }
 
             @Override
