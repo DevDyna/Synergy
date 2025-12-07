@@ -55,10 +55,12 @@ public class zStatic {
         public static String platinum = "platinum";
         public static String osmium = "osmium";
         public static String lead = "lead";
+        public static String sulfur = "sulfur";
     }
 
     public class ResourceType {
         public static String foil = "_foil";
+        public static String coil = "_coil";
         public static String gem = "_gem";
         public static String ingot = "_ingot";
         public static String nugget = "_nugget";
@@ -102,7 +104,6 @@ public class zStatic {
             public static String chip = "chip";
             public static String condenser = "condenser";
             public static String resistor = "resistor";
-            public static String copper_coil = "copper_coil";
             public static String light_bulb = "light_bulb";
             public static String magnetic_stone_circuit = "magnetic_stone_circuit";
             public static String metal_bolts = "metal_bolts";

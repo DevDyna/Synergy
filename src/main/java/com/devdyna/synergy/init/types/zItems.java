@@ -51,6 +51,7 @@ public class zItems {
                 zShards.register(bus);
                 zMobDrop.register(bus);
                 zPellets.register(bus);
+                zCoils.register(bus);
         }
 
         // ---------------------------------------------------------------------------------------//
@@ -103,7 +104,9 @@ public class zItems {
          * Generic resource type
          */
         public static final DeferredRegister.Items zResources = DeferredRegister.createItems(Main.ID);
+
         // Dedicated resource types
+        public static final DeferredRegister.Items zCoils = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zFoils = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zGems = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zIngots = DeferredRegister.createItems(Main.ID);
@@ -208,9 +211,6 @@ public class zItems {
         public static final DeferredHolder<Item, Item> RESISTIVE_STONE_CIRCUIT = Material
                         .craftingItem(zStatic.Items.CraftingComponents.resistive_stone_circuit);
 
-        public static final DeferredHolder<Item, Item> COPPER_COIL = Material
-                        .craftingItem(zStatic.Items.CraftingComponents.copper_coil);
-
         public static final DeferredHolder<Item, Item> LIGHT_BULB = Material
                         .craftingItem(zStatic.Items.CraftingComponents.light_bulb);
 
@@ -277,12 +277,17 @@ public class zItems {
                         .resourceDust(zStatic.ResourceMaterial.uranium);
         public static final DeferredHolder<Item, Item> ALUMINUM_DUST = Material
                         .resourceDust(zStatic.ResourceMaterial.aluminum);
+        public static final DeferredHolder<Item, Item> SULFUR_DUST = Material
+                        .resourceDust(zStatic.ResourceMaterial.sulfur);
 
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> COPPER_FOIL = Material
                         .resourceFoil(zStatic.ResourceMaterial.copper);
 
         public static final DeferredHolder<Item, Item> GOLD_FOIL = Material.resourceFoil(zStatic.ResourceMaterial.gold);
+        public static final DeferredHolder<Item, Item> IRON_FOIL = Material.resourceFoil(zStatic.ResourceMaterial.iron);
+        public static final DeferredHolder<Item, Item> SILVER_FOIL = Material
+                        .resourceFoil(zStatic.ResourceMaterial.silver);
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> AQUAMARINE = Material
                         .resourceGem(zStatic.ResourceMaterial.aquamarine);
@@ -333,6 +338,9 @@ public class zItems {
         public static final DeferredHolder<Item, Item> COPPER_PLATE = Material
                         .resourcePlate(zStatic.ResourceMaterial.copper);
 
+        public static final DeferredHolder<Item, Item> SILVER_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.silver);
+
         public static final DeferredHolder<Item, Item> GOLD_PLATE = Material
                         .resourcePlate(zStatic.ResourceMaterial.gold);
 
@@ -374,6 +382,15 @@ public class zItems {
                         .resourcePellet(zStatic.ResourceMaterial.thorium);
         public static final DeferredHolder<Item, Item> URANIUM = Material
                         .resourcePellet(zStatic.ResourceMaterial.uranium);
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> COPPER_COIL = Material
+                        .resourceCoil(zStatic.ResourceMaterial.copper);
+        public static final DeferredHolder<Item, Item> SILVER_COIL = Material
+                        .resourceCoil(zStatic.ResourceMaterial.silver);
+        public static final DeferredHolder<Item, Item> IRON_COIL = Material
+                        .resourceCoil(zStatic.ResourceMaterial.iron);
+        public static final DeferredHolder<Item, Item> GOLD_COIL = Material
+                        .resourceCoil(zStatic.ResourceMaterial.gold);
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> CREEPER_GALL = Material
                         .tooltippedItem(zStatic.MobDrop.creeper_gall, zMobDrop);
@@ -433,6 +450,7 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> ADOBE_BALL = Material
                         .resourceItem(zStatic.DryableBricks.ball.adobe);
+        // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,
                         () -> new CakeStick());

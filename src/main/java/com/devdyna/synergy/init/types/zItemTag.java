@@ -89,9 +89,13 @@ public class zItemTag {
         public static final TagKey<Item> FOILS = Material.tagItem("foils", "c");
         public static final TagKey<Item> FOIL_COPPER = Material.tagItem("foils/copper", "c");
         public static final TagKey<Item> FOIL_GOLD = Material.tagItem("foils/gold", "c");
+        public static final TagKey<Item> FOIL_SILVER = Material.tagItem("foils/silver", "c");
+        public static final TagKey<Item> FOIL_IRON = Material.tagItem("foils/iron", "c");
+
         public static final TagKey<Item> PLATES = Material.tagItem("plates", "c");
 
         public static final TagKey<Item> PLATE_COPPER = Material.tagItem("plates/copper", "c");
+        public static final TagKey<Item> PLATE_SILVER = Material.tagItem("plates/silver", "c");
         public static final TagKey<Item> PLATE_GOLD = Material.tagItem("plates/gold", "c");
         public static final TagKey<Item> PLATE_IRON = Material.tagItem("plates/iron", "c");
         public static final TagKey<Item> PLATE_STEEL = Material.tagItem("plates/steel", "c");
@@ -125,6 +129,7 @@ public class zItemTag {
         public static final TagKey<Item> DUST_LEAD = Material.tagItem("dusts/lead", "c");
         public static final TagKey<Item> DUST_URANIUM = Material.tagItem("dusts/uranium", "c");
         public static final TagKey<Item> DUST_ALUMINUM = Material.tagItem("dusts/aluminum", "c");
+        public static final TagKey<Item> DUST_SULFUR = Material.tagItem("dusts/sulfur", "c");
 
         public static final TagKey<Item> INGOT_NICKEL = Material.tagItem("ingots/nickel", "c");
         public static final TagKey<Item> INGOT_SILVER = Material.tagItem("ingots/silver", "c");
@@ -163,5 +168,11 @@ public class zItemTag {
         public static final TagKey<Item> ADD_ENTITY_GROWING = Material.tagItem("add_entity_growing");
 
         public static final TagKey<Item> REPEATERS = Material.tagItem("repeater", "c");
+
+        public static final TagKey<Item> COILS = Material.tagItem("coils", "c");
+        public static final TagKey<Item> COIL_COPPER = Material.tagItem("coils/copper", "c");
+        public static final TagKey<Item> COIL_GOLD = Material.tagItem("coils/gold", "c");
+        public static final TagKey<Item> COIL_IRON = Material.tagItem("coils/iron", "c");
+        public static final TagKey<Item> COIL_SILVER = Material.tagItem("coils/silver", "c");
 
 }

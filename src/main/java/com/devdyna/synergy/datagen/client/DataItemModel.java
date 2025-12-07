@@ -2,9 +2,6 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
-import java.util.List;
-
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.datagen.ExtraItemModelProvider;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
@@ -14,7 +11,6 @@ import com.devdyna.synergy.utils.x;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
@@ -26,94 +22,19 @@ public class DataItemModel extends ExtraItemModelProvider {
                 super(o, ID, f);
         }
 
-        List<Item> wild_plants = List.of(zBlocks.WILD_CAVE_WHEAT.get().asItem(),
-                        zBlocks.WILD_COTTON.get().asItem(),
-                        zBlocks.WILD_RICE.get().asItem());
-
         @Override
         protected void registerModels() {
 
                 withExistingParent(x.path(zBlocks.AZALEA.get().asItem()), x.rl("block/azalea/item"));
+
+                decorative();
+                resources();
 
                 zItems.zBucketItems.getEntries().forEach(b -> withExistingParent(
                                 x.path(b.get()),
                                 x.rl(NeoForgeVersion.MOD_ID, "item/bucket"))
                                 .customLoader(DynamicFluidContainerModelBuilder::begin)
                                 .fluid(((BucketItem) b.get()).content));
-
-                zItems.zCraftingComponents.getEntries()
-                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "components/"));
-                zItems.zCropExtra.getEntries()
-                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/results/"));
-                zItems.zFoods.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "foods/"));
-
-                zItems.zSeeds.getEntries().stream().filter(f -> !wild_plants.contains(f.get()))
-                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "plants/seeds/"));
-
-                zItems.zTool.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "tools/"));
-
-                zItems.zResources.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/"));
-                zItems.zDusts.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/dust/",
-                                x.path(item.get()).replace(zStatic.ResourceType.dust, "")));
-                zItems.zFoils.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/foil/",
-                                x.path(item.get()).replace(zStatic.ResourceType.foil, "")));
-                zItems.zGems.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/gem/",
-                                x.path(item.get()).replace(zStatic.ResourceType.gem, "")));
-                zItems.zIngots.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/ingot/",
-                                x.path(item.get()).replace(zStatic.ResourceType.ingot, "")));
-                zItems.zNuggets.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this,
-                                "resources/nugget/",
-                                x.path(item.get()).replace(zStatic.ResourceType.nugget, "")));
-                zItems.zPlates.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/plate/",
-                                x.path(item.get()).replace(zStatic.ResourceType.plate, "")));
-                zItems.zRawOres.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/raw/",
-                                x.path(item.get()).replace(zStatic.ResourceType.raw, "")));
-                zItems.zShards.getEntries().forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/shard/",
-                                x.path(item.get()).replace(zStatic.ResourceType.shard, "")));
-                zItems.zMobDrop.getEntries()
-                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/mob_drop/",
-                                                x.path(item.get())));
-                zItems.zPellets.getEntries()
-                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/pellet/",
-                                                x.path(item.get()).replace(zStatic.ResourceType.pellet, "")));
-
-                zItems.zDropLets.getEntries()
-                                .forEach(item -> DataGenUtil.itemModel(item.get(), this, "resources/droplet/",
-                                                x.path(item.get())));
-
-                zBlocks.zDecorative.getEntries()
-                                .forEach(bk -> cubeAll(bk.getRegisteredName().replace(ID + ":block/", ""),
-                                                modLoc("block/decorative/"
-                                                                + x.path(bk.get()).replace(ID + ":block/",
-                                                                                ""))));
-
-                zBlocks.zBlockSlab.getEntries().forEach(bk -> slab(
-                                bk.getRegisteredName().replace(ID + ":block/", ""), modLoc("block/decorative/"
-                                                + x.path(bk.get()).replace(ID + ":block/",
-                                                                "").replace("_slab",
-                                                                                "")),
-                                modLoc("block/decorative/"
-                                                + x.path(bk.get()).replace(ID + ":block/",
-                                                                "").replace("_slab",
-                                                                                "")),
-                                modLoc("block/decorative/"
-                                                + x.path(bk.get()).replace(ID + ":block/",
-                                                                "").replace("_slab",
-                                                                                ""))));
-
-                zBlocks.zBlockStair.getEntries().forEach(bk -> stairs(
-                                bk.getRegisteredName().replace(ID + ":block/", ""), modLoc("block/decorative/"
-                                                + x.path(bk.get()).replace(ID + ":block/",
-                                                                "").replace("_stair",
-                                                                                "")),
-                                modLoc("block/decorative/"
-                                                + x.path(bk.get()).replace(ID + ":block/",
-                                                                "").replace("_stair",
-                                                                                "")),
-                                modLoc("block/decorative/"
-                                                + x.path(bk.get()).replace(ID + ":block/",
-                                                                "").replace("_stair",
-                                                                                ""))));
 
                 DataGenUtil.itemBlockwithParent(zBlocks.SPRINKLER.get(), this,
                                 ID + ":block/" + x.path(zBlocks.SPRINKLER.get()));
@@ -133,10 +54,6 @@ public class DataItemModel extends ExtraItemModelProvider {
                 // node(zBlocks.ENERGY_PROVIDER, "green");
                 node(zBlocks.ENERGY_RETRIEVAL, "aqua");
                 node(zBlocks.ENERGY_TRANSFER, "red");
-
-                wild_plants.forEach(w -> withExistingParent(x.path(w), "minecraft:item/generated")
-                                .texture("layer0", x.rl(
-                                                "item/plants/bush/" + x.path(w).replace("wild_", ""))));
 
                 orientableWithBottom(zBlocks.HARVESTER.getRegisteredName(),
                                 modLoc("block/harvester/side"),
@@ -203,7 +120,7 @@ public class DataItemModel extends ExtraItemModelProvider {
 
                 withExistingParent(zBlocks.LASER_MACHINE.getRegisteredName(), modLoc("block/laser_machine_gun/off"));
                 withExistingParent(zBlocks.ELECTROMAGNETIC_ROTOR.getRegisteredName(), modLoc("block/laser_rotor/off"));
-               
+
                 withExistingParent(zBlocks.LASER_LENS.getRegisteredName(), modLoc("block/laser_lens"));
                 withExistingParent(zBlocks.LASER_MIRROR.getRegisteredName(), modLoc("block/laser_mirror"));
                 withExistingParent(zBlocks.LASER_SENSOR.getRegisteredName(), modLoc("block/laser_sensor/off"));

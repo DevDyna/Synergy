@@ -130,12 +130,15 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.FOIL_COPPER).add(zItems.COPPER_FOIL.get());
                 tag(zItemTag.FOIL_GOLD).add(zItems.GOLD_FOIL.get());
+                tag(zItemTag.FOIL_SILVER).add(zItems.SILVER_FOIL.get());
+                tag(zItemTag.FOIL_IRON).add(zItems.IRON_FOIL.get());
 
                 tag(zItemTag.PLATES)
                                 .add(DataGenUtil.getItems(zItems.zPlates));
 
                 tag(zItemTag.PLATE_COAL).add(zItems.CARBON_PLATE.get());
                 tag(zItemTag.PLATE_COPPER).add(zItems.COPPER_PLATE.get());
+                tag(zItemTag.PLATE_SILVER).add(zItems.SILVER_PLATE.get());
                 tag(zItemTag.PLATE_GOLD).add(zItems.GOLD_PLATE.get());
                 tag(zItemTag.PLATE_IRON).add(zItems.IRON_PLATE.get());
                 tag(zItemTag.PLATE_STEEL).add(zItems.STEEL_PLATE.get());
@@ -196,6 +199,7 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.DUST_LEAD).add(zItems.LEAD_DUST.get());
                 tag(zItemTag.DUST_URANIUM).add(zItems.URANIUM_DUST.get());
                 tag(zItemTag.DUST_ALUMINUM).add(zItems.ALUMINUM_DUST.get());
+                tag(zItemTag.DUST_SULFUR).add(zItems.SULFUR_DUST.get());
 
                 tag(zItemTag.NODES_RETRIEVAL)
                                 .add(zBlocks.ITEM_RETRIEVAL.get().asItem(), zBlocks.ENERGY_RETRIEVAL.get().asItem(),
@@ -240,6 +244,14 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.ADD_ENTITY_GROWING).add(Items.GLISTERING_MELON_SLICE);
 
                 tag(zItemTag.REPEATERS).add(zBlocks.INVERTED_REPEATER.get().asItem(), Items.REPEATER);
+
+                tag(zItemTag.COILS)
+                                .add(DataGenUtil.getItems(zItems.zCoils));
+
+                tag(zItemTag.COIL_COPPER).add(zItems.COPPER_COIL.get());
+                tag(zItemTag.COIL_GOLD).add(zItems.GOLD_COIL.get());
+                tag(zItemTag.COIL_IRON).add(zItems.IRON_COIL.get());
+                tag(zItemTag.COIL_SILVER).add(zItems.SILVER_COIL.get());
 
         }
 

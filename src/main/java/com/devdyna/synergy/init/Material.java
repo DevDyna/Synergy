@@ -224,6 +224,11 @@ public class Material {
                                 .registerSimpleItem(name + zStatic.ResourceType.foil);
         }
 
+        public static DeferredHolder<Item, Item> resourceCoil(String name) {
+                return zItems.zCoils
+                                .registerSimpleItem(name + zStatic.ResourceType.coil);
+        }
+
         public static DeferredHolder<Item, Item> resourceGem(String name) {
                 return zItems.zGems
                                 .registerSimpleItem(name + zStatic.ResourceType.gem);
