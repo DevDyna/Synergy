@@ -1,6 +1,7 @@
-package com.devdyna.synergy.api.machine.macerator;
+package com.devdyna.synergy.init.machine.macerator;
 
 import com.devdyna.synergy.client.gui.api.BaseMenu;
+import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.network.FriendlyByteBuf;
@@ -19,7 +20,7 @@ public class MaceratorMenu extends BaseMenu {
 
     public MaceratorMenu(int c, Inventory i, FriendlyByteBuf d) {
         this(c, i, i.player.level().getBlockEntity(d.readBlockPos()),
-                new SimpleContainerData(2));
+                new SimpleContainerData(4));
     }
 
     public MaceratorMenu(int i, Inventory inv, BlockEntity be, ContainerData data) {
@@ -28,8 +29,12 @@ public class MaceratorMenu extends BaseMenu {
         this.level = inv.player.level();
         this.data = data;
         addPlayerSlots(inv);
-        addMachineSlot(blockEntity.getStorage(), 0, 54, 34);
-        addMachineOutputSlot(blockEntity.getStorage(), 1, 104, 34);
+        addMachineInputSlot(itemstack -> !level.getRecipeManager()
+                .getRecipeFor(zMachines.MACERATOR.recipe().getType(),
+                        new MonoItemInput(itemstack), level)
+                .isEmpty(), blockEntity.getStorage(), 0, 47, 33);
+        addMachineOutputSlot(blockEntity.getStorage(), 1, 119, 25);
+        addMachineOutputSlot(blockEntity.getStorage(), 2, 119, 50);
         addDataSlots(data);
     }
 

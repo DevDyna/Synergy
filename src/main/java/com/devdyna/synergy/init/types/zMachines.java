@@ -5,10 +5,10 @@ import static com.devdyna.synergy.Main.ID;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.machine.macerator.MaceratorBE;
-import com.devdyna.synergy.api.machine.macerator.MaceratorBlock;
-import com.devdyna.synergy.api.machine.macerator.MaceratorMenu;
-import com.devdyna.synergy.api.machine.macerator.recipe.MaceratorRecipeType;
+import com.devdyna.synergy.init.machine.macerator.MaceratorBE;
+import com.devdyna.synergy.init.machine.macerator.MaceratorBlock;
+import com.devdyna.synergy.init.machine.macerator.MaceratorMenu;
+import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeType;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;

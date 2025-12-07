@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.machine.macerator;
+package com.devdyna.synergy.init.machine.macerator;
 
 import javax.annotation.Nullable;
 
@@ -29,7 +29,7 @@ public class MaceratorScreen extends BaseScreen<MaceratorMenu> {
 
     @Override
     protected ResourceLocation background() {
-        return x.rl("textures/gui/container/demo.png");
+        return x.rl("textures/gui/container/macerator.png");
     }
 
     @Override

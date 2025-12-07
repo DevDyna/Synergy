@@ -1,13 +1,13 @@
 package com.devdyna.synergy;
 
-import com.devdyna.synergy.api.machine.macerator.MaceratorMenu;
-import com.devdyna.synergy.api.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.client.aoe.*;
 import com.devdyna.synergy.client.gui.chests.ornated.OrnatedTinyChestScreen;
 import com.devdyna.synergy.client.gui.chests.stone.StoneTinyChestScreen;
 import com.devdyna.synergy.client.gui.chests.wooden.WoodenTinyChestScreen;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.client.quern.QuernRendering;
+import com.devdyna.synergy.init.machine.macerator.MaceratorMenu;
+import com.devdyna.synergy.init.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zContainer;
 import com.devdyna.synergy.init.types.zItems;

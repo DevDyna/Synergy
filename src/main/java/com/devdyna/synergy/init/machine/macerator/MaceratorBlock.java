@@ -1,10 +1,10 @@
-package com.devdyna.synergy.api.machine.macerator;
+package com.devdyna.synergy.init.machine.macerator;
 
 import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.machine.core.BaseMachineBlock;
+import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;

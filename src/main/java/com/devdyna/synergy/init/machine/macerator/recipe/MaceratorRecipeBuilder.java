@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.machine.macerator.recipe;
+package com.devdyna.synergy.init.machine.macerator.recipe;
 
 import static com.devdyna.synergy.Main.ID;
 
@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.machine.core.recipe.BaseMachineRecipeBuilder;
+import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.Criterion;
@@ -26,6 +26,7 @@ public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder {
     private int tick;
     private int energy;
     private ItemStack output;
+    private ItemStack secondary = null;
 
     private MaceratorRecipeBuilder() {
         this.tick = 60;
@@ -59,6 +60,11 @@ public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder {
         return this;
     }
 
+    public MaceratorRecipeBuilder secondary(ItemStack secondary) {
+        this.secondary = secondary;
+        return this;
+    }
+
     public MaceratorRecipeBuilder delay(int tick) {
         this.tick = tick;
         return this;
@@ -83,6 +89,22 @@ public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder {
 
     public MaceratorRecipeBuilder output(DeferredHolder<Item, Item> output, int count) {
         return output(output.get(), count);
+    }
+
+      public MaceratorRecipeBuilder secondary(Item secondary) {
+        return secondary(x.item(secondary));
+    }
+
+        public MaceratorRecipeBuilder secondary(DeferredHolder<Item, Item> secondary) {
+        return secondary(secondary.get());
+    }
+
+    public MaceratorRecipeBuilder secondary(Item secondary, int count) {
+        return secondary(x.item(secondary, count));
+    }
+
+    public MaceratorRecipeBuilder secondary(DeferredHolder<Item, Item> secondary, int count) {
+        return secondary(secondary.get(), count);
     }
 
     public MaceratorRecipeBuilder unlockedBy() {
@@ -117,6 +139,6 @@ public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder {
 
     @Override
     protected Recipe<?> createRecipe() {
-        return new MaceratorRecipeType(input, output, tick, energy);
+        return new MaceratorRecipeType(input, output, secondary, tick, energy);
     }
 }

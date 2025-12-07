@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.machine.core.recipe;
+package com.devdyna.synergy.init.machine.core.recipe;
 
 import static com.devdyna.synergy.Main.ID;
 

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.machine.core;
+package com.devdyna.synergy.init.machine.core;
 
 import java.util.List;
 
@@ -31,6 +31,21 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO {
     }
 
     @Override
+    public int getMachineSlots() {
+        return 2;
+    }
+
+    @Override
+    public List<Integer> getInputSlotIndex() {
+        return List.of(0);
+    }
+
+    @Override
+    public List<Integer> getOutputSlotIndex() {
+        return List.of(1);
+    }
+
+    @Override
     public int getSlotLimit(int slotindex) {
         return getStorage().getSlotLimit(slotindex);
     }
@@ -48,21 +63,6 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO {
     @Override
     public ItemStackHandler getStorage() {
         return storage;
-    }
-
-    @Override
-    public int getMachineSlots() {
-        return 2;
-    }
-
-    @Override
-    public List<Integer> getInputSlotIndex() {
-        return List.of(0);
-    }
-
-    @Override
-    public List<Integer> getOutputSlotIndex() {
-        return List.of(1);
     }
 
     @Override
@@ -114,6 +114,18 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO {
         public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
             super.deserializeNBT(provider, nbt);
         }
+
+    }
+
+    public void tickBoth() {
+
+    }
+
+    public void tickClient() {
+
+    }
+
+    public void tickServer() {
 
     }
 
