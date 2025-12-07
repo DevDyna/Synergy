@@ -714,8 +714,9 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 MaceratorRecipeBuilder.of()
                                 .input(Items.COAL)
-                                .output(zItems.CARBON_DUST,2)
+                                .output(zItems.CARBON_DUST, 2)
                                 .secondary(zItems.SAWDUST)
+                                .chance(0.4f)
                                 .group(ID).unlockedBy().save(c);
 
                 ;

@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.machine.macerator;
 
-import com.devdyna.synergy.client.gui.api.BaseMenu;
+import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
 import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
 
@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 @SuppressWarnings("null")
-public class MaceratorMenu extends BaseMenu {
+public class MaceratorMenu extends BaseMachineMenu {
 
     public final MaceratorBE blockEntity;
     private final Level level;

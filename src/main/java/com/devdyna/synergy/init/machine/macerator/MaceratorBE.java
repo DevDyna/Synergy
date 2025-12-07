@@ -94,7 +94,7 @@ public class MaceratorBE extends BaseMachineBE {
 
         MaceratorRecipeType recipe = recipeOpt.get().value();
 
-        this.maxProgress = recipe.getTicks();
+        this.maxProgress = recipe.getTime();
 
         this.progress++;
         if (this.progress < this.maxProgress) {
@@ -105,8 +105,8 @@ public class MaceratorBE extends BaseMachineBE {
         ItemStack outputSlot = storage.getStackInSlot(1);
         ItemStack secondarySlot = storage.getStackInSlot(2);
 
-        ItemStack output = recipe.getOutput().copy();
-        ItemStack secondary = recipe.getSecondary().copy();
+        ItemStack output = recipe.getOutputItem().copy();
+        ItemStack secondary = recipe.getSecondaryOutputItem().copy();
 
         if (outputSlot.isEmpty())
             storage.setStackInSlot(1, output);

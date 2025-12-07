@@ -1,131 +1,85 @@
 package com.devdyna.synergy.init.machine.macerator.recipe;
 
-import java.util.List;
 import java.util.Optional;
 
+import com.devdyna.synergy.api.MachineType;
+import com.devdyna.synergy.init.machine.core.BaseMachineBE;
+import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
+import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
+import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
 
 @SuppressWarnings("null")
-public class MaceratorRecipeType implements Recipe<MonoItemInput> {
+public class MaceratorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
-    private final Ingredient input;
-    private final int ticks;
-    private final int energy;
-    private final ItemStack output;
-    private final ItemStack secondary;
-
-    public MaceratorRecipeType(Ingredient input,
-            ItemStack output, ItemStack secondary, int ticks, int energy) {
+    public MaceratorRecipeType(int ticks, int energy, Ingredient input,
+            ItemStack output, ItemStack secondary, float chance) {
         this.input = input;
         this.ticks = ticks;
         this.output = output;
         this.energy = energy;
         this.secondary = secondary;
+        this.chance = chance;
     }
 
-    public static MaceratorRecipeType of(Ingredient input, ItemStack output, ItemStack secondary, int ticks,
-            int energy) {
-        return new MaceratorRecipeType(input, output, secondary, ticks, energy);
-    }
-
-    public MaceratorRecipeType of() {
-        return this;
-    }
-
-    public boolean matches(MonoItemInput r, Level l) {
-        return this.input.test(r.input());
-    }
-
-    public ItemStack assemble(MonoItemInput i, HolderLookup.Provider r) {
-        return this.output.copy();
-    }
-
-    public boolean canCraftInDimensions(int xz, int y) {
-        return false;
-    }
-
-    public RecipeType<?> getType() {
-        return zMachines.MACERATOR.recipe().getType();
-    }
-
-    public ItemStack getToastSymbol() {
-        return new ItemStack(zMachines.MACERATOR.block().get());
+    public static MaceratorRecipeType of(int ticks, int energy, Ingredient input,
+            ItemStack output, ItemStack secondary, float chance) {
+        return new MaceratorRecipeType(ticks, energy, input, output, secondary, chance);
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
-        return zMachines.MACERATOR.recipe().getSerializer();
-    }
-
-    public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.copyOf(List.of(this.input));
-    }
-
-    public Ingredient getInput() {
-        return input;
-    }
-
-    public ItemStack getOutput() {
-        return output;
-    }
-
-    public int getTicks() {
-        return ticks;
-    }
-
-    public int getEnergy() {
-        return energy;
-    }
-
-    public ItemStack getSecondary() {
-        return secondary;
+    public boolean hasSecondaryItem() {
+        return true;
     }
 
     @Override
-    public ItemStack getResultItem(HolderLookup.Provider a) {
-        return this.output;
+    public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<MonoItemInput>> getMachine() {
+        return zMachines.MACERATOR;
+    }
+
+    @Override
+    public ItemStack getRecipeInput(MonoItemInput recipe) {
+        return recipe.input();
     }
 
     public static class Serializer implements RecipeSerializer<MaceratorRecipeType> {
 
         public static final MapCodec<MaceratorRecipeType> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.CODEC.fieldOf("input").forGetter(MaceratorRecipeType::getInput),
-                ItemStack.CODEC.fieldOf("output").forGetter(MaceratorRecipeType::getOutput),
+                Codec.intRange(1, Integer.MAX_VALUE).fieldOf("ticks").forGetter(MaceratorRecipeType::getTime),
+                Codec.intRange(1, Integer.MAX_VALUE).fieldOf("energy").forGetter(MaceratorRecipeType::getEnergy),
+
+                Ingredient.CODEC.fieldOf("input").forGetter(MaceratorRecipeType::getInputItem),
+                ItemStack.CODEC.fieldOf("output").forGetter(MaceratorRecipeType::getOutputItem),
                 ItemStack.CODEC.optionalFieldOf("secondary", ItemStack.EMPTY)
-                        .forGetter(r -> (r.getSecondary() == null || r.getSecondary().isEmpty()) ? ItemStack.EMPTY
-                                : r.getSecondary()),
-                Codec.intRange(1, Integer.MAX_VALUE).fieldOf("ticks").forGetter(MaceratorRecipeType::getTicks),
-                Codec.intRange(1, Integer.MAX_VALUE).fieldOf("energy").forGetter(MaceratorRecipeType::getEnergy))
+                        .forGetter(r -> (r.getSecondaryOutputItem() == null || r.getSecondaryOutputItem().isEmpty())
+                                ? ItemStack.EMPTY
+                                : r.getSecondaryOutputItem()),
+                Codec.floatRange(0, 1).fieldOf("chance").forGetter(MaceratorRecipeType::getSecondaryItemChance))
                 .apply(inst, MaceratorRecipeType::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, MaceratorRecipeType> STREAM_CODEC = StreamCodec
                 .composite(
-                        Ingredient.CONTENTS_STREAM_CODEC, MaceratorRecipeType::getInput,
-                        ItemStack.STREAM_CODEC, MaceratorRecipeType::getOutput,
-                        ByteBufCodecs.optional(ItemStack.STREAM_CODEC), r ->
-                        (r.getSecondary() == null || r.getSecondary().isEmpty()) ? Optional.empty()
-                                : Optional.of(r.getSecondary()),
-                        ByteBufCodecs.INT, MaceratorRecipeType::getTicks,
+                        ByteBufCodecs.INT, MaceratorRecipeType::getTime,
                         ByteBufCodecs.INT, MaceratorRecipeType::getEnergy,
-                        (input,
-                                output, secondary, ticks, energy) -> new MaceratorRecipeType(input,
-                                        output, secondary.orElse(ItemStack.EMPTY), ticks, energy));
+                        Ingredient.CONTENTS_STREAM_CODEC, MaceratorRecipeType::getInputItem,
+                        ItemStack.STREAM_CODEC, MaceratorRecipeType::getOutputItem,
+                        ByteBufCodecs.optional(ItemStack.STREAM_CODEC),
+                        r -> (r.getSecondaryOutputItem() == null || r.getSecondaryOutputItem().isEmpty())
+                                ? Optional.empty()
+                                : Optional.of(r.getSecondaryOutputItem()),
+                        ByteBufCodecs.FLOAT, MaceratorRecipeType::getSecondaryItemChance,
+                        (t, e, i, o, s, c) -> new MaceratorRecipeType(t, e, i, o, s.orElse(ItemStack.EMPTY), c));
 
         @Override
         public MapCodec<MaceratorRecipeType> codec() {
