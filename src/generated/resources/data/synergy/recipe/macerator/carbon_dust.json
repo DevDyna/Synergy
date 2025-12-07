@@ -1,0 +1,16 @@
+{
+  "type": "synergy:macerator",
+  "energy": 1000,
+  "input": {
+    "item": "minecraft:coal"
+  },
+  "output": {
+    "count": 2,
+    "id": "synergy:carbon_dust"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "synergy:sawdust"
+  },
+  "ticks": 60
+}
