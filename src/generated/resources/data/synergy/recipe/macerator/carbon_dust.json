@@ -1,5 +1,6 @@
 {
   "type": "synergy:macerator",
+  "chance": 0.4,
   "energy": 1000,
   "input": {
     "item": "minecraft:coal"
