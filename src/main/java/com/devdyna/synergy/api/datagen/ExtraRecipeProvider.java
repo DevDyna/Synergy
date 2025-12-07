@@ -663,7 +663,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected void foil(RecipeOutput c, TagKey<Item> input, Item output) {
-                ShapedRecipeBuilder.shaped(MISC, output)
+                ShapedRecipeBuilder.shaped(MISC, output, 3)
                                 .pattern(" IS")
                                 .pattern(" I ")
                                 .pattern("SI ")
