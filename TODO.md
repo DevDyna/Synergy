@@ -48,6 +48,8 @@
 
 ## NEWS
 
+- [ ] Moss ball (chisel 1.7.10 like)
+
 - [ ] Laser Infusion RecipeType
 
 - [ ] Laser Dynamo (power gen)
