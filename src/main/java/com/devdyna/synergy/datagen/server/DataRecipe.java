@@ -725,7 +725,13 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .chance(0.4f)
                                 .group(ID).unlockedBy().save(c);
 
-                ;
+                QuernMillingBuilder.of()
+                                .input(zBlocks.RUSTIC_METAL.get().asItem())
+                                .delay(80)
+                                .unlockedBy()
+                                .group(ID)
+                                .output(zItems.IRON_DUST, 9)
+                                .save(c);
 
         }
 
