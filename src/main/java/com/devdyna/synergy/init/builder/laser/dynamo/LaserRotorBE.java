@@ -132,7 +132,8 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
         directions.putBoolean("east", east);
         directions.putBoolean("west", west);
 
-        laserData.putIntArray("blockpos", blockpos);
+        if (blockpos != null)
+            laserData.putIntArray("blockpos", blockpos);
         laserData.put("dir", directions);
         tag.put("laserData", laserData);
         super.saveAdditional(tag, registries);
