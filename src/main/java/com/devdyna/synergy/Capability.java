@@ -1,5 +1,6 @@
 package com.devdyna.synergy;
 
+import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.MachineIO;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zHandlers;
@@ -25,7 +26,12 @@ public class Capability {
                                 zBlocks.SOLAR_PANEL.get(),
                                 zBlocks.REACTOR_CONTROLLER.get(),
                                 zBlocks.LASER_MACHINE.get(),
-                                zBlocks.ELECTROMAGNETIC_ROTOR.get());
+                                zBlocks.ELECTROMAGNETIC_ROTOR.get()
+                                
+                                
+                                
+                                
+                                );
 
                 event.registerBlock(Capabilities.ItemHandler.BLOCK,
                                 (level, pos, state, be,
@@ -41,6 +47,14 @@ public class Capability {
                                 Capabilities.ItemHandler.BLOCK,
                                 (level, pos, state, be, side) -> ((be instanceof MachineIO m)
                                                 ? m.getStorage()
+                                                : null),
+                                ClazzUtil.getAllMachineTypes().stream().map(b -> b.block().get())
+                                                .toArray(Block[]::new));
+
+                event.registerBlock(
+                                Capabilities.EnergyStorage.BLOCK,
+                                (level, pos, state, be, side) -> ((be instanceof EnergyBlock m)
+                                                ? m.getCapEnergy()
                                                 : null),
                                 ClazzUtil.getAllMachineTypes().stream().map(b -> b.block().get())
                                                 .toArray(Block[]::new));
