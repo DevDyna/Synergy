@@ -87,10 +87,10 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
                     west = true;
 
                 if (blockpos == null)
-                    blockpos = new int[] { newpPos.getX(), newpPos.getY(), newpPos.getZ() };
+                    blockpos = pos(newpPos);
             } else {
                 resetStat();
-                blockpos = new int[] { newpPos.getX(), newpPos.getY(), newpPos.getZ() };
+                blockpos = pos(newpPos);
             }
 
             sended = false;
@@ -106,6 +106,10 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
         if (canExtract())
             providePowerAdjacent(level, getBlockPos(), cache, getStoredFE());
 
+    }
+
+    private int[] pos(BlockPos pos) {
+        return new int[] { pos.getX(), pos.getY(), pos.getZ() };
     }
 
     public void sendRotation(BlockPos pos, Direction dir) {
