@@ -2,21 +2,25 @@ package com.devdyna.synergy.init.machine.core;
 
 import java.util.List;
 
+import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.MachineIO;
 import com.devdyna.synergy.api.coreBE.be.BEMenu;
+import com.devdyna.synergy.init.types.zHandlers;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public abstract class BaseMachineBE extends BEMenu implements MachineIO {
+public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyBlock {
 
     protected int progress = 0;
     protected int maxProgress;
@@ -83,6 +87,21 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO {
         if (tag.contains("progress"))
             progress = tag.getInt("progress");
         super.loadAdditional(tag, registries);
+    }
+
+    @Override
+    public ContainerData getContainerData() {
+        return new SimpleContainerData(getMaxFE());
+    }
+
+    @Override
+    public EnergyStorage getCapEnergy() {
+        return getData(zHandlers.ENERGY_STORAGE);
+    }
+
+    @Override
+    public int MaxFE() {
+        return 1_000;
     }
 
     protected class MachineItemHandler extends ItemStackHandler {
