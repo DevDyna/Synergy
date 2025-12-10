@@ -144,14 +144,14 @@ public abstract class AbstractLaserMachine extends TickingBE implements EnergyBl
 
                     currentDir = newDir;
 
-                    lenght = MAX_LASER_LENGHT * 2 / 3;
+                    lenght = MAX_LASER_LENGHT / 4;
                 } else // empty -> repeat
                 if (renderParticlesWhen(level, partialState, currentDir, currentPos, isStart, partialBE, lenght))
                     LevelUtil.addDustParticleLine(red, green, blue,
                             (ServerLevel) level, currentPos, currentDir,
                             getParticlesScale(level, partialState, currentDir, currentPos, isStart, partialBE, lenght));
 
-                            // laser machine -> explode
+                // laser machine -> explode
                 if (partialBE != null && partialBE instanceof AbstractLaserMachine laser
                         && explodeWhen(level, partialState, currentDir, currentPos, isStart, laser)) {
                     laser.setFused();
