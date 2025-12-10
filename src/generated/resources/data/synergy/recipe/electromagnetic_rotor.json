@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "D": {
+      "tag": "c:dusts/redstone"
+    },
+    "G": {
+      "item": "synergy:laser_machine_gun"
+    },
+    "S": {
+      "tag": "c:plates/steel"
+    }
+  },
+  "pattern": [
+    "SGS",
+    "GDG",
+    "SGS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:electromagnetic_rotor"
+  }
+}

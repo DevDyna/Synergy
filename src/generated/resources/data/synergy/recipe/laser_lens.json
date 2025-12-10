@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "C": {
+      "tag": "c:ingots/copper"
+    },
+    "G": {
+      "tag": "c:glass_blocks/colorless"
+    },
+    "S": {
+      "tag": "c:plates/steel"
+    }
+  },
+  "pattern": [
+    "G G",
+    "GCG",
+    "SSS"
+  ],
+  "result": {
+    "count": 4,
+    "id": "synergy:laser_lens"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "C": {
+      "tag": "c:ingots/copper"
+    },
+    "D": {
+      "tag": "c:dusts/redstone"
+    },
+    "R": {
+      "item": "synergy:carbon_fiber"
+    },
+    "S": {
+      "tag": "c:plates/steel"
+    }
+  },
+  "pattern": [
+    "CRC",
+    "DSD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:laser_sensor"
+  }
+}

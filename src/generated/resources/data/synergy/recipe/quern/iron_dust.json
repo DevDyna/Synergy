@@ -1,0 +1,11 @@
+{
+  "type": "synergy:quern",
+  "frequence": 80,
+  "ingredient": {
+    "item": "synergy:rustic_metal"
+  },
+  "result": {
+    "count": 9,
+    "id": "synergy:iron_dust"
+  }
+}
