@@ -763,4 +763,63 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
+        protected static void lasers(RecipeOutput c) {
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_MIRROR.get(), 2)
+                                .pattern(" C ")
+                                .pattern("CGC")
+                                .pattern("SSS")
+                                .define('S', zItemTag.PLATE_STEEL)
+                                .define('C', Tags.Items.INGOTS_COPPER)
+                                .define('G', Tags.Items.GLASS_BLOCKS_COLORLESS)
+                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
+                                .group(ID)
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_LENS.get(), 4)
+                                .pattern("G G")
+                                .pattern("GCG")
+                                .pattern("SSS")
+                                .define('S', zItemTag.PLATE_STEEL)
+                                .define('C', Tags.Items.INGOTS_COPPER)
+                                .define('G', Tags.Items.GLASS_BLOCKS_COLORLESS)
+                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
+                                .group(ID)
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_MACHINE.get())
+                                .pattern("RC ")
+                                .pattern("CDC")
+                                .pattern(" CS")
+                                .define('R', zItems.CARBON_FIBER.get())
+                                .define('S', zItemTag.PLATE_STEEL)
+                                .define('C', Tags.Items.INGOTS_COPPER)
+                                .define('D', Tags.Items.DUSTS_REDSTONE)
+                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
+                                .group(ID)
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_SENSOR.get())
+                                .pattern("CRC")
+                                .pattern("DSD")
+                                .define('R', zItems.CARBON_FIBER.get())
+                                .define('S', zItemTag.PLATE_STEEL)
+                                .define('C', Tags.Items.INGOTS_COPPER)
+                                .define('D', Tags.Items.DUSTS_REDSTONE)
+                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
+                                .group(ID)
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ELECTROMAGNETIC_ROTOR.get())
+                                .pattern("SGS")
+                                .pattern("GDG")
+                                .pattern("SGS")
+                                .define('G', zBlocks.LASER_MACHINE.get())
+                                .define('S', zItemTag.PLATE_STEEL)
+                                .define('D', Tags.Items.DUSTS_REDSTONE)
+                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
+                                .group(ID)
+                                .save(c);
+
+        }
+
 }

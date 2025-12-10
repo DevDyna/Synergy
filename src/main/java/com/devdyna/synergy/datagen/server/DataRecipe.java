@@ -45,6 +45,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 moderators(c);
                 droplets(c);
                 brickRecipes(c);
+                lasers(c);
 
                 foil(c, zItemTag.PLATE_GOLD, zItems.GOLD_FOIL.get());
                 foil(c, zItemTag.PLATE_COPPER, zItems.COPPER_FOIL.get());
