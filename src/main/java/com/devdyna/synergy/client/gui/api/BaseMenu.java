@@ -1,5 +1,6 @@
 package com.devdyna.synergy.client.gui.api;
 
+import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import java.util.function.Function;
 import java.util.function.IntUnaryOperator;
@@ -7,6 +8,7 @@ import java.util.function.IntUnaryOperator;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
@@ -21,6 +23,7 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 public abstract class BaseMenu extends AbstractContainerMenu {
 
     public int MACHINE_SLOT;
+    public ContainerData energyData;
 
     protected BaseMenu(MenuType<?> menuType, int containerId, BlockEntity blockEntity) {
         super(menuType, containerId);
@@ -28,6 +31,11 @@ public abstract class BaseMenu extends AbstractContainerMenu {
             this.MACHINE_SLOT = be.MachineSlots();
         else
             this.MACHINE_SLOT = 0;
+
+            if(blockEntity instanceof EnergyBlock enel){
+                energyData = enel.getContainerData();
+                addDataSlots(energyData);
+            }
     }
 
     protected void addPlayerSlots(Inventory inventory) {
