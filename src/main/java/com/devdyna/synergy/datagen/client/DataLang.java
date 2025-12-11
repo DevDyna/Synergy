@@ -20,7 +20,7 @@ public class DataLang extends LanguageProvider {
 
         private String TIP_COLOR = "§7";
 
-        @SuppressWarnings("deprecation")
+        @SuppressWarnings({ "deprecation", "unchecked" })
         @Override
         protected void addTranslations() {
 
@@ -279,6 +279,8 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + "." + zStatic.Lazers.electromagnetic_rotor, TIP_COLOR
                                 + "Generate FE when powered from the same laser machine at all of the sides\nIf used multiple laser machine it will reset!");
+
+                ClazzUtil.getAllMachineTypes().forEach(m -> addBlock(m.block(), named(m.block())));
 
         }
 
