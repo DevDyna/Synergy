@@ -9,7 +9,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -28,7 +27,6 @@ public class zCreativeTab {
         public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = zCreative
                         .register(Main.ID, () -> CreativeModeTab.builder()
                                         .title(Component.translatable(Main.ID + "." + zStatic.CreativeTab))
-                                        .withTabsBefore(CreativeModeTabs.COMBAT)
                                         .icon(() -> zItems.CONFIGURATOR.get().getDefaultInstance())
                                         .displayItems((parameters, output) -> {
 
