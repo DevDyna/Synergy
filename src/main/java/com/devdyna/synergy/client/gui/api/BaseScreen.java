@@ -29,19 +29,12 @@ public abstract class BaseScreen<T extends BaseMenu> extends AbstractContainerSc
     protected final Color defaultToolTipColor = ColorUtil.color(64, 64, 64);
 
     @Override
-    protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
-        // RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        // RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+    protected void renderBg(GuiGraphics guiGraphics, float v, int i, int j) {
 
-        // RenderSystem.setShaderTexture(0, background());
-
-        int x = (width - imageWidth) / 2;
-        int y = (height - imageHeight) / 2;
-
-        guiGraphics.blit(background(), x, y, 0, 0, imageWidth, imageHeight);
+        guiGraphics.blit(background(), getGuiLeft(), getGuiTop(), 0, 0, imageWidth, imageHeight);
 
         if (arrow() != null && whenAnimateArrow())
-            guiGraphics.blit(arrow(), x + 73, y + 35, 0, 0, getScaledArrowProgress(), 16, 24, 16);
+            guiGraphics.blit(arrow(), getGuiLeft() + 73, getGuiTop() + 35, 0, 0, getScaledArrowProgress(), 16, 24, 16);
 
     }
 

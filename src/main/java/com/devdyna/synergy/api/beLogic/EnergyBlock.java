@@ -46,6 +46,13 @@ public interface EnergyBlock {
     default boolean canExtract() {
         return getCapEnergy().getEnergyStored() > 0;
     }
+    /**
+     * FE not empty / full
+     * REQUIRE SERVER ONLY
+     */
+    default boolean hasEnergy(int v) {
+        return getCapEnergy().getEnergyStored() >= v;
+    }
 
     /**
      * FE not full / empty

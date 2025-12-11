@@ -5,14 +5,11 @@ import java.util.List;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.MachineIO;
 import com.devdyna.synergy.api.coreBE.be.BEMenu;
-import com.devdyna.synergy.init.types.zHandlers;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -24,11 +21,18 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyB
 
     protected int progress = 0;
     protected int maxProgress;
+    protected int energy = 0;
+    protected int maxEnergy = 0;
+
+    protected boolean progress_cancel ;
+
     protected MachineItemHandler storage;
     /**
-     * Server side data sended to client side render
+     * Server side data sent to client side render
      */
-    protected ContainerData networkData;
+    public ContainerData networkData;
+
+    protected EnergyStorage energyStorage;
 
     public BaseMachineBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -78,6 +82,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyB
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         tag.put("inventory", getStorage().serializeNBT(registries));
         tag.putInt("progress", progress);
+        tag.putInt("energy", energyStorage.getEnergyStored());
         super.saveAdditional(tag, registries);
     }
 
@@ -86,22 +91,26 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyB
         getStorage().deserializeNBT(registries, tag.getCompound("inventory"));
         if (tag.contains("progress"))
             progress = tag.getInt("progress");
+
+        if (tag.contains("energy"))
+            energyStorage.receiveEnergy(Math.min(tag.getInt("energy"), energyStorage.getMaxEnergyStored()), false);
+
         super.loadAdditional(tag, registries);
     }
 
     @Override
-    public ContainerData getContainerData() {
-        return new SimpleContainerData(getMaxFE());
-    }
-
-    @Override
     public EnergyStorage getCapEnergy() {
-        return getData(zHandlers.ENERGY_STORAGE);
+        return energyStorage;
     }
 
     @Override
     public int MaxFE() {
-        return 1_000;
+        return 10_000;
+    }
+
+    @Override
+    public ContainerData getContainerData() {
+        return networkData;
     }
 
     protected class MachineItemHandler extends ItemStackHandler {
@@ -137,15 +146,11 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyB
     }
 
     public void tickBoth() {
-
     }
 
     public void tickClient() {
-
     }
 
     public void tickServer() {
-
     }
-
 }

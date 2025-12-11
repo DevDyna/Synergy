@@ -19,8 +19,7 @@ public class MaceratorMenu extends BaseMachineMenu {
     private final ContainerData data;
 
     public MaceratorMenu(int c, Inventory i, FriendlyByteBuf d) {
-        this(c, i, i.player.level().getBlockEntity(d.readBlockPos()),
-                new SimpleContainerData(4));
+        this(c, i, i.player.level().getBlockEntity(d.readBlockPos()), new SimpleContainerData(4));
     }
 
     public MaceratorMenu(int i, Inventory inv, BlockEntity be, ContainerData data) {
@@ -64,6 +63,17 @@ public class MaceratorMenu extends BaseMachineMenu {
     @Override
     public Level getLevel() {
         return level;
+    }
+
+    @Override
+    protected int getEnergyStored() {
+        blockEntity.setChanged();
+        return data.get(2);
+    }
+
+    @Override
+    protected int getMaxEnergy() {
+        return data.get(3);
     }
 
 }

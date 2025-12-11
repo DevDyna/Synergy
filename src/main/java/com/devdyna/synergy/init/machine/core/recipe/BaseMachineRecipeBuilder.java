@@ -42,7 +42,7 @@ public abstract class BaseMachineRecipeBuilder implements RecipeBuilder {
     protected Map<String, Criterion<?>> criteria;
 
     protected int ticks = 60;
-    protected int energy = 1_000;
+    protected int energy = 10;
 
     protected Ingredient input;
 
