@@ -2,7 +2,7 @@
 
 ## THINGS BEFORE RELEASE 0.5
 
-
+*NaN*
 
 ## BUGS
 
