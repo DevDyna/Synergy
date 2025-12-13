@@ -1,5 +1,6 @@
 package com.devdyna.synergy.utils;
 
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -22,6 +23,13 @@ public class StringUtil {
         NumberFormat format = NumberFormat.getCompactNumberInstance(Locale.US, NumberFormat.Style.SHORT);
         format.setMaximumFractionDigits(1);
         format.setMinimumFractionDigits(1);
+        return format;
+    }
+
+    public static NumberFormat getFormatNoRound(){
+        NumberFormat format = NumberFormat.getCompactNumberInstance(Locale.US, NumberFormat.Style.SHORT);
+        format.setMaximumFractionDigits(1);
+        format.setRoundingMode(RoundingMode.DOWN);
         return format;
     }
 
