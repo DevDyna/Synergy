@@ -251,6 +251,7 @@
   "synergy.jei.drying_bricks": "Dryable Brick Recipes",
   "synergy.jei.fuel_cell": "Reactor Reactions",
   "synergy.jei.item_use": "Item Use Recipes",
+  "synergy.jei.machine.macerator": "Macerator Recipes",
   "synergy.jei.provider.fluid": "Fluid Provider Pattern",
   "synergy.jei.provider.item": "Item Provider Pattern",
   "synergy.jei.quern": "Quern Milling",
