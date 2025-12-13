@@ -73,6 +73,7 @@
   "block.synergy.wild_rice": "Wild Rice",
   "config.jade.plugin_synergy.electromagnetic_rotor": "Laser Rotor Info",
   "config.jade.plugin_synergy.laser_machine_gun": "Laser Machine Gun Color",
+  "config.jade.plugin_synergy.machines": "Industrial Machines Info",
   "fluid_type.synergy.glue_type": "Glue",
   "fluid_type.synergy.oil_type": "Oil",
   "fluid_type.synergy.sap_type": "Sap",
