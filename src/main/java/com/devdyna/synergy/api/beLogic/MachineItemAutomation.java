@@ -7,7 +7,7 @@ import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public interface MachineIO extends IItemHandlerModifiable {
+public interface MachineItemAutomation extends IItemHandlerModifiable {
 
     ItemStackHandler getStorage();
 

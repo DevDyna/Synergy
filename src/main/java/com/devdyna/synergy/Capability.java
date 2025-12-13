@@ -1,7 +1,8 @@
 package com.devdyna.synergy;
 
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
-import com.devdyna.synergy.api.beLogic.MachineIO;
+import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
+import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.utils.ClazzUtil;
@@ -45,7 +46,7 @@ public class Capability {
 
                 event.registerBlock(
                                 Capabilities.ItemHandler.BLOCK,
-                                (level, pos, state, be, side) -> ((be instanceof MachineIO m)
+                                (level, pos, state, be, side) -> ((be instanceof MachineItemAutomation m)
                                                 ? m.getStorage()
                                                 : null),
                                 ClazzUtil.getAllMachineTypes().stream().map(b -> b.block().get())

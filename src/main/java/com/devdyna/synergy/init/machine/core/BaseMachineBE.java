@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.machine.core;
 import java.util.List;
 
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
-import com.devdyna.synergy.api.beLogic.MachineIO;
+import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
 import com.devdyna.synergy.api.coreBE.be.BEMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -19,7 +19,7 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyBlock {
+public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomation, EnergyBlock {
 
     protected int progress = 0;
     protected int maxProgress;

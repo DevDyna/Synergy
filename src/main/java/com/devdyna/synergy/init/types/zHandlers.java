@@ -42,7 +42,7 @@ public class zHandlers {
 
 public static final Supplier<AttachmentType<ItemStackHandler>> MACHINE_HANDLER = zHandler.register(
             "items", () -> AttachmentType.serializable(h -> {
-                if (h instanceof MachineIO be)
+                if (h instanceof MachineItemAutomation be)
                     return new ItemStackHandler(be.getMachineSlots());
                 return new ItemStackHandler(1);
             }).build());
