@@ -26,6 +26,14 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyB
     protected int energy = 0;
     protected int maxEnergy = 0;
 
+    public static final int PROGRESS_INDEX = 0;
+    public static final int MAX_PROGRESS_INDEX = 1;
+    public static final int ENERGY_INDEX = 2;
+    public static final int MAX_ENERGY_INDEX = 3;
+
+    public static final int INPUT_SLOT = 0;
+    public static final int OUTPUT_SLOT = 1;
+
     protected boolean progress_cancel;
 
     protected MachineItemHandler storage;
