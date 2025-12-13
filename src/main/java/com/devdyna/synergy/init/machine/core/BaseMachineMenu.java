@@ -15,4 +15,6 @@ public abstract class BaseMachineMenu extends BaseMenu {
 
     protected abstract int getMaxEnergy();
 
+    protected abstract int getRemainProgress();
+
 }

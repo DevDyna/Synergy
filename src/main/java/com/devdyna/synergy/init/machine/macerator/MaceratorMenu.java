@@ -76,4 +76,9 @@ public class MaceratorMenu extends BaseMachineMenu {
         return data.get(3);
     }
 
+    @Override
+    protected int getRemainProgress() {
+        return isCrafting() ? data.get(1) - data.get(0) : 0;
+    }
+
 }

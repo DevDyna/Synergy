@@ -45,4 +45,9 @@ public class MaceratorScreen extends BaseMachineScreen<MaceratorMenu> {
         return menu.getMaxEnergy();
     }
 
+    @Override
+    protected int getRemainProgress() {
+        return menu.getRemainProgress();
+    }
+
 }

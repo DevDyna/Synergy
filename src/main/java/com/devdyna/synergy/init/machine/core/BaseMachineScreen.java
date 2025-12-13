@@ -21,9 +21,17 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
 
     protected abstract int getMaxEnergy();
 
+    protected abstract int getRemainProgress();
+
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
         super.renderBg(guiGraphics, v, i, i1);
+
+        if (getRemainProgress() > 0)
+            guiGraphics.drawString(font, Component.literal(getRemainProgress() + " ticks"),
+                    getGuiLeft() + 68,
+                    getGuiTop() + 70,
+                    defaultToolTipColor.getRGB(), false);
 
         guiGraphics.blit(
                 x.rl("textures/gui/container/energy.png"),
@@ -74,6 +82,7 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         guiGraphics.drawString(this.font, this.title, this.titleLabelX + 57, this.titleLabelY,
                 defaultToolTipColor.getRGB(), false);
+
     }
 
 }

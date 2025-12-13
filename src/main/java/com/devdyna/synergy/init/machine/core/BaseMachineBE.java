@@ -24,7 +24,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyB
     protected int energy = 0;
     protected int maxEnergy = 0;
 
-    protected boolean progress_cancel ;
+    protected boolean progress_cancel;
 
     protected MachineItemHandler storage;
     /**
@@ -152,5 +152,17 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyB
     }
 
     public void tickServer() {
+    }
+
+    public boolean isCrafting() {
+        return progress > 0 && !progress_cancel;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public int getMaxProgress() {
+        return maxProgress;
     }
 }
