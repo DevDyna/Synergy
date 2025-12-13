@@ -1,12 +1,14 @@
 package com.devdyna.synergy.compat.jei.categories.core;
 
-
 import static com.devdyna.synergy.Main.ID;
+
+import java.awt.Color;
 
 import org.jetbrains.annotations.Nullable;
 
 import com.devdyna.synergy.api.Image;
 import com.devdyna.synergy.api.Size;
+import com.devdyna.synergy.utils.ColorUtil;
 
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
@@ -27,6 +29,8 @@ public abstract class BaseRecipeCategory<T> implements IRecipeCategory<T> {
     public BaseRecipeCategory(IGuiHelper h) {
         this.helper = h;
     }
+
+    protected final Color defaultToolTipColor = ColorUtil.color(64, 64, 64);
 
     public abstract String getTitleKey();
 

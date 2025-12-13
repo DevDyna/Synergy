@@ -9,6 +9,8 @@ import com.devdyna.synergy.api.datagen.ExtraRecipeProvider;
 import com.devdyna.synergy.api.node.BaseProviderRecipe;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.compat.jei.categories.*;
+import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
+import com.devdyna.synergy.init.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.ClazzUtil;
 import com.devdyna.synergy.utils.x;
@@ -20,6 +22,7 @@ import mezz.jei.api.registration.*;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -59,6 +62,8 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item(zBlocks.QUERN), QuernCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.ITEM_PROVIDER), ItemProviderCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.FLUID_PROVIDER), FluidProviderCategory.TYPE);
+
+                r.addRecipeCatalyst(x.item((Item) zMachines.MACERATOR.item().get()), MaceratorCategory.TYPE);
         }
 
         @Override
@@ -74,6 +79,10 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCategories(new ItemProviderCategory(helper));
                 r.addRecipeCategories(new FluidProviderCategory(helper));
                 r.addRecipeCategories(new DryableBricksCategory(helper));
+
+
+
+                r.addRecipeCategories(new MaceratorCategory(helper));
 
         }
 
@@ -112,12 +121,21 @@ public class Plugin implements IModPlugin {
                 r.addRecipes(DryableBricksCategory.TYPE,
                                 recipes.getAllRecipesFor(zRecipeTypes.DRYABLE_BRICKS.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
+
+
+
+                r.addRecipes(MaceratorCategory.TYPE,
+                                recipes.getAllRecipesFor(zMachines.MACERATOR.recipe().getType()).stream()
+                                                .map(RecipeHolder::value).toList());
         }
 
         @Override
         public void registerGuiHandlers(IGuiHandlerRegistration r) {
                 r.addRecipeClickArea(FuelCellScreen.class, 74, 30, 22, 20,
                                 ReactorCellCategory.TYPE);
+
+                r.addRecipeClickArea(MaceratorScreen.class, 75,35, 22, 15,
+                                MaceratorCategory.TYPE);
         }
 
 }

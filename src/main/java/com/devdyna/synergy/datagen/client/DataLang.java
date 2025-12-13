@@ -281,7 +281,13 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Lazers.electromagnetic_rotor, TIP_COLOR
                                 + "Generate FE when powered from the same laser machine at all of the sides\nIf used multiple laser machine it will reset!");
 
-                ClazzUtil.getAllMachineTypes().forEach(m -> addBlock(m.block(), named(m.block())));
+                ClazzUtil.getAllMachineTypes()
+                                .forEach(m -> {
+                                        addBlock(m.block(), named(m.block()));
+                                        add(ID + ".jei.machine." + m.id(), named(m.item())+" Recipes");
+                                }
+
+                                );
 
         }
 

@@ -65,11 +65,13 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
             graphics.renderTooltip(font,
 
                     Component.literal(
-                            (Screen.hasShiftDown() ? StringUtil.getFormatNoRound().format(getEnergyStored())
-                                    : getEnergyStored())
+                            (Screen.hasShiftDown() ? getEnergyStored()
+                                    : StringUtil.getFormatNoRound()
+                                            .format(getEnergyStored()))
                                     + "FE / " +
-                                    (Screen.hasShiftDown() ? StringUtil.getFormatNoRound().format(getMaxEnergy())
-                                            : getMaxEnergy()
+                                    (Screen.hasShiftDown() ? getMaxEnergy()
+                                            : StringUtil.getFormatNoRound()
+                                                    .format(getMaxEnergy())
                                                     + " FE")),
 
                     pMouseX,
