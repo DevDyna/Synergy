@@ -28,7 +28,7 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
         super.renderBg(guiGraphics, v, i, i1);
 
         if (getRemainProgress() > 0)
-            guiGraphics.drawString(font, Component.literal(getRemainProgress() + " ticks"),
+            guiGraphics.drawString(font, Component.literal((1 + getRemainProgress()) + " ticks"),
                     getGuiLeft() + 68,
                     getGuiTop() + 70,
                     defaultToolTipColor.getRGB(), false);
