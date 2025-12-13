@@ -2,9 +2,11 @@ package com.devdyna.synergy.init.machine.core;
 
 import com.devdyna.synergy.api.*;
 import com.devdyna.synergy.client.gui.api.BaseScreen;
+import com.devdyna.synergy.utils.StringUtil;
 import com.devdyna.synergy.utils.x;
 
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
@@ -50,8 +52,19 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
     public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
 
         super.render(graphics, pMouseX, pMouseY, pPartialTick);
-        if (Pos.of(getGuiLeft(), getGuiTop()).setSize(36, 72).test(pMouseX, pMouseY)) {
-            graphics.renderTooltip(font, Component.literal("t " + getEnergyStored() + " a " + getMaxEnergy()), pMouseX,
+        if (Pos.of(getGuiLeft() + 8, getGuiTop() + 5).setSize(18, 72).test(pMouseX, pMouseY)) {
+
+            graphics.renderTooltip(font,
+
+                    Component.literal(
+                            (Screen.hasShiftDown() ? StringUtil.getFormatNoRound().format(getEnergyStored())
+                                    : getEnergyStored())
+                                    + "FE / " +
+                                    (Screen.hasShiftDown() ? StringUtil.getFormatNoRound().format(getMaxEnergy())
+                                            : getMaxEnergy()
+                                                    + " FE")),
+
+                    pMouseX,
                     pMouseY);
         }
 
