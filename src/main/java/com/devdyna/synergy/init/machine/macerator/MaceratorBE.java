@@ -24,6 +24,8 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 @SuppressWarnings("null")
 public class MaceratorBE extends BaseMachineBE {
 
+    protected static final int OUTPUT_SECONDARY_SLOT = 2;
+
     public MaceratorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
         this.storage = new MachineItemHandler(getMachineSlots());
