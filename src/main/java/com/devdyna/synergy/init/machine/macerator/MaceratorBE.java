@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
+import com.devdyna.synergy.init.machine.core.SecondaryMachineResult;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeType;
 import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
@@ -22,9 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class MaceratorBE extends BaseMachineBE {
-
-    protected static final int OUTPUT_SECONDARY_SLOT = 2;
+public class MaceratorBE extends BaseMachineBE implements SecondaryMachineResult {
 
     public MaceratorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -85,12 +84,8 @@ public class MaceratorBE extends BaseMachineBE {
         if (level == null || level.isClientSide())
             return;
 
-        ItemStack input = storage.getStackInSlot(INPUT_SLOT);
-        ItemStack outputSlot = storage.getStackInSlot(OUTPUT_SLOT);
-        ItemStack secondarySlot = storage.getStackInSlot(OUTPUT_SECONDARY_SLOT);
-
         // empty
-        if (input.isEmpty()) {
+        if (getInput().isEmpty()) {
             if (getBlockState().getValue(BaseMachineBlock.ENABLED))
                 update(false);
             resetProgress();
@@ -99,7 +94,7 @@ public class MaceratorBE extends BaseMachineBE {
 
         Optional<RecipeHolder<MaceratorRecipeType>> r = level.getRecipeManager()
                 .getRecipeFor(zMachines.MACERATOR.recipe().getType(),
-                        new MonoItemInput(input), level);
+                        new MonoItemInput(getInput()), level);
 
         level.setBlockAndUpdate(getBlockPos(), getBlockState()
                 .setValue(BaseMachineBlock.ENABLED, !r.isEmpty() && canExtract()));
@@ -127,11 +122,11 @@ public class MaceratorBE extends BaseMachineBE {
         }
 
         // not empty
-        if (!outputSlot.isEmpty()) {
+        if (!getOutput().isEmpty()) {
             // same item
-            if (ItemStack.isSameItemSameComponents(outputSlot, output)) {
+            if (ItemStack.isSameItemSameComponents(getOutput(), output)) {
                 // count valid
-                if (outputSlot.getMaxStackSize() < outputSlot.getCount() + output.getCount()) {
+                if (getOutput().getMaxStackSize() < getOutput().getCount() + output.getCount()) {
                     resetProgress();
                     return;
                 }
@@ -143,11 +138,11 @@ public class MaceratorBE extends BaseMachineBE {
         }
 
         // not empty
-        if (!secondarySlot.isEmpty() && !secondary.isEmpty()) {
+        if (!getSecondary().isEmpty() && !secondary.isEmpty()) {
             // same item
-            if (ItemStack.isSameItemSameComponents(secondarySlot, secondary)) {
+            if (ItemStack.isSameItemSameComponents(getSecondary(), secondary)) {
                 // count valid
-                if (secondarySlot.getMaxStackSize() < secondarySlot.getCount() + secondary.getCount()) {
+                if (getSecondary().getMaxStackSize() < getSecondary().getCount() + secondary.getCount()) {
                     resetProgress();
                     return;
                 }
@@ -168,19 +163,19 @@ public class MaceratorBE extends BaseMachineBE {
             return;
         }
 
-        if (outputSlot.isEmpty())
+        if (getOutput().isEmpty())
             storage.setStackInSlot(OUTPUT_SLOT, output);
-        else if (ItemStack.isSameItemSameComponents(outputSlot, output))
-            outputSlot.grow(output.getCount());
+        else if (ItemStack.isSameItemSameComponents(getOutput(), output))
+            getOutput().grow(output.getCount());
 
         if (!secondary.isEmpty() && success) {
-            if (secondarySlot.isEmpty())
+            if (getSecondary().isEmpty())
                 storage.setStackInSlot(OUTPUT_SECONDARY_SLOT, secondary);
-            else if (ItemStack.isSameItemSameComponents(secondarySlot, secondary))
-                secondarySlot.grow(secondary.getCount());
+            else if (ItemStack.isSameItemSameComponents(getSecondary(), secondary))
+                getSecondary().grow(secondary.getCount());
         }
 
-        input.shrink(1);
+        getInput().shrink(1);
 
         progress = 0;
         setChanged();
