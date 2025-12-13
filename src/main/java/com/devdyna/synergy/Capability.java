@@ -1,8 +1,6 @@
 package com.devdyna.synergy;
 
-import com.devdyna.synergy.api.beLogic.EnergyBlock;
-import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
-import com.devdyna.synergy.init.machine.core.BaseMachineBE;
+import com.devdyna.synergy.api.beLogic.*;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.utils.ClazzUtil;
