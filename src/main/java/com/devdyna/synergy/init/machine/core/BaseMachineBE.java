@@ -182,4 +182,12 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyB
     public int getMaxProgress() {
         return maxProgress;
     }
+
+    public ItemStack getInput() {
+        return getStorage().getStackInSlot(INPUT_SLOT);
+    }
+
+    public ItemStack getOutput() {
+        return getStorage().getStackInSlot(OUTPUT_SLOT);
+    }
 }
