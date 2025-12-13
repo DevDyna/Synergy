@@ -31,13 +31,26 @@ public enum MachineProgress
     if (data == null)
       return;
 
-    IElementHelper helper = IElementHelper.get();
-    tooltip.add(helper.item(data.inventory.get(0)));
-    tooltip.append(helper.spacer(4, 0));
-    tooltip.append(helper.progress((float) data.progress / data.total).translate(new Vec2(-2, 0)));
-    tooltip.append(helper.item(data.inventory.get(1)));
-    if (data.hasSecondary)
-      tooltip.append(helper.item(data.inventory.get(2)));
+    // render only when has content
+    if (!isEmpty(data) || data.progress != 0) {
+      IElementHelper helper = IElementHelper.get();
+
+      tooltip.add(helper.item(data.inv.get(0)));
+
+      tooltip.append(helper.spacer(4, 0));
+
+      tooltip.append(helper.progress((float) data.progress / data.total).translate(new Vec2(-2, 0)));
+
+      tooltip.append(helper.item(data.inv.get(1)));
+
+      tooltip.append(helper.item(data.inv.get(2)));
+    }
+
+  }
+
+  private boolean isEmpty(Data data) {
+    return data.inv.get(0).isEmpty() && data.inv.get(1).isEmpty()
+        && (data.hasSecondary ? data.inv.get(2).isEmpty() : true);
   }
 
   @Override
@@ -64,11 +77,11 @@ public enum MachineProgress
     return Data.STREAM_CODEC;
   }
 
-  public record Data(int progress, int total, List<ItemStack> inventory, boolean hasSecondary) {
+  public record Data(int progress, int total, List<ItemStack> inv, boolean hasSecondary) {
     public static final StreamCodec<RegistryFriendlyByteBuf, Data> STREAM_CODEC = StreamCodec.composite(
         ByteBufCodecs.VAR_INT, Data::progress,
         ByteBufCodecs.VAR_INT, Data::total,
-        ItemStack.OPTIONAL_LIST_STREAM_CODEC, Data::inventory,
+        ItemStack.OPTIONAL_LIST_STREAM_CODEC, Data::inv,
         ByteBufCodecs.BOOL, Data::hasSecondary,
         Data::new);
   }
