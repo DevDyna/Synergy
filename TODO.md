@@ -2,6 +2,8 @@
 
 ## THINGS BEFORE RELEASE 0.5
 
+
+
 ## BUGS
 
 - [x] Reactor Controller dont save aoe
@@ -14,6 +16,8 @@
 
 - [ ] Mekanism IO will void/break many stuff (nodes , fuel cell , etc)
 
+- [ ] Machines slot index 0 doesn't allow to pickup items
+
 ## COMPATS AND TWEAKS
 
 - [ ] Patchouli compat
@@ -25,14 +29,18 @@
 
 - [ ] GuideMe quantum reactor GameScene
 
+- [ ] GuideMe laser stuff
+
+- [ ] GuideMe machinery
+
 - [ ] SilentGear raw ores compat quern
 - [ ] Create Zinc compat quern
 
 - [ ] Modern Chisel compat (?)
 
-### CODEBASE
+- [ ] quern recipes to macerator
 
-- [ ] Potted Azalea dirt->rotten randomtick event
+### CODEBASE
 
 - [ ] All Recipe Types compat with GuideMe (?)
 
@@ -48,6 +56,8 @@
 
 ## NEWS
 
+- [ ] Potted Azalea dirt->rotten randomtick event
+
 - [ ] Spawner Essence
 
 - [ ] Easy Bee : the return unification (?)
@@ -56,7 +66,7 @@
 
 - [ ] Laser Infusion RecipeType
 
-- [ ] Laser Dynamo (power gen)
+- [x] Laser Dynamo (power gen)
 
 - [ ] Fermenting
 
@@ -70,7 +80,7 @@
 
 - [ ] Framed CobbleGen (EnderioAddons-Like)
 
-- [ ] Forever young treatment (item use on entity)
+- [x] Forever young treatment (item use on entity)
 
 - [ ] cave mushroom -> press -> liquidi lapis/ liquid coal
 
@@ -101,14 +111,14 @@
 - [ ] Jukebox Network (jukebox that consume discs)
 - [ ] decorative devices
 - [ ] dye essence (?)
-- [ ] Energy (like FE but a completly new Capability type) that allow E->FE
-- [ ] Lasers and Lens
+- ~~ Energy (like FE but a completly new Capability type) that allow E->FE~~ too codebase breaker
+- [x] Lasers and Lens
 - [ ] Rocket Launcher
 - [ ] Planter (farmland like but bypass conditions)
 - [ ] Truffles
 - [ ] Mindustry/DE like Fusion Reactor (?)
 
-- [ ] Macerator (standard) Item->(Item|Item)
+- [x] Macerator (standard) Item->(Item|Item)
 - [ ] Electric Furnace (standard) Item->Item
 - [ ] Extractor (special recipes like honey) Item->(Item|Item)
 - [ ] Compressor (special recipes like blocks of X) Item->Item
