@@ -62,12 +62,12 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyB
 
     @Override
     public List<Integer> getInputSlotIndex() {
-        return List.of(0);
+        return List.of(INPUT_SLOT);
     }
 
     @Override
     public List<Integer> getOutputSlotIndex() {
-        return List.of(1);
+        return List.of(OUTPUT_SLOT);
     }
 
     @Override
