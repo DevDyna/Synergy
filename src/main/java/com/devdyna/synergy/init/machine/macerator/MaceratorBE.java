@@ -90,6 +90,8 @@ public class MaceratorBE extends BaseMachineBE implements SecondaryMachineResult
                 update(false);
             resetProgress();
             return;
+        }else{
+            progress_cancel = false;
         }
 
         Optional<RecipeHolder<MaceratorRecipeType>> r = level.getRecipeManager()
@@ -186,6 +188,7 @@ public class MaceratorBE extends BaseMachineBE implements SecondaryMachineResult
     }
 
     private void resetProgress() {
+        
         progress_cancel = true;
         if (progress > 0)
             progress--;
