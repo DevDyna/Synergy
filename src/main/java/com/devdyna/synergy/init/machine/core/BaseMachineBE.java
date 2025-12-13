@@ -9,6 +9,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.Containers;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -36,6 +38,13 @@ public abstract class BaseMachineBE extends BEMenu implements MachineIO, EnergyB
 
     public BaseMachineBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
+    }
+
+    public void dropItems() {
+        SimpleContainer inv = new SimpleContainer(getStorage().getSlots());
+        for (int i = 0; i < getStorage().getSlots(); i++)
+            inv.setItem(i, getStorage().getStackInSlot(i));
+        Containers.dropContents(this.level, this.worldPosition, inv);
     }
 
     @Override

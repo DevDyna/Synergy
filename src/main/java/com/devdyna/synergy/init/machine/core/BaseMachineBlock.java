@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.coreBE.block.BlockMenu;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -30,6 +31,20 @@ public abstract class BaseMachineBlock extends BlockMenu {
                 .destroyTime(1.0f)
                 .sound(SoundType.METAL)
                 .mapColor(MapColor.METAL));
+    }
+
+    @Override
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+
+        if (state.getBlock() != newState.getBlock())
+            if (level.getBlockEntity(pos) instanceof BaseMachineBE be) {
+
+                be.dropItems();
+
+                level.updateNeighbourForOutputSignal(pos, this);
+            }
+
+        super.onRemove(state, level, pos, newState, movedByPiston);
     }
 
     @Override
