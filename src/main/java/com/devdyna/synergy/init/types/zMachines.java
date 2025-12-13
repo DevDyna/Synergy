@@ -45,7 +45,7 @@ public class zMachines {
         MaceratorMenu,
         MaceratorRecipeType
         > MACERATOR = new MachineType<>(
-                zStatic.Blocks.macerator,
+                zStatic.Machines.macerator,
                 MaceratorBlock::new,
                 MaceratorBE::new,
                 MaceratorMenu::new,
