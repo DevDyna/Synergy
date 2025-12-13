@@ -9,6 +9,7 @@ import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.init.builder.DryableBricks;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
+import com.devdyna.synergy.init.types.zMachines;
 import com.devdyna.synergy.utils.DataGenUtil;
 import com.devdyna.synergy.utils.EnchantUtil;
 
@@ -49,9 +50,14 @@ public class DataLootBlock extends BlockLootSubProvider {
                         zBlocks.zBlockSlab,
                         zBlocks.zCoolers,
                         zBlocks.zModerators,
+
                         // wip
                         zBlocks.zDepositBlocks,
-                        zBlocks.zDepositOres);
+                        zBlocks.zDepositOres,
+
+                        zMachines.xBLOCKS_MACHINE
+
+        );
 
         @Override
         protected Iterable<Block> getKnownBlocks() {
@@ -101,8 +107,6 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.LASER_MIRROR,
                                 zBlocks.LASER_SENSOR,
 
-
-
                                 zBlocks.RECURSIVE_REPEATER,
                                 zBlocks.PULSE_REPEATER,
                                 zBlocks.INVERTED_REPEATER,
@@ -110,15 +114,16 @@ public class DataLootBlock extends BlockLootSubProvider {
 
                 ).forEach(b -> dropSelf(b.get()));
 
-                var types = List.of(
-                                zBlocks.zModerators, zBlocks.zCoolers, zBlocks.zBlockSlab, zBlocks.zBlockStair,
+                List.of(
+                                zBlocks.zModerators,
+                                zBlocks.zCoolers,
+                                zBlocks.zBlockSlab,
+                                zBlocks.zBlockStair,
                                 zBlocks.zDecorative
 
-                );
+                ).forEach(t -> t.getEntries().forEach(b -> dropSelf(b.get())));
 
-                types.forEach(t -> t.getEntries().forEach(b -> dropSelf(b.get())));
-
-                // zBlocks.zOnlyBlock.getEntries().forEach(b -> dropOther(b.get(), Items.AIR));
+                zMachines.xBLOCKS_MACHINE.getEntries().forEach(b -> dropSelf(b.get()));
 
                 azalea();
 
