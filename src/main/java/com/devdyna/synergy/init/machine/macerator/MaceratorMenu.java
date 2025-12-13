@@ -1,6 +1,7 @@
 package com.devdyna.synergy.init.machine.macerator;
 
 import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
+import static com.devdyna.synergy.init.machine.core.BaseMachineBE.*;
 import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
 
@@ -38,12 +39,12 @@ public class MaceratorMenu extends BaseMachineMenu {
     }
 
     public boolean isCrafting() {
-        return data.get(0) > 0;
+        return data.get(PROGRESS_INDEX) > 0;
     }
 
     public int getScaledArrowProgress() {
-        int progress = data.get(0);
-        int maxProgress = data.get(1);
+        int progress = data.get(PROGRESS_INDEX);
+        int maxProgress = data.get(MAX_PROGRESS_INDEX);
         int sizeArrow = 24;
         return maxProgress != 0
                 &&
@@ -68,17 +69,17 @@ public class MaceratorMenu extends BaseMachineMenu {
     @Override
     protected int getEnergyStored() {
         blockEntity.setChanged();
-        return data.get(2);
+        return data.get(ENERGY_INDEX);
     }
 
     @Override
     protected int getMaxEnergy() {
-        return data.get(3);
+        return data.get(MAX_ENERGY_INDEX);
     }
 
     @Override
     protected int getRemainProgress() {
-        return isCrafting() ? data.get(1) - data.get(0) : 0;
+        return isCrafting() ? data.get(MAX_PROGRESS_INDEX) - data.get(PROGRESS_INDEX) : 0;
     }
 
 }

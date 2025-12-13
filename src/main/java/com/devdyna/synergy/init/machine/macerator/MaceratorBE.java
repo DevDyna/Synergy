@@ -34,10 +34,10 @@ public class MaceratorBE extends BaseMachineBE {
             @Override
             public int get(int i) {
                 return switch (i) {
-                    case 0 -> progress;
-                    case 1 -> maxProgress;
-                    case 2 -> (level != null && !level.isClientSide()) ? getStoredFE() : energy;
-                    case 3 -> (level != null && !level.isClientSide()) ? getMaxFE() : maxEnergy;
+                    case PROGRESS_INDEX -> progress;
+                    case MAX_PROGRESS_INDEX -> maxProgress;
+                    case ENERGY_INDEX -> (level != null && !level.isClientSide()) ? getStoredFE() : energy;
+                    case MAX_ENERGY_INDEX -> (level != null && !level.isClientSide()) ? getMaxFE() : maxEnergy;
                     default -> 0;
                 };
             }
@@ -45,10 +45,10 @@ public class MaceratorBE extends BaseMachineBE {
             @Override
             public void set(int i, int value) {
                 switch (i) {
-                    case 0 -> progress = value;
-                    case 1 -> maxProgress = value;
-                    case 2 -> energy = value;
-                    case 3 -> maxEnergy = value;
+                    case PROGRESS_INDEX -> progress = value;
+                    case MAX_PROGRESS_INDEX -> maxProgress = value;
+                    case ENERGY_INDEX -> energy = value;
+                    case MAX_ENERGY_INDEX -> maxEnergy = value;
                 }
             }
 
@@ -67,7 +67,7 @@ public class MaceratorBE extends BaseMachineBE {
 
     @Override
     public List<Integer> getOutputSlotIndex() {
-        return List.of(1, 2);
+        return List.of(OUTPUT_SLOT, OUTPUT_SECONDARY_SLOT);
     }
 
     public MaceratorBE(BlockPos pos, BlockState blockState) {
@@ -85,9 +85,9 @@ public class MaceratorBE extends BaseMachineBE {
         if (level == null || level.isClientSide())
             return;
 
-        ItemStack input = storage.getStackInSlot(0);
-        ItemStack outputSlot = storage.getStackInSlot(1);
-        ItemStack secondarySlot = storage.getStackInSlot(2);
+        ItemStack input = storage.getStackInSlot(INPUT_SLOT);
+        ItemStack outputSlot = storage.getStackInSlot(OUTPUT_SLOT);
+        ItemStack secondarySlot = storage.getStackInSlot(OUTPUT_SECONDARY_SLOT);
 
         // empty
         if (input.isEmpty()) {
@@ -169,13 +169,13 @@ public class MaceratorBE extends BaseMachineBE {
         }
 
         if (outputSlot.isEmpty())
-            storage.setStackInSlot(1, output);
+            storage.setStackInSlot(OUTPUT_SLOT, output);
         else if (ItemStack.isSameItemSameComponents(outputSlot, output))
             outputSlot.grow(output.getCount());
 
         if (!secondary.isEmpty() && success) {
             if (secondarySlot.isEmpty())
-                storage.setStackInSlot(2, secondary);
+                storage.setStackInSlot(OUTPUT_SECONDARY_SLOT, secondary);
             else if (ItemStack.isSameItemSameComponents(secondarySlot, secondary))
                 secondarySlot.grow(secondary.getCount());
         }
