@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
@@ -95,6 +96,45 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         getStorage().setStackInSlot(slot, itemStack);
     }
 
+    public IItemHandler getAutomationHandler() {
+        return new IItemHandler() {
+
+            @Override
+            public int getSlots() {
+                return storage.getSlots();
+            }
+
+            @Override
+            public ItemStack getStackInSlot(int slot) {
+                return storage.getStackInSlot(slot);
+            }
+
+            @Override
+            public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+                if (getInputSlotIndex().contains(slot))
+                    return storage.insertItem(slot, stack, simulate);
+                return stack;
+            }
+
+            @Override
+            public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                if (getOutputSlotIndex().contains(slot))
+                    return storage.extractItem(slot, amount, simulate);
+                return ItemStack.EMPTY;
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                return storage.getSlotLimit(slot);
+            }
+
+            @Override
+            public boolean isItemValid(int slot, ItemStack stack) {
+                return getInputSlotIndex().contains(slot);
+            }
+        };
+    }
+
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         tag.put("inventory", getStorage().serializeNBT(registries));
@@ -145,9 +185,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
         @Override
         public ItemStack extractItem(int slot, int amount, boolean simulate) {
-            if (getOutputSlotIndex().contains(slot))
-                return super.extractItem(slot, amount, simulate);
-            return ItemStack.EMPTY;
+            return super.extractItem(slot, amount, simulate);
         }
 
         @Override

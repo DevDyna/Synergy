@@ -87,7 +87,7 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         addSlot(new SlotItemHandler(beSlot, id, x, y) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return true;//TODO investigate why it doesn't work
+                return true;
             }
 
             @Override
