@@ -48,6 +48,8 @@
 
 ## NEWS
 
+- [ ] Spawner Essence
+
 - [ ] Easy Bee : the return unification (?)
 
 - [ ] Moss ball (chisel 1.7.10 like)
