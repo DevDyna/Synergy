@@ -2,6 +2,9 @@ package com.devdyna.synergy.client.gui.api;
 
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
+import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
+
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntUnaryOperator;
 
@@ -22,25 +25,39 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 @SuppressWarnings("null")
 public abstract class BaseMenu extends AbstractContainerMenu {
 
-    public int MACHINE_SLOT;
+    public enum BlockMenuType {
+        CONTAINER,
+        MACHINE;
+    }
+
+    public int MACHINE_SLOT = 0;
     public ContainerData energyData;
+    public List<Integer> inputSlotIndex;
+    public List<Integer> outputSlotIndex;
+    public BlockMenuType type;
 
     protected BaseMenu(MenuType<?> menuType, int containerId, BlockEntity blockEntity) {
         super(menuType, containerId);
-        if (blockEntity instanceof ItemStorageBlock be)
+        if (blockEntity instanceof ItemStorageBlock be) {
+            this.type = BlockMenuType.CONTAINER;
             this.MACHINE_SLOT = be.MachineSlots();
-        else
-            this.MACHINE_SLOT = 0;
+        }
 
-            if(blockEntity instanceof EnergyBlock enel){
-                energyData = enel.getContainerData();
-                addDataSlots(energyData);
-            }
+        if (blockEntity instanceof MachineItemAutomation be) {
+            this.type = BlockMenuType.MACHINE;
+            this.MACHINE_SLOT = be.getMachineSlots();
+            this.inputSlotIndex = be.getInputSlotIndex();
+            this.outputSlotIndex = be.getOutputSlotIndex();
+        }
+
+        if (blockEntity instanceof EnergyBlock enel) {
+            energyData = enel.getContainerData();
+            addDataSlots(energyData);
+        }
     }
 
     protected void addPlayerSlots(Inventory inventory) {
-        addInventory(inventory);
-        addHotbar(inventory);
+        addPlayerSlots(inventory, 0, 0);
     }
 
     protected void addPlayerSlots(Inventory inventory, int xf, int yf) {
@@ -97,7 +114,8 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         });
     }
 
-    protected void addMachineInputSlot(Function<ItemStack, Boolean> mayPlace,ItemStackHandler beSlot, int id, int x, int y) {
+    protected void addMachineInputSlot(Function<ItemStack, Boolean> mayPlace, ItemStackHandler beSlot, int id, int x,
+            int y) {
         addSlot(new SlotItemHandler(beSlot, id, x, y) {
             @Override
             public boolean mayPlace(ItemStack stack) {
@@ -137,37 +155,10 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         }
     }
 
-    // TODO need to be verified
-    protected void addFilteredSlot(ItemStackHandler beSlot, int id, int x, int y, ItemStack filter) {
-        var a = new SlotItemHandler(beSlot, id, x, y);
-        a.mayPlace(filter);
-        addSlot(a);
-    }
-
-    // TODO DONT WORK PROPRERLY
+    // TODO NEED TO BE IMPLEMENTED!
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int index) {
-        ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = (Slot) this.slots.get(index);
-        if (slot != null && slot.hasItem()) {
-            ItemStack itemstack1 = slot.getItem();
-            itemstack = itemstack1.copy();
-            if (index < this.MACHINE_SLOT) {
-                if (!this.moveItemStackTo(itemstack1, this.MACHINE_SLOT, this.slots.size(), true)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.moveItemStackTo(itemstack1, 0, this.MACHINE_SLOT, false)) {
-                return ItemStack.EMPTY;
-            }
-
-            if (itemstack1.isEmpty()) {
-                slot.setByPlayer(ItemStack.EMPTY);
-            } else {
-                slot.setChanged();
-            }
-        }
-
-        return itemstack;
+    public ItemStack quickMoveStack(Player player, int index) {
+        return ItemStack.EMPTY;
     }
 
     @Override
