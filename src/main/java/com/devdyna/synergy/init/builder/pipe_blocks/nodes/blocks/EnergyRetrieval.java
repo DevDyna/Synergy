@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks;
+package com.devdyna.synergy.init.builder.pipe_blocks.nodes.blocks;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.node.builder.NodeBaseBlock;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
+import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities.*;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

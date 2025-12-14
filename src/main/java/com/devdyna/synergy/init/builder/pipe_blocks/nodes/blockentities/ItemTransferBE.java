@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities;
+package com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities;
 
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
@@ -11,19 +11,19 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 
 @SuppressWarnings({ "null" })
-public class ItemRetrievalBE extends NodeBaseBE {
+public class ItemTransferBE extends NodeBaseBE {
 
-    public ItemRetrievalBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public ItemTransferBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
-    public ItemRetrievalBE(BlockPos pos, BlockState blockState) {
-        super(zBlockEntities.ITEM_RETRIEVAL.get(), pos, blockState);
+    public ItemTransferBE(BlockPos pos, BlockState blockState) {
+        this(zBlockEntities.ITEM_TRANSFER.get(), pos, blockState);
     }
 
     @Override
     protected void executeItem(IItemHandler input, IItemHandler output) {
-        moveItems(output, input, 1);
+        moveItems(input, output, 1);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ItemRetrievalBE extends NodeBaseBE {
 
     @Override
     public BlockPos defineOutput() {
-        return getInputPos();
+        return getOutputPos();
     }
 
 }

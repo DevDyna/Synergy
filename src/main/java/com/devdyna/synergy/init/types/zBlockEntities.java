@@ -12,7 +12,7 @@ import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBE;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
+import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.quern.QuernBE;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBE;

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.pipeBlocks;
+package com.devdyna.synergy.init.builder.pipe_blocks;
 
 import java.util.List;
 

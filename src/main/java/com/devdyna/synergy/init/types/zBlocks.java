@@ -12,8 +12,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
-import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
-import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.*;
 import com.devdyna.synergy.init.builder.quern.QuernBlock;
 import com.devdyna.synergy.init.builder.redstone.InvertedRepeater;
 import com.devdyna.synergy.init.builder.redstone.PulseRepeater;
@@ -37,6 +35,8 @@ import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorContro
 import com.devdyna.synergy.init.builder.nuclear_reactor.cooler.*;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.moderator.*;
+import com.devdyna.synergy.init.builder.pipe_blocks.pipeBlock;
+import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blocks.*;
 
 public class zBlocks {
         public static void register(IEventBus bus) {

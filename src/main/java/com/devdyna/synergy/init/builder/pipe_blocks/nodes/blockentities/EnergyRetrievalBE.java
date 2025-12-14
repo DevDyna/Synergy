@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities;
+package com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities;
 
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
