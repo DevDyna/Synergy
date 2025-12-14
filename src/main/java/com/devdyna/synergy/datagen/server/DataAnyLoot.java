@@ -17,7 +17,9 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -50,17 +52,32 @@ public class DataAnyLoot implements LootTableSubProvider {
 
                 for (DeferredHolder<Item, Item> items : MOB_DROPS) {
 
-                        DataGenUtil.registerTable(c,
-                                        x.rl(items.getRegisteredName().replace(ID + ":", PREFIX_DROPS)),
-
-                                        DataGenUtil.createTable(DataGenUtil.createPool()
+                        var table = LootTable
+                                        .lootTable()
+                                        .withPool(DataGenUtil.createPool()
                                                         .setRolls(UniformGenerator.between(0.0f, 1.0f))
                                                         .add(LootItem.lootTableItem(items.get()))
                                                         .when(LootItemRandomChanceCondition.randomChance(0.25f))
                                                         .apply(SetItemCountFunction.setCount(
                                                                         UniformGenerator.between(1.0f, 3.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(p,
-                                                                        UniformGenerator.between(1, 3)))));
+                                                                        UniformGenerator.between(1, 3))))
+                                        .setParamSet(LootContextParamSet.builder().build())
+
+                        ;
+
+                        if (MOB_DROPS.indexOf(items) == 0) {
+                                table.withPool(DataGenUtil.createPool().setRolls(UniformGenerator.between(0.0f, 1.0f))
+                                                .add(LootItem.lootTableItem(zItems.SULFUR_DUST.get()))
+                                                .when(LootItemRandomChanceCondition.randomChance(0.85f))
+                                                .apply(SetItemCountFunction.setCount(
+                                                                ConstantValue.exactly(1)))
+                                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(p,
+                                                                UniformGenerator.between(1, 4))));
+                        }
+
+                        DataGenUtil.registerTable(c, x.rl(items.getRegisteredName().replace(ID + ":", PREFIX_DROPS)),
+                                        table);
 
                 }
 
@@ -76,6 +93,11 @@ public class DataAnyLoot implements LootTableSubProvider {
                 var mushtable = DataGenUtil.createTable(mushLoot);
 
                 DataGenUtil.registerTable(c, x.rl(MUSHROOMS), mushtable);
+
+                // DataGenUtil.registerTable(c, x.rl("entities/extra_mob_drops/sulfur_dust"),
+                // DataGenUtil.createTable(DataGenUtil.createPool()
+                // .setRolls(UniformGenerator.between(0.0f, 1.0f))
+                // ));
 
         }
 
