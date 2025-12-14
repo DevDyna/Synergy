@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
+import com.devdyna.synergy.utils.IngredientUtils;
 import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.Advancement;
@@ -99,7 +100,7 @@ public class ReactorCellBuilder implements RecipeBuilder {
 
     public ReactorCellBuilder unlockedBy() {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                .hasItems(this.input.getItems()[0].getItem()));
+                .hasItems(IngredientUtils.getItemLike(input)));
     }
 
     public ReactorCellBuilder unlockedBy(String name, Criterion<?> criterion) {

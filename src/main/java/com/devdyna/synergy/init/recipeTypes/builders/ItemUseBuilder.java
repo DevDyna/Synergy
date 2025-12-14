@@ -2,13 +2,13 @@ package com.devdyna.synergy.init.recipeTypes.builders;
 
 import static com.devdyna.synergy.Main.ID;
 
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.init.recipeTypes.type.ItemUseRecipe;
+import com.devdyna.synergy.utils.IngredientUtils;
 import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.Advancement;
@@ -116,9 +116,7 @@ public class ItemUseBuilder implements RecipeBuilder {
 
     public ItemUseBuilder unlockedBy() {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                .hasItems(Arrays.stream(this.inputItem.getItems())
-                        .map(ItemStack::getItem)
-                        .toArray(Item[]::new)));
+                .hasItems(IngredientUtils.getItemLike(inputItem)));
     }
 
     public ItemUseBuilder unlockedBy(String name, Criterion<?> criterion) {

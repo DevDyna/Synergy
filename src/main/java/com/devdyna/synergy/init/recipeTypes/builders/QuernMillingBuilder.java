@@ -2,12 +2,12 @@ package com.devdyna.synergy.init.recipeTypes.builders;
 
 import static com.devdyna.synergy.Main.ID;
 
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.init.recipeTypes.type.QuernMillingRecipe;
+import com.devdyna.synergy.utils.IngredientUtils;
 import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.Advancement;
@@ -89,9 +89,7 @@ public class QuernMillingBuilder implements RecipeBuilder {
 
     public QuernMillingBuilder unlockedBy() {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                .hasItems(Arrays.stream(this.input.getItems())
-                        .map(ItemStack::getItem)
-                        .toArray(Item[]::new)));
+                .hasItems(IngredientUtils.getItemLike(input)));
     }
 
     public QuernMillingBuilder unlockedBy(String name, Criterion<?> criterion) {
