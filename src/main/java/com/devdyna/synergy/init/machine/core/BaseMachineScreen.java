@@ -68,7 +68,7 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
                             (Screen.hasShiftDown() ? getEnergyStored()
                                     : StringUtil.getFormatNoRound()
                                             .format(getEnergyStored()))
-                                    + "FE / " +
+                                    + " FE / " +
                                     (Screen.hasShiftDown() ? getMaxEnergy()
                                             : StringUtil.getFormatNoRound()
                                                     .format(getMaxEnergy()))
