@@ -7,29 +7,28 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.recipebuilders.BaseRecipeBuilder;
+import com.devdyna.synergy.api.recipebuilders.SimpleInputItem;
+import com.devdyna.synergy.api.recipebuilders.SimpleOutputItem;
+import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.DryableBricksRecipe;
 
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementRequirements;
-import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.data.recipes.RecipeBuilder;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings("null")
-public class DryableBricksBuilder implements RecipeBuilder {
+public class DryableBricksBuilder extends BaseRecipeBuilder implements
+        SimpleInputItem<DryableBricksBuilder>, SimpleOutputItem<DryableBricksBuilder> {
 
-    private ItemStack input;
+    private Ingredient input;
     private BlockState block;
     private ItemStack output;
     private final Map<String, Criterion<?>> criteria;
@@ -42,13 +41,17 @@ public class DryableBricksBuilder implements RecipeBuilder {
         return new DryableBricksBuilder();
     }
 
-    public DryableBricksBuilder input(ItemStack input) {
-        this.input = input;
+    /**
+     * Block reference
+     */
+    public DryableBricksBuilder block(BlockState block) {
+        this.block = block;
         return this;
     }
 
-    public DryableBricksBuilder block(BlockState block) {
-        this.block = block;
+    @Override
+    public DryableBricksBuilder input(Ingredient input) {
+        this.input = input;
         return this;
     }
 
@@ -56,30 +59,14 @@ public class DryableBricksBuilder implements RecipeBuilder {
         return block(block.defaultBlockState());
     }
 
-    public DryableBricksBuilder input(Item input) {
-        return input(x.item(input));
-    }
-
-    public DryableBricksBuilder input(DeferredHolder<Item, Item> input) {
-        return input(input.get());
-    }
-
     public DryableBricksBuilder output(ItemStack output) {
         this.output = output;
         return this;
     }
 
-    public DryableBricksBuilder output(DeferredHolder<Item, Item> output) {
-        return output(output.get());
-    }
-
-    public DryableBricksBuilder output(Item output) {
-        return output(x.item(output));
-    }
-
     public DryableBricksBuilder unlockedBy() {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                .hasItems(this.input.getItem()));
+                .hasItems(IngredientUtils.getItemLike(input)));
     }
 
     public DryableBricksBuilder unlockedBy(String name, Criterion<?> criterion) {
@@ -101,20 +88,13 @@ public class DryableBricksBuilder implements RecipeBuilder {
     }
 
     @Override
-    public void save(RecipeOutput recipeOutput) {
-        save(recipeOutput, "");
+    public Recipe<?> createRecipe() {
+        return new DryableBricksRecipe(input, block, output);
     }
 
-    public void save(RecipeOutput pRecipeOutput, ResourceLocation pId) {
-        if (this.criteria.isEmpty())
-            throw new IllegalStateException("Missing/Null Criteria " + String.valueOf(pId));
-        Advancement.Builder advancement$builder = pRecipeOutput.advancement()
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pId))
-                .rewards(AdvancementRewards.Builder.recipe(pId))
-                .requirements(AdvancementRequirements.Strategy.OR);
-        this.criteria.forEach(advancement$builder::addCriterion);
-        DryableBricksRecipe shapelessrecipe = new DryableBricksRecipe(input, block, output);
-        pRecipeOutput.accept(pId, shapelessrecipe,
-                advancement$builder.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
+    @Override
+    public DryableBricksBuilder getBuilder() {
+        return this;
     }
+
 }

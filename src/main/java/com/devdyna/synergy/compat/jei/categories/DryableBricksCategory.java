@@ -37,7 +37,7 @@ public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecip
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, DryableBricksRecipe recipe, IFocusGroup focuses) {
 
-        builder.addInputSlot(8-7, 9-8).addItemStack(recipe.getInput());
+        builder.addInputSlot(8-7, 9-8).addIngredients(recipe.getInput());
         builder.addOutputSlot(67-7, 9-8).addItemStack(recipe.getOutput());
 
     }

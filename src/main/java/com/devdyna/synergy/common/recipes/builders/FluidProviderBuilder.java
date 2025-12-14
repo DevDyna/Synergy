@@ -7,28 +7,23 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.recipebuilders.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.FluidProviderRecipe;
 
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementRequirements;
-import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.data.recipes.RecipeBuilder;
-import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.FluidStack;
 
-@SuppressWarnings({ "rawtypes", "null" })
-public class FluidProviderBuilder implements RecipeBuilder {
+@SuppressWarnings({ "null" })
+public class FluidProviderBuilder extends BaseRecipeBuilder {
 
     private BlockState core;
     private BlockState below = Blocks.AIR.defaultBlockState();
@@ -122,20 +117,7 @@ public class FluidProviderBuilder implements RecipeBuilder {
     }
 
     @Override
-    public void save(RecipeOutput recipeOutput) {
-        save(recipeOutput, "");
-    }
-
-    public void save(RecipeOutput pRecipeOutput, ResourceLocation pId) {
-        if (this.criteria.isEmpty())
-            throw new IllegalStateException("Missing/Null Criteria " + String.valueOf(pId));
-        Advancement.Builder advancement$builder = pRecipeOutput.advancement()
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pId))
-                .rewards(AdvancementRewards.Builder.recipe(pId))
-                .requirements(AdvancementRequirements.Strategy.OR);
-        this.criteria.forEach(advancement$builder::addCriterion);
-        var shapelessrecipe = new FluidProviderRecipe(core, below, left, right, output);
-        pRecipeOutput.accept(pId, shapelessrecipe,
-                advancement$builder.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
+    public Recipe<?> createRecipe() {
+        return new FluidProviderRecipe<>(core, below, left, right, output);
     }
 }

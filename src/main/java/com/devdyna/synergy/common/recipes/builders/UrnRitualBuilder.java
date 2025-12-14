@@ -20,10 +20,10 @@ import net.minecraft.world.item.crafting.Recipe;
 
 @SuppressWarnings({ "null" })
 public class UrnRitualBuilder extends BaseRecipeBuilder
-        implements SimpleOutputItem<UrnRitualBuilder>, ListedIngredientInput<UrnRitualBuilder> {
+        implements SimpleOutputItem<UrnRitualBuilder>, ListedInputIngredient<UrnRitualBuilder> {
 
     private List<Ingredient> inputList = new ArrayList<>();
-    private ItemStack output = ItemStack.EMPTY;
+    private ItemStack output;
 
     private UrnRitualBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();

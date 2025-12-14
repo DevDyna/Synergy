@@ -22,7 +22,7 @@ public class RecipeTypesRender implements RecipeTypeMappingSupplier {
         return LytStandardRecipeBox.builder()
                 .icon(Items.BRICK)
                 .title("Dryable Bricks")
-                .input(x.ingredient(r.value().getInput()))
+                .input(r.value().getInput())
                 .output(r.value().getOutput())
                 .build(r);
     }

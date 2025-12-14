@@ -2,7 +2,6 @@ package com.devdyna.synergy.common.recipes.type;
 
 import java.util.List;
 
-import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -20,18 +19,18 @@ import net.minecraft.world.level.block.state.BlockState;
 @SuppressWarnings("null")
 public class DryableBricksRecipe implements Recipe<MonoItemInput> {
 
-    private final ItemStack input;
+    private final Ingredient input;
     private final BlockState block;
     private final ItemStack output;
 
-    public DryableBricksRecipe(ItemStack input, BlockState block, ItemStack output) {
+    public DryableBricksRecipe(Ingredient input, BlockState block, ItemStack output) {
         this.input = input;
         this.block = block;
         this.output = output;
     }
 
     public boolean matches(MonoItemInput r, Level l) {
-        return r.input().is(input.getItem());
+        return input.test(r.input());
     }
 
     public ItemStack assemble(MonoItemInput i, HolderLookup.Provider r) {
@@ -56,7 +55,7 @@ public class DryableBricksRecipe implements Recipe<MonoItemInput> {
     }
 
     public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.copyOf(List.of(x.ingredient(input)));
+        return NonNullList.copyOf(List.of(input));
     }
 
     @Override
@@ -64,7 +63,7 @@ public class DryableBricksRecipe implements Recipe<MonoItemInput> {
         return output;
     }
 
-    public ItemStack getInput() {
+    public Ingredient getInput() {
         return input;
     }
 

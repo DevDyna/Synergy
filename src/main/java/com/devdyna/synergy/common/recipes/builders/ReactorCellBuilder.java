@@ -3,39 +3,30 @@ package com.devdyna.synergy.common.recipes.builders;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.recipebuilders.BaseRecipeBuilder;
+import com.devdyna.synergy.api.recipebuilders.SimpleInputItem;
+import com.devdyna.synergy.api.recipebuilders.SimpleOutputItem;
 import com.devdyna.synergy.api.utils.IngredientUtils;
-import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.FuelCellRecipe;
 
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementRequirements;
-import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.data.recipes.RecipeBuilder;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.neoforged.neoforge.registries.DeferredHolder;
+import net.minecraft.world.item.crafting.Recipe;
 
 @SuppressWarnings({ "null" })
-public class ReactorCellBuilder implements RecipeBuilder {
+public class ReactorCellBuilder extends BaseRecipeBuilder
+        implements SimpleOutputItem<ReactorCellBuilder> , SimpleInputItem<ReactorCellBuilder> {
 
     private Ingredient input;
     private ItemStack output;
     private int duration;
     private double heat;
     private int fe;
-
-    private final Map<String, Criterion<?>> criteria;
 
     private ReactorCellBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
@@ -50,37 +41,9 @@ public class ReactorCellBuilder implements RecipeBuilder {
         return this;
     }
 
-    public ReactorCellBuilder input(Item input) {
-        return input(x.ingredient(input));
-    }
-
-    public ReactorCellBuilder input(DeferredHolder<Item, Item> input) {
-        return input(input.get());
-    }
-
-    public ReactorCellBuilder input(TagKey<Item> input) {
-        return input(x.ingredient(input));
-    }
-
     public ReactorCellBuilder output(ItemStack output) {
         this.output = output;
         return this;
-    }
-
-    public ReactorCellBuilder output(Item output) {
-        return output(x.item(output));
-    }
-
-    public ReactorCellBuilder output(DeferredHolder<Item, Item> output) {
-        return output(output.get());
-    }
-
-    public ReactorCellBuilder output(Item output, int count) {
-        return output(x.item(output, count));
-    }
-
-    public ReactorCellBuilder output(DeferredHolder<Item, Item> output, int count) {
-        return output(output.get(), count);
     }
 
     public ReactorCellBuilder energy(int fe) {
@@ -116,26 +79,13 @@ public class ReactorCellBuilder implements RecipeBuilder {
         return this.output.getItem();
     }
 
-    public void save(RecipeOutput recipeOutput, String extra) {
-        this.save(recipeOutput, x.rl("reactor_reaction/" + x.path(output.getItem())
-                + extra));
+    @Override
+    public ReactorCellBuilder getBuilder() {
+        return this;
     }
 
     @Override
-    public void save(RecipeOutput recipeOutput) {
-        save(recipeOutput, "");
-    }
-
-    public void save(RecipeOutput pRecipeOutput, ResourceLocation pId) {
-        if (this.criteria.isEmpty())
-            throw new IllegalStateException("Missing/Null Criteria " + String.valueOf(pId));
-        Advancement.Builder advancement$builder = pRecipeOutput.advancement()
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pId))
-                .rewards(AdvancementRewards.Builder.recipe(pId))
-                .requirements(AdvancementRequirements.Strategy.OR);
-        this.criteria.forEach(advancement$builder::addCriterion);
-        FuelCellRecipe shapelessrecipe = new FuelCellRecipe(input, output, duration, fe, heat);
-        pRecipeOutput.accept(pId, shapelessrecipe,
-                advancement$builder.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
+    public Recipe<?> createRecipe() {
+        return new FuelCellRecipe(input, output, duration, fe, heat);
     }
 }
