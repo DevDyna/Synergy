@@ -1,6 +1,6 @@
 {
   "type": "synergy:macerator",
-  "chance": 0.0,
+  "chance": 0.25,
   "energy": 10,
   "input": {
     "item": "minecraft:raw_gold"
@@ -8,6 +8,10 @@
   "output": {
     "count": 3,
     "id": "synergy:gold_dust"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "synergy:silver_dust"
   },
   "ticks": 60
 }

@@ -1,0 +1,17 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.85,
+  "energy": 10,
+  "input": {
+    "tag": "c:stones"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:cobblestone"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "synergy:stone_pebble"
+  },
+  "ticks": 40
+}

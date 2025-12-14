@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "C": {
+      "item": "synergy:blue_battery"
+    },
+    "M": {
+      "item": "synergy:basic_machine_frame"
+    },
+    "Q": {
+      "item": "synergy:quern"
+    },
+    "R": {
+      "item": "synergy:resistor"
+    },
+    "S": {
+      "item": "synergy:stone_circuit"
+    }
+  },
+  "pattern": [
+    " Q ",
+    "RMS",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:macerator"
+  }
+}
