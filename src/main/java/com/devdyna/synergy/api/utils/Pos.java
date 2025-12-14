@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api;
+package com.devdyna.synergy.api.utils;
 
 public class Pos {
 

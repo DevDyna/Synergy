@@ -4,10 +4,10 @@ import java.util.*;
 
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
 import com.devdyna.synergy.api.coreBE.be.TickingBE;
-import com.devdyna.synergy.api.BiBool;
-import com.devdyna.synergy.api.Range;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
+import com.devdyna.synergy.api.utils.BiBool;
+import com.devdyna.synergy.api.utils.Range;
 import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.reactor.cooler.CoolerBlockBase;

@@ -6,8 +6,8 @@ import java.awt.Color;
 
 import org.jetbrains.annotations.Nullable;
 
-import com.devdyna.synergy.api.Image;
-import com.devdyna.synergy.api.Size;
+import com.devdyna.synergy.api.utils.Image;
+import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.utils.ColorUtil;
 
 import mezz.jei.api.gui.drawable.IDrawable;

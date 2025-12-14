@@ -2,7 +2,7 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
-import com.devdyna.synergy.api.datagen.ExtraItemModelProvider;
+import com.devdyna.synergy.datagen.api.ExtraItemModelProvider;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.utils.ClazzUtil;

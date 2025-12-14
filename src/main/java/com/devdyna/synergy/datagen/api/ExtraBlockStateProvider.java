@@ -1,9 +1,10 @@
-package com.devdyna.synergy.api.datagen;
+package com.devdyna.synergy.datagen.api;
 
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.List;
 import java.util.function.BiFunction;
+
 import com.devdyna.synergy.api.zFluid;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeType;

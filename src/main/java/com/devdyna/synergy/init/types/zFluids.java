@@ -4,6 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.zFluid;
+
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.IEventBus;

@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import com.devdyna.synergy.api.Range;
+import com.devdyna.synergy.api.utils.Range;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

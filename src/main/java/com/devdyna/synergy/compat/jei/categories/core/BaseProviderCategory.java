@@ -1,7 +1,7 @@
 package com.devdyna.synergy.compat.jei.categories.core;
 
-import com.devdyna.synergy.api.Size;
 import com.devdyna.synergy.api.node.BaseProviderRecipe;
+import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.utils.x;
 

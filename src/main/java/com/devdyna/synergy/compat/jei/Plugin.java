@@ -5,11 +5,11 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.devdyna.synergy.api.datagen.ExtraRecipeProvider;
 import com.devdyna.synergy.api.node.BaseProviderRecipe;
 import com.devdyna.synergy.client.gui.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.compat.jei.categories.*;
 import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
+import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.ClazzUtil;

@@ -1,6 +1,7 @@
 package com.devdyna.synergy.init.machine.macerator.recipe;
 
 import java.util.LinkedHashMap;
+
 import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;

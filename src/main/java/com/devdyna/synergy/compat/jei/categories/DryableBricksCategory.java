@@ -1,8 +1,8 @@
 package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.Main;
-import com.devdyna.synergy.api.Pos;
-import com.devdyna.synergy.api.Size;
+import com.devdyna.synergy.api.utils.Pos;
+import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.common.recipeTypes.type.DryableBricksRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.types.zRecipeTypes;

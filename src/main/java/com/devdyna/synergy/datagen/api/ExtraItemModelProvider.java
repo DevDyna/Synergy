@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.datagen;
+package com.devdyna.synergy.datagen.api;
 
 import static com.devdyna.synergy.Main.ID;
 

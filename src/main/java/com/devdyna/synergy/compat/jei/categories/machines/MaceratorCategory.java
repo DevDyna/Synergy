@@ -1,7 +1,7 @@
 package com.devdyna.synergy.compat.jei.categories.machines;
 
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.Size;
+import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.compat.jei.categories.core.BaseMachineRecipeCategory;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
