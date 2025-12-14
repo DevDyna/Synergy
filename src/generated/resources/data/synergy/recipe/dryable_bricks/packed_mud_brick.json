@@ -10,8 +10,7 @@
     }
   },
   "input": {
-    "count": 1,
-    "id": "synergy:packed_mud_ball"
+    "item": "synergy:packed_mud_ball"
   },
   "output": {
     "count": 1,
