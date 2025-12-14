@@ -80,8 +80,6 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCategories(new FluidProviderCategory(helper));
                 r.addRecipeCategories(new DryableBricksCategory(helper));
 
-
-
                 r.addRecipeCategories(new MaceratorCategory(helper));
 
         }
@@ -122,11 +120,10 @@ public class Plugin implements IModPlugin {
                                 recipes.getAllRecipesFor(zRecipeTypes.DRYABLE_BRICKS.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
-
-
                 r.addRecipes(MaceratorCategory.TYPE,
                                 recipes.getAllRecipesFor(zMachines.MACERATOR.recipe().getType()).stream()
                                                 .map(RecipeHolder::value).toList());
+
         }
 
         @Override
@@ -134,7 +131,7 @@ public class Plugin implements IModPlugin {
                 r.addRecipeClickArea(FuelCellScreen.class, 74, 30, 22, 20,
                                 ReactorCellCategory.TYPE);
 
-                r.addRecipeClickArea(MaceratorScreen.class, 75,35, 22, 15,
+                r.addRecipeClickArea(MaceratorScreen.class, 75, 35, 22, 15,
                                 MaceratorCategory.TYPE);
         }
 
