@@ -9,14 +9,13 @@
 - [x] Reactor Controller dont save aoe
 - [ ] BE radius doesn't sync with AOE
 - [ ] Fuel cell output can conflict with input
-- [ ] quickMoveStack (i hate it!)
+- [ ] quickMoveStack (i hate you!)
 
 - [ ] Nodes can void items with furnaces
-- [ ] Shift-action on some GUI will cause issues
 
 - [ ] Mekanism IO will void/break many stuff (nodes , fuel cell , etc)
 
-- [ ] Machines slot index 0 doesn't allow to pickup items
+- [x] Machines slot index 0 doesn't allow to pickup items
 
 ## COMPATS AND TWEAKS
 
@@ -38,7 +37,7 @@
 
 - [ ] Modern Chisel compat (?)
 
-- [ ] quern recipes to macerator
+- [x] quern recipes to macerator
 
 ### CODEBASE
 
