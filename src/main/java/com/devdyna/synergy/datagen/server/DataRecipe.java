@@ -817,6 +817,16 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.IRON_DUST, 9)
                                 .save(c);
 
+                MaceratorRecipeBuilder.of()
+                                .input(Tags.Items.STONES)
+                                .delay(40)
+                                .unlockedBy()
+                                .group(ID)
+                                .output(Items.COBBLESTONE)
+                                .secondary(zItems.STONE_PEBBLE)
+                                .chance(0.85f)
+                                .save(c);
+
                 QuernMillingBuilder.of()
                                 .input(zBlocks.RUSTIC_METAL.get().asItem())
                                 .delay(80)
@@ -824,6 +834,21 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .group(ID)
                                 .output(zItems.IRON_DUST, 9)
                                 .save(c);
+
+
+
+                                ShapedRecipeBuilder.shaped(MISC, zMachines.MACERATOR.block().get())
+                                .pattern(" Q ")
+                                .pattern("RMS")
+                                .pattern(" C ")
+                                .define('S', zItems.STONE_CIRCUIT.get())
+                                .define('R', zItems.RESISTOR.get())
+                                .define('Q', zBlocks.QUERN.get())
+                                .define('C', zItems.BLUE_BATTERY.get())
+                                .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
+                                .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
+                                .group(ID).save(c);
+                                
 
         }
 
