@@ -9,7 +9,7 @@
 - [x] Reactor Controller dont save aoe
 - [ ] BE radius doesn't sync with AOE
 - [ ] Fuel cell output can conflict with input
-- [ ] quickMoveStack
+- [ ] quickMoveStack (i hate it!)
 
 - [ ] Nodes can void items with furnaces
 - [ ] Shift-action on some GUI will cause issues
