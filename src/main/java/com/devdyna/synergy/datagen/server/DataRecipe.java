@@ -379,7 +379,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy().save(c);
 
                 MaceratorRecipeBuilder.of().input(ItemTags.LOGS)
-                                .output(x.item(zItems.SAWDUST, 4))
+                                .output(x.item(zItems.SAWDUST, 3))
                                 .secondary(x.item(zItems.SAWDUST))
                                 .chance(0.5f)
                                 .unlockedBy().save(c);
