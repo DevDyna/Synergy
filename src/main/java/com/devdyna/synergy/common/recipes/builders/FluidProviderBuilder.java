@@ -3,7 +3,6 @@ package com.devdyna.synergy.common.recipes.builders;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -30,8 +29,6 @@ public class FluidProviderBuilder extends BaseRecipeBuilder {
     private BlockState left = Blocks.AIR.defaultBlockState();
     private BlockState right = Blocks.AIR.defaultBlockState();
     private FluidStack output;
-
-    private final Map<String, Criterion<?>> criteria;
 
     public FluidProviderBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();

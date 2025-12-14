@@ -3,7 +3,6 @@ package com.devdyna.synergy.common.recipes.builders;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -31,7 +30,6 @@ public class DryableBricksBuilder extends BaseRecipeBuilder implements
     private Ingredient input;
     private BlockState block;
     private ItemStack output;
-    private final Map<String, Criterion<?>> criteria;
 
     public DryableBricksBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
