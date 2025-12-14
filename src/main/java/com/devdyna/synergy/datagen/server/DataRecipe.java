@@ -822,9 +822,28 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(40)
                                 .unlockedBy()
                                 .group(ID)
-                                .output(Items.COBBLESTONE)
-                                .secondary(zItems.STONE_PEBBLE)
-                                .chance(0.85f)
+                                .output(zItems.STONE_PEBBLE, 4)
+                                .secondary(zItems.SILVERFISH_DUST)
+                                .chance(0.45f)
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, Items.COBBLESTONE, 1)
+                                .define('#', zItems.STONE_PEBBLE.get())
+                                .pattern("##")
+                                .pattern("##")
+                                .unlockedBy(getHasName(zItems.STONE_PEBBLE.get()),
+                                                has(zItems.STONE_PEBBLE.get()))
+                                .save(c, ID + ":" + getConversionRecipeName(Items.COBBLESTONE,
+                                                zItems.STONE_PEBBLE.get()));
+
+                MaceratorRecipeBuilder.of()
+                                .input(Tags.Items.NETHERRACKS)
+                                .delay(40)
+                                .unlockedBy()
+                                .group(ID)
+                                .output(zItems.NETHERRACK_PEBBLE,4)
+                                .secondary(zItems.SULFUR_DUST)
+                                .chance(0.75f)
                                 .save(c);
 
                 QuernMillingBuilder.of()
@@ -835,9 +854,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.IRON_DUST, 9)
                                 .save(c);
 
-
-
-                                ShapedRecipeBuilder.shaped(MISC, zMachines.MACERATOR.block().get())
+                ShapedRecipeBuilder.shaped(MISC, zMachines.MACERATOR.block().get())
                                 .pattern(" Q ")
                                 .pattern("RMS")
                                 .pattern(" C ")
@@ -848,7 +865,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
                                 .group(ID).save(c);
-                                
 
         }
 
