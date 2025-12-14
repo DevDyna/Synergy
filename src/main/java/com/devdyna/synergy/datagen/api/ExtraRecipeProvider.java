@@ -860,6 +860,17 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
+        protected static void simplePacked(RecipeOutput c,Item input,Item output){
+                ShapedRecipeBuilder.shaped(MISC, output, 1)
+                                .define('#', input)
+                                .pattern("##")
+                                .pattern("##")
+                                .unlockedBy(getHasName(input),
+                                                has(input))
+                                .save(c, ID + ":" + getConversionRecipeName(output,
+                                                input));
+        }
+
         protected static void lasers(RecipeOutput c) {
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_MIRROR.get(), 2)
                                 .pattern(" C ")
