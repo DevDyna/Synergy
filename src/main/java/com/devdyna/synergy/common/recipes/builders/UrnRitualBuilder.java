@@ -12,7 +12,7 @@ import com.devdyna.synergy.common.recipes.type.UrnRitualRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -47,11 +47,6 @@ public class UrnRitualBuilder extends BaseRecipeBuilder
         return this.output.getItem();
     }
 
-    public void save(RecipeOutput recipeOutput, String extra) {
-        this.save(recipeOutput, x.rl("urn_ritual/" + x.path(this.output.getItem())
-                + extra));
-    }
-
     @Override
     public Recipe<?> createRecipe() {
         return new UrnRitualRecipe(inputList, this.output);
@@ -78,5 +73,11 @@ public class UrnRitualBuilder extends BaseRecipeBuilder
         this.output = output;
         return this;
     }
+
+    @Override
+        public ResourceLocation getSuffix(String extra) {
+       return x.rl("urn_ritual/" + x.path(this.output.getItem())
+                + extra);
+        }
 
 }

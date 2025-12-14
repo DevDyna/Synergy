@@ -9,10 +9,12 @@ import com.devdyna.synergy.api.recipebuilders.BaseRecipeBuilder;
 import com.devdyna.synergy.api.recipebuilders.SimpleInputItem;
 import com.devdyna.synergy.api.recipebuilders.SimpleOutputItem;
 import com.devdyna.synergy.api.utils.IngredientUtils;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.FuelCellRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -20,7 +22,7 @@ import net.minecraft.world.item.crafting.Recipe;
 
 @SuppressWarnings({ "null" })
 public class ReactorCellBuilder extends BaseRecipeBuilder
-        implements SimpleOutputItem<ReactorCellBuilder> , SimpleInputItem<ReactorCellBuilder> {
+        implements SimpleOutputItem<ReactorCellBuilder>, SimpleInputItem<ReactorCellBuilder> {
 
     private Ingredient input;
     private ItemStack output;
@@ -88,4 +90,11 @@ public class ReactorCellBuilder extends BaseRecipeBuilder
     public Recipe<?> createRecipe() {
         return new FuelCellRecipe(input, output, duration, fe, heat);
     }
+
+    @Override
+    public ResourceLocation getSuffix(String extra) {
+        return x.rl("reactor_reaction/" + x.path(output.getItem())
+                + extra);
+    }
+
 }

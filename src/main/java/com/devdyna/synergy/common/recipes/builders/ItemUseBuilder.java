@@ -12,7 +12,7 @@ import com.devdyna.synergy.common.recipes.type.ItemUseRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -125,13 +125,13 @@ public class ItemUseBuilder extends BaseRecipeBuilder {
         return x.item(this.outputState).getItem();
     }
 
-    public void save(RecipeOutput recipeOutput, String extra) {
-        this.save(recipeOutput,
-                x.rl("item_use/" +
+    @Override
+    public ResourceLocation getSuffix(String extra) {
+        return x.rl("item_use/" +
                         x.path(outputState.getBlock())
                         + "_from_" +
                         x.path(inputState.getBlock())
-                        + extra));
+                        + extra);
     }
 
     @Override

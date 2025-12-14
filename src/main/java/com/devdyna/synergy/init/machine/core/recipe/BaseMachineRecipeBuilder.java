@@ -110,14 +110,15 @@ public abstract class BaseMachineRecipeBuilder extends BaseRecipeBuilder
         return this.output.getItem();
     }
 
-    public void save(RecipeOutput o, String extra) {
-        this.save(o, x.rl(getMachine().id() + "/" + x.path(output.getItem())
-                + extra));
-    }
-
     @Override
     public BaseMachineRecipeBuilder getBuilder() {
         return this;
+    }
+
+    @Override
+    public ResourceLocation getSuffix(String extra) {
+        return x.rl(getMachine().id() + "/" + x.path(output.getItem())
+                + extra);
     }
 
 }

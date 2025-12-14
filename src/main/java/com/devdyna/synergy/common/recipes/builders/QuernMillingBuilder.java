@@ -9,17 +9,19 @@ import com.devdyna.synergy.api.recipebuilders.BaseRecipeBuilder;
 import com.devdyna.synergy.api.recipebuilders.SimpleInputItem;
 import com.devdyna.synergy.api.recipebuilders.SimpleOutputItem;
 import com.devdyna.synergy.api.utils.IngredientUtils;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.QuernMillingRecipe;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 
 @SuppressWarnings({ "null" })
-public class QuernMillingBuilder extends BaseRecipeBuilder 
-implements SimpleInputItem<QuernMillingBuilder> , SimpleOutputItem<QuernMillingBuilder>{
+public class QuernMillingBuilder extends BaseRecipeBuilder
+        implements SimpleInputItem<QuernMillingBuilder>, SimpleOutputItem<QuernMillingBuilder> {
 
     private Ingredient input;
     private int tick;
@@ -75,5 +77,11 @@ implements SimpleInputItem<QuernMillingBuilder> , SimpleOutputItem<QuernMillingB
     @Override
     public QuernMillingBuilder getBuilder() {
         return this;
+    }
+
+    @Override
+    public ResourceLocation getSuffix(String extra) {
+        return x.rl("quern/" + x.path(output.getItem())
+                + extra);
     }
 }

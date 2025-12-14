@@ -20,9 +20,15 @@ public abstract class BaseRecipeBuilder implements RecipeBuilder {
 
     public abstract Recipe<?> createRecipe();
 
+    public abstract ResourceLocation getSuffix(String extra);
+
     @Override
     public void save(RecipeOutput recipeOutput) {
         save(recipeOutput, "");
+    }
+
+    public void save(RecipeOutput o, String extra) {
+        this.save(o, getSuffix(extra));
     }
 
     @Override

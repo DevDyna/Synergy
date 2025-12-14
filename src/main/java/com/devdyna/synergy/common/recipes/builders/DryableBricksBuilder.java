@@ -16,7 +16,7 @@ import com.devdyna.synergy.common.recipes.type.DryableBricksRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -82,9 +82,10 @@ public class DryableBricksBuilder extends BaseRecipeBuilder implements
         return this.output.getItem();
     }
 
-    public void save(RecipeOutput recipeOutput, String extra) {
-        this.save(recipeOutput, x.rl("dryable_bricks/" + x.path(output)
-                + extra));
+    @Override
+    public ResourceLocation getSuffix(String extra) {
+        return x.rl("dryable_bricks/" + x.path(output)
+                + extra);
     }
 
     @Override

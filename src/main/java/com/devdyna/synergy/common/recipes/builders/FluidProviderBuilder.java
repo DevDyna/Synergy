@@ -13,7 +13,7 @@ import com.devdyna.synergy.common.recipes.type.FluidProviderRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Block;
@@ -108,12 +108,11 @@ public class FluidProviderBuilder extends BaseRecipeBuilder {
         return x.item(this.core).getItem();
     }
 
-    public void save(RecipeOutput recipeOutput, String extra) {
-
-        this.save(recipeOutput,
-                x.rl("provider/fluid/" +
-                        x.path(output.getFluid()) + "_from_" + x.path(core)
-                        + extra));
+    @Override
+    public ResourceLocation getSuffix(String extra) {
+        return x.rl("provider/fluid/" +
+                x.path(output.getFluid()) + "_from_" + x.path(core)
+                + extra);
     }
 
     @Override

@@ -13,7 +13,7 @@ import com.devdyna.synergy.common.recipes.type.ItemProviderRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
@@ -103,14 +103,13 @@ public class ItemProviderBuilder extends BaseRecipeBuilder {
         return x.item(this.core).getItem();
     }
 
-    public void save(RecipeOutput recipeOutput, String extra) {
-
-        this.save(recipeOutput,
-                x.rl("provider/item/" +
-                        (x.path(output) == x.path(core)
-                                ? x.path(core)
-                                : x.path(output) + "_from_" + x.path(core))
-                        + extra));
+    @Override
+    public ResourceLocation getSuffix(String extra) {
+        return x.rl("provider/item/" +
+                (x.path(output) == x.path(core)
+                        ? x.path(core)
+                        : x.path(output) + "_from_" + x.path(core))
+                + extra);
     }
 
     @Override

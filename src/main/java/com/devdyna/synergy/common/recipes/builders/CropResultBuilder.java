@@ -14,7 +14,7 @@ import com.devdyna.synergy.common.recipes.type.CropResultRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -63,9 +63,10 @@ public class CropResultBuilder extends BaseRecipeBuilder
         return this.output.get(0).getItem();
     }
 
-    public void save(RecipeOutput recipeOutput, String extra) {
-        this.save(recipeOutput, x.rl("jei/crop_result/" + x.path(output.getFirst())
-                + extra));
+    @Override
+    public ResourceLocation getSuffix(String extra) {
+        return x.rl("jei/crop_result/" + x.path(output.getFirst())
+                + extra);
     }
 
     @Override
@@ -77,6 +78,5 @@ public class CropResultBuilder extends BaseRecipeBuilder
     public CropResultBuilder getBuilder() {
         return this;
     }
-
 
 }
