@@ -25,6 +25,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -96,7 +97,7 @@ public class UrnRitualBuilder implements RecipeBuilder {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                 .hasItems(this.input.stream()
                         .flatMap(i -> Arrays.stream(i.getItems())
-                                .map(ItemStack::getItem))
+                                .map(ItemStack::getItem)).filter(i->Items.BARRIER.equals(i))
                         .toArray(Item[]::new)));
     }
 
