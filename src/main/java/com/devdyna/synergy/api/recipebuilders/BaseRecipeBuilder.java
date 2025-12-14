@@ -1,4 +1,4 @@
-package com.devdyna.synergy.common.recipeTypes.builders.base;
+package com.devdyna.synergy.api.recipebuilders;
 
 import java.util.Map;
 
