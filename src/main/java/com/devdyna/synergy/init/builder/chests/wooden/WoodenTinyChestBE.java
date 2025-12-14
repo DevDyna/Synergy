@@ -3,7 +3,6 @@ package com.devdyna.synergy.init.builder.chests.wooden;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.coreBE.be.BEStorage;
-import com.devdyna.synergy.client.gui.chests.wooden.WoodenTinyChestMenu;
 import com.devdyna.synergy.init.types.zBlockEntities;
 
 import net.minecraft.core.BlockPos;

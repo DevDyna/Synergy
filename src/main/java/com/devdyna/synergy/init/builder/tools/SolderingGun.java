@@ -4,7 +4,8 @@ import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBE;
+import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBE;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;

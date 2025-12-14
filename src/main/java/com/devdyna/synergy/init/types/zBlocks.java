@@ -15,10 +15,6 @@ import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.pipeBlocks.pipeBlock;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blocks.*;
 import com.devdyna.synergy.init.builder.quern.QuernBlock;
-import com.devdyna.synergy.init.builder.reactor.cell.FuelCellBlock;
-import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
-import com.devdyna.synergy.init.builder.reactor.cooler.*;
-import com.devdyna.synergy.init.builder.reactor.moderator.*;
 import com.devdyna.synergy.init.builder.redstone.InvertedRepeater;
 import com.devdyna.synergy.init.builder.redstone.PulseRepeater;
 import com.devdyna.synergy.init.builder.redstone.RecursiveRepeater;
@@ -37,6 +33,10 @@ import com.devdyna.synergy.init.builder.laser.*;
 import com.devdyna.synergy.init.builder.laser.dynamo.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBlock;
+import com.devdyna.synergy.init.builder.nuclear_reactor.cell.FuelCellBlock;
+import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
+import com.devdyna.synergy.init.builder.nuclear_reactor.cooler.*;
+import com.devdyna.synergy.init.builder.nuclear_reactor.moderator.*;
 
 public class zBlocks {
         public static void register(IEventBus bus) {

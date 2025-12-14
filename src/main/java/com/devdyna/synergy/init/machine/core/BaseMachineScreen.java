@@ -1,7 +1,7 @@
 package com.devdyna.synergy.init.machine.core;
 
+import com.devdyna.synergy.api.gui.BaseScreen;
 import com.devdyna.synergy.api.utils.Pos;
-import com.devdyna.synergy.client.gui.api.BaseScreen;
 import com.devdyna.synergy.utils.StringUtil;
 import com.devdyna.synergy.utils.x;
 

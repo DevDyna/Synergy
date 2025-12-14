@@ -10,7 +10,7 @@ import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
 import com.devdyna.synergy.init.builder.DryableBricks;
-import com.devdyna.synergy.init.builder.reactor.controller.ReactorControllerBlock;
+import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.utils.DataGenUtil;
 import com.devdyna.synergy.utils.x;

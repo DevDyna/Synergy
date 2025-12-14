@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.machine.core;
 
-import com.devdyna.synergy.client.gui.api.BaseMenu;
+import com.devdyna.synergy.api.gui.BaseMenu;
 
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.entity.BlockEntity;

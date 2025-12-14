@@ -3,10 +3,10 @@ package com.devdyna.synergy.init.types;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.client.gui.chests.ornated.OrnatedTinyChestMenu;
-import com.devdyna.synergy.client.gui.chests.stone.StoneTinyChestMenu;
-import com.devdyna.synergy.client.gui.chests.wooden.WoodenTinyChestMenu;
-import com.devdyna.synergy.client.gui.fuel_cell.FuelCellMenu;
+import com.devdyna.synergy.init.builder.chests.ornated.OrnatedTinyChestMenu;
+import com.devdyna.synergy.init.builder.chests.stone.StoneTinyChestMenu;
+import com.devdyna.synergy.init.builder.chests.wooden.WoodenTinyChestMenu;
+import com.devdyna.synergy.init.builder.nuclear_reactor.cell.FuelCellMenu;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
