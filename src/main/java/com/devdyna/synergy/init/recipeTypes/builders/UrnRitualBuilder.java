@@ -97,7 +97,8 @@ public class UrnRitualBuilder implements RecipeBuilder {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                 .hasItems(this.input.stream()
                         .flatMap(i -> Arrays.stream(i.getItems())
-                                .map(ItemStack::getItem)).filter(i->Items.BARRIER.equals(i))
+                                .map(ItemStack::getItem))
+                        .filter(i -> Items.BARRIER.equals(i))
                         .toArray(Item[]::new)));
     }
 
@@ -136,7 +137,5 @@ public class UrnRitualBuilder implements RecipeBuilder {
         pRecipeOutput.accept(pId, shapelessrecipe,
                 advancement.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
     }
-
-    
 
 }
