@@ -69,6 +69,7 @@ public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipe
                 defaultToolTipColor.getRGB(), false);
 
         if (recipe.hasSecondaryItem())
+        if(recipe.getSecondaryItemChance() > 0f && !recipe.getSecondaryOutputItem().isEmpty())
             guiGraphics.drawString(font,
                     Component.literal(
                             ((int) (recipe.getSecondaryItemChance() * 100)) + "%"),
