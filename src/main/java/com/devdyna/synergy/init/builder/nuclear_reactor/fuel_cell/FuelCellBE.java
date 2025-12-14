@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.coreBE.be.MachineBE;
+import com.devdyna.synergy.api.basebe.be.MachineBE;
 import com.devdyna.synergy.common.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.common.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.coreBE.be;
+package com.devdyna.synergy.api.basebe.be;
 
 import javax.annotation.Nullable;
 

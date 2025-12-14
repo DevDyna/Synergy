@@ -2,7 +2,8 @@ package com.devdyna.synergy.init.builder.urn;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.coreBE.block.TickingBlock;
+import com.devdyna.synergy.api.basebe.block.TickingBlock;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;

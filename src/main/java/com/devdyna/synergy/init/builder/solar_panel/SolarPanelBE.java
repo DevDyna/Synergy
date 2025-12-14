@@ -3,8 +3,8 @@ package com.devdyna.synergy.init.builder.solar_panel;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
-import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import net.minecraft.core.BlockPos;

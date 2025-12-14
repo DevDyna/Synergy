@@ -2,9 +2,9 @@ package com.devdyna.synergy.init.builder.quern;
 
 import java.util.Optional;
 
+import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
-import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.common.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.common.recipeTypes.type.QuernMillingRecipe;

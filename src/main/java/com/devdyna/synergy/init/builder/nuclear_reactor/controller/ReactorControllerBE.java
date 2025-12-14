@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.builder.nuclear_reactor.controller;
 import java.util.*;
 
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
-import com.devdyna.synergy.api.coreBE.be.TickingBE;
+import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
 import com.devdyna.synergy.api.utils.*;

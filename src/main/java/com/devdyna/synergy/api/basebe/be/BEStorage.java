@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.coreBE.be;
+package com.devdyna.synergy.api.basebe.be;
 
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.init.types.zHandlers;

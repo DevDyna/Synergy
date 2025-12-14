@@ -4,8 +4,8 @@ import javax.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
-import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.builder.laser.LaserMirrorBlock;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBE;

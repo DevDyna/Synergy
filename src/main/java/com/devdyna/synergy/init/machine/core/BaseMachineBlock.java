@@ -2,7 +2,7 @@ package com.devdyna.synergy.init.machine.core;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.coreBE.block.BlockMenu;
+import com.devdyna.synergy.api.basebe.block.BlockMenu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;

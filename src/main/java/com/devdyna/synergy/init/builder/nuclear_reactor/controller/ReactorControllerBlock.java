@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.coreBE.block.TickingBlock;
+import com.devdyna.synergy.api.basebe.block.TickingBlock;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
 import com.devdyna.synergy.api.utils.PlayerUtil;
 import com.devdyna.synergy.api.utils.StringUtil;

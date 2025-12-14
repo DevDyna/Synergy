@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.builder.harvester;
 import java.util.*;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.ItemProducer;
-import com.devdyna.synergy.api.coreBE.be.TickingBE;
+import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.harvester.PlantHandler;
 import com.devdyna.synergy.api.harvester.VanillaPlants;

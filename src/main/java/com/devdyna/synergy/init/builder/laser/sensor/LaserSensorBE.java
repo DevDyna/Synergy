@@ -2,7 +2,7 @@ package com.devdyna.synergy.init.builder.laser.sensor;
 
 import java.util.List;
 
-import com.devdyna.synergy.api.coreBE.be.TickingBE;
+import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.types.zBlockEntities;
 

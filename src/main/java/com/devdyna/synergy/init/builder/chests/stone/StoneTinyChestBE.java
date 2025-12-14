@@ -2,7 +2,7 @@ package com.devdyna.synergy.init.builder.chests.stone;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.coreBE.be.BEStorage;
+import com.devdyna.synergy.api.basebe.be.BEStorage;
 import com.devdyna.synergy.init.types.zBlockEntities;
 
 import net.minecraft.core.BlockPos;

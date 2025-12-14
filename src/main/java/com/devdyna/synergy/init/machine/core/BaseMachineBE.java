@@ -2,9 +2,10 @@ package com.devdyna.synergy.init.machine.core;
 
 import java.util.List;
 
+import com.devdyna.synergy.api.basebe.be.BEMenu;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
-import com.devdyna.synergy.api.coreBE.be.BEMenu;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;

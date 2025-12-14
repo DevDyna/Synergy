@@ -1,8 +1,8 @@
-package com.devdyna.synergy.api.coreBE.block;
+package com.devdyna.synergy.api.basebe.block;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.coreBE.be.*;
+import com.devdyna.synergy.api.basebe.be.*;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
