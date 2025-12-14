@@ -77,6 +77,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                 MaceratorRecipeBuilder.of().input(x.ingredient(raw.asItem()))
                                 .output(x.item(dust.asItem(), 3))
+                                .secondary(secondary)
+                                .chance(chance)
                                 .unlockedBy().save(c, "_from_raw");
 
                 MaceratorRecipeBuilder.of().input(x.ingredient(ingot.asItem()))
