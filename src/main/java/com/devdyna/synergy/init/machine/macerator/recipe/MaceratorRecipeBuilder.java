@@ -25,7 +25,7 @@ public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder {
     }
 
     @Override
-    protected Recipe<?> createRecipe() {
+    public Recipe<?> createRecipe() {
         return new MaceratorRecipeType(ticks, energy, input, output, secondary, chance);
     }
 
@@ -33,4 +33,5 @@ public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder {
     public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<? extends RecipeInput>> getMachine() {
         return zMachines.MACERATOR;
     }
+
 }
