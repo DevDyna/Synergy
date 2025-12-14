@@ -72,7 +72,7 @@ public class Image {
      * JEI usage
      */
     public void render(IGuiHelper h, GuiGraphics g) {
-        h.drawableBuilder(com.devdyna.synergy.utils.x.rl(modid, rl), u, v, x, y).setTextureSize(x, y).build()
+        h.drawableBuilder(com.devdyna.synergy.api.utils.x.rl(modid, rl), u, v, x, y).setTextureSize(x, y).build()
                 .draw(g, xo, yo);
     }
 
@@ -82,7 +82,7 @@ public class Image {
     public void render(GuiGraphics g) {
 
         g.blit(
-                com.devdyna.synergy.utils.x.rl(modid, rl),
+                com.devdyna.synergy.api.utils.x.rl(modid, rl),
                 xo - 1,
                 yo - 1,
                 u, v,

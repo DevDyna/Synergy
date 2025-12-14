@@ -3,7 +3,8 @@ package com.devdyna.synergy.init.builder.nuclear_reactor.cell;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.gui.BaseScreen;
-import com.devdyna.synergy.utils.x;
+import com.devdyna.synergy.api.utils.x;
+
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

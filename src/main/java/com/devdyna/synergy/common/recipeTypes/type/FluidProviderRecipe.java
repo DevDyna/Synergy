@@ -4,10 +4,10 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.zRecipe;
 import com.devdyna.synergy.api.node.BaseProviderRecipe;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipeTypes.input.ProviderInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;

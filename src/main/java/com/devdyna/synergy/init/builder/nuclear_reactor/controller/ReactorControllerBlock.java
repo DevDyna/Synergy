@@ -8,8 +8,8 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.coreBE.block.TickingBlock;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
-import com.devdyna.synergy.utils.PlayerUtil;
-import com.devdyna.synergy.utils.StringUtil;
+import com.devdyna.synergy.api.utils.PlayerUtil;
+import com.devdyna.synergy.api.utils.StringUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

@@ -3,8 +3,8 @@ package com.devdyna.synergy.api.plants;
 import java.util.List;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.utils.LevelUtil;
-import com.devdyna.synergy.utils.ModAddonUtil;
+import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.api.utils.ModAddonUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;

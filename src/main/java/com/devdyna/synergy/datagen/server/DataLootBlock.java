@@ -6,12 +6,12 @@ import java.util.Set;
 
 import com.devdyna.synergy.api.plants.builder.BaseCropBlock;
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
+import com.devdyna.synergy.api.utils.DataGenUtil;
+import com.devdyna.synergy.api.utils.EnchantUtil;
 import com.devdyna.synergy.init.builder.DryableBricks;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zMachines;
-import com.devdyna.synergy.utils.DataGenUtil;
-import com.devdyna.synergy.utils.EnchantUtil;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;

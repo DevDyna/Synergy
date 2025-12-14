@@ -9,11 +9,11 @@ import com.devdyna.synergy.api.zFluid;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
+import com.devdyna.synergy.api.utils.DataGenUtil;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.DryableBricks;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.types.zBlocks;
-import com.devdyna.synergy.utils.DataGenUtil;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;

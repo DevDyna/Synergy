@@ -1,9 +1,9 @@
 package com.devdyna.synergy.compat.guideme;
 
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipeTypes.type.DryableBricksRecipe;
 import com.devdyna.synergy.common.recipeTypes.type.ItemUseRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-import com.devdyna.synergy.utils.x;
 
 import guideme.compiler.tags.RecipeTypeMappingSupplier;
 import guideme.document.block.recipes.LytStandardRecipeBox;

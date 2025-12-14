@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.util.List;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.utils.ColorUtil;
-import com.devdyna.synergy.utils.LevelUtil;
+import com.devdyna.synergy.api.utils.ColorUtil;
+import com.devdyna.synergy.api.utils.LevelUtil;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;

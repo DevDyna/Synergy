@@ -2,8 +2,8 @@ package com.devdyna.synergy.init.machine.core;
 
 import com.devdyna.synergy.api.gui.BaseScreen;
 import com.devdyna.synergy.api.utils.Pos;
-import com.devdyna.synergy.utils.StringUtil;
-import com.devdyna.synergy.utils.x;
+import com.devdyna.synergy.api.utils.StringUtil;
+import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;

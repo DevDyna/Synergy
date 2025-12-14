@@ -3,8 +3,8 @@ package com.devdyna.synergy.init.builder.laser.sensor;
 import java.util.List;
 
 import com.devdyna.synergy.api.coreBE.be.TickingBE;
+import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.types.zBlockEntities;
-import com.devdyna.synergy.utils.LevelUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

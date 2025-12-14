@@ -6,9 +6,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.utils.IngredientUtils;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipeTypes.type.QuernMillingRecipe;
-import com.devdyna.synergy.utils.IngredientUtils;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;

@@ -2,9 +2,10 @@ package com.devdyna.synergy.init.builder.sprinkler;
 
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.coreBE.be.TickingBE;
+import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
-import com.devdyna.synergy.utils.LevelUtil;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.SecondaryMachineResult;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;

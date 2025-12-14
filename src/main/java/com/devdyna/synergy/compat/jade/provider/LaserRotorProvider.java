@@ -2,8 +2,8 @@ package com.devdyna.synergy.compat.jade.provider;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.laser.dynamo.LaserRotorBE;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;

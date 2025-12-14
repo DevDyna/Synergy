@@ -6,8 +6,9 @@ import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.init.types.*;
-import com.devdyna.synergy.utils.ClazzUtil;
+
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;

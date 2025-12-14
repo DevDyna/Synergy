@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-import com.devdyna.synergy.utils.LogUtil;
+import com.devdyna.synergy.api.utils.LogUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.utils;
+package com.devdyna.synergy.api.utils;
 
 public class TimeUtil {
 

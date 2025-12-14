@@ -1,6 +1,6 @@
 package com.devdyna.synergy.api.recipebuilders;
 
-import com.devdyna.synergy.utils.x;
+import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

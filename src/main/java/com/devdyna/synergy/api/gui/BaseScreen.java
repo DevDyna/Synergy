@@ -4,7 +4,8 @@ import java.awt.Color;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.utils.ColorUtil;
+import com.devdyna.synergy.api.utils.ColorUtil;
+
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;

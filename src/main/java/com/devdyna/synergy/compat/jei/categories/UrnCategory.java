@@ -2,11 +2,11 @@ package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.Size;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipeTypes.type.UrnRitualRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;

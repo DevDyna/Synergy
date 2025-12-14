@@ -4,7 +4,8 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import com.devdyna.synergy.utils.DataGenUtil;
+
+import com.devdyna.synergy.api.utils.DataGenUtil;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

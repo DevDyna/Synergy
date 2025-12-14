@@ -1,4 +1,4 @@
-package com.devdyna.synergy.utils;
+package com.devdyna.synergy.api.utils;
 
 import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;

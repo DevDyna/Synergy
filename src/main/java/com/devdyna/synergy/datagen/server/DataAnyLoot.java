@@ -5,9 +5,9 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.List;
 import java.util.function.BiConsumer;
 
+import com.devdyna.synergy.api.utils.DataGenUtil;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.types.zItems;
-import com.devdyna.synergy.utils.DataGenUtil;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.LootTableSubProvider;

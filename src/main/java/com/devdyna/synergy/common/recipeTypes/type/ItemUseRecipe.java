@@ -2,9 +2,9 @@ package com.devdyna.synergy.common.recipeTypes.type;
 
 import java.util.List;
 
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipeTypes.input.UseItemInput;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;

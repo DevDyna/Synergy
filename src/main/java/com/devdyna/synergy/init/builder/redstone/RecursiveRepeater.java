@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.utils.LevelUtil;
+import com.devdyna.synergy.api.utils.LevelUtil;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;

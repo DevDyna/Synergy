@@ -8,8 +8,8 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipeTypes.type.CropResultRecipe;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;

@@ -1,11 +1,11 @@
 package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.api.node.BaseProviderRecipe;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipeTypes.type.ItemProviderRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseProviderCategory;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;

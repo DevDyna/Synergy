@@ -1,10 +1,10 @@
 package com.devdyna.synergy;
 
 import com.devdyna.synergy.api.beLogic.*;
+import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.init.machine.core.*;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zHandlers;
-import com.devdyna.synergy.utils.ClazzUtil;
 
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.capabilities.Capabilities;

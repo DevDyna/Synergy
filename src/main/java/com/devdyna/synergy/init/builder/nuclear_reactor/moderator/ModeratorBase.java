@@ -6,8 +6,8 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.builder.nuclear_reactor.cell.FuelCellBlock;
-import com.devdyna.synergy.utils.LevelUtil;
 
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;

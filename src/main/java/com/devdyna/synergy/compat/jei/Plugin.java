@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.devdyna.synergy.api.node.BaseProviderRecipe;
+import com.devdyna.synergy.api.utils.ClazzUtil;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.*;
 import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.nuclear_reactor.cell.FuelCellScreen;
 import com.devdyna.synergy.init.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.types.*;
-import com.devdyna.synergy.utils.ClazzUtil;
-import com.devdyna.synergy.utils.x;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;

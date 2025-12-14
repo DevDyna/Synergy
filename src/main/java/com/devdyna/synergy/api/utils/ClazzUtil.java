@@ -1,4 +1,4 @@
-package com.devdyna.synergy.utils;
+package com.devdyna.synergy.api.utils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

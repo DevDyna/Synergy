@@ -1,7 +1,7 @@
 package com.devdyna.synergy.compat.jei.drawable;
 
-import com.devdyna.synergy.utils.TimeUtil;
-import com.devdyna.synergy.utils.x;
+import com.devdyna.synergy.api.utils.TimeUtil;
+import com.devdyna.synergy.api.utils.x;
 
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;

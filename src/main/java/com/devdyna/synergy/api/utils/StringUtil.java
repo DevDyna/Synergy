@@ -1,4 +1,4 @@
-package com.devdyna.synergy.utils;
+package com.devdyna.synergy.api.utils;
 
 import java.math.RoundingMode;
 import java.text.NumberFormat;

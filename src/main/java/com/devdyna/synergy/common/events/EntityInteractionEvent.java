@@ -1,8 +1,8 @@
 package com.devdyna.synergy.common.events;
 
+import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.types.zEntityTag;
 import com.devdyna.synergy.init.types.zItemTag;
-import com.devdyna.synergy.utils.LevelUtil;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;

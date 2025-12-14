@@ -8,11 +8,11 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.MachineType;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;

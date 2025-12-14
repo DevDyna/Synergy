@@ -2,10 +2,10 @@ package com.devdyna.synergy.api;
 
 import java.util.function.Consumer;
 
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zFluids;
 import com.devdyna.synergy.init.types.zItems;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;

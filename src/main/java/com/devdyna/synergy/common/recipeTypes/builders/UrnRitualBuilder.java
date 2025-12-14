@@ -6,9 +6,9 @@ import java.util.*;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.recipebuilders.*;
+import com.devdyna.synergy.api.utils.IngredientUtils;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipeTypes.type.UrnRitualRecipe;
-import com.devdyna.synergy.utils.IngredientUtils;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;

@@ -3,9 +3,9 @@ package com.devdyna.synergy.datagen.api;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.utils.DataGenUtil;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.types.*;
-import com.devdyna.synergy.utils.DataGenUtil;
-import com.devdyna.synergy.utils.x;
 
 import java.util.*;
 

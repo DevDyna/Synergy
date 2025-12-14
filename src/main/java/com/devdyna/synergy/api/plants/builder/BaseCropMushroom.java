@@ -1,6 +1,7 @@
 package com.devdyna.synergy.api.plants.builder;
 
-import com.devdyna.synergy.utils.LevelUtil;
+import com.devdyna.synergy.api.utils.LevelUtil;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;

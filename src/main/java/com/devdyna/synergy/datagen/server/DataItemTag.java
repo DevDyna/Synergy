@@ -3,9 +3,9 @@ package com.devdyna.synergy.datagen.server;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.api.utils.DataGenUtil;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.types.*;
-import com.devdyna.synergy.utils.DataGenUtil;
-import com.devdyna.synergy.utils.x;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;

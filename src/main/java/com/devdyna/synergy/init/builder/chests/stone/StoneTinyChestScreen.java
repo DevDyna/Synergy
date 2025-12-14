@@ -1,7 +1,8 @@
 package com.devdyna.synergy.init.builder.chests.stone;
 
 import com.devdyna.synergy.api.gui.BaseTinyChestScreen;
-import com.devdyna.synergy.utils.x;
+import com.devdyna.synergy.api.utils.x;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;

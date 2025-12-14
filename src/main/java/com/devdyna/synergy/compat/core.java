@@ -3,7 +3,7 @@ package com.devdyna.synergy.compat;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.utils.*;
+import com.devdyna.synergy.api.utils.*;
 
 import guideme.Guide;
 import net.minecraft.resources.ResourceLocation;

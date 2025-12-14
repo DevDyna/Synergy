@@ -3,9 +3,10 @@ package com.devdyna.synergy.datagen.client;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
+import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.datagen.api.ExtraBlockStateProvider;
 import com.devdyna.synergy.init.types.zBlocks;
-import com.devdyna.synergy.utils.ClazzUtil;
+
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;

@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.builder;
 import java.util.List;
 
 import com.devdyna.synergy.Main;
-import com.devdyna.synergy.utils.LevelUtil;
+import com.devdyna.synergy.api.utils.LevelUtil;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;

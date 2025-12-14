@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
+import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.api.utils.LogUtil;
 import com.devdyna.synergy.init.types.zBlockTag;
-import com.devdyna.synergy.utils.LevelUtil;
-import com.devdyna.synergy.utils.LogUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,6 +1,6 @@
 package com.devdyna.synergy.common.recipeTypes.input;
 
-import com.devdyna.synergy.utils.x;
+import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeInput;
