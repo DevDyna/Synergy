@@ -827,21 +827,12 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .chance(0.45f)
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, Items.COBBLESTONE, 1)
-                                .define('#', zItems.STONE_PEBBLE.get())
-                                .pattern("##")
-                                .pattern("##")
-                                .unlockedBy(getHasName(zItems.STONE_PEBBLE.get()),
-                                                has(zItems.STONE_PEBBLE.get()))
-                                .save(c, ID + ":" + getConversionRecipeName(Items.COBBLESTONE,
-                                                zItems.STONE_PEBBLE.get()));
-
                 MaceratorRecipeBuilder.of()
                                 .input(Tags.Items.NETHERRACKS)
                                 .delay(40)
                                 .unlockedBy()
                                 .group(ID)
-                                .output(zItems.NETHERRACK_PEBBLE,4)
+                                .output(zItems.NETHERRACK_PEBBLE, 4)
                                 .secondary(zItems.SULFUR_DUST)
                                 .chance(0.75f)
                                 .save(c);
@@ -865,6 +856,9 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
                                 .group(ID).save(c);
+
+                simplePacked(c, zItems.STONE_PEBBLE.get(), Items.COBBLESTONE);
+                simplePacked(c, zItems.NETHERRACK_PEBBLE.get(), Items.NETHERRACK);
 
         }
 
