@@ -8,19 +8,6 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
-      "conditions": {
-        "items": [
-          {
-            "items": "synergy:diamond_dust"
-          },
-          {
-            "items": "synergy:lapis_dust"
-          },
-          {
-            "items": "synergy:silverfish_dust"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     }
   },

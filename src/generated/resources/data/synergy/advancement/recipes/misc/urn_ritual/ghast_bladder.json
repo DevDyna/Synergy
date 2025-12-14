@@ -8,16 +8,6 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
-      "conditions": {
-        "items": [
-          {
-            "items": "synergy:zombie_liver"
-          },
-          {
-            "items": "minecraft:ghast_tear"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     }
   },

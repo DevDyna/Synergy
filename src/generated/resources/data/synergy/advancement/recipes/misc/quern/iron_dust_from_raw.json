@@ -8,13 +8,6 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:raw_iron"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     }
   },

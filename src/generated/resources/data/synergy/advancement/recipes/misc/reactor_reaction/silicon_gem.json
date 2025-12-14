@@ -8,13 +8,6 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
-      "conditions": {
-        "items": [
-          {
-            "items": "synergy:raw_silicon"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     }
   },

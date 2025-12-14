@@ -15,9 +15,6 @@
           },
           {
             "items": "minecraft:barrier"
-          },
-          {
-            "items": "synergy:energized_redstone_dust"
           }
         ]
       },

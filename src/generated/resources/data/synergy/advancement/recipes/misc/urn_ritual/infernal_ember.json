@@ -11,9 +11,6 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:blaze_powder"
-          },
-          {
             "items": "minecraft:barrier"
           }
         ]

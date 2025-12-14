@@ -11,13 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:tiny_wooden_chest"
-          },
-          {
             "items": "minecraft:barrier"
-          },
-          {
-            "items": "synergy:ghoul_heart"
           }
         ]
       },

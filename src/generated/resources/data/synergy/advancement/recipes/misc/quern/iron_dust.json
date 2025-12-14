@@ -8,13 +8,6 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
-      "conditions": {
-        "items": [
-          {
-            "items": "synergy:rustic_metal"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     }
   },

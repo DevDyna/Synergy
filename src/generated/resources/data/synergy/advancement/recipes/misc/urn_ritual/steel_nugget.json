@@ -8,16 +8,6 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
-      "conditions": {
-        "items": [
-          {
-            "items": "synergy:carbon_dust"
-          },
-          {
-            "items": "synergy:iron_dust"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     }
   },

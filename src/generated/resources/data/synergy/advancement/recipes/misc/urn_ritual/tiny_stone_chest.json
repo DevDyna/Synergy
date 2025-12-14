@@ -8,19 +8,6 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
-      "conditions": {
-        "items": [
-          {
-            "items": "synergy:tiny_wooden_chest"
-          },
-          {
-            "items": "synergy:stone_pebble"
-          },
-          {
-            "items": "synergy:ghast_bladder"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     }
   },

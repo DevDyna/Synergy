@@ -11,12 +11,6 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:enderman_heart"
-          },
-          {
-            "items": "synergy:energized_redstone_dust"
-          },
-          {
             "items": "minecraft:barrier"
           }
         ]

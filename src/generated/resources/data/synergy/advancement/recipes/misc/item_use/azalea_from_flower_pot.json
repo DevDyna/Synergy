@@ -8,13 +8,6 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
-      "conditions": {
-        "items": [
-          {
-            "items": "synergy:azalea_seeds"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     }
   },

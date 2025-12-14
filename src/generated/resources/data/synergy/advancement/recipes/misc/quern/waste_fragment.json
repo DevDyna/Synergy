@@ -8,13 +8,6 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
-      "conditions": {
-        "items": [
-          {
-            "items": "synergy:creeper_gall"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     }
   },

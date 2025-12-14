@@ -8,16 +8,6 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:spider_eye"
-          },
-          {
-            "items": "synergy:waste_fragment"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     }
   },

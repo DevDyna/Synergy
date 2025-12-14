@@ -11,16 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:infernal_ember"
-          },
-          {
-            "items": "minecraft:ender_eye"
-          },
-          {
             "items": "minecraft:barrier"
-          },
-          {
-            "items": "synergy:silicon_shard"
           }
         ]
       },

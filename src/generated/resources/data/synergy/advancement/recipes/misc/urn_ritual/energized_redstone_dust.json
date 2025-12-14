@@ -8,16 +8,6 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:redstone"
-          },
-          {
-            "items": "minecraft:glowstone_dust"
-          }
-        ]
-      },
       "trigger": "minecraft:inventory_changed"
     }
   },

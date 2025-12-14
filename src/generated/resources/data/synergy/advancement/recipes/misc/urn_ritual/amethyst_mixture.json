@@ -12,15 +12,6 @@
         "items": [
           {
             "items": "minecraft:barrier"
-          },
-          {
-            "items": "synergy:quartz_dust"
-          },
-          {
-            "items": "synergy:amethyst_dust"
-          },
-          {
-            "items": "minecraft:honeycomb"
           }
         ]
       },
