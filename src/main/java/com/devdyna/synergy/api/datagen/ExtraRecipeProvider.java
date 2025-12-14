@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.recipeTypes.builders.CropResultBuilder;
-import com.devdyna.synergy.init.recipeTypes.builders.DryableBricksBuilder;
-import com.devdyna.synergy.init.recipeTypes.builders.QuernMillingBuilder;
-import com.devdyna.synergy.init.recipeTypes.builders.ReactorCellBuilder;
-import com.devdyna.synergy.init.recipeTypes.builders.UrnRitualBuilder;
+import com.devdyna.synergy.common.recipeTypes.builders.CropResultBuilder;
+import com.devdyna.synergy.common.recipeTypes.builders.DryableBricksBuilder;
+import com.devdyna.synergy.common.recipeTypes.builders.QuernMillingBuilder;
+import com.devdyna.synergy.common.recipeTypes.builders.ReactorCellBuilder;
+import com.devdyna.synergy.common.recipeTypes.builders.UrnRitualBuilder;
 import com.devdyna.synergy.init.types.*;
 import com.devdyna.synergy.utils.x;
 

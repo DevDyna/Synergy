@@ -5,11 +5,11 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.common.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.machine.core.SecondaryMachineResult;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeType;
-import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;

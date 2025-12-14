@@ -1,8 +1,8 @@
 package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.api.Size;
+import com.devdyna.synergy.common.recipeTypes.type.CropResultRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.init.recipeTypes.type.CropResultRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.x;
 

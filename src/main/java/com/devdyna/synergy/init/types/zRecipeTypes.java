@@ -4,8 +4,8 @@ import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.zRecipe;
-import com.devdyna.synergy.init.recipeTypes.serializer.*;
-import com.devdyna.synergy.init.recipeTypes.type.*;
+import com.devdyna.synergy.common.recipeTypes.serializer.*;
+import com.devdyna.synergy.common.recipeTypes.type.*;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.ItemStack;

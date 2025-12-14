@@ -2,8 +2,8 @@ package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.Size;
+import com.devdyna.synergy.common.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.init.recipeTypes.type.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.devdyna.synergy.utils.x;

@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.zRecipe;
-import com.devdyna.synergy.init.recipeTypes.input.ProviderInput;
+import com.devdyna.synergy.common.recipeTypes.input.ProviderInput;
 import com.devdyna.synergy.utils.x;
 
 import net.minecraft.core.NonNullList;

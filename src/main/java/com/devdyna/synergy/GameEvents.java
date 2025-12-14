@@ -1,6 +1,6 @@
 package com.devdyna.synergy;
 
-import com.devdyna.synergy.events.*;
+import com.devdyna.synergy.common.events.*;
 
 import net.neoforged.neoforge.common.NeoForge;
 

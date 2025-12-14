@@ -3,11 +3,11 @@ package com.devdyna.synergy.init.machine.macerator.recipe;
 import java.util.Optional;
 
 import com.devdyna.synergy.api.MachineType;
+import com.devdyna.synergy.common.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
 import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeType;
-import com.devdyna.synergy.init.recipeTypes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
