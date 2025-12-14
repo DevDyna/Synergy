@@ -90,7 +90,7 @@ public class MaceratorBE extends BaseMachineBE implements SecondaryMachineResult
                 update(false);
             resetProgress();
             return;
-        }else{
+        } else {
             progress_cancel = false;
         }
 
@@ -115,13 +115,6 @@ public class MaceratorBE extends BaseMachineBE implements SecondaryMachineResult
         this.maxProgress = recipe.getTime();
 
         boolean success = level.random.nextFloat() < recipe.getSecondaryItemChance();
-
-        if (energyStorage.getEnergyStored() >= recipe.getEnergy()) {
-            energyStorage.extractEnergy(recipe.getEnergy(), false);
-        } else {
-            resetProgress();
-            return;
-        }
 
         // not empty
         if (!getOutput().isEmpty()) {
@@ -160,6 +153,13 @@ public class MaceratorBE extends BaseMachineBE implements SecondaryMachineResult
         } else
             this.progress++;
 
+        if (energyStorage.getEnergyStored() >= recipe.getEnergy() && !progress_cancel) {
+            energyStorage.extractEnergy(recipe.getEnergy(), false);
+        } else {
+            resetProgress();
+            return;
+        }
+
         if (this.progress < this.maxProgress) {
             setChanged();
             return;
@@ -188,7 +188,7 @@ public class MaceratorBE extends BaseMachineBE implements SecondaryMachineResult
     }
 
     private void resetProgress() {
-        
+
         progress_cancel = true;
         if (progress > 0)
             progress--;
