@@ -198,7 +198,7 @@ public class zStatic {
         public static String mirror = "laser_mirror";
         public static String lens = "laser_lens";
         public static String sensor = "laser_sensor";
-        public static String electromagnetic_rotor = "electromagnetic_rotor";
+        public static String rotor = "laser_rotor";
     }
 
     public class ReactorStuff {

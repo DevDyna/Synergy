@@ -7,11 +7,11 @@ import com.devdyna.synergy.init.builder.chests.ornated.OrnatedTinyChestBE;
 import com.devdyna.synergy.init.builder.chests.stone.StoneTinyChestBE;
 import com.devdyna.synergy.init.builder.chests.wooden.WoodenTinyChestBE;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBE;
-import com.devdyna.synergy.init.builder.laser.dynamo.LaserRotorBE;
+import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBE;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBE;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
-import com.devdyna.synergy.init.builder.nuclear_reactor.cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBE;
+import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.pipeBlocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.quern.QuernBE;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
@@ -112,8 +112,8 @@ public class zBlockEntities {
                         .createBlockEntity(zStatic.Lazers.sensor, LaserSensorBE::new,
                                         zBlocks.LASER_SENSOR);
 
-        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LaserRotorBE>> ELECTROMAGNETIC_ROTOR = Material
-                        .createBlockEntity(zStatic.Lazers.electromagnetic_rotor,LaserRotorBE ::new,
-                                        zBlocks.ELECTROMAGNETIC_ROTOR);
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LaserRotorBE>> LASER_ROTOR = Material
+                        .createBlockEntity(zStatic.Lazers.rotor,LaserRotorBE ::new,
+                                        zBlocks.LASER_ROTOR);
 
 }

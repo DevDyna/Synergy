@@ -271,7 +271,7 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Blocks.pulse_repeater, TIP_COLOR + "Configurable pulse converter");
 
                 add("config.jade.plugin_" + ID + "." + zStatic.Lazers.machine_gun, "Laser Machine Gun Color");
-                add("config.jade.plugin_" + ID + "." + zStatic.Lazers.electromagnetic_rotor, "Laser Rotor Info");
+                add("config.jade.plugin_" + ID + "." + zStatic.Lazers.rotor, "Laser Rotor Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.Machines.TYPE, "Industrial Machines Info");
 
                 add(Main.ID + ".color", "Color: %d");
@@ -279,7 +279,7 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".blockpos", TIP_COLOR + "BlockPos : ");
                 add(Main.ID + ".dirs", TIP_COLOR + "Dirs : ");
 
-                add(Main.ID + "." + zStatic.Lazers.electromagnetic_rotor, TIP_COLOR
+                add(Main.ID + "." + zStatic.Lazers.rotor, TIP_COLOR
                                 + "Generate FE when powered from the same laser machine at all of the sides\nIf used multiple laser machine it will reset!");
 
                 ClazzUtil.getAllMachineTypes()

@@ -809,7 +809,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .group(ID)
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.ELECTROMAGNETIC_ROTOR.get())
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_ROTOR.get())
                                 .pattern("SGS")
                                 .pattern("GDG")
                                 .pattern("SGS")

@@ -3,7 +3,7 @@ package com.devdyna.synergy.compat.jade;
 import com.devdyna.synergy.compat.jade.provider.LaserMachineGunProvider;
 import com.devdyna.synergy.compat.jade.provider.LaserRotorProvider;
 import com.devdyna.synergy.compat.jade.provider.MachineProgress;
-import com.devdyna.synergy.init.builder.laser.dynamo.LaserRotorBlock;
+import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 

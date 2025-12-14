@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.nuclear_reactor.cell;
+package com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell;
 
 import com.devdyna.synergy.api.gui.BaseMenu;
 import com.devdyna.synergy.init.types.zBlocks;

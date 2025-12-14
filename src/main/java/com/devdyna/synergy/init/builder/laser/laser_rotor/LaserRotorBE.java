@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.laser.dynamo;
+package com.devdyna.synergy.init.builder.laser.laser_rotor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,7 +50,7 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
     }
 
     public LaserRotorBE(BlockPos pos, BlockState state) {
-        this(zBlockEntities.ELECTROMAGNETIC_ROTOR.get(), pos, state);
+        this(zBlockEntities.LASER_ROTOR.get(), pos, state);
     }
 
     @Override

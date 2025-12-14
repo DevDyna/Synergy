@@ -30,12 +30,12 @@ import com.devdyna.synergy.init.builder.crops.mushroom.*;
 import com.devdyna.synergy.init.builder.crops.wild.*;
 import com.devdyna.synergy.init.builder.harvester.HarvesterBLK;
 import com.devdyna.synergy.init.builder.laser.*;
-import com.devdyna.synergy.init.builder.laser.dynamo.LaserRotorBlock;
+import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBlock;
-import com.devdyna.synergy.init.builder.nuclear_reactor.cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.cooler.*;
+import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.moderator.*;
 
 public class zBlocks {
@@ -361,8 +361,8 @@ public class zBlocks {
                         zStatic.Blocks.inverted_repeater,
                         () -> new InvertedRepeater());
 
-        public static final DeferredHolder<Block, Block> ELECTROMAGNETIC_ROTOR = Material.registerItemBlock(
-                        zStatic.Lazers.electromagnetic_rotor,
+        public static final DeferredHolder<Block, Block> LASER_ROTOR = Material.registerItemBlock(
+                        zStatic.Lazers.rotor,
                         () -> new LaserRotorBlock());
 
         // ---------------------------------------------------------------------------------------//

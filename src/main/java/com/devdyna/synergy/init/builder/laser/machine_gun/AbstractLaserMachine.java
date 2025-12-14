@@ -8,7 +8,7 @@ import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.coreBE.be.TickingBE;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.builder.laser.LaserMirrorBlock;
-import com.devdyna.synergy.init.builder.laser.dynamo.LaserRotorBE;
+import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBE;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
 import com.devdyna.synergy.init.types.zHandlers;
 

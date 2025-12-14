@@ -45,7 +45,7 @@ public class LaserMachineBE extends AbstractLaserMachine {
     protected boolean breakWhen(Level level, BlockState state, Direction dir, BlockPos pos,
             boolean isStart, @Nullable BlockEntity be) {
         return isEntity(level, state, pos) || isOpaqueBlock(level, state, pos)
-                || level.getBlockState(pos.relative(dir.getOpposite())).is(zBlocks.ELECTROMAGNETIC_ROTOR);
+                || level.getBlockState(pos.relative(dir.getOpposite())).is(zBlocks.LASER_ROTOR);
     }
 
     @Override

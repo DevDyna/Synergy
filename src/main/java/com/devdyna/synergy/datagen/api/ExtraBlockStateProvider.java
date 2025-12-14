@@ -320,7 +320,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                                                 .toYRot() + 180) % 360)
                                                 .build());
 
-                getVariantBuilder(zBlocks.ELECTROMAGNETIC_ROTOR.get())
+                getVariantBuilder(zBlocks.LASER_ROTOR.get())
                                 .forAllStates(state -> ConfiguredModel.builder()
                                                 .modelFile(models()
                                                                 .getExistingFile(modLoc("block/laser_rotor/"

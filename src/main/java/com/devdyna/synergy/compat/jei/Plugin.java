@@ -11,7 +11,7 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.*;
 import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
-import com.devdyna.synergy.init.builder.nuclear_reactor.cell.FuelCellScreen;
+import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.init.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.types.*;
 

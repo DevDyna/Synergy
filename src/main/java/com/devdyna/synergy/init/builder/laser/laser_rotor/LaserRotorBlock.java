@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.laser.dynamo;
+package com.devdyna.synergy.init.builder.laser.laser_rotor;
 
 import java.util.List;
 
@@ -91,7 +91,7 @@ public class LaserRotorBlock extends TickingBlock implements IBlockLaser {
     @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.electromagnetic_rotor));
+        t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.rotor));
         t.add(Component.translatable(Main.ID + ".laser.rotate_by_click"));
 
     }

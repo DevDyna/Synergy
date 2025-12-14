@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.nuclear_reactor.cell;
+package com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell;
 
 import java.util.Optional;
 

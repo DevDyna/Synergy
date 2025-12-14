@@ -2,7 +2,7 @@ package com.devdyna.synergy.init.builder.nuclear_reactor.cooler;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.builder.nuclear_reactor.cell.FuelCellBlock;
+import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.moderator.ModeratorBase;
 
 import net.minecraft.core.BlockPos;

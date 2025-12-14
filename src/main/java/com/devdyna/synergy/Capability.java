@@ -26,12 +26,9 @@ public class Capability {
                                 zBlocks.SOLAR_PANEL.get(),
                                 zBlocks.REACTOR_CONTROLLER.get(),
                                 zBlocks.LASER_MACHINE.get(),
-                                zBlocks.ELECTROMAGNETIC_ROTOR.get()
-                                
-                                
-                                
-                                
-                                );
+                                zBlocks.LASER_ROTOR.get()
+
+                );
 
                 event.registerBlock(Capabilities.ItemHandler.BLOCK,
                                 (level, pos, state, be,
