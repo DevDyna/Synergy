@@ -1,0 +1,7 @@
+package com.devdyna.synergy.init.recipeTypes.builders.base;
+
+public interface BaseItemAttach<BUILDER extends BaseRecipeBuilder> {
+    public abstract BUILDER getBuilder();
+
+    
+}
