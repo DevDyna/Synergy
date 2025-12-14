@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.recipebuilders;
+package com.devdyna.synergy.api.recipes.builders;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings("unchecked")
-public interface ListedOutputItemStack<BUILDER extends BaseRecipeBuilder> extends BaseItemAttach<BUILDER> {
+public interface ListedOutputItemStack<BUILDER extends BaseRecipeBuilder> extends BuilderAttach<BUILDER> {
 
     abstract BUILDER output(List<ItemStack> output);
 

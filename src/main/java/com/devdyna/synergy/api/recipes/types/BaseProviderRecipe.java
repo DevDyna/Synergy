@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.node;
+package com.devdyna.synergy.api.recipes.types;
 
 import java.util.List;
 

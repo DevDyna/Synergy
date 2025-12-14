@@ -2,7 +2,7 @@ package com.devdyna.synergy.compat.jei.categories;
 
 import java.util.List;
 
-import com.devdyna.synergy.api.node.BaseProviderRecipe;
+import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.FluidProviderRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseProviderCategory;

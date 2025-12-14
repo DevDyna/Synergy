@@ -6,9 +6,9 @@ import java.util.LinkedHashMap;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.recipebuilders.BaseRecipeBuilder;
-import com.devdyna.synergy.api.recipebuilders.SimpleInputItem;
-import com.devdyna.synergy.api.recipebuilders.SimpleOutputItem;
+import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
+import com.devdyna.synergy.api.recipes.builders.SimpleInputItem;
+import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
 import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.DryableBricksRecipe;

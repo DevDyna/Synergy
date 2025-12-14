@@ -8,10 +8,10 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.recipebuilders.BaseRecipeBuilder;
-import com.devdyna.synergy.api.recipebuilders.SecondaryOutputItem;
-import com.devdyna.synergy.api.recipebuilders.SimpleInputItem;
-import com.devdyna.synergy.api.recipebuilders.SimpleOutputItem;
+import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
+import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
+import com.devdyna.synergy.api.recipes.builders.SimpleInputItem;
+import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;

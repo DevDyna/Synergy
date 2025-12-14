@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Optional;
 
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
+import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.crafting.Recipe;

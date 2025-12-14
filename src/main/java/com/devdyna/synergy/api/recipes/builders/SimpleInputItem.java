@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.recipebuilders;
+package com.devdyna.synergy.api.recipes.builders;
 
 import com.devdyna.synergy.api.utils.x;
 import net.minecraft.tags.TagKey;
@@ -6,7 +6,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public interface SimpleInputItem<BUILDER extends BaseRecipeBuilder> extends BaseItemAttach<BUILDER> {
+public interface SimpleInputItem<BUILDER extends BaseRecipeBuilder> extends BuilderAttach<BUILDER> {
 
     abstract BUILDER input(Ingredient input);
 

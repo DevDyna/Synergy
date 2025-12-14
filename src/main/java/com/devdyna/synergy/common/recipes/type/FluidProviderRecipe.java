@@ -3,7 +3,7 @@ package com.devdyna.synergy.common.recipes.type;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.zRecipe;
-import com.devdyna.synergy.api.node.BaseProviderRecipe;
+import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.ProviderInput;
 import com.devdyna.synergy.init.types.zBlocks;

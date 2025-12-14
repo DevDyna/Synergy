@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.recipebuilders;
+package com.devdyna.synergy.api.recipes.builders;
 
 import com.devdyna.synergy.api.utils.x;
 
@@ -7,7 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public interface SimpleOutputItem<BUILDER extends BaseRecipeBuilder> extends BaseItemAttach<BUILDER> {
+public interface SimpleOutputItem<BUILDER extends BaseRecipeBuilder> extends BuilderAttach<BUILDER> {
 
     abstract BUILDER output(ItemStack output);
 

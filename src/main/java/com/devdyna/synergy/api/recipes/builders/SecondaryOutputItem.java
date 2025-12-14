@@ -1,11 +1,11 @@
-package com.devdyna.synergy.api.recipebuilders;
+package com.devdyna.synergy.api.recipes.builders;
 
 import com.devdyna.synergy.api.utils.x;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public interface SecondaryOutputItem<BUILDER extends BaseRecipeBuilder> extends BaseItemAttach<BUILDER> {
+public interface SecondaryOutputItem<BUILDER extends BaseRecipeBuilder> extends BuilderAttach<BUILDER> {
 
     abstract BUILDER secondary(ItemStack output, float chance);
 
