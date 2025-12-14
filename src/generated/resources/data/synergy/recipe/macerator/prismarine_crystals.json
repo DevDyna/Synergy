@@ -1,0 +1,13 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 10,
+  "input": {
+    "item": "minecraft:prismarine_shard"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:prismarine_crystals"
+  },
+  "ticks": 20
+}

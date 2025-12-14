@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:raw_materials/uranium"
+      }
+    }
+  ],
+  "type": "synergy:macerator",
+  "chance": 0.25,
+  "energy": 10,
+  "input": {
+    "tag": "c:raw_materials/uranium"
+  },
+  "output": {
+    "count": 3,
+    "id": "synergy:uranium_dust"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "synergy:lead_dust"
+  },
+  "ticks": 60
+}

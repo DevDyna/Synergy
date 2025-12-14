@@ -1,0 +1,13 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 10,
+  "input": {
+    "item": "minecraft:iron_ingot"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:iron_dust"
+  },
+  "ticks": 60
+}

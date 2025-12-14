@@ -1,0 +1,13 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 10,
+  "input": {
+    "item": "minecraft:diamond"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:diamond_dust"
+  },
+  "ticks": 60
+}

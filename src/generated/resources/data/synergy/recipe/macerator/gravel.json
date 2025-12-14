@@ -1,0 +1,17 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.5,
+  "energy": 10,
+  "input": {
+    "tag": "c:cobblestones"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:gravel"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "minecraft:gravel"
+  },
+  "ticks": 20
+}

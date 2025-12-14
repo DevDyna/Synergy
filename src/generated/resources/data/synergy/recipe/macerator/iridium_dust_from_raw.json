@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:raw_materials/iridium"
+      }
+    }
+  ],
+  "type": "synergy:macerator",
+  "chance": 0.25,
+  "energy": 10,
+  "input": {
+    "tag": "c:raw_materials/iridium"
+  },
+  "output": {
+    "count": 3,
+    "id": "synergy:iridium_dust"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "synergy:iron_dust"
+  },
+  "ticks": 60
+}

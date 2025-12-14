@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/iridium"
+      }
+    }
+  ],
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 10,
+  "input": {
+    "tag": "c:ingots/iridium"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:iridium_dust"
+  },
+  "ticks": 60
+}

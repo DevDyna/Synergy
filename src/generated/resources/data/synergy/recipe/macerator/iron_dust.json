@@ -1,0 +1,13 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 10,
+  "input": {
+    "item": "synergy:rustic_metal"
+  },
+  "output": {
+    "count": 9,
+    "id": "synergy:iron_dust"
+  },
+  "ticks": 40
+}

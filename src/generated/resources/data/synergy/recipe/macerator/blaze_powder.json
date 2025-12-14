@@ -1,0 +1,17 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.25,
+  "energy": 10,
+  "input": {
+    "item": "minecraft:torchflower"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:blaze_powder"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "minecraft:blaze_powder"
+  },
+  "ticks": 120
+}

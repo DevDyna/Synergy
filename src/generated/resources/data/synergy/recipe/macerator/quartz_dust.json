@@ -1,0 +1,13 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 10,
+  "input": {
+    "item": "minecraft:quartz"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:quartz_dust"
+  },
+  "ticks": 60
+}

@@ -1,0 +1,17 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.5,
+  "energy": 10,
+  "input": {
+    "tag": "minecraft:logs"
+  },
+  "output": {
+    "count": 4,
+    "id": "synergy:sawdust"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "synergy:sawdust"
+  },
+  "ticks": 60
+}
