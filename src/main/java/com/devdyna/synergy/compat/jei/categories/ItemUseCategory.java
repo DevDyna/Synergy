@@ -6,7 +6,7 @@ import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.TimeUtil;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipeTypes.type.ItemUseRecipe;
+import com.devdyna.synergy.common.recipes.type.ItemUseRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 

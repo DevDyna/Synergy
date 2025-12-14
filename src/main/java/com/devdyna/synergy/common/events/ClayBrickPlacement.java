@@ -2,8 +2,8 @@ package com.devdyna.synergy.common.events;
 
 import java.util.Optional;
 
-import com.devdyna.synergy.common.recipeTypes.input.MonoItemInput;
-import com.devdyna.synergy.common.recipeTypes.type.DryableBricksRecipe;
+import com.devdyna.synergy.common.recipes.input.MonoItemInput;
+import com.devdyna.synergy.common.recipes.type.DryableBricksRecipe;
 import com.devdyna.synergy.init.builder.DryableBricks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 

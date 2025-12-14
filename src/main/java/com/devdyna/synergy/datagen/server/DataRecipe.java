@@ -6,7 +6,7 @@ import static net.minecraft.data.recipes.RecipeCategory.*;
 import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipeTypes.builders.*;
+import com.devdyna.synergy.common.recipes.builders.*;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.crops.cultivated.azalea;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;

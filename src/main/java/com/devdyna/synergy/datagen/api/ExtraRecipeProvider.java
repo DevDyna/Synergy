@@ -8,11 +8,11 @@ import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipeTypes.builders.CropResultBuilder;
-import com.devdyna.synergy.common.recipeTypes.builders.DryableBricksBuilder;
-import com.devdyna.synergy.common.recipeTypes.builders.QuernMillingBuilder;
-import com.devdyna.synergy.common.recipeTypes.builders.ReactorCellBuilder;
-import com.devdyna.synergy.common.recipeTypes.builders.UrnRitualBuilder;
+import com.devdyna.synergy.common.recipes.builders.CropResultBuilder;
+import com.devdyna.synergy.common.recipes.builders.DryableBricksBuilder;
+import com.devdyna.synergy.common.recipes.builders.QuernMillingBuilder;
+import com.devdyna.synergy.common.recipes.builders.ReactorCellBuilder;
+import com.devdyna.synergy.common.recipes.builders.UrnRitualBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup.Provider;

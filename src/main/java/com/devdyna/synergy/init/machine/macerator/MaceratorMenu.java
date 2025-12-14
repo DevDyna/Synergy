@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.machine.macerator;
 import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
 import static com.devdyna.synergy.init.machine.core.BaseMachineBE.*;
 
-import com.devdyna.synergy.common.recipeTypes.input.MonoItemInput;
+import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.network.FriendlyByteBuf;

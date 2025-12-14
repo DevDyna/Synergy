@@ -2,8 +2,8 @@ package com.devdyna.synergy.common.events;
 
 import java.util.Optional;
 
-import com.devdyna.synergy.common.recipeTypes.input.UseItemInput;
-import com.devdyna.synergy.common.recipeTypes.type.ItemUseRecipe;
+import com.devdyna.synergy.common.recipes.input.UseItemInput;
+import com.devdyna.synergy.common.recipes.type.ItemUseRecipe;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
