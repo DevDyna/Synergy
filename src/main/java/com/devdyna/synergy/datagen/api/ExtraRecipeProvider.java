@@ -13,6 +13,7 @@ import com.devdyna.synergy.common.recipes.builders.DryableBricksBuilder;
 import com.devdyna.synergy.common.recipes.builders.QuernMillingBuilder;
 import com.devdyna.synergy.common.recipes.builders.ReactorCellBuilder;
 import com.devdyna.synergy.common.recipes.builders.UrnRitualBuilder;
+import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup.Provider;
@@ -39,23 +40,23 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         protected void compatIngotsAndDusts(RecipeOutput c) {
                 raw_dust_smelt(c, x.rl("c", "raw_materials/tin"), zItems.TIN_DUST.get(),
-                                zItems.TIN_INGOT.get(), x.rl("c", "ingots/tin"));
+                                zItems.TIN_INGOT.get(), x.rl("c", "ingots/tin"), zItems.IRON_DUST.get(), 0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/silver"), zItems.SILVER_DUST.get(),
-                                zItems.SILVER_INGOT.get(), x.rl("c", "ingots/silver"));
+                                zItems.SILVER_INGOT.get(), x.rl("c", "ingots/silver"), zItems.TIN_DUST.get(), 0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/nickel"), zItems.NICKEL_DUST.get(),
-                                zItems.NICKEL_INGOT.get(), x.rl("c", "ingots/nickel"));
+                                zItems.NICKEL_INGOT.get(), x.rl("c", "ingots/nickel"), zItems.SILVER_DUST.get(), 0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/iridium"), zItems.IRIDIUM_DUST.get(),
-                                zItems.IRIDIUM_INGOT.get(), x.rl("c", "ingots/iridium"));
+                                zItems.IRIDIUM_INGOT.get(), x.rl("c", "ingots/iridium"), zItems.IRON_DUST.get(), 0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/uranium"), zItems.URANIUM_DUST.get(),
-                                zItems.URANIUM_INGOT.get(), x.rl("c", "ingots/uranium"));
+                                zItems.URANIUM_INGOT.get(), x.rl("c", "ingots/uranium"), zItems.LEAD_DUST.get(), 0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/platinum"), zItems.PLATINUM_DUST.get(),
-                                zItems.PLATINUM_INGOT.get(), x.rl("c", "ingots/platinum"));
+                                zItems.PLATINUM_INGOT.get(), x.rl("c", "ingots/platinum"), zItems.IRIDIUM_DUST.get(), 0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/osmium"), zItems.OSMIUM_DUST.get(),
-                                zItems.OSMIUM_INGOT.get(), x.rl("c", "ingots/osmium"));
+                                zItems.OSMIUM_INGOT.get(), x.rl("c", "ingots/osmium"), zItems.IRON_DUST.get(), 0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/aluminum"), zItems.ALUMINUM_DUST.get(),
-                                zItems.ALUMINUM_INGOT.get(), x.rl("c", "ingots/aluminum"));
+                                zItems.ALUMINUM_INGOT.get(), x.rl("c", "ingots/aluminum"), zItems.IRON_DUST.get(), 0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/lead"), zItems.LEAD_DUST.get(),
-                                zItems.LEAD_INGOT.get(), x.rl("c", "ingots/lead"));
+                                zItems.LEAD_INGOT.get(), x.rl("c", "ingots/lead"), zItems.SILVER_DUST.get(), 0.25f);
         }
 
         protected void nuggetIngotBlock(RecipeOutput c, ItemLike nugget, ItemLike ingot, ItemLike block) {
@@ -63,10 +64,104 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 packUnpack(c, ingot, block, false);
         }
 
+        protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot, Item secondary,
+                        float chance) {
+
+                QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
+                                .output(x.item(dust.asItem(), 2))
+                                .unlockedBy().save(c, "_from_raw");
+
+                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+                                .output(x.item(dust.asItem()))
+                                .unlockedBy().save(c, "_from_ingot");
+
+                MaceratorRecipeBuilder.of().input(x.ingredient(raw.asItem()))
+                                .output(x.item(dust.asItem(), 3))
+                                .unlockedBy().save(c, "_from_raw");
+
+                MaceratorRecipeBuilder.of().input(x.ingredient(ingot.asItem()))
+                                .output(x.item(dust.asItem()))
+                                .unlockedBy().save(c, "_from_ingot");
+
+                doubleSmelt(c, dust, ingot);
+        }
+
+        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot,
+                        Item secondary, float chance) {
+
+                QuernMillingBuilder.of().input(x.ingredient(raw))
+                                .output(x.item(dust.asItem(), 2))
+                                .unlockedBy().save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(raw)) }),
+                                                "_from_raw");
+
+                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+                                .output(x.item(dust.asItem()))
+                                .unlockedBy().save(c, "_from_ingot");
+
+                MaceratorRecipeBuilder.of().input(x.ingredient(raw))
+                                .output(x.item(dust.asItem(), 3))
+                                .secondary(secondary)
+                                .chance(chance)
+                                .unlockedBy().save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(raw)) }),
+                                                "_from_raw");
+
+                MaceratorRecipeBuilder.of().input(x.ingredient(ingot.asItem()))
+                                .output(x.item(dust.asItem()))
+                                .unlockedBy().save(c, "_from_ingot");
+
+                doubleSmelt(c, dust, ingot);
+        }
+
+        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot,
+                        ResourceLocation ingotTag, Item secondary, float chance) {
+
+                QuernMillingBuilder.of().input(x.ingredient(raw))
+                                .output(x.item(dust.asItem(), 2))
+                                .unlockedBy().save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(raw)) }),
+                                                "_from_raw");
+
+                MaceratorRecipeBuilder.of().input(x.ingredient(raw))
+                                .output(x.item(dust.asItem(), 3))
+                                .secondary(secondary)
+                                .chance(chance)
+                                .unlockedBy().save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(raw)) }),
+                                                "_from_raw");
+
+                QuernMillingBuilder.of().input(x.ingredient(ingotTag))
+                                .output(x.item(dust.asItem()))
+                                .unlockedBy().save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(ingotTag)) }),
+                                                "_from_ingot");
+
+                MaceratorRecipeBuilder.of().input(x.ingredient(ingotTag))
+                                .output(x.item(dust.asItem()))
+                                .unlockedBy().save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(ingotTag)) }),
+                                                "_from_ingot");
+
+                doubleSmelt(c, dust, ingot);
+        }
+
         protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot) {
 
                 QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
-                                .output(x.item(dust.asItem(), 3))
+                                .output(x.item(dust.asItem(), 2))
                                 .unlockedBy().save(c, "_from_raw");
 
                 QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
@@ -79,7 +174,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot) {
 
                 QuernMillingBuilder.of().input(x.ingredient(raw))
-                                .output(x.item(dust.asItem(), 3))
+                                .output(x.item(dust.asItem(), 2))
                                 .unlockedBy().save(c.withConditions(
                                                 new ICondition[] {
                                                                 new NotCondition(
@@ -97,7 +192,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                         ResourceLocation ingotTag) {
 
                 QuernMillingBuilder.of().input(x.ingredient(raw))
-                                .output(x.item(dust.asItem(), 3))
+                                .output(x.item(dust.asItem(), 2))
                                 .unlockedBy().save(c.withConditions(
                                                 new ICondition[] {
                                                                 new NotCondition(

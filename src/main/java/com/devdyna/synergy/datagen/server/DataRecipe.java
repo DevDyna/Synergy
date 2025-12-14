@@ -306,15 +306,37 @@ public class DataRecipe extends ExtraRecipeProvider {
                 QuernMillingBuilder.of().input(ItemTags.COALS)
                                 .output(zItems.CARBON_DUST).unlockedBy().save(c);
 
+                MaceratorRecipeBuilder.of().input(ItemTags.COALS)
+                                .output(zItems.CARBON_DUST, 2)
+                                .secondary(zItems.SULFUR_DUST)
+                                .chance(0.25f)
+                                .unlockedBy().save(c);
+
                 QuernMillingBuilder.of().input(zItems.CREEPER_GALL)
+                                .output(x.item(zItems.WASTE_FRAGMENT, 1))
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(zItems.CREEPER_GALL)
                                 .output(x.item(zItems.WASTE_FRAGMENT, 3))
+                                .secondary(zItems.WASTE_FRAGMENT)
+                                .chance(0.35f)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(zItemTag.DUST_URANIUM)
+                                .output(x.item(zItems.WASTE_FRAGMENT, 3))
+                                .unlockedBy().save(c, "_alt");
+
+                MaceratorRecipeBuilder.of().input(zItemTag.DUST_URANIUM)
                                 .output(x.item(zItems.WASTE_FRAGMENT, 9))
+                                .secondary(zItems.WASTE_FRAGMENT)
+                                .chance(0.45f)
                                 .unlockedBy().save(c, "_alt");
 
                 QuernMillingBuilder.of().input(Items.DIAMOND)
+                                .output(zItems.DIAMOND_DUST)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(Items.DIAMOND)
                                 .output(zItems.DIAMOND_DUST)
                                 .unlockedBy().save(c);
 
@@ -322,7 +344,15 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.EMERALD_DUST)
                                 .unlockedBy().save(c);
 
+                MaceratorRecipeBuilder.of().input(Items.EMERALD)
+                                .output(zItems.EMERALD_DUST)
+                                .unlockedBy().save(c);
+
                 QuernMillingBuilder.of().input(Items.AMETHYST_SHARD)
+                                .output(zItems.AMETHYST_DUST)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(Items.AMETHYST_SHARD)
                                 .output(zItems.AMETHYST_DUST)
                                 .unlockedBy().save(c);
 
@@ -330,19 +360,44 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.LAPIS_DUST)
                                 .unlockedBy().save(c);
 
+                MaceratorRecipeBuilder.of().input(Items.LAPIS_LAZULI)
+                                .output(zItems.LAPIS_DUST)
+                                .unlockedBy().save(c);
+
                 QuernMillingBuilder.of().input(Items.ANCIENT_DEBRIS)
                                 .output(zItems.ANCIENT_DEBRIS_DUST)
                                 .unlockedBy().save(c);
 
+                MaceratorRecipeBuilder.of().input(Items.ANCIENT_DEBRIS)
+                                .output(zItems.ANCIENT_DEBRIS_DUST, 2)
+                                .secondary(zItems.ANCIENT_DEBRIS_DUST)
+                                .chance(0.5f)
+                                .unlockedBy().save(c);
+
                 QuernMillingBuilder.of().input(ItemTags.LOGS)
+                                .output(x.item(zItems.SAWDUST, 2))
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(ItemTags.LOGS)
                                 .output(x.item(zItems.SAWDUST, 4))
+                                .secondary(x.item(zItems.SAWDUST))
+                                .chance(0.5f)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(Items.QUARTZ)
                                 .output(zItems.QUARTZ_DUST)
                                 .unlockedBy().save(c);
 
+                MaceratorRecipeBuilder.of().input(Items.QUARTZ)
+                                .output(zItems.QUARTZ_DUST)
+                                .unlockedBy().save(c);
+
                 QuernMillingBuilder.of().input(Items.PRISMARINE_SHARD)
+                                .output(Items.PRISMARINE_CRYSTALS)
+                                .delay(20)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(Items.PRISMARINE_SHARD)
                                 .output(Items.PRISMARINE_CRYSTALS)
                                 .delay(20)
                                 .unlockedBy().save(c);
@@ -352,8 +407,22 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(20)
                                 .unlockedBy().save(c);
 
+                MaceratorRecipeBuilder.of().input(Tags.Items.COBBLESTONES)
+                                .output(Items.GRAVEL)
+                                .secondary(Items.GRAVEL)
+                                .chance(0.5f)
+                                .delay(20)
+                                .unlockedBy().save(c);
+
                 QuernMillingBuilder.of().input(Tags.Items.GRAVELS)
                                 .output(Items.SAND)
+                                .delay(20)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(Tags.Items.GRAVELS)
+                                .output(Items.SAND)
+                                .secondary(Items.SAND)
+                                .chance(0.5f)
                                 .delay(20)
                                 .unlockedBy().save(c);
 
@@ -364,6 +433,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                 QuernMillingBuilder.of()
                                 .input(zItems.STONE_PEBBLE)
                                 .output(zItems.SILVERFISH_DUST)
+                                .delay(20)
+                                .group(ID)
+                                .unlockedBy()
+                                .save(c);
+
+                MaceratorRecipeBuilder.of()
+                                .input(zItems.STONE_PEBBLE)
+                                .output(zItems.SILVERFISH_DUST, 2)
                                 .delay(20)
                                 .group(ID)
                                 .unlockedBy()
@@ -386,9 +463,12 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                raw_dust_smelt(c, Items.RAW_COPPER, zItems.COPPER_DUST.get(), Items.COPPER_INGOT);
-                raw_dust_smelt(c, Items.RAW_GOLD, zItems.GOLD_DUST.get(), Items.GOLD_INGOT);
-                raw_dust_smelt(c, Items.RAW_IRON, zItems.IRON_DUST.get(), Items.IRON_INGOT);
+                raw_dust_smelt(c, Items.RAW_COPPER, zItems.COPPER_DUST.get(), Items.COPPER_INGOT,
+                                zItems.GOLD_DUST.get(), 0.25f);
+                raw_dust_smelt(c, Items.RAW_GOLD, zItems.GOLD_DUST.get(), Items.GOLD_INGOT, zItems.SILVER_DUST.get(),
+                                0.25f);
+                raw_dust_smelt(c, Items.RAW_IRON, zItems.IRON_DUST.get(), Items.IRON_INGOT, zItems.NICKEL_DUST.get(),
+                                0.25f);
 
                 doubleSmelt(c, zItems.ANCIENT_DEBRIS_DUST.get(), Items.NETHERITE_SCRAP);
 
@@ -648,6 +728,16 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
+                MaceratorRecipeBuilder.of()
+                                .input(Items.TORCHFLOWER)
+                                .output(Items.BLAZE_POWDER)
+                                .secondary(Items.BLAZE_POWDER)
+                                .chance(0.25f)
+                                .delay(120)
+                                .group(ID)
+                                .unlockedBy()
+                                .save(c);
+
                 ShapedRecipeBuilder.shaped(MISC, Items.MUD_BRICKS, 1).define('#', zItems.PACKED_MUD_BRICK.get())
                                 .pattern("##").pattern("##").unlockedBy(getHasName(zItems.PACKED_MUD_BRICK.get()),
                                                 has(zItems.PACKED_MUD_BRICK.get()))
@@ -720,11 +810,12 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 MaceratorRecipeBuilder.of()
-                                .input(Items.COAL)
-                                .output(zItems.CARBON_DUST, 2)
-                                .secondary(zItems.SULFUR_DUST)
-                                .chance(0.4f)
-                                .group(ID).unlockedBy().save(c);
+                                .input(zBlocks.RUSTIC_METAL.get().asItem())
+                                .delay(40)
+                                .unlockedBy()
+                                .group(ID)
+                                .output(zItems.IRON_DUST, 9)
+                                .save(c);
 
                 QuernMillingBuilder.of()
                                 .input(zBlocks.RUSTIC_METAL.get().asItem())
