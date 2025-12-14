@@ -1,17 +1,17 @@
 {
   "type": "synergy:macerator",
-  "chance": 0.85,
+  "chance": 0.75,
   "energy": 10,
   "input": {
-    "tag": "c:stones"
+    "tag": "c:netherracks"
   },
   "output": {
-    "count": 1,
-    "id": "minecraft:cobblestone"
+    "count": 4,
+    "id": "synergy:netherrack_pebble"
   },
   "secondary": {
     "count": 1,
-    "id": "synergy:stone_pebble"
+    "id": "synergy:sulfur_dust"
   },
   "ticks": 40
 }

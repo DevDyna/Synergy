@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:macerator/cobblestone"
+        "recipe": "synergy:macerator/stone_pebble"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:macerator/cobblestone"
+      "synergy:macerator/stone_pebble"
     ]
   }
 }
