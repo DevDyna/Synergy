@@ -39,7 +39,7 @@
 
 - [x] quern recipes to macerator
 
-- [ ] Reactor Controller jade tooltip
+- [x] Reactor Controller jade tooltip
 
 ### CODEBASE
 
