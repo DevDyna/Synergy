@@ -7,7 +7,7 @@
 ## BUGS
 
 - [x] Reactor Controller dont save aoe
-- [ ] BE radius doesn't sync with AOE
+- [x] BE radius doesn't sync with AOE
 - [ ] Fuel cell output can conflict with input
 - [ ] quickMoveStack (i hate you!)
 
@@ -16,6 +16,8 @@
 - [ ] Mekanism IO will void/break many stuff (nodes , fuel cell , etc)
 
 - [x] Machines slot index 0 doesn't allow to pickup items
+
+- [ ] rework any machine with AreaOfEffect and soldering gun to simplify
 
 ## COMPATS AND TWEAKS
 
