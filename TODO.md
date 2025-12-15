@@ -39,6 +39,8 @@
 
 - [x] quern recipes to macerator
 
+- [ ] Reactor Controller jade tooltip
+
 ### CODEBASE
 
 - [ ] All Recipe Types compat with GuideMe (?)
