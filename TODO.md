@@ -32,8 +32,8 @@
 
 - [ ] GuideMe machinery
 
-- [ ] SilentGear raw ores compat quern
-- [ ] Create Zinc compat quern
+- [x] SilentGear raw ores compat quern
+- [x] Create Zinc compat quern
 
 - [ ] Modern Chisel compat (?)
 
