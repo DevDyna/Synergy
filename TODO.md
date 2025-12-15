@@ -43,6 +43,10 @@
 
 - [x] Reactor Controller jade tooltip
 
+- [ ] Provider Nodes jade output
+
+- [ ] Provider Nodes freeze entirely when output storage is null/full
+
 ### CODEBASE
 
 - [ ] All Recipe Types compat with GuideMe (?)
