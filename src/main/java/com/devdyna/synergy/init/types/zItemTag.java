@@ -65,17 +65,6 @@ public class zItemTag {
         public static final TagKey<Item> SAWDUST = Material.tagItem("dusts/wood", "c");
         public static final TagKey<Item> SAWDUST2 = Material.tagItem("dusts/saw", "c");
 
-        public static final TagKey<Item> DUST_GOLD = Material.tagItem("dusts/gold", "c");
-        public static final TagKey<Item> DUST_IRON = Material.tagItem("dusts/iron", "c");
-        public static final TagKey<Item> DUST_EMERALD = Material.tagItem("dusts/emerald", "c");
-        public static final TagKey<Item> DUST_QUARTZ = Material.tagItem("dusts/quartz", "c");
-        public static final TagKey<Item> DUST_DIAMOND = Material.tagItem("dusts/diamond", "c");
-        public static final TagKey<Item> DUST_AMETHYST = Material.tagItem("dusts/amethyst", "c");
-        public static final TagKey<Item> DUST_ANCIENT_DEBRIS = Material.tagItem("dusts/ancient_debris", "c");
-        public static final TagKey<Item> DUST_COPPER = Material.tagItem("dusts/copper", "c");
-        public static final TagKey<Item> DUST_COAL = Material.tagItem("dusts/coal", "c");
-        public static final TagKey<Item> DUST_LAPIS = Material.tagItem("dusts/lapis", "c");
-
         public static final TagKey<Item> MOB_DROP = Material.tagItem("mob_drops");
 
         public static final TagKey<Item> INGOT_STEEL = Material.tagItem("ingots/steel", "c");
@@ -130,6 +119,17 @@ public class zItemTag {
         public static final TagKey<Item> DUST_URANIUM = Material.tagItem("dusts/uranium", "c");
         public static final TagKey<Item> DUST_ALUMINUM = Material.tagItem("dusts/aluminum", "c");
         public static final TagKey<Item> DUST_SULFUR = Material.tagItem("dusts/sulfur", "c");
+        public static final TagKey<Item> DUST_ZINC = Material.tagItem("dusts/zinc", "c");
+        public static final TagKey<Item> DUST_GOLD = Material.tagItem("dusts/gold", "c");
+        public static final TagKey<Item> DUST_IRON = Material.tagItem("dusts/iron", "c");
+        public static final TagKey<Item> DUST_EMERALD = Material.tagItem("dusts/emerald", "c");
+        public static final TagKey<Item> DUST_QUARTZ = Material.tagItem("dusts/quartz", "c");
+        public static final TagKey<Item> DUST_DIAMOND = Material.tagItem("dusts/diamond", "c");
+        public static final TagKey<Item> DUST_AMETHYST = Material.tagItem("dusts/amethyst", "c");
+        public static final TagKey<Item> DUST_ANCIENT_DEBRIS = Material.tagItem("dusts/ancient_debris", "c");
+        public static final TagKey<Item> DUST_COPPER = Material.tagItem("dusts/copper", "c");
+        public static final TagKey<Item> DUST_COAL = Material.tagItem("dusts/coal", "c");
+        public static final TagKey<Item> DUST_LAPIS = Material.tagItem("dusts/lapis", "c");
 
         public static final TagKey<Item> INGOT_NICKEL = Material.tagItem("ingots/nickel", "c");
         public static final TagKey<Item> INGOT_SILVER = Material.tagItem("ingots/silver", "c");
@@ -140,6 +140,7 @@ public class zItemTag {
         public static final TagKey<Item> INGOT_LEAD = Material.tagItem("ingots/lead", "c");
         public static final TagKey<Item> INGOT_URANIUM = Material.tagItem("ingots/uranium", "c");
         public static final TagKey<Item> INGOT_ALUMINUM = Material.tagItem("ingots/aluminum", "c");
+        public static final TagKey<Item> INGOT_ZINC = Material.tagItem("ingots/zinc", "c");
 
         public static final TagKey<Item> PIPE = Material.tagItem("pipe");
         public static final TagKey<Item> NODES = Material.tagItem("nodes");
