@@ -2,7 +2,7 @@
 
 ## THINGS BEFORE RELEASE 0.5
 
-*NaN*
+_NaN_
 
 ## BUGS
 
@@ -17,7 +17,7 @@
 
 - [x] Machines slot index 0 doesn't allow to pickup items
 
-- [ ] rework any machine with AreaOfEffect and soldering gun to simplify
+- [ ] Provider Nodes freeze entirely when output storage is null/full
 
 ## COMPATS AND TWEAKS
 
@@ -45,7 +45,7 @@
 
 - [ ] Provider Nodes jade output
 
-- [ ] Provider Nodes freeze entirely when output storage is null/full
+- [ ] rework any machine with AreaOfEffect and soldering gun to simplify
 
 ### CODEBASE
 
