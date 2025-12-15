@@ -23,4 +23,8 @@ public enum ControllerProperties implements StringRepresentable {
         return this.name;
     }
 
+    public String getName() {
+        return name;
+    }
+
 }
