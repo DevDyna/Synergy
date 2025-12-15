@@ -273,6 +273,8 @@ public class DataLang extends LanguageProvider {
                 add("config.jade.plugin_" + ID + "." + zStatic.Lazers.machine_gun, "Laser Machine Gun Color");
                 add("config.jade.plugin_" + ID + "." + zStatic.Lazers.rotor, "Laser Rotor Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.Machines.TYPE, "Industrial Machines Info");
+                add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.controller,
+                                "Quantum Reactor Controller Stats");
 
                 add(Main.ID + ".color", "Color: %d");
 
@@ -285,10 +287,18 @@ public class DataLang extends LanguageProvider {
                 ClazzUtil.getAllMachineTypes()
                                 .forEach(m -> {
                                         addBlock(m.block(), named(m.block()));
-                                        add(ID + ".jei.machine." + m.id(), named(m.item())+" Recipes");
+                                        add(ID + ".jei.machine." + m.id(), named(m.item()) + " Recipes");
                                 }
 
                                 );
+
+                add(ID + ".nofuel", "§eNo Fuel Cell available");
+                add(ID + ".waiting", "§eRequire a redstone signal to stay active");
+                add(ID + ".overheated", "§cOverheated");
+                add(ID + ".production", "§aProcessing");
+
+                add(ID + ".fe", "FE: ");
+                add(ID + ".heat", "Heat: ");
 
         }
 
