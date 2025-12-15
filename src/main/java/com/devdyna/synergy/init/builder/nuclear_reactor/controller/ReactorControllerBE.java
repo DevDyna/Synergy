@@ -214,4 +214,16 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
         return Range.of(1, 8, BiBool.of(true, false));
     }
 
+    public double getHeat() {
+        return heat;
+    }
+
+    public int getFe() {
+        return fe;
+    }
+
+    public String getStatus() {
+        return getBlockState().getValue(ReactorControllerBlock.STATUS).getName();
+    }
+
 }
