@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "silentgear"
+    }
+  ],
+  "type": "synergy:quern",
+  "frequence": 60,
+  "ingredient": {
+    "tag": "c:ingots/azure_silver"
+  },
+  "result": {
+    "count": 1,
+    "id": "silentgear:azure_silver_dust"
+  }
+}
