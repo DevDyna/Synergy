@@ -6,16 +6,12 @@ _NaN_
 
 ## BUGS
 
-- [x] Reactor Controller dont save aoe
-- [x] BE radius doesn't sync with AOE
 - [ ] Fuel cell output can conflict with input
 - [ ] quickMoveStack (i hate you!)
 
 - [ ] Nodes can void items with furnaces
 
 - [ ] Mekanism IO will void/break many stuff (nodes , fuel cell , etc)
-
-- [x] Machines slot index 0 doesn't allow to pickup items
 
 - [ ] Provider Nodes freeze entirely when output storage is null/full
 
@@ -34,14 +30,7 @@ _NaN_
 
 - [ ] GuideMe machinery
 
-- [x] SilentGear raw ores compat quern
-- [x] Create Zinc compat quern
-
 - [ ] Modern Chisel compat (?)
-
-- [x] quern recipes to macerator
-
-- [x] Reactor Controller jade tooltip
 
 - [ ] Provider Nodes jade output
 
@@ -52,8 +41,6 @@ _NaN_
 - [ ] All Recipe Types compat with GuideMe (?)
 
 - [ ] datagen recipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
-
-- [x] datagen recipes with namespace minecraft intend of synergy (could cause issues)
 
 - [ ] datagen recipes ids x.path(...).replace(...) -> id(item)
 
@@ -73,8 +60,6 @@ _NaN_
 
 - [ ] Laser Infusion RecipeType
 
-- [x] Laser Dynamo (power gen)
-
 - [ ] Fermenting
 
 - [ ] Zodiac (mdpk) Block Scrapping
@@ -86,8 +71,6 @@ _NaN_
 - [ ] Simple Resource Generators
 
 - [ ] Framed CobbleGen (EnderioAddons-Like)
-
-- [x] Forever young treatment (item use on entity)
 
 - [ ] cave mushroom -> press -> liquidi lapis/ liquid coal
 
@@ -119,13 +102,15 @@ _NaN_
 - [ ] decorative devices
 - [ ] dye essence (?)
 - ~~ Energy (like FE but a completly new Capability type) that allow E->FE~~ too codebase breaker
-- [x] Lasers and Lens
+
 - [ ] Rocket Launcher
+
 - [ ] Planter (farmland like but bypass conditions)
+
 - [ ] Truffles
+
 - [ ] Mindustry/DE like Fusion Reactor (?)
 
-- [x] Macerator (standard) Item->(Item|Item)
 - [ ] Electric Furnace (standard) Item->Item
 - [ ] Extractor (special recipes like honey) Item->(Item|Item)
 - [ ] Compressor (special recipes like blocks of X) Item->Item
