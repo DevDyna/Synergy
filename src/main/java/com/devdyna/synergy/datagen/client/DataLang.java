@@ -273,6 +273,7 @@ public class DataLang extends LanguageProvider {
                 add("config.jade.plugin_" + ID + "." + zStatic.Lazers.machine_gun, "Laser Machine Gun Color");
                 add("config.jade.plugin_" + ID + "." + zStatic.Lazers.rotor, "Laser Rotor Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.Machines.TYPE, "Industrial Machines Info");
+                add("config.jade.plugin_" + ID + ".aoe", "AreaOfEffect Machines Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.controller,
                                 "Quantum Reactor Controller Stats");
 
@@ -299,6 +300,9 @@ public class DataLang extends LanguageProvider {
 
                 add(ID + ".fe", "FE: ");
                 add(ID + ".heat", "Heat: ");
+                add(ID + ".aoe", "AreaOfEffect: ");
+                add(ID + ".aoe.small", "§cArea too small");
+                add(ID + ".aoe.big", "§cArea too big");
 
         }
 

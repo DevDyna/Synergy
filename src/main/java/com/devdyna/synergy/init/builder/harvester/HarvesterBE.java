@@ -90,9 +90,8 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
     public List<ItemStack> getAPICrops(Level level, BlockPos pos) {
         var state = level.getBlockState(pos);
         var block = state.getBlock();
-        if (block instanceof PlantHandler plant) {
+        if (block instanceof PlantHandler plant)
             return plant.execute(level, pos);
-        }
         return null;
     }
 
@@ -106,12 +105,10 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
 
             List<ItemStack> items = collectItemDrops(level, area.get(i));
 
-            if (items != null) {
-
+            if (items != null)
                 for (ItemStack itemStack : unifyDrops(items))
                     exportItems(itemStack, List.of(getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING)),
                             level, getBlockPos(), cache);
-            }
 
             level.playSound(null, getBlockPos(),
                     (soundToggle ? SoundEvents.COPPER_BULB_TURN_ON : SoundEvents.COPPER_BULB_TURN_OFF),
@@ -120,9 +117,9 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
             i++;
         }
 
-        if (i >= size) {
+        if (i >= size)
             i = 0;
-        }
+
     }
 
     @Override
@@ -162,7 +159,19 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
 
     @Override
     public Range heightLimit() {
-       return Range.of(1, 8, BiBool.of(true, false));
+        return Range.of(1, 8, BiBool.of(true, false));
+    }
+
+    @Override
+    public boolean hasSizeEqual() {
+        return false;
+    }
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        if (level.isClientSide)
+            rebuildArea();
     }
 
 }

@@ -4,8 +4,9 @@ import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBE;
-
+import com.devdyna.synergy.api.basebe.be.TickingBE;
+import com.devdyna.synergy.api.beLogic.AreaOfEffect;
+import com.devdyna.synergy.api.utils.PlayerUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -29,26 +30,32 @@ public class SolderingGun extends Item {
         var pos = c.getClickedPos();
         var player = c.getPlayer();
 
-        if (level.getBlockEntity(pos) instanceof ReactorControllerBE be
-                && c.getHand().equals(InteractionHand.MAIN_HAND)) {
+        if(level.isClientSide()) return InteractionResult.FAIL;
+
+        if (level.getBlockEntity(pos) instanceof TickingBE be
+                && be instanceof AreaOfEffect aoe && c.getHand().equals(InteractionHand.MAIN_HAND)) {
 
             var nbt = be.saveWithFullMetadata(level.registryAccess());
 
-            int radius = nbt.getInt(ReactorControllerBE.RADIUS);
+            int radius = nbt.getInt(TickingBE.RADIUS);
             int newrange = radius;
 
             if (!player.isCrouching()) {
-                if (be.getRange().test(radius + 1))
+                if (aoe.radiusLimit().test(radius + 1))
                     newrange++;
+                else
+                    PlayerUtil.traslableActionMessage( "aoe.big", player);
             } else {
-                if (be.getRange().test(radius - 1))
+                if (aoe.radiusLimit().test(radius - 1))
                     newrange--;
+                else
+                    PlayerUtil.traslableActionMessage( "aoe.small", player);
             }
 
             if (newrange == radius)
                 return InteractionResult.FAIL;
 
-            nbt.putInt(ReactorControllerBE.RADIUS, newrange);
+            nbt.putInt(TickingBE.RADIUS, newrange);
 
             be.loadWithComponents(nbt, level.registryAccess());
 

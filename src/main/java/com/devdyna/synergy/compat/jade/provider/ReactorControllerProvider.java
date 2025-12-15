@@ -24,22 +24,21 @@ public enum ReactorControllerProvider implements IBlockComponentProvider, IServe
 
                 var server = accessor.getServerData();
 
-                if (server.contains("fe") && server.contains("heat") && server.contains("status")) {
+                if (server.contains("fe") && server.contains("heat")) {
 
                         var heat = server.getDouble("heat");
                         var fe = server.getInt("fe");
-                        var status = server.getString("status");
 
                         tooltip.add(
                                         Component.literal("§7")
                                                         .append(Component.translatable(ID + ".heat"))
-                                                        .append(heat + "°/t | ").withStyle(heat > 0 ? ChatFormatting.RED : ChatFormatting.GREEN)
+                                                        .append(heat + "°/t | ")
+                                                        .withStyle(heat > 0 ? ChatFormatting.RED : ChatFormatting.GREEN)
                                                         .append(Component.translatable(ID + ".fe")
                                                                         .append(fe + "fe/t")));
-
-                        tooltip.add(Component.translatable(ID + "." + status));
-
                 }
+                if (server.contains("status"))
+                        tooltip.add(Component.translatable(ID + "." + server.getString("status")));
 
         }
 
@@ -49,6 +48,7 @@ public enum ReactorControllerProvider implements IBlockComponentProvider, IServe
                 data.putInt("fe", be.getFe());
                 data.putDouble("heat", be.getHeat());
                 data.putString("status", be.getStatus());
+                data.putInt("aoe", be.radius());
         }
 
         @Override

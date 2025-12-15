@@ -16,6 +16,8 @@ import com.devdyna.synergy.init.types.zHandlers;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -44,7 +46,6 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
 
     int i = 0;
 
-    List<BlockPos> area = null;
     List<Integer> rgbColor;
 
     public int fe = 1;
@@ -60,14 +61,14 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
         level.setBlockAndUpdate(getBlockPos(),
                 getBlockState()
                         .setValue(BlockStateProperties.ENABLED,
-                                canReceive() && area != null && level.hasNeighborSignal(getBlockPos()))
+                                canReceive() && !isAreaNull() && level.hasNeighborSignal(getBlockPos()))
                         .setValue(ReactorControllerBlock.STATUS,
                                 enable() ? (isOverHeated ? ControllerProperties.OVERHEATED
                                         : (cellFound() ? ControllerProperties.PRODUCTION
                                                 : ControllerProperties.NOFUEL))
                                         : ControllerProperties.WAITING));
 
-        if (area == null)
+        if (isAreaNull())
             area = getAreaSelection(level, getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING),
                     getBlockPos());
 
@@ -80,7 +81,7 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
             increaseFE(fe, false);
             if (level.getGameTime() % 10 == 0)
                 level.playSound(null, getBlockPos(),
-                        SoundEvents.CAMPFIRE_CRACKLE,
+                        SoundEvents.BLASTFURNACE_FIRE_CRACKLE,
                         SoundSource.BLOCKS, 1F * (LevelUtil.chance(50, level) ? 1f : 0.75f), 1);
 
         }
@@ -90,8 +91,9 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
 
     }
 
+    @Override
     public void updateAOE() {
-        area = null;
+        super.updateAOE();
         resetStats();
     }
 
@@ -224,6 +226,34 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
 
     public String getStatus() {
         return getBlockState().getValue(ReactorControllerBlock.STATUS).getName();
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(Provider lookupProvider) {
+        CompoundTag tag = super.getUpdateTag(lookupProvider);
+        tag.putDouble("heat", heat);
+        tag.putInt("fe", fe);
+        return tag;
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag, Provider lookupProvider) {
+        super.handleUpdateTag(tag, lookupProvider);
+        heat = tag.getDouble("heat");
+        fe = tag.getInt("fe");
+        rebuildArea();
+    }
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        if (level.isClientSide)
+            rebuildArea();
+    }
+
+    @Override
+    public boolean hasSizeEqual() {
+        return true;
     }
 
 }

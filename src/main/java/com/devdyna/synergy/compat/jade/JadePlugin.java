@@ -1,5 +1,7 @@
 package com.devdyna.synergy.compat.jade;
 
+import com.devdyna.synergy.api.basebe.block.TickingBlock;
+import com.devdyna.synergy.compat.jade.provider.AOEMachines;
 import com.devdyna.synergy.compat.jade.provider.LaserMachineGunProvider;
 import com.devdyna.synergy.compat.jade.provider.LaserRotorProvider;
 import com.devdyna.synergy.compat.jade.provider.MachineProgress;
@@ -23,6 +25,7 @@ public class JadePlugin implements IWailaPlugin {
         registration.registerBlockComponent(LaserRotorProvider.INSTANCE, LaserRotorBlock.class);
         registration.registerBlockComponent(MachineProgress.INSTANCE, BaseMachineBlock.class);
         registration.registerBlockComponent(ReactorControllerProvider.INSTANCE, ReactorControllerBlock.class);
+        registration.registerBlockComponent(AOEMachines.INSTANCE, TickingBlock.class);
     }
 
     @Override
@@ -31,5 +34,6 @@ public class JadePlugin implements IWailaPlugin {
         registration.registerBlockDataProvider(LaserRotorProvider.INSTANCE, LaserRotorBlock.class);
         registration.registerBlockDataProvider(MachineProgress.INSTANCE, BaseMachineBlock.class);
         registration.registerBlockDataProvider(ReactorControllerProvider.INSTANCE, ReactorControllerBlock.class);
+        registration.registerBlockDataProvider(AOEMachines.INSTANCE, TickingBlock.class);
     }
 }

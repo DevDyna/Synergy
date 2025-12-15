@@ -10,12 +10,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
 
-public interface AreaOfEffect {
+public interface AreaOfEffect extends SimpleAOE {
+
+    abstract void onLoad();
 
     /**
-     * radius of AOE around the controller blocks
+     * set true to exclude <code>height();</code> and use only
+     * <code>radius();</code> to define all coords
      */
-    int radius();
+    boolean hasSizeEqual();
 
     /*
      * height of AOE around the controller blocks
@@ -46,10 +49,11 @@ public interface AreaOfEffect {
                         height() - 1));
     }
 
-        /**
+    /**
      * @return map<Start,End>
      */
-    default Entry<BlockPos, BlockPos> getPoints(Level level, BlockPos baseBlock, Direction dir, boolean isUp,int height,int radius) {
+    default Entry<BlockPos, BlockPos> getPoints(Level level, BlockPos baseBlock, Direction dir, boolean isUp,
+            int height, int radius) {
         BlockPos relPos = baseBlock.relative(dir);
         Direction upDown = isUp ? Direction.UP : Direction.DOWN;
 

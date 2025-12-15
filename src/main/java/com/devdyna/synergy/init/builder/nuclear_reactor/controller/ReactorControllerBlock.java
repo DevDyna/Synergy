@@ -77,7 +77,7 @@ public class ReactorControllerBlock extends TickingBlock {
 
         var be = (ReactorControllerBE) level.getBlockEntity(pos);
 
-        if (be.area != null) {
+        if (!be.isAreaNull()) {
             be.updateCells(false);
         }
         super.onRemove(state, level, pos, newState, movedByPiston);

@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.builder.sprinkler;
 
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
+import com.devdyna.synergy.api.beLogic.SimpleAOE;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
@@ -19,13 +20,13 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class SprinklerBE extends TickingBE implements EnergyBlock {
+public class SprinklerBE extends TickingBE implements EnergyBlock, SimpleAOE {
 
     public SprinklerBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.SPRINKLER.get(), pos, state);
+        if (radius == 0)
+            this.radius = 4;
     }
-
-    private static int radius = 4;
 
     @Override
     public void tickServer() {
@@ -65,10 +66,6 @@ public class SprinklerBE extends TickingBE implements EnergyBlock {
 
     }
 
-    public static int getRadius() {
-        return radius;
-    }
-
     @Override
     public ContainerData getContainerData() {
         return new SimpleContainerData(getMaxFE());
@@ -82,6 +79,19 @@ public class SprinklerBE extends TickingBE implements EnergyBlock {
     @Override
     public int MaxFE() {
         return 10000;
+    }
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        if (level.isClientSide)
+            rebuildArea();
+    }
+
+
+    @Override
+    public int radius() {
+        return radius;
     }
 
 }
