@@ -13,7 +13,7 @@ _NaN_
 
 - [ ] Mekanism IO will void/break many stuff (nodes , fuel cell , etc)
 
-- [ ] Provider Nodes freeze entirely when output storage is null/full
+- [x] Provider Nodes freeze entirely when output storage is null/full
 
 ## COMPATS AND TWEAKS
 
