@@ -33,6 +33,9 @@ public class core {
         compatInfo(zStatic.Mods.DraconicEvolution, "DraconicEvolution");
         compatInfo(zStatic.Mods.EnderIO, "EnderIO");
 
+        compatInfo(zStatic.Mods.SilentGear, "SilentGear");
+        compatInfo(zStatic.Mods.Create, "Create");
+
         LogUtil.decor(20);
     }
 

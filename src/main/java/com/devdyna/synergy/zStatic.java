@@ -434,6 +434,8 @@ public class zStatic {
         public static String AE2 = "ae2";
         public static String DraconicEvolution = "draconicevolution";
         public static String EnderIO = "enderio";
+        public static String SilentGear = "silentgear";
+        public static String Create = "create";
     }
 
     public class tips {
