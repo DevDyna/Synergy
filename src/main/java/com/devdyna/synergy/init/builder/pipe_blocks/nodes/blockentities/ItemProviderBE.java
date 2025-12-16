@@ -33,13 +33,14 @@ public class ItemProviderBE extends NodeBaseBE
 
     @Override
     protected void executeItem(IItemHandler input, IItemHandler output) {
+
         var state = getBlockState();
         var dir = state.getValue(nodeType.FACING);
         var pos = getInputPos();
 
         if (isValidSet(state, dir, pos, level)) {
             if (level.getGameTime() % 20 == 0)// TODO change based on upgrades
-                insertItemStacked(output, getRecipe(pos).get().value().getOutput(), false);
+                insertItemStacked(output, getRecipe(pos).get().value().getOutput().copy(), false);
         }
 
     }
