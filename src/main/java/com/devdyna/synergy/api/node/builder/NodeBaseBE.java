@@ -132,7 +132,7 @@ public abstract class NodeBaseBE extends BlockEntity {
         if (capType == Capabilities.ItemHandler.BLOCK) {
             var itemHandler = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (itemHandler instanceof IItemHandler handler) {
-                // Check if any slot can accept an item (simulate insert)
+                // TODO rework to filter based on input cap
                 for (int slot = 0; slot < handler.getSlots(); slot++) {
                     if (handler.insertItem(slot, new ItemStack(Items.STONE, 1), true).isEmpty()) {
                         return true;
@@ -142,7 +142,6 @@ public abstract class NodeBaseBE extends BlockEntity {
         } else if (capType == Capabilities.EnergyStorage.BLOCK) {
             var energy = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (energy instanceof IEnergyStorage storage) {
-                // Check if it can receive at least 1 energy
                 if (storage.receiveEnergy(1, true) > 0) {
                     return true;
                 }
@@ -150,7 +149,7 @@ public abstract class NodeBaseBE extends BlockEntity {
         } else if (capType == Capabilities.FluidHandler.BLOCK) {
             var fluid = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (fluid instanceof IFluidHandler handler) {
-                // Try to simulate inserting 1 bucket of water
+                // TODO rework to filter based on input cap
                 if (handler.fill(new FluidStack(Fluids.WATER, 1000), IFluidHandler.FluidAction.SIMULATE) > 0) {
                     return true;
                 }
