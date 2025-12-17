@@ -50,6 +50,8 @@ _NaN_
 
 ## NEWS
 
+- [ ] Glass-Caster Factory (forestry like)
+
 - [ ] Potted Azalea dirt->rotten randomtick event
 
 - [ ] Spawner Essence
