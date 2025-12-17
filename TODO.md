@@ -46,7 +46,7 @@ _NaN_
 
 - [ ] datagen recipes group id rework
 
-- [ ] replace some "brute-force" particles to animateTick
+- [ ] replace some "brute-force" particles and sound event to animateTick
 
 ## NEWS
 
