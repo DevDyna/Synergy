@@ -220,10 +220,6 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
         return heat;
     }
 
-    public int getFe() {
-        return fe;
-    }
-
     public String getStatus() {
         return getBlockState().getValue(ReactorControllerBlock.STATUS).getName();
     }
@@ -254,6 +250,11 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
     @Override
     public boolean hasSizeEqual() {
         return true;
+    }
+
+    @Override
+    public int getFERate() {
+        return fe;
     }
 
 }

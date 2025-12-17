@@ -41,4 +41,11 @@ public interface EnergyProvider extends EnergyBlock {
             }
     }
 
+
+    /**
+     * Fe rate when ready to produce
+     * <br/><br/>
+     * Set to -1 to ignore
+     */
+    int getFERate();
 }

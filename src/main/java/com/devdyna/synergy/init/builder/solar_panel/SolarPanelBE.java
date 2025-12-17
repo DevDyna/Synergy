@@ -33,7 +33,7 @@ public class SolarPanelBE extends TickingBE implements EnergyProvider {
                 canReceive() && level.isDay() && checkSky() && !level.hasNeighborSignal(getBlockPos())));
 
         if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
-            increaseFE(64, false);
+            increaseFE(getFERate(), false);
         }
 
         if (canExtract()) {
@@ -59,6 +59,11 @@ public class SolarPanelBE extends TickingBE implements EnergyProvider {
     @Override
     public int MaxFE() {
         return 10000;
+    }
+
+    @Override
+    public int getFERate() {
+        return 64;
     }
 
 }

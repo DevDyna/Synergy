@@ -275,6 +275,7 @@ public class DataLang extends LanguageProvider {
                 add("config.jade.plugin_" + ID + "." + zStatic.Machines.TYPE, "Industrial Machines Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.PipeStuff.nodes.type_provider, "Node Provider Recipe Output Info");
                 add("config.jade.plugin_" + ID + ".aoe", "AreaOfEffect Machines Info");
+                add("config.jade.plugin_" + ID + ".fegen", "Energy Provider Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.controller,
                                 "Quantum Reactor Controller Stats");
 
@@ -304,6 +305,11 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".aoe", "AreaOfEffect: ");
                 add(ID + ".aoe.small", "§cArea too small");
                 add(ID + ".aoe.big", "§cArea too big");
+
+
+                                add(ID+".jade.tip.daytime", "when daytime");
+                                add(ID+".jade.tip.cycle", "every cycle");
+
 
         }
 

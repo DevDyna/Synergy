@@ -98,7 +98,7 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
 
         if (north && south && east && west) {
             if (canReceive())
-                increaseFE(10000, false);
+                increaseFE(getFERate(), false);
 
             resetStat();
         }
@@ -189,6 +189,11 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
         }
 
         return tag;
+    }
+
+    @Override
+    public int getFERate() {
+        return 10_000;
     }
 
 }
