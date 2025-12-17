@@ -43,14 +43,14 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                 ClazzUtil.getAllMachineTypes()
                                 .forEach(m -> horizontalBlockBiPhace((Block) m.block().get(), BaseMachineBlock.ENABLED,
                                                 models().orientableWithBottom(
-                                                                m.id(),
+                                                                m.id()+"_off",
                                                                 modLoc("block/machine/frame/basic/side"),
                                                                 modLoc("block/machine/processing/" + m.id()
                                                                                 + "/off"),
                                                                 modLoc("block/machine/frame/basic/bottom"),
                                                                 modLoc("block/machine/frame/basic/top")),
                                                 models().orientableWithBottom(
-                                                                m.id(),
+                                                                m.id()+"_on",
                                                                 modLoc("block/machine/frame/basic/side"),
                                                                 modLoc("block/machine/processing/" + m.id()
                                                                                 + "/on"),
@@ -61,7 +61,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
         protected void horizontalBlockBiPhace(Block block, BooleanProperty prop, ModelFile off, ModelFile on) {
                 getVariantBuilder(block)
                                 .forAllStates(state -> ConfiguredModel.builder()
-                                                .modelFile(state.getValue(prop) ? on : off)
+                                                .modelFile(state.getValue(prop).booleanValue() ? on : off)
                                                 .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING)
                                                                 .toYRot() + 180) % 360)
                                                 .build());

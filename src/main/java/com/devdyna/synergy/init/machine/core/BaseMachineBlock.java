@@ -3,8 +3,10 @@ package com.devdyna.synergy.init.machine.core;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.block.BlockMenu;
+import com.devdyna.synergy.api.utils.LevelUtil;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -56,6 +58,12 @@ public abstract class BaseMachineBlock extends BlockMenu {
     @Override
     protected void createBlockStateDefinition(Builder<Block, BlockState> b) {
         b.add(FACING, ENABLED);
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if(state.getValue(ENABLED))
+        LevelUtil.addRepeaterRedstoneParticles(level, pos, state.getValue(FACING), 1);
     }
 
     @Nullable
