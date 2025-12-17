@@ -74,7 +74,7 @@ _NaN_
 
 - [ ] Framed CobbleGen (EnderioAddons-Like)
 
-- [ ] cave mushroom -> press -> liquidi lapis/ liquid coal
+- [ ] cave mushroom -> press -> liquid lapis/ liquid coal
 
 - [ ] temporal hourglass (like unique crops)
 
