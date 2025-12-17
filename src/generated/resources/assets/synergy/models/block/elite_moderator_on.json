@@ -1,7 +1,7 @@
 {
   "parent": "synergy:block/double_layer",
   "textures": {
-    "below": "synergy:block/reactor/moderator/elite_frame",
-    "top": "synergy:block/reactor/moderator/base_on"
+    "below": "synergy:block/machine/nuclear/moderator/elite_frame",
+    "top": "synergy:block/machine/nuclear/moderator/base_on"
   }
 }

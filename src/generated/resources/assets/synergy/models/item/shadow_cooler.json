@@ -1,7 +1,7 @@
 {
   "parent": "synergy:block/double_layer",
   "textures": {
-    "below": "synergy:block/reactor/cooler/shadow",
-    "top": "synergy:block/reactor/cooler/casing"
+    "below": "synergy:block/machine/nuclear/cooler/shadow",
+    "top": "synergy:block/machine/nuclear/cooler/casing"
   }
 }

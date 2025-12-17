@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "bottom": "synergy:block/reactor/controller/bottom",
-    "side": "synergy:block/reactor/controller/side",
-    "top": "synergy:block/reactor/controller/top"
+    "bottom": "synergy:block/machine/frame/advanced/bottom",
+    "side": "synergy:block/machine/frame/advanced/side",
+    "top": "synergy:block/machine/frame/advanced/top"
   }
 }

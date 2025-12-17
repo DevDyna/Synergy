@@ -2,6 +2,6 @@
   "parent": "synergy:block/double_layer",
   "textures": {
     "below": "minecraft:block/lapis_block",
-    "top": "synergy:block/reactor/cooler/casing"
+    "top": "synergy:block/machine/nuclear/cooler/casing"
   }
 }
