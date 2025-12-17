@@ -86,8 +86,6 @@ public class MaceratorBE extends BaseMachineBE implements SecondaryMachineResult
 
         // empty
         if (getInput().isEmpty()) {
-            if (getBlockState().getValue(BaseMachineBlock.ENABLED))
-                update(false);
             resetProgress();
             return;
         } else {
@@ -97,9 +95,6 @@ public class MaceratorBE extends BaseMachineBE implements SecondaryMachineResult
         Optional<RecipeHolder<MaceratorRecipeType>> r = level.getRecipeManager()
                 .getRecipeFor(zMachines.MACERATOR.recipe().getType(),
                         new MonoItemInput(getInput()), level);
-
-        level.setBlockAndUpdate(getBlockPos(), getBlockState()
-                .setValue(BaseMachineBlock.ENABLED, !r.isEmpty() && canExtract()));
 
         // no recipe
         if (r.isEmpty()) {
@@ -155,6 +150,7 @@ public class MaceratorBE extends BaseMachineBE implements SecondaryMachineResult
 
         if (energyStorage.getEnergyStored() >= recipe.getEnergy() && !progress_cancel) {
             energyStorage.extractEnergy(recipe.getEnergy(), false);
+            update(true);
         } else {
             resetProgress();
             return;
@@ -194,6 +190,9 @@ public class MaceratorBE extends BaseMachineBE implements SecondaryMachineResult
             progress--;
         if (progress == 0)
             progress_cancel = false;
+            
+        if (getBlockState().getValue(BaseMachineBlock.ENABLED))
+            update(false);
     }
 
     @Override
