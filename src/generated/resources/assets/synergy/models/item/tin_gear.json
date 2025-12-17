@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "synergy:item/resources/gear/wooden"
+    "layer0": "synergy:item/resources/gear/tin"
   }
 }

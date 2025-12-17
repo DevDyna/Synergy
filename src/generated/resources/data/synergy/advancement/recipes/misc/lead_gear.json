@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:wooden_gear"
+        "recipe": "synergy:lead_gear"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#c:rods/wooden"
+            "items": "#c:ingots/lead"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:wooden_gear"
+      "synergy:lead_gear"
     ]
   }
 }

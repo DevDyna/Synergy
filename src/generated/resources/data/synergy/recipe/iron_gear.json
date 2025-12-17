@@ -4,7 +4,7 @@
   "group": "synergy",
   "key": {
     "#": {
-      "tag": "c:rods/wooden"
+      "tag": "c:ingots/iron"
     }
   },
   "pattern": [
@@ -14,6 +14,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "synergy:wooden_gear"
+    "id": "synergy:iron_gear"
   }
 }

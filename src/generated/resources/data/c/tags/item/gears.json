@@ -1,5 +1,12 @@
 {
   "values": [
-    "synergy:wooden_gear"
+    "synergy:wooden_gear",
+    "synergy:copper_gear",
+    "synergy:gold_gear",
+    "synergy:iron_gear",
+    "synergy:steel_gear",
+    "synergy:nickel_gear",
+    "synergy:tin_gear",
+    "synergy:lead_gear"
   ]
 }
