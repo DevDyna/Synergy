@@ -11,12 +11,10 @@ import com.devdyna.synergy.init.types.zBlockTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
@@ -134,7 +132,7 @@ public abstract class NodeBaseBE extends BlockEntity {
             if (itemHandler instanceof IItemHandler handler) {
                 // TODO rework to filter based on input cap
                 for (int slot = 0; slot < handler.getSlots(); slot++) {
-                    if (handler.insertItem(slot, new ItemStack(Items.STONE, 1), true).isEmpty()) {
+                    if (handler.getStackInSlot(slot).isEmpty()) {
                         return true;
                     }
                 }
@@ -150,8 +148,10 @@ public abstract class NodeBaseBE extends BlockEntity {
             var fluid = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (fluid instanceof IFluidHandler handler) {
                 // TODO rework to filter based on input cap
-                if (handler.fill(new FluidStack(Fluids.WATER, 1000), IFluidHandler.FluidAction.SIMULATE) > 0) {
-                    return true;
+                for (int tank = 0; tank < handler.getTanks(); tank++) {
+                    if (handler.getFluidInTank(tank).isEmpty()) {
+                        return true;
+                    }
                 }
             }
         } else {
