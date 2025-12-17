@@ -66,7 +66,7 @@ public interface nodeType extends pipeType {
         return state;
     }
 
-    static BlockState updateNodeOnPlace(BlockState state,Level level,  BlockPos pos,  Direction direction) {
+    static BlockState updateNodeOnPlace(BlockState state, Level level, BlockPos pos, Direction direction) {
         state = state.setValue(FACING, direction.getOpposite());
         state = pipeType.updatePipeOnPlace(state, level, pos);
         state = switch (direction.getOpposite()) {
@@ -82,7 +82,14 @@ public interface nodeType extends pipeType {
 
     static void getNodeMultiPart(Block b, MultiPartBlockStateBuilder model, ModelFile core, ModelFile pipe,
             ModelFile node) {
-        pipeType.getPipeMultiPart(b, model, core, pipe);
+
+        model.part().modelFile(pipe).addModel().condition(NORTH, pipeProperties.TRUE);
+        model.part().modelFile(pipe).rotationY(90).addModel().condition(EAST, pipeProperties.TRUE);
+        model.part().modelFile(pipe).rotationX(180).addModel().condition(SOUTH, pipeProperties.TRUE);
+        model.part().modelFile(pipe).rotationY(270).addModel().condition(WEST, pipeProperties.TRUE);
+        model.part().modelFile(pipe).rotationX(270).addModel().condition(UP, pipeProperties.TRUE);
+        model.part().modelFile(pipe).rotationX(90).addModel().condition(DOWN, pipeProperties.TRUE);
+
         model.part().modelFile(node).addModel().condition(NodeBaseBlock.FACING, Direction.NORTH);
         model.part().modelFile(node).rotationY(90).addModel().condition(NodeBaseBlock.FACING, Direction.EAST);
         model.part().modelFile(node).rotationY(180).addModel().condition(NodeBaseBlock.FACING, Direction.SOUTH);
