@@ -8,7 +8,6 @@ import com.devdyna.synergy.datagen.api.ExtraBlockStateProvider;
 import com.devdyna.synergy.init.types.zBlocks;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -21,8 +20,6 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
         @Override
         protected void registerStatesAndModels() {
-
-                ClazzUtil.getAllzFluids().forEach(f -> fluid(f));
 
                 rotableBlock(zBlocks.SPRINKLER.get());
 
@@ -51,15 +48,13 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 simpleBlockDecorative(zBlocks.ADVANCED_ALLOY_BLOCK);
                 simpleBlockDecorative(zBlocks.STEEL_BLOCK);
-                simpleBlockDecorative(zBlocks.COOLER_BASE);
                 simpleBlockDecorative(zBlocks.ADOBE);
                 simpleBlockDecorative(zBlocks.RUSTIC_METAL);
                 simpleBlockDecorative(zBlocks.WAXED_PLANKS);
 
-                decorativeBlocks();
-
+                simpleFlexibleBlock(zBlocks.COOLER_BASE, "machine/nuclear/cooler/base");
                 simpleFullBlock(zBlocks.HEALER, "");
-                simpleFullBlock(zBlocks.REACTOR_FUEL_CELL, "reactor/");
+                simpleFlexibleBlock(zBlocks.REACTOR_FUEL_CELL, "machine/nuclear/fuel_cell");
 
                 CoolerBlock(zBlocks.COPPER_COOLER, mcLoc("block/copper_block"));
                 CoolerBlock(zBlocks.GOLD_COOLER, mcLoc("block/gold_block"));
@@ -70,7 +65,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 CoolerBlock(zBlocks.SCULK_COOLER, mcLoc("block/sculk"));
                 CoolerBlock(zBlocks.WATER_COOLER, mcLoc("block/ice"));
                 CoolerBlock(zBlocks.QUARTZ_COOLER, mcLoc("block/quartz_block_top"));
-                CoolerBlock(zBlocks.SHADOW_COOLER, modLoc("block/reactor/cooler/shadow"));
+                CoolerBlock(zBlocks.SHADOW_COOLER, modLoc("block/machine/nuclear/cooler/shadow"));
                 CoolerBlock(zBlocks.DIAMOND_COOLER, mcLoc("block/diamond_block"));
                 CoolerBlock(zBlocks.EMERALD_COOLER, mcLoc("block/emerald_block"));
                 CoolerBlock(zBlocks.REDSTONE_COOLER, mcLoc("block/redstone_block"));
@@ -78,8 +73,8 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 CoolerBlock(zBlocks.NETHERITE_COOLER, mcLoc("block/netherite_block"));
 
                 moderatorBlock(zBlocks.SIMPLE_MODERATOR, mcLoc("block/coal_block"));
-                moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("block/reactor/moderator/advanced_frame"));
-                moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("block/reactor/moderator/elite_frame"));
+                moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("block/machine/nuclear/moderator/advanced_frame"));
+                moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("block/machine/nuclear/moderator/elite_frame"));
 
                 crop(zBlocks.RICE.get(), 7, true, CropBlock.AGE);
                 crop(zBlocks.CAVE_WHEAT.get(), 5, true, BaseShortCropBlock.AGE);
@@ -94,56 +89,47 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 horizontalBlock(zBlocks.HARVESTER.get(), models()
                                 .orientableWithBottom(
                                                 zBlocks.HARVESTER.getRegisteredName(),
-                                                modLoc("block/harvester/side"),
-                                                modLoc("block/harvester/front"),
-                                                modLoc("block/harvester/bottom"),
-                                                modLoc("block/harvester/top")));
-
-                reactorController(zBlocks.REACTOR_CONTROLLER);
+                                                modLoc("block/machine/frame/basic/side"),
+                                                modLoc("block/machine/farming/harvester"),
+                                                modLoc("block/machine/frame/basic/bottom"),
+                                                modLoc("block/machine/frame/basic/top")));
 
                 directionalBlock(zBlocks.BASIC_MACHINE_FRAME.get(),
                                 models().cubeBottomTop(zBlocks.BASIC_MACHINE_FRAME.getRegisteredName(),
-                                                modLoc("block/harvester/side"),
-                                                modLoc("block/harvester/bottom"),
-                                                modLoc("block/harvester/top")));
+                                                modLoc("block/machine/frame/basic/side"),
+                                                modLoc("block/machine/frame/basic/bottom"),
+                                                modLoc("block/machine/frame/basic/top")));
 
                 directionalBlock(zBlocks.ADVANCED_MACHINE_FRAME.get(),
                                 models().cubeBottomTop(zBlocks.ADVANCED_MACHINE_FRAME.getRegisteredName(),
-                                                modLoc("block/reactor/controller/side"),
-                                                modLoc("block/reactor/controller/bottom"),
-                                                modLoc("block/reactor/controller/top")));
+                                                modLoc("block/machine/frame/advanced/side"),
+                                                modLoc("block/machine/frame/advanced/bottom"),
+                                                modLoc("block/machine/frame/advanced/top")));
 
                 brick(zBlocks.CLAY_BRICK, mcLoc("block/clay"), mcLoc("block/terracotta"));
                 brick(zBlocks.PACKED_MUD_BRICK, mcLoc("block/packed_mud"), mcLoc("block/mud_bricks"));
 
-                laserBlocks();
-
-                ClazzUtil.getAllMachineTypes()
-                                .forEach(m -> {
-                                        horizontalBlock((Block) m.block().get(), models()
-                                                        .orientableWithBottom(
-                                                                        m.id(),
-                                                                        modLoc("block/harvester/side"), // TODO rework
-                                                                        modLoc("block/machines/" + m.id()),
-                                                                        modLoc("block/harvester/bottom"),
-                                                                        modLoc("block/harvester/top")));
-                                });
-
                 repeater(zBlocks.PULSE_REPEATER.get());
                 repeater(zBlocks.RECURSIVE_REPEATER.get());
-                repeater(zBlocks.INVERTED_REPEATER.get(), (a, b) -> 
-                models().withExistingParent("plate_inverted_" +
-                                                                (a ? "on" : "off"),
-                                                                modLoc("block/redstone/plate_"
-                                                                                + (a ? "off" : "on")))
-                                                                                .texture("top", mcLoc("block/repeater"+(a ? "_on" : "")))
+                repeater(zBlocks.INVERTED_REPEATER.get(), (a, b) -> models().withExistingParent("plate_inverted_" +
+                                (a ? "on" : "off"),
+                                modLoc("block/redstone/plate_"
+                                                + (a ? "off" : "on")))
+                                .texture("top", mcLoc("block/repeater" + (a ? "_on" : "")))
 
                                 , (a, b) -> models().getExistingFile(modLoc(
-                                        "block/redstone/output/1_"
-                                                        + (a ? "on" : "off"))),
-                                (a, b,c) -> models().getExistingFile(modLoc(
-                                                "block/redstone/input/"+c+"_"
+                                                "block/redstone/output/1_"
+                                                                + (a ? "on" : "off"))),
+                                (a, b, c) -> models().getExistingFile(modLoc(
+                                                "block/redstone/input/" + c + "_"
                                                                 + (a ? "off" : "on"))));
+
+                // this require to stay at the end of all
+                decorativeBlocks();
+                reactorController();
+                laserBlocks();
+                machines();
+                ClazzUtil.getAllzFluids().forEach(f -> fluid(f));
 
         }
 

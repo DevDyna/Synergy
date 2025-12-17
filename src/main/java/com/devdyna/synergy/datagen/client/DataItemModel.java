@@ -2,7 +2,6 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
-import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.datagen.api.ExtraItemModelProvider;
@@ -29,6 +28,7 @@ public class DataItemModel extends ExtraItemModelProvider {
 
                 decorative();
                 resources();
+                machines();
 
                 zItems.zBucketItems.getEntries().forEach(b -> withExistingParent(
                                 x.path(b.get()),
@@ -56,29 +56,30 @@ public class DataItemModel extends ExtraItemModelProvider {
                 node(zBlocks.ENERGY_TRANSFER, "red");
 
                 orientableWithBottom(zBlocks.HARVESTER.getRegisteredName(),
-                                modLoc("block/harvester/side"),
-                                modLoc("block/harvester/front"),
-                                modLoc("block/harvester/bottom"),
-                                modLoc("block/harvester/top"));
+                                modLoc("block/machine/frame/basic/side"),
+                                modLoc("block/machine/farming/harvester"),
+                                modLoc("block/machine/frame/basic/bottom"),
+                                modLoc("block/machine/frame/basic/top"));
 
                 orientableWithBottom(zBlocks.REACTOR_CONTROLLER.getRegisteredName(),
-                                modLoc("block/reactor/controller/side"),
-                                modLoc("block/reactor/controller/front_off"),
-                                modLoc("block/reactor/controller/bottom"),
-                                modLoc("block/reactor/controller/top"));
+                                modLoc("block/machine/frame/advanced/side"),
+                                modLoc("block/machine/nuclear/controller/front_off"),
+                                modLoc("block/machine/frame/advanced/bottom"),
+                                modLoc("block/machine/frame/advanced/top"));
 
                 cubeBottomTop(zBlocks.ADVANCED_MACHINE_FRAME.getRegisteredName(),
-                                modLoc("block/reactor/controller/side"),
-                                modLoc("block/reactor/controller/bottom"),
-                                modLoc("block/reactor/controller/top"));
+                                modLoc("block/machine/frame/advanced/side"),
+                                modLoc("block/machine/frame/advanced/bottom"),
+                                modLoc("block/machine/frame/advanced/top"));
 
                 cubeBottomTop(zBlocks.BASIC_MACHINE_FRAME.getRegisteredName(),
-                                modLoc("block/harvester/side"),
-                                modLoc("block/harvester/bottom"),
-                                modLoc("block/harvester/top"));
+                                modLoc("block/machine/frame/basic/side"),
+                                modLoc("block/machine/frame/basic/bottom"),
+                                modLoc("block/machine/frame/basic/top"));
 
                 simpleFullBlock(zBlocks.HEALER, "");
-                simpleFullBlock(zBlocks.REACTOR_FUEL_CELL, "reactor/");
+                simpleFlexibleBlock(zBlocks.REACTOR_FUEL_CELL, "machine/nuclear/fuel_cell");
+                simpleFlexibleBlock(zBlocks.COOLER_BASE, "machine/nuclear/cooler/base");
 
                 CoolerBlock(zBlocks.COPPER_COOLER, mcLoc("block/copper_block"));
                 CoolerBlock(zBlocks.GOLD_COOLER, mcLoc("block/gold_block"));
@@ -89,7 +90,7 @@ public class DataItemModel extends ExtraItemModelProvider {
                 CoolerBlock(zBlocks.SCULK_COOLER, mcLoc("block/sculk"));
                 CoolerBlock(zBlocks.WATER_COOLER, mcLoc("block/ice"));
                 CoolerBlock(zBlocks.QUARTZ_COOLER, mcLoc("block/quartz_block_top"));
-                CoolerBlock(zBlocks.SHADOW_COOLER, modLoc("block/reactor/cooler/shadow"));
+                CoolerBlock(zBlocks.SHADOW_COOLER, modLoc("block/machine/nuclear/cooler/shadow"));
                 CoolerBlock(zBlocks.DIAMOND_COOLER, mcLoc("block/diamond_block"));
                 CoolerBlock(zBlocks.EMERALD_COOLER, mcLoc("block/emerald_block"));
                 CoolerBlock(zBlocks.REDSTONE_COOLER, mcLoc("block/redstone_block"));
@@ -97,8 +98,8 @@ public class DataItemModel extends ExtraItemModelProvider {
                 CoolerBlock(zBlocks.NETHERITE_COOLER, mcLoc("block/netherite_block"));
 
                 moderatorBlock(zBlocks.SIMPLE_MODERATOR, mcLoc("block/coal_block"));
-                moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("block/reactor/moderator/advanced_frame"));
-                moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("block/reactor/moderator/elite_frame"));
+                moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("block/machine/nuclear/moderator/advanced_frame"));
+                moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("block/machine/nuclear/moderator/elite_frame"));
 
                 tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
                 tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
@@ -125,13 +126,7 @@ public class DataItemModel extends ExtraItemModelProvider {
                 withExistingParent(zBlocks.LASER_MIRROR.getRegisteredName(), modLoc("block/laser_mirror"));
                 withExistingParent(zBlocks.LASER_SENSOR.getRegisteredName(), modLoc("block/laser_sensor/off"));
 
-                ClazzUtil.getAllMachineTypes().forEach(m -> {
-                        orientableWithBottom(m.id(),
-                                        modLoc("block/harvester/side"), // TODO rework
-                                        modLoc("block/machines/" + m.id()),
-                                        modLoc("block/harvester/bottom"),
-                                        modLoc("block/harvester/top"));
-                });
+                
 
                 withExistingParent(x.path(zBlocks.PULSE_REPEATER.get()), "minecraft:item/generated")
                                 .texture("layer0", modLoc("item/redstone/pulse_repeater"));

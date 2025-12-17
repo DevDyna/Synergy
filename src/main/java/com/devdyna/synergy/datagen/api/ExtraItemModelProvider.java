@@ -3,6 +3,7 @@ package com.devdyna.synergy.datagen.api;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.types.*;
@@ -17,6 +18,7 @@ import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
+@SuppressWarnings("deprecation")
 public abstract class ExtraItemModelProvider extends ItemModelProvider {
 
         public ExtraItemModelProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper) {
@@ -24,7 +26,7 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
         }
 
         protected void decorative() {
-                zBlocks.zDecorative.getEntries()
+                zBlocks.zDecorative.getEntries().stream().filter(i -> !i.is(zBlocks.COOLER_BASE))
                                 .forEach(bk -> cubeAll(bk.getRegisteredName().replace(ID + ":block/", ""),
                                                 modLoc("block/decorative/"
                                                                 + x.path(bk.get()).replace(ID + ":block/",
@@ -57,6 +59,15 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                                 + x.path(bk.get()).replace(ID + ":block/",
                                                                 "").replace("_stair",
                                                                                 ""))));
+        }
+
+        protected void machines() {
+                ClazzUtil.getAllMachineTypes().forEach(m -> orientableWithBottom(
+                                m.id(),
+                                modLoc("block/machine/frame/basic/side"),
+                                modLoc("block/machine/processing/" + m.id() + "/off"),
+                                modLoc("block/machine/frame/basic/bottom"),
+                                modLoc("block/machine/frame/basic/top")));
         }
 
         protected void resources() {
@@ -133,13 +144,13 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
 
         protected void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
                 withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
-                                .texture("top", "block/reactor/cooler/casing")
+                                .texture("top", "block/machine/nuclear/cooler/casing")
                                 .texture("below", below);
         }
 
         protected void moderatorBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
                 withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
-                                .texture("top", "block/reactor/moderator/base_off")
+                                .texture("top", "block/machine/nuclear/moderator/base_off")
                                 .texture("below", below);
         }
 

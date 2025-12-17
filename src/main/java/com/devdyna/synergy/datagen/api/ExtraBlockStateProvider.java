@@ -4,15 +4,16 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.List;
 import java.util.function.BiFunction;
-
 import com.devdyna.synergy.api.zFluid;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
+import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.DryableBricks;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
+import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 
 import net.minecraft.core.Direction;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
@@ -35,6 +37,35 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
 
         public ExtraBlockStateProvider(PackOutput output, String modid, ExistingFileHelper exFileHelper) {
                 super(output, modid, exFileHelper);
+        }
+
+        protected void machines() {
+                ClazzUtil.getAllMachineTypes()
+                                .forEach(m -> horizontalBlockBiPhace((Block) m.block().get(), BaseMachineBlock.ENABLED,
+                                                models().orientableWithBottom(
+                                                                m.id(),
+                                                                modLoc("block/machine/frame/basic/side"),
+                                                                modLoc("block/machine/processing/" + m.id()
+                                                                                + "/off"),
+                                                                modLoc("block/machine/frame/basic/bottom"),
+                                                                modLoc("block/machine/frame/basic/top")),
+                                                models().orientableWithBottom(
+                                                                m.id(),
+                                                                modLoc("block/machine/frame/basic/side"),
+                                                                modLoc("block/machine/processing/" + m.id()
+                                                                                + "/on"),
+                                                                modLoc("block/machine/frame/basic/bottom"),
+                                                                modLoc("block/machine/frame/basic/top"))));
+        }
+
+        protected void horizontalBlockBiPhace(Block block, BooleanProperty prop, ModelFile off, ModelFile on) {
+                getVariantBuilder(block)
+                                .forAllStates(state -> ConfiguredModel.builder()
+                                                .modelFile(state.getValue(prop) ? on : off)
+                                                .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING)
+                                                                .toYRot() + 180) % 360)
+                                                .build());
+
         }
 
         protected void brick(DeferredHolder<Block, Block> b, ResourceLocation working, ResourceLocation dried) {
@@ -94,7 +125,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
 
         protected void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
                 simpleBlock(b.get(), models().withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
-                                .texture("top", "block/reactor/cooler/casing")
+                                .texture("top", "block/machine/nuclear/cooler/casing")
                                 .texture("below", below));
         }
 
@@ -128,14 +159,14 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                         return ConfiguredModel.builder().modelFile(
                                         models().withExistingParent(b.getRegisteredName() + "_" + front,
                                                         modLoc("block/double_layer"))
-                                                        .texture("top", "block/reactor/moderator/base_" + front)
+                                                        .texture("top", "block/machine/nuclear/moderator/base_" + front)
                                                         .texture("below", below))
                                         .build();
                 });
         }
 
-        protected void reactorController(DeferredHolder<Block, Block> b) {
-
+        protected void reactorController() {
+                var b = zBlocks.REACTOR_CONTROLLER;
                 getVariantBuilder(b.get()).forAllStates((state) -> {
 
                         String front = switch (state.getValue(ReactorControllerBlock.STATUS)) {
@@ -148,10 +179,10 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
 
                         return ConfiguredModel.builder().modelFile(models()
                                         .orientableWithBottom(b.getRegisteredName() + front,
-                                                        modLoc("block/reactor/controller/side"),
-                                                        modLoc("block/reactor/controller/" + front),
-                                                        modLoc("block/reactor/controller/bottom"),
-                                                        modLoc("block/reactor/controller/top")))
+                                                        modLoc("block/machine/frame/advanced/side"),
+                                                        modLoc("block/machine/nuclear/controller/" + front),
+                                                        modLoc("block/machine/frame/advanced/bottom"),
+                                                        modLoc("block/machine/frame/advanced/top")))
                                         .rotationY(
                                                         ((int) (state.getValue(BlockStateProperties.HORIZONTAL_FACING))
                                                                         .toYRot() + 0) % 360)
@@ -336,7 +367,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
 
         protected void repeater(Block b) {
 
-                var type = x.id(b.asItem()).getPath().replace("_repeater", "") ;
+                var type = x.id(b.asItem()).getPath().replace("_repeater", "");
 
                 var index = type.equals("pulse") ? "2" : "1";
 
