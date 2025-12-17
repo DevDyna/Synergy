@@ -1,5 +1,5 @@
 {
-  "format_version": "1.9.0",
+  "format_version": "1.21.5",
   "credit": "Made with Blockbench",
   "parent": "block/block",
   "render_type": "cutout",
