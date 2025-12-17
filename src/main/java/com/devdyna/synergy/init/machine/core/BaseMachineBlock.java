@@ -3,9 +3,10 @@ package com.devdyna.synergy.init.machine.core;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.block.BlockMenu;
-import com.devdyna.synergy.api.utils.LevelUtil;
-
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
@@ -62,8 +63,21 @@ public abstract class BaseMachineBlock extends BlockMenu {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if(state.getValue(ENABLED))
-        LevelUtil.addRepeaterRedstoneParticles(level, pos, state.getValue(FACING), 1);
+        if (state.getValue(ENABLED)) {
+            Direction dir = state.getValue(FACING);
+            Axis axis = dir.getAxis();
+
+            double x = pos.getX() + 0.5;
+            double y = pos.getY() + random.nextDouble() * 6.0 / 16.0;
+            double z = pos.getZ() + 0.5;
+
+            double spread = random.nextDouble() * 0.6 - 0.3;
+            double offX = axis == Direction.Axis.X ? dir.getStepX() * 0.52 : spread;
+            double offZ = axis == Direction.Axis.Z ? dir.getStepZ() * 0.52 : spread;
+
+            level.addParticle(ParticleTypes.SMOKE, x + offX, y, z + offZ, 0, 0, 0);
+
+        }
     }
 
     @Nullable
