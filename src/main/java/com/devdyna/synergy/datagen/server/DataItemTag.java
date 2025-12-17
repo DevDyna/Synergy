@@ -222,8 +222,15 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(Tags.Items.BRICKS).add(zItems.PACKED_MUD_BRICK.get());
                 tag(zItemTag.SUPPLEMENTARIES_BRICKS).add(zItems.PACKED_MUD_BRICK.get());
 
-                tag(zItemTag.GEARS).add(zItems.WOODEN_GEAR.get());
+                tag(zItemTag.GEARS).add(DataGenUtil.getItems(zItems.zGears));
                 tag(zItemTag.GEAR_WOODEN).add(zItems.WOODEN_GEAR.get());
+                tag(zItemTag.GEAR_COPPER).add(zItems.COPPER_GEAR.get());
+                tag(zItemTag.GEAR_GOLD).add(zItems.GOLD_GEAR.get());
+                tag(zItemTag.GEAR_IRON).add(zItems.IRON_GEAR.get());
+                tag(zItemTag.GEAR_LEAD).add(zItems.LEAD_GEAR.get());
+                tag(zItemTag.GEAR_NICKEL).add(zItems.NICKEL_GEAR.get());
+                tag(zItemTag.GEAR_STEEL).add(zItems.STEEL_GEAR.get());
+                tag(zItemTag.GEAR_TIN).add(zItems.TIN_GEAR.get());
 
                 tag(zItemTag.DYE_RESET).addTag(Tags.Items.DYES_BLACK);
                 tag(zItemTag.DYE_MAX).addTag(Tags.Items.DYES_WHITE);

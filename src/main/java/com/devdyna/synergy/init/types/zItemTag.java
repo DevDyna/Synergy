@@ -156,6 +156,13 @@ public class zItemTag {
 
         public static final TagKey<Item> GEARS = Material.tagItem("gears", "c");
         public static final TagKey<Item> GEAR_WOODEN = Material.tagItem("gears/wooden", "c");
+        public static final TagKey<Item> GEAR_IRON = Material.tagItem("gears/iron", "c");
+        public static final TagKey<Item> GEAR_GOLD = Material.tagItem("gears/gold", "c");
+        public static final TagKey<Item> GEAR_COPPER = Material.tagItem("gears/copper", "c");
+        public static final TagKey<Item> GEAR_TIN = Material.tagItem("gears/tin", "c");
+        public static final TagKey<Item> GEAR_LEAD = Material.tagItem("gears/lead", "c");
+        public static final TagKey<Item> GEAR_STEEL = Material.tagItem("gears/steel", "c");
+        public static final TagKey<Item> GEAR_NICKEL = Material.tagItem("gears/nickel", "c");
 
         public static final TagKey<Item> COLOR_APPLICABLE = Material.tagItem("color_applicable");
 

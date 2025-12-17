@@ -52,6 +52,7 @@ public class zItems {
                 zMobDrop.register(bus);
                 zPellets.register(bus);
                 zCoils.register(bus);
+                zGears.register(bus);
         }
 
         // ---------------------------------------------------------------------------------------//
@@ -114,6 +115,7 @@ public class zItems {
         public static final DeferredRegister.Items zPlates = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zRawOres = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zShards = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zGears = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zDusts = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zMobDrop = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zPellets = DeferredRegister.createItems(Main.ID);
@@ -411,6 +413,29 @@ public class zItems {
         public static final DeferredHolder<Item, Item> ZOMBIE_LIVER = Material
                         .tooltippedItem(zStatic.MobDrop.zombie_liver, zMobDrop);
         // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> WOODEN_GEAR = Material
+                        .resourceGear(zStatic.ResourceMaterial.wooden);
+        public static final DeferredHolder<Item, Item> COPPER_GEAR = Material
+                        .resourceGear(zStatic.ResourceMaterial.copper);
+        public static final DeferredHolder<Item, Item> GOLD_GEAR = Material
+                        .resourceGear(zStatic.ResourceMaterial.gold);
+        public static final DeferredHolder<Item, Item> IRON_GEAR = Material
+                        .resourceGear(zStatic.ResourceMaterial.iron);
+        public static final DeferredHolder<Item, Item> STEEL_GEAR = Material
+                        .resourceGear(zStatic.ResourceMaterial.steel);
+        public static final DeferredHolder<Item, Item> NICKEL_GEAR = Material
+                        .resourceGear(zStatic.ResourceMaterial.nickel);
+        public static final DeferredHolder<Item, Item> TIN_GEAR = Material
+                        .resourceGear(zStatic.ResourceMaterial.tin);
+        public static final DeferredHolder<Item, Item> LEAD_GEAR = Material
+                        .resourceGear(zStatic.ResourceMaterial.lead);
+
+        
+        
+        
+                // ---------------------------------------------------------------------------------------//
+
+        
         public static final DeferredHolder<Item, Item> CARBON_FIBER = Material
                         .resourceItem("carbon_fiber");
 
@@ -423,8 +448,7 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> SAP = Material.droplet(zStatic.Fluids.SAP);
 
-        public static final DeferredHolder<Item, Item> WOODEN_GEAR = Material
-                        .resourceItem("wooden_gear");
+        
         public static final DeferredHolder<Item, Item> WASTE_FRAGMENT = Material
                         .resourceItem("waste_fragment");
         public static final DeferredHolder<Item, Item> WASTE = Material

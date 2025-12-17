@@ -64,6 +64,16 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 packUnpack(c, ingot, block, false);
         }
 
+        protected void gear(RecipeOutput c,DeferredHolder<Item, Item> gear,TagKey<Item> input){
+                ShapedRecipeBuilder.shaped(MISC, gear.get())
+                                .pattern(" # ")
+                                .pattern("# #")
+                                .pattern(" # ")
+                                .define('#', input)
+                                .unlockedBy(ID, has(input))
+                                .group(ID).save(c);
+        }
+
         protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot, Item secondary,
                         float chance) {
 

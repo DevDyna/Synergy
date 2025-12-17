@@ -493,13 +493,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItems.WOODEN_GEAR.get()))
                                 .group(ID).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.WOODEN_GEAR.get())
-                                .pattern(" T ")
-                                .pattern("T T")
-                                .pattern(" T ")
-                                .define('T', Items.STICK)
-                                .unlockedBy(ID, has(Items.STICK))
-                                .group(ID).save(c);
+                gear(c, zItems.WOODEN_GEAR, Tags.Items.RODS_WOODEN);
+                gear(c, zItems.TIN_GEAR, zItemTag.INGOT_TIN);
+                gear(c, zItems.GOLD_GEAR, Tags.Items.INGOTS_GOLD);
+                gear(c, zItems.IRON_GEAR, Tags.Items.INGOTS_IRON);
+                gear(c, zItems.LEAD_GEAR, zItemTag.INGOT_LEAD);
+                gear(c, zItems.STEEL_GEAR, zItemTag.INGOT_STEEL);
+                gear(c, zItems.COPPER_GEAR, Tags.Items.INGOTS_COPPER);
+                gear(c, zItems.NICKEL_GEAR, zItemTag.INGOT_NICKEL);
 
                 nuggetIngotBlock(c, zItems.STEEL_NUGGET.get(), zItems.STEEL_INGOT.get(),
                                 zBlocks.STEEL_BLOCK.get().asItem());

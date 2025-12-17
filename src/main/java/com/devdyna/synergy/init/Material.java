@@ -259,6 +259,11 @@ public class Material {
                                 .registerSimpleItem(name + zStatic.ResourceType.shard);
         }
 
+        public static DeferredHolder<Item, Item> resourceGear(String name) {
+                return zItems.zGears
+                                .registerSimpleItem(name + zStatic.ResourceType.gear);
+        }
+
         public static DeferredHolder<Item, Item> resourceDust(String name) {
                 return zItems.zDusts
                                 .registerSimpleItem(name + zStatic.ResourceType.dust);

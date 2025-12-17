@@ -57,12 +57,14 @@ public class zStatic {
         public static String lead = "lead";
         public static String sulfur = "sulfur";
         public static String zinc = "zinc";
+        public static String wooden = "wooden";
     }
 
     public class ResourceType {
         public static String foil = "_foil";
         public static String coil = "_coil";
         public static String gem = "_gem";
+        public static String gear = "_gear";
         public static String ingot = "_ingot";
         public static String nugget = "_nugget";
         public static String block = "_block";

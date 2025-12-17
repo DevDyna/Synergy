@@ -81,6 +81,7 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                 zItems.zNuggets, zStatic.ResourceType.nugget,
                                 zItems.zPlates, zStatic.ResourceType.plate,
                                 zItems.zShards, zStatic.ResourceType.shard,
+                                zItems.zGears, zStatic.ResourceType.gear,
                                 zItems.zPellets, zStatic.ResourceType.pellet)
                                 .forEach((entries, data) -> entries.getEntries()
                                                 .forEach(item -> DataGenUtil.itemModel(
