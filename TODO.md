@@ -50,9 +50,13 @@ _NaN_
 
 ## NEWS
 
+- [ ] BREAD
+
+- [ ] Metal Smeltery (tiny tinker-like?)
+
 - [ ] Glass-Caster Factory (forestry like)
 
-- [ ] Potted Azalea dirt->rotten randomtick event
+- ~~ Potted Azalea dirt->rotten randomtick event~~ rejected due pointless
 
 - [ ] Spawner Essence
 
@@ -152,7 +156,7 @@ _NaN_
 
 ### Special Plants
 
-- [ ] magic beans (giant plant)
+- [ ] magic beans (giant plant) (randomthings like?)
 - [ ] blight spore (thorny giant plant)
 - [ ] grapple cultivated (multiblock)
-- [ ] smill trees
+- ~~ smill trees ~~ rejected due pointless
