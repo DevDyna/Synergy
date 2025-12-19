@@ -62,7 +62,7 @@ public class AlloySmelterCategory extends BaseMachineRecipeCategory<AlloySmelter
         guiGraphics.drawString(font,
                 Component.literal(
                         recipe.getTime() + " ticks"),
-                40, 2,
+                40, -2,
                 defaultToolTipColor.getRGB(), false);
 
     }
