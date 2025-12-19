@@ -8,7 +8,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public interface ListedInputIngredient<BUILDER extends BaseRecipeBuilder> extends BuilderAttach<BUILDER> {
+public interface InputIngredientItem<BUILDER extends BaseRecipeBuilder> extends BuilderAttach<BUILDER> {
 
     abstract BUILDER add(Ingredient input);
 

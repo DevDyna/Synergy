@@ -1,9 +1,9 @@
-package com.devdyna.synergy.init.machine.macerator.recipe;
+package com.devdyna.synergy.init.machine.compressor.recipe;
 
 import java.util.LinkedHashMap;
 
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
+import com.devdyna.synergy.api.recipes.builders.CatalystItem;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
@@ -11,40 +11,39 @@ import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
 
 @SuppressWarnings({ "null" })
-public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder<MaceratorRecipeBuilder>
-        implements SecondaryOutputItem<MaceratorRecipeBuilder> {
+public class CompressorRecipeBuilder extends BaseMachineRecipeBuilder<CompressorRecipeBuilder> implements CatalystItem<CompressorRecipeBuilder> {
 
-    private MaceratorRecipeBuilder() {
+    private CompressorRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static MaceratorRecipeBuilder of() {
-        return new MaceratorRecipeBuilder();
+    public static CompressorRecipeBuilder of() {
+        return new CompressorRecipeBuilder();
     }
 
     @Override
     public Recipe<?> createRecipe() {
-        return new MaceratorRecipeType(ticks, energy, input, output, secondary, chance);
+        return new CompressorRecipeType(ticks,energy,input,catalyst,output);
     }
 
     @Override
     public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<? extends RecipeInput>> getMachine() {
-        return zMachines.MACERATOR;
+        return zMachines.COMPRESSOR;
     }
 
-    public MaceratorRecipeBuilder secondary(ItemStack secondary, float chance) {
-        this.secondary = secondary;
-        this.chance = chance;
+    @Override
+    public CompressorRecipeBuilder catalyst(Ingredient catalyst) {
+        this.catalyst = catalyst;
         return getBuilder();
     }
 
     @Override
-    public MaceratorRecipeBuilder getBuilder() {
+    public CompressorRecipeBuilder getBuilder() {
         return this;
     }
 

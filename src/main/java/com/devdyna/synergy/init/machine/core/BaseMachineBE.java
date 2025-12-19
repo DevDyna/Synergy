@@ -163,7 +163,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     @Override
     public int MaxFE() {
-        return 10_000;
+        return 10_000;// TODO config
     }
 
     @Override
@@ -208,6 +208,8 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     }
 
     public void tickServer() {
+        if (level == null || level.isClientSide())
+            return;
     }
 
     public boolean isCrafting() {
@@ -228,5 +230,55 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     public ItemStack getOutput() {
         return getStorage().getStackInSlot(OUTPUT_SLOT);
+    }
+
+    /**
+     * Return <code>true</code> when success
+     */
+    public boolean checkSlot(ItemStack slot, ItemStack recipeSlot) {
+        if (!slot.isEmpty()) {
+            // same item
+            if (ItemStack.isSameItemSameComponents(slot, recipeSlot)) {
+                // count valid
+                if (slot.getMaxStackSize() < slot.getCount() + recipeSlot.getCount()) {
+                    return false;
+                }
+
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // /**
+    //  * Return <code>true</code> when success
+    //  */
+    // public boolean checkOptionalSlot(ItemStack slot, Ingredient recipeSlot) {
+    //     if (!slot.isEmpty()) {
+    //         // not same item or no items
+    //         if (recipeSlot.hasNoItems() || !recipeSlot.test(slot)) {
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+
+    /**
+     * Return <code>true</code> when success
+     */
+    public boolean checkAndConsumeFE(int min) {
+        if (energyStorage.getEnergyStored() >= min && !progress_cancel) {
+            energyStorage.extractEnergy(min, false);
+            return true;
+        } else
+            return false;
+    }
+
+    public void updateOutputSlot(ItemStack stack, ItemStack slotStack, int slotIndex) {
+        if (stack.isEmpty())
+            storage.setStackInSlot(slotIndex, slotStack);
+        else if (ItemStack.isSameItemSameComponents(stack, slotStack))
+            stack.grow(slotStack.getCount());
     }
 }

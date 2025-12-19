@@ -6,7 +6,8 @@ import java.util.List;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
-import com.devdyna.synergy.init.machine.core.SecondaryMachineResult;
+import com.devdyna.synergy.init.machine.core.ExtraMachineSlot;
+import com.devdyna.synergy.init.machine.core.ExtraMachineSlot.TYPE;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -33,17 +34,27 @@ public enum MachineProgress
 
     // render only when has content
     if (!isEmpty(data) || data.progress != 0) {
+      var be = (BaseMachineBE) accessor.getBlockEntity();
+
       IElementHelper helper = IElementHelper.get();
+
+      var check = be instanceof ExtraMachineSlot slot && slot.getSlotType().equals(TYPE.OUTPUT);
 
       tooltip.add(helper.item(data.inv.get(0)));
 
       tooltip.append(helper.spacer(4, 0));
 
+      if (!check) {
+        tooltip.append(helper.item(data.inv.get(2)));
+        tooltip.append(helper.spacer(4, 0));
+      }
+
       tooltip.append(helper.progress((float) data.progress / data.total).translate(new Vec2(-2, 0)));
 
       tooltip.append(helper.item(data.inv.get(1)));
 
-      tooltip.append(helper.item(data.inv.get(2)));
+      if (check)
+        tooltip.append(helper.item(data.inv.get(2)));
     }
 
   }
@@ -61,15 +72,15 @@ public enum MachineProgress
     slots.add(machineBE.getInput());
     slots.add(machineBE.getOutput());
 
-    if (machineBE instanceof SecondaryMachineResult r) {
-      slots.add(r.getSecondary());
+    if (machineBE instanceof ExtraMachineSlot r) {
+      slots.add(r.getExtraSlot());
     }
 
     return new Data(
         machineBE.getProgress(),
         machineBE.getMaxProgress(),
         slots,
-        machineBE instanceof SecondaryMachineResult);
+        machineBE instanceof ExtraMachineSlot);
   }
 
   @Override

@@ -1,5 +1,6 @@
 package com.devdyna.synergy.init.machine.core.recipe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.devdyna.synergy.api.MachineType;
@@ -27,6 +28,8 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
 
     public ItemStack secondary;
 
+    public Ingredient catalyst;
+
     public float chance;
 
     public int getEnergy() {
@@ -45,8 +48,12 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return output;
     }
 
-    public ItemStack getSecondaryOutputItem() {
+    public ItemStack getSecondaryItem() {
         return secondary;
+    }
+
+    public Ingredient getCatalystItem() {
+        return catalyst;
     }
 
     /**
@@ -56,18 +63,33 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return chance;
     }
 
-    public boolean hasSecondaryItem() {
+    public boolean hasCatalyst() {
+        return false;
+    }
+
+    public boolean hasSecondaryOutput() {
         return false;
     }
 
     public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.copyOf(List.of(getInputItem()));
+        var list = new ArrayList<Ingredient>();
+        list.add(getInputItem());
+        if (hasCatalyst() && getCatalystItem() != null)
+            list.add(getCatalystItem());
+        return NonNullList.copyOf(list);
     }
 
     public abstract ItemStack getRecipeInput(T recipe);
 
+    public ItemStack getRecipeInput2(T recipe) {
+        return null;
+    };
+
     public boolean matches(T r, Level l) {
-        return getInputItem().test(getRecipeInput(r));
+        var check = getInputItem().test(getRecipeInput(r));
+        if (hasCatalyst() && getCatalystItem() != null && getRecipeInput2(r) != null)
+            check = check && getCatalystItem().test(getRecipeInput2(r));
+        return check;
     }
 
     public ItemStack assemble(T i, HolderLookup.Provider r) {

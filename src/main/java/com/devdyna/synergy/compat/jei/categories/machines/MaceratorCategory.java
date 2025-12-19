@@ -48,8 +48,8 @@ public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipe
 
         builder.addInputSlot(3, 15).addIngredients(recipe.getInputItem());
         builder.addOutputSlot(75, 7).addItemStack(recipe.getOutputItem());
-        if (recipe.hasSecondaryItem()) {
-            builder.addOutputSlot(75, 32).addItemStack(recipe.getSecondaryOutputItem());
+        if (recipe.hasSecondaryOutput()) {
+            builder.addOutputSlot(75, 32).addItemStack(recipe.getSecondaryItem());
         }
 
     }
@@ -68,8 +68,8 @@ public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipe
                 25, 2,
                 defaultToolTipColor.getRGB(), false);
 
-        if (recipe.hasSecondaryItem())
-        if(recipe.getSecondaryItemChance() > 0f && !recipe.getSecondaryOutputItem().isEmpty())
+        if (recipe.hasSecondaryOutput())
+        if(recipe.getSecondaryItemChance() > 0f && !recipe.getSecondaryItem().isEmpty())
             guiGraphics.drawString(font,
                     Component.literal(
                             ((int) (recipe.getSecondaryItemChance() * 100)) + "%"),

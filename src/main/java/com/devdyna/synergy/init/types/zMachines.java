@@ -5,6 +5,14 @@ import static com.devdyna.synergy.Main.ID;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.MachineType;
+import com.devdyna.synergy.init.machine.alloy_smelter.AlloySmelterBE;
+import com.devdyna.synergy.init.machine.alloy_smelter.AlloySmelterBlock;
+import com.devdyna.synergy.init.machine.alloy_smelter.AlloySmelterMenu;
+import com.devdyna.synergy.init.machine.alloy_smelter.recipe.AlloySmelterRecipeType;
+import com.devdyna.synergy.init.machine.compressor.CompressorBE;
+import com.devdyna.synergy.init.machine.compressor.CompressorBlock;
+import com.devdyna.synergy.init.machine.compressor.CompressorMenu;
+import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeType;
 import com.devdyna.synergy.init.machine.macerator.MaceratorBE;
 import com.devdyna.synergy.init.machine.macerator.MaceratorBlock;
 import com.devdyna.synergy.init.machine.macerator.MaceratorMenu;
@@ -50,6 +58,31 @@ public class zMachines {
                 MaceratorBE::new,
                 MaceratorMenu::new,
                 MaceratorRecipeType.Serializer::new
+        );
+
+    public static final MachineType<
+        AlloySmelterBlock,
+        AlloySmelterBE,
+        AlloySmelterMenu,
+        AlloySmelterRecipeType
+        > ALLOY_SMELTER = new MachineType<>(
+                zStatic.Machines.alloy_smelter,
+                AlloySmelterBlock::new,
+                AlloySmelterBE::new,
+                AlloySmelterMenu::new,
+                AlloySmelterRecipeType.Serializer::new
+        );
+    public static final MachineType<
+        CompressorBlock,
+        CompressorBE,
+        CompressorMenu,
+        CompressorRecipeType
+        > COMPRESSOR = new MachineType<>(
+                zStatic.Machines.compressor,
+                CompressorBlock::new,
+                CompressorBE::new,
+                CompressorMenu::new,
+                CompressorRecipeType.Serializer::new
         );
 
 

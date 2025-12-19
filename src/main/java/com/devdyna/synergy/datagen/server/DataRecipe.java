@@ -9,6 +9,9 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.builders.*;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.crops.cultivated.azalea;
+import com.devdyna.synergy.init.machine.alloy_smelter.recipe.AlloySmelterRecipeBuilder;
+import com.devdyna.synergy.init.machine.compressor.CompressorBE;
+import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeBuilder;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 
@@ -860,6 +863,23 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 simplePacked(c, zItems.STONE_PEBBLE.get(), Items.COBBLESTONE);
                 simplePacked(c, zItems.NETHERRACK_PEBBLE.get(), Items.NETHERRACK);
+
+                CompressorRecipeBuilder.of()
+                                .input(zItemTag.DUST_COAL)
+                                .delay(80)
+                                .catalyst(zItemTag.PLATE_STEEL)
+                                .output(zItems.CARBON_PLATE)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
+
+                AlloySmelterRecipeBuilder.of()
+                                .inputs(zItemTag.INGOT_TIN, Tags.Items.INGOTS_COPPER)
+                                .delay(80)
+                                .output(zItems.LEAD_INGOT)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
 
         }
 

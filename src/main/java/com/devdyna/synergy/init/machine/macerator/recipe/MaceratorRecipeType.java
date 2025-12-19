@@ -39,7 +39,7 @@ public class MaceratorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
     }
 
     @Override
-    public boolean hasSecondaryItem() {
+    public boolean hasSecondaryOutput() {
         return true;
     }
 
@@ -62,9 +62,9 @@ public class MaceratorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                 Ingredient.CODEC.fieldOf("input").forGetter(MaceratorRecipeType::getInputItem),
                 ItemStack.CODEC.fieldOf("output").forGetter(MaceratorRecipeType::getOutputItem),
                 ItemStack.CODEC.optionalFieldOf("secondary", ItemStack.EMPTY)
-                        .forGetter(r -> (r.getSecondaryOutputItem() == null || r.getSecondaryOutputItem().isEmpty())
+                        .forGetter(r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())
                                 ? ItemStack.EMPTY
-                                : r.getSecondaryOutputItem()),
+                                : r.getSecondaryItem()),
                 Codec.floatRange(0, 1).fieldOf("chance").forGetter(MaceratorRecipeType::getSecondaryItemChance))
                 .apply(inst, MaceratorRecipeType::new));
 
@@ -75,9 +75,9 @@ public class MaceratorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                         Ingredient.CONTENTS_STREAM_CODEC, MaceratorRecipeType::getInputItem,
                         ItemStack.STREAM_CODEC, MaceratorRecipeType::getOutputItem,
                         ByteBufCodecs.optional(ItemStack.STREAM_CODEC),
-                        r -> (r.getSecondaryOutputItem() == null || r.getSecondaryOutputItem().isEmpty())
+                        r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())
                                 ? Optional.empty()
-                                : Optional.of(r.getSecondaryOutputItem()),
+                                : Optional.of(r.getSecondaryItem()),
                         ByteBufCodecs.FLOAT, MaceratorRecipeType::getSecondaryItemChance,
                         (t, e, i, o, s, c) -> new MaceratorRecipeType(t, e, i, o, s.orElse(ItemStack.EMPTY), c));
 

@@ -37,9 +37,8 @@ import net.minecraft.world.item.crafting.RecipeInput;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings({ "unused", "null" })
-public abstract class BaseMachineRecipeBuilder extends BaseRecipeBuilder
-        implements SimpleInputItem<BaseMachineRecipeBuilder>, SimpleOutputItem<BaseMachineRecipeBuilder>,
-        SecondaryOutputItem<BaseMachineRecipeBuilder> {
+public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilder<T>> extends BaseRecipeBuilder
+        implements SimpleInputItem<T>, SimpleOutputItem<T> {
 
     public abstract MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<? extends RecipeInput>> getMachine();
 
@@ -48,62 +47,57 @@ public abstract class BaseMachineRecipeBuilder extends BaseRecipeBuilder
     protected Ingredient input;
     protected ItemStack output;
     protected ItemStack secondary = ItemStack.EMPTY;
+    protected Ingredient catalyst = Ingredient.EMPTY;
     protected float chance;
 
-    public BaseMachineRecipeBuilder input(Ingredient input) {
+    public T input(Ingredient input) {
         this.input = input;
-        return this;
+        return getBuilder();
     }
 
-    public BaseMachineRecipeBuilder output(ItemStack output) {
+    public T output(ItemStack output) {
         this.output = output;
-        return this;
-    }
-
-    public BaseMachineRecipeBuilder secondary(ItemStack secondary, float chance) {
-        this.secondary = secondary;
-        this.chance = chance;
-        return this;
+        return getBuilder();
     }
 
     /**
      * default value -> 60t
      */
-    public BaseMachineRecipeBuilder delay(int ticks) {
+    public T delay(int ticks) {
         this.ticks = ticks;
-        return this;
+        return getBuilder();
     }
 
     /**
      * default value -> 1kfe | 1000fe
      */
-    public BaseMachineRecipeBuilder energy(int energy) {
+    public T energy(int energy) {
         this.energy = energy;
-        return this;
+        return getBuilder();
     }
 
     /**
      * secondary recipe output chance to success
      */
-    public BaseMachineRecipeBuilder chance(float chance) {
+    public T chance(float chance) {
         this.chance = chance;
-        return this;
+        return getBuilder();
     }
 
-    public BaseMachineRecipeBuilder unlockedBy() {
+    public T unlockedBy() {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                 .hasItems(Arrays.stream(this.input.getItems())
                         .map(ItemStack::getItem)
                         .toArray(Item[]::new)));
     }
 
-    public BaseMachineRecipeBuilder unlockedBy(String name, Criterion<?> criterion) {
+    public T unlockedBy(String name, Criterion<?> criterion) {
         this.criteria.put(name, criterion);
-        return this;
+        return getBuilder();
     }
 
-    public BaseMachineRecipeBuilder group(@Nullable String groupName) {
-        return this;
+    public T group(@Nullable String groupName) {
+        return getBuilder();
     }
 
     public Item getResult() {
@@ -111,14 +105,11 @@ public abstract class BaseMachineRecipeBuilder extends BaseRecipeBuilder
     }
 
     @Override
-    public BaseMachineRecipeBuilder getBuilder() {
-        return this;
-    }
-
-    @Override
     public ResourceLocation getSuffix(String extra) {
         return x.rl(getMachine().id() + "/" + x.path(output.getItem())
                 + extra);
     }
+
+    public abstract T getBuilder();
 
 }

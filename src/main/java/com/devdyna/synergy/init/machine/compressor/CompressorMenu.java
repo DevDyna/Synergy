@@ -1,14 +1,13 @@
-package com.devdyna.synergy.init.machine.macerator;
+package com.devdyna.synergy.init.machine.compressor;
 
-import com.devdyna.synergy.init.machine.core.BaseMachineBE;
-import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
 import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeType;
 
 import static com.devdyna.synergy.init.machine.core.BaseMachineBE.*;
 
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.common.recipes.input.MonoItemInput;
+import com.devdyna.synergy.init.machine.core.BaseMachineBE;
+import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.network.FriendlyByteBuf;
@@ -19,28 +18,26 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 @SuppressWarnings("null")
-public class MaceratorMenu extends BaseMachineMenu {
+public class CompressorMenu extends BaseMachineMenu {
 
-    public final MaceratorBE blockEntity;
+    public final CompressorBE blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public MaceratorMenu(int c, Inventory i, FriendlyByteBuf d) {
+    public CompressorMenu(int c, Inventory i, FriendlyByteBuf d) {
         this(c, i, i.player.level().getBlockEntity(d.readBlockPos()), new SimpleContainerData(4));
     }
 
-    public MaceratorMenu(int i, Inventory inv, BlockEntity be, ContainerData data) {
-        super(zMachines.MACERATOR.menu().get(), i, be);
-        this.blockEntity = ((MaceratorBE) be);
+    public CompressorMenu(int i, Inventory inv, BlockEntity be, ContainerData data) {
+        super(zMachines.COMPRESSOR.menu().get(), i, be);
+        this.blockEntity = ((CompressorBE) be);
         this.level = inv.player.level();
         this.data = data;
         addPlayerSlots(inv);
-        addMachineInputSlot(itemstack -> !level.getRecipeManager()
-                .getRecipeFor(zMachines.MACERATOR.recipe().getType(),
-                        new MonoItemInput(itemstack), level)
-                .isEmpty(), blockEntity.getStorage(), 0, 47, 33);
-        addMachineOutputSlot(blockEntity.getStorage(), 1, 119, 25);
-        addMachineOutputSlot(blockEntity.getStorage(), 2, 119, 50);
+        addMachineInputSlot(blockEntity.getStorage(), 0, 47, 15);
+        addMachineOutputSlot(blockEntity.getStorage(), 1, 119, 34);
+        addMachineInputSlot(blockEntity.getStorage(), 2, 47, 51);
+        
         addDataSlots(data);
     }
 
@@ -85,7 +82,7 @@ public class MaceratorMenu extends BaseMachineMenu {
 
     @Override
     public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<?>> getMachine() {
-        return zMachines.MACERATOR;
+        return zMachines.COMPRESSOR;
     }
 
 }

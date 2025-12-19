@@ -8,14 +8,14 @@ import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorAOE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.init.builder.quern.QuernRendering;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerAOE;
-import com.devdyna.synergy.init.machine.macerator.MaceratorMenu;
+import com.devdyna.synergy.init.machine.alloy_smelter.AlloySmelterScreen;
+import com.devdyna.synergy.init.machine.compressor.CompressorScreen;
 import com.devdyna.synergy.init.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zContainer;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zMachines;
 
-import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BucketItem;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -44,8 +44,10 @@ public class Client {
         event.register(zContainer.WOODEN_TINY_CHEST_MENU.get(), WoodenTinyChestScreen::new);
         event.register(zContainer.STONE_TINY_CHEST_MENU.get(), StoneTinyChestScreen::new);
         event.register(zContainer.ORNATED_TINY_CHEST_MENU.get(), OrnatedTinyChestScreen::new);
-
-        event.register((MenuType<MaceratorMenu>) zMachines.MACERATOR.menu().get(), MaceratorScreen::new);
+        // TODO rework
+        event.register(zMachines.MACERATOR.menu().get(), MaceratorScreen::new);
+        event.register(zMachines.COMPRESSOR.menu().get(), CompressorScreen::new);
+        event.register(zMachines.ALLOY_SMELTER.menu().get(), AlloySmelterScreen::new);
     }
 
     @SubscribeEvent

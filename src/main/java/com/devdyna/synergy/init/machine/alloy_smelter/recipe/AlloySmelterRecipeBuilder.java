@@ -1,9 +1,10 @@
-package com.devdyna.synergy.init.machine.macerator.recipe;
+package com.devdyna.synergy.init.machine.alloy_smelter.recipe;
 
 import java.util.LinkedHashMap;
 
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
+import com.devdyna.synergy.api.recipes.builders.CatalystItem;
+import com.devdyna.synergy.api.recipes.builders.DoubleInputItem;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
@@ -11,41 +12,42 @@ import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
 
 @SuppressWarnings({ "null" })
-public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder<MaceratorRecipeBuilder>
-        implements SecondaryOutputItem<MaceratorRecipeBuilder> {
+public class AlloySmelterRecipeBuilder extends BaseMachineRecipeBuilder<AlloySmelterRecipeBuilder>
+        implements DoubleInputItem<AlloySmelterRecipeBuilder> {
 
-    private MaceratorRecipeBuilder() {
+    private AlloySmelterRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static MaceratorRecipeBuilder of() {
-        return new MaceratorRecipeBuilder();
+    public static AlloySmelterRecipeBuilder of() {
+        return new AlloySmelterRecipeBuilder();
     }
 
     @Override
     public Recipe<?> createRecipe() {
-        return new MaceratorRecipeType(ticks, energy, input, output, secondary, chance);
+        return new AlloySmelterRecipeType(ticks, energy, input, catalyst, output);
     }
 
     @Override
     public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<? extends RecipeInput>> getMachine() {
-        return zMachines.MACERATOR;
-    }
-
-    public MaceratorRecipeBuilder secondary(ItemStack secondary, float chance) {
-        this.secondary = secondary;
-        this.chance = chance;
-        return getBuilder();
+        return zMachines.ALLOY_SMELTER;
     }
 
     @Override
-    public MaceratorRecipeBuilder getBuilder() {
+    public AlloySmelterRecipeBuilder getBuilder() {
         return this;
+    }
+
+    @Override
+    public AlloySmelterRecipeBuilder inputs(Ingredient right, Ingredient left) {
+        this.input = right;
+        this.catalyst = left;
+        return getBuilder();
     }
 
 }

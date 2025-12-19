@@ -1,15 +1,15 @@
-package com.devdyna.synergy.init.machine.macerator;
+package com.devdyna.synergy.init.machine.compressor;
 
 import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.common.recipes.input.MonoItemInput;
+import com.devdyna.synergy.common.recipes.input.BiItemInput;
+import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeType;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.machine.core.ExtraMachineSlot;
-import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,15 +17,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot {
+public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot {
 
-    public MaceratorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public CompressorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
         this.storage = new MachineItemHandler(getMachineSlots());
         this.energyStorage = new EnergyStorage(MaxFE());
@@ -64,25 +65,21 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot {
         return 3;
     }
 
-    @Override
-    public List<Integer> getOutputSlotIndex() {
-        return List.of(OUTPUT_SLOT, EXTRA_SLOT);
-    }
-
-    public MaceratorBE(BlockPos pos, BlockState blockState) {
-        this(zMachines.MACERATOR.blockentity().get(), pos, blockState);
+    public CompressorBE(BlockPos pos, BlockState blockState) {
+        this(zMachines.COMPRESSOR.blockentity().get(), pos, blockState);
     }
 
     @Override
     @Nullable
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return new MaceratorMenu(i, inventory, this, this.networkData);
+        return new CompressorMenu(i, inventory, this, this.networkData);
     }
 
     @Override
     public void tickServer() {
         super.tickServer();
 
+        // empty
         if (getInput().isEmpty()) {
             resetProgress();
             return;
@@ -90,9 +87,9 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot {
             progress_cancel = false;
         
 
-        Optional<RecipeHolder<MaceratorRecipeType>> r = level.getRecipeManager()
-                .getRecipeFor(zMachines.MACERATOR.recipe().getType(),
-                        new MonoItemInput(getInput()), level);
+        Optional<RecipeHolder<CompressorRecipeType>> r = level.getRecipeManager()
+                .getRecipeFor(zMachines.COMPRESSOR.recipe().getType(),
+                        new BiItemInput(getInput(),getExtraSlot()), level);
 
         // no recipe
         if (r.isEmpty()) {
@@ -100,16 +97,20 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot {
             return;
         }
 
-        MaceratorRecipeType recipe = r.get().value();
+        CompressorRecipeType recipe = r.get().value();
 
         ItemStack output = recipe.getOutputItem().copy();
-        ItemStack secondary = recipe.getSecondaryItem().copy();
+
+        // Ingredient catalyst = recipe.getCatalystItem();
+
+        // if(!catalyst.test(getExtraSlot())){
+        //     resetProgress();
+        //     return;
+        // }
 
         this.maxProgress = recipe.getTime();
 
-        boolean success = level.random.nextFloat() < recipe.getSecondaryItemChance();
-
-        if (!(checkSlot(getOutput(), output) && checkSlot(getExtraSlot(), secondary))) {
+        if (!(checkSlot(getOutput(), output))) {
             resetProgress();
             return;
         }
@@ -134,9 +135,6 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot {
 
         updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
 
-        if (!secondary.isEmpty() && success)
-            updateOutputSlot(getExtraSlot(), secondary, EXTRA_SLOT);
-
         getInput().shrink(1);
 
         progress = 0;
@@ -154,7 +152,7 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot {
             progress--;
         if (progress == 0)
             progress_cancel = false;
-            
+
         if (getBlockState().getValue(BaseMachineBlock.ENABLED))
             update(false);
     }
@@ -164,9 +162,9 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot {
         return networkData;
     }
 
-  @Override
-  public TYPE getSlotType() {
-      return TYPE.OUTPUT;
-  }
+    @Override
+    public TYPE getSlotType() {
+        return TYPE.CATALYST;
+    }
 
 }
