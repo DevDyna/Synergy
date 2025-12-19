@@ -34,10 +34,7 @@ public class MaceratorMenu extends BaseMachineMenu {
         this.level = inv.player.level();
         this.data = data;
         addPlayerSlots(inv);
-        addMachineInputSlot(itemstack -> !level.getRecipeManager()
-                .getRecipeFor(zMachines.MACERATOR.recipe().getType(),
-                        new MonoItemInput(itemstack), level)
-                .isEmpty(), blockEntity.getStorage(), 0, 47, 33);
+        addMachineInputSlot(blockEntity.getStorage(), 0, 47, 33);
         addMachineOutputSlot(blockEntity.getStorage(), 1, 119, 25);
         addMachineOutputSlot(blockEntity.getStorage(), 2, 119, 50);
         addDataSlots(data);
