@@ -10,6 +10,7 @@ import com.devdyna.synergy.init.builder.quern.QuernRendering;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerAOE;
 import com.devdyna.synergy.init.machine.alloy_smelter.AlloySmelterScreen;
 import com.devdyna.synergy.init.machine.compressor.CompressorScreen;
+import com.devdyna.synergy.init.machine.furnace.ElectricFurnaceScreen;
 import com.devdyna.synergy.init.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zContainer;
@@ -48,6 +49,7 @@ public class Client {
         event.register(zMachines.MACERATOR.menu().get(), MaceratorScreen::new);
         event.register(zMachines.COMPRESSOR.menu().get(), CompressorScreen::new);
         event.register(zMachines.ALLOY_SMELTER.menu().get(), AlloySmelterScreen::new);
+        event.register(zMachines.ELECTRIC_FURNACE.menu().get(), ElectricFurnaceScreen::new);
     }
 
     @SubscribeEvent

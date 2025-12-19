@@ -155,10 +155,73 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         }
     }
 
-    // TODO NEED TO BE IMPLEMENTED!
+    //TODO not work properly
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
-        return ItemStack.EMPTY;
+        ItemStack movedStack = ItemStack.EMPTY;
+        Slot slot = this.slots.get(index);
+
+        if (slot != null && slot.hasItem()) {
+            ItemStack rawStack = slot.getItem();
+            movedStack = rawStack.copy();
+
+            if (outputSlotIndex != null && outputSlotIndex.contains(index)) {
+                if (!this.moveItemStackTo(rawStack, MACHINE_SLOT + 1, this.slots.size(), true)) {
+                    return ItemStack.EMPTY;
+                }
+                slot.onQuickCraft(rawStack, movedStack);
+            }
+
+            else if (index >= MACHINE_SLOT + 1) {
+                boolean movedToInput = false;
+
+                if (inputSlotIndex != null && !inputSlotIndex.isEmpty()) {
+                    for (int inputIndex : inputSlotIndex) {
+                        if (this.moveItemStackTo(rawStack, inputIndex, inputIndex + 1, false)) {
+                            movedToInput = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!movedToInput) {
+                    int invStart = MACHINE_SLOT + 1;
+                    int invEnd = invStart + 27;
+                    int hotbarStart = invEnd;
+                    int hotbarEnd = this.slots.size();
+
+                    if (index >= invStart && index < invEnd) {
+                        if (!this.moveItemStackTo(rawStack, hotbarStart, hotbarEnd, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else if (index >= hotbarStart) {
+                        if (!this.moveItemStackTo(rawStack, invStart, invEnd, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    }
+                }
+            }
+
+            else if (inputSlotIndex != null && inputSlotIndex.contains(index)) {
+                if (!this.moveItemStackTo(rawStack, MACHINE_SLOT + 1, this.slots.size(), false)) {
+                    return ItemStack.EMPTY;
+                }
+            }
+
+            if (rawStack.isEmpty()) {
+                slot.setByPlayer(ItemStack.EMPTY);
+            } else {
+                slot.setChanged();
+            }
+
+            if (rawStack.getCount() == movedStack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+
+            slot.onTake(player, rawStack);
+        }
+
+        return movedStack;
     }
 
     @Override

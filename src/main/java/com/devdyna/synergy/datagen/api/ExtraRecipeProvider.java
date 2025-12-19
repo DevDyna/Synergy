@@ -32,6 +32,7 @@ import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
 import net.neoforged.neoforge.common.conditions.NotCondition;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
+@SuppressWarnings("null")
 public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         public ExtraRecipeProvider(PackOutput output, CompletableFuture<Provider> registries) {
@@ -50,11 +51,13 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 raw_dust_smelt(c, x.rl("c", "raw_materials/uranium"), zItems.URANIUM_DUST.get(),
                                 zItems.URANIUM_INGOT.get(), x.rl("c", "ingots/uranium"), zItems.LEAD_DUST.get(), 0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/platinum"), zItems.PLATINUM_DUST.get(),
-                                zItems.PLATINUM_INGOT.get(), x.rl("c", "ingots/platinum"), zItems.IRIDIUM_DUST.get(), 0.25f);
+                                zItems.PLATINUM_INGOT.get(), x.rl("c", "ingots/platinum"), zItems.IRIDIUM_DUST.get(),
+                                0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/osmium"), zItems.OSMIUM_DUST.get(),
                                 zItems.OSMIUM_INGOT.get(), x.rl("c", "ingots/osmium"), zItems.IRON_DUST.get(), 0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/aluminum"), zItems.ALUMINUM_DUST.get(),
-                                zItems.ALUMINUM_INGOT.get(), x.rl("c", "ingots/aluminum"), zItems.IRON_DUST.get(), 0.25f);
+                                zItems.ALUMINUM_INGOT.get(), x.rl("c", "ingots/aluminum"), zItems.IRON_DUST.get(),
+                                0.25f);
                 raw_dust_smelt(c, x.rl("c", "raw_materials/lead"), zItems.LEAD_DUST.get(),
                                 zItems.LEAD_INGOT.get(), x.rl("c", "ingots/lead"), zItems.SILVER_DUST.get(), 0.25f);
         }
@@ -64,7 +67,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 packUnpack(c, ingot, block, false);
         }
 
-        protected void gear(RecipeOutput c,DeferredHolder<Item, Item> gear,TagKey<Item> input){
+        protected void gear(RecipeOutput c, DeferredHolder<Item, Item> gear, TagKey<Item> input) {
                 ShapedRecipeBuilder.shaped(MISC, gear.get())
                                 .pattern(" # ")
                                 .pattern("# #")
@@ -870,7 +873,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        protected static void simplePacked(RecipeOutput c,Item input,Item output){
+        protected static void simplePacked(RecipeOutput c, Item input, Item output) {
                 ShapedRecipeBuilder.shaped(MISC, output, 1)
                                 .define('#', input)
                                 .pattern("##")

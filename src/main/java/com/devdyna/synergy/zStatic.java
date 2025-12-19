@@ -186,6 +186,7 @@ public class zStatic {
         public static String macerator = "macerator";
         public static String alloy_smelter = "alloy_smelter";
         public static String compressor = "compressor";
+        public static String electric_furnace = "electric_furnace";
     }
 
     public class Chests {

@@ -11,11 +11,15 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.*;
 import com.devdyna.synergy.compat.jei.categories.machines.AlloySmelterCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.CompressorCategory;
+import com.devdyna.synergy.compat.jei.categories.machines.ElectricFurnaceCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.init.machine.alloy_smelter.AlloySmelterScreen;
 import com.devdyna.synergy.init.machine.compressor.CompressorScreen;
+import com.devdyna.synergy.init.machine.furnace.ElectricFurnaceScreen;
+import com.devdyna.synergy.init.machine.furnace.recipe.ElectricFurnaceRecipeBuilder;
+import com.devdyna.synergy.init.machine.furnace.recipe.ElectricFurnaceRecipeType;
 import com.devdyna.synergy.init.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.types.*;
 
@@ -31,7 +35,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.server.ServerLifecycleHooks;
 
 @SuppressWarnings({ "unchecked", "unlikely-arg-type", "null" })
 @JeiPlugin
@@ -56,6 +62,7 @@ public class Plugin implements IModPlugin {
                 });
 
                 jeiRuntime.getRecipeManager().hideRecipes(RecipeTypes.CRAFTING, toHide);
+
         }
 
         @Override
@@ -70,6 +77,8 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item((Item) zMachines.MACERATOR.item().get()), MaceratorCategory.TYPE);
                 r.addRecipeCatalyst(x.item((Item) zMachines.COMPRESSOR.item().get()), CompressorCategory.TYPE);
                 r.addRecipeCatalyst(x.item((Item) zMachines.ALLOY_SMELTER.item().get()), AlloySmelterCategory.TYPE);
+                r.addRecipeCatalyst(x.item((Item) zMachines.ELECTRIC_FURNACE.item().get()),
+                                ElectricFurnaceCategory.TYPE);
         }
 
         @Override
@@ -90,6 +99,7 @@ public class Plugin implements IModPlugin {
 
                 r.addRecipeCategories(new CompressorCategory(helper));
                 r.addRecipeCategories(new AlloySmelterCategory(helper));
+                r.addRecipeCategories(new ElectricFurnaceCategory(helper));
 
         }
 
@@ -141,6 +151,23 @@ public class Plugin implements IModPlugin {
                                 recipes.getAllRecipesFor(zMachines.ALLOY_SMELTER.recipe().getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
+                r.addRecipes(ElectricFurnaceCategory.TYPE,
+                                recipes.getAllRecipesFor(zMachines.ELECTRIC_FURNACE.recipe().getType()).stream()
+                                                .map(RecipeHolder::value).toList());
+
+                r.addRecipes(ElectricFurnaceCategory.TYPE,
+                                recipes.getAllRecipesFor(RecipeType.SMELTING).stream()
+                                                .map(RecipeHolder::value)
+                                                .map(s -> (ElectricFurnaceRecipeType) ElectricFurnaceRecipeBuilder
+                                                                .of()
+                                                                .delay(60)
+                                                                .energy(10)
+                                                                .input(s.getIngredients().getFirst())
+                                                                .output(s.getResultItem(ServerLifecycleHooks
+                                                                                .getCurrentServer().registryAccess()))
+                                                                .createRecipe())
+                                                .toList());
+
         }
 
         @Override
@@ -156,6 +183,9 @@ public class Plugin implements IModPlugin {
 
                 r.addRecipeClickArea(AlloySmelterScreen.class, 75, 35, 22, 15,
                                 AlloySmelterCategory.TYPE);
+
+                r.addRecipeClickArea(ElectricFurnaceScreen.class, 75, 35, 22, 15,
+                                ElectricFurnaceCategory.TYPE);
         }
 
 }

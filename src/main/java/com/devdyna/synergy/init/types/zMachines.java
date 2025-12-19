@@ -13,6 +13,10 @@ import com.devdyna.synergy.init.machine.compressor.CompressorBE;
 import com.devdyna.synergy.init.machine.compressor.CompressorBlock;
 import com.devdyna.synergy.init.machine.compressor.CompressorMenu;
 import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeType;
+import com.devdyna.synergy.init.machine.furnace.ElectricFurnaceBE;
+import com.devdyna.synergy.init.machine.furnace.ElectricFurnaceBlock;
+import com.devdyna.synergy.init.machine.furnace.ElectricFurnaceMenu;
+import com.devdyna.synergy.init.machine.furnace.recipe.ElectricFurnaceRecipeType;
 import com.devdyna.synergy.init.machine.macerator.MaceratorBE;
 import com.devdyna.synergy.init.machine.macerator.MaceratorBlock;
 import com.devdyna.synergy.init.machine.macerator.MaceratorMenu;
@@ -83,6 +87,19 @@ public class zMachines {
                 CompressorBE::new,
                 CompressorMenu::new,
                 CompressorRecipeType.Serializer::new
+        );
+
+    public static final MachineType<
+        ElectricFurnaceBlock,
+        ElectricFurnaceBE,
+        ElectricFurnaceMenu,
+        ElectricFurnaceRecipeType
+        > ELECTRIC_FURNACE = new MachineType<>(
+                zStatic.Machines.electric_furnace,
+                ElectricFurnaceBlock::new,
+                ElectricFurnaceBE::new,
+                ElectricFurnaceMenu::new,
+                ElectricFurnaceRecipeType.Serializer::new
         );
 
 

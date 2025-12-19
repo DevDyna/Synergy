@@ -44,7 +44,7 @@ public enum MachineProgress
 
       tooltip.append(helper.spacer(4, 0));
 
-      if (!check) {
+      if (!check && be instanceof ExtraMachineSlot) {
         tooltip.append(helper.item(data.inv.get(2)));
         tooltip.append(helper.spacer(4, 0));
       }
