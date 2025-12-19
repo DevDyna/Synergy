@@ -33,9 +33,9 @@ public class AlloySmelterMenu extends BaseMachineMenu {
         this.level = inv.player.level();
         this.data = data;
         addPlayerSlots(inv);
-        addMachineInputSlot(blockEntity.getStorage(), 0, 34, 35);
+        addMachineInputSlot(blockEntity.getStorage(), 0, 34, 33);
         addMachineOutputSlot(blockEntity.getStorage(), 1, 119, 34);
-        addMachineInputSlot(blockEntity.getStorage(), 2, 54, 35);
+        addMachineInputSlot(blockEntity.getStorage(), 2, 54, 33);
         
         addDataSlots(data);
     }

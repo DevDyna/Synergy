@@ -317,6 +317,8 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jade.info.cooler_status.false", "Status: §cInactive");
                 add(ID + ".jade.info.cooler_status.true", "Status: §aActive");
 
+                add(ID+".jei.tip.dont_consume", "§cDon't consume");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {

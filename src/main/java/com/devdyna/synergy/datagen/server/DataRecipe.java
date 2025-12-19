@@ -873,9 +873,9 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 AlloySmelterRecipeBuilder.of()
-                                .inputs(zItemTag.INGOT_TIN, Tags.Items.INGOTS_COPPER)
+                                .inputs(zItemTag.DUST_COAL, Tags.Items.INGOTS_IRON)
                                 .delay(80)
-                                .output(zItems.LEAD_INGOT)
+                                .output(zItems.STEEL_INGOT)
                                 .unlockedBy()
                                 .group(ID)
                                 .save(c);

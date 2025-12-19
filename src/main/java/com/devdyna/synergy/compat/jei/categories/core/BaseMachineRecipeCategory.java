@@ -3,6 +3,7 @@ package com.devdyna.synergy.compat.jei.categories.core;
 import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeType;
 
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
@@ -12,6 +13,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 public abstract class BaseMachineRecipeCategory<R extends BaseMachineRecipeType<?>> extends BaseRecipeCategory<R> {
+
+protected IDrawableAnimated arrow;
 
     public BaseMachineRecipeCategory(IGuiHelper h) {
         super(h);

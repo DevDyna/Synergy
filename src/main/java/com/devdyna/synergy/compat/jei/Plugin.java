@@ -9,9 +9,13 @@ import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.*;
+import com.devdyna.synergy.compat.jei.categories.machines.AlloySmelterCategory;
+import com.devdyna.synergy.compat.jei.categories.machines.CompressorCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen;
+import com.devdyna.synergy.init.machine.alloy_smelter.AlloySmelterScreen;
+import com.devdyna.synergy.init.machine.compressor.CompressorScreen;
 import com.devdyna.synergy.init.machine.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.types.*;
 
@@ -64,6 +68,8 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item(zBlocks.FLUID_PROVIDER), FluidProviderCategory.TYPE);
 
                 r.addRecipeCatalyst(x.item((Item) zMachines.MACERATOR.item().get()), MaceratorCategory.TYPE);
+                r.addRecipeCatalyst(x.item((Item) zMachines.COMPRESSOR.item().get()), CompressorCategory.TYPE);
+                r.addRecipeCatalyst(x.item((Item) zMachines.ALLOY_SMELTER.item().get()), AlloySmelterCategory.TYPE);
         }
 
         @Override
@@ -81,6 +87,9 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCategories(new DryableBricksCategory(helper));
 
                 r.addRecipeCategories(new MaceratorCategory(helper));
+
+                r.addRecipeCategories(new CompressorCategory(helper));
+                r.addRecipeCategories(new AlloySmelterCategory(helper));
 
         }
 
@@ -124,6 +133,14 @@ public class Plugin implements IModPlugin {
                                 recipes.getAllRecipesFor(zMachines.MACERATOR.recipe().getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
+                r.addRecipes(CompressorCategory.TYPE,
+                                recipes.getAllRecipesFor(zMachines.COMPRESSOR.recipe().getType()).stream()
+                                                .map(RecipeHolder::value).toList());
+
+                r.addRecipes(AlloySmelterCategory.TYPE,
+                                recipes.getAllRecipesFor(zMachines.ALLOY_SMELTER.recipe().getType()).stream()
+                                                .map(RecipeHolder::value).toList());
+
         }
 
         @Override
@@ -133,6 +150,12 @@ public class Plugin implements IModPlugin {
 
                 r.addRecipeClickArea(MaceratorScreen.class, 75, 35, 22, 15,
                                 MaceratorCategory.TYPE);
+
+                r.addRecipeClickArea(CompressorScreen.class, 75, 35, 22, 15,
+                                CompressorCategory.TYPE);
+
+                r.addRecipeClickArea(AlloySmelterScreen.class, 75, 35, 22, 15,
+                                AlloySmelterCategory.TYPE);
         }
 
 }

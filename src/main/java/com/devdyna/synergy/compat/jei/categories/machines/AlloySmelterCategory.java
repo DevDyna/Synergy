@@ -4,6 +4,7 @@ import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.core.BaseMachineRecipeCategory;
+import com.devdyna.synergy.init.machine.alloy_smelter.recipe.AlloySmelterRecipeType;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 
@@ -21,9 +22,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 @SuppressWarnings("null")
-public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipeType> {
+public class AlloySmelterCategory extends BaseMachineRecipeCategory<AlloySmelterRecipeType> {
 
-    public MaceratorCategory(IGuiHelper h) {
+    public AlloySmelterCategory(IGuiHelper h) {
         super(h);
         this.arrow = helper
                 .drawableBuilder(x.rl("minecraft", "textures/gui/sprites/container/furnace/burn_progress.png"),
@@ -32,58 +33,48 @@ public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipe
                         IDrawableAnimated.StartDirection.LEFT, false);
     }
 
-    public static final RecipeType<MaceratorRecipeType> TYPE = new RecipeType<>(
-            x.rl(zMachines.MACERATOR.recipe().getId()),
-            MaceratorRecipeType.class);
+    public static final RecipeType<AlloySmelterRecipeType> TYPE = new RecipeType<>(
+            x.rl(zMachines.ALLOY_SMELTER.recipe().getId()),
+            AlloySmelterRecipeType.class);
 
     @Override
-    public RecipeType<MaceratorRecipeType> getRecipeType() {
+    public RecipeType<AlloySmelterRecipeType> getRecipeType() {
         return TYPE;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, MaceratorRecipeType recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, AlloySmelterRecipeType recipe, IFocusGroup focuses) {
 
-        builder.addInputSlot(2, 14).addIngredients(recipe.getInputItem());
-        builder.addOutputSlot(74, 6).addItemStack(recipe.getOutputItem());
-        if (recipe.hasSecondaryOutput()) {
-            builder.addOutputSlot(74, 31).addItemStack(recipe.getSecondaryItem());
-        }
+        builder.addInputSlot(2, 5).addIngredients(recipe.getInputItem());
+        builder.addInputSlot(22, 5).addIngredients(recipe.getCatalystItem());
+        builder.addOutputSlot(87, 6).addItemStack(recipe.getOutputItem());
 
     }
 
     @Override
-    public void draw(MaceratorRecipeType recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
+    public void draw(AlloySmelterRecipeType recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
             double mouseX,
             double mouseY) {
         super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 
-        arrow.draw(guiGraphics, 29, 15);
+        arrow.draw(guiGraphics, 43, 6);
 
         guiGraphics.drawString(font,
                 Component.literal(
                         recipe.getTime() + " ticks"),
-                25, 2,
+                40, 2,
                 defaultToolTipColor.getRGB(), false);
-
-        if (recipe.hasSecondaryOutput())
-            if (recipe.getSecondaryItemChance() > 0f && !recipe.getSecondaryItem().isEmpty())
-                guiGraphics.drawString(font,
-                        Component.literal(
-                                ((int) (recipe.getSecondaryItemChance() * 100)) + "%"),
-                        50, 36,
-                        defaultToolTipColor.getRGB(), false);
 
     }
 
     @Override
     public Size setXY() {
-        return Size.of(96, 49);
+        return Size.of(109, 28);
     }
 
     @Override
     public MachineType<? extends Block, ? extends BlockEntity, ? extends AbstractContainerMenu, ? extends Recipe<?>> getMachine() {
-        return zMachines.MACERATOR;
+        return zMachines.ALLOY_SMELTER;
     }
 
 }

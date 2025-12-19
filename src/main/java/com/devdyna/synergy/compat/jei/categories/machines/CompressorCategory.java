@@ -1,9 +1,12 @@
 package com.devdyna.synergy.compat.jei.categories.machines;
 
+import static com.devdyna.synergy.Main.ID;
+
 import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.core.BaseMachineRecipeCategory;
+import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeType;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 
@@ -12,7 +15,9 @@ import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -21,9 +26,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 @SuppressWarnings("null")
-public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipeType> {
+public class CompressorCategory extends BaseMachineRecipeCategory<CompressorRecipeType> {
 
-    public MaceratorCategory(IGuiHelper h) {
+    public CompressorCategory(IGuiHelper h) {
         super(h);
         this.arrow = helper
                 .drawableBuilder(x.rl("minecraft", "textures/gui/sprites/container/furnace/burn_progress.png"),
@@ -32,33 +37,34 @@ public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipe
                         IDrawableAnimated.StartDirection.LEFT, false);
     }
 
-    public static final RecipeType<MaceratorRecipeType> TYPE = new RecipeType<>(
-            x.rl(zMachines.MACERATOR.recipe().getId()),
-            MaceratorRecipeType.class);
+    public static final RecipeType<CompressorRecipeType> TYPE = new RecipeType<>(
+            x.rl(zMachines.COMPRESSOR.recipe().getId()),
+            CompressorRecipeType.class);
 
     @Override
-    public RecipeType<MaceratorRecipeType> getRecipeType() {
+    public RecipeType<CompressorRecipeType> getRecipeType() {
         return TYPE;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, MaceratorRecipeType recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, CompressorRecipeType recipe, IFocusGroup focuses) {
 
-        builder.addInputSlot(2, 14).addIngredients(recipe.getInputItem());
-        builder.addOutputSlot(74, 6).addItemStack(recipe.getOutputItem());
-        if (recipe.hasSecondaryOutput()) {
-            builder.addOutputSlot(74, 31).addItemStack(recipe.getSecondaryItem());
-        }
+        builder.addInputSlot(2, 2).addIngredients(recipe.getInputItem());
+        builder.addInputSlot(2, 38).addIngredients(recipe.getCatalystItem())
+                .addRichTooltipCallback(
+                        (v, t) -> t.add(Component.translatable(ID + ".jei.tip.dont_consume")));
+
+        builder.addOutputSlot(74, 21).addItemStack(recipe.getOutputItem());
 
     }
 
     @Override
-    public void draw(MaceratorRecipeType recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
+    public void draw(CompressorRecipeType recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
             double mouseX,
             double mouseY) {
         super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 
-        arrow.draw(guiGraphics, 29, 15);
+        arrow.draw(guiGraphics, 29, 21);
 
         guiGraphics.drawString(font,
                 Component.literal(
@@ -66,24 +72,16 @@ public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipe
                 25, 2,
                 defaultToolTipColor.getRGB(), false);
 
-        if (recipe.hasSecondaryOutput())
-            if (recipe.getSecondaryItemChance() > 0f && !recipe.getSecondaryItem().isEmpty())
-                guiGraphics.drawString(font,
-                        Component.literal(
-                                ((int) (recipe.getSecondaryItemChance() * 100)) + "%"),
-                        50, 36,
-                        defaultToolTipColor.getRGB(), false);
-
     }
 
     @Override
     public Size setXY() {
-        return Size.of(96, 49);
+        return Size.of(96, 56);
     }
 
     @Override
     public MachineType<? extends Block, ? extends BlockEntity, ? extends AbstractContainerMenu, ? extends Recipe<?>> getMachine() {
-        return zMachines.MACERATOR;
+        return zMachines.COMPRESSOR;
     }
 
 }
