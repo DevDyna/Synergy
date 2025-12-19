@@ -1,7 +1,6 @@
 package com.devdyna.synergy.init.machine.core;
 
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.basebe.be.MachineBE;
 import com.devdyna.synergy.api.gui.BaseMenu;
 import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeType;
 

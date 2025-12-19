@@ -1,7 +1,5 @@
 package com.devdyna.synergy.api.recipes.builders;
 
-import org.checkerframework.framework.qual.Unused;
-
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.tags.TagKey;

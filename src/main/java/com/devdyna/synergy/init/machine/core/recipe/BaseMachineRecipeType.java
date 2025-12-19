@@ -1,8 +1,6 @@
 package com.devdyna.synergy.init.machine.core.recipe;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.init.machine.core.*;
 

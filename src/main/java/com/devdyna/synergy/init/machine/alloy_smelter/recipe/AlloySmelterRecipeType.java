@@ -1,7 +1,5 @@
 package com.devdyna.synergy.init.machine.alloy_smelter.recipe;
 
-import java.util.Optional;
-
 import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.common.recipes.input.BiItemInput;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
