@@ -66,7 +66,7 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot {
 
     @Override
     public List<Integer> getInputSlotIndex() {
-        return List.of(INPUT_SLOT,EXTRA_SLOT);
+        return List.of(INPUT_SLOT, EXTRA_SLOT);
     }
 
     public AlloySmelterBE(BlockPos pos, BlockState blockState) {
@@ -87,29 +87,36 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot {
         if (getInput().isEmpty()) {
             resetProgress();
             return;
-        } else 
+        } else
             progress_cancel = false;
-        
 
         Optional<RecipeHolder<AlloySmelterRecipeType>> r = level.getRecipeManager()
                 .getRecipeFor(zMachines.ALLOY_SMELTER.recipe().getType(),
-                        new BiItemInput(getInput(),getExtraSlot()), level);
+                        new BiItemInput(getInput(), getExtraSlot()), level);
+
+        Optional<RecipeHolder<AlloySmelterRecipeType>> r2 = level.getRecipeManager()
+                .getRecipeFor(zMachines.ALLOY_SMELTER.recipe().getType(),
+                        new BiItemInput(getExtraSlot(), getInput()), level);
+
+        AlloySmelterRecipeType recipe;
+
+        boolean inverse = r.isEmpty();
 
         // no recipe
-        if (r.isEmpty()) {
+        if (inverse && r2.isEmpty()) {
             resetProgress();
             return;
         }
 
-        AlloySmelterRecipeType recipe = r.get().value();
+        recipe = inverse ? r2.get().value() : r.get().value();
 
         ItemStack output = recipe.getOutputItem().copy();
 
         // Ingredient catalyst = recipe.getCatalystItem();
 
         // if(!catalyst.test(getExtraSlot())){
-        //     resetProgress();
-        //     return;
+        // resetProgress();
+        // return;
         // }
 
         this.maxProgress = recipe.getTime();
