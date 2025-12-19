@@ -8,7 +8,6 @@ import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeType;
 import static com.devdyna.synergy.init.machine.core.BaseMachineBE.*;
 
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.network.FriendlyByteBuf;

@@ -7,7 +7,6 @@ import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.core.BaseMachineRecipeCategory;
 import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeType;
-import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -15,9 +14,7 @@ import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
-import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
