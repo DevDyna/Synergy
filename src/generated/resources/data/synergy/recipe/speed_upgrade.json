@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "synergy",
+  "key": {
+    "B": {
+      "item": "synergy:aquamarine_gem"
+    },
+    "C": {
+      "item": "synergy:chip"
+    },
+    "R": {
+      "item": "synergy:condenser"
+    },
+    "S": {
+      "tag": "c:plates/steel"
+    }
+  },
+  "pattern": [
+    " B ",
+    "CSC",
+    " R "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:speed_upgrade"
+  }
+}
