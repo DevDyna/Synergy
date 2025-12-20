@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.utils.LogUtil;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
@@ -94,15 +95,14 @@ public class ElectricFurnaceBE extends BaseMachineBE {
                 .getRecipeFor(RecipeType.SMELTING, new SingleRecipeInput(getInput()), level);
 
         // no recipe
-        if (r.isEmpty() && vanilla.isEmpty() && true) { // TODO config
+        if (r.isEmpty())
+            processVanillaType(vanilla.get().value());
+        else if (vanilla.isEmpty())
+            processStandaloneType(r.get().value());
+        else {
             resetProgress();
             return;
         }
-
-        if (r.isEmpty())
-            processVanillaType(vanilla.get().value());
-        else
-            processStandaloneType(r.get().value());
 
     }
 
@@ -143,8 +143,9 @@ public class ElectricFurnaceBE extends BaseMachineBE {
         setChanged();
     }
 
+    // TODO config
     private void processVanillaType(SmeltingRecipe recipe) {
-        ItemStack output = recipe.getResultItem(level.registryAccess());
+        ItemStack output = recipe.getResultItem(level.registryAccess()).copy();
 
         this.maxProgress = 60;
 
@@ -171,6 +172,7 @@ public class ElectricFurnaceBE extends BaseMachineBE {
             return;
         }
 
+        LogUtil.info("fired");
         updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
 
         getInput().shrink(1);
