@@ -112,9 +112,9 @@ public class x {
         return item(i.getBlock());
     }
 
-    public static ItemStack item(DeferredHolder<? extends ItemLike, ?> holder) {
-        return x.item(holder.get().asItem());
-    }
+    // public static ItemStack item(DeferredHolder<? extends ItemLike, ?> holder) {
+    //     return x.item(holder.get().asItem());
+    // }
 
     public static Ingredient ingredient(ItemStack i) {
         return Ingredient.of(i);
@@ -163,4 +163,16 @@ public class x {
     public static FluidStack fluid(Fluid f,int amount) {
         return new FluidStack(f, amount);
     }
+
+    public static <T> ItemStack item(DeferredHolder<T, ?> holder) {
+    T obj = holder.get();
+    if (obj instanceof Item item) {
+        return item.getDefaultInstance();
+    } else if (obj instanceof Block block) {
+        return new ItemStack(block);
+    } else {
+        throw new IllegalArgumentException("Unsupported type: " + obj.getClass());
+    }
+}
+
 }
