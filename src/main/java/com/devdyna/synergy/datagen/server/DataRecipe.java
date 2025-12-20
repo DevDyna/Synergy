@@ -342,6 +342,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.DIAMOND_DUST)
                                 .unlockedBy().save(c);
 
+                CompressorRecipeBuilder.of()
+                                .input(zItemTag.DUST_DIAMOND)
+                                .delay(80)
+                                .output(Items.DIAMOND)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
+
                 QuernMillingBuilder.of().input(Items.EMERALD)
                                 .output(zItems.EMERALD_DUST)
                                 .unlockedBy().save(c);
@@ -349,6 +357,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                 MaceratorRecipeBuilder.of().input(Items.EMERALD)
                                 .output(zItems.EMERALD_DUST)
                                 .unlockedBy().save(c);
+
+                CompressorRecipeBuilder.of()
+                                .input(zItemTag.DUST_EMERALD)
+                                .delay(80)
+                                .output(Items.EMERALD)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
 
                 QuernMillingBuilder.of().input(Items.AMETHYST_SHARD)
                                 .output(zItems.AMETHYST_DUST)
@@ -358,6 +374,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.AMETHYST_DUST)
                                 .unlockedBy().save(c);
 
+                CompressorRecipeBuilder.of()
+                                .input(zItemTag.DUST_AMETHYST)
+                                .delay(80)
+                                .output(Items.AMETHYST_SHARD)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
+
                 QuernMillingBuilder.of().input(Items.LAPIS_LAZULI)
                                 .output(zItems.LAPIS_DUST)
                                 .unlockedBy().save(c);
@@ -365,6 +389,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                 MaceratorRecipeBuilder.of().input(Items.LAPIS_LAZULI)
                                 .output(zItems.LAPIS_DUST)
                                 .unlockedBy().save(c);
+
+                CompressorRecipeBuilder.of()
+                                .input(zItemTag.DUST_LAPIS)
+                                .delay(80)
+                                .output(Items.LAPIS_LAZULI)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
 
                 QuernMillingBuilder.of().input(Items.ANCIENT_DEBRIS)
                                 .output(zItems.ANCIENT_DEBRIS_DUST)
@@ -393,6 +425,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                 MaceratorRecipeBuilder.of().input(Items.QUARTZ)
                                 .output(zItems.QUARTZ_DUST)
                                 .unlockedBy().save(c);
+
+                CompressorRecipeBuilder.of()
+                                .input(zItemTag.DUST_QUARTZ)
+                                .delay(80)
+                                .output(Items.QUARTZ)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
 
                 QuernMillingBuilder.of().input(Items.PRISMARINE_SHARD)
                                 .output(Items.PRISMARINE_CRYSTALS)
@@ -735,11 +775,21 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(Items.TORCHFLOWER)
                                 .output(Items.BLAZE_POWDER)
                                 .secondary(Items.BLAZE_POWDER)
-                                .chance(0.25f)
+                                .chance(0.05f)
                                 .delay(120)
                                 .group(ID)
                                 .unlockedBy()
-                                .save(c);
+                                .save(c,"_from_torchflower");
+
+                MaceratorRecipeBuilder.of()
+                                .input(Items.BLAZE_ROD)
+                                .output(Items.BLAZE_POWDER, 2)
+                                .secondary(Items.BLAZE_POWDER, 2)
+                                .chance(0.75f)
+                                .delay(120)
+                                .group(ID)
+                                .unlockedBy()
+                                .save(c,"_from_blaze_rod");
 
                 ShapedRecipeBuilder.shaped(MISC, Items.MUD_BRICKS, 1).define('#', zItems.PACKED_MUD_BRICK.get())
                                 .pattern("##").pattern("##").unlockedBy(getHasName(zItems.PACKED_MUD_BRICK.get()),
@@ -860,7 +910,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
                                 .group(ID).save(c);
 
-                                ShapedRecipeBuilder.shaped(MISC, zMachines.COMPRESSOR.block().get())
+                ShapedRecipeBuilder.shaped(MISC, zMachines.COMPRESSOR.block().get())
                                 .pattern(" Q ")
                                 .pattern("RMS")
                                 .pattern(" C ")
@@ -872,7 +922,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
                                 .group(ID).save(c);
 
-                                ShapedRecipeBuilder.shaped(MISC, zMachines.ALLOY_SMELTER.block().get())
+                ShapedRecipeBuilder.shaped(MISC, zMachines.ALLOY_SMELTER.block().get())
                                 .pattern(" Q ")
                                 .pattern("RMS")
                                 .pattern(" C ")
@@ -884,7 +934,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
                                 .group(ID).save(c);
 
-                                ShapedRecipeBuilder.shaped(MISC, zMachines.ELECTRIC_FURNACE.block().get())
+                ShapedRecipeBuilder.shaped(MISC, zMachines.ELECTRIC_FURNACE.block().get())
                                 .pattern(" Q ")
                                 .pattern("RMS")
                                 .pattern(" C ")
@@ -901,6 +951,14 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 CompressorRecipeBuilder.of()
                                 .input(zItemTag.DUST_COAL)
+                                .delay(80)
+                                .output(zItems.CARBON_FIBER)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
+
+                CompressorRecipeBuilder.of()
+                                .input(zItems.CARBON_FIBER)
                                 .delay(80)
                                 .catalyst(zItemTag.PLATE_STEEL)
                                 .output(zItems.CARBON_PLATE)

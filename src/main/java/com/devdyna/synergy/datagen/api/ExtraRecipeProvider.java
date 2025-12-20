@@ -13,6 +13,7 @@ import com.devdyna.synergy.common.recipes.builders.DryableBricksBuilder;
 import com.devdyna.synergy.common.recipes.builders.QuernMillingBuilder;
 import com.devdyna.synergy.common.recipes.builders.ReactorCellBuilder;
 import com.devdyna.synergy.common.recipes.builders.UrnRitualBuilder;
+import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeBuilder;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 
@@ -75,6 +76,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('#', input)
                                 .unlockedBy(ID, has(input))
                                 .group(ID).save(c);
+
+                                
         }
 
         protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot, Item secondary,
@@ -277,6 +280,15 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(ID,
                                                 has(input))
                                 .group(ID).save(c);
+
+                                CompressorRecipeBuilder.of()
+                                .input(input)
+                                .delay(80)
+                                .catalyst(zItemTag.PLATE_STEEL)
+                                .output(output,2)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
         }
 
         protected void plate(TagKey<Item> input, Item output, RecipeOutput c) {
@@ -286,6 +298,15 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(ID,
                                                 has(input))
                                 .group(ID).save(c);
+
+                               CompressorRecipeBuilder.of()
+                                .input(input)
+                                .delay(80)
+                                .catalyst(zItemTag.PLATE_STEEL)
+                                .output(output,2)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
         }
 
         // nodes
@@ -782,6 +803,14 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(ID,
                                                 has(Items.STICK))
                                 .group(ID).save(c);
+
+                                CompressorRecipeBuilder.of()
+                                .input(input)
+                                .delay(80)
+                                .output(output,2)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
         }
 
         protected void coil(RecipeOutput c, TagKey<Item> input, Item output) {
@@ -794,6 +823,15 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(ID,
                                                 has(Items.STICK))
                                 .group(ID).save(c);
+
+                                CompressorRecipeBuilder.of()
+                                .input(input)
+                                .delay(80)
+                                .catalyst(zItemTag.PLATE_STEEL)
+                                .output(output,2)
+                                .unlockedBy()
+                                .group(ID)
+                                .save(c);
         }
 
         protected void moderators(RecipeOutput c) {
