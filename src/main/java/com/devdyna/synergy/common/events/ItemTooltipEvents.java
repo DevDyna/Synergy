@@ -49,10 +49,10 @@ public class ItemTooltipEvents {
         var tooltip = event.getToolTip();
 
         if (item.is(zItemTag.REMOVE_ENTITY_GROWING)) {
-            tooltip.add(1, Component.translatable(Main.ID + ".remove_entity_growing"));
+            tooltip.add(Component.translatable(Main.ID + ".remove_entity_growing"));
         }
         if (item.is(zItemTag.ADD_ENTITY_GROWING)) {
-            tooltip.add(1, Component.translatable(Main.ID + ".add_entity_growing"));
+            tooltip.add(Component.translatable(Main.ID + ".add_entity_growing"));
         }
 
     }
@@ -64,11 +64,11 @@ public class ItemTooltipEvents {
         var tooltip = event.getToolTip();
 
         if (item.is(zItemTag.UPGRADE_ENERGY)) {
-            tooltip.add(1, Component.translatable(Main.ID + ".upgrade.energy"));
+            tooltip.add(Component.translatable(Main.ID + ".upgrade.energy"));
         }
         if (item.is(zItemTag.UPGRADE_SPEED)) {
-            tooltip.add(1, Component.translatable(Main.ID + ".upgrade.speed.speed"));
-            tooltip.add(1, Component.translatable(Main.ID + ".upgrade.speed.energy"));
+            tooltip.add(Component.translatable(Main.ID + ".upgrade.speed.energy"));
+            tooltip.add(Component.translatable(Main.ID + ".upgrade.speed.speed"));
         }
 
     }
