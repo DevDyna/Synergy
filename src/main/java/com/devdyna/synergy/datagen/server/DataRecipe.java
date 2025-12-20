@@ -860,6 +860,42 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
                                 .group(ID).save(c);
 
+                                ShapedRecipeBuilder.shaped(MISC, zMachines.COMPRESSOR.block().get())
+                                .pattern(" Q ")
+                                .pattern("RMS")
+                                .pattern(" C ")
+                                .define('S', zItems.MAGNETIC_STONE_CIRCUIT.get())
+                                .define('R', zItems.RESISTOR.get())
+                                .define('Q', Items.CRAFTER)
+                                .define('C', zItems.BLUE_BATTERY.get())
+                                .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
+                                .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
+                                .group(ID).save(c);
+
+                                ShapedRecipeBuilder.shaped(MISC, zMachines.ALLOY_SMELTER.block().get())
+                                .pattern(" Q ")
+                                .pattern("RMS")
+                                .pattern(" C ")
+                                .define('S', zItems.RESISTIVE_STONE_CIRCUIT.get())
+                                .define('R', zItems.RESISTOR.get())
+                                .define('Q', zBlocks.URN.get())
+                                .define('C', zItems.BLUE_BATTERY.get())
+                                .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
+                                .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
+                                .group(ID).save(c);
+
+                                ShapedRecipeBuilder.shaped(MISC, zMachines.ELECTRIC_FURNACE.block().get())
+                                .pattern(" Q ")
+                                .pattern("RMS")
+                                .pattern(" C ")
+                                .define('S', zItems.NETHER_CIRCUIT.get())
+                                .define('R', zItems.RESISTOR.get())
+                                .define('Q', Items.FURNACE)
+                                .define('C', zItems.BLUE_BATTERY.get())
+                                .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
+                                .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
+                                .group(ID).save(c);
+
                 simplePacked(c, zItems.STONE_PEBBLE.get(), Items.COBBLESTONE);
                 simplePacked(c, zItems.NETHERRACK_PEBBLE.get(), Items.NETHERRACK);
 
