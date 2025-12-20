@@ -1,7 +1,24 @@
 package com.devdyna.synergy;
 
 public class zStatic {
-    public static String CreativeTab = "creative_tab";
+    
+
+    public class CreativeTab {
+        public static String TYPE = "creative_tab";
+        public static String resources = "resources";
+        public static String machines = "machines";
+        public static String laser = "laser";
+        public static String nuclear = "nuclear";
+        public static String tools = "tools";
+        public static String agriculture = "agriculture";
+        public static String decorative = "decorative";
+        public static String automation = "automation";
+        public static String logistics = "logistics";
+        public static String storage = "storage";
+        public static String magic = "magic";
+        public static String redstone = "redstone";
+
+    }
 
     public class MobDrop {
         public static String creeper_gall = "creeper_gall";

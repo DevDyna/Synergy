@@ -50,6 +50,7 @@ public class DataLootBlock extends BlockLootSubProvider {
                         zBlocks.zBlockSlab,
                         zBlocks.zCoolers,
                         zBlocks.zModerators,
+                        zBlocks.zMachineFrame,
 
                         // wip
                         zBlocks.zDepositBlocks,

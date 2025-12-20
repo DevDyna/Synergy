@@ -26,6 +26,8 @@ public class Main {
         bus.addListener(Capability::register);
         bus.addListener(zDataMaps::register);
 
+        bus.addListener(CreativeTabs::register);
+
     }
 
 }

@@ -2,8 +2,8 @@ package com.devdyna.synergy.init;
 
 import static com.devdyna.synergy.Main.ID;
 
-import java.util.Arrays;
-import java.util.function.Supplier;
+import java.util.*;
+import java.util.function.*;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
@@ -14,10 +14,12 @@ import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.biome.Biome;
@@ -273,5 +275,17 @@ public class Material {
                 return zItems.zPellets
                                 .registerSimpleItem(name + zStatic.ResourceType.pellet);
         }
+
+        public static DeferredHolder<CreativeModeTab, CreativeModeTab> createCreativeTab(
+                        String id,
+                        Supplier<Item> icon) {
+                return zCreativeTab.zCreative
+                                .register(Main.ID+"_"+id, () -> CreativeModeTab.builder()
+                                                .title(Component.translatable(
+                                                                Main.ID + "." + zStatic.CreativeTab.TYPE + "." + id))
+                                                .icon(() -> icon.get().getDefaultInstance())// REQUIRE SUPPLIER
+                                                .build());
+        }
+
 
 }

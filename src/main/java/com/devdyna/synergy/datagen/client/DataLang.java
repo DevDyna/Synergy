@@ -2,11 +2,13 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
+import java.util.Arrays;
 import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.ClazzUtil;
+import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.data.PackOutput;
@@ -25,7 +27,10 @@ public class DataLang extends LanguageProvider {
         @Override
         protected void addTranslations() {
 
-                add(Main.ID + "." + zStatic.CreativeTab, "Synergy : MagiTech Collection");
+                Arrays.asList(ClazzUtil.getAllStrings(zStatic.CreativeTab.class))
+                                .stream().filter(s -> !s.equals(zStatic.CreativeTab.TYPE))
+                                .forEach(s -> add(Main.ID + "." + zStatic.CreativeTab.TYPE + "." + s,
+                                                "Synergy : " + StringUtil.nameCapitalized(s)));
 
                 zFluids.zFluidTypes.getEntries()
                                 .forEach(f -> add(f.get().getDescriptionId(), named(f).replace(" Type", "")));
@@ -34,6 +39,7 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zBlockFluids.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zBlock.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCrop.getEntries().forEach(b -> addBlock(b, named(b)));
+                zBlocks.zMachineFrame.getEntries().forEach(b -> addBlock(b, named(b)));
 
                 ClazzUtil.getAllzItems().stream().filter(d -> !d.is(zItems.CAKE_STICK))
                                 .forEach(c -> addItem(c, named(c)));
@@ -279,8 +285,8 @@ public class DataLang extends LanguageProvider {
                                 "Quantum Reactor Controller Stats");
                 add("config.jade.plugin_" + ID + ".aoe", "AreaOfEffect Machines Info");
                 add("config.jade.plugin_" + ID + ".fegen", "Energy Provider Info");
-                add("config.jade.plugin_" + ID +"."+ zStatic.ReactorStuff.moderator, "Moderator Provider Info");
-                add("config.jade.plugin_" + ID +"."+ zStatic.ReactorStuff.cooler, "Cooler Provider Info");
+                add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.moderator, "Moderator Provider Info");
+                add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.cooler, "Cooler Provider Info");
 
                 add(Main.ID + ".color", "Color: %d");
 
@@ -317,7 +323,7 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jade.info.cooler_status.false", "Status: §cInactive");
                 add(ID + ".jade.info.cooler_status.true", "Status: §aActive");
 
-                add(ID+".jei.tip.dont_consume", "§cDon't consume");
+                add(ID + ".jei.tip.dont_consume", "§cDon't consume");
 
         }
 

@@ -1,0 +1,152 @@
+package com.devdyna.synergy;
+
+import java.util.stream.Stream;
+
+import com.devdyna.synergy.api.utils.ClazzUtil;
+import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.init.types.zCreativeTab;
+import com.devdyna.synergy.init.types.zItems;
+import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+
+public class CreativeTabs {
+
+    public static void register(BuildCreativeModeTabContentsEvent event) {
+
+        // ---------------------------------------------------------- //
+        // MACHINES
+        if (event.getTabKey() == zCreativeTab.MACHINES.getKey()) {
+
+            ClazzUtil.getAllMachineTypes()
+                    .forEach(i -> event.accept((Item) i.item().get()));
+        }
+
+        // ---------------------------------------------------------- //
+        // LASER STUFF
+        if (event.getTabKey() == zCreativeTab.LASER_STUFF.getKey()) {
+            event.accept(zBlocks.LASER_MACHINE.get());
+            event.accept(zBlocks.LASER_LENS.get());
+            event.accept(zBlocks.LASER_MIRROR.get());
+            event.accept(zBlocks.LASER_ROTOR.get());
+            event.accept(zBlocks.LASER_SENSOR.get());
+        }
+
+        // ---------------------------------------------------------- //
+        // NUCLEAR STUFF
+        if (event.getTabKey() == zCreativeTab.NUCLEAR_STUFF.getKey()) {
+
+            ClazzUtil.getAllzBlocks(
+                    zBlocks.zModerators,
+                    zBlocks.zCoolers)
+                    .forEach(i -> event.accept(i.get()));
+            event.accept(zBlocks.REACTOR_CONTROLLER.get());
+            event.accept(zBlocks.REACTOR_FUEL_CELL.get());
+        }
+
+        // ---------------------------------------------------------- //
+        // TOOLS
+        if (event.getTabKey() == zCreativeTab.TOOLS.getKey()) {
+
+            ClazzUtil.getAllzItems(zItems.zTool)
+                    .forEach(item -> event.accept(item.get()));
+        }
+
+        // ---------------------------------------------------------- //
+        // AGRICULTURE
+        if (event.getTabKey() == zCreativeTab.AGRICULTURE.getKey()) {
+
+            event.accept(zBlocks.AZALEA.get());
+            event.accept(zBlocks.WILD_CAVE_WHEAT.get());
+            event.accept(zBlocks.WILD_COTTON.get());
+            event.accept(zBlocks.WILD_RICE.get());
+
+            ClazzUtil.getAllzItems(
+                    zItems.zSeeds,
+                    zItems.zCropExtra,
+                    zItems.zFoods)
+                    .forEach(i -> event.accept(i.get()));
+        }
+
+        // ---------------------------------------------------------- //
+        // DECORATIVE
+        if (event.getTabKey() == zCreativeTab.DECORATIVE_BLOCKS.getKey()) {
+
+            ClazzUtil.getAllzBlocks(
+                    zBlocks.zDecorative,
+                    zBlocks.zBlockStair,
+                    zBlocks.zBlockSlab,
+                    zBlocks.zMachineFrame)
+                    .forEach(i -> event.accept(i.get()));
+        }
+
+        // ---------------------------------------------------------- //
+        // AUTOMATION
+        if (event.getTabKey() == zCreativeTab.AUTOMATION.getKey()) {
+            event.accept(zBlocks.SOLAR_PANEL.get());
+            event.accept(zBlocks.HARVESTER.get());
+            event.accept(zBlocks.SPRINKLER.get());
+        }
+
+        // ---------------------------------------------------------- //
+        // LOGISTICS
+        if (event.getTabKey() == zCreativeTab.LOGISTICS.getKey()) {
+            event.accept(zBlocks.PIPE.get());
+            event.accept(zBlocks.ITEM_PROVIDER.get());
+            event.accept(zBlocks.ITEM_RETRIEVAL.get());
+            event.accept(zBlocks.ITEM_TRANSFER.get());
+            event.accept(zBlocks.FLUID_PROVIDER.get());
+            event.accept(zBlocks.FLUID_RETRIEVAL.get());
+            event.accept(zBlocks.FLUID_TRANSFER.get());
+            event.accept(zBlocks.ENERGY_RETRIEVAL.get());
+            event.accept(zBlocks.ENERGY_TRANSFER.get());
+        }
+
+        // ---------------------------------------------------------- //
+        // STORAGE
+        if (event.getTabKey() == zCreativeTab.STORAGE.getKey()) {
+            event.accept(zBlocks.WOODEN_TINY_CHEST.get());
+            event.accept(zBlocks.STONE_TINY_CHEST.get());
+            event.accept(zBlocks.ORNATE_TINY_CHEST.get());
+        }
+
+        // ---------------------------------------------------------- //
+        // MAGIC
+        if (event.getTabKey() == zCreativeTab.MAGIC.getKey()) {
+            event.accept(zBlocks.QUERN.get());
+            event.accept(zBlocks.URN.get());
+            event.accept(zBlocks.HEALER.get());
+        }
+
+        // ---------------------------------------------------------- //
+        // REDSTONE
+        if (event.getTabKey() == zCreativeTab.REDSTONE.getKey()) {
+            event.accept(zBlocks.PULSE_REPEATER.get());
+            event.accept(zBlocks.RECURSIVE_REPEATER.get());
+            event.accept(zBlocks.INVERTED_REPEATER.get());
+        }
+        // ---------------------------------------------------------- //
+        // RESOURCES
+        if (event.getTabKey() == zCreativeTab.RESOURCES.getKey()) {
+
+            Stream.of(
+                    zItems.zCraftingComponents,
+                    zItems.zDropLets,
+                    zItems.zResources,
+                    zItems.zDusts,
+                    zItems.zFoils,
+                    zItems.zGems,
+                    zItems.zIngots,
+                    zItems.zNuggets,
+                    zItems.zPlates,
+                    zItems.zRawOres,
+                    zItems.zShards,
+                    zItems.zMobDrop,
+                    zItems.zPellets,
+                    zItems.zCoils,
+                    zItems.zGears,
+                    zItems.zBucketItems).forEach(r -> r.getEntries().forEach(i -> event.accept(i.get())));
+
+        }
+    }
+
+}
