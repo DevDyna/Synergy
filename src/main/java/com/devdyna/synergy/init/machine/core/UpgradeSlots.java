@@ -44,14 +44,14 @@ public interface UpgradeSlots {
         var energy = getUpgradeInstalled(zItemTag.UPGRADE_ENERGY);
         var speed = getUpgradeInstalled(zItemTag.UPGRADE_SPEED);
 
-        return (base - ((int) (base * (energy * 0.15)))) // energy -> -15% | speed -> +15%
-                + ((int) (base * (speed * 0.15)));
+        return (base - ((int) (base * (energy * 0.2)))) // energy -> +20% | speed -> -20%
+                + ((int) (base * (speed * 0.2)));
     }
 
     // TODO config min-max limit
     public default int calculateMaxProgress(int base) {
         var upgrades = getUpgradeInstalled(zItemTag.UPGRADE_SPEED);
-        return (base - ((int) (base * (upgrades * 0.2))));// speed -> -20%
+        return (base - ((int) (base * (upgrades * 0.4))));// speed -> +40%
     }
 
 }
