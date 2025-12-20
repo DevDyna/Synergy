@@ -63,7 +63,7 @@ public class SolarPanelBE extends TickingBE implements EnergyProvider {
 
     @Override
     public int getFERate() {
-        return 64;
+        return 16;
     }
 
 }
