@@ -7,6 +7,7 @@ import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
@@ -29,7 +30,7 @@ MENU extends AbstractContainerMenu,
 
     private final DeferredHolder<Block, BLOCK> block;
     private final DeferredHolder<BlockEntityType<?>, BlockEntityType<BE>> be;
-    private final DeferredHolder<?, ?> item;
+    private final DeferredHolder<Item, ?> item;
     private final DeferredHolder<MenuType<?>, MenuType<MENU>> menutype;
 
     private final zRecipe<RECIPE> recipe;
@@ -66,7 +67,7 @@ MENU extends AbstractContainerMenu,
         return be;
     }
 
-    public DeferredHolder<?, ?> item() {
+    public DeferredHolder<Item, ?> item() {
         return item;
     }
 
