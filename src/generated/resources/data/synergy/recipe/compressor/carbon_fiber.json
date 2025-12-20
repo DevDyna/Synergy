@@ -2,14 +2,11 @@
   "type": "synergy:compressor",
   "energy": 10,
   "input": {
-    "item": "synergy:carbon_fiber"
+    "tag": "c:dusts/coal"
   },
   "output": {
     "count": 1,
-    "id": "synergy:carbon_plate"
-  },
-  "plate": {
-    "tag": "c:plates/steel"
+    "id": "synergy:carbon_fiber"
   },
   "ticks": 80
 }

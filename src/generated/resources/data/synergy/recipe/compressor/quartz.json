@@ -2,14 +2,11 @@
   "type": "synergy:compressor",
   "energy": 10,
   "input": {
-    "item": "synergy:carbon_fiber"
+    "tag": "c:dusts/quartz"
   },
   "output": {
     "count": 1,
-    "id": "synergy:carbon_plate"
-  },
-  "plate": {
-    "tag": "c:plates/steel"
+    "id": "minecraft:quartz"
   },
   "ticks": 80
 }

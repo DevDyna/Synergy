@@ -1,6 +1,6 @@
 {
   "type": "synergy:macerator",
-  "chance": 0.25,
+  "chance": 0.05,
   "energy": 10,
   "input": {
     "item": "minecraft:torchflower"

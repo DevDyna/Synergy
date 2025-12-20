@@ -1,0 +1,17 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.75,
+  "energy": 10,
+  "input": {
+    "item": "minecraft:blaze_rod"
+  },
+  "output": {
+    "count": 2,
+    "id": "minecraft:blaze_powder"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "minecraft:blaze_powder"
+  },
+  "ticks": 120
+}

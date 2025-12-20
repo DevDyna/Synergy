@@ -1,0 +1,12 @@
+{
+  "type": "synergy:compressor",
+  "energy": 10,
+  "input": {
+    "tag": "c:plates/iron"
+  },
+  "output": {
+    "count": 2,
+    "id": "synergy:iron_foil"
+  },
+  "ticks": 80
+}

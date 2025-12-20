@@ -2,11 +2,11 @@
   "type": "synergy:compressor",
   "energy": 10,
   "input": {
-    "item": "synergy:carbon_fiber"
+    "tag": "c:foils/gold"
   },
   "output": {
-    "count": 1,
-    "id": "synergy:carbon_plate"
+    "count": 2,
+    "id": "synergy:gold_coil"
   },
   "plate": {
     "tag": "c:plates/steel"

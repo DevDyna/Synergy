@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:compressor/carbon_plate"
+        "recipe": "synergy:macerator/blaze_powder_from_torchflower"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:carbon_fiber"
+            "items": "minecraft:torchflower"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:compressor/carbon_plate"
+      "synergy:macerator/blaze_powder_from_torchflower"
     ]
   }
 }
