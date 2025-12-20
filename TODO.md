@@ -9,13 +9,15 @@ _NaN_
 - [ ] Fuel cell output can conflict with input
 - [ ] quickMoveStack (i hate you!)
 
-- [ ] Nodes can void items with furnaces
+- [x] Nodes can void items with furnaces
+
+- [ ] Nodes bypass WorldyContainers restrictions
 
 - [ ] Mekanism IO will void/break many stuff (nodes , fuel cell , etc)
 
 - [x] Provider Nodes freeze entirely when output storage is null/full
 
-- [ ] Electric furnace dont process correctly some recipes (need to investigate) 
+- [ ] Electric furnace dont process correctly some recipes (need to investigate/if was already fixed?) 
 
 ## COMPATS AND TWEAKS
 
@@ -51,6 +53,8 @@ _NaN_
 - [ ] replace some "brute-force" particles and sound event to animateTick
 
 ## NEWS
+
+- [ ] Machine Upgrades
 
 - [ ] EYE
 
