@@ -3,6 +3,7 @@ package com.devdyna.synergy.datagen.server;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.init.types.zBlocks;
 import net.minecraft.core.HolderLookup.Provider;
@@ -24,6 +25,8 @@ public class DataBlockTag extends BlockTagsProvider {
 
         @Override
         protected void addTags(Provider p) {
+
+                tag(zBlockTag.MACHINES).add(ClazzUtil.getAllMachineTypes().stream().map(a->((Block)a.block().get())).toArray(Block[]::new));
 
                 tag(zBlockTag.LEAVES).addTag(BlockTags.LEAVES);
 

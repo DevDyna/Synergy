@@ -65,4 +65,7 @@ public class zBlockTag {
         public static final TagKey<Block> MODERATORS = Material
                         .tagBlock("moderator");
 
+
+public static final TagKey<Block> MACHINES = Material
+                        .tagBlock("industrial_machines");
 }

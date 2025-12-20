@@ -183,4 +183,7 @@ public class zItemTag {
         public static final TagKey<Item> COIL_IRON = Material.tagItem("coils/iron", "c");
         public static final TagKey<Item> COIL_SILVER = Material.tagItem("coils/silver", "c");
 
+public static final TagKey<Item> MACHINES = Material
+                        .tagItem("industrial_machines");
+
 }
