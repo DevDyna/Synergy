@@ -94,9 +94,9 @@ public class ElectricFurnaceBE extends BaseMachineBE {
                 .getRecipeFor(RecipeType.SMELTING, new SingleRecipeInput(getInput()), level);
 
         // no recipe
-        if (r.isEmpty())
+        if (r.isEmpty() && !vanilla.isEmpty())
             processVanillaType(vanilla.get().value());
-        else if (vanilla.isEmpty())
+        else if (!r.isEmpty())
             processStandaloneType(r.get().value());
         else {
             resetProgress();
