@@ -63,7 +63,7 @@ public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipe
         guiGraphics.drawString(font,
                 Component.literal(
                         recipe.getTime() + " ticks"),
-                25, 2,
+                22, 2,
                 defaultToolTipColor.getRGB(), false);
 
         if (recipe.hasSecondaryOutput())
