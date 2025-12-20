@@ -15,6 +15,8 @@ _NaN_
 
 - [x] Provider Nodes freeze entirely when output storage is null/full
 
+- [ ] Electric furnace dont process correctly some recipes (need to investigate) 
+
 ## COMPATS AND TWEAKS
 
 - [ ] Patchouli compat
@@ -105,8 +107,9 @@ _NaN_
 - [ ] Wireless Nodes
 - [ ] Fans & Wind (fluid-like)
 - [ ] Jukebox Network (jukebox that consume discs)
-- [ ] decorative devices
+- [ ] decorative devices (?)
 - [ ] dye essence (?)
+
 - ~~ Energy (like FE but a completly new Capability type) that allow E->FE~~ too codebase breaker
 
 - [ ] Rocket Launcher
@@ -117,12 +120,12 @@ _NaN_
 
 - [ ] Mindustry/DE like Fusion Reactor (?)
 
-- [ ] Electric Furnace (standard) Item->Item
+- [x] Electric Furnace (standard) Item->Item
 - [ ] Extractor (special recipes like honey) Item->(Item|Item)
-- [ ] Compressor (special recipes like blocks of X) Item->Item
-- [ ] Energy Converter (only FE->E)
-- [ ] Tiered Cables (transfer rate and capacity)
-- [ ] Alloy Smelter (Item|Item) -> Item
+- [x] Compressor (special recipes like blocks of X) Item->Item
+- ~~Energy Converter (only FE->E)~~
+- ~~Tiered Cables (transfer rate and capacity)~~
+- [x] Alloy Smelter (Item|Item) -> Item
 - [ ] Scrap Generator (recycle items to scraps and item used to craft)
 
 ### ResourceGen
