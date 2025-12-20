@@ -974,6 +974,28 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .group(ID)
                                 .save(c);
 
+                     ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_ENERGY.get())
+                                .pattern(" B ")
+                                .pattern("CSC")
+                                .pattern(" R ")
+                                .define('S', zItemTag.PLATE_STEEL)
+                                .define('R', zItems.RESISTOR.get())
+                                .define('B', zItems.BLUE_BATTERY.get())
+                                .define('C', zItems.CHIP.get())
+                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
+                                .group(ID).save(c);
+
+                     ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_SPEED.get())
+                                .pattern(" B ")
+                                .pattern("CSC")
+                                .pattern(" R ")
+                                .define('S', zItemTag.PLATE_STEEL)
+                                .define('R', zItems.CONDENSER.get())
+                                .define('B', zItems.AQUAMARINE.get())
+                                .define('C', zItems.CHIP.get())
+                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
+                                .group(ID).save(c);
+
         }
 
 }
