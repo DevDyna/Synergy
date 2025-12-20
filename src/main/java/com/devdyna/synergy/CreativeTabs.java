@@ -19,6 +19,8 @@ public class CreativeTabs {
 
             ClazzUtil.getAllMachineTypes()
                     .forEach(i -> event.accept((Item) i.item().get()));
+            ClazzUtil.getAllzItems(zItems.zMachineUpgrades)
+                    .forEach(a -> event.accept(a.get()));
         }
 
         // ---------------------------------------------------------- //

@@ -57,4 +57,20 @@ public class ItemTooltipEvents {
 
     }
 
+    @SubscribeEvent
+    public static void itemTooltipUpgrades(ItemTooltipEvent event) {
+
+        var item = event.getItemStack();
+        var tooltip = event.getToolTip();
+
+        if (item.is(zItemTag.UPGRADE_ENERGY)) {
+            tooltip.add(1, Component.translatable(Main.ID + ".upgrade.energy"));
+        }
+        if (item.is(zItemTag.UPGRADE_SPEED)) {
+            tooltip.add(1, Component.translatable(Main.ID + ".upgrade.speed.speed"));
+            tooltip.add(1, Component.translatable(Main.ID + ".upgrade.speed.energy"));
+        }
+
+    }
+
 }

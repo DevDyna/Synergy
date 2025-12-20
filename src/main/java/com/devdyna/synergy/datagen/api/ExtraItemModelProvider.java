@@ -137,6 +137,13 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                                 "plants/seeds/",
                                                 x.path(item.get())));
 
+                zItems.zMachineUpgrades.getEntries()
+                                .forEach(item -> DataGenUtil.itemModel(
+                                                item.get(),
+                                                this,
+                                                "upgrades/",
+                                                x.path(item.get()).replace("_"+zStatic.MachineUpgrades.TYPE, "")));
+
                 plants.forEach(w -> withExistingParent(
                                 x.path(w), "minecraft:item/generated")
                                 .texture("layer0", x.rl("item/plants/bush/" + x.path(w).replace("wild_", ""))));

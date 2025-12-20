@@ -1,7 +1,6 @@
 package com.devdyna.synergy;
 
 public class zStatic {
-    
 
     public class CreativeTab {
         public static String TYPE = "creative_tab";
@@ -90,6 +89,12 @@ public class zStatic {
         public static String shard = "_shard";
         public static String dust = "_dust";
         public static String pellet = "_pellet";
+    }
+
+    public class MachineUpgrades {
+        public static String TYPE = "upgrade";
+        public static String speed = "speed";
+        public static String energy = "energy";
     }
 
     public class Items {

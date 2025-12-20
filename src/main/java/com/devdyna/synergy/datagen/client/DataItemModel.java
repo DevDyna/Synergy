@@ -126,8 +126,6 @@ public class DataItemModel extends ExtraItemModelProvider {
                 withExistingParent(zBlocks.LASER_MIRROR.getRegisteredName(), modLoc("block/laser_mirror"));
                 withExistingParent(zBlocks.LASER_SENSOR.getRegisteredName(), modLoc("block/laser_sensor/off"));
 
-                
-
                 withExistingParent(x.path(zBlocks.PULSE_REPEATER.get()), "minecraft:item/generated")
                                 .texture("layer0", modLoc("item/redstone/pulse_repeater"));
                 withExistingParent(x.path(zBlocks.RECURSIVE_REPEATER.get()), "minecraft:item/generated")

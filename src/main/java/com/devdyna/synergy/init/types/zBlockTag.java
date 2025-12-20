@@ -67,5 +67,5 @@ public class zBlockTag {
 
 
 public static final TagKey<Block> MACHINES = Material
-                        .tagBlock("industrial_machines");
+                        .tagBlock("industrial_machine");
 }

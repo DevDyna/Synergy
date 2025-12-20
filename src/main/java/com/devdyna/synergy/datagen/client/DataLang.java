@@ -325,6 +325,11 @@ public class DataLang extends LanguageProvider {
 
                 add(ID + ".jei.tip.dont_consume", "§cDon't consume");
 
+                // i will move to item components intend of static values and tags
+                add(Main.ID + ".upgrade.speed.speed", TIP_COLOR + "Machine Speed : §a-20%§f");
+                add(Main.ID + ".upgrade.speed.energy", TIP_COLOR + "Machine Energy : §c+15%");
+                add(Main.ID + ".upgrade.energy", TIP_COLOR + "Machine Energy : §a-15%§f");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {

@@ -3,6 +3,7 @@ package com.devdyna.synergy.datagen.server;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.types.*;
@@ -12,10 +13,12 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings("null")
 public class DataItemTag extends ItemTagsProvider {
@@ -261,6 +264,16 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.COIL_GOLD).add(zItems.GOLD_COIL.get());
                 tag(zItemTag.COIL_IRON).add(zItems.IRON_COIL.get());
                 tag(zItemTag.COIL_SILVER).add(zItems.SILVER_COIL.get());
+
+                tag(zItemTag.UPGRADES)
+                                .add(
+                                                ClazzUtil.getAllzItems(zItems.zMachineUpgrades)
+                                                                .stream()
+                                                                .map(DeferredHolder::get)
+                                                                .toArray(Item[]::new));
+
+                tag(zItemTag.UPGRADE_ENERGY).add(zItems.UPGRADE_ENERGY.get());
+                tag(zItemTag.UPGRADE_SPEED).add(zItems.UPGRADE_SPEED.get());
 
         }
 

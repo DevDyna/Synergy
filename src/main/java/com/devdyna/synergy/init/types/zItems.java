@@ -53,6 +53,8 @@ public class zItems {
                 zPellets.register(bus);
                 zCoils.register(bus);
                 zGears.register(bus);
+
+                zMachineUpgrades.register(bus);
         }
 
         // ---------------------------------------------------------------------------------------//
@@ -105,6 +107,10 @@ public class zItems {
          * Generic resource type
          */
         public static final DeferredRegister.Items zResources = DeferredRegister.createItems(Main.ID);
+        /**
+         * Machine Upgrades
+         */
+        public static final DeferredRegister.Items zMachineUpgrades = DeferredRegister.createItems(Main.ID);
 
         // Dedicated resource types
         public static final DeferredRegister.Items zCoils = DeferredRegister.createItems(Main.ID);
@@ -430,12 +436,8 @@ public class zItems {
         public static final DeferredHolder<Item, Item> LEAD_GEAR = Material
                         .resourceGear(zStatic.ResourceMaterial.lead);
 
-        
-        
-        
-                // ---------------------------------------------------------------------------------------//
+        // ---------------------------------------------------------------------------------------//
 
-        
         public static final DeferredHolder<Item, Item> CARBON_FIBER = Material
                         .resourceItem("carbon_fiber");
 
@@ -448,7 +450,6 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> SAP = Material.droplet(zStatic.Fluids.SAP);
 
-        
         public static final DeferredHolder<Item, Item> WASTE_FRAGMENT = Material
                         .resourceItem("waste_fragment");
         public static final DeferredHolder<Item, Item> WASTE = Material
@@ -478,6 +479,13 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,
                         () -> new CakeStick());
+        // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> UPGRADE_SPEED = Material
+                        .machineUpgrade(zStatic.MachineUpgrades.speed);
+
+        public static final DeferredHolder<Item, Item> UPGRADE_ENERGY = Material
+                        .machineUpgrade(zStatic.MachineUpgrades.energy);
+
         // ---------------------------------------------------------------------------------------//
 
 }

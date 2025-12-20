@@ -184,6 +184,15 @@ public class zItemTag {
         public static final TagKey<Item> COIL_SILVER = Material.tagItem("coils/silver", "c");
 
 public static final TagKey<Item> MACHINES = Material
-                        .tagItem("industrial_machines");
+                        .tagItem("industrial_machine");
+
+public static final TagKey<Item> UPGRADES = Material
+                        .tagItem("upgrades");
+
+public static final TagKey<Item> UPGRADE_ENERGY = Material
+                        .tagItem("upgrades/energy");
+
+public static final TagKey<Item> UPGRADE_SPEED = Material
+                        .tagItem("upgrades/speed");
 
 }

@@ -216,6 +216,11 @@ public class Material {
                                 .registerSimpleItem(name);
         }
 
+        public static DeferredHolder<Item, Item> machineUpgrade(String name) {
+                return zItems.zMachineUpgrades
+                                .registerSimpleItem(name+"_"+zStatic.MachineUpgrades.TYPE);
+        }
+
         public static DeferredHolder<Item, Item> droplet(String name) {
                 return zItems.zDropLets
                                 .registerSimpleItem(name);
