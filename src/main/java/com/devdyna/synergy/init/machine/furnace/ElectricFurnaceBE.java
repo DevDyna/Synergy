@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.utils.LogUtil;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
@@ -172,7 +171,6 @@ public class ElectricFurnaceBE extends BaseMachineBE {
             return;
         }
 
-        LogUtil.info("fired");
         updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
 
         getInput().shrink(1);
