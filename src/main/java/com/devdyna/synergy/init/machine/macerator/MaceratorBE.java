@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.machine.macerator;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
@@ -9,9 +10,12 @@ import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.machine.core.ExtraMachineSlot;
+import com.devdyna.synergy.init.machine.core.UpgradeSlots;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -23,11 +27,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot {
+public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot , UpgradeSlots {
 
     public MaceratorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-        this.storage = new MachineItemHandler(getMachineSlots());
+        this.storage = new MachineItemHandler(7);
         this.energyStorage = new EnergyStorage(MaxFE());
         networkData = new ContainerData() {
             @Override
@@ -61,7 +65,12 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot {
 
     @Override
     public int getMachineSlots() {
-        return 3;
+        return 7;
+    }
+
+    @Override
+    public List<Integer> getInputSlotIndex() {
+        return Stream.concat(getUpgradeIndexs().stream(), Stream.of(INPUT_SLOT)).toList();
     }
 
     @Override
@@ -157,6 +166,8 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot {
             
         if (getBlockState().getValue(BaseMachineBlock.ENABLED))
             update(false);
+
+            setChanged();
     }
 
     @Override
@@ -169,4 +180,24 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot {
       return TYPE.OUTPUT;
   }
 
+
+  @Override
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        tag.put("inventory", getStorage().serializeNBT(registries));
+        tag.putInt("progress", progress);
+        tag.putInt("energy", energyStorage.getEnergyStored());
+        super.saveAdditional(tag, registries);
+    }
+
+    @Override
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        getStorage().deserializeNBT(registries, tag.getCompound("inventory"));
+        if (tag.contains("progress"))
+            progress = tag.getInt("progress");
+
+        if (tag.contains("energy"))
+            energyStorage.receiveEnergy(Math.min(tag.getInt("energy"), energyStorage.getMaxEnergyStored()), false);
+
+        super.loadAdditional(tag, registries);
+    }
 }

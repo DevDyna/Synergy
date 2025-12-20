@@ -25,6 +25,15 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
+        
+        guiGraphics.blit(
+                x.rl("textures/gui/container/upgrade_slots.png"),
+                getGuiLeft() +172,
+                getGuiTop(),
+                0, 0,
+                32, 86,
+                32, 86);
+
         super.renderBg(guiGraphics, v, i, i1);
 
         if (getRemainProgress() > 0)
@@ -32,6 +41,9 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
                     getGuiLeft() + 68,
                     getGuiTop() + 70,
                     defaultToolTipColor.getRGB(), false);
+
+        
+
 
         guiGraphics.blit(
                 x.rl("textures/gui/container/energy.png"),

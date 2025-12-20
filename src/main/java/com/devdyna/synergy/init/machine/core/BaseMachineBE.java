@@ -23,6 +23,9 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 @SuppressWarnings("null")
 public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomation, EnergyBlock {
 
+    public static final int DEFAULT_FE_COST = 10;
+    public static final int DEFAULT_TICK_DURATION = 60;
+
     protected int progress = 0;
     protected int maxProgress;
     protected int energy = 0;
@@ -57,10 +60,10 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         Containers.dropContents(this.level, this.worldPosition, inv);
     }
 
-    @Override
-    public int getMachineSlots() {
-        return 2;
-    }
+    // @Override
+    // public int getMachineSlots() {
+    //     return 2;
+    // }
 
     @Override
     public List<Integer> getInputSlotIndex() {
@@ -252,16 +255,16 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     }
 
     // /**
-    //  * Return <code>true</code> when success
-    //  */
+    // * Return <code>true</code> when success
+    // */
     // public boolean checkOptionalSlot(ItemStack slot, Ingredient recipeSlot) {
-    //     if (!slot.isEmpty()) {
-    //         // not same item or no items
-    //         if (recipeSlot.hasNoItems() || !recipeSlot.test(slot)) {
-    //             return false;
-    //         }
-    //     }
-    //     return true;
+    // if (!slot.isEmpty()) {
+    // // not same item or no items
+    // if (recipeSlot.hasNoItems() || !recipeSlot.test(slot)) {
+    // return false;
+    // }
+    // }
+    // return true;
     // }
 
     /**

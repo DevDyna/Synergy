@@ -8,6 +8,7 @@ import static com.devdyna.synergy.init.machine.core.BaseMachineBE.*;
 import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
+import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.network.FriendlyByteBuf;
@@ -37,6 +38,11 @@ public class AlloySmelterMenu extends BaseMachineMenu {
         addMachineOutputSlot(blockEntity.getStorage(), 1, 119, 34);
         addMachineInputSlot(blockEntity.getStorage(), 2, 54, 33);
         
+
+         addSingleMachineSlot((u1)->u1.is(zItemTag.UPGRADES),blockEntity.getStorage(), 3, 180, 8);
+        addSingleMachineSlot((u2)->u2.is(zItemTag.UPGRADES),blockEntity.getStorage(), 4, 180, 26);
+        addSingleMachineSlot((u3)->u3.is(zItemTag.UPGRADES),blockEntity.getStorage(), 5, 180, 44);
+        addSingleMachineSlot((u4)->u4.is(zItemTag.UPGRADES),blockEntity.getStorage(), 6, 180, 62);
         addDataSlots(data);
     }
 

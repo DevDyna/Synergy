@@ -114,7 +114,7 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         });
     }
 
-    protected void addMachineInputSlot(Function<ItemStack, Boolean> mayPlace, ItemStackHandler beSlot, int id, int x,
+    protected void addMachineSlot(Function<ItemStack, Boolean> mayPlace, ItemStackHandler beSlot, int id, int x,
             int y) {
         addSlot(new SlotItemHandler(beSlot, id, x, y) {
             @Override
@@ -126,6 +126,32 @@ public abstract class BaseMenu extends AbstractContainerMenu {
             public boolean mayPickup(Player playerIn) {
                 return true;
             }
+        });
+    }
+
+    protected void addSingleMachineSlot(Function<ItemStack, Boolean> mayPlace, ItemStackHandler beSlot, int id, int x,
+            int y) {
+        addSlot(new SlotItemHandler(beSlot, id, x, y) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return mayPlace.apply(stack);
+            }
+
+            @Override
+            public boolean mayPickup(Player playerIn) {
+                return true;
+            }
+
+            @Override
+            public int getMaxStackSize() {
+                return 1;
+            }
+
+            @Override
+            public int getMaxStackSize(ItemStack stack) {
+                return 1;
+            }
+
         });
     }
 
@@ -155,7 +181,7 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         }
     }
 
-    //TODO not work properly
+    // TODO not work properly
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
         ItemStack movedStack = ItemStack.EMPTY;

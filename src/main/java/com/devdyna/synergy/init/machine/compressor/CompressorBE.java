@@ -1,6 +1,8 @@
 package com.devdyna.synergy.init.machine.compressor;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
@@ -9,6 +11,7 @@ import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeType;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.machine.core.ExtraMachineSlot;
+import com.devdyna.synergy.init.machine.core.UpgradeSlots;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -22,11 +25,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot {
+public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot ,UpgradeSlots{
 
     public CompressorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-        this.storage = new MachineItemHandler(getMachineSlots());
+        this.storage = new MachineItemHandler(7);
         this.energyStorage = new EnergyStorage(MaxFE());
         networkData = new ContainerData() {
             @Override
@@ -60,7 +63,7 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot {
 
     @Override
     public int getMachineSlots() {
-        return 3;
+        return 7;
     }
 
     public CompressorBE(BlockPos pos, BlockState blockState) {
@@ -71,6 +74,11 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot {
     @Nullable
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
         return new CompressorMenu(i, inventory, this, this.networkData);
+    }
+
+    @Override
+    public List<Integer> getInputSlotIndex() {
+        return Stream.concat(getUpgradeIndexs().stream(), Stream.of(INPUT_SLOT)).toList();
     }
 
     @Override
@@ -106,7 +114,7 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot {
         //     return;
         // }
 
-        this.maxProgress = recipe.getTime();
+        this.maxProgress = calculateMaxProgress(recipe.getTime());
 
         if (!(checkSlot(getOutput(), output))) {
             resetProgress();
@@ -118,7 +126,7 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot {
         else
             this.progress++;
 
-        if (checkAndConsumeFE(recipe.getEnergy())) {
+        if (checkAndConsumeFE(calculateFEUsage(recipe.getEnergy()))) {
             if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
                 update(true);
         } else {

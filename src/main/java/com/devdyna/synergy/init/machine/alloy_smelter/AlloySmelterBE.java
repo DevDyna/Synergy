@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.machine.alloy_smelter;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
@@ -10,6 +11,7 @@ import com.devdyna.synergy.init.machine.alloy_smelter.recipe.AlloySmelterRecipeT
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.machine.core.ExtraMachineSlot;
+import com.devdyna.synergy.init.machine.core.UpgradeSlots;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -23,11 +25,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot {
+public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot, UpgradeSlots {
 
     public AlloySmelterBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-        this.storage = new MachineItemHandler(getMachineSlots());
+        this.storage = new MachineItemHandler(7);
         this.energyStorage = new EnergyStorage(MaxFE());
         networkData = new ContainerData() {
             @Override
@@ -61,12 +63,12 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot {
 
     @Override
     public int getMachineSlots() {
-        return 3;
+        return 7;
     }
 
     @Override
     public List<Integer> getInputSlotIndex() {
-        return List.of(INPUT_SLOT, EXTRA_SLOT);
+        return Stream.concat(getUpgradeIndexs().stream(), Stream.of(INPUT_SLOT, EXTRA_SLOT)).toList();
     }
 
     public AlloySmelterBE(BlockPos pos, BlockState blockState) {
@@ -112,14 +114,7 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot {
 
         ItemStack output = recipe.getOutputItem().copy();
 
-        // Ingredient catalyst = recipe.getCatalystItem();
-
-        // if(!catalyst.test(getExtraSlot())){
-        // resetProgress();
-        // return;
-        // }
-
-        this.maxProgress = recipe.getTime();
+        this.maxProgress = calculateMaxProgress(recipe.getTime());
 
         if (!(checkSlot(getOutput(), output))) {
             resetProgress();
@@ -131,7 +126,7 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot {
         else
             this.progress++;
 
-        if (checkAndConsumeFE(recipe.getEnergy())) {
+        if (checkAndConsumeFE(calculateFEUsage(recipe.getEnergy()))) {
             if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
                 update(true);
         } else {

@@ -1,12 +1,15 @@
 package com.devdyna.synergy.init.machine.furnace;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.machine.core.BaseMachineBE;
 import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
+import com.devdyna.synergy.init.machine.core.UpgradeSlots;
 import com.devdyna.synergy.init.machine.furnace.recipe.ElectricFurnaceRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 
@@ -25,11 +28,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class ElectricFurnaceBE extends BaseMachineBE {
+public class ElectricFurnaceBE extends BaseMachineBE implements UpgradeSlots{
 
     public ElectricFurnaceBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-        this.storage = new MachineItemHandler(getMachineSlots());
+        this.storage = new MachineItemHandler(7);
         this.energyStorage = new EnergyStorage(MaxFE());
         networkData = new ContainerData() {
             @Override
@@ -63,7 +66,7 @@ public class ElectricFurnaceBE extends BaseMachineBE {
 
     @Override
     public int getMachineSlots() {
-        return 2;
+        return 6;
     }
 
     public ElectricFurnaceBE(BlockPos pos, BlockState blockState) {
@@ -74,6 +77,11 @@ public class ElectricFurnaceBE extends BaseMachineBE {
     @Nullable
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
         return new ElectricFurnaceMenu(i, inventory, this, this.networkData);
+    }
+
+    @Override
+    public List<Integer> getInputSlotIndex() {
+        return Stream.concat(getUpgradeIndexs().stream(), Stream.of(INPUT_SLOT)).toList();
     }
 
     @Override
@@ -109,7 +117,7 @@ public class ElectricFurnaceBE extends BaseMachineBE {
 
         ItemStack output = recipe.getOutputItem().copy();
 
-        this.maxProgress = recipe.getTime();
+        this.maxProgress = calculateMaxProgress(recipe.getTime());
 
         if (!(checkSlot(getOutput(), output))) {
             resetProgress();
@@ -121,7 +129,7 @@ public class ElectricFurnaceBE extends BaseMachineBE {
         else
             this.progress++;
 
-        if (checkAndConsumeFE(recipe.getEnergy())) {
+        if (checkAndConsumeFE(calculateFEUsage(recipe.getEnergy()))) {
             if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
                 update(true);
         } else {
@@ -146,7 +154,7 @@ public class ElectricFurnaceBE extends BaseMachineBE {
     private void processVanillaType(SmeltingRecipe recipe) {
         ItemStack output = recipe.getResultItem(level.registryAccess()).copy();
 
-        this.maxProgress = 60;
+        this.maxProgress = calculateMaxProgress(DEFAULT_TICK_DURATION);
 
         if (!(checkSlot(getOutput(), output))) {
             resetProgress();
@@ -158,7 +166,7 @@ public class ElectricFurnaceBE extends BaseMachineBE {
         else
             this.progress++;
 
-        if (checkAndConsumeFE(10)) {
+        if (checkAndConsumeFE(calculateFEUsage(DEFAULT_FE_COST))) {
             if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
                 update(true);
         } else {
