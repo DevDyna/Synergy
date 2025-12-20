@@ -36,7 +36,11 @@ public interface UpgradeSlots {
 
 
     public default int getUpgradeInstalled(TagKey<Item> filter) {
-        return (int) getUpgradeInstalled().stream().filter(i -> i.is(filter)).count();
+        return getUpgradeInstalled(filter,4);
+    }
+
+    public default int getUpgradeInstalled(TagKey<Item> filter,int max) {
+        return Math.min(max,(int) getUpgradeInstalled().stream().filter(i -> i.is(filter)).count());
     }
 
     // TODO config min-max limit
@@ -44,14 +48,14 @@ public interface UpgradeSlots {
         var energy = getUpgradeInstalled(zItemTag.UPGRADE_ENERGY);
         var speed = getUpgradeInstalled(zItemTag.UPGRADE_SPEED);
 
-        return (base - ((int) (base * (energy * 0.2)))) // energy -> +20% | speed -> -20%
-                + ((int) (base * (speed * 0.2)));
+        return (base - ((int) (base * (energy * 0.75)))) // energy -> +75% | speed -> -100%
+                + ((int) (base * speed));
     }
 
     // TODO config min-max limit
     public default int calculateMaxProgress(int base) {
-        var upgrades = getUpgradeInstalled(zItemTag.UPGRADE_SPEED);
-        return (base - ((int) (base * (upgrades * 0.4))));// speed -> +40%
+        var upgrades = getUpgradeInstalled(zItemTag.UPGRADE_SPEED,2);//TODO config
+        return (base - ((int) (base * (upgrades * 0.35))));// speed -> +35% max 2
     }
 
 }
