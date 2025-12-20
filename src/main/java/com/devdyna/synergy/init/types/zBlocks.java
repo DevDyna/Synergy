@@ -54,6 +54,7 @@ public class zBlocks {
                 zBlockStair.register(bus);
                 zCoolers.register(bus);
                 zModerators.register(bus);
+                zMachineFrame.register(bus);
                 registerLists();
         }
 
@@ -94,6 +95,7 @@ public class zBlocks {
         public static final DeferredRegister.Blocks zDecorative = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zBlockSlab = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zBlockStair = DeferredRegister.createBlocks(Main.ID);
+        public static final DeferredRegister.Blocks zMachineFrame = DeferredRegister.createBlocks(Main.ID);
 
         /**
          * reactor stuff
@@ -214,11 +216,11 @@ public class zBlocks {
 
         public static final DeferredHolder<Block, Block> BASIC_MACHINE_FRAME = Material.registerItemBlock(
                         zStatic.DecorativeBlocks.MachineFrame.basic,
-                        () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)));
+                        () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)),zMachineFrame);
 
         public static final DeferredHolder<Block, Block> ADVANCED_MACHINE_FRAME = Material.registerItemBlock(
                         zStatic.DecorativeBlocks.MachineFrame.advanced,
-                        () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)));
+                        () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)),zMachineFrame);
 
         public static final DeferredHolder<Block, Block> HEALER = Material.registerItemBlock(
                         zStatic.Blocks.healer,
