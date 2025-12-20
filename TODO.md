@@ -52,6 +52,8 @@ _NaN_
 
 ## NEWS
 
+- [ ] EYE
+
 - [ ] BREAD
 
 - [ ] Metal Smeltery (tiny tinker-like?)
