@@ -58,7 +58,7 @@ _NaN_
 
 - [ ] EYE
 
-- [ ] BREAD
+- [x] BREAD
 
 - [ ] Metal Smeltery (tiny tinker-like?)
 
