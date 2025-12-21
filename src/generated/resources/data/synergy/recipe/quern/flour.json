@@ -2,7 +2,7 @@
   "type": "synergy:quern",
   "frequence": 80,
   "ingredient": {
-    "tag": "c:crops/wheat"
+    "item": "minecraft:wheat"
   },
   "result": {
     "count": 1,
