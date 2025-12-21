@@ -323,7 +323,7 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jade.info.cooler_status.false", "Status: §cInactive");
                 add(ID + ".jade.info.cooler_status.true", "Status: §aActive");
 
-                add(ID + ".jei.tip.dont_consume", "§cDon't consume");
+                add(ID + ".jei.tip.dont_consume", "§cNot consume");
 
                 // i will move to item components intend of static values and tags
                 add(Main.ID + ".upgrade.speed.speed", TIP_COLOR + "Machine Speed : §a+35%§f");
