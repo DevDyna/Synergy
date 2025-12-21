@@ -297,7 +297,7 @@
   "synergy.jei.provider.fluid": "Fluid Provider Pattern",
   "synergy.jei.provider.item": "Item Provider Pattern",
   "synergy.jei.quern": "Quern Milling",
-  "synergy.jei.tip.dont_consume": "§cDon't consume",
+  "synergy.jei.tip.dont_consume": "§cNot consume",
   "synergy.jei.urn": "Urn Rituals",
   "synergy.jei.warning.config": "Can be overriden via config",
   "synergy.laser.rotate_by_click": "§7Can be rotated with right-click",
