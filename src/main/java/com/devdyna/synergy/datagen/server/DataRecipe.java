@@ -779,7 +779,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(120)
                                 .group(ID)
                                 .unlockedBy()
-                                .save(c,"_from_torchflower");
+                                .save(c, "_from_torchflower");
 
                 MaceratorRecipeBuilder.of()
                                 .input(Items.BLAZE_ROD)
@@ -789,7 +789,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(120)
                                 .group(ID)
                                 .unlockedBy()
-                                .save(c,"_from_blaze_rod");
+                                .save(c, "_from_blaze_rod");
 
                 ShapedRecipeBuilder.shaped(MISC, Items.MUD_BRICKS, 1).define('#', zItems.PACKED_MUD_BRICK.get())
                                 .pattern("##").pattern("##").unlockedBy(getHasName(zItems.PACKED_MUD_BRICK.get()),
@@ -974,7 +974,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .group(ID)
                                 .save(c);
 
-                     ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_ENERGY.get())
+                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_ENERGY.get())
                                 .pattern(" B ")
                                 .pattern("CSC")
                                 .pattern(" R ")
@@ -985,7 +985,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
                                 .group(ID).save(c);
 
-                     ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_SPEED.get())
+                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_SPEED.get())
                                 .pattern(" B ")
                                 .pattern("CSC")
                                 .pattern(" R ")
@@ -995,6 +995,26 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .define('C', zItems.CHIP.get())
                                 .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
                                 .group(ID).save(c);
+
+                MaceratorRecipeBuilder.of()
+                                .input(Tags.Items.CROPS_WHEAT)
+                                .delay(40)
+                                .unlockedBy()
+                                .group(ID)
+                                .output(zItems.FLOUR, 2)
+                                .secondary(Items.WHEAT_SEEDS)
+                                .chance(0.75f)
+                                .save(c);
+
+                QuernMillingBuilder.of()
+                                .input(Tags.Items.CROPS_WHEAT)
+                                .delay(80)
+                                .unlockedBy()
+                                .group(ID)
+                                .output(zItems.FLOUR)
+                                .save(c);
+
+                smeltingResultFromBase(c, Items.BREAD, zItems.FLOUR.get());
 
         }
 

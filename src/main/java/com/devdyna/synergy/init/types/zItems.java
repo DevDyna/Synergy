@@ -475,6 +475,9 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> ADOBE_BALL = Material
                         .resourceItem(zStatic.DryableBricks.ball.adobe);
+
+        public static final DeferredHolder<Item, Item> FLOUR = Material
+                        .resourceItem(zStatic.Items.flour);
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,

@@ -151,6 +151,9 @@ public class zStatic {
 
         public static String ember_coal_mixture = "coal_mixture";
 
+
+        public static String flour = "flour";
+
     }
 
     public class DecorativeBlocks {
