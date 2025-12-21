@@ -997,7 +997,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .group(ID).save(c);
 
                 MaceratorRecipeBuilder.of()
-                                .input(Tags.Items.CROPS_WHEAT)
+                                .input(Items.WHEAT)
                                 .delay(40)
                                 .unlockedBy()
                                 .group(ID)
@@ -1007,7 +1007,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 QuernMillingBuilder.of()
-                                .input(Tags.Items.CROPS_WHEAT)
+                                .input(Items.WHEAT)
                                 .delay(80)
                                 .unlockedBy()
                                 .group(ID)
