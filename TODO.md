@@ -54,7 +54,7 @@ _NaN_
 
 ## NEWS
 
-- [ ] Machine Upgrades
+- [x] Machine Upgrades
 
 - [ ] EYE
 
