@@ -347,6 +347,7 @@
   "synergy.upgrade.speed.energy": "§7Machine Energy : §c-100%",
   "synergy.upgrade.speed.speed": "§7Machine Speed : §a+35%§f",
   "synergy.venom_sac.tip": "§7Obtained from Poison Creatures",
+  "synergy.void_box": "§7A strange box to allow to NOT store items",
   "synergy.waiting": "§eRequire a redstone signal to stay active",
   "synergy.witherflesh.tip": "§7Obtained from Wither Skeletons",
   "synergy.wooden_crook": "§7Increase the chance to obtain saplings",

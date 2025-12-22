@@ -8,6 +8,16 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:barrier"
+          },
+          {
+            "items": "minecraft:barrier"
+          }
+        ]
+      },
       "trigger": "minecraft:inventory_changed"
     }
   },

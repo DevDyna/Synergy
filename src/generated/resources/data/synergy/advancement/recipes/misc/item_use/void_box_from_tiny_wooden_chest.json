@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:urn_ritual/void_box"
+        "recipe": "synergy:item_use/void_box_from_tiny_wooden_chest"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -19,7 +19,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:urn_ritual/void_box"
+      "synergy:item_use/void_box_from_tiny_wooden_chest"
     ]
   }
 }

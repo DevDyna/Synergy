@@ -1,0 +1,21 @@
+{
+  "type": "synergy:item_use",
+  "base": {
+    "Name": "synergy:tiny_wooden_chest",
+    "Properties": {
+      "facing": "north"
+    }
+  },
+  "can_be_disabled": false,
+  "catalyst": {
+    "item": "synergy:void_crystal"
+  },
+  "render_only": false,
+  "result": {
+    "Name": "synergy:void_box",
+    "Properties": {
+      "enabled": "true",
+      "facing": "north"
+    }
+  }
+}

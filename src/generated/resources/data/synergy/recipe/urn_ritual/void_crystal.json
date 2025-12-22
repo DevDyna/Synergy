@@ -2,20 +2,17 @@
   "type": "synergy:urn",
   "ingredient": [
     {
-      "item": "minecraft:diamond"
+      "tag": "c:dusts/coal"
     },
     {
-      "item": "synergy:witherflesh"
+      "tag": "c:gems/diamond"
     },
     {
-      "item": "synergy:slime_bolus"
-    },
-    {
-      "item": "minecraft:echo_shard"
+      "item": "synergy:energized_redstone_dust"
     }
   ],
   "result": {
-    "count": 1,
+    "count": 2,
     "id": "synergy:void_crystal"
   }
 }
