@@ -1015,12 +1015,16 @@ public class DataRecipe extends ExtraRecipeProvider {
                 smeltingResultFromBase(c, Items.BREAD, zItems.FLOUR.get());
 
                 UrnRitualBuilder.of()
-                                .add(Items.DIAMOND)
-                                .add(zItems.WITHERFLESH)
-                                .add(zItems.SLIME_BOLUS)
+                                .add(zItems.GHOUL_HEART)
                                 .add(Items.ECHO_SHARD)
-                                .output(zItems.VOID_CRYSTAL.get())
+                                .output(zItems.VOID_CRYSTAL.get(),2)
                                 .unlockedBy().group(ID).save(c);
+
+                ItemUseBuilder.of()
+                                .inputItem(zItems.VOID_CRYSTAL)
+                                .inputBlock(zBlocks.WOODEN_TINY_CHEST)
+                                .outputBlock(zBlocks.VOID_BOX)
+                                .unlockedBy().save(c);
 
         }
 
