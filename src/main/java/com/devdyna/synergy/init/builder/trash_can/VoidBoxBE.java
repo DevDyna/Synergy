@@ -1,7 +1,5 @@
 package com.devdyna.synergy.init.builder.trash_can;
 
-import javax.annotation.Nullable;
-
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
@@ -16,14 +14,12 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.event.level.NoteBlockEvent.Play;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
@@ -117,36 +113,28 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
         slot.extractItem(0, item.getCount(), false);
     }
 
-    public Player player;
+    // TODO NYC
+
+    private float prevLidProgress;
+    private float lidProgress;
 
     @Override
     public void tickBoth() {
         var pos = getBlockPos();
         var player = level.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 2, false);
-        tickLid(player != null);
-    }
 
-    public @Nullable Player getPlayer() {
-        return player;
-    }
-
-    private float prevLidProgress;
-    private float lidProgress;
-
-    public float getLidProgress(float partialTick) {
-        return Mth.lerp(partialTick, prevLidProgress, lidProgress);
-    }
-
-    // Call this every tick to update lidProgress
-    public void tickLid(boolean isPlayerNearby) {
         prevLidProgress = lidProgress;
-        float increment = 0.1f; // speed of opening/closing
-        if (isPlayerNearby && lidProgress < 1.0f) {
+        float increment = 0.1f;
+        if (player != null && lidProgress < 1.0f) {
             lidProgress += increment;
-        } else if (!isPlayerNearby && lidProgress > 0.0f) {
+        } else if (player == null && lidProgress > 0.0f) {
             lidProgress -= increment;
         }
         lidProgress = Mth.clamp(lidProgress, 0.0f, 1.0f);
+    }
+
+    public float getLidProgress(float partialTick) {
+        return Mth.lerp(partialTick, prevLidProgress, lidProgress);
     }
 
 }
