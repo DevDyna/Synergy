@@ -55,7 +55,7 @@ public class WoodenTinyChestBlock extends BlockStorage {
 
     @Override
     protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
-        return Block.box(5, 0, 5, 11, 6, 11);
+        return Block.box(4, 0, 4, 12, 8, 12);
     }
 
     @Override
