@@ -8,7 +8,10 @@
       "tag": "c:dusts/gold"
     },
     {
-      "item": "synergy:ghoul_heart"
+      "item": "synergy:advanced_alloy_plate"
+    },
+    {
+      "item": "minecraft:netherite_scrap"
     }
   ],
   "result": {

@@ -1,0 +1,18 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "item": "synergy:tiny_wooden_chest"
+    },
+    {
+      "item": "synergy:void_crystal"
+    },
+    {
+      "item": "synergy:ghoul_heart"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:void_box"
+  }
+}

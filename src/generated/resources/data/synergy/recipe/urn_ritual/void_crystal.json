@@ -1,0 +1,21 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "synergy:witherflesh"
+    },
+    {
+      "item": "synergy:slime_bolus"
+    },
+    {
+      "item": "minecraft:echo_shard"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:void_crystal"
+  }
+}
