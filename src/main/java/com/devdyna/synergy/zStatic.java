@@ -13,7 +13,7 @@ public class zStatic {
         public static String decorative = "decorative";
         public static String automation = "automation";
         public static String logistics = "logistics";
-        public static String storage = "storage";
+        // public static String storage = "storage";
         public static String magic = "magic";
         public static String redstone = "redstone";
 

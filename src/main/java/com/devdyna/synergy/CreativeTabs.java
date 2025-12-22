@@ -104,19 +104,14 @@ public class CreativeTabs {
         }
 
         // ---------------------------------------------------------- //
-        // STORAGE
-        if (event.getTabKey() == zCreativeTab.STORAGE.getKey()) {
-            event.accept(zBlocks.WOODEN_TINY_CHEST.get());
-            event.accept(zBlocks.STONE_TINY_CHEST.get());
-            event.accept(zBlocks.ORNATE_TINY_CHEST.get());
-        }
-
-        // ---------------------------------------------------------- //
         // MAGIC
         if (event.getTabKey() == zCreativeTab.MAGIC.getKey()) {
             event.accept(zBlocks.QUERN.get());
             event.accept(zBlocks.URN.get());
             event.accept(zBlocks.HEALER.get());
+            event.accept(zBlocks.WOODEN_TINY_CHEST.get());
+            event.accept(zBlocks.STONE_TINY_CHEST.get());
+            event.accept(zBlocks.ORNATE_TINY_CHEST.get());
         }
 
         // ---------------------------------------------------------- //
