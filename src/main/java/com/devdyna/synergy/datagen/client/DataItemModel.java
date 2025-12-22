@@ -43,9 +43,6 @@ public class DataItemModel extends ExtraItemModelProvider {
 
                 withExistingParent(zBlocks.SOLAR_PANEL.getRegisteredName(), modLoc("block/solar_panel/item_model"));
 
-                withExistingParent(zBlocks.VOID_BOX.getRegisteredName(), modLoc("block/tiny_block/void_box/item"));
-
-
                 node(zBlocks.ITEM_PROVIDER, "green");
                 node(zBlocks.ITEM_RETRIEVAL, "aqua");
                 node(zBlocks.ITEM_TRANSFER, "red");
@@ -107,6 +104,7 @@ public class DataItemModel extends ExtraItemModelProvider {
                 tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
                 tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
                 tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
+                tinyChestAll(zBlocks.VOID_BOX, "block/tiny_block/void_box/chest");
 
                 withExistingParent(zBlocks.URN.getRegisteredName(),
                                 modLoc("block/tiny_block/urn"));
