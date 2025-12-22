@@ -712,13 +712,6 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .output(zBlocks.STONE_TINY_CHEST.get())
                                 .unlockedBy().save(c);
 
-                UrnRitualBuilder.of()
-                                .add(zBlocks.WOODEN_TINY_CHEST.get())
-                                .add(zItems.VOID_CRYSTAL.get())
-                                .add(zItems.GHOUL_HEART.get())
-                                .output(zBlocks.VOID_BOX.get())
-                                .unlockedBy().group(ID).save(c);
-
         }
 
         protected void tools(RecipeOutput c) {
