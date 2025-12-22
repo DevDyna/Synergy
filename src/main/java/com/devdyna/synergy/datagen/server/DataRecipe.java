@@ -1002,8 +1002,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .group(ID)
                                 .output(zItems.FLOUR, 2)
-                                .secondary(Items.WHEAT_SEEDS)
-                                .chance(0.75f)
                                 .save(c);
 
                 QuernMillingBuilder.of()
@@ -1015,6 +1013,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 smeltingResultFromBase(c, Items.BREAD, zItems.FLOUR.get());
+
+                UrnRitualBuilder.of()
+                                .add(Items.DIAMOND)
+                                .add(zItems.WITHERFLESH)
+                                .add(zItems.SLIME_BOLUS)
+                                .add(Items.ECHO_SHARD)
+                                .output(zItems.VOID_CRYSTAL.get())
+                                .unlockedBy().group(ID).save(c);
 
         }
 

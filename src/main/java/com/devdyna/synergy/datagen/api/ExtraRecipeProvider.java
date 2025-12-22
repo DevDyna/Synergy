@@ -77,7 +77,6 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(ID, has(input))
                                 .group(ID).save(c);
 
-                                
         }
 
         protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot, Item secondary,
@@ -281,11 +280,11 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(input))
                                 .group(ID).save(c);
 
-                                CompressorRecipeBuilder.of()
+                CompressorRecipeBuilder.of()
                                 .input(input)
                                 .delay(80)
                                 .catalyst(zItemTag.PLATE_STEEL)
-                                .output(output,2)
+                                .output(output, 2)
                                 .unlockedBy()
                                 .group(ID)
                                 .save(c);
@@ -299,11 +298,11 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(input))
                                 .group(ID).save(c);
 
-                               CompressorRecipeBuilder.of()
+                CompressorRecipeBuilder.of()
                                 .input(input)
                                 .delay(80)
                                 .catalyst(zItemTag.PLATE_STEEL)
-                                .output(output,2)
+                                .output(output, 2)
                                 .unlockedBy()
                                 .group(ID)
                                 .save(c);
@@ -701,7 +700,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 UrnRitualBuilder.of()
                                 .add(zBlocks.WOODEN_TINY_CHEST.get())
                                 .add(zItemTag.DUST_GOLD)
-                                .add(zItems.GHOUL_HEART)
+                                .add(zItems.ADVANCED_ALLOY_PLATE)
+                                .add(Items.NETHERITE_SCRAP)
                                 .output(zBlocks.ORNATE_TINY_CHEST.get())
                                 .unlockedBy().save(c);
 
@@ -711,6 +711,13 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .add(zItems.GHAST_BLADDER)
                                 .output(zBlocks.STONE_TINY_CHEST.get())
                                 .unlockedBy().save(c);
+
+                UrnRitualBuilder.of()
+                                .add(zBlocks.WOODEN_TINY_CHEST.get())
+                                .add(zItems.VOID_CRYSTAL.get())
+                                .add(zItems.GHOUL_HEART.get())
+                                .output(zBlocks.VOID_BOX.get())
+                                .unlockedBy().group(ID).save(c);
 
         }
 
@@ -804,10 +811,10 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(Items.STICK))
                                 .group(ID).save(c);
 
-                                CompressorRecipeBuilder.of()
+                CompressorRecipeBuilder.of()
                                 .input(input)
                                 .delay(80)
-                                .output(output,2)
+                                .output(output, 2)
                                 .unlockedBy()
                                 .group(ID)
                                 .save(c);
@@ -824,11 +831,11 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(Items.STICK))
                                 .group(ID).save(c);
 
-                                CompressorRecipeBuilder.of()
+                CompressorRecipeBuilder.of()
                                 .input(input)
                                 .delay(80)
                                 .catalyst(zItemTag.PLATE_STEEL)
-                                .output(output,2)
+                                .output(output, 2)
                                 .unlockedBy()
                                 .group(ID)
                                 .save(c);

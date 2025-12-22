@@ -31,6 +31,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 block(zBlocks.QUERN, "block/quern/base");
                 block(zBlocks.QUERN_MOVING, "block/quern/moving");
+                block(zBlocks.VOID_BOX_LID, "block/tiny_block/void_box/animation");
 
                 node(zBlocks.ITEM_PROVIDER.get(), "green");
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
@@ -94,6 +95,8 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 modLoc("block/machine/frame/basic/bottom"),
                                                 modLoc("block/machine/frame/basic/top")));
 
+
+                                                
                 directionalBlock(zBlocks.BASIC_MACHINE_FRAME.get(),
                                 models().cubeBottomTop(zBlocks.BASIC_MACHINE_FRAME.getRegisteredName(),
                                                 modLoc("block/machine/frame/basic/side"),
@@ -130,6 +133,13 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 laserBlocks();
                 machines();
                 ClazzUtil.getAllzFluids().forEach(f -> fluid(f));
+
+
+
+                horizontalBlock(zBlocks.VOID_BOX.get(),
+                                models().withExistingParent(zBlocks.VOID_BOX.getRegisteredName(),
+                                                modLoc("block/tiny_block/void_box/block")));
+                
 
         }
 

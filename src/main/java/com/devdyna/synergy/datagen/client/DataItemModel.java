@@ -43,6 +43,9 @@ public class DataItemModel extends ExtraItemModelProvider {
 
                 withExistingParent(zBlocks.SOLAR_PANEL.getRegisteredName(), modLoc("block/solar_panel/item_model"));
 
+                withExistingParent(zBlocks.VOID_BOX.getRegisteredName(), modLoc("block/tiny_block/void_box/item"));
+
+
                 node(zBlocks.ITEM_PROVIDER, "green");
                 node(zBlocks.ITEM_RETRIEVAL, "aqua");
                 node(zBlocks.ITEM_TRANSFER, "red");
