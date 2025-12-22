@@ -42,8 +42,31 @@ public class ColorUtil {
         return rgbColor(level, 160);
     }
 
-    public static Color color(int red,int green, int blue){
+    public static Color color(int red, int green, int blue) {
         return new Color(red, green, blue);
+    }
+
+    public static int pulseColor(Level level, int delay, int startColor, int endColor) {
+
+        float t = (float) ((Math.sin((level.getGameTime() % delay) * (2 * Math.PI / delay)) + 1) / 2);
+
+        int r1 = (startColor >> 16) & 0xFF;
+        int g1 = (startColor >> 8) & 0xFF;
+        int b1 = startColor & 0xFF;
+
+        int r2 = (endColor >> 16) & 0xFF;
+        int g2 = (endColor >> 8) & 0xFF;
+        int b2 = endColor & 0xFF;
+
+        int r = (int) (r1 + (r2 - r1) * t);
+        int g = (int) (g1 + (g2 - g1) * t);
+        int b = (int) (b1 + (b2 - b1) * t);
+
+        return (r << 16) | (g << 8) | b;
+    }
+
+    public static int pulseColor(Level level, int startColor, int endColor){
+        return pulseColor(level, 160, startColor, endColor);
     }
 
 }
