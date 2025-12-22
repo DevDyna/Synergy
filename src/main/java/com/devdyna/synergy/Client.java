@@ -8,7 +8,7 @@ import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorAOE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.init.builder.quern.QuernRendering;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerAOE;
-import com.devdyna.synergy.init.builder.trash_can.VoidBoxRender;
+import com.devdyna.synergy.init.builder.void_box.VoidBoxRender;
 import com.devdyna.synergy.init.machine.alloy_smelter.AlloySmelterScreen;
 import com.devdyna.synergy.init.machine.compressor.CompressorScreen;
 import com.devdyna.synergy.init.machine.furnace.ElectricFurnaceScreen;
