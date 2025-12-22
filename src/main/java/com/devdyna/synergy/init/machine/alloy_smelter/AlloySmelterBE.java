@@ -2,7 +2,6 @@ package com.devdyna.synergy.init.machine.alloy_smelter;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
@@ -68,7 +67,7 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot, U
 
     @Override
     public List<Integer> getInputSlotIndex() {
-        return Stream.concat(getUpgradeIndexs().stream(), Stream.of(INPUT_SLOT, EXTRA_SLOT)).toList();
+        return List.of(INPUT_SLOT, EXTRA_SLOT);
     }
 
     public AlloySmelterBE(BlockPos pos, BlockState blockState) {

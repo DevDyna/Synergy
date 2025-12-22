@@ -62,7 +62,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     // @Override
     // public int getMachineSlots() {
-    //     return 2;
+    // return 2;
     // }
 
     @Override
@@ -115,7 +115,8 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
             @Override
             public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-                if (getInputSlotIndex().contains(slot))
+                if (getInputSlotIndex().contains(slot)
+                        && (this instanceof UpgradeSlots upgrades ? !upgrades.getUpgradeIndexs().contains(slot) : true))
                     return storage.insertItem(slot, stack, simulate);
                 return stack;
             }

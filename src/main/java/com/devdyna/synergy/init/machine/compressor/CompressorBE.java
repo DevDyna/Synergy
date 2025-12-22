@@ -1,9 +1,6 @@
 package com.devdyna.synergy.init.machine.compressor;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
-
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.common.recipes.input.BiItemInput;
@@ -74,11 +71,6 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot ,Upg
     @Nullable
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
         return new CompressorMenu(i, inventory, this, this.networkData);
-    }
-
-    @Override
-    public List<Integer> getInputSlotIndex() {
-        return Stream.concat(getUpgradeIndexs().stream(), Stream.of(INPUT_SLOT)).toList();
     }
 
     @Override

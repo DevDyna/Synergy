@@ -2,8 +2,6 @@ package com.devdyna.synergy.init.machine.macerator;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
-
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
@@ -27,7 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot , UpgradeSlots {
+public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot, UpgradeSlots {
 
     public MaceratorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -69,11 +67,6 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot , Upg
     }
 
     @Override
-    public List<Integer> getInputSlotIndex() {
-        return Stream.concat(getUpgradeIndexs().stream(), Stream.of(INPUT_SLOT)).toList();
-    }
-
-    @Override
     public List<Integer> getOutputSlotIndex() {
         return List.of(OUTPUT_SLOT, EXTRA_SLOT);
     }
@@ -95,9 +88,8 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot , Upg
         if (getInput().isEmpty()) {
             resetProgress();
             return;
-        } else 
+        } else
             progress_cancel = false;
-        
 
         Optional<RecipeHolder<MaceratorRecipeType>> r = level.getRecipeManager()
                 .getRecipeFor(zMachines.MACERATOR.recipe().getType(),
@@ -163,11 +155,11 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot , Upg
             progress--;
         if (progress == 0)
             progress_cancel = false;
-            
+
         if (getBlockState().getValue(BaseMachineBlock.ENABLED))
             update(false);
 
-            setChanged();
+        setChanged();
     }
 
     @Override
@@ -175,13 +167,12 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot , Upg
         return networkData;
     }
 
-  @Override
-  public TYPE getSlotType() {
-      return TYPE.OUTPUT;
-  }
+    @Override
+    public TYPE getSlotType() {
+        return TYPE.OUTPUT;
+    }
 
-
-  @Override
+    @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         tag.put("inventory", getStorage().serializeNBT(registries));
         tag.putInt("progress", progress);
