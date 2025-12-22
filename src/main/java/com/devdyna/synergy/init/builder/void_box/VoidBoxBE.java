@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.trash_can;
+package com.devdyna.synergy.init.builder.void_box;
 
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
@@ -11,6 +11,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
@@ -86,6 +88,7 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
 
     @Override
     public void tickServer() {
+
         if (level == null)
             return;
 
@@ -117,10 +120,16 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
 
     private float prevLidProgress;
     private float lidProgress;
+    private boolean startSound = false;
+    private float temp;
 
     @Override
     public void tickBoth() {
+
         var pos = getBlockPos();
+        if (level == null)
+            return;
+
         var player = level.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 2, false);
 
         prevLidProgress = lidProgress;
@@ -131,10 +140,39 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
             lidProgress -= increment;
         }
         lidProgress = Mth.clamp(lidProgress, 0.0f, 1.0f);
+
+        if (!level.isClientSide) {
+            float current = getAnimationProgress();
+
+            if (current != temp && startSound) {
+                if (current > temp) {
+                    // opening
+                    level.playSound(null, pos, SoundEvents.ENDER_CHEST_OPEN,
+                            SoundSource.BLOCKS, 1f, 1.1f);
+                } else {
+                    // closing
+                    level.playSound(null, pos, SoundEvents.ENDER_CHEST_CLOSE,
+                            SoundSource.BLOCKS, 1f, 1.1f);
+                }
+                startSound = false;
+            }
+
+            // re-arm only at the ends
+            if (current <= 0.05f || current >= 0.95f) {
+                startSound = true;
+            }
+
+            temp = current;
+        }
+
     }
 
     public float getLidProgress(float partialTick) {
         return Mth.lerp(partialTick, prevLidProgress, lidProgress);
+    }
+
+    public float getAnimationProgress() {
+        return lidProgress;
     }
 
 }

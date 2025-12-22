@@ -1,13 +1,24 @@
-package com.devdyna.synergy.init.builder.trash_can;
+package com.devdyna.synergy.init.builder.void_box;
+
+import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.Main;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
+import com.devdyna.synergy.api.utils.ColorUtil;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -21,6 +32,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import java.awt.Color;
 
 @SuppressWarnings("null")
 public class VoidBoxBlock extends TickingBlock {
@@ -81,6 +93,28 @@ public class VoidBoxBlock extends TickingBlock {
         if (level.getBlockEntity(pos) instanceof VoidBoxBE be)
             return be.itemUseOn(player, level, pos, hand);
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    public MutableComponent getName() {
+        var level = Minecraft.getInstance().level;
+        int color = (level == null ? Color.BLUE.getRGB()
+                : ColorUtil.pulseColor(level, Color.BLUE.getRGB(), Color.MAGENTA.getRGB()));
+        return Component.translatable(this.getDescriptionId()).withColor(color);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+            TooltipFlag f) {
+
+        t.clear();
+
+        var level = Minecraft.getInstance().level;
+        int color = (level == null ? Color.BLUE.getRGB()
+                : ColorUtil.pulseColor(level, Color.BLUE.getRGB(), Color.MAGENTA.getRGB()));
+        t.add(0, Component.translatable(this.getDescriptionId()).withColor(color));
+
+        t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.void_box));
     }
 
 }

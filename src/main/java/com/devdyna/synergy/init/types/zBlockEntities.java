@@ -16,8 +16,8 @@ import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.quern.QuernBE;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBE;
-import com.devdyna.synergy.init.builder.trash_can.VoidBoxBE;
 import com.devdyna.synergy.init.builder.urn.UrnBE;
+import com.devdyna.synergy.init.builder.void_box.VoidBoxBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
