@@ -330,6 +330,8 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".upgrade.speed.energy", TIP_COLOR + "Machine Energy : §c-100%");
                 add(Main.ID + ".upgrade.energy", TIP_COLOR + "Machine Energy : §a+75%§f");
 
+                add(Main.ID + "." + zStatic.Blocks.void_box, TIP_COLOR + "A strange box to allow to NOT store items");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {
