@@ -478,6 +478,9 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> FLOUR = Material
                         .resourceItem(zStatic.Items.flour);
+
+        public static final DeferredHolder<Item, Item> VOID_CRYSTAL = Material
+                        .resourceItem(zStatic.Items.void_crystal);
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,

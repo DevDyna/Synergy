@@ -16,6 +16,7 @@ import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.quern.QuernBE;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBE;
+import com.devdyna.synergy.init.builder.trash_can.VoidBoxBE;
 import com.devdyna.synergy.init.builder.urn.UrnBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -115,5 +116,9 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LaserRotorBE>> LASER_ROTOR = Material
                         .createBlockEntity(zStatic.Lazers.rotor,LaserRotorBE ::new,
                                         zBlocks.LASER_ROTOR);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<VoidBoxBE>> VOID_BOX = Material
+                        .createBlockEntity(zStatic.Blocks.void_box,VoidBoxBE ::new,
+                                        zBlocks.VOID_BOX);
 
 }

@@ -38,7 +38,8 @@ public class Capability {
                                 zBlocks.WOODEN_TINY_CHEST.get(),
                                 zBlocks.ORNATE_TINY_CHEST.get(),
                                 zBlocks.STONE_TINY_CHEST.get(),
-                                zBlocks.QUERN.get());
+                                zBlocks.QUERN.get(),
+                                zBlocks.VOID_BOX.get());
 
                 event.registerBlock(
                                 Capabilities.ItemHandler.BLOCK,

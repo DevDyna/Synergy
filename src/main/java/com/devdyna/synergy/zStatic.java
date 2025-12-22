@@ -153,6 +153,7 @@ public class zStatic {
 
 
         public static String flour = "flour";
+        public static String void_crystal = "void_crystal";
 
     }
 
@@ -192,6 +193,8 @@ public class zStatic {
         public static String harvester = "harvester";
         public static String solar_panel = "solar_panel";
         public static String healer = "healer";
+
+        public static String void_box = "void_box";
 
         public static String urn = "urn";
         public static String quern = "quern";

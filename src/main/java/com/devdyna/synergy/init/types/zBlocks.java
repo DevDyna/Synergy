@@ -18,6 +18,7 @@ import com.devdyna.synergy.init.builder.redstone.PulseRepeater;
 import com.devdyna.synergy.init.builder.redstone.RecursiveRepeater;
 import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.sprinkler.SprinklerBLK;
+import com.devdyna.synergy.init.builder.trash_can.VoidBoxBlock;
 import com.devdyna.synergy.init.builder.urn.UrnBlock;
 import com.devdyna.synergy.init.builder.*;
 import com.devdyna.synergy.init.builder.chests.ornated.OrnatedTinyChestBlock;
@@ -366,6 +367,13 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> LASER_ROTOR = Material.registerItemBlock(
                         zStatic.Lazers.rotor,
                         () -> new LaserRotorBlock());
+
+        public static final DeferredHolder<Block, Block> VOID_BOX = Material.registerItemBlock(
+                        zStatic.Blocks.void_box,
+                        () -> new VoidBoxBlock());
+
+                        public static final DeferredHolder<Block, Block> VOID_BOX_LID = zOnlyBlock.registerSimpleBlock(
+                        zStatic.Blocks.void_box + "_lid");
 
         // ---------------------------------------------------------------------------------------//
 
