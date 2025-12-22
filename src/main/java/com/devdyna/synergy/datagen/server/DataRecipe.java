@@ -1015,9 +1015,10 @@ public class DataRecipe extends ExtraRecipeProvider {
                 smeltingResultFromBase(c, Items.BREAD, zItems.FLOUR.get());
 
                 UrnRitualBuilder.of()
-                                .add(zItems.GHOUL_HEART)
-                                .add(Items.ECHO_SHARD)
-                                .output(zItems.VOID_CRYSTAL.get(),2)
+                                .add(zItemTag.DUST_COAL)
+                                .add(Tags.Items.GEMS_DIAMOND)
+                                .add(zItems.ENERGIZED_REDSTONE)
+                                .output(zItems.VOID_CRYSTAL.get(), 2)
                                 .unlockedBy().group(ID).save(c);
 
                 ItemUseBuilder.of()
