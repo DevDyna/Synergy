@@ -163,7 +163,6 @@ public class QuernBE extends TickingBE implements ItemStorageBlock , NoGuiStorag
 
     }
 
-    /** CLIENT TICK: smooth rotation */
     @Override
     public void tickClient() {
 
