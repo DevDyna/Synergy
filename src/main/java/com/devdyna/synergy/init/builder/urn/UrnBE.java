@@ -67,14 +67,12 @@ public class UrnBE extends TickingBE implements ItemStorageBlock , NoGuiStorage{
 
     @Override
     protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        // pTag.put("inventory", getStorage().serializeNBT(pRegistries));
         super.saveAdditional(pTag, pRegistries);
     }
 
     @Override
     protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         super.loadAdditional(pTag, pRegistries);
-        // getStorage().deserializeNBT(pRegistries, pTag.getCompound("inventory"));
     }
 
     @Override
