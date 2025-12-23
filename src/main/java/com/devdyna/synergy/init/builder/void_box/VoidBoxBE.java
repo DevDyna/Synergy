@@ -31,6 +31,11 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlock {
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
+    private float prevLidProgress;
+    private float lidProgress;
+    private boolean startSound = false;
+    private float temp;
+
     public VoidBoxBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
@@ -121,13 +126,6 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
         slot.extractItem(0, item.getCount(), false);
     }
 
-    // TODO NYC
-
-    private float prevLidProgress;
-    private float lidProgress;
-    private boolean startSound = false;
-    private float temp;
-
     @Override
     public void tickBoth() {
 
@@ -135,13 +133,14 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
         if (level == null)
             return;
 
-        var player = level.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 2, false);
+        var player = level.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 4.5f, false);
 
-        if (LevelUtil.chance(1, level))
+        if (lidProgress > 0.01f && level.random.nextFloat() < 0.001f) {
             if (LevelUtil.chance(50, level))
                 level.playSound(player, pos, SoundEvents.ALLAY_DEATH, SoundSource.BLOCKS, 0.5f, 0.25f);
             else
                 level.playSound(player, pos, SoundEvents.SCULK_SHRIEKER_SHRIEK, SoundSource.BLOCKS, 0.3f, 2f);
+        }
 
         prevLidProgress = lidProgress;
         float increment = 0.1f;
@@ -153,7 +152,7 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
         lidProgress = Mth.clamp(lidProgress, 0.0f, 1.0f);
 
         if (!level.isClientSide) {
-            float current = getAnimationProgress();
+            float current = lidProgress;
 
             if (current != temp && startSound) {
                 if (current > temp) {
