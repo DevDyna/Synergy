@@ -52,6 +52,7 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zBlockStair.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zModerators.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zCoolers.getEntries().forEach(b -> addBlock(b, named(b)));
+                zBlocks.zColumn.getEntries().forEach(b -> addBlock(b, named(b)));
 
                 zBlocks.zHiddenBlock.getEntries().forEach(b -> addBlock(b, named(b).replace(" Block", "")));
 
@@ -331,6 +332,8 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".upgrade.energy", TIP_COLOR + "Machine Energy : §a+75%§f");
 
                 add(Main.ID + "." + zStatic.Blocks.void_box, TIP_COLOR + "A strange box to allow to NOT store items");
+
+                add(Main.ID + ".block.blast_proof", TIP_COLOR + "Blast resistance");
 
         }
 

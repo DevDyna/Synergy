@@ -53,6 +53,16 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 simpleBlockDecorative(zBlocks.RUSTIC_METAL);
                 simpleBlockDecorative(zBlocks.WAXED_PLANKS);
 
+                simpleBlockDecorative(zBlocks.SMOOTH_ADOBE);
+                simpleBlockDecorative(zBlocks.BLAST_BRICKS);
+
+                simpleBlockDecorative(zBlocks.FIRECLAY_BRICKS.getBricks());
+                simpleBlockDecorative(zBlocks.FIRECLAY_BRICKS.getTiles());
+                simpleBlockDecorative(zBlocks.FIRECLAY_BRICK_CRACKED.getBricks());
+                simpleBlockDecorative(zBlocks.FIRECLAY_BRICK_CRACKED.getTiles());
+                simpleBlockDecorative(zBlocks.FIRECLAY_BRICK_MOSSY.getBricks());
+                simpleBlockDecorative(zBlocks.FIRECLAY_BRICK_MOSSY.getTiles());
+
                 simpleFlexibleBlock(zBlocks.COOLER_BASE, "machine/nuclear/cooler/base");
                 simpleFullBlock(zBlocks.HEALER, "");
                 simpleFlexibleBlock(zBlocks.REACTOR_FUEL_CELL, "machine/nuclear/fuel_cell");
@@ -95,8 +105,6 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 modLoc("block/machine/frame/basic/bottom"),
                                                 modLoc("block/machine/frame/basic/top")));
 
-
-                                                
                 directionalBlock(zBlocks.BASIC_MACHINE_FRAME.get(),
                                 models().cubeBottomTop(zBlocks.BASIC_MACHINE_FRAME.getRegisteredName(),
                                                 modLoc("block/machine/frame/basic/side"),
@@ -111,6 +119,10 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 brick(zBlocks.CLAY_BRICK, mcLoc("block/clay"), mcLoc("block/terracotta"));
                 brick(zBlocks.PACKED_MUD_BRICK, mcLoc("block/packed_mud"), mcLoc("block/mud_bricks"));
+                brick(zBlocks.FIRECLAY_BRICK, modLoc("block/decorative/fireclay"),
+                                modLoc("block/decorative/fireclay_bricks"));
+                brick(zBlocks.BLAST_BRICK, modLoc("block/decorative/clay_mixture"),
+                                modLoc("block/decorative/blast_bricks"));
 
                 repeater(zBlocks.PULSE_REPEATER.get());
                 repeater(zBlocks.RECURSIVE_REPEATER.get());
@@ -134,12 +146,9 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 machines();
                 ClazzUtil.getAllzFluids().forEach(f -> fluid(f));
 
-
-
                 horizontalBlock(zBlocks.VOID_BOX.get(),
                                 models().withExistingParent(zBlocks.VOID_BOX.getRegisteredName(),
                                                 modLoc("block/tiny_block/void_box/block")));
-                
 
         }
 

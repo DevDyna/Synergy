@@ -164,8 +164,12 @@ public class DataLootBlock extends BlockLootSubProvider {
                 // zBlocks.deposits.forEach(e -> dropSelf(e.get()));
                 // zBlocks.generators.forEach(e->dropSelf(e.get()));
 
+                
                 brick(zBlocks.CLAY_BRICK, Items.CLAY_BALL, Items.BRICK);
                 brick(zBlocks.PACKED_MUD_BRICK, zItems.PACKED_MUD_BALL.get(), zItems.PACKED_MUD_BRICK.get());
+                
+                brick(zBlocks.FIRECLAY_BRICK, zItems.FIRECLAY_BALL.get(), zItems.FIRECLAY_BRICK.get());
+                brick(zBlocks.BLAST_BRICK, zItems.CLAY_MIXTURE_BALL.get(), zItems.BLAST_BRICK.get());
 
         }
 

@@ -120,6 +120,16 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("layer0",
                                                 modLoc("item/resources/packed_mud_ball"));
 
+                withExistingParent(zBlocks.FIRECLAY_BRICK.getRegisteredName(),
+                                mcLoc("minecraft:item/generated"))
+                                .texture("layer0",
+                                                modLoc("item/resources/fireclay_ball"));
+
+                withExistingParent(zBlocks.BLAST_BRICK.getRegisteredName(),
+                                mcLoc("minecraft:item/generated"))
+                                .texture("layer0",
+                                                modLoc("item/resources/clay_mixture_ball"));
+
                 withExistingParent(zBlocks.LASER_MACHINE.getRegisteredName(), modLoc("block/laser_machine_gun/off"));
                 withExistingParent(zBlocks.LASER_ROTOR.getRegisteredName(), modLoc("block/laser_rotor/off"));
 

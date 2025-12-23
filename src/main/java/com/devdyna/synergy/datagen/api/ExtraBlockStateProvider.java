@@ -21,6 +21,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.models.blockstates.PropertyDispatch.TriFunction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -43,14 +44,14 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                 ClazzUtil.getAllMachineTypes()
                                 .forEach(m -> horizontalBlockBiPhace((Block) m.block().get(), BaseMachineBlock.ENABLED,
                                                 models().orientableWithBottom(
-                                                                m.id()+"_off",
+                                                                m.id() + "_off",
                                                                 modLoc("block/machine/frame/basic/side"),
                                                                 modLoc("block/machine/processing/" + m.id()
                                                                                 + "/off"),
                                                                 modLoc("block/machine/frame/basic/bottom"),
                                                                 modLoc("block/machine/frame/basic/top")),
                                                 models().orientableWithBottom(
-                                                                m.id()+"_on",
+                                                                m.id() + "_on",
                                                                 modLoc("block/machine/frame/basic/side"),
                                                                 modLoc("block/machine/processing/" + m.id()
                                                                                 + "/on"),
@@ -300,6 +301,16 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
         }
 
         protected void decorativeBlocks() {
+
+                zBlocks.zColumn.getEntries().forEach(b -> axisBlock((RotatedPillarBlock) b.get(),
+                                modLoc("block/decorative/column/side/"
+                                                + x.path(b.get()).replace(ID + ":block/",
+                                                                "").replace("_column",
+                                                                                "")),
+                                modLoc("block/decorative/column/end/"
+                                                + x.path(b.get()).replace(ID + ":block/",
+                                                                "").replace("_column",
+                                                                                ""))));
 
                 zBlocks.zBlockSlab.getEntries().forEach(b -> slabBlock((SlabBlock) b.get(), modLoc("block/"
                                 + x.path(b.get()).replace(ID + ":block/",

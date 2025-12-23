@@ -26,7 +26,8 @@ public class DataBlockTag extends BlockTagsProvider {
         @Override
         protected void addTags(Provider p) {
 
-                tag(zBlockTag.MACHINES).add(ClazzUtil.getAllMachineTypes().stream().map(a->((Block)a.block().get())).toArray(Block[]::new));
+                tag(zBlockTag.MACHINES).add(ClazzUtil.getAllMachineTypes().stream().map(a -> ((Block) a.block().get()))
+                                .toArray(Block[]::new));
 
                 tag(zBlockTag.LEAVES).addTag(BlockTags.LEAVES);
 
@@ -35,6 +36,9 @@ public class DataBlockTag extends BlockTagsProvider {
                 tag(BlockTags.MINEABLE_WITH_PICKAXE)
                                 .addTag(zBlockTag.COOLERS)
                                 .addTag(zBlockTag.MODERATORS)
+                                .addTag(zBlocks.FIRECLAY_BRICKS.getTagkey())
+                                .addTag(zBlocks.FIRECLAY_BRICK_CRACKED.getTagkey())
+                                .addTag(zBlocks.FIRECLAY_BRICK_MOSSY.getTagkey())
                                 .add(
                                                 zBlocks.SPRINKLER.get(),
                                                 zBlocks.HARVESTER.get(),
@@ -51,7 +55,8 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.HEALER.get(),
                                                 zBlocks.COOLER_BASE.get(),
                                                 zBlocks.REACTOR_FUEL_CELL.get(),
-                                                zBlocks.REACTOR_CONTROLLER.get());
+                                                zBlocks.REACTOR_CONTROLLER.get(),
+                                                zBlocks.BLAST_BRICKS.get());
 
                 tag(BlockTags.MINEABLE_WITH_AXE)
                                 .add(
@@ -173,6 +178,15 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(zBlockTag.BLOCK_STEEL)
                                 .add(zBlocks.STEEL_BLOCK.get());
+
+                tag(zBlocks.FIRECLAY_BRICKS.getTagkey())
+                                .add(zBlocks.FIRECLAY_BRICKS.getAll());
+
+                tag(zBlocks.FIRECLAY_BRICK_CRACKED.getTagkey())
+                                .add(zBlocks.FIRECLAY_BRICK_CRACKED.getAll());
+
+                tag(zBlocks.FIRECLAY_BRICK_MOSSY.getTagkey())
+                                .add(zBlocks.FIRECLAY_BRICK_MOSSY.getAll());
 
         }
 

@@ -183,8 +183,6 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.SILICON).add(zItems.SILICON.get());
 
-                tag(zItemTag.PLACEABLE).add(Items.CLAY_BALL, zItems.PACKED_MUD_BALL.get());
-
                 tag(zItemTag.INGOT_NICKEL).add(zItems.NICKEL_INGOT.get());
                 tag(zItemTag.INGOT_SILVER).add(zItems.SILVER_INGOT.get());
                 tag(zItemTag.INGOT_IRIDIUM).add(zItems.IRIDIUM_INGOT.get());
@@ -224,8 +222,29 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.PIPE).add(zBlocks.PIPE.get().asItem());
 
-                tag(Tags.Items.BRICKS).add(zItems.PACKED_MUD_BRICK.get());
-                tag(zItemTag.SUPPLEMENTARIES_BRICKS).add(zItems.PACKED_MUD_BRICK.get());
+                tag(Tags.Items.BRICKS).add(
+                                zItems.PACKED_MUD_BRICK.get(),
+                                zItems.BLAST_BRICK.get(),
+                                zItems.FIRECLAY_BRICK.get()
+
+                );
+
+                tag(zItemTag.SUPPLEMENTARIES_BRICKS)
+                                .add(
+
+                                                zItems.PACKED_MUD_BRICK.get(),
+                                                zItems.FIRECLAY_BRICK.get(),
+                                                zItems.BLAST_BRICK.get()
+
+                                );
+
+                tag(zItemTag.PLACEABLE).add(
+                                Items.CLAY_BALL,
+                                zItems.PACKED_MUD_BALL.get(),
+                                zItems.FIRECLAY_BALL.get(),
+                                zItems.CLAY_MIXTURE_BALL.get()
+
+                );
 
                 tag(zItemTag.GEARS).add(DataGenUtil.getItems(zItems.zGears));
                 tag(zItemTag.GEAR_WOODEN).add(zItems.WOODEN_GEAR.get());

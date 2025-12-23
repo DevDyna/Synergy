@@ -18,15 +18,31 @@ import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-@SuppressWarnings("deprecation")
 public abstract class ExtraItemModelProvider extends ItemModelProvider {
 
         public ExtraItemModelProvider(PackOutput output, String modid, ExistingFileHelper existingFileHelper) {
                 super(output, modid, existingFileHelper);
         }
 
+        private List<DeferredHolder<Block, Block>> notDecorativeBlocks = List.of(
+                        zBlocks.COOLER_BASE
+
+        );
+
         protected void decorative() {
-                zBlocks.zDecorative.getEntries().stream().filter(i -> !i.is(zBlocks.COOLER_BASE))
+
+                zBlocks.zColumn.getEntries().stream()
+                                .forEach(bk -> cubeColumn(bk.getRegisteredName().replace(ID + ":block/", ""),
+                                                modLoc("block/decorative/column/side/"
+                                                                + x.path(bk.get())
+                                                                                .replace("_column", "")
+                                                                                .replace(ID + ":block/", "")),
+                                                modLoc("block/decorative/column/end/"
+                                                                + x.path(bk.get())
+                                                                                .replace("_column", "")
+                                                                                .replace(ID + ":block/", ""))));
+
+                zBlocks.zDecorative.getEntries().stream().filter(i -> !notDecorativeBlocks.contains(i))
                                 .forEach(bk -> cubeAll(bk.getRegisteredName().replace(ID + ":block/", ""),
                                                 modLoc("block/decorative/"
                                                                 + x.path(bk.get()).replace(ID + ":block/",
@@ -142,7 +158,7 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                                 item.get(),
                                                 this,
                                                 "upgrades/",
-                                                x.path(item.get()).replace("_"+zStatic.MachineUpgrades.TYPE, "")));
+                                                x.path(item.get()).replace("_" + zStatic.MachineUpgrades.TYPE, "")));
 
                 plants.forEach(w -> withExistingParent(
                                 x.path(w), "minecraft:item/generated")
