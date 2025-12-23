@@ -491,6 +491,9 @@ public class zItems {
         public static final DeferredHolder<Item, Item> FLOUR = Material
                         .resourceItem(zStatic.Items.flour);
 
+        public static final DeferredHolder<Item, Item> MAGIC_DUST = Material
+                        .resourceItem(zStatic.Items.magic_dust);
+
         public static final DeferredHolder<Item, Item> VOID_CRYSTAL = Material
                         .resourceItem(zStatic.Items.void_crystal);
         // ---------------------------------------------------------------------------------------//

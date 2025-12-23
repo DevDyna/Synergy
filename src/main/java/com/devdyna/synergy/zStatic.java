@@ -153,6 +153,7 @@ public class zStatic {
 
         public static String flour = "flour";
         public static String void_crystal = "void_crystal";
+        public static String magic_dust = "magic_dust";
 
     }
 
