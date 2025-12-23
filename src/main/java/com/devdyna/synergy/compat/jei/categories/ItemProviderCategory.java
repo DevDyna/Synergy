@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 
 @SuppressWarnings({ "unchecked", "null" })
 public class ItemProviderCategory extends BaseProviderCategory<ItemProviderRecipe<ItemStack>, ItemStack> {
-
+    // DONT TOUCH OR WILL BREAK AND YOU WILL MAD WITH YOURSELF
     public static final RecipeType<BaseProviderRecipe<ItemStack>> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.ITEM_PROVIDER.getId()),
             (Class<ItemProviderRecipe<ItemStack>>) (Class<?>) ItemProviderRecipe.class);
@@ -45,6 +45,5 @@ public class ItemProviderCategory extends BaseProviderCategory<ItemProviderRecip
             IFocusGroup focuses) {
         builder.addOutputSlot(18, 2).addItemStack(recipe.getOutput());
     }
-
 
 }

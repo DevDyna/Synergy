@@ -19,7 +19,7 @@ import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings({ "unchecked", "null" })
 public class FluidProviderCategory extends BaseProviderCategory<FluidProviderRecipe<FluidStack>, FluidStack> {
-
+    // DONT TOUCH OR WILL BREAK AND YOU WILL MAD WITH YOURSELF
     public static final RecipeType<BaseProviderRecipe<FluidStack>> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.FLUID_PROVIDER.getId()),
             (Class<FluidProviderRecipe<FluidStack>>) (Class<?>) FluidProviderRecipe.class);
@@ -53,6 +53,4 @@ public class FluidProviderCategory extends BaseProviderCategory<FluidProviderRec
                         Math.max((int) (recipe.getOutput().getAmount() * 0.016), 1));
     }
 
-
-  
 }
