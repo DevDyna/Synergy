@@ -34,10 +34,8 @@ public class CropResultCategory extends BaseRecipeCategory<CropResultRecipe> {
 
         builder.addInputSlot(16, 24).addIngredients(recipe.getInput());
 
-        recipe.getOutputs().forEach(s -> {
-            var index = recipe.getOutputs().indexOf(s);
-            builder.addOutputSlot(65 + (index % 3 * 20), 8 + (index > 2 ? 32 : 0)).addItemStack(s);
-        });
+        recipe.getOutputs().forEach(s -> builder.addOutputSlot(65 + (recipe.getOutputs().indexOf(s) % 3 * 20),
+                8 + (recipe.getOutputs().indexOf(s) > 2 ? 32 : 0)).addItemStack(s));
 
     }
 

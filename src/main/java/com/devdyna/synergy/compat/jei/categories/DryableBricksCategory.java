@@ -37,15 +37,15 @@ public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecip
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, DryableBricksRecipe recipe, IFocusGroup focuses) {
 
-        builder.addInputSlot(8-7, 9-8).addIngredients(recipe.getInput());
-        builder.addOutputSlot(67-7, 9-8).addItemStack(recipe.getOutput());
+        builder.addInputSlot(1, 1).addIngredients(recipe.getInput());
+        builder.addOutputSlot(60, 1).addItemStack(recipe.getOutput());
 
     }
 
     @Override
     public void getTooltip(ITooltipBuilder tooltip, DryableBricksRecipe recipe, IRecipeSlotsView recipeSlotsView,
             double mouseX, double mouseY) {
-        if (Pos.of(35-7, 9-8).setSize(16, 16).test(mouseX, mouseY))
+        if (Pos.of(28, 1).setSize(16, 16).test(mouseX, mouseY))
             tooltip.add(Component.translatable(Main.ID + ".jei.dryable.tip"));
 
     }

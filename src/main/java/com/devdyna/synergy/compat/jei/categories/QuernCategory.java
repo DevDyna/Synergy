@@ -57,9 +57,9 @@ public class QuernCategory extends BaseRecipeCategory<QuernMillingRecipe> {
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, QuernMillingRecipe recipe, IFocusGroup focuses) {
 
-        builder.addSlot(RecipeIngredientRole.INPUT, 5-3, 4-2).addIngredients(recipe.getInput());
+        builder.addSlot(RecipeIngredientRole.INPUT, 2, 2).addIngredients(recipe.getInput());
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 60-3, 4-2).addItemStack(recipe.getOutput());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 57, 2).addItemStack(recipe.getOutput());
     }
 
     @Override
@@ -75,7 +75,7 @@ public class QuernCategory extends BaseRecipeCategory<QuernMillingRecipe> {
                         )
                                 : recipe.getTime() / 20 + " sec" + (recipe.getTime() > 20 ? "s" : ""))
                                 : recipe.getTime() + " tick" + (recipe.getTime() > 1 ? "s" : ""))),
-                24-3, 16-2, 0xA0A0A0);
+                21, 14, 0xA0A0A0);
 
     }
 

@@ -53,14 +53,12 @@ public class UrnCategory extends BaseRecipeCategory<UrnRitualRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, UrnRitualRecipe recipe, IFocusGroup focuses) {
-        recipe.getIngredients().forEach(i -> {
-            var index = recipe.getIngredients().indexOf(i);
+        recipe.getIngredients()
+                .forEach(i -> builder
+                        .addSlot(RecipeIngredientRole.INPUT, 2 + (recipe.getIngredients().indexOf(i) * 17), 2)
+                        .addIngredients(i));
 
-            builder.addSlot(RecipeIngredientRole.INPUT, 14-12 + (index * 17), 9-7).addIngredients(i);
-
-        });
-
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 82-12, 53-7).addItemStack(recipe.getResultItem());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 70, 46).addItemStack(recipe.getResultItem());
     }
 
 }

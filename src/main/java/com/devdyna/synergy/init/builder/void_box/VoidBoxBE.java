@@ -3,8 +3,10 @@ package com.devdyna.synergy.init.builder.void_box;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
+import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
+import com.devdyna.synergy.init.types.zItemTag;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -113,6 +115,9 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
         if (item.isEmpty())
             return;
 
+        if (item.is(zItemTag.VOID_BOX_DENY))
+            return;
+
         slot.extractItem(0, item.getCount(), false);
     }
 
@@ -131,6 +136,12 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
             return;
 
         var player = level.getNearestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 2, false);
+
+        if (LevelUtil.chance(1, level))
+            if (LevelUtil.chance(50, level))
+                level.playSound(player, pos, SoundEvents.ALLAY_DEATH, SoundSource.BLOCKS, 0.5f, 0.25f);
+            else
+                level.playSound(player, pos, SoundEvents.SCULK_SHRIEKER_SHRIEK, SoundSource.BLOCKS, 0.3f, 2f);
 
         prevLidProgress = lidProgress;
         float increment = 0.1f;

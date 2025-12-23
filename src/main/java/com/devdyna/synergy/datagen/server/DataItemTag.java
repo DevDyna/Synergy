@@ -294,6 +294,9 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.UPGRADE_ENERGY).add(zItems.UPGRADE_ENERGY.get());
                 tag(zItemTag.UPGRADE_SPEED).add(zItems.UPGRADE_SPEED.get());
 
+                tag(zItemTag.VOID_BOX_DENY)
+                                .add(zItems.VOID_CRYSTAL.get());
+
         }
 
 }

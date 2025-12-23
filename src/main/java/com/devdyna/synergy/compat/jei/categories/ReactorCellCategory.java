@@ -62,8 +62,8 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, FuelCellRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 34-32+14, 17-15+14).addIngredients(recipe.getInput());
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 84-32-2+14, 17-15+14).addItemStack(recipe.getOutput());
+        builder.addSlot(RecipeIngredientRole.INPUT, 16, 16).addIngredients(recipe.getInput());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 64, 16).addItemStack(recipe.getOutput());
     }
 
     @Override
@@ -79,15 +79,15 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
                         )
                                 : recipe.getDuration() / 20 + " second" + (recipe.getDuration() > 20 ? "s" : ""))
                                 : recipe.getDuration() + " tick" + (recipe.getDuration() > 1 ? "s" : ""))),
-                45-32+14, 5-15+14, 0xA0A0A0);
+                27, 4, 0xA0A0A0);
 
         guiGraphics.drawString(font, "Heat " + (recipe.getHeat() >= 0 ? "+" : "") + recipe.getHeat() + "°/t",
-                25-32+14, 40-15+14, 0xA0A0A0);
+                7, 39, 0xA0A0A0);
 
         guiGraphics.drawString(font, "Gen  " + (recipe.getFe() >= 0 ? "+" : "") + recipe.getFe() + "fe/t",
-                25-32+14, 50-15+14, 0xA0A0A0);
+                7, 49, 0xA0A0A0);
 
-        arrow.draw(guiGraphics, 53-32+14, 17-15+14);
+        arrow.draw(guiGraphics, 35, 16);
 
     }
 

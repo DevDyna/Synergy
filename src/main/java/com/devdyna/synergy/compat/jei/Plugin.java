@@ -79,6 +79,9 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item((Item) zMachines.ALLOY_SMELTER.item().get()), AlloySmelterCategory.TYPE);
                 r.addRecipeCatalyst(x.item((Item) zMachines.ELECTRIC_FURNACE.item().get()),
                                 ElectricFurnaceCategory.TYPE);
+
+                r.addRecipeCatalyst(x.item(zBlocks.VOID_BOX), VoidBoxInfusionCategory.TYPE);
+
         }
 
         @Override
@@ -100,6 +103,8 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCategories(new CompressorCategory(helper));
                 r.addRecipeCategories(new AlloySmelterCategory(helper));
                 r.addRecipeCategories(new ElectricFurnaceCategory(helper));
+
+                r.addRecipeCategories(new VoidBoxInfusionCategory(helper));
 
         }
 
@@ -167,6 +172,10 @@ public class Plugin implements IModPlugin {
                                                                                 .getCurrentServer().registryAccess()))
                                                                 .createRecipe())
                                                 .toList());
+
+                r.addRecipes(VoidBoxInfusionCategory.TYPE,
+                                recipes.getAllRecipesFor(zRecipeTypes.VOID_BOX_INFUSION.getType()).stream()
+                                                .map(RecipeHolder::value).toList());
 
         }
 

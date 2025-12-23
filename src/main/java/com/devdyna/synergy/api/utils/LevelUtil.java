@@ -182,6 +182,10 @@ public class LevelUtil {
         addParticle(type, level, pos, isRandom, 1);
     }
 
+    public static void addParticle(ParticleOptions type, Level level, BlockPos pos, boolean isRandom) {
+        addParticle(type, (ServerLevel)level, pos, isRandom, 1);
+    }
+
     /**
      * @param red   0 -> 255
      * @param green 0 -> 255

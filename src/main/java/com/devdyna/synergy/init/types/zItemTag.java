@@ -183,16 +183,19 @@ public class zItemTag {
         public static final TagKey<Item> COIL_IRON = Material.tagItem("coils/iron", "c");
         public static final TagKey<Item> COIL_SILVER = Material.tagItem("coils/silver", "c");
 
-public static final TagKey<Item> MACHINES = Material
+        public static final TagKey<Item> MACHINES = Material
                         .tagItem("industrial_machine");
 
-public static final TagKey<Item> UPGRADES = Material
+        public static final TagKey<Item> UPGRADES = Material
                         .tagItem("upgrades");
 
-public static final TagKey<Item> UPGRADE_ENERGY = Material
+        public static final TagKey<Item> UPGRADE_ENERGY = Material
                         .tagItem("upgrades/energy");
 
-public static final TagKey<Item> UPGRADE_SPEED = Material
+        public static final TagKey<Item> UPGRADE_SPEED = Material
                         .tagItem("upgrades/speed");
+
+        public static final TagKey<Item> VOID_BOX_DENY = Material
+                        .tagItem("void_box_deny");
 
 }

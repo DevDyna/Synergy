@@ -179,6 +179,9 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei.drying_bricks",
                                 "Dryable Brick Recipes");
 
+                add(Main.ID + ".jei."+zStatic.Blocks.void_box,
+                                "Void Box Infusions");
+
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.SHADOW,
                                 zStatic.ReactorStuff.CoolerTypes.COPPER,

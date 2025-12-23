@@ -98,5 +98,14 @@ public class zRecipeTypes {
                                         return DRYABLE_BRICKS.getId();
                                 }
                         });
+
+        public static final zRecipe<VoidBoxInfusionRecipe> VOID_BOX_INFUSION = new zRecipe<VoidBoxInfusionRecipe>(
+                        "void_box_infusion", VoidBoxInfusionRecipeSerializer::new,
+                        () -> new RecipeType<VoidBoxInfusionRecipe>() {
+                                @Override
+                                public String toString() {
+                                        return VOID_BOX_INFUSION.getId();
+                                }
+                        });
         // ------------------------------------------------------------------------------------------------------------------------------------//
 }

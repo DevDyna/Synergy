@@ -1142,6 +1142,11 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.MAGIC_DUST, 2)
                                 .unlockedBy().save(c);
 
+                VoidBoxInfusionBuilder.of()
+                                .input(Items.DIAMOND)
+                                .output(zItems.VOID_CRYSTAL)
+                                .unlockedBy().save(c);
+
         }
 
 }
