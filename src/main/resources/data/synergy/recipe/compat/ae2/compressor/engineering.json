@@ -1,0 +1,21 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ae2"
+    }
+  ],
+  "type": "synergy:compressor",
+  "energy": 10,
+  "input": {
+    "item": "minecraft:diamond"
+  },
+  "output": {
+    "count": 1,
+    "id": "ae2:printed_engineering_processor"
+  },
+  "plate": {
+    "item": "ae2:engineering_processor_press"
+  },
+  "ticks": 80
+}
