@@ -980,7 +980,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern(" R ")
                                 .define('S', zItemTag.PLATE_STEEL)
                                 .define('R', zItems.RESISTOR.get())
-                                .define('B', zItems.BLUE_BATTERY.get())
+                                .define('B', zItems.ENERGIZED_REDSTONE.get())
                                 .define('C', zItems.CHIP.get())
                                 .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
                                 .save(c);
