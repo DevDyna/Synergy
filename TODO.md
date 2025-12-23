@@ -9,15 +9,11 @@ _NaN_
 - [ ] Fuel cell output can conflict with input
 - [ ] quickMoveStack (i hate you!)
 
-- [x] Nodes can void items with furnaces
-
 - [ ] Nodes bypass WorldyContainers restrictions
 
 - [ ] Mekanism IO will void/break many stuff (nodes , fuel cell , etc)
 
-- [x] Provider Nodes freeze entirely when output storage is null/full
-
-- [ ] Electric furnace dont process correctly some recipes (need to investigate/if was already fixed?) 
+- [ ] Electric furnace dont process correctly some recipes (need to investigate/if was already fixed?)
 
 ## COMPATS AND TWEAKS
 
@@ -36,7 +32,7 @@ _NaN_
 
 - [ ] Modern Chisel compat (?)
 
-- [ ] Provider Nodes jade output
+- [x] Provider Nodes jade output
 
 - [ ] rework any machine with AreaOfEffect and soldering gun to simplify
 
@@ -52,13 +48,13 @@ _NaN_
 
 - [ ] replace some "brute-force" particles and sound event to animateTick
 
+- [ ] Void box deny item tag
+
 ## NEWS
 
-- [x] Machine Upgrades
+- [ ] Void box recipe type on item use (?)
 
 - [ ] EYE
-
-- [x] BREAD
 
 - [ ] Metal Smeltery (tiny tinker-like?)
 
@@ -126,12 +122,11 @@ _NaN_
 
 - [ ] Mindustry/DE like Fusion Reactor (?)
 
-- [x] Electric Furnace (standard) Item->Item
 - [ ] Extractor (special recipes like honey) Item->(Item|Item)
-- [x] Compressor (special recipes like blocks of X) Item->Item
+
 - ~~Energy Converter (only FE->E)~~
 - ~~Tiered Cables (transfer rate and capacity)~~
-- [x] Alloy Smelter (Item|Item) -> Item
+
 - [ ] Scrap Generator (recycle items to scraps and item used to craft)
 
 ### ResourceGen
