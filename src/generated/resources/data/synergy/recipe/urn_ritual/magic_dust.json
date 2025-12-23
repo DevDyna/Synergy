@@ -2,14 +2,14 @@
   "type": "synergy:urn",
   "ingredient": [
     {
-      "tag": "c:gems/diamond"
+      "tag": "c:dusts/amethyst"
     },
     {
-      "item": "synergy:magic_dust"
+      "tag": "c:dusts/lapis"
     }
   ],
   "result": {
     "count": 2,
-    "id": "synergy:void_crystal"
+    "id": "synergy:magic_dust"
   }
 }

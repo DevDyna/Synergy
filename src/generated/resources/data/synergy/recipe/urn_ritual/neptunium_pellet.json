@@ -5,10 +5,10 @@
       "tag": "c:pellets/plutonium"
     },
     {
-      "tag": "c:dusts/lapis"
+      "item": "synergy:magic_dust"
     },
     {
-      "tag": "c:dusts/amethyst"
+      "item": "synergy:aquamarine_gem"
     }
   ],
   "result": {

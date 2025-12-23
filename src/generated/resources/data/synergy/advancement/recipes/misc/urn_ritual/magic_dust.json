@@ -3,13 +3,16 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:urn_ritual/void_crystal"
+        "recipe": "synergy:urn_ritual/magic_dust"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
       "conditions": {
         "items": [
+          {
+            "items": "minecraft:barrier"
+          },
           {
             "items": "minecraft:barrier"
           }
@@ -26,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:urn_ritual/void_crystal"
+      "synergy:urn_ritual/magic_dust"
     ]
   }
 }

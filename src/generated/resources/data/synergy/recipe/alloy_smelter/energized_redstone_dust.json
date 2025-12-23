@@ -1,0 +1,15 @@
+{
+  "type": "synergy:alloy_smelter",
+  "energy": 10,
+  "left": {
+    "item": "minecraft:redstone"
+  },
+  "output": {
+    "count": 2,
+    "id": "synergy:energized_redstone_dust"
+  },
+  "right": {
+    "item": "minecraft:glowstone_dust"
+  },
+  "ticks": 240
+}
