@@ -10,6 +10,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.blockfamilies.BrickFamily;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.quern.QuernBlock;
@@ -56,7 +57,7 @@ public class zBlocks {
                 zCoolers.register(bus);
                 zModerators.register(bus);
                 zMachineFrame.register(bus);
-                registerLists();
+                zColumn.register(bus);
         }
 
         // ---------------------------------------------------------------------------------------//
@@ -94,6 +95,7 @@ public class zBlocks {
          * decorative stuff
          */
         public static final DeferredRegister.Blocks zDecorative = DeferredRegister.createBlocks(Main.ID);
+        public static final DeferredRegister.Blocks zColumn = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zBlockSlab = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zBlockStair = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zMachineFrame = DeferredRegister.createBlocks(Main.ID);
@@ -212,16 +214,24 @@ public class zBlocks {
                                                         .strength(1.0f).mapColor(MapColor.SAND),
                                         zDecorative);
 
+        public static final DeferredHolder<Block, Block> SMOOTH_ADOBE = Material
+                        .DecoBlock(zStatic.DecorativeBlocks.smooth_adobe,
+                                        BlockBehaviour.Properties.of().sound(SoundType.STONE)
+                                                        .strength(1.0f).mapColor(MapColor.SAND),
+                                        zDecorative);
+
         public static final DeferredHolder<Block, Block> WAXED_PLANKS_SLAB = Material.slab(WAXED_PLANKS);
         public static final DeferredHolder<Block, Block> WAXED_PLANKS_STAIR = Material.stair(WAXED_PLANKS);
 
         public static final DeferredHolder<Block, Block> BASIC_MACHINE_FRAME = Material.registerItemBlock(
                         zStatic.DecorativeBlocks.MachineFrame.basic,
-                        () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)),zMachineFrame);
+                        () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)),
+                        zMachineFrame);
 
         public static final DeferredHolder<Block, Block> ADVANCED_MACHINE_FRAME = Material.registerItemBlock(
                         zStatic.DecorativeBlocks.MachineFrame.advanced,
-                        () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)),zMachineFrame);
+                        () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)),
+                        zMachineFrame);
 
         public static final DeferredHolder<Block, Block> HEALER = Material.registerItemBlock(
                         zStatic.Blocks.healer,
@@ -230,10 +240,7 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> SIMPLE_MODERATOR = Material.registerItemBlock(
                         zStatic.ReactorStuff.ModeratorTypes.SIMPLE,
                         () -> new SimpleModerator(), zModerators);
-        // public static final DeferredHolder<Block, Block> IMPROVED_MODERATOR =
-        // Material.registerItemBlock(
-        // zStatic.ReactorStuff.ModeratorTypes.IMPROVED,
-        // () -> new ImprovedModerator(), zModerators);
+
         public static final DeferredHolder<Block, Block> ADVANCED_MODERATOR = Material.registerItemBlock(
                         zStatic.ReactorStuff.ModeratorTypes.ADVANCED,
                         () -> new AdvancedModerator(), zModerators);
@@ -336,6 +343,18 @@ public class zBlocks {
                                         .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
                         zHiddenBlock);
 
+        public static final DeferredHolder<Block, Block> FIRECLAY_BRICK = Material.registerItemBlock(
+                        zStatic.DryableBricks.brick.fireclay + "_block",
+                        () -> new DryableBricks(BlockBehaviour.Properties.of()
+                                        .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
+                        zHiddenBlock);
+
+        public static final DeferredHolder<Block, Block> BLAST_BRICK = Material.registerItemBlock(
+                        zStatic.DryableBricks.brick.blast + "_block",
+                        () -> new DryableBricks(BlockBehaviour.Properties.of()
+                                        .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
+                        zHiddenBlock);
+
         public static final DeferredHolder<Block, Block> LASER_MACHINE = Material.registerItemBlock(
                         zStatic.Lazers.machine_gun,
                         () -> new LaserMachineBlock());
@@ -372,13 +391,55 @@ public class zBlocks {
                         zStatic.Blocks.void_box,
                         () -> new VoidBoxBlock());
 
-                        public static final DeferredHolder<Block, Block> VOID_BOX_LID = zOnlyBlock.registerSimpleBlock(
+        public static final DeferredHolder<Block, Block> VOID_BOX_LID = zOnlyBlock.registerSimpleBlock(
                         zStatic.Blocks.void_box + "_lid");
 
+        public static final DeferredHolder<Block, Block> BLAST_BRICKS = Material
+        .registerItemBlock(zStatic.DecorativeBlocks.blast_bricks,
+                                       ()-> new BlockToolTipped(BlockBehaviour.Properties.of().sound(SoundType.NETHER_BRICKS)
+                                                        .strength(2.0F, 1200.0F)
+                                                        .mapColor(MapColor.TERRACOTTA_ORANGE),"block.blast_proof") ,
+                                        zDecorative);
+
+        public static final BrickFamily FIRECLAY_BRICKS = BrickFamily
+                        .of(zStatic.DecorativeBlocks.FireClay.TYPE,
+                                        BlockBehaviour.Properties.of().sound(SoundType.STONE)
+                                                        .strength(1.0f).mapColor(MapColor.TERRACOTTA_ORANGE))
+                        .bricks()
+                        .pillar()
+                        .tiles()
+                        .brick_stair()
+                        .brick_slab()
+                        .tile_stair()
+                        .tile_slab()
+                        .createTag();
+
+        public static final BrickFamily FIRECLAY_BRICK_MOSSY = BrickFamily
+                        .of(zStatic.DecorativeBlocks.FireClay.mossy,
+                                        BlockBehaviour.Properties.of().sound(SoundType.STONE)
+                                                        .strength(1.0f).mapColor(MapColor.TERRACOTTA_ORANGE))
+                        .bricks()
+                        .pillar()
+                        .tiles()
+                        .brick_stair()
+                        .brick_slab()
+                        .tile_stair()
+                        .tile_slab()
+                        .createTag();
+
+        public static final BrickFamily FIRECLAY_BRICK_CRACKED = BrickFamily
+                        .of(zStatic.DecorativeBlocks.FireClay.cracked,
+                                        BlockBehaviour.Properties.of().sound(SoundType.STONE)
+                                                        .strength(1.0f).mapColor(MapColor.TERRACOTTA_ORANGE))
+                        .bricks()
+                        .pillar()
+                        .tiles()
+                        .brick_stair()
+                        .brick_slab()
+                        .tile_stair()
+                        .tile_slab()
+                        .createTag();
+
         // ---------------------------------------------------------------------------------------//
-
-        public static void registerLists() {
-
-        }
 
 }

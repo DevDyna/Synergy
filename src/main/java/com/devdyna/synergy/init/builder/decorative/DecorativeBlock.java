@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder;
+package com.devdyna.synergy.init.builder.decorative;
 
 import java.util.List;
 
