@@ -107,13 +107,15 @@ public class VoidBoxBlock extends TickingBlock {
                             new MonoItemInput(stack), level);
 
             if (!r.isEmpty()) {
+
                 var recipe = r.get().value();
-
-                LevelUtil.addParticle(ParticleTypes.WITCH, level, pos, true);
+                if (!level.isClientSide)
+                    LevelUtil.addParticle(ParticleTypes.WITCH, level, pos, true);
                 level.playSound(player, pos, SoundEvents.WITCH_DRINK, SoundSource.BLOCKS, 0.5f, 0.25f);
-                LevelUtil.popItemFromPos(level, pos, recipe.getOutput());
+                LevelUtil.popItemFromPos(level, pos, recipe.getOutput().copy());
 
-                stack.shrink(1);
+                if (!player.isCreative())
+                    stack.shrink(1);
 
                 return ItemInteractionResult.sidedSuccess(level.isClientSide());
             } else if (!stack.is(zItemTag.VOID_BOX_DENY))
