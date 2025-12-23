@@ -151,7 +151,6 @@ public class zStatic {
 
         public static String ember_coal_mixture = "coal_mixture";
 
-
         public static String flour = "flour";
         public static String void_crystal = "void_crystal";
 
@@ -161,10 +160,21 @@ public class zStatic {
         public static String rustic_metal = "rustic_metal";
         public static String waxed_planks = "waxed_planks";
         public static String adobe = "adobe";
+        public static String smooth_adobe = "smooth_adobe";
+
+        public static String blast_bricks = "blast_bricks";
 
         public class MachineFrame {
             public static String basic = "basic_machine_frame";
             public static String advanced = "advanced_machine_frame";
+        }
+
+        public static class FireClay {
+
+            public static final String TYPE = "fireclay";
+            public static final String mossy = "mossy_" + TYPE;
+            public static final String cracked = "cracked_" + TYPE;
+
         }
 
     }
@@ -176,6 +186,8 @@ public class zStatic {
         public class brick {
             public static String clay = "clay" + BRICK;
             public static String packed_mud = "packed_mud" + BRICK;
+            public static String blast = "blast" + BRICK;
+            public static String fireclay = "fireclay" + BRICK;
         }
 
         public class ball {
@@ -183,6 +195,8 @@ public class zStatic {
             public static String mud = "mud" + BALL;
             public static String packed_mud = "packed_mud" + BALL;
             public static String adobe = "adobe" + BALL;
+            public static String clay_mixture = "clay_mixture" + BALL;
+            public static String fireclay = "fireclay" + BALL;
         }
 
     }
