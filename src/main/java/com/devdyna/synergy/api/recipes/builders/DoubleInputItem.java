@@ -42,4 +42,13 @@ public interface DoubleInputItem<BUILDER extends BaseRecipeBuilder> extends Simp
     default BUILDER inputs(TagKey<Item> right, TagKey<Item> left) {
         return inputs(x.ingredient(right), x.ingredient(left));
     }
+
+    default BUILDER inputs(TagKey<Item> right, Item left) {
+        return inputs(x.ingredient(right), x.ingredient(left));
+    }
+
+    default BUILDER inputs(Item right, TagKey<Item> left) {
+        return inputs(x.ingredient(right), x.ingredient(left));
+    }
+
 }
