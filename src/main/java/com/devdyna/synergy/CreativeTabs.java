@@ -77,8 +77,14 @@ public class CreativeTabs {
                     zBlocks.zDecorative,
                     zBlocks.zBlockStair,
                     zBlocks.zBlockSlab,
-                    zBlocks.zMachineFrame)
+                    zBlocks.zMachineFrame,
+                    zBlocks.zColumn)
                     .forEach(i -> event.accept(i.get()));
+
+            zBlocks.FIRECLAY_BRICKS.buildCreativeTab(() -> event);
+            zBlocks.FIRECLAY_BRICK_CRACKED.buildCreativeTab(() -> event);
+            zBlocks.FIRECLAY_BRICK_MOSSY.buildCreativeTab(() -> event);
+
         }
 
         // ---------------------------------------------------------- //
