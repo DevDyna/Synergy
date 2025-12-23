@@ -476,6 +476,18 @@ public class zItems {
         public static final DeferredHolder<Item, Item> ADOBE_BALL = Material
                         .resourceItem(zStatic.DryableBricks.ball.adobe);
 
+        public static final DeferredHolder<Item, Item> FIRECLAY_BALL = Material
+                        .resourceItem(zStatic.DryableBricks.ball.fireclay);
+
+        public static final DeferredHolder<Item, Item> CLAY_MIXTURE_BALL = Material
+                        .resourceItem(zStatic.DryableBricks.ball.clay_mixture);
+
+        public static final DeferredHolder<Item, Item> FIRECLAY_BRICK = Material
+                        .resourceItem(zStatic.DryableBricks.brick.fireclay);
+
+        public static final DeferredHolder<Item, Item> BLAST_BRICK = Material
+                        .resourceItem(zStatic.DryableBricks.brick.blast);
+
         public static final DeferredHolder<Item, Item> FLOUR = Material
                         .resourceItem(zStatic.Items.flour);
 
