@@ -972,7 +972,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(80)
                                 .output(zItems.STEEL_INGOT)
                                 .unlockedBy()
-
                                 .save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_ENERGY.get())
@@ -1123,6 +1122,25 @@ public class DataRecipe extends ExtraRecipeProvider {
                                         stonecutter(c, s.getTiles().get(), s.getBricks().get());
 
                                 });
+
+
+
+
+                                AlloySmelterRecipeBuilder.of()
+                                .inputs(Tags.Items.INGOTS_GOLD,Items.NETHERITE_SCRAP)
+                                .delay(240)
+                                .output(Items.NETHERITE_INGOT)
+                                .unlockedBy()
+                                .save(c);
+
+                                AlloySmelterRecipeBuilder.of()
+                                .inputs(Items.GLOWSTONE_DUST,Items.REDSTONE)
+                                .delay(240)
+                                .output(zItems.ENERGIZED_REDSTONE,2)
+                                .unlockedBy()
+                                .save(c);
+
+
 
         }
 

@@ -1007,8 +1007,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         protected static void stair(ItemLike stair, ItemLike material, RecipeOutput c) {
                 ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, stair, 4).define('#', material)
-                                .pattern("  #")
-                                .pattern(" ##")
+                                .pattern("#  ")
+                                .pattern("## ")
                                 .pattern("###")
                                 .unlockedBy(getHasName(material), has(material))
                                 .save(c);
