@@ -1027,9 +1027,8 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                                 zItems.FLOUR.get()));
 
                 UrnRitualBuilder.of()
-                                .add(zItemTag.DUST_COAL)
                                 .add(Tags.Items.GEMS_DIAMOND)
-                                .add(zItems.ENERGIZED_REDSTONE)
+                                .add(zItems.MAGIC_DUST)
                                 .output(zItems.VOID_CRYSTAL.get(), 2)
                                 .unlockedBy().save(c);
 
@@ -1123,24 +1122,25 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                                 });
 
-
-
-
-                                AlloySmelterRecipeBuilder.of()
-                                .inputs(Tags.Items.INGOTS_GOLD,Items.NETHERITE_SCRAP)
+                AlloySmelterRecipeBuilder.of()
+                                .inputs(Tags.Items.INGOTS_GOLD, Items.NETHERITE_SCRAP)
                                 .delay(240)
                                 .output(Items.NETHERITE_INGOT)
                                 .unlockedBy()
                                 .save(c);
 
-                                AlloySmelterRecipeBuilder.of()
-                                .inputs(Items.GLOWSTONE_DUST,Items.REDSTONE)
+                AlloySmelterRecipeBuilder.of()
+                                .inputs(Items.GLOWSTONE_DUST, Items.REDSTONE)
                                 .delay(240)
-                                .output(zItems.ENERGIZED_REDSTONE,2)
+                                .output(zItems.ENERGIZED_REDSTONE, 2)
                                 .unlockedBy()
                                 .save(c);
 
-
+                UrnRitualBuilder.of()
+                                .add(zItemTag.DUST_AMETHYST)
+                                .add(zItemTag.DUST_LAPIS)
+                                .output(zItems.MAGIC_DUST, 2)
+                                .unlockedBy().save(c);
 
         }
 

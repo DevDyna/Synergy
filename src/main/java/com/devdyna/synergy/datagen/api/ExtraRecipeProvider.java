@@ -589,8 +589,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                 UrnRitualBuilder.of()
                                 .add(zItemTag.PLUTONIUM)
-                                .add(zItemTag.DUST_LAPIS)
-                                .add(zItemTag.DUST_AMETHYST)
+                                .add(zItems.MAGIC_DUST)
+                                .add(zItems.AQUAMARINE)
                                 .output(zItems.NEPTUNIUM, 2)
                                 .unlockedBy().save(c);
 
