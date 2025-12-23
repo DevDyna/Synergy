@@ -1,6 +1,8 @@
 {
   "values": [
     "minecraft:clay_ball",
-    "synergy:packed_mud_ball"
+    "synergy:packed_mud_ball",
+    "synergy:fireclay_ball",
+    "synergy:clay_mixture_ball"
   ]
 }

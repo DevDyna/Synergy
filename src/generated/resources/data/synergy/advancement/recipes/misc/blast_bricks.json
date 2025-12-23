@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blast_brick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:blast_brick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:blast_bricks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_blast_brick"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:blast_bricks"
+    ]
+  }
+}

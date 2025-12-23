@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mossy_fireclay_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:mossy_fireclay_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:mossy_fireclay_bricks_slab_from_mossy_fireclay_bricks_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mossy_fireclay_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:mossy_fireclay_bricks_slab_from_mossy_fireclay_bricks_stonecutting"
+    ]
+  }
+}

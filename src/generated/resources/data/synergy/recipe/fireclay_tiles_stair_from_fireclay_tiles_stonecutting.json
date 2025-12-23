@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "synergy:fireclay_tiles"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:fireclay_tiles_stair"
+  }
+}

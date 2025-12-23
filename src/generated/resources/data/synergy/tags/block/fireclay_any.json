@@ -1,0 +1,11 @@
+{
+  "values": [
+    "synergy:fireclay_bricks",
+    "synergy:fireclay_tiles",
+    "synergy:fireclay_column",
+    "synergy:fireclay_bricks_slab",
+    "synergy:fireclay_tiles_slab",
+    "synergy:fireclay_bricks_stair",
+    "synergy:fireclay_tiles_stair"
+  ]
+}

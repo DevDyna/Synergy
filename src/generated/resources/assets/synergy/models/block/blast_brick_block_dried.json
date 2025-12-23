@@ -1,0 +1,6 @@
+{
+  "parent": "synergy:block/base_brick",
+  "textures": {
+    "texture": "synergy:block/decorative/blast_bricks"
+  }
+}

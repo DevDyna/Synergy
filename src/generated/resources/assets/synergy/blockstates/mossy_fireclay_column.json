@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "synergy:block/mossy_fireclay_column_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "synergy:block/mossy_fireclay_column"
+    },
+    "axis=z": {
+      "model": "synergy:block/mossy_fireclay_column_horizontal",
+      "x": 90
+    }
+  }
+}

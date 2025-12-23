@@ -1,5 +1,7 @@
 {
   "values": [
-    "synergy:packed_mud_brick"
+    "synergy:packed_mud_brick",
+    "synergy:fireclay_brick",
+    "synergy:blast_brick"
   ]
 }

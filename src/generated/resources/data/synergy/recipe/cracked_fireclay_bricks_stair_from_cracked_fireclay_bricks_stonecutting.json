@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "synergy:cracked_fireclay_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:cracked_fireclay_bricks_stair"
+  }
+}

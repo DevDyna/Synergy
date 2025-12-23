@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "synergy:block/mossy_fireclay_bricks_slab"
+    },
+    "type=double": {
+      "model": "synergy:block/mossy_fireclay_bricks"
+    },
+    "type=top": {
+      "model": "synergy:block/mossy_fireclay_bricks_slab_top"
+    }
+  }
+}

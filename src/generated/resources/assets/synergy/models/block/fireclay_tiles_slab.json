@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "synergy:block/decorative/fireclay_tiles",
+    "side": "synergy:block/decorative/fireclay_tiles",
+    "top": "synergy:block/decorative/fireclay_tiles"
+  }
+}

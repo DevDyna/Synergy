@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "synergy",
   "key": {
     "C": {
       "tag": "c:nuggets/advanced_alloy"

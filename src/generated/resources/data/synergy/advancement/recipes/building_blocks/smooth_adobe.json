@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_adobe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:adobe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:smooth_adobe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_adobe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:smooth_adobe"
+    ]
+  }
+}

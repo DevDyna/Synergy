@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fireclay_brick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:fireclay_brick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:fireclay_bricks"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fireclay_brick"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:fireclay_bricks"
+    ]
+  }
+}

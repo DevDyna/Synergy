@@ -2,6 +2,9 @@
   "values": [
     "#synergy:cooler",
     "#synergy:moderator",
+    "#synergy:fireclay_any",
+    "#synergy:cracked_fireclay_any",
+    "#synergy:mossy_fireclay_any",
     "synergy:sprinkler",
     "synergy:harvester",
     "synergy:solar_panel",
@@ -17,6 +20,7 @@
     "synergy:healer",
     "synergy:cooler_base",
     "synergy:fuel_cell",
-    "synergy:quantum_reactor_controller"
+    "synergy:quantum_reactor_controller",
+    "synergy:blast_bricks"
   ]
 }

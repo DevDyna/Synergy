@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "synergy:block/decorative/column/end/mossy_fireclay",
+    "side": "synergy:block/decorative/column/side/mossy_fireclay"
+  }
+}

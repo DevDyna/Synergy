@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "synergy:block/decorative/cracked_fireclay_bricks",
+    "side": "synergy:block/decorative/cracked_fireclay_bricks",
+    "top": "synergy:block/decorative/cracked_fireclay_bricks"
+  }
+}
