@@ -24,7 +24,7 @@ public interface Harvestable {
     IntegerProperty getPublicAgeProperty();
 
     default boolean harvestCrop(Level level, BlockState state, BlockPos pos, Player player, ItemStack tool) {
-        if (!level.isClientSide && canBeHarvested(state) && !Common.DISABLE_HARVESTABLE_ACTION.get()) {
+        if (!level.isClientSide() && canBeHarvested(state) && !Common.DISABLE_HARVESTABLE_ACTION.get()) {
 
             getItemResult(level, state, pos, player, tool)
                     .forEach(item -> ItemHandlerHelper.giveItemToPlayer(player, item));
