@@ -28,7 +28,7 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 
 @SuppressWarnings({ "removal", "deprecation", "null" })
-@EventBusSubscriber(modid = Main.ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Main.ID, value = Dist.CLIENT)
 public class Client {
 
     @SubscribeEvent
@@ -54,15 +54,15 @@ public class Client {
         event.register(zMachines.ELECTRIC_FURNACE.menu().get(), ElectricFurnaceScreen::new);
     }
 
-    @SubscribeEvent
-    public static void registerItemColor(RegisterColorHandlersEvent.Item event) {
-        // TODO idk if it work but i will keep it
-        for (var bucket : zItems.zBucketItems.getEntries()) {
-            event.getItemColors().register((s, i) -> (i == 1 && s.getItem() instanceof BucketItem)
-                    ? IClientFluidTypeExtensions.of(((BucketItem) s.getItem()).content).getTintColor()
-                    : 0xFFFFFFFF, bucket.get());
-        }
+    // @SubscribeEvent
+    // public static void registerItemColor(RegisterColorHandlersEvent.Item event) {
+    //     // TODO idk if it work but i will keep it
+    //     for (var bucket : zItems.zBucketItems.getEntries()) {
+    //         event.getItemColors().register((s, i) -> (i == 1 && s.getItem() instanceof BucketItem)
+    //                 ? IClientFluidTypeExtensions.of(((BucketItem) s.getItem()).content).getTintColor()
+    //                 : 0xFFFFFFFF, bucket.get());
+    //     }
 
-    }
+    // }
 
 }
