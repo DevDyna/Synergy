@@ -48,7 +48,7 @@ MENU extends AbstractContainerMenu,
 
         this.be = zMachines.xBE_MACHINE.register(
                 id,
-                () -> BlockEntityType.Builder.of(beFactory, this.block.get()).build(null));
+                () -> BlockEntityType.BlockEntitySupplier.of(beFactory, this.block.get()).build(null));
 
         this.item = zMachines.xITEM_MACHINE.registerSimpleBlockItem(this.block);
 
