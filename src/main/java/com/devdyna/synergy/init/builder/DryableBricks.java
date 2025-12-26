@@ -2,6 +2,8 @@ package com.devdyna.synergy.init.builder;
 
 import java.util.List;
 
+import org.jspecify.annotations.Nullable;
+
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.mojang.serialization.MapCodec;
@@ -29,6 +31,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -130,8 +133,8 @@ public class DryableBricks extends HorizontalDirectionalBlock {
 
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
-            BlockPos neighborPos, boolean movedByPiston) {
-        if (level.isClientSide)
+            @Nullable Orientation orientation, boolean movedByPiston) {
+        if (level.isClientSide())
             return;
 
         if (!Block.canSupportCenter(level, pos.below(), Direction.UP)) {
@@ -144,7 +147,7 @@ public class DryableBricks extends HorizontalDirectionalBlock {
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
             BlockHitResult hitResult) {
 
-        if (!level.isClientSide && state.getValue(DRIED)) {
+        if (!level.isClientSide() && state.getValue(DRIED)) {
             level.removeBlock(pos, false);
             Block.getDrops(state, (ServerLevel) level, pos, null)
                     .forEach(i -> ItemHandlerHelper.giveItemToPlayer(player, i));
