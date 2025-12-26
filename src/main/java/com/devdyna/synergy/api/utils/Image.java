@@ -4,7 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import mezz.jei.api.helpers.IGuiHelper;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class Image {
 
@@ -62,7 +62,7 @@ public class Image {
         return this;
     }
 
-    public Image rl(ResourceLocation rl) {
+    public Image rl(Identifier rl) {
         this.modid = rl.getNamespace();
         this.rl = rl.getPath();
         return this;
