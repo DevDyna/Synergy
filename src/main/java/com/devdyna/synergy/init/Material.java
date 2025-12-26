@@ -7,6 +7,7 @@ import java.util.function.*;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.ItemComponents;
 import com.devdyna.synergy.init.builder.ItemToolTipped;
 import com.devdyna.synergy.init.builder.decorative.DecorativeBlock;
@@ -15,7 +16,7 @@ import com.devdyna.synergy.init.types.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
@@ -91,7 +92,7 @@ public class Material {
          */
         public static TagKey<Item> tagItem(String name) {
                 return TagKey.create(BuiltInRegistries.ITEM.key(),
-                                ResourceLocation.fromNamespaceAndPath(Main.ID, name));
+                                x.rl(Main.ID, name));
         }
 
         /**
@@ -99,7 +100,7 @@ public class Material {
          */
         public static TagKey<Block> tagBlock(String name) {
                 return TagKey.create(BuiltInRegistries.BLOCK.key(),
-                                ResourceLocation.fromNamespaceAndPath(Main.ID, name));
+                                x.rl(Main.ID, name));
         }
 
         /**
@@ -107,7 +108,7 @@ public class Material {
          */
         public static TagKey<Item> tagItem(String name, String modname) {
                 return TagKey.create(BuiltInRegistries.ITEM.key(),
-                                ResourceLocation.fromNamespaceAndPath(modname, name));
+                                x.rl(modname, name));
         }
 
         /**
@@ -115,7 +116,7 @@ public class Material {
          */
         public static TagKey<Block> tagBlock(String name, String modname) {
                 return TagKey.create(BuiltInRegistries.BLOCK.key(),
-                                ResourceLocation.fromNamespaceAndPath(modname, name));
+                                x.rl(modname, name));
         }
 
         /**
@@ -123,7 +124,7 @@ public class Material {
          */
         public static TagKey<Fluid> tagFluid(String name) {
                 return TagKey.create(BuiltInRegistries.FLUID.key(),
-                                ResourceLocation.fromNamespaceAndPath(Main.ID, name));
+                                x.rl(Main.ID, name));
         }
 
         /**
@@ -137,14 +138,14 @@ public class Material {
          * create an biome tag
          */
         public static TagKey<Biome> tagBiome(String name) {
-                return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Main.ID, name));
+                return TagKey.create(Registries.BIOME, x.rl(Main.ID, name));
         }
 
         /**
          * create an entity tag
          */
         public static TagKey<EntityType<?>> tagEntity(String modname, String name) {
-                return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(modname, name));
+                return TagKey.create(Registries.ENTITY_TYPE, x.rl(modname, name));
         }
 
         /**
