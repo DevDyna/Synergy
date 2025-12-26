@@ -18,7 +18,7 @@ public class Capability {
                 // if it will return null , probably was a MY mistake!
                 // :p
 
-                event.registerBlock(Capabilities.EnergyStorage.BLOCK,
+                event.registerBlock(Capabilities.Energy.BLOCK,
                                 (level, pos, state, be,
                                                 side) -> (be != null ? be.getData(zHandlers.ENERGY_STORAGE) : null),
                                 zBlocks.HARVESTER.get(),
@@ -30,7 +30,7 @@ public class Capability {
 
                 );
 
-                event.registerBlock(Capabilities.ItemHandler.BLOCK,
+                event.registerBlock(Capabilities.Item.BLOCK,
                                 (level, pos, state, be,
                                                 side) -> (be != null ? be.getData(zHandlers.ITEM_STORAGE) : null),
                                 zBlocks.REACTOR_FUEL_CELL.get(),
@@ -42,7 +42,7 @@ public class Capability {
                                 zBlocks.VOID_BOX.get());
 
                 event.registerBlock(
-                                Capabilities.ItemHandler.BLOCK,
+                                Capabilities.Item.BLOCK,
                                 (level, pos, state, be, side) -> ((be instanceof BaseMachineBE m)
                                                 ? m.getAutomationHandler()
                                                 : null),
@@ -50,7 +50,7 @@ public class Capability {
                                                 .toArray(Block[]::new));
 
                 event.registerBlock(
-                                Capabilities.EnergyStorage.BLOCK,
+                                Capabilities.Energy.BLOCK,
                                 (level, pos, state, be, side) -> ((be instanceof EnergyBlock m)
                                                 ? m.getCapEnergy()
                                                 : null),
