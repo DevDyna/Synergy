@@ -30,7 +30,7 @@ _NaN_
 
 - [ ] GuideMe machinery
 
-- [ ] Modern Chisel compat (?)
+- ~~Modern Chisel compat (?)~~
 
 - [x] Provider Nodes jade output
 
