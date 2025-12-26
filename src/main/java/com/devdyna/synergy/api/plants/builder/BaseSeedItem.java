@@ -1,5 +1,6 @@
 package com.devdyna.synergy.api.plants.builder;
 
+import net.minecraft.references.Items;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.Block;
 
