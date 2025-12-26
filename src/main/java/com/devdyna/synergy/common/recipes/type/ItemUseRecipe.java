@@ -38,7 +38,7 @@ public class ItemUseRecipe implements Recipe<UseItemInput> {
     }
 
     public boolean matches(UseItemInput r, Level l) {
-        return inputItem.test(r.input()) && inputState.is(r.block().getBlock()) && !canBeDisabled;
+        return inputItem.test(r.input()) && inputState.is(r.block().getBlock());
     }
 
     public ItemStack assemble(UseItemInput i, HolderLookup.Provider r) {
