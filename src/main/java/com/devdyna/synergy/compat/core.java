@@ -5,9 +5,6 @@ import static com.devdyna.synergy.Main.ID;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.*;
 
-import guideme.Guide;
-import net.minecraft.resources.ResourceLocation;
-
 public class core {
 
     public static void registerCompat() {
@@ -16,7 +13,7 @@ public class core {
         LogUtil.decor(20);
 
         if (ModAddonUtil.checkMod(zStatic.Mods.GuideMe))
-            Guide.builder(ResourceLocation.parse(ID + ":guide")).build();
+            // Guide.builder(ResourceLocation.parse(ID + ":guide")).build();
 
         compatInfo(zStatic.Mods.GuideMe, "GuideMe");
         compatInfo(zStatic.Mods.Patchouli, "Patchouli");
