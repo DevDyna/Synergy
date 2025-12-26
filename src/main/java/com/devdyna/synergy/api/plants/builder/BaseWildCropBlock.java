@@ -18,7 +18,7 @@ public class BaseWildCropBlock extends BushBlock {
 
     protected BaseWildCropBlock(Properties properties) {
         super(properties.mapColor(MapColor.PLANT)
-                .noCollission()
+                .noCollision()
                 .randomTicks()
                 .instabreak()
                 .sound(SoundType.CROP)
@@ -26,10 +26,10 @@ public class BaseWildCropBlock extends BushBlock {
 
     }
 
-    @Override
-    public MapCodec<BaseWildCropBlock> codec() {
-        return simpleCodec((p) -> new BaseWildCropBlock(p));
-    }
+    // @Override
+    // public MapCodec<BaseWildCropBlock> codec() {
+    //     return simpleCodec((p) -> new BaseWildCropBlock(p));
+    // }
 
     public TagKey<Block> getSpawnFilter() {
         return null;
