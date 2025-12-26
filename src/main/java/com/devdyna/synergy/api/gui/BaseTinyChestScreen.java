@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
 @SuppressWarnings("null")
@@ -25,7 +25,7 @@ public abstract class BaseTinyChestScreen<T extends BaseTinyChestMenu> extends B
     }
 
     @Override
-    protected @Nullable ResourceLocation arrow() {
+    protected @Nullable Identifier arrow() {
         return null;
     }
 
