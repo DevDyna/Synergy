@@ -16,7 +16,6 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
@@ -51,41 +50,41 @@ public class LevelUtil {
         return value;
     }
 
-    public static List<Holder<Block>> BlockByTag(TagKey<Block> tag) {
-        return BuiltInRegistries.BLOCK.getOrCreateTag(tag).stream().toList();
-    }
+    // public static List<Holder<Block>> BlockByTag(TagKey<Block> tag) {
+    //     return BuiltInRegistries.BLOCK.get(tag).stream().toList();
+    // }
 
-    public static List<Holder<Block>> BlockByTagName(String tag) {
-        return BuiltInRegistries.BLOCK.getOrCreateTag(Material.tagBlock(tag)).stream().toList();
-    }
+    // public static List<Holder<Block>> BlockByTagName(String tag) {
+    //     return BuiltInRegistries.BLOCK.getOrCreateTag(Material.tagBlock(tag)).stream().toList();
+    // }
 
-    public static List<Holder<Item>> ItemByTagName(String tag) {
-        return BuiltInRegistries.ITEM.getOrCreateTag(Material.tagItem(tag)).stream().toList();
-    }
+    // public static List<Holder<Item>> ItemByTagName(String tag) {
+    //     return BuiltInRegistries.ITEM.getOrCreateTag(Material.tagItem(tag)).stream().toList();
+    // }
 
-    public static Block BlockByTag(TagKey<Block> tag, int index) {
-        return BlockByTag(tag).get(index).value();
-    }
+    // public static Block BlockByTag(TagKey<Block> tag, int index) {
+    //     return BlockByTag(tag).get(index).value();
+    // }
 
-    public static List<Holder<Item>> ItemByTag(TagKey<Item> tag) {
-        return BuiltInRegistries.ITEM.getOrCreateTag(tag).stream().toList();
-    }
+    // public static List<Holder<Item>> ItemByTag(TagKey<Item> tag) {
+    //     return BuiltInRegistries.ITEM.getOrCreateTag(tag).stream().toList();
+    // }
 
-    public static List<Item> getItemByTag(TagKey<Item> tag) {
-        return BuiltInRegistries.ITEM.getOrCreateTag(tag).stream().map(Holder::value).toList();
-    }
+    // public static List<Item> getItemByTag(TagKey<Item> tag) {
+    //     return BuiltInRegistries.ITEM.getOrCreateTag(tag).stream().map(Holder::value).toList();
+    // }
 
-    public static Item ItemByTag(TagKey<Item> tag, int index) {
-        return ItemByTag(tag).get(index).value();
-    }
+    // public static Item ItemByTag(TagKey<Item> tag, int index) {
+    //     return ItemByTag(tag).get(index).value();
+    // }
 
-    public static int getSizeItemTag(TagKey<Item> tag) {
-        return ItemByTag(tag).size() - 1;
-    }
+    // public static int getSizeItemTag(TagKey<Item> tag) {
+    //     return ItemByTag(tag).size() - 1;
+    // }
 
-    public static int getSizeBlockTag(TagKey<Block> tag) {
-        return BlockByTag(tag).size() - 1;
-    }
+    // public static int getSizeBlockTag(TagKey<Block> tag) {
+    //     return BlockByTag(tag).size() - 1;
+    // }
 
     public static void popItemFromPos(Level level, BlockPos pos, ItemStack itemStack) {
         Block.popResource(level, pos, itemStack);
@@ -107,7 +106,7 @@ public class LevelUtil {
 
         LootTable lootTable = level.getServer().reloadableRegistries()
                 .getLootTable(ResourceKey
-                        .create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(
+                        .create(Registries.LOOT_TABLE, x.rl(
                                 StringUtil.getModName(raw_ore_name), "blocks/"
                                         + raw_ore_name.substring(raw_ore_name.lastIndexOf('.') + 1))));
         return lootTable.getRandomItems(params);
@@ -150,7 +149,7 @@ public class LevelUtil {
             String resourcelocation) {
         LootTable lootTable = level.getServer().reloadableRegistries()
                 .getLootTable(ResourceKey
-                        .create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(
+                        .create(Registries.LOOT_TABLE, x.rl(
                                 ModName, resourcelocation)));
         return lootTable.getRandomItems(new LootParams.Builder(level).create(LootContextParamSets.EMPTY));
     }
@@ -195,9 +194,9 @@ public class LevelUtil {
             ServerLevel level, BlockPos pos,
             boolean isRandom, int count) {
 
-        Vector3f color = Vec3
-                .fromRGB24((red << 16) | (green << 8) | blue)
-                .toVector3f();
+        // Vector3f color = Vec3
+                // .fromRGB24((red << 16) | (green << 8) | blue)
+                // .toVector3f();
 
         double x = pos.getX() + 0.5;
         double y = pos.getY() + 0.5;
@@ -209,7 +208,7 @@ public class LevelUtil {
         double speed = isRandom ? level.random.nextDouble() * 0.025 : 0;
 
         level.sendParticles(
-                new DustParticleOptions(color, 1.0F),
+                new DustParticleOptions((red << 16) | (green << 8) | blue, 1.0F),
                 x, y, z,
                 count,
                 dx, dy, dz,
@@ -221,7 +220,7 @@ public class LevelUtil {
             int count) {
 
         level.sendParticles(
-                new DustParticleOptions(Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(), 1.0F),
+                new DustParticleOptions((red << 16) | (green << 8) | blue, 1.0F),
                 (double) x + 0.5,
                 (double) y + 0.5,
                 (double) z + 0.5,
@@ -238,7 +237,7 @@ public class LevelUtil {
             int count) {
 
         level.sendParticles(
-                new DustParticleOptions(Vec3.fromRGB24(rgbColor).toVector3f(), 1.0F),
+                new DustParticleOptions(rgbColor, 1.0F),
                 (double) pos.getX() + 0.5,
                 (double) pos.getY() + 0.5,
                 (double) pos.getZ() + 0.5,
@@ -321,7 +320,7 @@ public class LevelUtil {
 
             level.sendParticles(
                     new DustParticleOptions(
-                            Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(),
+                            (red << 16) | (green << 8) | blue,
                             scale),
                     x, y, z,
                     1,
@@ -337,8 +336,8 @@ public class LevelUtil {
         double startY = pos.getY() + 0.25;
         double startZ = pos.getZ() + 0.5;
 
-        Vec3 inputVec = Vec3.atLowerCornerOf(input.getOpposite().getNormal()).scale(0.5);
-        Vec3 outputVec = Vec3.atLowerCornerOf(output.getNormal()).scale(0.5);
+        Vec3 inputVec = Vec3.atLowerCornerOf(input.getOpposite().getUnitVec3i()).scale(0.5);
+        Vec3 outputVec = Vec3.atLowerCornerOf(output.getUnitVec3i()).scale(0.5);
 
         for (int i = 1; i <= maxParticles; i++) {
             double t = (double) i / (maxParticles + 1);
@@ -349,7 +348,7 @@ public class LevelUtil {
 
             level.sendParticles(
                     new DustParticleOptions(
-                            Vec3.fromRGB24((red << 16) | (green << 8) | blue).toVector3f(),
+                            (red << 16) | (green << 8) | blue,
                             scale),
                     x, y, z,
                     1,
