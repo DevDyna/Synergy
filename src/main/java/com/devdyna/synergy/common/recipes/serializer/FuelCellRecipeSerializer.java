@@ -15,7 +15,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 public class FuelCellRecipeSerializer implements RecipeSerializer<FuelCellRecipe> {
 
     public static final MapCodec<FuelCellRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-            Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(FuelCellRecipe::getInput),
+            Ingredient.CODEC.fieldOf("ingredient").forGetter(FuelCellRecipe::getInput),
             ItemStack.CODEC.fieldOf("result").forGetter(FuelCellRecipe::getOutput),
             Codec.INT.fieldOf("ticks").forGetter(FuelCellRecipe::getDuration),
             Codec.INT.fieldOf("fe").forGetter(FuelCellRecipe::getFe),
