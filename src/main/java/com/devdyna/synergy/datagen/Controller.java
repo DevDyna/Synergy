@@ -21,7 +21,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 @SuppressWarnings({ "removal", "deprecation" })
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = ID)
+@EventBusSubscriber(modid = ID)
 public class Controller {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent e) {
