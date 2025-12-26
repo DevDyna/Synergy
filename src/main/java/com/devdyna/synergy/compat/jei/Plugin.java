@@ -111,7 +111,7 @@ public class Plugin implements IModPlugin {
         @Override
         public void registerRecipes(IRecipeRegistration r) {
 
-                RecipeManager recipes = Minecraft.getInstance().level.getRecipeManager();
+                RecipeManager recipes = Minecraft.getInstance().level.getServer().getRecipeManager();
 
                 r.addRecipes(ReactorCellCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.FUEL_CELL_RECIPE.getType())
                                 .stream().map(RecipeHolder::value).toList());
