@@ -156,10 +156,10 @@ public class DryableBricks extends HorizontalDirectionalBlock {
             return super.useWithoutItem(state, level, pos, player, hitResult);
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
-            TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + ".disabled"));
-    }
+    // @Override
+    // public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
+    //         TooltipFlag tooltipFlag) {
+    //     tooltipComponents.add(Component.translatable(Main.ID + ".disabled"));
+    // }
 
 }
