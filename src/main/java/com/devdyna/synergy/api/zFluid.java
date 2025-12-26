@@ -91,7 +91,7 @@ public class zFluid {
                         c.accept(new IClientFluidTypeExtensions() {
 
                             @Override
-                            public ResourceLocation getStillTexture() {
+                            public Identifier getStillTexture() {
                                 return still;
                             }
 
@@ -101,18 +101,18 @@ public class zFluid {
                             }
 
                             @Override
-                            public ResourceLocation getFlowingTexture() {
+                            public Identifier getFlowingTexture() {
                                 return flowing;
                             }
 
                             @Override
-                            public ResourceLocation getOverlayTexture() {
+                            public Identifier getOverlayTexture() {
                                 return overlay;
                             };
 
                             @Override
-                            public ResourceLocation getRenderOverlayTexture(Minecraft mc) {
-                                return ResourceLocation.parse("textures/misc/underwater.png");
+                            public Identifier getRenderOverlayTexture(Minecraft mc) {
+                                return Identifier.parse("textures/misc/underwater.png");
                             }
 
                             @Override
@@ -171,7 +171,7 @@ public class zFluid {
         return itemBucket;
     }
 
-    public ResourceLocation getStill() {
+    public Identifier getStill() {
         return still;
     }
 
@@ -179,32 +179,32 @@ public class zFluid {
         return type;
     }
 
-    public zFluid setTextures(ResourceLocation still) {
+    public zFluid setTextures(Identifier still) {
         this.still = still;
         return this;
     }
 
-    public zFluid setTextures(ResourceLocation still, ResourceLocation flowing) {
+    public zFluid setTextures(Identifier still, Identifier flowing) {
         this.flowing = flowing;
         return setTextures(still);
     }
 
-    public zFluid setTextures(ResourceLocation still, ResourceLocation flowing, ResourceLocation overlay) {
+    public zFluid setTextures(Identifier still, Identifier flowing, Identifier overlay) {
         this.overlay = overlay;
         return setTextures(still, flowing);
     }
 
-    public zFluid setStillTexture(ResourceLocation rl) {
+    public zFluid setStillTexture(Identifier rl) {
         this.still = rl;
         return this;
     }
 
-    public zFluid setFlowingTexture(ResourceLocation rl) {
+    public zFluid setFlowingTexture(Identifier rl) {
         this.flowing = rl;
         return this;
     }
 
-    public zFluid setOverlayTexture(ResourceLocation rl) {
+    public zFluid setOverlayTexture(Identifier rl) {
         this.overlay = rl;
         return this;
     }
