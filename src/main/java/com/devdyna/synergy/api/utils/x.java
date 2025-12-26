@@ -3,7 +3,8 @@ package com.devdyna.synergy.api.utils;
 import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -19,11 +20,11 @@ import static com.devdyna.synergy.Main.ID;
 
 public class x {
 
-    public static ResourceLocation rl(String modid, String s) {
-        return ResourceLocation.fromNamespaceAndPath(modid, s);
+    public static Identifier rl(String modid, String s) {
+        return Identifier.fromNamespaceAndPath(modid, s);
     }
 
-    public static ResourceLocation rl(String s) {
+    public static Identifier rl(String s) {
         return rl(ID, s);
     }
 
@@ -31,7 +32,7 @@ public class x {
      * @param d <code>BuiltInRegistries.BLOCK</code>
      * @param i <code>Blocks.STONE</code>
      */
-    public static <T> ResourceLocation rl(DefaultedRegistry<T> d, T i) {
+    public static <T> Identifier rl(DefaultedRegistry<T> d, T i) {
         return rl(d.getKey(i).getPath());
     }
 
@@ -39,15 +40,15 @@ public class x {
      * @param d <code>BuiltInRegistries.BLOCK</code>
      * @param i <code>Blocks.STONE</code>
      */
-    public static <T> ResourceLocation rl(DefaultedRegistry<T> d, T i, String modid) {
+    public static <T> Identifier rl(DefaultedRegistry<T> d, T i, String modid) {
         return rl(modid, d.getKey(i).getPath());
     }
 
-    public static ResourceLocation rl(Item i) {
+    public static Identifier rl(Item i) {
         return rl(BuiltInRegistries.ITEM, i);
     }
 
-    public static ResourceLocation rl(Block i) {
+    public static Identifier rl(Block i) {
         return rl(BuiltInRegistries.BLOCK, i);
     }
 
@@ -84,7 +85,7 @@ public class x {
      * @param i   <code>"stone"</code>
      */
     public static <T> T get(DefaultedRegistry<T> d, String i) {
-        return d.get(rl(i));
+        return (T) d.get(rl(i));
     }
 
     /**
@@ -93,7 +94,7 @@ public class x {
      * @param i   <code>"stone"</code>
      */
     public static <T> T get(DefaultedRegistry<T> d, String modid, String i) {
-        return d.get(rl(modid, i));
+        return (T) d.get(rl(modid, i));
     }
 
     public static ItemStack item(Item i, int c) {
@@ -116,8 +117,12 @@ public class x {
     //     return x.item(holder.get().asItem());
     // }
 
+    /**
+     * Use <code>ingredient(ItemLike i)</code>
+     */
+    @Deprecated
     public static Ingredient ingredient(ItemStack i) {
-        return Ingredient.of(i);
+        return Ingredient.of(i.getItem());
     }
 
     public static Ingredient ingredient(ItemLike i) {
@@ -136,7 +141,7 @@ public class x {
         return Ingredient.of(i);
     }
 
-    public static Ingredient ingredient(ResourceLocation tag) {
+    public static Ingredient ingredient(Identifier tag) {
         return Ingredient.of(TagKey.create(Registries.ITEM, tag));
     }
 
@@ -152,7 +157,7 @@ public class x {
         return b.getBlock();
     }
 
-    public static ResourceLocation id(Item item) {
+    public static Identifier id(Item item) {
         return BuiltInRegistries.ITEM.getKey(item);
     }
 
