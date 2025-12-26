@@ -72,9 +72,9 @@ _NaN_
 
 - [ ] Fermenting
 
-- [ ] Zodiac (mdpk) Block Scrapping
+-  ~~Zodiac (mdpk) Block Scrapping~~
 
-- [ ] Flint and flint (flint and steel like but with chance to success)
+-  ~~Flint and flint (flint and steel like but with chance to success)~~
 
 - [ ] BE NBT crafting uncraft/tooltip (?)
 
