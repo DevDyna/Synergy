@@ -10,14 +10,17 @@ import com.devdyna.synergy.common.recipes.input.ProviderInput;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeBookCategories;
+import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
-public abstract class BaseProviderRecipe<T> implements Recipe<ProviderInput> {
+public abstract class BaseProviderRecipe<T, RECIPE extends Recipe<ProviderInput>> implements Recipe<ProviderInput> {
 
     protected final BlockState core;
     protected final BlockState below;
@@ -44,13 +47,13 @@ public abstract class BaseProviderRecipe<T> implements Recipe<ProviderInput> {
 
     public abstract zRecipe<?> getRecipe();
 
-    public RecipeType<?> getType() {
-        return getRecipe().getType();
+    public RecipeType<RECIPE> getType() {
+        return (RecipeType<RECIPE>) getRecipe().getType();
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
-        return getRecipe().getSerializer();
+    public RecipeSerializer<RECIPE> getSerializer() {
+        return (RecipeSerializer<RECIPE>) getRecipe().getSerializer();
     }
 
     public NonNullList<Ingredient> getIngredients() {
@@ -78,6 +81,16 @@ public abstract class BaseProviderRecipe<T> implements Recipe<ProviderInput> {
 
     public T getOutput() {
         return output;
+    }
+
+    @Override
+    public PlacementInfo placementInfo() {
+        return PlacementInfo.NOT_PLACEABLE;
+    }
+
+    @Override
+    public RecipeBookCategory recipeBookCategory() {
+        return RecipeBookCategories.CRAFTING_BUILDING_BLOCKS;
     }
 
 }
