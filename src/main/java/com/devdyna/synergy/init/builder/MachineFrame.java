@@ -40,10 +40,10 @@ public class MachineFrame extends DirectionalBlock {
         return simpleCodec((p) -> this);
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + ".safe_building"));
-    }
+    // @Override
+    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+    //         TooltipFlag f) {
+    //     t.add(Component.translatable(Main.ID + ".safe_building"));
+    // }
 
 }
