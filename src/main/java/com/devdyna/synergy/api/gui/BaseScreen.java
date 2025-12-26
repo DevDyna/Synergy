@@ -9,7 +9,7 @@ import com.devdyna.synergy.api.utils.ColorUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
 @SuppressWarnings("null")
@@ -19,9 +19,9 @@ public abstract class BaseScreen<T extends BaseMenu> extends AbstractContainerSc
         super(menu, playerInventory, title);
     }
 
-    protected abstract ResourceLocation background();
+    protected abstract Identifier background();
 
-    protected abstract @Nullable ResourceLocation arrow();
+    protected abstract @Nullable Identifier arrow();
 
     protected abstract boolean whenAnimateArrow();
 
@@ -32,7 +32,7 @@ public abstract class BaseScreen<T extends BaseMenu> extends AbstractContainerSc
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int j) {
 
-        guiGraphics.blit(background(), getGuiLeft(), getGuiTop(), 0, 0, imageWidth, imageHeight);
+        guiGraphics.blit(background(), getGuiLeft(), getGuiTop(), 0, 0, imageWidth, imageHeight, 0,0);
 
         if (arrow() != null && whenAnimateArrow())
             guiGraphics.blit(arrow(), getGuiLeft() + 73, getGuiTop() + 35, 0, 0, getScaledArrowProgress(), 16, 24, 16);
