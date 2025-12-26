@@ -60,7 +60,7 @@ _NaN_
 
 - [ ] Glass-Caster Factory (forestry like)
 
-- ~~ Potted Azalea dirt->rotten randomtick event~~ rejected due pointless
+- ~~Potted Azalea dirt->rotten randomtick event~~ rejected due pointless
 
 - [ ] Spawner Essence
 
@@ -112,7 +112,7 @@ _NaN_
 - [ ] decorative devices (?)
 - [ ] dye essence (?)
 
-- ~~ Energy (like FE but a completly new Capability type) that allow E->FE~~ too codebase breaker
+- ~~Energy (like FE but a completly new Capability type) that allow E->FE~~ too codebase breaker
 
 - [ ] Rocket Launcher
 
@@ -124,7 +124,7 @@ _NaN_
 
 - [ ] Extractor (special recipes like honey) Item->(Item|Item)
 
-- ~~Energy Converter (only FE->E)~~
+- ~~Energy Converter (only FE->E)~~ <br/>
 - ~~Tiered Cables (transfer rate and capacity)~~
 
 - [ ] Scrap Generator (recycle items to scraps and item used to craft)
@@ -162,5 +162,5 @@ _NaN_
 
 - [ ] magic beans (giant plant) (randomthings like?)
 - [ ] blight spore (thorny giant plant)
-- [ ] grapple cultivated (multiblock)
-- ~~ smill trees ~~ rejected due pointless
+- [ ] grapple cultivated (multiblock)<br/>
+- ~~smill trees~~ rejected due pointless
