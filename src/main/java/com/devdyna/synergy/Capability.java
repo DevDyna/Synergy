@@ -10,7 +10,6 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
-@SuppressWarnings("null")
 public class Capability {
 
         public static void register(RegisterCapabilitiesEvent event) {
