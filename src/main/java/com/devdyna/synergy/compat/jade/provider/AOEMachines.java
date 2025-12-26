@@ -8,7 +8,7 @@ import com.devdyna.synergy.api.beLogic.SimpleAOE;
 import com.devdyna.synergy.api.utils.x;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import snownee.jade.api.*;
 import snownee.jade.api.config.IPluginConfig;
 
@@ -25,9 +25,9 @@ public enum AOEMachines implements IBlockComponentProvider, IServerDataProvider<
 
         if (server.contains("xz"))
             tooltip.add(Component.translatable(ID + ".aoe")
-                    .append(server.contains("isComplex") && server.getBoolean("isComplex") && server.contains("h")
-                            ? ("XZ: " + server.getInt("xz") + " | Y: " + server.getInt("h"))
-                            : "" + server.getInt("xz")));
+                    .append(server.contains("isComplex") && server.getBoolean("isComplex").isPresent() && server.getBoolean("isComplex").get() && server.contains("h")
+                            ? ("XZ: " + server.getInt("xz").get() + " | Y: " + server.getInt("h").get())
+                            : "" + server.getInt("xz").get()));
 
     }
 
@@ -46,7 +46,7 @@ public enum AOEMachines implements IBlockComponentProvider, IServerDataProvider<
     }
 
     @Override
-    public ResourceLocation getUid() {
+    public Identifier getUid() {
         return x.rl("aoe");
     }
 
