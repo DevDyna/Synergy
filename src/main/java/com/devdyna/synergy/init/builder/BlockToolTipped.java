@@ -10,23 +10,26 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.Block;
 
 @SuppressWarnings("null")
+@Deprecated
 public class BlockToolTipped extends Block {
 
-    private String traslationkey;
+    // private String traslationkey;
 
+    @Deprecated
     public BlockToolTipped(Properties properties, String traslationkey) {
         super(properties);
-        this.traslationkey = traslationkey;
+        // this.traslationkey = traslationkey;
     }
 
+    @Deprecated
     public BlockToolTipped(String traslationkey) {
         this(Properties.of(), traslationkey);
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + traslationkey));
-    }
+    // @Override
+    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+    // TooltipFlag f) {
+    // t.add(Component.translatable(Main.ID + "." + traslationkey));
+    // }
 
 }
