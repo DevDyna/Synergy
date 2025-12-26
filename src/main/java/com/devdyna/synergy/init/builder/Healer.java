@@ -32,7 +32,7 @@ public class Healer extends Block {
         if (entity instanceof LivingEntity livingEntity) {
             if (livingEntity.getMaxHealth() > livingEntity.getHealth() && entity.isAlive()) {
                 livingEntity.heal(1);
-                if (!level.isClientSide)
+                if (!level.isClientSide())
                     LevelUtil.addParticle(ParticleTypes.HEART, (ServerLevel) level, pos.above(), true, 3);
                 if (entity.isOnFire())
                     entity.clearFire();
@@ -41,10 +41,10 @@ public class Healer extends Block {
 
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.healer));
-    }
+    // @Override
+    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+    //         TooltipFlag f) {
+    //     t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.healer));
+    // }
 
 }
