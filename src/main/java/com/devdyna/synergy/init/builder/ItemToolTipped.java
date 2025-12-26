@@ -11,6 +11,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 
 @SuppressWarnings("null")
+@Deprecated
 public class ItemToolTipped extends Item {
 
     private String traslationkey;
