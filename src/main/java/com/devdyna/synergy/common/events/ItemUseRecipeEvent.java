@@ -26,7 +26,7 @@ public class ItemUseRecipeEvent {
         var hand = event.getHand();
         var state = level.getBlockState(pos);
 
-        Optional<RecipeHolder<ItemUseRecipe>> recipe = level.getRecipeManager()
+        Optional<RecipeHolder<ItemUseRecipe>> recipe = level.getServer().getRecipeManager()
                 .getRecipeFor(zRecipeTypes.ITEM_USE.getType(),
                         new UseItemInput(state, item), level);
 
