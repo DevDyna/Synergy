@@ -84,45 +84,47 @@ public class zFluid {
                         .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
                         .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)) {
 
-                    @SuppressWarnings({ "removal" })
-                    @Override
-                    public void initializeClient(Consumer<IClientFluidTypeExtensions> c) {
+                            
 
-                        c.accept(new IClientFluidTypeExtensions() {
+                    // @SuppressWarnings({ "removal" })
+                    // @Override
+                    // public void initializeClient(Consumer<IClientFluidTypeExtensions> c) {
 
-                            @Override
-                            public Identifier getStillTexture() {
-                                return still;
-                            }
+                    //     c.accept(new IClientFluidTypeExtensions() {
 
-                            @Override
-                            public int getTintColor(FluidState s, BlockAndTintGetter g, BlockPos p) {
-                                return color;
-                            }
+                    //         @Override
+                    //         public Identifier getStillTexture() {
+                    //             return still;
+                    //         }
 
-                            @Override
-                            public Identifier getFlowingTexture() {
-                                return flowing;
-                            }
+                    //         @Override
+                    //         public int getTintColor(FluidState s, BlockAndTintGetter g, BlockPos p) {
+                    //             return color;
+                    //         }
 
-                            @Override
-                            public Identifier getOverlayTexture() {
-                                return overlay;
-                            };
+                    //         @Override
+                    //         public Identifier getFlowingTexture() {
+                    //             return flowing;
+                    //         }
 
-                            @Override
-                            public Identifier getRenderOverlayTexture(Minecraft mc) {
-                                return Identifier.parse("textures/misc/underwater.png");
-                            }
+                    //         @Override
+                    //         public Identifier getOverlayTexture() {
+                    //             return overlay;
+                    //         };
 
-                            @Override
-                            public int getTintColor() {
-                                return color;
-                            }
+                    //         @Override
+                    //         public Identifier getRenderOverlayTexture(Minecraft mc) {
+                    //             return Identifier.parse("textures/misc/underwater.png");
+                    //         }
 
-                        });
-                        super.initializeClient(c);
-                    }
+                    //         @Override
+                    //         public int getTintColor() {
+                    //             return color;
+                    //         }
+
+                    //     });
+                    //     super.initializeClient(c);
+                    // }
                 });
 
         this.prop = new BaseFlowingFluid.Properties(this.type, null, null);
@@ -140,7 +142,7 @@ public class zFluid {
         this.block = zBlocks.zBlockFluids.register(
                 id,
                 () -> new LiquidBlock(this.fluidflowing.value(),
-                        BlockBehaviour.Properties.of().mapColor(MapColor.WATER).replaceable().noCollission()
+                        BlockBehaviour.Properties.of().mapColor(MapColor.WATER).replaceable().noCollision()
                                 .strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid()
                                 .sound(SoundType.EMPTY)
                                 .liquid()
