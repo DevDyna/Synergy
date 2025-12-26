@@ -2,7 +2,7 @@ package com.devdyna.synergy.api.beLogic;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 public interface NoGuiStorage {
 
-    default ItemInteractionResult itemUseOn(Player player, Level level, BlockPos pos, InteractionHand hand) {
+    default InteractionResult itemUseOn(Player player, Level level, BlockPos pos, InteractionHand hand) {
 
         var stack = player.getItemInHand(hand);
 
@@ -24,18 +24,18 @@ public interface NoGuiStorage {
 
                 // If holding item -> try insert
                 if (!stack.isEmpty()) {
-                    if (!level.isClientSide) {
+                    if (!level.isClientSide()) {
                         ItemStack remaining = storage.insertItem(stack);
                         player.setItemInHand(hand, remaining);
                     }
 
-                    return ItemInteractionResult.sidedSuccess(level.isClientSide);
+                    return InteractionResult.SUCCESS_SERVER;
                 } else {
                     // If empty hand -> extract one item
                     ItemStack extracted = storage.extractItem();
-                    if (!extracted.isEmpty() && !level.isClientSide) {
+                    if (!extracted.isEmpty() && !level.isClientSide()) {
                         ItemHandlerHelper.giveItemToPlayer(player, extracted);
-                        return ItemInteractionResult.CONSUME;
+                        return InteractionResult.CONSUME;
                     }
                 }
                 
@@ -43,7 +43,7 @@ public interface NoGuiStorage {
                 // storage.setChanged();
             }
         }
-        return ItemInteractionResult.FAIL;
+        return InteractionResult.FAIL;
     }
 
     abstract ItemStack extractItem();
