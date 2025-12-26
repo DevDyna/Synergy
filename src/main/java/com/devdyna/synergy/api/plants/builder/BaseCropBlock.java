@@ -10,7 +10,6 @@ import com.devdyna.synergy.api.plants.Harvestable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -22,13 +21,14 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.InteractionResult;
 
 @SuppressWarnings("null")
 public class BaseCropBlock extends CropBlock implements Harvestable, PlantHandler {
 
     public BaseCropBlock(Properties properties) {
         super(properties.mapColor(MapColor.PLANT)
-                .noCollission()
+                .noCollision()
                 .randomTicks()
                 .instabreak()
                 .sound(SoundType.CROP)
@@ -36,11 +36,11 @@ public class BaseCropBlock extends CropBlock implements Harvestable, PlantHandle
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
 
         if (harvestCrop(level, state, pos, player, stack))
-            return ItemInteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS;
         else
 
             return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
