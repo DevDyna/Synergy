@@ -18,7 +18,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Tiers;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -167,7 +166,8 @@ public class zItems {
 
         public static final DeferredHolder<Item, ?> VIOLET_WEBCAP_MUSHROOM = zCropExtra
                         .registerSimpleItem(zStatic.Plants.VIOLET_WEBCAP_MUSHROOM,
-                                        new Item.Properties().food(new FoodProperties.Builder()
+                                        new Item.Properties()
+                                        .food(new FoodProperties.Builder()
                                                         .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 160,
                                                                         0),
                                                                         25)
