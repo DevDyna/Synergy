@@ -19,7 +19,7 @@ public class CropResultRecipeSerializer implements RecipeSerializer<CropResultRe
 
     public static final StreamCodec<RegistryFriendlyByteBuf, CropResultRecipe> STREAM_CODEC = StreamCodec.composite(
             Ingredient.CONTENTS_STREAM_CODEC, CropResultRecipe::getInput,
-            ItemStack.LIST_STREAM_CODEC, CropResultRecipe::getOutputs,
+            ItemStack.OPTIONAL_LIST_STREAM_CODEC, CropResultRecipe::getOutputs,
             CropResultRecipe::new);
 
     @Override
