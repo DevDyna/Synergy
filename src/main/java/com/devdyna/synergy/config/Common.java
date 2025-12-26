@@ -35,11 +35,11 @@ public class Common {
 
         DISABLE_ITEM_USE_RECIPE = qCOMMON
                 .comment("Disable Toggleable Item-Use recipes")
-                .define("item_use_recipe_toggleable", false);
+                .define("optional_item_use_recipe", false);
 
         DISABLE_CROOK_EVENT = qCOMMON
                 .comment("Disable Crook behavior on breaking leaves")
-                .define("crook_event_status", false);
+                .define("crook_event", false);
 
         DISABLE_HARVESTABLE_ACTION = qCOMMON
                 .comment("Disable player right-click on crops to collect")
