@@ -15,7 +15,7 @@ import com.devdyna.synergy.init.types.zFluids;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zMachines;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -196,7 +196,7 @@ public class ClazzUtil {
 
         List<DeferredHolder<Block, ?>> allBlocks = ClazzUtil.getAllzBlocks();
 
-        Set<ResourceLocation> whitelistIds = Arrays.stream(whitelist)
+        Set<Identifier> whitelistIds = Arrays.stream(whitelist)
                 .flatMap(reg -> reg.getEntries().stream())
                 .map(DeferredHolder::getId)
                 .collect(Collectors.toSet());
