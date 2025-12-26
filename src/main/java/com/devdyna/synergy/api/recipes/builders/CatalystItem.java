@@ -2,6 +2,8 @@ package com.devdyna.synergy.api.recipes.builders;
 
 import java.util.Arrays;
 
+import com.devdyna.synergy.api.utils.x;
+
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -15,7 +17,7 @@ public interface CatalystItem<BUILDER extends BaseRecipeBuilder> extends Builder
     abstract BUILDER catalyst(Ingredient catalyst);
 
     default BUILDER catalyst(ItemStack... catalyst) {
-        return catalyst(Ingredient.of(catalyst));
+        return catalyst(Ingredient.of(Arrays.stream(catalyst).map(ItemStack::getItem).toArray(Item[]::new)));
     }
 
     default BUILDER catalyst(DeferredHolder<Item, Item>... catalyst) {
@@ -30,8 +32,8 @@ public interface CatalystItem<BUILDER extends BaseRecipeBuilder> extends Builder
         return catalyst(Ingredient.of(catalyst));
     }
 
-    default BUILDER catalyst(TagKey<Item> catalyst) {
-        return catalyst(Ingredient.of(catalyst));
-    }
+    // default BUILDER catalyst(TagKey<Item> catalyst) {
+    //     return catalyst(Ingredient.of());
+    // }
 
 }
