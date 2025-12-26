@@ -6,11 +6,14 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.crafting.Recipe;
 
 @SuppressWarnings("null")
@@ -20,7 +23,7 @@ public abstract class BaseRecipeBuilder implements RecipeBuilder {
 
     public abstract Recipe<?> createRecipe();
 
-    public abstract ResourceLocation getSuffix(String extra);
+    public abstract String getSuffix(String extra);
 
     @Override
     public void save(RecipeOutput recipeOutput) {
@@ -28,11 +31,13 @@ public abstract class BaseRecipeBuilder implements RecipeBuilder {
     }
 
     public void save(RecipeOutput o, String extra) {
-        this.save(o, getSuffix(extra));
+        this.save(o,ResourceKey.create(Registries.RECIPE,BuiltInRegistries.ITEM.getKey(getResult().asItem()).withSuffix(getSuffix(extra))));
     }
 
+
+
     @Override
-    public void save(RecipeOutput pRecipeOutput, ResourceLocation pId) {
+    public void save(RecipeOutput pRecipeOutput, ResourceKey<Recipe<?>> pId) {
         if (this.criteria.isEmpty())
             throw new IllegalStateException("Missing/Null Criteria " + String.valueOf(pId));
         Advancement.Builder advancement$builder = pRecipeOutput.advancement()
@@ -41,7 +46,7 @@ public abstract class BaseRecipeBuilder implements RecipeBuilder {
                 .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement$builder::addCriterion);
         pRecipeOutput.accept(pId, createRecipe(),
-                advancement$builder.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
+                advancement$builder.build(pId.identifier().withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
     }
 
 }
