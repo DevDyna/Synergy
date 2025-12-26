@@ -4,7 +4,7 @@
 
 _NaN_
 
-## BUGS
+## ISSUES
 
 - [ ] Fuel cell output can conflict with input
 - [ ] quickMoveStack (i hate you!)
@@ -14,6 +14,9 @@ _NaN_
 - [ ] Mekanism IO will void/break many stuff (nodes , fuel cell , etc)
 
 - [ ] Electric furnace dont process correctly some recipes (need to investigate/if was already fixed?)
+
+## MINOR
+
 
 ## COMPATS AND TWEAKS
 
@@ -30,13 +33,11 @@ _NaN_
 
 - [ ] GuideMe machinery
 
-- ~~Modern Chisel compat (?)~~
-
 - [ ] rework any machine with AreaOfEffect and soldering gun to simplify
 
 - [ ] Laser Infusion RecipeType
 
-### CODEBASE
+### OPTIMIZATIONS
 
 - [ ] All Recipe Types compat with GuideMe (?)
 
