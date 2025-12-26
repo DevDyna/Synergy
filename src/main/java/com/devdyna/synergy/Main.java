@@ -27,6 +27,7 @@ public class Main {
         bus.addListener(zDataMaps::register);
 
         bus.addListener(CreativeTabs::register);
+        Config.register(mc);
 
     }
 
