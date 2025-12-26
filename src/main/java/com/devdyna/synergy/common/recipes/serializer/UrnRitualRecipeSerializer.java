@@ -14,7 +14,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 public class UrnRitualRecipeSerializer implements RecipeSerializer<UrnRitualRecipe> {
 
     public static final MapCodec<UrnRitualRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-            Ingredient.LIST_CODEC_NONEMPTY.fieldOf("ingredient").forGetter(UrnRitualRecipe::getIngredients),
+            Ingredient.CODEC.listOf().fieldOf("ingredient").forGetter(UrnRitualRecipe::getIngredients),
             ItemStack.CODEC.fieldOf("result").forGetter(UrnRitualRecipe::getResultItem)
             ).apply(inst, UrnRitualRecipe::new));
 
