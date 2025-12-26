@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.jspecify.annotations.Nullable;
+
 import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,6 +21,9 @@ import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
 public interface ItemProducer {
 
@@ -67,7 +73,7 @@ public interface ItemProducer {
      * export items to the nearest storage or will drop/void all overflow items
      */
     default void exportItems(ItemStack item, List<Direction> blacklistedDirs, Level level, BlockPos pos,
-            Map<Direction, BlockCapabilityCache<IItemHandler, Direction>> cache) {
+            Map<Direction, BlockCapabilityCache<ResourceHandler<ItemResource>,Direction>> cache) {
         var totalDir = Direction.values().length;
         for (Direction dir : Direction.values()) {
             if (blacklistedDirs.contains(dir)) {
@@ -77,25 +83,24 @@ public interface ItemProducer {
             var cachedData = cache.get(dir);
             if (cachedData == null)
                 cachedData = BlockCapabilityCache.create(
-                        Capabilities.ItemHandler.BLOCK,
+                        Capabilities.Item.BLOCK,
                         (ServerLevel) level,
                         pos.relative(dir),
                         dir.getOpposite());
             cache.put(dir, cachedData);
 
-            IItemHandler cap = cachedData.getCapability();
+            ResourceHandler<ItemResource> cap = cachedData.getCapability();
 
-            if (cap == null || !(cap instanceof IItemHandler)) {
+            if (cap == null || !(cap instanceof ResourceHandler<ItemResource>)) {
                 totalDir--;
                 continue;
             } else {
 
-                var items = ItemHandlerHelper.insertItemStacked(cap, item, false);
+                var insered = cap.insert(ItemResource.of(item.copy()), item.getCount(), Transaction.openRoot());
 
-                if (item.is(items.getItem()) && item.getCount() == items.getCount()
-                        && items != new ItemStack(Items.AIR) && dropWhenFail()) {
+                if (insered != item.getCount() && dropWhenFail()) {
 
-                    LevelUtil.popItemFromPos(level, pos.above(), item);
+                    LevelUtil.popItemFromPos(level, pos.above(), x.item(item.getItem(),item.getCount()-insered));
                     level.playSound(null, pos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 1F, 0.75F);
 
                 }
