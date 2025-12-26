@@ -2,6 +2,7 @@ package com.devdyna.synergy.api.beLogic;
 
 import net.minecraft.world.inventory.ContainerData;
 import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 
 public interface EnergyBlock {
 
@@ -13,7 +14,7 @@ public interface EnergyBlock {
     /**
      * Something like "getData(zHandlers.ENERGY_STORAGE)"
      */
-    EnergyStorage getCapEnergy();
+    EnergyHandler getCapEnergy();
 
     int MaxFE();
 
