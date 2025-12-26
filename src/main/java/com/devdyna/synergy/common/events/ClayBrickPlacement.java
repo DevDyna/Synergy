@@ -26,7 +26,7 @@ public class ClayBrickPlacement {
         var block = level.getBlockState(pos.relative(dir));
         var hand = event.getHand();
 
-        Optional<RecipeHolder<DryableBricksRecipe>> recipe = level.getRecipeManager()
+        Optional<RecipeHolder<DryableBricksRecipe>> recipe = level.getServer().getRecipeManager()
                 .getRecipeFor(zRecipeTypes.DRYABLE_BRICKS.getType(),
                         new MonoItemInput(item), level);
 
