@@ -32,9 +32,9 @@ _NaN_
 
 - ~~Modern Chisel compat (?)~~
 
-- [x] Provider Nodes jade output
-
 - [ ] rework any machine with AreaOfEffect and soldering gun to simplify
+
+- [ ] Laser Infusion RecipeType
 
 ### CODEBASE
 
@@ -48,99 +48,27 @@ _NaN_
 
 - [ ] replace some "brute-force" particles and sound event to animateTick
 
-- [ ] Void box deny item tag
-
 ## NEWS
 
-- [ ] Void box recipe type on item use (?)
+### Survival expansion
 
-- [ ] EYE
+- [ ] brick oven
 
-- [ ] Metal Smeltery (tiny tinker-like?)
+### Automation
 
-- [ ] Glass-Caster Factory (forestry like)
-
-- ~~Potted Azalea dirt->rotten randomtick event~~ rejected due pointless
-
-- [ ] Spawner Essence
-
-- [ ] Easy Bee : the return unification (?)
-
-- [ ] Moss ball (chisel 1.7.10 like)
-
-- [ ] Laser Infusion RecipeType
-
-- [ ] Fermenting
-
--  ~~Zodiac (mdpk) Block Scrapping~~
-
--  ~~Flint and flint (flint and steel like but with chance to success)~~
-
-- [ ] BE NBT crafting uncraft/tooltip (?)
-
-- [ ] Simple Resource Generators
-
-- [ ] Framed CobbleGen (EnderioAddons-Like)
-
-- [ ] cave mushroom -> press -> liquid lapis/ liquid coal
-
-- [ ] temporal hourglass (like unique crops)
-
-- [ ] EnderLilly
-
-- [ ] LootBox opening (classic animation)
-
-- [ ] weed crop plant (unwanted plant) -> farmland spreaddable crop -> fibers(?)
-- [ ] Archaeologist villager profession
-- [ ] Ceramic Bottles (drawer like)
-- [ ] Rice Generator (rice->fe)
 - [ ] CobbleGen (like NC)
 - [ ] WaterGen (like NC)
+- [ ] Framed CobbleGen (EnderioAddons-Like)
 - [ ] block placer (harvester like but place blocks)
-
-- [ ] Item Collector
-- [ ] Crucible (BTW like but require to stay connected at a support)
-- [ ] Decorative Pots sherds swap
-- [ ] puzzle fossils
 - [ ] platform network (industry indiegame like)
-- [ ] brick oven
-- [ ] Item Duct (item transfer with rendering)
-- [ ] Chimney & smoke tubes
-- [ ] Wireless Nodes
-- [ ] Fans & Wind (fluid-like)
-- [ ] Jukebox Network (jukebox that consume discs)
-- [ ] decorative devices (?)
-- [ ] dye essence (?)
-
-- ~~Energy (like FE but a completly new Capability type) that allow E->FE~~ too codebase breaker
-
-- [ ] Rocket Launcher
-
 - [ ] Planter (farmland like but bypass conditions)
 
+### Agriculture
+
+- [ ] EnderLilly
+- [ ] cave mushroom -> press -> liquid lapis/ liquid coal
+- [ ] weed crop plant (unwanted plant) -> farmland spreaddable crop -> fibers(?)
 - [ ] Truffles
-
-- [ ] Mindustry/DE like Fusion Reactor (?)
-
-- [ ] Extractor (special recipes like honey) Item->(Item|Item)
-
-- ~~Energy Converter (only FE->E)~~ <br/>
-- ~~Tiered Cables (transfer rate and capacity)~~
-
-- [ ] Scrap Generator (recycle items to scraps and item used to craft)
-
-### ResourceGen
-
-- [ ] Growable Crystals
-- [ ] Extractor
-- [ ] Generators
-- [ ] Mineral Deposits
-- [ ] Buddings
-- [ ] Resource Shards
-- [ ] metal scraps (like deposits but return metal things)
-- [ ] Cookie clicker machines (randomtick generator)
-
-### Plants
 
 - [ ] flax (double)
 - [ ] corn (double)
@@ -153,14 +81,64 @@ _NaN_
 - [ ] nerium oleander (pole-plant)
 - [ ] sisal (double/multiple plant) -> paper
 
-### Mushrooms
-
-- [ ] desarmillaria tabescens mushroom (like candles)
-- [ ] macrolepiota procera mushroom (double)
-
-### Special Plants
-
 - [ ] magic beans (giant plant) (randomthings like?)
 - [ ] blight spore (thorny giant plant)
-- [ ] grapple cultivated (multiblock)<br/>
-- ~~smill trees~~ rejected due pointless
+- [ ] grapple cultivated (multiblock)
+
+### Industrial machines
+
+- [ ] Extractor (special recipes like honey) Item->(Item|Item)
+- [ ] Scrap Generator (recycle items to scraps and item used to craft)
+
+### FluidCasting
+
+- [ ] Rustic-like crushing tub (?)
+- [ ] Metal Smeltery (tiny tinker-like?)
+- [ ] Glass-Caster Factory (forestry like)
+
+### Magic
+
+- [ ] Spawner Essence
+- [ ] EYE
+- [ ] Easy Bee Fertilizer/bonemeals
+- [ ] Fermenting (cobble->moss)
+- [ ] temporal hourglass (like unique crops)
+- [ ] LootBox opening (classic animation)
+- [ ] Item Collector
+- [ ] Crucible (BTW like but require to stay connected at a support)
+- [ ] dye essence (?)
+- [ ] "Bonsai trees" (azalea like trees)
+
+### Archaeology
+
+- [ ] Archaeologist villager profession
+- [ ] Ceramic Bottles (drawer like)
+
+- [ ] Decorative Pots sherds swap
+
+- [ ] puzzle fossils
+
+### LOGISTICS
+
+- [ ] Item Duct (item transfer with rendering)
+- [ ] Wireless Nodes
+
+### Fun stuff
+
+- [ ] Rocket Launcher
+
+- [ ] Fans & Wind (fluid-like)
+- [ ] Jukebox Network (jukebox that consume discs)
+- [ ] Chimney & smoke tubes
+- [ ] Mindustry/DE like Fusion Reactor (?) multiblock (?)
+
+### Zodiac
+
+- [ ] Growable Crystals
+- [ ] Extractor
+- [ ] Generators
+- [ ] Mineral Deposits
+- [ ] Buddings
+- [ ] Resource Shards
+- [ ] metal scraps (like deposits but return metal things)
+- [ ] Cookie clicker machines (randomtick generator)
