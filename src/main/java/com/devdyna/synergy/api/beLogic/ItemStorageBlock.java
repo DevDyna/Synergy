@@ -1,6 +1,7 @@
 package com.devdyna.synergy.api.beLogic;
 
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 
 /**
  * Simple ItemStackHandler<br/><br/>
@@ -8,7 +9,7 @@ import net.neoforged.neoforge.items.ItemStackHandler;
  */
 public interface ItemStorageBlock {
 
-    ItemStackHandler getStorage();
+    ItemStacksResourceHandler getStorage();
 
     int MachineSlots();
 
