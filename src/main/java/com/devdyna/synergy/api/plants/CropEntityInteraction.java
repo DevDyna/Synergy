@@ -31,7 +31,7 @@ public interface CropEntityInteraction {
    }
 
    default boolean hurtCondition(Entity entity, Level level) {
-      return !level.isClientSide
+      return !level.isClientSide()
             && (entity.xOld != entity.getX() || entity.zOld != entity.getZ())
             && Math.abs(entity.getX() - entity.xOld) >= hurt
             || Math.abs(entity.getZ() - entity.zOld) >= hurt;
