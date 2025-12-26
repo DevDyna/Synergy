@@ -9,7 +9,7 @@ import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
@@ -45,9 +45,9 @@ public class zFluid {
     private BaseFlowingFluid.Properties prop;
     private DeferredHolder<FluidType, ?> type;
 
-    private ResourceLocation still;
-    private ResourceLocation flowing;
-    private ResourceLocation overlay;
+    private Identifier still;
+    private Identifier flowing;
+    private Identifier overlay;
 
     private int viscosity;
     private boolean canDrown;
