@@ -26,33 +26,6 @@ public interface TypeRenders<T> {
         return 16;
     }
 
-    /**
-     * @param xyz block position to traslate NOT BLOCKPOS
-     */
-    // default void createPipeRender(int x, int y, int z, PoseStack stack,
-    // BlockEntity be, MultiBufferSource bufferSource,
-    // int packedLight,
-    // int packedOverlay) {
-    // var render = Minecraft.getInstance().getBlockRenderer();
-    // stack.pushPose();
-    // stack.translate(x, y, z);
-    // // pipe render
-    // var pipe = zBlocks.PIPE.get().defaultBlockState();
-    // for (EnumProperty<pipeProperties> prop : pipeType.PROPRTIES) {
-    // pipe = pipe.setValue(prop, pipeProperties.FALSE);
-    // }
-    // // wip , only make it white atm
-    // var color = bufferSource.getBuffer(RenderType.DEBUG_QUADS).setColor(1.0f,
-    // 0.0f, 0.0f, 1.0f);
-    // var player = be.getLevel().getNearestPlayer(be.getBlockPos().getX(),
-    // be.getBlockPos().getY(),
-    // be.getBlockPos().getZ(), getPlayerDistance(), false);
-    // if (checkTool(ModeTypes.SHOW_TRACK, player, be.getBlockPos()))
-    // render.renderBatched(pipe, be.getBlockPos(), be.getLevel(), stack, color,
-    // false, be.getLevel().getRandom());
-    // stack.popPose();
-    // }
-
     default void renderDebugBox(BlockEntity be, BlockPos start, BlockPos end, @Nullable Direction dir, PoseStack stack,
             MultiBufferSource bufferIn) {
 
