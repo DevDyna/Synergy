@@ -23,6 +23,10 @@ public class x {
         return ResourceLocation.fromNamespaceAndPath(modid, s);
     }
 
+    public static ResourceLocation parse(String s) {
+        return ResourceLocation.parse(s);
+    }
+
     public static ResourceLocation rl(String s) {
         return rl(ID, s);
     }
@@ -62,6 +66,7 @@ public class x {
     public static String path(Item i) {
         return path(BuiltInRegistries.ITEM, i);
     }
+
     public static String path(Fluid i) {
         return path(BuiltInRegistries.FLUID, i);
     }
@@ -113,7 +118,7 @@ public class x {
     }
 
     // public static ItemStack item(DeferredHolder<? extends ItemLike, ?> holder) {
-    //     return x.item(holder.get().asItem());
+    // return x.item(holder.get().asItem());
     // }
 
     public static Ingredient ingredient(ItemStack i) {
@@ -160,19 +165,19 @@ public class x {
         return fluid(f, 1000);
     }
 
-    public static FluidStack fluid(Fluid f,int amount) {
+    public static FluidStack fluid(Fluid f, int amount) {
         return new FluidStack(f, amount);
     }
 
     public static <T> ItemStack item(DeferredHolder<T, ?> holder) {
-    T obj = holder.get();
-    if (obj instanceof Item item) {
-        return item.getDefaultInstance();
-    } else if (obj instanceof Block block) {
-        return new ItemStack(block);
-    } else {
-        throw new IllegalArgumentException("Unsupported type: " + obj.getClass());
+        T obj = holder.get();
+        if (obj instanceof Item item) {
+            return item.getDefaultInstance();
+        } else if (obj instanceof Block block) {
+            return new ItemStack(block);
+        } else {
+            throw new IllegalArgumentException("Unsupported type: " + obj.getClass());
+        }
     }
-}
 
 }
