@@ -8,6 +8,7 @@
 - [ ] custom capability IO api (?)
 - [ ] unify many be base code to be more flexible
 - [ ] standardize Material and MachineType on a dedicated api
+- [ ] move appendHoverText to standalone event
 
 ## ISSUES
 
