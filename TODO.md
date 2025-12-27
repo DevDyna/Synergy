@@ -1,8 +1,13 @@
 # TODO
 
-## THINGS BEFORE RELEASE 0.6
 
-_NaN_
+## THINGS TO BE IMPLEMENTED BEFORE 26.1
+
+- [ ] recipetypes unification -> BaseRecipeType<T>
+- [ ] replace all resourcelocation to x.class
+- [ ] custom capability IO api (?)
+- [ ] unify many be base code to be more flexible
+- [ ] standardize Material and MachineType on a dedicated api
 
 ## ISSUES
 
@@ -12,10 +17,6 @@ _NaN_
 - [ ] Nodes bypass WorldyContainers restrictions
 
 - [ ] Mekanism IO will void/break many stuff (nodes , fuel cell , etc)
-
-- [ ] Electric furnace dont process correctly some recipes (need to investigate/if was already fixed?)
-
-## MINOR
 
 
 ## COMPATS AND TWEAKS
@@ -36,8 +37,6 @@ _NaN_
 - [ ] rework any machine with AreaOfEffect and soldering gun to simplify
 
 - [ ] Laser Infusion RecipeType
-
-### OPTIMIZATIONS
 
 - [ ] All Recipe Types compat with GuideMe (?)
 
