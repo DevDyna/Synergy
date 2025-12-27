@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 @SuppressWarnings("null")
-public interface TypeRenders<T> {
+public interface AOERender {
 
     /*
      * Distance of player from BE to render

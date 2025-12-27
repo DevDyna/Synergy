@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.harvester;
 
-import com.devdyna.synergy.api.render.TypeRenders;
+import com.devdyna.synergy.api.render.AOERender;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -9,7 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 @SuppressWarnings("null")
-public class HarvesterAOE<T extends HarvesterBE> implements BlockEntityRenderer<T>, TypeRenders<T> {
+public class HarvesterAOE<T extends HarvesterBE> implements BlockEntityRenderer<T>, AOERender {
 
     public HarvesterAOE(Context c) {
         super();

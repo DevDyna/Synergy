@@ -1,7 +1,7 @@
 package com.devdyna.synergy.init.builder.sprinkler;
 
 import com.devdyna.synergy.api.beLogic.SimpleAOE;
-import com.devdyna.synergy.api.render.TypeRenders;
+import com.devdyna.synergy.api.render.AOERender;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Con
 import net.minecraft.core.BlockPos;
 
 @SuppressWarnings("null")
-public class SprinklerAOE<T extends SprinklerBE> implements BlockEntityRenderer<T>, TypeRenders<T> {
+public class SprinklerAOE<T extends SprinklerBE> implements BlockEntityRenderer<T>, AOERender {
 
     public SprinklerAOE(Context c) {
         super();
