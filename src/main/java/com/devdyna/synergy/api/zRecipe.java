@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 /**
  * Utility class to create recipes and recipe serializers at once
  */
-@SuppressWarnings({"null"})
+@SuppressWarnings({ "null" })
 public class zRecipe<T extends Recipe<?>> {
 
     private final String id;
@@ -24,7 +24,8 @@ public class zRecipe<T extends Recipe<?>> {
 
     public zRecipe(String id,
             Supplier<? extends RecipeSerializer<T>> serializer,
-            Supplier<? extends RecipeType<T>> type, DeferredRegister<RecipeSerializer<?>> serializer_type,
+            Supplier<? extends RecipeType<T>> type,
+            DeferredRegister<RecipeSerializer<?>> serializer_type,
             DeferredRegister<RecipeType<?>> recipetype_type) {
         this.id = id;
         this.SERIALIZER_TYPE = serializer_type;
