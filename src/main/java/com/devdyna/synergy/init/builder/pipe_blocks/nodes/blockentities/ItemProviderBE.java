@@ -6,7 +6,7 @@ import com.devdyna.synergy.api.node.IProvider;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.common.recipes.input.ProviderInput;
-import com.devdyna.synergy.common.recipes.type.ItemProviderRecipe;
+import com.devdyna.synergy.common.recipes.type.node_providers.ItemProviderRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import net.minecraft.core.BlockPos;

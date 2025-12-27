@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.devdyna.synergy.api.zRecipe;
+import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.common.recipes.input.ItemListInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.util.RecipeMatcher;
 
 @SuppressWarnings("null")
-public class UrnRitualRecipe implements Recipe<ItemListInput> {
+public class UrnRitualRecipe extends BaseRecipeType<ItemListInput> {
 
     public static final int INPUT_COUNT = 9;
     public final NonNullList<Ingredient> inputs;
@@ -62,23 +62,6 @@ public class UrnRitualRecipe implements Recipe<ItemListInput> {
         return this.output.copy();
     }
 
-    public boolean canCraftInDimensions(int xz, int y) {
-        return false;
-    }
-
-    public RecipeType<?> getType() {
-        return zRecipeTypes.URN_RITUAL_RECIPE.getType();
-    }
-
-    public ItemStack getToastSymbol() {
-        return new ItemStack(zBlocks.URN.get());
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return zRecipeTypes.URN_RITUAL_RECIPE.getSerializer();
-    }
-
     public NonNullList<Ingredient> getIngredients() {
         return this.inputs;
     }
@@ -88,7 +71,18 @@ public class UrnRitualRecipe implements Recipe<ItemListInput> {
     }
 
     @Override
+    @Deprecated
     public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
         return this.output;
+    }
+
+    @Override
+    public zRecipe<? extends BaseRecipeType<ItemListInput>> getRecipe() {
+        return zRecipeTypes.URN_RITUAL_RECIPE;
+    }
+
+    @Override
+    public Item getToastIcon() {
+        return zBlocks.URN.get().asItem();
     }
 }

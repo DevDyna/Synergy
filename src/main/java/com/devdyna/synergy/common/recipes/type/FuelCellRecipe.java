@@ -1,20 +1,20 @@
 package com.devdyna.synergy.common.recipes.type;
 
+import com.devdyna.synergy.api.zRecipe;
+import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 @SuppressWarnings("null")
-public class FuelCellRecipe implements Recipe<MonoItemInput> {
+public class FuelCellRecipe extends BaseRecipeType<MonoItemInput> {
 
     protected final Ingredient input;
     protected final ItemStack output;
@@ -39,16 +39,12 @@ public class FuelCellRecipe implements Recipe<MonoItemInput> {
         return this.output.copy();
     }
 
-    public boolean canCraftInDimensions(int xz, int y) {
-        return false;
-    }
-
     public NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> list = NonNullList.create();
         list.add(this.input);
         return list;
     }
-
+@Deprecated
     public ItemStack getResultItem(HolderLookup.Provider r) {
         return this.output;
     }
@@ -73,17 +69,17 @@ public class FuelCellRecipe implements Recipe<MonoItemInput> {
         return heat;
     }
 
-    public RecipeType<?> getType() {
-        return zRecipeTypes.FUEL_CELL_RECIPE.getType();
-    }
 
-    public ItemStack getToastSymbol() {
-        return new ItemStack(zBlocks.REACTOR_FUEL_CELL.get());
+
+
+    @Override
+    public zRecipe<? extends BaseRecipeType<MonoItemInput>> getRecipe() {
+        return zRecipeTypes.FUEL_CELL_RECIPE;
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
-        return zRecipeTypes.FUEL_CELL_RECIPE.getSerializer();
+    public Item getToastIcon() {
+       return zBlocks.REACTOR_FUEL_CELL.get().asItem();
     }
 
 }

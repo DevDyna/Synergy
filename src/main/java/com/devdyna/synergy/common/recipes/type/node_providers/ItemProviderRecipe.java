@@ -1,4 +1,4 @@
-package com.devdyna.synergy.common.recipes.type;
+package com.devdyna.synergy.common.recipes.type.node_providers;
 
 import javax.annotation.Nullable;
 
@@ -8,6 +8,7 @@ import com.devdyna.synergy.common.recipes.input.ProviderInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -28,17 +29,19 @@ public class ItemProviderRecipe<T> extends BaseProviderRecipe<ItemStack> {
     }
 
     @Override
-    public zRecipe<?> getRecipe() {
+    public zRecipe<ItemProviderRecipe<ItemStack>> getRecipe() {
         return zRecipeTypes.ITEM_PROVIDER;
     }
 
-    public ItemStack getToastSymbol() {
-        return new ItemStack(zBlocks.ITEM_PROVIDER.get());
+    @Override
+    @Deprecated
+    public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
+        return this.output;
     }
 
     @Override
-    public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
-        return this.output;
+    public Item getToastIcon() {
+        return zBlocks.ITEM_PROVIDER.get().asItem();
     }
 
 }

@@ -2,22 +2,21 @@ package com.devdyna.synergy.common.recipes.type;
 
 import java.util.List;
 
+import com.devdyna.synergy.api.zRecipe;
+import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 @SuppressWarnings("null")
-public class QuernMillingRecipe implements Recipe<MonoItemInput> {
+public class QuernMillingRecipe extends BaseRecipeType<MonoItemInput> {
 
-    // public static final int INPUT_COUNT = 1;
     private final Ingredient input;
     private final int time;
     private final ItemStack output;
@@ -41,23 +40,6 @@ public class QuernMillingRecipe implements Recipe<MonoItemInput> {
         return this.output.copy();
     }
 
-    public boolean canCraftInDimensions(int xz, int y) {
-        return false;
-    }
-
-    public RecipeType<?> getType() {
-        return zRecipeTypes.QUERN_MILLING.getType();
-    }
-
-    public ItemStack getToastSymbol() {
-        return new ItemStack(zBlocks.QUERN.get());
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return zRecipeTypes.QUERN_MILLING.getSerializer();
-    }
-
     public NonNullList<Ingredient> getIngredients() {
         return NonNullList.copyOf(List.of(this.input));
     }
@@ -75,7 +57,18 @@ public class QuernMillingRecipe implements Recipe<MonoItemInput> {
     }
 
     @Override
+    @Deprecated
     public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
         return this.output;
+    }
+
+    @Override
+    public zRecipe<? extends BaseRecipeType<MonoItemInput>> getRecipe() {
+        return zRecipeTypes.QUERN_MILLING;
+    }
+
+    @Override
+    public Item getToastIcon() {
+        return zBlocks.QUERN.get().asItem();
     }
 }

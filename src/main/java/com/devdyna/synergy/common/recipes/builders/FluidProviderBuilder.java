@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.type.FluidProviderRecipe;
+import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;

@@ -1,7 +1,7 @@
 package com.devdyna.synergy.common.recipes.serializer;
 
 import com.devdyna.synergy.api.codec.BetterThanBlockStates;
-import com.devdyna.synergy.common.recipes.type.ItemProviderRecipe;
+import com.devdyna.synergy.common.recipes.type.node_providers.ItemProviderRecipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
