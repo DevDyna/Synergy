@@ -3,7 +3,7 @@
 
 ## THINGS TO BE IMPLEMENTED BEFORE 26.1
 
-- [ ] recipetypes unification -> BaseRecipeType<T>
+- [x] recipetypes unification -> BaseRecipeType<T>
 - [ ] replace all resourcelocation to x.class
 - [ ] custom capability IO api (?)
 - [ ] unify many be base code to be more flexible
