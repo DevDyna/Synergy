@@ -1,6 +1,6 @@
 package com.devdyna.synergy.api.render;
 
-import com.devdyna.synergy.init.builder.void_box.VoidBoxBE;
+import com.devdyna.synergy.init.builder.magic.void_box.VoidBoxBE;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;

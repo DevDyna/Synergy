@@ -9,7 +9,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.builders.*;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
-import com.devdyna.synergy.init.builder.crops.cultivated.azalea;
+import com.devdyna.synergy.init.builder.agriculture.cultivated.azalea;
 import com.devdyna.synergy.init.machine.alloy_smelter.recipe.AlloySmelterRecipeBuilder;
 import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeBuilder;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
