@@ -40,6 +40,7 @@ public abstract class BlockStorage extends BlockMenu {
         return super.useWithoutItem(state, level, pos, player, hitResult);
     }
 
+    // TODO try destroy(LevelAccessor level, BlockPos pos, BlockState state)
     @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
 
