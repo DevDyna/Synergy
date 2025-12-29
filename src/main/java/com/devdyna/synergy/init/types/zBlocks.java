@@ -394,11 +394,14 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> VOID_BOX_LID = zOnlyBlock.registerSimpleBlock(
                         zStatic.Blocks.void_box + "_lid");
 
+        @SuppressWarnings("deprecation")
         public static final DeferredHolder<Block, Block> BLAST_BRICKS = Material
-        .registerItemBlock(zStatic.DecorativeBlocks.blast_bricks,
-                                       ()-> new BlockToolTipped(BlockBehaviour.Properties.of().sound(SoundType.NETHER_BRICKS)
-                                                        .strength(2.0F, 1200.0F)
-                                                        .mapColor(MapColor.TERRACOTTA_ORANGE),"block.blast_proof") ,
+                        .registerItemBlock(zStatic.DecorativeBlocks.blast_bricks,
+                                        () -> new BlockToolTipped(
+                                                        BlockBehaviour.Properties.of().sound(SoundType.NETHER_BRICKS)
+                                                                        .strength(2.0F, 1200.0F)
+                                                                        .mapColor(MapColor.TERRACOTTA_ORANGE),
+                                                        "block.blast_proof"),
                                         zDecorative);
 
         public static final BrickFamily FIRECLAY_BRICKS = BrickFamily
