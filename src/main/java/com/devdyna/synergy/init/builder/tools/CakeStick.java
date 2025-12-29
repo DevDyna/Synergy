@@ -6,6 +6,7 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.ColorUtil;
 import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.init.builder.ItemToolTipped;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -21,10 +22,10 @@ import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 @SuppressWarnings({ "deprecation", "null" })
-public class CakeStick extends Item {
+public class CakeStick extends ItemToolTipped {
 
     public CakeStick() {
-        super(new Properties().stacksTo(1).durability(7));
+        super(new Properties().stacksTo(1).durability(7), zStatic.Items.cake_stick);
     }
 
     @Override
@@ -46,7 +47,7 @@ public class CakeStick extends Item {
                 level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.BITES, bites));
 
                 player.swing(hand);
-                item.hurtAndBreak(1, player, Player.getSlotForHand(hand));
+                item.hurtAndBreak(1, player, hand);
 
                 if (!level.isClientSide())
                     LevelUtil.addDustParticle(255, 255, 255, (ServerLevel) level, pos, true, 16);
@@ -62,7 +63,7 @@ public class CakeStick extends Item {
                     Blocks.CAKE.defaultBlockState().setValue(BlockStateProperties.BITES, 6));
 
             player.swing(hand);
-            item.hurtAndBreak(1, player, Player.getSlotForHand(hand));
+            item.hurtAndBreak(1, player, hand);
 
             if (!level.isClientSide())
                 LevelUtil.addDustParticle(255, 255, 255, (ServerLevel) level, pos, true, 16);
@@ -77,12 +78,7 @@ public class CakeStick extends Item {
     public Component getName(ItemStack stack) {
         var level = Minecraft.getInstance().level;
         int color = (level == null ? Color.RED.getRGB() : ColorUtil.rgbColor(level));
-        return Component.translatable(this.getDescriptionId(stack)).withColor(color);
+        return Component.translatable(getDescriptionId()).withColor(color);
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Items.cake_stick));
-    }
 }

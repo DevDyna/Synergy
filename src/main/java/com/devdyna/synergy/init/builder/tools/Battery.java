@@ -1,6 +1,8 @@
 package com.devdyna.synergy.init.builder.tools;
 
 import java.util.List;
+import java.util.function.Consumer;
+
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
@@ -17,6 +19,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 
 @SuppressWarnings("null")
@@ -70,17 +73,19 @@ public class Battery extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Items.Batteries.TYPE_BATTERY + ".tip"));
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay,
+            Consumer<Component> tooltipAdder, TooltipFlag flag) {
+        tooltipAdder.accept(Component.translatable(Main.ID + "." + zStatic.Items.Batteries.TYPE_BATTERY + ".tip"));
 
-        t.add(Component.translatable(Main.ID + "." + zStatic.Items.Batteries.TYPE_BATTERY + ".energy")
+        tooltipAdder.accept(Component.translatable(Main.ID + "." + zStatic.Items.Batteries.TYPE_BATTERY + ".energy")
                 .append(Component.literal(
-                        (i.get(zComponents.FE_STORED) == null ? "0"
-                                : (Screen.hasShiftDown() ? i.get(zComponents.FE_STORED).intValue()
-                                        : StringUtil.getFormat().format(i.get(zComponents.FE_STORED).intValue())) + "")
+                        (stack.get(zComponents.FE_STORED) == null ? "0"
+                                : (flag.hasShiftDown() ? stack.get(zComponents.FE_STORED).intValue()
+                                        : StringUtil.getFormat().format(stack.get(zComponents.FE_STORED).intValue()))
+                                        + "")
                                 + "/"
-                                + (Screen.hasShiftDown() ? capacity : StringUtil.getFormat().format(capacity)))
+                                + (flag.hasShiftDown() ? capacity : StringUtil.getFormat().format(capacity)))
                         .withStyle(ChatFormatting.RED)));
     }
+
 }

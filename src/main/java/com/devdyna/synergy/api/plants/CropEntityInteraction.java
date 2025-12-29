@@ -3,6 +3,7 @@ package com.devdyna.synergy.api.plants;
 import java.util.List;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -47,13 +48,14 @@ public interface CropEntityInteraction {
    default void getEntityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
       if (StuckWhenInside())
          entity.makeStuckInBlock(state, speedFactor());
+      // see net.minecraft.world.level.block.SweetBerryBushBlock
       if (HurtWhenInside())
-         entity.hurt(level.damageSources().sweetBerryBush(), 1.0F);
+         entity.hurtServer((ServerLevel) level, level.damageSources().sweetBerryBush(), 1.0F);
    }
 
    default void getStepEntityOn(Level level, BlockPos pos, BlockState state, Entity entity) {
       if (HurtWhenStep())
-         entity.hurt(level.damageSources().sweetBerryBush(), 0.1F);
+         entity.hurtServer((ServerLevel) level, level.damageSources().sweetBerryBush(), 0.1F);
    }
 
 }

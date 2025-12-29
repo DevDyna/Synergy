@@ -7,25 +7,28 @@ import java.util.function.*;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.plants.builder.BaseSeedItem;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.ItemComponents;
 import com.devdyna.synergy.init.builder.ItemToolTipped;
 import com.devdyna.synergy.init.builder.decorative.DecorativeBlock;
 import com.devdyna.synergy.init.types.*;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemUseAnimation;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
@@ -40,7 +43,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredRegister.Blocks;
+import net.neoforged.neoforge.registries.DeferredRegister.*;
 
 @SuppressWarnings({ "null", "unchecked" })
 public class Material {
@@ -153,19 +156,44 @@ public class Material {
 
         /**
          * like rice
+         * 
+         * @param timeToEat default 1.6F | OG Fast to Eat -> 0.8F
          */
-        public static DeferredItem<ItemNameBlockItem> seedFoodItem(String name, Block b, int nutrition,
-                        float saturationModifier, boolean fastToEat, boolean isAlwaysEdible) {
-                
+        public static DeferredItem<BaseSeedItem> seedFoodItem(String name, Block b, int nutrition,
+                        float saturationModifier, float timeToEat, boolean isAlwaysEdible) {
+                var food = new FoodProperties.Builder().saturationModifier(saturationModifier).nutrition(nutrition);
 
+                if (isAlwaysEdible)
+                        food.alwaysEdible();
+                // see net.minecraft.world.item.Items.KELP
                 return zItems.zFoods.register(name,
-                                () -> new ItemNameBlockItem(b, new Item.Properties()
-                                .food(Consumable.builder().consumeSeconds(1.6F).animation(ItemUseAnimation.EAT).sound(SoundEvents.GENERIC_EAT).hasConsumeParticles(true).consumeSeconds(0.8F).build())));
+                                () -> new BaseSeedItem(b, new Item.Properties()
+                                                .food(food.build(),
+                                                                Consumable.builder().consumeSeconds(timeToEat)
+                                                                                .animation(ItemUseAnimation.EAT)
+                                                                                .sound(SoundEvents.GENERIC_EAT)
+                                                                                .hasConsumeParticles(true).build())));
         }
 
-        public static DeferredItem<ItemNameBlockItem> seedItem(String name, Block b) {
+        public static final DeferredHolder<Item, ?> foodEffectItem(String id, Holder<MobEffect> effect, int ticks,
+                        int amplify, Items items) {
+                // see net.minecraft.world.item.Items.PUFFERFISH
+                return items
+                                .registerSimpleItem(id,
+                                                () -> new Item.Properties()
+                                                                .food(new FoodProperties(1, 1, true), Consumable
+                                                                                .builder()
+                                                                                .onConsume(new ApplyStatusEffectsConsumeEffect(
+                                                                                                new MobEffectInstance(
+                                                                                                                effect,
+                                                                                                                ticks,
+                                                                                                                amplify)))
+                                                                                .build()));
+        }
+
+        public static DeferredItem<BaseSeedItem> seedItem(String name, Block b) {
                 return zItems.zSeeds.register(name,
-                                () -> new ItemNameBlockItem(b, new Item.Properties()));
+                                () -> new BaseSeedItem(b, new Item.Properties()));
         }
 
         public static DeferredHolder<Block, Block> stair(DeferredHolder<Block, Block> b) {
@@ -193,7 +221,7 @@ public class Material {
                         String name,
                         BlockEntitySupplier<T> factory, Supplier<? extends Block>... validBlocks) {
                 return zBlockEntities.zBE.register(name,
-                                () -> new BlockEntityType<>(factory,false, Arrays.stream(validBlocks)
+                                () -> new BlockEntityType<>(factory, false, Arrays.stream(validBlocks)
                                                 .map(Supplier::get)
                                                 .toArray(Block[]::new)));
         }
@@ -215,7 +243,7 @@ public class Material {
 
         public static DeferredHolder<Item, Item> machineUpgrade(String name) {
                 return zItems.zMachineUpgrades
-                                .registerSimpleItem(name+"_"+zStatic.MachineUpgrades.TYPE);
+                                .registerSimpleItem(name + "_" + zStatic.MachineUpgrades.TYPE);
         }
 
         public static DeferredHolder<Item, Item> droplet(String name) {
@@ -282,12 +310,11 @@ public class Material {
                         String id,
                         Supplier<Item> icon) {
                 return zCreativeTab.zCreative
-                                .register(Main.ID+"_"+id, () -> CreativeModeTab.builder()
+                                .register(Main.ID + "_" + id, () -> CreativeModeTab.builder()
                                                 .title(Component.translatable(
                                                                 Main.ID + "." + zStatic.CreativeTab.TYPE + "." + id))
                                                 .icon(() -> icon.get().getDefaultInstance())// REQUIRE SUPPLIER
                                                 .build());
         }
-
 
 }

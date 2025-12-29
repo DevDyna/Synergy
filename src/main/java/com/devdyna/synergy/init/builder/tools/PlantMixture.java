@@ -1,6 +1,7 @@
 package com.devdyna.synergy.init.builder.tools;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
@@ -15,6 +16,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.BoneMealItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.CactusBlock;
 import net.minecraft.world.level.block.FarmBlock;
@@ -53,7 +55,7 @@ public class PlantMixture extends BoneMealItem {
             if (state.isRandomlyTicking()) {
                 item.shrink(1);
 
-                if (!level.isClientSide) {
+                if (!level.isClientSide()) {
                     LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER, (ServerLevel) level, pos, true,
                             LevelUtil.getRandomValue(7, level) + 5);
 
@@ -68,7 +70,7 @@ public class PlantMixture extends BoneMealItem {
             }
 
         if (block instanceof FlowerBlock) {
-            if (!level.isClientSide) {
+            if (!level.isClientSide()) {
                 LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER, (ServerLevel) level, pos, true,
                         LevelUtil.getRandomValue(7, level) + 3);
                 BlockPos.randomBetweenClosed(random, LevelUtil.getRandomValue(12, level),
@@ -89,9 +91,9 @@ public class PlantMixture extends BoneMealItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.tips.MIXTURE_TIP));
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay,
+            Consumer<Component> tooltipAdder, TooltipFlag flag) {
+        tooltipAdder.accept(Component.translatable(Main.ID + "." + zStatic.tips.MIXTURE_TIP));
     }
 
 }

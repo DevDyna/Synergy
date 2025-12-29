@@ -18,6 +18,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ToolMaterial;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -140,7 +142,7 @@ public class zItems {
 
         public static final DeferredHolder<Item, ?> RICE_SEED = zSeeds.register(zStatic.Seeds.RICE_SEED,
                         () -> new BaseSeedItem(zBlocks.RICE.get(),
-                                        new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().fast()
+                                        new Item.Properties().food(new FoodProperties.Builder().alwaysEdible()
                                                         .nutrition(1).saturationModifier(1).build())));
 
         public static final DeferredHolder<Item, ?> COTTON_SEEDS = zSeeds.register(zStatic.Seeds.COTTON_SEED,
@@ -156,25 +158,15 @@ public class zItems {
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, ?> COTTON = zCropExtra.registerSimpleItem(zStatic.Plants.COTTON);
 
-        public static final DeferredHolder<Item, ?> BLUE_CUP_MUSHROOM = zCropExtra
-                        .registerSimpleItem(zStatic.Plants.BLUE_CUP_MUSHROOM,
-                                        new Item.Properties().food(new FoodProperties.Builder()
-                                                        .effect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 160,
-                                                                        0),
-                                                                        25)
-                                                        .build()));
+        public static final DeferredHolder<Item, ?> BLUE_CUP_MUSHROOM = Material
+                        .foodEffectItem(zStatic.Plants.BLUE_CUP_MUSHROOM, MobEffects.BLINDNESS, 25, 0, zCropExtra);
 
-        public static final DeferredHolder<Item, ?> VIOLET_WEBCAP_MUSHROOM = zCropExtra
-                        .registerSimpleItem(zStatic.Plants.VIOLET_WEBCAP_MUSHROOM,
-                                        new Item.Properties()
-                                        .food(new FoodProperties.Builder()
-                                                        .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 160,
-                                                                        0),
-                                                                        25)
-                                                        .build()));
+        public static final DeferredHolder<Item, ?> VIOLET_WEBCAP_MUSHROOM = Material.foodEffectItem(
+                        zStatic.Plants.VIOLET_WEBCAP_MUSHROOM, MobEffects.BLINDNESS, 160, 0, zCropExtra);
+
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Croock> WOODEN_CROOK = zTool.register(zStatic.Items.wooden_crook,
-                        () -> new Croock(BlockTags.LEAVES, Tiers.NETHERITE));
+                        () -> new Croock(ToolMaterial.NETHERITE));
 
         public static final DeferredHolder<Item, Item> PIPE_REFARCTORIZER = zTool
                         .register(zStatic.Items.refactorizer, () -> new PipeRefactorizer());

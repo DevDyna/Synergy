@@ -1,6 +1,7 @@
 package com.devdyna.synergy.init.builder.tools;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
@@ -16,6 +17,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 
 @SuppressWarnings("null")
@@ -42,7 +44,7 @@ public class Configurator extends Item {
                         if (be != null)
                                 if (be instanceof SimpleAOE) {
 
-                                        if (level.isClientSide)
+                                        if (level.isClientSide())
                                                 player.playSound(SoundEvents.AMETHYST_BLOCK_RESONATE);
 
                                         else {
@@ -67,23 +69,24 @@ public class Configurator extends Item {
                 return super.useOn(c);
         }
 
-        @Override
-        public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-                        TooltipFlag f) {
-                var nbt = i.get(zComponents.GLOBAL_POS);
+@Override
+public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay,
+    Consumer<Component> tooltipAdder, TooltipFlag flag) {
 
-                t.add(Component.translatable(Main.ID + "." + zStatic.Items.configurator + ".tip"));
+                var nbt = stack.get(zComponents.GLOBAL_POS);
+
+                tooltipAdder.accept(Component.translatable(Main.ID + "." + zStatic.Items.configurator + ".tip"));
 
                 if (nbt != null) {
 
                         var pos = nbt.pos();
                         var dim = nbt.dimension();
 
-                        t.add(Component.translatable(Main.ID + "." + zStatic.Items.configurator + ".dim")
+                        tooltipAdder.accept(Component.translatable(Main.ID + "." + zStatic.Items.configurator + ".dim")
                                         .append(Component
-                                                        .literal(dim.location().toString())
+                                                        .literal(dim.identifier().toString())
                                                         .withStyle(ChatFormatting.GREEN)));
-                        t.add(Component.translatable(Main.ID + "." + zStatic.Items.configurator + ".blockpos")
+                        tooltipAdder.accept(Component.translatable(Main.ID + "." + zStatic.Items.configurator + ".blockpos")
 
                                         .append(Component
                                                         .literal("" + pos.getX())

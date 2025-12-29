@@ -9,7 +9,8 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
@@ -33,7 +34,7 @@ public interface TypeRenders<T> {
                 be.getBlockPos().getY(),
                 be.getBlockPos().getZ(), getPlayerDistance(), false);
 
-        VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.lines());
+        VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderTypes.LINES);
 
         if (dir != null)
             switch (dir) {

@@ -122,18 +122,18 @@ public class DataGenUtil {
     }
 
     public static ModelProvider cross(ModelProvider t, String filePath, Identifier texturePath) {
-        return t.models().withExistingParent(filePath, x.mcrl("block/cross")).texture("cross", texturePath)
+        return t.models().withExistingParent(filePath, x.mcLoc("block/cross")).texture("cross", texturePath)
                 .renderType("minecraft:cutout");
     }
 
     public static BlockModelBuilder crop(BlockStateProvider t, String filePath, Identifier texturePath) {
-        return t.models().withExistingParent(filePath, t.mcLoc("block/crop")).texture("crop", texturePath)
+        return t.models().withExistingParent(filePath, x.mcLoc("block/crop")).texture("crop", texturePath)
                 .renderType("minecraft:cutout");
     }
 
     public static BlockModelBuilder crossORcrop(BlockStateProvider t, boolean isCrop, String filePath,
             Identifier texturePath) {
-        return t.models().withExistingParent(filePath, t.mcLoc("block/" + (isCrop ? "crop" : "cross")))
+        return t.models().withExistingParent(filePath, x.mcLoc("block/" + (isCrop ? "crop" : "cross")))
                 .texture((isCrop ? "crop" : "cross"), texturePath)
                 .renderType("minecraft:cutout");
     }
@@ -145,7 +145,7 @@ public class DataGenUtil {
      */
     public static BlockModelBuilder BlockwithParent(Block block, BlockStateProvider b,
             String parent) {
-        return b.models().withExistingParent(getPath(block), parent);
+        return b.models().withExistingParent(x.path(block), parent);
     }
 
     public static void BiStateBlock(BlockStateProvider t, Block b, BooleanProperty p, ModelFile on,
@@ -158,7 +158,7 @@ public class DataGenUtil {
     }
 
     public static ItemModelBuilder itemBlockwithParent(Block block, ItemModelProvider b, String parent) {
-        return b.withExistingParent(getPath(block), parent);
+        return b.withExistingParent(x.path(block), parent);
     }
 
     public static LootItemBlockStatePropertyCondition.Builder lootTableCondition(Block block, IntegerProperty prop,

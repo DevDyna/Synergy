@@ -28,7 +28,7 @@ public class x {
         return rl(ID, s);
     }
 
-    public static Identifier mcrl(String s) {
+    public static Identifier mcLoc(String s) {
         return rl("minecraft", s);
     }
 

@@ -11,24 +11,24 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 
 @SuppressWarnings("null")
-@Deprecated
+
 public class ItemToolTipped extends Item {
 
     private String traslationkey;
-    public ItemToolTipped(Properties properties,String traslationkey) {
+
+    public ItemToolTipped(Properties properties, String traslationkey) {
         super(properties);
         this.traslationkey = traslationkey;
     }
 
-    public ItemToolTipped(String traslationkey){
+    public ItemToolTipped(String traslationkey) {
         this(new Item.Properties(), traslationkey);
     }
 
-//TODO move to separate event
-    // @Override
-    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-    //         TooltipFlag f) {
-    //     t.add(Component.translatable(Main.ID +"."+ traslationkey));
-    // }
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay,
+            Consumer<Component> tooltipAdder, TooltipFlag flag) {
+        tooltipAdder.accept(Component.translatable(Main.ID + "." + traslationkey));
+    }
 
 }

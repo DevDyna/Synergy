@@ -1,7 +1,9 @@
 package com.devdyna.synergy.init.builder.tools;
 
 import java.util.List;
+import java.util.function.Consumer;
 
+import com.devdyna.synergy.init.builder.ItemToolTipped;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
@@ -14,13 +16,14 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 
 @SuppressWarnings("null")
-public class PipeRefactorizer extends Item {
+public class PipeRefactorizer extends ItemToolTipped {
 
     public PipeRefactorizer() {
-        super(new Properties().stacksTo(1));
+        super(new Properties().stacksTo(1),zStatic.Items.refactorizer);
     }
 
     @Override
@@ -48,9 +51,5 @@ public class PipeRefactorizer extends Item {
         return super.useOn(c);
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
-            TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Items.refactorizer));
-    }
+
 }
