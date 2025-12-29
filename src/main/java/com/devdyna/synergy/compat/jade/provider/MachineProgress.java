@@ -12,7 +12,7 @@ import com.devdyna.synergy.init.machine.core.ExtraMachineSlot.TYPE;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec2;
 import snownee.jade.api.*;
@@ -98,7 +98,7 @@ public enum MachineProgress
   }
 
   @Override
-  public ResourceLocation getUid() {
+  public Identifier getUid() {
     return x.rl(zStatic.Machines.TYPE);
   }
 

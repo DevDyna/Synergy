@@ -10,7 +10,7 @@ import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.utils.x;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -47,7 +47,7 @@ public enum NodeProvider implements IBlockComponentProvider, IServerDataProvider
     public void appendServerData(CompoundTag data, BlockAccessor accessor) {
         NodeBaseBE nodejs = (NodeBaseBE) accessor.getBlockEntity();
 
-        ResourceLocation id = null;
+        Identifier id = null;
 
         var pos = nodejs.getBlockPos().relative(nodejs.getBlockState().getValue(nodeType.FACING));
 
@@ -75,7 +75,7 @@ public enum NodeProvider implements IBlockComponentProvider, IServerDataProvider
     }
 
     @Override
-    public ResourceLocation getUid() {
+    public Identifier getUid() {
         return x.rl(zStatic.PipeStuff.nodes.type_provider);
     }
 

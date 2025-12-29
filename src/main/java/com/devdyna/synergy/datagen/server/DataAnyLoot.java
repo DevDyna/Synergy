@@ -12,12 +12,12 @@ import com.devdyna.synergy.init.types.zItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.context.ContextKeySet;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
@@ -62,7 +62,7 @@ public class DataAnyLoot implements LootTableSubProvider {
                                                                         UniformGenerator.between(1.0f, 3.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(p,
                                                                         UniformGenerator.between(1, 3))))
-                                        .setParamSet(LootContextParamSet.builder().build())
+                                        .setParamSet(new ContextKeySet.Builder().build())
 
                         ;
 
@@ -76,8 +76,9 @@ public class DataAnyLoot implements LootTableSubProvider {
                                                                 UniformGenerator.between(1, 4))));
                         }
 
-                        DataGenUtil.registerTable(c, x.rl(items.getRegisteredName().replace(ID + ":", PREFIX_DROPS)),
-                                        table);
+                        // DataGenUtil.registerTable(c, x.rl(items.getRegisteredName().replace(ID + ":",
+                        // PREFIX_DROPS)),
+                        // table);
 
                 }
 
@@ -92,12 +93,7 @@ public class DataAnyLoot implements LootTableSubProvider {
 
                 var mushtable = DataGenUtil.createTable(mushLoot);
 
-                DataGenUtil.registerTable(c, x.rl(MUSHROOMS), mushtable);
-
-                // DataGenUtil.registerTable(c, x.rl("entities/extra_mob_drops/sulfur_dust"),
-                // DataGenUtil.createTable(DataGenUtil.createPool()
-                // .setRolls(UniformGenerator.between(0.0f, 1.0f))
-                // ));
+                // DataGenUtil.registerTable(c, x.rl(MUSHROOMS), mushtable);
 
         }
 

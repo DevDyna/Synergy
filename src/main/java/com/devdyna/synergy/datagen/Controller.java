@@ -10,51 +10,46 @@ import com.devdyna.synergy.datagen.client.*;
 import com.devdyna.synergy.datagen.server.*;
 
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.*;
+import net.minecraft.data.DataGenerator.PackGenerator;
+import net.minecraft.data.DataProvider.Factory;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.minecraft.data.DataProvider.Factory;
 
 @SuppressWarnings({ "removal", "deprecation" })
 @EventBusSubscriber(modid = ID)
 public class Controller {
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent e) {
+    public static void gatherData(GatherDataEvent.Client e) {
         DataGenerator g = e.getGenerator();
-        PackOutput po = g.getPackOutput();
-        ExistingFileHelper f = e.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> pr = e.getLookupProvider();
+        PackGenerator v = g.getVanillaPack(true);
 
         // client
 
-        providerGen(e, g, new DataBlockModelState(po, f));
-        providerGen(e, g, new DataItemModel(po, f));
-        providerGen(e, g, new DataLang(po));
+        // providerGen(e, g, new DataBlockModelState(po, f));
+        // providerGen(e, g, new DataItemModel(po, f));
+        v.addProvider(DataLang::new);
 
         // server
-        DataBlockTag blocktag = new DataBlockTag(po, pr, f);
-        providerGen(e, g, blocktag);
-        providerGen(e, g, new DataItemTag(po, pr, blocktag.contentsGetter(),f));
-        providerGen(e, g, new DataEntityTag(po, pr,  f));
-        providerGen(e, g, new LootTableProvider(po, Set.of(),
+        
+        DataBlockTag blocktags = v.addProvider(o -> new DataBlockTag(o, pr));
+        
+        v.addProvider(o-> new DataItemTag(o, pr, blocktags.contentsGetter()));
+        v.addProvider(o-> new DataEntityTag(o, pr));
+        v.addProvider(o-> new LootTableProvider(o, Set.of(),
                 List.of(
                         new LootTableProvider.SubProviderEntry(DataLootBlock::new, LootContextParamSets.BLOCK),
                         new LootTableProvider.SubProviderEntry(DataAnyLoot::new, LootContextParamSets.ENTITY)),
                 pr));
 
-        providerGen(e, g, new DataRecipe(po, pr));
-        providerGen(e, g, new DataMaps(po, pr));
-        providerGen(e, g, new DataGlobalLootModifier(po, pr));
-
-    }
-
-    private static <T extends DataProvider> void providerGen(GatherDataEvent e, DataGenerator g, T f) {
-        g.addProvider(e.includeClient(), f);
+         v.addProvider(o-> new DataRecipe.RecipeRunner(o,pr));
+         v.addProvider(o-> new DataMaps(o, pr));
+         v.addProvider(o-> new DataGlobalLootModifier(o, pr));
     }
 
 }

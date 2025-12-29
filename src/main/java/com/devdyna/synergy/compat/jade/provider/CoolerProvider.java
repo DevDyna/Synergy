@@ -7,7 +7,7 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.nuclear_reactor.cooler.CoolerBlockBase;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import snownee.jade.api.*;
 import snownee.jade.api.config.IPluginConfig;
@@ -44,7 +44,7 @@ public enum CoolerProvider implements IBlockComponentProvider, IServerDataProvid
     }
 
     @Override
-    public ResourceLocation getUid() {
+    public Identifier getUid() {
         return x.rl(zStatic.ReactorStuff.cooler);
     }
 

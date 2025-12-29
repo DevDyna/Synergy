@@ -6,6 +6,7 @@ import static net.minecraft.data.recipes.RecipeCategory.*;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.builders.*;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
@@ -16,6 +17,7 @@ import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
@@ -28,12 +30,12 @@ import net.neoforged.neoforge.common.Tags;
 @SuppressWarnings("null")
 public class DataRecipe extends ExtraRecipeProvider {
 
-        public DataRecipe(PackOutput o, CompletableFuture<HolderLookup.Provider> c) {
-                super(o, c);
+        protected DataRecipe(RecipeOutput output, Provider registries) {
+                super(registries, output);
         }
 
         @Override
-        protected void buildRecipes(RecipeOutput c) {
+        protected void buildRecipes() {
 
                 compatIngotsAndDusts(c);
                 cropResultRecipes(c);
@@ -1148,5 +1150,22 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy().save(c);
 
         }
+
+
+     public static final class RecipeRunner extends RecipeProvider.Runner {
+        public RecipeRunner(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+            super(output, lookupProvider);
+        }
+
+        @Override
+        protected net.minecraft.data.recipes.RecipeProvider createRecipeProvider(HolderLookup.Provider lookupProvider, RecipeOutput output) {
+            return new DataRecipe(output, lookupProvider);
+        }
+
+        @Override
+        public String getName() {
+            return StringUtil.nameCapitalized(ID);
+        }
+    }
 
 }

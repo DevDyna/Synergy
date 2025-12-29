@@ -8,7 +8,7 @@ import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorContro
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import snownee.jade.api.*;
 import snownee.jade.api.config.IPluginConfig;
 
@@ -35,7 +35,7 @@ public enum ReactorControllerProvider implements IBlockComponentProvider, IServe
         }
 
         @Override
-        public ResourceLocation getUid() {
+        public Identifier getUid() {
                 return x.rl(zStatic.ReactorStuff.controller);
         }
 

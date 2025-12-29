@@ -17,11 +17,15 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemUseAnimation;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
@@ -152,18 +156,11 @@ public class Material {
          */
         public static DeferredItem<ItemNameBlockItem> seedFoodItem(String name, Block b, int nutrition,
                         float saturationModifier, boolean fastToEat, boolean isAlwaysEdible) {
-                var food = (new FoodProperties.Builder())
-                                .nutrition(nutrition)
-                                .saturationModifier(saturationModifier);
-
-                if (fastToEat)
-                        food.fast();
-
-                if (isAlwaysEdible)
-                        food.alwaysEdible();
+                
 
                 return zItems.zFoods.register(name,
-                                () -> new ItemNameBlockItem(b, new Item.Properties().food(food.build())));
+                                () -> new ItemNameBlockItem(b, new Item.Properties()
+                                .food(Consumable.builder().consumeSeconds(1.6F).animation(ItemUseAnimation.EAT).sound(SoundEvents.GENERIC_EAT).hasConsumeParticles(true).consumeSeconds(0.8F).build())));
         }
 
         public static DeferredItem<ItemNameBlockItem> seedItem(String name, Block b) {
@@ -196,9 +193,9 @@ public class Material {
                         String name,
                         BlockEntitySupplier<T> factory, Supplier<? extends Block>... validBlocks) {
                 return zBlockEntities.zBE.register(name,
-                                () -> BlockEntityType.Builder.of(factory, Arrays.stream(validBlocks)
+                                () -> new BlockEntityType<>(factory,false, Arrays.stream(validBlocks)
                                                 .map(Supplier::get)
-                                                .toArray(Block[]::new)).build(null));
+                                                .toArray(Block[]::new)));
         }
 
         public static DeferredHolder<Item, Item> craftingItem(String name) {

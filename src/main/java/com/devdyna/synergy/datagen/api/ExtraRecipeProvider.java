@@ -1,8 +1,7 @@
 package com.devdyna.synergy.datagen.api;
 
 import static com.devdyna.synergy.Main.ID;
-import static net.minecraft.data.recipes.RecipeCategory.BUILDING_BLOCKS;
-import static net.minecraft.data.recipes.RecipeCategory.MISC;
+import static net.minecraft.data.recipes.RecipeCategory.*;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -18,11 +17,11 @@ import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeBuilde
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -38,8 +37,10 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 @SuppressWarnings("null")
 public abstract class ExtraRecipeProvider extends RecipeProvider {
 
-        public ExtraRecipeProvider(PackOutput output, CompletableFuture<Provider> registries) {
-                super(output, registries);
+        protected RecipeOutput c = output;
+
+        protected ExtraRecipeProvider(Provider registries, RecipeOutput output) {
+                super(registries, output);
         }
 
         protected void compatIngotsAndDusts(RecipeOutput c) {
@@ -1087,5 +1088,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(getHasName(material), has(material))
                                 .save(c);
         }
+
+      
 
 }

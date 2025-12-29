@@ -13,7 +13,7 @@ import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import snownee.jade.api.*;
 import snownee.jade.api.config.IPluginConfig;
 
@@ -38,7 +38,7 @@ public enum EnergyTipProviders implements IBlockComponentProvider, IServerDataPr
                     Component.literal("§7")
                             .append(Component.translatable(ID + ".heat"))
                             .append(heat + "°/t | ")
-                            .withStyle(heat > 0 ? ChatFormatting.RED : ChatFormatting.GREEN)
+                            .withStyle((heat.get() > 0) ? ChatFormatting.RED : ChatFormatting.GREEN)
                             .append(Component.translatable(ID + ".fe")
                                     .append(fe + "fe/t")));
         }
@@ -69,7 +69,7 @@ public enum EnergyTipProviders implements IBlockComponentProvider, IServerDataPr
     }
 
     @Override
-    public ResourceLocation getUid() {
+    public Identifier getUid() {
         return x.rl("fegen");
     }
 

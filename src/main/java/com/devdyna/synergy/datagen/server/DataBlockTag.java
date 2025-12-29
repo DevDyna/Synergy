@@ -1,5 +1,7 @@
 package com.devdyna.synergy.datagen.server;
 
+import static com.devdyna.synergy.Main.ID;
+
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.Main;
@@ -13,14 +15,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-@SuppressWarnings({ "unchecked", "null" })
+@SuppressWarnings({ "unchecked" })
 
 public class DataBlockTag extends BlockTagsProvider {
 
-        public DataBlockTag(PackOutput o, CompletableFuture<Provider> l, ExistingFileHelper f) {
-                super(o, l, Main.ID, f);
+        public DataBlockTag(PackOutput output, CompletableFuture<Provider> lookupProvider) {
+                super(output, lookupProvider, ID);
         }
 
         @Override

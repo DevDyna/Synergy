@@ -4,7 +4,6 @@ import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
-import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -18,6 +17,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static com.devdyna.synergy.Main.ID;
 
+@SuppressWarnings("unchecked")
 public class x {
 
     public static Identifier rl(String modid, String s) {
@@ -26,6 +26,10 @@ public class x {
 
     public static Identifier rl(String s) {
         return rl(ID, s);
+    }
+
+    public static Identifier mcrl(String s) {
+        return rl("minecraft", s);
     }
 
     /**
@@ -63,6 +67,7 @@ public class x {
     public static String path(Item i) {
         return path(BuiltInRegistries.ITEM, i);
     }
+
     public static String path(Fluid i) {
         return path(BuiltInRegistries.FLUID, i);
     }
@@ -84,6 +89,7 @@ public class x {
      * @param d   <code>BuiltInRegistries.BLOCK</code>
      * @param i   <code>"stone"</code>
      */
+
     public static <T> T get(DefaultedRegistry<T> d, String i) {
         return (T) d.get(rl(i));
     }
@@ -114,7 +120,7 @@ public class x {
     }
 
     // public static ItemStack item(DeferredHolder<? extends ItemLike, ?> holder) {
-    //     return x.item(holder.get().asItem());
+    // return x.item(holder.get().asItem());
     // }
 
     /**
@@ -137,13 +143,13 @@ public class x {
         return ingredient(i.get());
     }
 
-    public static Ingredient ingredient(TagKey<Item> i) {
-        return Ingredient.of(i);
-    }
+    // public static Ingredient ingredient(TagKey<Item> i) {
+    //     return Ingredient.of(i);
+    // }
 
-    public static Ingredient ingredient(Identifier tag) {
-        return Ingredient.of(TagKey.create(Registries.ITEM, tag));
-    }
+    // public static Ingredient ingredient(Identifier tag) {
+    //     return Ingredient.of(TagKey.create(Registries.ITEM, tag));
+    // }
 
     public static Block block(DeferredHolder<Block, ?> b) {
         return b.get();
@@ -165,19 +171,19 @@ public class x {
         return fluid(f, 1000);
     }
 
-    public static FluidStack fluid(Fluid f,int amount) {
+    public static FluidStack fluid(Fluid f, int amount) {
         return new FluidStack(f, amount);
     }
 
     public static <T> ItemStack item(DeferredHolder<T, ?> holder) {
-    T obj = holder.get();
-    if (obj instanceof Item item) {
-        return item.getDefaultInstance();
-    } else if (obj instanceof Block block) {
-        return new ItemStack(block);
-    } else {
-        throw new IllegalArgumentException("Unsupported type: " + obj.getClass());
+        T obj = holder.get();
+        if (obj instanceof Item item) {
+            return item.getDefaultInstance();
+        } else if (obj instanceof Block block) {
+            return new ItemStack(block);
+        } else {
+            throw new IllegalArgumentException("Unsupported type: " + obj.getClass());
+        }
     }
-}
 
 }

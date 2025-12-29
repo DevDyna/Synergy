@@ -1,46 +1,46 @@
 package com.devdyna.synergy.datagen.server;
 
+import static com.devdyna.synergy.Main.ID;
+
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
-import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.BlockTagCopyingItemTagProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-@SuppressWarnings("null")
-public class DataItemTag extends ItemTagsProvider {
+public class DataItemTag extends BlockTagCopyingItemTagProvider {
 
-        public DataItemTag(PackOutput o, CompletableFuture<HolderLookup.Provider> p,
-                        CompletableFuture<TagLookup<Block>> b,
-                        ExistingFileHelper h) {
-                super(o, p, b, Main.ID, h);
+       
+
+        public DataItemTag(PackOutput output, CompletableFuture<Provider> lookupProvider,
+                        CompletableFuture<TagLookup<Block>> blockTags) {
+                super(output, lookupProvider, blockTags, ID);
         }
 
         @Override
         protected void addTags(Provider p) {
 
-                copy(zBlockTag.MACHINES, zItemTag.MACHINES);
+                // copy(zBlockTag.MACHINES, zItemTag.MACHINES);
 
-                copy(zBlockTag.CAN_SUSTAIN_BLUE_CUP, zItemTag.CAN_SUSTAIN_BLUE_CUP);
-                copy(zBlockTag.CAN_SUSTAIN_CAVE_WHEAT, zItemTag.CAN_SUSTAIN_CAVE_WHEAT);
-                copy(zBlockTag.CAN_SUSTAIN_COTTON, zItemTag.CAN_SUSTAIN_COTTON);
-                copy(zBlockTag.CAN_SUSTAIN_RICE, zItemTag.CAN_SUSTAIN_RICE);
-                copy(zBlockTag.CAN_SUSTAIN_VIOLET_WEBCAP,
-                                zItemTag.CAN_SUSTAIN_VIOLET_WEBCAP);
-                copy(zBlockTag.INFESTED_BLOCKS, zItemTag.INFESTED_BLOCKS);
+                // copy(zBlockTag.CAN_SUSTAIN_BLUE_CUP, zItemTag.CAN_SUSTAIN_BLUE_CUP);
+                // copy(zBlockTag.CAN_SUSTAIN_CAVE_WHEAT, zItemTag.CAN_SUSTAIN_CAVE_WHEAT);
+                // copy(zBlockTag.CAN_SUSTAIN_COTTON, zItemTag.CAN_SUSTAIN_COTTON);
+                // copy(zBlockTag.CAN_SUSTAIN_RICE, zItemTag.CAN_SUSTAIN_RICE);
+                // copy(zBlockTag.CAN_SUSTAIN_VIOLET_WEBCAP,
+                //                 zItemTag.CAN_SUSTAIN_VIOLET_WEBCAP);
+                // copy(zBlockTag.INFESTED_BLOCKS, zItemTag.INFESTED_BLOCKS);
 
                 tag(zItemTag.STONE_SLABS).add(Items.STONE_SLAB, Items.SMOOTH_STONE_SLAB);
 
@@ -98,8 +98,8 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.MOB_DROP)
                                 .add(DataGenUtil.getItems(zItems.zMobDrop));
 
-                copy(zBlockTag.COOLERS, zItemTag.COOLERS);
-                copy(zBlockTag.MODERATORS, zItemTag.MODERATORS);
+                // copy(zBlockTag.COOLERS, zItemTag.COOLERS);
+                // copy(zBlockTag.MODERATORS, zItemTag.MODERATORS);
 
                 tag(Tags.Items.DUSTS).add(DataGenUtil.getItems(zItems.zDusts));
 
@@ -171,9 +171,9 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.GEMS_AQUAMARINE).add(zItems.AQUAMARINE.get());
                 tag(zItemTag.GEMS_SILICON).add(zItems.SILICON.get());
 
-                tag(zItemTag.METAL_NUGGETS)
-                                .addTag(Tags.Items.NUGGETS)
-                                .remove(x.rl("create", "experience_nugget"));
+                // tag(zItemTag.METAL_NUGGETS)
+                //                 .addTag(Tags.Items.NUGGETS)
+                //                 .remove(x.rl("create", "experience_nugget"));
 
                 tag(zItemTag.MUSHROOM_RESULT).add(zItems.VIOLET_WEBCAP_MUSHROOM.get(), zItems.BLUE_CUP_MUSHROOM.get());
                 tag(zItemTag.MUSHROOM_SEED).add(zItems.VIOLET_WEBCAP_SPORE.get(), zItems.BLUE_CUP_SPORE.get());

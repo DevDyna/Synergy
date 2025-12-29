@@ -8,27 +8,24 @@ import java.util.stream.Stream;
 
 import com.devdyna.synergy.datagen.server.DataGlobalLootModifier;
 
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.advancements.criterion.StatePropertiesPredicate;
+import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.context.ContextKeySet;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
-import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
-import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.loot.AddTableLootModifier;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -37,105 +34,105 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 @SuppressWarnings("unchecked")
 public class DataGenUtil {
 
-    public static final ResourceLocation CUTOUT = ResourceLocation.withDefaultNamespace("cutout");
+    public static final Identifier CUTOUT = Identifier.withDefaultNamespace("cutout");
 
     private static String mc = "minecraft:";
     public static String TOOL = mc + "item/handheld";
     public static String ITEM = mc + "item/generated";
     private static String mod = ID + ":";
 
-    /**
-     * @deprecated use <code> x.get() </code>
-     */
-    @Deprecated
-    public static Block getBlock(String id) {
-        return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ID, id));
-    }
+    // /**
+    //  * @deprecated use <code> x.get() </code>
+    //  */
+    // @Deprecated
+    // public static Block getBlock(String id) {
+    //     return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ID, id));
+    // }
 
-    /**
-     * @deprecated use <code> x.get() </code>
-     */
-    @Deprecated
-    public static Block getBlock(String id, String modid) {
-        return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(modid, id));
-    }
+    // /**
+    //  * @deprecated use <code> x.get() </code>
+    //  */
+    // @Deprecated
+    // public static Block getBlock(String id, String modid) {
+    //     return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(modid, id));
+    // }
 
-    /**
-     * @deprecated use <code> x.path() </code>
-     */
-    @Deprecated
-    public static String getPath(Block b) {
-        return BuiltInRegistries.BLOCK.getKey(b).getPath();
-    }
+    // /**
+    //  * @deprecated use <code> x.path() </code>
+    //  */
+    // @Deprecated
+    // public static String getPath(Block b) {
+    //     return BuiltInRegistries.BLOCK.getKey(b).getPath();
+    // }
 
-    /**
-     * @deprecated use <code> x.path() </code>
-     */
-    @Deprecated
-    public static String getPath(Item i) {
-        return BuiltInRegistries.ITEM.getKey(i).getPath();
-    }
+    // /**
+    //  * @deprecated use <code> x.path() </code>
+    //  */
+    // @Deprecated
+    // public static String getPath(Item i) {
+    //     return BuiltInRegistries.ITEM.getKey(i).getPath();
+    // }
 
-    /**
-     * @deprecated use <code> x.rl() </code>
-     */
-    @Deprecated
-    public static ResourceLocation getResource(String s) {
-        return ResourceLocation.fromNamespaceAndPath(ID, s);
-    }
+    // /**
+    //  * @deprecated use <code> x.rl() </code>
+    //  */
+    // @Deprecated
+    // public static ResourceLocation getResource(String s) {
+    //     return ResourceLocation.fromNamespaceAndPath(ID, s);
+    // }
 
-    /**
-     * @deprecated use <code> x.rl() </code>
-     */
-    @Deprecated
-    public static ResourceLocation getResource(Block b) {
-        return ResourceLocation.fromNamespaceAndPath(ID, getPath(b));
-    }
+    // /**
+    //  * @deprecated use <code> x.rl() </code>
+    //  */
+    // @Deprecated
+    // public static ResourceLocation getResource(Block b) {
+    //     return ResourceLocation.fromNamespaceAndPath(ID, getPath(b));
+    // }
 
-    /**
-     * @deprecated use <code> x.rl() </code>
-     */
-    @Deprecated
-    public static ResourceLocation getResource(Item i) {
-        return ResourceLocation.fromNamespaceAndPath(ID, getPath(i));
-    }
+    // /**
+    //  * @deprecated use <code> x.rl() </code>
+    //  */
+    // @Deprecated
+    // public static ResourceLocation getResource(Item i) {
+    //     return ResourceLocation.fromNamespaceAndPath(ID, getPath(i));
+    // }
 
     public static ItemModelBuilder itemTool(Item item, ItemModelProvider b) {
-        return b.withExistingParent(getPath(item), TOOL).texture("layer0",
-                getResource("item/" + getPath(item)));
+        return b.withExistingParent(x.path(item), TOOL).texture("layer0",
+                x.rl("item/" + x.path(item)));
     }
 
     public static ItemModelBuilder itemModel(Item item, ItemModelProvider b) {
-        return b.withExistingParent(getPath(item), ITEM).texture("layer0",
-                getResource("item/" + getPath(item)));
+        return b.withExistingParent(x.path(item), ITEM).texture("layer0",
+                x.rl("item/" + x.path(item)));
     }
 
     public static ItemModelBuilder itemModel(Item item, ItemModelProvider b, String pathSuffix) {
-        return b.withExistingParent(getPath(item), ITEM).texture("layer0",
-                getResource("item/" + pathSuffix + getPath(item)));
+        return b.withExistingParent(x.path(item), ITEM).texture("layer0",
+                x.rl("item/" + pathSuffix + x.path(item)));
     }
 
     public static ItemModelBuilder itemModel(Item item, ItemModelProvider b, String pathSuffix, String itemPath) {
-        return b.withExistingParent(getPath(item), ITEM).texture("layer0",
-                getResource("item/" + pathSuffix + itemPath));
+        return b.withExistingParent(x.path(item), ITEM).texture("layer0",
+                x.rl("item/" + pathSuffix + itemPath));
     }
 
     public static ItemModelBuilder itemBlock(Block block, ItemModelProvider b) {
-        return b.withExistingParent(getPath(block), mod + "block/" + getPath(block));
+        return b.withExistingParent(x.path(block), mod + "block/" + x.path(block));
     }
 
-    public static BlockModelBuilder cross(BlockStateProvider t, String filePath, ResourceLocation texturePath) {
-        return t.models().withExistingParent(filePath, t.mcLoc("block/cross")).texture("cross", texturePath)
+    public static ModelProvider cross(ModelProvider t, String filePath, Identifier texturePath) {
+        return t.models().withExistingParent(filePath, x.mcrl("block/cross")).texture("cross", texturePath)
                 .renderType("minecraft:cutout");
     }
 
-    public static BlockModelBuilder crop(BlockStateProvider t, String filePath, ResourceLocation texturePath) {
+    public static BlockModelBuilder crop(BlockStateProvider t, String filePath, Identifier texturePath) {
         return t.models().withExistingParent(filePath, t.mcLoc("block/crop")).texture("crop", texturePath)
                 .renderType("minecraft:cutout");
     }
 
     public static BlockModelBuilder crossORcrop(BlockStateProvider t, boolean isCrop, String filePath,
-            ResourceLocation texturePath) {
+            Identifier texturePath) {
         return t.models().withExistingParent(filePath, t.mcLoc("block/" + (isCrop ? "crop" : "cross")))
                 .texture((isCrop ? "crop" : "cross"), texturePath)
                 .renderType("minecraft:cutout");
@@ -190,7 +187,7 @@ public class DataGenUtil {
         g.add(lootModifier,
                 new AddTableLootModifier(
                         new LootItemCondition[] { AnyOfCondition.anyOf(Arrays.asList(lootTables).stream()
-                                .map(r -> LootTableIdCondition.builder(ResourceLocation.parse(r)))
+                                .map(r -> LootTableIdCondition.builder(Identifier.parse(r)))
                                 .toArray(LootTableIdCondition.Builder[]::new)).build() },
                         ResourceKey.create(Registries.LOOT_TABLE, modLoc(lootModifier))));
 
@@ -199,13 +196,13 @@ public class DataGenUtil {
     public static void modifyLootTables(DataGlobalLootModifier g, String lootModifier,
             ResourceKey<LootTable>... lootTables) {
         modifyLootTables(g, lootModifier,
-                Arrays.asList(lootTables).stream().map(r -> r.location().getPath()).toArray(String[]::new));
+                Arrays.asList(lootTables).stream().map(r -> r.identifier().getPath()).toArray(String[]::new));
     }
 
     public static void modifyLootTables(DataGlobalLootModifier g, String lootModifier,
             EntityType<?>... lootTables) {
         modifyLootTables(g, lootModifier,
-                Arrays.asList(lootTables).stream().map(r -> r.getDefaultLootTable().location().getPath())
+                Arrays.asList(lootTables).stream().map(r -> r.getDefaultLootTable().get().identifier().getPath())
                         .toArray(String[]::new));
     }
 
@@ -213,9 +210,9 @@ public class DataGenUtil {
             ResourceKey<LootTable>[] chestTables, EntityType<?>... entityTables) {
         modifyLootTables(g, lootModifier,
                 ArrayUtils.concat(
-                        Arrays.asList(entityTables).stream().map(r -> r.getDefaultLootTable().location().getPath())
+                        Arrays.asList(entityTables).stream().map(r -> r.getDefaultLootTable().get().identifier().getPath())
                                 .toArray(String[]::new),
-                        Arrays.asList(chestTables).stream().map(r -> r.location().getPath()).toArray(String[]::new)));
+                        Arrays.asList(chestTables).stream().map(r -> r.identifier().getPath()).toArray(String[]::new)));
 
     }
 
@@ -224,8 +221,8 @@ public class DataGenUtil {
      * @deprecated
      */
     @Deprecated
-    public static ResourceLocation modLoc(String path) {
-        return ResourceLocation.fromNamespaceAndPath(ID, path);
+    public static Identifier modLoc(String path) {
+        return Identifier.fromNamespaceAndPath(ID, path);
     }
 
     /**
@@ -259,11 +256,11 @@ public class DataGenUtil {
         return LootTable
                 .lootTable()
                 .withPool(pool)
-                .setParamSet(LootContextParamSet.builder().build());
+                .setParamSet(new ContextKeySet.Builder().build());
     }
 
     public static void registerTable(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> c,
-            ResourceLocation tableLocation,
+            Identifier tableLocation,
             LootTable.Builder table) {
         c.accept(ResourceKey.create(Registries.LOOT_TABLE, tableLocation), table);
     }

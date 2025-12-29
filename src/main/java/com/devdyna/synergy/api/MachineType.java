@@ -20,11 +20,7 @@ import net.neoforged.neoforge.network.IContainerFactory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings("null")
-public class MachineType<
-BLOCK extends Block, 
-BE extends BlockEntity, 
-MENU extends AbstractContainerMenu,
- RECIPE extends Recipe<?>> {
+public class MachineType<BLOCK extends Block, BE extends BlockEntity, MENU extends AbstractContainerMenu, RECIPE extends Recipe<?>> {
 
     private final String id;
 
@@ -48,7 +44,10 @@ MENU extends AbstractContainerMenu,
 
         this.be = zMachines.xBE_MACHINE.register(
                 id,
-                () -> BlockEntityType.BlockEntitySupplier.of(beFactory, this.block.get()).build(null));
+                () -> new BlockEntityType<>(
+                        beFactory,
+                        false,
+                        this.block.get()));
 
         this.item = zMachines.xITEM_MACHINE.registerSimpleBlockItem(this.block);
 

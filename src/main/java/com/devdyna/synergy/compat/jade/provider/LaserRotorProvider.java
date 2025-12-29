@@ -8,7 +8,7 @@ import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBE;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import snownee.jade.api.*;
 import snownee.jade.api.config.IPluginConfig;
 
@@ -84,7 +84,7 @@ public enum LaserRotorProvider implements IBlockComponentProvider, IServerDataPr
     }
 
     @Override
-    public ResourceLocation getUid() {
+    public Identifier getUid() {
         return x.rl(zStatic.Lazers.rotor);
     }
 
