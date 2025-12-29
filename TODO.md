@@ -49,6 +49,15 @@
 
 - [ ] replace some "brute-force" particles and sound event to animateTick
 
+- [ ] horse armor on macerator
+
+- [ ] gear recycle
+
+- [ ] sulfur
+
+- [ ] macerator sugar
+
+
 ## NEWS
 
 ### Survival expansion
@@ -99,6 +108,7 @@
 
 ### Magic
 
+- [ ] Toaster
 - [ ] Spawner Essence
 - [ ] EYE
 - [ ] Easy Bee Fertilizer/bonemeals
