@@ -7,6 +7,7 @@ import com.devdyna.synergy.init.types.zItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
+import net.minecraft.client.gui.screens.inventory.StructureBlockEditScreen;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.rendertype.RenderType;
@@ -16,6 +17,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.StructureBlockEntity;
 
 @SuppressWarnings("null")
 public interface TypeRenders<T> {
@@ -60,7 +62,9 @@ public interface TypeRenders<T> {
 
         if (checkTool(player, be.getBlockPos())) {
             stack.pushPose();
-            LevelRenderer.renderLineBox(stack, vertexconsumer,
+
+            // TODO try net.minecraft.world.level.block.entity.BoundingBoxRenderable
+            LevelRenderer.renderHitOutline(stack, vertexconsumer,
                     start.getX(), start.getY(), start.getZ(), end.getX(), end.getY() + 1, end.getZ(),
                     0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
             stack.popPose();

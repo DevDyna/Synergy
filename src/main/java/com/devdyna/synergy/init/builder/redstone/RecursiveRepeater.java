@@ -56,7 +56,7 @@ public class RecursiveRepeater extends DiodeBlock {
             return InteractionResult.PASS;
         } else {
             level.setBlock(pos, state.cycle(DELAY), 3);
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS_SERVER;
         }
     }
 

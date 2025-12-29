@@ -84,7 +84,7 @@ public class SprinklerBE extends TickingBE implements EnergyBlock, SimpleAOE {
     @Override
     public void onLoad() {
         super.onLoad();
-        if (level.isClientSide)
+        if (level.isClientSide())
             rebuildArea();
     }
 

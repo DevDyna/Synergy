@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings({ "null" })
-public class FluidProviderRecipe<T> extends BaseProviderRecipe<FluidStack> {
+public class FluidProviderRecipe<T> extends BaseProviderRecipe<FluidStack,FluidProviderRecipe<T>> {
 
     private final FluidStack output;
 
@@ -37,11 +37,6 @@ public class FluidProviderRecipe<T> extends BaseProviderRecipe<FluidStack> {
 
     public ItemStack getToastSymbol() {
         return new ItemStack(zBlocks.FLUID_PROVIDER.get());
-    }
-
-    @Override
-    public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
-        return x.item(this.output.getFluid().getBucket());
     }
 
 }
