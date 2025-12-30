@@ -68,7 +68,6 @@ public interface pipeType {
         return model.optimize();
     }
 
-    // TODO need to define differents model parts
     static pipeProperties[] allTrue = { pipeProperties.TRUE, pipeProperties.NODE };
 
     static void getPipeMultiPart(Block b, MultiPartBlockStateBuilder model, ModelFile core, ModelFile pipe) {

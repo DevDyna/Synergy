@@ -12,7 +12,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 /**
  * Utility class to create recipes and recipe serializers at once
  */
-@SuppressWarnings({ "null" })
 public class zRecipe<T extends Recipe<?>> {
 
     private final String id;

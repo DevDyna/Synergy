@@ -234,7 +234,6 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                         .addModel();
         }
 
-        // TODO optimize and make it dynamic
         protected void growPlantWithVariants(Block b, int max, boolean isCrop, IntegerProperty property) {
                 var name = b.getDescriptionId().replace("block." + ID + ".", "");
 

@@ -11,8 +11,6 @@ import net.neoforged.neoforge.common.ModConfigSpec.*;
 
 public class Common {
 
-    //TODO NYC
-
     private static final ModConfigSpec.Builder qCOMMON = new ModConfigSpec.Builder();
 
     public static BooleanValue DISABLE_ITEM_USE_RECIPE;

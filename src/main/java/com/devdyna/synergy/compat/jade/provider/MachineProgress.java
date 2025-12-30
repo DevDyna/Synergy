@@ -26,7 +26,7 @@ public enum MachineProgress
   @Override
   public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
 
-    // TODO remove default item capability tooltip
+    // remove default item capability tooltip
 
     Data data = decodeFromData(accessor).orElse(null);
     if (data == null)

@@ -181,7 +181,7 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         }
     }
 
-    // TODO not work properly
+    // not work properly
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
         ItemStack movedStack = ItemStack.EMPTY;

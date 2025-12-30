@@ -32,7 +32,6 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-@SuppressWarnings("null")
 public class DataLootBlock extends BlockLootSubProvider {
 
         public DataLootBlock(HolderLookup.Provider l) {
@@ -192,8 +191,7 @@ public class DataLootBlock extends BlockLootSubProvider {
                                                                                 .setCount(ConstantValue.exactly(1)))));
         }
 
-        // TODO add fortune and age condition
-        // TODO convert to crop
+
         private void azalea() {
                 add(zBlocks.AZALEA.get(),
                                 LootTable.lootTable()

@@ -27,7 +27,7 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 
-@SuppressWarnings({ "removal", "deprecation", "null" })
+@SuppressWarnings({ "removal", "deprecation" })
 @EventBusSubscriber(modid = Main.ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class Client {
 
@@ -47,7 +47,7 @@ public class Client {
         event.register(zContainer.WOODEN_TINY_CHEST_MENU.get(), WoodenTinyChestScreen::new);
         event.register(zContainer.STONE_TINY_CHEST_MENU.get(), StoneTinyChestScreen::new);
         event.register(zContainer.ORNATED_TINY_CHEST_MENU.get(), OrnatedTinyChestScreen::new);
-        // TODO rework
+
         event.register(zMachines.MACERATOR.menu().get(), MaceratorScreen::new);
         event.register(zMachines.COMPRESSOR.menu().get(), CompressorScreen::new);
         event.register(zMachines.ALLOY_SMELTER.menu().get(), AlloySmelterScreen::new);
@@ -56,7 +56,7 @@ public class Client {
 
     @SubscribeEvent
     public static void registerItemColor(RegisterColorHandlersEvent.Item event) {
-        // TODO idk if it work but i will keep it
+        // idk if it work but i will keep it
         for (var bucket : zItems.zBucketItems.getEntries()) {
             event.getItemColors().register((s, i) -> (i == 1 && s.getItem() instanceof BucketItem)
                     ? IClientFluidTypeExtensions.of(((BucketItem) s.getItem()).content).getTintColor()

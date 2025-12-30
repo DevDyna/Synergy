@@ -11,7 +11,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.CropBlock;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-@SuppressWarnings("null")
 public class DataBlockModelState extends ExtraBlockStateProvider {
 
         public DataBlockModelState(PackOutput o, ExistingFileHelper f) {

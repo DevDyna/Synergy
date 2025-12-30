@@ -14,7 +14,6 @@ import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContai
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
 
-@SuppressWarnings("null")
 public class DataItemModel extends ExtraItemModelProvider {
 
         public DataItemModel(PackOutput o, ExistingFileHelper f) {

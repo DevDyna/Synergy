@@ -14,7 +14,7 @@ import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-@SuppressWarnings({ "unchecked", "null" })
+@SuppressWarnings({ "unchecked" })
 public class ItemProviderCategory extends BaseProviderCategory<ItemProviderRecipe<ItemStack>, ItemStack> {
     // DONT TOUCH OR WILL BREAK AND YOU WILL MAD WITH YOURSELF
     public static final RecipeType<BaseProviderRecipe<ItemStack>> TYPE = new RecipeType<>(

@@ -17,7 +17,7 @@ import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.fluids.FluidStack;
 
-@SuppressWarnings({ "unchecked", "null" })
+@SuppressWarnings({ "unchecked" })
 public class FluidProviderCategory extends BaseProviderCategory<FluidProviderRecipe<FluidStack>, FluidStack> {
     // DONT TOUCH OR WILL BREAK AND YOU WILL MAD WITH YOURSELF
     public static final RecipeType<BaseProviderRecipe<FluidStack>> TYPE = new RecipeType<>(

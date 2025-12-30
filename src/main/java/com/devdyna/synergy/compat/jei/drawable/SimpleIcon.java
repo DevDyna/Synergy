@@ -16,7 +16,7 @@ public class SimpleIcon {
         return guiHelper.createDrawableItemStack(x.item(item));
     }
 
-    //TODO dont work , require to investigate why
+    // dont work , require to investigate why
     public static IDrawable of(IGuiHelper guiHelper, ResourceLocation rl, int x, int y) {
         return new IDrawable() {
 

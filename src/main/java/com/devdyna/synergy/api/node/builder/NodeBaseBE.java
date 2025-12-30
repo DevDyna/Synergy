@@ -73,7 +73,7 @@ public abstract class NodeBaseBE extends BlockEntity {
         } else if (capType == Capabilities.FluidHandler.BLOCK) {
             executeFluid((IFluidHandler) inCap, (IFluidHandler) outCap);
         } else {
-            // TODO meka compats
+            // add other capabilities
         }
         // refresh
         this.failedRoutes.removeAll(this.failedRoutes);
@@ -130,7 +130,6 @@ public abstract class NodeBaseBE extends BlockEntity {
         if (capType == Capabilities.ItemHandler.BLOCK) {
             var itemHandler = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (itemHandler instanceof IItemHandler handler) {
-                // TODO rework to filter based on input cap
                 for (int slot = 0; slot < handler.getSlots(); slot++) {
                     if (handler.getStackInSlot(slot).isEmpty()) {
                         return true;
@@ -147,7 +146,6 @@ public abstract class NodeBaseBE extends BlockEntity {
         } else if (capType == Capabilities.FluidHandler.BLOCK) {
             var fluid = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (fluid instanceof IFluidHandler handler) {
-                // TODO rework to filter based on input cap
                 for (int tank = 0; tank < handler.getTanks(); tank++) {
                     if (handler.getFluidInTank(tank).isEmpty()) {
                         return true;
@@ -155,8 +153,7 @@ public abstract class NodeBaseBE extends BlockEntity {
                 }
             }
         } else {
-            // TODO: meka compat
-
+            // add other capabilities
         }
         return false;
     }
@@ -259,7 +256,7 @@ public abstract class NodeBaseBE extends BlockEntity {
 
         int remaining = maxCount;
 
-        // TODO add check when be is instanceof WorldlyContainer (furnace)
+        // add check when be is instanceof WorldlyContainer (furnace)
 
         for (int inSlot = 0; inSlot < input.getSlots() && remaining > 0; inSlot++) {
             ItemStack inStack = input.getStackInSlot(inSlot);
@@ -331,7 +328,7 @@ public abstract class NodeBaseBE extends BlockEntity {
         return stack;
     }
 
-    // TODO meka compat
+    // dont work with meka
     protected void moveEnergy(IEnergyStorage input, IEnergyStorage output, int maxEnergy) {
 
         if (input == null || output == null)

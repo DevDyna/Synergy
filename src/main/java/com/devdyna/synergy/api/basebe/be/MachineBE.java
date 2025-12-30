@@ -8,7 +8,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-@SuppressWarnings("null")
 public abstract class MachineBE extends BEStorage {
 
     public final static String RADIUS = "aoe";

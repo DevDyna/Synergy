@@ -28,7 +28,7 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
 
     public ReactorCellCategory(IGuiHelper helper) {
         super(helper);
-        // TODO change timespan based on duration
+        // change timespan based on duration
         this.arrow = helper.drawableBuilder(x.rl(
                         "textures/gui/green_progress_arrow.png"), 0, 0, 24, 16)
                 .setTextureSize(24, 16).buildAnimated(200,

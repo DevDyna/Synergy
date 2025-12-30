@@ -35,7 +35,6 @@ import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
 import net.neoforged.neoforge.common.conditions.NotCondition;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-@SuppressWarnings("null")
 public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         public ExtraRecipeProvider(PackOutput output, CompletableFuture<Provider> registries) {

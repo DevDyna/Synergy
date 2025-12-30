@@ -7,7 +7,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-@SuppressWarnings("null")
 public abstract class BaseTinyChestScreen<T extends BaseTinyChestMenu> extends BaseScreen<T> {
 
     public BaseTinyChestScreen(T menu, Inventory playerInventory, Component title) {
