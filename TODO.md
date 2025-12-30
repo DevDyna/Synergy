@@ -124,7 +124,7 @@
 ### Zodiac
 
 - [ ] Growable Crystals
-- [ ] Extractor
+- [ ] Node Extractor
 - [ ] Generators
 - [ ] Mineral Deposits
 - [ ] Buddings
