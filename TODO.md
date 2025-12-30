@@ -1,32 +1,18 @@
 # TODO
 
 
-## THINGS TO BE IMPLEMENTED BEFORE 26.1
-
-- [x] recipetypes unification -> BaseRecipeType<T>
-- [ ] replace all resourcelocation to x.class
-- [ ] custom capability IO api (?)
-- [ ] unify many be base code to be more flexible
-- [ ] standardize Material and MachineType on a dedicated api
-- [ ] move appendHoverText to standalone event
-
 ## ISSUES
 
 - [ ] Fuel cell output can conflict with input
+
 - [ ] quickMoveStack (i hate you!)
 
 - [ ] Nodes bypass WorldyContainers restrictions
 
-- [ ] Mekanism IO will void/break many stuff (nodes , fuel cell , etc)
-
-
 ## COMPATS AND TWEAKS
 
-- [ ] Patchouli compat
-
-- [ ] (Meka) Gas nodes
 - [ ] Node Upgrades
-- [ ] Pipe Blocker
+
 - [ ] Differents styles for Nodes / Node model rework
 
 - [ ] GuideMe quantum reactor GameScene
@@ -41,21 +27,13 @@
 
 - [ ] All Recipe Types compat with GuideMe (?)
 
-- [ ] datagen recipes InventoryChangeTrigger.TriggerInstance.hasItems -> has()
-
-- [ ] datagen recipes ids x.path(...).replace(...) -> id(item)
-
-- [ ] datagen recipes group id rework
-
-- [ ] replace some "brute-force" particles and sound event to animateTick
-
-- [ ] horse armor on macerator
+- [x] horse armor on macerator
 
 - [ ] gear recycle
 
-- [ ] sulfur
+- [ ] sulfur usage
 
-- [ ] macerator sugar
+- [x] macerator sugar
 
 
 ## NEWS
