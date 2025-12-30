@@ -1,0 +1,13 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 10,
+  "input": {
+    "item": "minecraft:diamond_horse_armor"
+  },
+  "output": {
+    "count": 5,
+    "id": "minecraft:diamond"
+  },
+  "ticks": 60
+}

@@ -1,0 +1,13 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 10,
+  "input": {
+    "item": "minecraft:golden_horse_armor"
+  },
+  "output": {
+    "count": 5,
+    "id": "synergy:gold_dust"
+  },
+  "ticks": 60
+}
