@@ -1147,6 +1147,28 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.VOID_CRYSTAL)
                                 .unlockedBy().save(c);
 
+                QuernMillingBuilder.of().input(Items.SUGAR_CANE)
+                                .output(Items.SUGAR, 2)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(Items.SUGAR_CANE)
+                                .output(Items.SUGAR, 2)
+                                .secondary(Items.SUGAR)
+                                .chance(0.75f)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(Items.IRON_HORSE_ARMOR)
+                                .output(zItems.IRON_DUST, 5)
+                                .unlockedBy().save(c, "_from_horse_armor");
+
+                MaceratorRecipeBuilder.of().input(Items.GOLDEN_HORSE_ARMOR)
+                                .output(zItems.GOLD_DUST, 5)
+                                .unlockedBy().save(c, "_from_horse_armor");
+
+                MaceratorRecipeBuilder.of().input(Items.DIAMOND_HORSE_ARMOR)
+                                .output(Items.DIAMOND, 5)
+                                .unlockedBy().save(c, "_from_horse_armor");
+
         }
 
 }
