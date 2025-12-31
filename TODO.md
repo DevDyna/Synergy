@@ -1,5 +1,10 @@
 # TODO
 
 ## ISSUES
-- [ ] finish 21.11 port
 - [ ] update new features
+
+
+## 21.11 ONLY TO UPDATE
+- [ ] zRecipes rework
+- [ ] EnderEyeExtraction
+- [ ] new datagen recipes
