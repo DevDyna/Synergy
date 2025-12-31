@@ -1,7 +1,7 @@
 package com.devdyna.synergy.compat.jade;
 
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
-import com.devdyna.synergy.api.machines.BaseMachineBlock;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.node.builder.NodeBaseBlock;
 import com.devdyna.synergy.compat.jade.provider.AOEMachines;
 import com.devdyna.synergy.compat.jade.provider.CoolerProvider;

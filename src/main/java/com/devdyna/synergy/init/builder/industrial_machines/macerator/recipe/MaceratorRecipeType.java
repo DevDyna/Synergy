@@ -3,10 +3,10 @@ package com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe;
 import java.util.Optional;
 
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.machines.BaseMachineBE;
-import com.devdyna.synergy.api.machines.BaseMachineBlock;
-import com.devdyna.synergy.api.machines.BaseMachineMenu;
-import com.devdyna.synergy.api.machines.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.machine.BaseMachineMenu;
+import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
 import com.mojang.serialization.Codec;

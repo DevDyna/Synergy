@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.machines.recipe;
+package com.devdyna.synergy.api.machine.recipe;
 
 import static com.devdyna.synergy.Main.ID;
 
@@ -8,9 +8,9 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.machines.BaseMachineBE;
-import com.devdyna.synergy.api.machines.BaseMachineBlock;
-import com.devdyna.synergy.api.machines.BaseMachineMenu;
+import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
 import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
 import com.devdyna.synergy.api.recipes.builders.SimpleInputItem;

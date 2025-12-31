@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.machines.BaseMachineBE;
-import com.devdyna.synergy.api.machines.ExtraMachineSlot;
-import com.devdyna.synergy.api.machines.ExtraMachineSlot.TYPE;
+import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.ExtraMachineSlot;
+import com.devdyna.synergy.api.machine.ExtraMachineSlot.TYPE;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;

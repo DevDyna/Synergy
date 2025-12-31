@@ -1,7 +1,7 @@
 package com.devdyna.synergy.compat.jei.categories.core;
 
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.machines.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;

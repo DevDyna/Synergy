@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.machines;
+package com.devdyna.synergy.api.machine;
 
 import com.devdyna.synergy.api.gui.BaseScreen;
 import com.devdyna.synergy.api.utils.Pos;

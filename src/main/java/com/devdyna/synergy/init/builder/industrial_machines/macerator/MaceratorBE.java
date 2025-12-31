@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.machines.BaseMachineBE;
-import com.devdyna.synergy.api.machines.BaseMachineBlock;
-import com.devdyna.synergy.api.machines.ExtraMachineSlot;
-import com.devdyna.synergy.api.machines.UpgradeSlots;
+import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.machine.ExtraMachineSlot;
+import com.devdyna.synergy.api.machine.UpgradeSlots;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;

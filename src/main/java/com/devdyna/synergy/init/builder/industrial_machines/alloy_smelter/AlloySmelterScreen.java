@@ -2,7 +2,7 @@ package com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.machines.BaseMachineScreen;
+import com.devdyna.synergy.api.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.network.chat.Component;

@@ -1,8 +1,8 @@
 package com.devdyna.synergy;
 
 import com.devdyna.synergy.api.beLogic.*;
-import com.devdyna.synergy.api.machines.BaseMachineBE;
-import com.devdyna.synergy.api.machines.core.*;
+import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.core.*;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zHandlers;

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.machines;
+package com.devdyna.synergy.api.machine;
 
 import java.util.List;
 

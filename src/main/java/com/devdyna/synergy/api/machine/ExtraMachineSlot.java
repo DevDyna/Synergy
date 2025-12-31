@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.machines;
+package com.devdyna.synergy.api.machine;
 
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.ItemStackHandler;
