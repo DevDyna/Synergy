@@ -1,13 +1,12 @@
 package com.devdyna.synergy.init.machine.furnace;
 
-import com.devdyna.synergy.init.machine.core.BaseMachineBE;
-import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
-import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
-import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeType;
-
-import static com.devdyna.synergy.init.machine.core.BaseMachineBE.*;
+import static com.devdyna.synergy.api.machine.BaseMachineBE.*;
 
 import com.devdyna.synergy.api.MachineType;
+import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.machine.BaseMachineMenu;
+import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.init.types.zMachines;
 

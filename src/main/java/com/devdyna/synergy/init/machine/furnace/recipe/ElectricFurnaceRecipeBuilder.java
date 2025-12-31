@@ -3,11 +3,11 @@ package com.devdyna.synergy.init.machine.furnace.recipe;
 import java.util.LinkedHashMap;
 
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.init.machine.core.BaseMachineBE;
-import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
-import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
-import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeBuilder;
-import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.machine.BaseMachineMenu;
+import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeBuilder;
+import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.world.item.crafting.Recipe;

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.machine.core.recipe;
+package com.devdyna.synergy.api.machine.recipe;
 
 import static com.devdyna.synergy.Main.ID;
 
@@ -8,14 +8,14 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.MachineType;
+import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
 import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
 import com.devdyna.synergy.api.recipes.builders.SimpleInputItem;
 import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.init.machine.core.BaseMachineBE;
-import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
-import com.devdyna.synergy.init.machine.core.BaseMachineMenu;
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
 
 import net.minecraft.advancements.Advancement;

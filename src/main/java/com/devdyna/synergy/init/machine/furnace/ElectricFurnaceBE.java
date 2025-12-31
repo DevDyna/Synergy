@@ -3,10 +3,10 @@ package com.devdyna.synergy.init.machine.furnace;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.machine.UpgradeSlots;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
-import com.devdyna.synergy.init.machine.core.BaseMachineBE;
-import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
-import com.devdyna.synergy.init.machine.core.UpgradeSlots;
 import com.devdyna.synergy.init.machine.furnace.recipe.ElectricFurnaceRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 

@@ -2,8 +2,8 @@ package com.devdyna.synergy.init.machine.furnace;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.init.machine.core.BaseMachineScreen;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

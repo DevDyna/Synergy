@@ -1,8 +1,8 @@
-package com.devdyna.synergy.init.machine.core;
+package com.devdyna.synergy.api.machine;
 
 import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.gui.BaseMenu;
-import com.devdyna.synergy.init.machine.core.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.Block;

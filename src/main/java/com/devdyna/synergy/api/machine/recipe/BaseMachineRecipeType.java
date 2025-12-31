@@ -1,8 +1,10 @@
-package com.devdyna.synergy.init.machine.core.recipe;
+package com.devdyna.synergy.api.machine.recipe;
 
 import java.util.ArrayList;
 import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.init.machine.core.*;
+import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.machine.BaseMachineMenu;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;

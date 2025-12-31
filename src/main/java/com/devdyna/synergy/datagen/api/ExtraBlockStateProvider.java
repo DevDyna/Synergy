@@ -5,6 +5,7 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.List;
 import java.util.function.BiFunction;
 import com.devdyna.synergy.api.zFluid;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
@@ -13,7 +14,6 @@ import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.DryableBricks;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
-import com.devdyna.synergy.init.machine.core.BaseMachineBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 
 import net.minecraft.core.Direction;
