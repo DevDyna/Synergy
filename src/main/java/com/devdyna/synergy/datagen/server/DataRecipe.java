@@ -11,9 +11,9 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.builders.*;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.agriculture.cultivated.azalea;
-import com.devdyna.synergy.init.machine.alloy_smelter.recipe.AlloySmelterRecipeBuilder;
-import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeBuilder;
-import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe.AlloySmelterRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup;

@@ -4,7 +4,7 @@ import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.core.BaseMachineRecipeCategory;
-import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeType;
+import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
