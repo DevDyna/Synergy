@@ -15,6 +15,8 @@ import com.devdyna.synergy.common.recipes.type.DryableBricksRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -30,12 +32,13 @@ public class DryableBricksBuilder extends BaseRecipeBuilder implements
     private BlockState block;
     private ItemStack output;
 
-    public DryableBricksBuilder() {
+    public DryableBricksBuilder(RegistryLookup<Item> p) {
+        super(p);
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static DryableBricksBuilder of() {
-        return new DryableBricksBuilder();
+    public static DryableBricksBuilder of(RegistryLookup<Item> p) {
+        return new DryableBricksBuilder(p);
     }
 
     /**
@@ -81,7 +84,8 @@ public class DryableBricksBuilder extends BaseRecipeBuilder implements
 
     @Override
     public String getSuffix(String extra) {
-        return "dryable_bricks/" + x.path(output);
+        return "dryable_bricks/" + x.path(output)
+                + extra;
     }
 
     @Override

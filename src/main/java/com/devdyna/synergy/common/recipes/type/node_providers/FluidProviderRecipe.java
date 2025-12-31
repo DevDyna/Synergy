@@ -1,4 +1,4 @@
-package com.devdyna.synergy.common.recipes.type;
+package com.devdyna.synergy.common.recipes.type.node_providers;
 
 import javax.annotation.Nullable;
 
@@ -10,12 +10,13 @@ import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings({ "null" })
-public class FluidProviderRecipe<T> extends BaseProviderRecipe<FluidStack,FluidProviderRecipe<T>> {
+public class FluidProviderRecipe<T> extends BaseProviderRecipe<FluidStack> {
 
     private final FluidStack output;
 
@@ -31,12 +32,14 @@ public class FluidProviderRecipe<T> extends BaseProviderRecipe<FluidStack,FluidP
     }
 
     @Override
-    public zRecipe<?> getRecipe() {
+    public zRecipe<FluidProviderRecipe<FluidStack>> getRecipe() {
         return zRecipeTypes.FLUID_PROVIDER;
     }
 
-    public ItemStack getToastSymbol() {
-        return new ItemStack(zBlocks.FLUID_PROVIDER.get());
+ 
+    @Override
+    public Item getToastIcon() {
+        return zBlocks.FLUID_PROVIDER.get().asItem();
     }
 
 }

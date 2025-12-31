@@ -20,7 +20,7 @@ public interface SimpleInputItem<BUILDER extends BaseRecipeBuilder> extends Buil
     }
 
     default BUILDER input(TagKey<Item> input) {
-        return input(x.ingredient(input));
+        return input(x.ingredient(getProvider(),input));
     }
 
 }

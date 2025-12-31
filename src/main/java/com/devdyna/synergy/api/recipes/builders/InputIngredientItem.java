@@ -21,7 +21,7 @@ public interface InputIngredientItem<BUILDER extends BaseRecipeBuilder> extends 
     }
 
     default BUILDER add(TagKey<Item> input) {
-        return add(x.ingredient(input));
+        return add(x.ingredient(getProvider(),input));
     }
 
     default BUILDER add(ItemLike input) {

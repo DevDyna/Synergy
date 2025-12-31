@@ -13,8 +13,9 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.FuelCellRecipe;
 
 import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -30,12 +31,13 @@ public class ReactorCellBuilder extends BaseRecipeBuilder
     private double heat;
     private int fe;
 
-    private ReactorCellBuilder() {
+    private ReactorCellBuilder(RegistryLookup<Item> p) {
+        super(p);
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static ReactorCellBuilder of() {
-        return new ReactorCellBuilder();
+    public static ReactorCellBuilder of(RegistryLookup<Item> p) {
+        return new ReactorCellBuilder(p);
     }
 
     public ReactorCellBuilder input(Ingredient input) {
@@ -92,9 +94,9 @@ public class ReactorCellBuilder extends BaseRecipeBuilder
     }
 
     @Override
-    public ResourceLocation getSuffix(String extra) {
-        return x.rl("reactor_reaction/" + x.path(output.getItem())
-                + extra);
+    public String getSuffix(String extra) {
+        return "reactor_reaction/" + x.path(output.getItem())
+                + extra;
     }
 
 }

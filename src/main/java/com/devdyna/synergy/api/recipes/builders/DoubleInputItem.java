@@ -4,6 +4,7 @@ import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -40,15 +41,15 @@ public interface DoubleInputItem<BUILDER extends BaseRecipeBuilder> extends Simp
     }
 
     default BUILDER inputs(TagKey<Item> right, TagKey<Item> left) {
-        return inputs(x.ingredient(right), x.ingredient(left));
+        return inputs(x.ingredient(getProvider(), left), x.ingredient(getProvider(),left));
     }
 
     default BUILDER inputs(TagKey<Item> right, Item left) {
-        return inputs(x.ingredient(right), x.ingredient(left));
+        return inputs(x.ingredient(getProvider(),right), x.ingredient(left));
     }
 
     default BUILDER inputs(Item right, TagKey<Item> left) {
-        return inputs(x.ingredient(right), x.ingredient(left));
+        return inputs(x.ingredient(right), x.ingredient(getProvider(),left));
     }
 
 }

@@ -17,7 +17,7 @@ public interface CatalystItem<BUILDER extends BaseRecipeBuilder> extends Builder
     abstract BUILDER catalyst(Ingredient catalyst);
 
     default BUILDER catalyst(ItemStack... catalyst) {
-        return catalyst(Ingredient.of(Arrays.stream(catalyst).map(ItemStack::getItem).toArray(Item[]::new)));
+        return catalyst(x.ingredient(catalyst));
     }
 
     default BUILDER catalyst(DeferredHolder<Item, Item>... catalyst) {
@@ -25,15 +25,15 @@ public interface CatalystItem<BUILDER extends BaseRecipeBuilder> extends Builder
     }
 
     default BUILDER catalyst(Item... catalyst) {
-        return catalyst(Ingredient.of(catalyst));
+        return catalyst(x.ingredient(catalyst));
     }
 
     default BUILDER catalyst(ItemLike... catalyst) {
-        return catalyst(Ingredient.of(catalyst));
+        return catalyst(x.ingredient(catalyst));
     }
 
-    // default BUILDER catalyst(TagKey<Item> catalyst) {
-    //     return catalyst(Ingredient.of());
-    // }
+    default BUILDER catalyst(TagKey<Item> catalyst) {
+        return catalyst(x.ingredient(getProvider(),catalyst));
+    }
 
 }

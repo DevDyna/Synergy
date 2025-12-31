@@ -13,8 +13,9 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.UrnRitualRecipe;
 
 import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -27,12 +28,13 @@ public class UrnRitualBuilder extends BaseRecipeBuilder
     private List<Ingredient> inputList = new ArrayList<>();
     private ItemStack output;
 
-    private UrnRitualBuilder() {
+    private UrnRitualBuilder(RegistryLookup<Item> p) {
+        super(p);
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static UrnRitualBuilder of() {
-        return new UrnRitualBuilder();
+    public static UrnRitualBuilder of(RegistryLookup<Item> p) {
+        return new UrnRitualBuilder(p);
     }
 
     public UrnRitualBuilder unlockedBy() {
@@ -77,9 +79,9 @@ public class UrnRitualBuilder extends BaseRecipeBuilder
     }
 
     @Override
-        public ResourceLocation getSuffix(String extra) {
-       return x.rl("urn_ritual/" + x.path(this.output.getItem())
-                + extra);
+        public String getSuffix(String extra) {
+       return "urn_ritual/" + x.path(this.output.getItem())
+                + extra;
         }
 
 }

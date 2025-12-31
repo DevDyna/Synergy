@@ -4,8 +4,6 @@ import static com.devdyna.synergy.Main.ID;
 import static net.minecraft.data.recipes.RecipeCategory.*;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.builders.CropResultBuilder;
@@ -17,11 +15,12 @@ import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeBuilde
 import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.PackOutput;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -38,9 +37,11 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         protected RecipeOutput c = output;
+        protected RegistryLookup<Item> r;
 
-        protected ExtraRecipeProvider(Provider registries, RecipeOutput output) {
-                super(registries, output);
+        protected ExtraRecipeProvider(Provider provider, RecipeOutput output) {
+                super(provider, output);
+                this.r = provider.lookupOrThrow(Registries.ITEM);
         }
 
         protected void compatIngotsAndDusts(RecipeOutput c) {
@@ -72,7 +73,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected void gear(RecipeOutput c, DeferredHolder<Item, Item> gear, TagKey<Item> input) {
-                ShapedRecipeBuilder.shaped(MISC, gear.get())
+                ShapedRecipeBuilder.shaped(r, MISC, gear.get())
                                 .pattern(" # ")
                                 .pattern("# #")
                                 .pattern(" # ")
@@ -85,11 +86,11 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot, Item secondary,
                         float chance) {
 
-                QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
+                QuernMillingBuilder.of(r).input(x.ingredient(raw.asItem()))
                                 .output(x.item(dust.asItem(), 2))
                                 .unlockedBy().save(c, "_from_raw");
 
-                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+                QuernMillingBuilder.of(r).input(x.ingredient(ingot.asItem()))
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c, "_from_ingot");
 
@@ -106,29 +107,25 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 doubleSmelt(c, dust, ingot);
         }
 
-        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot,
+        protected void raw_dust_smelt(RecipeOutput c, Identifier raw, ItemLike dust, ItemLike ingot,
                         Item secondary, float chance) {
 
-                QuernMillingBuilder.of().input(x.ingredient(raw))
+                QuernMillingBuilder.of(r).input(x.ingredient(r, raw))
                                 .output(x.item(dust.asItem(), 2))
                                 .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }),
+                                                tagNotEmptyCondition(raw)),
                                                 "_from_raw");
 
-                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+                QuernMillingBuilder.of(r).input(x.ingredient(ingot.asItem()))
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c, "_from_ingot");
 
-                MaceratorRecipeBuilder.of().input(x.ingredient(raw))
+                MaceratorRecipeBuilder.of().input(x.ingredient(r, raw))
                                 .output(x.item(dust.asItem(), 3))
                                 .secondary(secondary)
                                 .chance(chance)
                                 .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }),
+                                                tagNotEmptyCondition(raw)),
                                                 "_from_raw");
 
                 MaceratorRecipeBuilder.of().input(x.ingredient(ingot.asItem()))
@@ -138,41 +135,33 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 doubleSmelt(c, dust, ingot);
         }
 
-        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot,
-                        ResourceLocation ingotTag, Item secondary, float chance) {
+        protected void raw_dust_smelt(RecipeOutput c, Identifier raw, ItemLike dust, ItemLike ingot,
+                        Identifier ingotTag, Item secondary, float chance) {
 
-                QuernMillingBuilder.of().input(x.ingredient(raw))
+                QuernMillingBuilder.of(r).input(x.ingredient(r, raw))
                                 .output(x.item(dust.asItem(), 2))
                                 .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }),
+                                                tagNotEmptyCondition(raw)),
                                                 "_from_raw");
 
-                MaceratorRecipeBuilder.of().input(x.ingredient(raw))
+                MaceratorRecipeBuilder.of().input(x.ingredient(r, raw))
                                 .output(x.item(dust.asItem(), 3))
                                 .secondary(secondary)
                                 .chance(chance)
                                 .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }),
+                                                tagNotEmptyCondition(raw)),
                                                 "_from_raw");
 
-                QuernMillingBuilder.of().input(x.ingredient(ingotTag))
+                QuernMillingBuilder.of(r).input(x.ingredient(r, ingotTag))
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(ingotTag)) }),
+                                                tagNotEmptyCondition(ingotTag)),
                                                 "_from_ingot");
 
-                MaceratorRecipeBuilder.of().input(x.ingredient(ingotTag))
+                MaceratorRecipeBuilder.of().input(x.ingredient(r, ingotTag))
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(ingotTag)) }),
+                                                tagNotEmptyCondition(ingotTag)),
                                                 "_from_ingot");
 
                 doubleSmelt(c, dust, ingot);
@@ -180,51 +169,51 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot) {
 
-                QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
+                QuernMillingBuilder.of(r).input(x.ingredient(raw.asItem()))
                                 .output(x.item(dust.asItem(), 2))
                                 .unlockedBy().save(c, "_from_raw");
 
-                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+                QuernMillingBuilder.of(r).input(x.ingredient(ingot.asItem()))
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c, "_from_ingot");
 
                 doubleSmelt(c, dust, ingot);
         }
 
-        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot) {
+        protected void raw_dust_smelt(RecipeOutput c, Identifier raw, ItemLike dust, ItemLike ingot) {
 
-                QuernMillingBuilder.of().input(x.ingredient(raw))
+                QuernMillingBuilder.of(r).input(x.ingredient(r, raw))
                                 .output(x.item(dust.asItem(), 2))
                                 .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }),
+                                                tagNotEmptyCondition(raw)),
                                                 "_from_raw");
 
-                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+                QuernMillingBuilder.of(r).input(x.ingredient(ingot.asItem()))
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c, "_from_ingot");
 
                 doubleSmelt(c, dust, ingot);
         }
 
-        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot,
-                        ResourceLocation ingotTag) {
+        protected void raw_dust_smelt(RecipeOutput c, Identifier raw, ItemLike dust, ItemLike ingot,
+                        Identifier ingotTag) {
 
-                QuernMillingBuilder.of().input(x.ingredient(raw))
+                QuernMillingBuilder.of(r).input(x.ingredient(r, raw))
                                 .output(x.item(dust.asItem(), 2))
                                 .unlockedBy().save(c.withConditions(
                                                 new ICondition[] {
                                                                 new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }),
+                                                                                new TagEmptyCondition<Item>(
+                                                                                                x.tag(raw))) }),
                                                 "_from_raw");
 
-                QuernMillingBuilder.of().input(x.ingredient(ingotTag))
+                QuernMillingBuilder.of(r).input(x.ingredient(r, ingotTag))
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c.withConditions(
                                                 new ICondition[] {
                                                                 new NotCondition(
-                                                                                new TagEmptyCondition(ingotTag)) }),
+                                                                                new TagEmptyCondition<Item>(
+                                                                                                x.tag(ingotTag))) }),
                                                 "_from_ingot");
 
                 doubleSmelt(c, dust, ingot);
@@ -241,14 +230,14 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 + "_smelting");
         }
 
-        protected static void unpacker(RecipeOutput c, ItemLike input, ItemLike output, int count) {
-                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, output, count).requires(input)
+        protected void unpacker(RecipeOutput c, ItemLike input, ItemLike output, int count) {
+                ShapelessRecipeBuilder.shapeless(r, RecipeCategory.MISC, output, count).requires(input)
                                 .unlockedBy(getHasName(input), has(input))
                                 .save(c, getConversionRecipeName(output, input));
         }
 
-        protected static void brickRecipes(RecipeOutput c) {
-                DryableBricksBuilder.of()
+        protected void brickRecipes(RecipeOutput c) {
+                DryableBricksBuilder.of(r)
                                 .input(Items.CLAY_BALL)
                                 .block(zBlocks.CLAY_BRICK.get())
                                 .output(Items.BRICK)
@@ -256,7 +245,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                                 .save(c);
 
-                DryableBricksBuilder.of()
+                DryableBricksBuilder.of(r)
                                 .input(zItems.PACKED_MUD_BALL)
                                 .block(zBlocks.PACKED_MUD_BRICK.get())
                                 .output(zItems.PACKED_MUD_BRICK)
@@ -264,7 +253,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                                 .save(c);
 
-                DryableBricksBuilder.of()
+                DryableBricksBuilder.of(r)
                                 .input(zItems.FIRECLAY_BALL)
                                 .block(zBlocks.FIRECLAY_BRICK.get())
                                 .output(zItems.FIRECLAY_BRICK)
@@ -272,7 +261,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                                 .save(c);
 
-                DryableBricksBuilder.of()
+                DryableBricksBuilder.of(r)
                                 .input(zItems.CLAY_MIXTURE_BALL)
                                 .block(zBlocks.BLAST_BRICK.get())
                                 .output(zItems.BLAST_BRICK)
@@ -282,8 +271,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        protected static void twoByTwoPacker(RecipeOutput c, ItemLike output, TagKey<Item> tag) {
-                ShapedRecipeBuilder.shaped(MISC, output)
+        protected void twoByTwoPacker(RecipeOutput c, ItemLike output, TagKey<Item> tag) {
+                ShapedRecipeBuilder.shaped(r, MISC, output)
                                 .define('#', tag)
                                 .pattern("##")
                                 .pattern("##")
@@ -291,8 +280,17 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
         }
 
+        protected void twoByTwoPacker(RecipeOutput c, ItemLike output, ItemLike input) {
+                ShapedRecipeBuilder.shaped(r, MISC, output)
+                                .define('#', input)
+                                .pattern("##")
+                                .pattern("##")
+                                .unlockedBy(ID, has(input))
+                                .save(c);
+        }
+
         protected void plate(Item input, Item output, RecipeOutput c) {
-                ShapedRecipeBuilder.shaped(MISC, output, 3)
+                ShapedRecipeBuilder.shaped(r, MISC, output, 3)
                                 .pattern("III")
                                 .define('I', input)
                                 .unlockedBy(ID,
@@ -310,7 +308,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected void plate(TagKey<Item> input, Item output, RecipeOutput c) {
-                ShapedRecipeBuilder.shaped(MISC, output, 3)
+                ShapedRecipeBuilder.shaped(r, MISC, output, 3)
                                 .pattern("III")
                                 .define('I', input)
                                 .unlockedBy(ID,
@@ -330,7 +328,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         // nodes
         protected void nodeRecipe(RecipeOutput c, Block b, ItemLike catalyst) {
 
-                ShapedRecipeBuilder.shaped(MISC, b.asItem())
+                ShapedRecipeBuilder.shaped(r, MISC, b.asItem())
                                 .pattern(" P ")
                                 .pattern("RBR")
                                 .pattern("SCS")
@@ -344,7 +342,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                                 zBlocks.PIPE.get()))
                                 .group(zStatic.PipeStuff.types.item_node).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, b.asItem(), 4)
+                ShapedRecipeBuilder.shaped(r, MISC, b.asItem(), 4)
                                 .pattern(" P ")
                                 .pattern("RBR")
                                 .pattern("SCS")
@@ -363,13 +361,13 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected void node_alt(RecipeOutput c, ItemLike input, ItemLike output) {
-                ShapelessRecipeBuilder.shapeless(MISC, output)
+                ShapelessRecipeBuilder.shapeless(r, MISC, output)
                                 .requires(input)
                                 .unlockedBy(ID, has(input))
                                 .group(zStatic.PipeStuff.types.item_node)
                                 .save(c, BuiltInRegistries.ITEM.getKey(input.asItem()) + "_alt2");
 
-                ShapelessRecipeBuilder.shapeless(MISC, input)
+                ShapelessRecipeBuilder.shapeless(r, MISC, input)
                                 .requires(output)
                                 .unlockedBy(ID, has(output))
                                 .group(zStatic.PipeStuff.types.item_node)
@@ -379,10 +377,10 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         protected void cropResultRecipes(RecipeOutput c) {
 
                 var seeds = List.of(
-                                x.ingredient(zItemTag.RICE_PLANT),
+                                x.ingredient(r, zItemTag.RICE_PLANT),
                                 x.ingredient(zBlocks.AZALEA.get().asItem()),
-                                x.ingredient(zItemTag.COTTON_PLANT),
-                                x.ingredient(zItemTag.CAVE_WHEAT_PLANT),
+                                x.ingredient(r, zItemTag.COTTON_PLANT),
+                                x.ingredient(r, zItemTag.CAVE_WHEAT_PLANT),
                                 x.ingredient(zItems.BLUE_CUP_SPORE.get()),
                                 x.ingredient(zItems.VIOLET_WEBCAP_SPORE.get()));
 
@@ -396,7 +394,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 List.of(zItems.VIOLET_WEBCAP_SPORE.get(), zItems.VIOLET_WEBCAP_MUSHROOM.get()));
 
                 seeds.forEach(s -> CropResultBuilder
-                                .of().input(s).output(result.get(seeds.indexOf(s))
+                                .of(r).input(s).output(result.get(seeds.indexOf(s))
                                                 .stream().map(i -> x.item(i)).toList())
                                 .unlockedBy().save(c));
 
@@ -410,7 +408,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         protected void clearNBT(RecipeOutput c) {
 
                 clearNBT.forEach(i -> {
-                        ShapelessRecipeBuilder.shapeless(MISC, i.get())
+                        ShapelessRecipeBuilder.shapeless(r, MISC, i.get())
                                         .requires(i.get())
                                         .unlockedBy(ID, has(i.get()))
 
@@ -455,7 +453,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                 for (DeferredHolder<Block, Block> b : coolers) {
                         var index = coolers.indexOf(b);
-                        ShapelessRecipeBuilder.shapeless(MISC, b.get())
+                        ShapelessRecipeBuilder.shapeless(r, MISC, b.get())
                                         .requires(ingredients.get(index))
                                         .requires(zBlocks.COOLER_BASE.get())
                                         .unlockedBy(ID, has(ingredients.get(index)))
@@ -464,7 +462,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected void bacteries(RecipeOutput c) {
-                ShapedRecipeBuilder.shaped(MISC, zItems.RED_BATTERY.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.RED_BATTERY.get())
                                 .pattern(" R ")
                                 .pattern("RHR")
                                 .pattern(" R ")
@@ -474,7 +472,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(zItems.BLUE_BATTERY.get()))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.BLUE_BATTERY.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.BLUE_BATTERY.get())
                                 .pattern(" R ")
                                 .pattern("RHR")
                                 .pattern(" R ")
@@ -484,7 +482,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(zItems.AQUAMARINE.get()))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.GREEN_BATTERY.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.GREEN_BATTERY.get())
                                 .pattern(" S ")
                                 .pattern("RHR")
                                 .pattern(" R ")
@@ -498,7 +496,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         protected void legacyItemComponents(RecipeOutput c) {
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.RESISTOR.get(), 4)
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.RESISTOR.get(), 4)
                                 .pattern(" MN")
                                 .pattern("MGM")
                                 .pattern("NM ")
@@ -510,7 +508,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                                 zItems.BONE_MEAL_MIXTURE.get()))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.RESISTOR.get(), 8)
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.RESISTOR.get(), 8)
                                 .pattern(" MN")
                                 .pattern("MGM")
                                 .pattern("NM ")
@@ -521,7 +519,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(zItems.STEEL_NUGGET.get()))
                                 .save(c, ID + ":" + x.path(zItems.RESISTOR.get()) + "_improved");
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.CHIP.get(), 4)
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.CHIP.get(), 4)
                                 .pattern(" N ")
                                 .pattern(" GN")
                                 .pattern("Q  ")
@@ -532,7 +530,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(zItems.BONE_MEAL_MIXTURE.get()))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.CHIP.get(), 8)
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.CHIP.get(), 8)
                                 .pattern(" N ")
                                 .pattern(" GN")
                                 .pattern("Q  ")
@@ -543,7 +541,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(zItems.BONE_MEAL_MIXTURE.get()))
                                 .save(c, ID + ":" + x.path(zItems.CHIP.get()) + "_improved");
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.CONDENSER.get(), 4)
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.CONDENSER.get(), 4)
                                 .pattern("N N")
                                 .pattern("GMG")
                                 .pattern(" I ")
@@ -555,7 +553,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(zItems.BONE_MEAL_MIXTURE.get()))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.CONDENSER.get(), 8)
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.CONDENSER.get(), 8)
                                 .pattern("N N")
                                 .pattern("GMG")
                                 .pattern(" I ")
@@ -570,39 +568,39 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         protected void fuelCellNuclearReactions(RecipeOutput c) {
 
-                UrnRitualBuilder.of()
+                UrnRitualBuilder.of(r)
                                 .add(zItems.WASTE)
                                 .output(zItems.URANIUM)
                                 .unlockedBy().save(c);
 
-                UrnRitualBuilder.of()
+                UrnRitualBuilder.of(r)
                                 .add(zItemTag.URANIUM)
                                 .add(zItemTag.DUST_COAL)
                                 .output(zItems.THORIUM, 2)
                                 .unlockedBy().save(c);
 
-                UrnRitualBuilder.of()
+                UrnRitualBuilder.of(r)
                                 .add(zItemTag.THORIUM)
                                 .add(zItemTag.DUST_DIAMOND)
                                 .add(zItemTag.DUST_QUARTZ)
                                 .output(zItems.PLUTONIUM, 2)
                                 .unlockedBy().save(c);
 
-                UrnRitualBuilder.of()
+                UrnRitualBuilder.of(r)
                                 .add(zItemTag.PLUTONIUM)
                                 .add(zItems.MAGIC_DUST)
                                 .add(zItems.AQUAMARINE)
                                 .output(zItems.NEPTUNIUM, 2)
                                 .unlockedBy().save(c);
 
-                UrnRitualBuilder.of()
+                UrnRitualBuilder.of(r)
                                 .add(zItemTag.NEPTUNIUM)
                                 .add(zItems.INFERNAL_EMBER)
                                 .add(Tags.Items.DUSTS_REDSTONE)
                                 .output(zItems.AMERICIUM, 2)
                                 .unlockedBy().save(c);
 
-                UrnRitualBuilder.of()
+                UrnRitualBuilder.of(r)
                                 .add(zItemTag.AMERICIUM)
                                 .add(zItemTag.DUST_COPPER)
                                 .add(zItemTag.DUST_GOLD)
@@ -610,14 +608,14 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .output(zItems.BERKELIUM, 2)
                                 .unlockedBy().save(c);
 
-                UrnRitualBuilder.of()
+                UrnRitualBuilder.of(r)
                                 .add(zItemTag.BERKELIUM)
                                 .add(zItemTag.DUST_ANCIENT_DEBRIS)
                                 .add(zItems.ENERGIZED_REDSTONE)
                                 .output(zItems.CURIUM, 2)
                                 .unlockedBy().save(c);
 
-                ReactorCellBuilder.of()
+                ReactorCellBuilder.of(r)
                                 .input(zItemTag.URANIUM)
                                 .output(zItems.WASTE_FRAGMENT, 3)
                                 .duration(10_000)
@@ -625,7 +623,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .heat(50)
                                 .unlockedBy().save(c, "_from_uranium");
 
-                ReactorCellBuilder.of()
+                ReactorCellBuilder.of(r)
                                 .input(zItemTag.THORIUM)
                                 .output(zItems.WASTE_FRAGMENT, 6)
                                 .duration(25_000)
@@ -633,7 +631,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .heat(90)
                                 .unlockedBy().save(c, "_from_thorium");
 
-                ReactorCellBuilder.of()
+                ReactorCellBuilder.of(r)
                                 .input(zItemTag.PLUTONIUM)
                                 .output(zItems.WASTE_FRAGMENT, 9)
                                 .duration(50_000)
@@ -641,7 +639,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .heat(180)
                                 .unlockedBy().save(c, "_from_plutonium");
 
-                ReactorCellBuilder.of()
+                ReactorCellBuilder.of(r)
                                 .input(zItemTag.NEPTUNIUM)
                                 .output(zItems.WASTE_FRAGMENT, 12)
                                 .duration(75_000)
@@ -649,7 +647,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .heat(350)
                                 .unlockedBy().save(c, "_from_neptunium");
 
-                ReactorCellBuilder.of()
+                ReactorCellBuilder.of(r)
                                 .input(zItemTag.AMERICIUM)
                                 .output(zItems.WASTE_FRAGMENT, 15)
                                 .duration(150_000)
@@ -657,7 +655,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .heat(1040)
                                 .unlockedBy().save(c, "_from_americium");
 
-                ReactorCellBuilder.of()
+                ReactorCellBuilder.of(r)
                                 .input(zItemTag.BERKELIUM)
                                 .output(zItems.WASTE_FRAGMENT, 18)
                                 .duration(300_000)
@@ -665,7 +663,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .heat(1700)
                                 .unlockedBy().save(c, "_from_berkelium");
 
-                ReactorCellBuilder.of()
+                ReactorCellBuilder.of(r)
                                 .input(zItemTag.CALIFORNIUM)
                                 .output(zItems.WASTE_FRAGMENT, 21)
                                 .duration(750_000)
@@ -673,7 +671,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .heat(3500)
                                 .unlockedBy().save(c, "_from_californium");
 
-                ReactorCellBuilder.of()
+                ReactorCellBuilder.of(r)
                                 .input(zItemTag.CURIUM)
                                 .output(zItems.WASTE_FRAGMENT, 24)
                                 .duration(1_250_000)
@@ -684,7 +682,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         protected void mixtures(RecipeOutput c) {
 
-                ShapelessRecipeBuilder.shapeless(MISC, zItems.BONE_MEAL_MIXTURE.get(), 2)
+                ShapelessRecipeBuilder.shapeless(r, MISC, zItems.BONE_MEAL_MIXTURE.get(), 2)
                                 .requires(Tags.Items.SLIME_BALLS)
                                 .requires(Items.BONE_MEAL)
                                 .requires(Tags.Items.DUSTS_REDSTONE)
@@ -693,7 +691,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(Items.BLAZE_POWDER))
                                 .group(zStatic.tips.MIXTURE_TIP).save(c);
 
-                UrnRitualBuilder.of()
+                UrnRitualBuilder.of(r)
                                 .add(Tags.Items.SLIME_BALLS)
                                 .add(zItems.ENERGIZED_REDSTONE.get())
                                 .add(zItems.LAPIS_DUST.get())
@@ -701,7 +699,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .output(zItems.GLOWSTONE_MIXTURE.get(), 5)
                                 .unlockedBy().save(c);
 
-                UrnRitualBuilder.of()
+                UrnRitualBuilder.of(r)
                                 .add(zItemTag.GEMS_SILICON)
                                 .add(zItems.QUARTZ_DUST.get())
                                 .add(zItems.AMETHYST_DUST.get())
@@ -711,12 +709,12 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected void chests(RecipeOutput c) {
-                ShapelessRecipeBuilder.shapeless(MISC, zBlocks.WOODEN_TINY_CHEST.get(), 4)
+                ShapelessRecipeBuilder.shapeless(r, MISC, zBlocks.WOODEN_TINY_CHEST.get(), 4)
                                 .requires(Items.CHEST)
                                 .unlockedBy(ID, has(Items.CHEST))
                                 .save(c);
 
-                UrnRitualBuilder.of()
+                UrnRitualBuilder.of(r)
                                 .add(zBlocks.WOODEN_TINY_CHEST.get())
                                 .add(zItemTag.DUST_GOLD)
                                 .add(zItems.ADVANCED_ALLOY_PLATE)
@@ -724,7 +722,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .output(zBlocks.ORNATE_TINY_CHEST.get())
                                 .unlockedBy().save(c);
 
-                UrnRitualBuilder.of()
+                UrnRitualBuilder.of(r)
                                 .add(zBlocks.WOODEN_TINY_CHEST.get())
                                 .add(zItems.STONE_PEBBLE)
                                 .add(zItems.GHAST_BLADDER)
@@ -735,7 +733,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         protected void tools(RecipeOutput c) {
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.WOODEN_CROOK.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.WOODEN_CROOK.get())
                                 .pattern("SS")
                                 .pattern(" S")
                                 .pattern(" S")
@@ -744,19 +742,17 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(Items.STICK))
                                 .group(zStatic.Items.wooden_crook).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.WOODEN_CROOK.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.WOODEN_CROOK.get())
                                 .pattern("SS")
                                 .pattern("S ")
                                 .pattern("S ")
                                 .define('S', Items.STICK)
                                 .unlockedBy(ID,
                                                 has(Items.STICK))
-                                .group(zStatic.Items.wooden_crook).save(c, x.rl(
-                                                zItems.WOODEN_CROOK.get().getDescriptionId()
-                                                                .replace("item." + ID + ".", "")
-                                                                + "_alt"));
+                                .group(zStatic.Items.wooden_crook)
+                                .save(c, x.recipeID(zItems.WOODEN_CROOK.get(), "_alt"));
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.SMASHER.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.SMASHER.get())
                                 .pattern("NI ")
                                 .pattern(" I ")
                                 .pattern(" IN")
@@ -766,7 +762,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(Items.IRON_INGOT))
                                 .group(zStatic.Items.smasher).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.SMASHER.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.SMASHER.get())
                                 .pattern(" IN")
                                 .pattern(" I ")
                                 .pattern("NI ")
@@ -774,12 +770,10 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('N', Items.IRON_NUGGET)
                                 .unlockedBy(ID,
                                                 has(Items.IRON_INGOT))
-                                .group(zStatic.Items.smasher).save(c, x.rl(
-                                                zItems.SMASHER.get().getDescriptionId()
-                                                                .replace("item." + ID + ".", "")
-                                                                + "_alt"));
+                                .group(zStatic.Items.smasher).save(c,
+                                                x.recipeID(zItems.SMASHER.get(), "_alt"));
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.SOLDERING_GUN.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.SOLDERING_GUN.get())
                                 .pattern("  I")
                                 .pattern(" G ")
                                 .pattern("S  ")
@@ -790,7 +784,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(zItems.GOLD_FOIL.get()))
                                 .group(zStatic.Items.soldering_gun).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.PIPE_REFARCTORIZER.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.PIPE_REFARCTORIZER.get())
                                 .pattern(" I")
                                 .pattern("S ")
                                 .define('S', Items.STICK)
@@ -799,7 +793,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(Items.IRON_INGOT))
                                 .group(zStatic.Items.refactorizer).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.CONFIGURATOR.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zItems.CONFIGURATOR.get())
                                 .pattern("N N")
                                 .pattern("IEI")
                                 .pattern("RIR")
@@ -813,7 +807,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected void foil(RecipeOutput c, TagKey<Item> input, Item output) {
-                ShapedRecipeBuilder.shaped(MISC, output, 3)
+                ShapedRecipeBuilder.shaped(r, MISC, output, 3)
                                 .pattern(" IS")
                                 .pattern(" I ")
                                 .pattern("SI ")
@@ -833,7 +827,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected void coil(RecipeOutput c, TagKey<Item> input, Item output) {
-                ShapedRecipeBuilder.shaped(MISC, output, 4)
+                ShapedRecipeBuilder.shaped(r, MISC, output, 4)
                                 .pattern(" I ")
                                 .pattern("ISI")
                                 .pattern(" I ")
@@ -855,7 +849,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         protected void moderators(RecipeOutput c) {
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.SIMPLE_MODERATOR.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zBlocks.SIMPLE_MODERATOR.get())
                                 .pattern(" S ")
                                 .pattern("SFS")
                                 .pattern(" S ")
@@ -865,7 +859,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(zBlocks.ADVANCED_MACHINE_FRAME.get()))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_MODERATOR.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zBlocks.ADVANCED_MODERATOR.get())
                                 .pattern("CSC")
                                 .pattern("SFS")
                                 .pattern("CSC")
@@ -876,7 +870,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(zBlocks.SIMPLE_MODERATOR.get()))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.ELITE_MODERATOR.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zBlocks.ELITE_MODERATOR.get())
                                 .pattern("SPS")
                                 .pattern("CFC")
                                 .pattern("SPS")
@@ -904,7 +898,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                 droplets.forEach(d -> {
                         var bucket = fluids.get(droplets.indexOf(d)).getItemBucket().get();
-                        ShapelessRecipeBuilder.shapeless(MISC, d.get(), 3)
+                        ShapelessRecipeBuilder.shapeless(r, MISC, d.get(), 3)
                                         .requires(bucket)
                                         .unlockedBy(ID, has(bucket))
                                         .save(c);
@@ -912,13 +906,13 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        protected static void packUnpack(RecipeOutput c, ItemLike unpacked, ItemLike packed, boolean isSmall) {
-                ShapelessRecipeBuilder.shapeless(MISC, unpacked, isSmall ? 4 : 9)
+        protected void packUnpack(RecipeOutput c, ItemLike unpacked, ItemLike packed, boolean isSmall) {
+                ShapelessRecipeBuilder.shapeless(r, MISC, unpacked, isSmall ? 4 : 9)
                                 .requires(packed)
 
                                 .unlockedBy(getHasName(packed), has(packed))
                                 .save(c, ID + ":" + x.path((Item) unpacked) + "_unpack" + (isSmall ? "_4" : "_9"));
-                var temp = ShapedRecipeBuilder.shaped(MISC, packed)
+                var temp = ShapedRecipeBuilder.shaped(r, MISC, packed)
                                 .define('#', unpacked)
                                 .pattern("##" + (!isSmall ? "#" : "")).pattern("##" + (!isSmall ? "#" : ""));
 
@@ -930,8 +924,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        protected static void simplePacked(RecipeOutput c, Item input, Item output) {
-                ShapedRecipeBuilder.shaped(MISC, output, 1)
+        protected void simplePacked(RecipeOutput c, Item input, Item output) {
+                ShapedRecipeBuilder.shaped(r, MISC, output, 1)
                                 .define('#', input)
                                 .pattern("##")
                                 .pattern("##")
@@ -941,8 +935,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 input));
         }
 
-        protected static void lasers(RecipeOutput c) {
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_MIRROR.get(), 2)
+        protected void lasers(RecipeOutput c) {
+                ShapedRecipeBuilder.shaped(r, MISC, zBlocks.LASER_MIRROR.get(), 2)
                                 .pattern(" C ")
                                 .pattern("CGC")
                                 .pattern("SSS")
@@ -953,7 +947,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_LENS.get(), 4)
+                ShapedRecipeBuilder.shaped(r, MISC, zBlocks.LASER_LENS.get(), 4)
                                 .pattern("G G")
                                 .pattern("GCG")
                                 .pattern("SSS")
@@ -964,7 +958,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_MACHINE.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zBlocks.LASER_MACHINE.get())
                                 .pattern("RC ")
                                 .pattern("CDC")
                                 .pattern(" CS")
@@ -976,7 +970,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_SENSOR.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zBlocks.LASER_SENSOR.get())
                                 .pattern("CRC")
                                 .pattern("DSD")
                                 .define('R', zItems.CARBON_FIBER.get())
@@ -987,7 +981,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_ROTOR.get())
+                ShapedRecipeBuilder.shaped(r, MISC, zBlocks.LASER_ROTOR.get())
                                 .pattern("SGS")
                                 .pattern("GDG")
                                 .pattern("SGS")
@@ -1000,14 +994,14 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        protected static void slab(ItemLike slab, ItemLike material, RecipeOutput c) {
-                ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, slab, 6).define('#', material).pattern("###")
+        protected void slab(ItemLike slab, ItemLike material, RecipeOutput c) {
+                ShapedRecipeBuilder.shaped(r, BUILDING_BLOCKS, slab, 6).define('#', material).pattern("###")
                                 .unlockedBy(getHasName(material), has(material))
                                 .save(c);
         }
 
-        protected static void stair(ItemLike stair, ItemLike material, RecipeOutput c) {
-                ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, stair, 4).define('#', material)
+        protected void stair(ItemLike stair, ItemLike material, RecipeOutput c) {
+                ShapedRecipeBuilder.shaped(r, BUILDING_BLOCKS, stair, 4).define('#', material)
                                 .pattern("#  ")
                                 .pattern("## ")
                                 .pattern("###")
@@ -1015,24 +1009,24 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
         }
 
-        protected static void stonecutter(RecipeOutput c, ItemLike result, ItemLike material, int resultCount) {
+        protected void stonecutter(RecipeOutput c, ItemLike result, ItemLike material, int resultCount) {
                 stonecutter(c, result, material, resultCount,
                                 ID + ":" + getConversionRecipeName(result, material) + "_stonecutting");
         }
 
-        protected static void stonecutter(RecipeOutput c, ItemLike result, ItemLike material) {
+        protected void stonecutter(RecipeOutput c, ItemLike result, ItemLike material) {
                 stonecutter(c, result, material, 1,
                                 ID + ":" + getConversionRecipeName(result, material) + "_stonecutting");
         }
 
-        protected static void slab(ItemLike slab, ItemLike material, RecipeOutput c, String extra) {
-                ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, slab, 6).define('#', material).pattern("###")
+        protected void slab(ItemLike slab, ItemLike material, RecipeOutput c, String extra) {
+                ShapedRecipeBuilder.shaped(r, BUILDING_BLOCKS, slab, 6).define('#', material).pattern("###")
                                 .unlockedBy(getHasName(material), has(material))
                                 .save(c, extra);
         }
 
-        protected static void stair(ItemLike stair, ItemLike material, RecipeOutput c, String extra) {
-                ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, stair, 4).define('#', material)
+        protected void stair(ItemLike stair, ItemLike material, RecipeOutput c, String extra) {
+                ShapedRecipeBuilder.shaped(r, BUILDING_BLOCKS, stair, 4).define('#', material)
                                 .pattern("  #")
                                 .pattern(" ##")
                                 .pattern("###")
@@ -1040,19 +1034,19 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c, extra);
         }
 
-        protected static void stonecutter(RecipeOutput c, ItemLike result, ItemLike material, int resultCount,
+        protected void stonecutter(RecipeOutput c, ItemLike result, ItemLike material, int resultCount,
                         String extra) {
                 SingleItemRecipeBuilder.stonecutting(Ingredient.of(material), BUILDING_BLOCKS, result, resultCount)
                                 .unlockedBy(getHasName(material), has(material))
                                 .save(c, extra);
         }
 
-        protected static void stonecutter(RecipeOutput c, ItemLike result, ItemLike material,String extra) {
-                stonecutter(c, result, material,1,extra);
+        protected void stonecutter(RecipeOutput c, ItemLike result, ItemLike material, String extra) {
+                stonecutter(c, result, material, 1, extra);
         }
 
-        protected static void pillar(RecipeOutput c, ItemLike result, ItemLike material) {
-                ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, result, 2)
+        protected void pillar(RecipeOutput c, ItemLike result, ItemLike material) {
+                ShapedRecipeBuilder.shaped(r, BUILDING_BLOCKS, result, 2)
                                 .define('#', material)
                                 .pattern("#")
                                 .pattern("#")
@@ -1060,9 +1054,9 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
         }
 
-        protected static void pillar(RecipeOutput c, ItemLike result, ItemLike material,
+        protected void pillar(RecipeOutput c, ItemLike result, ItemLike material,
                         String extra) {
-                ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, result, 2)
+                ShapedRecipeBuilder.shaped(r, BUILDING_BLOCKS, result, 2)
                                 .define('#', material)
                                 .pattern("#")
                                 .pattern("#")
@@ -1070,9 +1064,9 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c, extra);
         }
 
-        protected static void tiles(RecipeOutput c, ItemLike result, ItemLike material,
+        protected void tiles(RecipeOutput c, ItemLike result, ItemLike material,
                         String extra) {
-                ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, result, 4)
+                ShapedRecipeBuilder.shaped(r, BUILDING_BLOCKS, result, 4)
                                 .define('#', material)
                                 .pattern("##")
                                 .pattern("##")
@@ -1080,8 +1074,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c, extra);
         }
 
-        protected static void tiles(RecipeOutput c, ItemLike result, ItemLike material) {
-                ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, result, 4)
+        protected void tiles(RecipeOutput c, ItemLike result, ItemLike material) {
+                ShapedRecipeBuilder.shaped(r, BUILDING_BLOCKS, result, 4)
                                 .define('#', material)
                                 .pattern("##")
                                 .pattern("##")
@@ -1089,6 +1083,10 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
         }
 
-      
+        protected ICondition[] tagNotEmptyCondition(Identifier tag) {
+                return new ICondition[] {
+                                new NotCondition(
+                                                new TagEmptyCondition<Item>(x.tag(tag))) };
+        }
 
 }

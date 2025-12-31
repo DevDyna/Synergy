@@ -1,13 +1,17 @@
 package com.devdyna.synergy.api.utils;
 
 import net.minecraft.core.DefaultedRegistry;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,6 +20,8 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static com.devdyna.synergy.Main.ID;
+
+import java.util.stream.Stream;
 
 @SuppressWarnings("unchecked")
 public class x {
@@ -131,6 +137,14 @@ public class x {
         return Ingredient.of(i.getItem());
     }
 
+    public static Ingredient ingredient(ItemStack... i) {
+        return Ingredient.of(Stream.of(i).map(ItemStack::getItem));
+    }
+
+    public static Ingredient ingredient(ItemLike... i) {
+        return Ingredient.of(i);
+    }
+
     public static Ingredient ingredient(ItemLike i) {
         return Ingredient.of(i);
     }
@@ -144,12 +158,16 @@ public class x {
     }
 
     // public static Ingredient ingredient(TagKey<Item> i) {
-    //     return Ingredient.of(i);
+    // return Ingredient.of(i);
     // }
 
-    // public static Ingredient ingredient(Identifier tag) {
-    //     return Ingredient.of(TagKey.create(Registries.ITEM, tag));
-    // }
+    public static Ingredient ingredient(RegistryLookup<Item> p, Identifier tag) {
+        return x.ingredient(p, tag(tag));
+    }
+    
+    public static TagKey<Item> tag(Identifier tag){
+        return TagKey.create(Registries.ITEM, tag);
+    }
 
     public static Block block(DeferredHolder<Block, ?> b) {
         return b.get();
@@ -184,6 +202,19 @@ public class x {
         } else {
             throw new IllegalArgumentException("Unsupported type: " + obj.getClass());
         }
+    }
+
+    public static Ingredient ingredient(HolderLookup.Provider p, TagKey<Item> tag) {
+        return ingredient(p.lookupOrThrow(Registries.ITEM), tag);
+    }
+
+    public static Ingredient ingredient(RegistryLookup<Item> p, TagKey<Item> tag) {
+        return Ingredient.of(p.getOrThrow(tag));
+    }
+
+    public static ResourceKey<Recipe<?>> recipeID(Item i, String suffix) {
+        return ResourceKey.create(Registries.RECIPE,
+                BuiltInRegistries.ITEM.getKey(i).withSuffix(suffix));
     }
 
 }

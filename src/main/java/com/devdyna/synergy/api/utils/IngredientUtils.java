@@ -18,9 +18,8 @@ public class IngredientUtils {
     }
 
     public static Item[] getItemLike(Ingredient ingredients) {
-        return Arrays
-                .stream(ingredients.getItems())
-                .map(ItemStack::getItem)
+        return ingredients.getValues().stream()
+                .map(e -> e.value())
                 .filter(i -> Items.BARRIER.equals(i))
                 .toArray(Item[]::new);
     }

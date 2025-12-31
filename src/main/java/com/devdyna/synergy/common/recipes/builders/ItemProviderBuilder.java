@@ -8,11 +8,12 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.type.ItemProviderRecipe;
+import com.devdyna.synergy.common.recipes.type.node_providers.ItemProviderRecipe;
 
 import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
@@ -29,12 +30,13 @@ public class ItemProviderBuilder extends BaseRecipeBuilder {
     private BlockState right = Blocks.AIR.defaultBlockState();
     private ItemStack output;
 
-    public ItemProviderBuilder() {
+    public ItemProviderBuilder(RegistryLookup<Item> p) {
+        super(p);
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static ItemProviderBuilder of() {
-        return new ItemProviderBuilder();
+    public static ItemProviderBuilder of(RegistryLookup<Item> p) {
+        return new ItemProviderBuilder(p);
     }
 
     public ItemProviderBuilder core(BlockState b) {
@@ -101,12 +103,12 @@ public class ItemProviderBuilder extends BaseRecipeBuilder {
     }
 
     @Override
-    public ResourceLocation getSuffix(String extra) {
-        return x.rl("provider/item/" +
+    public String getSuffix(String extra) {
+        return "provider/item/" +
                 (x.path(output) == x.path(core)
                         ? x.path(core)
                         : x.path(output) + "_from_" + x.path(core))
-                + extra);
+                + extra;
     }
 
     @Override

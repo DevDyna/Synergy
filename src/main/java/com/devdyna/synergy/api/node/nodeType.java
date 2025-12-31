@@ -9,9 +9,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.piston.PistonBaseBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.PistonType;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -19,7 +22,7 @@ import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder
 
 public interface nodeType extends pipeType {
 
-    static DirectionProperty FACING = DirectionProperty.create("facing");
+    static EnumProperty<Direction> FACING = BlockStateProperties.FACING;
 
     static void NodeStateDefinition(Builder<Block, BlockState> b) {
         pipeType.PipeStateDefinition(b);

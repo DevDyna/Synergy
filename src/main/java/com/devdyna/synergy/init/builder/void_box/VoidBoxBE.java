@@ -1,5 +1,7 @@
 package com.devdyna.synergy.init.builder.void_box;
 
+import org.jspecify.annotations.Nullable;
+
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
@@ -26,10 +28,12 @@ import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
 
 @SuppressWarnings("null")
 public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlock {
-    private BlockCapabilityCache<IItemHandler, Direction> cache;
+    private BlockCapabilityCache<ResourceHandler<ItemResource>,Direction> cache;
 
     private float prevLidProgress;
     private float lidProgress;
@@ -75,7 +79,7 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
         super.onLoad();
         if (this.level instanceof ServerLevel serverLevel) {
             this.cache = BlockCapabilityCache.create(
-                    Capabilities.ItemHandler.BLOCK,
+                    Capabilities.Item.BLOCK,
                     serverLevel,
                     getBlockPos(),
                     null);
@@ -151,7 +155,7 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
         }
         lidProgress = Mth.clamp(lidProgress, 0.0f, 1.0f);
 
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             float current = lidProgress;
 
             if (current != temp && startSound) {
