@@ -1,14 +1,14 @@
 package com.devdyna.synergy;
 
-import com.devdyna.synergy.init.builder.chests.ornated.OrnatedTinyChestScreen;
-import com.devdyna.synergy.init.builder.chests.stone.StoneTinyChestScreen;
-import com.devdyna.synergy.init.builder.chests.wooden.WoodenTinyChestScreen;
-import com.devdyna.synergy.init.builder.harvester.HarvesterAOE;
+import com.devdyna.synergy.init.builder.automation.harvester.HarvesterAOE;
+import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerAOE;
+import com.devdyna.synergy.init.builder.magic.chests.ornated.OrnatedTinyChestScreen;
+import com.devdyna.synergy.init.builder.magic.chests.stone.StoneTinyChestScreen;
+import com.devdyna.synergy.init.builder.magic.chests.wooden.WoodenTinyChestScreen;
+import com.devdyna.synergy.init.builder.magic.quern.QuernRendering;
+import com.devdyna.synergy.init.builder.magic.void_box.VoidBoxRender;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorAOE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen;
-import com.devdyna.synergy.init.builder.quern.QuernRendering;
-import com.devdyna.synergy.init.builder.sprinkler.SprinklerAOE;
-import com.devdyna.synergy.init.builder.void_box.VoidBoxRender;
 import com.devdyna.synergy.init.machine.alloy_smelter.AlloySmelterScreen;
 import com.devdyna.synergy.init.machine.compressor.CompressorScreen;
 import com.devdyna.synergy.init.machine.furnace.ElectricFurnaceScreen;

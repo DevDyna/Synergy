@@ -6,9 +6,9 @@ import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.init.builder.automation.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBE;
-import com.devdyna.synergy.init.builder.solar_panel.SolarPanelBE;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
