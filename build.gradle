@@ -131,7 +131,7 @@ dependencies {
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     //guideme
-    //implementation "curse.maven:guideme-1173950:6688687"
+    implementation "curse.maven:guideme-1173950:7366493"
 
     //compat
     //implementation "curse.maven:meka-268560:7017663"
