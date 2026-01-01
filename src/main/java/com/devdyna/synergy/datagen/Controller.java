@@ -12,15 +12,12 @@ import com.devdyna.synergy.datagen.server.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.*;
 import net.minecraft.data.DataGenerator.PackGenerator;
-import net.minecraft.data.DataProvider.Factory;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.minecraft.data.DataProvider.Factory;
 
-@SuppressWarnings({ "removal", "deprecation" })
 @EventBusSubscriber(modid = ID)
 public class Controller {
     @SubscribeEvent

@@ -76,9 +76,10 @@ public class DataAnyLoot implements LootTableSubProvider {
                                                                 UniformGenerator.between(1, 4))));
                         }
 
-                        // DataGenUtil.registerTable(c, x.rl(items.getRegisteredName().replace(ID + ":",
-                        // PREFIX_DROPS)),
-                        // table);
+                        DataGenUtil.registerTable(c, x.rl(items.getRegisteredName()
+                                        .replace(ID + ":",
+                                                        PREFIX_DROPS)),
+                                        table);
 
                 }
 
@@ -93,7 +94,7 @@ public class DataAnyLoot implements LootTableSubProvider {
 
                 var mushtable = DataGenUtil.createTable(mushLoot);
 
-                // DataGenUtil.registerTable(c, x.rl(MUSHROOMS), mushtable);
+                DataGenUtil.registerTable(c, x.rl(MUSHROOMS), mushtable);
 
         }
 

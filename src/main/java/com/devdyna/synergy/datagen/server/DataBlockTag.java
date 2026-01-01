@@ -4,7 +4,6 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.concurrent.CompletableFuture;
 
-import com.devdyna.synergy.Main;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.init.types.zBlocks;

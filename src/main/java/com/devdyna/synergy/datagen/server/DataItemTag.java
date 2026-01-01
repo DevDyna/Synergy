@@ -4,12 +4,10 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.concurrent.CompletableFuture;
 
-import com.devdyna.synergy.Main;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.init.types.*;
 
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
