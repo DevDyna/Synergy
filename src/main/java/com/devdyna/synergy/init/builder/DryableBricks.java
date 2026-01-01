@@ -32,7 +32,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 
-@SuppressWarnings("null")
 public class DryableBricks extends HorizontalDirectionalBlock implements NoItemForm {
 
     public final static IntegerProperty DRY_STAGE = IntegerProperty.create("stage", 0, 5);

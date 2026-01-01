@@ -1,6 +1,5 @@
 package com.devdyna.synergy.init.builder;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 import com.devdyna.synergy.Main;

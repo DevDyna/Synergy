@@ -1,18 +1,16 @@
 package com.devdyna.synergy.init.builder;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 import com.devdyna.synergy.Main;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.Block;
 
-@SuppressWarnings("null")
+@SuppressWarnings("deprecation")
 public class BlockTipped extends BlockItem {
 
     private String traslationkey;
