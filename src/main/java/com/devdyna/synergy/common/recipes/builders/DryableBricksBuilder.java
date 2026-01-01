@@ -15,7 +15,6 @@ import com.devdyna.synergy.common.recipes.type.DryableBricksRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
