@@ -74,10 +74,5 @@ public class WoodenTinyChestBlock extends BlockStorage {
         level.playSound(player, pos, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 1, 1.75f);
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
-            TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Chests.WOODEN));
-    }
 
 }

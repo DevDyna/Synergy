@@ -65,12 +65,12 @@ public class FuelCellBlock extends MachineBlock {
         return LevelUtil.predicateNeighborMatch(level, pos, b -> b instanceof FuelCellBlock);
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." +
-                zStatic.ReactorStuff.fuel_cell));
-    }
+    // @Override
+    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+    //         TooltipFlag f) {
+    //     t.add(Component.translatable(Main.ID + "." +
+    //             zStatic.ReactorStuff.fuel_cell));
+    // }
 
     @Override
     @Nullable

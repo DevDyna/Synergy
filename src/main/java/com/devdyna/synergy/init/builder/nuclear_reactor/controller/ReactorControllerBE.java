@@ -27,13 +27,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
-import net.neoforged.neoforge.energy.EnergyStorage;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 
 @SuppressWarnings("null")
 public class ReactorControllerBE extends TickingBE implements EnergyProvider, AreaOfEffect {
 
-    private final Map<Direction, BlockCapabilityCache<IEnergyStorage, Direction>> cache = new HashMap<>();
+    private final Map<Direction, BlockCapabilityCache<EnergyHandler, Direction>> cache = new HashMap<>();
 
     public ReactorControllerBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.REACTOR_CONTROLLER.get(), pos, state);
@@ -78,7 +77,7 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
         }
 
         if (is(ControllerProperties.PRODUCTION)) {
-            increaseFE(fe, false);
+            increaseFE(fe);
             if (level.getGameTime() % 10 == 0)
                 level.playSound(null, getBlockPos(),
                         SoundEvents.BLASTFURNACE_FIRE_CRACKLE,
@@ -183,7 +182,7 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
     }
 
     @Override
-    public EnergyStorage getCapEnergy() {
+    public EnergyHandler getCapEnergy() {
         return getData(zHandlers.ENERGY_STORAGE);
     }
 
@@ -235,15 +234,15 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
     @Override
     public void handleUpdateTag(CompoundTag tag, Provider lookupProvider) {
         super.handleUpdateTag(tag, lookupProvider);
-        heat = tag.getDouble("heat");
-        fe = tag.getInt("fe");
+        heat = tag.getDouble("heat").get();
+        fe = tag.getInt("fe").get();
         rebuildArea();
     }
 
     @Override
     public void onLoad() {
         super.onLoad();
-        if (level.isClientSide)
+        if (level.isClientSide())
             rebuildArea();
     }
 

@@ -49,10 +49,6 @@ public class StoneTinyChestBlock extends WoodenTinyChestBlock {
         return StoneTinyChestBlock::new;
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
-            TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Chests.STONE));
-    }
+  
 
 }

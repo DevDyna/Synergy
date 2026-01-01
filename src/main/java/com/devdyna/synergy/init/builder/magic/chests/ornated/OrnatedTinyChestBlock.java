@@ -49,10 +49,5 @@ public class OrnatedTinyChestBlock extends WoodenTinyChestBlock {
         return OrnatedTinyChestBlock::new;
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
-            TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Chests.ORNATE));
-    }
 
 }

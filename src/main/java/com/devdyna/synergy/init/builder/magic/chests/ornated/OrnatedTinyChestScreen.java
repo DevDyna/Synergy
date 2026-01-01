@@ -5,7 +5,7 @@ import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
 @SuppressWarnings("null")
@@ -17,7 +17,7 @@ public class OrnatedTinyChestScreen extends BaseTinyChestScreen<OrnatedTinyChest
     }
 
     @Override
-    protected ResourceLocation background() {
+    protected Identifier background() {
         return x.rl("minecraft", "textures/gui/container/generic_54.png");
     }
 
@@ -32,7 +32,9 @@ public class OrnatedTinyChestScreen extends BaseTinyChestScreen<OrnatedTinyChest
                 xPos, yPos,
                 0, 0,
                 this.imageWidth,
-                this.imageHeight);
+                this.imageHeight,
+                0,
+                0);
     }
 
     @Override

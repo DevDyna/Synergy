@@ -23,7 +23,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
@@ -98,18 +98,18 @@ public class VoidBoxBlock extends TickingBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (level.getBlockEntity(pos) instanceof VoidBoxBE be) {
 
-            Optional<RecipeHolder<VoidBoxInfusionRecipe>> r = level.getRecipeManager()
+            Optional<RecipeHolder<VoidBoxInfusionRecipe>> r = level.getServer().getRecipeManager()
                     .getRecipeFor(zRecipeTypes.VOID_BOX_INFUSION.getType(),
                             new MonoItemInput(stack), level);
 
             if (!r.isEmpty()) {
 
                 var recipe = r.get().value();
-                if (!level.isClientSide)
+                if (!level.isClientSide())
                     LevelUtil.addParticle(ParticleTypes.WITCH, level, pos, true);
                 level.playSound(player, pos, SoundEvents.WITCH_DRINK, SoundSource.BLOCKS, 0.5f, 0.25f);
                 LevelUtil.popItemFromPos(level, pos, recipe.getOutput().copy());
@@ -117,12 +117,12 @@ public class VoidBoxBlock extends TickingBlock {
                 if (!player.isCreative())
                     stack.shrink(1);
 
-                return ItemInteractionResult.sidedSuccess(level.isClientSide());
+                return InteractionResult.SUCCESS_SERVER;
             } else if (!stack.is(zItemTag.VOID_BOX_DENY))
                 return be.itemUseOn(player, level, pos, hand);
 
         }
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.FAIL;
     }
 
     @Override
@@ -133,18 +133,18 @@ public class VoidBoxBlock extends TickingBlock {
         return Component.translatable(this.getDescriptionId()).withColor(color);
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
+    // @Override
+    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+    //         TooltipFlag f) {
 
-        t.clear();
+    //     t.clear();
 
-        var level = Minecraft.getInstance().level;
-        int color = (level == null ? Color.BLUE.getRGB()
-                : ColorUtil.pulseColor(level, Color.BLUE.getRGB(), Color.MAGENTA.getRGB()));
-        t.add(0, Component.translatable(this.getDescriptionId()).withColor(color));
+    //     var level = Minecraft.getInstance().level;
+    //     int color = (level == null ? Color.BLUE.getRGB()
+    //             : ColorUtil.pulseColor(level, Color.BLUE.getRGB(), Color.MAGENTA.getRGB()));
+    //     t.add(0, Component.translatable(this.getDescriptionId()).withColor(color));
 
-        t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.void_box));
-    }
+    //     t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.void_box));
+    // }
 
 }

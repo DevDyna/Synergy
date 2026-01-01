@@ -14,14 +14,14 @@ public interface IModerator extends ComplexTooltips {
     @Override
     default void renderTip(List<Component> t, TooltipFlag f) {
         if (f.hasShiftDown()) {
-            t.add(conditions());
-            t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".fe")
+            t.add(1,conditions());
+            t.add(2,Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".fe")
                     .append("" + FEReducer()));
-            t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".heat")
+            t.add(3,Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator + ".heat")
                     .append("" + HeatReducer()));
         } else {
-            t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator));
-            t.add(Component.translatable(Main.ID + "." + zStatic.tips.SHIFT));
+            t.add(1,Component.translatable(Main.ID + "." + zStatic.ReactorStuff.moderator));
+            t.add(2,Component.translatable(Main.ID + "." + zStatic.tips.SHIFT));
 
         }
     }

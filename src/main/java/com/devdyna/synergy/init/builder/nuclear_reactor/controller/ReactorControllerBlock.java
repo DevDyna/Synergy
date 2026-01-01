@@ -14,7 +14,7 @@ import com.devdyna.synergy.api.utils.StringUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
@@ -55,9 +55,9 @@ public class ReactorControllerBlock extends TickingBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (!player.isShiftKeyDown() && !level.isClientSide && hand.equals(InteractionHand.MAIN_HAND)
+        if (!player.isShiftKeyDown() && !level.isClientSide() && hand.equals(InteractionHand.MAIN_HAND)
                 && stack.isEmpty()
                 && level.getBlockEntity(pos) instanceof ReactorControllerBE be) {
 
@@ -67,7 +67,7 @@ public class ReactorControllerBlock extends TickingBlock {
                     + "°/t§f | §6" +
                     StringUtil.getFormat().format(be.fe)+"fe/t", player);
 
-            return ItemInteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS;
         }
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
@@ -90,10 +90,5 @@ public class ReactorControllerBlock extends TickingBlock {
         return new ReactorControllerBE(p, s);
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.controller));
-    }
 
 }

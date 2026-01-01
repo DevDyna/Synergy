@@ -12,15 +12,14 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.items.SlotItemHandler;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
+import net.neoforged.neoforge.transfer.item.ResourceHandlerSlot;
 
 @SuppressWarnings("null")
 public abstract class BaseMenu extends AbstractContainerMenu {
@@ -87,12 +86,12 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         addHotbar(inventory, 0, 0);
     }
 
-    protected void addMachineSlot(ItemStackHandler beSlot, int id, int x, int y) {
-        addSlot(new SlotItemHandler(beSlot, id, x, y));
+    protected void addMachineSlot(ItemStacksResourceHandler beSlot, int id, int x, int y) {
+        addSlot(new ResourceHandlerSlot(beSlot, null, id, x, y));
     }
 
-    protected void addMachineOutputSlot(ItemStackHandler beSlot, int id, int x, int y) {
-        addSlot(new SlotItemHandler(beSlot, id, x, y) {
+    protected void addMachineOutputSlot(ItemStacksResourceHandler beSlot, int id, int x, int y) {
+        addSlot(new ResourceHandlerSlot(beSlot, null, id, x, y) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return false;
@@ -100,8 +99,8 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         });
     }
 
-    protected void addMachineInputSlot(ItemStackHandler beSlot, int id, int x, int y) {
-        addSlot(new SlotItemHandler(beSlot, id, x, y) {
+    protected void addMachineInputSlot(ItemStacksResourceHandler beSlot, int id, int x, int y) {
+        addSlot(new ResourceHandlerSlot(beSlot, null, id, x, y) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return true;
@@ -114,9 +113,10 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         });
     }
 
-    protected void addMachineSlot(Function<ItemStack, Boolean> mayPlace, ItemStackHandler beSlot, int id, int x,
+    protected void addMachineSlot(Function<ItemStack, Boolean> mayPlace, ItemStacksResourceHandler beSlot, int id,
+            int x,
             int y) {
-        addSlot(new SlotItemHandler(beSlot, id, x, y) {
+        addSlot(new ResourceHandlerSlot(beSlot, null, id, x, y) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return mayPlace.apply(stack);
@@ -129,9 +129,10 @@ public abstract class BaseMenu extends AbstractContainerMenu {
         });
     }
 
-    protected void addSingleMachineSlot(Function<ItemStack, Boolean> mayPlace, ItemStackHandler beSlot, int id, int x,
+    protected void addSingleMachineSlot(Function<ItemStack, Boolean> mayPlace, ItemStacksResourceHandler beSlot, int id,
+            int x,
             int y) {
-        addSlot(new SlotItemHandler(beSlot, id, x, y) {
+        addSlot(new ResourceHandlerSlot(beSlot, null, id, x, y) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return mayPlace.apply(stack);
@@ -166,15 +167,16 @@ public abstract class BaseMenu extends AbstractContainerMenu {
      * @param yOf    (slot_index) -> value
      */
     protected void addMachineSlots(
-            ItemStackHandler beSlot,
+            ItemStacksResourceHandler beSlot,
             int baseId,
             int x, int y,
             int count,
             IntUnaryOperator xOf,
             IntUnaryOperator yOf) {
         for (int i = 0; i < count; ++i) {
-            addSlot(new SlotItemHandler(
+            addSlot(new ResourceHandlerSlot(
                     beSlot,
+                    null,
                     baseId + i,
                     x + xOf.applyAsInt(i),
                     y + yOf.applyAsInt(i)));
@@ -253,15 +255,15 @@ public abstract class BaseMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player player) {
         return true;
-        //  ContainerLevelAccess.create(getLevel(), getBlockEntity().getBlockPos())
-        //         .evaluate((lvl, pos) -> {
-        //             for (Block b : getValidBlock()) {
-        //                 if (lvl.getBlockState(pos).is(b)) {
-        //                     return  player.canInteractWithBlock(pos, 4.0);
-        //                 }
-        //             }
-        //             return false;
-        //         }, true);
+        // ContainerLevelAccess.create(getLevel(), getBlockEntity().getBlockPos())
+        // .evaluate((lvl, pos) -> {
+        // for (Block b : getValidBlock()) {
+        // if (lvl.getBlockState(pos).is(b)) {
+        // return player.canInteractWithBlock(pos, 4.0);
+        // }
+        // }
+        // return false;
+        // }, true);
     }
 
     public abstract Block[] getValidBlock();

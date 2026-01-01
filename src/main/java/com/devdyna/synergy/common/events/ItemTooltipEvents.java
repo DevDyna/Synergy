@@ -18,7 +18,7 @@ import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 public class ItemTooltipEvents {
 
-    private static final int OVER_THE_REGISTRY_ID = 1;
+    private static final int BELOW_THE_REGISTRY_ID = 1;
 
     @SubscribeEvent
     public static void tooltipEvent(ItemTooltipEvent e) {
@@ -44,62 +44,66 @@ public class ItemTooltipEvents {
     public static void itemPlaceable(ItemStack item, List<Component> tooltip) {
 
         if (item.is(zItemTag.PLACEABLE)) {
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".placed"));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(Main.ID + ".placed"));
         }
     }
 
     public static void laserColorApplicator(ItemStack item, List<Component> tooltip) {
 
         if (item.is(zItemTag.DYE_RESET)) {
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.reset"));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.reset"));
         }
         if (item.is(zItemTag.DYE_MAX)) {
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.max"));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.max"));
         }
         if (item.is(zItemTag.DYE_RED)) {
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.red"));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.red"));
         }
         if (item.is(zItemTag.DYE_GREEN)) {
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.green"));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.green"));
         }
         if (item.is(zItemTag.DYE_BLUE)) {
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.blue"));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.blue"));
         }
     }
 
     public static void noGrowingItems(ItemStack item, List<Component> tooltip) {
 
         if (item.is(zItemTag.REMOVE_ENTITY_GROWING)) {
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".remove_entity_growing"));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(Main.ID + ".remove_entity_growing"));
         }
         if (item.is(zItemTag.ADD_ENTITY_GROWING)) {
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".add_entity_growing"));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(Main.ID + ".add_entity_growing"));
         }
 
     }
 
+    /**
+     * need to move on a dedicated interface
+     */
+    @Deprecated
     public static void upgrades(ItemStack item, List<Component> tooltip) {
 
         if (item.is(zItemTag.UPGRADE_ENERGY)) {
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".upgrade.energy"));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(Main.ID + ".upgrade.energy"));
         }
         if (item.is(zItemTag.UPGRADE_SPEED)) {
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".upgrade.speed.energy"));
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".upgrade.speed.speed"));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(Main.ID + ".upgrade.speed.energy"));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(Main.ID + ".upgrade.speed.speed"));
         }
 
     }
 
     public static void simpleToolTip(BlockItem blockItem, List<Component> tooltip) {
         if (blockItem.getBlock() instanceof SimpleToolTip sm) {
-            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + sm.key()));
+            tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(ID + "." + sm.key()));
         }
     }
 
     public static void multiSimpleToolTip(BlockItem blockItem, List<Component> tooltip) {
         if (blockItem.getBlock() instanceof MultiSimpleTips msm) {
             for (String s : msm.keys()) {
-                tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + s));
+                tooltip.add(BELOW_THE_REGISTRY_ID, Component.translatable(ID + "." + s));
             }
         }
     }

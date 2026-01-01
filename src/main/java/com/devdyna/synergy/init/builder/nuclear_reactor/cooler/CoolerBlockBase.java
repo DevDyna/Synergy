@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.BlockAbilities.tooltips.complex.ICooler;
 
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -23,7 +24,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("null")
-public abstract class CoolerBlockBase extends Block {
+public abstract class CoolerBlockBase extends Block implements ICooler{
 
     public CoolerBlockBase() {
         super(Properties.of().strength(1.0f).destroyTime(1.0f).sound(SoundType.CHAIN).mapColor(MapColor.METAL));
@@ -73,22 +74,6 @@ public abstract class CoolerBlockBase extends Block {
         return level.getBlockState(pos).getValue(BlockStateProperties.ENABLED);
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-
-        if (Screen.hasShiftDown()) {
-            t.add(conditions());
-            t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.cooler + ".off")
-                    .append("" + getBaseCooling()));
-            t.add(Component.translatable(Main.ID + "." + zStatic.ReactorStuff.cooler + ".on")
-                    .append("" + getActiveCooling()));
-        } else {
-            t.add(Component.translatable(Main.ID + "." +
-                    zStatic.ReactorStuff.cooler + ".desc"));
-            t.add(Component.translatable(Main.ID + "." + zStatic.tips.SHIFT));
-
-        }
-    }
+ 
 
 }

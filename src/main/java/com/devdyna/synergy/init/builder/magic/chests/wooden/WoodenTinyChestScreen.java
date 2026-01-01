@@ -4,7 +4,7 @@ import com.devdyna.synergy.api.gui.BaseTinyChestScreen;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
 @SuppressWarnings("null")
@@ -15,7 +15,7 @@ public class WoodenTinyChestScreen extends BaseTinyChestScreen<WoodenTinyChestMe
     }
 
     @Override
-    protected ResourceLocation background() {
+    protected Identifier background() {
         return x.rl( "textures/gui/container/tiny_chest.png");
     }
 

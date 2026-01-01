@@ -99,7 +99,7 @@ public class FuelCellBE extends MachineBE {
         // var storedItem = ItemStack.parseOptional(this.level.registryAccess(),
         // nbt.getCompound(RECIPE_INPUT));
         if (!item.isEmpty() && !nbt.contains(RECIPE_INPUT)) {
-            var recipe = level.getRecipeManager()
+            var recipe = level.getServer().getRecipeManager()
                     .getRecipeFor(zRecipeTypes.FUEL_CELL_RECIPE.getType(),
                             new MonoItemInput(item), level);
 
@@ -164,9 +164,9 @@ public class FuelCellBE extends MachineBE {
 
         var nbt = this.saveWithFullMetadata(level.registryAccess());
         if (nbt.contains(RECIPE_INPUT)) {
-            var item = ItemStack.parseOptional(this.level.registryAccess(), nbt.getCompound(RECIPE_INPUT));
+            ItemStack item = ItemStack.parseOptional(this.level.registryAccess(), nbt.getCompound(RECIPE_INPUT));
 
-            return level.getRecipeManager()
+            return level.getServer().getRecipeManager()
                     .getRecipeFor(zRecipeTypes.FUEL_CELL_RECIPE.getType(),
                             new MonoItemInput(item), level);
         } else
