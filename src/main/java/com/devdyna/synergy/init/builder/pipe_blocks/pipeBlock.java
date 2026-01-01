@@ -6,9 +6,11 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.pipe.pipeProperties;
 import com.devdyna.synergy.api.pipe.pipeType;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
@@ -52,7 +54,24 @@ public class pipeBlock extends Block implements pipeType {
 
     @Override
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
-        //TODO fix blockstates like SolarPanelBLK
+        // TODO check if work
+        if (!level.isClientSide()) {
+            BlockState newState = state;
+            for (Direction face : DIRECTIONS) {
+                BlockPos neighborPos = pos.relative(face);
+                BlockState neighborState = level.getBlockState(neighborPos);
+
+                if (neighborState.is(this)) {
+                    newState = newState.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), pipeProperties.TRUE);
+
+                    level.setBlock(neighborPos,
+                            neighborState.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
+                                    pipeProperties.TRUE),
+                            Block.UPDATE_ALL);
+                }
+            }
+            level.setBlock(pos, newState, Block.UPDATE_ALL);
+        }
     }
 
     @Override
@@ -68,10 +87,12 @@ public class pipeBlock extends Block implements pipeType {
     }
 
     // @Override
-    // public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
-    //         TooltipFlag tooltipFlag) {
-    //     tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Blocks.pipe + ".desc"));
-    //     tooltipComponents.add(Component.translatable(Main.ID + ".safe_building"));
+    // public void appendHoverText(ItemStack stack, TooltipContext context,
+    // List<Component> tooltipComponents,
+    // TooltipFlag tooltipFlag) {
+    // tooltipComponents.add(Component.translatable(Main.ID + "." +
+    // zStatic.Blocks.pipe + ".desc"));
+    // tooltipComponents.add(Component.translatable(Main.ID + ".safe_building"));
     // }
 
 }
