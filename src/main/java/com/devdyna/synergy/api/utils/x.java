@@ -30,6 +30,10 @@ public class x {
         return Identifier.fromNamespaceAndPath(modid, s);
     }
 
+    public static Identifier parse(String s) {
+        return Identifier.parse(s);
+    }
+
     public static Identifier rl(String s) {
         return rl(ID, s);
     }
@@ -164,8 +168,8 @@ public class x {
     public static Ingredient ingredient(RegistryLookup<Item> p, Identifier tag) {
         return x.ingredient(p, tag(tag));
     }
-    
-    public static TagKey<Item> tag(Identifier tag){
+
+    public static TagKey<Item> tag(Identifier tag) {
         return TagKey.create(Registries.ITEM, tag);
     }
 
@@ -213,8 +217,11 @@ public class x {
     }
 
     public static ResourceKey<Recipe<?>> recipeID(Item i, String suffix) {
-        return ResourceKey.create(Registries.RECIPE,
-                BuiltInRegistries.ITEM.getKey(i).withSuffix(suffix));
+        return recipeID(BuiltInRegistries.ITEM.getKey(i).withSuffix(suffix));
+    }
+
+    public static ResourceKey<Recipe<?>> recipeID(Identifier rl) {
+        return ResourceKey.create(Registries.RECIPE, rl);
     }
 
 }

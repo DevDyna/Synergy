@@ -2,7 +2,7 @@ package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.type.ItemProviderRecipe;
+import com.devdyna.synergy.common.recipes.type.node_providers.*;
 import com.devdyna.synergy.compat.jei.categories.core.BaseProviderCategory;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;

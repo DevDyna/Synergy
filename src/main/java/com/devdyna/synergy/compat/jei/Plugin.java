@@ -29,22 +29,22 @@ import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.registration.*;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
 
-@SuppressWarnings({ "unchecked", "unlikely-arg-type", "null" })
+@SuppressWarnings({ "unchecked", "unlikely-arg-type" ,"deprecation"})
 @JeiPlugin
 public class Plugin implements IModPlugin {
 
         @Override
-        public ResourceLocation getPluginUid() {
+        public Identifier getPluginUid() {
                 return x.rl(ID, "jei_plugin");
         }
 
@@ -55,8 +55,8 @@ public class Plugin implements IModPlugin {
 
                 ClazzUtil.getAllzItems().forEach(b -> {
                         if (!ExtraRecipeProvider.clearNBT.contains(b.get())) {
-                                Minecraft.getInstance().level.getRecipeManager()
-                                                .byKey(ResourceLocation.parse(b.getId() + "_clear_nbt"))
+                                Minecraft.getInstance().level.getServer().getRecipeManager()
+                                                .byKey(x.recipeID(x.rl(b.getId() + "_clear_nbt")))
                                                 .ifPresent(r -> toHide.add((RecipeHolder<CraftingRecipe>) r));
                         }
                 });
@@ -67,20 +67,18 @@ public class Plugin implements IModPlugin {
 
         @Override
         public void registerRecipeCatalysts(IRecipeCatalystRegistration r) {
-                r.addRecipeCatalyst(x.item(zBlocks.REACTOR_CONTROLLER), ReactorCellCategory.TYPE);
-                r.addRecipeCatalyst(x.item(zBlocks.REACTOR_FUEL_CELL), ReactorCellCategory.TYPE);
-                r.addRecipeCatalyst(x.item(zBlocks.URN), UrnCategory.TYPE);
-                r.addRecipeCatalyst(x.item(zBlocks.QUERN), QuernCategory.TYPE);
-                r.addRecipeCatalyst(x.item(zBlocks.ITEM_PROVIDER), ItemProviderCategory.TYPE);
-                r.addRecipeCatalyst(x.item(zBlocks.FLUID_PROVIDER), FluidProviderCategory.TYPE);
 
-                r.addRecipeCatalyst(x.item((Item) zMachines.MACERATOR.item().get()), MaceratorCategory.TYPE);
-                r.addRecipeCatalyst(x.item((Item) zMachines.COMPRESSOR.item().get()), CompressorCategory.TYPE);
-                r.addRecipeCatalyst(x.item((Item) zMachines.ALLOY_SMELTER.item().get()), AlloySmelterCategory.TYPE);
-                r.addRecipeCatalyst(x.item((Item) zMachines.ELECTRIC_FURNACE.item().get()),
-                                ElectricFurnaceCategory.TYPE);
-
-                r.addRecipeCatalyst(x.item(zBlocks.VOID_BOX), VoidBoxInfusionCategory.TYPE);
+                r.addCraftingStation(ReactorCellCategory.TYPE, zBlocks.REACTOR_CONTROLLER.get());
+                r.addCraftingStation(ReactorCellCategory.TYPE, zBlocks.REACTOR_FUEL_CELL.get());
+                r.addCraftingStation(UrnCategory.TYPE, zBlocks.URN.get());
+                r.addCraftingStation(QuernCategory.TYPE, zBlocks.QUERN.get());
+                r.addCraftingStation(ItemProviderCategory.TYPE, zBlocks.ITEM_PROVIDER.get());
+                r.addCraftingStation(FluidProviderCategory.TYPE, zBlocks.FLUID_PROVIDER.get());
+                r.addCraftingStation(MaceratorCategory.TYPE, zMachines.MACERATOR.item().get());
+                r.addCraftingStation(CompressorCategory.TYPE, zMachines.COMPRESSOR.item().get());
+                r.addCraftingStation(AlloySmelterCategory.TYPE, zMachines.ALLOY_SMELTER.item().get());
+                r.addCraftingStation(ElectricFurnaceCategory.TYPE, zMachines.ELECTRIC_FURNACE.item().get());
+                r.addCraftingStation(VoidBoxInfusionCategory.TYPE, zBlocks.VOID_BOX.get());
 
         }
 
@@ -108,73 +106,80 @@ public class Plugin implements IModPlugin {
 
         }
 
+        
         @Override
         public void registerRecipes(IRecipeRegistration r) {
 
                 RecipeManager recipes = Minecraft.getInstance().level.getServer().getRecipeManager();
 
-                r.addRecipes(ReactorCellCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.FUEL_CELL_RECIPE.getType())
-                                .stream().map(RecipeHolder::value).toList());
+                r.addRecipes(ReactorCellCategory.TYPE,
+                                recipes.recipeMap().byType(zRecipeTypes.FUEL_CELL_RECIPE.getType())
+                                                .stream().map(RecipeHolder::value).toList());
 
                 r.addRecipes(UrnCategory.TYPE,
-                                recipes.getAllRecipesFor(zRecipeTypes.URN_RITUAL_RECIPE.getType()).stream()
+                                recipes.recipeMap().byType(zRecipeTypes.URN_RITUAL_RECIPE.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(CropResultCategory.TYPE,
-                                recipes.getAllRecipesFor(zRecipeTypes.CROP_RESULT.getType()).stream()
+                                recipes.recipeMap().byType(zRecipeTypes.CROP_RESULT.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
-                r.addRecipes(ItemUseCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.ITEM_USE.getType()).stream()
+                r.addRecipes(ItemUseCategory.TYPE, recipes.recipeMap().byType(zRecipeTypes.ITEM_USE.getType()).stream()
                                 .map(RecipeHolder::value).toList());
 
-                r.addRecipes(QuernCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.QUERN_MILLING.getType()).stream()
-                                .map(RecipeHolder::value).toList());
+                r.addRecipes(QuernCategory.TYPE,
+                                recipes.recipeMap().byType(zRecipeTypes.QUERN_MILLING.getType()).stream()
+                                                .map(RecipeHolder::value).toList());
 
                 r.addRecipes(ItemProviderCategory.TYPE,
-                                (List<BaseProviderRecipe<ItemStack>>) (List<?>) recipes
-                                                .getAllRecipesFor(zRecipeTypes.ITEM_PROVIDER.getType()).stream()
+                                (List<BaseProviderRecipe<ItemStack>>) (List<?>) recipes.recipeMap()
+                                                .byType(zRecipeTypes.ITEM_PROVIDER.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(FluidProviderCategory.TYPE,
-                                (List<BaseProviderRecipe<FluidStack>>) (List<?>) recipes
-                                                .getAllRecipesFor(zRecipeTypes.FLUID_PROVIDER.getType()).stream()
+                                (List<BaseProviderRecipe<FluidStack>>) (List<?>) recipes.recipeMap()
+                                                .byType(zRecipeTypes.FLUID_PROVIDER.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(DryableBricksCategory.TYPE,
-                                recipes.getAllRecipesFor(zRecipeTypes.DRYABLE_BRICKS.getType()).stream()
+                                recipes.recipeMap().byType(zRecipeTypes.DRYABLE_BRICKS.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(MaceratorCategory.TYPE,
-                                recipes.getAllRecipesFor(zMachines.MACERATOR.recipe().getType()).stream()
+                                recipes.recipeMap().byType(zMachines.MACERATOR.recipe().getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(CompressorCategory.TYPE,
-                                recipes.getAllRecipesFor(zMachines.COMPRESSOR.recipe().getType()).stream()
+                                recipes.recipeMap().byType(zMachines.COMPRESSOR.recipe().getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(AlloySmelterCategory.TYPE,
-                                recipes.getAllRecipesFor(zMachines.ALLOY_SMELTER.recipe().getType()).stream()
+                                recipes.recipeMap().byType(zMachines.ALLOY_SMELTER.recipe().getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(ElectricFurnaceCategory.TYPE,
-                                recipes.getAllRecipesFor(zMachines.ELECTRIC_FURNACE.recipe().getType()).stream()
+                                recipes.recipeMap().byType(zMachines.ELECTRIC_FURNACE.recipe().getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(ElectricFurnaceCategory.TYPE,
-                                recipes.getAllRecipesFor(RecipeType.SMELTING).stream()
+                                recipes.recipeMap().byType(RecipeType.SMELTING).stream()
                                                 .map(RecipeHolder::value)
                                                 .map(s -> (ElectricFurnaceRecipeType) ElectricFurnaceRecipeBuilder
                                                                 .of()
                                                                 .delay(60)
                                                                 .energy(10)
-                                                                .input(s.getIngredients().getFirst())
-                                                                .output(s.getResultItem(ServerLifecycleHooks
-                                                                                .getCurrentServer().registryAccess()))
+                                                                .input(s.input())
+                                                                .output(s.assemble(
+                                                                                new SingleRecipeInput(x.item(s.input()
+                                                                                                .items().findFirst()
+                                                                                                .get().value())),
+                                                                                ServerLifecycleHooks.getCurrentServer()
+                                                                                                .registryAccess()))
                                                                 .createRecipe())
                                                 .toList());
 
                 r.addRecipes(VoidBoxInfusionCategory.TYPE,
-                                recipes.getAllRecipesFor(zRecipeTypes.VOID_BOX_INFUSION.getType()).stream()
+                                recipes.recipeMap().byType(zRecipeTypes.VOID_BOX_INFUSION.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
         }
