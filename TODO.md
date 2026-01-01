@@ -86,6 +86,7 @@
 
 ### Magic
 
+- [ ] STAR FORGE
 - [ ] Toaster
 - [ ] Spawner Essence
 - [ ] EYE
