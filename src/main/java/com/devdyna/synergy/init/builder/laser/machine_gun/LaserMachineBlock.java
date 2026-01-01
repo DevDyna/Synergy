@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.BlockAbilities.tooltips.simple.Rotable;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
 import com.devdyna.synergy.init.builder.laser.IBlockLaser;
 import com.devdyna.synergy.init.types.zItemTag;
@@ -17,7 +18,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -35,7 +35,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class LaserMachineBlock extends TickingBlock implements IBlockLaser {
+public class LaserMachineBlock extends TickingBlock implements IBlockLaser, Rotable {
 
     public LaserMachineBlock() {
         super(getProperties);
@@ -64,7 +64,7 @@ public class LaserMachineBlock extends TickingBlock implements IBlockLaser {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
 
         if (stack.is(zItemTag.COLOR_APPLICABLE)) {
@@ -94,11 +94,11 @@ public class LaserMachineBlock extends TickingBlock implements IBlockLaser {
                 if (stack.is(zItemTag.DYE_BLUE))
                     laser.tweakBlue(!inverse);
 
-                    level.playSound(player, pos, SoundEvents.SHULKER_AMBIENT, SoundSource.PLAYERS, 0.15F, 1.75F);
+                level.playSound(player, pos, SoundEvents.SHULKER_AMBIENT, SoundSource.PLAYERS, 0.15F, 1.75F);
 
             }
 
-            return ItemInteractionResult.SUCCESS;
+            return InteractionResult.SUCCESS;
         }
 
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
@@ -108,7 +108,7 @@ public class LaserMachineBlock extends TickingBlock implements IBlockLaser {
     protected InteractionResult useWithoutItem(
             BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
 
-        if (!level.isClientSide)
+        if (!level.isClientSide())
             level.setBlockAndUpdate(pos,
                     state.setValue(BlockStateProperties.HORIZONTAL_FACING,
                             (player.isShiftKeyDown()
@@ -117,7 +117,7 @@ public class LaserMachineBlock extends TickingBlock implements IBlockLaser {
                                     : state.getValue(BlockStateProperties.HORIZONTAL_FACING)
                                             .getClockWise(Direction.Axis.Y))));
 
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.SUCCESS_SERVER;
     }
 
     @Nullable
@@ -126,12 +126,12 @@ public class LaserMachineBlock extends TickingBlock implements IBlockLaser {
         return new LaserMachineBE(p, s);
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.machine_gun));
-        t.add(Component.translatable(Main.ID + ".laser.rotate_by_click"));
+    // @Override
+    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+    // TooltipFlag f) {
+    // t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.machine_gun));
+    // t.add(Component.translatable(Main.ID + ".laser.rotate_by_click"));
 
-    }
+    // }
 
 }

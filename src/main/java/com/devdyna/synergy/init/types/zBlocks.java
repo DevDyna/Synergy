@@ -110,50 +110,50 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> AZALEA = Material.registerItemBlock(zStatic.Blocks.azalea,
                         () -> new azalea(), zBlock);
 
-        public static final DeferredHolder<Block, Block> SPRINKLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> SPRINKLER = Material.registerItemBlockTipped(
                         zStatic.Blocks.sprinkler,
                         () -> new SprinklerBLK());
 
-        public static final DeferredHolder<Block, Block> SOLAR_PANEL = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> SOLAR_PANEL = Material.registerItemBlockTipped(
                         zStatic.Blocks.solar_panel,
                         () -> new SolarPanelBLK());
 
-        public static final DeferredHolder<Block, Block> HARVESTER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> HARVESTER = Material.registerItemBlockTipped(
                         zStatic.Blocks.harvester,
                         () -> new HarvesterBLK());
 
-        public static final DeferredHolder<Block, Block> PIPE = Material.registerItemBlock(zStatic.Blocks.pipe,
+        public static final DeferredHolder<Block, Block> PIPE = Material.registerItemBlockTipped(zStatic.Blocks.pipe,
                         () -> new pipeBlock());
 
-        public static final DeferredHolder<Block, Block> ITEM_TRANSFER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ITEM_TRANSFER = Material.registerItemBlockTipped(
                         zStatic.PipeStuff.nodes.Transfer.Item,
                         () -> new ItemTransfer());
 
-        public static final DeferredHolder<Block, Block> ITEM_PROVIDER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ITEM_PROVIDER = Material.registerItemBlockTipped(
                         zStatic.PipeStuff.nodes.Provider.Item,
                         () -> new ItemProvider());
 
-        public static final DeferredHolder<Block, Block> ITEM_RETRIEVAL = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ITEM_RETRIEVAL = Material.registerItemBlockTipped(
                         zStatic.PipeStuff.nodes.Retrieval.Item,
                         () -> new ItemRetrieval());
 
-        public static final DeferredHolder<Block, Block> ENERGY_TRANSFER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ENERGY_TRANSFER = Material.registerItemBlockTipped(
                         zStatic.PipeStuff.nodes.Transfer.Energy,
                         () -> new EnergyTransfer());
 
-        public static final DeferredHolder<Block, Block> ENERGY_RETRIEVAL = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ENERGY_RETRIEVAL = Material.registerItemBlockTipped(
                         zStatic.PipeStuff.nodes.Retrieval.Energy,
                         () -> new EnergyRetrieval());
 
-        public static final DeferredHolder<Block, Block> FLUID_TRANSFER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> FLUID_TRANSFER = Material.registerItemBlockTipped(
                         zStatic.PipeStuff.nodes.Transfer.Fluid,
                         () -> new FluidTransfer());
 
-        public static final DeferredHolder<Block, Block> FLUID_PROVIDER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> FLUID_PROVIDER = Material.registerItemBlockTipped(
                         zStatic.PipeStuff.nodes.Provider.Fluid,
                         () -> new FluidProvider());
 
-        public static final DeferredHolder<Block, Block> FLUID_RETRIEVAL = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> FLUID_RETRIEVAL = Material.registerItemBlockTipped(
                         zStatic.PipeStuff.nodes.Retrieval.Fluid,
                         () -> new FluidRetrieval());
 
@@ -233,72 +233,72 @@ public class zBlocks {
                         () -> new MachineFrame(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.METAL)),
                         zMachineFrame);
 
-        public static final DeferredHolder<Block, Block> HEALER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> HEALER = Material.registerItemBlockTipped(
                         zStatic.Blocks.healer,
                         () -> new Healer(BlockBehaviour.Properties.of().strength(1.0f).sound(SoundType.WOOL)));
 
-        public static final DeferredHolder<Block, Block> SIMPLE_MODERATOR = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> SIMPLE_MODERATOR = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.ModeratorTypes.SIMPLE,
                         () -> new SimpleModerator(), zModerators);
 
-        public static final DeferredHolder<Block, Block> ADVANCED_MODERATOR = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ADVANCED_MODERATOR = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.ModeratorTypes.ADVANCED,
                         () -> new AdvancedModerator(), zModerators);
-        public static final DeferredHolder<Block, Block> ELITE_MODERATOR = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ELITE_MODERATOR = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.ModeratorTypes.ELITE,
                         () -> new EliteModerator(), zModerators);
 
-        public static final DeferredHolder<Block, Block> REACTOR_CONTROLLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> REACTOR_CONTROLLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.controller,
                         () -> new ReactorControllerBlock());
 
-        public static final DeferredHolder<Block, Block> REACTOR_FUEL_CELL = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> REACTOR_FUEL_CELL = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.fuel_cell,
                         () -> new FuelCellBlock());
 
-        public static final DeferredHolder<Block, Block> SHADOW_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> SHADOW_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.SHADOW,
                         () -> new ShadowCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> COPPER_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> COPPER_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.COPPER,
                         () -> new CopperCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> DIAMOND_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> DIAMOND_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.DIAMOND,
                         () -> new DiamondCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> EMERALD_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> EMERALD_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.EMERALD,
                         () -> new EmeraldCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> ENDER_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ENDER_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.ENDER,
                         () -> new EnderCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> FROST_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> FROST_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.FROST,
                         () -> new FrostCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> GLOWSTONE_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> GLOWSTONE_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.GLOWSTONE,
                         () -> new GlowstoneCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> GOLD_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> GOLD_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.GOLD,
                         () -> new GoldCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> IRON_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> IRON_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.IRON,
                         () -> new IronCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> LAPIS_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> LAPIS_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.LAPIS,
                         () -> new LapisCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> NETHERITE_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> NETHERITE_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.NETHERITE,
                         () -> new NetheriteCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> QUARTZ_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> QUARTZ_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.QUARTZ,
                         () -> new QuartzCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> REDSTONE_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> REDSTONE_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.REDSTONE,
                         () -> new RedstoneCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> SCULK_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> SCULK_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.SCULK,
                         () -> new SculkCooler(), zCoolers);
-        public static final DeferredHolder<Block, Block> WATER_COOLER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> WATER_COOLER = Material.registerItemBlockTipped(
                         zStatic.ReactorStuff.CoolerTypes.WATER,
                         () -> new WaterCooler(), zCoolers);
 
@@ -308,86 +308,86 @@ public class zBlocks {
                                         .mapColor(MapColor.METAL),
                         zDecorative);
 
-        public static final DeferredHolder<Block, Block> WOODEN_TINY_CHEST = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> WOODEN_TINY_CHEST = Material.registerItemBlockTipped(
                         zStatic.Chests.WOODEN,
                         () -> new WoodenTinyChestBlock());
 
-        public static final DeferredHolder<Block, Block> ORNATE_TINY_CHEST = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> ORNATE_TINY_CHEST = Material.registerItemBlockTipped(
                         zStatic.Chests.ORNATE,
                         () -> new OrnatedTinyChestBlock());
 
-        public static final DeferredHolder<Block, Block> STONE_TINY_CHEST = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> STONE_TINY_CHEST = Material.registerItemBlockTipped(
                         zStatic.Chests.STONE,
                         () -> new StoneTinyChestBlock());
 
-        public static final DeferredHolder<Block, Block> URN = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> URN = Material.registerItemBlockTipped(
                         zStatic.Blocks.urn,
                         () -> new UrnBlock());
 
-        public static final DeferredHolder<Block, Block> QUERN = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> QUERN = Material.registerItemBlockTipped(
                         zStatic.Blocks.quern,
                         () -> new QuernBlock());
 
         public static final DeferredHolder<Block, Block> QUERN_MOVING = zOnlyBlock.registerSimpleBlock(
                         zStatic.Blocks.quern + "_moving");
 
-        public static final DeferredHolder<Block, Block> CLAY_BRICK = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> PLACED_CLAY_BRICK = Material.registerItemBlock(
                         zStatic.DryableBricks.brick.clay + "_block",
                         () -> new DryableBricks(BlockBehaviour.Properties.of()
                                         .sound(SoundType.GRAVEL).mapColor(MapColor.CLAY)),
                         zHiddenBlock);
 
-        public static final DeferredHolder<Block, Block> PACKED_MUD_BRICK = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> PLACED_PACKED_MUD_BRICK = Material.registerItemBlock(
                         zStatic.DryableBricks.brick.packed_mud + "_block",
                         () -> new DryableBricks(BlockBehaviour.Properties.of()
                                         .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
                         zHiddenBlock);
 
-        public static final DeferredHolder<Block, Block> FIRECLAY_BRICK = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> PLACED_FIRECLAY_BRICK = Material.registerItemBlock(
                         zStatic.DryableBricks.brick.fireclay + "_block",
                         () -> new DryableBricks(BlockBehaviour.Properties.of()
                                         .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
                         zHiddenBlock);
 
-        public static final DeferredHolder<Block, Block> BLAST_BRICK = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> PLACED_BLAST_BRICK = Material.registerItemBlock(
                         zStatic.DryableBricks.brick.blast + "_block",
                         () -> new DryableBricks(BlockBehaviour.Properties.of()
                                         .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
                         zHiddenBlock);
 
-        public static final DeferredHolder<Block, Block> LASER_MACHINE = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> LASER_MACHINE = Material.registerItemBlockTipped(
                         zStatic.Lazers.machine_gun,
                         () -> new LaserMachineBlock());
 
-        public static final DeferredHolder<Block, Block> LASER_LENS = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> LASER_LENS = Material.registerItemBlockTipped(
                         zStatic.Lazers.lens,
                         () -> new LaserLensBlock());
 
-        public static final DeferredHolder<Block, Block> LASER_MIRROR = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> LASER_MIRROR = Material.registerItemBlockTipped(
                         zStatic.Lazers.mirror,
                         () -> new LaserMirrorBlock());
 
-        public static final DeferredHolder<Block, Block> LASER_SENSOR = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> LASER_SENSOR = Material.registerItemBlockTipped(
                         zStatic.Lazers.sensor,
                         () -> new LaserSensorBlock());
 
-        public static final DeferredHolder<Block, Block> PULSE_REPEATER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> PULSE_REPEATER = Material.registerItemBlockTipped(
                         zStatic.Blocks.pulse_repeater,
                         () -> new PulseRepeater());
 
-        public static final DeferredHolder<Block, Block> RECURSIVE_REPEATER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> RECURSIVE_REPEATER = Material.registerItemBlockTipped(
                         zStatic.Blocks.recursive_repeater,
                         () -> new RecursiveRepeater());
 
-        public static final DeferredHolder<Block, Block> INVERTED_REPEATER = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> INVERTED_REPEATER = Material.registerItemBlockTipped(
                         zStatic.Blocks.inverted_repeater,
                         () -> new InvertedRepeater());
 
-        public static final DeferredHolder<Block, Block> LASER_ROTOR = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> LASER_ROTOR = Material.registerItemBlockTipped(
                         zStatic.Lazers.rotor,
                         () -> new LaserRotorBlock());
 
-        public static final DeferredHolder<Block, Block> VOID_BOX = Material.registerItemBlock(
+        public static final DeferredHolder<Block, Block> VOID_BOX = Material.registerItemBlockTipped(
                         zStatic.Blocks.void_box,
                         () -> new VoidBoxBlock());
 
@@ -395,10 +395,10 @@ public class zBlocks {
                         zStatic.Blocks.void_box + "_lid");
 
         public static final DeferredHolder<Block, Block> BLAST_BRICKS = Material
-        .registerItemBlock(zStatic.DecorativeBlocks.blast_bricks,
-                                       ()-> new BlockToolTipped(BlockBehaviour.Properties.of().sound(SoundType.NETHER_BRICKS)
+                        .registerItemBlockTipped(zStatic.DecorativeBlocks.blast_bricks,
+                                        BlockBehaviour.Properties.of().sound(SoundType.NETHER_BRICKS)
                                                         .strength(2.0F, 1200.0F)
-                                                        .mapColor(MapColor.TERRACOTTA_ORANGE),"block.blast_proof") ,
+                                                        .mapColor(MapColor.TERRACOTTA_ORANGE),
                                         zDecorative);
 
         public static final BrickFamily FIRECLAY_BRICKS = BrickFamily

@@ -28,11 +28,14 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
 
 @SuppressWarnings("null")
 public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect, ItemProducer {
 
-    private final Map<Direction, BlockCapabilityCache<IItemHandler, Direction>> cache = new HashMap<>();
+    private final Map<Direction, BlockCapabilityCache<ResourceHandler<ItemResource>, Direction>> cache = new HashMap<>();
 
     public HarvesterBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.HARVESTER.get(), pos, state);
@@ -64,7 +67,7 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
 
         if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
             checkBlocks(level);
-            extractFE(25, false);
+            extractFE(25);
 
         }
 
@@ -128,7 +131,7 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
     }
 
     @Override
-    public EnergyStorage getCapEnergy() {
+    public EnergyHandler getCapEnergy() {
         return getData(zHandlers.ENERGY_STORAGE);
     }
 
@@ -170,7 +173,7 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
     @Override
     public void onLoad() {
         super.onLoad();
-        if (level.isClientSide)
+        if (level.isClientSide())
             rebuildArea();
     }
 

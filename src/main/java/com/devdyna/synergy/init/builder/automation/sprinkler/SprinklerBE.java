@@ -17,7 +17,7 @@ import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 
 @SuppressWarnings("null")
 public class SprinklerBE extends TickingBE implements EnergyBlock, SimpleAOE {
@@ -59,7 +59,7 @@ public class SprinklerBE extends TickingBE implements EnergyBlock, SimpleAOE {
                                     cropBlock.performBonemeal((ServerLevel) level, level.random, pos, state);
                             } else
                                 state.randomTick((ServerLevel) level, pos, level.random);
-                            extractFE(25, false);
+                            extractFE(25);
                         }
                     });
         }
@@ -72,7 +72,7 @@ public class SprinklerBE extends TickingBE implements EnergyBlock, SimpleAOE {
     }
 
     @Override
-    public EnergyStorage getCapEnergy() {
+    public EnergyHandler getCapEnergy() {
         return getData(zHandlers.ENERGY_STORAGE);
     }
 

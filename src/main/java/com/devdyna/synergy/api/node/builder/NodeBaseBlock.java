@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.BlockAbilities.tooltips.multi_simple.NodeType;
 import com.devdyna.synergy.api.node.nodeType;
 
 import net.minecraft.core.BlockPos;
@@ -31,7 +32,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class NodeBaseBlock extends Block implements nodeType , EntityBlock {
+public abstract class NodeBaseBlock extends Block implements nodeType, EntityBlock, NodeType {
 
     public NodeBaseBlock() {
         super(BlockBehaviour.Properties.of().destroyTime(0.5f).forceSolidOn()
@@ -67,19 +68,14 @@ public class NodeBaseBlock extends Block implements nodeType , EntityBlock {
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
     }
 
-    @Override
+    // @Override
+    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+    // TooltipFlag f) {
+    // t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.pipe +
+    // ".extend"));
+    // }
+
     @Nullable
-    public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
-        return null;
-    }
-
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.pipe + ".extend"));
-    }
-
-        @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l, BlockState s,
             BlockEntityType<T> ty) {
@@ -93,4 +89,5 @@ public class NodeBaseBlock extends Block implements nodeType , EntityBlock {
             }
         };
     }
+
 }

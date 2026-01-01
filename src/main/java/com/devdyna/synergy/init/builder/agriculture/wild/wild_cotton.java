@@ -56,10 +56,6 @@ public class wild_cotton extends BaseWildCropBlock implements CropEntityInteract
         return true;
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
-            TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID +".disabled"));
-    }
+   
 
 }

@@ -18,6 +18,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -51,39 +52,42 @@ public class LevelUtil {
     }
 
     // public static List<Holder<Block>> BlockByTag(TagKey<Block> tag) {
-    //     return BuiltInRegistries.BLOCK.get(tag).stream().toList();
+    // return BuiltInRegistries.BLOCK.get(tag).stream().toList();
     // }
 
     // public static List<Holder<Block>> BlockByTagName(String tag) {
-    //     return BuiltInRegistries.BLOCK.getOrCreateTag(Material.tagBlock(tag)).stream().toList();
+    // return
+    // BuiltInRegistries.BLOCK.getOrCreateTag(Material.tagBlock(tag)).stream().toList();
     // }
 
     // public static List<Holder<Item>> ItemByTagName(String tag) {
-    //     return BuiltInRegistries.ITEM.getOrCreateTag(Material.tagItem(tag)).stream().toList();
+    // return
+    // BuiltInRegistries.ITEM.getOrCreateTag(Material.tagItem(tag)).stream().toList();
     // }
 
     // public static Block BlockByTag(TagKey<Block> tag, int index) {
-    //     return BlockByTag(tag).get(index).value();
+    // return BlockByTag(tag).get(index).value();
     // }
 
     // public static List<Holder<Item>> ItemByTag(TagKey<Item> tag) {
-    //     return BuiltInRegistries.ITEM.getOrCreateTag(tag).stream().toList();
+    // return BuiltInRegistries.ITEM.getOrCreateTag(tag).stream().toList();
     // }
 
     // public static List<Item> getItemByTag(TagKey<Item> tag) {
-    //     return BuiltInRegistries.ITEM.getOrCreateTag(tag).stream().map(Holder::value).toList();
+    // return
+    // BuiltInRegistries.ITEM.getOrCreateTag(tag).stream().map(Holder::value).toList();
     // }
 
     // public static Item ItemByTag(TagKey<Item> tag, int index) {
-    //     return ItemByTag(tag).get(index).value();
+    // return ItemByTag(tag).get(index).value();
     // }
 
     // public static int getSizeItemTag(TagKey<Item> tag) {
-    //     return ItemByTag(tag).size() - 1;
+    // return ItemByTag(tag).size() - 1;
     // }
 
     // public static int getSizeBlockTag(TagKey<Block> tag) {
-    //     return BlockByTag(tag).size() - 1;
+    // return BlockByTag(tag).size() - 1;
     // }
 
     public static void popItemFromPos(Level level, BlockPos pos, ItemStack itemStack) {
@@ -182,7 +186,7 @@ public class LevelUtil {
     }
 
     public static void addParticle(ParticleOptions type, Level level, BlockPos pos, boolean isRandom) {
-        addParticle(type, (ServerLevel)level, pos, isRandom, 1);
+        addParticle(type, (ServerLevel) level, pos, isRandom, 1);
     }
 
     /**
@@ -195,8 +199,8 @@ public class LevelUtil {
             boolean isRandom, int count) {
 
         // Vector3f color = Vec3
-                // .fromRGB24((red << 16) | (green << 8) | blue)
-                // .toVector3f();
+        // .fromRGB24((red << 16) | (green << 8) | blue)
+        // .toVector3f();
 
         double x = pos.getX() + 0.5;
         double y = pos.getY() + 0.5;
@@ -370,6 +374,11 @@ public class LevelUtil {
                 pos.getY() + 0.4 + (level.random.nextDouble() - 0.5) * 0.2,
                 pos.getZ() + 0.5 + (level.random.nextDouble() - 0.5) * 0.2 + f * dir.getStepZ(),
                 0.0, 0.0, 0.0);
+    }
+
+    // need to make a standalone check
+    public static boolean isDay(Level level, BlockPos pos) {
+       return level.environmentAttributes().getValue(EnvironmentAttributes.EYEBLOSSOM_OPEN, pos).toBoolean(true);
     }
 
 }

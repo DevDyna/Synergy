@@ -5,11 +5,11 @@ import java.util.List;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
 @SuppressWarnings("null")
-public interface MachineItemAutomation extends IItemHandlerModifiable {
-
-    ItemStackHandler getStorage();
+public interface MachineItemAutomation extends ItemStorageBlock {
 
     int getMachineSlots();
 
@@ -17,38 +17,47 @@ public interface MachineItemAutomation extends IItemHandlerModifiable {
 
     List<Integer> getOutputSlotIndex();
 
-    @Override
-    default int getSlots() {
-        return getMachineSlots();
+    /**
+     * return the item count insered
+     */
+    default int insertItem(int slot, ItemStack itemStack) {
+
+        try (var tx = Transaction.openRoot()) {
+            if (getOutputSlotIndex().contains(slot))
+                return 0;
+
+            var count = getStorage().insert(slot, ItemResource.of(itemStack), itemStack.getCount(), tx);
+            tx.commit();
+            return count;
+        }
+
     }
 
-    @Override
-    default ItemStack insertItem(int slot, ItemStack itemStack, boolean simOn) {
-        if (getOutputSlotIndex().contains(slot))
-            return itemStack;
+    /**
+     * return the item count extracted
+     */
+    default int extractItem(int slot, int amount) {
+        try (var tx = Transaction.openRoot()) {
+            if (getInputSlotIndex().contains(slot))
+                return 0;
 
-        return getStorage().insertItem(slot, itemStack, simOn);
+            var count = extract(slot,tx);
+            tx.commit();
+            return count;
+        }
     }
 
-    @Override
-    default ItemStack extractItem(int slot, int amount, boolean simOn) {
-        if (getInputSlotIndex().contains(slot))
-            return ItemStack.EMPTY;
+    // @Override
+    // default ItemStack getStackInSlot(int slot) {
+    //     if (getStorage().getSlots() >= slot)
+    //         return getStorage().extractItem(slot, getSlotLimit(slot), true);
 
-        return getStorage().extractItem(slot, amount, simOn);
-    }
+    //     return ItemStack.EMPTY;
+    // }
 
-    @Override
-    default ItemStack getStackInSlot(int slot) {
-        if (getStorage().getSlots() >= slot)
-                    return getStorage().extractItem(slot, getSlotLimit(slot), true);
-
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    default int getSlotLimit(int slot) {
-        return getStorage().getStackInSlot(slot).getMaxStackSize();
-    }
+    // @Override
+    // default int getSlotLimit(int slot) {
+    //     return getStorage().getStackInSlot(slot).getMaxStackSize();
+    // }
 
 }

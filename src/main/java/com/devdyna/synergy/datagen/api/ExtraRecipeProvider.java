@@ -239,7 +239,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         protected void brickRecipes(RecipeOutput c) {
                 DryableBricksBuilder.of(r)
                                 .input(Items.CLAY_BALL)
-                                .block(zBlocks.CLAY_BRICK.get())
+                                .block(zBlocks.PLACED_CLAY_BRICK.get())
                                 .output(Items.BRICK)
                                 .unlockedBy()
 
@@ -247,7 +247,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                 DryableBricksBuilder.of(r)
                                 .input(zItems.PACKED_MUD_BALL)
-                                .block(zBlocks.PACKED_MUD_BRICK.get())
+                                .block(zBlocks.PLACED_PACKED_MUD_BRICK.get())
                                 .output(zItems.PACKED_MUD_BRICK)
                                 .unlockedBy()
 
@@ -255,7 +255,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                 DryableBricksBuilder.of(r)
                                 .input(zItems.FIRECLAY_BALL)
-                                .block(zBlocks.FIRECLAY_BRICK.get())
+                                .block(zBlocks.PLACED_FIRECLAY_BRICK.get())
                                 .output(zItems.FIRECLAY_BRICK)
                                 .unlockedBy()
 
@@ -263,7 +263,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                 DryableBricksBuilder.of(r)
                                 .input(zItems.CLAY_MIXTURE_BALL)
-                                .block(zBlocks.BLAST_BRICK.get())
+                                .block(zBlocks.PLACED_BLAST_BRICK.get())
                                 .output(zItems.BLAST_BRICK)
                                 .unlockedBy()
 

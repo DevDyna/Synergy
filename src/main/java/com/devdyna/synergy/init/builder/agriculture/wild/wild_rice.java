@@ -26,10 +26,6 @@ public class wild_rice extends BaseWildCropBlock {
         return zBlockTag.CAN_SUSTAIN_RICE;
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
-            TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID +".disabled"));
-    }
+  
 
 }

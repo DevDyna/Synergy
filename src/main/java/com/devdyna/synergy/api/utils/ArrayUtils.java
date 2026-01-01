@@ -9,4 +9,9 @@ public class ArrayUtils {
         list.addAll(Arrays.asList(a2));
         return list.toArray(size -> Arrays.copyOf(a1, size));
     }
+
+    public static <T> List<T> concat(List<T> l, T e) {
+        l.add(e);
+        return l;
+    }
 }

@@ -255,7 +255,7 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".laser_use.green", TIP_COLOR + "Can increase green color on laser beam");
                 add(Main.ID + ".laser_use.blue", TIP_COLOR + "Can increase blue color on laser beam");
 
-                add(Main.ID + ".laser.rotate_by_click",
+                add(Main.ID + ".rotate_by_click",
                                 TIP_COLOR + "Can be rotated with right-click");
 
                 add(Main.ID + ".remove_entity_growing",

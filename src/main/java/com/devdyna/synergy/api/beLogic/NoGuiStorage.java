@@ -10,6 +10,7 @@ import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 public interface NoGuiStorage {
 
+    @SuppressWarnings("removal")
     default InteractionResult itemUseOn(Player player, Level level, BlockPos pos, InteractionHand hand) {
 
         var stack = player.getItemInHand(hand);
@@ -34,6 +35,7 @@ public interface NoGuiStorage {
                     // If empty hand -> extract one item
                     ItemStack extracted = storage.extractItem();
                     if (!extracted.isEmpty() && !level.isClientSide()) {
+                        
                         ItemHandlerHelper.giveItemToPlayer(player, extracted);
                         return InteractionResult.CONSUME;
                     }

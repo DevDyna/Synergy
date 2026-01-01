@@ -2,24 +2,17 @@ package com.devdyna.synergy.init.builder.automation.solar_panel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.Main;
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item.TooltipContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -72,7 +65,7 @@ public class SolarPanelBLK extends TickingBlock {
 
     @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             BlockState newState = state;
             for (Direction face : DIRECTIONS) {
                 BlockPos neighborPos = pos.relative(face);
@@ -110,27 +103,28 @@ public class SolarPanelBLK extends TickingBlock {
     }
 
     @Override
-    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
-            BlockPos neighborPos, boolean movedByPiston) {
+    public void onNeighborChange(BlockState state, LevelReader levelReader, BlockPos pos, BlockPos neighbor) {
 
-        for (Direction face : DIRECTIONS) {
+        if (levelReader instanceof Level level && !levelReader.isClientSide()) {
+            for (Direction face : DIRECTIONS) {
 
-            var offset = level.getBlockState(pos.relative(face));
-            if (offset.is(state.getBlock())) {
+                var offset = level.getBlockState(pos.relative(face));
+                if (offset.is(state.getBlock())) {
 
-                level.setBlockAndUpdate(pos.relative(face),
-                        offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
-                                true));
-                level.setBlockAndUpdate(pos, state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), true));
+                    level.setBlockAndUpdate(pos.relative(face),
+                            offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
+                                    true));
+                    level.setBlockAndUpdate(pos, state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), true));
 
-            } else {
+                } else {
 
-                level.setBlockAndUpdate(pos, state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), false));
+                    level.setBlockAndUpdate(pos, state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), false));
 
+                }
             }
         }
 
-        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+        super.onNeighborChange(state, levelReader, pos, neighbor);
     }
 
     @Nullable
@@ -145,10 +139,10 @@ public class SolarPanelBLK extends TickingBlock {
         return PROPRTIES.get(i);
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.solar_panel));
-    }
+    // @Override
+    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+    // TooltipFlag f) {
+    // t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.solar_panel));
+    // }
 
 }

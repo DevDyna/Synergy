@@ -1,8 +1,18 @@
 package com.devdyna.synergy.common.events;
 
+import static com.devdyna.synergy.Main.ID;
+
+import java.util.*;
+
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.api.BlockAbilities.tooltips.base.ComplexTooltips;
+import com.devdyna.synergy.api.BlockAbilities.tooltips.base.MultiSimpleTips;
+import com.devdyna.synergy.api.BlockAbilities.tooltips.base.SimpleToolTip;
 import com.devdyna.synergy.init.types.zItemTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
@@ -11,68 +21,93 @@ public class ItemTooltipEvents {
     private static final int OVER_THE_REGISTRY_ID = 1;
 
     @SubscribeEvent
-    public static void itemTooltipPlaceable(ItemTooltipEvent event) {
+    public static void tooltipEvent(ItemTooltipEvent e) {
+        var item = e.getItemStack();
+        var tooltip = e.getToolTip();
+        var flags = e.getFlags();
 
-        var item = event.getItemStack();
-        var tooltip = event.getToolTip();
+        isBlock(item, tooltip, flags);
+        itemPlaceable(item, tooltip);
+        laserColorApplicator(item, tooltip);
+        noGrowingItems(item, tooltip);
+        upgrades(item, tooltip);
+
+    }
+
+    public static void isBlock(ItemStack item, List<Component> tooltip, TooltipFlag flags) {
+        if (item.getItem() instanceof BlockItem blockItem) {
+            simpleToolTip(blockItem, tooltip);
+            advancedToolTip(blockItem, tooltip, flags);
+        }
+    }
+
+    public static void itemPlaceable(ItemStack item, List<Component> tooltip) {
 
         if (item.is(zItemTag.PLACEABLE)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".placed"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".placed"));
         }
     }
 
-    @SubscribeEvent
-    public static void itemTooltipLaserColorApplicator(ItemTooltipEvent event) {
-
-        var item = event.getItemStack();
-        var tooltip = event.getToolTip();
+    public static void laserColorApplicator(ItemStack item, List<Component> tooltip) {
 
         if (item.is(zItemTag.DYE_RESET)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".laser_use.reset"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.reset"));
         }
         if (item.is(zItemTag.DYE_MAX)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".laser_use.max"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.max"));
         }
         if (item.is(zItemTag.DYE_RED)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".laser_use.red"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.red"));
         }
         if (item.is(zItemTag.DYE_GREEN)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".laser_use.green"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.green"));
         }
         if (item.is(zItemTag.DYE_BLUE)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".laser_use.blue"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.blue"));
         }
     }
 
-    @SubscribeEvent
-    public static void itemTooltipNoGrowingItems(ItemTooltipEvent event) {
-
-        var item = event.getItemStack();
-        var tooltip = event.getToolTip();
+    public static void noGrowingItems(ItemStack item, List<Component> tooltip) {
 
         if (item.is(zItemTag.REMOVE_ENTITY_GROWING)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".remove_entity_growing"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".remove_entity_growing"));
         }
         if (item.is(zItemTag.ADD_ENTITY_GROWING)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".add_entity_growing"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".add_entity_growing"));
         }
 
     }
 
-    @SubscribeEvent
-    public static void itemTooltipUpgrades(ItemTooltipEvent event) {
-
-        var item = event.getItemStack();
-        var tooltip = event.getToolTip();
+    public static void upgrades(ItemStack item, List<Component> tooltip) {
 
         if (item.is(zItemTag.UPGRADE_ENERGY)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.energy"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".upgrade.energy"));
         }
         if (item.is(zItemTag.UPGRADE_SPEED)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.speed.energy"));
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.speed.speed"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".upgrade.speed.energy"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".upgrade.speed.speed"));
         }
 
+    }
+
+    public static void simpleToolTip(BlockItem blockItem, List<Component> tooltip) {
+        if (blockItem.getBlock() instanceof SimpleToolTip sm) {
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + sm.key()));
+        }
+    }
+
+    public static void multiSimpleToolTip(BlockItem blockItem, List<Component> tooltip) {
+        if (blockItem.getBlock() instanceof MultiSimpleTips msm) {
+            for (String s : msm.keys()) {
+                tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + s));
+            }
+        }
+    }
+
+    public static void advancedToolTip(BlockItem blockItem, List<Component> tooltip, TooltipFlag flags) {
+        if (blockItem.getBlock() instanceof ComplexTooltips adv) {
+            adv.renderTip(tooltip, flags);
+        }
     }
 
 }

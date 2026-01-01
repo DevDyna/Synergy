@@ -26,10 +26,4 @@ public class wild_cave_wheat extends BaseWildCropBlock {
         return zBlockTag.CAN_SUSTAIN_CAVE_WHEAT;
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
-            TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID +".disabled"));
-    }
-
 }

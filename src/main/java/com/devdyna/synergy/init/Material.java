@@ -9,6 +9,7 @@ import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseSeedItem;
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.init.builder.BlockTipped;
 import com.devdyna.synergy.init.builder.ItemComponents;
 import com.devdyna.synergy.init.builder.ItemToolTipped;
 import com.devdyna.synergy.init.builder.decorative.DecorativeBlock;
@@ -24,6 +25,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemUseAnimation;
@@ -87,6 +89,31 @@ public class Material {
                 DeferredHolder<Block, Block> block = b.register(blockname, sup);
                 zItems.zBlockItem.registerSimpleBlockItem(block);
                 return block;
+        }
+
+        public static DeferredHolder<Block, Block> registerItemBlockTipped(String blockname, Supplier<Block> sup,
+                        DeferredRegister.Blocks b, String key) {
+                DeferredHolder<Block, Block> block = b.register(blockname, sup);
+                zItems.zBlockItem.registerItem(blockname, (p) -> new BlockTipped(block.get(),
+                                p.useBlockDescriptionPrefix(), key));
+                return block;
+        }
+
+        public static DeferredHolder<Block, Block> registerItemBlockTipped(String blockname, Supplier<Block> sup,
+                        DeferredRegister.Blocks b) {
+                return registerItemBlockTipped(blockname, sup, b, blockname);
+        }
+
+        public static DeferredHolder<Block, Block> registerItemBlockTipped(String blockname, DeferredRegister.Blocks b) {
+                return registerItemBlockTipped(blockname, BlockBehaviour.Properties.of(), b);
+        }
+
+        public static DeferredHolder<Block, Block> registerItemBlockTipped(String blockname,BlockBehaviour.Properties p, DeferredRegister.Blocks b) {
+                return registerItemBlockTipped(blockname, () -> new Block(p), b);
+        }
+
+        public static DeferredHolder<Block, Block> registerItemBlockTipped(String blockname,Supplier<Block> sup) {
+                return registerItemBlockTipped(blockname, sup, zBlocks.zBlockItem);
         }
 
         public static DeferredHolder<Block, Block> registerItemBlock(String blockname, DeferredRegister.Blocks b) {
@@ -208,7 +235,8 @@ public class Material {
                                 () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(b.get())), zBlocks.zBlockSlab);
 
         }
-
+        
+        
         public static DeferredHolder<Block, Block> DecoBlock(String name, Properties prop, Blocks blockSets) {
                 return registerItemBlock(name, () -> new DecorativeBlock(prop), blockSets);
         }

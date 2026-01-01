@@ -20,6 +20,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 
+@Deprecated
 public interface nodeType extends pipeType {
 
     static EnumProperty<Direction> FACING = BlockStateProperties.FACING;

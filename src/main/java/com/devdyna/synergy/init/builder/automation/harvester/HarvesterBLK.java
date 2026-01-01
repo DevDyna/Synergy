@@ -47,10 +47,5 @@ public class HarvesterBLK extends TickingBlock {
         return new HarvesterBE(p, s);
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.harvester));
-    }
 
 }

@@ -67,11 +67,11 @@ public class pipeBlock extends Block implements pipeType {
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
-            TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Blocks.pipe + ".desc"));
-        tooltipComponents.add(Component.translatable(Main.ID + ".safe_building"));
-    }
+    // @Override
+    // public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents,
+    //         TooltipFlag tooltipFlag) {
+    //     tooltipComponents.add(Component.translatable(Main.ID + "." + zStatic.Blocks.pipe + ".desc"));
+    //     tooltipComponents.add(Component.translatable(Main.ID + ".safe_building"));
+    // }
 
 }

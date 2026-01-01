@@ -1,6 +1,8 @@
 package com.devdyna.synergy.api.plants.builder;
 
 
+import com.devdyna.synergy.api.BlockAbilities.tooltips.simple.NoItemForm;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.BlockGetter;
@@ -13,7 +15,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
 @SuppressWarnings("null")
-public class BaseWildCropBlock extends BushBlock {
+public class BaseWildCropBlock extends BushBlock implements NoItemForm{
 
     protected BaseWildCropBlock(Properties properties) {
         super(properties.mapColor(MapColor.PLANT)

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.jspecify.annotations.Nullable;
-
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.api.utils.x;
 
@@ -15,12 +13,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
@@ -73,7 +68,7 @@ public interface ItemProducer {
      * export items to the nearest storage or will drop/void all overflow items
      */
     default void exportItems(ItemStack item, List<Direction> blacklistedDirs, Level level, BlockPos pos,
-            Map<Direction, BlockCapabilityCache<ResourceHandler<ItemResource>,Direction>> cache) {
+            Map<Direction, BlockCapabilityCache<ResourceHandler<ItemResource>, Direction>> cache) {
         var totalDir = Direction.values().length;
         for (Direction dir : Direction.values()) {
             if (blacklistedDirs.contains(dir)) {
@@ -96,12 +91,17 @@ public interface ItemProducer {
                 continue;
             } else {
 
-                var insered = cap.insert(ItemResource.of(item.copy()), item.getCount(), Transaction.openRoot());
+                try (var tx = Transaction.openRoot()) {
 
-                if (insered != item.getCount() && dropWhenFail()) {
+                    var insered = cap.insert(ItemResource.of(item.copy()), item.getCount(), tx);
 
-                    LevelUtil.popItemFromPos(level, pos.above(), x.item(item.getItem(),item.getCount()-insered));
-                    level.playSound(null, pos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 1F, 0.75F);
+                    if (insered != item.getCount() && dropWhenFail()) {
+
+                        LevelUtil.popItemFromPos(level, pos.above(), x.item(item.getItem(), item.getCount() - insered));
+                        level.playSound(null, pos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 1F, 0.75F);
+
+                    }
+                    tx.commit();
 
                 }
 

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
+import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import net.minecraft.core.BlockPos;
@@ -14,13 +15,12 @@ import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
-import net.neoforged.neoforge.energy.EnergyStorage;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 
 @SuppressWarnings("null")
 public class SolarPanelBE extends TickingBE implements EnergyProvider {
 
-    private final Map<Direction, BlockCapabilityCache<IEnergyStorage, Direction>> cache = new HashMap<>();
+    private final Map<Direction, BlockCapabilityCache<EnergyHandler, Direction>> cache = new HashMap<>();
 
     public SolarPanelBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.SOLAR_PANEL.get(), pos, state);
@@ -28,12 +28,12 @@ public class SolarPanelBE extends TickingBE implements EnergyProvider {
 
     @Override
     public void tickServer() {
-
+        
         level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED,
-                canReceive() && level.isDay() && checkSky() && !level.hasNeighborSignal(getBlockPos())));
+                canReceive() && LevelUtil.isDay(level, getBlockPos()) && checkSky() && !level.hasNeighborSignal(getBlockPos())));
 
         if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
-            increaseFE(getFERate(), false);
+            increaseFE(getFERate());
         }
 
         if (canExtract()) {
@@ -52,7 +52,7 @@ public class SolarPanelBE extends TickingBE implements EnergyProvider {
     }
 
     @Override
-    public EnergyStorage getCapEnergy() {
+    public EnergyHandler getCapEnergy() {
         return getData(zHandlers.ENERGY_STORAGE);
     }
 

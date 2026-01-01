@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.BlockAbilities.tooltips.simple.Rotable;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
 import com.devdyna.synergy.init.builder.laser.IBlockLaser;
 
@@ -30,7 +31,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 
 @SuppressWarnings("null")
-public class LaserSensorBlock extends TickingBlock implements IBlockLaser {
+public class LaserSensorBlock extends TickingBlock implements IBlockLaser , Rotable {
 
     public LaserSensorBlock() {
         super(getProperties);
@@ -81,11 +82,11 @@ public class LaserSensorBlock extends TickingBlock implements IBlockLaser {
         return getShape();
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.sensor));
-        t.add(Component.translatable(Main.ID + ".laser.rotate_by_click"));
-    }
+    // @Override
+    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+    //         TooltipFlag f) {
+    //     t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.sensor));
+    //     t.add(Component.translatable(Main.ID + ".laser.rotate_by_click"));
+    // }
 
 }

@@ -33,10 +33,10 @@ public class LaserLensBlock extends Block implements IBlockLaser {
         return getShape();
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.lens));
-    }
+    // @Override
+    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+    //         TooltipFlag f) {
+    //     t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.lens));
+    // }
 
 }
