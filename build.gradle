@@ -126,9 +126,9 @@ repositories {
 dependencies {
 
     //jei
-    compileOnly "mezz.jei:jei-${jei_minecraft}-common-api:${jei_version}"
-    compileOnly "mezz.jei:jei-${jei_minecraft}-neoforge-api:${jei_version}"
-    localRuntime "mezz.jei:jei-${jei_minecraft}-neoforge:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     //guideme
     //implementation "curse.maven:guideme-1173950:6688687"
