@@ -66,11 +66,11 @@ public abstract class NodeBaseBE extends BlockEntity {
         var inCap = getCapType().getCapability(level, input, inState, inBE, null);
         var outCap = getCapType().getCapability(level, output, outState, outBE, null);
         var capType = getCapType();
-        if (capType == Capabilities.ItemHandler.BLOCK) {
+        if (capType == Capabilities.Item.BLOCK) {
             executeItem((IItemHandler) inCap, (IItemHandler) outCap);
-        } else if (capType == Capabilities.EnergyStorage.BLOCK) {
+        } else if (capType == Capabilities.Energy.BLOCK) {
             executeEnergy((IEnergyStorage) inCap, (IEnergyStorage) outCap);
-        } else if (capType == Capabilities.FluidHandler.BLOCK) {
+        } else if (capType == Capabilities.Fluid.BLOCK) {
             executeFluid((IFluidHandler) inCap, (IFluidHandler) outCap);
         } else {
             // TODO meka compats
@@ -127,7 +127,7 @@ public abstract class NodeBaseBE extends BlockEntity {
             BlockState nextState) {
         var capType = getCapType();
         var blockEntity = level.getBlockEntity(nextPos);
-        if (capType == Capabilities.ItemHandler.BLOCK) {
+        if (capType == Capabilities.Item.BLOCK) {
             var itemHandler = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (itemHandler instanceof IItemHandler handler) {
                 // TODO rework to filter based on input cap
@@ -137,14 +137,14 @@ public abstract class NodeBaseBE extends BlockEntity {
                     }
                 }
             }
-        } else if (capType == Capabilities.EnergyStorage.BLOCK) {
+        } else if (capType == Capabilities.Energy.BLOCK) {
             var energy = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (energy instanceof IEnergyStorage storage) {
                 if (storage.receiveEnergy(1, true) > 0) {
                     return true;
                 }
             }
-        } else if (capType == Capabilities.FluidHandler.BLOCK) {
+        } else if (capType == Capabilities.Fluid.BLOCK) {
             var fluid = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (fluid instanceof IFluidHandler handler) {
                 // TODO rework to filter based on input cap

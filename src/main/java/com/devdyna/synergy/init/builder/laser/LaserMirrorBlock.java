@@ -1,24 +1,18 @@
 package com.devdyna.synergy.init.builder.laser;
 
-import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import com.devdyna.synergy.Main;
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.BlockAbilities.tooltips.simple.Rotable;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item.TooltipContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -28,7 +22,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class LaserMirrorBlock extends Block implements IBlockLaser , Rotable{
+public class LaserMirrorBlock extends Block implements IBlockLaser, Rotable {
 
     public LaserMirrorBlock() {
         super(getProperties);
@@ -63,8 +57,11 @@ public class LaserMirrorBlock extends Block implements IBlockLaser , Rotable{
     private static final Map<BlockPos, Boolean> poweredMap = new WeakHashMap<>();
 
     @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos,
-            boolean isMoving) {
+    public void onNeighborChange(BlockState state, LevelReader levelrReader, BlockPos pos, BlockPos neighbor) {
+
+        if (!(levelrReader instanceof Level level))
+            return;
+
         boolean powered = level.hasNeighborSignal(pos);
         boolean wasPowered = poweredMap.getOrDefault(pos, false);
 
@@ -95,9 +92,9 @@ public class LaserMirrorBlock extends Block implements IBlockLaser , Rotable{
 
     // @Override
     // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-    //         TooltipFlag f) {
-    //     t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.mirror));
-    //     t.add(Component.translatable(Main.ID + ".rotate_by_click"));
+    // TooltipFlag f) {
+    // t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.mirror));
+    // t.add(Component.translatable(Main.ID + ".rotate_by_click"));
     // }
 
 }

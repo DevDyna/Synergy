@@ -22,6 +22,7 @@ import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
+
 /**
  * Utility class to create fluids
  */
@@ -39,8 +40,8 @@ public class zFluid {
     private DeferredHolder<FluidType, ?> type;
 
     private Identifier still;
-    private Identifier flowing;
-    private Identifier overlay;
+    // private Identifier flowing;
+    // private Identifier overlay;
 
     private int viscosity;
     private boolean canDrown;
@@ -57,8 +58,8 @@ public class zFluid {
         this.id = id;
 
         this.still = x.rl("minecraft", "block/water_still");
-        this.flowing = x.rl("minecraft", "block/water_flow");
-        this.overlay = x.rl("minecraft", "block/water_overlay");
+        // this.flowing = x.rl("minecraft", "block/water_flow");
+        // this.overlay = x.rl("minecraft", "block/water_overlay");
         this.viscosity = 1000;// approx water
         this.canDrown = false;
         this.canSwim = false;
@@ -76,47 +77,45 @@ public class zFluid {
                         .canConvertToSource(canConvertToSource)
                         .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
                         .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)) {
-                            
-                            
 
                     // @SuppressWarnings({ "removal" })
                     // @Override
                     // public void initializeClient(Consumer<IClientFluidTypeExtensions> c) {
 
-                    //     c.accept(new IClientFluidTypeExtensions() {
+                    // c.accept(new IClientFluidTypeExtensions() {
 
-                    //         @Override
-                    //         public Identifier getStillTexture() {
-                    //             return still;
-                    //         }
+                    // @Override
+                    // public Identifier getStillTexture() {
+                    // return still;
+                    // }
 
-                    //         @Override
-                    //         public int getTintColor(FluidState s, BlockAndTintGetter g, BlockPos p) {
-                    //             return color;
-                    //         }
+                    // @Override
+                    // public int getTintColor(FluidState s, BlockAndTintGetter g, BlockPos p) {
+                    // return color;
+                    // }
 
-                    //         @Override
-                    //         public Identifier getFlowingTexture() {
-                    //             return flowing;
-                    //         }
+                    // @Override
+                    // public Identifier getFlowingTexture() {
+                    // return flowing;
+                    // }
 
-                    //         @Override
-                    //         public Identifier getOverlayTexture() {
-                    //             return overlay;
-                    //         };
+                    // @Override
+                    // public Identifier getOverlayTexture() {
+                    // return overlay;
+                    // };
 
-                    //         @Override
-                    //         public Identifier getRenderOverlayTexture(Minecraft mc) {
-                    //             return Identifier.parse("textures/misc/underwater.png");
-                    //         }
+                    // @Override
+                    // public Identifier getRenderOverlayTexture(Minecraft mc) {
+                    // return Identifier.parse("textures/misc/underwater.png");
+                    // }
 
-                    //         @Override
-                    //         public int getTintColor() {
-                    //             return color;
-                    //         }
+                    // @Override
+                    // public int getTintColor() {
+                    // return color;
+                    // }
 
-                    //     });
-                    //     super.initializeClient(c);
+                    // });
+                    // super.initializeClient(c);
                     // }
                 });
 
@@ -180,12 +179,12 @@ public class zFluid {
     }
 
     public zFluid setTextures(Identifier still, Identifier flowing) {
-        this.flowing = flowing;
+        // this.flowing = flowing;
         return setTextures(still);
     }
 
     public zFluid setTextures(Identifier still, Identifier flowing, Identifier overlay) {
-        this.overlay = overlay;
+        // this.overlay = overlay;
         return setTextures(still, flowing);
     }
 
@@ -194,13 +193,15 @@ public class zFluid {
         return this;
     }
 
+    @Deprecated
     public zFluid setFlowingTexture(Identifier rl) {
-        this.flowing = rl;
+        // this.flowing = rl;
         return this;
     }
 
+    @Deprecated
     public zFluid setOverlayTexture(Identifier rl) {
-        this.overlay = rl;
+        // this.overlay = rl;
         return this;
     }
 

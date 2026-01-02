@@ -3,6 +3,7 @@ package com.devdyna.synergy.init.builder.magic.quern;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
+import com.devdyna.synergy.api.beLogic.DropOnBreak;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -12,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -54,17 +56,10 @@ public class QuernBlock extends TickingBlock {
     }
 
     @Override
-    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
-
-        if (state.getBlock() != newState.getBlock())
-            if (level.getBlockEntity(pos) instanceof QuernBE be) {
-
-                be.drops();
-
-                level.updateNeighbourForOutputSignal(pos, this);
-            }
-
-        super.onRemove(state, level, pos, newState, movedByPiston);
+    public void destroy(LevelAccessor level, BlockPos pos, BlockState state) {
+        if (level.getBlockEntity(pos) instanceof DropOnBreak be)
+            be.drops();
+        super.destroy(level, pos, state);
     }
 
     @Override

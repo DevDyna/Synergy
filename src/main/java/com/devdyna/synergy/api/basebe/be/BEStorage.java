@@ -1,17 +1,21 @@
 package com.devdyna.synergy.api.basebe.be;
 
+import org.jspecify.annotations.Nullable;
+
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.init.types.zHandlers;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.Containers;
-import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.ItemStackHandler;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 
+/**
+ * BEStorage with MenuType integrated
+ */
 @SuppressWarnings("null")
 public abstract class BEStorage extends BEMenu implements ItemStorageBlock {
 
@@ -19,27 +23,24 @@ public abstract class BEStorage extends BEMenu implements ItemStorageBlock {
         super(type, pos, blockState);
     }
 
-    public void drops() {
-        SimpleContainer inv = new SimpleContainer(getStorage().getSlots());
-        for (int i = 0; i < getStorage().getSlots(); i++)
-            inv.setItem(i, getStorage().getStackInSlot(i));
-        Containers.dropContents(this.level, this.worldPosition, inv);
+    @Override
+    public @Nullable Level getLevel() {
+        return level;
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        tag.put("inventory", getStorage().serializeNBT(registries));
-        super.saveAdditional(tag, registries);
+    protected void saveAdditional(ValueOutput output) {
+        getStorage().serialize(output);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        getStorage().deserializeNBT(registries, tag.getCompound("inventory"));
-        super.loadAdditional(tag, registries);
+    protected void loadAdditional(ValueInput input) {
+        getStorage().deserialize(input);
+        super.loadAdditional(input);
     }
 
     @Override
-    public ItemStackHandler getStorage() {
+    public ItemStacksResourceHandler getStorage() {
         return getData(zHandlers.ITEM_STORAGE);
     }
 

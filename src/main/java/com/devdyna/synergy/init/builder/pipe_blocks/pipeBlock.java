@@ -1,24 +1,17 @@
 package com.devdyna.synergy.init.builder.pipe_blocks;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.Main;
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.pipe.pipeProperties;
 import com.devdyna.synergy.api.pipe.pipeType;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item.TooltipContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -79,12 +72,13 @@ public class pipeBlock extends Block implements pipeType {
         pipeType.onDestroyPipe(s, (Level) l, p);
     }
 
-    @Override
-    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
-            BlockPos neighborPos, boolean movedByPiston) {
-        level.setBlockAndUpdate(pos, pipeType.updatePipeOnPlace(state, level, pos));
-        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
-    }
+@Override
+public void onNeighborChange(BlockState state, LevelReader levelrReader, BlockPos pos, BlockPos neighbor) {
+    if(levelrReader instanceof Level level)
+    level.setBlockAndUpdate(pos, pipeType.updatePipeOnPlace(state, level, pos));
+}
+
+   
 
     // @Override
     // public void appendHoverText(ItemStack stack, TooltipContext context,

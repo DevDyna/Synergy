@@ -6,7 +6,7 @@ import com.devdyna.synergy.api.node.IProvider;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.common.recipes.input.ProviderInput;
-import com.devdyna.synergy.common.recipes.type.FluidProviderRecipe;
+import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import net.minecraft.core.BlockPos;
@@ -46,7 +46,7 @@ public class FluidProviderBE extends NodeBaseBE
 
     @Override
     public BlockCapability<?, Direction> getCapType() {
-        return Capabilities.FluidHandler.BLOCK;
+        return Capabilities.Fluid.BLOCK;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class FluidProviderBE extends NodeBaseBE
 
     @Override
     public Optional<RecipeHolder<FluidProviderRecipe<FluidStack>>> getRecipe(BlockPos pos) {
-        return level.getRecipeManager().getRecipeFor(
+        return level.getServer().getRecipeManager().getRecipeFor(
                 zRecipeTypes.FLUID_PROVIDER.getType(),
                 new ProviderInput(level.getBlockState(pos)),
                 level);

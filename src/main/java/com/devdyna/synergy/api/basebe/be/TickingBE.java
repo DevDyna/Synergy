@@ -15,6 +15,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 @SuppressWarnings("null")
 public class TickingBE extends BlockEntity {
@@ -53,25 +55,23 @@ public class TickingBE extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, Provider registries) {
-
+    protected void saveAdditional(ValueOutput output) {
         if (this instanceof SimpleAOE)
-            tag.putInt(RADIUS, radius);
+            output.putInt(RADIUS, radius);
         if (this instanceof AreaOfEffect)
-            tag.putInt(HEIGHT, height);
-        super.saveAdditional(tag, registries);
+            output.putInt(HEIGHT, height);
+        super.saveAdditional(output);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, Provider registries) {
-
+    protected void loadAdditional(ValueInput input) {
         if (this instanceof SimpleAOE)
-            if (tag.contains(RADIUS))
-                radius = tag.getInt(RADIUS);
+            if (input.getInt(RADIUS).isPresent())
+                radius = input.getInt(RADIUS).get();
         if (this instanceof AreaOfEffect)
-            if (tag.contains(HEIGHT))
-                height = tag.getInt(HEIGHT);
-        super.loadAdditional(tag, registries);
+            if (input.getInt(HEIGHT).isPresent())
+                height = input.getInt(HEIGHT).get();
+        super.loadAdditional(input);
     }
 
     // required to sync client to server data
@@ -103,12 +103,12 @@ public class TickingBE extends BlockEntity {
     }
 
     @Override
-    public void handleUpdateTag(CompoundTag tag, Provider lookupProvider) {
-        super.handleUpdateTag(tag, lookupProvider);
+    public void handleUpdateTag(ValueInput input) {
+        super.handleUpdateTag(input);
         if (this instanceof SimpleAOE)
-            radius = tag.getInt(RADIUS);
+            radius = input.getInt(RADIUS).get();
         if (this instanceof AreaOfEffect) {
-            height = tag.getInt(HEIGHT);
+            height = input.getInt(HEIGHT).get();
             rebuildArea();
         }
     }

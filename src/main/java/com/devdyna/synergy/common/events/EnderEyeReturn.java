@@ -5,7 +5,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 public class EnderEyeReturn {
     @SubscribeEvent
@@ -16,7 +15,7 @@ public class EnderEyeReturn {
         var state = level.getBlockState(pos);
 
         if (state.is(Blocks.END_PORTAL_FRAME) && state.getValue(EndPortalFrameBlock.HAS_EYE)) {
-            ItemHandlerHelper.giveItemToPlayer(player, x.item(Items.ENDER_EYE));
+            player.addItem(x.item(Items.ENDER_EYE));
             level.setBlockAndUpdate(pos, state.setValue(EndPortalFrameBlock.HAS_EYE, false));
         }
 

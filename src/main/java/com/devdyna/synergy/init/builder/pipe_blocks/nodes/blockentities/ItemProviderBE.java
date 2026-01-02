@@ -6,7 +6,7 @@ import com.devdyna.synergy.api.node.IProvider;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.common.recipes.input.ProviderInput;
-import com.devdyna.synergy.common.recipes.type.ItemProviderRecipe;
+import com.devdyna.synergy.common.recipes.type.node_providers.ItemProviderRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import net.minecraft.core.BlockPos;
@@ -47,7 +47,7 @@ public class ItemProviderBE extends NodeBaseBE
 
     @Override
     public BlockCapability<?, Direction> getCapType() {
-        return Capabilities.ItemHandler.BLOCK;
+        return Capabilities.Item.BLOCK;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ItemProviderBE extends NodeBaseBE
 
     @Override
     public Optional<RecipeHolder<ItemProviderRecipe<ItemStack>>> getRecipe(BlockPos pos) {
-        return level.getRecipeManager().getRecipeFor(
+        return level.getServer().getRecipeManager().getRecipeFor(
                 zRecipeTypes.ITEM_PROVIDER.getType(),
                 new ProviderInput(level.getBlockState(pos)),
                 level);

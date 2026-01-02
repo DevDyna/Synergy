@@ -13,12 +13,9 @@ import com.devdyna.synergy.init.builder.tools.PipeRefactorizer;
 import com.devdyna.synergy.init.builder.tools.Smasher;
 import com.devdyna.synergy.init.builder.tools.SolderingGun;
 
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ToolMaterial;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;

@@ -3,7 +3,6 @@ package com.devdyna.synergy.api.recipes.types;
 import com.devdyna.synergy.api.zRecipe;
 import com.devdyna.synergy.api.utils.x;
 
-import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.PlacementInfo;

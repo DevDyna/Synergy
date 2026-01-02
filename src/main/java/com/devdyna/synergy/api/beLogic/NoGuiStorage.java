@@ -6,11 +6,9 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 
-public interface NoGuiStorage {
+public interface NoGuiStorage extends ItemStorageBlock {
 
-    @SuppressWarnings("removal")
     default InteractionResult itemUseOn(Player player, Level level, BlockPos pos, InteractionHand hand) {
 
         var stack = player.getItemInHand(hand);
@@ -23,24 +21,30 @@ public interface NoGuiStorage {
 
                 player.swing(hand);
 
+                if (level.isClientSide())
+                    return InteractionResult.FAIL;
+
                 // If holding item -> try insert
                 if (!stack.isEmpty()) {
-                    if (!level.isClientSide()) {
-                        ItemStack remaining = storage.insertItem(stack);
-                        player.setItemInHand(hand, remaining);
-                    }
+
+                    if (canInsert(0, stack)) {
+                        var insered = storage.insert(0, stack);
+                        stack.shrink(insered);
+
+                    } else
+                        swap(0, stack);
+
+                    player.setItemInHand(hand, stack);
 
                     return InteractionResult.SUCCESS_SERVER;
                 } else {
                     // If empty hand -> extract one item
-                    ItemStack extracted = storage.extractItem();
-                    if (!extracted.isEmpty() && !level.isClientSide()) {
-                        
-                        ItemHandlerHelper.giveItemToPlayer(player, extracted);
+                    ItemStack extracted = storage.getStackInSlot(0);
+                    if (!extracted.isEmpty()) {
+                        player.setItemInHand(hand, stack);
                         return InteractionResult.CONSUME;
                     }
                 }
-                
 
                 // storage.setChanged();
             }
@@ -48,8 +52,8 @@ public interface NoGuiStorage {
         return InteractionResult.FAIL;
     }
 
-    abstract ItemStack extractItem();
+    // abstract ItemStack extractItem();
 
-    abstract ItemStack insertItem(ItemStack stack);
+    // abstract ItemStack insertItem(ItemStack stack);
 
 }

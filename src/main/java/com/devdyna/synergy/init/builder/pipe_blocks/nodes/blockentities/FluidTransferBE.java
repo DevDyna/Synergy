@@ -28,7 +28,7 @@ public class FluidTransferBE extends NodeBaseBE {
 
     @Override
     public BlockCapability<?, Direction> getCapType() {
-        return Capabilities.FluidHandler.BLOCK;
+        return Capabilities.Fluid.BLOCK;
     }
 
     @Override

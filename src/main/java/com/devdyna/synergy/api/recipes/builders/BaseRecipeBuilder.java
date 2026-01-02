@@ -2,20 +2,20 @@ package com.devdyna.synergy.api.recipes.builders;
 
 import java.util.Map;
 
+import com.devdyna.synergy.api.utils.x;
+
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.RegistryLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -36,7 +36,7 @@ public abstract class BaseRecipeBuilder implements RecipeBuilder {
 
     public static Criterion<?> unlock(Ingredient i) {
         return InventoryChangeTrigger.TriggerInstance
-                .hasItems(i.items().findFirst().get().value());
+                .hasItems(x.ingredientToItem(i));
     }
 
     protected Map<String, Criterion<?>> criteria;

@@ -8,7 +8,6 @@ import com.devdyna.synergy.api.plants.Harvestable;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 public class VanillaHarvestable {
     @SubscribeEvent
@@ -26,7 +25,7 @@ public class VanillaHarvestable {
         if (check == null)
             return; // no valid plants found
 
-        check.forEach(i -> ItemHandlerHelper.giveItemToPlayer(player, i));
+        check.forEach(i -> player.addItem(i));
 
     }
 }

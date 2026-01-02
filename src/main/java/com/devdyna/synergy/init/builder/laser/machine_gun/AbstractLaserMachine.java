@@ -14,8 +14,6 @@ import com.devdyna.synergy.init.types.zHandlers;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup.Provider;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
@@ -25,8 +23,10 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
-import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 
 @SuppressWarnings("null")
 public abstract class AbstractLaserMachine extends TickingBE implements EnergyBlock {
@@ -91,7 +91,7 @@ public abstract class AbstractLaserMachine extends TickingBE implements EnergyBl
         var facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
 
         if (state.getValue(BlockStateProperties.ENABLED) && canExtract()) {
-            extractFE(10, false);
+            extractFE(10);
 
             /**
              * dynamic pos
@@ -225,7 +225,7 @@ public abstract class AbstractLaserMachine extends TickingBE implements EnergyBl
     }
 
     @Override
-    public EnergyStorage getCapEnergy() {
+    public EnergyHandler getCapEnergy() {
         return getData(zHandlers.ENERGY_STORAGE);
     }
 
@@ -240,23 +240,22 @@ public abstract class AbstractLaserMachine extends TickingBE implements EnergyBl
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, Provider registries) {
-        tag.putInt("red", red);
-        tag.putInt("green", green);
-        tag.putInt("blue", blue);
-        super.saveAdditional(tag, registries);
+    protected void saveAdditional(ValueOutput output) {
+        output.putInt("red", red);
+        output.putInt("green", green);
+        output.putInt("blue", blue);
+        super.saveAdditional(output);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, Provider registries) {
-
-        if (tag.contains("red"))
-            red = tag.getInt("red");
-        if (tag.contains("green"))
-            green = tag.getInt("green");
-        if (tag.contains("blue"))
-            blue = tag.getInt("blue");
-        super.loadAdditional(tag, registries);
+    protected void loadAdditional(ValueInput input) {
+        if (input.getInt("red").isPresent())
+            red = input.getInt("red").get();
+        if (input.getInt("green").isPresent())
+            green = input.getInt("green").get();
+        if (input.getInt("blue").isPresent())
+            blue = input.getInt("blue").get();
+        super.loadAdditional(input);
     }
 
     public void setRed(int red) {

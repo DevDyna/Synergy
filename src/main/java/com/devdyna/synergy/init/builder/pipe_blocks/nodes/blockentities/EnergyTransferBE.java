@@ -28,7 +28,7 @@ public class EnergyTransferBE extends NodeBaseBE {
 
     @Override
     public BlockCapability<?, Direction> getCapType() {
-        return Capabilities.EnergyStorage.BLOCK;
+        return Capabilities.Energy.BLOCK;
     }
 
     @Override

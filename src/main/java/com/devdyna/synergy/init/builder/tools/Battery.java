@@ -1,6 +1,5 @@
 package com.devdyna.synergy.init.builder.tools;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 import com.devdyna.synergy.Main;
@@ -11,7 +10,6 @@ import com.devdyna.synergy.init.types.zComponents;
 import com.devdyna.synergy.init.types.zHandlers;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -21,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
 @SuppressWarnings("null")
 public class Battery extends Item {
@@ -42,8 +41,12 @@ public class Battery extends Item {
 
                 if (((EnergyBlock) be).canExtract()) {
                     var data = be.getData(zHandlers.ENERGY_STORAGE);
-                    c.getItemInHand().set(zComponents.FE_STORED,
-                            data.extractEnergy(Math.min(capacity, data.getEnergyStored()), false));
+                    try (var tx = Transaction.openRoot()) {
+                        c.getItemInHand().set(zComponents.FE_STORED,
+                                data.extract(Math.min(capacity, data.getAmountAsInt()), tx));
+                        tx.commit();
+                    }
+
                     c.getPlayer().swing(c.getHand());
                     c.getLevel().playSound(c.getPlayer(), c.getClickedPos(), SoundEvents.WOODEN_BUTTON_CLICK_OFF,
                             SoundSource.PLAYERS, 1F, 2F);
@@ -52,12 +55,17 @@ public class Battery extends Item {
             } else {
                 if (((EnergyBlock) be).canReceive()) {
                     var data = be.getData(zHandlers.ENERGY_STORAGE);
-                    if (data.getMaxEnergyStored() - data.getEnergyStored() != 0) {
-                        var item = c.getItemInHand().get(zComponents.FE_STORED).intValue();
-                        var extraction = Math.min(data.receiveEnergy(item, true), item);
-                        data.receiveEnergy(extraction, false);
+                    if (data.getCapacityAsInt() - data.getAmountAsInt() != 0) {
 
-                        c.getItemInHand().set(zComponents.FE_STORED, item - extraction);
+                        try (var tx = Transaction.openRoot()) {
+
+                            var item = c.getItemInHand().get(zComponents.FE_STORED).intValue();
+                            var extraction = Math.min(data.insert(item, tx), item);
+                            tx.commit();
+
+                            c.getItemInHand().set(zComponents.FE_STORED, item - extraction);
+                        }
+
                         c.getPlayer().swing(c.getHand());
                         c.getLevel().playSound(c.getPlayer(), c.getClickedPos(), SoundEvents.WOODEN_BUTTON_CLICK_ON,
                                 SoundSource.PLAYERS, 1F, 2F);

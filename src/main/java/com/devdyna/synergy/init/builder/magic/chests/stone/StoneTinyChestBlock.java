@@ -1,19 +1,12 @@
 package com.devdyna.synergy.init.builder.magic.chests.stone;
 
-import java.util.List;
 import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.Main;
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.builder.magic.chests.wooden.WoodenTinyChestBlock;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -25,13 +18,12 @@ public class StoneTinyChestBlock extends WoodenTinyChestBlock {
 
     public StoneTinyChestBlock(Properties p) {
         super(
-            Properties.of()
-            .strength(1.5F, 6.0F)
-            .sound(SoundType.STONE)
-            .mapColor(MapColor.STONE)
-            .requiresCorrectToolForDrops()
-            );
-            
+                Properties.of()
+                        .strength(1.5F, 6.0F)
+                        .sound(SoundType.STONE)
+                        .mapColor(MapColor.STONE)
+                        .requiresCorrectToolForDrops());
+
     }
 
     public StoneTinyChestBlock() {
@@ -48,7 +40,5 @@ public class StoneTinyChestBlock extends WoodenTinyChestBlock {
     protected Function<Properties, Block> getFactory() {
         return StoneTinyChestBlock::new;
     }
-
-  
 
 }

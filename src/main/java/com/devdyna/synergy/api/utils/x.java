@@ -224,4 +224,9 @@ public class x {
         return ResourceKey.create(Registries.RECIPE, rl);
     }
 
+    @SuppressWarnings("deprecation")
+    public static Item ingredientToItem(Ingredient i){
+        return i.items().findFirst().get().value();
+    }
+
 }

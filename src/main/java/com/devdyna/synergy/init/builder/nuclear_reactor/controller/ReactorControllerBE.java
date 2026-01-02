@@ -26,6 +26,7 @@ import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.storage.ValueInput;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 
@@ -232,10 +233,10 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
     }
 
     @Override
-    public void handleUpdateTag(CompoundTag tag, Provider lookupProvider) {
-        super.handleUpdateTag(tag, lookupProvider);
-        heat = tag.getDouble("heat").get();
-        fe = tag.getInt("fe").get();
+    public void handleUpdateTag(ValueInput input) {
+        super.handleUpdateTag(input);
+        heat = input.getDoubleOr("heat", heat);
+        fe = input.getInt("fe").get();
         rebuildArea();
     }
 

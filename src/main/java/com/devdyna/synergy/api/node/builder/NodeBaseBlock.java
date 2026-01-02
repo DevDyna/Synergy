@@ -1,23 +1,16 @@
 package com.devdyna.synergy.api.node.builder;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.Main;
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.BlockAbilities.tooltips.multi_simple.NodeType;
 import com.devdyna.synergy.api.node.nodeType;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -61,11 +54,11 @@ public abstract class NodeBaseBlock extends Block implements nodeType, EntityBlo
     }
 
     @Override
-    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
-            BlockPos neighborPos, boolean movedByPiston) {
-        level.setBlockAndUpdate(pos,
-                nodeType.updateNodeOnPlace(state, level, pos, state.getValue(nodeType.FACING).getOpposite()));
-        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+    public void onNeighborChange(BlockState state, LevelReader levelReader, BlockPos pos, BlockPos neighbor) {
+        super.onNeighborChange(state, levelReader, pos, neighbor);
+        if (levelReader instanceof Level level)
+            level.setBlockAndUpdate(pos,
+                    nodeType.updateNodeOnPlace(state, level, pos, state.getValue(nodeType.FACING).getOpposite()));
     }
 
     // @Override

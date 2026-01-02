@@ -1,26 +1,19 @@
 package com.devdyna.synergy.init.builder.laser.machine_gun;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.Main;
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.BlockAbilities.tooltips.simple.Rotable;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
 import com.devdyna.synergy.init.builder.laser.IBlockLaser;
 import com.devdyna.synergy.init.types.zItemTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;

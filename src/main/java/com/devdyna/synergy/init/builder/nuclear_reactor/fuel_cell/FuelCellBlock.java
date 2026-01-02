@@ -1,23 +1,16 @@
 package com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell;
 
-import java.util.List;
 import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.Main;
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.basebe.block.MachineBlock;
 import com.devdyna.synergy.api.utils.LevelUtil;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item.TooltipContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -54,11 +47,10 @@ public class FuelCellBlock extends MachineBlock {
     }
 
     @Override
-    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
-            BlockPos neighborPos, boolean movedByPiston) {
-
-        level.setBlockAndUpdate(pos,
-                state.setValue(CELLS, getCells(level, pos)));
+    public void onNeighborChange(BlockState state, LevelReader levelrReader, BlockPos pos, BlockPos neighbor) {
+        if (levelrReader instanceof Level level)
+            level.setBlockAndUpdate(pos,
+                    state.setValue(CELLS, getCells(level, pos)));
     }
 
     public int getCells(Level level, BlockPos pos) {
@@ -67,9 +59,9 @@ public class FuelCellBlock extends MachineBlock {
 
     // @Override
     // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-    //         TooltipFlag f) {
-    //     t.add(Component.translatable(Main.ID + "." +
-    //             zStatic.ReactorStuff.fuel_cell));
+    // TooltipFlag f) {
+    // t.add(Component.translatable(Main.ID + "." +
+    // zStatic.ReactorStuff.fuel_cell));
     // }
 
     @Override
@@ -81,10 +73,6 @@ public class FuelCellBlock extends MachineBlock {
     @Override
     protected Function<Properties, Block> getFactory() {
         return FuelCellBlock::new;
-    }
-
-    @Override
-    protected void onClickAction(BlockState state, Level level, BlockPos pos, Player player) {
     }
 
 }

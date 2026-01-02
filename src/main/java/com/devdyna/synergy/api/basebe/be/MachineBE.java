@@ -3,10 +3,10 @@ package com.devdyna.synergy.api.basebe.be;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup.Provider;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 @SuppressWarnings("null")
 public abstract class MachineBE extends BEStorage {
@@ -42,19 +42,18 @@ public abstract class MachineBE extends BEStorage {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, Provider registries) {
+    protected void saveAdditional(ValueOutput output) {
         if (this instanceof AreaOfEffect)
-            tag.putInt(RADIUS, radius);
-        super.saveAdditional(tag, registries);
+            output.putInt(RADIUS, radius);
+        super.saveAdditional(output);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, Provider registries) {
-
+    protected void loadAdditional(ValueInput input) {
         if (this instanceof AreaOfEffect)
-            if (tag.contains(RADIUS))
-                radius = tag.getInt(RADIUS);
-        super.loadAdditional(tag, registries);
+            if (input.getInt(RADIUS).isPresent())
+                radius = input.getInt(RADIUS).get();
+        super.loadAdditional(input);
     }
 
 }

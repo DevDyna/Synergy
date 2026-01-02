@@ -1,9 +1,6 @@
 package com.devdyna.synergy.init.builder.magic.void_box;
 
-import org.jspecify.annotations.Nullable;
-
 import com.devdyna.synergy.api.basebe.be.TickingBE;
-import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.types.zBlockEntities;
@@ -12,28 +9,25 @@ import com.devdyna.synergy.init.types.zItemTag;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.world.Containers;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
 @SuppressWarnings("null")
-public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlock {
-    private BlockCapabilityCache<ResourceHandler<ItemResource>,Direction> cache;
+public class VoidBoxBE extends TickingBE implements NoGuiStorage {
+    private BlockCapabilityCache<ResourceHandler<ItemResource>, Direction> cache;
 
     private float prevLidProgress;
     private float lidProgress;
@@ -49,14 +43,8 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
     }
 
     @Override
-    public ItemStackHandler getStorage() {
+    public ItemStacksResourceHandler getStorage() {
         return getData(zHandlers.ITEM_STORAGE);
-    }
-
-    public void drops() {
-        SimpleContainer inv = new SimpleContainer(getStorage().getSlots());
-        inv.setItem(0, getStorage().getStackInSlot(0));
-        Containers.dropContents(this.level, this.worldPosition, inv);
     }
 
     @Override
@@ -65,13 +53,13 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider pRegistries) {
-        super.saveAdditional(tag, pRegistries);
+    protected void saveAdditional(ValueOutput output) {
+        super.saveAdditional(output);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(tag, pRegistries);
+    protected void loadAdditional(ValueInput input) {
+        super.loadAdditional(input);
     }
 
     @Override
@@ -84,17 +72,6 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
                     getBlockPos(),
                     null);
         }
-    }
-
-    public ItemStack insertItem(ItemStack stack) {
-        return getStorage().insertItem(0, stack, false);
-    }
-
-    public ItemStack extractItem() {
-        ItemStack extracted = getStorage().extractItem(0, getStorage().getStackInSlot(0).getCount(), false);
-        if (!extracted.isEmpty())
-            return extracted;
-        return ItemStack.EMPTY;
     }
 
     @Override
@@ -119,7 +96,7 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
         if (slot == null)
             return;
 
-        var item = slot.getStackInSlot(0);
+        var item = slot.getResource(0);
 
         if (item.isEmpty())
             return;
@@ -127,7 +104,11 @@ public class VoidBoxBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
         if (item.is(zItemTag.VOID_BOX_DENY))
             return;
 
-        slot.extractItem(0, item.getCount(), false);
+        try (var tx = Transaction.openRoot()) {
+            slot.extract(item, item.toStack().getCount(), tx);
+            tx.commit();
+        }
+
     }
 
     @Override

@@ -9,20 +9,20 @@ import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
-import net.neoforged.neoforge.energy.EnergyStorage;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 
 @SuppressWarnings("null")
 public class LaserRotorBE extends TickingBE implements EnergyProvider {
 
-    private final Map<Direction, BlockCapabilityCache<IEnergyStorage, Direction>> cache = new HashMap<>();
+    private final Map<Direction, BlockCapabilityCache<EnergyHandler, Direction>> cache = new HashMap<>();
 
     private int[] blockpos;
 
@@ -37,11 +37,9 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
 
     private Direction newdir;
 
-    private CompoundTag laserData;
 
     public LaserRotorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-        laserData = new CompoundTag();
         blockpos = null;
         north = false;
         south = false;
@@ -59,7 +57,7 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
     }
 
     @Override
-    public EnergyStorage getCapEnergy() {
+    public EnergyHandler getCapEnergy() {
         return getData(zHandlers.ENERGY_STORAGE);
     }
 
@@ -98,7 +96,7 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
 
         if (north && south && east && west) {
             if (canReceive())
-                increaseFE(getFERate(), false);
+                increaseFE(getFERate());
 
             resetStat();
         }
@@ -126,52 +124,35 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
         west = false;
     }
 
+    protected static final String POS_LASER = "blockpos-laser";
+    protected static final String DIR_NORTH = "dir-north";
+    protected static final String DIR_SOUTH = "dir-south";
+    protected static final String DIR_EAST = "dir-east";
+    protected static final String DIR_WEST = "dir-west";
+
     @Override
-    protected void saveAdditional(CompoundTag tag, Provider registries) {
-        var laserData = new CompoundTag();
-        var directions = new CompoundTag();
-
-        directions.putBoolean("north", north);
-        directions.putBoolean("south", south);
-        directions.putBoolean("east", east);
-        directions.putBoolean("west", west);
-
-        if (blockpos != null)
-            laserData.putIntArray("blockpos", blockpos);
-        laserData.put("dir", directions);
-        tag.put("laserData", laserData);
-        super.saveAdditional(tag, registries);
+    protected void saveAdditional(ValueOutput output) {
+        output.putBoolean(DIR_NORTH, north);
+        output.putBoolean(DIR_SOUTH, south);
+        output.putBoolean(DIR_EAST, east);
+        output.putBoolean(DIR_WEST, west);
+        output.putIntArray(POS_LASER, blockpos);
+        super.saveAdditional(output);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, Provider registries) {
+    protected void loadAdditional(ValueInput input) {
+        north = input.getBooleanOr(DIR_NORTH, false);
+        south = input.getBooleanOr(DIR_SOUTH, false);
+        east = input.getBooleanOr(DIR_EAST, false);
+        west = input.getBooleanOr(DIR_WEST, false);
 
-        if (tag.contains("laserData")) {
-            laserData = tag.getCompound("laserData");
-            if (laserData.contains("dir")) {
-                var dir = laserData.getCompound("dir");
-
-                if (dir.contains("north"))
-                    north = dir.getBoolean("north");
-                if (dir.contains("south"))
-                    south = dir.getBoolean("south");
-                if (dir.contains("east"))
-                    east = dir.getBoolean("east");
-                if (dir.contains("west"))
-                    west = dir.getBoolean("west");
-
-            }
-
-            if (laserData.contains("blockpos")) {
-
-                var pos = laserData.getIntArray("blockpos");
-
-                blockpos = pos;
-            }
-
+        if (input.getIntArray(POS_LASER).isPresent()) {
+            var pos = input.getIntArray(POS_LASER).get();
+            blockpos = pos;
         }
 
-        super.loadAdditional(tag, registries);
+        super.loadAdditional(input);
     }
 
     public CompoundTag getData() {

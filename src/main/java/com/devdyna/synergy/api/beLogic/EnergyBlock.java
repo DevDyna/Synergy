@@ -16,7 +16,15 @@ public interface EnergyBlock {
      */
     EnergyHandler getCapEnergy();
 
+    /**
+     * use getMaxEnergy()
+     */
+    @Deprecated
     int MaxFE();
+
+    default int getMaxEnergy(){
+        return MaxFE();
+    }
 
     /**
      * Block -> Energy

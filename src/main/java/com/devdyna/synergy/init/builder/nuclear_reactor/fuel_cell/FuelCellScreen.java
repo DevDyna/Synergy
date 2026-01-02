@@ -7,7 +7,7 @@ import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 
 @SuppressWarnings("null")
@@ -28,12 +28,12 @@ public class FuelCellScreen extends BaseScreen<FuelCellMenu> {
     }
 
     @Override
-    protected ResourceLocation background() {
+    protected Identifier background() {
         return x.rl("textures/gui/container/fuel_cell.png");
     }
 
     @Override
-    protected @Nullable ResourceLocation arrow() {
+    protected @Nullable Identifier arrow() {
         return x.rl("textures/gui/green_progress_arrow.png");
     }
 

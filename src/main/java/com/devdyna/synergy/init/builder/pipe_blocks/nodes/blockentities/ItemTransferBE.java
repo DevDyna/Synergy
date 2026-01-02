@@ -28,7 +28,7 @@ public class ItemTransferBE extends NodeBaseBE {
 
     @Override
     public BlockCapability<?, Direction> getCapType() {
-        return Capabilities.ItemHandler.BLOCK;
+        return Capabilities.Item.BLOCK;
     }
 
     @Override

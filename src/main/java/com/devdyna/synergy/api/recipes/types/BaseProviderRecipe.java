@@ -35,7 +35,7 @@ public abstract class BaseProviderRecipe<T> extends BaseRecipeType<ProviderInput
     }
 
     public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.copyOf(List.of(x.ingredient(x.item(core))));
+        return NonNullList.copyOf(List.of(x.ingredient(core.getBlock())));
     }
 
     public BlockState getCore() {

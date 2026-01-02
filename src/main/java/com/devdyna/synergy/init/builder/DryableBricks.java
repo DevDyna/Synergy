@@ -30,7 +30,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 public class DryableBricks extends HorizontalDirectionalBlock implements NoItemForm {
 
@@ -143,17 +142,10 @@ public class DryableBricks extends HorizontalDirectionalBlock implements NoItemF
         if (!level.isClientSide() && state.getValue(DRIED)) {
             level.removeBlock(pos, false);
             Block.getDrops(state, (ServerLevel) level, pos, null)
-                    .forEach(i -> ItemHandlerHelper.giveItemToPlayer(player, i));
+                    .forEach(i -> player.addItem(i));
             return InteractionResult.SUCCESS;
         } else
             return super.useWithoutItem(state, level, pos, player, hitResult);
     }
-
-    // @Override
-    // public void appendHoverText(ItemStack stack, TooltipContext context,
-    // List<Component> tooltipComponents,
-    // TooltipFlag tooltipFlag) {
-    // tooltipComponents.add(Component.translatable(Main.ID + ".disabled"));
-    // }
 
 }

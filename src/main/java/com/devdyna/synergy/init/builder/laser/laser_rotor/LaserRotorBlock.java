@@ -1,21 +1,13 @@
 package com.devdyna.synergy.init.builder.laser.laser_rotor;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.Main;
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
 import com.devdyna.synergy.init.builder.laser.IBlockLaser;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item.TooltipContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -57,10 +49,10 @@ public class LaserRotorBlock extends TickingBlock implements IBlockLaser {
     protected InteractionResult useWithoutItem(
             BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
 
-        if (!level.isClientSide)
+        if (!level.isClientSide())
             rotate(pos, state, player.isShiftKeyDown(), level);
 
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.SUCCESS_SERVER;
     }
 
     public static void rotate(BlockPos pos, BlockState state, boolean inverse, Level level) {
@@ -88,12 +80,12 @@ public class LaserRotorBlock extends TickingBlock implements IBlockLaser {
         return getShape();
     }
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
-        t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.rotor));
-        t.add(Component.translatable(Main.ID + ".laser.rotate_by_click"));
+    // @Override
+    // public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
+    //         TooltipFlag f) {
+    //     t.add(Component.translatable(Main.ID + "." + zStatic.Lazers.rotor));
+    //     t.add(Component.translatable(Main.ID + ".laser.rotate_by_click"));
 
-    }
+    // }
 
 }

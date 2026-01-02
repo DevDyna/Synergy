@@ -1,21 +1,14 @@
 package com.devdyna.synergy.init.builder.nuclear_reactor.cooler;
 
-import java.util.List;
-
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.Main;
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.BlockAbilities.tooltips.complex.ICooler;
 
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -24,7 +17,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("null")
-public abstract class CoolerBlockBase extends Block implements ICooler{
+public abstract class CoolerBlockBase extends Block implements ICooler {
 
     public CoolerBlockBase() {
         super(Properties.of().strength(1.0f).destroyTime(1.0f).sound(SoundType.CHAIN).mapColor(MapColor.METAL));
@@ -43,9 +36,10 @@ public abstract class CoolerBlockBase extends Block implements ICooler{
     }
 
     @Override
-    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
-            BlockPos neighborPos, boolean movedByPiston) {
-        level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.ENABLED, activeWhen(state, level, pos)));
+    public void onNeighborChange(BlockState state, LevelReader levelrReader, BlockPos pos, BlockPos neighbor) {
+        super.onNeighborChange(state, levelrReader, pos, neighbor);
+        if (levelrReader instanceof Level level)
+            level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.ENABLED, activeWhen(state, level, pos)));
     }
 
     /**
@@ -73,7 +67,5 @@ public abstract class CoolerBlockBase extends Block implements ICooler{
     public boolean isActive(Level level, BlockPos pos) {
         return level.getBlockState(pos).getValue(BlockStateProperties.ENABLED);
     }
-
- 
 
 }

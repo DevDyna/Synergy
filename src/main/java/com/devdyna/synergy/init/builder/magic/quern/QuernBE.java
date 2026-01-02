@@ -3,7 +3,6 @@ package com.devdyna.synergy.init.builder.magic.quern;
 import java.util.Optional;
 
 import com.devdyna.synergy.api.basebe.be.TickingBE;
-import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
@@ -14,27 +13,25 @@ import com.devdyna.synergy.init.types.zRecipeTypes;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 
 @SuppressWarnings("null")
-public class QuernBE extends TickingBE implements ItemStorageBlock , NoGuiStorage{
+public class QuernBE extends TickingBE implements NoGuiStorage {
 
-    private BlockCapabilityCache<IItemHandler, Direction> cache;
+    private BlockCapabilityCache<ResourceHandler<ItemResource>, Direction> cache;
 
     private float rotation = 0f; // client & server rotation
     private float speed = 0f; // server authoritative speed
@@ -54,7 +51,7 @@ public class QuernBE extends TickingBE implements ItemStorageBlock , NoGuiStorag
     }
 
     @Override
-    public ItemStackHandler getStorage() {
+    public ItemStacksResourceHandler getStorage() {
         return getData(zHandlers.ITEM_STORAGE);
     }
 
@@ -63,44 +60,35 @@ public class QuernBE extends TickingBE implements ItemStorageBlock , NoGuiStorag
         return 1;
     }
 
-    public void drops() {
-        SimpleContainer inv = new SimpleContainer(getStorage().getSlots());
-        inv.setItem(0, getStorage().getStackInSlot(0));
-        Containers.dropContents(this.level, this.worldPosition, inv);
-    }
+  @Override
+  protected void saveAdditional(ValueOutput output) {
+      super.saveAdditional(output);
+  }
 
-    @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider pRegistries) {
-        super.saveAdditional(tag, pRegistries);
-    }
-
-    @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(tag, pRegistries);
-    }
+  @Override
+  protected void loadAdditional(ValueInput input) {
+      super.loadAdditional(input);
+  }
 
     @Override
     public void onLoad() {
         super.onLoad();
         if (this.level instanceof ServerLevel serverLevel) {
             this.cache = BlockCapabilityCache.create(
-                    Capabilities.ItemHandler.BLOCK,
+                    Capabilities.Item.BLOCK,
                     serverLevel,
                     getBlockPos(),
                     null);
         }
     }
 
-    public ItemStack insertItem(ItemStack stack) {
-        return getStorage().insertItem(0, stack, false);
-    }
+    // public ItemStack insertItem(ItemStack stack) {
+    //     return getStorage().insert(ItemResource.of(stack.getItem()), 0);
+    // }
 
-    public ItemStack extractItem() {
-        ItemStack extracted = getStorage().extractItem(0, getStorage().getStackInSlot(0).getCount(), false);
-        if (!extracted.isEmpty())
-            return extracted;
-        return ItemStack.EMPTY;
-    }
+    // public ItemStack extractItem() {
+        
+    // }
 
     public float getRotation(float partialTicks) {
         return rotation + speed * partialTicks;
@@ -123,11 +111,11 @@ public class QuernBE extends TickingBE implements ItemStorageBlock , NoGuiStorag
         if (slot == null)
             return;
 
-        var item = slot.getStackInSlot(0);
+        var item = getStackInSlot(0);
 
         if (!item.isEmpty()) {
 
-            Optional<RecipeHolder<QuernMillingRecipe>> recipe = level.getRecipeManager()
+            Optional<RecipeHolder<QuernMillingRecipe>> recipe = level.getServer().getRecipeManager()
                     .getRecipeFor(zRecipeTypes.QUERN_MILLING.getType(),
                             new MonoItemInput(item), level);
 
@@ -148,7 +136,7 @@ public class QuernBE extends TickingBE implements ItemStorageBlock , NoGuiStorag
                     if (minDelay >= recipe.get().value().getTime() && minDelay % recipe.get().value().getTime() == 0) {
                         var output = recipe.get().value().getOutput();
                         LevelUtil.popItemFromPos(level, getBlockPos(), output.copy());
-                        slot.extractItem(0, 1, false);
+                        extract(0,1);
                         level.playSound(null, getBlockPos(),
                                 SoundEvents.ITEM_FRAME_REMOVE_ITEM,
                                 SoundSource.BLOCKS, 0.5F * (LevelUtil.chance(50, level) ? 1f : 0.75f), 1);
