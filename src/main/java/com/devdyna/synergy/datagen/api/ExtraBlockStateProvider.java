@@ -124,6 +124,11 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                 modLoc("block/" + loc)));
         }
 
+        protected void cutOut(DeferredHolder<Block, Block> b, String loc) {
+                simpleBlock(b.get(), models().cubeAll(b.getRegisteredName(),
+                                modLoc("block/" + loc)).renderType(DataGenUtil.CUTOUT));
+        }
+
         protected void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
                 simpleBlock(b.get(), models().withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
                                 .texture("top", "block/machine/nuclear/cooler/casing")
