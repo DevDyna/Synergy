@@ -149,6 +149,7 @@ public class zStatic {
 
         public static String coal_mixture = "coal_mixture";
 
+        //TODO
         public static String ember_coal_mixture = "coal_mixture";
 
         public static String flour = "flour";
@@ -407,6 +408,13 @@ public class zStatic {
         public static String SHIFT = "shift";
         public static String SAFE_BUILD = "safe_building";
         public static String INGREDIENT = "crafting_ingredient";
+    }
+
+    public class Config {
+        public static String FE_CAPACITY = "FE Capacity";
+        public static String FE_COST = "FE consumed every tick";
+        public static String FE_GEN = "FE production every tick";
+
     }
 
 }
