@@ -3,7 +3,7 @@
 
 ## ISSUES
 
-- [ ] Fuel cell output can conflict with input
+- [x] Fuel cell output can conflict with input
 
 - [ ] quickMoveStack (i hate you!)
 
