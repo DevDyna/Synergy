@@ -1157,6 +1157,42 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .chance(0.75f)
                                 .unlockedBy().save(c);
 
+                QuernMillingBuilder.of().input(Items.BONE)
+                                .output(Items.BONE_MEAL, 4)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(Items.BONE)
+                                .output(Items.BONE_MEAL, 5)
+                                .secondary(Items.BONE_MEAL,2)
+                                .chance(0.75f)
+                                .unlockedBy().save(c);
+
+                QuernMillingBuilder.of().input(ItemTags.WOOL)
+                                .output(Items.STRING, 4)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(ItemTags.WOOL)
+                                .output(Items.STRING, 4)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(zItems.COTTON.get())
+                                .output(Items.STRING, 5)
+                                .secondary(Items.STRING,2)
+                                .chance(0.75f)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(Tags.Items.SANDSTONE_UNCOLORED_BLOCKS)
+                                .output(Items.SAND, 4)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(Tags.Items.SANDSTONE_RED_BLOCKS)
+                                .output(Items.RED_SAND, 4)
+                                .unlockedBy().save(c);
+
+                MaceratorRecipeBuilder.of().input(Items.BREEZE_ROD)
+                                .output(Items.WIND_CHARGE, 6)
+                                .unlockedBy().save(c);
+
                 MaceratorRecipeBuilder.of().input(Items.IRON_HORSE_ARMOR)
                                 .output(zItems.IRON_DUST, 5)
                                 .unlockedBy().save(c, "_from_horse_armor");
