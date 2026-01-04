@@ -5,6 +5,7 @@ import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.FuelCellRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
+import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -30,7 +31,7 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
         super(helper);
         // change timespan based on duration
         this.arrow = helper.drawableBuilder(x.rl(
-                        "textures/gui/green_progress_arrow.png"), 0, 0, 24, 16)
+                "textures/gui/green_progress_arrow.png"), 0, 0, 24, 16)
                 .setTextureSize(24, 16).buildAnimated(200,
                         IDrawableAnimated.StartDirection.LEFT, false);
     }
@@ -69,16 +70,9 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
     @Override
     public void draw(FuelCellRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
             double mouseY) {
-                super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
         guiGraphics.drawString(font,
-                (recipe.getDuration() == 1 ? "no tick delay"
-                        : (recipe.getDuration() >= 20 ? (recipe.getDuration() >= 1200 ? (recipe.getDuration() >= 72000
-                                ? recipe.getDuration() / 72000 + " hour" + (recipe.getDuration() > 72000 ? "s" : "")
-                                : recipe.getDuration() / 1200 + " minute" + (recipe.getDuration() > 1200 ? "s" : "")
-
-                        )
-                                : recipe.getDuration() / 20 + " second" + (recipe.getDuration() > 20 ? "s" : ""))
-                                : recipe.getDuration() + " tick" + (recipe.getDuration() > 1 ? "s" : ""))),
+                FuelCellBE.getTimeValue(recipe.getDuration()),
                 27, 4, 0xA0A0A0);
 
         guiGraphics.drawString(font, "Heat " + (recipe.getHeat() >= 0 ? "+" : "") + recipe.getHeat() + "°/t",
