@@ -25,8 +25,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 @SuppressWarnings("null")
 public class FuelCellBE extends MachineBE {
 
-    private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
+    protected static final int INPUT_SLOT = 0;
+    protected static final int OUTPUT_SLOT = 1;
     public static final String PROGRESS = "progress";
     public static final String RECIPE_INPUT = "recipe_input";
     private int progress = 0;
@@ -212,4 +212,9 @@ public class FuelCellBE extends MachineBE {
     public List<Integer> getOutputSlotIndex() {
         return List.of(OUTPUT_SLOT);
     }
+
+    public ItemStack getInputStack() {
+        return inputStack;
+    }
+
 }
