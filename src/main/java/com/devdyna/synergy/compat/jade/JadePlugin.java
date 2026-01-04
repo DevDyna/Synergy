@@ -6,6 +6,7 @@ import com.devdyna.synergy.api.node.builder.NodeBaseBlock;
 import com.devdyna.synergy.compat.jade.provider.AOEMachines;
 import com.devdyna.synergy.compat.jade.provider.CoolerProvider;
 import com.devdyna.synergy.compat.jade.provider.EnergyTipProviders;
+import com.devdyna.synergy.compat.jade.provider.FuelCellProgress;
 import com.devdyna.synergy.compat.jade.provider.LaserMachineGunProvider;
 import com.devdyna.synergy.compat.jade.provider.LaserRotorProvider;
 import com.devdyna.synergy.compat.jade.provider.MachineProgress;
@@ -16,6 +17,7 @@ import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.cooler.CoolerBlockBase;
+import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.moderator.ModeratorBase;
 
 import snownee.jade.api.IWailaClientRegistration;
@@ -27,28 +29,30 @@ import snownee.jade.api.WailaPlugin;
 public class JadePlugin implements IWailaPlugin {
 
     @Override
-    public void registerClient(IWailaClientRegistration registration) {
-        registration.registerBlockComponent(LaserMachineGunProvider.INSTANCE, LaserMachineBlock.class);
-        registration.registerBlockComponent(LaserRotorProvider.INSTANCE, LaserRotorBlock.class);
-        registration.registerBlockComponent(MachineProgress.INSTANCE, BaseMachineBlock.class);
-        registration.registerBlockComponent(ReactorControllerProvider.INSTANCE, ReactorControllerBlock.class);
-        registration.registerBlockComponent(AOEMachines.INSTANCE, TickingBlock.class);
-        registration.registerBlockComponent(NodeProvider.INSTANCE, NodeBaseBlock.class);
-        registration.registerBlockComponent(EnergyTipProviders.INSTANCE, TickingBlock.class);
-        registration.registerBlockComponent(CoolerProvider.INSTANCE, CoolerBlockBase.class);
-        registration.registerBlockComponent(ModeratorProvider.INSTANCE, ModeratorBase.class);
+    public void registerClient(IWailaClientRegistration r) {
+        r.registerBlockComponent(LaserMachineGunProvider.INSTANCE, LaserMachineBlock.class);
+        r.registerBlockComponent(LaserRotorProvider.INSTANCE, LaserRotorBlock.class);
+        r.registerBlockComponent(MachineProgress.INSTANCE, BaseMachineBlock.class);
+        r.registerBlockComponent(ReactorControllerProvider.INSTANCE, ReactorControllerBlock.class);
+        r.registerBlockComponent(AOEMachines.INSTANCE, TickingBlock.class);
+        r.registerBlockComponent(NodeProvider.INSTANCE, NodeBaseBlock.class);
+        r.registerBlockComponent(EnergyTipProviders.INSTANCE, TickingBlock.class);
+        r.registerBlockComponent(CoolerProvider.INSTANCE, CoolerBlockBase.class);
+        r.registerBlockComponent(ModeratorProvider.INSTANCE, ModeratorBase.class);
+        r.registerBlockComponent(FuelCellProgress.INSTANCE, FuelCellBlock.class);
     }
 
     @Override
-    public void register(IWailaCommonRegistration registration) {
-        registration.registerBlockDataProvider(LaserMachineGunProvider.INSTANCE, LaserMachineBlock.class);
-        registration.registerBlockDataProvider(LaserRotorProvider.INSTANCE, LaserRotorBlock.class);
-        registration.registerBlockDataProvider(MachineProgress.INSTANCE, BaseMachineBlock.class);
-        registration.registerBlockDataProvider(ReactorControllerProvider.INSTANCE, ReactorControllerBlock.class);
-        registration.registerBlockDataProvider(AOEMachines.INSTANCE, TickingBlock.class);
-        registration.registerBlockDataProvider(NodeProvider.INSTANCE, NodeBaseBlock.class);
-        registration.registerBlockDataProvider(EnergyTipProviders.INSTANCE, TickingBlock.class);
-        registration.registerBlockDataProvider(CoolerProvider.INSTANCE, CoolerBlockBase.class);
-        registration.registerBlockDataProvider(ModeratorProvider.INSTANCE, ModeratorBase.class);
+    public void register(IWailaCommonRegistration r) {
+        r.registerBlockDataProvider(LaserMachineGunProvider.INSTANCE, LaserMachineBlock.class);
+        r.registerBlockDataProvider(LaserRotorProvider.INSTANCE, LaserRotorBlock.class);
+        r.registerBlockDataProvider(MachineProgress.INSTANCE, BaseMachineBlock.class);
+        r.registerBlockDataProvider(ReactorControllerProvider.INSTANCE, ReactorControllerBlock.class);
+        r.registerBlockDataProvider(AOEMachines.INSTANCE, TickingBlock.class);
+        r.registerBlockDataProvider(NodeProvider.INSTANCE, NodeBaseBlock.class);
+        r.registerBlockDataProvider(EnergyTipProviders.INSTANCE, TickingBlock.class);
+        r.registerBlockDataProvider(CoolerProvider.INSTANCE, CoolerBlockBase.class);
+        r.registerBlockDataProvider(ModeratorProvider.INSTANCE, ModeratorBase.class);
+        r.registerBlockDataProvider(FuelCellProgress.INSTANCE, FuelCellBlock.class);
     }
 }
