@@ -8,6 +8,7 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
@@ -27,11 +28,14 @@ public enum FuelCellProgress
     // remove default item capability tooltip
 
     Data data = decodeFromData(accessor).orElse(null);
-    if (data == null)
+    if (data == null || data.inv == null)
       return;
 
     // render only when has content
-    if (!(data.inv.get(0).isEmpty() && data.inv.get(1).isEmpty()) || data.progress != 0) {
+    if (!((data.inv.get(0).isEmpty() || data.inv.get(0) == null)
+        && (data.inv.get(1).isEmpty() || data.inv.get(1) == null)) || data.progress != 0) {
+
+      tooltip.add(Component.literal(FuelCellBE.getTimeValue(data.total - data.progress) + " left"));
 
       IElementHelper helper = IElementHelper.get();
 
@@ -52,12 +56,12 @@ public enum FuelCellProgress
     FuelCellBE fuelCellBE = (FuelCellBE) accessor.getBlockEntity();
 
     List<ItemStack> slots = new ArrayList<>();
-    slots.add(fuelCellBE.getInputStack());
+
     try {
+      slots.add(fuelCellBE.getInputStack());
       slots.add(fuelCellBE.getRecipe().get().value().getOutput());
     } catch (Exception e) {
-      slots.add(ItemStack.EMPTY);
-      // maybe it could cause some issues with custom recipes so i want be safe
+      slots = List.of(ItemStack.EMPTY, ItemStack.EMPTY);
     }
 
     return new Data(
