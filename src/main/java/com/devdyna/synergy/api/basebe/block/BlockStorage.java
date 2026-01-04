@@ -57,6 +57,8 @@ public abstract class BlockStorage extends BlockMenu {
     /**
      * Event to allow to set animations or events when menu was opened
      */
-    protected abstract void onClickAction(BlockState state, Level level, BlockPos pos, Player player);
+    protected void onClickAction(BlockState state, Level level, BlockPos pos, Player player){
+        
+    }
 
 }

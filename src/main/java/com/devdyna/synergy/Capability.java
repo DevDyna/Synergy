@@ -1,5 +1,6 @@
 package com.devdyna.synergy;
 
+import com.devdyna.synergy.api.basebe.be.MachineBE;
 import com.devdyna.synergy.api.beLogic.*;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.utils.ClazzUtil;
@@ -31,7 +32,15 @@ public class Capability {
 
                 event.registerBlock(Capabilities.ItemHandler.BLOCK,
                                 (level, pos, state, be,
-                                                side) -> (be != null ? be.getData(zHandlers.ITEM_STORAGE) : null),
+                                                side) -> {
+
+                                        if (be instanceof MachineBE machineBE)
+                                                return machineBE.getAutomatioHandler();
+
+                                        return (be != null)
+                                                        ? be.getData(zHandlers.ITEM_STORAGE)
+                                                        : null;
+                                },
                                 zBlocks.REACTOR_FUEL_CELL.get(),
                                 zBlocks.URN.get(),
                                 zBlocks.WOODEN_TINY_CHEST.get(),

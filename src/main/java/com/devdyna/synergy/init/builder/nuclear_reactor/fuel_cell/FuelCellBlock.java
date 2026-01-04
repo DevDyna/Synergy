@@ -12,7 +12,6 @@ import com.devdyna.synergy.api.utils.LevelUtil;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -81,10 +80,6 @@ public class FuelCellBlock extends MachineBlock {
     @Override
     protected Function<Properties, Block> getFactory() {
         return FuelCellBlock::new;
-    }
-
-    @Override
-    protected void onClickAction(BlockState state, Level level, BlockPos pos, Player player) {
     }
 
 }

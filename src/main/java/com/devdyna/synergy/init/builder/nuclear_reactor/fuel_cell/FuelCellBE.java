@@ -1,5 +1,6 @@
 package com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.Nullable;
@@ -200,5 +201,15 @@ public class FuelCellBE extends MachineBE {
         progress = tag.getInt(PROGRESS);
         inputStack = ItemStack.parseOptional(pRegistries, tag.getCompound(RECIPE_INPUT));
 
+    }
+
+    @Override
+    public List<Integer> getInputSlotIndex() {
+        return List.of(INPUT_SLOT);
+    }
+
+    @Override
+    public List<Integer> getOutputSlotIndex() {
+        return List.of(OUTPUT_SLOT);
     }
 }

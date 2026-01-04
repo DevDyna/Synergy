@@ -1,13 +1,17 @@
 package com.devdyna.synergy.api.basebe.be;
 
-import com.devdyna.synergy.api.beLogic.AreaOfEffect;
+import java.util.List;
 
+import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.items.IItemHandler;
 
+@SuppressWarnings("null")
 public abstract class MachineBE extends BEStorage {
 
     public final static String RADIUS = "aoe";
@@ -54,6 +58,50 @@ public abstract class MachineBE extends BEStorage {
             if (tag.contains(RADIUS))
                 radius = tag.getInt(RADIUS);
         super.loadAdditional(tag, registries);
+    }
+
+    public abstract List<Integer> getInputSlotIndex();
+
+    public abstract List<Integer> getOutputSlotIndex();
+
+    public IItemHandler getAutomatioHandler() {
+        return new IItemHandler() {
+
+            @Override
+            public int getSlots() {
+                return getStorage().getSlots();
+            }
+
+            @Override
+            public ItemStack getStackInSlot(int slot) {
+                return getStorage().getStackInSlot(slot);
+            }
+
+            @Override
+            public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+                if (getInputSlotIndex().contains(slot))
+                    return getStorage().insertItem(slot, stack, simulate);
+                return stack;
+            }
+
+            @Override
+            public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                if (getOutputSlotIndex().contains(slot))
+                    return getStorage().extractItem(slot, amount, simulate);
+                return ItemStack.EMPTY;
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                return getStorage().getSlotLimit(slot);
+            }
+
+            @Override
+            public boolean isItemValid(int slot, ItemStack stack) {
+                return getInputSlotIndex().contains(slot);
+            }
+
+        };
     }
 
 }
