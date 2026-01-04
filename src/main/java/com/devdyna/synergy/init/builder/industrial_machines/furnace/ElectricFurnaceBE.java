@@ -146,7 +146,7 @@ public class ElectricFurnaceBE extends BaseMachineBE implements UpgradeSlots{
     private void processVanillaType(SmeltingRecipe recipe) {
         ItemStack output = recipe.getResultItem(level.registryAccess()).copy();
 
-        this.maxProgress = calculateMaxProgress(DEFAULT_TICK_DURATION);
+        this.maxProgress = calculateMaxProgress(recipe.getCookingTime());
 
         if (!(checkSlot(getOutput(), output))) {
             resetProgress();
