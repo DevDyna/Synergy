@@ -1163,7 +1163,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 MaceratorRecipeBuilder.of().input(Items.BONE)
                                 .output(Items.BONE_MEAL, 5)
-                                .secondary(Items.BONE_MEAL,2)
+                                .secondary(Items.BONE_MEAL, 2)
                                 .chance(0.75f)
                                 .unlockedBy().save(c);
 
@@ -1173,17 +1173,17 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 MaceratorRecipeBuilder.of().input(ItemTags.WOOL)
                                 .output(Items.STRING, 4)
-                                .unlockedBy().save(c);
+                                .unlockedBy().save(c, "_from_wool");
 
                 MaceratorRecipeBuilder.of().input(zItems.COTTON.get())
                                 .output(Items.STRING, 5)
-                                .secondary(Items.STRING,2)
+                                .secondary(Items.STRING, 2)
                                 .chance(0.75f)
-                                .unlockedBy().save(c);
+                                .unlockedBy().save(c, "_from_cotton");
 
                 MaceratorRecipeBuilder.of().input(Tags.Items.SANDSTONE_UNCOLORED_BLOCKS)
                                 .output(Items.SAND, 4)
-                                .unlockedBy().save(c);
+                                .unlockedBy().save(c, "_from_sandstone");
 
                 MaceratorRecipeBuilder.of().input(Tags.Items.SANDSTONE_RED_BLOCKS)
                                 .output(Items.RED_SAND, 4)
