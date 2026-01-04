@@ -37,9 +37,7 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
     public HarvesterBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.HARVESTER.get(), pos, state);
         var random = new Random();
-
         var color = ColorUtil.colorfulColorList.get(random.nextInt(ColorUtil.colorfulColorList.size()));
-
         rgbColor = List.of(color.getRed(), color.getGreen(), color.getBlue());
     }
 
@@ -65,7 +63,6 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
         if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
             checkBlocks(level);
             extractFE(25, false);
-
         }
 
     }

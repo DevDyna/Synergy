@@ -14,8 +14,8 @@ import com.devdyna.synergy.common.recipes.builders.DryableBricksBuilder;
 import com.devdyna.synergy.common.recipes.builders.QuernMillingBuilder;
 import com.devdyna.synergy.common.recipes.builders.ReactorCellBuilder;
 import com.devdyna.synergy.common.recipes.builders.UrnRitualBuilder;
-import com.devdyna.synergy.init.machine.compressor.recipe.CompressorRecipeBuilder;
-import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup.Provider;

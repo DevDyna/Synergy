@@ -16,7 +16,7 @@ import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
 import com.devdyna.synergy.api.recipes.builders.SimpleInputItem;
 import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.init.machine.macerator.recipe.MaceratorRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
