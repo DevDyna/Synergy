@@ -3,11 +3,11 @@
 
 ## ISSUES
 
-- [x] Fuel cell output can conflict with input
-
 - [ ] quickMoveStack (i hate you!)
 
 - [ ] Nodes bypass WorldyContainers restrictions
+
+- [ ] Fuel Cells dont sync with client
 
 ## COMPATS AND TWEAKS
 
