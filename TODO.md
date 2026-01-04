@@ -27,14 +27,11 @@
 
 - [ ] All Recipe Types compat with GuideMe (?)
 
-- [x] horse armor on macerator
-
 - [ ] gear recycle
 
 - [ ] sulfur usage
 
-- [x] macerator sugar
-
+- [ ] urn jei category rework to dynamic handling
 
 ## NEWS
 
