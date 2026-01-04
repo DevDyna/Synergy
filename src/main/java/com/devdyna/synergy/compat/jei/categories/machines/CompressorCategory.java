@@ -3,6 +3,7 @@ package com.devdyna.synergy.compat.jei.categories.machines;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.api.MachineType;
+import com.devdyna.synergy.api.utils.Image;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.core.BaseMachineRecipeCategory;
@@ -68,6 +69,12 @@ public class CompressorCategory extends BaseMachineRecipeCategory<CompressorReci
                         recipe.getTime() + " ticks"),
                 25, 2,
                 defaultToolTipColor.getRGB(), false);
+
+        Image.of()
+                .rl(x.rl("textures/gui/sprite/compressor_arrow.png"))
+                .size(16, 9)
+                .offset(2, 23)
+                .render(helper, guiGraphics);
 
     }
 
