@@ -1,0 +1,11 @@
+{
+  "type": "synergy:quern",
+  "frequence": 60,
+  "ingredient": {
+    "tag": "minecraft:wool"
+  },
+  "result": {
+    "count": 4,
+    "id": "minecraft:string"
+  }
+}

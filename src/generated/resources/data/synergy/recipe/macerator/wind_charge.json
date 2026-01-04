@@ -1,0 +1,13 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 10,
+  "input": {
+    "item": "minecraft:breeze_rod"
+  },
+  "output": {
+    "count": 6,
+    "id": "minecraft:wind_charge"
+  },
+  "ticks": 60
+}

@@ -1,0 +1,13 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 10,
+  "input": {
+    "tag": "minecraft:wool"
+  },
+  "output": {
+    "count": 4,
+    "id": "minecraft:string"
+  },
+  "ticks": 60
+}

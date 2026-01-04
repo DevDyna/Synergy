@@ -1,0 +1,13 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 10,
+  "input": {
+    "tag": "c:sandstone/red_blocks"
+  },
+  "output": {
+    "count": 4,
+    "id": "minecraft:red_sand"
+  },
+  "ticks": 60
+}
