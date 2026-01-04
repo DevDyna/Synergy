@@ -104,6 +104,7 @@
   "config.jade.plugin_synergy.aoe": "AreaOfEffect Machines Info",
   "config.jade.plugin_synergy.cooler": "Cooler Provider Info",
   "config.jade.plugin_synergy.fegen": "Energy Provider Info",
+  "config.jade.plugin_synergy.fuel_cell": "Fuel Cell Recipe Provider Info",
   "config.jade.plugin_synergy.laser_machine_gun": "Laser Machine Gun Color",
   "config.jade.plugin_synergy.laser_rotor": "Laser Rotor Info",
   "config.jade.plugin_synergy.machines": "Industrial Machines Info",
