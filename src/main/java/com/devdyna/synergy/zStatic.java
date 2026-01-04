@@ -147,15 +147,6 @@ public class zStatic {
             public static String nugget = steel + "_nugget";
         }
 
-        public static String coal_mixture = "coal_mixture";
-
-        //TODO
-        public static String ember_coal_mixture = "coal_mixture";
-
-        public static String flour = "flour";
-        public static String void_crystal = "void_crystal";
-        public static String magic_dust = "magic_dust";
-
     }
 
     public class DecorativeBlocks {

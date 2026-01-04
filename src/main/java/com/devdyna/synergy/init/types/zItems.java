@@ -489,13 +489,13 @@ public class zItems {
                         .resourceItem(zStatic.DryableBricks.brick.blast);
 
         public static final DeferredHolder<Item, Item> FLOUR = Material
-                        .resourceItem(zStatic.Items.flour);
+                        .resourceItem("flour");
 
         public static final DeferredHolder<Item, Item> MAGIC_DUST = Material
-                        .resourceItem(zStatic.Items.magic_dust);
+                        .resourceItem("magic_dust");
 
         public static final DeferredHolder<Item, Item> VOID_CRYSTAL = Material
-                        .resourceItem(zStatic.Items.void_crystal);
+                        .resourceItem("void_crystal");
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,
