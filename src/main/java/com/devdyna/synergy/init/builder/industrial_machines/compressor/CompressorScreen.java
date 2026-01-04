@@ -28,17 +28,18 @@ public class CompressorScreen extends BaseMachineScreen<CompressorMenu> {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-        super.render(guiGraphics, pMouseX, pMouseY, pPartialTick);
+    protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
 
         if (whenAnimateArrow())
             guiGraphics.blit(
                     x.rl("textures/gui/sprite/compressor_arrow.png"),
                     getGuiLeft() + 47,
                     getGuiTop() + 36,
-                    0, 0,
+                    1,0, 0,
+                    16, 9,
                     16, 9);
 
+        super.renderBg(guiGraphics, v, i, i1);
     }
 
     @Override
