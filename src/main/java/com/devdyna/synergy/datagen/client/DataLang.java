@@ -291,6 +291,7 @@ public class DataLang extends LanguageProvider {
                 add("config.jade.plugin_" + ID + ".fegen", "Energy Provider Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.moderator, "Moderator Provider Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.cooler, "Cooler Provider Info");
+                add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.fuel_cell, "Fuel Cell Recipe Provider Info");
 
                 add(Main.ID + ".color", "Color: %d");
 
