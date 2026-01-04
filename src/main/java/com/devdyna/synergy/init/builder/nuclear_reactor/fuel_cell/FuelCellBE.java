@@ -60,8 +60,9 @@ public class FuelCellBE extends MachineBE {
 
             @Override
             public int getCount() {
-                return MachineSlots();
+                return 2;
             }
+
         };
     }
 
@@ -94,24 +95,20 @@ public class FuelCellBE extends MachineBE {
     }
 
     public void saveItemInput() {
-        // LogUtil.info("fired");
         var item = getStorage().getStackInSlot(INPUT_SLOT).copy();
         var nbt = saveWithFullMetadata(level.registryAccess());
-        // var storedItem = ItemStack.parseOptional(this.level.registryAccess(),
-        // nbt.getCompound(RECIPE_INPUT));
+        setChanged();
         if (!item.isEmpty() && !nbt.contains(RECIPE_INPUT)) {
             var recipe = level.getRecipeManager()
                     .getRecipeFor(zRecipeTypes.FUEL_CELL_RECIPE.getType(),
                             new MonoItemInput(item), level);
 
-            // LogUtil.info("isempty " + recipe.isEmpty());
-
             if (!recipe.isEmpty() && canInsert(OUTPUT_SLOT, recipe.get().value().getOutput())) {
                 item.setCount(1);
                 nbt.put(RECIPE_INPUT, item.save(level.registryAccess()));
                 loadWithComponents(nbt, level.registryAccess());
-                setChanged(level, getBlockPos(), getBlockState());
                 getStorage().extractItem(INPUT_SLOT, 1, false);
+                setChanged();
             }
         }
 
