@@ -19,6 +19,7 @@ public class Image {
 
     private int u = 0;
     private int v = 0;
+    private int index = 0;
 
     public Image() {
 
@@ -48,6 +49,11 @@ public class Image {
     public Image offset(int xo, int yo) {
         this.xo = xo;
         this.yo = yo;
+        return this;
+    }
+
+    public Image index(int i){
+        this.index = i;
         return this;
     }
 
@@ -85,7 +91,7 @@ public class Image {
                 com.devdyna.synergy.api.utils.x.rl(modid, rl),
                 xo - 1,
                 yo - 1,
-                u, v,
+                index,u, v,
                 x, y,
                 tx, ty);
 
