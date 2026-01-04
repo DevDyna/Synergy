@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.builder.nuclear_reactor.cooler;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.moderator.ModeratorBase;
 
@@ -25,7 +26,12 @@ public class WaterCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return -60;
+        return Common.WATER_COOLER_ACTIVE_COOLING.get();
+    }
+
+    @Override
+    public int getBaseCooling() {
+        return Common.WATER_COOLER_BASE_COOLING.get();
     }
 
     @Override

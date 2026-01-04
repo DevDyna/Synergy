@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import net.minecraft.core.BlockPos;
@@ -30,7 +31,7 @@ public class SolarPanelBE extends TickingBE implements EnergyProvider {
     public void tickServer() {
 
         level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED,
-                canReceive() && level.isDay() && checkSky() && !level.hasNeighborSignal(getBlockPos())));
+                canReceive() && checkDay() && checkSky() && !level.hasNeighborSignal(getBlockPos())));
 
         if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
             increaseFE(getFERate(), false);
@@ -43,7 +44,11 @@ public class SolarPanelBE extends TickingBE implements EnergyProvider {
 
     public boolean checkSky() {
         return level.canSeeSkyFromBelowWater(getBlockPos().above())
-                && level.getBlockState(getBlockPos().above()).isAir();
+                && level.getBlockState(getBlockPos().above()).isAir() && !Common.SOLAR_PANEL_DISABLE_CHECK_SEE_SKY.get();
+    }
+
+    public boolean checkDay() {
+        return level.isDay() && !Common.SOLAR_PANEL_DISABLE_DAYTIME.get();
     }
 
     @Override
@@ -58,12 +63,12 @@ public class SolarPanelBE extends TickingBE implements EnergyProvider {
 
     @Override
     public int MaxFE() {
-        return 10000;
+        return Common.SOLAR_PANEL_MAX_FE.get();
     }
 
     @Override
     public int getFERate() {
-        return 16;
+        return Common.SOLAR_PANEL_FE_GEN.get();
     }
 
 }

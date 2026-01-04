@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.builder.nuclear_reactor.cooler;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
 
@@ -29,7 +30,12 @@ public class ShadowCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return -320;
+        return Common.SHADOW_COOLER_ACTIVE_COOLING.get();
+    }
+
+    @Override
+    public int getBaseCooling() {
+        return Common.SHADOW_COOLER_BASE_COOLING.get();
     }
 
     @Override

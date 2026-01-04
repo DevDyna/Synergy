@@ -2,6 +2,7 @@ package com.devdyna.synergy.api.machine;
 
 import java.util.List;
 
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zItemTag;
 
 import net.minecraft.tags.TagKey;
@@ -37,7 +38,7 @@ public interface UpgradeSlots {
 
 
     public default int getUpgradeInstalled(TagKey<Item> filter) {
-        return getUpgradeInstalled(filter,4);
+        return getUpgradeInstalled(filter,MAX_UPGRADE_SLOTS);
     }
 
     public default int getUpgradeInstalled(TagKey<Item> filter,int max) {
@@ -55,7 +56,7 @@ public interface UpgradeSlots {
 
     // TODO config min-max limit
     public default int calculateMaxProgress(int base) {
-        var upgrades = getUpgradeInstalled(zItemTag.UPGRADE_SPEED,2);//TODO config
+        var upgrades = getUpgradeInstalled(zItemTag.UPGRADE_SPEED,Common.MACHINE_MAX_SPEED_UPGRADES.get());
         return (base - ((int) (base * (upgrades * 0.35))));// speed -> +35% max 2
     }
 

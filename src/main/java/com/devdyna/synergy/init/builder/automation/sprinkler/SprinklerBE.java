@@ -4,6 +4,7 @@ import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.SimpleAOE;
 import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 
@@ -59,7 +60,7 @@ public class SprinklerBE extends TickingBE implements EnergyBlock, SimpleAOE {
                                     cropBlock.performBonemeal((ServerLevel) level, level.random, pos, state);
                             } else
                                 state.randomTick((ServerLevel) level, pos, level.random);
-                            extractFE(25, false);
+                            extractFE(Common.SPRINKLER_FE_COST.get(), false);
                         }
                     });
         }
@@ -78,7 +79,7 @@ public class SprinklerBE extends TickingBE implements EnergyBlock, SimpleAOE {
 
     @Override
     public int MaxFE() {
-        return 10000;
+        return Common.SPRINKLER_MAX_FE.get();
     }
 
     @Override

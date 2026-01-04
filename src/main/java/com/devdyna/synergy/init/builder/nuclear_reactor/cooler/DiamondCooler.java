@@ -2,6 +2,8 @@ package com.devdyna.synergy.init.builder.nuclear_reactor.cooler;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.config.Common;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -28,7 +30,12 @@ public class DiamondCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return -150;
+        return Common.DIAMOND_COOLER_ACTIVE_COOLING.get();
+    }
+
+    @Override
+    public int getBaseCooling() {
+        return Common.DIAMOND_COOLER_BASE_COOLING.get();
     }
 
     @Override

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import net.minecraft.core.BlockPos;
@@ -64,7 +65,7 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
 
     @Override
     public int MaxFE() {
-        return 1_000_000;
+        return Common.LASER_ROTOR_MAX_FE.get();
     }
 
     @Override
@@ -192,7 +193,7 @@ public class LaserRotorBE extends TickingBE implements EnergyProvider {
 
     @Override
     public int getFERate() {
-        return 10_000;
+        return Common.LASER_ROTOR_FE_GEN.get();
     }
 
 }

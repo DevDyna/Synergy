@@ -11,6 +11,7 @@ import com.devdyna.synergy.api.utils.BiBool;
 import com.devdyna.synergy.api.utils.ColorUtil;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.api.utils.Range;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 
@@ -46,7 +47,7 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
     boolean soundToggle = false;
     List<Integer> rgbColor;
 
-    int delay = 5;
+    int delay = Common.HARVESTER_TICK_DELAY.get();
 
     @Override
     public void tickServer() {
@@ -62,7 +63,7 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
 
         if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
             checkBlocks(level);
-            extractFE(25, false);
+            extractFE(Common.HARVESTER_FE_COST.get(), false);
         }
 
     }
@@ -87,6 +88,9 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
     public List<ItemStack> getAPICrops(Level level, BlockPos pos) {
         var state = level.getBlockState(pos);
         var block = state.getBlock();
+        
+        if(Common.HARVESTER_DISABLE_CHECK_API.get()) return null;
+
         if (block instanceof PlantHandler plant)
             return plant.execute(level, pos);
         return null;
@@ -141,12 +145,12 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
 
     @Override
     public boolean dropWhenFail() {
-        return true;
+        return !Common.HARVESTER_DISABLE_DROP_WHEN_FULL.get();
     }
 
     @Override
     public int MaxFE() {
-        return 10000;
+        return Common.HARVESTER_MAX_FE.get();
     }
 
     @Override

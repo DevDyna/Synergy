@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.laser.LaserMirrorBlock;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBE;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
@@ -33,9 +34,9 @@ public abstract class AbstractLaserMachine extends TickingBE implements EnergyBl
 
     public boolean fused;
 
-    public int red = 255;
-    public int green = 0;
-    public int blue = 0;
+    public int red = Common.LASER_MACHINE_GUN_COLOR_RED.get();
+    public int green = Common.LASER_MACHINE_GUN_COLOR_GREEN.get();
+    public int blue = Common.LASER_MACHINE_GUN_COLOR_BLUE.get();
 
     /**
      * dead decay stage -1 (lasermachine)
@@ -91,7 +92,7 @@ public abstract class AbstractLaserMachine extends TickingBE implements EnergyBl
         var facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
 
         if (state.getValue(BlockStateProperties.ENABLED) && canExtract()) {
-            extractFE(10, false);
+            extractFE(Common.LASER_MACHINE_GUN_FE_COST.get(), false);
 
             /**
              * dynamic pos
@@ -231,7 +232,7 @@ public abstract class AbstractLaserMachine extends TickingBE implements EnergyBl
 
     @Override
     public int MaxFE() {
-        return 10000;
+        return Common.LASER_MACHINE_GUN_MAX_FE.get();
     }
 
     public void setFused() {

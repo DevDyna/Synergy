@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.config.Common;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
@@ -81,8 +82,9 @@ public class DryableBricks extends HorizontalDirectionalBlock {
                                 && getConditions(level, pos)));
 
         if (state.getValue(WET)) {
-            if (state.getValue(DRY_STAGE) != 0)
-                level.setBlockAndUpdate(pos, state.setValue(DRY_STAGE, state.getValue(DRY_STAGE) - 1));
+            if (!Common.DISABLE_DRYABLE_BRICKS_DECREASE_STAGE_WHEN_WET.get())
+                if (state.getValue(DRY_STAGE) != 0)
+                    level.setBlockAndUpdate(pos, state.setValue(DRY_STAGE, state.getValue(DRY_STAGE) - 1));
         } else {
             if (LevelUtil.chance(25, level) && state.getValue(DRY_STAGE) != 5)
                 level.setBlockAndUpdate(pos, state.setValue(DRY_STAGE, state.getValue(DRY_STAGE) + 1));

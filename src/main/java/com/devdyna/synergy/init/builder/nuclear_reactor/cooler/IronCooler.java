@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.builder.nuclear_reactor.cooler;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.config.Common;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,7 +25,12 @@ public class IronCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return -80;
+        return Common.IRON_COOLER_ACTIVE_COOLING.get();
+    }
+
+    @Override
+    public int getBaseCooling() {
+        return Common.IRON_COOLER_BASE_COOLING.get();
     }
 
     @Override

@@ -9,6 +9,7 @@ import java.util.Set;
 
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.api.utils.LogUtil;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockTag;
 
 import net.minecraft.core.BlockPos;
@@ -34,7 +35,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class VanillaPlants {
 
-    static int treeHarvestingBlockLimit = 2048;
+    static int treeHarvestingBlockLimit = Common.HARVESTER_TREE_CUTTING_LIMIT.get();
 
     public static List<List<Integer>> getTreeDirections() {
         ArrayList<List<Integer>> coordinates = new ArrayList<>();
@@ -63,7 +64,11 @@ public class VanillaPlants {
 
     public static List<ItemStack> checkReplant(Level level, BlockPos pos) {
 
-        if(level.isClientSide()) return null;
+        if (level.isClientSide())
+            return null;
+
+        if (Common.HARVESTER_DISABLE_CHECK_REPLANT.get())
+            return null;
 
         var state = level.getBlockState(pos);
         var block = state.getBlock();
@@ -140,12 +145,13 @@ public class VanillaPlants {
 
     }
 
-
-
-
     public static List<ItemStack> checkNoReplant(Level level, BlockPos pos) {
         var state = level.getBlockState(pos);
         var block = state.getBlock();
+
+        if (Common.HARVESTER_DISABLE_CHECK_NOREPLANT.get())
+            return null;
+
         if (block instanceof PumpkinBlock || state.is(Blocks.MELON)) {
             level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
             return Block.getDrops(state, (ServerLevel) level, pos, null);
@@ -155,6 +161,9 @@ public class VanillaPlants {
 
     public static List<ItemStack> checkTree(Level level, BlockPos pos) {
         var state = level.getBlockState(pos);
+
+        if (Common.HARVESTER_DISABLE_CHECK_TREE.get())
+            return null;
 
         boolean canProcede = false;
 
@@ -207,6 +216,9 @@ public class VanillaPlants {
     }
 
     public static List<ItemStack> checkBigPlant(Level level, BlockPos pos) {
+
+        if (Common.HARVESTER_DISABLE_CHECK_BIGPLANT.get())
+            return null;
 
         var state = level.getBlockState(pos);
         var block = state.getBlock();

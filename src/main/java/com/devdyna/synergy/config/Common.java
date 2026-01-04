@@ -41,8 +41,10 @@ public class Common {
     // ic4
     public static IntValue MACHINE_MAX_FE;// 10k
 
+    // Not Yet Used
     public static IntValue MACHINE_MAX_ENERGY_UPGRADES;// 4
     public static IntValue MACHINE_MAX_SPEED_UPGRADES;// 2
+
     public static BooleanValue DISABLE_MACHINE_FURNACE_PROCESS_VANILLA;// false
     public static IntValue MACHINE_FURNACE_PROCESS_VANILLA_FE_COST;// DEFAULT
 
@@ -110,10 +112,6 @@ public class Common {
     // redrock
 
     // toolz
-
-    public static IntValue GREEN_BATTERY_CAPACITY;// 1k
-    public static IntValue BLUE_BATTERY_CAPACITY;// 10k
-    public static IntValue RED_BATTERY_CAPACITY;// 100k
 
     public static BooleanValue DISABLE_PLANT_MIXTURE_ON_NETHER_WART;// false
     public static BooleanValue DISABLE_PLANT_MIXTURE_ON_SUGAR_CANES;// false
@@ -362,14 +360,6 @@ public class Common {
     private static void tools() {
         qCOMMON.comment("Tools").push("9-tools");
 
-        decor.simple("Batteries");
-        GREEN_BATTERY_CAPACITY = number("Green " + zStatic.Config.FE_CAPACITY,
-                "battery_green_fe_max", 1_000);
-        BLUE_BATTERY_CAPACITY = number("Blue " + zStatic.Config.FE_CAPACITY,
-                "battery_blue_fe_max", 10_000);
-        RED_BATTERY_CAPACITY = number("Red " + zStatic.Config.FE_CAPACITY,
-                "battery_red_fe_max", 100_000);
-
         decor.simple("Plant Mixtures");
 
         DISABLE_PLANT_MIXTURE_ON_NETHER_WART = bool("Disable plant mixture effect on nether warts",
@@ -426,11 +416,11 @@ public class Common {
     private static void other() {
         qCOMMON.comment("Other").push("13-other");
 
-         DISABLE_ENDER_EYE_RETURN_EVENT= bool("Disable End Portal Frame interaction to remove Eye of Ender",
+        DISABLE_ENDER_EYE_RETURN_EVENT = bool("Disable End Portal Frame interaction to remove Eye of Ender",
                 "ender_eye_return");
-         DISABLE_REMOVE_BABY_GROW_EVENT= bool("Disable Forever Young effect",
+        DISABLE_REMOVE_BABY_GROW_EVENT = bool("Disable Forever Young effect",
                 "git_commit_forever_young");
-         DISABLE_READD_BABY_GROW_EVENT= bool("Disable the reverse of Forever Young effect",
+        DISABLE_READD_BABY_GROW_EVENT = bool("Disable the reverse of Forever Young effect",
                 "git_revert_forever_young");
 
         qCOMMON.pop();

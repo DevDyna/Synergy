@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.builder.nuclear_reactor.cooler;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
 
 import net.minecraft.core.BlockPos;
@@ -24,7 +25,12 @@ public class RedstoneCooler extends CoolerBlockBase {
 
     @Override
     public int getActiveCooling() {
-        return -90;
+        return Common.REDSTONE_COOLER_ACTIVE_COOLING.get();
+    }
+
+    @Override
+    public int getBaseCooling() {
+        return Common.REDSTONE_COOLER_BASE_COOLING.get();
     }
 
     @Override

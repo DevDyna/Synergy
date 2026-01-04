@@ -1,6 +1,7 @@
 package com.devdyna.synergy.common.events;
 
 import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zEntityTag;
 import com.devdyna.synergy.init.types.zItemTag;
 
@@ -21,6 +22,8 @@ public class EntityInteractionEvent {
         var target = event.getTarget();
         var level = event.getLevel();
         var pos = event.getPos();
+
+        if(Common.DISABLE_REMOVE_BABY_GROW_EVENT.get()) return;
 
         if (item.is(zItemTag.REMOVE_ENTITY_GROWING) && target instanceof AgeableMob mob && mob.isBaby()
                 && !target.getType().is(zEntityTag.DONT_LIKE_JAY_Z)) {
@@ -44,6 +47,8 @@ public class EntityInteractionEvent {
         var target = event.getTarget();
         var level = event.getLevel();
         var pos = event.getPos();
+
+        if(Common.DISABLE_READD_BABY_GROW_EVENT.get()) return;
 
         if (item.is(zItemTag.ADD_ENTITY_GROWING) && target instanceof AgeableMob mob && mob.isBaby()
                 && mob.getAge() < -100_000) {

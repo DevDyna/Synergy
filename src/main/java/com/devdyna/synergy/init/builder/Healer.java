@@ -5,6 +5,7 @@ import java.util.List;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.config.Common;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -30,11 +31,11 @@ public class Healer extends Block {
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
 
         if (entity instanceof LivingEntity livingEntity) {
-            if (livingEntity.getMaxHealth() > livingEntity.getHealth() && entity.isAlive()) {
+            if (livingEntity.getMaxHealth() > livingEntity.getHealth() && entity.isAlive() && !Common.DISABLE_HEALER_HEAL_HP.get()) {
                 livingEntity.heal(1);
                 if (!level.isClientSide)
                     LevelUtil.addParticle(ParticleTypes.HEART, (ServerLevel) level, pos.above(), true, 3);
-                if (entity.isOnFire())
+                if (entity.isOnFire() && !Common.DISABLE_HEALER_REMOVE_FIRE.get())
                     entity.clearFire();
             }
         }

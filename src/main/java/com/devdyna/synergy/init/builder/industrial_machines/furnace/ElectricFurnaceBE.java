@@ -7,6 +7,7 @@ import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.UpgradeSlots;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 
@@ -142,8 +143,10 @@ public class ElectricFurnaceBE extends BaseMachineBE implements UpgradeSlots{
         setChanged();
     }
 
-    // TODO config
     private void processVanillaType(SmeltingRecipe recipe) {
+
+        if(Common.DISABLE_MACHINE_FURNACE_PROCESS_VANILLA.get()) return;
+
         ItemStack output = recipe.getResultItem(level.registryAccess()).copy();
 
         this.maxProgress = calculateMaxProgress(recipe.getCookingTime());
@@ -158,7 +161,7 @@ public class ElectricFurnaceBE extends BaseMachineBE implements UpgradeSlots{
         else
             this.progress++;
 
-        if (checkAndConsumeFE(calculateFEUsage(DEFAULT_FE_COST))) {
+        if (checkAndConsumeFE(calculateFEUsage(Common.MACHINE_FURNACE_PROCESS_VANILLA_FE_COST.get()))) {
             if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
                 update(true);
         } else {

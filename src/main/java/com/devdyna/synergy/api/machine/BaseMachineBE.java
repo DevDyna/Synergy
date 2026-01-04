@@ -5,6 +5,7 @@ import java.util.List;
 import com.devdyna.synergy.api.basebe.be.BEMenu;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
+import com.devdyna.synergy.config.Common;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -167,7 +168,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     @Override
     public int MaxFE() {
-        return 10_000;// TODO config
+        return Common.MACHINE_MAX_FE.get();
     }
 
     @Override

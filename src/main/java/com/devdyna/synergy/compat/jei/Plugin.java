@@ -13,6 +13,7 @@ import com.devdyna.synergy.compat.jei.categories.machines.AlloySmelterCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.CompressorCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.ElectricFurnaceCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorScreen;
@@ -160,18 +161,20 @@ public class Plugin implements IModPlugin {
                                 recipes.getAllRecipesFor(zMachines.ELECTRIC_FURNACE.recipe().getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
-                r.addRecipes(ElectricFurnaceCategory.TYPE,
-                                recipes.getAllRecipesFor(RecipeType.SMELTING).stream()
-                                                .map(RecipeHolder::value)
-                                                .map(s -> (ElectricFurnaceRecipeType) ElectricFurnaceRecipeBuilder
-                                                                .of()
-                                                                .delay(60)
-                                                                .energy(10)
-                                                                .input(s.getIngredients().getFirst())
-                                                                .output(s.getResultItem(ServerLifecycleHooks
-                                                                                .getCurrentServer().registryAccess()))
-                                                                .createRecipe())
-                                                .toList());
+                if (!Common.DISABLE_MACHINE_FURNACE_PROCESS_VANILLA.get())
+                        r.addRecipes(ElectricFurnaceCategory.TYPE,
+                                        recipes.getAllRecipesFor(RecipeType.SMELTING).stream()
+                                                        .map(RecipeHolder::value)
+                                                        .map(s -> (ElectricFurnaceRecipeType) ElectricFurnaceRecipeBuilder
+                                                                        .of()
+                                                                        .delay(60)
+                                                                        .energy(10)
+                                                                        .input(s.getIngredients().getFirst())
+                                                                        .output(s.getResultItem(ServerLifecycleHooks
+                                                                                        .getCurrentServer()
+                                                                                        .registryAccess()))
+                                                                        .createRecipe())
+                                                        .toList());
 
                 r.addRecipes(VoidBoxInfusionCategory.TYPE,
                                 recipes.getAllRecipesFor(zRecipeTypes.VOID_BOX_INFUSION.getType()).stream()

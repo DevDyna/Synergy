@@ -1,6 +1,8 @@
 package com.devdyna.synergy.common.events;
 
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.config.Common;
+
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -15,7 +17,8 @@ public class EnderEyeReturn {
         var player = event.getEntity();
         var state = level.getBlockState(pos);
 
-        if (state.is(Blocks.END_PORTAL_FRAME) && state.getValue(EndPortalFrameBlock.HAS_EYE)) {
+        if (state.is(Blocks.END_PORTAL_FRAME) && state.getValue(EndPortalFrameBlock.HAS_EYE)
+                && !Common.DISABLE_ENDER_EYE_RETURN_EVENT.get()) {
             ItemHandlerHelper.giveItemToPlayer(player, x.item(Items.ENDER_EYE));
             level.setBlockAndUpdate(pos, state.setValue(EndPortalFrameBlock.HAS_EYE, false));
         }

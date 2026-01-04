@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
 
 import net.minecraft.core.BlockPos;
@@ -24,7 +25,7 @@ public class LaserSensorBE extends TickingBE {
         this(zBlockEntities.LASER_SENSOR.get(), p, s);
     }
 
-    public int MAX_TIMER_COOLDOWN = 5;
+    public int MAX_TIMER_COOLDOWN = Common.LASER_SENSOR_TICK_DELAY.get();
 
     private int tick = 0;
 

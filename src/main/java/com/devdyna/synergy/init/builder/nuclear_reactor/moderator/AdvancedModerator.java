@@ -1,15 +1,17 @@
 package com.devdyna.synergy.init.builder.nuclear_reactor.moderator;
 
+import com.devdyna.synergy.config.Common;
+
 public class AdvancedModerator extends ModeratorBase {
 
     @Override
     public float FEReducer() {
-        return 1.65F;
+        return Common.ADVANCED_MODERATOR_FE_REDUCER.get().floatValue();
     }
 
     @Override
     public float HeatReducer() {
-        return 2.0F;
+        return Common.ADVANCED_MODERATOR_HEAT_REDUCER.get().floatValue();
     }
 
 }

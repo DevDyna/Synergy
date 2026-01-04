@@ -7,6 +7,7 @@ import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
 import com.devdyna.synergy.api.utils.*;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.nuclear_reactor.cooler.CoolerBlockBase;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
@@ -199,7 +200,7 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
 
     @Override
     public int MaxFE() {
-        return 1_000_000;
+        return Common.REACTOR_CONTROLLER_MAX_FE.get();
     }
 
     @Override
