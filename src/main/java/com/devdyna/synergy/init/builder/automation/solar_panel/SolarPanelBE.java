@@ -38,7 +38,7 @@ public class SolarPanelBE extends TickingBE implements EnergyProvider {
         }
 
         if (canExtract()) {
-            providePowerAdjacent(level, getBlockPos(), cache, 64);
+            providePowerAdjacent(level, getBlockPos(), cache, getStoredFE());
         }
     }
 
