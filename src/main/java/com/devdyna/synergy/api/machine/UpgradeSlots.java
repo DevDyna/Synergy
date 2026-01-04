@@ -16,12 +16,13 @@ public interface UpgradeSlots {
     public static final int SLOT_UPGRADE_3 = 5;
     public static final int SLOT_UPGRADE_4 = 6;
 
+    public static final int MAX_UPGRADE_SLOTS = 4;
+
     abstract ItemStackHandler getStorage();
 
     public default List<Integer> getUpgradeIndexs() {
-    int slots = getStorage().getSlots();
     return List.of(SLOT_UPGRADE_1, SLOT_UPGRADE_2, SLOT_UPGRADE_3, SLOT_UPGRADE_4).stream()
-        .filter(i -> i < slots)
+        .filter(i -> i < getStorage().getSlots())
         .toList();
 }
 
