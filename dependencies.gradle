@@ -1,0 +1,37 @@
+repositories {
+
+    //required for jei
+        maven {
+        url = "https://maven.blamejared.com"
+    }
+
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+}
+
+
+dependencies {
+
+    //jei
+    compileOnly "mezz.jei:jei-${jei_minecraft}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${jei_minecraft}-neoforge-api:${jei_version}"
+    localRuntime "mezz.jei:jei-${jei_minecraft}-neoforge:${jei_version}"
+
+    //guideme
+    implementation "curse.maven:guideme-1173950:7127444"
+
+    //compat
+    implementation "curse.maven:meka-268560:7017663"
+    implementation "curse.maven:patchouli-306770:6842247"
+    implementation "curse.maven:jade-324717:6853386"
+
+    //jei integration
+    compileOnly "mezz.jei:jei-1.21.1-common-api:19.18.10.218"
+    compileOnly "mezz.jei:jei-1.21.1-neoforge-api:19.18.10.218"
+    runtimeOnly "mezz.jei:jei-1.21.1-neoforge:19.18.10.218"
+
+}
