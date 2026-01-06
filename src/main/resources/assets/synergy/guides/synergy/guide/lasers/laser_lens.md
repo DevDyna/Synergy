@@ -12,7 +12,7 @@ item_ids:
 
 # Laser Lens
 
-A new block that allow to repeat the lenght of any laser track
+Repeat the lenght of any laser track
 
 <BlockImage id="synergy:laser_lens" scale="4.0"/>
 
