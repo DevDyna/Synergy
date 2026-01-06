@@ -22,30 +22,27 @@ public interface UpgradeSlots {
     abstract ItemStackHandler getStorage();
 
     public default List<Integer> getUpgradeIndexs() {
-    return List.of(SLOT_UPGRADE_1, SLOT_UPGRADE_2, SLOT_UPGRADE_3, SLOT_UPGRADE_4).stream()
-        .filter(i -> i < getStorage().getSlots())
-        .toList();
-}
-
+        return List.of(SLOT_UPGRADE_1, SLOT_UPGRADE_2, SLOT_UPGRADE_3, SLOT_UPGRADE_4).stream()
+                .filter(i -> i < getStorage().getSlots())
+                .toList();
+    }
 
     public default List<ItemStack> getUpgradeInstalled() {
-    ItemStackHandler handler = getStorage();
-    return getUpgradeIndexs().stream()
-        .filter(i -> i >= 0 && i < handler.getSlots())
-        .map(handler::getStackInSlot)
-        .toList();
-}
-
+        ItemStackHandler handler = getStorage();
+        return getUpgradeIndexs().stream()
+                .filter(i -> i >= 0 && i < handler.getSlots())
+                .map(handler::getStackInSlot)
+                .toList();
+    }
 
     public default int getUpgradeInstalled(TagKey<Item> filter) {
-        return getUpgradeInstalled(filter,MAX_UPGRADE_SLOTS);
+        return getUpgradeInstalled(filter, MAX_UPGRADE_SLOTS);
     }
 
-    public default int getUpgradeInstalled(TagKey<Item> filter,int max) {
-        return Math.min(max,(int) getUpgradeInstalled().stream().filter(i -> i.is(filter)).count());
+    public default int getUpgradeInstalled(TagKey<Item> filter, int max) {
+        return Math.min(max, (int) getUpgradeInstalled().stream().filter(i -> i.is(filter)).count());
     }
 
-    // TODO config min-max limit
     public default int calculateFEUsage(int base) {
         var energy = getUpgradeInstalled(zItemTag.UPGRADE_ENERGY);
         var speed = getUpgradeInstalled(zItemTag.UPGRADE_SPEED);
@@ -54,9 +51,8 @@ public interface UpgradeSlots {
                 + ((int) (base * speed));
     }
 
-    // TODO config min-max limit
     public default int calculateMaxProgress(int base) {
-        var upgrades = getUpgradeInstalled(zItemTag.UPGRADE_SPEED,Common.MACHINE_MAX_SPEED_UPGRADES.get());
+        var upgrades = getUpgradeInstalled(zItemTag.UPGRADE_SPEED, Common.MACHINE_MAX_SPEED_UPGRADES.get());
         return (base - ((int) (base * (upgrades * 0.35))));// speed -> +35% max 2
     }
 
