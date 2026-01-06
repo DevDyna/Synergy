@@ -26,16 +26,23 @@ public class VoidBoxRender<T extends VoidBoxBE> implements BlockEntityRenderer<T
     public void render(T be, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource,
             int packedLight, int packedOverlay) {
 
+        var condition = be.getAnimationProgress() > 0.1;
+
         renderChest(be, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
+        
+        if (condition) {
+            timer++;
 
-        timer++;
-
-        if (timer > 360)
-            timer = 0;
+            if (timer > 360)
+                timer = 0;
+        }
 
         SimpleItemRender.of()
-                .whenOn(be.getAnimationProgress() > 0.1)
-                .move(0.5, 0.5 * be.getAnimationProgress(), 0.5)
+                .whenOn(condition)
+                .move(0.5,
+                        0.5 * be.getAnimationProgress()
+                                + (0.15 * (1 - Math.cos(Math.PI * Math.abs(timer - 180) / 180.0)) / 2),
+                        0.5)
                 .rotateYP(timer)
                 .scale(0.75F, 0.75F, 0.75F)
                 .item(zItems.VOID_CRYSTAL)
