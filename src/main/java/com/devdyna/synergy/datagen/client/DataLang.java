@@ -70,8 +70,8 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Items.configurator + ".dim",
                                 TIP_COLOR + "Dimension : ");
 
-                add(Main.ID + "." + zStatic.Items.refactorizer,
-                                TIP_COLOR + "Force update blockstates of any #synergy:can_connect");
+                // add(Main.ID + "." + zStatic.Items.refactorizer,
+                                // TIP_COLOR + "Force update blockstates of any #synergy:can_connect");
                 add(Main.ID + "." + zStatic.Items.smasher, TIP_COLOR + "Quick break any #synergy:mashable");
                 add(Main.ID + "." + zStatic.Items.wooden_crook, TIP_COLOR + "Increase the chance to obtain saplings");
 

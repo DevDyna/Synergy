@@ -115,8 +115,7 @@ public class zStatic {
 
         public static String cake_stick = "cake_stick";
 
-        // TODO need to rework
-        public static String refactorizer = "pipe_refactorizer";
+        // public static String refactorizer = "pipe_refactorizer";
 
         public class Batteries {
             public static String TYPE_BATTERY = "_battery";

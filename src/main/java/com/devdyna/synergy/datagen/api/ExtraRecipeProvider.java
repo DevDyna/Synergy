@@ -788,14 +788,14 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(zItems.GOLD_FOIL.get()))
                                 .group(zStatic.Items.soldering_gun).save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.PIPE_REFARCTORIZER.get())
-                                .pattern(" I")
-                                .pattern("S ")
-                                .define('S', Items.STICK)
-                                .define('I', Items.IRON_NUGGET)
-                                .unlockedBy(ID,
-                                                has(Items.IRON_INGOT))
-                                .group(zStatic.Items.refactorizer).save(c);
+                // ShapedRecipeBuilder.shaped(MISC, zItems.PIPE_REFARCTORIZER.get())
+                //                 .pattern(" I")
+                //                 .pattern("S ")
+                //                 .define('S', Items.STICK)
+                //                 .define('I', Items.IRON_NUGGET)
+                //                 .unlockedBy(ID,
+                //                                 has(Items.IRON_INGOT))
+                //                 .group(zStatic.Items.refactorizer).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.CONFIGURATOR.get())
                                 .pattern("N N")
