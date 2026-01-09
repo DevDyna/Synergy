@@ -1,6 +1,5 @@
 # TODO
 
-
 ## ISSUES
 
 - [ ] quickMoveStack (i hate you!)
@@ -17,11 +16,13 @@
 
 - [ ] GuideMe quantum reactor GameScene
 
-- [ ] GuideMe laser stuff
+- [x] GuideMe laser stuff
 
-- [ ] GuideMe machinery
+- [x] GuideMe machinery
 
 - [ ] rework any machine with AreaOfEffect and soldering gun to simplify
+
+- [ ] rework slot index industrial machines
 
 - [ ] Laser Infusion RecipeType
 
@@ -33,11 +34,17 @@
 
 - [ ] urn jei category rework to dynamic handling
 
+- [ ] jade drying time
+
 ## NEWS
 
 ### Survival expansion
 
 - [ ] brick oven
+
+- [ ] Sun drying items (item render)
+
+- [ ] salt leather
 
 ### Automation
 
