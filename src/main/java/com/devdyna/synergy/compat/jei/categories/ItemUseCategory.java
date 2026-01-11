@@ -121,7 +121,7 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
     public void getTooltip(ITooltipBuilder tooltip, ItemUseRecipe recipe, IRecipeSlotsView recipeSlotsView,
             double mouseX, double mouseY) {
 
-        if (recipe.canBeDisabled() && Pos.of(77, 3).setSize(10, 10).test(mouseX, mouseY))
+        if (recipe.isRenderOnly() && Pos.of(77, 3).setSize(10, 10).test(mouseX, mouseY))
             tooltip.add(Component.translatable(Main.ID + ".jei.warning.render_only"));
 
     }
