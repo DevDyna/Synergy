@@ -4,6 +4,7 @@ import java.util.*;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.node.FluidNodeType;
 import com.devdyna.synergy.api.node.ItemNodeType;
 import com.devdyna.synergy.api.node.nodeType;
@@ -35,8 +36,8 @@ public abstract class NodeBaseBE extends BlockEntity {
     private BlockPos output;
     private Object inCap;
     private Object outCap;
-    private BlockEntity inBE;
-    private BlockEntity outBE;
+    // private BlockEntity inBE;
+    // private BlockEntity outBE;
 
     /**
      * Client only ticking
@@ -78,8 +79,8 @@ public abstract class NodeBaseBE extends BlockEntity {
         this.output = output;
         var inState = level.getBlockState(input);
         var outState = level.getBlockState(output);
-        this.inBE = level.getBlockEntity(input);
-        this.outBE = level.getBlockEntity(output);
+        var inBE = level.getBlockEntity(input);
+        var outBE = level.getBlockEntity(output);
         var capType = getCapType();
         this.inCap = capType.getCapability(level, input, inState, inBE, null);
         this.outCap = capType.getCapability(level, output, outState, outBE, null);
@@ -114,13 +115,13 @@ public abstract class NodeBaseBE extends BlockEntity {
         return this.outCap;
     }
 
-    public BlockEntity getInputBE() {
-        return inBE;
-    }
+    // public BlockEntity getInputBE() {
+    // return inBE;
+    // }
 
-    public BlockEntity getOutputBE() {
-        return outBE;
-    }
+    // public BlockEntity getOutputBE() {
+    // return outBE;
+    // }
 
     // public boolean allowInputNull() {
     // return false;
@@ -168,6 +169,14 @@ public abstract class NodeBaseBE extends BlockEntity {
             var itemHandler = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (itemHandler instanceof IItemHandler handler) {
                 if (getNodeBE() instanceof ItemNodeType it) {
+
+                    if (blockEntity instanceof BaseMachineBE machineBE) {
+                        for (int index = 0; index < machineBE.getInputSlotIndex().size(); index++) {
+                            if (machineBE.isItemValid(machineBE.getInputSlotIndex().get(index), it.getItemStack())) {
+                                return true;
+                            }
+                        }
+                    }
 
                     if (blockEntity instanceof WorldlyContainer container) {
                         for (int index = 0; index < container.getContainerSize(); index++) {

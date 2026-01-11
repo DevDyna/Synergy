@@ -1,7 +1,6 @@
 package com.devdyna.synergy.api.node;
 
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 
@@ -9,13 +8,9 @@ import net.neoforged.neoforge.items.ItemHandlerHelper;
 public interface ItemNodeType {
     abstract ItemStack getItemStack();
 
-    abstract BlockEntity getInputBE();
-
-    abstract BlockEntity getOutputBE();
-
     default void moveItems(IItemHandler input, IItemHandler output, int maxCount) {
 
-        if (input == null || output == null || getInputBE() == null || getOutputBE() == null)
+        if (input == null || output == null)
             return;
 
         int remaining = maxCount;
