@@ -1,5 +1,6 @@
 {
   "type": "synergy:compressor",
+  "consume_catalyst": false,
   "energy": 10,
   "input": {
     "tag": "c:gems/aquamarine"
