@@ -333,7 +333,7 @@
   "synergy.jei.tip.dont_consume": "§cNot consume",
   "synergy.jei.urn": "Urn Rituals",
   "synergy.jei.void_box": "Void Box Infusions",
-  "synergy.jei.warning.config": "Can be overriden via config",
+  "synergy.jei.warning.render_only": "In-World interaction not editable",
   "synergy.laser.rotate_by_click": "§7Can be rotated with right-click",
   "synergy.laser_lens": "§7Repeat the signal of any laser line when pass through",
   "synergy.laser_machine_gun": "§7Generate a laser line when has ForgeEnergy and a redstone signal",
