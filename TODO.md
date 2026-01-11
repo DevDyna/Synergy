@@ -46,6 +46,8 @@
 
 - [ ] salt leather
 
+- [ ] enchanting table-like that require enchanted books on chiseled bookshelf to be used
+
 ### Automation
 
 - [ ] CobbleGen (like NC)
