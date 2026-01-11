@@ -1,5 +1,6 @@
 package com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities;
 
+import com.devdyna.synergy.api.node.EnergyNodeType;
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -11,7 +12,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
 @SuppressWarnings({ "null" })
-public class EnergyTransferBE extends NodeBaseBE {
+public class EnergyTransferBE extends NodeBaseBE implements EnergyNodeType{
 
     public EnergyTransferBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);

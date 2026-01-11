@@ -1,9 +1,11 @@
 package com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities;
 
+import com.devdyna.synergy.api.node.ItemNodeType;
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.BlockCapability;
@@ -11,7 +13,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 
 @SuppressWarnings({ "null" })
-public class ItemTransferBE extends NodeBaseBE {
+public class ItemTransferBE extends NodeBaseBE implements ItemNodeType {
 
     public ItemTransferBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -34,6 +36,11 @@ public class ItemTransferBE extends NodeBaseBE {
     @Override
     public BlockPos defineOutput() {
         return getOutputPos();
+    }
+
+    @Override
+    public ItemStack getItemStack() {
+        return getFirstItem((IItemHandler) getInputCap());
     }
 
 }

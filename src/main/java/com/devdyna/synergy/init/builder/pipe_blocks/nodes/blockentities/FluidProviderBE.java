@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities;
 
 import java.util.Optional;
 
+import com.devdyna.synergy.api.node.FluidNodeType;
 import com.devdyna.synergy.api.node.IProvider;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
@@ -21,7 +22,7 @@ import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 @SuppressWarnings({ "null" })
 public class FluidProviderBE extends NodeBaseBE
-        implements IProvider<ProviderInput, FluidProviderRecipe<FluidStack>, FluidStack> {
+        implements IProvider<ProviderInput, FluidProviderRecipe<FluidStack>, FluidStack>, FluidNodeType {
 
     public FluidProviderBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -65,6 +66,11 @@ public class FluidProviderBE extends NodeBaseBE
     @Override
     public BlockPos getInput() {
         return getInputPos();
+    }
+
+    @Override
+    public FluidStack getFluidStack() {
+        return getRecipe(getInput()).get().value().getOutput();
     }
 
 }

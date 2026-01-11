@@ -4,13 +4,15 @@ import java.util.*;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.node.FluidNodeType;
+import com.devdyna.synergy.api.node.ItemNodeType;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeProperties;
 import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.init.types.zBlockTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -18,12 +20,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
-import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.FluidUtil;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 @SuppressWarnings("null")
 public abstract class NodeBaseBE extends BlockEntity {
@@ -32,13 +30,31 @@ public abstract class NodeBaseBE extends BlockEntity {
         super(type, pos, blockState);
     }
 
-    public NodeBaseBE(BlockPos pos, BlockState blockState) {
-        super(null, pos, blockState);
-    }
-
     private Set<BlockPos> failedRoutes;
     private BlockPos input;
     private BlockPos output;
+    private Object inCap;
+    private Object outCap;
+    private BlockEntity inBE;
+    private BlockEntity outBE;
+
+    /**
+     * Client only ticking
+     * <br/>
+     * <br/>
+     * Useful for player events
+     */
+    public void tickClient() {
+    }
+
+    /**
+     * Client and Server ticking
+     * <br/>
+     * <br/>
+     * Usefull for particles
+     */
+    public void tickBoth() {
+    }
 
     /**
      * Server only ticking
@@ -47,6 +63,7 @@ public abstract class NodeBaseBE extends BlockEntity {
      * Useful for block events
      */
     public void tickServer() {
+
         this.failedRoutes = new HashSet<>();
         var input = getInputPos(getBlockState(), level, getBlockPos());
 
@@ -61,11 +78,11 @@ public abstract class NodeBaseBE extends BlockEntity {
         this.output = output;
         var inState = level.getBlockState(input);
         var outState = level.getBlockState(output);
-        var inBE = level.getBlockEntity(input);
-        var outBE = level.getBlockEntity(output);
-        var inCap = getCapType().getCapability(level, input, inState, inBE, null);
-        var outCap = getCapType().getCapability(level, output, outState, outBE, null);
+        this.inBE = level.getBlockEntity(input);
+        this.outBE = level.getBlockEntity(output);
         var capType = getCapType();
+        this.inCap = capType.getCapability(level, input, inState, inBE, null);
+        this.outCap = capType.getCapability(level, output, outState, outBE, null);
         if (capType == Capabilities.ItemHandler.BLOCK) {
             executeItem((IItemHandler) inCap, (IItemHandler) outCap);
         } else if (capType == Capabilities.EnergyStorage.BLOCK) {
@@ -89,8 +106,28 @@ public abstract class NodeBaseBE extends BlockEntity {
         return this.output;
     }
 
-    public boolean allowInputNull() {
-        return false;
+    public Object getInputCap() {
+        return this.inCap;
+    }
+
+    public Object getOutputCap() {
+        return this.outCap;
+    }
+
+    public BlockEntity getInputBE() {
+        return inBE;
+    }
+
+    public BlockEntity getOutputBE() {
+        return outBE;
+    }
+
+    // public boolean allowInputNull() {
+    // return false;
+    // }
+
+    public BlockEntity getNodeBE() {
+        return level.getBlockEntity(getBlockPos());
     }
 
     /**
@@ -130,9 +167,20 @@ public abstract class NodeBaseBE extends BlockEntity {
         if (capType == Capabilities.ItemHandler.BLOCK) {
             var itemHandler = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (itemHandler instanceof IItemHandler handler) {
-                for (int slot = 0; slot < handler.getSlots(); slot++) {
-                    if (handler.getStackInSlot(slot).isEmpty()) {
-                        return true;
+                if (getNodeBE() instanceof ItemNodeType it) {
+
+                    if (blockEntity instanceof WorldlyContainer container) {
+                        for (int index = 0; index < container.getContainerSize(); index++) {
+                            if (container.canPlaceItemThroughFace(index, it.getItemStack(), dir)) {
+                                return true;
+                            }
+                        }
+                    }
+
+                    for (int slot = 0; slot < handler.getSlots(); slot++) {
+                        if (handler.getStackInSlot(slot).isEmpty() || handler.isItemValid(slot, it.getItemStack())) {
+                            return true;
+                        }
                     }
                 }
             }
@@ -146,9 +194,11 @@ public abstract class NodeBaseBE extends BlockEntity {
         } else if (capType == Capabilities.FluidHandler.BLOCK) {
             var fluid = capType.getCapability(level, nextPos, nextState, blockEntity, dir);
             if (fluid instanceof IFluidHandler handler) {
-                for (int tank = 0; tank < handler.getTanks(); tank++) {
-                    if (handler.getFluidInTank(tank).isEmpty()) {
-                        return true;
+                if (getNodeBE() instanceof FluidNodeType ft) {
+                    for (int tank = 0; tank < handler.getTanks(); tank++) {
+                        if (handler.getFluidInTank(tank).isEmpty() || handler.isFluidValid(tank, ft.getFluidStack())) {
+                            return true;
+                        }
                     }
                 }
             }
@@ -156,24 +206,6 @@ public abstract class NodeBaseBE extends BlockEntity {
             // add other capabilities
         }
         return false;
-    }
-
-    /**
-     * Client only ticking
-     * <br/>
-     * <br/>
-     * Useful for player events
-     */
-    public void tickClient() {
-    }
-
-    /**
-     * Client and Server ticking
-     * <br/>
-     * <br/>
-     * Usefull for particles
-     */
-    public void tickBoth() {
     }
 
     /**
@@ -248,107 +280,5 @@ public abstract class NodeBaseBE extends BlockEntity {
     }
 
     public abstract BlockPos defineOutput();
-
-    public void moveItems(IItemHandler input, IItemHandler output, int maxCount) {
-
-        if (input == null || output == null)
-            return;
-
-        int remaining = maxCount;
-
-        // add check when be is instanceof WorldlyContainer (furnace)
-
-        for (int inSlot = 0; inSlot < input.getSlots() && remaining > 0; inSlot++) {
-            ItemStack inStack = input.getStackInSlot(inSlot);
-            if (inStack.isEmpty())
-                continue;
-
-            int extractAmount = Math.min(inStack.getCount(), remaining);
-            ItemStack extracted = input.extractItem(inSlot, extractAmount, false);
-            if (extracted.isEmpty())
-                continue;
-
-            ItemStack leftover = extracted.copy();
-
-            // Attempt to insert into all output slots
-            for (int outSlot = 0; outSlot < output.getSlots() && !leftover.isEmpty(); outSlot++) {
-                leftover = output.insertItem(outSlot, leftover, false);
-            }
-
-            // Update remaining based on successfully inserted items
-            int inserted = extracted.getCount() - leftover.getCount();
-            remaining -= inserted;
-
-            // If anything couldn't be inserted, return it to input
-            if (!leftover.isEmpty()) {
-                input.insertItem(inSlot, leftover, false);
-            }
-        }
-    }
-
-    protected void moveFluids(IFluidHandler input, IFluidHandler output, int rate) {
-        if (input == null || output == null)
-            return;
-
-        FluidUtil.tryFluidTransfer(output, input, rate, true);
-
-    }
-
-    public static ItemStack insertItemStacked(IItemHandler handler, ItemStack stack, boolean simOn) {
-        return ItemHandlerHelper.insertItemStacked(handler, stack, simOn);
-    }
-
-    // Only water can increase inside tanks from other mods!?
-    public static FluidStack insertFluidStacked(IFluidHandler handler, FluidStack stack, Boolean simOn) {
-
-        if (handler != null)
-            for (int i = 0; i < handler.getTanks(); i++) {
-
-                var tank = handler.getFluidInTank(i);
-                var diff = tank.getAmount();
-                var max = handler.getTankCapacity(i);
-
-                if (FluidStack.isSameFluidSameComponents(stack, tank)
-                        && max > diff) {
-
-                    tank.setAmount(Math.min(max, diff + stack.getAmount()));
-
-                    stack.setAmount(Math.min(max - diff, stack.getAmount()));
-
-                    return stack;
-                }
-
-                if (tank.isEmpty()) {
-                    stack.setAmount(handler.fill(stack, simOn ? FluidAction.SIMULATE : FluidAction.EXECUTE));
-                    return FluidStack.EMPTY;
-                }
-
-            }
-
-        return stack;
-    }
-
-    // dont work with meka
-    protected void moveEnergy(IEnergyStorage input, IEnergyStorage output, int maxEnergy) {
-
-        if (input == null || output == null)
-            return;
-
-        int remaining = maxEnergy;
-
-        // Try to extract energy from input
-        int extracted = input.extractEnergy(remaining, false);
-        if (extracted <= 0)
-            return;
-
-        // Try to insert into output
-        int accepted = output.receiveEnergy(extracted, false);
-        int leftover = extracted - accepted;
-
-        // If some energy couldn't be accepted, put it back into input
-        if (leftover > 0) {
-            input.receiveEnergy(leftover, false);
-        }
-    }
 
 }

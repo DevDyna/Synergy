@@ -17,6 +17,9 @@ import net.minecraft.world.level.block.state.BlockState;
 @SuppressWarnings({ "unchecked", "null" })
 public interface IProvider<I extends RecipeInput, T extends Recipe<I>, L> {
 
+    /**
+     * @param pos input pos
+     */
     abstract Optional<RecipeHolder<T>> getRecipe(BlockPos pos);
 
     abstract BlockPos getInput();

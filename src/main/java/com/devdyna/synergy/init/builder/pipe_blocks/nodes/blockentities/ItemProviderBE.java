@@ -3,6 +3,7 @@ package com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities;
 import java.util.Optional;
 
 import com.devdyna.synergy.api.node.IProvider;
+import com.devdyna.synergy.api.node.ItemNodeType;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.common.recipes.input.ProviderInput;
@@ -21,7 +22,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 
 @SuppressWarnings({ "null" })
 public class ItemProviderBE extends NodeBaseBE
-        implements IProvider<ProviderInput, ItemProviderRecipe<ItemStack>, ItemStack> {
+        implements IProvider<ProviderInput, ItemProviderRecipe<ItemStack>, ItemStack>, ItemNodeType {
 
     public ItemProviderBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -66,6 +67,11 @@ public class ItemProviderBE extends NodeBaseBE
     @Override
     public BlockPos getInput() {
         return getInputPos();
+    }
+
+    @Override
+    public ItemStack getItemStack() {
+        return getRecipe(getInput()).get().value().getOutput();
     }
 
 }
