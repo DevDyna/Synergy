@@ -6,14 +6,17 @@ import com.devdyna.synergy.api.basebe.be.BEMenu;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
 import com.devdyna.synergy.config.Common;
+import com.devdyna.synergy.init.types.zItemTag;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -37,8 +40,15 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     public static final int ENERGY_INDEX = 2;
     public static final int MAX_ENERGY_INDEX = 3;
 
-    public static final int INPUT_SLOT = 0;
-    public static final int OUTPUT_SLOT = 1;
+    public static final int SLOT_UPGRADE_1 = 0;
+    public static final int SLOT_UPGRADE_2 = 1;
+    public static final int SLOT_UPGRADE_3 = 2;
+    public static final int SLOT_UPGRADE_4 = 3;
+
+    public static final int INPUT_SLOT = 4;
+    public static final int OUTPUT_SLOT = 5;
+
+    public static final int MAX_UPGRADE_SLOTS = 4;
 
     protected boolean progress_cancel;
 
@@ -117,7 +127,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
             @Override
             public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
                 if (getInputSlotIndex().contains(slot)
-                        && (this instanceof UpgradeSlots upgrades ? !upgrades.getUpgradeIndexs().contains(slot) : true))
+                        && getUpgradeIndexs().contains(slot))
                     return storage.insertItem(slot, stack, simulate);
                 return stack;
             }
@@ -285,5 +295,40 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
             storage.setStackInSlot(slotIndex, slotStack);
         else if (ItemStack.isSameItemSameComponents(stack, slotStack))
             stack.grow(slotStack.getCount());
+    }
+
+    public List<Integer> getUpgradeIndexs() {
+        return List.of(SLOT_UPGRADE_1, SLOT_UPGRADE_2, SLOT_UPGRADE_3, SLOT_UPGRADE_4).stream()
+                .filter(i -> i < getStorage().getSlots())
+                .toList();
+    }
+
+    public List<ItemStack> getUpgradeInstalled() {
+        ItemStackHandler handler = getStorage();
+        return getUpgradeIndexs().stream()
+                .filter(i -> i >= 0 && i < handler.getSlots())
+                .map(handler::getStackInSlot)
+                .toList();
+    }
+
+    public int getUpgradeInstalled(TagKey<Item> filter) {
+        return getUpgradeInstalled(filter, MAX_UPGRADE_SLOTS);
+    }
+
+    public int getUpgradeInstalled(TagKey<Item> filter, int max) {
+        return Math.min(max, (int) getUpgradeInstalled().stream().filter(i -> i.is(filter)).count());
+    }
+
+    public int calculateFEUsage(int base) {
+        var energy = getUpgradeInstalled(zItemTag.UPGRADE_ENERGY);
+        var speed = getUpgradeInstalled(zItemTag.UPGRADE_SPEED);
+
+        return (base - ((int) (base * (energy * 0.75)))) // energy -> +75% | speed -> -100%
+                + ((int) (base * speed));
+    }
+
+    public int calculateMaxProgress(int base) {
+        var upgrades = getUpgradeInstalled(zItemTag.UPGRADE_SPEED, Common.MACHINE_MAX_SPEED_UPGRADES.get());
+        return (base - ((int) (base * (upgrades * 0.35))));// speed -> +35% max 2
     }
 }

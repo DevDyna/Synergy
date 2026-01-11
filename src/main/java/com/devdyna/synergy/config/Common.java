@@ -2,7 +2,6 @@ package com.devdyna.synergy.config;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.UpgradeSlots;
 import com.devdyna.synergy.api.utils.ModAddonUtil;
 import com.devdyna.synergy.api.utils.StringUtil;
 
@@ -229,10 +228,10 @@ public class Common {
                 "base_machine_max_fe", 10_000);
 
         MACHINE_MAX_ENERGY_UPGRADES = number("Max Energy Upgrades usable foreach machine",
-                "max_energy_upgrades", 4, 0, UpgradeSlots.MAX_UPGRADE_SLOTS);
+                "max_energy_upgrades", 4, 0, BaseMachineBE.MAX_UPGRADE_SLOTS);
 
         MACHINE_MAX_SPEED_UPGRADES = number("Max Speed Upgrades usable foreach machine",
-                "max_speed_upgrades", 2, 0, UpgradeSlots.MAX_UPGRADE_SLOTS);
+                "max_speed_upgrades", 2, 0, BaseMachineBE.MAX_UPGRADE_SLOTS);
 
         decor.complex(zStatic.Machines.electric_furnace);
 

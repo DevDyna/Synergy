@@ -7,7 +7,6 @@ import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
-import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.network.FriendlyByteBuf;
@@ -33,13 +32,9 @@ public class ElectricFurnaceMenu extends BaseMachineMenu {
         this.level = inv.player.level();
         this.data = data;
         addPlayerSlots(inv);
-        addMachineInputSlot(blockEntity.getStorage(), 0, 47, 33);
-        addMachineOutputSlot(blockEntity.getStorage(), 1, 119, 34);
+        addMachineInputSlot(blockEntity.getStorage(), ElectricFurnaceBE.INPUT_SLOT, 47, 33);
+        addMachineOutputSlot(blockEntity.getStorage(), ElectricFurnaceBE.OUTPUT_SLOT, 119, 34);
 
-        addSingleMachineSlot((u1) -> u1.is(zItemTag.UPGRADES), blockEntity.getStorage(), 2, 180, 8);
-        addSingleMachineSlot((u2) -> u2.is(zItemTag.UPGRADES), blockEntity.getStorage(), 3, 180, 26);
-        addSingleMachineSlot((u3) -> u3.is(zItemTag.UPGRADES), blockEntity.getStorage(), 4, 180, 44);
-        addSingleMachineSlot((u4) -> u4.is(zItemTag.UPGRADES), blockEntity.getStorage(), 5, 180, 62);
         addDataSlots(data);
     }
 

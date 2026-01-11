@@ -28,7 +28,7 @@ public class CompressorRecipeBuilder extends BaseMachineRecipeBuilder<Compressor
 
     @Override
     public Recipe<?> createRecipe() {
-        return new CompressorRecipeType(ticks,energy,input,catalyst,output);
+        return new CompressorRecipeType(ticks,energy,input,catalyst,consumeCatalyst,output);
     }
 
     @Override
@@ -41,6 +41,13 @@ public class CompressorRecipeBuilder extends BaseMachineRecipeBuilder<Compressor
         this.catalyst = catalyst;
         return getBuilder();
     }
+
+    public CompressorRecipeBuilder consumeCatalyst() {
+        this.consumeCatalyst = true;
+        return getBuilder();
+    }
+
+    
 
     @Override
     public CompressorRecipeBuilder getBuilder() {

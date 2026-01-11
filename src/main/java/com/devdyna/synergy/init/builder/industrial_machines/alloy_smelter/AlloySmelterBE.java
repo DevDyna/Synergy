@@ -7,8 +7,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
-import com.devdyna.synergy.api.machine.ExtraMachineSlot;
-import com.devdyna.synergy.api.machine.UpgradeSlots;
+import com.devdyna.synergy.api.machine.ExtraMachineSlots;
 import com.devdyna.synergy.common.recipes.input.BiItemInput;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe.AlloySmelterRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
@@ -24,7 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot, UpgradeSlots {
+public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
 
     public AlloySmelterBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -67,7 +66,7 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot, U
 
     @Override
     public List<Integer> getInputSlotIndex() {
-        return List.of(INPUT_SLOT, EXTRA_SLOT);
+        return List.of(INPUT_SLOT, EXTRA_SLOT_1);
     }
 
     public AlloySmelterBE(BlockPos pos, BlockState blockState) {
@@ -93,11 +92,11 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot, U
 
         Optional<RecipeHolder<AlloySmelterRecipeType>> r = level.getRecipeManager()
                 .getRecipeFor(zMachines.ALLOY_SMELTER.recipe().getType(),
-                        new BiItemInput(getInput(), getExtraSlot()), level);
+                        new BiItemInput(getInput(), getExtraSlot1()), level);
 
         Optional<RecipeHolder<AlloySmelterRecipeType>> r2 = level.getRecipeManager()
                 .getRecipeFor(zMachines.ALLOY_SMELTER.recipe().getType(),
-                        new BiItemInput(getExtraSlot(), getInput()), level);
+                        new BiItemInput(getExtraSlot1(), getInput()), level);
 
         AlloySmelterRecipeType recipe;
 
@@ -141,7 +140,7 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot, U
         updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
 
         getInput().shrink(1);
-        getExtraSlot().shrink(1);
+        getExtraSlot1().shrink(1);
 
         progress = 0;
         setChanged();
@@ -168,9 +167,9 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlot, U
         return networkData;
     }
 
-    @Override
-    public TYPE getSlotType() {
-        return TYPE.INPUT;
+   @Override
+    public SlotBuilder getSlotTypes() {
+        return SlotBuilder.of().set(EXTRA_SLOT_1, SlotType.INPUT);
     }
 
 }

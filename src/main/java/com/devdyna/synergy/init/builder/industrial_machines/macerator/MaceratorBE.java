@@ -6,8 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
-import com.devdyna.synergy.api.machine.ExtraMachineSlot;
-import com.devdyna.synergy.api.machine.UpgradeSlots;
+import com.devdyna.synergy.api.machine.ExtraMachineSlots;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
@@ -25,7 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot, UpgradeSlots {
+public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
 
     public MaceratorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -68,7 +67,7 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot, Upgr
 
     @Override
     public List<Integer> getOutputSlotIndex() {
-        return List.of(OUTPUT_SLOT, EXTRA_SLOT);
+        return List.of(OUTPUT_SLOT, EXTRA_SLOT_2);
     }
 
     public MaceratorBE(BlockPos pos, BlockState blockState) {
@@ -110,7 +109,7 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot, Upgr
 
         boolean success = level.random.nextFloat() < recipe.getSecondaryItemChance();
 
-        if (!(checkSlot(getOutput(), output) && checkSlot(getExtraSlot(), secondary))) {
+        if (!(checkSlot(getOutput(), output) && checkSlot(getExtraSlot1(), secondary))) {
             resetProgress();
             return;
         }
@@ -136,7 +135,7 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot, Upgr
         updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
 
         if (!secondary.isEmpty() && success)
-            updateOutputSlot(getExtraSlot(), secondary, EXTRA_SLOT);
+            updateOutputSlot(getExtraSlot1(), secondary, EXTRA_SLOT_1);
 
         getInput().shrink(1);
 
@@ -168,11 +167,6 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot, Upgr
     }
 
     @Override
-    public TYPE getSlotType() {
-        return TYPE.OUTPUT;
-    }
-
-    @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         tag.put("inventory", getStorage().serializeNBT(registries));
         tag.putInt("progress", progress);
@@ -190,5 +184,10 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlot, Upgr
             energyStorage.receiveEnergy(Math.min(tag.getInt("energy"), energyStorage.getMaxEnergyStored()), false);
 
         super.loadAdditional(tag, registries);
+    }
+
+    @Override
+    public SlotBuilder getSlotTypes() {
+        return SlotBuilder.of().set(EXTRA_SLOT_1, SlotType.OUTPUT);
     }
 }

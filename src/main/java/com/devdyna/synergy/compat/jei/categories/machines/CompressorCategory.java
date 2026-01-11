@@ -26,66 +26,70 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 @SuppressWarnings("null")
 public class CompressorCategory extends BaseMachineRecipeCategory<CompressorRecipeType> {
 
-    public CompressorCategory(IGuiHelper h) {
-        super(h);
-        this.arrow = helper
-                .drawableBuilder(x.rl("minecraft", "textures/gui/sprites/container/furnace/burn_progress.png"),
-                        0, 0, 24, 16)
-                .setTextureSize(24, 16).buildAnimated(60,
-                        IDrawableAnimated.StartDirection.LEFT, false);
-    }
+        public CompressorCategory(IGuiHelper h) {
+                super(h);
+                this.arrow = helper
+                                .drawableBuilder(x.rl("minecraft",
+                                                "textures/gui/sprites/container/furnace/burn_progress.png"),
+                                                0, 0, 24, 16)
+                                .setTextureSize(24, 16).buildAnimated(60,
+                                                IDrawableAnimated.StartDirection.LEFT, false);
+        }
 
-    public static final RecipeType<CompressorRecipeType> TYPE = new RecipeType<>(
-            x.rl(zMachines.COMPRESSOR.recipe().getId()),
-            CompressorRecipeType.class);
+        public static final RecipeType<CompressorRecipeType> TYPE = new RecipeType<>(
+                        x.rl(zMachines.COMPRESSOR.recipe().getId()),
+                        CompressorRecipeType.class);
 
-    @Override
-    public RecipeType<CompressorRecipeType> getRecipeType() {
-        return TYPE;
-    }
+        @Override
+        public RecipeType<CompressorRecipeType> getRecipeType() {
+                return TYPE;
+        }
 
-    @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, CompressorRecipeType recipe, IFocusGroup focuses) {
+        @Override
+        public void setRecipe(IRecipeLayoutBuilder builder, CompressorRecipeType recipe, IFocusGroup focuses) {
 
-        builder.addInputSlot(2, 2).addIngredients(recipe.getInputItem());
-        builder.addInputSlot(2, 38).addIngredients(recipe.getCatalystItem())
-                .addRichTooltipCallback(
-                        (v, t) -> t.add(Component.translatable(ID + ".jei.tip.dont_consume")));
+                builder.addInputSlot(2, 2).addIngredients(recipe.getInputItem());
 
-        builder.addOutputSlot(74, 21).addItemStack(recipe.getOutputItem());
+                var catalyst = builder.addInputSlot(2, 38).addIngredients(recipe.getCatalystItem());
 
-    }
+                if (!recipe.consumeCatalyst())
+                        catalyst.addRichTooltipCallback(
+                                        (v, t) -> t.add(Component.translatable(ID + ".jei.tip.dont_consume")));
 
-    @Override
-    public void draw(CompressorRecipeType recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
-            double mouseX,
-            double mouseY) {
-        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+                builder.addOutputSlot(74, 21).addItemStack(recipe.getOutputItem());
 
-        arrow.draw(guiGraphics, 29, 21);
+        }
 
-        guiGraphics.drawString(font,
-                Component.literal(
-                        recipe.getTime() + " ticks"),
-                25, 2,
-                defaultToolTipColor.getRGB(), false);
+        @Override
+        public void draw(CompressorRecipeType recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
+                        double mouseX,
+                        double mouseY) {
+                super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 
-        Image.of()
-                .rl(x.rl("textures/gui/sprite/compressor_arrow.png"))
-                .size(16, 9)
-                .offset(2, 23)
-                .render(helper, guiGraphics);
+                arrow.draw(guiGraphics, 29, 21);
 
-    }
+                guiGraphics.drawString(font,
+                                Component.literal(
+                                                recipe.getTime() + " ticks"),
+                                25, 2,
+                                defaultToolTipColor.getRGB(), false);
 
-    @Override
-    public Size setXY() {
-        return Size.of(96, 56);
-    }
+                Image.of()
+                                .rl(x.rl("textures/gui/sprite/compressor_arrow.png"))
+                                .size(16, 9)
+                                .offset(2, 23)
+                                .render(helper, guiGraphics);
 
-    @Override
-    public MachineType<? extends Block, ? extends BlockEntity, ? extends AbstractContainerMenu, ? extends Recipe<?>> getMachine() {
-        return zMachines.COMPRESSOR;
-    }
+        }
+
+        @Override
+        public Size setXY() {
+                return Size.of(96, 56);
+        }
+
+        @Override
+        public MachineType<? extends Block, ? extends BlockEntity, ? extends AbstractContainerMenu, ? extends Recipe<?>> getMachine() {
+                return zMachines.COMPRESSOR;
+        }
 
 }

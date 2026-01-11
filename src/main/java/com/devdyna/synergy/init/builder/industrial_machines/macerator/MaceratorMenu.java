@@ -7,7 +7,6 @@ import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
-import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.network.FriendlyByteBuf;
@@ -35,12 +34,7 @@ public class MaceratorMenu extends BaseMachineMenu {
         addPlayerSlots(inv);
         addMachineInputSlot(blockEntity.getStorage(), MaceratorBE.INPUT_SLOT, 47, 33);
         addMachineOutputSlot(blockEntity.getStorage(), MaceratorBE.OUTPUT_SLOT, 119, 25);
-        addMachineOutputSlot(blockEntity.getStorage(), MaceratorBE.EXTRA_SLOT, 119, 50);
-
-        addSingleMachineSlot((u1)->u1.is(zItemTag.UPGRADES),blockEntity.getStorage(), MaceratorBE.SLOT_UPGRADE_1, 180, 8);
-        addSingleMachineSlot((u2)->u2.is(zItemTag.UPGRADES),blockEntity.getStorage(), MaceratorBE.SLOT_UPGRADE_2, 180, 26);
-        addSingleMachineSlot((u3)->u3.is(zItemTag.UPGRADES),blockEntity.getStorage(), MaceratorBE.SLOT_UPGRADE_3, 180, 44);
-        addSingleMachineSlot((u4)->u4.is(zItemTag.UPGRADES),blockEntity.getStorage(), MaceratorBE.SLOT_UPGRADE_4, 180, 62);
+        addMachineOutputSlot(blockEntity.getStorage(), MaceratorBE.EXTRA_SLOT_1, 119, 50);
         addDataSlots(data);
     }
 

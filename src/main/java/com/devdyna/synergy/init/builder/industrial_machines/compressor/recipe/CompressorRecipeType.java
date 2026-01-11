@@ -23,19 +23,19 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 @SuppressWarnings("null")
 public class CompressorRecipeType extends BaseMachineRecipeType<BiItemInput> {
 
-    public CompressorRecipeType(int ticks, int energy, Ingredient input,Ingredient plate,
-            ItemStack output ) {
+    public CompressorRecipeType(int ticks, int energy, Ingredient input, Ingredient plate,
+            boolean consumeCatalyst, ItemStack output) {
         this.input = input;
         this.catalyst = plate;
         this.ticks = ticks;
         this.output = output;
         this.energy = energy;
-  
+        this.consumeCatalyst = consumeCatalyst;
     }
 
     public static CompressorRecipeType of(int ticks, int energy, Ingredient input,
-            Ingredient plate, ItemStack output) {
-        return new CompressorRecipeType(ticks, energy, input, plate, output);
+            Ingredient plate, boolean consumeCatalyst, ItemStack output) {
+        return new CompressorRecipeType(ticks, energy, input, plate, consumeCatalyst, output);
     }
 
     @Override
@@ -69,6 +69,7 @@ public class CompressorRecipeType extends BaseMachineRecipeType<BiItemInput> {
                         .forGetter(r -> (r.getCatalystItem() == null || r.getCatalystItem().isEmpty())
                                 ? Ingredient.EMPTY
                                 : r.getCatalystItem()),
+                Codec.BOOL.fieldOf("consume_catalyst").forGetter(CompressorRecipeType::consumeCatalyst),
                 ItemStack.CODEC.fieldOf("output").forGetter(CompressorRecipeType::getOutputItem))
                 .apply(inst, CompressorRecipeType::new));
 
@@ -81,9 +82,10 @@ public class CompressorRecipeType extends BaseMachineRecipeType<BiItemInput> {
                         r -> (r.getCatalystItem() == null || r.getCatalystItem().isEmpty())
                                 ? Optional.empty()
                                 : Optional.of(r.getCatalystItem()),
+                        ByteBufCodecs.BOOL, CompressorRecipeType::consumeCatalyst,
                         ItemStack.STREAM_CODEC, CompressorRecipeType::getOutputItem,
-                        
-                        (t, e, i, o, s) -> new CompressorRecipeType(t, e, i, o.orElse(Ingredient.EMPTY), s));
+
+                        (t, e, i, o, s, c) -> new CompressorRecipeType(t, e, i, o.orElse(Ingredient.EMPTY), s, c));
 
         @Override
         public MapCodec<CompressorRecipeType> codec() {

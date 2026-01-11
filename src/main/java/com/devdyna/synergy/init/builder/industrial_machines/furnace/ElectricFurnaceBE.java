@@ -5,7 +5,6 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
-import com.devdyna.synergy.api.machine.UpgradeSlots;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeType;
@@ -26,7 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class ElectricFurnaceBE extends BaseMachineBE implements UpgradeSlots{
+public class ElectricFurnaceBE extends BaseMachineBE {
 
     public ElectricFurnaceBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);

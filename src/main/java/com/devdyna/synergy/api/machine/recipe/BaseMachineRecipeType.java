@@ -32,6 +32,12 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
 
     public float chance;
 
+    public boolean consumeCatalyst;
+
+    public boolean consumeCatalyst(){
+        return consumeCatalyst;
+    }
+
     public int getEnergy() {
         return energy;
     }

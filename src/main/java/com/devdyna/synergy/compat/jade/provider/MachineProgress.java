@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.ExtraMachineSlot;
-import com.devdyna.synergy.api.machine.ExtraMachineSlot.TYPE;
+import com.devdyna.synergy.api.machine.ExtraMachineSlots;
+import com.devdyna.synergy.api.machine.ExtraMachineSlots.SlotType;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -32,36 +32,40 @@ public enum MachineProgress
     if (data == null)
       return;
 
+    var be = (BaseMachineBE) accessor.getBlockEntity();
+
     // render only when has content
-    if (!isEmpty(data) || data.progress != 0) {
-      var be = (BaseMachineBE) accessor.getBlockEntity();
+    if (data.inv.isEmpty() && data.progress != 0) {
 
       IElementHelper helper = IElementHelper.get();
-
-      var check = be instanceof ExtraMachineSlot slot && slot.getSlotType().equals(TYPE.OUTPUT);
 
       tooltip.add(helper.item(data.inv.get(0)));
 
       tooltip.append(helper.spacer(4, 0));
 
-      if (!check && be instanceof ExtraMachineSlot) {
-        tooltip.append(helper.item(data.inv.get(2)));
-        tooltip.append(helper.spacer(4, 0));
-      }
+      calculateSlots(be, data, helper, tooltip, SlotType.INPUT);
 
       tooltip.append(helper.progress((float) data.progress / data.total).translate(new Vec2(-2, 0)));
 
       tooltip.append(helper.item(data.inv.get(1)));
 
-      if (check)
-        tooltip.append(helper.item(data.inv.get(2)));
+      calculateSlots(be, data, helper, tooltip, SlotType.OUTPUT);
+
     }
 
   }
 
-  private boolean isEmpty(Data data) {
-    return data.inv.get(0).isEmpty() && data.inv.get(1).isEmpty()
-        && (data.hasSecondary ? data.inv.get(2).isEmpty() : true);
+  protected void calculateSlots(BaseMachineBE be, Data data, IElementHelper helper, ITooltip tooltip, SlotType type) {
+    if (be instanceof ExtraMachineSlots extra) {
+      if (data.inv().size() > 2) {
+        for (int i = 2; i < data.inv.size() - 2; i++) {
+          if (!data.inv.get(i).isEmpty() && extra.getSlotTypes().get().get(i - 2).equals(type)) {
+            tooltip.append(helper.item(data.inv.get(i)));
+            tooltip.append(helper.spacer(4, 0));
+          }
+        }
+      }
+    }
   }
 
   @Override
@@ -69,18 +73,20 @@ public enum MachineProgress
     BaseMachineBE machineBE = (BaseMachineBE) accessor.getBlockEntity();
 
     List<ItemStack> slots = new ArrayList<>();
+    // slots.addAll(machineBE.getUpgradeInstalled());
     slots.add(machineBE.getInput());
     slots.add(machineBE.getOutput());
 
-    if (machineBE instanceof ExtraMachineSlot r) {
-      slots.add(r.getExtraSlot());
+    if (machineBE instanceof ExtraMachineSlots && machineBE.getMachineSlots()-6 > 0) {
+      for (int i = 6; i < machineBE.getMachineSlots(); i++) {
+        slots.add(machineBE.getStorage().getStackInSlot(i));
+      }
     }
 
     return new Data(
         machineBE.getProgress(),
         machineBE.getMaxProgress(),
-        slots,
-        machineBE instanceof ExtraMachineSlot);
+        slots);
   }
 
   @Override
@@ -88,12 +94,11 @@ public enum MachineProgress
     return Data.STREAM_CODEC;
   }
 
-  public record Data(int progress, int total, List<ItemStack> inv, boolean hasSecondary) {
+  public record Data(int progress, int total, List<ItemStack> inv) {
     public static final StreamCodec<RegistryFriendlyByteBuf, Data> STREAM_CODEC = StreamCodec.composite(
         ByteBufCodecs.VAR_INT, Data::progress,
         ByteBufCodecs.VAR_INT, Data::total,
         ItemStack.OPTIONAL_LIST_STREAM_CODEC, Data::inv,
-        ByteBufCodecs.BOOL, Data::hasSecondary,
         Data::new);
   }
 

@@ -12,6 +12,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 @SuppressWarnings("unchecked")
 public interface CatalystItem<BUILDER extends BaseRecipeBuilder> extends BuilderAttach<BUILDER> {
 
+    abstract BUILDER consumeCatalyst();
+
     abstract BUILDER catalyst(Ingredient catalyst);
 
     default BUILDER catalyst(ItemStack... catalyst) {

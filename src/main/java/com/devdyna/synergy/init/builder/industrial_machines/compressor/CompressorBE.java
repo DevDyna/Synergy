@@ -5,8 +5,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
-import com.devdyna.synergy.api.machine.ExtraMachineSlot;
-import com.devdyna.synergy.api.machine.UpgradeSlots;
+import com.devdyna.synergy.api.machine.ExtraMachineSlots;
 import com.devdyna.synergy.common.recipes.input.BiItemInput;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
@@ -22,7 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot ,UpgradeSlots{
+public class CompressorBE extends BaseMachineBE implements ExtraMachineSlots {
 
     public CompressorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -81,13 +80,12 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot ,Upg
         if (getInput().isEmpty()) {
             resetProgress();
             return;
-        } else 
+        } else
             progress_cancel = false;
-        
 
         Optional<RecipeHolder<CompressorRecipeType>> r = level.getRecipeManager()
                 .getRecipeFor(zMachines.COMPRESSOR.recipe().getType(),
-                        new BiItemInput(getInput(),getExtraSlot()), level);
+                        new BiItemInput(getInput(), getExtraSlot1()), level);
 
         // no recipe
         if (r.isEmpty()) {
@@ -98,13 +96,6 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot ,Upg
         CompressorRecipeType recipe = r.get().value();
 
         ItemStack output = recipe.getOutputItem().copy();
-
-        // Ingredient catalyst = recipe.getCatalystItem();
-
-        // if(!catalyst.test(getExtraSlot())){
-        //     resetProgress();
-        //     return;
-        // }
 
         this.maxProgress = calculateMaxProgress(recipe.getTime());
 
@@ -135,6 +126,9 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot ,Upg
 
         getInput().shrink(1);
 
+        if (recipe.consumeCatalyst())
+            getExtraSlot1().shrink(1);
+
         progress = 0;
         setChanged();
     }
@@ -161,8 +155,8 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlot ,Upg
     }
 
     @Override
-    public TYPE getSlotType() {
-        return TYPE.CATALYST;
+    public SlotBuilder getSlotTypes() {
+        return SlotBuilder.of().set(EXTRA_SLOT_1, SlotType.INPUT);
     }
 
 }

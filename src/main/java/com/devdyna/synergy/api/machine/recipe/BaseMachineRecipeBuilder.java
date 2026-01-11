@@ -49,6 +49,7 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
     protected ItemStack secondary = ItemStack.EMPTY;
     protected Ingredient catalyst = Ingredient.EMPTY;
     protected float chance;
+    protected boolean consumeCatalyst = false;
 
     public T input(Ingredient input) {
         this.input = input;
