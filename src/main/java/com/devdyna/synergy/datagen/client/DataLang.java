@@ -71,7 +71,7 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "Dimension : ");
 
                 // add(Main.ID + "." + zStatic.Items.refactorizer,
-                                // TIP_COLOR + "Force update blockstates of any #synergy:can_connect");
+                // TIP_COLOR + "Force update blockstates of any #synergy:can_connect");
                 add(Main.ID + "." + zStatic.Items.smasher, TIP_COLOR + "Quick break any #synergy:mashable");
                 add(Main.ID + "." + zStatic.Items.wooden_crook, TIP_COLOR + "Increase the chance to obtain saplings");
 
@@ -179,7 +179,7 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei.drying_bricks",
                                 "Dryable Brick Recipes");
 
-                add(Main.ID + ".jei."+zStatic.Blocks.void_box,
+                add(Main.ID + ".jei." + zStatic.Blocks.void_box,
                                 "Void Box Infusions");
 
                 List<String> coolerTypes = List.of(
@@ -240,8 +240,8 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Items.soldering_gun,
                                 TIP_COLOR + "Change the size of AOE on specific blocks");
 
-                add(Main.ID + ".jei.warning.config",
-                                "Can be overriden via config");
+                add(Main.ID + ".jei.warning.render_only",
+                                "In-World interaction not editable");
 
                 add(Main.ID + ".placed",
                                 TIP_COLOR + "Can be placed");
@@ -291,7 +291,8 @@ public class DataLang extends LanguageProvider {
                 add("config.jade.plugin_" + ID + ".fegen", "Energy Provider Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.moderator, "Moderator Provider Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.cooler, "Cooler Provider Info");
-                add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.fuel_cell, "Fuel Cell Recipe Provider Info");
+                add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.fuel_cell,
+                                "Fuel Cell Recipe Provider Info");
 
                 add(Main.ID + ".color", "Color: %d");
 

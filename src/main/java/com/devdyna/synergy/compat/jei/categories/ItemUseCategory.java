@@ -98,7 +98,7 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
     public void draw(ItemUseRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
             double mouseY) {
         super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
-        if (recipe.canBeDisabled())
+        if (recipe.isRenderOnly())
             helper.drawableBuilder(x.rl("minecraft",
                     "textures/gui/sprites/icon/unseen_notification.png"), 0, 0, 10, 10).setTextureSize(10, 10).build()
                     .draw(guiGraphics, 77, 3);
@@ -122,7 +122,7 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
             double mouseX, double mouseY) {
 
         if (recipe.canBeDisabled() && Pos.of(77, 3).setSize(10, 10).test(mouseX, mouseY))
-            tooltip.add(Component.translatable(Main.ID + ".jei.warning.config"));
+            tooltip.add(Component.translatable(Main.ID + ".jei.warning.render_only"));
 
     }
 
