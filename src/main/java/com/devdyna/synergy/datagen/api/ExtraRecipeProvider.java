@@ -78,7 +78,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(ID, has(input))
                                 .save(c);
 
-                CompressorRecipeBuilder.of()//TODO maybe it will be unbalanced
+                CompressorRecipeBuilder.of()// TODO maybe it will be unbalanced
                                 .input(input)
                                 .delay(80)
                                 .catalyst(zItems.MOLD_GEAR.get())
@@ -793,15 +793,6 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(ID,
                                                 has(zItems.GOLD_FOIL.get()))
                                 .group(zStatic.Items.soldering_gun).save(c);
-
-                // ShapedRecipeBuilder.shaped(MISC, zItems.PIPE_REFARCTORIZER.get())
-                // .pattern(" I")
-                // .pattern("S ")
-                // .define('S', Items.STICK)
-                // .define('I', Items.IRON_NUGGET)
-                // .unlockedBy(ID,
-                // has(Items.IRON_INGOT))
-                // .group(zStatic.Items.refactorizer).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.CONFIGURATOR.get())
                                 .pattern("N N")
