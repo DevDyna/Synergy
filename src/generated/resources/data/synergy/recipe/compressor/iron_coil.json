@@ -10,7 +10,7 @@
     "id": "synergy:iron_coil"
   },
   "plate": {
-    "tag": "c:plates/steel"
+    "item": "synergy:foil_mold"
   },
   "ticks": 80
 }

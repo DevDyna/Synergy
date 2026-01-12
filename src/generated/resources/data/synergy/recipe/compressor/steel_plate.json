@@ -10,7 +10,7 @@
     "id": "synergy:steel_plate"
   },
   "plate": {
-    "tag": "c:plates/steel"
+    "item": "synergy:plate_mold"
   },
   "ticks": 80
 }

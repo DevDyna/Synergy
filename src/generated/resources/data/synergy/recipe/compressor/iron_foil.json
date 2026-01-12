@@ -9,5 +9,8 @@
     "count": 2,
     "id": "synergy:iron_foil"
   },
+  "plate": {
+    "item": "synergy:foil_mold"
+  },
   "ticks": 80
 }

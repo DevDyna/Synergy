@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "synergy:molds"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:foil_mold"
+  }
+}

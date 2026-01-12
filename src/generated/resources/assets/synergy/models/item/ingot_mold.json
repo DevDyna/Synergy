@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "synergy:item/resources/blank_mold",
+    "layer1": "synergy:item/resources/mold/ingot"
+  }
+}

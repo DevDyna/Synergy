@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:foil_mold_from_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "tag_foil_mold": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#synergy:molds"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "tag_foil_mold"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:foil_mold_from_stonecutting"
+    ]
+  }
+}

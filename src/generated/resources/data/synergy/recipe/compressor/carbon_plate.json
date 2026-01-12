@@ -1,12 +1,12 @@
 {
   "type": "synergy:compressor",
-  "consume_catalyst": false,
+  "consume_catalyst": true,
   "energy": 10,
   "input": {
     "item": "synergy:carbon_fiber"
   },
   "output": {
-    "count": 1,
+    "count": 2,
     "id": "synergy:carbon_plate"
   },
   "plate": {
