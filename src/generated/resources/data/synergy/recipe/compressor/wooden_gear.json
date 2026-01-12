@@ -1,0 +1,16 @@
+{
+  "type": "synergy:compressor",
+  "consume_catalyst": false,
+  "energy": 10,
+  "input": {
+    "tag": "c:rods/wooden"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:wooden_gear"
+  },
+  "plate": {
+    "item": "synergy:gear_mold"
+  },
+  "ticks": 80
+}
