@@ -78,6 +78,14 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(ID, has(input))
                                 .save(c);
 
+                CompressorRecipeBuilder.of()//TODO maybe it will be unbalanced
+                                .input(input)
+                                .delay(80)
+                                .catalyst(zItems.MOLD_GEAR.get())
+                                .output(gear)
+                                .unlockedBy()
+                                .save(c);
+
         }
 
         protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot, Item secondary,
@@ -787,13 +795,13 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .group(zStatic.Items.soldering_gun).save(c);
 
                 // ShapedRecipeBuilder.shaped(MISC, zItems.PIPE_REFARCTORIZER.get())
-                //                 .pattern(" I")
-                //                 .pattern("S ")
-                //                 .define('S', Items.STICK)
-                //                 .define('I', Items.IRON_NUGGET)
-                //                 .unlockedBy(ID,
-                //                                 has(Items.IRON_INGOT))
-                //                 .group(zStatic.Items.refactorizer).save(c);
+                // .pattern(" I")
+                // .pattern("S ")
+                // .define('S', Items.STICK)
+                // .define('I', Items.IRON_NUGGET)
+                // .unlockedBy(ID,
+                // has(Items.IRON_INGOT))
+                // .group(zStatic.Items.refactorizer).save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.CONFIGURATOR.get())
                                 .pattern("N N")
@@ -1045,21 +1053,21 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         protected static void stonecutter(RecipeOutput c, ItemLike result, TagKey<Item> material, int resultCount,
                         String extra) {
                 SingleItemRecipeBuilder.stonecutting(x.ingredient(material), BUILDING_BLOCKS, result, resultCount)
-                                .unlockedBy("tag_"+getItemName(result), has(material))
+                                .unlockedBy("tag_" + getItemName(result), has(material))
                                 .save(c, extra);
         }
 
-        protected static void stonecutter(RecipeOutput c, ItemLike result, TagKey<Item> material, 
+        protected static void stonecutter(RecipeOutput c, ItemLike result, TagKey<Item> material,
                         String extra) {
-                 stonecutter(c, result, material,1,extra);
+                stonecutter(c, result, material, 1, extra);
         }
 
         protected static void stonecutter(RecipeOutput c, ItemLike result, TagKey<Item> material) {
-                 stonecutter(c, result, material,1,ID + ":" + getItemName(result) + "_from_stonecutting");
+                stonecutter(c, result, material, 1, ID + ":" + getItemName(result) + "_from_stonecutting");
         }
 
-        protected static void stonecutter(RecipeOutput c, ItemLike result, ItemLike material,String extra) {
-                stonecutter(c, result, material,1,extra);
+        protected static void stonecutter(RecipeOutput c, ItemLike result, ItemLike material, String extra) {
+                stonecutter(c, result, material, 1, extra);
         }
 
         protected static void pillar(RecipeOutput c, ItemLike result, ItemLike material) {
