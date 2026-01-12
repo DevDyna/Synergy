@@ -60,7 +60,7 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zOnlyBlock.getEntries().forEach(b -> addBlock(b, "Unobtainable block"));
 
                 zItems.zMolds.getEntries()
-                                .forEach(i -> addItem(i, "Mold: " + named(i).replace(zStatic.ResourceType.mold, "")));
+                                .forEach(i -> addItem(i, "Mold: " + named(i).replace(" Mold", "")));
 
                 // tools
                 add(Main.ID + "." + zStatic.Items.configurator + ".tip",
