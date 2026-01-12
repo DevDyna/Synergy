@@ -297,6 +297,10 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.VOID_BOX_DENY)
                                 .add(zBlocks.VOID_BOX.get().asItem());
 
+                tag(zItemTag.MOLDS).add(ClazzUtil.getAllzItems(zItems.zMolds).stream()
+                                .map(DeferredHolder::get)
+                                .toArray(Item[]::new));
+
         }
 
 }

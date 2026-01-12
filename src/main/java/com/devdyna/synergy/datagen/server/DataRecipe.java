@@ -24,6 +24,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings("null")
 public class DataRecipe extends ExtraRecipeProvider {
@@ -348,7 +349,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(80)
                                 .output(Items.DIAMOND)
                                 .unlockedBy()
-
                                 .save(c);
 
                 QuernMillingBuilder.of().input(Items.EMERALD)
@@ -364,7 +364,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(80)
                                 .output(Items.EMERALD)
                                 .unlockedBy()
-
                                 .save(c);
 
                 QuernMillingBuilder.of().input(Items.AMETHYST_SHARD)
@@ -380,7 +379,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(80)
                                 .output(Items.AMETHYST_SHARD)
                                 .unlockedBy()
-
                                 .save(c);
 
                 QuernMillingBuilder.of().input(Items.LAPIS_LAZULI)
@@ -396,7 +394,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(80)
                                 .output(Items.LAPIS_LAZULI)
                                 .unlockedBy()
-
                                 .save(c);
 
                 QuernMillingBuilder.of().input(Items.ANCIENT_DEBRIS)
@@ -432,7 +429,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(80)
                                 .output(Items.QUARTZ)
                                 .unlockedBy()
-
                                 .save(c);
 
                 QuernMillingBuilder.of().input(Items.PRISMARINE_SHARD)
@@ -955,16 +951,15 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(80)
                                 .output(zItems.CARBON_FIBER)
                                 .unlockedBy()
-
                                 .save(c);
 
                 CompressorRecipeBuilder.of()
                                 .input(zItems.CARBON_FIBER)
                                 .delay(80)
                                 .catalyst(zItemTag.PLATE_STEEL)
-                                .output(zItems.CARBON_PLATE)
+                                .consumeCatalyst()
+                                .output(zItems.CARBON_PLATE, 2)
                                 .unlockedBy()
-
                                 .save(c);
 
                 AlloySmelterRecipeBuilder.of()
@@ -1204,6 +1199,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                 MaceratorRecipeBuilder.of().input(Items.DIAMOND_HORSE_ARMOR)
                                 .output(Items.DIAMOND, 5)
                                 .unlockedBy().save(c, "_from_horse_armor");
+
+                twoByTwoPacker(c, zItems.BLANK_MOLD.get(), zItemTag.PLATE_STEEL);
+
+                zItems.zMolds.getEntries().stream().map(DeferredHolder::get)
+                                .forEach(i -> {
+                                        stonecutter(c, i, zItems.BLANK_MOLD.get());
+                                        stonecutter(c, i, zItemTag.MOLDS);
+                                });
 
         }
 

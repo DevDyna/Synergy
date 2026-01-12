@@ -164,6 +164,12 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                 x.path(w), "minecraft:item/generated")
                                 .texture("layer0", x.rl("item/plants/bush/" + x.path(w).replace("wild_", ""))));
 
+                zItems.zMolds.getEntries().stream().map(DeferredHolder::get)
+                                .forEach(d -> withExistingParent(x.path(d), "minecraft:item/generated")
+                                                .texture("layer0", x.rl("item/resources/blank_mold"))
+                                                .texture("layer1", x.rl("item/resources/mold/"
+                                                                + x.path(d).replace(zStatic.ResourceType.mold, ""))));
+
         }
 
         protected void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {

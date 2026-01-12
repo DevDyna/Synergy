@@ -41,7 +41,8 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zCrop.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zMachineFrame.getEntries().forEach(b -> addBlock(b, named(b)));
 
-                ClazzUtil.getAllzItems().stream().filter(d -> !d.is(zItems.CAKE_STICK))
+                ClazzUtil.getAllzItems().stream()
+                                .filter(d -> !d.is(zItems.CAKE_STICK) && !zItems.zMolds.getEntries().contains(d))
                                 .forEach(c -> addItem(c, named(c)));
 
                 zItems.zBucketItems.getEntries().forEach(b -> addItem(b, named(b)));
@@ -57,6 +58,9 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zHiddenBlock.getEntries().forEach(b -> addBlock(b, named(b).replace(" Block", "")));
 
                 zBlocks.zOnlyBlock.getEntries().forEach(b -> addBlock(b, "Unobtainable block"));
+
+                zItems.zMolds.getEntries()
+                                .forEach(i -> addItem(i, "Mold: " + named(i).replace(zStatic.ResourceType.mold, "")));
 
                 // tools
                 add(Main.ID + "." + zStatic.Items.configurator + ".tip",

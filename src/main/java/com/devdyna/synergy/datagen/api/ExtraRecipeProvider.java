@@ -300,10 +300,9 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 CompressorRecipeBuilder.of()
                                 .input(input)
                                 .delay(80)
-                                .catalyst(zItemTag.PLATE_STEEL)
+                                .catalyst(zItems.MOLD_PLATE.get())
                                 .output(output, 2)
                                 .unlockedBy()
-
                                 .save(c);
         }
 
@@ -318,10 +317,9 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 CompressorRecipeBuilder.of()
                                 .input(input)
                                 .delay(80)
-                                .catalyst(zItemTag.PLATE_STEEL)
+                                .catalyst(zItems.MOLD_PLATE.get())
                                 .output(output, 2)
                                 .unlockedBy()
-
                                 .save(c);
         }
 
@@ -824,9 +822,9 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 CompressorRecipeBuilder.of()
                                 .input(input)
                                 .delay(80)
+                                .catalyst(zItems.MOLD_FOIL.get())
                                 .output(output, 2)
                                 .unlockedBy()
-
                                 .save(c);
         }
 
@@ -844,10 +842,9 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 CompressorRecipeBuilder.of()
                                 .input(input)
                                 .delay(80)
-                                .catalyst(zItemTag.PLATE_STEEL)
+                                .catalyst(zItems.MOLD_FOIL.get())
                                 .output(output, 2)
                                 .unlockedBy()
-
                                 .save(c);
         }
 
@@ -1043,6 +1040,22 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 SingleItemRecipeBuilder.stonecutting(Ingredient.of(material), BUILDING_BLOCKS, result, resultCount)
                                 .unlockedBy(getHasName(material), has(material))
                                 .save(c, extra);
+        }
+
+        protected static void stonecutter(RecipeOutput c, ItemLike result, TagKey<Item> material, int resultCount,
+                        String extra) {
+                SingleItemRecipeBuilder.stonecutting(x.ingredient(material), BUILDING_BLOCKS, result, resultCount)
+                                .unlockedBy("tag_"+getItemName(result), has(material))
+                                .save(c, extra);
+        }
+
+        protected static void stonecutter(RecipeOutput c, ItemLike result, TagKey<Item> material, 
+                        String extra) {
+                 stonecutter(c, result, material,1,extra);
+        }
+
+        protected static void stonecutter(RecipeOutput c, ItemLike result, TagKey<Item> material) {
+                 stonecutter(c, result, material,1,ID + ":" + getItemName(result) + "_from_stonecutting");
         }
 
         protected static void stonecutter(RecipeOutput c, ItemLike result, ItemLike material,String extra) {
