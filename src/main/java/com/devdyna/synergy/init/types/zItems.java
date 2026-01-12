@@ -46,6 +46,7 @@ public class zItems {
                 zPellets.register(bus);
                 zCoils.register(bus);
                 zGears.register(bus);
+                zMolds.register(bus);
 
                 zMachineUpgrades.register(bus);
         }
@@ -106,6 +107,7 @@ public class zItems {
         public static final DeferredRegister.Items zMachineUpgrades = DeferredRegister.createItems(Main.ID);
 
         // Dedicated resource types
+        public static final DeferredRegister.Items zMolds = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zCoils = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zFoils = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zGems = DeferredRegister.createItems(Main.ID);
@@ -170,7 +172,7 @@ public class zItems {
                         () -> new Croock(BlockTags.LEAVES, Tiers.NETHERITE));
 
         // public static final DeferredHolder<Item, Item> PIPE_REFARCTORIZER = zTool
-        //                 .register(zStatic.Items.refactorizer, () -> new PipeRefactorizer());
+        // .register(zStatic.Items.refactorizer, () -> new PipeRefactorizer());
 
         public static final DeferredHolder<Item, Item> SMASHER = zTool
                         .register(zStatic.Items.smasher, () -> new Smasher());
@@ -430,6 +432,19 @@ public class zItems {
                         .resourceGear(zStatic.ResourceMaterial.lead);
 
         // ---------------------------------------------------------------------------------------//
+        public static final DeferredHolder<Item, Item> MOLD_GEAR = Material
+                        .resourceMold(zStatic.ResourceType.gear);
+        public static final DeferredHolder<Item, Item> MOLD_FOIL = Material
+                        .resourceMold(zStatic.ResourceType.foil);
+        public static final DeferredHolder<Item, Item> MOLD_INGOT = Material
+                        .resourceMold(zStatic.ResourceType.ingot);
+        public static final DeferredHolder<Item, Item> MOLD_PLATE = Material
+                        .resourceMold(zStatic.ResourceType.plate);
+
+        // ---------------------------------------------------------------------------------------//
+
+        public static final DeferredHolder<Item, Item> BLANK_MOLD = Material
+                        .resourceItem("blank_mold");
 
         public static final DeferredHolder<Item, Item> CARBON_FIBER = Material
                         .resourceItem("carbon_fiber");

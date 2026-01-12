@@ -89,6 +89,7 @@ public class zStatic {
         public static String shard = "_shard";
         public static String dust = "_dust";
         public static String pellet = "_pellet";
+        public static String mold = "_mold";
     }
 
     public class MachineUpgrades {

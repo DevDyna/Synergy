@@ -198,4 +198,8 @@ public class zItemTag {
         public static final TagKey<Item> VOID_BOX_DENY = Material
                         .tagItem("void_box_deny");
 
+
+        public static final TagKey<Item> MOLDS = Material
+                        .tagItem("molds");
+
 }

@@ -218,7 +218,7 @@ public class Material {
 
         public static DeferredHolder<Item, Item> machineUpgrade(String name) {
                 return zItems.zMachineUpgrades
-                                .registerSimpleItem(name+"_"+zStatic.MachineUpgrades.TYPE);
+                                .registerSimpleItem(name + "_" + zStatic.MachineUpgrades.TYPE);
         }
 
         public static DeferredHolder<Item, Item> droplet(String name) {
@@ -281,16 +281,20 @@ public class Material {
                                 .registerSimpleItem(name + zStatic.ResourceType.pellet);
         }
 
+        public static DeferredHolder<Item, Item> resourceMold(String name) {
+                return zItems.zMolds
+                                .registerSimpleItem(name.replace("_", "") + zStatic.ResourceType.mold);
+        }
+
         public static DeferredHolder<CreativeModeTab, CreativeModeTab> createCreativeTab(
                         String id,
                         Supplier<Item> icon) {
                 return zCreativeTab.zCreative
-                                .register(Main.ID+"_"+id, () -> CreativeModeTab.builder()
+                                .register(Main.ID + "_" + id, () -> CreativeModeTab.builder()
                                                 .title(Component.translatable(
                                                                 Main.ID + "." + zStatic.CreativeTab.TYPE + "." + id))
                                                 .icon(() -> icon.get().getDefaultInstance())// REQUIRE SUPPLIER
                                                 .build());
         }
-
 
 }

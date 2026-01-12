@@ -148,6 +148,7 @@ public class CreativeTabs {
                     zItems.zPellets,
                     zItems.zCoils,
                     zItems.zGears,
+                    zItems.zMolds,
                     zItems.zBucketItems).forEach(r -> r.getEntries().forEach(i -> event.accept(i.get())));
 
         }
