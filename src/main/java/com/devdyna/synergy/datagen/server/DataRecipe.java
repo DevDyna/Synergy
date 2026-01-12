@@ -1024,7 +1024,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 UrnRitualBuilder.of()
                                 .add(Tags.Items.GEMS_DIAMOND)
                                 .add(zItems.MAGIC_DUST)
-                                .output(zItems.VOID_CRYSTAL.get(), 2)
+                                .output(zItems.VOID_CRYSTAL.get())
                                 .unlockedBy().save(c);
 
                 ItemUseBuilder.of()
