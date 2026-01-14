@@ -70,7 +70,7 @@ public class FluidProviderBE extends NodeBaseBE
 
     @Override
     public FluidStack getFluidStack() {
-        return getRecipe(getInput()).get().value().getOutput();
+        return getRecipe(getInput()).isPresent() ? getRecipe(getInput()).get().value().getOutput() : FluidStack.EMPTY;
     }
 
 }

@@ -71,7 +71,7 @@ public class ItemProviderBE extends NodeBaseBE
 
     @Override
     public ItemStack getItemStack() {
-        return getRecipe(getInput()).get().value().getOutput();
+        return getRecipe(getInput()).isPresent() ? getRecipe(getInput()).get().value().getOutput() : ItemStack.EMPTY;
     }
 
 }
