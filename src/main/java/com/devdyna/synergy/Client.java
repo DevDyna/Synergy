@@ -27,8 +27,8 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 
-@SuppressWarnings({ "removal", "deprecation" })
-@EventBusSubscriber(modid = Main.ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(value = Dist.CLIENT)
+@Mod(value = Main.ID, dist = Dist.CLIENT)
 public class Client {
 
     @SubscribeEvent
@@ -54,6 +54,7 @@ public class Client {
         event.register(zMachines.ELECTRIC_FURNACE.menu().get(), ElectricFurnaceScreen::new);
     }
 
+    @SuppressWarnings("deprecation")
     @SubscribeEvent
     public static void registerItemColor(RegisterColorHandlersEvent.Item event) {
         // idk if it work but i will keep it
