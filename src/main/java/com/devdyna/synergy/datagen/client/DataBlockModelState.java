@@ -4,6 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.api.utils.ClazzUtil;
+import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.datagen.api.ExtraBlockStateProvider;
 import com.devdyna.synergy.init.types.zBlocks;
 
@@ -148,6 +149,9 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 horizontalBlock(zBlocks.VOID_BOX.get(),
                                 models().withExistingParent(zBlocks.VOID_BOX.getRegisteredName(),
                                                 modLoc("block/tiny_block/void_box/block")));
+
+                simpleBlock(zBlocks.FLUID_TANK.get(), models().cubeAll(zBlocks.FLUID_TANK.getRegisteredName(),
+                                modLoc("block/fluid_tank")).renderType(DataGenUtil.CUTOUT));
 
         }
 

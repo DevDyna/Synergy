@@ -143,6 +143,8 @@ public class DataItemModel extends ExtraItemModelProvider {
                 withExistingParent(x.path(zBlocks.INVERTED_REPEATER.get()), "minecraft:item/generated")
                                 .texture("layer0", modLoc("item/redstone/inverted_repeater"));
 
+                simpleFlexibleBlock(zBlocks.FLUID_TANK, "fluid_tank").renderType(DataGenUtil.CUTOUT);
+
         }
 
 }

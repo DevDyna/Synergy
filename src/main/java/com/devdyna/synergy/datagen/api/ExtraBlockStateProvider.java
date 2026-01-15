@@ -124,6 +124,16 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                 modLoc("block/" + loc)));
         }
 
+        protected void simpleFlexibleBlock(DeferredHolder<Block, Block> b, ResourceLocation loc) {
+                simpleBlock(b.get(), models().cubeAll(b.getRegisteredName(),
+                                loc));
+        }
+
+        protected void simpleCutOut(DeferredHolder<Block, Block> b, ResourceLocation loc) {
+                simpleBlock(b.get(), models().cubeAll(b.getRegisteredName(),
+                                loc).renderType(DataGenUtil.CUTOUT));
+        }
+
         protected void cutOut(DeferredHolder<Block, Block> b, String loc) {
                 simpleBlock(b.get(), models().cubeAll(b.getRegisteredName(),
                                 modLoc("block/" + loc)).renderType(DataGenUtil.CUTOUT));

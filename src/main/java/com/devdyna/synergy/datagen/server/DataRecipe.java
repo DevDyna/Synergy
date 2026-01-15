@@ -1208,6 +1208,16 @@ public class DataRecipe extends ExtraRecipeProvider {
                                         stonecutter(c, i, zItemTag.MOLDS);
                                 });
 
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.FLUID_TANK.get(), 1)
+                                .define('#', Tags.Items.NUGGETS_IRON)
+                                .define('G', Tags.Items.GLASS_BLOCKS_COLORLESS)
+                                .pattern(" # ")
+                                .pattern("#G#")
+                                .pattern(" # ")
+                                .unlockedBy(getHasName(Items.IRON_NUGGET),
+                                                has(Items.IRON_NUGGET))
+                                .save(c);
+
         }
 
 }

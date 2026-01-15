@@ -21,7 +21,7 @@ public class DataLang extends LanguageProvider {
                 super(o, ID, "en_us");
         }
 
-        private String TIP_COLOR = "§7";
+        public static final String TIP_COLOR = "§7";
 
         @SuppressWarnings({ "deprecation", "unchecked" })
         @Override
@@ -336,13 +336,15 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jei.tip.dont_consume", "§cNot consume");
 
                 // i will move to item components intend of static values and tags
-                add(Main.ID + ".upgrade.speed.speed", TIP_COLOR + "Machine Speed : §a+35%§f");
-                add(Main.ID + ".upgrade.speed.energy", TIP_COLOR + "Machine Energy : §c-100%");
-                add(Main.ID + ".upgrade.energy", TIP_COLOR + "Machine Energy : §a+75%§f");
+                add(ID + ".upgrade.speed.speed", TIP_COLOR + "Machine Speed : §a+35%§f");
+                add(ID + ".upgrade.speed.energy", TIP_COLOR + "Machine Energy : §c-100%");
+                add(ID + ".upgrade.energy", TIP_COLOR + "Machine Energy : §a+75%§f");
 
-                add(Main.ID + "." + zStatic.Blocks.void_box, TIP_COLOR + "A strange box to allow to NOT store items");
+                add(ID + "." + zStatic.Blocks.void_box, TIP_COLOR + "A strange box to allow to NOT store items");
 
-                add(Main.ID + ".block.blast_proof", TIP_COLOR + "Blast resistance");
+                add(ID + ".block.blast_proof", TIP_COLOR + "Blast resistance");
+
+                add(ID + ".tank_interact.empty", "Empty");
 
         }
 

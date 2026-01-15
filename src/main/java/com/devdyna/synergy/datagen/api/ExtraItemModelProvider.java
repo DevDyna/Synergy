@@ -14,6 +14,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -201,13 +202,13 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                 .texture("down", down);
         }
 
-        protected void simpleFlexibleBlock(DeferredHolder<Block, Block> b, String loc) {
-                cubeAll(b.getRegisteredName(),
+        protected ItemModelBuilder simpleFlexibleBlock(DeferredHolder<Block, Block> b, String loc) {
+               return cubeAll(b.getRegisteredName(),
                                 modLoc("block/" + loc));
         }
 
-        protected void simpleFullBlock(DeferredHolder<Block, Block> b, String prefix) {
-                cubeAll(b.getRegisteredName(),
+        protected ItemModelBuilder  simpleFullBlock(DeferredHolder<Block, Block> b, String prefix) {
+               return cubeAll(b.getRegisteredName(),
                                 modLoc("block/" + b.getRegisteredName().replace(ID + ":", prefix)));
         }
 
