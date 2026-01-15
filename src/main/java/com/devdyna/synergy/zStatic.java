@@ -202,6 +202,7 @@ public class zStatic {
         public static String healer = "healer";
 
         public static String void_box = "void_box";
+        public static String fluid_tank = "fluid_tank";
 
         public static String urn = "urn";
         public static String quern = "quern";

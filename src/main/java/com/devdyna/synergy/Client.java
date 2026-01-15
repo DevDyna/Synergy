@@ -2,6 +2,7 @@ package com.devdyna.synergy;
 
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterAOE;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerAOE;
+import com.devdyna.synergy.init.builder.automation.tank.FluidTankFluidRender;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurnaceScreen;
@@ -22,6 +23,7 @@ import net.minecraft.world.item.BucketItem;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
@@ -39,6 +41,7 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.REACTOR_CONTROLLER.get(), ReactorAOE::new);
         event.registerBlockEntityRenderer(zBlockEntities.QUERN.get(), QuernRendering::new);
         event.registerBlockEntityRenderer(zBlockEntities.VOID_BOX.get(), VoidBoxRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.FLUID_TANK.get(), FluidTankFluidRender::new);
     }
 
     @SubscribeEvent

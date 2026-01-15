@@ -30,6 +30,18 @@ public class Capability {
 
                 );
 
+                event.registerBlock(Capabilities.FluidHandler.BLOCK,
+                                (level, pos, state, be,
+                                                side) -> {
+                                        if (be instanceof SimpleFluidStorage)
+                                                return be.getData(zHandlers.FLUID_TANK);
+
+                                        return null;
+                                },
+                                zBlocks.FLUID_TANK.get()
+
+                );
+
                 event.registerBlock(Capabilities.ItemHandler.BLOCK,
                                 (level, pos, state, be,
                                                 side) -> {

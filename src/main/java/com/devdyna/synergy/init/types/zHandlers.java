@@ -4,8 +4,10 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.function.Supplier;
 
+import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.beLogic.*;
 
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.energy.EnergyStorage;
@@ -36,17 +38,21 @@ public class zHandlers {
             "item_storage", () -> AttachmentType.serializable(h -> {
                 if (h instanceof ItemStorageBlock be)
                     return new ItemStackHandler(be.MachineSlots());
-                return new ItemStackHandler(1);
+                return null;
             }).build());
 
+    public static final Supplier<AttachmentType<FluidStorageTank>> FLUID_TANK = zHandler.register(
+            "fluid_tank", () -> AttachmentType.serializable(h -> {
+                if (h instanceof BlockEntity be && h instanceof SimpleFluidStorage f)
+                    return new FluidStorageTank(be,f.getFluidCapacity());
+                return null;
+            }).build());
 
-public static final Supplier<AttachmentType<ItemStackHandler>> MACHINE_HANDLER = zHandler.register(
+    public static final Supplier<AttachmentType<ItemStackHandler>> MACHINE_HANDLER = zHandler.register(
             "items", () -> AttachmentType.serializable(h -> {
                 if (h instanceof MachineItemAutomation be)
                     return new ItemStackHandler(be.getMachineSlots());
-                return new ItemStackHandler(1);
+                return null;
             }).build());
-
-              
 
 }

@@ -6,6 +6,7 @@ import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterBE;
 import com.devdyna.synergy.init.builder.automation.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerBE;
+import com.devdyna.synergy.init.builder.automation.tank.FluidTankBE;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBE;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBE;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
@@ -114,11 +115,15 @@ public class zBlockEntities {
                                         zBlocks.LASER_SENSOR);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LaserRotorBE>> LASER_ROTOR = Material
-                        .createBlockEntity(zStatic.Lazers.rotor,LaserRotorBE ::new,
+                        .createBlockEntity(zStatic.Lazers.rotor,LaserRotorBE::new,
                                         zBlocks.LASER_ROTOR);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<VoidBoxBE>> VOID_BOX = Material
-                        .createBlockEntity(zStatic.Blocks.void_box,VoidBoxBE ::new,
+                        .createBlockEntity(zStatic.Blocks.void_box,VoidBoxBE::new,
                                         zBlocks.VOID_BOX);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FluidTankBE>> FLUID_TANK = Material
+                        .createBlockEntity(zStatic.Blocks.fluid_tank,FluidTankBE::new,
+                                        zBlocks.FLUID_TANK);
 
 }

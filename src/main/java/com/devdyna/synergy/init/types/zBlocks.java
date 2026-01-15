@@ -23,6 +23,7 @@ import com.devdyna.synergy.init.builder.agriculture.wild.*;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterBLK;
 import com.devdyna.synergy.init.builder.automation.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerBLK;
+import com.devdyna.synergy.init.builder.automation.tank.FluidTankBlock;
 import com.devdyna.synergy.init.builder.laser.*;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
@@ -386,6 +387,10 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> LASER_ROTOR = Material.registerItemBlock(
                         zStatic.Lazers.rotor,
                         () -> new LaserRotorBlock());
+
+        public static final DeferredHolder<Block, Block> FLUID_TANK = Material.registerItemBlock(
+                        zStatic.Blocks.fluid_tank,
+                        () -> new FluidTankBlock());
 
         public static final DeferredHolder<Block, Block> VOID_BOX = Material.registerItemBlock(
                         zStatic.Blocks.void_box,
