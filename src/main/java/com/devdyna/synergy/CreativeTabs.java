@@ -93,6 +93,7 @@ public class CreativeTabs {
             event.accept(zBlocks.SOLAR_PANEL.get());
             event.accept(zBlocks.HARVESTER.get());
             event.accept(zBlocks.SPRINKLER.get());
+            event.accept(zBlocks.FLUID_TANK.get());
         }
 
         // ---------------------------------------------------------- //
