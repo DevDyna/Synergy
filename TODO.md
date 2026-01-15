@@ -50,6 +50,7 @@
 
 ### Automation
 
+- [ ] GreenHouse (in-gui plant farmer)
 - [ ] CobbleGen (like NC)
 - [ ] WaterGen (like NC)
 - [ ] Framed CobbleGen (EnderioAddons-Like)
