@@ -21,6 +21,7 @@
     "synergy:cooler_base",
     "synergy:fuel_cell",
     "synergy:quantum_reactor_controller",
-    "synergy:blast_bricks"
+    "synergy:blast_bricks",
+    "synergy:fluid_tank"
   ]
 }
