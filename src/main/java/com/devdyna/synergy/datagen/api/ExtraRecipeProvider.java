@@ -406,19 +406,19 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        public static List<DeferredHolder<Item, Item>> clearNBT = List.of(
-                        zItems.RED_BATTERY,
-                        zItems.BLUE_BATTERY,
-                        zItems.GREEN_BATTERY);
+        public static List< Item> clearNBT = List.of(
+                        zItems.RED_BATTERY.get(),
+                        zItems.BLUE_BATTERY.get(),
+                        zItems.GREEN_BATTERY.get(),
+                        zBlocks.FLUID_TANK.get().asItem());
 
         protected void clearNBT(RecipeOutput c) {
 
                 clearNBT.forEach(i -> {
-                        ShapelessRecipeBuilder.shapeless(MISC, i.get())
-                                        .requires(i.get())
-                                        .unlockedBy(ID, has(i.get()))
-
-                                        .save(c, i.getRegisteredName() + "_clear_nbt");
+                        ShapelessRecipeBuilder.shapeless(MISC, i)
+                                        .requires(i)
+                                        .unlockedBy(ID, has(i))
+                                        .save(c, ID + ":" + x.path(i) + "_clear_nbt");
                 });
         }
 
