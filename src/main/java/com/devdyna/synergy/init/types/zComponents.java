@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.types;
 
 import static com.devdyna.synergy.Main.ID;
 
+import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
@@ -51,6 +52,13 @@ public class zComponents {
                                         () -> DataComponentType.<SimpleFluidContent>builder()
                                                         .persistent(SimpleFluidContent.CODEC)
                                                         .networkSynchronized(SimpleFluidContent.STREAM_CODEC)
+                                                        .build());
+
+        public static final DeferredHolder<DataComponentType<?>, DataComponentType<UpgradeComponents>> UPGRADE_COMPONENTS = zComponents
+                        .register("upgrade_components",
+                                        () -> DataComponentType.<UpgradeComponents>builder()
+                                                        .persistent(UpgradeComponents.CODEC)
+                                                        .networkSynchronized(UpgradeComponents.STREAM_CODEC)
                                                         .build());
 
 }

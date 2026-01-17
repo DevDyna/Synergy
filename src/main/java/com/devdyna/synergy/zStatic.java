@@ -96,6 +96,8 @@ public class zStatic {
         public static String TYPE = "upgrade";
         public static String speed = "speed";
         public static String energy = "energy";
+        public static String luck = "luck";
+        public static String fluid = "fluid";
     }
 
     public class Items {

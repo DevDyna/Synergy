@@ -108,8 +108,9 @@ public class ExtractorBE extends BaseMachineBE implements FluidTankStorage {
         ItemStack item_out = recipe.getOutputItem().copy();
         FluidStack fluid_out = recipe.getFluidOutput().copy();
 
-        this.maxProgress = recipe.getTime();
+        this.maxProgress = calculateMaxProgress(recipe.getTime());
 
+        boolean success = calculateSecondarySuccess(recipe.getSecondaryItemChance());
 
         if (!(checkSlot(getOutput(), item_out)
                 && checkSlot(getFluidStorage().getFluid(), fluid_out, getFluidCapacity()))) {
@@ -122,7 +123,7 @@ public class ExtractorBE extends BaseMachineBE implements FluidTankStorage {
         else
             this.progress++;
 
-        if (checkAndConsumeFE(recipe.getEnergy())) {
+        if (checkAndConsumeFE(calculateFEUsage(recipe.getEnergy()))) {
             if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
                 update(true);
         } else {
@@ -135,7 +136,7 @@ public class ExtractorBE extends BaseMachineBE implements FluidTankStorage {
             return;
         }
 
-        if (!item_out.isEmpty())
+        if (!item_out.isEmpty() && success)
             updateOutputSlot(getOutput(), item_out, OUTPUT_SLOT);
 
         if (!fluid_out.isEmpty()) {

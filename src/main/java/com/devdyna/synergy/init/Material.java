@@ -7,6 +7,7 @@ import java.util.function.*;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.init.builder.IndustrialUpgrade;
 import com.devdyna.synergy.init.builder.ItemComponents;
 import com.devdyna.synergy.init.builder.ItemToolTipped;
 import com.devdyna.synergy.init.builder.decorative.DecorativeBlock;
@@ -216,9 +217,10 @@ public class Material {
                                 .registerSimpleItem(name);
         }
 
-        public static DeferredHolder<Item, Item> machineUpgrade(String name) {
+        public static DeferredHolder<Item, IndustrialUpgrade> machineUpgrade(String name) {
                 return zItems.zMachineUpgrades
-                                .registerSimpleItem(name + "_" + zStatic.MachineUpgrades.TYPE);
+                                .register(name + "_" + zStatic.MachineUpgrades.TYPE,
+                                                () -> new IndustrialUpgrade());
         }
 
         public static DeferredHolder<Item, Item> droplet(String name) {

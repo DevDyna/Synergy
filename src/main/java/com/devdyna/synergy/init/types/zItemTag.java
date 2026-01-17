@@ -195,6 +195,12 @@ public class zItemTag {
         public static final TagKey<Item> UPGRADE_SPEED = Material
                         .tagItem("upgrades/speed");
 
+        public static final TagKey<Item> UPGRADE_LUCK = Material
+                        .tagItem("upgrades/luck");
+
+        public static final TagKey<Item> UPGRADE_FLUID = Material
+                        .tagItem("upgrades/fluid");
+
         public static final TagKey<Item> VOID_BOX_DENY = Material
                         .tagItem("void_box_deny");
 

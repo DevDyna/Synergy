@@ -24,17 +24,18 @@ import net.neoforged.neoforge.fluids.FluidStack;
 public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
     public ExtractorRecipeType(int ticks, int energy, Ingredient input,
-            ItemStack output, FluidStack fluid) {
+            ItemStack output, FluidStack fluid, float chance) {
         this.input = input;
         this.ticks = ticks;
         this.output = output;
         this.energy = energy;
         this.fluid_output = fluid;
+        this.chance = chance;
     }
 
     public static ExtractorRecipeType of(int ticks, int energy, Ingredient input,
-            ItemStack output, FluidStack fluid) {
-        return new ExtractorRecipeType(ticks, energy, input, output, fluid);
+            ItemStack output, FluidStack fluid, float chance) {
+        return new ExtractorRecipeType(ticks, energy, input, output, fluid, chance);
     }
 
     @Override
@@ -67,9 +68,9 @@ public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                 FluidStack.CODEC.optionalFieldOf("output_fluid", FluidStack.EMPTY)
                         .forGetter(r -> (r.getFluidOutput() == null || r.getFluidOutput().isEmpty())
                                 ? FluidStack.EMPTY
-                                : r.getFluidOutput())
-
-        ).apply(inst, ExtractorRecipeType::new));
+                                : r.getFluidOutput()),
+                Codec.floatRange(0, 1).fieldOf("chance").forGetter(ExtractorRecipeType::getSecondaryItemChance))
+                .apply(inst, ExtractorRecipeType::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, ExtractorRecipeType> STREAM_CODEC = StreamCodec
                 .composite(
@@ -86,13 +87,14 @@ public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                         r -> (r.getFluidOutput() == null || r.getFluidOutput().isEmpty())
                                 ? Optional.empty()
                                 : Optional.of(r.getFluidOutput()),
-
-                        (ticks, energy, input, a, b) -> new ExtractorRecipeType(
+                        ByteBufCodecs.FLOAT, ExtractorRecipeType::getSecondaryItemChance,
+                        (ticks, energy, input, a, b, c) -> new ExtractorRecipeType(
                                 ticks,
                                 energy,
                                 input,
                                 a.orElse(ItemStack.EMPTY),
-                                b.orElse(FluidStack.EMPTY)));
+                                b.orElse(FluidStack.EMPTY),
+                                c));
 
         @Override
         public MapCodec<ExtractorRecipeType> codec() {

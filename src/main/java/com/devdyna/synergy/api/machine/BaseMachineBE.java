@@ -1,24 +1,23 @@
 package com.devdyna.synergy.api.machine;
 
 import java.util.List;
-
 import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.basebe.be.BEMenu;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
 import com.devdyna.synergy.api.utils.LogUtil;
 import com.devdyna.synergy.config.Common;
-import com.devdyna.synergy.init.types.zItemTag;
-
+import com.devdyna.synergy.init.builder.IndustrialUpgrade;
+import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents;
+import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents.TYPE;
+import com.devdyna.synergy.init.types.zComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -354,8 +353,6 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
             stack.grow(slotStack.getCount());
     }
 
- 
-
     public List<Integer> getUpgradeIndexs() {
         return List.of(SLOT_UPGRADE_1, SLOT_UPGRADE_2, SLOT_UPGRADE_3, SLOT_UPGRADE_4).stream()
                 .filter(i -> i < getStorage().getSlots())
@@ -367,27 +364,39 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         return getUpgradeIndexs().stream()
                 .filter(i -> i >= 0 && i < handler.getSlots())
                 .map(handler::getStackInSlot)
+                .filter(i -> !(i.getItem() instanceof IndustrialUpgrade))
+                .filter(i -> i.get(zComponents.UPGRADE_COMPONENTS) == null)
                 .toList();
     }
 
-    public int getUpgradeInstalled(TagKey<Item> filter) {
-        return getUpgradeInstalled(filter, MAX_UPGRADE_SLOTS);
-    }
-
-    public int getUpgradeInstalled(TagKey<Item> filter, int max) {
-        return Math.min(max, (int) getUpgradeInstalled().stream().filter(i -> i.is(filter)).count());
-    }
-
-    public int calculateFEUsage(int base) {
-        var energy = getUpgradeInstalled(zItemTag.UPGRADE_ENERGY);
-        var speed = getUpgradeInstalled(zItemTag.UPGRADE_SPEED);
-
-        return (base - ((int) (base * (energy * 0.75)))) // energy -> +75% | speed -> -100%
-                + ((int) (base * speed));
+    public List<Integer> getValues(UpgradeComponents.TYPE type) {
+        return getUpgradeInstalled().stream()
+                .filter(i -> !UpgradeComponents.has(i, type))
+                .map(i -> UpgradeComponents.get(i, type))
+                .toList();
     }
 
     public int calculateMaxProgress(int base) {
-        var upgrades = getUpgradeInstalled(zItemTag.UPGRADE_SPEED, Common.MACHINE_MAX_SPEED_UPGRADES.get());
-        return (base - ((int) (base * (upgrades * 0.35))));// speed -> +35% max 2
+        var upgrades = getValues(TYPE.SPEED);
+        var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
+        return Math.max(1, base - (base * sum));
+    }
+
+    public int calculateFEUsage(int base) {
+        var upgrades = getValues(TYPE.ENERGY);
+        var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
+        return Math.max(0, base + (base * sum));
+    }
+
+    public int calculateMBUsage(int base) {
+        var upgrades = getValues(TYPE.FLUID);
+        var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
+        return Math.max(1, base - (base * sum));
+    }
+
+    public boolean calculateSecondarySuccess(float base) {// recipe.getSecondaryItemChance()
+        var upgrades = getValues(TYPE.LUCK);
+        var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
+        return level.random.nextFloat() < (base + (sum/100));
     }
 }

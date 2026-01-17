@@ -3,7 +3,7 @@ package com.devdyna.synergy.api.gui;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
-
+import com.devdyna.synergy.init.builder.IndustrialUpgrade;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntUnaryOperator;
@@ -126,6 +126,39 @@ public abstract class BaseMenu extends AbstractContainerMenu {
             public boolean mayPickup(Player playerIn) {
                 return true;
             }
+        });
+    }
+
+    protected void addMachineUpgradeSlot(ItemStackHandler beSlot, int id, int x, int y) {
+        addMachineSlot(s -> s.getItem() instanceof IndustrialUpgrade,
+                4, beSlot, id, x, y);
+    }
+
+    protected void addMachineSlot(Function<ItemStack, Boolean> mayPlace,
+            int max_stack_size,
+            ItemStackHandler beSlot, int id, int x,
+            int y) {
+        addSlot(new SlotItemHandler(beSlot, id, x, y) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return mayPlace.apply(stack);
+            }
+
+            @Override
+            public boolean mayPickup(Player playerIn) {
+                return true;
+            }
+
+            @Override
+            public int getMaxStackSize() {
+                return max_stack_size;
+            }
+
+            @Override
+            public int getMaxStackSize(ItemStack stack) {
+                return max_stack_size;
+            }
+
         });
     }
 

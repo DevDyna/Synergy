@@ -154,13 +154,6 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                                 "plants/seeds/",
                                                 x.path(item.get())));
 
-                zItems.zMachineUpgrades.getEntries()
-                                .forEach(item -> DataGenUtil.itemModel(
-                                                item.get(),
-                                                this,
-                                                "upgrades/",
-                                                x.path(item.get()).replace("_" + zStatic.MachineUpgrades.TYPE, "")));
-
                 plants.forEach(w -> withExistingParent(
                                 x.path(w), "minecraft:item/generated")
                                 .texture("layer0", x.rl("item/plants/bush/" + x.path(w).replace("wild_", ""))));
@@ -170,6 +163,13 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                                 .texture("layer0", x.rl("item/resources/blank_mold"))
                                                 .texture("layer1", x.rl("item/resources/mold/"
                                                                 + x.path(d).replace(zStatic.ResourceType.mold, ""))));
+
+                zItems.zMachineUpgrades.getEntries().stream().map(DeferredHolder::get)
+                                .forEach(d -> withExistingParent(x.path(d), "minecraft:item/generated")
+                                                .texture("layer0", x.rl("item/upgrades/base"))
+                                                .texture("layer1", x.rl("item/upgrades/"
+                                                                + x.path(d).replace("_"+zStatic.MachineUpgrades.TYPE,
+                                                                                ""))));
 
         }
 
@@ -203,12 +203,12 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
         }
 
         protected ItemModelBuilder simpleFlexibleBlock(DeferredHolder<Block, Block> b, String loc) {
-               return cubeAll(b.getRegisteredName(),
+                return cubeAll(b.getRegisteredName(),
                                 modLoc("block/" + loc));
         }
 
-        protected ItemModelBuilder  simpleFullBlock(DeferredHolder<Block, Block> b, String prefix) {
-               return cubeAll(b.getRegisteredName(),
+        protected ItemModelBuilder simpleFullBlock(DeferredHolder<Block, Block> b, String prefix) {
+                return cubeAll(b.getRegisteredName(),
                                 modLoc("block/" + b.getRegisteredName().replace(ID + ":", prefix)));
         }
 

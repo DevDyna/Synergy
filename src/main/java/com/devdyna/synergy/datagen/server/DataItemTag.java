@@ -293,6 +293,8 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.UPGRADE_ENERGY).add(zItems.UPGRADE_ENERGY.get());
                 tag(zItemTag.UPGRADE_SPEED).add(zItems.UPGRADE_SPEED.get());
+                tag(zItemTag.UPGRADE_LUCK).add(zItems.UPGRADE_LUCK.get());
+                tag(zItemTag.UPGRADE_FLUID).add(zItems.UPGRADE_FLUID.get());
 
                 tag(zItemTag.VOID_BOX_DENY)
                                 .add(zBlocks.VOID_BOX.get().asItem());

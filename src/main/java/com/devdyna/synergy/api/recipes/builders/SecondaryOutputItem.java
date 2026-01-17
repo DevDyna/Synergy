@@ -33,7 +33,7 @@ public interface SecondaryOutputItem<BUILDER extends BaseRecipeBuilder> extends 
     }
 
     default BUILDER secondary(Item secondary, float chance) {
-        return secondary(secondary, chance);
+        return secondary(x.item(secondary), chance);
     }
 
     default BUILDER secondary(DeferredHolder<Item, Item> secondary, float chance) {

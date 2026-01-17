@@ -4,6 +4,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseSeedItem;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
+import com.devdyna.synergy.init.builder.IndustrialUpgrade;
 import com.devdyna.synergy.init.builder.tools.*;
 
 import net.minecraft.tags.BlockTags;
@@ -509,11 +510,17 @@ public class zItems {
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,
                         () -> new CakeStick());
         // ---------------------------------------------------------------------------------------//
-        public static final DeferredHolder<Item, Item> UPGRADE_SPEED = Material
+        public static final DeferredHolder<Item, IndustrialUpgrade> UPGRADE_SPEED = Material
                         .machineUpgrade(zStatic.MachineUpgrades.speed);
 
-        public static final DeferredHolder<Item, Item> UPGRADE_ENERGY = Material
+        public static final DeferredHolder<Item, IndustrialUpgrade> UPGRADE_ENERGY = Material
                         .machineUpgrade(zStatic.MachineUpgrades.energy);
+
+        public static final DeferredHolder<Item, IndustrialUpgrade> UPGRADE_LUCK = Material
+                        .machineUpgrade(zStatic.MachineUpgrades.luck);
+                        
+        public static final DeferredHolder<Item, IndustrialUpgrade> UPGRADE_FLUID = Material
+                        .machineUpgrade(zStatic.MachineUpgrades.fluid);
 
         // ---------------------------------------------------------------------------------------//
 

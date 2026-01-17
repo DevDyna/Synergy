@@ -11,6 +11,7 @@ import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.api.recipes.builders.BiTypeOutput;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -29,7 +30,7 @@ public class ExtractorRecipeBuilder extends BaseMachineRecipeBuilder<ExtractorRe
 
     @Override
     public Recipe<?> createRecipe() {
-        return new ExtractorRecipeType(ticks, energy, input, output,fluid_output);
+        return new ExtractorRecipeType(ticks, energy, input, output, fluid_output, chance);
     }
 
     @Override
@@ -43,8 +44,15 @@ public class ExtractorRecipeBuilder extends BaseMachineRecipeBuilder<ExtractorRe
     }
 
     @Override
-    public ExtractorRecipeBuilder output(FluidStack fluid) {
+    public ExtractorRecipeBuilder fluid(FluidStack fluid) {
         this.fluid_output = fluid;
+        return getBuilder();
+    }
+
+    @Override
+    public ExtractorRecipeBuilder secondary(ItemStack secondary, float chance) {
+        this.secondary = secondary;
+        this.chance = chance;
         return getBuilder();
     }
 

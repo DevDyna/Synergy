@@ -19,8 +19,11 @@ public class CreativeTabs {
 
             ClazzUtil.getAllMachineTypes()
                     .forEach(i -> event.accept((Item) i.item().get()));
-            ClazzUtil.getAllzItems(zItems.zMachineUpgrades)
-                    .forEach(a -> event.accept(a.get()));
+
+            event.accept(zItems.UPGRADE_ENERGY.get().set(0, -150, 0, 0));
+            event.accept(zItems.UPGRADE_SPEED.get().set(250, 150, 0, 0));
+            event.accept(zItems.UPGRADE_LUCK.get().set(0, 150, 25, 0));
+            event.accept(zItems.UPGRADE_FLUID.get().set(0, 150, 0, 20));
         }
 
         // ---------------------------------------------------------- //

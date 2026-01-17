@@ -970,7 +970,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_ENERGY.get())
+                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_ENERGY.get().set(0, -150, 0, 0))
                                 .pattern(" B ")
                                 .pattern("CSC")
                                 .pattern(" R ")
@@ -981,13 +981,35 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_SPEED.get())
+                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_SPEED.get().set(250, 150, 0, 0))
                                 .pattern(" B ")
                                 .pattern("CSC")
                                 .pattern(" R ")
                                 .define('S', zItemTag.PLATE_STEEL)
                                 .define('R', zItems.CONDENSER.get())
                                 .define('B', zItems.AQUAMARINE.get())
+                                .define('C', zItems.CHIP.get())
+                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_LUCK.get().set(0, 150, 25, 0))
+                                .pattern(" B ")
+                                .pattern("CSC")
+                                .pattern(" R ")
+                                .define('S', zItemTag.PLATE_STEEL)
+                                .define('R', zItems.MAGNETIC_STONE_CIRCUIT.get())
+                                .define('B', zItems.GLUE.get())
+                                .define('C', zItems.CHIP.get())
+                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_FLUID.get().set(0, 150, 0, 20))
+                                .pattern(" B ")
+                                .pattern("CSC")
+                                .pattern(" R ")
+                                .define('S', zItemTag.PLATE_STEEL)
+                                .define('R', zItems.RESISTIVE_STONE_CIRCUIT.get())
+                                .define('B', zItems.SAP.get())
                                 .define('C', zItems.CHIP.get())
                                 .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
                                 .save(c);
@@ -1219,23 +1241,22 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 has(Items.IRON_NUGGET))
                                 .save(c);
 
-                
                 ExtractorRecipeBuilder.of()
                                 .input(Items.SLIME_BALL)
-                                .output(zFluids.GLUE, 250)
+                                .fluid(zFluids.GLUE, 250)
                                 .unlockedBy()
                                 .save(c);
 
                 ExtractorRecipeBuilder.of()
                                 .input(zItems.VIOLET_WEBCAP_MUSHROOM.get())
-                                .output(zFluids.OIL, 250)
+                                .fluid(zFluids.OIL, 250)
                                 .unlockedBy()
                                 .save(c);
 
                 ExtractorRecipeBuilder.of()
                                 .input(zItems.BLUE_CUP_MUSHROOM.get())
-                                .output(Items.LAPIS_LAZULI)
-                                .output(Fluids.WATER, 250)
+                                .secondary(Items.LAPIS_LAZULI,0.25f)
+                                .fluid(Fluids.WATER, 250)
                                 .unlockedBy()
                                 .save(c);
 

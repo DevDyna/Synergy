@@ -105,9 +105,9 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
         ItemStack output = recipe.getOutputItem().copy();
         ItemStack secondary = recipe.getSecondaryItem().copy();
 
-        this.maxProgress = recipe.getTime();
+        this.maxProgress = calculateMaxProgress(recipe.getTime());
 
-        boolean success = level.random.nextFloat() < recipe.getSecondaryItemChance();
+        boolean success = calculateSecondarySuccess(recipe.getSecondaryItemChance());
 
         if (!(checkSlot(getOutput(), output) && checkSlot(getExtraSlot1(), secondary))) {
             resetProgress();
@@ -119,7 +119,7 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
         else
             this.progress++;
 
-        if (checkAndConsumeFE(recipe.getEnergy())) {
+        if (checkAndConsumeFE(calculateFEUsage(recipe.getEnergy()))) {
             if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
                 update(true);
         } else {
