@@ -15,6 +15,7 @@ import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings("null")
 public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Recipe<T> {
@@ -33,6 +34,8 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
     public float chance;
 
     public boolean consumeCatalyst;
+
+    public FluidStack fluid_output;
 
     public boolean consumeCatalyst(){
         return consumeCatalyst;
@@ -60,6 +63,10 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
 
     public Ingredient getCatalystItem() {
         return catalyst;
+    }
+
+    public FluidStack getFluidOutput() {
+        return fluid_output;
     }
 
     /**

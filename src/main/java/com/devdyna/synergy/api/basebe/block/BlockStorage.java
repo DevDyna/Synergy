@@ -29,7 +29,7 @@ public abstract class BlockStorage extends BlockMenu {
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
             BlockHitResult hitResult) {
 
         if (level.getBlockEntity(pos) instanceof BEStorage be) {

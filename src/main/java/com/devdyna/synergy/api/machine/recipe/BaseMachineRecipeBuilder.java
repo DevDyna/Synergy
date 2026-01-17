@@ -12,6 +12,7 @@ import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
+import com.devdyna.synergy.api.recipes.builders.BiTypeOutput;
 import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
 import com.devdyna.synergy.api.recipes.builders.SimpleInputItem;
 import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
@@ -34,6 +35,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings({ "unused", "null" })
@@ -50,6 +52,7 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
     protected Ingredient catalyst = Ingredient.EMPTY;
     protected float chance;
     protected boolean consumeCatalyst = false;
+    protected FluidStack fluid_output = FluidStack.EMPTY;
 
     public T input(Ingredient input) {
         this.input = input;
@@ -107,6 +110,12 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
 
     @Override
     public ResourceLocation getSuffix(String extra) {
+
+        if (this instanceof BiTypeOutput)
+            if (output == null)
+                return x.rl(getMachine().id() + "/" + x.path(fluid_output.getFluid())
+                        + extra);
+
         return x.rl(getMachine().id() + "/" + x.path(output.getItem())
                 + extra);
     }

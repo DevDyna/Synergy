@@ -85,12 +85,12 @@ public abstract class BaseMachineBlock extends BlockMenu {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l, BlockState s,
             BlockEntityType<T> ty) {
         return (lvl, pos, b, t) -> {
+
+            if (l == null)
+                return;
+
             if (t instanceof BaseMachineBE be) {
-                be.tickBoth();
-                if (l.isClientSide())
-                    be.tickClient();
-                else
-                    be.tickServer();
+                be.tick();
             }
         };
     }

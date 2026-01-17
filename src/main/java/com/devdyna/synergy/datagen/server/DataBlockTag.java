@@ -34,6 +34,7 @@ public class DataBlockTag extends BlockTagsProvider {
                 tag(zBlockTag.CROPS).addTag(BlockTags.CROPS);
 
                 tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                                .addTag(zBlockTag.MACHINES)
                                 .addTag(zBlockTag.COOLERS)
                                 .addTag(zBlockTag.MODERATORS)
                                 .addTag(zBlocks.FIRECLAY_BRICKS.getTagkey())

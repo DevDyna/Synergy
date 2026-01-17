@@ -223,6 +223,7 @@ public class zStatic {
         public static String alloy_smelter = "alloy_smelter";
         public static String compressor = "compressor";
         public static String electric_furnace = "electric_furnace";
+        public static String extractor = "extractor";
     }
 
     public class Chests {

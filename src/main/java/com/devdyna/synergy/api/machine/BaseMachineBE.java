@@ -2,9 +2,11 @@ package com.devdyna.synergy.api.machine;
 
 import java.util.List;
 
+import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.basebe.be.BEMenu;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
+import com.devdyna.synergy.api.utils.LogUtil;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zItemTag;
 
@@ -18,9 +20,11 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
@@ -34,31 +38,45 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     protected int maxProgress;
     protected int energy = 0;
     protected int maxEnergy = 0;
+    protected int fluid_amount = 0;
+    protected int maxFluid = 0;
 
     public static final int PROGRESS_INDEX = 0;
     public static final int MAX_PROGRESS_INDEX = 1;
     public static final int ENERGY_INDEX = 2;
     public static final int MAX_ENERGY_INDEX = 3;
+    public static final int FLUID_INDEX = 4;
+    public static final int MAX_FLUID_INDEX = 5;
 
     public static final int SLOT_UPGRADE_1 = 0;
     public static final int SLOT_UPGRADE_2 = 1;
     public static final int SLOT_UPGRADE_3 = 2;
     public static final int SLOT_UPGRADE_4 = 3;
 
+    public static final int MAX_UPGRADE_SLOTS = 4;
+
     public static final int INPUT_SLOT = 4;
     public static final int OUTPUT_SLOT = 5;
 
-    public static final int MAX_UPGRADE_SLOTS = 4;
+    public static final int BASE_SLOT_IO = 2;
+
+    public static final int TOTAL_BASE_SLOT_IO = MAX_UPGRADE_SLOTS + BASE_SLOT_IO;
 
     protected boolean progress_cancel;
 
     protected MachineItemHandler storage;
+
+    protected FluidStorageTank fluid_tank;
     /**
      * Server side data sent to client side render
      */
     public ContainerData networkData;
 
     protected EnergyStorage energyStorage;
+
+    public static int check(Level l, int t, int f) {
+        return (l != null && !l.isClientSide()) ? t : f;
+    }
 
     public BaseMachineBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -215,6 +233,28 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     }
 
+    protected void tick() {
+
+        try {
+            tickBoth();
+            if (level.isClientSide())
+                tickClient();
+            else
+                tickServer();
+
+        } catch (RuntimeException e) {
+            // catch Slot X not is valid range - [0,Y)
+
+            if (level.getBlockEntity(getBlockPos()) instanceof BaseMachineBE) {
+                LogUtil.error(
+                        "BlockEntity at " + getBlockPos() + " has invalid data -> Broken to prevent crash");
+                level.removeBlockEntity(getBlockPos());
+                level.destroyBlock(getBlockPos(), true);
+            }
+        }
+
+    }
+
     public void tickBoth() {
     }
 
@@ -222,8 +262,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     }
 
     public void tickServer() {
-        if (level == null || level.isClientSide())
-            return;
+
     }
 
     public boolean isCrafting() {
@@ -265,6 +304,25 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         return true;
     }
 
+    /**
+     * Return <code>true</code> when success
+     */
+    public boolean checkSlot(FluidStack slot, FluidStack recipeSlot, int max_fluid_tank) {
+        if (!slot.isEmpty()) {
+            // same item
+            if (FluidStack.isSameFluidSameComponents(slot, recipeSlot)) {
+                // count valid
+                if (max_fluid_tank < slot.getAmount() + recipeSlot.getAmount()) {
+                    return false;
+                }
+
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
     // /**
     // * Return <code>true</code> when success
     // */
@@ -295,6 +353,8 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         else if (ItemStack.isSameItemSameComponents(stack, slotStack))
             stack.grow(slotStack.getCount());
     }
+
+ 
 
     public List<Integer> getUpgradeIndexs() {
         return List.of(SLOT_UPGRADE_1, SLOT_UPGRADE_2, SLOT_UPGRADE_3, SLOT_UPGRADE_4).stream()

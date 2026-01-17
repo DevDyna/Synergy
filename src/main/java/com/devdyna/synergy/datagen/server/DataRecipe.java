@@ -12,6 +12,7 @@ import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.agriculture.cultivated.azalea;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe.AlloySmelterRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.extractor.recipe.ExtractorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 
@@ -1208,7 +1209,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                         stonecutter(c, i, zItemTag.MOLDS);
                                 });
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.FLUID_TANK.get(), 1)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.FLUID_TANK.get())
                                 .define('#', Tags.Items.NUGGETS_IRON)
                                 .define('G', Tags.Items.GLASS_BLOCKS_COLORLESS)
                                 .pattern(" # ")
@@ -1216,6 +1217,26 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern(" # ")
                                 .unlockedBy(getHasName(Items.IRON_NUGGET),
                                                 has(Items.IRON_NUGGET))
+                                .save(c);
+
+                
+                ExtractorRecipeBuilder.of()
+                                .input(Items.SLIME_BALL)
+                                .output(zFluids.GLUE, 250)
+                                .unlockedBy()
+                                .save(c);
+
+                ExtractorRecipeBuilder.of()
+                                .input(zItems.VIOLET_WEBCAP_MUSHROOM.get())
+                                .output(zFluids.OIL, 250)
+                                .unlockedBy()
+                                .save(c);
+
+                ExtractorRecipeBuilder.of()
+                                .input(zItems.BLUE_CUP_MUSHROOM.get())
+                                .output(Items.LAPIS_LAZULI)
+                                .output(Fluids.WATER, 250)
+                                .unlockedBy()
                                 .save(c);
 
         }

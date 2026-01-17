@@ -13,6 +13,10 @@ import com.devdyna.synergy.init.builder.industrial_machines.compressor.Compresso
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorBlock;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorMenu;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeType;
+import com.devdyna.synergy.init.builder.industrial_machines.extractor.ExtractorBE;
+import com.devdyna.synergy.init.builder.industrial_machines.extractor.ExtractorBlock;
+import com.devdyna.synergy.init.builder.industrial_machines.extractor.ExtractorMenu;
+import com.devdyna.synergy.init.builder.industrial_machines.extractor.recipe.ExtractorRecipeType;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurnaceBE;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurnaceBlock;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurnaceMenu;
@@ -100,6 +104,19 @@ public class zMachines {
                 ElectricFurnaceBE::new,
                 ElectricFurnaceMenu::new,
                 ElectricFurnaceRecipeType.Serializer::new
+        );
+
+    public static final MachineType<
+        ExtractorBlock,
+        ExtractorBE,
+        ExtractorMenu,
+        ExtractorRecipeType
+        > EXTRACTOR = new MachineType<>(
+                zStatic.Machines.extractor,
+                ExtractorBlock::new,
+                ExtractorBE::new,
+                ExtractorMenu::new,
+                ExtractorRecipeType.Serializer::new
         );
 
 
