@@ -1,0 +1,16 @@
+{
+  "type": "synergy:extractor",
+  "energy": 10,
+  "input": {
+    "item": "synergy:blue_cup_mushroom"
+  },
+  "output_fluid": {
+    "amount": 250,
+    "id": "minecraft:water"
+  },
+  "output_item": {
+    "count": 1,
+    "id": "minecraft:lapis_lazuli"
+  },
+  "ticks": 60
+}

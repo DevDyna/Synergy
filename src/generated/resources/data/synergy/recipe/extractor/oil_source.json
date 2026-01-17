@@ -1,0 +1,12 @@
+{
+  "type": "synergy:extractor",
+  "energy": 10,
+  "input": {
+    "item": "synergy:violet_webcap_mushroom"
+  },
+  "output_fluid": {
+    "amount": 250,
+    "id": "synergy:oil_source"
+  },
+  "ticks": 60
+}
