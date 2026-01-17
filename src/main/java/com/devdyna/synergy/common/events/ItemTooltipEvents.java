@@ -17,7 +17,7 @@ public class ItemTooltipEvents {
         var tooltip = event.getToolTip();
 
         if (item.is(zItemTag.PLACEABLE)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".placed"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".placed"));
         }
     }
 
@@ -28,19 +28,19 @@ public class ItemTooltipEvents {
         var tooltip = event.getToolTip();
 
         if (item.is(zItemTag.DYE_RESET)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".laser_use.reset"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.reset"));
         }
         if (item.is(zItemTag.DYE_MAX)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".laser_use.max"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.max"));
         }
         if (item.is(zItemTag.DYE_RED)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".laser_use.red"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.red"));
         }
         if (item.is(zItemTag.DYE_GREEN)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".laser_use.green"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.green"));
         }
         if (item.is(zItemTag.DYE_BLUE)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".laser_use.blue"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".laser_use.blue"));
         }
     }
 
@@ -51,29 +51,12 @@ public class ItemTooltipEvents {
         var tooltip = event.getToolTip();
 
         if (item.is(zItemTag.REMOVE_ENTITY_GROWING)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".remove_entity_growing"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".remove_entity_growing"));
         }
         if (item.is(zItemTag.ADD_ENTITY_GROWING)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".add_entity_growing"));
+            tooltip.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".add_entity_growing"));
         }
 
     }
-
-    //TODO
-    // @SubscribeEvent
-    // public static void itemTooltipUpgrades(ItemTooltipEvent event) {
-
-    //     var item = event.getItemStack();
-    //     var tooltip = event.getToolTip();
-
-    //     if (item.is(zItemTag.UPGRADE_ENERGY)) {
-    //         tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.energy"));
-    //     }
-    //     if (item.is(zItemTag.UPGRADE_SPEED)) {
-    //         tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.speed.energy"));
-    //         tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.speed.speed"));
-    //     }
-
-    // }
 
 }
