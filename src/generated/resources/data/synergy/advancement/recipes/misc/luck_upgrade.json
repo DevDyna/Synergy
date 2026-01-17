@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:extractor/lapis_lazuli"
+        "recipe": "synergy:luck_upgrade"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:blue_cup_mushroom"
+            "items": "#c:plates/steel"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:extractor/lapis_lazuli"
+      "synergy:luck_upgrade"
     ]
   }
 }

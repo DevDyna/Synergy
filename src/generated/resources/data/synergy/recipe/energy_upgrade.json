@@ -21,6 +21,11 @@
     " R "
   ],
   "result": {
+    "components": {
+      "synergy:upgrade_components": {
+        "energy_usage": -150
+      }
+    },
     "count": 1,
     "id": "synergy:energy_upgrade"
   }

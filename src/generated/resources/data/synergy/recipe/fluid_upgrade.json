@@ -3,13 +3,13 @@
   "category": "misc",
   "key": {
     "B": {
-      "item": "synergy:aquamarine_gem"
+      "item": "synergy:sap"
     },
     "C": {
       "item": "synergy:chip"
     },
     "R": {
-      "item": "synergy:condenser"
+      "item": "synergy:resistive_stone_circuit"
     },
     "S": {
       "tag": "c:plates/steel"
@@ -24,10 +24,10 @@
     "components": {
       "synergy:upgrade_components": {
         "energy_usage": 150,
-        "speed": 250
+        "fluid_usage": 20
       }
     },
     "count": 1,
-    "id": "synergy:speed_upgrade"
+    "id": "synergy:fluid_upgrade"
   }
 }

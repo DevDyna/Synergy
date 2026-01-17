@@ -2,6 +2,6 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "synergy:item/upgrades/base",
-    "layer1": "synergy:item/upgrades/energy"
+    "layer1": "synergy:item/upgrades/fluid"
   }
 }

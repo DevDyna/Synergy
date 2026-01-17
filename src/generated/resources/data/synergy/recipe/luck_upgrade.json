@@ -3,13 +3,13 @@
   "category": "misc",
   "key": {
     "B": {
-      "item": "synergy:aquamarine_gem"
+      "item": "synergy:glue"
     },
     "C": {
       "item": "synergy:chip"
     },
     "R": {
-      "item": "synergy:condenser"
+      "item": "synergy:magnetic_stone_circuit"
     },
     "S": {
       "tag": "c:plates/steel"
@@ -24,10 +24,10 @@
     "components": {
       "synergy:upgrade_components": {
         "energy_usage": 150,
-        "speed": 250
+        "luck": 25
       }
     },
     "count": 1,
-    "id": "synergy:speed_upgrade"
+    "id": "synergy:luck_upgrade"
   }
 }

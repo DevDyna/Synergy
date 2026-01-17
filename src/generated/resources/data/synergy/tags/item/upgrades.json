@@ -1,6 +1,8 @@
 {
   "values": [
     "synergy:speed_upgrade",
-    "synergy:energy_upgrade"
+    "synergy:energy_upgrade",
+    "synergy:luck_upgrade",
+    "synergy:fluid_upgrade"
   ]
 }
