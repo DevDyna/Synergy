@@ -7,15 +7,12 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.block.BlockTank;
-import com.devdyna.synergy.api.beLogic.KeepInventory;
-import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.api.beLogic.KeepFluidWhenBroken;
 import com.devdyna.synergy.datagen.client.DataLang;
 import com.devdyna.synergy.init.types.zComponents;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -58,17 +55,19 @@ public class FluidTankBlock extends BlockTank {
 
         super.setPlacedBy(level, pos, state, entity, stack);
 
-        if (level.getBlockEntity(pos) instanceof KeepInventory keep)
+        if (level.getBlockEntity(pos) instanceof KeepFluidWhenBroken keep)
             keep.whenPlaced(level, pos, entity, stack);
 
     }
 
     @Override
     protected List<ItemStack> getDrops(BlockState state, Builder builder) {
-        if (builder.getParameter(LootContextParams.BLOCK_ENTITY) instanceof KeepInventory keep) {
+        if (builder.getParameter(LootContextParams.BLOCK_ENTITY) instanceof KeepFluidWhenBroken keep) {
             var drops = keep.getDropItems(this, state, builder);
+
             if (drops != null)
                 return drops;
+
         }
 
         return super.getDrops(state, builder);
@@ -78,33 +77,17 @@ public class FluidTankBlock extends BlockTank {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
 
-        var nbt = stack.get(zComponents.MACHINE_DATA);
+        var nbt = stack.get(zComponents.FLUID_STORAGE);
         if (nbt != null) {
-            var copied = nbt.copyTag();
 
-            if (copied.contains("neoforge:attachments")) {
-                CompoundTag nbtAttachments = copied.getCompound("neoforge:attachments");
+            if (!nbt.isEmpty()) {
 
-                if (nbtAttachments.contains("synergy:fluid_tank")) {
-                    CompoundTag nbtTank = nbtAttachments.getCompound("synergy:fluid_tank");
+                tooltip.add(Component
+                        .literal(
+                                DataLang.TIP_COLOR + nbt.getFluidType().getDescription().getString()
+                                        + " : " + nbt.getAmount() + "mB"));
+                return;
 
-                    if (nbtTank.contains("Fluid")) {
-                        CompoundTag nbtFluid = nbtTank.getCompound("Fluid");
-
-                        int amount = nbtFluid.getInt("amount");
-
-                        var fluid = BuiltInRegistries.FLUID.getOptional(x.parse(nbtFluid.getString("id")));
-
-                        if (!fluid.isEmpty()) {
-                            tooltip.add(Component
-                                    .literal(
-                                            DataLang.TIP_COLOR + fluid.get().getFluidType().getDescription().getString()
-                                                    + " : " + amount + "mB"));
-                            return;
-                        }
-
-                    }
-                }
             }
         }
 

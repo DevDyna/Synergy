@@ -3,13 +3,11 @@ package com.devdyna.synergy.api.basebe.be;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.FluidStorageTank;
-import com.devdyna.synergy.api.beLogic.KeepInventory;
-import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
+import com.devdyna.synergy.api.beLogic.KeepFluidWhenBroken;
 import com.devdyna.synergy.init.types.zHandlers;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -21,7 +19,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams.Builder;
 
 @SuppressWarnings("null")
-public abstract class BETank extends BlockEntity implements SimpleFluidStorage, KeepInventory {
+public abstract class BETank extends BlockEntity implements KeepFluidWhenBroken {
+
+    public static final int DEFAULT_TANK_STORAGE = 16_000;
 
     public BETank(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -34,12 +34,7 @@ public abstract class BETank extends BlockEntity implements SimpleFluidStorage, 
 
     @Override
     public int getFluidCapacity() {
-        return 1000;
-    }
-
-    @Override
-    public void loadCustomOnly(CompoundTag nbt, RegistryAccess registryAccess) {
-        super.loadCustomOnly(nbt, registryAccess);
+        return DEFAULT_TANK_STORAGE;
     }
 
     @Override
@@ -67,7 +62,7 @@ public abstract class BETank extends BlockEntity implements SimpleFluidStorage, 
 
     @Override
     public boolean whenSaveContent(BlockEntity be, Block block, BlockState state, Builder builder) {
-        return !getFluidStorage().getFluid().isEmpty();
+        return defaultSaveCondition();
     }
 
 }

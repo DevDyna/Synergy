@@ -17,6 +17,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static com.devdyna.synergy.Main.ID;
 
+import com.devdyna.synergy.api.zFluid;
+
 public class x {
 
     public static ResourceLocation rl(String modid, String s) {
@@ -165,6 +167,12 @@ public class x {
         return fluid(f, 1000);
     }
 
+    public static Fluid fluid(zFluid f) {
+        return f.getFluid();
+    }
+
+
+
     public static FluidStack fluid(Fluid f, int amount) {
         return new FluidStack(f, amount);
     }
@@ -179,5 +187,6 @@ public class x {
             throw new IllegalArgumentException("Unsupported type: " + obj.getClass());
         }
     }
+
 
 }

@@ -260,4 +260,8 @@ public class zFluid {
                 | ((int) (b * 255));
     }
 
+    public Fluid getFluid(){
+        return getSource().get();
+    }
+
 }

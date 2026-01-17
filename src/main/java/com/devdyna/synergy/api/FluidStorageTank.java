@@ -10,27 +10,27 @@ import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 public class FluidStorageTank extends FluidTank
         implements INBTSerializable<CompoundTag> {
 
-    private final BlockEntity owner;
+    private final BlockEntity be;
 
-    public FluidStorageTank(BlockEntity owner, int capacity) {
+    public FluidStorageTank(BlockEntity be, int capacity) {
         super(capacity);
-        this.owner = owner;
+        this.be = be;
     }
 
     @Override
     protected void onContentsChanged() {
         super.onContentsChanged();
 
-        if (owner == null || owner.getLevel() == null)
+        if (be == null || be.getLevel() == null)
             return;
 
-        owner.setChanged();
+        be.setChanged();
 
-        if (!owner.getLevel().isClientSide) {
-            owner.getLevel().sendBlockUpdated(
-                    owner.getBlockPos(),
-                    owner.getBlockState(),
-                    owner.getBlockState(),
+        if (!be.getLevel().isClientSide) {
+            be.getLevel().sendBlockUpdated(
+                    be.getBlockPos(),
+                    be.getBlockState(),
+                    be.getBlockState(),
                     3);
         }
     }

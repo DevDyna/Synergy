@@ -1,15 +1,22 @@
 package com.devdyna.synergy;
 
+import com.devdyna.synergy.api.basebe.be.BETank;
 import com.devdyna.synergy.api.basebe.be.MachineBE;
+import com.devdyna.synergy.api.basebe.block.BlockTank;
 import com.devdyna.synergy.api.beLogic.*;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.FluidTankStorage;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.init.types.zComponents;
 import com.devdyna.synergy.init.types.zHandlers;
+import com.devdyna.synergy.init.types.zMachines;
 
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStackSimple;
 
 public class Capability {
 
@@ -41,6 +48,16 @@ public class Capability {
                                 zBlocks.FLUID_TANK.get()
 
                 );
+
+                event.registerItem(Capabilities.FluidHandler.ITEM, (i, v) -> {
+
+                        if (i.getItem() instanceof BlockItem bi && bi.getBlock() instanceof BlockTank)
+                                return new FluidHandlerItemStackSimple(zComponents.FLUID_STORAGE, i,
+                                                BETank.DEFAULT_TANK_STORAGE);
+
+                        return null;
+                },
+                                zBlocks.FLUID_TANK.get().asItem());
 
                 event.registerBlock(Capabilities.ItemHandler.BLOCK,
                                 (level, pos, state, be,
@@ -76,6 +93,13 @@ public class Capability {
                                                 : null),
                                 ClazzUtil.getAllMachineTypes().stream().map(b -> b.block().get())
                                                 .toArray(Block[]::new));
+
+                event.registerBlock(
+                                Capabilities.FluidHandler.BLOCK,
+                                (level, pos, state, be, side) -> ((be instanceof FluidTankStorage t)
+                                                ? t.getFluidStorage()
+                                                : null),
+                                zMachines.EXTRACTOR.block().get());
 
         }
 

@@ -8,12 +8,11 @@ import net.minecraft.core.GlobalPos;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.world.item.component.CustomData;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-@SuppressWarnings("deprecation")
 public class zComponents {
         public static void register(IEventBus bus) {
                 zComponents.register(bus);
@@ -47,12 +46,11 @@ public class zComponents {
                                                         .networkSynchronized(BlockPos.STREAM_CODEC)
                                                         .build());
 
-        
-        public static final DeferredHolder<DataComponentType<?>, DataComponentType<CustomData>> MACHINE_DATA = zComponents
-                        .register("machine_data",
-                                        () -> DataComponentType.<CustomData>builder()
-                                                        .persistent(CustomData.CODEC)
-                                                        .networkSynchronized(CustomData.STREAM_CODEC)
+        public static final DeferredHolder<DataComponentType<?>, DataComponentType<SimpleFluidContent>> FLUID_STORAGE = zComponents
+                        .register("fluid_storage",
+                                        () -> DataComponentType.<SimpleFluidContent>builder()
+                                                        .persistent(SimpleFluidContent.CODEC)
+                                                        .networkSynchronized(SimpleFluidContent.STREAM_CODEC)
                                                         .build());
 
 }

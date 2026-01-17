@@ -34,6 +34,9 @@ import net.minecraft.world.phys.Vec3;
 
 @SuppressWarnings("null")
 public class LevelUtil {
+
+    
+
     public static boolean isDimension(Level level, ResourceKey<Level> dim) {
         return level.dimension().equals(dim);
     }
