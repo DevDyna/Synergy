@@ -52,8 +52,8 @@ public class IndustrialUpgrade extends Item {
             Optional<Integer> fluid_usage) {
         public static final Codec<UpgradeComponents> CODEC = RecordCodecBuilder.create(i -> i.group(
                 Codec.INT.optionalFieldOf("speed").forGetter(UpgradeComponents::speed),
-                Codec.INT.optionalFieldOf("energy_usage").forGetter(UpgradeComponents::energy_usage),
-                Codec.INT.optionalFieldOf("luck").forGetter(UpgradeComponents::luck),
+                Codec.INT.optionalFieldOf("energy").forGetter(UpgradeComponents::energy_usage),
+                Codec.INT.optionalFieldOf("secondary_luck").forGetter(UpgradeComponents::luck),
                 Codec.INT.optionalFieldOf("fluid_usage").forGetter(UpgradeComponents::fluid_usage))
                 .apply(i, UpgradeComponents::new));
 
