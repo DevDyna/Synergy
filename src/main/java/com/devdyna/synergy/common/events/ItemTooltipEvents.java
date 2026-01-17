@@ -59,20 +59,21 @@ public class ItemTooltipEvents {
 
     }
 
-    @SubscribeEvent
-    public static void itemTooltipUpgrades(ItemTooltipEvent event) {
+    //TODO
+    // @SubscribeEvent
+    // public static void itemTooltipUpgrades(ItemTooltipEvent event) {
 
-        var item = event.getItemStack();
-        var tooltip = event.getToolTip();
+    //     var item = event.getItemStack();
+    //     var tooltip = event.getToolTip();
 
-        if (item.is(zItemTag.UPGRADE_ENERGY)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.energy"));
-        }
-        if (item.is(zItemTag.UPGRADE_SPEED)) {
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.speed.energy"));
-            tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.speed.speed"));
-        }
+    //     if (item.is(zItemTag.UPGRADE_ENERGY)) {
+    //         tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.energy"));
+    //     }
+    //     if (item.is(zItemTag.UPGRADE_SPEED)) {
+    //         tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.speed.energy"));
+    //         tooltip.add(OVER_THE_REGISTRY_ID,Component.translatable(Main.ID + ".upgrade.speed.speed"));
+    //     }
 
-    }
+    // }
 
 }
