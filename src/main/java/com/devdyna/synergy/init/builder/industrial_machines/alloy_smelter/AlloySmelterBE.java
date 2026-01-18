@@ -124,7 +124,7 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
         else
             this.progress++;
 
-        if (checkAndConsumeFE(calculateFEUsage(recipe.getEnergy()))) {
+        if (calculateAndConsumeFE(recipe.getEnergy())) {
             if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
                 update(true);
         } else {

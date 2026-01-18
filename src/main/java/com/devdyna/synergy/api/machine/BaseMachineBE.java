@@ -337,16 +337,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     // return true;
     // }
 
-    /**
-     * Return <code>true</code> when success
-     */
-    public boolean checkAndConsumeFE(int min) {
-        if (energyStorage.getEnergyStored() >= min && !progress_cancel) {
-            energyStorage.extractEnergy(min, false);
-            return true;
-        } else
-            return false;
-    }
+    
 
     public void updateOutputSlot(ItemStack stack, ItemStack slotStack, int slotIndex) {
         if (stack.isEmpty())
@@ -402,7 +393,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         return Math.max(Common.MACHINE_MINIMAL_TICK_DELAY.get(), (int) (base - (base * (((float) sum) / 1000))));
     }
 
-    public int calculateFEUsage(int base) {
+    private int calculateFEUsage(int base) {
         var upgrades = getValues(TYPE.ENERGY);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
         return Math.max(Common.MACHINE_MINIMAL_FE_COST.get(), (int) (base + (base * (((float) sum) / 1000))));
@@ -417,6 +408,18 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     public boolean calculateSecondarySuccess(float base) {
         var upgrades = getValues(TYPE.LUCK);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return level.random.nextFloat() < (base + (((float) sum) / 1000));
+        return level.random.nextFloat() < Math.min(Common.MACHINE_MAXIMAL_LUCK.get(),(base + (((float) sum) / 100)));
+    }
+
+    /**
+     * Return <code>true</code> when success
+     */
+    public boolean calculateAndConsumeFE(int min) {
+        var base = calculateFEUsage(min);
+        if (energyStorage.getEnergyStored() >= base && !progress_cancel) {
+            energyStorage.extractEnergy(base, false);
+            return true;
+        } else
+            return false;
     }
 }

@@ -121,7 +121,7 @@ public class ElectricFurnaceBE extends BaseMachineBE {
         else
             this.progress++;
 
-        if (checkAndConsumeFE(calculateFEUsage(recipe.getEnergy()))) {
+        if (calculateAndConsumeFE(recipe.getEnergy())) {
             if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
                 update(true);
         } else {
@@ -160,7 +160,7 @@ public class ElectricFurnaceBE extends BaseMachineBE {
         else
             this.progress++;
 
-        if (checkAndConsumeFE(calculateFEUsage(Common.MACHINE_FURNACE_PROCESS_VANILLA_FE_COST.get()))) {
+        if (calculateAndConsumeFE(Common.MACHINE_FURNACE_PROCESS_VANILLA_FE_COST.get())) {
             if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
                 update(true);
         } else {

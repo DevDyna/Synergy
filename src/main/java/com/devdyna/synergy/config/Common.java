@@ -49,6 +49,7 @@ public class Common {
         public static IntValue MACHINE_MINIMAL_TICK_DELAY;//1
         public static IntValue MACHINE_MINIMAL_FE_COST;//0
         public static IntValue MACHINE_MINIMAL_FLUID_COST;//0
+        public static IntValue MACHINE_MAXIMAL_LUCK;//100
 
         public static BooleanValue DISABLE_MACHINE_FURNACE_PROCESS_VANILLA;// false
         public static IntValue MACHINE_FURNACE_PROCESS_VANILLA_FE_COST;// DEFAULT
@@ -251,6 +252,8 @@ public class Common {
                                 "min_fe_cost", 0);
                 MACHINE_MINIMAL_FLUID_COST= number("Minimal Fluid cost based on upgrade installed",
                                 "min_mb_cost", 0);
+                MACHINE_MAXIMAL_LUCK= number("Maximal Secondary Chance based on upgrade installed",
+                                "max_luck", 100);
 
 
 
