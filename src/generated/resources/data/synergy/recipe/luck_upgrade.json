@@ -23,8 +23,8 @@
   "result": {
     "components": {
       "synergy:upgrade_components": {
-        "energy_usage": 150,
-        "luck": 25
+        "energy": 500,
+        "secondary_luck": 25
       }
     },
     "count": 1,
