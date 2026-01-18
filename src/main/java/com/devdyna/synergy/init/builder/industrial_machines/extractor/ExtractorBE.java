@@ -105,7 +105,7 @@ public class ExtractorBE extends BaseMachineBE implements FluidTankStorage {
 
         ExtractorRecipeType recipe = r.get().value();
 
-        ItemStack item_out = recipe.getOutputItem().copy();
+        ItemStack item_out = recipe.getSecondaryItem().copy();
         FluidStack fluid_out = recipe.getFluidOutput().copy();
 
         this.maxProgress = calculateMaxProgress(recipe.getTime());

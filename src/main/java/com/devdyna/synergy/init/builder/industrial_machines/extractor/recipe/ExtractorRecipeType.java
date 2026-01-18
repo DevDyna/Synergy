@@ -24,18 +24,18 @@ import net.neoforged.neoforge.fluids.FluidStack;
 public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
     public ExtractorRecipeType(int ticks, int energy, Ingredient input,
-            ItemStack output, FluidStack fluid, float chance) {
+            ItemStack secondary, FluidStack fluid, float chance) {
         this.input = input;
         this.ticks = ticks;
-        this.secondary = output;
+        this.secondary = secondary;
         this.energy = energy;
         this.fluid_output = fluid;
         this.chance = chance;
     }
 
     public static ExtractorRecipeType of(int ticks, int energy, Ingredient input,
-            ItemStack output, FluidStack fluid, float chance) {
-        return new ExtractorRecipeType(ticks, energy, input, output, fluid, chance);
+            ItemStack secondary, FluidStack fluid, float chance) {
+        return new ExtractorRecipeType(ticks, energy, input, secondary, fluid, chance);
     }
 
     @Override

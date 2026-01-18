@@ -30,7 +30,7 @@ public class ExtractorRecipeBuilder extends BaseMachineRecipeBuilder<ExtractorRe
 
     @Override
     public Recipe<?> createRecipe() {
-        return new ExtractorRecipeType(ticks, energy, input, output, fluid_output, chance);
+        return new ExtractorRecipeType(ticks, energy, input, secondary, fluid_output, chance);
     }
 
     @Override
