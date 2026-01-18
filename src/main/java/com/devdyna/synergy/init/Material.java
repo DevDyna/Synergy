@@ -7,6 +7,7 @@ import java.util.function.*;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.IndustrialUpgrade;
 import com.devdyna.synergy.init.builder.ItemComponents;
 import com.devdyna.synergy.init.builder.ItemToolTipped;
@@ -16,6 +17,7 @@ import com.devdyna.synergy.init.types.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -32,11 +34,16 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BlockEntityType.BlockEntitySupplier;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.DeferredRegister.Blocks;
 
 @SuppressWarnings({ "null", "unchecked" })
@@ -59,6 +66,8 @@ public class Material {
 
                 zMachines.register(bus);
                 zEntityTag.register(bus);
+                zFeatures.register(bus);
+                zBiomeModifiers.register(bus);
         }
 
         /**
@@ -297,6 +306,23 @@ public class Material {
                                                                 Main.ID + "." + zStatic.CreativeTab.TYPE + "." + id))
                                                 .icon(() -> icon.get().getDefaultInstance())// REQUIRE SUPPLIER
                                                 .build());
+        }
+
+        public static ResourceKey<ConfiguredFeature<?, ?>> createConfiguredFeature(String i) {
+                return ResourceKey.create(Registries.CONFIGURED_FEATURE, x.rl(i));
+        }
+
+        public static ResourceKey<PlacedFeature> createPlacedFeature(String i) {
+                return ResourceKey.create(Registries.PLACED_FEATURE, x.rl(i));
+        }
+
+        @Deprecated
+        public static ResourceKey<Feature<?>> createFeature(String i) {
+                return ResourceKey.create(Registries.FEATURE, x.rl(i));
+        }
+
+        public static ResourceKey<BiomeModifier> createBiomeModifier(String i) {
+                return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, x.rl(i));
         }
 
 }

@@ -50,6 +50,7 @@ public class Controller {
         providerGen(e, g, new DataRecipe(po, pr));
         providerGen(e, g, new DataMaps(po, pr));
         providerGen(e, g, new DataGlobalLootModifier(po, pr));
+        providerGen(e, g, new DataWorldgen(po, pr));
 
     }
 
