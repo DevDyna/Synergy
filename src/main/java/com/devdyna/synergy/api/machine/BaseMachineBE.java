@@ -1,5 +1,6 @@
 package com.devdyna.synergy.api.machine;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.basebe.be.BEMenu;
@@ -368,10 +369,18 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     }
 
     public List<Integer> getValues(UpgradeComponents.TYPE type) {
-        return getUpgradeInstalled().stream()
+        List<ItemStack> upgrades = getUpgradeInstalled().stream()
                 .filter(i -> UpgradeComponents.has(i, type))
-                .map(i -> UpgradeComponents.get(i, type) * i.getCount())
                 .toList();
+
+        List<Integer> validSlots = new ArrayList<>();
+        int maxRoll = 4;
+
+        for (int i = 0; i < upgrades.size() && validSlots.size() < maxRoll; i++)
+            for (int j = 0; j < upgrades.get(i).getCount() && validSlots.size() < maxRoll; j++)
+                validSlots.add(UpgradeComponents.get(upgrades.get(i), type));
+
+        return validSlots;
     }
 
     public int calculateMaxProgress(int base) {
