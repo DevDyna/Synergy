@@ -248,7 +248,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
             if (level.getBlockEntity(getBlockPos()) instanceof BaseMachineBE) {
                 LogUtil.error(
                         "BlockEntity at " + getBlockPos() + " has invalid data -> Broken to prevent crash");
-                        LogUtil.error("Contact Mod Author and report this as BUG");
+                LogUtil.error("Contact Mod Author and report this as BUG");
                 level.removeBlockEntity(getBlockPos());
                 level.destroyBlock(getBlockPos(), true);
             }
@@ -362,7 +362,6 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     }
 
     public List<ItemStack> getUpgradeInstalled() {
-
         return getUpgradeIndexs().stream()
                 .map(getStorage()::getStackInSlot)
                 .filter(i -> i.getItem() instanceof IndustrialUpgrade)
@@ -376,7 +375,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
                 .toList();
 
         List<Integer> validSlots = new ArrayList<>();
-        int maxRoll = 4;
+        int maxRoll = getTypeLimiter(type);
 
         for (int i = 0; i < upgrades.size() && validSlots.size() < maxRoll; i++)
             for (int j = 0; j < upgrades.get(i).getCount() && validSlots.size() < maxRoll; j++)
@@ -385,22 +384,34 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         return validSlots;
     }
 
+    public int getTypeLimiter(UpgradeComponents.TYPE type) {
+        if (type.equals(TYPE.SPEED))
+            return Common.MACHINE_MAX_SPEED_UPGRADES_TYPE.get();
+        if (type.equals(TYPE.ENERGY))
+            return Common.MACHINE_MAX_ENERGY_UPGRADES_TYPE.get();
+        if (type.equals(TYPE.LUCK))
+            return Common.MACHINE_MAX_LUCK_UPGRADES_TYPE.get();
+        if (type.equals(TYPE.FLUID))
+            return Common.MACHINE_MAX_FLUID_UPGRADES_TYPE.get();
+        return Integer.MAX_VALUE;
+    }
+
     public int calculateMaxProgress(int base) {
         var upgrades = getValues(TYPE.SPEED);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Math.max(1, (int) (base - (base * (((float) sum) / 1000))));
+        return Math.max(Common.MACHINE_MINIMAL_TICK_DELAY.get(), (int) (base - (base * (((float) sum) / 1000))));
     }
 
     public int calculateFEUsage(int base) {
         var upgrades = getValues(TYPE.ENERGY);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Math.max(0, (int) (base + (base * (((float) sum) / 1000))));
+        return Math.max(Common.MACHINE_MINIMAL_FE_COST.get(), (int) (base + (base * (((float) sum) / 1000))));
     }
 
     public int calculateMBUsage(int base) {
         var upgrades = getValues(TYPE.FLUID);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Math.max(1, (int) (base - (base * (((float) sum) / 1000))));
+        return Math.max(Common.MACHINE_MINIMAL_FLUID_COST.get(), (int) (base - (base * (((float) sum) / 1000))));
     }
 
     public boolean calculateSecondarySuccess(float base) {
