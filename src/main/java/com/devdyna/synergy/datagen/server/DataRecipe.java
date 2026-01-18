@@ -970,7 +970,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_ENERGY.get().set(0, -150, 0, 0))
+                ShapedRecipeBuilder.shaped(MISC, zStatic.MachineUpgrades.TemplateUpgrades.ENERGY)
                                 .pattern(" B ")
                                 .pattern("CSC")
                                 .pattern(" R ")
@@ -981,7 +981,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_SPEED.get().set(250, 150, 0, 0))
+                ShapedRecipeBuilder.shaped(MISC, zStatic.MachineUpgrades.TemplateUpgrades.SPEED)
                                 .pattern(" B ")
                                 .pattern("CSC")
                                 .pattern(" R ")
@@ -992,7 +992,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_LUCK.get().set(0, 150, 25, 0))
+                ShapedRecipeBuilder.shaped(MISC, zStatic.MachineUpgrades.TemplateUpgrades.LUCK)
                                 .pattern(" B ")
                                 .pattern("CSC")
                                 .pattern(" R ")
@@ -1003,7 +1003,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.UPGRADE_FLUID.get().set(0, 150, 0, 20))
+                ShapedRecipeBuilder.shaped(MISC, zStatic.MachineUpgrades.TemplateUpgrades.FLUID)
                                 .pattern(" B ")
                                 .pattern("CSC")
                                 .pattern(" R ")
@@ -1255,7 +1255,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 ExtractorRecipeBuilder.of()
                                 .input(zItems.BLUE_CUP_MUSHROOM.get())
-                                .secondary(Items.LAPIS_LAZULI,0.25f)
+                                .secondary(Items.LAPIS_LAZULI, 0.25f)
                                 .fluid(Fluids.WATER, 250)
                                 .unlockedBy()
                                 .save(c);

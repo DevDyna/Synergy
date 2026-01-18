@@ -20,10 +20,10 @@ public class CreativeTabs {
             ClazzUtil.getAllMachineTypes()
                     .forEach(i -> event.accept((Item) i.item().get()));
 
-            event.accept(zItems.UPGRADE_ENERGY.get().set(0, -150, 0, 0));
-            event.accept(zItems.UPGRADE_SPEED.get().set(250, 150, 0, 0));
-            event.accept(zItems.UPGRADE_LUCK.get().set(0, 150, 25, 0));
-            event.accept(zItems.UPGRADE_FLUID.get().set(0, 150, 0, 20));
+            event.accept(zStatic.MachineUpgrades.TemplateUpgrades.ENERGY);
+            event.accept(zStatic.MachineUpgrades.TemplateUpgrades.SPEED);
+            event.accept(zStatic.MachineUpgrades.TemplateUpgrades.LUCK);
+            event.accept(zStatic.MachineUpgrades.TemplateUpgrades.FLUID);
         }
 
         // ---------------------------------------------------------- //
