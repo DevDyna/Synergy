@@ -30,4 +30,6 @@ This project is limited on specific situations described below
 
 - Some textures wasn't originally made for this project and have a different license -> [credits](https://github.com/DevDyna/Synergy/blob/21.1/README.md)
 
+- Custom textures are under ARR so if you want use it , open an issue question or ASK TO ME !
+
 - Don't download any clones of this project outside CurseForge or third parties launchers!
