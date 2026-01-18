@@ -5,7 +5,6 @@ import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.basebe.be.BEMenu;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
-import com.devdyna.synergy.api.utils.LogUtil;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.IndustrialUpgrade;
 import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents;
