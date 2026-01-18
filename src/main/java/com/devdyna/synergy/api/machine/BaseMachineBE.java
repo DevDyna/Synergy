@@ -371,32 +371,32 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     public List<Integer> getValues(UpgradeComponents.TYPE type) {
         return getUpgradeInstalled().stream()
-                .filter(i -> !UpgradeComponents.has(i, type))
-                .map(i -> UpgradeComponents.get(i, type))
+                .filter(i -> UpgradeComponents.has(i, type))
+                .map(i -> UpgradeComponents.get(i, type) * i.getCount())
                 .toList();
     }
 
     public int calculateMaxProgress(int base) {
         var upgrades = getValues(TYPE.SPEED);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Math.max(1, base - (base * sum));
+        return Math.max(1, (int) (base - (base * (((float) sum) / 1000))));
     }
 
     public int calculateFEUsage(int base) {
         var upgrades = getValues(TYPE.ENERGY);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Math.max(0, base + (base * sum));
+        return Math.max(0, (int) (base + (base * (((float) sum) / 1000))));
     }
 
     public int calculateMBUsage(int base) {
         var upgrades = getValues(TYPE.FLUID);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Math.max(1, base - (base * sum));
+        return Math.max(1, (int) (base - (base * (((float) sum) / 1000))));
     }
 
-    public boolean calculateSecondarySuccess(float base) {// recipe.getSecondaryItemChance()
+    public boolean calculateSecondarySuccess(float base) {
         var upgrades = getValues(TYPE.LUCK);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return level.random.nextFloat() < (base + (sum/100));
+        return level.random.nextFloat() < (base + (((float) sum) / 1000));
     }
 }
