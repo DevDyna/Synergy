@@ -360,12 +360,11 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     }
 
     public List<ItemStack> getUpgradeInstalled() {
-        ItemStackHandler handler = getStorage();
+
         return getUpgradeIndexs().stream()
-                .filter(i -> i >= 0 && i < handler.getSlots())
-                .map(handler::getStackInSlot)
-                .filter(i -> !(i.getItem() instanceof IndustrialUpgrade))
-                .filter(i -> i.get(zComponents.UPGRADE_COMPONENTS) == null)
+                .map(getStorage()::getStackInSlot)
+                .filter(i -> i.getItem() instanceof IndustrialUpgrade)
+                .filter(i -> i.get(zComponents.UPGRADE_COMPONENTS) != null)
                 .toList();
     }
 
