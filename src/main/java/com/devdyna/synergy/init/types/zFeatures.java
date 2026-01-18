@@ -1,10 +1,5 @@
 package com.devdyna.synergy.init.types;
 
-import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.Material;
-
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.neoforged.bus.api.IEventBus;
 
 public class zFeatures {
@@ -13,7 +8,7 @@ public class zFeatures {
         
     }
 
-
+//TODO
 
 
 //----------------------------------------------------------------------------------//
