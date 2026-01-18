@@ -75,11 +75,11 @@ public class IndustrialUpgrade extends Item {
         }
 
         public static final boolean has(UpgradeComponents c, TYPE type) {
-            return !getAll(c).get(type.value()).isEmpty();
+            return c == null ? false : !getAll(c).get(type.value()).isEmpty();
         }
 
         public static final int get(UpgradeComponents c, TYPE type) {
-            return getAll(c).get(type.value()).get();
+            return c == null ? 0 : getAll(c).get(type.value()).get();
         }
 
         public static final boolean has(ItemStack i, TYPE type) {
