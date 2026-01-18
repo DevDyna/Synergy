@@ -27,7 +27,7 @@ public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
             ItemStack output, FluidStack fluid, float chance) {
         this.input = input;
         this.ticks = ticks;
-        this.output = output;
+        this.secondary = output;
         this.energy = energy;
         this.fluid_output = fluid;
         this.chance = chance;
@@ -62,9 +62,9 @@ public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                 Ingredient.CODEC.fieldOf("input").forGetter(ExtractorRecipeType::getInputItem),
 
                 ItemStack.CODEC.optionalFieldOf("output_item", ItemStack.EMPTY)
-                        .forGetter(r -> (r.getOutputItem() == null || r.getOutputItem().isEmpty())
+                        .forGetter(r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())
                                 ? ItemStack.EMPTY
-                                : r.getOutputItem()),
+                                : r.getSecondaryItem()),
                 FluidStack.CODEC.optionalFieldOf("output_fluid", FluidStack.EMPTY)
                         .forGetter(r -> (r.getFluidOutput() == null || r.getFluidOutput().isEmpty())
                                 ? FluidStack.EMPTY
@@ -80,9 +80,9 @@ public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                         Ingredient.CONTENTS_STREAM_CODEC, ExtractorRecipeType::getInputItem,
 
                         ByteBufCodecs.optional(ItemStack.STREAM_CODEC),
-                        r -> (r.getOutputItem() == null || r.getOutputItem().isEmpty())
+                        r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())
                                 ? Optional.empty()
-                                : Optional.of(r.getOutputItem()),
+                                : Optional.of(r.getSecondaryItem()),
                         ByteBufCodecs.optional(FluidStack.STREAM_CODEC),
                         r -> (r.getFluidOutput() == null || r.getFluidOutput().isEmpty())
                                 ? Optional.empty()
