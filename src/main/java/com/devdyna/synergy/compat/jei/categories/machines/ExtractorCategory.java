@@ -50,7 +50,7 @@ public class ExtractorCategory extends BaseMachineRecipeCategory<ExtractorRecipe
 
                 builder.addInputSlot(2, 5).addIngredients(recipe.getInputItem());
                 if (recipe.hasSecondaryOutput())
-                        builder.addOutputSlot(74, 6).addItemStack(recipe.getSecondaryItem());
+                        builder.addOutputSlot(81, 5).addItemStack(recipe.getSecondaryItem());
 
                 if (!recipe.getFluidOutput().isEmpty())
                         builder.addOutputSlot(102,
@@ -81,7 +81,7 @@ public class ExtractorCategory extends BaseMachineRecipeCategory<ExtractorRecipe
                                 guiGraphics.drawString(font,
                                                 Component.literal(
                                                                 ((int) (recipe.getSecondaryItemChance() * 100)) + "%"),
-                                                50, 36,
+                                                60, 10,
                                                 defaultToolTipColor.getRGB(), false);
 
         }
