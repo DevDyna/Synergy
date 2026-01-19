@@ -17,6 +17,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static com.devdyna.synergy.Main.ID;
 
+import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.zFluid;
 
 public class x {
@@ -113,6 +114,10 @@ public class x {
 
     public static ItemStack item(ItemLike i) {
         return new ItemStack(i);
+    }
+
+    public static ItemStack item(MachineType<?, ?, ?, ?> i) {
+        return item(i.item());
     }
 
     public static ItemStack item(BlockState i) {
