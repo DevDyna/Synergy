@@ -410,6 +410,7 @@ public class zStatic {
         public static String EnderIO = "enderio";
         public static String SilentGear = "silentgear";
         public static String Create = "create";
+        public static String JEI = "jei";
     }
 
     public class tips {
