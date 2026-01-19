@@ -17,15 +17,13 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
 public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
 
     private IDrawableAnimated arrow;
-    public static final RecipeType<FuelCellRecipe> TYPE = new RecipeType<>(
-            x.rl(zRecipeTypes.FUEL_CELL_RECIPE.getId()),
-            FuelCellRecipe.class);
 
     public ReactorCellCategory(IGuiHelper helper) {
         super(helper);
@@ -36,8 +34,11 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
                         IDrawableAnimated.StartDirection.LEFT, false);
     }
 
+    public static final RecipeType<RecipeHolder<FuelCellRecipe>> TYPE = RecipeType
+            .createFromVanilla(zRecipeTypes.FUEL_CELL_RECIPE.getType());
+
     @Override
-    public RecipeType<FuelCellRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<FuelCellRecipe>> getRecipeType() {
         return TYPE;
     }
 

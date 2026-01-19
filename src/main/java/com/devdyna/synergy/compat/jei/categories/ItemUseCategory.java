@@ -21,22 +21,22 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.LiquidBlock;
 
 @SuppressWarnings("null")
 public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
 
-    public static final RecipeType<ItemUseRecipe> TYPE = new RecipeType<>(
-            x.rl(zRecipeTypes.ITEM_USE.getId()),
-            ItemUseRecipe.class);
-
     public ItemUseCategory(IGuiHelper helper) {
         super(helper);
     }
 
+    public static final RecipeType<RecipeHolder<ItemUseRecipe>> TYPE = RecipeType
+            .createFromVanilla(zRecipeTypes.ITEM_USE.getType());
+
     @Override
-    public RecipeType<ItemUseRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<ItemUseRecipe>> getRecipeType() {
         return TYPE;
     }
 

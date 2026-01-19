@@ -1,7 +1,6 @@
 package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.api.utils.Size;
-import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.CropResultRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -11,21 +10,21 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
 public class CropResultCategory extends BaseRecipeCategory<CropResultRecipe> {
 
-    public static final RecipeType<CropResultRecipe> TYPE = new RecipeType<>(
-            x.rl(zRecipeTypes.CROP_RESULT.getId()),
-            CropResultRecipe.class);
-
     public CropResultCategory(IGuiHelper helper) {
         super(helper);
     }
 
+    public static final RecipeType<RecipeHolder<CropResultRecipe>> TYPE = RecipeType
+            .createFromVanilla(zRecipeTypes.CROP_RESULT.getType());
+
     @Override
-    public RecipeType<CropResultRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<CropResultRecipe>> getRecipeType() {
         return TYPE;
     }
 

@@ -20,6 +20,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
@@ -36,12 +37,11 @@ public class CompressorCategory extends BaseMachineRecipeCategory<CompressorReci
                                                 IDrawableAnimated.StartDirection.LEFT, false);
         }
 
-        public static final RecipeType<CompressorRecipeType> TYPE = new RecipeType<>(
-                        x.rl(zMachines.COMPRESSOR.recipe().getId()),
-                        CompressorRecipeType.class);
+        public static final RecipeType<RecipeHolder<CompressorRecipeType>> TYPE = RecipeType
+                        .createFromVanilla(zMachines.COMPRESSOR.recipe().getType());
 
         @Override
-        public RecipeType<CompressorRecipeType> getRecipeType() {
+        public RecipeType<RecipeHolder<CompressorRecipeType>> getRecipeType() {
                 return TYPE;
         }
 

@@ -20,6 +20,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
@@ -36,12 +37,11 @@ public class ExtractorCategory extends BaseMachineRecipeCategory<ExtractorRecipe
                                                 IDrawableAnimated.StartDirection.LEFT, false);
         }
 
-        public static final RecipeType<ExtractorRecipeType> TYPE = new RecipeType<>(
-                        x.rl(zMachines.EXTRACTOR.recipe().getId()),
-                        ExtractorRecipeType.class);
+        public static final RecipeType<RecipeHolder<ExtractorRecipeType>> TYPE = RecipeType
+                        .createFromVanilla(zMachines.EXTRACTOR.recipe().getType());
 
         @Override
-        public RecipeType<ExtractorRecipeType> getRecipeType() {
+        public RecipeType<RecipeHolder<ExtractorRecipeType>> getRecipeType() {
                 return TYPE;
         }
 

@@ -5,9 +5,11 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.utils.ClazzUtil;
+import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecipe;
+import com.devdyna.synergy.common.recipes.type.node_providers.ItemProviderRecipe;
 import com.devdyna.synergy.compat.jei.categories.*;
 import com.devdyna.synergy.compat.jei.categories.machines.AlloySmelterCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.CompressorCategory;
@@ -80,7 +82,8 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item((Item) zMachines.MACERATOR.item().get()), MaceratorCategory.TYPE);
                 r.addRecipeCatalyst(x.item((Item) zMachines.COMPRESSOR.item().get()), CompressorCategory.TYPE);
                 r.addRecipeCatalyst(x.item((Item) zMachines.ALLOY_SMELTER.item().get()), AlloySmelterCategory.TYPE);
-                r.addRecipeCatalyst(x.item((Item) zMachines.ELECTRIC_FURNACE.item().get()), ElectricFurnaceCategory.TYPE);
+                r.addRecipeCatalyst(x.item((Item) zMachines.ELECTRIC_FURNACE.item().get()),
+                                ElectricFurnaceCategory.TYPE);
                 r.addRecipeCatalyst(x.item((Item) zMachines.EXTRACTOR.item().get()), ExtractorCategory.TYPE);
 
                 r.addRecipeCatalyst(x.item(zBlocks.VOID_BOX), VoidBoxInfusionCategory.TYPE);
@@ -116,75 +119,70 @@ public class Plugin implements IModPlugin {
 
                 RecipeManager recipes = Minecraft.getInstance().level.getRecipeManager();
 
-                r.addRecipes(ReactorCellCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.FUEL_CELL_RECIPE.getType())
-                                .stream().map(RecipeHolder::value).toList());
+                r.addRecipes(ReactorCellCategory.TYPE,
+                                RecipeUtils.getRecipes(zRecipeTypes.FUEL_CELL_RECIPE));
 
                 r.addRecipes(UrnCategory.TYPE,
-                                recipes.getAllRecipesFor(zRecipeTypes.URN_RITUAL_RECIPE.getType()).stream()
-                                                .map(RecipeHolder::value).toList());
+                                RecipeUtils.getRecipes(zRecipeTypes.URN_RITUAL_RECIPE));
 
                 r.addRecipes(CropResultCategory.TYPE,
-                                recipes.getAllRecipesFor(zRecipeTypes.CROP_RESULT.getType()).stream()
-                                                .map(RecipeHolder::value).toList());
+                                RecipeUtils.getRecipes(zRecipeTypes.CROP_RESULT));
 
-                r.addRecipes(ItemUseCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.ITEM_USE.getType()).stream()
-                                .map(RecipeHolder::value).toList());
+                r.addRecipes(ItemUseCategory.TYPE, RecipeUtils.getRecipes(zRecipeTypes.ITEM_USE));
 
-                r.addRecipes(QuernCategory.TYPE, recipes.getAllRecipesFor(zRecipeTypes.QUERN_MILLING.getType()).stream()
-                                .map(RecipeHolder::value).toList());
+                r.addRecipes(QuernCategory.TYPE, RecipeUtils.getRecipes(zRecipeTypes.QUERN_MILLING));
 
                 r.addRecipes(ItemProviderCategory.TYPE,
-                                (List<BaseProviderRecipe<ItemStack>>) (List<?>) recipes
+                                (List<ItemProviderRecipe<ItemStack>>) (List<?>) recipes
                                                 .getAllRecipesFor(zRecipeTypes.ITEM_PROVIDER.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(FluidProviderCategory.TYPE,
-                                (List<BaseProviderRecipe<FluidStack>>) (List<?>) recipes
+                                (List<FluidProviderRecipe<FluidStack>>) (List<?>) recipes
                                                 .getAllRecipesFor(zRecipeTypes.FLUID_PROVIDER.getType()).stream()
                                                 .map(RecipeHolder::value).toList());
 
                 r.addRecipes(DryableBricksCategory.TYPE,
-                                recipes.getAllRecipesFor(zRecipeTypes.DRYABLE_BRICKS.getType()).stream()
-                                                .map(RecipeHolder::value).toList());
+                                RecipeUtils.getRecipes(zRecipeTypes.DRYABLE_BRICKS));
 
                 r.addRecipes(MaceratorCategory.TYPE,
-                                recipes.getAllRecipesFor(zMachines.MACERATOR.recipe().getType()).stream()
-                                                .map(RecipeHolder::value).toList());
+                                RecipeUtils.getRecipes(zMachines.MACERATOR));
 
                 r.addRecipes(CompressorCategory.TYPE,
-                                recipes.getAllRecipesFor(zMachines.COMPRESSOR.recipe().getType()).stream()
-                                                .map(RecipeHolder::value).toList());
+                                RecipeUtils.getRecipes(zMachines.COMPRESSOR));
 
                 r.addRecipes(AlloySmelterCategory.TYPE,
-                                recipes.getAllRecipesFor(zMachines.ALLOY_SMELTER.recipe().getType()).stream()
-                                                .map(RecipeHolder::value).toList());
+                                RecipeUtils.getRecipes(zMachines.ALLOY_SMELTER));
 
                 r.addRecipes(ElectricFurnaceCategory.TYPE,
-                                recipes.getAllRecipesFor(zMachines.ELECTRIC_FURNACE.recipe().getType()).stream()
-                                                .map(RecipeHolder::value).toList());
+                                RecipeUtils.getRecipes(zMachines.ELECTRIC_FURNACE));
 
                 r.addRecipes(ExtractorCategory.TYPE,
-                                recipes.getAllRecipesFor(zMachines.EXTRACTOR.recipe().getType()).stream()
-                                                .map(RecipeHolder::value).toList());
+                                RecipeUtils.getRecipes(zMachines.EXTRACTOR));
 
                 if (!Common.DISABLE_MACHINE_FURNACE_PROCESS_VANILLA.get())
                         r.addRecipes(ElectricFurnaceCategory.TYPE,
                                         recipes.getAllRecipesFor(RecipeType.SMELTING).stream()
-                                                        .map(RecipeHolder::value)
-                                                        .map(s -> (ElectricFurnaceRecipeType) ElectricFurnaceRecipeBuilder
-                                                                        .of()
-                                                                        .delay(60)
-                                                                        .energy(10)
-                                                                        .input(s.getIngredients().getFirst())
-                                                                        .output(s.getResultItem(ServerLifecycleHooks
-                                                                                        .getCurrentServer()
-                                                                                        .registryAccess()))
-                                                                        .createRecipe())
+                                                        .map(s ->
+                                                        new RecipeHolder<>(x.rl(zMachines.ELECTRIC_FURNACE.id()+"_generated_" + s.id().getPath().replace("/", "")),
+                                                                        (ElectricFurnaceRecipeType) ElectricFurnaceRecipeBuilder
+                                                                                        .of()
+                                                                                        .delay(60)
+                                                                                        .energy(10)
+                                                                                        .input(s.value().getIngredients()
+                                                                                                        .getFirst())
+                                                                                        .output(s.value().getResultItem(
+                                                                                                        ServerLifecycleHooks
+                                                                                                                        .getCurrentServer()
+                                                                                                                        .registryAccess()))
+                                                                                        .createRecipe())
+
+                                                        )
+
                                                         .toList());
 
                 r.addRecipes(VoidBoxInfusionCategory.TYPE,
-                                recipes.getAllRecipesFor(zRecipeTypes.VOID_BOX_INFUSION.getType()).stream()
-                                                .map(RecipeHolder::value).toList());
+                                RecipeUtils.getRecipes(zRecipeTypes.VOID_BOX_INFUSION));
 
         }
 

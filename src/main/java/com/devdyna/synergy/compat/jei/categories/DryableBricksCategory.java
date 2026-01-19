@@ -3,7 +3,6 @@ package com.devdyna.synergy.compat.jei.categories;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.Size;
-import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.DryableBricksRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -16,24 +15,24 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
 public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecipe> {
 
-    public static final RecipeType<DryableBricksRecipe> TYPE = new RecipeType<>(
-            x.rl(zRecipeTypes.DRYABLE_BRICKS.getId()),
-            DryableBricksRecipe.class);
-
     public DryableBricksCategory(IGuiHelper helper) {
         super(helper);
     }
 
+    public static final RecipeType<RecipeHolder<DryableBricksRecipe>> TYPE = RecipeType
+            .createFromVanilla(zRecipeTypes.DRYABLE_BRICKS.getType());
+
     @Override
-    public RecipeType<DryableBricksRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<DryableBricksRecipe>> getRecipeType() {
         return TYPE;
     }
-    
+
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, DryableBricksRecipe recipe, IFocusGroup focuses) {
 
@@ -49,7 +48,6 @@ public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecip
             tooltip.add(Component.translatable(Main.ID + ".jei.dryable.tip"));
 
     }
-
 
     @Override
     public String getTitleKey() {

@@ -6,7 +6,6 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.core.BaseMachineRecipeCategory;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe.AlloySmelterRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
-
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
@@ -17,6 +16,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
@@ -32,12 +32,11 @@ public class AlloySmelterCategory extends BaseMachineRecipeCategory<AlloySmelter
                         IDrawableAnimated.StartDirection.LEFT, false);
     }
 
-    public static final RecipeType<AlloySmelterRecipeType> TYPE = new RecipeType<>(
-            x.rl(zMachines.ALLOY_SMELTER.recipe().getId()),
-            AlloySmelterRecipeType.class);
+    public static final RecipeType<RecipeHolder<AlloySmelterRecipeType>> TYPE = RecipeType
+            .createFromVanilla(zMachines.ALLOY_SMELTER.recipe().getType());
 
     @Override
-    public RecipeType<AlloySmelterRecipeType> getRecipeType() {
+    public RecipeType<RecipeHolder<AlloySmelterRecipeType>> getRecipeType() {
         return TYPE;
     }
 

@@ -2,7 +2,6 @@ package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.Size;
-import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.UrnRitualRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -13,21 +12,21 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
 public class UrnCategory extends BaseRecipeCategory<UrnRitualRecipe> {
 
-    public static final RecipeType<UrnRitualRecipe> TYPE = new RecipeType<>(
-            x.rl(zRecipeTypes.URN_RITUAL_RECIPE.getId()),
-            UrnRitualRecipe.class);
-
     public UrnCategory(IGuiHelper helper) {
         super(helper);
     }
 
+    public static final RecipeType<RecipeHolder<UrnRitualRecipe>> TYPE = RecipeType
+            .createFromVanilla(zRecipeTypes.URN_RITUAL_RECIPE.getType());
+
     @Override
-    public RecipeType<UrnRitualRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<UrnRitualRecipe>> getRecipeType() {
         return TYPE;
     }
 

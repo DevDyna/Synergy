@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 @SuppressWarnings({ "unchecked" })
 public class ItemProviderCategory extends BaseProviderCategory<ItemProviderRecipe<ItemStack>, ItemStack> {
     // DONT TOUCH OR WILL BREAK AND YOU WILL MAD WITH YOURSELF
-    public static final RecipeType<BaseProviderRecipe<ItemStack>> TYPE = new RecipeType<>(
+    public static final RecipeType<ItemProviderRecipe<ItemStack>> TYPE = new RecipeType<>(
             x.rl(zRecipeTypes.ITEM_PROVIDER.getId()),
             (Class<ItemProviderRecipe<ItemStack>>) (Class<?>) ItemProviderRecipe.class);
 
@@ -26,7 +26,7 @@ public class ItemProviderCategory extends BaseProviderCategory<ItemProviderRecip
     }
 
     @Override
-    public RecipeType<BaseProviderRecipe<ItemStack>> getRecipeType() {
+    public RecipeType<ItemProviderRecipe<ItemStack>> getRecipeType() {
         return TYPE;
     }
 

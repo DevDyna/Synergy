@@ -2,7 +2,6 @@ package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.Size;
-import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.QuernMillingRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -16,21 +15,21 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
 public class QuernCategory extends BaseRecipeCategory<QuernMillingRecipe> {
 
-    public static final RecipeType<QuernMillingRecipe> TYPE = new RecipeType<>(
-            x.rl(zRecipeTypes.QUERN_MILLING.getId()),
-            QuernMillingRecipe.class);
-
     public QuernCategory(IGuiHelper helper) {
         super(helper);
     }
 
+    public static final RecipeType<RecipeHolder<QuernMillingRecipe>> TYPE = RecipeType
+            .createFromVanilla(zRecipeTypes.QUERN_MILLING.getType());
+
     @Override
-    public RecipeType<QuernMillingRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<QuernMillingRecipe>> getRecipeType() {
         return TYPE;
     }
 
@@ -65,7 +64,7 @@ public class QuernCategory extends BaseRecipeCategory<QuernMillingRecipe> {
     @Override
     public void draw(QuernMillingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
             double mouseX, double mouseY) {
-                super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
         guiGraphics.drawString(font,
                 Component.literal(recipe.getTime() == 1 ? "no tick delay"
                         : (recipe.getTime() >= 20 ? (recipe.getTime() >= 1200 ? (recipe.getTime() >= 72000

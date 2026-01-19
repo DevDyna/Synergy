@@ -2,7 +2,6 @@ package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.Size;
-import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.VoidBoxInfusionRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -13,21 +12,21 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
 public class VoidBoxInfusionCategory extends BaseRecipeCategory<VoidBoxInfusionRecipe> {
 
-    public static final RecipeType<VoidBoxInfusionRecipe> TYPE = new RecipeType<>(
-            x.rl(zRecipeTypes.VOID_BOX_INFUSION.getId()),
-            VoidBoxInfusionRecipe.class);
-
     public VoidBoxInfusionCategory(IGuiHelper helper) {
         super(helper);
     }
 
+    public static final RecipeType<RecipeHolder<VoidBoxInfusionRecipe>> TYPE = RecipeType
+            .createFromVanilla(zRecipeTypes.VOID_BOX_INFUSION.getType());
+
     @Override
-    public RecipeType<VoidBoxInfusionRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<VoidBoxInfusionRecipe>> getRecipeType() {
         return TYPE;
     }
 

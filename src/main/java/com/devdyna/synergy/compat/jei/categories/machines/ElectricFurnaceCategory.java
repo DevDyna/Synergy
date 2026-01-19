@@ -17,6 +17,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
@@ -32,12 +33,11 @@ public class ElectricFurnaceCategory extends BaseMachineRecipeCategory<ElectricF
                         IDrawableAnimated.StartDirection.LEFT, false);
     }
 
-    public static final RecipeType<ElectricFurnaceRecipeType> TYPE = new RecipeType<>(
-            x.rl(zMachines.ELECTRIC_FURNACE.recipe().getId()),
-            ElectricFurnaceRecipeType.class);
+    public static final RecipeType<RecipeHolder<ElectricFurnaceRecipeType>> TYPE = RecipeType
+            .createFromVanilla(zMachines.ELECTRIC_FURNACE.recipe().getType());
 
     @Override
-    public RecipeType<ElectricFurnaceRecipeType> getRecipeType() {
+    public RecipeType<RecipeHolder<ElectricFurnaceRecipeType>> getRecipeType() {
         return TYPE;
     }
 

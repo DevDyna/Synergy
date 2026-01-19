@@ -17,6 +17,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
@@ -32,12 +33,11 @@ public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipe
                         IDrawableAnimated.StartDirection.LEFT, false);
     }
 
-    public static final RecipeType<MaceratorRecipeType> TYPE = new RecipeType<>(
-            x.rl(zMachines.MACERATOR.recipe().getId()),
-            MaceratorRecipeType.class);
+    public static final RecipeType<RecipeHolder<MaceratorRecipeType>> TYPE = RecipeType
+            .createFromVanilla(zMachines.MACERATOR.recipe().getType());
 
     @Override
-    public RecipeType<MaceratorRecipeType> getRecipeType() {
+    public RecipeType<RecipeHolder<MaceratorRecipeType>> getRecipeType() {
         return TYPE;
     }
 
