@@ -5,22 +5,16 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.machine.BaseMachineScreen;
+import com.devdyna.synergy.api.render.FluidGUITank;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
-import com.mojang.blaze3d.systems.RenderSystem;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.material.Fluid;
-import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 
 @SuppressWarnings("null")
 public class ExtractorScreen extends BaseMachineScreen<ExtractorMenu> {
@@ -31,7 +25,7 @@ public class ExtractorScreen extends BaseMachineScreen<ExtractorMenu> {
 
     @Override
     protected ResourceLocation background() {
-        return x.rl("textures/gui/container/extractor.png");
+        return x.rl("textures/gui/container/electric_furnace.png");
     }
 
     @Override
@@ -79,14 +73,6 @@ public class ExtractorScreen extends BaseMachineScreen<ExtractorMenu> {
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
 
-        // guiGraphics.blit(
-        // x.rl("textures/gui/container/fluid_tank.png"),
-        // getGuiLeft() - 30,
-        // getGuiTop(),
-        // 0, 0,
-        // 32, 86,
-        // 32, 86);
-
         super.renderBg(guiGraphics, v, i, i1);
 
         guiGraphics.blit(x.rl("textures/gui/container/fluid_widget.png"),
@@ -96,56 +82,14 @@ public class ExtractorScreen extends BaseMachineScreen<ExtractorMenu> {
                 18, 72,
                 36, 72);
 
-        if (getMaxFluidAmount() > 0 && getFluidAmount() > 0) {
-
-            int tankHeight = 72;
-            int tankWidth = 16;
-            int fluidHeight = ((getFluidAmount() * tankHeight) / getMaxFluidAmount()) - 2;
-
-            var still = IClientFluidTypeExtensions.of(getFluid()).getStillTexture();
-
-            if (still != null) {
-                TextureAtlasSprite sprite = Minecraft.getInstance()
-                        .getTextureAtlas(InventoryMenu.BLOCK_ATLAS)
-                        .apply(still);
-
-                int x = getGuiLeft() + 150 + 1;
-                int yBottom = getGuiTop() + 5 + tankHeight - 1;
-
-                // Tint color
-                int color = IClientFluidTypeExtensions.of(getFluid()).getTintColor();
-                float r = ((color >> 16) & 0xFF) / 255f;
-                float g = ((color >> 8) & 0xFF) / 255f;
-                float b = (color & 0xFF) / 255f;
-                guiGraphics.setColor(r, g, b, 1f);
-
-                int remaining = fluidHeight;
-                int y = yBottom;
-
-                while (remaining > 0) {
-                    int renderHeight = Math.min(16, remaining);
-                    y -= renderHeight;
-
-                    // z = 0 ensures the fluid is on the same layer as normal GUI
-                    RenderSystem.setShader(GameRenderer::getPositionTexShader);
-                    RenderSystem.setShaderColor(r, g, b, 1f);
-                    RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
-
-                    guiGraphics.blit(
-                            x,
-                            y,
-                            0,
-                            tankWidth,
-                            renderHeight,
-                            sprite);
-
-                    remaining -= renderHeight;
-                }
-
-                // Reset color
-                guiGraphics.setColor(1f, 1f, 1f, 1f);
-            }
-        }
+        if (getMaxFluidAmount() > 0 && getFluidAmount() > 0)
+            FluidGUITank.of()
+                    .setFluid(getFluid())
+                    .setMaxCapacity(getMaxFluidAmount())
+                    .setAmount(getFluidAmount())
+                    .size(72, 16)
+                    .offset(getGuiLeft() + 151, getGuiTop() + 4)
+                    .render(guiGraphics);
 
         guiGraphics.blit(x.rl("textures/gui/container/fluid_widget.png"),
                 getGuiLeft() + 150,

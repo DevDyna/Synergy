@@ -6,7 +6,7 @@ import com.devdyna.synergy.api.utils.x;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.FluidStack;
 
-public interface BiTypeOutput<BUILDER extends BaseRecipeBuilder> extends SecondaryOutputItem<BUILDER> {
+public interface SimpleFluidAttach<BUILDER extends BaseRecipeBuilder> {
 
     abstract BUILDER fluid(FluidStack fluid);
 

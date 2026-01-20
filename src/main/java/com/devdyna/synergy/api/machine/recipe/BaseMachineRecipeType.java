@@ -35,9 +35,11 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
 
     public boolean consumeCatalyst;
 
+    public FluidStack fluid_input;
+
     public FluidStack fluid_output;
 
-    public boolean consumeCatalyst(){
+    public boolean consumeCatalyst() {
         return consumeCatalyst;
     }
 
@@ -69,6 +71,10 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return fluid_output;
     }
 
+    public FluidStack getFluidInput() {
+        return fluid_input;
+    }
+
     /**
      * 0.00 -> 1.00
      */
@@ -98,7 +104,20 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return null;
     };
 
+    public FluidStack getRecipeFluidInput(T recipe) {
+        return null;
+    };
+
     public boolean matches(T r, Level l) {
+
+        if (getInputItem().isEmpty() || getInputItem() == null) {
+            if (getFluidInput() != null && !getFluidInput().isEmpty())
+                return FluidStack.isSameFluidSameComponents(getFluidInput(), getRecipeFluidInput(r));
+        }else{
+            if (getFluidInput() != null && !getFluidInput().isEmpty())
+                return FluidStack.isSameFluidSameComponents(getFluidInput(), getRecipeFluidInput(r)) && getInputItem().test(getRecipeInput(r));
+        }
+
         var check = getInputItem().test(getRecipeInput(r));
         if (hasCatalyst() && getCatalystItem() != null && getRecipeInput2(r) != null)
             check = check && getCatalystItem().test(getRecipeInput2(r));

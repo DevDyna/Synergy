@@ -8,7 +8,8 @@ import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
-import com.devdyna.synergy.api.recipes.builders.BiTypeOutput;
+import com.devdyna.synergy.api.recipes.builders.SimpleFluidAttach;
+import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.world.item.ItemStack;
@@ -18,7 +19,7 @@ import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings({ "null" })
 public class ExtractorRecipeBuilder extends BaseMachineRecipeBuilder<ExtractorRecipeBuilder>
-        implements BiTypeOutput<ExtractorRecipeBuilder> {
+        implements SimpleFluidAttach<ExtractorRecipeBuilder> , SecondaryOutputItem<ExtractorRecipeBuilder> {
 
     private ExtractorRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();

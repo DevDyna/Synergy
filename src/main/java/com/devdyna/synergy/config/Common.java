@@ -46,10 +46,12 @@ public class Common {
         public static IntValue MACHINE_MAX_LUCK_UPGRADES_TYPE;// max
         public static IntValue MACHINE_MAX_FLUID_UPGRADES_TYPE;// max
 
-        public static IntValue MACHINE_MINIMAL_TICK_DELAY;//1
-        public static IntValue MACHINE_MINIMAL_FE_COST;//0
-        public static IntValue MACHINE_MINIMAL_FLUID_COST;//0
-        public static IntValue MACHINE_MAXIMAL_LUCK;//100
+        public static IntValue MACHINE_MINIMAL_TICK_DELAY;// 1
+        public static IntValue MACHINE_MINIMAL_FE_COST;// 0
+        public static IntValue MACHINE_MINIMAL_FLUID_COST;// 0
+        public static IntValue MACHINE_MAXIMAL_LUCK;// 100
+
+        public static BooleanValue DISABLE_MACHINE_DROP_WHEN_CORRUPTED;
 
         public static BooleanValue DISABLE_MACHINE_FURNACE_PROCESS_VANILLA;// false
         public static IntValue MACHINE_FURNACE_PROCESS_VANILLA_FE_COST;// DEFAULT
@@ -245,18 +247,17 @@ public class Common {
                 MACHINE_MAX_FLUID_UPGRADES_TYPE = number("Max Fluid Efficiency Upgrade Types usable foreach machine",
                                 "max_fluid_upgrades", Integer.MAX_VALUE);
 
-
-                MACHINE_MINIMAL_TICK_DELAY= number("Minimal tick delay based on upgrade installed",
+                MACHINE_MINIMAL_TICK_DELAY = number("Minimal tick delay based on upgrade installed",
                                 "min_tick_rate", 1);
-                MACHINE_MINIMAL_FE_COST= number("Minimal Energy cost based on upgrade installed",
+                MACHINE_MINIMAL_FE_COST = number("Minimal Energy cost based on upgrade installed",
                                 "min_fe_cost", 0);
-                MACHINE_MINIMAL_FLUID_COST= number("Minimal Fluid cost based on upgrade installed",
+                MACHINE_MINIMAL_FLUID_COST = number("Minimal Fluid cost based on upgrade installed",
                                 "min_mb_cost", 0);
-                MACHINE_MAXIMAL_LUCK= number("Maximal Secondary Chance based on upgrade installed",
+                MACHINE_MAXIMAL_LUCK = number("Maximal Secondary Chance based on upgrade installed",
                                 "max_luck", 100);
 
-
-
+                DISABLE_MACHINE_DROP_WHEN_CORRUPTED = bool(
+                                "Disable crash safer when an Industrial Machine is corrupted", "disable_ms_firewall");
 
                 decor.complex(zStatic.Machines.electric_furnace);
 

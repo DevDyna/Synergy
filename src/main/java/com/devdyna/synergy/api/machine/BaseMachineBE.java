@@ -234,23 +234,31 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     }
 
     protected void tick() {
-
-        try {
+        if (Common.DISABLE_MACHINE_DROP_WHEN_CORRUPTED.get()) {
             tickBoth();
             if (level.isClientSide())
                 tickClient();
             else
                 tickServer();
+        } else {
+            try {
+                tickBoth();
+                if (level.isClientSide())
+                    tickClient();
+                else
+                    tickServer();
 
-        } catch (RuntimeException e) {
-            // catch Slot X not is valid range - [0,Y)
+            } catch (RuntimeException e) {
 
-            if (level.getBlockEntity(getBlockPos()) instanceof BaseMachineBE) {
-                LogUtil.error(
-                        "BlockEntity at " + getBlockPos() + " has invalid data -> Broken to prevent crash");
-                LogUtil.error("Contact Mod Author and report this as BUG");
-                level.removeBlockEntity(getBlockPos());
-                level.destroyBlock(getBlockPos(), true);
+                // catch potential crashes
+                if (level.getBlockEntity(getBlockPos()) instanceof BaseMachineBE) {
+                    LogUtil.error(
+                            "BlockEntity at " + getBlockPos() + " has invalid data -> Broken to prevent crash");
+                    LogUtil.error("Contact Mod Author and report this as BUG");
+                    LogUtil.error(e.getMessage());
+                    level.removeBlockEntity(getBlockPos());
+                    level.destroyBlock(getBlockPos(), true);
+                }
             }
         }
 
@@ -337,8 +345,6 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     // return true;
     // }
 
-    
-
     public void updateOutputSlot(ItemStack stack, ItemStack slotStack, int slotIndex) {
         if (stack.isEmpty())
             storage.setStackInSlot(slotIndex, slotStack);
@@ -408,7 +414,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     public boolean calculateSecondarySuccess(float base) {
         var upgrades = getValues(TYPE.LUCK);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return level.random.nextFloat() < Math.min(Common.MACHINE_MAXIMAL_LUCK.get(),(base + (((float) sum) / 100)));
+        return level.random.nextFloat() < Math.min(Common.MACHINE_MAXIMAL_LUCK.get(), (base + (((float) sum) / 100)));
     }
 
     /**
