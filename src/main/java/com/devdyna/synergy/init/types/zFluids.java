@@ -24,10 +24,22 @@ public class zFluids {
 
     // ---------------------------------------------------------------------------------------//
 
-    // public static final zFluid CRYSTALLINE = zFluid.create("crystalline",
-    // 0x7cefe3);
-    public static final zFluid OIL = zFluid.create(zStatic.Fluids.OIL, 0.125f, 0.125f, 0.125f, 1f).pushEntity();
-    public static final zFluid SAP = zFluid.create(zStatic.Fluids.SAP, 0.95f, 0.65f, 0.1f, 1f).pushEntity();
-    public static final zFluid GLUE = zFluid.create(zStatic.Fluids.GLUE, 0.9f, 0.95f, 0.9f, 1f).pushEntity();
+ public static final zFluid OIL =
+    zFluid.create(zStatic.Fluids.OIL, 0xFF202020).pushEntity();
+
+public static final zFluid SAP =
+    zFluid.create(zStatic.Fluids.SAP, 0xFFF2A619).pushEntity();
+
+public static final zFluid GLUE =
+    zFluid.create(zStatic.Fluids.GLUE, 0xDAF3EFE6).pushEntity();
+
+public static final zFluid IRONBERRY_JUICE =
+    zFluid.create(zStatic.Fluids.IRONBERRY_JUICE, 0xD1D1D1E3).pushEntity();
+
+public static final zFluid LIQUID_GLASS =
+    zFluid.create(zStatic.Fluids.LIQUID_GLASS, 0xFFFFFFDD).pushEntity();
+
+public static final zFluid HONEY =
+    zFluid.create(zStatic.Fluids.HONEY, 0xF69707DD).pushEntity();
 
 }

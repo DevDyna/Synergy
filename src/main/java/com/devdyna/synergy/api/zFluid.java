@@ -253,12 +253,13 @@ public class zFluid {
         return new zFluid(id, r, g, b, a);
     }
 
-    public static int rgba(float r, float g, float b, float a) {
-        return ((int) (a * 255) << 24)
-                | ((int) (r * 255) << 16)
-                | ((int) (g * 255) << 8)
-                | ((int) (b * 255));
-    }
+public static int rgba(float r, float g, float b, float a) {
+    return ((int)(a * 255) << 24) 
+         | ((int)(b * 255) << 16)
+         | ((int)(g * 255) << 8)
+         | ((int)(r * 255));
+}
+
 
     public Fluid getFluid(){
         return getSource().get();

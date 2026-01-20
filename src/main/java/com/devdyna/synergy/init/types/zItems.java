@@ -332,6 +332,9 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> STEEL_NUGGET = Material
                         .resourceNugget(zStatic.ResourceMaterial.steel);
+
+        public static final DeferredHolder<Item, Item> COPPER_NUGGET = Material
+                        .resourceNugget(zStatic.ResourceMaterial.copper);
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> ADVANCED_ALLOY_PLATE = Material
                         .resourcePlate(zStatic.ResourceMaterial.advanced_alloy);
@@ -505,6 +508,18 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> VOID_CRYSTAL = Material
                         .resourceItem("void_crystal");
+
+
+        public static final DeferredHolder<Item, Item> BEEWAX = Material
+                        .resourceItem("beewax");
+
+        public static final DeferredHolder<Item, Item> PATINA = Material
+                        .resourceItem("patina");
+
+        public static final DeferredHolder<Item, Item> IRONBERRIES = Material
+                        .resourceItem("ironberries");
+        public static final DeferredHolder<Item, Item> TINY_IRON_DUST = Material
+                        .resourceItem("tiny_iron_dust");
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,

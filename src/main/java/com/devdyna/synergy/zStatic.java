@@ -392,6 +392,9 @@ public class zStatic {
         public static String OIL = "oil";
         public static String GLUE = "glue";
         public static String SAP = "sap";
+        public static String IRONBERRY_JUICE = "ironberry_juice";
+        public static String LIQUID_GLASS = "liquid_glass";
+        public static String HONEY = "honey";
 
         public static String AFFIX_DROPLETT = "droplet_";
     }
