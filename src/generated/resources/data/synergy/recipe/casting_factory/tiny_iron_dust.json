@@ -1,0 +1,13 @@
+{
+  "type": "synergy:casting_factory",
+  "energy": 10,
+  "input_fluid": {
+    "amount": 125,
+    "id": "synergy:ironberry_juice_source"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:tiny_iron_dust"
+  },
+  "ticks": 60
+}

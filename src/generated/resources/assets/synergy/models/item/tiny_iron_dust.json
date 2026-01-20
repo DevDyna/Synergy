@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "synergy:item/resources/tiny_iron_dust"
+  }
+}

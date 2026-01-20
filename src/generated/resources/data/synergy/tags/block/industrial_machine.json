@@ -4,6 +4,7 @@
     "synergy:alloy_smelter",
     "synergy:compressor",
     "synergy:electric_furnace",
-    "synergy:extractor"
+    "synergy:extractor",
+    "synergy:casting_factory"
   ]
 }

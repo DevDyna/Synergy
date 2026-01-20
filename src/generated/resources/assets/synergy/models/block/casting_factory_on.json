@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "synergy:block/machine/frame/basic/bottom",
+    "front": "synergy:block/machine/processing/casting_factory/on",
+    "side": "synergy:block/machine/frame/basic/side",
+    "top": "synergy:block/machine/frame/basic/top"
+  }
+}

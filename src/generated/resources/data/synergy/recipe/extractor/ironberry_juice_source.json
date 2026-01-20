@@ -1,0 +1,17 @@
+{
+  "type": "synergy:extractor",
+  "chance": 0.25,
+  "energy": 10,
+  "input": {
+    "item": "synergy:ironberries"
+  },
+  "output_fluid": {
+    "amount": 250,
+    "id": "synergy:ironberry_juice_source"
+  },
+  "output_item": {
+    "count": 1,
+    "id": "synergy:tiny_iron_dust"
+  },
+  "ticks": 60
+}
