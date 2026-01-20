@@ -82,14 +82,13 @@
 
 ### Industrial machines
 
-- [ ] Extractor (special recipes like honey) Item->(Item|Item)
 - [ ] Scrap Generator (recycle items to scraps and item used to craft)
 
 ### FluidCasting
 
 - [ ] Rustic-like crushing tub (?)
 - [ ] Metal Smeltery (tiny tinker-like?)
-- [ ] Glass-Caster Factory (forestry like)
+- [x] Glass-Caster Factory (forestry like)
 
 ### Magic
 
