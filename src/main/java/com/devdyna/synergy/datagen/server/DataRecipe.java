@@ -11,6 +11,7 @@ import com.devdyna.synergy.common.recipes.builders.*;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.agriculture.cultivated.azalea;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe.AlloySmelterRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.CasterRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.extractor.recipe.ExtractorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
@@ -1259,6 +1260,53 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .fluid(Fluids.WATER, 250)
                                 .unlockedBy()
                                 .save(c);
+
+                ExtractorRecipeBuilder.of()
+                                .input(Items.MAGMA_BLOCK)
+                                .secondary(Items.NETHERRACK, 0.75f)
+                                .fluid(Fluids.LAVA, 250)
+                                .unlockedBy()
+                                .save(c);
+
+                ExtractorRecipeBuilder.of()
+                                .input(Items.HONEYCOMB)
+                                .secondary(zItems.BEEWAX, 0.5f)
+                                .fluid(zFluids.HONEY, 250)
+                                .unlockedBy()
+                                .save(c, "_from_honeycomb");
+
+                ExtractorRecipeBuilder.of()
+                                .input(zItems.BEEWAX)
+                                .fluid(zFluids.HONEY, 150)
+                                .unlockedBy()
+                                .save(c, "_from_beewax");
+
+                ExtractorRecipeBuilder.of()
+                                .input(zItems.IRONBERRIES)
+                                .secondary(zItems.TINY_IRON_DUST, 0.25f)
+                                .fluid(zFluids.IRONBERRY_JUICE, 250)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(zFluids.IRONBERRY_JUICE, 125)
+                                .output(zItems.TINY_IRON_DUST)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(zFluids.LIQUID_GLASS, 1000)
+                                .output(Items.GLASS)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(Fluids.WATER,250)
+                                .input(Items.COBBLESTONE)
+                                .output(Items.MOSSY_COBBLESTONE)
+                                .unlockedBy()
+                                .save(c);
+                                
 
         }
 
