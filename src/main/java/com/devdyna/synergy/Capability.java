@@ -99,7 +99,7 @@ public class Capability {
                                 (level, pos, state, be, side) -> ((be instanceof FluidTankStorage t)
                                                 ? t.getFluidStorage()
                                                 : null),
-                                zMachines.EXTRACTOR.block().get());
+                                zMachines.EXTRACTOR.block().get(),zMachines.CASTING_FACTORY.block().get());
 
         }
 

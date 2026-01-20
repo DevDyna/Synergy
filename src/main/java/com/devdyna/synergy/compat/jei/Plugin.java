@@ -12,6 +12,7 @@ import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecip
 import com.devdyna.synergy.common.recipes.type.node_providers.ItemProviderRecipe;
 import com.devdyna.synergy.compat.jei.categories.*;
 import com.devdyna.synergy.compat.jei.categories.machines.AlloySmelterCategory;
+import com.devdyna.synergy.compat.jei.categories.machines.CasterCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.CompressorCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.ElectricFurnaceCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.ExtractorCategory;
@@ -19,6 +20,7 @@ import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterScreen;
+import com.devdyna.synergy.init.builder.industrial_machines.caster.CasterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.extractor.ExtractorScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurnaceScreen;
@@ -78,6 +80,9 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item(zBlocks.QUERN), QuernCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.ITEM_PROVIDER), ItemProviderCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.FLUID_PROVIDER), FluidProviderCategory.TYPE);
+                                r.addRecipeCatalyst(x.item(zBlocks.VOID_BOX), VoidBoxInfusionCategory.TYPE);
+
+
 
                 r.addRecipeCatalyst(x.item((Item) zMachines.MACERATOR.item().get()), MaceratorCategory.TYPE);
                 r.addRecipeCatalyst(x.item((Item) zMachines.COMPRESSOR.item().get()), CompressorCategory.TYPE);
@@ -85,8 +90,8 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item((Item) zMachines.ELECTRIC_FURNACE.item().get()),
                                 ElectricFurnaceCategory.TYPE);
                 r.addRecipeCatalyst(x.item((Item) zMachines.EXTRACTOR.item().get()), ExtractorCategory.TYPE);
+                r.addRecipeCatalyst(x.item((Item) zMachines.CASTING_FACTORY.item().get()), CasterCategory.TYPE);
 
-                r.addRecipeCatalyst(x.item(zBlocks.VOID_BOX), VoidBoxInfusionCategory.TYPE);
 
         }
 
@@ -103,14 +108,16 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCategories(new ItemProviderCategory(helper));
                 r.addRecipeCategories(new FluidProviderCategory(helper));
                 r.addRecipeCategories(new DryableBricksCategory(helper));
+                r.addRecipeCategories(new VoidBoxInfusionCategory(helper));
 
                 r.addRecipeCategories(new MaceratorCategory(helper));
                 r.addRecipeCategories(new CompressorCategory(helper));
                 r.addRecipeCategories(new AlloySmelterCategory(helper));
                 r.addRecipeCategories(new ElectricFurnaceCategory(helper));
                 r.addRecipeCategories(new ExtractorCategory(helper));
+                r.addRecipeCategories(new CasterCategory(helper));
 
-                r.addRecipeCategories(new VoidBoxInfusionCategory(helper));
+                
 
         }
 
@@ -160,6 +167,9 @@ public class Plugin implements IModPlugin {
                 r.addRecipes(ExtractorCategory.TYPE,
                                 RecipeUtils.getRecipes(zMachines.EXTRACTOR));
 
+                r.addRecipes(CasterCategory.TYPE,
+                                RecipeUtils.getRecipes(zMachines.CASTING_FACTORY));
+
                 if (!Common.DISABLE_MACHINE_FURNACE_PROCESS_VANILLA.get())
                         r.addRecipes(ElectricFurnaceCategory.TYPE,
                                         recipes.getAllRecipesFor(RecipeType.SMELTING).stream()
@@ -205,6 +215,8 @@ public class Plugin implements IModPlugin {
 
                 r.addRecipeClickArea(ExtractorScreen.class, 75, 35, 22, 15,
                                 ExtractorCategory.TYPE);
+                r.addRecipeClickArea(CasterScreen.class, 75, 35, 22, 15,
+                                CasterCategory.TYPE);
         }
 
 }

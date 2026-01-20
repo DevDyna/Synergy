@@ -4,6 +4,7 @@ import com.devdyna.synergy.init.builder.automation.harvester.HarvesterAOE;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerAOE;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankFluidRender;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterScreen;
+import com.devdyna.synergy.init.builder.industrial_machines.caster.CasterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.extractor.ExtractorScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurnaceScreen;
@@ -57,6 +58,7 @@ public class Client {
         event.register(zMachines.ALLOY_SMELTER.menu().get(), AlloySmelterScreen::new);
         event.register(zMachines.ELECTRIC_FURNACE.menu().get(), ElectricFurnaceScreen::new);
         event.register(zMachines.EXTRACTOR.menu().get(), ExtractorScreen::new);
+        event.register(zMachines.CASTING_FACTORY.menu().get(), CasterScreen::new);
     }
 
     @SuppressWarnings("deprecation")

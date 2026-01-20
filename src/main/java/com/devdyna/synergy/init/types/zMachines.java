@@ -9,6 +9,10 @@ import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloyS
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterBlock;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterMenu;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe.AlloySmelterRecipeType;
+import com.devdyna.synergy.init.builder.industrial_machines.caster.CasterBE;
+import com.devdyna.synergy.init.builder.industrial_machines.caster.CasterBlock;
+import com.devdyna.synergy.init.builder.industrial_machines.caster.CasterMenu;
+import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.CasterRecipeType;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorBE;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorBlock;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorMenu;
@@ -117,6 +121,19 @@ public class zMachines {
                 ExtractorBE::new,
                 ExtractorMenu::new,
                 ExtractorRecipeType.Serializer::new
+        );
+
+    public static final MachineType<
+        CasterBlock,
+        CasterBE,
+        CasterMenu,
+        CasterRecipeType
+        > CASTING_FACTORY = new MachineType<>(
+                zStatic.Machines.casting_factory,
+                CasterBlock::new,
+                CasterBE::new,
+                CasterMenu::new,
+                CasterRecipeType.Serializer::new
         );
 
 

@@ -240,6 +240,7 @@ public class zStatic {
         public static String compressor = "compressor";
         public static String electric_furnace = "electric_furnace";
         public static String extractor = "extractor";
+        public static String casting_factory = "casting_factory";
     }
 
     public class Chests {
