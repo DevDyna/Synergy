@@ -1032,7 +1032,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.FLOUR)
                                 .save(c);
 
-                // smeltingResultFromBase(c, Items.BREAD, zItems.FLOUR.get());
                 smeltingResultFromBase(c, zBlocks.SMOOTH_ADOBE.get(), zBlocks.ADOBE.get());
 
                 SimpleCookingRecipeBuilder

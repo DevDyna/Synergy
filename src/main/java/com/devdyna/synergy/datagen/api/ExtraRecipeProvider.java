@@ -805,6 +805,20 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(ID,
                                                 has(Items.REDSTONE))
                                 .group(zStatic.Items.configurator).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.CHISEL.get())
+                                .pattern("  N")
+                                .pattern(" I ")
+                                .pattern("S  ")
+                                .define('N', Items.IRON_NUGGET)
+                                .define('S', Items.STICK)
+                                .define('I', Items.IRON_INGOT)
+                                .unlockedBy(ID,
+                                                has(Items.IRON_INGOT))
+                                .group(zStatic.Items.chisel).save(c);
+
+
+
         }
 
         protected void foil(RecipeOutput c, TagKey<Item> input, Item output) {

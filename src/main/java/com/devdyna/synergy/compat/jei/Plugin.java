@@ -91,6 +91,7 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item(zMachines.EXTRACTOR.item().get()), ExtractorCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zMachines.CASTING_FACTORY.item().get()), CasterCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zMachines.MELTER.item().get()), MelterCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zItems.CHISEL), RecipeTypes.STONECUTTING);
 
         }
 
