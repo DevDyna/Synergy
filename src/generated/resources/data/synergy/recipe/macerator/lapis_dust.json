@@ -1,7 +1,7 @@
 {
   "type": "synergy:macerator",
   "chance": 0.0,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "item": "minecraft:lapis_lazuli"
   },
@@ -9,5 +9,5 @@
     "count": 1,
     "id": "synergy:lapis_dust"
   },
-  "ticks": 60
+  "ticks": 100
 }

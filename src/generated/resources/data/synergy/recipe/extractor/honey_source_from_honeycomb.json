@@ -1,7 +1,7 @@
 {
   "type": "synergy:extractor",
   "chance": 0.5,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "item": "minecraft:honeycomb"
   },
@@ -13,5 +13,5 @@
     "count": 1,
     "id": "synergy:beewax"
   },
-  "ticks": 60
+  "ticks": 100
 }

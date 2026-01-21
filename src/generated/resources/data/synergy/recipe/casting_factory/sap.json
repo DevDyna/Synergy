@@ -1,6 +1,6 @@
 {
   "type": "synergy:casting_factory",
-  "energy": 10,
+  "energy": 500,
   "input_fluid": {
     "amount": 250,
     "id": "synergy:sap_source"
@@ -9,5 +9,5 @@
     "count": 1,
     "id": "synergy:sap"
   },
-  "ticks": 60
+  "ticks": 100
 }

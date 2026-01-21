@@ -1,7 +1,7 @@
 {
   "type": "synergy:extractor",
   "chance": 0.25,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "item": "minecraft:obsidian"
   },
@@ -13,5 +13,5 @@
     "count": 1,
     "id": "minecraft:cobblestone"
   },
-  "ticks": 60
+  "ticks": 100
 }

@@ -1,6 +1,6 @@
 {
   "type": "synergy:casting_factory",
-  "energy": 10,
+  "energy": 500,
   "input_fluid": {
     "amount": 1000,
     "id": "synergy:liquid_glass_source"
@@ -9,5 +9,5 @@
     "count": 1,
     "id": "minecraft:glass"
   },
-  "ticks": 60
+  "ticks": 100
 }

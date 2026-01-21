@@ -1,6 +1,6 @@
 {
   "type": "synergy:casting_factory",
-  "energy": 10,
+  "energy": 500,
   "input_fluid": {
     "amount": 250,
     "id": "minecraft:water"
@@ -12,5 +12,5 @@
     "count": 1,
     "id": "minecraft:mossy_cobblestone"
   },
-  "ticks": 60
+  "ticks": 100
 }

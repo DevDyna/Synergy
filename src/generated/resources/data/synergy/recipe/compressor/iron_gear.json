@@ -1,7 +1,7 @@
 {
   "type": "synergy:compressor",
   "consume_catalyst": false,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "tag": "c:ingots/iron"
   },

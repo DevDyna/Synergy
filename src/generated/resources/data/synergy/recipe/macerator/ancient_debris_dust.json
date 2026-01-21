@@ -1,7 +1,7 @@
 {
   "type": "synergy:macerator",
   "chance": 0.5,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "item": "minecraft:ancient_debris"
   },
@@ -13,5 +13,5 @@
     "count": 1,
     "id": "synergy:ancient_debris_dust"
   },
-  "ticks": 60
+  "ticks": 100
 }

@@ -10,7 +10,7 @@
   ],
   "type": "synergy:macerator",
   "chance": 0.25,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "tag": "c:raw_materials/iridium"
   },
@@ -22,5 +22,5 @@
     "count": 1,
     "id": "synergy:iron_dust"
   },
-  "ticks": 60
+  "ticks": 100
 }

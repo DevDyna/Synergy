@@ -1,7 +1,7 @@
 {
   "type": "synergy:macerator",
   "chance": 0.45,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "tag": "c:dusts/uranium"
   },
@@ -13,5 +13,5 @@
     "count": 1,
     "id": "synergy:waste_fragment"
   },
-  "ticks": 60
+  "ticks": 100
 }

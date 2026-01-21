@@ -1,7 +1,7 @@
 {
   "type": "synergy:macerator",
   "chance": 0.0,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "item": "minecraft:iron_horse_armor"
   },
@@ -9,5 +9,5 @@
     "count": 5,
     "id": "synergy:iron_dust"
   },
-  "ticks": 60
+  "ticks": 100
 }

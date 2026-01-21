@@ -1,7 +1,7 @@
 {
   "type": "synergy:macerator",
   "chance": 0.75,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "item": "minecraft:sugar_cane"
   },
@@ -13,5 +13,5 @@
     "count": 1,
     "id": "minecraft:sugar"
   },
-  "ticks": 60
+  "ticks": 100
 }

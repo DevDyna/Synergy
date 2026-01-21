@@ -1,7 +1,7 @@
 {
   "type": "synergy:extractor",
   "chance": 0.0,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "item": "minecraft:slime_ball"
   },
@@ -9,5 +9,5 @@
     "amount": 250,
     "id": "synergy:glue_source"
   },
-  "ticks": 60
+  "ticks": 100
 }

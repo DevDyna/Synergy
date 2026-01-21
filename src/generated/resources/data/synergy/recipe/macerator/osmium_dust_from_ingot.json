@@ -10,7 +10,7 @@
   ],
   "type": "synergy:macerator",
   "chance": 0.0,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "tag": "c:ingots/osmium"
   },
@@ -18,5 +18,5 @@
     "count": 1,
     "id": "synergy:osmium_dust"
   },
-  "ticks": 60
+  "ticks": 100
 }

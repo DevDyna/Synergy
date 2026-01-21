@@ -1,6 +1,6 @@
 {
   "type": "synergy:alloy_smelter",
-  "energy": 10,
+  "energy": 500,
   "left": {
     "tag": "c:ingots/iron"
   },

@@ -1,7 +1,7 @@
 {
   "type": "synergy:compressor",
   "consume_catalyst": true,
-  "energy": 10,
+  "energy": 500,
   "input": {
     "item": "synergy:carbon_fiber"
   },

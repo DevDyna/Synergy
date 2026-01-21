@@ -1,6 +1,6 @@
 {
   "type": "synergy:casting_factory",
-  "energy": 10,
+  "energy": 500,
   "input_fluid": {
     "amount": 1000,
     "id": "synergy:honey_source"
@@ -9,5 +9,5 @@
     "count": 1,
     "id": "minecraft:honey_block"
   },
-  "ticks": 60
+  "ticks": 100
 }
