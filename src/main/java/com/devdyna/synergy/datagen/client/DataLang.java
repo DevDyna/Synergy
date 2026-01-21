@@ -347,8 +347,10 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".tank_interact.empty", "Empty");
 
                 add(ID + "." + zStatic.Items.chisel, TIP_COLOR
-                                + "Convert any interacted block with the bounded block if is the result of a stonecutter recipe");
+                                + "Craft in-world Stonecutter recipes when bound to the result block");
 
+                add(Main.ID + "." + zStatic.Items.chisel + ".registry",
+                                TIP_COLOR + "Block : ");
         }
 
         private String named(DeferredHolder<?, ?> b) {

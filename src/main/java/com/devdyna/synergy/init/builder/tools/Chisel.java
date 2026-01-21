@@ -113,9 +113,9 @@ public class Chisel extends Item {
 
         if (nbt != null) {
             var item = x.get(nbt);
-            t.add(
-                    Component.translatable(item.getDescriptionId())
-                            .withStyle(ChatFormatting.GREEN));
+            t.add(Component.translatable(Main.ID + "." + zStatic.Items.chisel + ".registry")
+                    .append(Component.translatable(item.getDescriptionId())
+                            .withStyle(ChatFormatting.GREEN)));
         }
 
     }
