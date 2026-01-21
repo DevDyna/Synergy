@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.types;
 
 import static com.devdyna.synergy.Main.ID;
 
+import com.devdyna.synergy.api.codec.BetterThanBlockStates;
 import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
@@ -9,6 +10,8 @@ import net.minecraft.core.GlobalPos;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -59,6 +62,20 @@ public class zComponents {
                                         () -> DataComponentType.<UpgradeComponents>builder()
                                                         .persistent(UpgradeComponents.CODEC)
                                                         .networkSynchronized(UpgradeComponents.STREAM_CODEC)
+                                                        .build());
+
+        public static final DeferredHolder<DataComponentType<?>, DataComponentType<BlockState>> BLOCKSTATE = zComponents
+                        .register("blockstate",
+                                        () -> DataComponentType.<BlockState>builder()
+                                                        .persistent(BlockState.CODEC)
+                                                        .networkSynchronized(BetterThanBlockStates.STREAM_CODEC)
+                                                        .build());
+
+        public static final DeferredHolder<DataComponentType<?>, DataComponentType<ResourceLocation>> REGISTRY_ID = zComponents
+                        .register("registry_id",
+                                        () -> DataComponentType.<ResourceLocation>builder()
+                                                        .persistent(ResourceLocation.CODEC)
+                                                        .networkSynchronized(ResourceLocation.STREAM_CODEC)
                                                         .build());
 
 }

@@ -168,6 +168,10 @@ public class x {
         return BuiltInRegistries.ITEM.getKey(item);
     }
 
+    public static Item get(ResourceLocation rl) {
+        return BuiltInRegistries.ITEM.get(rl);
+    }
+
     public static FluidStack fluid(Fluid f) {
         return fluid(f, 1000);
     }

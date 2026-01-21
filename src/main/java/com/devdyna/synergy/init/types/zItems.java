@@ -524,6 +524,9 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,
                         () -> new CakeStick());
+
+        public static final DeferredHolder<Item, Item> CHISEL = zTool.register(zStatic.Items.chisel,
+                        () -> new Chisel());
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, IndustrialUpgrade> UPGRADE_SPEED = Material
                         .machineUpgrade(zStatic.MachineUpgrades.speed);
