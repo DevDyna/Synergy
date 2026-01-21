@@ -31,8 +31,8 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 @SuppressWarnings("null")
 public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomation, EnergyBlock {
 
-    public static final int DEFAULT_FE_COST = 10;
-    public static final int DEFAULT_TICK_DURATION = 60;
+    public static final int DEFAULT_FE_COST = 500;
+    public static final int DEFAULT_TICK_DURATION = 100;
 
     protected int progress = 0;
     protected int maxProgress;
