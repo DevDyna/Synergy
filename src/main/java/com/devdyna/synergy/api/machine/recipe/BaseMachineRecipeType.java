@@ -134,7 +134,7 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
 
     @Override
     public ItemStack getResultItem(HolderLookup.Provider a) {
-        return getOutputItem();
+        return getOutputItem() == null ? ItemStack.EMPTY : getOutputItem();
     }
 
     public abstract MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<T>> getMachine();
