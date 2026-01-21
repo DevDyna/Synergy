@@ -77,7 +77,8 @@ public class ExtractorCategory extends BaseMachineRecipeCategory<ExtractorRecipe
                                 defaultToolTipColor.getRGB(), false);
 
                 if (recipe.hasSecondaryOutput() && recipe.getSecondaryItem() != null)
-                        if (recipe.getSecondaryItemChance() > 0f && !recipe.getSecondaryItem().isEmpty())
+                        if (recipe.getSecondaryItemChance() > 0f && recipe.getSecondaryItemChance() < 1f
+                                        && !recipe.getSecondaryItem().isEmpty())
                                 guiGraphics.drawString(font,
                                                 Component.literal(
                                                                 ((int) (recipe.getSecondaryItemChance() * 100)) + "%"),
