@@ -116,10 +116,11 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
     @Override
     public ResourceLocation getSuffix(String extra) {
 
-        if (this instanceof SimpleFluidAttach)
+        if (this instanceof SimpleFluidAttach && (fluid_output != null || !fluid_output.isEmpty())) {
             if (output == null)
                 return x.rl(getMachine().id() + "/" + x.path(fluid_output.getFluid())
                         + extra);
+        }
 
         return x.rl(getMachine().id() + "/" + x.path(output.getItem())
                 + extra);
