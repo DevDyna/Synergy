@@ -129,6 +129,7 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.INGOT_ADVANCEDALLOY).add(zItems.ADVANCED_ALLOY_INGOT.get());
                 tag(zItemTag.NUGGET_STEEL).add(zItems.STEEL_NUGGET.get());
                 tag(zItemTag.NUGGET_ADVANCEDALLOY).add(zItems.ADVANCED_ALLOY_NUGGET.get());
+                tag(zItemTag.NUGGET_COPPER).add(zItems.COPPER_NUGGET.get());
 
                 tag(zItemTag.FOILS)
                                 .add(DataGenUtil.getItems(zItems.zFoils));
