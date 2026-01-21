@@ -48,6 +48,8 @@
 
 - [ ] enchanting table-like that require enchanted books on chiseled bookshelf to be used
 
+- [ ] Foundry (tiny tinker-like)
+
 ### Automation
 
 - [ ] GreenHouse (in-gui plant farmer)
@@ -59,6 +61,8 @@
 - [ ] Planter (farmland like but bypass conditions)
 
 ### Agriculture
+
+- [ ] Rustic-like crushing tub
 
 - [ ] EnderLilly
 - [ ] cave mushroom -> press -> liquid lapis/ liquid coal
@@ -84,14 +88,14 @@
 
 - [ ] Scrap Generator (recycle items to scraps and item used to craft)
 
-### FluidCasting
-
-- [ ] Rustic-like crushing tub (?)
-- [ ] Metal Smeltery (tiny tinker-like?)
-- [x] Glass-Caster Factory (forestry like)
-
 ### Magic
 
+- [ ] Buddings
+- [ ] Growable Crystals (astral like?)
+- [ ] Floating Crystal recipe
+- [ ] Linkable Crystals
+
+- [ ] Rock Grinder (animated macerator)
 - [ ] STAR FORGE
 - [ ] Toaster
 - [ ] Spawner Essence
@@ -128,13 +132,18 @@
 - [ ] Chimney & smoke tubes
 - [ ] Mindustry/DE like Fusion Reactor (?) multiblock (?)
 
+## Skyblock stuff
+
+- [ ] Resource Shards (skyresources like?)
+
+## Factory expansion
+
+- [ ] metal scraps (like deposits but return metal things)
+- [ ] Node Extractors (Automatic Drills to produce resources)
+- [ ] Ore Nodes
+- [ ] Mineral Deposits
+- [ ] Simple Belts
+
 ### Zodiac
 
-- [ ] Growable Crystals
-- [ ] Node Extractor
-- [ ] Generators
-- [ ] Mineral Deposits
-- [ ] Buddings
-- [ ] Resource Shards
-- [ ] metal scraps (like deposits but return metal things)
 - [ ] Cookie clicker machines (randomtick generator)
