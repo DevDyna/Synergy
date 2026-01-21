@@ -29,6 +29,10 @@ import com.devdyna.synergy.init.builder.industrial_machines.macerator.MaceratorB
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.MaceratorBlock;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.MaceratorMenu;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeType;
+import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterBE;
+import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterBlock;
+import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterMenu;
+import com.devdyna.synergy.init.builder.industrial_machines.melter.recipe.MelterRecipeType;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -134,6 +138,19 @@ public class zMachines {
                 CasterBE::new,
                 CasterMenu::new,
                 CasterRecipeType.Serializer::new
+        );
+
+    public static final MachineType<
+        MelterBlock,
+        MelterBE,
+        MelterMenu,
+        MelterRecipeType
+        > MELTER = new MachineType<>(
+                zStatic.Machines.melter,
+                MelterBlock::new,
+                MelterBE::new,
+                MelterMenu::new,
+                MelterRecipeType.Serializer::new
         );
 
 

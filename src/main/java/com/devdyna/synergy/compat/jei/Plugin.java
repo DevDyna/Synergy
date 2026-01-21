@@ -17,6 +17,7 @@ import com.devdyna.synergy.compat.jei.categories.machines.CompressorCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.ElectricFurnaceCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.ExtractorCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
+import com.devdyna.synergy.compat.jei.categories.machines.MelterCategory;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterScreen;
@@ -27,6 +28,7 @@ import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurn
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeType;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.MaceratorScreen;
+import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterScreen;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.init.types.*;
 
@@ -37,7 +39,6 @@ import mezz.jei.api.registration.*;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -80,18 +81,16 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item(zBlocks.QUERN), QuernCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.ITEM_PROVIDER), ItemProviderCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.FLUID_PROVIDER), FluidProviderCategory.TYPE);
-                                r.addRecipeCatalyst(x.item(zBlocks.VOID_BOX), VoidBoxInfusionCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zBlocks.VOID_BOX), VoidBoxInfusionCategory.TYPE);
 
-
-
-                r.addRecipeCatalyst(x.item((Item) zMachines.MACERATOR.item().get()), MaceratorCategory.TYPE);
-                r.addRecipeCatalyst(x.item((Item) zMachines.COMPRESSOR.item().get()), CompressorCategory.TYPE);
-                r.addRecipeCatalyst(x.item((Item) zMachines.ALLOY_SMELTER.item().get()), AlloySmelterCategory.TYPE);
-                r.addRecipeCatalyst(x.item((Item) zMachines.ELECTRIC_FURNACE.item().get()),
+                r.addRecipeCatalyst(x.item(zMachines.MACERATOR.item().get()), MaceratorCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zMachines.COMPRESSOR.item().get()), CompressorCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zMachines.ALLOY_SMELTER.item().get()), AlloySmelterCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zMachines.ELECTRIC_FURNACE.item().get()),
                                 ElectricFurnaceCategory.TYPE);
-                r.addRecipeCatalyst(x.item((Item) zMachines.EXTRACTOR.item().get()), ExtractorCategory.TYPE);
-                r.addRecipeCatalyst(x.item((Item) zMachines.CASTING_FACTORY.item().get()), CasterCategory.TYPE);
-
+                r.addRecipeCatalyst(x.item(zMachines.EXTRACTOR.item().get()), ExtractorCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zMachines.CASTING_FACTORY.item().get()), CasterCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zMachines.MELTER.item().get()), MelterCategory.TYPE);
 
         }
 
@@ -116,8 +115,7 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCategories(new ElectricFurnaceCategory(helper));
                 r.addRecipeCategories(new ExtractorCategory(helper));
                 r.addRecipeCategories(new CasterCategory(helper));
-
-                
+                r.addRecipeCategories(new MelterCategory(helper));
 
         }
 
@@ -170,11 +168,17 @@ public class Plugin implements IModPlugin {
                 r.addRecipes(CasterCategory.TYPE,
                                 RecipeUtils.getRecipes(zMachines.CASTING_FACTORY));
 
+                r.addRecipes(MelterCategory.TYPE,
+                                RecipeUtils.getRecipes(zMachines.MELTER));
+
                 if (!Common.DISABLE_MACHINE_FURNACE_PROCESS_VANILLA.get())
                         r.addRecipes(ElectricFurnaceCategory.TYPE,
                                         recipes.getAllRecipesFor(RecipeType.SMELTING).stream()
-                                                        .map(s ->
-                                                        new RecipeHolder<>(x.rl(zMachines.ELECTRIC_FURNACE.id()+"_generated_" + s.id().getPath().replace("/", "")),
+                                                        .map(s -> new RecipeHolder<>(
+                                                                        x.rl(zMachines.ELECTRIC_FURNACE.id()
+                                                                                        + "_generated_"
+                                                                                        + s.id().getPath().replace("/",
+                                                                                                        "")),
                                                                         (ElectricFurnaceRecipeType) ElectricFurnaceRecipeBuilder
                                                                                         .of()
                                                                                         .delay(60)
@@ -217,6 +221,8 @@ public class Plugin implements IModPlugin {
                                 ExtractorCategory.TYPE);
                 r.addRecipeClickArea(CasterScreen.class, 75, 35, 22, 15,
                                 CasterCategory.TYPE);
+                r.addRecipeClickArea(MelterScreen.class, 75, 35, 22, 15,
+                                MelterCategory.TYPE);
         }
 
 }

@@ -41,12 +41,10 @@ public class zStatic {
         public static String copper = "copper";
         public static String gold = "gold";
         public static String aquamarine = "aquamarine";
-        // public static String onyx = "onyx";
         public static String silicon = "silicon";
         public static String advanced_alloy = "advanced_alloy";
         public static String steel = "steel";
         public static String carbon = "carbon";
-        // public static String matrix = "matrix";
         public static String netherrack = "netherrack";
         public static String stone = "stone";
         public static String americium = "americium";
@@ -66,7 +64,6 @@ public class zStatic {
         public static String sawdust = "sawdust";
         public static String quartz = "quartz";
         public static String mixed = "mixed";
-
         public static String nickel = "nickel";
         public static String silver = "silver";
         public static String tin = "tin";
@@ -241,6 +238,7 @@ public class zStatic {
         public static String electric_furnace = "electric_furnace";
         public static String extractor = "extractor";
         public static String casting_factory = "casting_factory";
+        public static String melter = "electric_melter";
     }
 
     public class Chests {
@@ -302,12 +300,12 @@ public class zStatic {
             private static String item = "item_";
             private static String fluid = "fluid_";
             private static String energy = "energy_";
-            private static String chemical = "chemical_";
+            // private static String chemical = "chemical_";
 
             public static String item_node = "item_" + nodes.node;
             public static String fluid_node = "fluid_" + nodes.node;
             public static String energy_node = "energy_" + nodes.node;
-            public static String chemical_node = "chemical_" + nodes.node;
+            // public static String chemical_node = "chemical_" + nodes.node;
         }
 
         public class nodes {
@@ -326,21 +324,21 @@ public class zStatic {
                 public static String Item = types.item + transfer + node2;
                 public static String Fluid = types.fluid + transfer + node2;
                 public static String Energy = types.energy + transfer + node2;
-                public static String Chemical = types.chemical + transfer + node2;
+                // public static String Chemical = types.chemical + transfer + node2;
             }
 
             public class Provider {
                 public static String Item = types.item + provider + node2;
                 public static String Fluid = types.fluid + provider + node2;
                 public static String Energy = types.energy + provider + node2;
-                public static String Chemical = types.chemical + provider + node2;
+                // public static String Chemical = types.chemical + provider + node2;
             }
 
             public class Retrieval {
                 public static String Item = types.item + retrieval + node2;
                 public static String Fluid = types.fluid + retrieval + node2;
                 public static String Energy = types.energy + retrieval + node2;
-                public static String Chemical = types.chemical + retrieval + node2;
+                // public static String Chemical = types.chemical + retrieval + node2;
             }
 
         }
@@ -396,6 +394,61 @@ public class zStatic {
         public static String IRONBERRY_JUICE = "ironberry_juice";
         public static String LIQUID_GLASS = "liquid_glass";
         public static String HONEY = "honey";
+
+
+
+        public static String iron = "iron";
+        public static String copper = "copper";
+        public static String gold = "gold";
+        // public static String aquamarine = "aquamarine";
+        // public static String silicon = "silicon";
+        // public static String advanced_alloy = "advanced_alloy";
+        public static String steel = "steel";
+        // public static String carbon = "carbon";
+        // public static String netherrack = "netherrack";
+        // public static String stone = "stone";
+        // public static String americium = "americium";
+        // public static String berkelium = "berkelium";
+        // public static String californium = "californium";
+        // public static String curium = "curium";
+        // public static String neptunium = "neptunium";
+        // public static String plutonium = "plutonium";
+        // public static String thorium = "thorium";
+        public static String uranium = "uranium";
+        // public static String amethyst = "amethyst";
+        // public static String diamond = "diamond";
+        // public static String emerald = "emerald";
+        // public static String ancient_debris = "ancient_debris";
+        // public static String energized_redstone = "energized_redstone";
+        // public static String lapis = "lapis";
+        // public static String sawdust = "sawdust";
+        // public static String quartz = "quartz";
+        // public static String mixed = "mixed";
+        public static String nickel = "nickel";
+        public static String silver = "silver";
+        public static String tin = "tin";
+        public static String aluminum = "aluminum";
+        public static String iridium = "iridium";
+        public static String platinum = "platinum";
+        public static String osmium = "osmium";
+        public static String lead = "lead";
+        // public static String sulfur = "sulfur";
+        public static String zinc = "zinc";
+        // public static String wooden = "wooden";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public static String AFFIX_DROPLETT = "droplet_";
     }

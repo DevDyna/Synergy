@@ -1,0 +1,54 @@
+package com.devdyna.synergy.init.builder.industrial_machines.melter.recipe;
+
+import java.util.LinkedHashMap;
+
+import com.devdyna.synergy.api.MachineType;
+import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.machine.BaseMachineMenu;
+import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeBuilder;
+import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.recipes.builders.SimpleFluidAttach;
+import com.devdyna.synergy.init.types.zMachines;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeInput;
+import net.neoforged.neoforge.fluids.FluidStack;
+
+@SuppressWarnings({ "null" })
+public class MelterRecipeBuilder extends BaseMachineRecipeBuilder<MelterRecipeBuilder>
+        implements SimpleFluidAttach<MelterRecipeBuilder> {
+
+    private MelterRecipeBuilder() {
+        this.criteria = new LinkedHashMap<String, Criterion<?>>();
+        this.energy = 1000;
+        this.ticks = 240;
+    }
+
+    public static MelterRecipeBuilder of() {
+        return new MelterRecipeBuilder();
+    }
+
+    @Override
+    public Recipe<?> createRecipe() {
+        return new MelterRecipeType(ticks, energy, input, fluid_output);
+    }
+
+    @Override
+    public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<? extends RecipeInput>> getMachine() {
+        return zMachines.MELTER;
+    }
+
+    @Override
+    public MelterRecipeBuilder getBuilder() {
+        return this;
+    }
+
+    @Override
+    public MelterRecipeBuilder fluid(FluidStack fluid) {
+        this.fluid_output = fluid;
+        return getBuilder();
+    }
+
+
+}

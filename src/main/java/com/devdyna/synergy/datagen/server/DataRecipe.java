@@ -15,6 +15,7 @@ import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.Caster
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.extractor.recipe.ExtractorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.melter.recipe.MelterRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup;
@@ -1266,7 +1267,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .secondary(Items.NETHERRACK, 0.75f)
                                 .fluid(Fluids.LAVA, 250)
                                 .unlockedBy()
-                                .save(c);
+                                .save(c, "_from_magmablock");
 
                 ExtractorRecipeBuilder.of()
                                 .input(Items.HONEYCOMB)
@@ -1282,11 +1283,24 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c, "_from_beewax");
 
                 ExtractorRecipeBuilder.of()
+                                .input(Items.HONEY_BOTTLE)
+                                .secondary(Items.SUGAR, 6)
+                                .unlockedBy()
+                                .save(c);
+
+                ExtractorRecipeBuilder.of()
                                 .input(zItems.IRONBERRIES)
                                 .secondary(zItems.TINY_IRON_DUST, 0.25f)
                                 .fluid(zFluids.IRONBERRY_JUICE, 250)
                                 .unlockedBy()
                                 .save(c);
+
+                ExtractorRecipeBuilder.of()
+                                .input(Items.OBSIDIAN)
+                                .secondary(Items.COBBLESTONE, 0.25f)
+                                .fluid(Fluids.LAVA, 1000)
+                                .unlockedBy()
+                                .save(c, "_from_obsidian");
 
                 CasterRecipeBuilder.of()
                                 .fluid(zFluids.IRONBERRY_JUICE, 125)
@@ -1301,12 +1315,41 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 CasterRecipeBuilder.of()
-                                .fluid(Fluids.WATER,250)
+                                .fluid(Fluids.WATER, 250)
                                 .input(Items.COBBLESTONE)
                                 .output(Items.MOSSY_COBBLESTONE)
                                 .unlockedBy()
                                 .save(c);
-                                
+
+                CasterRecipeBuilder.of()
+                                .fluid(zFluids.HONEY, 1000)
+                                .output(Items.HONEY_BLOCK)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(zFluids.GLUE, 250)
+                                .output(zItems.GLUE)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(zFluids.OIL, 250)
+                                .output(zItems.OIL)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(zFluids.SAP, 250)
+                                .output(zItems.SAP)
+                                .unlockedBy()
+                                .save(c);
+
+                MelterRecipeBuilder.of()
+                                .input(Items.COBBLESTONE)
+                                .fluid(Fluids.LAVA, 250)
+                                .unlockedBy()
+                                .save(c);
 
         }
 
