@@ -1,6 +1,7 @@
 package com.devdyna.synergy.api;
 
 import java.util.function.Consumer;
+import java.awt.Color;
 
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -247,6 +248,10 @@ public class zFluid {
 
     public static zFluid create(String id, int color) {
         return new zFluid(id, color);
+    }
+
+    public static zFluid create(String id, Color color) {
+        return new zFluid(id, color.getRGB());
     }
 
     public static zFluid create(String id, float r, float g, float b, float a) {
