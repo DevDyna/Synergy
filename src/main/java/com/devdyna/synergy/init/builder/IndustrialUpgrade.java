@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.builder;
 
 import java.util.*;
 
+import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.datagen.client.DataLang;
 import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents.TYPE;
@@ -13,9 +14,11 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
 
 @SuppressWarnings("null")
 public class IndustrialUpgrade extends Item {
@@ -26,6 +29,28 @@ public class IndustrialUpgrade extends Item {
 
     public IndustrialUpgrade() {
         this(new Item.Properties());
+    }
+
+    @Override
+    public InteractionResult useOn(UseOnContext c) {
+        var level = c.getLevel();
+        var pos = c.getClickedPos();
+        var item = c.getItemInHand();
+        var be = level.getBlockEntity(pos);
+        var player = c.getPlayer();
+
+        if (player.isCrouching() && be instanceof BaseMachineBE machineBE) {
+
+            if (machineBE.tryAddUpgrade(item)) {
+                if (!player.isCreative())
+                    item.shrink(1);
+                return InteractionResult.SUCCESS;
+            }
+
+        }
+
+        return InteractionResult.FAIL;
+
     }
 
     /**

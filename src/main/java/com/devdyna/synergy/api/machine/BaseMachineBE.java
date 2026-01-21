@@ -428,4 +428,28 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         } else
             return false;
     }
+
+    public boolean tryAddUpgrade(ItemStack item) {
+        var upgrade = item.copy();
+        upgrade.setCount(1);
+
+        if(!upgrade.has(zComponents.UPGRADE_COMPONENTS))
+        return false;
+
+        for (int index = 0; index < MAX_UPGRADE_SLOTS; index++) {
+            var slot = getStackInSlot(index);
+
+            if (slot.isEmpty()) {
+                setStackInSlot(index,upgrade);
+                return true;
+            }
+
+            if (ItemStack.isSameItemSameComponents(upgrade, slot) && slot.getCount() < 4) {
+                slot.grow(1);
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
