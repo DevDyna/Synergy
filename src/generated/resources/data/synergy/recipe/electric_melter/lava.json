@@ -1,0 +1,12 @@
+{
+  "type": "synergy:electric_melter",
+  "energy": 1000,
+  "fluid": {
+    "amount": 250,
+    "id": "minecraft:lava"
+  },
+  "input": {
+    "item": "minecraft:cobblestone"
+  },
+  "ticks": 240
+}
