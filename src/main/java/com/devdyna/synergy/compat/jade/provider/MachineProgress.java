@@ -29,7 +29,7 @@ public enum MachineProgress
     // remove default item capability tooltip
 
     Data data = decodeFromData(accessor).orElse(null);
-    if (data == null)
+    if (data == null || data.inv == null)
       return;
 
     var be = (BaseMachineBE) accessor.getBlockEntity();
@@ -74,10 +74,12 @@ public enum MachineProgress
 
     List<ItemStack> slots = new ArrayList<>();
     // slots.addAll(machineBE.getUpgradeInstalled());
-    slots.add(machineBE.getInput());
-    slots.add(machineBE.getOutput());
+    if (machineBE.getMachineSlots() > 4)
+      slots.add(machineBE.getInput());
+    if (machineBE.getMachineSlots() > 5)
+      slots.add(machineBE.getOutput());
 
-    if (machineBE instanceof ExtraMachineSlots && machineBE.getMachineSlots()-6 > 0) {
+    if (machineBE instanceof ExtraMachineSlots && machineBE.getMachineSlots() > 6) {
       for (int i = 6; i < machineBE.getMachineSlots(); i++) {
         slots.add(machineBE.getStorage().getStackInSlot(i));
       }
