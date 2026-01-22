@@ -1323,6 +1323,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 CasterRecipeBuilder.of()
                                 .fluid(Fluids.WATER, 250)
                                 .input(Items.COBBLESTONE)
+                                .consumeCatalyst()
                                 .output(Items.MOSSY_COBBLESTONE)
                                 .unlockedBy()
                                 .save(c);
