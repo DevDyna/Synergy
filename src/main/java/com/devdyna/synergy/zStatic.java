@@ -410,7 +410,6 @@ public class zStatic {
         public static String platinum = "platinum";
         public static String osmium = "osmium";
         public static String lead = "lead";
-        public static String zinc = "zinc";
 
 
 

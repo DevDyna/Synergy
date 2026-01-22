@@ -63,7 +63,5 @@ public class zFluids {
                                                                                                               
     public static final zFluid MOLTEN_LEAD = zFluid.create(zStatic.Fluids.lead, 0xF6555560).pushEntity(); 
                                                                                                           
-    public static final zFluid MOLTEN_ZINC = zFluid.create(zStatic.Fluids.zinc, 0xF6C8D0D8).pushEntity(); 
-                                                                                                          
 
 }
