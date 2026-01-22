@@ -71,6 +71,10 @@ public class ClazzUtil {
         return blocks;
     }
 
+    public static List<zFluid> getAllzFluids(String filter_whitelist) {
+        return getAllzFluids().stream().filter(f -> f.getId().contains(filter_whitelist)).toList();
+    }
+
     /**
      * Dont use on LootTableProviders
      */
