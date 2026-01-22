@@ -146,6 +146,7 @@ public class CreativeTabs {
                     zItems.zIngots,
                     zItems.zNuggets,
                     zItems.zPlates,
+                    zItems.zElectronTubes,
                     zItems.zRawOres,
                     zItems.zShards,
                     zItems.zMobDrop,
