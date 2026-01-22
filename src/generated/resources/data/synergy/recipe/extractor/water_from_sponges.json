@@ -1,0 +1,17 @@
+{
+  "type": "synergy:extractor",
+  "chance": 1.0,
+  "energy": 500,
+  "input": {
+    "item": "minecraft:wet_sponge"
+  },
+  "output_fluid": {
+    "amount": 1000,
+    "id": "minecraft:water"
+  },
+  "output_item": {
+    "count": 1,
+    "id": "minecraft:sponge"
+  },
+  "ticks": 100
+}

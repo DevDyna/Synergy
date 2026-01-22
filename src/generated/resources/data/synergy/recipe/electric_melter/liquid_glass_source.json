@@ -2,11 +2,11 @@
   "type": "synergy:electric_melter",
   "energy": 5000,
   "fluid": {
-    "amount": 250,
-    "id": "minecraft:lava"
+    "amount": 1000,
+    "id": "synergy:liquid_glass_source"
   },
   "input": {
-    "tag": "c:cobblestones"
+    "tag": "c:glass_blocks/colorless"
   },
   "ticks": 800
 }

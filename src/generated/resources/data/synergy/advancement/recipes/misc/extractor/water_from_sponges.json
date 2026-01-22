@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:electric_melter/lava"
+        "recipe": "synergy:extractor/water_from_sponges"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:barrier"
+            "items": "minecraft:wet_sponge"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:electric_melter/lava"
+      "synergy:extractor/water_from_sponges"
     ]
   }
 }
