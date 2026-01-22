@@ -164,11 +164,18 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                                 .texture("layer1", x.rl("item/resources/mold/"
                                                                 + x.path(d).replace(zStatic.ResourceType.mold, ""))));
 
+                zItems.zElectronTubes.getEntries().stream().map(DeferredHolder::get)
+                                .forEach(d -> withExistingParent(x.path(d), "minecraft:item/generated")
+                                                .texture("layer0", x.rl("item/resources/electron_tube_base"))
+                                                .texture("layer1", x.rl("item/resources/electron_tube/"
+                                                                + x.path(d).replace(zStatic.ResourceType.electron_tube,
+                                                                                ""))));
+
                 zItems.zMachineUpgrades.getEntries().stream().map(DeferredHolder::get)
                                 .forEach(d -> withExistingParent(x.path(d), "minecraft:item/generated")
                                                 .texture("layer0", x.rl("item/upgrades/base"))
                                                 .texture("layer1", x.rl("item/upgrades/"
-                                                                + x.path(d).replace("_"+zStatic.MachineUpgrades.TYPE,
+                                                                + x.path(d).replace("_" + zStatic.MachineUpgrades.TYPE,
                                                                                 ""))));
 
         }

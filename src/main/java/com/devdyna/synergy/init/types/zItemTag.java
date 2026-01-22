@@ -205,8 +205,23 @@ public class zItemTag {
         public static final TagKey<Item> VOID_BOX_DENY = Material
                         .tagItem("void_box_deny");
 
-
         public static final TagKey<Item> MOLDS = Material
                         .tagItem("molds");
+
+        public static final TagKey<Item> ELECTRON_TUBES = Material.tagItem("electron_tubes", "c");
+
+        public static final TagKey<Item> IRON_ELECTRON_TUBE = Material.tagItem("electron_tubes/iron", "c");
+        public static final TagKey<Item> GOLD_ELECTRON_TUBE = Material.tagItem("electron_tubes/gold", "c");
+        public static final TagKey<Item> COPPER_ELECTRON_TUBE = Material.tagItem("electron_tubes/copper", "c");
+        public static final TagKey<Item> ALUMINUM_ELECTRON_TUBE = Material.tagItem("electron_tubes/aluminum", "c");
+        public static final TagKey<Item> IRIDIUM_ELECTRON_TUBE = Material.tagItem("electron_tubes/iridium", "c");
+        public static final TagKey<Item> LEAD_ELECTRON_TUBE = Material.tagItem("electron_tubes/lead", "c");
+        public static final TagKey<Item> NICKEL_ELECTRON_TUBE = Material.tagItem("electron_tubes/nickel", "c");
+        public static final TagKey<Item> OSMIUM_ELECTRON_TUBE = Material.tagItem("electron_tubes/osmium", "c");
+        public static final TagKey<Item> PLATINUM_ELECTRON_TUBE = Material.tagItem("electron_tubes/platinum", "c");
+        public static final TagKey<Item> SILVER_ELECTRON_TUBE = Material.tagItem("electron_tubes/silver", "c");
+        public static final TagKey<Item> STEEL_ELECTRON_TUBE = Material.tagItem("electron_tubes/steel", "c");
+        public static final TagKey<Item> TIN_ELECTRON_TUBE = Material.tagItem("electron_tubes/tin", "c");
+        public static final TagKey<Item> URANIUM_ELECTRON_TUBE = Material.tagItem("electron_tubes/uranium", "c");
 
 }

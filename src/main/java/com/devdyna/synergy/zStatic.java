@@ -91,6 +91,7 @@ public class zStatic {
         public static String dust = "_dust";
         public static String pellet = "_pellet";
         public static String mold = "_mold";
+        public static String electron_tube = "_electron_tube";
     }
 
     public class MachineUpgrades {
@@ -101,7 +102,7 @@ public class zStatic {
         public static String fluid = "fluid";
 
         public class TemplateUpgrades {
-            
+
             public static ItemStack SPEED = zItems.UPGRADE_SPEED.get().set(150, 350, 0, 0);
             public static ItemStack ENERGY = zItems.UPGRADE_ENERGY.get().set(0, -450, 0, 0);
             public static ItemStack LUCK = zItems.UPGRADE_LUCK.get().set(0, 500, 25, 0);
@@ -388,6 +389,9 @@ public class zStatic {
     }
 
     public class Fluids {
+        public static String AFFIX_DROPLETT = "droplet_";
+        public static String AFFIX_MOLTEN = "molten_";
+
         public static String oil = "oil";
         public static String glue = "glue";
         public static String sap = "sap";
@@ -395,37 +399,20 @@ public class zStatic {
         public static String liquid_glass = "liquid_glass";
         public static String honey = "honey";
 
+        public static String iron = AFFIX_MOLTEN + "iron";
+        public static String copper = AFFIX_MOLTEN + "copper";
+        public static String gold = AFFIX_MOLTEN + "gold";
+        public static String steel = AFFIX_MOLTEN + "steel";
+        public static String uranium = AFFIX_MOLTEN + "uranium";
+        public static String nickel = AFFIX_MOLTEN + "nickel";
+        public static String silver = AFFIX_MOLTEN + "silver";
+        public static String tin = AFFIX_MOLTEN + "tin";
+        public static String aluminum = AFFIX_MOLTEN + "aluminum";
+        public static String iridium = AFFIX_MOLTEN + "iridium";
+        public static String platinum = AFFIX_MOLTEN + "platinum";
+        public static String osmium = AFFIX_MOLTEN + "osmium";
+        public static String lead = AFFIX_MOLTEN + "lead";
 
-
-        public static String iron = "iron";
-        public static String copper = "copper";
-        public static String gold = "gold";
-        public static String steel = "steel";
-        public static String uranium = "uranium";
-        public static String nickel = "nickel";
-        public static String silver = "silver";
-        public static String tin = "tin";
-        public static String aluminum = "aluminum";
-        public static String iridium = "iridium";
-        public static String platinum = "platinum";
-        public static String osmium = "osmium";
-        public static String lead = "lead";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public static String AFFIX_DROPLETT = "droplet_";
     }
 
     public class Mods {

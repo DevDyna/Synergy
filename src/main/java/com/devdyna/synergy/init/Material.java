@@ -297,6 +297,11 @@ public class Material {
                                 .registerSimpleItem(name.replace("_", "") + zStatic.ResourceType.mold);
         }
 
+        public static DeferredHolder<Item, Item> resourceElectronTube(String name) {
+                return zItems.zElectronTubes
+                                .registerSimpleItem(name + zStatic.ResourceType.electron_tube);
+        }
+
         public static DeferredHolder<CreativeModeTab, CreativeModeTab> createCreativeTab(
                         String id,
                         Supplier<Item> icon) {
