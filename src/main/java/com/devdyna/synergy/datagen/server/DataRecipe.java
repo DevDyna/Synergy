@@ -1301,6 +1301,13 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c, "_from_obsidian");
 
+                ExtractorRecipeBuilder.of()
+                                .input(Items.WET_SPONGE)
+                                .secondary(Items.SPONGE)
+                                .fluid(Fluids.WATER, 1000)
+                                .unlockedBy()
+                                .save(c,"_from_sponges");
+
                 CasterRecipeBuilder.of()
                                 .fluid(zFluids.IRONBERRY_JUICE, 125)
                                 .output(zItems.TINY_IRON_DUST)
@@ -1345,8 +1352,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 MelterRecipeBuilder.of()
-                                .input(Items.COBBLESTONE)
+                                .input(Tags.Items.COBBLESTONES)
                                 .fluid(Fluids.LAVA, 250)
+                                .unlockedBy()
+                                .save(c);
+
+                MelterRecipeBuilder.of()
+                                .input(Tags.Items.GLASS_BLOCKS_COLORLESS)
+                                .fluid(zFluids.LIQUID_GLASS, 1000)
                                 .unlockedBy()
                                 .save(c);
 
