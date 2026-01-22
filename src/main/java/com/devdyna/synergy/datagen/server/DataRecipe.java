@@ -523,6 +523,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 twoByTwoPacker(c, zItems.CARBON_FIBER.get(), zItemTag.DUST_COAL);
+                twoByTwoPacker(c, MISC, Items.RAW_IRON, zItems.TINY_IRON_DUST.get());
 
                 twoByTwoPacker(c, MISC, zItems.CARBON_PLATE.get(), zItems.CARBON_FIBER.get());
 
@@ -535,14 +536,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItems.WOODEN_GEAR.get()))
                                 .save(c);
 
-                gear(c, zItems.WOODEN_GEAR, Tags.Items.RODS_WOODEN);
-                gear(c, zItems.TIN_GEAR, zItemTag.INGOT_TIN);
-                gear(c, zItems.GOLD_GEAR, Tags.Items.INGOTS_GOLD);
-                gear(c, zItems.IRON_GEAR, Tags.Items.INGOTS_IRON);
-                gear(c, zItems.LEAD_GEAR, zItemTag.INGOT_LEAD);
-                gear(c, zItems.STEEL_GEAR, zItemTag.INGOT_STEEL);
-                gear(c, zItems.COPPER_GEAR, Tags.Items.INGOTS_COPPER);
-                gear(c, zItems.NICKEL_GEAR, zItemTag.INGOT_NICKEL);
+                gear(c, zItems.WOODEN_GEAR, Tags.Items.RODS_WOODEN, ItemTags.PLANKS);
+                gear(c, zItems.TIN_GEAR, zItemTag.INGOT_TIN, zFluids.MOLTEN_TIN);
+                gear(c, zItems.GOLD_GEAR, Tags.Items.INGOTS_GOLD, zFluids.MOLTEN_GOLD);
+                gear(c, zItems.IRON_GEAR, Tags.Items.INGOTS_IRON, zFluids.MOLTEN_IRON);
+                gear(c, zItems.LEAD_GEAR, zItemTag.INGOT_LEAD, zFluids.MOLTEN_LEAD);
+                gear(c, zItems.STEEL_GEAR, zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
+                gear(c, zItems.COPPER_GEAR, Tags.Items.INGOTS_COPPER, zFluids.MOLTEN_COPPER);
+                gear(c, zItems.NICKEL_GEAR, zItemTag.INGOT_NICKEL, zFluids.MOLTEN_NICKEL);
 
                 nuggetIngotBlock(c, zItems.STEEL_NUGGET.get(), zItems.STEEL_INGOT.get(),
                                 zBlocks.STEEL_BLOCK.get().asItem());
@@ -1306,7 +1307,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .secondary(Items.SPONGE)
                                 .fluid(Fluids.WATER, 1000)
                                 .unlockedBy()
-                                .save(c,"_from_sponges");
+                                .save(c, "_from_sponges");
 
                 CasterRecipeBuilder.of()
                                 .fluid(zFluids.IRONBERRY_JUICE, 125)

@@ -207,6 +207,9 @@ public class zFluid {
         return this;
     }
 
+    /**
+     * dont work
+     */
     public zFluid setLight(int l) {
         this.lightLevel = l;
         return this;

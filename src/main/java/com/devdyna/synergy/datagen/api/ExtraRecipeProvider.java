@@ -8,14 +8,17 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.zFluid;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.builders.CropResultBuilder;
 import com.devdyna.synergy.common.recipes.builders.DryableBricksBuilder;
 import com.devdyna.synergy.common.recipes.builders.QuernMillingBuilder;
 import com.devdyna.synergy.common.recipes.builders.ReactorCellBuilder;
 import com.devdyna.synergy.common.recipes.builders.UrnRitualBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.CasterRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.melter.recipe.MelterRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup.Provider;
@@ -69,7 +72,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 packUnpack(c, ingot, block, false);
         }
 
-        protected void gear(RecipeOutput c, DeferredHolder<Item, Item> gear, TagKey<Item> input) {
+        protected void gear(RecipeOutput c, DeferredHolder<Item, Item> gear, TagKey<Item> input,
+                        TagKey<Item> inputCompress) {
                 ShapedRecipeBuilder.shaped(MISC, gear.get())
                                 .pattern(" # ")
                                 .pattern("# #")
@@ -78,10 +82,33 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(ID, has(input))
                                 .save(c);
 
-                CompressorRecipeBuilder.of()// TODO maybe it will be unbalanced
-                                .input(input)
+                CompressorRecipeBuilder.of()
+                                .input(inputCompress)
                                 .delay(80)
                                 .catalyst(zItems.MOLD_GEAR.get())
+                                .output(gear)
+                                .unlockedBy()
+                                .save(c);
+        }
+
+        protected void gear(RecipeOutput c, DeferredHolder<Item, Item> gear, TagKey<Item> input, zFluid fluid) {
+                ShapedRecipeBuilder.shaped(MISC, gear.get())
+                                .pattern(" # ")
+                                .pattern("# #")
+                                .pattern(" # ")
+                                .define('#', input)
+                                .unlockedBy(ID, has(input))
+                                .save(c);
+
+                MelterRecipeBuilder.of()
+                                .input(input)
+                                .fluid(fluid, 90)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(fluid, 180)
+                                .input(zItems.MOLD_GEAR)
                                 .output(gear)
                                 .unlockedBy()
                                 .save(c);
@@ -406,7 +433,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        public static List< Item> clearNBT = List.of(
+        public static List<Item> clearNBT = List.of(
                         zItems.RED_BATTERY.get(),
                         zItems.BLUE_BATTERY.get(),
                         zItems.GREEN_BATTERY.get(),
@@ -816,8 +843,6 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy(ID,
                                                 has(Items.IRON_INGOT))
                                 .group(zStatic.Items.chisel).save(c);
-
-
 
         }
 
