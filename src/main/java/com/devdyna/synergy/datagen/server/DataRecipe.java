@@ -1374,6 +1374,20 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
+                moltenIngots(c, zItems.TIN_INGOT.get(), zItemTag.INGOT_TIN, zFluids.MOLTEN_TIN);
+                moltenIngots(c, Items.GOLD_INGOT, Tags.Items.INGOTS_GOLD, zFluids.MOLTEN_GOLD);
+                moltenIngots(c, Items.IRON_INGOT, Tags.Items.INGOTS_IRON, zFluids.MOLTEN_IRON);
+                moltenIngots(c, zItems.LEAD_INGOT.get(), zItemTag.INGOT_LEAD, zFluids.MOLTEN_LEAD);
+                moltenIngots(c, zItems.STEEL_INGOT.get(), zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
+                moltenIngots(c, Items.COPPER_INGOT, Tags.Items.INGOTS_COPPER, zFluids.MOLTEN_COPPER);
+                moltenIngots(c, zItems.NICKEL_INGOT.get(), zItemTag.INGOT_NICKEL, zFluids.MOLTEN_NICKEL);
+                moltenIngots(c, zItems.OSMIUM_INGOT.get(), zItemTag.INGOT_OSMIUM, zFluids.MOLTEN_OSMIUM);
+                moltenIngots(c, zItems.SILVER_INGOT.get(), zItemTag.INGOT_SILVER, zFluids.MOLTEN_SILVER);
+                moltenIngots(c, zItems.IRIDIUM_INGOT.get(), zItemTag.INGOT_IRIDIUM, zFluids.MOLTEN_IRIDIUM);
+                moltenIngots(c, zItems.URANIUM_INGOT.get(), zItemTag.INGOT_URANIUM, zFluids.MOLTEN_URANIUM);
+                moltenIngots(c, zItems.ALUMINUM_INGOT.get(), zItemTag.INGOT_ALUMINUM, zFluids.MOLTEN_ALUMINUM);
+                moltenIngots(c, zItems.PLATINUM_INGOT.get(), zItemTag.INGOT_PLATINUM, zFluids.MOLTEN_PLATINUM);
+
                 electron_tube(c, zItems.TIN_ELECTRON_TUBE, zFluids.MOLTEN_TIN);
                 electron_tube(c, zItems.GOLD_ELECTRON_TUBE, zFluids.MOLTEN_GOLD);
                 electron_tube(c, zItems.IRON_ELECTRON_TUBE, zFluids.MOLTEN_IRON);

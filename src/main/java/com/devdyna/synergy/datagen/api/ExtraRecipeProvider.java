@@ -101,15 +101,31 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
 
                 MelterRecipeBuilder.of()
-                                .input(input)
-                                .fluid(fluid, 90)
+                                .input(gear)
+                                .fluid(fluid, 180)
                                 .unlockedBy()
-                                .save(c);
+                                .save(c,"_from_gear");
 
                 CasterRecipeBuilder.of()
                                 .fluid(fluid, 180)
                                 .input(zItems.MOLD_GEAR)
                                 .output(gear)
+                                .unlockedBy()
+                                .save(c);
+        }
+
+        protected void moltenIngots(RecipeOutput c, Item ingot, TagKey<Item> input, zFluid fluid) {
+
+                MelterRecipeBuilder.of()
+                                .input(input)
+                                .fluid(fluid, 90)
+                                .unlockedBy()
+                                .save(c,"_from_ingot");
+
+                CasterRecipeBuilder.of()
+                                .fluid(fluid, 90)
+                                .input(zItems.MOLD_INGOT)
+                                .output(ingot)
                                 .unlockedBy()
                                 .save(c);
 
