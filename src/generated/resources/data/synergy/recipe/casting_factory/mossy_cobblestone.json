@@ -1,5 +1,6 @@
 {
   "type": "synergy:casting_factory",
+  "consume_item": true,
   "energy": 500,
   "input_fluid": {
     "amount": 250,
