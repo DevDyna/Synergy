@@ -501,7 +501,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .add(zItems.LAPIS_DUST)
                                 .add(zItems.SILVERFISH_DUST)
                                 .output(zItems.AQUAMARINE, 2)
-
                                 .unlockedBy()
                                 .save(c);
 
@@ -1317,6 +1316,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 CasterRecipeBuilder.of()
                                 .fluid(zFluids.LIQUID_GLASS, 1000)
+                                .input(zItems.MOLD_BLOCK)
                                 .output(Items.GLASS)
                                 .unlockedBy()
                                 .save(c);
@@ -1331,6 +1331,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 CasterRecipeBuilder.of()
                                 .fluid(zFluids.HONEY, 1000)
+                                .input(zItems.MOLD_BLOCK)
                                 .output(Items.HONEY_BLOCK)
                                 .unlockedBy()
                                 .save(c);
