@@ -121,6 +121,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .fluid(fluid, 180)
                                 .input(zItems.ELECTRON_TUBE_BASE)
                                 .output(tube)
+                                .consumeCatalyst()
                                 .unlockedBy()
                                 .save(c);
 

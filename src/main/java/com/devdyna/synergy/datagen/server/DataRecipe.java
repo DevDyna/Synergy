@@ -1369,6 +1369,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 CasterRecipeBuilder.of()
                                 .input(zItems.CHIP)
                                 .fluid(zFluids.LIQUID_GLASS, 250)
+                                .consumeCatalyst()
                                 .output(zItems.ELECTRON_TUBE_BASE)
                                 .unlockedBy()
                                 .save(c);
