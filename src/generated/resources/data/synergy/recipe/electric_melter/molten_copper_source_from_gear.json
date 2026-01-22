@@ -1,0 +1,12 @@
+{
+  "type": "synergy:electric_melter",
+  "energy": 5000,
+  "fluid": {
+    "amount": 180,
+    "id": "synergy:molten_copper_source"
+  },
+  "input": {
+    "item": "synergy:copper_gear"
+  },
+  "ticks": 800
+}

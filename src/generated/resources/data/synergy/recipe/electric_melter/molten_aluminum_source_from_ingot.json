@@ -1,0 +1,12 @@
+{
+  "type": "synergy:electric_melter",
+  "energy": 5000,
+  "fluid": {
+    "amount": 90,
+    "id": "synergy:molten_aluminum_source"
+  },
+  "input": {
+    "tag": "c:ingots/aluminum"
+  },
+  "ticks": 800
+}

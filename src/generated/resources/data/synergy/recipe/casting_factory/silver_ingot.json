@@ -1,0 +1,17 @@
+{
+  "type": "synergy:casting_factory",
+  "consume_item": false,
+  "energy": 500,
+  "input_fluid": {
+    "amount": 90,
+    "id": "synergy:molten_silver_source"
+  },
+  "input_item": {
+    "item": "synergy:ingot_mold"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:silver_ingot"
+  },
+  "ticks": 100
+}

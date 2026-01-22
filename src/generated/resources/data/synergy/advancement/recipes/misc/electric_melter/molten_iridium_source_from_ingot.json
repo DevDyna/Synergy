@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:electric_melter/molten_tin_source"
+        "recipe": "synergy:electric_melter/molten_iridium_source_from_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:electric_melter/molten_tin_source"
+      "synergy:electric_melter/molten_iridium_source_from_ingot"
     ]
   }
 }

@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:electric_melter/molten_nickel_source"
+        "recipe": "synergy:electric_melter/molten_copper_source_from_gear"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:barrier"
+            "items": "synergy:copper_gear"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:electric_melter/molten_nickel_source"
+      "synergy:electric_melter/molten_copper_source_from_gear"
     ]
   }
 }
