@@ -1,0 +1,17 @@
+{
+  "type": "synergy:casting_factory",
+  "consume_item": false,
+  "energy": 500,
+  "input_fluid": {
+    "amount": 180,
+    "id": "synergy:lead_source"
+  },
+  "input_item": {
+    "item": "synergy:gear_mold"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:lead_gear"
+  },
+  "ticks": 100
+}

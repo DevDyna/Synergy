@@ -1,0 +1,12 @@
+{
+  "type": "synergy:electric_melter",
+  "energy": 5000,
+  "fluid": {
+    "amount": 90,
+    "id": "synergy:lead_source"
+  },
+  "input": {
+    "tag": "c:ingots/lead"
+  },
+  "ticks": 800
+}

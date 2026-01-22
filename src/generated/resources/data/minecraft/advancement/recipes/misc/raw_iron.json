@@ -3,15 +3,15 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:compressor/tin_gear"
+        "recipe": "minecraft:raw_iron"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "synergy": {
+    "has_tiny_iron_dust": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:barrier"
+            "items": "synergy:tiny_iron_dust"
           }
         ]
       },
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "synergy"
+      "has_tiny_iron_dust"
     ]
   ],
   "rewards": {
     "recipes": [
-      "synergy:compressor/tin_gear"
+      "minecraft:raw_iron"
     ]
   }
 }

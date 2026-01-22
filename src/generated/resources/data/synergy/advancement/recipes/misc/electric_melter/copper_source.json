@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:compressor/nickel_gear"
+        "recipe": "synergy:electric_melter/copper_source"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:compressor/nickel_gear"
+      "synergy:electric_melter/copper_source"
     ]
   }
 }
