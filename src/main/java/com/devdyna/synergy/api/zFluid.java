@@ -1,6 +1,7 @@
 package com.devdyna.synergy.api;
 
 import java.util.function.Consumer;
+import java.util.function.ToIntFunction;
 import java.awt.Color;
 
 import com.devdyna.synergy.api.utils.x;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
@@ -30,6 +32,7 @@ import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
+
 /**
  * Utility class to create fluids
  */
@@ -50,6 +53,8 @@ public class zFluid {
     private ResourceLocation flowing;
     private ResourceLocation overlay;
 
+    private int lightLevel;
+    private ToIntFunction<BlockState> dynLightLevel;
     private int viscosity;
     private boolean canDrown;
     private boolean canSwim;
@@ -68,6 +73,8 @@ public class zFluid {
         this.flowing = x.rl("minecraft", "block/water_flow");
         this.overlay = x.rl("minecraft", "block/water_overlay");
         this.viscosity = 1000;// approx water
+        this.lightLevel = 0;
+        this.dynLightLevel = a -> lightLevel;
         this.canDrown = false;
         this.canSwim = false;
         this.canPushEntity = false;
@@ -76,7 +83,7 @@ public class zFluid {
         this.type = zFluids.zFluidTypes.register(
                 id + "_type",
                 () -> new FluidType(FluidType.Properties.create()
-                        .lightLevel(10)
+                        .lightLevel(lightLevel)
                         .viscosity(viscosity)
                         .canDrown(canDrown)
                         .canSwim(canSwim)
@@ -145,8 +152,8 @@ public class zFluid {
                                 .strength(100.0F).pushReaction(PushReaction.DESTROY).noLootTable().liquid()
                                 .sound(SoundType.EMPTY)
                                 .liquid()
-                                .lightLevel(value -> 10)
-                                .emissiveRendering((s, g, p) -> true)));
+                                .lightLevel(dynLightLevel)
+                                .emissiveRendering((s, g, p) -> lightLevel > 0 || dynLightLevel.applyAsInt(s) > 0)));
 
         this.prop = new BaseFlowingFluid.Properties(
                 this.type,
@@ -197,6 +204,16 @@ public class zFluid {
 
     public zFluid setStillTexture(ResourceLocation rl) {
         this.still = rl;
+        return this;
+    }
+
+    public zFluid setLight(int l) {
+        this.lightLevel = l;
+        return this;
+    }
+
+    public zFluid setLight(ToIntFunction<BlockState> l) {
+        this.dynLightLevel = l;
         return this;
     }
 
@@ -258,15 +275,14 @@ public class zFluid {
         return new zFluid(id, r, g, b, a);
     }
 
-public static int rgba(float r, float g, float b, float a) {
-    return ((int)(a * 255) << 24) 
-         | ((int)(b * 255) << 16)
-         | ((int)(g * 255) << 8)
-         | ((int)(r * 255));
-}
+    public static int rgba(float r, float g, float b, float a) {
+        return ((int) (a * 255) << 24)
+                | ((int) (b * 255) << 16)
+                | ((int) (g * 255) << 8)
+                | ((int) (r * 255));
+    }
 
-
-    public Fluid getFluid(){
+    public Fluid getFluid() {
         return getSource().get();
     }
 

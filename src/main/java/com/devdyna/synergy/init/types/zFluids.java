@@ -2,8 +2,11 @@ package com.devdyna.synergy.init.types;
 
 import static com.devdyna.synergy.Main.ID;
 
+import java.awt.Color;
+
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.zFluid;
+import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.material.Fluid;
@@ -30,38 +33,38 @@ public class zFluids {
 
     public static final zFluid GLUE = zFluid.create(zStatic.Fluids.glue, 0xDAF3EFE6).pushEntity();
 
-    public static final zFluid IRONBERRY_JUICE = zFluid.create(zStatic.Fluids.ironberry_juice, 0xD1D1D1E3).pushEntity();
+    public static final zFluid IRONBERRY_JUICE = zFluid.create(zStatic.Fluids.ironberry_juice, Color.LIGHT_GRAY.brighter().brighter()).pushEntity();
 
-    public static final zFluid LIQUID_GLASS = zFluid.create(zStatic.Fluids.liquid_glass, 0xFFFFFFDD).pushEntity();
+    public static final zFluid LIQUID_GLASS = zFluid.create(zStatic.Fluids.liquid_glass, Color.WHITE.brighter()).pushEntity();
 
-    public static final zFluid HONEY = zFluid.create(zStatic.Fluids.honey, 0xF69707DD).pushEntity();
+    public static final zFluid HONEY = zFluid.create(zStatic.Fluids.honey, Color.YELLOW).pushEntity();
 
   // ---------------------------------------------------------------------------------------//
-    public static final zFluid MOLTEN_IRON = zFluid.create(zStatic.Fluids.iron, 0xF6D14A2C).pushEntity();
+    public static final zFluid MOLTEN_IRON = zFluid.create(zStatic.Fluids.iron, Color.LIGHT_GRAY.brighter()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay"));
 
-    public static final zFluid MOLTEN_COPPER = zFluid.create(zStatic.Fluids.copper, 0xF6E0702A).pushEntity();                                                                                        
+    public static final zFluid MOLTEN_COPPER = zFluid.create(zStatic.Fluids.copper, Color.ORANGE.darker().darker()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay"));                                                                                       
     
-    public static final zFluid MOLTEN_GOLD = zFluid.create(zStatic.Fluids.gold, 0xF6FFD34A).pushEntity(); 
+    public static final zFluid MOLTEN_GOLD = zFluid.create(zStatic.Fluids.gold, Color.YELLOW.brighter()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay")); 
     
-    public static final zFluid MOLTEN_STEEL = zFluid.create(zStatic.Fluids.steel, 0xF6B0B0B0).pushEntity(); 
+    public static final zFluid MOLTEN_STEEL = zFluid.create(zStatic.Fluids.steel, Color.GRAY.darker()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay")); 
                                                                                                             
-    public static final zFluid MOLTEN_URANIUM = zFluid.create(zStatic.Fluids.uranium, 0xF65CFF3A).pushEntity(); 
+    public static final zFluid MOLTEN_URANIUM = zFluid.create(zStatic.Fluids.uranium, Color.GREEN.brighter().brighter()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay")); 
                                                                                                             
-    public static final zFluid MOLTEN_NICKEL = zFluid.create(zStatic.Fluids.nickel, 0xF6CFCFCF).pushEntity(); 
+    public static final zFluid MOLTEN_NICKEL = zFluid.create(zStatic.Fluids.nickel, Color.YELLOW.darker()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay")); 
                                                                                                               
-    public static final zFluid MOLTEN_SILVER = zFluid.create(zStatic.Fluids.silver, 0xF6E6E6E6).pushEntity(); 
+    public static final zFluid MOLTEN_SILVER = zFluid.create(zStatic.Fluids.silver, Color.CYAN.brighter()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay")); 
                                                                                                               
-    public static final zFluid MOLTEN_TIN = zFluid.create(zStatic.Fluids.tin, 0xF6D6D6D6).pushEntity(); 
+    public static final zFluid MOLTEN_TIN = zFluid.create(zStatic.Fluids.tin, Color.LIGHT_GRAY.darker()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay")); 
     
-    public static final zFluid MOLTEN_ALUMINUM = zFluid.create(zStatic.Fluids.aluminum, 0xF6E0E0E0).pushEntity(); 
+    public static final zFluid MOLTEN_ALUMINUM = zFluid.create(zStatic.Fluids.aluminum, Color.WHITE.darker()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay")); 
                                                                                                                  
-    public static final zFluid MOLTEN_IRIDIUM = zFluid.create(zStatic.Fluids.iridium, 0xF64B5B7A).pushEntity(); 
+    public static final zFluid MOLTEN_IRIDIUM = zFluid.create(zStatic.Fluids.iridium, Color.MAGENTA.darker()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay")); 
                                                                                                                 
-    public static final zFluid MOLTEN_PLATINUM = zFluid.create(zStatic.Fluids.platinum, 0xF6DADFE3).pushEntity(); 
+    public static final zFluid MOLTEN_PLATINUM = zFluid.create(zStatic.Fluids.platinum, Color.CYAN.darker()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay")); 
                                                                                                                  
-    public static final zFluid MOLTEN_OSMIUM = zFluid.create(zStatic.Fluids.osmium, 0xF63A3F4B).pushEntity(); 
+    public static final zFluid MOLTEN_OSMIUM = zFluid.create(zStatic.Fluids.osmium, Color.CYAN).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay")); 
                                                                                                               
-    public static final zFluid MOLTEN_LEAD = zFluid.create(zStatic.Fluids.lead, 0xF6555560).pushEntity(); 
-                                                                                                          
+    public static final zFluid MOLTEN_LEAD = zFluid.create(zStatic.Fluids.lead, Color.PINK.darker().darker()).pushEntity().setTextures(x.rl("minecraft", "block/lava_still"),x.rl("minecraft", "block/lava_flow"),x.rl("minecraft", "block/lava_overlay")); 
+                                                                                                                                                                                                                  
 
 }
