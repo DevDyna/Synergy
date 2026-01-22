@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:block_mold_from_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "tag_block_mold": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#synergy:molds"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "tag_block_mold"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:block_mold_from_stonecutting"
+    ]
+  }
+}
