@@ -55,9 +55,4 @@ public class CasterRecipeBuilder extends BaseMachineRecipeBuilder<CasterRecipeBu
         return getBuilder();
     }
 
-    public CasterRecipeBuilder consume(boolean b) {
-        this.consumeCatalyst = b;
-        return getBuilder();
-    }
-
 }
