@@ -115,6 +115,17 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
+        protected void electron_tube(RecipeOutput c, DeferredHolder<Item, Item> tube, zFluid fluid) {
+
+                CasterRecipeBuilder.of()
+                                .fluid(fluid, 180)
+                                .input(zItems.ELECTRON_TUBE_BASE)
+                                .output(tube)
+                                .unlockedBy()
+                                .save(c);
+
+        }
+
         protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot, Item secondary,
                         float chance) {
 
