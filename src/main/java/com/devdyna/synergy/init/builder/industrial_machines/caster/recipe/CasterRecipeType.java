@@ -24,17 +24,18 @@ import net.neoforged.neoforge.fluids.FluidStack;
 public class CasterRecipeType extends BaseMachineRecipeType<FluidInput> {
 
     public CasterRecipeType(int ticks, int energy, FluidStack fluid, Ingredient input,
-            ItemStack output) {
+       boolean consumeCatalyst  ,   ItemStack output) {
         this.input = input;
         this.ticks = ticks;
         this.energy = energy;
         this.fluid_input = fluid;
         this.output = output;
+        this.consumeCatalyst = consumeCatalyst;
     }
 
     public static CasterRecipeType of(int ticks, int energy, FluidStack fluid, Ingredient input,
-            ItemStack output) {
-        return new CasterRecipeType(ticks, energy, fluid, input, output);
+          boolean consumeCatalyst , ItemStack output) {
+        return new CasterRecipeType(ticks, energy, fluid, input,consumeCatalyst, output);
     }
 
     @Override
@@ -69,7 +70,7 @@ public class CasterRecipeType extends BaseMachineRecipeType<FluidInput> {
                         .forGetter(r -> (r.getInputItem() == null || r.getInputItem().isEmpty())
                                 ? Ingredient.EMPTY
                                 : r.getInputItem()),
-
+                Codec.BOOL.fieldOf("consume_item").forGetter(CasterRecipeType::consumeCatalyst),
                 ItemStack.CODEC.fieldOf("output").forGetter(CasterRecipeType::getOutputItem)
 
         )
@@ -87,14 +88,16 @@ public class CasterRecipeType extends BaseMachineRecipeType<FluidInput> {
                                 ? Optional.empty()
                                 : Optional.of(r.getInputItem()),
 
+                                ByteBufCodecs.BOOL, CasterRecipeType::consumeCatalyst,
+
                         ItemStack.STREAM_CODEC, CasterRecipeType::getOutputItem,
 
-                        (ticks, energy, f, i, o) -> new CasterRecipeType(
+                        (ticks, energy, f, i, o,c) -> new CasterRecipeType(
                                 ticks,
                                 energy,
                                 f,
                                 i.orElse(Ingredient.EMPTY),
-                                o));
+                                o,c));
 
         @Override
         public MapCodec<CasterRecipeType> codec() {

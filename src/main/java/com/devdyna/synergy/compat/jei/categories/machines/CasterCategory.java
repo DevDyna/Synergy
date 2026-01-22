@@ -1,5 +1,7 @@
 package com.devdyna.synergy.compat.jei.categories.machines;
 
+import static com.devdyna.synergy.Main.ID;
+
 import java.util.List;
 
 import com.devdyna.synergy.api.MachineType;
@@ -48,10 +50,15 @@ public class CasterCategory extends BaseMachineRecipeCategory<CasterRecipeType> 
         @Override
         public void setRecipe(IRecipeLayoutBuilder builder, CasterRecipeType recipe, IFocusGroup focuses) {
 
-                if (!recipe.getInputItem().isEmpty())
-                        builder.addInputSlot(2+21, 5).addIngredients(recipe.getInputItem());
+                if (!recipe.getInputItem().isEmpty()) {
+                        var item = builder.addInputSlot(2 + 21, 5).addIngredients(recipe.getInputItem());
+                       
+                        if (!recipe.consumeCatalyst())
+                                item.addRichTooltipCallback(
+                                                (v, t) -> t.add(Component.translatable(ID + ".jei.tip.dont_consume")));
+                }
 
-                builder.addOutputSlot(81+21, 5).addItemStack(recipe.getOutputItem());
+                builder.addOutputSlot(81 + 21, 5).addItemStack(recipe.getOutputItem());
 
                 builder.addInputSlot(3,
                                 21 - Math.max((int) (recipe.getFluidInput().getAmount() * 0.016), 1))
@@ -68,12 +75,12 @@ public class CasterCategory extends BaseMachineRecipeCategory<CasterRecipeType> 
                         double mouseY) {
                 super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 
-                arrow.draw(guiGraphics, 29+21, 6);
+                arrow.draw(guiGraphics, 29 + 21, 6);
 
                 guiGraphics.drawString(font,
                                 Component.literal(
                                                 recipe.getTime() + " ticks"),
-                                24+21, -2,
+                                24 + 21, -2,
                                 defaultToolTipColor.getRGB(), false);
 
         }

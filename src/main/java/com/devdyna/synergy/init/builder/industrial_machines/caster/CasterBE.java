@@ -135,7 +135,7 @@ public class CasterBE extends BaseMachineBE implements FluidTankStorage {
 
         getFluidStorage().drain(recipe.getFluidInput(), FluidAction.EXECUTE);
 
-        if(!getInput().isEmpty())
+        if(!getInput().isEmpty() && recipe.consumeCatalyst())
         getInput().shrink(1);
 
         progress = 0;
