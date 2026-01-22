@@ -1,0 +1,17 @@
+{
+  "values": [
+    "synergy:molten_iron_source",
+    "synergy:molten_copper_source",
+    "synergy:molten_gold_source",
+    "synergy:molten_steel_source",
+    "synergy:molten_uranium_source",
+    "synergy:molten_nickel_source",
+    "synergy:molten_silver_source",
+    "synergy:molten_tin_source",
+    "synergy:molten_aluminum_source",
+    "synergy:molten_iridium_source",
+    "synergy:molten_platinum_source",
+    "synergy:molten_osmium_source",
+    "synergy:molten_lead_source"
+  ]
+}

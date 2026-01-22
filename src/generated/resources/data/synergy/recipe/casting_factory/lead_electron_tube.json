@@ -1,0 +1,17 @@
+{
+  "type": "synergy:casting_factory",
+  "consume_item": false,
+  "energy": 500,
+  "input_fluid": {
+    "amount": 180,
+    "id": "synergy:molten_lead_source"
+  },
+  "input_item": {
+    "item": "synergy:electron_tube_base"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:lead_electron_tube"
+  },
+  "ticks": 100
+}

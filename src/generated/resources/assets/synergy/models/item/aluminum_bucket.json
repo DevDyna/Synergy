@@ -1,5 +1,0 @@
-{
-  "parent": "neoforge:item/bucket",
-  "fluid": "synergy:aluminum_source",
-  "loader": "neoforge:fluid_container"
-}

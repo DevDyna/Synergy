@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "synergy:item/resources/electron_tube_base",
+    "layer1": "synergy:item/resources/electron_tube/steel"
+  }
+}
