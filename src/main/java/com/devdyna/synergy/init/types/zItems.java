@@ -444,6 +444,8 @@ public class zItems {
                         .resourceMold(zStatic.ResourceType.ingot);
         public static final DeferredHolder<Item, Item> MOLD_PLATE = Material
                         .resourceMold(zStatic.ResourceType.plate);
+        public static final DeferredHolder<Item, Item> MOLD_BLOCK = Material
+                        .resourceMold(zStatic.ResourceType.block);
 
         // ---------------------------------------------------------------------------------------//
 
@@ -456,11 +458,11 @@ public class zItems {
         public static final DeferredHolder<Item, Item> INFERNAL_EMBER = Material
                         .resourceItem("infernal_ember");
 
-        public static final DeferredHolder<Item, Item> GLUE = Material.droplet(zStatic.Fluids.GLUE);
+        public static final DeferredHolder<Item, Item> GLUE = Material.droplet(zStatic.Fluids.glue);
 
-        public static final DeferredHolder<Item, Item> OIL = Material.droplet(zStatic.Fluids.OIL);
+        public static final DeferredHolder<Item, Item> OIL = Material.droplet(zStatic.Fluids.oil);
 
-        public static final DeferredHolder<Item, Item> SAP = Material.droplet(zStatic.Fluids.SAP);
+        public static final DeferredHolder<Item, Item> SAP = Material.droplet(zStatic.Fluids.sap);
 
         public static final DeferredHolder<Item, Item> WASTE_FRAGMENT = Material
                         .resourceItem("waste_fragment");

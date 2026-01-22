@@ -388,42 +388,20 @@ public class zStatic {
     }
 
     public class Fluids {
-        public static String OIL = "oil";
-        public static String GLUE = "glue";
-        public static String SAP = "sap";
-        public static String IRONBERRY_JUICE = "ironberry_juice";
-        public static String LIQUID_GLASS = "liquid_glass";
-        public static String HONEY = "honey";
+        public static String oil = "oil";
+        public static String glue = "glue";
+        public static String sap = "sap";
+        public static String ironberry_juice = "ironberry_juice";
+        public static String liquid_glass = "liquid_glass";
+        public static String honey = "honey";
 
 
 
         public static String iron = "iron";
         public static String copper = "copper";
         public static String gold = "gold";
-        // public static String aquamarine = "aquamarine";
-        // public static String silicon = "silicon";
-        // public static String advanced_alloy = "advanced_alloy";
         public static String steel = "steel";
-        // public static String carbon = "carbon";
-        // public static String netherrack = "netherrack";
-        // public static String stone = "stone";
-        // public static String americium = "americium";
-        // public static String berkelium = "berkelium";
-        // public static String californium = "californium";
-        // public static String curium = "curium";
-        // public static String neptunium = "neptunium";
-        // public static String plutonium = "plutonium";
-        // public static String thorium = "thorium";
         public static String uranium = "uranium";
-        // public static String amethyst = "amethyst";
-        // public static String diamond = "diamond";
-        // public static String emerald = "emerald";
-        // public static String ancient_debris = "ancient_debris";
-        // public static String energized_redstone = "energized_redstone";
-        // public static String lapis = "lapis";
-        // public static String sawdust = "sawdust";
-        // public static String quartz = "quartz";
-        // public static String mixed = "mixed";
         public static String nickel = "nickel";
         public static String silver = "silver";
         public static String tin = "tin";
@@ -432,9 +410,7 @@ public class zStatic {
         public static String platinum = "platinum";
         public static String osmium = "osmium";
         public static String lead = "lead";
-        // public static String sulfur = "sulfur";
         public static String zinc = "zinc";
-        // public static String wooden = "wooden";
 
 
 
