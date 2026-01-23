@@ -36,6 +36,8 @@
 
 - [ ] jade drying time
 
+- [ ] transfer nodes dont extract secondary slot of macerator
+
 ## NEWS
 
 ### Survival expansion
