@@ -678,7 +678,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .input(zItemTag.URANIUM)
                                 .output(zItems.WASTE_FRAGMENT, 3)
                                 .duration(10_000)
-                                .energy(20)
+                                .energy(160)
                                 .heat(50)
                                 .unlockedBy().save(c, "_from_uranium");
 
@@ -686,7 +686,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .input(zItemTag.THORIUM)
                                 .output(zItems.WASTE_FRAGMENT, 6)
                                 .duration(25_000)
-                                .energy(80)
+                                .energy(480)
                                 .heat(90)
                                 .unlockedBy().save(c, "_from_thorium");
 
@@ -694,7 +694,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .input(zItemTag.PLUTONIUM)
                                 .output(zItems.WASTE_FRAGMENT, 9)
                                 .duration(50_000)
-                                .energy(160)
+                                .energy(1_440)
                                 .heat(180)
                                 .unlockedBy().save(c, "_from_plutonium");
 
@@ -702,7 +702,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .input(zItemTag.NEPTUNIUM)
                                 .output(zItems.WASTE_FRAGMENT, 12)
                                 .duration(75_000)
-                                .energy(300)
+                                .energy(4_320)
                                 .heat(350)
                                 .unlockedBy().save(c, "_from_neptunium");
 
@@ -710,7 +710,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .input(zItemTag.AMERICIUM)
                                 .output(zItems.WASTE_FRAGMENT, 15)
                                 .duration(150_000)
-                                .energy(750)
+                                .energy(12_960)
                                 .heat(1040)
                                 .unlockedBy().save(c, "_from_americium");
 
@@ -718,7 +718,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .input(zItemTag.BERKELIUM)
                                 .output(zItems.WASTE_FRAGMENT, 18)
                                 .duration(300_000)
-                                .energy(1500)
+                                .energy(38_880)
                                 .heat(1700)
                                 .unlockedBy().save(c, "_from_berkelium");
 
@@ -726,7 +726,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .input(zItemTag.CALIFORNIUM)
                                 .output(zItems.WASTE_FRAGMENT, 21)
                                 .duration(750_000)
-                                .energy(2700)
+                                .energy(116_640)
                                 .heat(3500)
                                 .unlockedBy().save(c, "_from_californium");
 
@@ -734,7 +734,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .input(zItemTag.CURIUM)
                                 .output(zItems.WASTE_FRAGMENT, 24)
                                 .duration(1_250_000)
-                                .energy(3500)
+                                .energy(349_920)
                                 .heat(7500)
                                 .unlockedBy().save(c, "_from_curium");
         }
