@@ -23,6 +23,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 
 @SuppressWarnings("null")
@@ -105,8 +106,15 @@ public class CasterBE extends BaseMachineBE implements FluidTankStorage {
         CasterRecipeType recipe = r.get().value();
 
         ItemStack item_out = recipe.getOutputItem().copy();
+        FluidStack fluid_input = recipe.getFluidInput().copy();
 
         this.maxProgress = calculateMaxProgress(recipe.getTime());
+
+        if(getFluidStorage().getFluidAmount() < fluid_input.getAmount()){
+            resetProgress();
+            return;
+        }
+
 
         if (!(checkSlot(getOutput(), item_out))) {
             resetProgress();
