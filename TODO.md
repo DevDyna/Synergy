@@ -22,13 +22,13 @@
 
 - [ ] rework any machine with AreaOfEffect and soldering gun to simplify
 
-- [ ] rework slot index industrial machines
+- [x] rework slot index industrial machines
 
 - [ ] Laser Infusion RecipeType
 
 - [ ] All Recipe Types compat with GuideMe (?)
 
-- [ ] gear recycle
+- [x] gear recycle
 
 - [ ] sulfur usage
 
@@ -36,7 +36,7 @@
 
 - [ ] jade drying time
 
-- [ ] transfer nodes dont extract secondary slot of macerator
+- [ ] machine secondary slots dont work with capabilities
 
 ## NEWS
 
