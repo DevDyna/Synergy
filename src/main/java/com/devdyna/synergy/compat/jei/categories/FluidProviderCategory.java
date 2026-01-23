@@ -1,17 +1,15 @@
 package com.devdyna.synergy.compat.jei.categories;
 
-import java.util.List;
-
 import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecipe;
+import com.devdyna.synergy.compat.jei.api.JEIFluidTankHelper;
 import com.devdyna.synergy.compat.jei.categories.core.BaseProviderCategory;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.Item;
@@ -47,10 +45,12 @@ public class FluidProviderCategory extends BaseProviderCategory<FluidProviderRec
     protected void defineOutput(IRecipeLayoutBuilder builder, BaseProviderRecipe<FluidStack> recipe,
             IFocusGroup focuses) {
         // FluidStack size start on top of slot!
-        builder.addOutputSlot(18, 18 - Math.max((int) (recipe.getOutput().getAmount() * 0.016), 1))
-                .addIngredients(NeoForgeTypes.FLUID_STACK, List.of(recipe.getOutput()))
-                .setFluidRenderer(recipe.getOutput().getAmount(), false, 16,
-                        Math.max((int) (recipe.getOutput().getAmount() * 0.016), 1));
+
+        JEIFluidTankHelper.of()
+                .fluid(recipe.getOutput())
+                .offset(18, 18)
+                .build((x, y) -> builder.addOutputSlot(x, y));
+
     }
 
 }

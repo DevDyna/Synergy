@@ -1,10 +1,9 @@
 package com.devdyna.synergy.compat.jei.categories.machines;
 
-import java.util.List;
-
 import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.compat.jei.api.JEIFluidTankHelper;
 import com.devdyna.synergy.compat.jei.categories.core.BaseMachineRecipeCategory;
 import com.devdyna.synergy.init.builder.industrial_machines.extractor.recipe.ExtractorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
@@ -13,7 +12,6 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
@@ -53,12 +51,10 @@ public class ExtractorCategory extends BaseMachineRecipeCategory<ExtractorRecipe
                         builder.addOutputSlot(81, 5).addItemStack(recipe.getSecondaryItem());
 
                 if (!recipe.getFluidOutput().isEmpty())
-                        builder.addOutputSlot(102,
-                                        21 - Math.max((int) (recipe.getFluidOutput().getAmount() * 0.016), 1))
-                                        .addIngredients(NeoForgeTypes.FLUID_STACK, List.of(recipe.getFluidOutput()))
-                                        .setFluidRenderer(recipe.getFluidOutput().getAmount(), false, 16,
-                                                        Math.max((int) (recipe.getFluidOutput().getAmount() * 0.016),
-                                                                        1));
+                        JEIFluidTankHelper.of()
+                                        .fluid(recipe.getFluidOutput())
+                                        .offset(102, 21)
+                                        .build((x, y) -> builder.addOutputSlot(x, y));
 
         }
 

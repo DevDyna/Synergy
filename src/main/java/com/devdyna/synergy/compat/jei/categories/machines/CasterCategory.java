@@ -2,11 +2,10 @@ package com.devdyna.synergy.compat.jei.categories.machines;
 
 import static com.devdyna.synergy.Main.ID;
 
-import java.util.List;
-
 import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.compat.jei.api.JEIFluidTankHelper;
 import com.devdyna.synergy.compat.jei.categories.core.BaseMachineRecipeCategory;
 import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.CasterRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
@@ -15,7 +14,6 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
@@ -52,7 +50,7 @@ public class CasterCategory extends BaseMachineRecipeCategory<CasterRecipeType> 
 
                 if (!recipe.getInputItem().isEmpty()) {
                         var item = builder.addInputSlot(2 + 21, 5).addIngredients(recipe.getInputItem());
-                       
+
                         if (!recipe.consumeCatalyst())
                                 item.addRichTooltipCallback(
                                                 (v, t) -> t.add(Component.translatable(ID + ".jei.tip.dont_consume")));
@@ -60,12 +58,10 @@ public class CasterCategory extends BaseMachineRecipeCategory<CasterRecipeType> 
 
                 builder.addOutputSlot(81 + 21, 5).addItemStack(recipe.getOutputItem());
 
-                builder.addInputSlot(3,
-                                21 - Math.max((int) (recipe.getFluidInput().getAmount() * 0.016), 1))
-                                .addIngredients(NeoForgeTypes.FLUID_STACK, List.of(recipe.getFluidInput()))
-                                .setFluidRenderer(recipe.getFluidInput().getAmount(), false, 16,
-                                                Math.max((int) (recipe.getFluidInput().getAmount() * 0.016),
-                                                                1));
+                JEIFluidTankHelper.of()
+                                .fluid(recipe.getFluidInput())
+                                .offset(3, 21)
+                                .build((x, y) -> builder.addInputSlot(x, y));
 
         }
 
