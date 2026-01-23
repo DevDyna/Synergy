@@ -104,7 +104,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .input(gear)
                                 .fluid(fluid, 180)
                                 .unlockedBy()
-                                .save(c,"_from_gear");
+                                .save(c, "_from_gear");
 
                 CasterRecipeBuilder.of()
                                 .fluid(fluid, 180)
@@ -120,7 +120,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .input(input)
                                 .fluid(fluid, 90)
                                 .unlockedBy()
-                                .save(c,"_from_ingot");
+                                .save(c, "_from_ingot");
 
                 CasterRecipeBuilder.of()
                                 .fluid(fluid, 90)
@@ -309,38 +309,36 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected static void brickRecipes(RecipeOutput c) {
-                DryableBricksBuilder.of()
-                                .input(Items.CLAY_BALL)
-                                .block(zBlocks.CLAY_BRICK.get())
-                                .output(Items.BRICK)
-                                .unlockedBy()
 
+                brickDryingRecipe(c, Items.CLAY_BALL, zBlocks.CLAY_BRICK.get(),
+                                Items.BRICK);
+
+                brickDryingRecipe(c, zItems.PACKED_MUD_BALL.get(), zBlocks.PACKED_MUD_BRICK.get(),
+                                zItems.PACKED_MUD_BRICK.get());
+
+                brickDryingRecipe(c, zItems.FIRECLAY_BALL.get(), zBlocks.FIRECLAY_BRICK.get(),
+                                zItems.FIRECLAY_BRICK.get());
+
+                brickDryingRecipe(c, zItems.CLAY_MIXTURE_BALL.get(), zBlocks.BLAST_BRICK.get(),
+                                zItems.BLAST_BRICK.get());
+
+        }
+
+        private static void brickDryingRecipe(RecipeOutput c, Item ball, Block block,
+                        Item brick) {
+                DryableBricksBuilder.of()
+                                .input(ball)
+                                .block(block)
+                                .output(brick)
+                                .unlockedBy()
                                 .save(c);
 
-                DryableBricksBuilder.of()
-                                .input(zItems.PACKED_MUD_BALL)
-                                .block(zBlocks.PACKED_MUD_BRICK.get())
-                                .output(zItems.PACKED_MUD_BRICK)
+                CompressorRecipeBuilder.of()
+                                .input(ball)
+                                .catalyst(zItems.MOLD_INGOT.get())
+                                .output(brick)
                                 .unlockedBy()
-
                                 .save(c);
-
-                DryableBricksBuilder.of()
-                                .input(zItems.FIRECLAY_BALL)
-                                .block(zBlocks.FIRECLAY_BRICK.get())
-                                .output(zItems.FIRECLAY_BRICK)
-                                .unlockedBy()
-
-                                .save(c);
-
-                DryableBricksBuilder.of()
-                                .input(zItems.CLAY_MIXTURE_BALL)
-                                .block(zBlocks.BLAST_BRICK.get())
-                                .output(zItems.BLAST_BRICK)
-                                .unlockedBy()
-
-                                .save(c);
-
         }
 
         protected static void twoByTwoPacker(RecipeOutput c, ItemLike output, TagKey<Item> tag) {
