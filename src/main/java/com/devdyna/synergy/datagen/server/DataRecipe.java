@@ -243,7 +243,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(zItems.RAW_SILICON)
                                 .output(zItems.SILICON)
                                 .duration(1_000)
-                                .energy(5)
+                                .energy(50)
                                 .heat(10)
                                 .unlockedBy().save(c);
 
