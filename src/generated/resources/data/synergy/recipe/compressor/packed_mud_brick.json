@@ -1,0 +1,16 @@
+{
+  "type": "synergy:compressor",
+  "consume_catalyst": false,
+  "energy": 500,
+  "input": {
+    "item": "synergy:packed_mud_ball"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:packed_mud_brick"
+  },
+  "plate": {
+    "item": "synergy:ingot_mold"
+  },
+  "ticks": 100
+}

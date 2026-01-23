@@ -1,0 +1,16 @@
+{
+  "type": "synergy:compressor",
+  "consume_catalyst": false,
+  "energy": 500,
+  "input": {
+    "item": "minecraft:clay_ball"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:brick"
+  },
+  "plate": {
+    "item": "synergy:ingot_mold"
+  },
+  "ticks": 100
+}
