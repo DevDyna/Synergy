@@ -62,9 +62,9 @@ public class Plugin implements IModPlugin {
                 List<RecipeHolder<CraftingRecipe>> toHide = new ArrayList<>();
 
                 ClazzUtil.getAllzItems().forEach(b -> {
-                        if (!ExtraRecipeProvider.clearNBT.contains(b.get())) {
+                        if (ExtraRecipeProvider.clearNBT.contains(b.get())) {
                                 Minecraft.getInstance().level.getRecipeManager()
-                                                .byKey(ResourceLocation.parse(b.getId() + "_clear_nbt"))
+                                                .byKey(x.parse(ID + ":" + x.path(b.get()) + "_clear_nbt"))
                                                 .ifPresent(r -> toHide.add((RecipeHolder<CraftingRecipe>) r));
                         }
                 });
