@@ -1,6 +1,6 @@
 {
   "type": "synergy:fuel_cell",
-  "fe": 2700,
+  "fe": 116640,
   "heat": 3500.0,
   "ingredient": {
     "tag": "c:pellets/californium"

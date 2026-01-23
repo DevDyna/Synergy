@@ -1,6 +1,6 @@
 {
   "type": "synergy:fuel_cell",
-  "fe": 160,
+  "fe": 1440,
   "heat": 180.0,
   "ingredient": {
     "tag": "c:pellets/plutonium"

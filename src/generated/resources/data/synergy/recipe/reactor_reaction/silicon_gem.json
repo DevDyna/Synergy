@@ -1,6 +1,6 @@
 {
   "type": "synergy:fuel_cell",
-  "fe": 5,
+  "fe": 50,
   "heat": 10.0,
   "ingredient": {
     "item": "synergy:raw_silicon"
