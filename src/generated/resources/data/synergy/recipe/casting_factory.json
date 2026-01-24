@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "synergy:blue_battery"
+    },
+    "M": {
+      "item": "synergy:basic_machine_frame"
+    },
+    "Q": {
+      "item": "synergy:fluid_tank"
+    },
+    "R": {
+      "item": "synergy:resistor"
+    },
+    "S": {
+      "item": "synergy:steel_gear"
+    }
+  },
+  "pattern": [
+    " Q ",
+    "RMS",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:casting_factory"
+  }
+}

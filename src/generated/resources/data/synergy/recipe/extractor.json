@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "synergy:blue_battery"
+    },
+    "M": {
+      "item": "synergy:basic_machine_frame"
+    },
+    "Q": {
+      "item": "synergy:aquamarine_plate"
+    },
+    "R": {
+      "item": "synergy:resistor"
+    },
+    "S": {
+      "item": "synergy:steel_electron_tube"
+    }
+  },
+  "pattern": [
+    " Q ",
+    "RMS",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:extractor"
+  }
+}
