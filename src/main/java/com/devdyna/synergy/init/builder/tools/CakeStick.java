@@ -7,7 +7,6 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.ColorUtil;
 import com.devdyna.synergy.api.utils.LevelUtil;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
@@ -74,15 +73,17 @@ public class CakeStick extends Item {
     }
 
     @Override
-    public Component getName(ItemStack stack) {
-        var level = Minecraft.getInstance().level;
-        int color = (level == null ? Color.RED.getRGB() : ColorUtil.rgbColor(level));
-        return Component.translatable(this.getDescriptionId(stack)).withColor(color);
-    }
-
-    @Override
     public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
             TooltipFlag f) {
+
+        t.clear();
+
+        int color = Color.RED.getRGB();
+        if (c.level() != null) {
+            color = ColorUtil.rgbColor(c.level());
+        }
+
+        t.add(0, Component.translatable(this.getDescriptionId(i)).withColor(color));
         t.add(Component.translatable(Main.ID + "." + zStatic.Items.cake_stick));
     }
 }

@@ -15,11 +15,9 @@ import com.devdyna.synergy.common.recipes.type.VoidBoxInfusionRecipe;
 import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -126,25 +124,21 @@ public class VoidBoxBlock extends TickingBlock {
     }
 
     @Override
-    public MutableComponent getName() {
-        var level = Minecraft.getInstance().level;
-        int color = (level == null ? Color.BLUE.getRGB()
-                : ColorUtil.pulseColor(level, Color.BLUE.getRGB(), Color.MAGENTA.getRGB()));
-        return Component.translatable(this.getDescriptionId()).withColor(color);
-    }
+    public void appendHoverText(ItemStack stack, TooltipContext context,
+            List<Component> tooltip, TooltipFlag flag) {
 
-    @Override
-    public void appendHoverText(ItemStack i, TooltipContext c, List<Component> t,
-            TooltipFlag f) {
+        tooltip.clear();
 
-        t.clear();
+        int color = Color.BLUE.getRGB();
+        if (context.level() != null) {
+            color = ColorUtil.pulseColor(
+                    context.level(),
+                    Color.BLUE.getRGB(),
+                    Color.MAGENTA.getRGB());
+        }
 
-        var level = Minecraft.getInstance().level;
-        int color = (level == null ? Color.BLUE.getRGB()
-                : ColorUtil.pulseColor(level, Color.BLUE.getRGB(), Color.MAGENTA.getRGB()));
-        t.add(0, Component.translatable(this.getDescriptionId()).withColor(color));
-
-        t.add(Component.translatable(Main.ID + "." + zStatic.Blocks.void_box));
+        tooltip.add(0, Component.translatable(this.getDescriptionId()).withColor(color));
+        tooltip.add(Component.translatable(Main.ID + "." + zStatic.Blocks.void_box));
     }
 
 }
