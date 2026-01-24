@@ -22,7 +22,7 @@ public class MelterRecipeBuilder extends BaseMachineRecipeBuilder<MelterRecipeBu
     private MelterRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
         this.energy = BaseMachineBE.DEFAULT_FE_COST*10;
-        this.ticks = BaseMachineBE.DEFAULT_TICK_DURATION*8;
+        this.ticks = BaseMachineBE.DEFAULT_TICK_DURATION*4;
     }
 
     public static MelterRecipeBuilder of() {
