@@ -231,6 +231,30 @@ public class zStatic {
         public static String inverted_repeater = "inverted_repeater";
     }
 
+    public class Tiers {
+        public static String SIMPLE = "simple_";
+        public static String ADVANCED = "advanced_";
+        public static String ELITE = "elite_";
+    }
+
+    public class ResourceGenerators {
+        public static final String TYPE_GEN = "_generator";
+
+        public class Water {
+            public static final String TYPE = "water" + TYPE_GEN;
+            public static String simple = Tiers.SIMPLE + TYPE;
+            public static String advanced = Tiers.ADVANCED + TYPE;
+            public static String elite = Tiers.ELITE + TYPE;
+        }
+
+        public class CobbleStone {
+            public static final String TYPE = "cobblestone" + TYPE_GEN;
+            public static String simple = Tiers.SIMPLE + TYPE;
+            public static String advanced = Tiers.ADVANCED + TYPE;
+            public static String elite = Tiers.ELITE + TYPE;
+        }
+    }
+
     public class Machines {
         public final static String TYPE = "machines";
         public static String macerator = "macerator";
@@ -290,7 +314,6 @@ public class zStatic {
 
         public class ModeratorTypes {
             public static String SIMPLE = "simple_" + moderator;
-            public static String IMPROVED = "improved_" + moderator;
             public static String ADVANCED = "advanced_" + moderator;
             public static String ELITE = "elite_" + moderator;
         }
