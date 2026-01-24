@@ -1402,6 +1402,46 @@ public class DataRecipe extends ExtraRecipeProvider {
                 electron_tube(c, zItems.ALUMINUM_ELECTRON_TUBE, zFluids.MOLTEN_ALUMINUM);
                 electron_tube(c, zItems.PLATINUM_ELECTRON_TUBE, zFluids.MOLTEN_PLATINUM);
 
+
+
+
+
+                ShapedRecipeBuilder.shaped(MISC, zMachines.CASTING_FACTORY.block().get())
+                                .pattern(" Q ")
+                                .pattern("RMS")
+                                .pattern(" C ")
+                                .define('S', zItems.STEEL_GEAR.get())
+                                .define('R', zItems.RESISTOR.get())
+                                .define('Q', zBlocks.FLUID_TANK.get())
+                                .define('C', zItems.BLUE_BATTERY.get())
+                                .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
+                                .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
+                                .save(c);
+
+                                ShapedRecipeBuilder.shaped(MISC, zMachines.EXTRACTOR.block().get())
+                                .pattern(" Q ")
+                                .pattern("RMS")
+                                .pattern(" C ")
+                                .define('S', zItems.STEEL_ELECTRON_TUBE.get())
+                                .define('R', zItems.RESISTOR.get())
+                                .define('Q', zItems.AQUAMARINE_PLATE.get())
+                                .define('C', zItems.BLUE_BATTERY.get())
+                                .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
+                                .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
+                                .save(c);
+
+                                ShapedRecipeBuilder.shaped(MISC, zMachines.MELTER.block().get())
+                                .pattern(" Q ")
+                                .pattern("RMS")
+                                .pattern(" C ")
+                                .define('S', zItems.LIGHT_BULB.get())
+                                .define('R', zItems.RESISTOR.get())
+                                .define('Q', zItems.SUPERCONDUCTOR.get())
+                                .define('C', zItems.BLUE_BATTERY.get())
+                                .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
+                                .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
+                                .save(c);
+
         }
 
 }
