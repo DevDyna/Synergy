@@ -41,7 +41,7 @@ public interface MachineItemAutomation extends IItemHandlerModifiable {
     @Override
     default ItemStack getStackInSlot(int slot) {
         if (getStorage().getSlots() >= slot)
-                    return getStorage().extractItem(slot, getSlotLimit(slot), true);
+            return getStorage().extractItem(slot, getSlotLimit(slot), true);
 
         return ItemStack.EMPTY;
     }
