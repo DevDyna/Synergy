@@ -79,6 +79,9 @@ public interface ExtraMachineSlots {
             return new SlotBuilder();
         }
 
+        /**
+         * slot should be EXTRA_SLOT_X
+         */
         public SlotBuilder set(int slot, SlotType type) {
             list.set(slot - EXTRA_SLOT_1, type);
             return this;
