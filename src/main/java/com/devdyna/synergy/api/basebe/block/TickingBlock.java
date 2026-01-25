@@ -25,6 +25,9 @@ public abstract class TickingBlock extends Block implements EntityBlock {
             BlockEntityType<T> ty) {
         return (lvl, pos, b, t) -> {
             if (t instanceof TickingBE be) {
+
+                if(l == null) return;
+
                 be.tickBoth();
                 if (l.isClientSide())
                     be.tickClient();
