@@ -67,7 +67,7 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
 
     @Override
     public List<Integer> getOutputSlotIndex() {
-        return List.of(OUTPUT_SLOT, EXTRA_SLOT_2);
+        return List.of(OUTPUT_SLOT,EXTRA_SLOT_1);
     }
 
     public MaceratorBE(BlockPos pos, BlockState blockState) {
@@ -82,7 +82,6 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
 
     @Override
     public void tickServer() {
-        super.tickServer();
 
         if (getInput().isEmpty()) {
             resetProgress();
