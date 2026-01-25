@@ -115,7 +115,7 @@ public class QuernBE extends TickingBE implements ItemStorageBlock , NoGuiStorag
             minDelay = 0;
         }
 
-        if (level == null || cache == null)
+        if (cache == null)
             return;
 
         var slot = this.cache.getCapability();
@@ -166,7 +166,7 @@ public class QuernBE extends TickingBE implements ItemStorageBlock , NoGuiStorag
     @Override
     public void tickClient() {
 
-        if (level.getBlockState(getBlockPos()).getValue(BlockStateProperties.ENABLED)) {
+        if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
             if (speed < MAX_SPEED)
                 speed += ACCEL;
         } else {
