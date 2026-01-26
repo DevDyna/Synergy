@@ -55,6 +55,18 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zCoolers.getEntries().forEach(b -> addBlock(b, named(b)));
                 zBlocks.zColumn.getEntries().forEach(b -> addBlock(b, named(b)));
 
+                zBlocks.zResourceGenerators.getEntries().forEach(b -> {
+
+                        for (String tier : zStatic.Tiers.ALL) {
+                                if (b.getRegisteredName().contains(tier)) {
+                                        var affix = StringUtil.nameCapitalized(tier);
+                                        addBlock(b, named(b).replace(affix, "") + "(" + affix + ")");
+                                        continue;
+                                }
+                        }
+
+                });
+
                 zBlocks.zHiddenBlock.getEntries().forEach(b -> addBlock(b, named(b).replace(" Block", "")));
 
                 zBlocks.zOnlyBlock.getEntries().forEach(b -> addBlock(b, "Unobtainable block"));
@@ -273,8 +285,8 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Lazers.lens,
                                 TIP_COLOR + "Repeat the signal of any laser line when pass through");
                 add(Main.ID + "." + zStatic.Lazers.mirror, TIP_COLOR + "Rotate of 90° any laser line");
-                add(Main.ID + "." + zStatic.Lazers.sensor, TIP_COLOR
-                                + "Emit a redstone signal and generate a small amount of ForgeEnergy when a laser line pass through");
+                add(Main.ID + "." + zStatic.Lazers.sensor,
+                                TIP_COLOR + "Emit a redstone signal when a laser line pass through");
 
                 add(Main.ID + "." + zStatic.Items.cake_stick, TIP_COLOR + "Place cake slices");
 
@@ -335,11 +347,6 @@ public class DataLang extends LanguageProvider {
 
                 add(ID + ".jei.tip.dont_consume", "§cNot consume");
 
-                // i will move to item components intend of static values and tags
-                add(ID + ".upgrade.speed.speed", TIP_COLOR + "Machine Speed : §a+35%§f");
-                add(ID + ".upgrade.speed.energy", TIP_COLOR + "Machine Energy : §c-100%");
-                add(ID + ".upgrade.energy", TIP_COLOR + "Machine Energy : §a+75%§f");
-
                 add(ID + "." + zStatic.Blocks.void_box, TIP_COLOR + "A strange box to allow to NOT store items");
 
                 add(ID + ".block.blast_proof", TIP_COLOR + "Blast resistance");
@@ -352,7 +359,22 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + "." + zStatic.Items.chisel + ".registry",
                                 TIP_COLOR + "Block : ");
 
-                add(ID + ".resourcegen.tip", "Generate %s of %s every %d ticks");
+                add(ID + ".resourcegen.tip", "Generate %s %s every %d ticks");
+                add(ID + ".resourcegen.tip.mono", "Generate %s %s every %d tick");
+
+                add(ID + ".upgrades.title", TIP_COLOR + "Upgrade Modifiers");
+
+                add(ID + ".upgrades.modifier.energy", TIP_COLOR + "Energy Usage: %s");
+                add(ID + ".upgrades.modifier.speed", TIP_COLOR + "Recipe Speed: %s");
+                add(ID + ".upgrades.modifier.luck", TIP_COLOR + "Secondary Output: %s");
+                add(ID + ".upgrades.modifier.fluid", TIP_COLOR + "Fluid Usage: %s");
+
+                add(ID + ".screen.upgrades", "Supported Upgrades:");
+
+                add(ID + ".screen.modifier.energy", TIP_COLOR + "Energy");
+                add(ID + ".screen.modifier.speed", TIP_COLOR + "Speed");
+                add(ID + ".screen.modifier.luck", TIP_COLOR + "Luck");
+                add(ID + ".screen.modifier.fluid", TIP_COLOR + "Fluid");
 
         }
 

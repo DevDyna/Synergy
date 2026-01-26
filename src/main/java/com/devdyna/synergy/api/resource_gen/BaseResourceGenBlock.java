@@ -20,11 +20,12 @@ import net.neoforged.neoforge.fluids.FluidStack;
 public abstract class BaseResourceGenBlock extends TickingBlock {
 
     public BaseResourceGenBlock(Properties properties) {
-        super(properties.strength(1.0f).destroyTime(1.0f).sound(SoundType.METAL).mapColor(MapColor.METAL).noOcclusion());
+        super(properties.strength(1.0f).destroyTime(1.0f).sound(SoundType.METAL).mapColor(MapColor.METAL)
+                .noOcclusion());
     }
 
     public MutableComponent fluid(IntValue amount, FluidStack fluid, IntValue tickrate) {
-        return tip(amount.get() + " mb", fluid.getFluidType().getDescription().getString(), tickrate.get());
+        return tip(amount.get() + " mb of", fluid.getFluidType().getDescription().getString(), tickrate.get());
     }
 
     public MutableComponent item(IntValue amount, Item item, IntValue tickrate) {
@@ -32,7 +33,9 @@ public abstract class BaseResourceGenBlock extends TickingBlock {
     }
 
     public MutableComponent tip(String amount, String item, int tickrate) {
-        return Component.translatable(ID + ".resourcegen.tip", amount, item, tickrate).withStyle(ChatFormatting.GRAY);
+        return Component
+                .translatable(ID + ".resourcegen.tip" + ((tickrate == 1) ? ".mono" : ""), amount, item, tickrate)
+                .withStyle(ChatFormatting.GRAY);
     }
 
     public MutableComponent water(IntValue amount, IntValue tickrate) {

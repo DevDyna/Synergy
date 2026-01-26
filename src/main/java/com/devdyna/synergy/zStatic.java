@@ -1,5 +1,7 @@
 package com.devdyna.synergy;
 
+import java.util.List;
+
 import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.world.item.ItemStack;
@@ -235,6 +237,8 @@ public class zStatic {
         public static String SIMPLE = "simple_";
         public static String ADVANCED = "advanced_";
         public static String ELITE = "elite_";
+
+        public static List<String> ALL = List.of(SIMPLE,ADVANCED,ELITE);
     }
 
     public class ResourceGenerators {

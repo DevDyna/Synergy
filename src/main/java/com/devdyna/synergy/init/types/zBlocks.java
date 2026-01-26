@@ -65,6 +65,7 @@ public class zBlocks {
                 zModerators.register(bus);
                 zMachineFrame.register(bus);
                 zColumn.register(bus);
+                zResourceGenerators.register(bus);
         }
 
         // ---------------------------------------------------------------------------------------//
@@ -112,6 +113,10 @@ public class zBlocks {
          */
         public static final DeferredRegister.Blocks zModerators = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zCoolers = DeferredRegister.createBlocks(Main.ID);
+         /**
+         * resource generators
+         */
+        public static final DeferredRegister.Blocks zResourceGenerators = DeferredRegister.createBlocks(Main.ID);
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Block, Block> AZALEA = Material.registerItemBlock(zStatic.Blocks.azalea,
@@ -457,23 +462,23 @@ public class zBlocks {
 
         public static final DeferredHolder<Block, Block> SIMPLE_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.simple,
-                        () -> new SimpleWaterGenBlock());
+                        () -> new SimpleWaterGenBlock(),zResourceGenerators);
         public static final DeferredHolder<Block, Block> ADVANCED_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.advanced,
-                        () -> new AdvancedWaterGenBlock());
+                        () -> new AdvancedWaterGenBlock(),zResourceGenerators);
         public static final DeferredHolder<Block, Block> ELITE_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.elite,
-                        () -> new EliteWaterGenBlock());
+                        () -> new EliteWaterGenBlock(),zResourceGenerators);
 
         public static final DeferredHolder<Block, Block> SIMPLE_COBBLE_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.CobbleStone.simple,
-                        () -> new SimpleCobbleGenBlock());
+                        () -> new SimpleCobbleGenBlock(),zResourceGenerators);
         public static final DeferredHolder<Block, Block> ADVANCED_COBBLE_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.CobbleStone.advanced,
-                        () -> new AdvancedCobbleGenBlock());
+                        () -> new AdvancedCobbleGenBlock(),zResourceGenerators);
         public static final DeferredHolder<Block, Block> ELITE_COBBLE_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.CobbleStone.elite,
-                        () -> new EliteCobbleGenBlock());
+                        () -> new EliteCobbleGenBlock(),zResourceGenerators);
 
         // ---------------------------------------------------------------------------------------//
 
