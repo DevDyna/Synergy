@@ -1,10 +1,11 @@
 package com.devdyna.synergy.init.builder;
 
+import static com.devdyna.synergy.Main.ID;
+
 import java.util.*;
 
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.datagen.client.DataLang;
 import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents.TYPE;
 import com.devdyna.synergy.init.types.zComponents;
 import com.mojang.serialization.Codec;
@@ -165,30 +166,27 @@ public class IndustrialUpgrade extends Item {
         var nbt = stack.get(zComponents.UPGRADE_COMPONENTS);
 
         if (nbt != null && !UpgradeComponents.isEmpty(nbt)) {
-            t.add(Component.literal(DataLang.TIP_COLOR + "Upgrade stats"));
+            t.add(Component.translatable(ID + ".upgrades.title"));
 
             if (UpgradeComponents.has(nbt, TYPE.ENERGY)) {
                 var energy = UpgradeComponents.get(nbt, TYPE.ENERGY);
-                t.add(Component
-                        .literal(DataLang.TIP_COLOR + "Energy Usage: " +
-                                (energy < 0 ? "§a" : "§c+") + energy + "%"));
+                t.add(Component.translatable(ID + ".upgrades.modifier.energy",
+                                ((String) (energy < 0 ? "§a" : "§c+") + energy+"%")));
             }
             if (UpgradeComponents.has(nbt, TYPE.SPEED)) {
                 var speed = UpgradeComponents.get(nbt, TYPE.SPEED);
-                t.add(Component
-                        .literal(DataLang.TIP_COLOR + "Recipe Speed: " +
-                                (speed >= 0 ? "§a+" : "§c") + speed + "%"));
+                t.add(Component.translatable(ID + ".upgrades.modifier.speed",
+                                ((String)(speed >= 0 ? "§a+" : "§c") + speed+"%") ));
             }
             if (UpgradeComponents.has(nbt, TYPE.LUCK)) {
                 var luck = UpgradeComponents.get(nbt, TYPE.LUCK);
-                t.add(Component.literal(
-                        DataLang.TIP_COLOR + "Secondary Output: " +
-                                (luck > 0 ? "§a+" : "§c") + luck + "%"));
+                t.add(Component.translatable(ID + ".upgrades.modifier.luck",
+                                ((String)(luck > 0 ? "§a+" : "§c") + luck+"%")));
             }
             if (UpgradeComponents.has(nbt, TYPE.FLUID)) {
                 var fluid = UpgradeComponents.get(nbt, TYPE.FLUID);
-                t.add(Component.literal(DataLang.TIP_COLOR + "Fluid Usage: " +
-                        (fluid > 0 ? "§a+" : "§c") + fluid + "%"));
+                t.add(Component.translatable(ID + ".upgrades.modifier.fluid",
+                        ((String)(fluid > 0 ? "§a+" : "§c") + fluid+"%") ));
             }
 
         }
