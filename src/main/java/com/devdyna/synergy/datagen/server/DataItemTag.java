@@ -125,9 +125,11 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(Tags.Items.NUGGETS)
                                 .add(DataGenUtil.getItems(zItems.zNuggets));
 
+                tag(zItemTag.INGOT_WROUGHT_IRON).add(zItems.WROUGHT_IRON_INGOT.get());
                 tag(zItemTag.INGOT_STEEL).add(zItems.STEEL_INGOT.get());
                 tag(zItemTag.INGOT_ADVANCEDALLOY).add(zItems.ADVANCED_ALLOY_INGOT.get());
                 tag(zItemTag.NUGGET_STEEL).add(zItems.STEEL_NUGGET.get());
+                tag(zItemTag.NUGGET_WROUGHT_IRON).add(zItems.WROUGHT_IRON_NUGGET.get());
                 tag(zItemTag.NUGGET_ADVANCEDALLOY).add(zItems.ADVANCED_ALLOY_NUGGET.get());
                 tag(zItemTag.NUGGET_COPPER).add(zItems.COPPER_NUGGET.get());
 
@@ -142,6 +144,7 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.PLATES)
                                 .add(DataGenUtil.getItems(zItems.zPlates));
 
+                tag(zItemTag.PLATE_WROUGHT_IRON).add(zItems.WROUGHT_IRON_PLATE.get());
                 tag(zItemTag.PLATE_COAL).add(zItems.CARBON_PLATE.get());
                 tag(zItemTag.PLATE_COPPER).add(zItems.COPPER_PLATE.get());
                 tag(zItemTag.PLATE_SILVER).add(zItems.SILVER_PLATE.get());
@@ -303,6 +306,19 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.MOLDS).add(ClazzUtil.getAllzItems(zItems.zMolds).stream()
                                 .map(DeferredHolder::get)
                                 .toArray(Item[]::new));
+
+                tag(Tags.Items.STORAGE_BLOCKS)
+                                .add(zBlocks.ADVANCED_ALLOY_BLOCK.get().asItem(), zBlocks.STEEL_BLOCK.get().asItem(),
+                                                zBlocks.WROUGHT_IRON_BLOCK.get().asItem());
+
+                tag(zItemTag.BLOCK_ADVANCED_ALLOY)
+                                .add(zBlocks.ADVANCED_ALLOY_BLOCK.get().asItem());
+
+                tag(zItemTag.BLOCK_STEEL)
+                                .add(zBlocks.STEEL_BLOCK.get().asItem());
+
+                tag(zItemTag.BLOCK_WROUGHT_IRON)
+                                .add(zBlocks.WROUGHT_IRON_BLOCK.get().asItem());
 
         }
 

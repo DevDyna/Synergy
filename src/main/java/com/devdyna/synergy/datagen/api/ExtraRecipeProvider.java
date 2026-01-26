@@ -915,10 +915,11 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         protected void moderators(RecipeOutput c) {
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.SIMPLE_MODERATOR.get())
-                                .pattern(" S ")
+                                .pattern("CSC")
                                 .pattern("SFS")
-                                .pattern(" S ")
-                                .define('F', Tags.Items.STORAGE_BLOCKS_COAL)
+                                .pattern("CSC")
+                                .define('F', zBlocks.WROUGHT_IRON_BLOCK.get())
+                                .define('C', Items.COAL)
                                 .define('S', zItemTag.PLATE_AQUAMARINE)
                                 .unlockedBy(ID,
                                                 has(zBlocks.ADVANCED_MACHINE_FRAME.get()))

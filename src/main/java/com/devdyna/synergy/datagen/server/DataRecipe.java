@@ -14,6 +14,7 @@ import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe
 import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.CasterRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.extractor.recipe.ExtractorRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.recipe.MelterRecipeBuilder;
 import com.devdyna.synergy.init.types.*;
@@ -67,8 +68,17 @@ public class DataRecipe extends ExtraRecipeProvider {
                 nodeRecipe(c, zBlocks.ITEM_TRANSFER.get(), Blocks.CHEST);
                 nodeRecipe(c, zBlocks.ITEM_PROVIDER.get(), Items.IRON_PICKAXE);
                 nodeRecipe(c, zBlocks.ITEM_RETRIEVAL.get(), Blocks.HOPPER);
-                node_alt(c, zBlocks.ITEM_RETRIEVAL.get(), zBlocks.ENERGY_RETRIEVAL.get());
-                node_alt(c, zBlocks.ITEM_TRANSFER.get(), zBlocks.ENERGY_TRANSFER.get());
+
+                stonecutter(c, zBlocks.ITEM_RETRIEVAL.get(), zItemTag.NODES_RETRIEVAL);
+                stonecutter(c, zBlocks.FLUID_RETRIEVAL.get(), zItemTag.NODES_RETRIEVAL);
+                stonecutter(c, zBlocks.ENERGY_RETRIEVAL.get(), zItemTag.NODES_RETRIEVAL);
+
+                stonecutter(c, zBlocks.ITEM_TRANSFER.get(), zItemTag.NODES_TRANSFER);
+                stonecutter(c, zBlocks.FLUID_TRANSFER.get(), zItemTag.NODES_TRANSFER);
+                stonecutter(c, zBlocks.ENERGY_TRANSFER.get(), zItemTag.NODES_TRANSFER);
+
+                stonecutter(c, zBlocks.ITEM_PROVIDER.get(), zItemTag.NODES_PROVIDER);
+                stonecutter(c, zBlocks.FLUID_PROVIDER.get(), zItemTag.NODES_PROVIDER);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.PIPE.get().asItem(), 16)
                                 .pattern("SSS")
@@ -149,14 +159,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(
                                                 zItems.BLUE_BATTERY.get()))
                                 .group(zStatic.Blocks.sprinkler).save(c);
-
-                SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.IRON_BLOCK), MISC,
-                                zBlocks.RUSTIC_METAL.get().asItem(), 0.01f, 100)
-                                .unlockedBy(ID, has(Items.IRON_BLOCK))
-                                .group(zStatic.DecorativeBlocks.rustic_metal).save(c, x.rl(
-                                                zBlocks.RUSTIC_METAL.get().getDescriptionId()
-                                                                .replace("block." + ID + ".", "")
-                                                                + "_blasting"));
 
                 ShapelessRecipeBuilder.shapeless(MISC, zBlocks.WAXED_PLANKS.get(), 8)
                                 .requires(ItemTags.PLANKS)
@@ -273,6 +275,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 plate(zItemTag.INGOT_STEEL, zItems.STEEL_PLATE.get(), c);
                 plate(zItemTag.INGOT_ADVANCEDALLOY, zItems.ADVANCED_ALLOY_PLATE.get(), c);
                 plate(zItemTag.GEMS_AQUAMARINE, zItems.AQUAMARINE_PLATE.get(), c);
+                plate(zItemTag.INGOT_WROUGHT_IRON, zItems.WROUGHT_IRON_PLATE.get(), c);
 
                 packUnpack(c, zItems.WASTE_FRAGMENT.get(), zItems.WASTE.get(), false);
                 packUnpack(c, zItems.SILICON_SHARD.get(), zItems.RAW_SILICON.get(), false);
@@ -548,6 +551,9 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 zBlocks.STEEL_BLOCK.get().asItem());
                 nuggetIngotBlock(c, zItems.ADVANCED_ALLOY_NUGGET.get(), zItems.ADVANCED_ALLOY_INGOT.get(),
                                 zBlocks.ADVANCED_ALLOY_BLOCK.get().asItem());
+
+                nuggetIngotBlock(c, zItems.WROUGHT_IRON_NUGGET.get(), zItems.WROUGHT_IRON_INGOT.get(),
+                                zBlocks.WROUGHT_IRON_BLOCK.get().asItem());
 
                 ItemProviderBuilder.of()
                                 .core(Blocks.COBBLESTONE)
@@ -863,14 +869,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 MaceratorRecipeBuilder.of()
-                                .input(zBlocks.RUSTIC_METAL.get().asItem())
-                                .delay(40)
-                                .unlockedBy()
-
-                                .output(zItems.IRON_DUST, 9)
-                                .save(c);
-
-                MaceratorRecipeBuilder.of()
                                 .input(Tags.Items.STONES)
                                 .delay(40)
                                 .unlockedBy()
@@ -884,18 +882,9 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(Tags.Items.NETHERRACKS)
                                 .delay(40)
                                 .unlockedBy()
-
                                 .output(zItems.NETHERRACK_PEBBLE, 4)
                                 .secondary(zItems.SULFUR_DUST)
                                 .chance(0.75f)
-                                .save(c);
-
-                QuernMillingBuilder.of()
-                                .input(zBlocks.RUSTIC_METAL.get().asItem())
-                                .delay(80)
-                                .unlockedBy()
-
-                                .output(zItems.IRON_DUST, 9)
                                 .save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zMachines.MACERATOR.block().get())
@@ -1402,10 +1391,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                 electron_tube(c, zItems.ALUMINUM_ELECTRON_TUBE, zFluids.MOLTEN_ALUMINUM);
                 electron_tube(c, zItems.PLATINUM_ELECTRON_TUBE, zFluids.MOLTEN_PLATINUM);
 
-
-
-
-
                 ShapedRecipeBuilder.shaped(MISC, zMachines.CASTING_FACTORY.block().get())
                                 .pattern(" Q ")
                                 .pattern("RMS")
@@ -1418,7 +1403,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
                                 .save(c);
 
-                                ShapedRecipeBuilder.shaped(MISC, zMachines.EXTRACTOR.block().get())
+                ShapedRecipeBuilder.shaped(MISC, zMachines.EXTRACTOR.block().get())
                                 .pattern(" Q ")
                                 .pattern("RMS")
                                 .pattern(" C ")
@@ -1430,7 +1415,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
                                 .save(c);
 
-                                ShapedRecipeBuilder.shaped(MISC, zMachines.MELTER.block().get())
+                ShapedRecipeBuilder.shaped(MISC, zMachines.MELTER.block().get())
                                 .pattern(" Q ")
                                 .pattern("RMS")
                                 .pattern(" C ")
@@ -1440,6 +1425,82 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .define('C', zItems.BLUE_BATTERY.get())
                                 .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
+                                .save(c);
+
+                ShapelessRecipeBuilder.shapeless(MISC, zItems.WROUGHT_IRON_INGOT.get(), 1)
+                                .requires(zItemTag.DUST_COAL)
+                                .requires(zItemTag.DUST_COAL)
+                                .requires(Tags.Items.INGOTS_IRON)
+                                .unlockedBy(ID, has(Items.IRON_INGOT))
+                                .save(c);
+
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(zItems.WROUGHT_IRON_INGOT.get()), MISC,
+                                zItems.STEEL_INGOT.get(), 0.01f, 100)
+                                .unlockedBy(ID, has(zItems.WROUGHT_IRON_INGOT.get()))
+                                .save(c);
+
+                ElectricFurnaceRecipeBuilder.of()
+                                .input(zItems.WROUGHT_IRON_INGOT)
+                                .output(zItems.STEEL_INGOT)
+                                .unlockedBy()
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.SIMPLE_COBBLE_GEN.get().asItem())
+                                .pattern("PPP")
+                                .pattern("LNW")
+                                .pattern("PPP")
+                                .define('P', zItemTag.PLATE_WROUGHT_IRON)
+                                .define('L', Items.LAVA_BUCKET)
+                                .define('W', Items.WATER_BUCKET)
+                                .define('N', zBlocks.ITEM_PROVIDER.get())
+                                .unlockedBy(ID, has(zBlocks.ITEM_PROVIDER.get()))
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.SIMPLE_WATER_GEN.get().asItem())
+                                .pattern("PPP")
+                                .pattern("WNW")
+                                .pattern("PPP")
+                                .define('P', zItemTag.PLATE_WROUGHT_IRON)
+                                .define('W', Items.WATER_BUCKET)
+                                .define('N', zBlocks.FLUID_PROVIDER.get())
+                                .unlockedBy(ID, has(zBlocks.FLUID_PROVIDER.get()))
+                                .save(c);
+
+
+        ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_COBBLE_GEN.get().asItem())
+                                .pattern("AAA")
+                                .pattern("ABA")
+                                .pattern("AAA")
+                                .define('A', zBlocks.SIMPLE_COBBLE_GEN.get())
+                                .define('B', zBlocks.BASIC_MACHINE_FRAME.get())
+                                .unlockedBy(ID, has(zBlocks.SIMPLE_COBBLE_GEN.get()))
+                                .save(c);
+
+        ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_WATER_GEN.get().asItem())
+                                .pattern("AAA")
+                                .pattern("ABA")
+                                .pattern("AAA")
+                                .define('A', zBlocks.SIMPLE_WATER_GEN.get())
+                                .define('B', zBlocks.BASIC_MACHINE_FRAME.get())
+                                .unlockedBy(ID, has(zBlocks.SIMPLE_WATER_GEN.get()))
+                                .save(c);
+
+        ShapedRecipeBuilder.shaped(MISC, zBlocks.ELITE_COBBLE_GEN.get().asItem())
+                                .pattern("AAA")
+                                .pattern("ABA")
+                                .pattern("AAA")
+                                .define('A', zBlocks.ADVANCED_COBBLE_GEN.get())
+                                .define('B', zBlocks.ADVANCED_MACHINE_FRAME.get())
+                                .unlockedBy(ID, has(zBlocks.ADVANCED_COBBLE_GEN.get()))
+                                .save(c);
+
+        ShapedRecipeBuilder.shaped(MISC, zBlocks.ELITE_WATER_GEN.get().asItem())
+                                .pattern("AAA")
+                                .pattern("ABA")
+                                .pattern("AAA")
+                                .define('A', zBlocks.ADVANCED_WATER_GEN.get())
+                                .define('B', zBlocks.ADVANCED_MACHINE_FRAME.get())
+                                .unlockedBy(ID, has(zBlocks.ADVANCED_WATER_GEN.get()))
                                 .save(c);
 
         }

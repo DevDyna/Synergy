@@ -112,7 +112,14 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.INVERTED_REPEATER,
                                 zBlocks.LASER_ROTOR,
                                 zBlocks.VOID_BOX,
-                                zBlocks.FLUID_TANK
+                                zBlocks.FLUID_TANK,
+
+                                zBlocks.SIMPLE_COBBLE_GEN,
+                                zBlocks.SIMPLE_WATER_GEN,
+                                zBlocks.ADVANCED_COBBLE_GEN,
+                                zBlocks.ADVANCED_WATER_GEN,
+                                zBlocks.ELITE_COBBLE_GEN,
+                                zBlocks.ELITE_WATER_GEN
 
                 ).forEach(b -> dropSelf(b.get()));
 
@@ -164,10 +171,9 @@ public class DataLootBlock extends BlockLootSubProvider {
                 // zBlocks.deposits.forEach(e -> dropSelf(e.get()));
                 // zBlocks.generators.forEach(e->dropSelf(e.get()));
 
-                
                 brick(zBlocks.CLAY_BRICK, Items.CLAY_BALL, Items.BRICK);
                 brick(zBlocks.PACKED_MUD_BRICK, zItems.PACKED_MUD_BALL.get(), zItems.PACKED_MUD_BRICK.get());
-                
+
                 brick(zBlocks.FIRECLAY_BRICK, zItems.FIRECLAY_BALL.get(), zItems.FIRECLAY_BRICK.get());
                 brick(zBlocks.BLAST_BRICK, zItems.CLAY_MIXTURE_BALL.get(), zItems.BLAST_BRICK.get());
 
@@ -191,7 +197,6 @@ public class DataLootBlock extends BlockLootSubProvider {
                                                                 .apply(SetItemCountFunction
                                                                                 .setCount(ConstantValue.exactly(1)))));
         }
-
 
         private void azalea() {
                 add(zBlocks.AZALEA.get(),

@@ -214,6 +214,10 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                 modLoc("block/" + loc));
         }
 
+        protected ItemModelBuilder simpleFlexibleBlock(DeferredHolder<Block, Block> b, ResourceLocation loc) {
+                return cubeAll(b.getRegisteredName(), loc);
+        }
+
         protected ItemModelBuilder simpleFullBlock(DeferredHolder<Block, Block> b, String prefix) {
                 return cubeAll(b.getRegisteredName(),
                                 modLoc("block/" + b.getRegisteredName().replace(ID + ":", prefix)));

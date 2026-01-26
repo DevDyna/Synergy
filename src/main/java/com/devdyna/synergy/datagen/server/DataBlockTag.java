@@ -45,7 +45,7 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.HARVESTER.get(),
                                                 zBlocks.SOLAR_PANEL.get(),
                                                 zBlocks.ADOBE.get(),
-                                                zBlocks.RUSTIC_METAL.get(),
+                                                zBlocks.WROUGHT_IRON_BLOCK.get(),
                                                 zBlocks.BASIC_MACHINE_FRAME.get(),
                                                 zBlocks.URN.get(),
                                                 zBlocks.ADVANCED_MACHINE_FRAME.get(),
@@ -173,13 +173,16 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.REACTOR_FUEL_CELL.get());
 
                 tag(Tags.Blocks.STORAGE_BLOCKS)
-                                .add(zBlocks.ADVANCED_ALLOY_BLOCK.get(), zBlocks.STEEL_BLOCK.get());
+                                .add(zBlocks.ADVANCED_ALLOY_BLOCK.get(), zBlocks.STEEL_BLOCK.get(),zBlocks.WROUGHT_IRON_BLOCK.get());
 
                 tag(zBlockTag.BLOCK_ADVANCED_ALLOY)
                                 .add(zBlocks.ADVANCED_ALLOY_BLOCK.get());
 
                 tag(zBlockTag.BLOCK_STEEL)
                                 .add(zBlocks.STEEL_BLOCK.get());
+                                
+                tag(zBlockTag.BLOCK_WROUGHT_IRON)
+                                .add(zBlocks.WROUGHT_IRON_BLOCK.get());
 
                 tag(zBlocks.FIRECLAY_BRICKS.getTagkey())
                                 .add(zBlocks.FIRECLAY_BRICKS.getAll());

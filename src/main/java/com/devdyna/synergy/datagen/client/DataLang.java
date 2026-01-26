@@ -351,6 +351,9 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + "." + zStatic.Items.chisel + ".registry",
                                 TIP_COLOR + "Block : ");
+
+                add(ID + ".resourcegen.tip", "Generate %s of %s every %d ticks");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {

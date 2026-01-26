@@ -50,7 +50,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 simpleBlockDecorative(zBlocks.ADVANCED_ALLOY_BLOCK);
                 simpleBlockDecorative(zBlocks.STEEL_BLOCK);
                 simpleBlockDecorative(zBlocks.ADOBE);
-                simpleBlockDecorative(zBlocks.RUSTIC_METAL);
+                simpleBlockDecorative(zBlocks.WROUGHT_IRON_BLOCK);
                 simpleBlockDecorative(zBlocks.WAXED_PLANKS);
 
                 simpleBlockDecorative(zBlocks.SMOOTH_ADOBE);
@@ -152,6 +152,55 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 simpleBlock(zBlocks.FLUID_TANK.get(), models().cubeAll(zBlocks.FLUID_TANK.getRegisteredName(),
                                 modLoc("block/fluid_tank")).renderType(DataGenUtil.CUTOUT));
+
+
+                simpleBlock(zBlocks.SIMPLE_WATER_GEN.get(),
+                                models().withExistingParent(zBlocks.SIMPLE_WATER_GEN.getRegisteredName(),
+                                                modLoc("block/triple_layer"))
+                                                .texture("top", "block/resource_gen/water")
+                                                .texture("middle", "block/resource_gen/overlay/simple")
+                                                .texture("below", "block/decorative/wrought_iron_block")
+                                                .renderType(DataGenUtil.CUTOUT));
+
+                simpleBlock(zBlocks.ADVANCED_WATER_GEN.get(),
+                                models().withExistingParent(zBlocks.ADVANCED_WATER_GEN.getRegisteredName(),
+                                                modLoc("block/triple_layer"))
+                                                .texture("top", "block/resource_gen/water")
+                                                .texture("middle", "block/resource_gen/overlay/advanced")
+                                                .texture("below", "block/machine/frame/basic/bottom")
+                                                .renderType(DataGenUtil.CUTOUT));
+
+                simpleBlock(zBlocks.ELITE_WATER_GEN.get(),
+                                models().withExistingParent(zBlocks.ELITE_WATER_GEN.getRegisteredName(),
+                                                modLoc("block/triple_layer"))
+                                                .texture("top", "block/resource_gen/water")
+                                                .texture("middle", "block/resource_gen/overlay/elite")
+                                                .texture("below", "block/machine/frame/advanced/top")
+                                                .renderType(DataGenUtil.CUTOUT));
+
+                simpleBlock(zBlocks.SIMPLE_COBBLE_GEN.get(),
+                                models().withExistingParent(zBlocks.SIMPLE_COBBLE_GEN.getRegisteredName(),
+                                                modLoc("block/triple_layer"))
+                                                .texture("top", "block/resource_gen/cobblestone")
+                                                .texture("middle", "block/resource_gen/overlay/simple")
+                                                .texture("below", "block/decorative/wrought_iron_block")
+                                                .renderType(DataGenUtil.CUTOUT));
+
+                simpleBlock(zBlocks.ADVANCED_COBBLE_GEN.get(),
+                                models().withExistingParent(zBlocks.ADVANCED_COBBLE_GEN.getRegisteredName(),
+                                                modLoc("block/triple_layer"))
+                                                .texture("top", "block/resource_gen/cobblestone")
+                                                .texture("middle", "block/resource_gen/overlay/advanced")
+                                                .texture("below", "block/machine/frame/basic/bottom")
+                                                .renderType(DataGenUtil.CUTOUT));
+
+                simpleBlock(zBlocks.ELITE_COBBLE_GEN.get(),
+                                models().withExistingParent(zBlocks.ELITE_COBBLE_GEN.getRegisteredName(),
+                                                modLoc("block/triple_layer"))
+                                                .texture("top", "block/resource_gen/cobblestone")
+                                                .texture("middle", "block/resource_gen/overlay/elite")
+                                                .texture("below", "block/machine/frame/advanced/top")
+                                                .renderType(DataGenUtil.CUTOUT));
 
         }
 
