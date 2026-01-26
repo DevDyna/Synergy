@@ -1,9 +1,12 @@
 package com.devdyna.synergy.api;
 
+import java.util.function.Predicate;
+
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.common.util.INBTSerializable;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 
 @SuppressWarnings("null")
@@ -13,6 +16,11 @@ public class FluidStorageTank extends FluidTank implements INBTSerializable<Comp
 
     public FluidStorageTank(BlockEntity be, int capacity) {
         super(capacity);
+        this.be = be;
+    }
+
+    public FluidStorageTank(BlockEntity be, int capacity,Predicate<FluidStack> filter) {
+        super(capacity,filter);
         this.be = be;
     }
 
