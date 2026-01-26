@@ -25,7 +25,9 @@ public interface ItemProducer {
      * when true it will drop all overflow items
      * when false it will void all overflow items
      */
-    boolean dropWhenFail();
+    default boolean dropWhenFail() {
+        return false;
+    }
 
     /**
      * unify all dropped items
@@ -66,7 +68,7 @@ public interface ItemProducer {
     /**
      * export items to the nearest storage or will drop/void all overflow items
      */
-    default void exportItems(ItemStack item, List<Direction> blacklistedDirs, Level level, BlockPos pos,
+    default boolean exportItems(ItemStack item, List<Direction> blacklistedDirs, Level level, BlockPos pos,
             Map<Direction, BlockCapabilityCache<IItemHandler, Direction>> cache) {
         var totalDir = Direction.values().length;
         for (Direction dir : Direction.values()) {
@@ -85,7 +87,7 @@ public interface ItemProducer {
 
             IItemHandler cap = cachedData.getCapability();
 
-            if (cap != null || !(cap instanceof IItemHandler)) {
+            if (cap == null || !(cap instanceof IItemHandler)) {
                 totalDir--;
                 continue;
             }
@@ -101,6 +103,11 @@ public interface ItemProducer {
 
             }
 
+            if (!dropWhenFail() && !items.isEmpty()) {
+                totalDir--;
+                continue;
+            }
+
             break;
 
         }
@@ -110,6 +117,7 @@ public interface ItemProducer {
             LevelUtil.popItemFromPos(level, pos.above(), item);
         }
 
+        return totalDir <= 0;
     }
 
     default boolean applySoundWhenFail() {
