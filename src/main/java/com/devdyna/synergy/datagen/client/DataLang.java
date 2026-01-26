@@ -60,7 +60,7 @@ public class DataLang extends LanguageProvider {
                         for (String tier : zStatic.Tiers.ALL) {
                                 if (b.getRegisteredName().contains(tier)) {
                                         var affix = StringUtil.nameCapitalized(tier).replace("_", "");
-                                        addBlock(b, named(b).replace(affix, "") + " (" + affix + ")");
+                                        addBlock(b, named(b).replace(affix+" ", "") + " [" + affix + "]");
                                         continue;
                                 }
                         }
