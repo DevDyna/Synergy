@@ -97,6 +97,12 @@ public class CreativeTabs {
             event.accept(zBlocks.HARVESTER.get());
             event.accept(zBlocks.SPRINKLER.get());
             event.accept(zBlocks.FLUID_TANK.get());
+            event.accept(zBlocks.SIMPLE_COBBLE_GEN.get());
+            event.accept(zBlocks.ADVANCED_COBBLE_GEN.get());
+            event.accept(zBlocks.ELITE_COBBLE_GEN.get());
+            event.accept(zBlocks.SIMPLE_WATER_GEN.get());
+            event.accept(zBlocks.ADVANCED_WATER_GEN.get());
+            event.accept(zBlocks.ELITE_WATER_GEN.get());
         }
 
         // ---------------------------------------------------------- //

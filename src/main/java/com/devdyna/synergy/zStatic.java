@@ -37,6 +37,7 @@ public class zStatic {
     }
 
     public class ResourceMaterial {
+        public static String wrought_iron = "wrought_iron";
         public static String iron = "iron";
         public static String copper = "copper";
         public static String gold = "gold";
@@ -164,7 +165,6 @@ public class zStatic {
     }
 
     public class DecorativeBlocks {
-        public static String rustic_metal = "rustic_metal";
         public static String waxed_planks = "waxed_planks";
         public static String adobe = "adobe";
         public static String smooth_adobe = "smooth_adobe";

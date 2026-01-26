@@ -45,8 +45,7 @@ public class Capability {
 
                                         return null;
                                 },
-                                zBlocks.FLUID_TANK.get()
-
+                                zBlocks.FLUID_TANK.get(),zBlocks.SIMPLE_WATER_GEN.get(),zBlocks.ADVANCED_WATER_GEN.get(),zBlocks.ELITE_WATER_GEN.get()
                 );
 
                 event.registerItem(Capabilities.FluidHandler.ITEM, (i, v) -> {
@@ -76,7 +75,10 @@ public class Capability {
                                 zBlocks.ORNATE_TINY_CHEST.get(),
                                 zBlocks.STONE_TINY_CHEST.get(),
                                 zBlocks.QUERN.get(),
-                                zBlocks.VOID_BOX.get());
+                                zBlocks.VOID_BOX.get(),
+                                zBlocks.SIMPLE_COBBLE_GEN.get(),
+                                zBlocks.ADVANCED_COBBLE_GEN.get(),
+                                zBlocks.ELITE_COBBLE_GEN.get());
 
                 event.registerBlock(
                                 Capabilities.ItemHandler.BLOCK,

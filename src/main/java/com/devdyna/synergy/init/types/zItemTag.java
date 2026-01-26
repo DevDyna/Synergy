@@ -69,10 +69,12 @@ public class zItemTag {
 
         public static final TagKey<Item> INGOT_STEEL = Material.tagItem("ingots/steel", "c");
         public static final TagKey<Item> INGOT_ADVANCEDALLOY = Material.tagItem("ingots/advanced_alloy", "c");
+        public static final TagKey<Item> INGOT_WROUGHT_IRON = Material.tagItem("ingots/wrought_iron", "c");
 
         public static final TagKey<Item> NUGGET_STEEL = Material.tagItem("nuggets/steel", "c");
         public static final TagKey<Item> NUGGET_ADVANCEDALLOY = Material.tagItem("nuggets/advanced_alloy", "c");
         public static final TagKey<Item> NUGGET_COPPER = Material.tagItem("nuggets/copper", "c");
+        public static final TagKey<Item> NUGGET_WROUGHT_IRON = Material.tagItem("nuggets/wrought_iron", "c");
 
         public static final TagKey<Item> URN_MIXTURES = Material.tagItem("urn_mixtures");
 
@@ -92,6 +94,7 @@ public class zItemTag {
         public static final TagKey<Item> PLATE_COAL = Material.tagItem("plates/coal", "c");
         public static final TagKey<Item> PLATE_ADVANCED_ALLOY = Material.tagItem("plates/advanced_alloy", "c");
         public static final TagKey<Item> PLATE_AQUAMARINE = Material.tagItem("plates/aquamarine", "c");
+        public static final TagKey<Item> PLATE_WROUGHT_IRON = Material.tagItem("plates/wrought_iron", "c");
 
         public static final TagKey<Item> RICE_PLANT = Material.tagItem("plant/rice");
         public static final TagKey<Item> COTTON_PLANT = Material.tagItem("plant/cotton");
@@ -223,5 +226,21 @@ public class zItemTag {
         public static final TagKey<Item> STEEL_ELECTRON_TUBE = Material.tagItem("electron_tubes/steel", "c");
         public static final TagKey<Item> TIN_ELECTRON_TUBE = Material.tagItem("electron_tubes/tin", "c");
         public static final TagKey<Item> URANIUM_ELECTRON_TUBE = Material.tagItem("electron_tubes/uranium", "c");
+
+
+        public static final TagKey<Item> BLOCK_STEEL = Material
+                        .tagItem("storage_blocks/steel", "c");
+
+        public static final TagKey<Item> BLOCK_ADVANCED_ALLOY = Material
+                        .tagItem("storage_blocks/advanced_alloy", "c");
+                        
+        public static final TagKey<Item> BLOCK_WROUGHT_IRON = Material
+                        .tagItem("storage_blocks/wrought_iron", "c");
+
+
+
+
+
+
 
 }

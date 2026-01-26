@@ -21,6 +21,12 @@ import com.devdyna.synergy.init.builder.agriculture.cultivated.*;
 import com.devdyna.synergy.init.builder.agriculture.mushroom.*;
 import com.devdyna.synergy.init.builder.agriculture.wild.*;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterBLK;
+import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.advanced.AdvancedCobbleGenBlock;
+import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.elite.EliteCobbleGenBlock;
+import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.simple.SimpleCobbleGenBlock;
+import com.devdyna.synergy.init.builder.automation.resource_gen.water.advanced.AdvancedWaterGenBlock;
+import com.devdyna.synergy.init.builder.automation.resource_gen.water.elite.EliteWaterGenBlock;
+import com.devdyna.synergy.init.builder.automation.resource_gen.water.simple.SimpleWaterGenBlock;
 import com.devdyna.synergy.init.builder.automation.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankBlock;
@@ -185,8 +191,8 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> WILD_COTTON = Material.registerItemBlock(zStatic.Wild.COTTON,
                         () -> new wild_cotton(), zWildCrop);
 
-        public static final DeferredHolder<Block, Block> RUSTIC_METAL = Material
-                        .DecoBlock(zStatic.DecorativeBlocks.rustic_metal,
+        public static final DeferredHolder<Block, Block> WROUGHT_IRON_BLOCK = Material
+                        .DecoBlock(zStatic.ResourceMaterial.wrought_iron + zStatic.ResourceType.block,
                                         BlockBehaviour.Properties.of().sound(SoundType.METAL)
                                                         .strength(2.5f).mapColor(MapColor.RAW_IRON),
                                         zDecorative);
@@ -447,6 +453,27 @@ public class zBlocks {
                         .tile_stair()
                         .tile_slab()
                         .createTag();
+
+
+        public static final DeferredHolder<Block, Block> SIMPLE_WATER_GEN = Material.registerItemBlock(
+                        zStatic.ResourceGenerators.Water.simple,
+                        () -> new SimpleWaterGenBlock());
+        public static final DeferredHolder<Block, Block> ADVANCED_WATER_GEN = Material.registerItemBlock(
+                        zStatic.ResourceGenerators.Water.advanced,
+                        () -> new AdvancedWaterGenBlock());
+        public static final DeferredHolder<Block, Block> ELITE_WATER_GEN = Material.registerItemBlock(
+                        zStatic.ResourceGenerators.Water.elite,
+                        () -> new EliteWaterGenBlock());
+
+        public static final DeferredHolder<Block, Block> SIMPLE_COBBLE_GEN = Material.registerItemBlock(
+                        zStatic.ResourceGenerators.CobbleStone.simple,
+                        () -> new SimpleCobbleGenBlock());
+        public static final DeferredHolder<Block, Block> ADVANCED_COBBLE_GEN = Material.registerItemBlock(
+                        zStatic.ResourceGenerators.CobbleStone.advanced,
+                        () -> new AdvancedCobbleGenBlock());
+        public static final DeferredHolder<Block, Block> ELITE_COBBLE_GEN = Material.registerItemBlock(
+                        zStatic.ResourceGenerators.CobbleStone.elite,
+                        () -> new EliteCobbleGenBlock());
 
         // ---------------------------------------------------------------------------------------//
 

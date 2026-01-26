@@ -17,6 +17,7 @@ public class Common {
         // grr grr
         public static BooleanValue DISABLE_ITEM_USE_RECIPE;// false
         public static BooleanValue DISABLE_HARVESTABLE_ACTION;// false
+
         // autotune
         public static IntValue HARVESTER_TICK_DELAY;// 5
         public static IntValue HARVESTER_FE_COST;// 25
@@ -36,6 +37,28 @@ public class Common {
 
         public static IntValue SPRINKLER_FE_COST;// 25
         public static IntValue SPRINKLER_MAX_FE;// 10k
+
+        public static IntValue SIMPLE_COBBLE_GEN_TICK_RATE;// 20
+        public static IntValue SIMPLE_COBBLE_GEN_ITEM_COUNT;// 4
+
+        public static IntValue SIMPLE_WATER_GEN_TICK_RATE;// 20
+        public static IntValue SIMPLE_WATER_GEN_FLUID_AMOUNT;// 200
+
+        public static IntValue ADVANCED_COBBLE_GEN_TICK_RATE;// 5
+        public static IntValue ADVANCED_COBBLE_GEN_ITEM_COUNT;// 16
+
+        public static IntValue ADVANCED_WATER_GEN_TICK_RATE;// 5
+        public static IntValue ADVANCED_WATER_GEN_FLUID_AMOUNT;// 800
+
+        public static IntValue ELITE_COBBLE_GEN_TICK_RATE;// 1
+        public static IntValue ELITE_COBBLE_GEN_ITEM_COUNT;// 64
+
+        public static IntValue ELITE_WATER_GEN_TICK_RATE;// 1
+        public static IntValue ELITE_WATER_GEN_FLUID_AMOUNT;// 6400
+
+        public static IntValue SIMPLE_WATER_GEN_CAPACITY;// 4000
+        public static IntValue ADVANCED_WATER_GEN_CAPACITY;// 16000
+        public static IntValue ELITE_WATER_GEN_CAPACITY;// 64000
 
         // ic4
         public static IntValue MACHINE_MAX_FE;// 10k
@@ -226,6 +249,45 @@ public class Common {
                 SPRINKLER_MAX_FE = number(zStatic.Config.FE_CAPACITY,
                                 "sprinkler_fe_max", 10_000);
 
+                decor.complex(zStatic.ResourceGenerators.CobbleStone.TYPE);
+                SIMPLE_COBBLE_GEN_TICK_RATE = number("Ticks delay to produce a resource",
+                                zStatic.Tiers.SIMPLE + "cobblegen_tick_rate", 20);
+                SIMPLE_COBBLE_GEN_ITEM_COUNT = number("Item count every time executed",
+                                zStatic.Tiers.SIMPLE + "cobblegen_item_count", 4);
+
+                ADVANCED_COBBLE_GEN_TICK_RATE = number("Ticks delay to produce a resource",
+                                zStatic.Tiers.ADVANCED + "cobblegen_tick_rate", 5);
+                ADVANCED_COBBLE_GEN_ITEM_COUNT = number("Item count every time executed",
+                                zStatic.Tiers.ADVANCED + "cobblegen_item_count", 16);
+
+                ELITE_COBBLE_GEN_TICK_RATE = number("Ticks delay to produce a resource",
+                                zStatic.Tiers.ELITE + "cobblegen_tick_rate", 1);
+                ELITE_COBBLE_GEN_ITEM_COUNT = number("Item count every time executed",
+                                zStatic.Tiers.ELITE + "cobblegen_item_count", 64);
+
+                decor.complex(zStatic.ResourceGenerators.Water.TYPE);
+
+                SIMPLE_WATER_GEN_TICK_RATE = number("Ticks delay to produce a resource",
+                                zStatic.Tiers.SIMPLE + "watergen_tick_rate", 20);
+                SIMPLE_WATER_GEN_FLUID_AMOUNT = number("Fluid amount every time executed",
+                                zStatic.Tiers.SIMPLE + "watergen_fluid_amount", 200);
+
+                ADVANCED_WATER_GEN_TICK_RATE = number("Ticks delay to produce a resource",
+                                zStatic.Tiers.ADVANCED + "watergen_tick_rate", 5);
+                ADVANCED_WATER_GEN_FLUID_AMOUNT = number("Fluid amount every time executed",
+                                zStatic.Tiers.ADVANCED + "watergen_fluid_amount", 800);
+
+                ELITE_WATER_GEN_TICK_RATE = number("Ticks delay to produce a resource",
+                                zStatic.Tiers.ELITE + "watergen_tick_rate", 1);
+                ELITE_WATER_GEN_FLUID_AMOUNT = number("Fluid amount every time executed",
+                                zStatic.Tiers.ELITE + "watergen_fluid_amount", 3200);
+
+                SIMPLE_WATER_GEN_CAPACITY = number("Fluid capacity",
+                                zStatic.Tiers.SIMPLE + "watergen_capacity", 4000);
+                ADVANCED_WATER_GEN_CAPACITY = number("Fluid capacity",
+                                zStatic.Tiers.ADVANCED + "watergen_capacity", 16000);
+                ELITE_WATER_GEN_CAPACITY = number("Fluid capacity",
+                                zStatic.Tiers.ELITE + "watergen_capacity", 64000);
                 qCOMMON.pop();
         }
 

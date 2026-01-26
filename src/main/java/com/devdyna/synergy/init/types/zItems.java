@@ -303,6 +303,9 @@ public class zItems {
         public static final DeferredHolder<Item, Item> ADVANCED_ALLOY_INGOT = Material
                         .resourceIngot(zStatic.ResourceMaterial.advanced_alloy);
 
+        public static final DeferredHolder<Item, Item> WROUGHT_IRON_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.wrought_iron);
+
         public static final DeferredHolder<Item, Item> STEEL_INGOT = Material
                         .resourceIngot(zStatic.ResourceMaterial.steel);
 
@@ -332,6 +335,9 @@ public class zItems {
         public static final DeferredHolder<Item, Item> ADVANCED_ALLOY_NUGGET = Material
                         .resourceNugget(zStatic.ResourceMaterial.advanced_alloy);
 
+        public static final DeferredHolder<Item, Item> WROUGHT_IRON_NUGGET = Material
+                        .resourceNugget(zStatic.ResourceMaterial.wrought_iron);
+
         public static final DeferredHolder<Item, Item> STEEL_NUGGET = Material
                         .resourceNugget(zStatic.ResourceMaterial.steel);
 
@@ -340,6 +346,8 @@ public class zItems {
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> ADVANCED_ALLOY_PLATE = Material
                         .resourcePlate(zStatic.ResourceMaterial.advanced_alloy);
+        public static final DeferredHolder<Item, Item> WROUGHT_IRON_PLATE = Material
+                        .resourcePlate(zStatic.ResourceMaterial.wrought_iron);
 
         public static final DeferredHolder<Item, Item> CARBON_PLATE = Material
                         .resourcePlate(zStatic.ResourceMaterial.carbon);

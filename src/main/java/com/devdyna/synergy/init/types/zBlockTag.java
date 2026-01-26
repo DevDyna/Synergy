@@ -59,6 +59,9 @@ public class zBlockTag {
 
         public static final TagKey<Block> BLOCK_ADVANCED_ALLOY = Material
                         .tagBlock("storage_blocks/advanced_alloy", "c");
+                        
+        public static final TagKey<Block> BLOCK_WROUGHT_IRON = Material
+                        .tagBlock("storage_blocks/wrought_iron", "c");
 
         public static final TagKey<Block> COOLERS = Material
                         .tagBlock("cooler");
