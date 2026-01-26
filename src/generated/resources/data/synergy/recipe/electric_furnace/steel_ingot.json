@@ -1,0 +1,12 @@
+{
+  "type": "synergy:electric_furnace",
+  "energy": 500,
+  "input": {
+    "item": "synergy:wrought_iron_ingot"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:steel_ingot"
+  },
+  "ticks": 100
+}

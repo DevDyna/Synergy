@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:wrought_iron_ingot_pack_x9"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wrought_iron_nugget": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:wrought_iron_nugget"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wrought_iron_nugget"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:wrought_iron_ingot_pack_x9"
+    ]
+  }
+}

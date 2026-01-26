@@ -1,0 +1,9 @@
+{
+  "parent": "synergy:block/triple_layer",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "below": "synergy:block/machine/frame/basic/bottom",
+    "middle": "synergy:block/resource_gen/overlay/advanced",
+    "top": "synergy:block/resource_gen/cobblestone"
+  }
+}

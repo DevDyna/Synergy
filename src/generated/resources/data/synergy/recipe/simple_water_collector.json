@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "item": "synergy:fluid_provider_node"
+    },
+    "P": {
+      "tag": "c:plates/wrought_iron"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "WNW",
+    "PPP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:simple_water_collector"
+  }
+}

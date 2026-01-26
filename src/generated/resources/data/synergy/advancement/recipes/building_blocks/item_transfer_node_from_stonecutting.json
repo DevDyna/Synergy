@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:item_transfer_node_from_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "tag_item_transfer_node": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#synergy:nodes/transfer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "tag_item_transfer_node"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:item_transfer_node_from_stonecutting"
+    ]
+  }
+}

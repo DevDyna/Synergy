@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:item_provider_node_from_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "tag_item_provider_node": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#synergy:nodes/provider"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "tag_item_provider_node"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:item_provider_node_from_stonecutting"
+    ]
+  }
+}

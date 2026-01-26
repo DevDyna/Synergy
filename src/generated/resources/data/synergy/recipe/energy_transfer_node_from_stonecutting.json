@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "synergy:nodes/transfer"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:energy_transfer_node"
+  }
+}

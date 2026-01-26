@@ -2,17 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
+    "C": {
+      "item": "minecraft:coal"
+    },
     "F": {
-      "tag": "c:storage_blocks/coal"
+      "item": "synergy:wrought_iron_block"
     },
     "S": {
       "tag": "c:plates/aquamarine"
     }
   },
   "pattern": [
-    " S ",
+    "CSC",
     "SFS",
-    " S "
+    "CSC"
   ],
   "result": {
     "count": 1,

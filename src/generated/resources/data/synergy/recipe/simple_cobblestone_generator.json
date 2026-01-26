@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "L": {
+      "item": "minecraft:lava_bucket"
+    },
+    "N": {
+      "item": "synergy:item_provider_node"
+    },
+    "P": {
+      "tag": "c:plates/wrought_iron"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "LNW",
+    "PPP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:simple_cobblestone_generator"
+  }
+}

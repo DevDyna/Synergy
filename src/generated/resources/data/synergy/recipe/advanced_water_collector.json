@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "synergy:simple_water_collector"
+    },
+    "B": {
+      "item": "synergy:basic_machine_frame"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:advanced_water_collector"
+  }
+}

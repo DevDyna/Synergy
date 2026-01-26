@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "synergy:wrought_iron_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "synergy:wrought_iron_ingot"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "synergy:compressor",
+  "consume_catalyst": false,
+  "energy": 500,
+  "input": {
+    "tag": "c:ingots/wrought_iron"
+  },
+  "output": {
+    "count": 2,
+    "id": "synergy:wrought_iron_plate"
+  },
+  "plate": {
+    "item": "synergy:plate_mold"
+  },
+  "ticks": 80
+}
