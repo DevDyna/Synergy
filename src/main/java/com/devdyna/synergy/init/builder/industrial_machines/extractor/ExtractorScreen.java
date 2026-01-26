@@ -9,6 +9,7 @@ import com.devdyna.synergy.api.render.FluidGUITank;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents.TYPE;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -123,6 +124,11 @@ public class ExtractorScreen extends BaseMachineScreen<ExtractorMenu> {
                     pMouseY);
         }
 
+    }
+
+    @Override
+    public List<TYPE> validUpgrades() {
+        return List.of(TYPE.ENERGY, TYPE.SPEED, TYPE.LUCK);
     }
 
 }

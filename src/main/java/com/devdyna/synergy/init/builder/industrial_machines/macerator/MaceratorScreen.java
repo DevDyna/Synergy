@@ -1,10 +1,12 @@
 package com.devdyna.synergy.init.builder.industrial_machines.macerator;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.utils.x;
-
+import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents.TYPE;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -49,6 +51,11 @@ public class MaceratorScreen extends BaseMachineScreen<MaceratorMenu> {
     @Override
     protected int getRemainProgress() {
         return menu.getRemainProgress();
+    }
+
+    @Override
+    public List<TYPE> validUpgrades() {
+        return List.of(TYPE.ENERGY, TYPE.SPEED, TYPE.LUCK);
     }
 
 }
