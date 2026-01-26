@@ -360,7 +360,7 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "Block : ");
 
                 add(ID + ".resourcegen.tip", "Generate %s %s every %d ticks");
-                add(ID + ".resourcegen.tip.mono", "Generate %s %s every %d tick");
+                add(ID + ".resourcegen.tip.mono", "Generate %s %s every tick");
 
                 add(ID + ".upgrades.title", TIP_COLOR + "Upgrade Modifiers");
 
