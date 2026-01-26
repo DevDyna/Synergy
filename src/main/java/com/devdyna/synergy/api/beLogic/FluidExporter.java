@@ -3,6 +3,8 @@ package com.devdyna.synergy.api.beLogic;
 import java.util.List;
 import java.util.Map;
 
+import com.devdyna.synergy.api.utils.x;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -18,13 +20,13 @@ public interface FluidExporter {
     /**
      * export fluids to the nearest storage
      */
-    default void exportFluids(FluidStack fluid, List<Direction> blacklistedDirs, Level level, BlockPos pos,
+    default boolean exportFluids(FluidStack fluid, List<Direction> blacklistedDirs, Level level, BlockPos pos,
             Map<Direction, BlockCapabilityCache<IFluidHandler, Direction>> cache) {
 
-        boolean success;
-
+        var totalDir = Direction.values().length;
         for (Direction dir : Direction.values()) {
             if (blacklistedDirs.contains(dir)) {
+                totalDir--;
                 continue;
             }
             var cachedData = cache.get(dir);
@@ -39,23 +41,24 @@ public interface FluidExporter {
             IFluidHandler cap = cachedData.getCapability();
 
             if (cap == null || !(cap instanceof IFluidHandler)) {
+                totalDir--;
                 continue;
-            } else {
-                success = false;
-                for (int i = 0; i < cap.getTanks(); i++) {
-                    if (FluidStack.isSameFluidSameComponents(cap.getFluidInTank(i), fluid)
-                            && cap.isFluidValid(i, fluid)) {
-                        cap.fill(fluid, FluidAction.EXECUTE);
-                        success = true;
-                        break;
-                    }
-                }
-
-                if (success)
-                    break;
             }
 
-        }
+            if (cap.getFluidInTank(0).getAmount() == cap.getTankCapacity(0)) {
+                totalDir--;
+                continue;
+            }
 
+            if (!fluid.isEmpty()) {
+                cap.fill(x.fluid(fluid.getFluid(), Math.min(fluid.getAmount(), cap.getTankCapacity(0))),
+                        FluidAction.EXECUTE);
+            }
+
+            break;
+
+        }
+        return totalDir <= 0;
     }
+
 }
