@@ -11,12 +11,13 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 public class ClayBrickPlacement {
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGH)
     public static void claybrickplacement(PlayerInteractEvent.RightClickBlock event) {
         var level = event.getLevel();
         var pos = event.getPos();
@@ -39,6 +40,9 @@ public class ClayBrickPlacement {
             return;
 
         if (!Block.canSupportCenter(level, pos.relative(dir).below(), Direction.UP))
+            return;
+
+        if (!dir.equals(Direction.UP))
             return;
 
         if (!player.isCreative())
