@@ -35,7 +35,6 @@ public class ExtractorMenu extends BaseMachineMenu {
         addPlayerSlots(inv);
         addMachineInputSlot(blockEntity.getStorage(), ExtractorBE.INPUT_SLOT, 47, 33);
         addMachineOutputSlot(blockEntity.getStorage(), ExtractorBE.OUTPUT_SLOT, 119, 34);
-
         addDataSlots(data);
     }
 
