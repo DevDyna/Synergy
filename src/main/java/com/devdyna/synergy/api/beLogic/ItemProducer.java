@@ -85,23 +85,23 @@ public interface ItemProducer {
 
             IItemHandler cap = cachedData.getCapability();
 
-            if (cap == null || !(cap instanceof IItemHandler)) {
+            if (cap != null || !(cap instanceof IItemHandler)) {
                 totalDir--;
                 continue;
-            } else {
+            }
 
-                var items = ItemHandlerHelper.insertItemStacked(cap, item, false);
+            var items = ItemHandlerHelper.insertItemStacked(cap, item, false);
 
-                if (item.is(items.getItem()) && item.getCount() == items.getCount()
-                        && items != new ItemStack(Items.AIR) && dropWhenFail()) {
+            if (item.is(items.getItem()) && item.getCount() == items.getCount()
+                    && items != new ItemStack(Items.AIR) && dropWhenFail()) {
 
-                    LevelUtil.popItemFromPos(level, pos.above(), item);
+                LevelUtil.popItemFromPos(level, pos.above(), item);
+                if (applySoundWhenFail())
                     level.playSound(null, pos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 1F, 0.75F);
 
-                }
-
-                break;
             }
+
+            break;
 
         }
 
@@ -110,5 +110,9 @@ public interface ItemProducer {
             LevelUtil.popItemFromPos(level, pos.above(), item);
         }
 
+    }
+
+    default boolean applySoundWhenFail() {
+        return false;
     }
 }

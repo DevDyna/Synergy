@@ -175,4 +175,9 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
             rebuildArea();
     }
 
+    @Override
+    public boolean applySoundWhenFail() {
+        return true;
+    }
+
 }
