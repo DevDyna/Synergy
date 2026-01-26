@@ -7,8 +7,7 @@ import net.neoforged.neoforge.common.util.INBTSerializable;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 
 @SuppressWarnings("null")
-public class FluidStorageTank extends FluidTank
-        implements INBTSerializable<CompoundTag> {
+public class FluidStorageTank extends FluidTank implements INBTSerializable<CompoundTag> {
 
     private final BlockEntity be;
 
