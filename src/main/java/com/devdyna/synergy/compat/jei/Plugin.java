@@ -5,6 +5,7 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.devdyna.synergy.api.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.api.utils.x;
@@ -35,9 +36,11 @@ import com.devdyna.synergy.init.types.*;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
+import mezz.jei.api.gui.handlers.IGuiContainerHandler;
 import mezz.jei.api.registration.*;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
@@ -224,6 +227,21 @@ public class Plugin implements IModPlugin {
                                 CasterCategory.TYPE);
                 r.addRecipeClickArea(MelterScreen.class, 75, 35, 22, 15,
                                 MelterCategory.TYPE);
+
+                r.addGuiContainerHandler(
+                                (Class<? extends BaseMachineScreen<?>>) (Class<?>) BaseMachineScreen.class,
+                                new IGuiContainerHandler<BaseMachineScreen<?>>() {
+                                        @Override
+                                        public List<Rect2i> getGuiExtraAreas(BaseMachineScreen<?> screen) {
+                                                return List.of(
+                                                                new Rect2i(
+                                                                                screen.getGuiLeft() + 172,
+                                                                                screen.getGuiTop(),
+                                                                                32,
+                                                                                86));
+                                        }
+                                });
+
         }
 
 }
