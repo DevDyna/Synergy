@@ -238,17 +238,16 @@ public class zStatic {
     }
 
     public class ResourceGenerators {
-        public static final String TYPE_GEN = "_generator";
 
         public class Water {
-            public static final String TYPE = "water" + TYPE_GEN;
+            public static final String TYPE = "water_collector";
             public static String simple = Tiers.SIMPLE + TYPE;
             public static String advanced = Tiers.ADVANCED + TYPE;
             public static String elite = Tiers.ELITE + TYPE;
         }
 
         public class CobbleStone {
-            public static final String TYPE = "cobblestone" + TYPE_GEN;
+            public static final String TYPE = "cobblestone_generator";
             public static String simple = Tiers.SIMPLE + TYPE;
             public static String advanced = Tiers.ADVANCED + TYPE;
             public static String elite = Tiers.ELITE + TYPE;
