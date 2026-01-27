@@ -185,8 +185,8 @@ public class Plugin implements IModPlugin {
                                                                                                         "")),
                                                                         (ElectricFurnaceRecipeType) ElectricFurnaceRecipeBuilder
                                                                                         .of()
-                                                                                        .delay(60)
-                                                                                        .energy(10)
+                                                                                        .delay(s.value().getCookingTime())
+                                                                                        .energy(Common.MACHINE_FURNACE_PROCESS_VANILLA_FE_COST.get())
                                                                                         .input(s.value().getIngredients()
                                                                                                         .getFirst())
                                                                                         .output(s.value().getResultItem(
