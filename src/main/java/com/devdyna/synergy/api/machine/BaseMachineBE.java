@@ -396,19 +396,19 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     public int calculateMaxProgress(int base) {
         var upgrades = getValues(TYPE.SPEED);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Math.max(Common.MACHINE_MINIMAL_TICK_DELAY.get(), (int) (base - (base * (((float) sum) / 1000))));
+        return Math.max(Common.MACHINE_MINIMAL_TICK_DELAY.get(), (int) (base - (base * (((float) sum) / 100))));
     }
 
     private int calculateFEUsage(int base) {
         var upgrades = getValues(TYPE.ENERGY);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Math.max(Common.MACHINE_MINIMAL_FE_COST.get(), (int) (base + (base * (((float) sum) / 1000))));
+        return Math.max(Common.MACHINE_MINIMAL_FE_COST.get(), (int) (base + (base * (((float) sum) / 100))));
     }
 
     public int calculateMBUsage(int base) {
         var upgrades = getValues(TYPE.FLUID);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Math.max(Common.MACHINE_MINIMAL_FLUID_COST.get(), (int) (base - (base * (((float) sum) / 1000))));
+        return Math.max(Common.MACHINE_MINIMAL_FLUID_COST.get(), (int) (base - (base * (((float) sum) / 100))));
     }
 
     public boolean calculateSecondarySuccess(float base) {
