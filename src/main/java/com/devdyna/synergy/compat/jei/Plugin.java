@@ -2,11 +2,9 @@ package com.devdyna.synergy.compat.jei;
 
 import static com.devdyna.synergy.Main.ID;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.devdyna.synergy.api.machine.BaseMachineScreen;
-import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecipe;
@@ -20,7 +18,6 @@ import com.devdyna.synergy.compat.jei.categories.machines.ExtractorCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.MelterCategory;
 import com.devdyna.synergy.config.Common;
-import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.caster.CasterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorScreen;
@@ -43,7 +40,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -62,17 +58,17 @@ public class Plugin implements IModPlugin {
         @Override
         public void onRuntimeAvailable(IJeiRuntime jeiRuntime) {
 
-                List<RecipeHolder<CraftingRecipe>> toHide = new ArrayList<>();
+                // List<RecipeHolder<CraftingRecipe>> toHide = new ArrayList<>();
 
-                ClazzUtil.getAllzItems().forEach(b -> {
-                        if (ExtraRecipeProvider.clearNBT.contains(b.get())) {
-                                Minecraft.getInstance().level.getRecipeManager()
-                                                .byKey(x.parse(ID + ":" + x.path(b.get()) + "_clear_nbt"))
-                                                .ifPresent(r -> toHide.add((RecipeHolder<CraftingRecipe>) r));
-                        }
-                });
+                // ClazzUtil.getAllzItems().forEach(b -> {
+                //         if (ExtraRecipeProvider.clearNBT.contains(b.get())) {
+                //                 Minecraft.getInstance().level.getRecipeManager()
+                //                                 .byKey(x.parse(ID + ":" + x.path(b.get()) + "_clear_nbt"))
+                //                                 .ifPresent(r -> toHide.add((RecipeHolder<CraftingRecipe>) r));
+                //         }
+                // });
 
-                jeiRuntime.getRecipeManager().hideRecipes(RecipeTypes.CRAFTING, toHide);
+                // jeiRuntime.getRecipeManager().hideRecipes(RecipeTypes.CRAFTING, toHide);
 
         }
 
