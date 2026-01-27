@@ -23,8 +23,8 @@
   "result": {
     "components": {
       "synergy:upgrade_components": {
-        "energy": 275,
-        "speed": 150
+        "energy": 125,
+        "speed": 20
       }
     },
     "count": 1,

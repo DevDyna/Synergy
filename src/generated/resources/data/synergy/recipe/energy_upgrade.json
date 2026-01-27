@@ -23,7 +23,7 @@
   "result": {
     "components": {
       "synergy:upgrade_components": {
-        "energy": -250
+        "energy": -50
       }
     },
     "count": 1,
