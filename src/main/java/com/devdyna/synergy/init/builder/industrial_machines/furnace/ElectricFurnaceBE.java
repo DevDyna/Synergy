@@ -144,11 +144,12 @@ public class ElectricFurnaceBE extends BaseMachineBE {
 
     private void processVanillaType(SmeltingRecipe recipe) {
 
-        if(Common.DISABLE_MACHINE_FURNACE_PROCESS_VANILLA.get()) return;
+        if (Common.DISABLE_MACHINE_FURNACE_PROCESS_VANILLA.get())
+            return;
 
         ItemStack output = recipe.getResultItem(level.registryAccess()).copy();
 
-        this.maxProgress = calculateMaxProgress(recipe.getCookingTime());
+        this.maxProgress = calculateMaxProgress(getCalculatedDelay(recipe));
 
         if (!(checkSlot(getOutput(), output))) {
             resetProgress();
@@ -200,6 +201,12 @@ public class ElectricFurnaceBE extends BaseMachineBE {
     @Override
     public ContainerData getContainerData() {
         return networkData;
+    }
+
+    public static int getCalculatedDelay(SmeltingRecipe recipe) {
+        return Common.DISABLE_MACHINE_FURNACE_VANILLA_TICK_REDUCER.get() ? recipe.getCookingTime()
+                : Math.max(Common.MACHINE_FURNACE_PROCESS_VANILLA_MIN_TICK_DELAY.get(), recipe.getCookingTime()
+                        * Common.MACHINE_FURNACE_PROCESS_VANILLA_PERCENTUAGE_TICK_DELAY.get() / 100);
     }
 
 }

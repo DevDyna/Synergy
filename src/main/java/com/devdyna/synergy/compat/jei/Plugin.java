@@ -22,6 +22,7 @@ import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloyS
 import com.devdyna.synergy.init.builder.industrial_machines.caster.CasterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.extractor.ExtractorScreen;
+import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurnaceBE;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurnaceScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeType;
@@ -181,7 +182,7 @@ public class Plugin implements IModPlugin {
                                                                                                         "")),
                                                                         (ElectricFurnaceRecipeType) ElectricFurnaceRecipeBuilder
                                                                                         .of()
-                                                                                        .delay(s.value().getCookingTime())
+                                                                                        .delay(ElectricFurnaceBE.getCalculatedDelay(s.value()))
                                                                                         .energy(Common.MACHINE_FURNACE_PROCESS_VANILLA_FE_COST.get())
                                                                                         .input(s.value().getIngredients()
                                                                                                         .getFirst())
