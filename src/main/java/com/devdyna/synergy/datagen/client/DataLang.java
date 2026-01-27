@@ -371,10 +371,10 @@ public class DataLang extends LanguageProvider {
 
                 add(ID + ".screen.upgrades", "Supported Upgrades:");
 
-                add(ID + ".screen.modifier.energy", TIP_COLOR + "Energy");
-                add(ID + ".screen.modifier.speed", TIP_COLOR + "Speed");
-                add(ID + ".screen.modifier.luck", TIP_COLOR + "Luck");
-                add(ID + ".screen.modifier.fluid", TIP_COLOR + "Fluid");
+                add(ID + ".screen.modifier.energy", TIP_COLOR + "Energy Modifier §7[§f§a%s§7]");
+                add(ID + ".screen.modifier.speed", TIP_COLOR + "Speed Modifier §7[§f§a%s§7]");
+                add(ID + ".screen.modifier.luck", TIP_COLOR + "Luck Modifier §7[§f§a%s§7]");
+                add(ID + ".screen.modifier.fluid", TIP_COLOR + "Fluid Modifier §7[§f§a%s§7]");
 
         }
 

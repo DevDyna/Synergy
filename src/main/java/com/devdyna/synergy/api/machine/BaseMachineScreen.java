@@ -9,11 +9,17 @@ import com.devdyna.synergy.api.gui.BaseScreen;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.config.Common;
+import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents;
 import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents.TYPE;
+
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 
 @SuppressWarnings("null")
 public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseScreen<T> {
@@ -124,15 +130,44 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
                 List<Component> result = new ArrayList<>();
 
                 result.add(Component.translatable(ID + ".screen.upgrades"));
-                for (TYPE upgrade : validUpgrades()) 
-                        result.add(Component.translatable(ID + ".screen.modifier." + upgrade.name().toLowerCase()));
-                
+                for (TYPE upgrade : validUpgrades())
+                        result.add(Component
+                                        .translatable(ID + ".screen.modifier." + upgrade.name().toLowerCase(),
+                                                        getConfigLimits(upgrade))
+                                        .withStyle(getConfigLimits(upgrade) > getInstalledUpgradesOnSlots(upgrade)
+                                                        ? ChatFormatting.GREEN
+                                                        : (getConfigLimits(upgrade) < getInstalledUpgradesOnSlots(
+                                                                        upgrade) ? ChatFormatting.RED
+                                                                                        : ChatFormatting.YELLOW)));
 
                 return result;
         }
 
         public List<TYPE> validUpgrades() {
                 return List.of(TYPE.ENERGY, TYPE.SPEED);
+        }
+
+        public int getConfigLimits(TYPE type) {
+                return switch (type) {
+                        case TYPE.ENERGY -> Common.MACHINE_MAX_ENERGY_UPGRADES_TYPE.get();
+                        case TYPE.SPEED -> Common.MACHINE_MAX_SPEED_UPGRADES_TYPE.get();
+                        case TYPE.LUCK -> Common.MACHINE_MAX_LUCK_UPGRADES_TYPE.get();
+                        case TYPE.FLUID -> Common.MACHINE_MAX_FLUID_UPGRADES_TYPE.get();
+                };
+        }
+
+        public int getInstalledUpgradesOnSlots(TYPE type) {
+                return List.of(
+                                BaseMachineBE.SLOT_UPGRADE_1,
+                                BaseMachineBE.SLOT_UPGRADE_2,
+                                BaseMachineBE.SLOT_UPGRADE_3,
+                                BaseMachineBE.SLOT_UPGRADE_4)
+                                .stream()
+                                .map(menu::getSlot)
+                                .map(Slot::getItem)
+                                .filter(item -> UpgradeComponents.has(item, type))
+                                .mapToInt(ItemStack::getCount)
+                                .sum();
         }
 
 }
