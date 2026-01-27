@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "synergy:speed_upgrade"
+    }
+  ],
+  "result": {
+    "components": {
+      "synergy:upgrade_components": {
+        "energy": 125,
+        "speed": 20
+      }
+    },
+    "count": 1,
+    "id": "synergy:speed_upgrade"
+  }
+}

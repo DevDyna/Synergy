@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "synergy:luck_upgrade"
+    }
+  ],
+  "result": {
+    "components": {
+      "synergy:upgrade_components": {
+        "energy": 150,
+        "secondary_luck": 25
+      }
+    },
+    "count": 1,
+    "id": "synergy:luck_upgrade"
+  }
+}

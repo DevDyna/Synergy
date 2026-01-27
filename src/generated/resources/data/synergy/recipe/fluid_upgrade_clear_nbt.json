@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "synergy:fluid_upgrade"
+    }
+  ],
+  "result": {
+    "components": {
+      "synergy:upgrade_components": {
+        "energy": 150,
+        "fluid_usage": 20
+      }
+    },
+    "count": 1,
+    "id": "synergy:fluid_upgrade"
+  }
+}

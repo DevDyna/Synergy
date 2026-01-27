@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "synergy:energy_upgrade"
+    }
+  ],
+  "result": {
+    "components": {
+      "synergy:upgrade_components": {
+        "energy": -50
+      }
+    },
+    "count": 1,
+    "id": "synergy:energy_upgrade"
+  }
+}
