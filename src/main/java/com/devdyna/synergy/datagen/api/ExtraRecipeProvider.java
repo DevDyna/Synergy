@@ -473,6 +473,13 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                         .unlockedBy(ID, has(i))
                                         .save(c, ID + ":" + x.path(i) + "_clear_nbt");
                 });
+
+                zStatic.MachineUpgrades.TemplateUpgrades.ALL.forEach(i -> {
+                        ShapelessRecipeBuilder.shapeless(MISC, i)
+                                        .requires(i.getItem())
+                                        .unlockedBy(ID, has(i.getItem()))
+                                        .save(c, ID + ":" + x.path(i) + "_clear_nbt");
+                });
         }
 
         protected void coolerRecipes(RecipeOutput c) {

@@ -111,6 +111,8 @@ public class zStatic {
             public static ItemStack LUCK = zItems.UPGRADE_LUCK.get().set(0, 150, 25, 0);
             public static ItemStack FLUID = zItems.UPGRADE_FLUID.get().set(0, 150, 0, 20);
 
+            public static List<ItemStack> ALL = List.of(SPEED, ENERGY, LUCK, FLUID);
+
         }
 
     }
@@ -238,7 +240,7 @@ public class zStatic {
         public static String ADVANCED = "advanced_";
         public static String ELITE = "elite_";
 
-        public static List<String> ALL = List.of(SIMPLE,ADVANCED,ELITE);
+        public static List<String> ALL = List.of(SIMPLE, ADVANCED, ELITE);
     }
 
     public class ResourceGenerators {
