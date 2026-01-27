@@ -312,7 +312,7 @@ public class Common {
                 MACHINE_MINIMAL_TICK_DELAY = number("Minimal tick delay based on upgrade installed",
                                 "min_tick_rate", 1);
                 MACHINE_MINIMAL_FE_COST = number("Minimal Energy cost based on upgrade installed",
-                                "min_fe_cost", 0);
+                                "min_fe_cost", 5);
                 MACHINE_MINIMAL_FLUID_COST = number("Minimal Fluid cost based on upgrade installed",
                                 "min_mb_cost", 0);
                 MACHINE_MAXIMAL_LUCK = number("Maximal Secondary Chance based on upgrade installed",
