@@ -116,6 +116,13 @@ public class IndustrialUpgrade extends Item {
             return get(i.get(zComponents.UPGRADE_COMPONENTS), type);
         }
 
+        public static final int getStacked(ItemStack i, TYPE type) {
+            var tot = 0;
+            for (int j = 0; j < i.getCount(); j++) 
+                tot += get(i.get(zComponents.UPGRADE_COMPONENTS), type);
+            return tot;
+        }
+
         public static final List<Optional<Integer>> getAll(UpgradeComponents c) {
             return List.of(c.speed(), c.energy_usage(), c.luck(), c.fluid_usage());
         }
