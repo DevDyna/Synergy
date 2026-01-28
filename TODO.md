@@ -36,7 +36,17 @@
 
 - [ ] jade drying time
 
-- [ ] machine secondary slots dont work with capabilities
+- [x] machine secondary slots dont work with capabilities
+
+- [ ] Casting Factory -> Input FluidStack -> SizedFluidIngredient
+
+- [ ] Casting Factory -> Input Ingredient -> SizedIngredient
+- [ ] Melter -> Input Ingredient -> SizedIngredient
+- [ ] Macerator -> Input Ingredient -> SizedIngredient
+- [ ] Extractor -> Input Ingredient -> SizedIngredient
+- [ ] Furnace -> Input Ingredient -> SizedIngredient
+- [ ] Compressor -> Input Ingredient -> SizedIngredient
+- [ ] Alloy Smelter -> Input Ingredient -> SizedIngredient
 
 ## NEWS
 
