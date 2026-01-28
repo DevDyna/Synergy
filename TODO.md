@@ -48,6 +48,8 @@
 - [ ] Compressor -> Input Ingredient -> SizedIngredient
 - [ ] Alloy Smelter -> Input Ingredient -> SizedIngredient
 
+- [ ] guideme for machines and upgrades
+
 ## NEWS
 
 ### Survival expansion
