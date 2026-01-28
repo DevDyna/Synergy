@@ -37,6 +37,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings({ "unused", "null" })
@@ -54,7 +55,7 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
     protected Ingredient catalyst = Ingredient.EMPTY;
     protected float chance;
     protected boolean consumeCatalyst = false;
-    protected FluidStack fluid_input;
+    protected SizedFluidIngredient fluid_input;
     protected FluidStack fluid_output = FluidStack.EMPTY;
 
     public T input(Ingredient input) {
@@ -94,7 +95,7 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
     public T unlockedBy() {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                 .hasItems(this.input == null
-                        ? new Item[] { this.fluid_input.getFluidType().getBucket(fluid_input).getItem() }
+                        ? new Item[] { x.getFluids(this.fluid_input).getFirst().getFluid().getBucket() }
                         : Arrays.stream(this.input.getItems())
                                 .map(ItemStack::getItem)
                                 .toArray(Item[]::new)));

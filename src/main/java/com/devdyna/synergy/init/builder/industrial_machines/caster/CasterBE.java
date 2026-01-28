@@ -23,8 +23,8 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
-import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
+import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
 @SuppressWarnings("null")
 public class CasterBE extends BaseMachineBE implements FluidTankStorage {
@@ -95,26 +95,24 @@ public class CasterBE extends BaseMachineBE implements FluidTankStorage {
 
         Optional<RecipeHolder<CasterRecipeType>> r = level.getRecipeManager()
                 .getRecipeFor(zMachines.CASTING_FACTORY.recipe().getType(),
-                        new FluidInput(getFluidStorage().getFluid(),getInput()), level);
+                        new FluidInput(getFluidStorage().getFluid(), getInput()), level);
 
         // no recipe
         if (r.isEmpty()) {
             resetProgress();
             return;
         }
-
         CasterRecipeType recipe = r.get().value();
 
         ItemStack item_out = recipe.getOutputItem().copy();
-        FluidStack fluid_input = recipe.getFluidInput().copy();
+        SizedFluidIngredient fluid_input = recipe.getFluidInput();
 
         this.maxProgress = calculateMaxProgress(recipe.getTime());
-
-        if(getFluidStorage().getFluidAmount() < fluid_input.getAmount()){
+        
+        if (getFluidStorage().getFluidAmount() < fluid_input.amount()) {
             resetProgress();
             return;
         }
-
 
         if (!(checkSlot(getOutput(), item_out))) {
             resetProgress();
@@ -141,10 +139,10 @@ public class CasterBE extends BaseMachineBE implements FluidTankStorage {
 
         updateOutputSlot(getOutput(), item_out, OUTPUT_SLOT);
 
-        getFluidStorage().drain(recipe.getFluidInput(), FluidAction.EXECUTE);
+        getFluidStorage().drain(recipe.getFluidInput().amount(), FluidAction.EXECUTE);
 
-        if(!getInput().isEmpty() && recipe.consumeCatalyst())
-        getInput().shrink(1);
+        if (!getInput().isEmpty() && recipe.consumeCatalyst())
+            getInput().shrink(1);
 
         progress = 0;
         setChanged();

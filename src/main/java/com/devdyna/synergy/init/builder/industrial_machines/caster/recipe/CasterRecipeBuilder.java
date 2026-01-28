@@ -9,16 +9,16 @@ import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.api.recipes.builders.ConsumeInputItem;
-import com.devdyna.synergy.api.recipes.builders.SimpleFluidAttach;
+import com.devdyna.synergy.api.recipes.builders.InputFluidAttach;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
-import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
 @SuppressWarnings({ "null" })
 public class CasterRecipeBuilder extends BaseMachineRecipeBuilder<CasterRecipeBuilder>
-        implements SimpleFluidAttach<CasterRecipeBuilder>, ConsumeInputItem<CasterRecipeBuilder> {
+        implements InputFluidAttach<CasterRecipeBuilder>, ConsumeInputItem<CasterRecipeBuilder> {
 
     private CasterRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
@@ -44,14 +44,14 @@ public class CasterRecipeBuilder extends BaseMachineRecipeBuilder<CasterRecipeBu
     }
 
     @Override
-    public CasterRecipeBuilder fluid(FluidStack fluid) {
-        this.fluid_input = fluid;
+    public CasterRecipeBuilder consumeCatalyst() {
+        this.consumeCatalyst = true;
         return getBuilder();
     }
 
     @Override
-    public CasterRecipeBuilder consumeCatalyst() {
-        this.consumeCatalyst = true;
+    public CasterRecipeBuilder fluid(SizedFluidIngredient fluid) {
+        this.fluid_input = fluid;
         return getBuilder();
     }
 

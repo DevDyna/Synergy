@@ -5,6 +5,7 @@ import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
+import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -16,6 +17,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
 @SuppressWarnings("null")
 public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Recipe<T> {
@@ -35,7 +37,7 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
 
     public boolean consumeCatalyst;
 
-    public FluidStack fluid_input;
+    public SizedFluidIngredient fluid_input;
 
     public FluidStack fluid_output;
 
@@ -71,7 +73,7 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return fluid_output;
     }
 
-    public FluidStack getFluidInput() {
+    public SizedFluidIngredient getFluidInput() {
         return fluid_input;
     }
 
@@ -104,18 +106,19 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return null;
     };
 
-    public FluidStack getRecipeFluidInput(T recipe) {
+    public SizedFluidIngredient getRecipeFluidInput(T recipe) {
         return null;
     };
 
     public boolean matches(T r, Level l) {
 
         if (getInputItem().isEmpty() || getInputItem() == null) {
-            if (getFluidInput() != null && !getFluidInput().isEmpty())
-                return FluidStack.isSameFluidSameComponents(getFluidInput(), getRecipeFluidInput(r));
-        }else{
-            if (getFluidInput() != null && !getFluidInput().isEmpty())
-                return FluidStack.isSameFluidSameComponents(getFluidInput(), getRecipeFluidInput(r)) && getInputItem().test(getRecipeInput(r));
+            if (getFluidInput() != null && !x.getFluids(getFluidInput()).isEmpty())
+                return x.getFluids(getRecipeFluidInput(r)).stream().anyMatch(i -> getFluidInput().test(i));
+        } else {
+            if (getFluidInput() != null && !x.getFluids(getFluidInput()).isEmpty())
+                return x.getFluids(getRecipeFluidInput(r)).stream().anyMatch(i -> getFluidInput().test(i))
+                        && getInputItem().test(getRecipeInput(r));
         }
 
         var check = getInputItem().test(getRecipeInput(r));
