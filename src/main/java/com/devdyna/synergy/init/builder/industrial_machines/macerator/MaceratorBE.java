@@ -136,7 +136,7 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
         if (!secondary.isEmpty() && success)
             updateOutputSlot(getExtraSlot1(), secondary, EXTRA_SLOT_1);
 
-        getInput().shrink(1);
+        getInput().shrink(recipe.getInputItem().count());
 
         progress = 0;
         setChanged();

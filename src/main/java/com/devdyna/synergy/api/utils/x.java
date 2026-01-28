@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -156,6 +157,10 @@ public class x {
     public static Ingredient ingredient(ResourceLocation tag) {
         return Ingredient.of(TagKey.create(Registries.ITEM, tag));
     }
+    
+    public static SizedIngredient itemSized(ResourceLocation tag) {
+        return itemSized(ingredient(tag));
+    }
 
     public static Block block(DeferredHolder<Block, ?> b) {
         return b.get();
@@ -208,12 +213,63 @@ public class x {
         return SizedFluidIngredient.of(fluid, amount);
     }
 
+    public static SizedFluidIngredient fluidSized(TagKey<Fluid> tag) {
+        return fluidSized(tag, 1000);
+    }
+
+    public static SizedFluidIngredient fluidSized(Fluid fluid) {
+        return fluidSized(fluid, 1000);
+    }
+
     public static SizedFluidIngredient fluidSized(FluidStack stack) {
         return SizedFluidIngredient.of(stack);
     }
 
+    public static SizedIngredient itemSized(ItemLike stack) {
+        return itemSized(stack, 1);
+    }
+
+    public static SizedIngredient itemSized(TagKey<Item> stack) {
+        return itemSized(stack, 1);
+    }
+
+    public static SizedIngredient itemSized(ItemLike stack, int c) {
+        return SizedIngredient.of(stack, c);
+    }
+
+    public static SizedIngredient itemSized(TagKey<Item> stack, int c) {
+        return SizedIngredient.of(stack, c);
+    }
+
+    public static SizedIngredient itemSized(ItemStack stack) {
+        return itemSized(stack.getItem(), stack.getCount());
+    }
+
+    public static SizedIngredient itemSized() {
+        return itemSized(Ingredient.EMPTY, 1);
+    }
+
+    public static SizedIngredient itemSized(Ingredient i,int c) {
+        return new SizedIngredient(i, c);
+    }
+    public static SizedIngredient itemSized(Ingredient i) {
+        return itemSized(i, 1);
+    }
+
     public static List<FluidStack> getFluids(SizedFluidIngredient i) {
         return Arrays.asList(i.getFluids());
+    }
+
+    public static SizedFluidIngredient fluidSized() {
+        return new SizedFluidIngredient(FluidIngredient.empty(), 1);
+    }
+
+    public static boolean matchAny(SizedFluidIngredient s, SizedFluidIngredient f) {
+        return getFluids(s).stream().anyMatch(i -> f.test(i));
+    }
+
+    public static boolean matchAny(SizedIngredient s, SizedIngredient f) {
+        return getItems(s).stream().anyMatch(i -> f.test(i));
     }
 
     public static List<ItemStack> getItems(SizedIngredient i) {

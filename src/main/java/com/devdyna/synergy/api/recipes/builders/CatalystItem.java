@@ -2,11 +2,14 @@ package com.devdyna.synergy.api.recipes.builders;
 
 import java.util.Arrays;
 
+import com.devdyna.synergy.api.utils.x;
+
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings("unchecked")
@@ -14,7 +17,11 @@ public interface CatalystItem<BUILDER extends BaseRecipeBuilder> extends Builder
 
     abstract BUILDER consumeCatalyst();
 
-    abstract BUILDER catalyst(Ingredient catalyst);
+    abstract BUILDER catalyst(SizedIngredient catalyst);
+
+    default BUILDER catalyst(Ingredient catalyst) {
+        return catalyst(x.itemSized(catalyst));
+    }
 
     default BUILDER catalyst(ItemStack... catalyst) {
         return catalyst(Ingredient.of(catalyst));

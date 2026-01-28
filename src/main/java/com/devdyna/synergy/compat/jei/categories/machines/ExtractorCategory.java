@@ -46,7 +46,7 @@ public class ExtractorCategory extends BaseMachineRecipeCategory<ExtractorRecipe
         @Override
         public void setRecipe(IRecipeLayoutBuilder builder, ExtractorRecipeType recipe, IFocusGroup focuses) {
 
-                builder.addInputSlot(2, 5).addIngredients(recipe.getInputItem());
+                builder.addInputSlot(2, 5).addItemStacks(x.getItems(recipe.getInputItem()));
                 if (recipe.hasSecondaryOutput())
                         builder.addOutputSlot(81, 5).addItemStack(recipe.getSecondaryItem());
 

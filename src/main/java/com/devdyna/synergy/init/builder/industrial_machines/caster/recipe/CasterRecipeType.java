@@ -17,14 +17,14 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
 @SuppressWarnings("null")
 public class CasterRecipeType extends BaseMachineRecipeType<FluidInput> {
 
-    public CasterRecipeType(int ticks, int energy, SizedFluidIngredient fluid, Ingredient input,
+    public CasterRecipeType(int ticks, int energy, SizedFluidIngredient fluid, SizedIngredient input,
             boolean consumeCatalyst, ItemStack output) {
         this.input = input;
         this.ticks = ticks;
@@ -34,7 +34,7 @@ public class CasterRecipeType extends BaseMachineRecipeType<FluidInput> {
         this.consumeCatalyst = consumeCatalyst;
     }
 
-    public static CasterRecipeType of(int ticks, int energy, SizedFluidIngredient fluid, Ingredient input,
+    public static CasterRecipeType of(int ticks, int energy, SizedFluidIngredient fluid, SizedIngredient input,
             boolean consumeCatalyst, ItemStack output) {
         return new CasterRecipeType(ticks, energy, fluid, input, consumeCatalyst, output);
     }
@@ -67,10 +67,8 @@ public class CasterRecipeType extends BaseMachineRecipeType<FluidInput> {
 
                 SizedFluidIngredient.FLAT_CODEC.fieldOf("input_fluid").forGetter(CasterRecipeType::getFluidInput),
 
-                Ingredient.CODEC.optionalFieldOf("input_item", Ingredient.EMPTY)
-                        .forGetter(r -> (r.getInputItem() == null || r.getInputItem().isEmpty())
-                                ? Ingredient.EMPTY
-                                : r.getInputItem()),
+                SizedIngredient.FLAT_CODEC.optionalFieldOf("input_item",x.itemSized())
+                        .forGetter(r->(r.getInputItem() == null || x.getItems(r.getInputItem()).isEmpty()) ? x.itemSized() : r.getInputItem()),
                 Codec.BOOL.fieldOf("consume_item").forGetter(CasterRecipeType::consumeCatalyst),
                 ItemStack.CODEC.fieldOf("output").forGetter(CasterRecipeType::getOutputItem)
 
@@ -84,8 +82,8 @@ public class CasterRecipeType extends BaseMachineRecipeType<FluidInput> {
                         ByteBufCodecs.INT, CasterRecipeType::getEnergy,
                         SizedFluidIngredient.STREAM_CODEC, CasterRecipeType::getFluidInput,
 
-                        ByteBufCodecs.optional(Ingredient.CONTENTS_STREAM_CODEC),
-                        r -> (r.getInputItem() == null || r.getInputItem().isEmpty())
+                        ByteBufCodecs.optional(SizedIngredient.STREAM_CODEC),
+                        r -> (r.getInputItem() == null || x.getItems(r.getInputItem()).isEmpty())
                                 ? Optional.empty()
                                 : Optional.of(r.getInputItem()),
 
@@ -97,7 +95,7 @@ public class CasterRecipeType extends BaseMachineRecipeType<FluidInput> {
                                 ticks,
                                 energy,
                                 f,
-                                i.orElse(Ingredient.EMPTY),
+                                i.orElse(null),
                                 o, c));
 
         @Override

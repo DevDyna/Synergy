@@ -15,7 +15,7 @@ import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
 import com.devdyna.synergy.api.recipes.builders.SimpleFluidAttach;
 import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
-import com.devdyna.synergy.api.recipes.builders.SimpleInputItem;
+import com.devdyna.synergy.api.recipes.builders.InputItem;
 import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
@@ -36,29 +36,30 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings({ "unused", "null" })
 public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilder<T>> extends BaseRecipeBuilder
-        implements SimpleInputItem<T>, SimpleOutputItem<T> {
+        implements InputItem<T>, SimpleOutputItem<T> {
 
     public abstract MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<? extends RecipeInput>> getMachine();
 
     protected int ticks = BaseMachineBE.DEFAULT_TICK_DURATION;
     protected int energy = BaseMachineBE.DEFAULT_FE_COST;
-    protected Ingredient input;
-    protected Ingredient optional_input = Ingredient.EMPTY;
+    protected SizedIngredient input;
+    protected SizedIngredient optional_input = x.itemSized();
     protected ItemStack output;
-    protected ItemStack secondary = ItemStack.EMPTY;
-    protected Ingredient catalyst = Ingredient.EMPTY;
+    protected ItemStack optional_output = ItemStack.EMPTY;
+    protected SizedIngredient extra_input = x.itemSized();
     protected float chance;
     protected boolean consumeCatalyst = false;
     protected SizedFluidIngredient fluid_input;
     protected FluidStack fluid_output = FluidStack.EMPTY;
 
-    public T input(Ingredient input) {
+    public T input(SizedIngredient input) {
         this.input = input;
         return getBuilder();
     }
@@ -117,14 +118,14 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
     @Override
     public ResourceLocation getSuffix(String extra) {
 
-        if (this instanceof SimpleFluidAttach && (fluid_output != null || !fluid_output.isEmpty())) {
-            if (output == null)
-                return x.rl(getMachine().id() + "/" + x.path(fluid_output.getFluid())
-                        + extra);
-        }
+        if (output != null && !output.isEmpty())
+            return x.rl(getMachine().id() + "/" + x.path(output.getItem())
+                    + extra);
 
-        return x.rl(getMachine().id() + "/" + x.path(output.getItem())
-                + extra);
+        if (this instanceof SimpleFluidAttach && fluid_output != null && !fluid_output.isEmpty())
+            return x.rl(getMachine().id() + "/" + x.path(fluid_output.getFluid()) + extra);
+
+        return x.rl(getMachine().id() + "/" + x.path(optional_output.getItem()) + extra);
     }
 
     public abstract T getBuilder();

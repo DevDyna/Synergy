@@ -139,8 +139,8 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
 
         updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
 
-        getInput().shrink(1);
-        getExtraSlot1().shrink(1);
+        getInput().shrink(recipe.getInputItem().count());
+        getExtraSlot1().shrink(recipe.getCatalystItem().count());
 
         progress = 0;
         setChanged();

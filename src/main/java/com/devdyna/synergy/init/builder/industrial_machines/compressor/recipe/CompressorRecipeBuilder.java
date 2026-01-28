@@ -11,12 +11,13 @@ import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.api.recipes.builders.CatalystItem;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 @SuppressWarnings({ "null" })
-public class CompressorRecipeBuilder extends BaseMachineRecipeBuilder<CompressorRecipeBuilder> implements CatalystItem<CompressorRecipeBuilder> {
+public class CompressorRecipeBuilder extends BaseMachineRecipeBuilder<CompressorRecipeBuilder>
+        implements CatalystItem<CompressorRecipeBuilder> {
 
     private CompressorRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
@@ -28,7 +29,7 @@ public class CompressorRecipeBuilder extends BaseMachineRecipeBuilder<Compressor
 
     @Override
     public Recipe<?> createRecipe() {
-        return new CompressorRecipeType(ticks,energy,input,catalyst,consumeCatalyst,output);
+        return new CompressorRecipeType(ticks, energy, input, optional_input, consumeCatalyst, output);
     }
 
     @Override
@@ -37,8 +38,8 @@ public class CompressorRecipeBuilder extends BaseMachineRecipeBuilder<Compressor
     }
 
     @Override
-    public CompressorRecipeBuilder catalyst(Ingredient catalyst) {
-        this.catalyst = catalyst;
+    public CompressorRecipeBuilder catalyst(SizedIngredient catalyst) {
+        this.optional_input = catalyst;
         return getBuilder();
     }
 
@@ -46,8 +47,6 @@ public class CompressorRecipeBuilder extends BaseMachineRecipeBuilder<Compressor
         this.consumeCatalyst = true;
         return getBuilder();
     }
-
-    
 
     @Override
     public CompressorRecipeBuilder getBuilder() {

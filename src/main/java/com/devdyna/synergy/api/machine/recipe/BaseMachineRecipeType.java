@@ -16,6 +16,7 @@ import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
@@ -24,21 +25,14 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
 
     public int ticks;
     public int energy;
-
-    public Ingredient input;
-
+    public SizedIngredient input;
+    public SizedIngredient optional_input;
     public ItemStack output;
-
-    public ItemStack secondary;
-
-    public Ingredient catalyst;
-
+    public ItemStack optional_output;
+    // public SizedIngredient extra_input;
     public float chance;
-
     public boolean consumeCatalyst;
-
     public SizedFluidIngredient fluid_input;
-
     public FluidStack fluid_output;
 
     public boolean consumeCatalyst() {
@@ -53,7 +47,7 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return ticks;
     }
 
-    public Ingredient getInputItem() {
+    public SizedIngredient getInputItem() {
         return input;
     }
 
@@ -62,11 +56,11 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
     }
 
     public ItemStack getSecondaryItem() {
-        return secondary;
+        return optional_output;
     }
 
-    public Ingredient getCatalystItem() {
-        return catalyst;
+    public SizedIngredient getCatalystItem() {
+        return optional_input;
     }
 
     public FluidStack getFluidOutput() {
@@ -94,9 +88,10 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
 
     public NonNullList<Ingredient> getIngredients() {
         var list = new ArrayList<Ingredient>();
-        list.add(getInputItem());
+        if(getInputItem() != null)
+        list.add(getInputItem().ingredient());
         if (hasCatalyst() && getCatalystItem() != null)
-            list.add(getCatalystItem());
+            list.add(getCatalystItem().ingredient());
         return NonNullList.copyOf(list);
     }
 
@@ -112,7 +107,7 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
 
     public boolean matches(T r, Level l) {
 
-        if (getInputItem().isEmpty() || getInputItem() == null) {
+        if (x.getItems(getInputItem()).isEmpty() || getInputItem() == null) {
             if (getFluidInput() != null && !x.getFluids(getFluidInput()).isEmpty())
                 return x.getFluids(getRecipeFluidInput(r)).stream().anyMatch(i -> getFluidInput().test(i));
         } else {

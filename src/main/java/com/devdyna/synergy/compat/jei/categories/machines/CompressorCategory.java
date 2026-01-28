@@ -48,14 +48,14 @@ public class CompressorCategory extends BaseMachineRecipeCategory<CompressorReci
         @Override
         public void setRecipe(IRecipeLayoutBuilder builder, CompressorRecipeType recipe, IFocusGroup focuses) {
 
-                builder.addInputSlot(2, 2).addIngredients(recipe.getInputItem());
+                builder.addInputSlot(2, 2).addItemStacks(x.getItems(recipe.getInputItem()));
 
-                var catalyst = builder.addInputSlot(2, 38).addIngredients(recipe.getCatalystItem());
+    if(recipe.getCatalystItem() != null) {           var catalyst = builder.addInputSlot(2, 38).addItemStacks(x.getItems(recipe.getCatalystItem()));
 
                 if (!recipe.consumeCatalyst())
                         catalyst.addRichTooltipCallback(
                                         (v, t) -> t.add(Component.translatable(ID + ".jei.tip.dont_consume")));
-
+}
                 builder.addOutputSlot(74, 21).addItemStack(recipe.getOutputItem());
 
         }

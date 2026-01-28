@@ -136,7 +136,7 @@ public class ElectricFurnaceBE extends BaseMachineBE {
 
         updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
 
-        getInput().shrink(1);
+        getInput().shrink(recipe.getInputItem().count());
 
         progress = 0;
         setChanged();

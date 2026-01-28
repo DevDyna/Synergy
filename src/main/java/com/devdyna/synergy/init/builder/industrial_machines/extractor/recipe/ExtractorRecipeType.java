@@ -16,24 +16,24 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings("null")
 public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
-    public ExtractorRecipeType(int ticks, int energy, Ingredient input,
+    public ExtractorRecipeType(int ticks, int energy, SizedIngredient input,
             ItemStack secondary, FluidStack fluid, float chance) {
         this.input = input;
         this.ticks = ticks;
-        this.secondary = secondary;
+        this.optional_output = secondary;
         this.energy = energy;
         this.fluid_output = fluid;
         this.chance = chance;
     }
 
-    public static ExtractorRecipeType of(int ticks, int energy, Ingredient input,
+    public static ExtractorRecipeType of(int ticks, int energy, SizedIngredient input,
             ItemStack secondary, FluidStack fluid, float chance) {
         return new ExtractorRecipeType(ticks, energy, input, secondary, fluid, chance);
     }
@@ -59,7 +59,7 @@ public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                 Codec.intRange(1, Integer.MAX_VALUE).fieldOf("ticks").forGetter(ExtractorRecipeType::getTime),
                 Codec.intRange(1, Integer.MAX_VALUE).fieldOf("energy").forGetter(ExtractorRecipeType::getEnergy),
 
-                Ingredient.CODEC.fieldOf("input").forGetter(ExtractorRecipeType::getInputItem),
+                SizedIngredient.FLAT_CODEC.fieldOf("input").forGetter(ExtractorRecipeType::getInputItem),
 
                 ItemStack.CODEC.optionalFieldOf("output_item", ItemStack.EMPTY)
                         .forGetter(r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())
@@ -77,7 +77,7 @@ public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
                         ByteBufCodecs.INT, ExtractorRecipeType::getTime,
                         ByteBufCodecs.INT, ExtractorRecipeType::getEnergy,
-                        Ingredient.CONTENTS_STREAM_CODEC, ExtractorRecipeType::getInputItem,
+                        SizedIngredient.STREAM_CODEC, ExtractorRecipeType::getInputItem,
 
                         ByteBufCodecs.optional(ItemStack.STREAM_CODEC),
                         r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())

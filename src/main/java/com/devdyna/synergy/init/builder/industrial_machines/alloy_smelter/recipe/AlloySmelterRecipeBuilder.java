@@ -11,9 +11,9 @@ import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.api.recipes.builders.DoubleInputItem;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 @SuppressWarnings({ "null" })
 public class AlloySmelterRecipeBuilder extends BaseMachineRecipeBuilder<AlloySmelterRecipeBuilder>
@@ -29,7 +29,7 @@ public class AlloySmelterRecipeBuilder extends BaseMachineRecipeBuilder<AlloySme
 
     @Override
     public Recipe<?> createRecipe() {
-        return new AlloySmelterRecipeType(ticks, energy, input, catalyst, output);
+        return new AlloySmelterRecipeType(ticks, energy, input, extra_input, output);
     }
 
     @Override
@@ -43,9 +43,9 @@ public class AlloySmelterRecipeBuilder extends BaseMachineRecipeBuilder<AlloySme
     }
 
     @Override
-    public AlloySmelterRecipeBuilder inputs(Ingredient right, Ingredient left) {
+    public AlloySmelterRecipeBuilder inputs(SizedIngredient right, SizedIngredient left) {
         this.input = right;
-        this.catalyst = left;
+        this.extra_input = left;
         return getBuilder();
     }
 

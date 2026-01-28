@@ -48,8 +48,8 @@ public class CasterCategory extends BaseMachineRecipeCategory<CasterRecipeType> 
         @Override
         public void setRecipe(IRecipeLayoutBuilder builder, CasterRecipeType recipe, IFocusGroup focuses) {
 
-                if (!recipe.getInputItem().isEmpty()) {
-                        var item = builder.addInputSlot(2 + 21, 5).addIngredients(recipe.getInputItem());
+                if (recipe.getInputItem() != null && !x.getItems(recipe.getInputItem()).isEmpty()) {
+                        var item = builder.addInputSlot(2 + 21, 5).addItemStacks(x.getItems(recipe.getInputItem()));
 
                         if (!recipe.consumeCatalyst())
                                 item.addRichTooltipCallback(

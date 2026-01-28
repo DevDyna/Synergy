@@ -29,7 +29,7 @@ public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder<MaceratorRe
 
     @Override
     public Recipe<?> createRecipe() {
-        return new MaceratorRecipeType(ticks, energy, input, output, secondary, chance);
+        return new MaceratorRecipeType(ticks, energy, input, output, optional_output, chance);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder<MaceratorRe
     }
 
     public MaceratorRecipeBuilder secondary(ItemStack secondary, float chance) {
-        this.secondary = secondary;
+        this.optional_output = secondary;
         this.chance = chance;
         return getBuilder();
     }

@@ -1,5 +1,7 @@
-package com.devdyna.synergy.api.recipes.builders;
+package com.devdyna.synergy.api.recipes.builders.legacy;
 
+import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
+import com.devdyna.synergy.api.recipes.builders.BuilderAttach;
 import com.devdyna.synergy.api.utils.x;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -10,7 +12,6 @@ public interface SimpleInputItem<BUILDER extends BaseRecipeBuilder> extends Buil
 
     abstract BUILDER input(Ingredient input);
 
-    
     default BUILDER input(Item input) {
         return input(x.ingredient(input));
     }

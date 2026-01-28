@@ -17,23 +17,23 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 @SuppressWarnings("null")
 public class MaceratorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
-    public MaceratorRecipeType(int ticks, int energy, Ingredient input,
+    public MaceratorRecipeType(int ticks, int energy, SizedIngredient  input,
             ItemStack output, ItemStack secondary, float chance) {
         this.input = input;
         this.ticks = ticks;
         this.output = output;
         this.energy = energy;
-        this.secondary = secondary;
+        this.optional_output = secondary;
         this.chance = chance;
     }
 
-    public static MaceratorRecipeType of(int ticks, int energy, Ingredient input,
+    public static MaceratorRecipeType of(int ticks, int energy, SizedIngredient input,
             ItemStack output, ItemStack secondary, float chance) {
         return new MaceratorRecipeType(ticks, energy, input, output, secondary, chance);
     }
@@ -59,7 +59,7 @@ public class MaceratorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                 Codec.intRange(1, Integer.MAX_VALUE).fieldOf("ticks").forGetter(MaceratorRecipeType::getTime),
                 Codec.intRange(1, Integer.MAX_VALUE).fieldOf("energy").forGetter(MaceratorRecipeType::getEnergy),
 
-                Ingredient.CODEC.fieldOf("input").forGetter(MaceratorRecipeType::getInputItem),
+                SizedIngredient.FLAT_CODEC.fieldOf("input").forGetter(MaceratorRecipeType::getInputItem),
                 ItemStack.CODEC.fieldOf("output").forGetter(MaceratorRecipeType::getOutputItem),
                 ItemStack.CODEC.optionalFieldOf("secondary", ItemStack.EMPTY)
                         .forGetter(r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())
@@ -72,7 +72,7 @@ public class MaceratorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                 .composite(
                         ByteBufCodecs.INT, MaceratorRecipeType::getTime,
                         ByteBufCodecs.INT, MaceratorRecipeType::getEnergy,
-                        Ingredient.CONTENTS_STREAM_CODEC, MaceratorRecipeType::getInputItem,
+                        SizedIngredient.STREAM_CODEC, MaceratorRecipeType::getInputItem,
                         ItemStack.STREAM_CODEC, MaceratorRecipeType::getOutputItem,
                         ByteBufCodecs.optional(ItemStack.STREAM_CODEC),
                         r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())

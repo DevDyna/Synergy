@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
 import com.devdyna.synergy.api.recipes.builders.ListedOutputItemStack;
-import com.devdyna.synergy.api.recipes.builders.SimpleInputItem;
+import com.devdyna.synergy.api.recipes.builders.legacy.SimpleInputItem;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.CropResultRecipe;
 

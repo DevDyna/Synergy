@@ -15,24 +15,24 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 @SuppressWarnings("null")
 public class AlloySmelterRecipeType extends BaseMachineRecipeType<BiItemInput> {
 
-    public AlloySmelterRecipeType(int ticks, int energy, Ingredient right,Ingredient left,
+    public AlloySmelterRecipeType(int ticks, int energy, SizedIngredient  right,SizedIngredient  left,
             ItemStack output ) {
         this.input = right;
-        this.catalyst = left;
+        this.optional_input = left;
         this.ticks = ticks;
         this.output = output;
         this.energy = energy;
   
     }
 
-    public static AlloySmelterRecipeType of(int ticks, int energy, Ingredient right,
-            Ingredient left, ItemStack output) {
+    public static AlloySmelterRecipeType of(int ticks, int energy, SizedIngredient  right,
+            SizedIngredient  left, ItemStack output) {
         return new AlloySmelterRecipeType(ticks, energy, right, left, output);
     }
 
@@ -61,8 +61,8 @@ public class AlloySmelterRecipeType extends BaseMachineRecipeType<BiItemInput> {
         public static final MapCodec<AlloySmelterRecipeType> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
                 Codec.intRange(1, Integer.MAX_VALUE).fieldOf("ticks").forGetter(AlloySmelterRecipeType::getTime),
                 Codec.intRange(1, Integer.MAX_VALUE).fieldOf("energy").forGetter(AlloySmelterRecipeType::getEnergy),
-                Ingredient.CODEC.fieldOf("right").forGetter(AlloySmelterRecipeType::getInputItem),
-                Ingredient.CODEC.fieldOf("left").forGetter(AlloySmelterRecipeType::getCatalystItem),
+                SizedIngredient.FLAT_CODEC.fieldOf("right").forGetter(AlloySmelterRecipeType::getInputItem),
+                SizedIngredient.FLAT_CODEC.fieldOf("left").forGetter(AlloySmelterRecipeType::getCatalystItem),
                 ItemStack.CODEC.fieldOf("output").forGetter(AlloySmelterRecipeType::getOutputItem))
                 .apply(inst, AlloySmelterRecipeType::new));
 
@@ -70,8 +70,8 @@ public class AlloySmelterRecipeType extends BaseMachineRecipeType<BiItemInput> {
                 .composite(
                         ByteBufCodecs.INT, AlloySmelterRecipeType::getTime,
                         ByteBufCodecs.INT, AlloySmelterRecipeType::getEnergy,
-                        Ingredient.CONTENTS_STREAM_CODEC, AlloySmelterRecipeType::getInputItem,
-                        Ingredient.CONTENTS_STREAM_CODEC,AlloySmelterRecipeType::getCatalystItem,
+                        SizedIngredient.STREAM_CODEC, AlloySmelterRecipeType::getInputItem,
+                        SizedIngredient.STREAM_CODEC,AlloySmelterRecipeType::getCatalystItem,
                         ItemStack.STREAM_CODEC, AlloySmelterRecipeType::getOutputItem,
                         AlloySmelterRecipeType::new);
 

@@ -15,13 +15,13 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 @SuppressWarnings("null")
 public class ElectricFurnaceRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
-    public ElectricFurnaceRecipeType(int ticks, int energy, Ingredient input,
+    public ElectricFurnaceRecipeType(int ticks, int energy, SizedIngredient input,
             ItemStack output) {
         this.input = input;
         this.ticks = ticks;
@@ -29,7 +29,7 @@ public class ElectricFurnaceRecipeType extends BaseMachineRecipeType<MonoItemInp
         this.energy = energy;
     }
 
-    public static ElectricFurnaceRecipeType of(int ticks, int energy, Ingredient input,
+    public static ElectricFurnaceRecipeType of(int ticks, int energy, SizedIngredient input,
             ItemStack output) {
         return new ElectricFurnaceRecipeType(ticks, energy, input, output);
     }
@@ -50,7 +50,7 @@ public class ElectricFurnaceRecipeType extends BaseMachineRecipeType<MonoItemInp
                 Codec.intRange(1, Integer.MAX_VALUE).fieldOf("ticks").forGetter(ElectricFurnaceRecipeType::getTime),
                 Codec.intRange(1, Integer.MAX_VALUE).fieldOf("energy").forGetter(ElectricFurnaceRecipeType::getEnergy),
 
-                Ingredient.CODEC.fieldOf("input").forGetter(ElectricFurnaceRecipeType::getInputItem),
+                SizedIngredient.FLAT_CODEC.fieldOf("input").forGetter(ElectricFurnaceRecipeType::getInputItem),
                 ItemStack.CODEC.fieldOf("output").forGetter(ElectricFurnaceRecipeType::getOutputItem))
                 .apply(inst, ElectricFurnaceRecipeType::new));
 
@@ -58,7 +58,7 @@ public class ElectricFurnaceRecipeType extends BaseMachineRecipeType<MonoItemInp
                 .composite(
                         ByteBufCodecs.INT, ElectricFurnaceRecipeType::getTime,
                         ByteBufCodecs.INT, ElectricFurnaceRecipeType::getEnergy,
-                        Ingredient.CONTENTS_STREAM_CODEC, ElectricFurnaceRecipeType::getInputItem,
+                        SizedIngredient.STREAM_CODEC, ElectricFurnaceRecipeType::getInputItem,
                         ItemStack.STREAM_CODEC, ElectricFurnaceRecipeType::getOutputItem,
                         ElectricFurnaceRecipeType::new);
 

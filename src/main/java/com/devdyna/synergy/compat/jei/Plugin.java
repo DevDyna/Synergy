@@ -62,11 +62,11 @@ public class Plugin implements IModPlugin {
                 // List<RecipeHolder<CraftingRecipe>> toHide = new ArrayList<>();
 
                 // ClazzUtil.getAllzItems().forEach(b -> {
-                //         if (ExtraRecipeProvider.clearNBT.contains(b.get())) {
-                //                 Minecraft.getInstance().level.getRecipeManager()
-                //                                 .byKey(x.parse(ID + ":" + x.path(b.get()) + "_clear_nbt"))
-                //                                 .ifPresent(r -> toHide.add((RecipeHolder<CraftingRecipe>) r));
-                //         }
+                // if (ExtraRecipeProvider.clearNBT.contains(b.get())) {
+                // Minecraft.getInstance().level.getRecipeManager()
+                // .byKey(x.parse(ID + ":" + x.path(b.get()) + "_clear_nbt"))
+                // .ifPresent(r -> toHide.add((RecipeHolder<CraftingRecipe>) r));
+                // }
                 // });
 
                 // jeiRuntime.getRecipeManager().hideRecipes(RecipeTypes.CRAFTING, toHide);
@@ -182,10 +182,14 @@ public class Plugin implements IModPlugin {
                                                                                                         "")),
                                                                         (ElectricFurnaceRecipeType) ElectricFurnaceRecipeBuilder
                                                                                         .of()
-                                                                                        .delay(ElectricFurnaceBE.getCalculatedDelay(s.value()))
-                                                                                        .energy(Common.MACHINE_FURNACE_PROCESS_VANILLA_FE_COST.get())
-                                                                                        .input(s.value().getIngredients()
-                                                                                                        .getFirst())
+                                                                                        .delay(ElectricFurnaceBE
+                                                                                                        .getCalculatedDelay(
+                                                                                                                        s.value()))
+                                                                                        .energy(Common.MACHINE_FURNACE_PROCESS_VANILLA_FE_COST
+                                                                                                        .get())
+                                                                                        .input(x.itemSized(s.value()
+                                                                                                        .getIngredients()
+                                                                                                        .getFirst()))
                                                                                         .output(s.value().getResultItem(
                                                                                                         ServerLifecycleHooks
                                                                                                                         .getCurrentServer()

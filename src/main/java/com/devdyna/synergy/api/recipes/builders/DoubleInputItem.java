@@ -5,32 +5,16 @@ import com.devdyna.synergy.api.utils.x;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public interface DoubleInputItem<BUILDER extends BaseRecipeBuilder> extends SimpleInputItem<BUILDER> {
+public interface DoubleInputItem<BUILDER extends BaseRecipeBuilder> extends InputItem<BUILDER> {
 
-    abstract BUILDER inputs(Ingredient right, Ingredient left);
+    abstract BUILDER inputs(SizedIngredient right, SizedIngredient left);
 
-    /**
-     * USE <code>input(Ingredient right, Ingredient left)</code> intend of this
-     * 
-     * @deprecated
-     */
-    @Deprecated(forRemoval = false, since = "''USE input(Ingredient right, Ingredient left)''")
-    default BUILDER input(Ingredient input) {
-        return null;
+    default BUILDER inputs(Ingredient right, Ingredient left) {
+        return inputs(x.itemSized(right), x.itemSized(left));
     }
-
-    /**
-     * USE <code>input(Ingredient right, Ingredient left)</code> intend of this
-     * 
-     * @deprecated
-     */
-    @Deprecated(forRemoval = false, since = "''USE input(Ingredient right, Ingredient left)''")
-    default BUILDER catalyst(Ingredient input) {
-        return null;
-    }
-
     default BUILDER inputs(Item right, Item left) {
         return inputs(x.ingredient(right), x.ingredient(left));
     }

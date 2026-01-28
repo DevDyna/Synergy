@@ -146,7 +146,7 @@ public class ExtractorBE extends BaseMachineBE implements FluidTankStorage {
                 getFluidStorage().fill(fluid_out, FluidAction.EXECUTE);
         }
 
-        getInput().shrink(1);
+        getInput().shrink(recipe.getInputItem().count());
 
         progress = 0;
         setChanged();

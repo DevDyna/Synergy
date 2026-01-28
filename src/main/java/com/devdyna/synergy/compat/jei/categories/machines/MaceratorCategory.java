@@ -44,7 +44,7 @@ public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipe
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, MaceratorRecipeType recipe, IFocusGroup focuses) {
 
-        builder.addInputSlot(2, 14).addIngredients(recipe.getInputItem());
+        builder.addInputSlot(2, 14).addItemStacks(x.getItems(recipe.getInputItem()));
         builder.addOutputSlot(74, 6).addItemStack(recipe.getOutputItem());
         if (recipe.hasSecondaryOutput()) {
             builder.addOutputSlot(74, 31).addItemStack(recipe.getSecondaryItem());

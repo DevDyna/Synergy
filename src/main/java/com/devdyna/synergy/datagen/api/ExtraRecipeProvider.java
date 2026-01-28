@@ -154,13 +154,13 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c, "_from_ingot");
 
-                MaceratorRecipeBuilder.of().input(x.ingredient(raw.asItem()))
+                MaceratorRecipeBuilder.of().input(x.itemSized(raw.asItem()))
                                 .output(x.item(dust.asItem(), 3))
                                 .secondary(secondary)
                                 .chance(chance)
                                 .unlockedBy().save(c, "_from_raw");
 
-                MaceratorRecipeBuilder.of().input(x.ingredient(ingot.asItem()))
+                MaceratorRecipeBuilder.of().input(x.itemSized(ingot.asItem()))
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c, "_from_ingot");
 
@@ -182,7 +182,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c, "_from_ingot");
 
-                MaceratorRecipeBuilder.of().input(x.ingredient(raw))
+                MaceratorRecipeBuilder.of().input(x.itemSized(raw))
                                 .output(x.item(dust.asItem(), 3))
                                 .secondary(secondary)
                                 .chance(chance)
@@ -192,7 +192,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                                                 new TagEmptyCondition(raw)) }),
                                                 "_from_raw");
 
-                MaceratorRecipeBuilder.of().input(x.ingredient(ingot.asItem()))
+                MaceratorRecipeBuilder.of().input(x.itemSized(ingot.asItem()))
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c, "_from_ingot");
 
@@ -210,7 +210,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                                                 new TagEmptyCondition(raw)) }),
                                                 "_from_raw");
 
-                MaceratorRecipeBuilder.of().input(x.ingredient(raw))
+                MaceratorRecipeBuilder.of().input(x.itemSized(raw))
                                 .output(x.item(dust.asItem(), 3))
                                 .secondary(secondary)
                                 .chance(chance)
@@ -228,7 +228,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                                                 new TagEmptyCondition(ingotTag)) }),
                                                 "_from_ingot");
 
-                MaceratorRecipeBuilder.of().input(x.ingredient(ingotTag))
+                MaceratorRecipeBuilder.of().input(x.itemSized(ingotTag))
                                 .output(x.item(dust.asItem()))
                                 .unlockedBy().save(c.withConditions(
                                                 new ICondition[] {

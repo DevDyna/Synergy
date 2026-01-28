@@ -15,21 +15,21 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings("null")
 public class MelterRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
-    public MelterRecipeType(int ticks, int energy, Ingredient input, FluidStack fluid) {
+    public MelterRecipeType(int ticks, int energy, SizedIngredient input, FluidStack fluid) {
         this.input = input;
         this.ticks = ticks;
         this.energy = energy;
         this.fluid_output = fluid;
     }
 
-    public static MelterRecipeType of(int ticks, int energy, Ingredient input,
+    public static MelterRecipeType of(int ticks, int energy, SizedIngredient input,
             FluidStack fluid) {
         return new MelterRecipeType(ticks, energy, input, fluid);
     }
@@ -55,7 +55,7 @@ public class MelterRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                 Codec.intRange(1, Integer.MAX_VALUE).fieldOf("ticks").forGetter(MelterRecipeType::getTime),
                 Codec.intRange(1, Integer.MAX_VALUE).fieldOf("energy").forGetter(MelterRecipeType::getEnergy),
 
-                Ingredient.CODEC.fieldOf("input").forGetter(MelterRecipeType::getInputItem),
+                SizedIngredient.FLAT_CODEC.fieldOf("input").forGetter(MelterRecipeType::getInputItem),
 
                 FluidStack.CODEC.fieldOf("fluid").forGetter(MelterRecipeType::getFluidOutput))
                 .apply(inst, MelterRecipeType::new));
@@ -65,9 +65,9 @@ public class MelterRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
                         ByteBufCodecs.INT, MelterRecipeType::getTime,
                         ByteBufCodecs.INT, MelterRecipeType::getEnergy,
-                        Ingredient.CONTENTS_STREAM_CODEC, MelterRecipeType::getInputItem,
-                        FluidStack.STREAM_CODEC,MelterRecipeType::getFluidOutput,
-                        (ticks, energy, input,  c) -> new MelterRecipeType(
+                        SizedIngredient.STREAM_CODEC, MelterRecipeType::getInputItem,
+                        FluidStack.STREAM_CODEC, MelterRecipeType::getFluidOutput,
+                        (ticks, energy, input, c) -> new MelterRecipeType(
                                 ticks,
                                 energy,
                                 input,
