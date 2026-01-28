@@ -4,7 +4,7 @@
   "energy": 500,
   "input_fluid": {
     "amount": 90,
-    "id": "synergy:molten_iridium_source"
+    "fluid": "synergy:molten_iridium_source"
   },
   "input_item": {
     "item": "synergy:ingot_mold"

@@ -4,7 +4,7 @@
   "energy": 500,
   "input_fluid": {
     "amount": 250,
-    "id": "minecraft:water"
+    "tag": "c:water"
   },
   "input_item": {
     "item": "minecraft:cobblestone"

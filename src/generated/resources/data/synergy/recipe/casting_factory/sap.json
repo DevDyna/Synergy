@@ -4,7 +4,7 @@
   "energy": 500,
   "input_fluid": {
     "amount": 250,
-    "id": "synergy:sap_source"
+    "fluid": "synergy:sap_source"
   },
   "output": {
     "count": 1,

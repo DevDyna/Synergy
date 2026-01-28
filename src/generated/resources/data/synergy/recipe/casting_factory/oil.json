@@ -4,7 +4,7 @@
   "energy": 500,
   "input_fluid": {
     "amount": 250,
-    "id": "synergy:oil_source"
+    "fluid": "synergy:oil_source"
   },
   "output": {
     "count": 1,

@@ -4,7 +4,7 @@
   "energy": 500,
   "input_fluid": {
     "amount": 1000,
-    "id": "synergy:honey_source"
+    "fluid": "synergy:honey_source"
   },
   "input_item": {
     "item": "synergy:block_mold"

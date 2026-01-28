@@ -4,7 +4,7 @@
   "energy": 500,
   "input_fluid": {
     "amount": 250,
-    "id": "synergy:glue_source"
+    "fluid": "synergy:glue_source"
   },
   "output": {
     "count": 1,
