@@ -38,7 +38,7 @@
 
 - [x] machine secondary slots dont work with capabilities
 
-- [ ] Casting Factory -> Input FluidStack -> SizedFluidIngredient
+- [x] Casting Factory -> Input FluidStack -> SizedFluidIngredient
 
 - [ ] Casting Factory -> Input Ingredient -> SizedIngredient
 - [ ] Melter -> Input Ingredient -> SizedIngredient
