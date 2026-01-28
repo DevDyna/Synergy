@@ -1,17 +1,27 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:raw_materials/tin"
+      }
+    }
+  ],
   "type": "synergy:macerator",
   "chance": 0.25,
   "energy": 500,
   "input": {
-    "item": "minecraft:raw_iron"
+    "count": 1,
+    "tag": "c:raw_materials/tin"
   },
   "output": {
     "count": 3,
-    "id": "synergy:iron_dust"
+    "id": "synergy:tin_dust"
   },
   "secondary": {
     "count": 1,
-    "id": "synergy:nickel_dust"
+    "id": "synergy:iron_dust"
   },
   "ticks": 100
 }
