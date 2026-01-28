@@ -6,6 +6,7 @@
     "id": "synergy:molten_tin_source"
   },
   "input": {
+    "count": 1,
     "tag": "c:ingots/tin"
   },
   "ticks": 400

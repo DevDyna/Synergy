@@ -7,6 +7,7 @@
     "fluid": "synergy:molten_iron_source"
   },
   "input_item": {
+    "count": 1,
     "item": "synergy:gear_mold"
   },
   "output": {

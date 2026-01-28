@@ -6,6 +6,7 @@
     "id": "synergy:molten_uranium_source"
   },
   "input": {
+    "count": 1,
     "tag": "c:ingots/uranium"
   },
   "ticks": 400

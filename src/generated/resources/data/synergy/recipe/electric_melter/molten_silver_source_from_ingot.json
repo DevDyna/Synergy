@@ -6,6 +6,7 @@
     "id": "synergy:molten_silver_source"
   },
   "input": {
+    "count": 1,
     "tag": "c:ingots/silver"
   },
   "ticks": 400

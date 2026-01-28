@@ -6,6 +6,7 @@
     "id": "synergy:molten_gold_source"
   },
   "input": {
+    "count": 1,
     "item": "synergy:gold_gear"
   },
   "ticks": 400

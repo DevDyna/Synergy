@@ -6,6 +6,7 @@
     "id": "synergy:molten_copper_source"
   },
   "input": {
+    "count": 1,
     "tag": "c:ingots/copper"
   },
   "ticks": 400

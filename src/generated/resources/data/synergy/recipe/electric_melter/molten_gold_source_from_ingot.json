@@ -6,6 +6,7 @@
     "id": "synergy:molten_gold_source"
   },
   "input": {
+    "count": 1,
     "tag": "c:ingots/gold"
   },
   "ticks": 400

@@ -6,6 +6,7 @@
     "id": "minecraft:lava"
   },
   "input": {
+    "count": 1,
     "tag": "c:cobblestones"
   },
   "ticks": 400

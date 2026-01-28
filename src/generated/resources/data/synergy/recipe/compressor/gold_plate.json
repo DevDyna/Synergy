@@ -3,6 +3,7 @@
   "consume_catalyst": false,
   "energy": 500,
   "input": {
+    "count": 1,
     "item": "minecraft:gold_ingot"
   },
   "output": {
@@ -10,6 +11,7 @@
     "id": "synergy:gold_plate"
   },
   "plate": {
+    "count": 1,
     "item": "synergy:plate_mold"
   },
   "ticks": 80

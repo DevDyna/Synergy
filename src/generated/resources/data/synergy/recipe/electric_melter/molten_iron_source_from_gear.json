@@ -6,6 +6,7 @@
     "id": "synergy:molten_iron_source"
   },
   "input": {
+    "count": 1,
     "item": "synergy:iron_gear"
   },
   "ticks": 400

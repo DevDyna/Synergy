@@ -7,6 +7,7 @@
     "fluid": "synergy:honey_source"
   },
   "input_item": {
+    "count": 1,
     "item": "synergy:block_mold"
   },
   "output": {

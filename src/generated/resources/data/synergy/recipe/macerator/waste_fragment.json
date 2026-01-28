@@ -3,6 +3,7 @@
   "chance": 0.35,
   "energy": 500,
   "input": {
+    "count": 1,
     "item": "synergy:creeper_gall"
   },
   "output": {

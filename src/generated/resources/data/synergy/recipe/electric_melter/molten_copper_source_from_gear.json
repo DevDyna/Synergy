@@ -6,6 +6,7 @@
     "id": "synergy:molten_copper_source"
   },
   "input": {
+    "count": 1,
     "item": "synergy:copper_gear"
   },
   "ticks": 400

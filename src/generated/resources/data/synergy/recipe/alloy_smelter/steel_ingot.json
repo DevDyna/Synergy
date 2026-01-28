@@ -2,6 +2,7 @@
   "type": "synergy:alloy_smelter",
   "energy": 500,
   "left": {
+    "count": 1,
     "tag": "c:ingots/iron"
   },
   "output": {
@@ -9,6 +10,7 @@
     "id": "synergy:steel_ingot"
   },
   "right": {
+    "count": 1,
     "tag": "c:dusts/coal"
   },
   "ticks": 80

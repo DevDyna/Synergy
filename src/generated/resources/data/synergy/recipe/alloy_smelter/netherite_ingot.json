@@ -2,6 +2,7 @@
   "type": "synergy:alloy_smelter",
   "energy": 500,
   "left": {
+    "count": 1,
     "item": "minecraft:netherite_scrap"
   },
   "output": {
@@ -9,6 +10,7 @@
     "id": "minecraft:netherite_ingot"
   },
   "right": {
+    "count": 1,
     "tag": "c:ingots/gold"
   },
   "ticks": 240

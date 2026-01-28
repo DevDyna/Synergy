@@ -6,6 +6,7 @@
     "id": "synergy:molten_lead_source"
   },
   "input": {
+    "count": 1,
     "item": "synergy:lead_gear"
   },
   "ticks": 400

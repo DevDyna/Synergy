@@ -6,6 +6,7 @@
     "id": "synergy:molten_iridium_source"
   },
   "input": {
+    "count": 1,
     "tag": "c:ingots/iridium"
   },
   "ticks": 400

@@ -7,6 +7,7 @@
     "tag": "c:water"
   },
   "input_item": {
+    "count": 1,
     "item": "minecraft:cobblestone"
   },
   "output": {

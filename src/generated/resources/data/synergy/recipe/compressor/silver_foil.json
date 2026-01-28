@@ -3,6 +3,7 @@
   "consume_catalyst": false,
   "energy": 500,
   "input": {
+    "count": 1,
     "tag": "c:plates/silver"
   },
   "output": {
@@ -10,6 +11,7 @@
     "id": "synergy:silver_foil"
   },
   "plate": {
+    "count": 1,
     "item": "synergy:foil_mold"
   },
   "ticks": 80

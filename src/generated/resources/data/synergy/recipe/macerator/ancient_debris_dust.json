@@ -3,6 +3,7 @@
   "chance": 0.5,
   "energy": 500,
   "input": {
+    "count": 1,
     "item": "minecraft:ancient_debris"
   },
   "output": {

@@ -6,6 +6,7 @@
     "id": "synergy:molten_osmium_source"
   },
   "input": {
+    "count": 1,
     "tag": "c:ingots/osmium"
   },
   "ticks": 400

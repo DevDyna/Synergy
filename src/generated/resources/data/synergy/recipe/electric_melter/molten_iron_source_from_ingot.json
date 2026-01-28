@@ -6,6 +6,7 @@
     "id": "synergy:molten_iron_source"
   },
   "input": {
+    "count": 1,
     "tag": "c:ingots/iron"
   },
   "ticks": 400

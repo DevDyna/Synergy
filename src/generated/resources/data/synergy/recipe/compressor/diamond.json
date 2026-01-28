@@ -3,6 +3,7 @@
   "consume_catalyst": false,
   "energy": 500,
   "input": {
+    "count": 1,
     "tag": "c:dusts/diamond"
   },
   "output": {

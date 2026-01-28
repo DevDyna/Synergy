@@ -6,6 +6,7 @@
     "id": "synergy:liquid_glass_source"
   },
   "input": {
+    "count": 1,
     "tag": "c:glass_blocks/colorless"
   },
   "ticks": 400

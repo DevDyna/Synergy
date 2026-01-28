@@ -2,6 +2,7 @@
   "type": "synergy:electric_furnace",
   "energy": 500,
   "input": {
+    "count": 1,
     "item": "synergy:wrought_iron_ingot"
   },
   "output": {

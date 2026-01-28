@@ -6,6 +6,7 @@
     "id": "synergy:molten_nickel_source"
   },
   "input": {
+    "count": 1,
     "item": "synergy:nickel_gear"
   },
   "ticks": 400

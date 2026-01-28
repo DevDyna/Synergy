@@ -3,6 +3,7 @@
   "chance": 0.05,
   "energy": 500,
   "input": {
+    "count": 1,
     "item": "minecraft:torchflower"
   },
   "output": {
