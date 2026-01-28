@@ -12,10 +12,15 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import static com.devdyna.synergy.Main.ID;
+
+import java.util.Arrays;
+import java.util.List;
 
 import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.zFluid;
@@ -180,8 +185,6 @@ public class x {
         return f.getFluid();
     }
 
-
-
     public static FluidStack fluid(Fluid f, int amount) {
         return new FluidStack(f, amount);
     }
@@ -197,7 +200,24 @@ public class x {
         }
     }
 
-    
+    public static SizedFluidIngredient fluidSized(TagKey<Fluid> tag, int amount) {
+        return SizedFluidIngredient.of(tag, amount);
+    }
 
+    public static SizedFluidIngredient fluidSized(Fluid fluid, int amount) {
+        return SizedFluidIngredient.of(fluid, amount);
+    }
+
+    public static SizedFluidIngredient fluidSized(FluidStack stack) {
+        return SizedFluidIngredient.of(stack);
+    }
+
+    public static List<FluidStack> getFluids(SizedFluidIngredient i) {
+        return Arrays.asList(i.getFluids());
+    }
+
+    public static List<ItemStack> getItems(SizedIngredient i) {
+        return Arrays.asList(i.getItems());
+    }
 
 }
