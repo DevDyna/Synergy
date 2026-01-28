@@ -17,6 +17,7 @@ import com.devdyna.synergy.api.recipes.builders.SimpleFluidAttach;
 import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
 import com.devdyna.synergy.api.recipes.builders.InputItem;
 import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
+import com.devdyna.synergy.api.utils.LogUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
 
@@ -118,14 +119,22 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
     @Override
     public ResourceLocation getSuffix(String extra) {
 
-        if (output != null && !output.isEmpty())
-            return x.rl(getMachine().id() + "/" + x.path(output.getItem())
-                    + extra);
+        String path = getMachine().id() + "/";
 
-        if (this instanceof SimpleFluidAttach && fluid_output != null && !fluid_output.isEmpty())
-            return x.rl(getMachine().id() + "/" + x.path(fluid_output.getFluid()) + extra);
+        if (output != null && !output.isEmpty()) 
+            return x.rl(path + x.path(output.getItem()) + extra);
 
-        return x.rl(getMachine().id() + "/" + x.path(optional_output.getItem()) + extra);
+        if (this instanceof SimpleFluidAttach
+                && fluid_output != null
+                && !fluid_output.isEmpty()) 
+            return x.rl(path + x.path(fluid_output.getFluid()) + extra);
+
+        if (optional_output != null && !optional_output.isEmpty()) 
+            return x.rl(path + x.path(optional_output.getItem()) + extra);
+        
+
+        throw new IllegalStateException("No valid output found for " + getMachine().id());
+
     }
 
     public abstract T getBuilder();
