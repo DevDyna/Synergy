@@ -350,6 +350,10 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
         }
 
+        protected static void twoByTwoPacker(RecipeOutput c, ItemLike i, ItemLike o,String e) {
+      ShapedRecipeBuilder.shaped(MISC, i, 1).define('#', o).pattern("##").pattern("##").unlockedBy(getHasName(o), has(o)).save(c,e);
+   }
+
         protected void plate(Item input, Item output, RecipeOutput c) {
                 ShapedRecipeBuilder.shaped(MISC, output, 3)
                                 .pattern("III")
