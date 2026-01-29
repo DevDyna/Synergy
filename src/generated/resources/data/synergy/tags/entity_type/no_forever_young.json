@@ -1,3 +1,6 @@
 {
-  "values": []
+  "values": [
+    "minecraft:item",
+    "#c:bosses"
+  ]
 }

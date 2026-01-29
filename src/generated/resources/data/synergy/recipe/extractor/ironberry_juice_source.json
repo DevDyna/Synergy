@@ -7,7 +7,7 @@
     "item": "synergy:ironberries"
   },
   "output_fluid": {
-    "amount": 250,
+    "amount": 500,
     "id": "synergy:ironberry_juice_source"
   },
   "output_item": {

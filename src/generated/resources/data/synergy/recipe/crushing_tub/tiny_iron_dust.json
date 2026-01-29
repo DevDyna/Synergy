@@ -1,0 +1,14 @@
+{
+  "type": "synergy:crushing_tub",
+  "fluid": {
+    "amount": 250,
+    "id": "synergy:ironberry_juice_source"
+  },
+  "input": {
+    "item": "synergy:ironberries"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:tiny_iron_dust"
+  }
+}

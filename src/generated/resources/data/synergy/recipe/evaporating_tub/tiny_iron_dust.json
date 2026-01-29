@@ -1,0 +1,12 @@
+{
+  "type": "synergy:evaporating_tub",
+  "fluid": {
+    "amount": 125,
+    "fluid": "synergy:ironberry_juice_source"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:tiny_iron_dust"
+  },
+  "ticks": 100
+}

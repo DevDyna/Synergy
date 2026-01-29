@@ -1,0 +1,12 @@
+{
+  "type": "synergy:evaporating_tub",
+  "fluid": {
+    "amount": 125,
+    "fluid": "minecraft:water"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:salt"
+  },
+  "ticks": 100
+}

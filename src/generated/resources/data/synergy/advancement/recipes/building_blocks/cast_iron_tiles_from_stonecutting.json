@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:cast_iron_tiles_from_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "tag_cast_iron_tiles": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#synergy:cast_iron_blocks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "tag_cast_iron_tiles"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:cast_iron_tiles_from_stonecutting"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cast_iron_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:cast_iron_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:cast_iron_block_from_cast_iron_ingot_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cast_iron_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:cast_iron_block_from_cast_iron_ingot_stonecutting"
+    ]
+  }
+}
