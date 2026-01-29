@@ -43,7 +43,7 @@ public class SimpleItemRender {
     }
 
     public SimpleItemRender rotate(Quaternionf angle) {
-        this.angle = angle;
+        this.angle = new Quaternionf(this.angle).mul(angle);
         return this;
     }
 
@@ -97,6 +97,7 @@ public class SimpleItemRender {
     public SimpleItemRender item(DeferredHolder<Item, Item> i) {
         return item(i.get());
     }
+    
 
     public void build(ItemRenderer r, PoseStack p, int light, int overlay, MultiBufferSource buffer, Level level) {
 
@@ -111,5 +112,6 @@ public class SimpleItemRender {
             p.popPose();
         }
     }
+    
 
 }
