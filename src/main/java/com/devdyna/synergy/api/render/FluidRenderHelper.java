@@ -17,9 +17,9 @@ public class FluidRenderHelper {
 
     private TextureAtlasSprite texture;
     private int color = 0xFFFFFF;
-    private int x = 0;
-    private int y = 0;
-    private int z = 0;
+    private float x = 0;
+    private float y = 0;
+    private float z = 0;
     private float amount = 1000;
     private float height = 1.0f;
     private float width = 1.0f;
@@ -117,7 +117,7 @@ public class FluidRenderHelper {
      * <br/>
      * Default = 0
      */
-    public FluidRenderHelper offset(int x, int y, int z) {
+    public FluidRenderHelper offset(float x, float y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;
