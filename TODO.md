@@ -36,17 +36,19 @@
 
 - [ ] jade drying time
 
+- [ ] machines jei compat dont show anymore
+
 - [x] machine secondary slots dont work with capabilities
 
 - [x] Casting Factory -> Input FluidStack -> SizedFluidIngredient
 
-- [ ] Casting Factory -> Input Ingredient -> SizedIngredient
-- [ ] Melter -> Input Ingredient -> SizedIngredient
-- [ ] Macerator -> Input Ingredient -> SizedIngredient
-- [ ] Extractor -> Input Ingredient -> SizedIngredient
-- [ ] Furnace -> Input Ingredient -> SizedIngredient
-- [ ] Compressor -> Input Ingredient -> SizedIngredient
-- [ ] Alloy Smelter -> Input Ingredient -> SizedIngredient
+- [x] Casting Factory -> Input Ingredient -> SizedIngredient
+- [x] Melter -> Input Ingredient -> SizedIngredient
+- [x] Macerator -> Input Ingredient -> SizedIngredient
+- [x] Extractor -> Input Ingredient -> SizedIngredient
+- [x] Furnace -> Input Ingredient -> SizedIngredient
+- [x] Compressor -> Input Ingredient -> SizedIngredient
+- [x] Alloy Smelter -> Input Ingredient -> SizedIngredient
 
 - [ ] guideme for machines and upgrades
 
