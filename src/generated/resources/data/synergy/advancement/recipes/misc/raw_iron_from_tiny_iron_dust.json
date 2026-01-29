@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:raw_iron"
+        "recipe": "synergy:raw_iron_from_tiny_iron_dust"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:raw_iron"
+      "synergy:raw_iron_from_tiny_iron_dust"
     ]
   }
 }
