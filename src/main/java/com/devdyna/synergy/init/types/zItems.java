@@ -330,6 +330,8 @@ public class zItems {
                         .resourceIngot(zStatic.ResourceMaterial.uranium);
         public static final DeferredHolder<Item, Item> ALUMINUM_INGOT = Material
                         .resourceIngot(zStatic.ResourceMaterial.aluminum);
+        public static final DeferredHolder<Item, Item> CAST_IRON_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.cast_iron);
 
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> ADVANCED_ALLOY_NUGGET = Material
@@ -565,6 +567,7 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> IRONBERRIES = Material
                         .resourceItem("ironberries");
+
         public static final DeferredHolder<Item, Item> TINY_IRON_DUST = Material
                         .resourceItem("tiny_iron_dust");
         // ---------------------------------------------------------------------------------------//

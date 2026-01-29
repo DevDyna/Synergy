@@ -240,6 +240,11 @@ public class zItemTag {
 
 
 
+        public static final TagKey<Item> CAST_IRON_BLOCKS = Material.tagItem("cast_iron_blocks");
+
+
+
+
 
 
 

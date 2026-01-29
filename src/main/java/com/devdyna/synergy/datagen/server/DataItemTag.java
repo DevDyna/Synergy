@@ -320,6 +320,9 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.BLOCK_WROUGHT_IRON)
                                 .add(zBlocks.WROUGHT_IRON_BLOCK.get().asItem());
 
+                tag(zItemTag.CAST_IRON_BLOCKS)
+                                .add(zBlocks.CAST_IRON_BLOCK.get().asItem(), zBlocks.CAST_IRON_TILES.get().asItem());
+
         }
 
 }

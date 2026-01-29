@@ -39,6 +39,8 @@ public class zStatic {
     }
 
     public class ResourceMaterial {
+        public static String cast_iron = "cast_iron";
+        public static String calcite = "calcite";
         public static String wrought_iron = "wrought_iron";
         public static String iron = "iron";
         public static String copper = "copper";
@@ -89,6 +91,8 @@ public class zStatic {
         public static String ingot = "_ingot";
         public static String nugget = "_nugget";
         public static String block = "_block";
+        public static String tiles = "_tiles";
+        public static String bricks = "_bricks";
         public static String plate = "_plate";
         public static String raw = "raw_";
         public static String shard = "_shard";

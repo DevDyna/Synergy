@@ -1521,18 +1521,54 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-        ShapedRecipeBuilder.shaped(MISC, zBlocks.CRUSHING_TUB.get().asItem())
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.CRUSHING_TUB.get().asItem())
                                 .pattern("# #")
                                 .pattern("###")
                                 .define('#', ItemTags.WOODEN_SLABS)
                                 .unlockedBy(ID, has(ItemTags.WOODEN_SLABS))
                                 .save(c);
 
-        ShapedRecipeBuilder.shaped(MISC, zBlocks.EVAPORATION_BASIN.get().asItem())
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.EVAPORATION_BASIN.get().asItem())
                                 .pattern("# #")
                                 .pattern("###")
                                 .define('#', Items.TERRACOTTA)
                                 .unlockedBy(ID, has(Items.TERRACOTTA))
+                                .save(c);
+
+                SimpleCookingRecipeBuilder
+                                .smelting(Ingredient.of(Items.IRON_INGOT),
+                                                RecipeCategory.BUILDING_BLOCKS,
+                                                zItems.CAST_IRON_INGOT.get(), 0.1F, 200)
+                                .unlockedBy(getHasName(Items.IRON_INGOT),
+                                                has(Items.IRON_INGOT))
+                                .save(c, ID + ":"
+                                                + getConversionRecipeName(
+                                                                zItems.CAST_IRON_INGOT.get(),
+                                                                Items.IRON_INGOT));
+
+                SimpleCookingRecipeBuilder
+                                .blasting(Ingredient.of(Items.IRON_INGOT),
+                                                RecipeCategory.BUILDING_BLOCKS,
+                                                zItems.CAST_IRON_INGOT.get(), 0.1F, 100)
+                                .unlockedBy(getHasName(Items.IRON_INGOT),
+                                                has(Items.IRON_INGOT))
+                                .save(c, ID + ":" + getConversionRecipeName(
+                                                zItems.CAST_IRON_INGOT.get(),
+                                                Items.IRON_INGOT) + "_from_blasting");
+
+                stonecutter(c, zBlocks.CAST_IRON_BLOCK.get(), zItems.CAST_IRON_INGOT.get(),2);
+                stonecutter(c, zBlocks.CAST_IRON_TILES.get(), zItems.CAST_IRON_INGOT.get(),2);
+
+                stonecutter(c, zBlocks.CAST_IRON_BLOCK.get(), zItemTag.CAST_IRON_BLOCKS);
+                stonecutter(c, zBlocks.CAST_IRON_TILES.get(), zItemTag.CAST_IRON_BLOCKS);
+
+                stonecutter(c, zBlocks.CALCITE_BRICKS.get(), Items.CALCITE);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.CALCITE_BRICKS.get().asItem())
+                                .pattern("##")
+                                .pattern("##")
+                                .define('#', Items.CALCITE)
+                                .unlockedBy(ID, has(Items.CALCITE))
                                 .save(c);
 
         }

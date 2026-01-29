@@ -204,6 +204,24 @@ public class zBlocks {
                                                         .strength(2.5f).mapColor(MapColor.RAW_IRON),
                                         zDecorative);
 
+        public static final DeferredHolder<Block, Block> CAST_IRON_BLOCK = Material
+                        .DecoBlock(zStatic.ResourceMaterial.cast_iron + zStatic.ResourceType.block,
+                                        BlockBehaviour.Properties.of().sound(SoundType.METAL)
+                                                        .strength(2.5f).mapColor(MapColor.COLOR_BLACK),
+                                        zDecorative);
+
+        public static final DeferredHolder<Block, Block> CAST_IRON_TILES = Material
+                        .DecoBlock(zStatic.ResourceMaterial.cast_iron + zStatic.ResourceType.tiles,
+                                        BlockBehaviour.Properties.of().sound(SoundType.METAL)
+                                                        .strength(2.5f).mapColor(MapColor.COLOR_BLACK),
+                                        zDecorative);
+
+        public static final DeferredHolder<Block, Block> CALCITE_BRICKS = Material
+                        .DecoBlock(zStatic.ResourceMaterial.calcite + zStatic.ResourceType.bricks,
+                                        BlockBehaviour.Properties.of().sound(SoundType.STONE)
+                                                        .strength(1.5f).mapColor(MapColor.WOOL),
+                                        zDecorative);
+
         public static final DeferredHolder<Block, Block> WAXED_PLANKS = Material
                         .DecoBlock(zStatic.DecorativeBlocks.waxed_planks,
                                         BlockBehaviour.Properties.of().sound(SoundType.WOOD)
