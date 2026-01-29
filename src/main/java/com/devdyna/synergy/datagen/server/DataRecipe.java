@@ -525,8 +525,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 twoByTwoPacker(c, zItems.CARBON_FIBER.get(), zItemTag.DUST_COAL);
-                twoByTwoPacker(c, MISC, Items.RAW_IRON, zItems.TINY_IRON_DUST.get());
-
+                twoByTwoPacker(c, Items.RAW_IRON, zItems.TINY_IRON_DUST.get(),ID+":raw_iron_from_tiny_iron_dust");
                 twoByTwoPacker(c, MISC, zItems.CARBON_PLATE.get(), zItems.CARBON_FIBER.get());
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.QUERN.get())
