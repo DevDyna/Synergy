@@ -93,6 +93,9 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item(zMachines.MELTER.item().get()), MelterCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zItems.CHISEL), RecipeTypes.STONECUTTING);
 
+                r.addRecipeCatalyst(x.item(zBlocks.CRUSHING_TUB), CrushingTubCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zBlocks.EVAPORATION_BASIN), EvaporationBasinCategory.TYPE);
+
         }
 
         @Override
@@ -117,6 +120,9 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCategories(new ExtractorCategory(helper));
                 r.addRecipeCategories(new CasterCategory(helper));
                 r.addRecipeCategories(new MelterCategory(helper));
+
+                r.addRecipeCategories(new CrushingTubCategory(helper));
+                r.addRecipeCategories(new EvaporationBasinCategory(helper));
 
         }
 
@@ -202,6 +208,12 @@ public class Plugin implements IModPlugin {
 
                 r.addRecipes(VoidBoxInfusionCategory.TYPE,
                                 RecipeUtils.getRecipes(zRecipeTypes.VOID_BOX_INFUSION));
+
+                r.addRecipes(CrushingTubCategory.TYPE,
+                                RecipeUtils.getRecipes(zRecipeTypes.CRUSHING_TUB));
+                                
+                r.addRecipes(EvaporationBasinCategory.TYPE,
+                                RecipeUtils.getRecipes(zRecipeTypes.EVAPORATING_BASIN));
 
         }
 

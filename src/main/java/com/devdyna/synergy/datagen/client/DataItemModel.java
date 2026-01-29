@@ -181,6 +181,9 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("below", "block/machine/frame/advanced/top")
                                 .renderType(DataGenUtil.CUTOUT);
 
+                withExistingParent(zBlocks.CRUSHING_TUB.getRegisteredName(), modLoc("block/crushing_tub"));
+                withExistingParent(zBlocks.EVAPORATION_BASIN.getRegisteredName(), modLoc("block/evaporation_basin"));
+
         }
 
 }

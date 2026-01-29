@@ -15,6 +15,9 @@ public class JEIFluidTankHelper {
     private int x0;
     private int y0;
     private List<FluidStack> fluids;
+    private float h = 1f;
+    private float w = 1f;
+
 
     public JEIFluidTankHelper() {
     }
@@ -34,15 +37,21 @@ public class JEIFluidTankHelper {
         return this;
     }
 
+    public JEIFluidTankHelper scale(float height,float width) {
+         this.w = width;
+         this.h = height;  
+        return this;
+    }
+
     public static JEIFluidTankHelper of() {
         return new JEIFluidTankHelper();
     }
 
     public void build(BiFunction<Integer, Integer, IRecipeSlotBuilder> builder) {
-        var height = Math.min(16, Math.max((int) ((fluids.getFirst().getAmount() + 256) * 0.016), 1));
-        builder.apply(x0, y0 - height)
+        var height =(int) (Math.min(16, Math.max((int) ((fluids.getFirst().getAmount() + 256) * 0.016), 1))*h);
+        builder.apply((int) (x0* w), y0 - height)
                 .addIngredients(NeoForgeTypes.FLUID_STACK, fluids)
-                .setFluidRenderer(fluids.getFirst().getAmount(), false, 16, height);
+                .setFluidRenderer(fluids.getFirst().getAmount(), false, (int) (w*16), height);
     }
 
 }

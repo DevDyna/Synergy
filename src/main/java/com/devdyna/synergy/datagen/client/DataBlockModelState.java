@@ -202,6 +202,10 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 .texture("below", "block/machine/frame/advanced/top")
                                                 .renderType(DataGenUtil.CUTOUT));
 
+
+                simpleBlock(zBlocks.CRUSHING_TUB.get(),models().getExistingFile(modLoc("block/crushing_tub")));
+                simpleBlock(zBlocks.EVAPORATION_BASIN.get(),models().getExistingFile(modLoc("block/evaporation_basin")));
+
         }
 
 }

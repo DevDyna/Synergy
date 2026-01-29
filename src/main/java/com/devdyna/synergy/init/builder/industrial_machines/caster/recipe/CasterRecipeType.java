@@ -7,7 +7,7 @@ import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.input.FluidInput;
+import com.devdyna.synergy.common.recipes.input.ItemFluidInput;
 import com.devdyna.synergy.init.types.zMachines;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -22,7 +22,7 @@ import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
 @SuppressWarnings("null")
-public class CasterRecipeType extends BaseMachineRecipeType<FluidInput> {
+public class CasterRecipeType extends BaseMachineRecipeType<ItemFluidInput> {
 
     public CasterRecipeType(int ticks, int energy, SizedFluidIngredient fluid, SizedIngredient input,
             boolean consumeCatalyst, ItemStack output) {
@@ -45,17 +45,17 @@ public class CasterRecipeType extends BaseMachineRecipeType<FluidInput> {
     }
 
     @Override
-    public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<FluidInput>> getMachine() {
+    public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<ItemFluidInput>> getMachine() {
         return zMachines.CASTING_FACTORY;
     }
 
     @Override
-    public ItemStack getRecipeInput(FluidInput recipe) {
+    public ItemStack getRecipeInput(ItemFluidInput recipe) {
         return recipe.item();
     }
 
     @Override
-    public SizedFluidIngredient getRecipeFluidInput(FluidInput recipe) {
+    public SizedFluidIngredient getRecipeFluidInput(ItemFluidInput recipe) {
         return x.fluidSized(recipe.input());
     }
 

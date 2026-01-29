@@ -4,7 +4,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.neoforged.neoforge.fluids.FluidStack;
 
-public record FluidInput(FluidStack input) implements RecipeInput {
+public record ItemFluidInput(FluidStack input,ItemStack item) implements RecipeInput {
 
     @Override
     public ItemStack getItem(int i) {

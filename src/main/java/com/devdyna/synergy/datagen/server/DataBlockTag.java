@@ -58,7 +58,8 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.REACTOR_FUEL_CELL.get(),
                                                 zBlocks.REACTOR_CONTROLLER.get(),
                                                 zBlocks.BLAST_BRICKS.get(),
-                                                zBlocks.FLUID_TANK.get());
+                                                zBlocks.FLUID_TANK.get(),
+                                                zBlocks.EVAPORATION_BASIN.get());
 
                 tag(BlockTags.MINEABLE_WITH_AXE)
                                 .add(
@@ -68,7 +69,8 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.WAXED_PLANKS_STAIR.get(),
                                                 zBlocks.AZALEA.get(), zBlocks.CAVE_WHEAT.get(), zBlocks.COTTON.get(),
                                                 zBlocks.RICE.get(), zBlocks.BLUE_CUP_MUSHROOM.get(),
-                                                zBlocks.VIOLET_WEBCAP_MUSHROOM.get());
+                                                zBlocks.VIOLET_WEBCAP_MUSHROOM.get(),
+                                                zBlocks.CRUSHING_TUB.get());
 
                 tag(zBlockTag.MUSHROOMS)
                                 .add(zBlocks.BLUE_CUP_MUSHROOM.get(), zBlocks.VIOLET_WEBCAP_MUSHROOM.get());

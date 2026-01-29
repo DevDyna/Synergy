@@ -8,7 +8,7 @@ import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.FluidTankStorage;
-import com.devdyna.synergy.common.recipes.input.FluidInput;
+import com.devdyna.synergy.common.recipes.input.ItemFluidInput;
 import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.CasterRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.core.BlockPos;
@@ -95,7 +95,7 @@ public class CasterBE extends BaseMachineBE implements FluidTankStorage {
 
         Optional<RecipeHolder<CasterRecipeType>> r = level.getRecipeManager()
                 .getRecipeFor(zMachines.CASTING_FACTORY.recipe().getType(),
-                        new FluidInput(getFluidStorage().getFluid(), getInput()), level);
+                        new ItemFluidInput(getFluidStorage().getFluid(), getInput()), level);
 
         // no recipe
         if (r.isEmpty()) {

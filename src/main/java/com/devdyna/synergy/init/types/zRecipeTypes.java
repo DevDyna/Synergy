@@ -54,5 +54,13 @@ public class zRecipeTypes {
 
         public static final zRecipe<VoidBoxInfusionRecipe> VOID_BOX_INFUSION = zRecipe.of("void_box_infusion",
                         VoidBoxInfusionRecipeSerializer::new);
+
+        public static final zRecipe<CrushingTubRecipe> CRUSHING_TUB = zRecipe.of("crushing_tub",
+                        CrushingTubRecipeSerializer::new);
+
+        public static final zRecipe<EvaporationBasinRecipe> EVAPORATING_BASIN = zRecipe.of("evaporating_tub",
+                        EvaporationBasinRecipeSerializer::new);
+
+
         // ------------------------------------------------------------------------------------------------------------------------------------//
 }

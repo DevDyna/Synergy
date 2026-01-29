@@ -3,6 +3,7 @@ package com.devdyna.synergy.api.resource_gen;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.FluidExporter;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
@@ -20,7 +21,6 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
-import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 
 @SuppressWarnings("null")
 public abstract class BaseWaterRGBE extends TickingBE implements SimpleFluidStorage, FluidExporter {
@@ -42,7 +42,7 @@ public abstract class BaseWaterRGBE extends TickingBE implements SimpleFluidStor
     }
 
     @Override
-    public FluidTank getFluidStorage() {
+    public FluidStorageTank getFluidStorage() {
         return getData(zHandlers.FLUID_TANK);
     }
 

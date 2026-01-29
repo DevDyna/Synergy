@@ -125,6 +125,8 @@ public class CreativeTabs {
             event.accept(zBlocks.STONE_TINY_CHEST.get());
             event.accept(zBlocks.ORNATE_TINY_CHEST.get());
             event.accept(zBlocks.VOID_BOX.get());
+            event.accept(zBlocks.CRUSHING_TUB.get());
+            event.accept(zBlocks.EVAPORATION_BASIN.get());
         }
 
         // ---------------------------------------------------------- //

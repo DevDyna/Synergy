@@ -1,10 +1,10 @@
 package com.devdyna.synergy.api.beLogic;
 
-import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
+import com.devdyna.synergy.api.FluidStorageTank;
 
 public interface SimpleFluidStorage {
 
-    FluidTank getFluidStorage();
+    FluidStorageTank getFluidStorage();
 
     int getFluidCapacity();
 

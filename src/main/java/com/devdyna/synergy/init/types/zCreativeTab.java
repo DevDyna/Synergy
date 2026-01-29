@@ -51,9 +51,6 @@ public class zCreativeTab {
         public static final DeferredHolder<CreativeModeTab, CreativeModeTab> LOGISTICS = Material
                         .createCreativeTab(zStatic.CreativeTab.logistics, () -> zBlocks.PIPE.get().asItem());
 
-        // public static final DeferredHolder<CreativeModeTab, CreativeModeTab> STORAGE = Material
-        //                 .createCreativeTab(zStatic.CreativeTab.storage, () -> zBlocks.WOODEN_TINY_CHEST.get().asItem());
-
         public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAGIC = Material
                         .createCreativeTab(zStatic.CreativeTab.magic, () -> zBlocks.QUERN.get().asItem());
 

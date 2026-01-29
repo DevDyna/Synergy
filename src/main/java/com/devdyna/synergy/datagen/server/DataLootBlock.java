@@ -55,7 +55,6 @@ public class DataLootBlock extends BlockLootSubProvider {
                         // wip
                         zBlocks.zDepositBlocks,
                         zBlocks.zDepositOres,
-                        
 
                         zMachines.xBLOCKS_MACHINE
 
@@ -121,7 +120,10 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.ADVANCED_COBBLE_GEN,
                                 zBlocks.ADVANCED_WATER_GEN,
                                 zBlocks.ELITE_COBBLE_GEN,
-                                zBlocks.ELITE_WATER_GEN
+                                zBlocks.ELITE_WATER_GEN,
+
+                                zBlocks.EVAPORATION_BASIN,
+                                zBlocks.CRUSHING_TUB
 
                 ).forEach(b -> dropSelf(b.get()));
 

@@ -16,6 +16,8 @@ import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.redstone.InvertedRepeater;
 import com.devdyna.synergy.init.builder.redstone.PulseRepeater;
 import com.devdyna.synergy.init.builder.redstone.RecursiveRepeater;
+import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBlock;
+import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBlock;
 import com.devdyna.synergy.init.builder.*;
 import com.devdyna.synergy.init.builder.agriculture.cultivated.*;
 import com.devdyna.synergy.init.builder.agriculture.mushroom.*;
@@ -113,7 +115,7 @@ public class zBlocks {
          */
         public static final DeferredRegister.Blocks zModerators = DeferredRegister.createBlocks(Main.ID);
         public static final DeferredRegister.Blocks zCoolers = DeferredRegister.createBlocks(Main.ID);
-         /**
+        /**
          * resource generators
          */
         public static final DeferredRegister.Blocks zResourceGenerators = DeferredRegister.createBlocks(Main.ID);
@@ -459,26 +461,32 @@ public class zBlocks {
                         .tile_slab()
                         .createTag();
 
-
         public static final DeferredHolder<Block, Block> SIMPLE_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.simple,
-                        () -> new SimpleWaterGenBlock(),zResourceGenerators);
+                        () -> new SimpleWaterGenBlock(), zResourceGenerators);
         public static final DeferredHolder<Block, Block> ADVANCED_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.advanced,
-                        () -> new AdvancedWaterGenBlock(),zResourceGenerators);
+                        () -> new AdvancedWaterGenBlock(), zResourceGenerators);
         public static final DeferredHolder<Block, Block> ELITE_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.elite,
-                        () -> new EliteWaterGenBlock(),zResourceGenerators);
+                        () -> new EliteWaterGenBlock(), zResourceGenerators);
 
         public static final DeferredHolder<Block, Block> SIMPLE_COBBLE_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.CobbleStone.simple,
-                        () -> new SimpleCobbleGenBlock(),zResourceGenerators);
+                        () -> new SimpleCobbleGenBlock(), zResourceGenerators);
         public static final DeferredHolder<Block, Block> ADVANCED_COBBLE_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.CobbleStone.advanced,
-                        () -> new AdvancedCobbleGenBlock(),zResourceGenerators);
+                        () -> new AdvancedCobbleGenBlock(), zResourceGenerators);
         public static final DeferredHolder<Block, Block> ELITE_COBBLE_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.CobbleStone.elite,
-                        () -> new EliteCobbleGenBlock(),zResourceGenerators);
+                        () -> new EliteCobbleGenBlock(), zResourceGenerators);
+
+        public static final DeferredHolder<Block, Block> CRUSHING_TUB = Material.registerItemBlock(
+                        zStatic.Blocks.crushing_tub,
+                        () -> new CrushingTubBlock());
+        public static final DeferredHolder<Block, Block> EVAPORATION_BASIN = Material.registerItemBlock(
+                        zStatic.Blocks.evaporation_basin,
+                        () -> new EvaporationBasinBlock());
 
         // ---------------------------------------------------------------------------------------//
 

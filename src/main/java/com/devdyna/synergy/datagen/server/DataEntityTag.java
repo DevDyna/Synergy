@@ -11,6 +11,8 @@ import com.devdyna.synergy.init.types.zEntityTag;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
+import net.minecraft.world.entity.EntityType;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 @SuppressWarnings("null")
@@ -23,7 +25,12 @@ public class DataEntityTag extends EntityTypeTagsProvider {
 
         @Override
         protected void addTags(Provider provider) {
-                tag(zEntityTag.DONT_LIKE_JAY_Z);
+                tag(zEntityTag.DONT_LIKE_JAY_Z)
+                                .add(EntityType.ITEM)
+                                .addTag(Tags.EntityTypes.BOSSES);
+
+                tag(zEntityTag.CRUSHING_TUB_ALLOW)
+                                .add(EntityType.PLAYER, EntityType.ARMOR_STAND);
         }
 
 }

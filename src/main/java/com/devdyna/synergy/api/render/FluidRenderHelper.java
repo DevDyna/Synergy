@@ -23,6 +23,7 @@ public class FluidRenderHelper {
     private float amount = 1000;
     private float height = 1.0f;
     private float width = 1.0f;
+    private float scale = 1.0f;
 
     public FluidRenderHelper() {
     }
@@ -129,6 +130,7 @@ public class FluidRenderHelper {
      * <br/>
      * Default = x1.0f
      */
+    @Deprecated
     public FluidRenderHelper scaleMultiplier(float h, float w) {
         this.height = h;
         this.width = w;
@@ -141,8 +143,7 @@ public class FluidRenderHelper {
      * Default = x1.0f
      */
     public FluidRenderHelper scaleMultiplier(float v) {
-        this.height = v;
-        this.width = v;
+        this.scale = v;
         return this;
     }
 
@@ -157,6 +158,8 @@ public class FluidRenderHelper {
                     "FluidRenderHelper/Texture: You need to set the texture sprite BEFORE build it!");
 
         stack.pushPose();
+        stack.scale(scale, scale, scale);
+        stack.translate(x, y, z);
 
         var pose = stack.last();
 
@@ -165,32 +168,32 @@ public class FluidRenderHelper {
         float inset = 1 / 16f;
 
         TextureRenderUtil.renderDirectionalFace(Direction.NORTH, pose, consumer, texture,
-                x + inset, y + inset, z + inset,
+                inset,  inset, inset,
                 width * faceSize, height * fluidHeight,
                 color, packedLight);
 
         TextureRenderUtil.renderDirectionalFace(Direction.SOUTH, pose, consumer, texture,
-                x + inset, y + inset, z + inset,
+                inset,  inset, inset,
                 width * faceSize, height * fluidHeight,
                 color, packedLight);
 
         TextureRenderUtil.renderDirectionalFace(Direction.EAST, pose, consumer, texture,
-                x + inset, y + inset, z + inset,
+                inset,  inset, inset,
                 width * faceSize, height * fluidHeight,
                 color, packedLight);
 
         TextureRenderUtil.renderDirectionalFace(Direction.WEST, pose, consumer, texture,
-                x + inset, y + inset, z + inset,
+                inset,  inset, inset,
                 width * faceSize, height * fluidHeight,
                 color, packedLight);
 
         TextureRenderUtil.renderDirectionalFace(Direction.UP, pose, consumer, texture,
-                x + inset, y + inset, z + inset + fluidHeight,
+                inset,  inset, inset + fluidHeight,
                 width * faceSize, height * faceSize,
                 color, packedLight);
 
         TextureRenderUtil.renderDirectionalFace(Direction.DOWN, pose, consumer, texture,
-                x + inset, y + inset, z + 1 - inset,
+                 inset,  inset,  1 - inset,
                 width * faceSize, height * faceSize,
                 color, packedLight);
 

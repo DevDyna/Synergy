@@ -1,0 +1,85 @@
+package com.devdyna.synergy.common.recipes.builders;
+
+import static com.devdyna.synergy.Main.ID;
+
+import java.util.*;
+import javax.annotation.Nullable;
+
+import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
+import com.devdyna.synergy.api.recipes.builders.InputFluidAttach;
+import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
+import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.common.recipes.type.EvaporationBasinRecipe;
+
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
+
+@SuppressWarnings({ "null" })
+public class EvaporatingBasinBuilder extends BaseRecipeBuilder
+        implements SimpleOutputItem<EvaporatingBasinBuilder>,
+        InputFluidAttach<EvaporatingBasinBuilder> {
+
+    private SizedFluidIngredient fluid;
+    private int ticks = 100;
+    private ItemStack output;
+
+    private EvaporatingBasinBuilder() {
+        this.criteria = new LinkedHashMap<String, Criterion<?>>();
+    }
+
+    public static EvaporatingBasinBuilder of() {
+        return new EvaporatingBasinBuilder();
+    }
+
+    public EvaporatingBasinBuilder unlockedBy() {
+        return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
+                .hasItems(x.getFluids(this.fluid).getFirst().getFluid().getBucket()));
+    }
+
+    public EvaporatingBasinBuilder unlockedBy(String name, Criterion<?> criterion) {
+        this.criteria.put(name, criterion);
+        return this;
+    }
+
+    public Item getResult() {
+        return this.output.getItem();
+    }
+
+    @Override
+    public Recipe<?> createRecipe() {
+        return new EvaporationBasinRecipe(fluid, ticks, output);
+    }
+
+    @Override
+    public EvaporatingBasinBuilder getBuilder() {
+        return this;
+    }
+
+    @Override
+    public EvaporatingBasinBuilder group(@Nullable String groupName) {
+        return this;
+    }
+
+    @Override
+    public EvaporatingBasinBuilder fluid(SizedFluidIngredient fluid) {
+        this.fluid = fluid;
+        return this;
+    }
+
+    @Override
+    public EvaporatingBasinBuilder output(ItemStack output) {
+        this.output = output;
+        return this;
+    }
+
+    @Override
+    public ResourceLocation getSuffix(String extra) {
+        return x.rl("evaporating_tub/" + x.path(this.output.getItem()) + extra);
+    }
+
+}

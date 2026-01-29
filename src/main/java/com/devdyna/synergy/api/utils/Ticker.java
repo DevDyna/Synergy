@@ -10,6 +10,18 @@ public class Ticker {
         this.delay = delay;
     }
 
+    public static Ticker of(int delay){
+        return new Ticker(delay);
+    }
+
+    public void set(int value) {
+        this.value = value;
+    }
+
+    public int get() {
+        return value;
+    }
+
     public boolean commit() {
         var check = value >= delay;
         if (check)

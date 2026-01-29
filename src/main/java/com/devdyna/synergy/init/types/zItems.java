@@ -520,6 +520,9 @@ public class zItems {
         public static final DeferredHolder<Item, Item> SAWDUST = Material
                         .resourceItem(zStatic.ResourceMaterial.sawdust);
 
+        public static final DeferredHolder<Item, Item> SALT = Material
+                        .resourceItem(zStatic.ResourceMaterial.salt);
+
         public static final DeferredHolder<Item, Item> MUD_BALL = Material
                         .resourceItem(zStatic.DryableBricks.ball.mud);
 

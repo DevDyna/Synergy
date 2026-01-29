@@ -23,6 +23,11 @@ public interface BucketInteraction {
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
+    default ItemInteractionResult executeWhenNotBucket(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hitResult) {
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
     default ItemInteractionResult bucketAction(ItemStack item, BlockState blockState, Level level,
             BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
 
@@ -33,15 +38,14 @@ public interface BucketInteraction {
             return ItemInteractionResult.SUCCESS;
 
         IFluidHandlerItem bucket = item.getCapability(Capabilities.FluidHandler.ITEM);
-        if (bucket == null) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        }
+        if (bucket == null)
+            return executeWhenNotBucket(item, blockState, level, blockPos, player, hand, blockHitResult);
 
         IFluidHandler cap = level.getCapability(Capabilities.FluidHandler.BLOCK, blockPos,
                 blockHitResult.getDirection());
 
         if (cap == null)
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return executeWhenNotBucket(item, blockState, level, blockPos, player, hand, blockHitResult);
 
         int droplet = 0;
 

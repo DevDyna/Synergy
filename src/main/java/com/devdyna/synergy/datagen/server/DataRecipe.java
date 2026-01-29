@@ -1277,13 +1277,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 ExtractorRecipeBuilder.of()
-                                .input(zItems.IRONBERRIES)
-                                .secondary(zItems.TINY_IRON_DUST, 0.25f)
-                                .fluid(zFluids.IRONBERRY_JUICE, 250)
-                                .unlockedBy()
-                                .save(c);
-
-                ExtractorRecipeBuilder.of()
                                 .input(Items.OBSIDIAN)
                                 .secondary(Items.COBBLESTONE, 0.25f)
                                 .fluid(Fluids.LAVA, 1000)
@@ -1296,12 +1289,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .fluid(Fluids.WATER, 1000)
                                 .unlockedBy()
                                 .save(c, "_from_sponges");
-
-                CasterRecipeBuilder.of()
-                                .fluid(zFluids.IRONBERRY_JUICE, 125)
-                                .output(zItems.TINY_IRON_DUST)
-                                .unlockedBy()
-                                .save(c);
 
                 CasterRecipeBuilder.of()
                                 .fluid(zFluids.LIQUID_GLASS, 1000)
@@ -1466,8 +1453,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zBlocks.FLUID_PROVIDER.get()))
                                 .save(c);
 
-
-        ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_COBBLE_GEN.get().asItem())
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_COBBLE_GEN.get().asItem())
                                 .pattern("AAA")
                                 .pattern("ABA")
                                 .pattern("AAA")
@@ -1476,7 +1462,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zBlocks.SIMPLE_COBBLE_GEN.get()))
                                 .save(c);
 
-        ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_WATER_GEN.get().asItem())
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_WATER_GEN.get().asItem())
                                 .pattern("AAA")
                                 .pattern("ABA")
                                 .pattern("AAA")
@@ -1485,7 +1471,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zBlocks.SIMPLE_WATER_GEN.get()))
                                 .save(c);
 
-        ShapedRecipeBuilder.shaped(MISC, zBlocks.ELITE_COBBLE_GEN.get().asItem())
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ELITE_COBBLE_GEN.get().asItem())
                                 .pattern("AAA")
                                 .pattern("ABA")
                                 .pattern("AAA")
@@ -1494,13 +1480,59 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zBlocks.ADVANCED_COBBLE_GEN.get()))
                                 .save(c);
 
-        ShapedRecipeBuilder.shaped(MISC, zBlocks.ELITE_WATER_GEN.get().asItem())
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ELITE_WATER_GEN.get().asItem())
                                 .pattern("AAA")
                                 .pattern("ABA")
                                 .pattern("AAA")
                                 .define('A', zBlocks.ADVANCED_WATER_GEN.get())
                                 .define('B', zBlocks.ADVANCED_MACHINE_FRAME.get())
                                 .unlockedBy(ID, has(zBlocks.ADVANCED_WATER_GEN.get()))
+                                .save(c);
+
+                ExtractorRecipeBuilder.of()
+                                .input(zItems.IRONBERRIES)
+                                .secondary(zItems.TINY_IRON_DUST, 0.25f)
+                                .fluid(zFluids.IRONBERRY_JUICE, 500)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(zFluids.IRONBERRY_JUICE, 125)
+                                .output(zItems.TINY_IRON_DUST)
+                                .unlockedBy()
+                                .save(c);
+
+                CrushingTubBuilder.of()
+                                .input(zItems.IRONBERRIES)
+                                .fluid(zFluids.IRONBERRY_JUICE, 250)
+                                .output(zItems.TINY_IRON_DUST)
+                                .unlockedBy()
+                                .save(c);
+
+                EvaporatingBasinBuilder.of()
+                                .fluid(zFluids.IRONBERRY_JUICE, 125)
+                                .output(zItems.TINY_IRON_DUST)
+                                .unlockedBy()
+                                .save(c);
+
+                EvaporatingBasinBuilder.of()
+                                .fluid(Fluids.WATER, 125)
+                                .output(zItems.SALT)
+                                .unlockedBy()
+                                .save(c);
+
+        ShapedRecipeBuilder.shaped(MISC, zBlocks.CRUSHING_TUB.get().asItem())
+                                .pattern("# #")
+                                .pattern("###")
+                                .define('#', ItemTags.WOODEN_SLABS)
+                                .unlockedBy(ID, has(ItemTags.WOODEN_SLABS))
+                                .save(c);
+
+        ShapedRecipeBuilder.shaped(MISC, zBlocks.EVAPORATION_BASIN.get().asItem())
+                                .pattern("# #")
+                                .pattern("###")
+                                .define('#', Items.TERRACOTTA)
+                                .unlockedBy(ID, has(Items.TERRACOTTA))
                                 .save(c);
 
         }

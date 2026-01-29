@@ -78,6 +78,7 @@ public class zStatic {
         public static String sulfur = "sulfur";
         public static String zinc = "zinc";
         public static String wooden = "wooden";
+        public static String salt = "salt";
     }
 
     public class ResourceType {
@@ -224,6 +225,9 @@ public class zStatic {
 
         public static String urn = "urn";
         public static String quern = "quern";
+
+        public static String evaporation_basin = "evaporation_basin";
+        public static String crushing_tub = "crushing_tub";
 
         // public static String fan = "fan";
         // public static String wind = "wind";

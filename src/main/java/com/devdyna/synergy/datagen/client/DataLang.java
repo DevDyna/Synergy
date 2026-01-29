@@ -60,7 +60,7 @@ public class DataLang extends LanguageProvider {
                         for (String tier : zStatic.Tiers.ALL) {
                                 if (b.getRegisteredName().contains(tier)) {
                                         var affix = StringUtil.nameCapitalized(tier).replace("_", "");
-                                        addBlock(b, named(b).replace(affix+" ", "") + " [" + affix + "]");
+                                        addBlock(b, named(b).replace(affix + " ", "") + " [" + affix + "]");
                                         continue;
                                 }
                         }
@@ -197,6 +197,11 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + ".jei." + zStatic.Blocks.void_box,
                                 "Void Box Infusions");
+
+                add(Main.ID + ".jei." + zStatic.Blocks.crushing_tub,
+                                "Crushing Tub Recipes");
+                add(Main.ID + ".jei." + zStatic.Blocks.evaporation_basin,
+                                "Evaporation Basin Recipes");
 
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.SHADOW,
@@ -375,6 +380,10 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".screen.modifier.speed", TIP_COLOR + "Speed Modifier §7[§f§a%s§7]");
                 add(ID + ".screen.modifier.luck", TIP_COLOR + "Luck Modifier §7[§f§a%s§7]");
                 add(ID + ".screen.modifier.fluid", TIP_COLOR + "Fluid Modifier §7[§f§a%s§7]");
+
+                add(ID + "." + zStatic.Blocks.crushing_tub,
+                                TIP_COLOR + "Crush items into items and fluids when jump on it");
+                add(ID + "." + zStatic.Blocks.evaporation_basin, TIP_COLOR + "Dry fluids into items after some time");
 
         }
 

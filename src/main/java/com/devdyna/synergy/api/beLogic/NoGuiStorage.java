@@ -23,24 +23,24 @@ public interface NoGuiStorage {
                 player.swing(hand);
 
                 // If holding item -> try insert
-                if (!stack.isEmpty()) {
+                if (!stack.isEmpty() && !extractOnly()) {
                     if (!level.isClientSide) {
                         ItemStack remaining = storage.insertItem(stack);
                         player.setItemInHand(hand, remaining);
                     }
-
+                    setChanged();
                     return ItemInteractionResult.sidedSuccess(level.isClientSide);
-                } else {
+                }
+
+                if (stack.isEmpty() && ! insertOnly()) {
                     // If empty hand -> extract one item
                     ItemStack extracted = storage.extractItem();
                     if (!extracted.isEmpty() && !level.isClientSide) {
                         ItemHandlerHelper.giveItemToPlayer(player, extracted);
+                        setChanged();
                         return ItemInteractionResult.CONSUME;
                     }
                 }
-                
-
-                // storage.setChanged();
             }
         }
         return ItemInteractionResult.FAIL;
@@ -49,5 +49,15 @@ public interface NoGuiStorage {
     abstract ItemStack extractItem();
 
     abstract ItemStack insertItem(ItemStack stack);
+
+    default boolean extractOnly() {
+        return false;
+    }
+
+    default boolean insertOnly() {
+        return false;
+    }
+
+    abstract void setChanged();
 
 }
