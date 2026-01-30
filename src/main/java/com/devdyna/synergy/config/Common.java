@@ -63,7 +63,6 @@ public class Common {
         // ic4
         public static IntValue MACHINE_MAX_FE;// 10k
 
-        // Not Yet Used
         public static IntValue MACHINE_MAX_SPEED_UPGRADES_TYPE;// 4
         public static IntValue MACHINE_MAX_ENERGY_UPGRADES_TYPE;// max
         public static IntValue MACHINE_MAX_LUCK_UPGRADES_TYPE;// max
