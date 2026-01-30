@@ -13,7 +13,7 @@ public record ItemFluidInput(FluidStack input,ItemStack item) implements RecipeI
 
     @Override
     public int size() {
-        return 1;
+        return 2;
     }
 
 }
