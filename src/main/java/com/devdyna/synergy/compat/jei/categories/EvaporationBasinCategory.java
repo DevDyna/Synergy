@@ -48,7 +48,7 @@ public class EvaporationBasinCategory extends BaseRecipeCategory<EvaporationBasi
 
     @Override
     public String setBackGround() {
-        return "textures/gui/evaporation_basin.png";
+        return "textures/gui/jei/evaporation_basin.png";
     }
 
     @Override
