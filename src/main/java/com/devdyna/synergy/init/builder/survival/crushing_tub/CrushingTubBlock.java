@@ -6,12 +6,14 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
 import com.devdyna.synergy.api.beLogic.BucketInteraction;
+import com.devdyna.synergy.api.beLogic.FluidClearableTank;
 import com.devdyna.synergy.init.types.zEntityTag;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -34,7 +36,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import static com.devdyna.synergy.Main.ID;
 
 @SuppressWarnings("null")
-public class CrushingTubBlock extends TickingBlock implements BucketInteraction {
+public class CrushingTubBlock extends TickingBlock implements BucketInteraction , FluidClearableTank {
 
     public CrushingTubBlock(Properties properties) {
         super(properties);
@@ -87,6 +89,12 @@ public class CrushingTubBlock extends TickingBlock implements BucketInteraction 
         if (level.getBlockEntity(pos) instanceof CrushingTubBE)
             return bucketAction(stack, state, level, pos, player, hand, hitResult);
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
+            BlockHitResult hitResult) {
+        return useItemToClear(state, level, pos, player, hitResult);
     }
 
     @Override
