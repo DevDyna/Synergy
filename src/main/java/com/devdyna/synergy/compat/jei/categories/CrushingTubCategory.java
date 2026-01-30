@@ -48,7 +48,7 @@ public class CrushingTubCategory extends BaseRecipeCategory<CrushingTubRecipe> {
 
     @Override
     public String setBackGround() {
-        return "textures/gui/crushing_tub.png";
+        return "textures/gui/jei/crushing_tub.png";
     }
 
     @Override
