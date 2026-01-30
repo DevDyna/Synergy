@@ -129,7 +129,9 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
 
         LevelUtil.popItemFromPos(level, getBlockPos().above(), recipe.getOutput().copy());
 
-        level.playSound(null, getBlockPos(), SoundEvents.SNIFFER_EGG_CRACK, SoundSource.BLOCKS, 1f, 1f);
+        level.playSound(null, getBlockPos(),
+                LevelUtil.chance(50, level) ? SoundEvents.SLIME_BLOCK_FALL : SoundEvents.SNIFFER_EGG_CRACK,
+                SoundSource.BLOCKS, 1f, 1f);
 
         update();
     }
