@@ -6,10 +6,12 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
 import com.devdyna.synergy.api.beLogic.BucketInteraction;
+import com.devdyna.synergy.api.beLogic.FluidClearableTank;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item.TooltipContext;
@@ -29,7 +31,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import static com.devdyna.synergy.Main.ID;
 
 @SuppressWarnings("null")
-public class EvaporationBasinBlock extends TickingBlock implements BucketInteraction {
+public class EvaporationBasinBlock extends TickingBlock implements BucketInteraction, FluidClearableTank {
 
     public EvaporationBasinBlock(Properties properties) {
         super(properties);
@@ -59,6 +61,12 @@ public class EvaporationBasinBlock extends TickingBlock implements BucketInterac
                 level.updateNeighbourForOutputSignal(pos, this);
             }
         super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
+            BlockHitResult hitResult) {
+        return useItemToClear(state, level, pos, player, hitResult);
     }
 
     @Override
