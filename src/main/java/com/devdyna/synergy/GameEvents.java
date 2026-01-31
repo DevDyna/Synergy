@@ -1,7 +1,7 @@
 package com.devdyna.synergy;
 
 import com.devdyna.synergy.common.events.*;
-import com.devdyna.synergy.init.builder.survival.PlaceableBrickEvent;
+import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickEvent;
 
 import net.neoforged.neoforge.common.NeoForge;
 

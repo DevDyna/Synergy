@@ -1,7 +1,6 @@
-package com.devdyna.synergy.common.recipes.serializer;
+package com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe;
 
 import com.devdyna.synergy.api.codec.BetterThanBlockStates;
-import com.devdyna.synergy.common.recipes.type.DryableBricksRecipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 

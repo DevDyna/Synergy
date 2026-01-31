@@ -21,6 +21,9 @@ import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualBuilder;
 import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionBuilder;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.ReactorCellBuilder;
 import com.devdyna.synergy.init.builder.plants.cultivated.azalea;
+import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubBuilder;
+import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackBuilder;
+import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporatingBasinBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup;

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.survival;
+package com.devdyna.synergy.init.builder.survival.placeable_bricks;
 
 import java.util.List;
 

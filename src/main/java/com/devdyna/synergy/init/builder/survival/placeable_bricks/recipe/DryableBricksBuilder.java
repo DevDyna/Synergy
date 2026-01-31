@@ -1,4 +1,4 @@
-package com.devdyna.synergy.common.recipes.builders;
+package com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe;
 
 import static com.devdyna.synergy.Main.ID;
 
@@ -11,7 +11,6 @@ import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
 import com.devdyna.synergy.api.recipes.builders.legacy.SimpleInputItem;
 import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.type.DryableBricksRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;

@@ -12,9 +12,6 @@ import com.devdyna.synergy.init.builder.industrial_machines.extractor.ExtractorS
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurnaceScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterScreen;
-import com.devdyna.synergy.init.builder.magic.crushing_tub.CrushingTubRender;
-import com.devdyna.synergy.init.builder.magic.drying_rack.DryingRackRender;
-import com.devdyna.synergy.init.builder.magic.evaporation_basin.EvaporationBasinRender;
 import com.devdyna.synergy.init.builder.magic.quern.QuernRendering;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.ornated.OrnatedTinyChestScreen;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.stone.StoneTinyChestScreen;
@@ -22,6 +19,9 @@ import com.devdyna.synergy.init.builder.magic.tiny_chests.wooden.WoodenTinyChest
 import com.devdyna.synergy.init.builder.magic.void_box.VoidBoxRender;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorAOE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen;
+import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubRender;
+import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackRender;
+import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinRender;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zContainer;
 import com.devdyna.synergy.init.types.zItems;

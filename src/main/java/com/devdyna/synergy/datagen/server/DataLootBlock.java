@@ -8,7 +8,7 @@ import com.devdyna.synergy.api.plants.builder.BaseCropBlock;
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.EnchantUtil;
-import com.devdyna.synergy.init.builder.survival.PlaceableBrickBlock;
+import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zMachines;

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.magic.evaporation_basin;
+package com.devdyna.synergy.init.builder.survival.crushing_tub;
 
 import java.util.Optional;
 
@@ -10,9 +10,8 @@ import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
 import com.devdyna.synergy.api.utils.LevelUtil;
-import com.devdyna.synergy.api.utils.Ticker;
-import com.devdyna.synergy.common.recipes.input.FluidInput;
-import com.devdyna.synergy.common.recipes.type.EvaporationBasinRecipe;
+import com.devdyna.synergy.common.recipes.input.MonoItemInput;
+import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -20,12 +19,13 @@ import com.devdyna.synergy.init.types.zRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
@@ -39,16 +39,16 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage {
+public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
-    public EvaporationBasinBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public CrushingTubBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
-    public EvaporationBasinBE(BlockPos pos, BlockState blockState) {
-        this(zBlockEntities.EVAPORATION_BASIN.get(), pos, blockState);
+    public CrushingTubBE(BlockPos pos, BlockState blockState) {
+        this(zBlockEntities.CRUSHING_TUB.get(), pos, blockState);
     }
 
     @Override
@@ -80,7 +80,8 @@ public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemS
     }
 
     public ItemStack insertItem(ItemStack stack) {
-        return stack;
+        update();
+        return getStorage().insertItem(0, stack, false);
     }
 
     public ItemStack extractItem() {
@@ -91,10 +92,7 @@ public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemS
         return ItemStack.EMPTY;
     }
 
-    private Ticker ticker = null;
-
-    @Override
-    public void tickBoth() {
+    public void craft() {
 
         if (level == null)
             return;
@@ -102,42 +100,45 @@ public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemS
         if (cache == null)
             return;
 
-        if (getFluidStorage().getFluid().isEmpty())
+        var slot = this.cache.getCapability();
+
+        if (slot == null)
             return;
+
+        var item = slot.getStackInSlot(0);
 
         update();
 
-        Optional<RecipeHolder<EvaporationBasinRecipe>> r = level.getRecipeManager()
-                .getRecipeFor(zRecipeTypes.EVAPORATING_BASIN.getType(),
-                        new FluidInput(getFluidStorage().getFluid()), level);
+        if (item.isEmpty())
+            return;
+
+        Optional<RecipeHolder<CrushingTubRecipe>> r = level.getRecipeManager()
+                .getRecipeFor(zRecipeTypes.CRUSHING_TUB.getType(),
+                        new MonoItemInput(item), level);
 
         if (r.isEmpty())
             return;
 
         var recipe = r.get().value();
 
-        if (getStorage().getStackInSlot(0).getMaxStackSize() < recipe.getOutput().getCount()
-                + getStorage().getStackInSlot(0).getCount())
+        if (getFluidStorage().getSpace() < recipe.getFluid().getAmount())
             return;
 
-        if (LevelUtil.chance(5, level))
-            LevelUtil.addParticle(ParticleTypes.CLOUD, level, getBlockPos(), true);
+        getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.EXECUTE);
+        getStorage().extractItem(0, 1, false);
 
-        if (ticker == null)
-            ticker = Ticker.of(recipe.getTicks());
+        LevelUtil.popItemFromPos(level, getBlockPos().above(), recipe.getOutput().copy());
 
-        if (ticker.commit()) {
-            getFluidStorage().drain(recipe.getFluid().amount(), FluidAction.EXECUTE);
-            getStorage().insertItem(0, recipe.getOutput().copy(), false);
-        }
+        level.playSound(null, getBlockPos(),
+                LevelUtil.chance(50, level) ? SoundEvents.SLIME_BLOCK_FALL : SoundEvents.SNIFFER_EGG_CRACK,
+                SoundSource.BLOCKS, 1f, 1f);
 
         update();
-
     }
 
-    @Override
-    public boolean extractOnly() {
-        return true;
+    protected void update() {
+        setChanged();
+        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
     }
 
     @Override
@@ -148,11 +149,6 @@ public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemS
     @Override
     public int getFluidCapacity() {
         return 16_000;
-    }
-
-    protected void update() {
-        setChanged();
-        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
     }
 
     @Override

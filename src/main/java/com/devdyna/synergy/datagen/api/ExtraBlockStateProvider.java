@@ -14,7 +14,7 @@ import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
-import com.devdyna.synergy.init.builder.survival.PlaceableBrickBlock;
+import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 
 import net.minecraft.core.Direction;

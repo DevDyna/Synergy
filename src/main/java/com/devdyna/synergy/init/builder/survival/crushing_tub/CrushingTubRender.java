@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.magic.crushing_tub;
+package com.devdyna.synergy.init.builder.survival.crushing_tub;
 
 import java.util.Random;
 

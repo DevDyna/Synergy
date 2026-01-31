@@ -2,9 +2,9 @@ package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.Size;
-import com.devdyna.synergy.common.recipes.type.CrushingTubRecipe;
 import com.devdyna.synergy.compat.jei.api.JEIFluidTankHelper;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
+import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 

@@ -1,17 +1,18 @@
-package com.devdyna.synergy.init.builder.magic.drying_rack;
+package com.devdyna.synergy.init.builder.survival.evaporation_basin;
 
 import java.util.Optional;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
+import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.api.utils.Ticker;
-import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.input.MonoItemInput;
-import com.devdyna.synergy.common.recipes.type.DryingRackRecipe;
+import com.devdyna.synergy.common.recipes.input.FluidInput;
+import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporationBasinRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -33,20 +34,21 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorageBlock {
+public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
-    public DryingRackBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public EvaporationBasinBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
-    public DryingRackBE(BlockPos pos, BlockState blockState) {
-        this(zBlockEntities.DRYING_RACK.get(), pos, blockState);
+    public EvaporationBasinBE(BlockPos pos, BlockState blockState) {
+        this(zBlockEntities.EVAPORATION_BASIN.get(), pos, blockState);
     }
 
     @Override
@@ -78,8 +80,7 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
     }
 
     public ItemStack insertItem(ItemStack stack) {
-        update();
-        return getStorage().insertItem(0, stack, false);
+        return stack;
     }
 
     public ItemStack extractItem() {
@@ -101,39 +102,52 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
         if (cache == null)
             return;
 
-        var slot = this.cache.getCapability();
-
-        if (slot == null)
+        if (getFluidStorage().getFluid().isEmpty())
             return;
-
-        var item = slot.getStackInSlot(0);
 
         update();
 
-        Optional<RecipeHolder<DryingRackRecipe>> r = level.getRecipeManager()
-                .getRecipeFor(zRecipeTypes.DRYING_RACK.getType(),
-                        new MonoItemInput(item), level);
+        Optional<RecipeHolder<EvaporationBasinRecipe>> r = level.getRecipeManager()
+                .getRecipeFor(zRecipeTypes.EVAPORATING_BASIN.getType(),
+                        new FluidInput(getFluidStorage().getFluid()), level);
 
         if (r.isEmpty())
             return;
 
         var recipe = r.get().value();
 
+        if (getStorage().getStackInSlot(0).getMaxStackSize() < recipe.getOutput().getCount()
+                + getStorage().getStackInSlot(0).getCount())
+            return;
+
         if (LevelUtil.chance(5, level))
-            LevelUtil.addParticle(ParticleTypes.CLOUD, level, getBlockPos().below(), true);
+            LevelUtil.addParticle(ParticleTypes.CLOUD, level, getBlockPos(), true);
 
         if (ticker == null)
-            ticker = Ticker.of(recipe.getTicks() * item.getCount());
+            ticker = Ticker.of(recipe.getTicks());
 
         if (ticker.commit()) {
-            getStorage().extractItem(0, item.getCount(), false);
-            getStorage().insertItem(0,
-                    x.item(recipe.getOutput().copy().getItem(), recipe.getOutput().copy().getCount() * item.getCount()),
-                    false);
+            getFluidStorage().drain(recipe.getFluid().amount(), FluidAction.EXECUTE);
+            getStorage().insertItem(0, recipe.getOutput().copy(), false);
         }
 
         update();
 
+    }
+
+    @Override
+    public boolean extractOnly() {
+        return true;
+    }
+
+    @Override
+    public FluidStorageTank getFluidStorage() {
+        return getData(zHandlers.FLUID_TANK);
+    }
+
+    @Override
+    public int getFluidCapacity() {
+        return 16_000;
     }
 
     protected void update() {
@@ -143,12 +157,14 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
 
     @Override
     public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        tag.put("tank", getFluidStorage().serializeNBT(registries));
         tag.put("inventory", getStorage().serializeNBT(registries));
         super.saveAdditional(tag, registries);
     }
 
     @Override
     public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        getFluidStorage().deserializeNBT(registries, tag.getCompound("tank"));
         getStorage().deserializeNBT(registries, tag.getCompound("inventory"));
         super.loadAdditional(tag, registries);
     }

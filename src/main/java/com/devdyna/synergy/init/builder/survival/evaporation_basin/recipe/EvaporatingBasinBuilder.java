@@ -1,4 +1,4 @@
-package com.devdyna.synergy.common.recipes.builders;
+package com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe;
 
 import static com.devdyna.synergy.Main.ID;
 
@@ -9,7 +9,6 @@ import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
 import com.devdyna.synergy.api.recipes.builders.InputFluidAttach;
 import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.type.EvaporationBasinRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;

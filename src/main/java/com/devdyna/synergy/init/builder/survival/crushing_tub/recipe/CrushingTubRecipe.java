@@ -1,4 +1,4 @@
-package com.devdyna.synergy.common.recipes.type;
+package com.devdyna.synergy.init.builder.survival.crushing_tub.recipe;
 
 import java.util.List;
 
@@ -13,36 +13,36 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings("null")
-public class DryingRackRecipe extends BaseRecipeType<MonoItemInput> {
+public class CrushingTubRecipe extends BaseRecipeType<MonoItemInput> {
 
     private final Ingredient input;
-    private final int ticks;
+    private final FluidStack fluid;
     private final ItemStack output;
 
-    public DryingRackRecipe(Ingredient input,int ticks, ItemStack output) {
+    public CrushingTubRecipe(Ingredient input,
+            ItemStack output, FluidStack fluid) {
         this.input = input;
+        this.fluid = fluid;
         this.output = output;
-        this.ticks = ticks;
+    }
+
+    public static CrushingTubRecipe of(Ingredient input, ItemStack output, FluidStack fluid) {
+        return new CrushingTubRecipe(input, output, fluid);
     }
 
     public boolean matches(MonoItemInput r, Level l) {
-        return input.test(r.input());
+        return this.input.test(r.input());
     }
 
     public ItemStack assemble(MonoItemInput i, HolderLookup.Provider r) {
-        return this.output;
+        return this.output.copy();
     }
 
     public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.copyOf(List.of(input));
-    }
-
-    @Override
-    @Deprecated
-    public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
-        return output;
+        return NonNullList.copyOf(List.of(this.input));
     }
 
     public Ingredient getInput() {
@@ -53,18 +53,23 @@ public class DryingRackRecipe extends BaseRecipeType<MonoItemInput> {
         return output;
     }
 
-    public int getTicks() {
-        return ticks;
+public FluidStack getFluid() {
+    return fluid;
+}
+
+    @Override
+    @Deprecated
+    public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
+        return this.output;
     }
 
     @Override
     public RecipeRegister<? extends BaseRecipeType<MonoItemInput>> getRecipe() {
-        return zRecipeTypes.DRYING_RACK;
+        return zRecipeTypes.CRUSHING_TUB;
     }
 
     @Override
     public Item getToastIcon() {
-        return zBlocks.VOID_BOX.get().asItem();
+        return zBlocks.CRUSHING_TUB.get().asItem();
     }
-
 }

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.magic.drying_rack;
+package com.devdyna.synergy.init.builder.survival.drying_rack;
 
 import java.util.List;
 import javax.annotation.Nullable;

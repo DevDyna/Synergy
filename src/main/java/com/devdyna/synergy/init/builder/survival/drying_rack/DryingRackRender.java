@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.magic.drying_rack;
+package com.devdyna.synergy.init.builder.survival.drying_rack;
 
 import com.devdyna.synergy.api.render.SimpleItemRender;
 import com.mojang.blaze3d.vertex.PoseStack;

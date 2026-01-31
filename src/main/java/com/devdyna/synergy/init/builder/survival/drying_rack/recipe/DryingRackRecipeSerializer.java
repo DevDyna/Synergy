@@ -1,6 +1,5 @@
-package com.devdyna.synergy.common.recipes.serializer;
+package com.devdyna.synergy.init.builder.survival.drying_rack.recipe;
 
-import com.devdyna.synergy.common.recipes.type.DryingRackRecipe;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

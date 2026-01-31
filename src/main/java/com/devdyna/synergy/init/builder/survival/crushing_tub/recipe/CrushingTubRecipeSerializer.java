@@ -1,6 +1,5 @@
-package com.devdyna.synergy.common.recipes.serializer;
+package com.devdyna.synergy.init.builder.survival.crushing_tub.recipe;
 
-import com.devdyna.synergy.common.recipes.type.CrushingTubRecipe;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 

@@ -16,6 +16,14 @@ import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionRec
 import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionRecipeSerializer;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.FuelCellRecipe;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.FuelCellRecipeSerializer;
+import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubRecipe;
+import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubRecipeSerializer;
+import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackRecipe;
+import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackRecipeSerializer;
+import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporationBasinRecipe;
+import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporationBasinRecipeSerializer;
+import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipe;
+import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipeSerializer;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.ItemStack;

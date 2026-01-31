@@ -1,32 +1,30 @@
-package com.devdyna.synergy.common.recipes.type;
+package com.devdyna.synergy.init.builder.survival.drying_rack.recipe;
 
 import java.util.List;
 
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
+import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
-public class DryableBricksRecipe extends BaseRecipeType<MonoItemInput> {
+public class DryingRackRecipe extends BaseRecipeType<MonoItemInput> {
 
     private final Ingredient input;
-    private final BlockState block;
+    private final int ticks;
     private final ItemStack output;
 
-    public DryableBricksRecipe(Ingredient input, BlockState block, ItemStack output) {
+    public DryingRackRecipe(Ingredient input,int ticks, ItemStack output) {
         this.input = input;
-        this.block = block;
         this.output = output;
+        this.ticks = ticks;
     }
 
     public boolean matches(MonoItemInput r, Level l) {
@@ -34,17 +32,7 @@ public class DryableBricksRecipe extends BaseRecipeType<MonoItemInput> {
     }
 
     public ItemStack assemble(MonoItemInput i, HolderLookup.Provider r) {
-        return output;
-    }
-
-    @Override
-    public RecipeRegister<DryableBricksRecipe> getRecipe() {
-        return zRecipeTypes.DRYABLE_BRICKS;
-    }
-
-    @Override
-    public Item getToastIcon() {
-        return Items.BRICK;
+        return this.output;
     }
 
     public NonNullList<Ingredient> getIngredients() {
@@ -65,7 +53,18 @@ public class DryableBricksRecipe extends BaseRecipeType<MonoItemInput> {
         return output;
     }
 
-    public BlockState getBlock() {
-        return block;
+    public int getTicks() {
+        return ticks;
     }
+
+    @Override
+    public RecipeRegister<? extends BaseRecipeType<MonoItemInput>> getRecipe() {
+        return zRecipeTypes.DRYING_RACK;
+    }
+
+    @Override
+    public Item getToastIcon() {
+        return zBlocks.VOID_BOX.get().asItem();
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.common.recipes.type;
+package com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe;
 
 import java.util.List;
 

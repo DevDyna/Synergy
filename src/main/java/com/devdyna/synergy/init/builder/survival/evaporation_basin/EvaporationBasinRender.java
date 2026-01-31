@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.magic.evaporation_basin;
+package com.devdyna.synergy.init.builder.survival.evaporation_basin;
 
 import java.util.Random;
 
