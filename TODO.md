@@ -38,19 +38,13 @@
 
 - [ ] machines jei compat dont show anymore
 
-- [x] machine secondary slots dont work with capabilities
-
-- [x] Casting Factory -> Input FluidStack -> SizedFluidIngredient
-
-- [x] Casting Factory -> Input Ingredient -> SizedIngredient
-- [x] Melter -> Input Ingredient -> SizedIngredient
-- [x] Macerator -> Input Ingredient -> SizedIngredient
-- [x] Extractor -> Input Ingredient -> SizedIngredient
-- [x] Furnace -> Input Ingredient -> SizedIngredient
-- [x] Compressor -> Input Ingredient -> SizedIngredient
-- [x] Alloy Smelter -> Input Ingredient -> SizedIngredient
-
 - [ ] guideme for machines and upgrades
+
+- [ ] drying racks jade
+- [ ] drying racks jei
+- [ ] evaporation basin jade
+
+- [ ] safe decoration drying racks
 
 ## NEWS
 
