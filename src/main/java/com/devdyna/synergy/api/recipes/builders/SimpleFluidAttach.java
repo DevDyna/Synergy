@@ -1,6 +1,6 @@
 package com.devdyna.synergy.api.recipes.builders;
 
-import com.devdyna.synergy.api.zFluid;
+import com.devdyna.synergy.api.registers.FluidRegister;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.world.level.material.Fluid;
@@ -18,11 +18,11 @@ public interface SimpleFluidAttach<BUILDER extends BaseRecipeBuilder> {
         return fluid(fluid, 1000);
     }
 
-    default BUILDER fluid(zFluid fluid, int amount) {
+    default BUILDER fluid(FluidRegister fluid, int amount) {
         return fluid(x.fluid(fluid), amount);
     }
 
-    default BUILDER fluid(zFluid fluid) {
+    default BUILDER fluid(FluidRegister fluid) {
         return fluid(x.fluid(fluid), 1000);
     }
 

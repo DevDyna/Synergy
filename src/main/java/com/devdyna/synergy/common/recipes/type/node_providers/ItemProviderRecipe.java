@@ -2,8 +2,8 @@ package com.devdyna.synergy.common.recipes.type.node_providers;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.zRecipe;
 import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
+import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.common.recipes.input.ProviderInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -29,7 +29,7 @@ public class ItemProviderRecipe<T> extends BaseProviderRecipe<ItemStack> {
     }
 
     @Override
-    public zRecipe<ItemProviderRecipe<ItemStack>> getRecipe() {
+    public RecipeRegister<ItemProviderRecipe<ItemStack>> getRecipe() {
         return zRecipeTypes.ITEM_PROVIDER;
     }
 

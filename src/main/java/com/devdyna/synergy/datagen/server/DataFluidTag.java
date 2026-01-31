@@ -4,7 +4,7 @@ import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.zFluid;
+import com.devdyna.synergy.api.registers.FluidRegister;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.init.types.zFluidTags;
 import com.devdyna.synergy.init.types.zFluids;
@@ -28,7 +28,7 @@ public class DataFluidTag extends FluidTagsProvider {
 
                 tag(zFluidTags.MOLTEN_FLUIDS)
                                 .add(ClazzUtil.getAllzFluids(zStatic.Fluids.AFFIX_MOLTEN).stream()
-                                                .map(zFluid::getFluid)
+                                                .map(FluidRegister::getFluid)
                                                 .toArray(Fluid[]::new));
 
                 tag(zFluidTags.ALUMINUM_MOLTEN).add(zFluids.MOLTEN_ALUMINUM.getFluid());

@@ -2,8 +2,8 @@ package com.devdyna.synergy.common.recipes.type;
 
 import java.util.List;
 
-import com.devdyna.synergy.api.zRecipe;
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
+import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.FluidInput;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -65,7 +65,7 @@ public class EvaporationBasinRecipe extends BaseRecipeType<FluidInput> {
     }
 
     @Override
-    public zRecipe<? extends BaseRecipeType<FluidInput>> getRecipe() {
+    public RecipeRegister<? extends BaseRecipeType<FluidInput>> getRecipe() {
         return zRecipeTypes.EVAPORATING_BASIN;
     }
 

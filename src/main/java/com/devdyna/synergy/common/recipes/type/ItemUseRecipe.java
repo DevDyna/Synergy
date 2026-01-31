@@ -2,8 +2,8 @@ package com.devdyna.synergy.common.recipes.type;
 
 import java.util.List;
 
-import com.devdyna.synergy.api.zRecipe;
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
+import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.UseItemInput;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -81,7 +81,7 @@ public class ItemUseRecipe extends BaseRecipeType<UseItemInput> {
     }
 
     @Override
-    public zRecipe<? extends BaseRecipeType<UseItemInput>> getRecipe() {
+    public RecipeRegister<? extends BaseRecipeType<UseItemInput>> getRecipe() {
         return zRecipeTypes.ITEM_USE;
     }
 

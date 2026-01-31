@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api;
+package com.devdyna.synergy.api.registers;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -33,7 +33,7 @@ MENU extends AbstractContainerMenu,
     private final DeferredHolder<Item, ?> item;
     private final DeferredHolder<MenuType<?>, MenuType<MENU>> menutype;
 
-    private final zRecipe<RECIPE> recipe;
+    private final RecipeRegister<RECIPE> recipe;
 
     public MachineType(
             String id,
@@ -56,7 +56,7 @@ MENU extends AbstractContainerMenu,
                 id,
                 () -> IMenuTypeExtension.create(menuFactory));
 
-        this.recipe = zRecipe.of(id, recipeSerializer);
+        this.recipe = RecipeRegister.of(id, recipeSerializer);
     }
 
     public DeferredHolder<Block, BLOCK> block() {
@@ -75,7 +75,7 @@ MENU extends AbstractContainerMenu,
         return menutype;
     }
 
-    public zRecipe<RECIPE> recipe() {
+    public RecipeRegister<RECIPE> recipe() {
         return recipe;
     }
 

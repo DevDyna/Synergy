@@ -2,11 +2,11 @@ package com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe;
 
 import java.util.Optional;
 
-import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.BiItemInput;
 import com.devdyna.synergy.init.types.zMachines;

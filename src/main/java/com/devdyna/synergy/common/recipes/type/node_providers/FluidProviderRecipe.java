@@ -2,8 +2,8 @@ package com.devdyna.synergy.common.recipes.type.node_providers;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.zRecipe;
 import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
+import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.ProviderInput;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -32,7 +32,7 @@ public class FluidProviderRecipe<T> extends BaseProviderRecipe<FluidStack> {
     }
 
     @Override
-    public zRecipe<FluidProviderRecipe<FluidStack>> getRecipe() {
+    public RecipeRegister<FluidProviderRecipe<FluidStack>> getRecipe() {
         return zRecipeTypes.FLUID_PROVIDER;
     }
 

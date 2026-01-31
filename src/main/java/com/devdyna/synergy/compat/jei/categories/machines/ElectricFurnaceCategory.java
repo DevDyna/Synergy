@@ -1,6 +1,6 @@
 package com.devdyna.synergy.compat.jei.categories.machines;
 
-import com.devdyna.synergy.api.MachineType;
+import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.core.BaseMachineRecipeCategory;

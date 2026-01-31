@@ -8,7 +8,6 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
@@ -17,6 +16,7 @@ import com.devdyna.synergy.api.recipes.builders.SimpleFluidAttach;
 import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
 import com.devdyna.synergy.api.recipes.builders.InputItem;
 import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
+import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.api.utils.LogUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;

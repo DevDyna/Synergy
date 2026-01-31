@@ -2,8 +2,8 @@ package com.devdyna.synergy.common.recipes.type;
 
 import java.util.List;
 
-import com.devdyna.synergy.api.zRecipe;
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
+import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -64,7 +64,7 @@ public FluidStack getFluid() {
     }
 
     @Override
-    public zRecipe<? extends BaseRecipeType<MonoItemInput>> getRecipe() {
+    public RecipeRegister<? extends BaseRecipeType<MonoItemInput>> getRecipe() {
         return zRecipeTypes.CRUSHING_TUB;
     }
 

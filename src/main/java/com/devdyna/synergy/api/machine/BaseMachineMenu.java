@@ -1,9 +1,10 @@
 package com.devdyna.synergy.api.machine;
 
-import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
 import com.devdyna.synergy.api.gui.BaseMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.registers.MachineType;
+
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;

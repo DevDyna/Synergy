@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api;
+package com.devdyna.synergy.api.registers;
 
 import java.util.function.Consumer;
 import java.util.function.ToIntFunction;
@@ -37,7 +37,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
  * Utility class to create fluids
  */
 @SuppressWarnings("null")
-public class zFluid {
+public class FluidRegister {
 
     private int color;
     private String id;
@@ -61,11 +61,11 @@ public class zFluid {
     private boolean canPushEntity;
     private boolean canConvertToSource;
 
-    public zFluid(String id, float r, float g, float b, float a) {
+    public FluidRegister(String id, float r, float g, float b, float a) {
         this(id, rgba(r, g, b, a));
     }
 
-    public zFluid(String id, int color) {
+    public FluidRegister(String id, int color) {
         this.color = color;
         this.id = id;
 
@@ -187,22 +187,22 @@ public class zFluid {
         return type;
     }
 
-    public zFluid setTextures(ResourceLocation still) {
+    public FluidRegister setTextures(ResourceLocation still) {
         this.still = still;
         return this;
     }
 
-    public zFluid setTextures(ResourceLocation still, ResourceLocation flowing) {
+    public FluidRegister setTextures(ResourceLocation still, ResourceLocation flowing) {
         this.flowing = flowing;
         return setTextures(still);
     }
 
-    public zFluid setTextures(ResourceLocation still, ResourceLocation flowing, ResourceLocation overlay) {
+    public FluidRegister setTextures(ResourceLocation still, ResourceLocation flowing, ResourceLocation overlay) {
         this.overlay = overlay;
         return setTextures(still, flowing);
     }
 
-    public zFluid setStillTexture(ResourceLocation rl) {
+    public FluidRegister setStillTexture(ResourceLocation rl) {
         this.still = rl;
         return this;
     }
@@ -210,42 +210,42 @@ public class zFluid {
     /**
      * dont work
      */
-    public zFluid setLight(int l) {
+    public FluidRegister setLight(int l) {
         this.lightLevel = l;
         return this;
     }
 
-    public zFluid setLight(ToIntFunction<BlockState> l) {
+    public FluidRegister setLight(ToIntFunction<BlockState> l) {
         this.dynLightLevel = l;
         return this;
     }
 
-    public zFluid setFlowingTexture(ResourceLocation rl) {
+    public FluidRegister setFlowingTexture(ResourceLocation rl) {
         this.flowing = rl;
         return this;
     }
 
-    public zFluid setOverlayTexture(ResourceLocation rl) {
+    public FluidRegister setOverlayTexture(ResourceLocation rl) {
         this.overlay = rl;
         return this;
     }
 
-    public zFluid swim() {
+    public FluidRegister swim() {
         this.canSwim = true;
         return this;
     }
 
-    public zFluid convertToSource() {
+    public FluidRegister convertToSource() {
         this.canConvertToSource = true;
         return this;
     }
 
-    public zFluid drown() {
+    public FluidRegister drown() {
         this.canDrown = true;
         return this;
     }
 
-    public zFluid pushEntity() {
+    public FluidRegister pushEntity() {
         this.canPushEntity = true;
         return this;
     }
@@ -253,7 +253,7 @@ public class zFluid {
     /**
      * Default value: 1000
      */
-    public zFluid setViscosity(int v) {
+    public FluidRegister setViscosity(int v) {
         this.viscosity = v;
         return this;
     }
@@ -266,16 +266,16 @@ public class zFluid {
         return id;
     }
 
-    public static zFluid create(String id, int color) {
-        return new zFluid(id, color);
+    public static FluidRegister create(String id, int color) {
+        return new FluidRegister(id, color);
     }
 
-    public static zFluid create(String id, Color color) {
-        return new zFluid(id, color.getRGB());
+    public static FluidRegister create(String id, Color color) {
+        return new FluidRegister(id, color.getRGB());
     }
 
-    public static zFluid create(String id, float r, float g, float b, float a) {
-        return new zFluid(id, r, g, b, a);
+    public static FluidRegister create(String id, float r, float g, float b, float a) {
+        return new FluidRegister(id, r, g, b, a);
     }
 
     public static int rgba(float r, float g, float b, float a) {

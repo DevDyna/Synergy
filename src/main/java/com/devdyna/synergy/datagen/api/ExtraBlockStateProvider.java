@@ -4,11 +4,12 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.List;
 import java.util.function.BiFunction;
-import com.devdyna.synergy.api.zFluid;
+
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.node.nodeType;
 import com.devdyna.synergy.api.pipe.pipeType;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
+import com.devdyna.synergy.api.registers.FluidRegister;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
@@ -311,7 +312,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                 .build());
         }
 
-        protected void fluid(zFluid fluid) {
+        protected void fluid(FluidRegister fluid) {
                 getVariantBuilder(fluid.getBlock().get())
                                 .partialState().modelForState()
                                 .modelFile(models().getBuilder("block/" + fluid.getId())

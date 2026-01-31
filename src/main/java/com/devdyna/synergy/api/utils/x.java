@@ -23,8 +23,8 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.Arrays;
 import java.util.List;
 
-import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.zFluid;
+import com.devdyna.synergy.api.registers.FluidRegister;
+import com.devdyna.synergy.api.registers.MachineType;
 
 public class x {
 
@@ -190,7 +190,7 @@ public class x {
         return fluid(f, 1000);
     }
 
-    public static Fluid fluid(zFluid f) {
+    public static Fluid fluid(FluidRegister f) {
         return f.getFluid();
     }
 

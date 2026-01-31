@@ -1,6 +1,6 @@
 package com.devdyna.synergy.api.recipes.types;
 
-import com.devdyna.synergy.api.zRecipe;
+import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.core.HolderLookup.Provider;
@@ -34,7 +34,7 @@ public abstract class BaseRecipeType<RECIPE_INPUT extends RecipeInput>
         return getRecipe().getType();
     }
 
-    public abstract zRecipe<? extends BaseRecipeType<RECIPE_INPUT>> getRecipe();
+    public abstract RecipeRegister<? extends BaseRecipeType<RECIPE_INPUT>> getRecipe();
 
     public abstract Item getToastIcon();
 

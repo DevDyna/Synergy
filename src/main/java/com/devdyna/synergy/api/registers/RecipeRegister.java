@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api;
+package com.devdyna.synergy.api.registers;
 
 import java.util.function.Supplier;
 
@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 /**
  * Utility class to create recipes and recipe serializers at once
  */
-public class zRecipe<T extends Recipe<?>> {
+public class RecipeRegister<T extends Recipe<?>> {
 
     private final String id;
     private final Supplier<? extends RecipeSerializer<T>> serializer;
@@ -21,7 +21,7 @@ public class zRecipe<T extends Recipe<?>> {
     private DeferredRegister<RecipeSerializer<?>> SERIALIZER_TYPE;
     private DeferredRegister<RecipeType<?>> RECIPE_TYPE;
 
-    public zRecipe(String id,
+    public RecipeRegister(String id,
             Supplier<? extends RecipeSerializer<T>> serializer,
             Supplier<? extends RecipeType<T>> type,
             DeferredRegister<RecipeSerializer<?>> serializer_type,
@@ -34,7 +34,7 @@ public class zRecipe<T extends Recipe<?>> {
 
     }
 
-    public zRecipe(String id,
+    public RecipeRegister(String id,
             Supplier<? extends RecipeSerializer<T>> serializer,
             Supplier<? extends RecipeType<T>> type) {
         this(id, serializer, type, zRecipeTypes.SERIALIZERS, zRecipeTypes.TYPES);
@@ -52,10 +52,10 @@ public class zRecipe<T extends Recipe<?>> {
         return type.get();
     }
 
-    public static <T extends Recipe<?>> zRecipe<T> of(String id,
+    public static <T extends Recipe<?>> RecipeRegister<T> of(String id,
             Supplier<? extends RecipeSerializer<T>> serializer, DeferredRegister<RecipeSerializer<?>> serializer_type,
             DeferredRegister<RecipeType<?>> recipetype_type) {
-        return new zRecipe<>(id, serializer, () -> new RecipeType<T>() {
+        return new RecipeRegister<>(id, serializer, () -> new RecipeType<T>() {
             @Override
             public String toString() {
                 return id;
@@ -63,9 +63,9 @@ public class zRecipe<T extends Recipe<?>> {
         }, serializer_type, recipetype_type);
     }
 
-    public static <T extends Recipe<?>> zRecipe<T> of(String id,
+    public static <T extends Recipe<?>> RecipeRegister<T> of(String id,
             Supplier<? extends RecipeSerializer<T>> serializer) {
-        return new zRecipe<>(id, serializer, () -> new RecipeType<T>() {
+        return new RecipeRegister<>(id, serializer, () -> new RecipeType<T>() {
             @Override
             public String toString() {
                 return id;

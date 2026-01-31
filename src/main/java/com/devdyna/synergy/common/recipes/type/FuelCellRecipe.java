@@ -1,7 +1,7 @@
 package com.devdyna.synergy.common.recipes.type;
 
-import com.devdyna.synergy.api.zRecipe;
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
+import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -73,7 +73,7 @@ public class FuelCellRecipe extends BaseRecipeType<MonoItemInput> {
 
 
     @Override
-    public zRecipe<? extends BaseRecipeType<MonoItemInput>> getRecipe() {
+    public RecipeRegister<? extends BaseRecipeType<MonoItemInput>> getRecipe() {
         return zRecipeTypes.FUEL_CELL_RECIPE;
     }
 

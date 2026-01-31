@@ -2,8 +2,8 @@ package com.devdyna.synergy.common.recipes.type;
 
 import java.util.List;
 
-import com.devdyna.synergy.api.zRecipe;
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
+import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.ItemListInput;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -60,7 +60,7 @@ public class CropResultRecipe extends BaseRecipeType<ItemListInput> {
     }
 
     @Override
-    public zRecipe<CropResultRecipe> getRecipe() {
+    public RecipeRegister<CropResultRecipe> getRecipe() {
         return zRecipeTypes.CROP_RESULT;
     }
 }

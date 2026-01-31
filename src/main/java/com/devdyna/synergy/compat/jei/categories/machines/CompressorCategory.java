@@ -2,7 +2,7 @@ package com.devdyna.synergy.compat.jei.categories.machines;
 
 import static com.devdyna.synergy.Main.ID;
 
-import com.devdyna.synergy.api.MachineType;
+import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.api.utils.Image;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;

@@ -4,7 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.MachineType;
+import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterBE;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterBlock;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterMenu;

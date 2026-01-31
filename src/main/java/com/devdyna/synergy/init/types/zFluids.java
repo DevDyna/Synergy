@@ -5,7 +5,7 @@ import static com.devdyna.synergy.Main.ID;
 import java.awt.Color;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.zFluid;
+import com.devdyna.synergy.api.registers.FluidRegister;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -27,58 +27,58 @@ public class zFluids {
 
     // ---------------------------------------------------------------------------------------//
 
-    public static final zFluid OIL = zFluid.create(zStatic.Fluids.oil, 0xFF202020).pushEntity();
+    public static final FluidRegister OIL = FluidRegister.create(zStatic.Fluids.oil, 0xFF202020).pushEntity();
 
-    public static final zFluid SAP = zFluid.create(zStatic.Fluids.sap, 0xFFF2A619).pushEntity();
+    public static final FluidRegister SAP = FluidRegister.create(zStatic.Fluids.sap, 0xFFF2A619).pushEntity();
 
-    public static final zFluid GLUE = zFluid.create(zStatic.Fluids.glue, 0xDAF3EFE6).pushEntity();
+    public static final FluidRegister GLUE = FluidRegister.create(zStatic.Fluids.glue, 0xDAF3EFE6).pushEntity();
 
-    public static final zFluid IRONBERRY_JUICE = zFluid
+    public static final FluidRegister IRONBERRY_JUICE = FluidRegister
             .create(zStatic.Fluids.ironberry_juice, Color.LIGHT_GRAY.brighter().brighter()).pushEntity();
 
-    public static final zFluid LIQUID_GLASS = zFluid.create(zStatic.Fluids.liquid_glass, Color.WHITE.brighter())
+    public static final FluidRegister LIQUID_GLASS = FluidRegister.create(zStatic.Fluids.liquid_glass, Color.WHITE.brighter())
             .pushEntity();
 
-    public static final zFluid HONEY = zFluid.create(zStatic.Fluids.honey, Color.YELLOW).pushEntity();
+    public static final FluidRegister HONEY = FluidRegister.create(zStatic.Fluids.honey, Color.YELLOW).pushEntity();
 
     // ---------------------------------------------------------------------------------------//
-    public static final zFluid MOLTEN_IRON = zFluid.create(zStatic.Fluids.iron, Color.LIGHT_GRAY.brighter())
+    public static final FluidRegister MOLTEN_IRON = FluidRegister.create(zStatic.Fluids.iron, Color.LIGHT_GRAY.brighter())
             .pushEntity().setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_COPPER = zFluid.create(zStatic.Fluids.copper, Color.ORANGE.darker().darker())
+    public static final FluidRegister MOLTEN_COPPER = FluidRegister.create(zStatic.Fluids.copper, Color.ORANGE.darker().darker())
             .pushEntity().setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_GOLD = zFluid.create(zStatic.Fluids.gold, Color.YELLOW.brighter()).pushEntity()
+    public static final FluidRegister MOLTEN_GOLD = FluidRegister.create(zStatic.Fluids.gold, Color.YELLOW.brighter()).pushEntity()
             .setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_STEEL = zFluid.create(zStatic.Fluids.steel, Color.GRAY.darker()).pushEntity()
+    public static final FluidRegister MOLTEN_STEEL = FluidRegister.create(zStatic.Fluids.steel, Color.GRAY.darker()).pushEntity()
             .setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_URANIUM = zFluid.create(zStatic.Fluids.uranium, Color.GREEN.brighter().brighter())
+    public static final FluidRegister MOLTEN_URANIUM = FluidRegister.create(zStatic.Fluids.uranium, Color.GREEN.brighter().brighter())
             .pushEntity().setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_NICKEL = zFluid.create(zStatic.Fluids.nickel, Color.YELLOW.darker()).pushEntity()
+    public static final FluidRegister MOLTEN_NICKEL = FluidRegister.create(zStatic.Fluids.nickel, Color.YELLOW.darker()).pushEntity()
             .setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_SILVER = zFluid.create(zStatic.Fluids.silver, Color.CYAN.brighter()).pushEntity()
+    public static final FluidRegister MOLTEN_SILVER = FluidRegister.create(zStatic.Fluids.silver, Color.CYAN.brighter()).pushEntity()
             .setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_TIN = zFluid.create(zStatic.Fluids.tin, Color.LIGHT_GRAY.darker()).pushEntity()
+    public static final FluidRegister MOLTEN_TIN = FluidRegister.create(zStatic.Fluids.tin, Color.LIGHT_GRAY.darker()).pushEntity()
             .setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_ALUMINUM = zFluid.create(zStatic.Fluids.aluminum, Color.WHITE.darker())
+    public static final FluidRegister MOLTEN_ALUMINUM = FluidRegister.create(zStatic.Fluids.aluminum, Color.WHITE.darker())
             .pushEntity().setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_IRIDIUM = zFluid.create(zStatic.Fluids.iridium, Color.MAGENTA.darker())
+    public static final FluidRegister MOLTEN_IRIDIUM = FluidRegister.create(zStatic.Fluids.iridium, Color.MAGENTA.darker())
             .pushEntity().setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_PLATINUM = zFluid.create(zStatic.Fluids.platinum, Color.CYAN.darker())
+    public static final FluidRegister MOLTEN_PLATINUM = FluidRegister.create(zStatic.Fluids.platinum, Color.CYAN.darker())
             .pushEntity().setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_OSMIUM = zFluid.create(zStatic.Fluids.osmium, Color.CYAN).pushEntity()
+    public static final FluidRegister MOLTEN_OSMIUM = FluidRegister.create(zStatic.Fluids.osmium, Color.CYAN).pushEntity()
             .setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final zFluid MOLTEN_LEAD = zFluid.create(zStatic.Fluids.lead, Color.PINK.darker().darker())
+    public static final FluidRegister MOLTEN_LEAD = FluidRegister.create(zStatic.Fluids.lead, Color.PINK.darker().darker())
             .pushEntity().setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
 }

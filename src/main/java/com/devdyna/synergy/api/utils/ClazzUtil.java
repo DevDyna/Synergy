@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.MachineType;
-import com.devdyna.synergy.api.zFluid;
+import com.devdyna.synergy.api.registers.FluidRegister;
+import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zFluids;
 import com.devdyna.synergy.init.types.zItems;
@@ -72,21 +72,21 @@ public class ClazzUtil {
         return blocks;
     }
 
-    public static List<zFluid> getAllzFluids(String filter_whitelist) {
+    public static List<FluidRegister> getAllzFluids(String filter_whitelist) {
         return getAllzFluids().stream().filter(f -> f.getId().contains(filter_whitelist)).toList();
     }
 
     /**
      * Dont use on LootTableProviders
      */
-    public static List<zFluid> getAllzFluids() {
-        List<zFluid> l = new ArrayList<>();
+    public static List<FluidRegister> getAllzFluids() {
+        List<FluidRegister> l = new ArrayList<>();
 
         for (Field field : zFluids.class.getDeclaredFields()) {
             try {
-                if (zFluid.class.isAssignableFrom(field.getType())) {
+                if (FluidRegister.class.isAssignableFrom(field.getType())) {
                     Object value = field.get(null);
-                    if (value instanceof zFluid f) {
+                    if (value instanceof FluidRegister f) {
                         l.add(f);
                     }
                 }

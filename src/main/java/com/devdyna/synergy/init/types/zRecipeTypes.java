@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.types;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.zRecipe;
+import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.common.recipes.serializer.*;
 import com.devdyna.synergy.common.recipes.type.*;
 import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecipe;
@@ -29,39 +29,39 @@ public class zRecipeTypes {
                         .create(Registries.RECIPE_SERIALIZER, ID);
         public static final DeferredRegister<RecipeType<?>> TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, ID);
         // ------------------------------------------------------------------------------------------------------------------------------------//
-        public static final zRecipe<FuelCellRecipe> FUEL_CELL_RECIPE = zRecipe.of(zStatic.ReactorStuff.fuel_cell,
+        public static final RecipeRegister<FuelCellRecipe> FUEL_CELL_RECIPE = RecipeRegister.of(zStatic.ReactorStuff.fuel_cell,
                         FuelCellRecipeSerializer::new);
 
-        public static final zRecipe<UrnRitualRecipe> URN_RITUAL_RECIPE = zRecipe.of(zStatic.Blocks.urn,
+        public static final RecipeRegister<UrnRitualRecipe> URN_RITUAL_RECIPE = RecipeRegister.of(zStatic.Blocks.urn,
                         UrnRitualRecipeSerializer::new);
 
-        public static final zRecipe<QuernMillingRecipe> QUERN_MILLING = zRecipe.of(zStatic.Blocks.quern,
+        public static final RecipeRegister<QuernMillingRecipe> QUERN_MILLING = RecipeRegister.of(zStatic.Blocks.quern,
                         QuernMillingRecipeSerializer::new);
 
-        public static final zRecipe<CropResultRecipe> CROP_RESULT = zRecipe.of("crop_result",
+        public static final RecipeRegister<CropResultRecipe> CROP_RESULT = RecipeRegister.of("crop_result",
                         CropResultRecipeSerializer::new);
 
-        public static final zRecipe<ItemUseRecipe> ITEM_USE = zRecipe.of("item_use", ItemUseRecipeSerializer::new);
+        public static final RecipeRegister<ItemUseRecipe> ITEM_USE = RecipeRegister.of("item_use", ItemUseRecipeSerializer::new);
 
-        public static final zRecipe<ItemProviderRecipe<ItemStack>> ITEM_PROVIDER = zRecipe.of("provider/item",
+        public static final RecipeRegister<ItemProviderRecipe<ItemStack>> ITEM_PROVIDER = RecipeRegister.of("provider/item",
                         ItemProviderRecipeSerializer::new);
 
-        public static final zRecipe<FluidProviderRecipe<FluidStack>> FLUID_PROVIDER = zRecipe.of("provider/fluid",
+        public static final RecipeRegister<FluidProviderRecipe<FluidStack>> FLUID_PROVIDER = RecipeRegister.of("provider/fluid",
                         FluidProviderRecipeSerializer::new);
 
-        public static final zRecipe<DryableBricksRecipe> DRYABLE_BRICKS = zRecipe.of("dryable_bricks",
+        public static final RecipeRegister<DryableBricksRecipe> DRYABLE_BRICKS = RecipeRegister.of("dryable_bricks",
                         DryableBricksRecipeSerializer::new);
 
-        public static final zRecipe<VoidBoxInfusionRecipe> VOID_BOX_INFUSION = zRecipe.of("void_box_infusion",
+        public static final RecipeRegister<VoidBoxInfusionRecipe> VOID_BOX_INFUSION = RecipeRegister.of("void_box_infusion",
                         VoidBoxInfusionRecipeSerializer::new);
 
-        public static final zRecipe<DryingRackRecipe> DRYING_RACK = zRecipe.of("drying_rack",
+        public static final RecipeRegister<DryingRackRecipe> DRYING_RACK = RecipeRegister.of("drying_rack",
                         DryingRackRecipeSerializer::new);
 
-        public static final zRecipe<CrushingTubRecipe> CRUSHING_TUB = zRecipe.of("crushing_tub",
+        public static final RecipeRegister<CrushingTubRecipe> CRUSHING_TUB = RecipeRegister.of("crushing_tub",
                         CrushingTubRecipeSerializer::new);
 
-        public static final zRecipe<EvaporationBasinRecipe> EVAPORATING_BASIN = zRecipe.of("evaporating_tub",
+        public static final RecipeRegister<EvaporationBasinRecipe> EVAPORATING_BASIN = RecipeRegister.of("evaporating_tub",
                         EvaporationBasinRecipeSerializer::new);
 
 

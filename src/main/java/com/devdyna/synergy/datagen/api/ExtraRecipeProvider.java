@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.zFluid;
+import com.devdyna.synergy.api.registers.FluidRegister;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.builders.CropResultBuilder;
 import com.devdyna.synergy.common.recipes.builders.DryableBricksBuilder;
@@ -91,7 +91,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
         }
 
-        protected void gear(RecipeOutput c, DeferredHolder<Item, Item> gear, TagKey<Item> input, zFluid fluid) {
+        protected void gear(RecipeOutput c, DeferredHolder<Item, Item> gear, TagKey<Item> input, FluidRegister fluid) {
                 ShapedRecipeBuilder.shaped(MISC, gear.get())
                                 .pattern(" # ")
                                 .pattern("# #")
@@ -114,7 +114,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
         }
 
-        protected void moltenIngots(RecipeOutput c, Item ingot, TagKey<Item> input, zFluid fluid) {
+        protected void moltenIngots(RecipeOutput c, Item ingot, TagKey<Item> input, FluidRegister fluid) {
 
                 MelterRecipeBuilder.of()
                                 .input(input)
@@ -131,7 +131,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        protected void electron_tube(RecipeOutput c, DeferredHolder<Item, Item> tube, zFluid fluid) {
+        protected void electron_tube(RecipeOutput c, DeferredHolder<Item, Item> tube, FluidRegister fluid) {
 
                 CasterRecipeBuilder.of()
                                 .fluid(fluid, 180)
