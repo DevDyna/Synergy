@@ -1,5 +1,6 @@
 package com.devdyna.synergy.init.builder.survival.drying_rack;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.Nullable;
@@ -13,6 +14,7 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
+import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -123,7 +125,7 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
             LevelUtil.addParticle(ParticleTypes.CLOUD, level, getBlockPos().below(), true);
 
         if (ticker == null)
-            ticker = Ticker.of(recipe.getTicks() * item.getCount());
+            ticker = Ticker.of(calcTicks(recipe.getTicks() * item.getCount()));
 
         if (ticker.commit()) {
             getStorage().extractItem(0, item.getCount(), false);
@@ -134,6 +136,23 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
 
         update();
 
+    }
+
+    private int calcTicks(int base) {
+
+        var range = List.of(
+                getBlockPos().below(),
+                getBlockPos().below().below(),
+                getBlockPos().below().below().below(),
+                getBlockPos().below().below().below().below(),
+                getBlockPos().below().below().below().below().below());
+
+        var result = range
+                .stream()
+                .map(level::getBlockState)
+                .anyMatch(s -> s.is(zBlockTag.DRYING_RACK_HEATER));
+
+        return Math.max(1, base / (result ? 2 : 1));
     }
 
     protected void update() {

@@ -59,7 +59,7 @@ public class zBlockTag {
 
         public static final TagKey<Block> BLOCK_ADVANCED_ALLOY = Material
                         .tagBlock("storage_blocks/advanced_alloy", "c");
-                        
+
         public static final TagKey<Block> BLOCK_WROUGHT_IRON = Material
                         .tagBlock("storage_blocks/wrought_iron", "c");
 
@@ -68,7 +68,12 @@ public class zBlockTag {
         public static final TagKey<Block> MODERATORS = Material
                         .tagBlock("moderator");
 
-
-public static final TagKey<Block> MACHINES = Material
+        public static final TagKey<Block> MACHINES = Material
                         .tagBlock("industrial_machine");
+
+        public static final TagKey<Block> EVAPORATION_BASIC_HEATER = Material
+                        .tagBlock("evaporation_basin_heater");
+
+        public static final TagKey<Block> DRYING_RACK_HEATER = Material
+                        .tagBlock("drying_rack_heater");
 }

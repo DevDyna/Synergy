@@ -195,6 +195,10 @@ public class DataBlockTag extends BlockTagsProvider {
                 tag(zBlocks.FIRECLAY_BRICK_MOSSY.getTagkey())
                                 .add(zBlocks.FIRECLAY_BRICK_MOSSY.getAll());
 
+
+                tag(zBlockTag.EVAPORATION_BASIC_HEATER).add(Blocks.MAGMA_BLOCK);
+                tag(zBlockTag.DRYING_RACK_HEATER).addTag(BlockTags.CAMPFIRES);
+
         }
 
 }

@@ -14,6 +14,7 @@ import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.common.recipes.input.FluidInput;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporationBasinRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
+import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -124,7 +125,7 @@ public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemS
             LevelUtil.addParticle(ParticleTypes.CLOUD, level, getBlockPos(), true);
 
         if (ticker == null)
-            ticker = Ticker.of(recipe.getTicks());
+            ticker = Ticker.of(calcTicks(recipe.getTicks()));
 
         if (ticker.commit()) {
             getFluidStorage().drain(recipe.getFluid().amount(), FluidAction.EXECUTE);
@@ -133,6 +134,10 @@ public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemS
 
         update();
 
+    }
+
+    private int calcTicks(int base) {
+        return Math.max(1, base / (level.getBlockState(getBlockPos().below()).is(zBlockTag.EVAPORATION_BASIC_HEATER) ? 2 : 1));
     }
 
     @Override
