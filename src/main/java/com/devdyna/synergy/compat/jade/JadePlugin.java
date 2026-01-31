@@ -3,6 +3,8 @@ package com.devdyna.synergy.compat.jade;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.node.builder.NodeBaseBlock;
+import com.devdyna.synergy.api.reactor.CoolerBlockBase;
+import com.devdyna.synergy.api.reactor.ModeratorBase;
 import com.devdyna.synergy.compat.jade.provider.AOEMachines;
 import com.devdyna.synergy.compat.jade.provider.CoolerProvider;
 import com.devdyna.synergy.compat.jade.provider.EnergyTipProviders;
@@ -16,9 +18,7 @@ import com.devdyna.synergy.compat.jade.provider.ReactorControllerProvider;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
-import com.devdyna.synergy.init.builder.nuclear_reactor.cooler.CoolerBlockBase;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
-import com.devdyna.synergy.init.builder.nuclear_reactor.moderator.ModeratorBase;
 
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;

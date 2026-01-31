@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.nuclear_reactor.moderator;
+package com.devdyna.synergy.api.reactor;
 
 import java.util.List;
 

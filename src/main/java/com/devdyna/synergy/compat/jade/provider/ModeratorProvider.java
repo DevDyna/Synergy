@@ -3,8 +3,8 @@ package com.devdyna.synergy.compat.jade.provider;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.reactor.ModeratorBase;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.init.builder.nuclear_reactor.moderator.ModeratorBase;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

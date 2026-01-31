@@ -6,12 +6,12 @@ import com.devdyna.synergy.api.beLogic.EnergyProvider;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
+import com.devdyna.synergy.api.reactor.CoolerBlockBase;
+import com.devdyna.synergy.api.reactor.ModeratorBase;
 import com.devdyna.synergy.api.utils.*;
 import com.devdyna.synergy.config.Common;
-import com.devdyna.synergy.init.builder.nuclear_reactor.cooler.CoolerBlockBase;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
-import com.devdyna.synergy.init.builder.nuclear_reactor.moderator.ModeratorBase;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 
