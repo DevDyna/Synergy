@@ -116,7 +116,7 @@ public class CrushingTubBlock extends TickingBlock implements BucketInteraction 
     @Override
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
         if (level.getBlockEntity(pos) instanceof CrushingTubBE be && entity.getType().is(zEntityTag.CRUSHING_TUB_ALLOW))
-            be.craft();
+            be.craft(true);
         super.fallOn(level, state, pos, entity, fallDistance);
     }
 

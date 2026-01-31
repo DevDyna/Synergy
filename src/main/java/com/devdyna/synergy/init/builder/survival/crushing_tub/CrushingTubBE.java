@@ -92,7 +92,40 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
         return ItemStack.EMPTY;
     }
 
-    public void craft() {
+    public ItemStack getNextDroppedItem() {
+        if (level == null)
+            return ItemStack.EMPTY;
+
+        if (cache == null)
+            return ItemStack.EMPTY;
+
+        var slot = this.cache.getCapability();
+
+        if (slot == null)
+            return ItemStack.EMPTY;
+
+        var item = slot.getStackInSlot(0);
+
+        if (item.isEmpty())
+            return ItemStack.EMPTY;
+
+        Optional<RecipeHolder<CrushingTubRecipe>> r = level.getRecipeManager()
+                .getRecipeFor(zRecipeTypes.CRUSHING_TUB.getType(),
+                        new MonoItemInput(item), level);
+
+        if (r.isEmpty())
+            return ItemStack.EMPTY;
+
+        var recipe = r.get().value();
+
+        if (getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.SIMULATE) != 0)
+            return ItemStack.EMPTY;
+
+        return recipe.getOutput().copy();
+
+    }
+
+    public void craft(boolean dropWhenCrafted) {
 
         if (level == null)
             return;
@@ -121,13 +154,14 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
 
         var recipe = r.get().value();
 
-        if (getFluidStorage().getSpace() < recipe.getFluid().getAmount())
+        if (getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.SIMULATE) != 0)
             return;
 
         getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.EXECUTE);
         getStorage().extractItem(0, 1, false);
 
-        LevelUtil.popItemFromPos(level, getBlockPos().above(), recipe.getOutput().copy());
+        if (dropWhenCrafted)
+            LevelUtil.popItemFromPos(level, getBlockPos().above(), recipe.getOutput().copy());
 
         level.playSound(null, getBlockPos(),
                 LevelUtil.chance(50, level) ? SoundEvents.SLIME_BLOCK_FALL : SoundEvents.SNIFFER_EGG_CRACK,
