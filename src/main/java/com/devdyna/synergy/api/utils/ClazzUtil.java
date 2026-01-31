@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.MachineType;
 import com.devdyna.synergy.api.zFluid;
 import com.devdyna.synergy.init.types.zBlocks;
@@ -240,6 +241,22 @@ public class ClazzUtil {
 
         items.addAll(blockItems);
         return items;
+    }
+
+    public static List<String> getAllAdditionalModels() {
+
+        List<String> types = new ArrayList<>();
+        Field[] fields = zStatic.AdditionalModel.class.getDeclaredFields();
+        for (Field field : fields) {
+            if (field.getType() == String.class) {
+                try {
+                    types.add((String) field.get(null));
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return types;
     }
 
 }

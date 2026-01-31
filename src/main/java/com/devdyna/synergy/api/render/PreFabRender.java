@@ -1,21 +1,19 @@
 package com.devdyna.synergy.api.render;
 
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.init.builder.magic.void_box.VoidBoxBE;
-import com.devdyna.synergy.init.types.zBlocks;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.neoforge.client.model.data.ModelData;
 
-public interface TinyChestOpening {
+public class PreFabRender {
 
-    default void renderChest(BlockEntity be, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource,
+    public static void renderChest(BlockEntity be, float partialTick, PoseStack poseStack,
+            MultiBufferSource bufferSource,
             int packedLight, int packedOverlay) {
         poseStack.pushPose();
 
@@ -41,10 +39,9 @@ public interface TinyChestOpening {
                         * ((float) Math.PI / 2))));
         poseStack.translate(-0.5f, -0.3125f, -0.75f);
 
-        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(
-                zBlocks.VOID_BOX_LID.get().defaultBlockState(),
-                poseStack, bufferSource, packedLight, packedOverlay,
-                ModelData.EMPTY, RenderType.cutout());
+        ModelRenderHelper.of()
+                .model(zStatic.AdditionalModel.VOID_BOX)
+                .build(poseStack, packedLight, packedOverlay, bufferSource);
 
         poseStack.popPose();
     }

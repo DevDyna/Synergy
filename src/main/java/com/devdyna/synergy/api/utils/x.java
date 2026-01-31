@@ -32,6 +32,10 @@ public class x {
         return ResourceLocation.fromNamespaceAndPath(modid, s);
     }
 
+    public static ResourceLocation mcLoc(String s) {
+        return rl("minecraft", s);
+    }
+
     public static ResourceLocation parse(String s) {
         return ResourceLocation.parse(s);
     }
@@ -157,7 +161,7 @@ public class x {
     public static Ingredient ingredient(ResourceLocation tag) {
         return Ingredient.of(TagKey.create(Registries.ITEM, tag));
     }
-    
+
     public static SizedIngredient itemSized(ResourceLocation tag) {
         return itemSized(ingredient(tag));
     }
@@ -249,9 +253,10 @@ public class x {
         return itemSized(Ingredient.EMPTY, 1);
     }
 
-    public static SizedIngredient itemSized(Ingredient i,int c) {
+    public static SizedIngredient itemSized(Ingredient i, int c) {
         return new SizedIngredient(i, c);
     }
+
     public static SizedIngredient itemSized(Ingredient i) {
         return itemSized(i, 1);
     }

@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.builder.magic.void_box;
 import java.util.Random;
 
 import com.devdyna.synergy.api.render.SimpleItemRender;
-import com.devdyna.synergy.api.render.TinyChestOpening;
+import com.devdyna.synergy.api.render.PreFabRender;
 import com.devdyna.synergy.init.types.zItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 
 @SuppressWarnings("null")
-public class VoidBoxRender<T extends VoidBoxBE> implements BlockEntityRenderer<T>, TinyChestOpening {
+public class VoidBoxRender<T extends VoidBoxBE> implements BlockEntityRenderer<T> {
 
     private ItemRenderer itemRenderer;
     private int timer;
@@ -28,7 +28,7 @@ public class VoidBoxRender<T extends VoidBoxBE> implements BlockEntityRenderer<T
 
         var condition = be.getAnimationProgress() > 0.1;
 
-        renderChest(be, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
+        PreFabRender.renderChest(be, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
         
         if (condition) {
             timer++;

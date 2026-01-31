@@ -1,5 +1,7 @@
 package com.devdyna.synergy;
 
+import com.devdyna.synergy.api.utils.ClazzUtil;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterAOE;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerAOE;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankFluidRender;
@@ -25,12 +27,14 @@ import com.devdyna.synergy.init.types.zContainer;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zMachines;
 
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.world.item.BucketItem;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
@@ -82,6 +86,15 @@ public class Client {
                     : 0xFFFFFFFF, bucket.get());
         }
 
+    }
+
+    @SubscribeEvent
+    public static void registerAdditionalModels(ModelEvent.RegisterAdditional event) {
+        ClazzUtil.getAllAdditionalModels()
+                .stream()
+                .map(x::rl)
+                .map(ModelResourceLocation::standalone)
+                .forEach(event::register);
     }
 
 }

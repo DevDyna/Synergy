@@ -486,10 +486,24 @@ public class zStatic {
 
     }
 
-     public static final List<DeferredHolder<Block, Block>> ALL_DRYING_RACKS = List.of(zBlocks.ACACIA_DRYING_RACK, zBlocks.BAMBOO_DRYING_RACK,
-                                zBlocks.BIRCH_DRYING_RACK, zBlocks.CHERRY_DRYING_RACK, zBlocks.CRIMSON_DRYING_RACK,
-                                zBlocks.DARK_OAK_DRYING_RACK, zBlocks.JUNGLE_DRYING_RACK, zBlocks.MANGROVE_DRYING_RACK,
-                                zBlocks.OAK_DRYING_RACK, zBlocks.SPRUCE_DRYING_RACK, zBlocks.WARPED_DRYING_RACK);
-     
+    public static final List<DeferredHolder<Block, Block>> ALL_DRYING_RACKS = List.of(
+            zBlocks.ACACIA_DRYING_RACK,
+            zBlocks.BAMBOO_DRYING_RACK,
+            zBlocks.BIRCH_DRYING_RACK,
+            zBlocks.CHERRY_DRYING_RACK,
+            zBlocks.CRIMSON_DRYING_RACK,
+            zBlocks.DARK_OAK_DRYING_RACK,
+            zBlocks.JUNGLE_DRYING_RACK,
+            zBlocks.MANGROVE_DRYING_RACK,
+            zBlocks.OAK_DRYING_RACK,
+            zBlocks.SPRUCE_DRYING_RACK,
+            zBlocks.WARPED_DRYING_RACK);
+
+    public class AdditionalModel {
+
+        public static final String QUERN = "block/quern/moving";
+        public static final String VOID_BOX = "block/tiny_block/void_box/animation";
+
+    }
 
 }

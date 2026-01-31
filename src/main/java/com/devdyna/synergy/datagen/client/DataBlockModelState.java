@@ -30,8 +30,8 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 block(zBlocks.URN, "block/tiny_block/urn");
 
                 block(zBlocks.QUERN, "block/quern/base");
-                block(zBlocks.QUERN_MOVING, "block/quern/moving");
-                block(zBlocks.VOID_BOX_LID, "block/tiny_block/void_box/animation");
+                // block(zBlocks.QUERN_MOVING, "block/quern/moving");
+                // block(zBlocks.VOID_BOX_LID, "block/tiny_block/void_box/animation");
 
                 node(zBlocks.ITEM_PROVIDER.get(), "green");
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");

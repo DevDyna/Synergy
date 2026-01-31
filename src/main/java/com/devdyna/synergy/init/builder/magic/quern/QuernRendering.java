@@ -1,19 +1,22 @@
 package com.devdyna.synergy.init.builder.magic.quern;
 
-import com.devdyna.synergy.init.types.zBlocks;
-
+import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.render.ModelRenderHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Context;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
 
-@SuppressWarnings({ "null", "deprecation" })
+@SuppressWarnings({ "null" })
 public class QuernRendering<T extends QuernBE> implements BlockEntityRenderer<T> {
+
+    private BlockRenderDispatcher brd;
 
     public QuernRendering(Context c) {
         super();
+        this.brd = c.getBlockRenderDispatcher();
     }
 
     @Override
@@ -22,19 +25,12 @@ public class QuernRendering<T extends QuernBE> implements BlockEntityRenderer<T>
 
         float rotation = be.getRotation(partialTicks);
 
-        poseStack.pushPose();
-        poseStack.translate(0.5, 0.5, 0.5);
-        poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
-        poseStack.translate(-0.5, -0.5, -0.5);
+        ModelRenderHelper.of()
+                .pivot(0.5, 0.5, 0.5)
+                .rotateYP(rotation)
+                .model(zStatic.AdditionalModel.QUERN)
+                .build(Minecraft.getInstance().getModelManager(), brd, poseStack, light, overlay, buffer);
 
-        Minecraft.getInstance().getBlockRenderer().renderSingleBlock(
-                zBlocks.QUERN_MOVING.get().defaultBlockState(),
-                poseStack,
-                buffer,
-                light,
-                overlay);
-
-        poseStack.popPose();
     }
 
 }

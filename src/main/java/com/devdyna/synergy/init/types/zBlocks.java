@@ -362,8 +362,8 @@ public class zBlocks {
                         zStatic.Blocks.quern,
                         () -> new QuernBlock());
 
-        public static final DeferredHolder<Block, Block> QUERN_MOVING = zOnlyBlock.registerSimpleBlock(
-                        zStatic.Blocks.quern + "_moving");
+        // public static final DeferredHolder<Block, Block> QUERN_MOVING = zOnlyBlock.registerSimpleBlock(
+        //                 zStatic.Blocks.quern + "_moving");
 
         public static final DeferredHolder<Block, Block> CLAY_BRICK = Material.registerItemBlock(
                         zStatic.DryableBricks.brick.clay + "_block",
@@ -429,8 +429,8 @@ public class zBlocks {
                         zStatic.Blocks.void_box,
                         () -> new VoidBoxBlock());
 
-        public static final DeferredHolder<Block, Block> VOID_BOX_LID = zOnlyBlock.registerSimpleBlock(
-                        zStatic.Blocks.void_box + "_lid");
+        // public static final DeferredHolder<Block, Block> VOID_BOX_LID = zOnlyBlock.registerSimpleBlock(
+        //                 zStatic.Blocks.void_box + "_lid");
 
         @SuppressWarnings("deprecation")
         public static final DeferredHolder<Block, Block> BLAST_BRICKS = Material
