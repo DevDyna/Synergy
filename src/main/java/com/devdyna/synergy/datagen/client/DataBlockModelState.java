@@ -2,12 +2,12 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.datagen.api.ExtraBlockStateProvider;
 import com.devdyna.synergy.init.types.zBlocks;
-
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.CropBlock;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -21,7 +21,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
         @Override
         protected void registerStatesAndModels() {
 
-                rotableBlock(zBlocks.SPRINKLER.get());
+                variantRotatedBlock(zBlocks.SPRINKLER.get());
 
                 tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
                 tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
@@ -153,7 +153,6 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 simpleBlock(zBlocks.FLUID_TANK.get(), models().cubeAll(zBlocks.FLUID_TANK.getRegisteredName(),
                                 modLoc("block/fluid_tank")).renderType(DataGenUtil.CUTOUT));
 
-
                 simpleBlock(zBlocks.SIMPLE_WATER_GEN.get(),
                                 models().withExistingParent(zBlocks.SIMPLE_WATER_GEN.getRegisteredName(),
                                                 modLoc("block/triple_layer"))
@@ -202,9 +201,36 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 .texture("below", "block/machine/frame/advanced/top")
                                                 .renderType(DataGenUtil.CUTOUT));
 
+                simpleBlock(zBlocks.CRUSHING_TUB.get(), models().getExistingFile(modLoc("block/crushing_tub")));
+                simpleBlock(zBlocks.EVAPORATION_BASIN.get(),
+                                models().getExistingFile(modLoc("block/evaporation_basin")));
 
-                simpleBlock(zBlocks.CRUSHING_TUB.get(),models().getExistingFile(modLoc("block/crushing_tub")));
-                simpleBlock(zBlocks.EVAPORATION_BASIN.get(),models().getExistingFile(modLoc("block/evaporation_basin")));
+               
+                zStatic.ALL_DRYING_RACKS.forEach(t -> {
+
+                        var log = "_log";
+                        var toplog = "_log_top";
+
+                        var id = t.getRegisteredName();
+                        var text = id.replace(ID+":", "").replace("_" + zStatic.Blocks.drying_rack, "");
+
+                        if(text.contains("bamboo")){
+                                log = log.replace("log", "block");
+                                toplog = toplog.replace("log", "block");
+                        }
+
+                        if(text.contains("crimson") || text.contains("warped")){
+                                log = log.replace("log", "stem");
+                                toplog = toplog.replace("log", "stem");
+                        }
+
+                        horizontalBlock(t.get(),
+                                        models().withExistingParent(id,
+                                                        modLoc("block/drying_rack"))
+                                                        .texture("side", mcLoc("block/" + text + log))
+                                                        .texture("top", mcLoc("block/" + text + toplog))
+                                                        .renderType(DataGenUtil.CUTOUT));
+                });
 
         }
 

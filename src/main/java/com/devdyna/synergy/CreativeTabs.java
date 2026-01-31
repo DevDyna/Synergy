@@ -8,6 +8,7 @@ import com.devdyna.synergy.init.types.zCreativeTab;
 import com.devdyna.synergy.init.types.zItems;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class CreativeTabs {
 
@@ -127,6 +128,7 @@ public class CreativeTabs {
             event.accept(zBlocks.VOID_BOX.get());
             event.accept(zBlocks.CRUSHING_TUB.get());
             event.accept(zBlocks.EVAPORATION_BASIN.get());
+            zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get).forEach(event::accept);
         }
 
         // ---------------------------------------------------------- //

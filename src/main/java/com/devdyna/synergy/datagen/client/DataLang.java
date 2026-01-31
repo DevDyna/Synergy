@@ -385,6 +385,8 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "Crush items into items and fluids when jump on it");
                 add(ID + "." + zStatic.Blocks.evaporation_basin, TIP_COLOR + "Dry fluids into items after some time");
 
+                add(ID + "." + zStatic.Blocks.drying_rack, TIP_COLOR + "Dry items into other items");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {

@@ -55,6 +55,9 @@ public class zRecipeTypes {
         public static final zRecipe<VoidBoxInfusionRecipe> VOID_BOX_INFUSION = zRecipe.of("void_box_infusion",
                         VoidBoxInfusionRecipeSerializer::new);
 
+        public static final zRecipe<DryingRackRecipe> DRYING_RACK = zRecipe.of("drying_rack",
+                        DryingRackRecipeSerializer::new);
+
         public static final zRecipe<CrushingTubRecipe> CRUSHING_TUB = zRecipe.of("crushing_tub",
                         CrushingTubRecipeSerializer::new);
 

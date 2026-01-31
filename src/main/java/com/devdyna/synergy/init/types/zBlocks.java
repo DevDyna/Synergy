@@ -4,6 +4,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -17,6 +18,7 @@ import com.devdyna.synergy.init.builder.redstone.InvertedRepeater;
 import com.devdyna.synergy.init.builder.redstone.PulseRepeater;
 import com.devdyna.synergy.init.builder.redstone.RecursiveRepeater;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBlock;
+import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBlock;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBlock;
 import com.devdyna.synergy.init.builder.*;
 import com.devdyna.synergy.init.builder.agriculture.cultivated.*;
@@ -505,6 +507,61 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> EVAPORATION_BASIN = Material.registerItemBlock(
                         zStatic.Blocks.evaporation_basin,
                         () -> new EvaporationBasinBlock());
+
+        public static final DeferredHolder<Block, Block> ACACIA_DRYING_RACK = Material.registerItemBlock(
+                        WoodType.ACACIA.name() + "_" + zStatic.Blocks.drying_rack,
+                        () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.COLOR_ORANGE).sound(SoundType.WOOD)));
+
+        public static final DeferredHolder<Block, Block> BAMBOO_DRYING_RACK = Material.registerItemBlock(
+                        WoodType.BAMBOO.name() + "_" + zStatic.Blocks.drying_rack,
+                        () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.COLOR_GREEN).sound(SoundType.BAMBOO)));
+
+        public static final DeferredHolder<Block, Block> BIRCH_DRYING_RACK = Material.registerItemBlock(
+                        WoodType.BIRCH.name() + "_" + zStatic.Blocks.drying_rack,
+                        () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.WOOL).sound(SoundType.WOOD)));
+
+        public static final DeferredHolder<Block, Block> CHERRY_DRYING_RACK = Material.registerItemBlock(
+                        WoodType.CHERRY.name() + "_" + zStatic.Blocks.drying_rack,
+                        () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.COLOR_PINK).sound(SoundType.CHERRY_WOOD)));
+
+        public static final DeferredHolder<Block, Block> CRIMSON_DRYING_RACK = Material.registerItemBlock(
+                        WoodType.CRIMSON.name() + "_" + zStatic.Blocks.drying_rack,
+                        () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.CRIMSON_STEM).sound(SoundType.NETHER_WOOD)));
+
+        public static final DeferredHolder<Block, Block> DARK_OAK_DRYING_RACK = Material.registerItemBlock(
+                        WoodType.DARK_OAK.name() + "_" + zStatic.Blocks.drying_rack,
+                        () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.COLOR_BROWN).sound(SoundType.WOOD)));
+
+        public static final DeferredHolder<Block, Block> JUNGLE_DRYING_RACK = Material.registerItemBlock(
+                        WoodType.JUNGLE.name() + "_" + zStatic.Blocks.drying_rack,
+                        () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.COLOR_ORANGE).sound(SoundType.WOOD)));
+
+        public static final DeferredHolder<Block, Block> MANGROVE_DRYING_RACK = Material.registerItemBlock(
+                        WoodType.MANGROVE.name() + "_" + zStatic.Blocks.drying_rack,
+                        () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.COLOR_ORANGE).sound(SoundType.WOOD)));
+
+        public static final DeferredHolder<Block, Block> OAK_DRYING_RACK = Material.registerItemBlock(
+                        WoodType.OAK.name() + "_" + zStatic.Blocks.drying_rack,
+                        () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.COLOR_ORANGE).sound(SoundType.WOOD)));
+
+        public static final DeferredHolder<Block, Block> SPRUCE_DRYING_RACK = Material.registerItemBlock(
+                        WoodType.SPRUCE.name() + "_" + zStatic.Blocks.drying_rack,
+                        () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.COLOR_BROWN).sound(SoundType.WOOD)));
+
+        public static final DeferredHolder<Block, Block> WARPED_DRYING_RACK = Material.registerItemBlock(
+                        WoodType.WARPED.name() + "_" + zStatic.Blocks.drying_rack,
+                        () -> new DryingRackBlock(BlockBehaviour.Properties.of()
+                                        .mapColor(MapColor.WARPED_STEM).sound(SoundType.NETHER_WOOD)));
 
         // ---------------------------------------------------------------------------------------//
 

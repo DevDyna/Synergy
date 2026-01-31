@@ -2,8 +2,8 @@ package com.devdyna.synergy.datagen.server;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
+import java.util.*;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseCropBlock;
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.api.utils.DataGenUtil;
@@ -70,7 +70,7 @@ public class DataLootBlock extends BlockLootSubProvider {
         @Override
         protected void generate() {
 
-                Set.of(
+                 Set.of(
                                 zBlocks.BASIC_MACHINE_FRAME,
                                 zBlocks.PIPE,
 
@@ -125,7 +125,9 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.EVAPORATION_BASIN,
                                 zBlocks.CRUSHING_TUB
 
-                ).forEach(b -> dropSelf(b.get()));
+                ).stream().map(DeferredHolder::get).forEach(this::dropSelf);
+
+                zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get).forEach(this::dropSelf);
 
                 List.of(
                                 zBlocks.zModerators,

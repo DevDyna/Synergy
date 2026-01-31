@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStackSimple;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class Capability {
 
@@ -50,8 +51,7 @@ public class Capability {
                                 zBlocks.ADVANCED_WATER_GEN.get(),
                                 zBlocks.ELITE_WATER_GEN.get(),
                                 zBlocks.CRUSHING_TUB.get(),
-                                zBlocks.EVAPORATION_BASIN.get()
-                );
+                                zBlocks.EVAPORATION_BASIN.get());
 
                 event.registerItem(Capabilities.FluidHandler.ITEM, (i, v) -> {
 
@@ -87,6 +87,19 @@ public class Capability {
                                 zBlocks.CRUSHING_TUB.get(),
                                 zBlocks.EVAPORATION_BASIN.get());
 
+                event.registerBlock(Capabilities.ItemHandler.BLOCK,
+                                (level, pos, state, be,
+                                                side) -> {
+
+                                        if (be instanceof MachineBE machineBE)
+                                                return machineBE.getAutomatioHandler();
+
+                                        return (be != null)
+                                                        ? be.getData(zHandlers.ITEM_STORAGE)
+                                                        : null;
+                                },
+                                zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get).toArray(Block[]::new));
+
                 event.registerBlock(
                                 Capabilities.ItemHandler.BLOCK,
                                 (level, pos, state, be, side) -> ((be instanceof BaseMachineBE m)
@@ -108,7 +121,8 @@ public class Capability {
                                 (level, pos, state, be, side) -> ((be instanceof FluidTankStorage t)
                                                 ? t.getFluidStorage()
                                                 : null),
-                                zMachines.EXTRACTOR.block().get(),zMachines.CASTING_FACTORY.block().get(),zMachines.MELTER.block().get());
+                                zMachines.EXTRACTOR.block().get(), zMachines.CASTING_FACTORY.block().get(),
+                                zMachines.MELTER.block().get());
 
         }
 

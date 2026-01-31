@@ -525,7 +525,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 twoByTwoPacker(c, zItems.CARBON_FIBER.get(), zItemTag.DUST_COAL);
-                twoByTwoPacker(c, Items.RAW_IRON, zItems.TINY_IRON_DUST.get(),ID+":raw_iron_from_tiny_iron_dust");
+                twoByTwoPacker(c, Items.RAW_IRON, zItems.TINY_IRON_DUST.get(), ID + ":raw_iron_from_tiny_iron_dust");
                 twoByTwoPacker(c, MISC, zItems.CARBON_PLATE.get(), zItems.CARBON_FIBER.get());
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.QUERN.get())
@@ -1555,8 +1555,8 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 zItems.CAST_IRON_INGOT.get(),
                                                 Items.IRON_INGOT) + "_from_blasting");
 
-                stonecutter(c, zBlocks.CAST_IRON_BLOCK.get(), zItems.CAST_IRON_INGOT.get(),2);
-                stonecutter(c, zBlocks.CAST_IRON_TILES.get(), zItems.CAST_IRON_INGOT.get(),2);
+                stonecutter(c, zBlocks.CAST_IRON_BLOCK.get(), zItems.CAST_IRON_INGOT.get(), 2);
+                stonecutter(c, zBlocks.CAST_IRON_TILES.get(), zItems.CAST_IRON_INGOT.get(), 2);
 
                 stonecutter(c, zBlocks.CAST_IRON_BLOCK.get(), zItemTag.CAST_IRON_BLOCKS);
                 stonecutter(c, zBlocks.CAST_IRON_TILES.get(), zItemTag.CAST_IRON_BLOCKS);
@@ -1569,6 +1569,26 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .define('#', Items.CALCITE)
                                 .unlockedBy(ID, has(Items.CALCITE))
                                 .save(c);
+
+                DryingRackBuilder.of()
+                                .input(Items.ROTTEN_FLESH)
+                                .output(Items.LEATHER)
+                                .unlockedBy()
+                                .save(c);
+
+                var logs = List.of(Items.ACACIA_LOG, Items.BAMBOO_BLOCK,
+                                Items.BIRCH_LOG, Items.CHERRY_LOG, Items.CRIMSON_STEM,
+                                Items.DARK_OAK_LOG, Items.JUNGLE_LOG, Items.MANGROVE_LOG,
+                                Items.OAK_LOG, Items.SPRUCE_LOG, Items.WARPED_STEM);
+
+                zStatic.ALL_DRYING_RACKS.forEach(a -> ShapedRecipeBuilder.shaped(MISC, a.get(),4)
+                                .pattern(" L ")
+                                .pattern("C C")
+                                .pattern("LLL")
+                                .define('C', Items.CHAIN)
+                                .define('L', logs.get(zStatic.ALL_DRYING_RACKS.indexOf(a)))
+                                .unlockedBy(ID, has(Items.CHAIN))
+                                .save(c));
 
         }
 

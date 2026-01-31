@@ -26,6 +26,7 @@ import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorContro
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBE;
+import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBE;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -162,5 +163,9 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EvaporationBasinBE>> EVAPORATION_BASIN = Material
                         .createBlockEntity(zStatic.Blocks.evaporation_basin, EvaporationBasinBE::new,
                                         zBlocks.EVAPORATION_BASIN);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DryingRackBE>> DRYING_RACK = Material
+                        .createBlockEntity(zStatic.Blocks.drying_rack, DryingRackBE::new,
+                                        zStatic.ALL_DRYING_RACKS.toArray(DeferredHolder[]::new));
 
 }

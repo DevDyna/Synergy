@@ -282,19 +282,24 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                                         .build());
         }
 
-        protected void rotableBlock(Block b) {
-                rotableBlock(b, x.rl(b));
+        protected void variantRotatedBlock(Block b) {
+                variantRotatedBlock(b, x.rl(b));
         }
 
-        protected void rotableBlock(Block b, ResourceLocation path) {
+        protected void variantRotatedBlock(Block b, ResourceLocation path) {
+                variantRotatedBlock(b, models().getExistingFile(path));
+        }
+
+        protected void variantRotatedBlock(Block b, ModelFile m) {
                 var model = getVariantBuilder(b);
                 model.partialState().addModels(ConfiguredModel.builder()
-                                .modelFile(models().getExistingFile(path)).nextModel()
-                                .modelFile(models().getExistingFile(path)).rotationY(90)
+                                .modelFile(m)
                                 .nextModel()
-                                .modelFile(models().getExistingFile(path)).rotationY(180)
+                                .modelFile(m).rotationY(90)
                                 .nextModel()
-                                .modelFile(models().getExistingFile(path)).rotationY(270)
+                                .modelFile(m).rotationY(180)
+                                .nextModel()
+                                .modelFile(m).rotationY(270)
                                 .build());
         }
 

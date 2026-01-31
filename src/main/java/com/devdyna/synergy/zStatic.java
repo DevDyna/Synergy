@@ -2,9 +2,12 @@ package com.devdyna.synergy;
 
 import java.util.List;
 
+import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class zStatic {
 
@@ -231,6 +234,7 @@ public class zStatic {
         public static String quern = "quern";
 
         public static String evaporation_basin = "evaporation_basin";
+        public static String drying_rack = "drying_rack";
         public static String crushing_tub = "crushing_tub";
 
         // public static String fan = "fan";
@@ -481,5 +485,11 @@ public class zStatic {
         public static String FE_GEN = "FE production every tick";
 
     }
+
+     public static final List<DeferredHolder<Block, Block>> ALL_DRYING_RACKS = List.of(zBlocks.ACACIA_DRYING_RACK, zBlocks.BAMBOO_DRYING_RACK,
+                                zBlocks.BIRCH_DRYING_RACK, zBlocks.CHERRY_DRYING_RACK, zBlocks.CRIMSON_DRYING_RACK,
+                                zBlocks.DARK_OAK_DRYING_RACK, zBlocks.JUNGLE_DRYING_RACK, zBlocks.MANGROVE_DRYING_RACK,
+                                zBlocks.OAK_DRYING_RACK, zBlocks.SPRUCE_DRYING_RACK, zBlocks.WARPED_DRYING_RACK);
+     
 
 }

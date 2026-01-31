@@ -2,6 +2,7 @@ package com.devdyna.synergy.datagen.client;
 
 import static com.devdyna.synergy.Main.ID;
 
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.datagen.api.ExtraItemModelProvider;
@@ -184,6 +185,30 @@ public class DataItemModel extends ExtraItemModelProvider {
                 withExistingParent(zBlocks.CRUSHING_TUB.getRegisteredName(), modLoc("block/crushing_tub"));
                 withExistingParent(zBlocks.EVAPORATION_BASIN.getRegisteredName(), modLoc("block/evaporation_basin"));
 
+                zStatic.ALL_DRYING_RACKS.forEach(t -> {
+
+                        var log = "_log";
+                        var toplog = "_log_top";
+
+                        var id = t.getRegisteredName();
+                        var text = id.replace(ID + ":", "").replace("_" + zStatic.Blocks.drying_rack, "");
+
+                        if (text.contains("bamboo")) {
+                                log = log.replace("log", "block");
+                                toplog = toplog.replace("log", "block");
+                        }
+
+                        if (text.contains("crimson") || text.contains("warped")) {
+                                log = log.replace("log", "stem");
+                                toplog = toplog.replace("log", "stem");
+                        }
+
+                        withExistingParent(id,
+                                        modLoc("block/drying_rack"))
+                                        .texture("side", mcLoc("block/" + text + log))
+                                        .texture("top", mcLoc("block/" + text + toplog));
+
+                });
         }
 
 }
