@@ -1,7 +1,6 @@
 package com.devdyna.synergy;
 
 import com.devdyna.synergy.api.utils.LogUtil;
-import com.devdyna.synergy.common.dataMaps.zDataMaps;
 import com.devdyna.synergy.compat.core;
 import com.devdyna.synergy.init.Material;
 
@@ -24,7 +23,6 @@ public class Main {
         GameEvents.register();
 
         bus.addListener(Capability::register);
-        bus.addListener(zDataMaps::register);
 
         bus.addListener(CreativeTabs::register);
         Config.register(mc);
