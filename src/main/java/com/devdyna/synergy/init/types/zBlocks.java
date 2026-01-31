@@ -21,9 +21,6 @@ import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBlock;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBlock;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBlock;
 import com.devdyna.synergy.init.builder.*;
-import com.devdyna.synergy.init.builder.agriculture.cultivated.*;
-import com.devdyna.synergy.init.builder.agriculture.mushroom.*;
-import com.devdyna.synergy.init.builder.agriculture.wild.*;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterBLK;
 import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.advanced.AdvancedCobbleGenBlock;
 import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.elite.EliteCobbleGenBlock;
@@ -50,6 +47,9 @@ import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.moderator.*;
 import com.devdyna.synergy.init.builder.pipe_blocks.pipeBlock;
 import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blocks.*;
+import com.devdyna.synergy.init.builder.plants.cultivated.*;
+import com.devdyna.synergy.init.builder.plants.mushroom.*;
+import com.devdyna.synergy.init.builder.plants.wild.*;
 
 public class zBlocks {
         public static void register(IEventBus bus) {

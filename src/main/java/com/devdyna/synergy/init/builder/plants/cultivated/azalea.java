@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.agriculture.cultivated;
+package com.devdyna.synergy.init.builder.plants.cultivated;
 
 import java.util.List;
 import java.util.Random;

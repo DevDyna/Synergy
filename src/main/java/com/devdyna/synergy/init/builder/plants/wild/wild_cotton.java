@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.agriculture.wild;
+package com.devdyna.synergy.init.builder.plants.wild;
 
 import java.util.List;
 

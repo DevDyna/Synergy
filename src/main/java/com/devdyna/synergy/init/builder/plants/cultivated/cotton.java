@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.agriculture.cultivated;
+package com.devdyna.synergy.init.builder.plants.cultivated;
 
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.init.types.zItems;
