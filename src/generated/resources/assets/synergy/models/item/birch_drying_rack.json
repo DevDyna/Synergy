@@ -1,0 +1,7 @@
+{
+  "parent": "synergy:block/drying_rack",
+  "textures": {
+    "side": "minecraft:block/birch_log",
+    "top": "minecraft:block/birch_log_top"
+  }
+}

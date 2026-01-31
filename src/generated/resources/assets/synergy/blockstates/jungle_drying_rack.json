@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "synergy:block/jungle_drying_rack",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "synergy:block/jungle_drying_rack"
+    },
+    "facing=south": {
+      "model": "synergy:block/jungle_drying_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "synergy:block/jungle_drying_rack",
+      "y": 270
+    }
+  }
+}

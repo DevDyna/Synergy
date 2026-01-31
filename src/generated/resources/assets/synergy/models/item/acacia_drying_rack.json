@@ -1,0 +1,7 @@
+{
+  "parent": "synergy:block/drying_rack",
+  "textures": {
+    "side": "minecraft:block/acacia_log",
+    "top": "minecraft:block/acacia_log_top"
+  }
+}

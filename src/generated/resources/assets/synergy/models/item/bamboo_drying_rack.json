@@ -1,0 +1,7 @@
+{
+  "parent": "synergy:block/drying_rack",
+  "textures": {
+    "side": "minecraft:block/bamboo_block",
+    "top": "minecraft:block/bamboo_block_top"
+  }
+}

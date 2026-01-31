@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "L": {
+      "item": "minecraft:bamboo_block"
+    }
+  },
+  "pattern": [
+    " L ",
+    "C C",
+    "LLL"
+  ],
+  "result": {
+    "count": 4,
+    "id": "synergy:bamboo_drying_rack"
+  }
+}

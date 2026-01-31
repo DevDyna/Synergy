@@ -1,0 +1,7 @@
+{
+  "parent": "synergy:block/drying_rack",
+  "textures": {
+    "side": "minecraft:block/warped_stem",
+    "top": "minecraft:block/warped_stem_top"
+  }
+}

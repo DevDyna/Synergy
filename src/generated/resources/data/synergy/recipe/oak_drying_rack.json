@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "L": {
+      "item": "minecraft:oak_log"
+    }
+  },
+  "pattern": [
+    " L ",
+    "C C",
+    "LLL"
+  ],
+  "result": {
+    "count": 4,
+    "id": "synergy:oak_drying_rack"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "L": {
+      "item": "minecraft:warped_stem"
+    }
+  },
+  "pattern": [
+    " L ",
+    "C C",
+    "LLL"
+  ],
+  "result": {
+    "count": 4,
+    "id": "synergy:warped_drying_rack"
+  }
+}
