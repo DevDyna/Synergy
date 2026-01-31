@@ -3,7 +3,8 @@ package com.devdyna.synergy.api.gui;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
-import com.devdyna.synergy.init.builder.IndustrialUpgrade;
+import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade;
+
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntUnaryOperator;

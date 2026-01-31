@@ -17,9 +17,7 @@ import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.redstone.InvertedRepeater;
 import com.devdyna.synergy.init.builder.redstone.PulseRepeater;
 import com.devdyna.synergy.init.builder.redstone.RecursiveRepeater;
-import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBlock;
-import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBlock;
-import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBlock;
+import com.devdyna.synergy.init.builder.survival.PlaceableBrickBlock;
 import com.devdyna.synergy.init.builder.*;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterBLK;
 import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.advanced.AdvancedCobbleGenBlock;
@@ -31,14 +29,19 @@ import com.devdyna.synergy.init.builder.automation.resource_gen.water.simple.Sim
 import com.devdyna.synergy.init.builder.automation.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankBlock;
+import com.devdyna.synergy.init.builder.combat.Healer;
+import com.devdyna.synergy.init.builder.decorative.MachineFrame;
 import com.devdyna.synergy.init.builder.laser.*;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBlock;
-import com.devdyna.synergy.init.builder.magic.chests.ornated.OrnatedTinyChestBlock;
-import com.devdyna.synergy.init.builder.magic.chests.stone.StoneTinyChestBlock;
-import com.devdyna.synergy.init.builder.magic.chests.wooden.WoodenTinyChestBlock;
+import com.devdyna.synergy.init.builder.magic.crushing_tub.CrushingTubBlock;
+import com.devdyna.synergy.init.builder.magic.drying_rack.DryingRackBlock;
+import com.devdyna.synergy.init.builder.magic.evaporation_basin.EvaporationBasinBlock;
 import com.devdyna.synergy.init.builder.magic.quern.QuernBlock;
+import com.devdyna.synergy.init.builder.magic.tiny_chests.ornated.OrnatedTinyChestBlock;
+import com.devdyna.synergy.init.builder.magic.tiny_chests.stone.StoneTinyChestBlock;
+import com.devdyna.synergy.init.builder.magic.tiny_chests.wooden.WoodenTinyChestBlock;
 import com.devdyna.synergy.init.builder.magic.urn.UrnBlock;
 import com.devdyna.synergy.init.builder.magic.void_box.VoidBoxBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
@@ -367,25 +370,25 @@ public class zBlocks {
 
         public static final DeferredHolder<Block, Block> CLAY_BRICK = Material.registerItemBlock(
                         zStatic.DryableBricks.brick.clay + "_block",
-                        () -> new DryableBricks(BlockBehaviour.Properties.of()
+                        () -> new PlaceableBrickBlock(BlockBehaviour.Properties.of()
                                         .sound(SoundType.GRAVEL).mapColor(MapColor.CLAY)),
                         zHiddenBlock);
 
         public static final DeferredHolder<Block, Block> PACKED_MUD_BRICK = Material.registerItemBlock(
                         zStatic.DryableBricks.brick.packed_mud + "_block",
-                        () -> new DryableBricks(BlockBehaviour.Properties.of()
+                        () -> new PlaceableBrickBlock(BlockBehaviour.Properties.of()
                                         .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
                         zHiddenBlock);
 
         public static final DeferredHolder<Block, Block> FIRECLAY_BRICK = Material.registerItemBlock(
                         zStatic.DryableBricks.brick.fireclay + "_block",
-                        () -> new DryableBricks(BlockBehaviour.Properties.of()
+                        () -> new PlaceableBrickBlock(BlockBehaviour.Properties.of()
                                         .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
                         zHiddenBlock);
 
         public static final DeferredHolder<Block, Block> BLAST_BRICK = Material.registerItemBlock(
                         zStatic.DryableBricks.brick.blast + "_block",
-                        () -> new DryableBricks(BlockBehaviour.Properties.of()
+                        () -> new PlaceableBrickBlock(BlockBehaviour.Properties.of()
                                         .sound(SoundType.GRAVEL).mapColor(MapColor.TERRACOTTA_ORANGE)),
                         zHiddenBlock);
 

@@ -6,7 +6,8 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents.TYPE;
+import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents.TYPE;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;

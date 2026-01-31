@@ -8,7 +8,7 @@ import com.devdyna.synergy.api.plants.builder.BaseCropBlock;
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.EnchantUtil;
-import com.devdyna.synergy.init.builder.DryableBricks;
+import com.devdyna.synergy.init.builder.survival.PlaceableBrickBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zMachines;
@@ -192,14 +192,14 @@ public class DataLootBlock extends BlockLootSubProvider {
                                                                 .add(LootItem.lootTableItem(fail))
                                                                 .when(DataGenUtil.lootTableConditionInverse(
                                                                                 b.get(),
-                                                                                DryableBricks.DRIED))
+                                                                                PlaceableBrickBlock.DRIED))
                                                                 .apply(SetItemCountFunction
                                                                                 .setCount(ConstantValue.exactly(1))))
                                                 .withPool(DataGenUtil.createPool()
                                                                 .add(LootItem.lootTableItem(success))
                                                                 .when(DataGenUtil.lootTableCondition(
                                                                                 b.get(),
-                                                                                DryableBricks.DRIED))
+                                                                                PlaceableBrickBlock.DRIED))
                                                                 .apply(SetItemCountFunction
                                                                                 .setCount(ConstantValue.exactly(1)))));
         }

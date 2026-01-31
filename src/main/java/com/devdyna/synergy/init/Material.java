@@ -8,10 +8,10 @@ import java.util.function.*;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.init.builder.IndustrialUpgrade;
 import com.devdyna.synergy.init.builder.ItemComponents;
 import com.devdyna.synergy.init.builder.ItemToolTipped;
 import com.devdyna.synergy.init.builder.decorative.DecorativeBlock;
+import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.registries.BuiltInRegistries;

@@ -4,7 +4,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseSeedItem;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
-import com.devdyna.synergy.init.builder.IndustrialUpgrade;
+import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade;
 import com.devdyna.synergy.init.builder.tools.*;
 
 import net.minecraft.tags.BlockTags;

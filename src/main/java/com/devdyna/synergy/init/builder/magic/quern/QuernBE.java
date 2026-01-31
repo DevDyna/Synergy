@@ -7,7 +7,7 @@ import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
-import com.devdyna.synergy.common.recipes.type.QuernMillingRecipe;
+import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.init.types.zRecipeTypes;

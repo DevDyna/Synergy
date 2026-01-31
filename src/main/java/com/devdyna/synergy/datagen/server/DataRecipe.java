@@ -16,6 +16,10 @@ import com.devdyna.synergy.init.builder.industrial_machines.extractor.recipe.Ext
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.recipe.MelterRecipeBuilder;
+import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingBuilder;
+import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualBuilder;
+import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionBuilder;
+import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.ReactorCellBuilder;
 import com.devdyna.synergy.init.builder.plants.cultivated.azalea;
 import com.devdyna.synergy.init.types.*;
 

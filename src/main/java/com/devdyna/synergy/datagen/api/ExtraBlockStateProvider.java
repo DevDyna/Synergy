@@ -13,8 +13,8 @@ import com.devdyna.synergy.api.registers.FluidRegister;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.init.builder.DryableBricks;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
+import com.devdyna.synergy.init.builder.survival.PlaceableBrickBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 
 import net.minecraft.core.Direction;
@@ -74,12 +74,12 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                 getVariantBuilder(b.get()).forAllStates((state) -> {
                         return ConfiguredModel.builder().modelFile(
                                         models().withExistingParent(
-                                                        b.getRegisteredName() + (state.getValue(DryableBricks.DRIED)
+                                                        b.getRegisteredName() + (state.getValue(PlaceableBrickBlock.DRIED)
                                                                         ? "_dried"
                                                                         : "_not_dried"),
                                                         modLoc("block/base_brick"))
                                                         .texture("texture",
-                                                                        (state.getValue(DryableBricks.DRIED) ? dried
+                                                                        (state.getValue(PlaceableBrickBlock.DRIED) ? dried
                                                                                         : working)))
                                         .rotationY(((int) (state
                                                         .getValue(BlockStateProperties.HORIZONTAL_FACING)).toYRot()

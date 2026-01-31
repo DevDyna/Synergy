@@ -9,7 +9,8 @@ import com.devdyna.synergy.api.render.FluidGUITank;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents.TYPE;
+import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents.TYPE;
+
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;

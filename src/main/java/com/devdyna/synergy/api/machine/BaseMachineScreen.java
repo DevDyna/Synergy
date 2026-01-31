@@ -10,8 +10,8 @@ import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.config.Common;
-import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents;
-import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents.TYPE;
+import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents;
+import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents.TYPE;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;

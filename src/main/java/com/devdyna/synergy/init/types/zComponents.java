@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.types;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.api.codec.BetterThanBlockStates;
-import com.devdyna.synergy.init.builder.IndustrialUpgrade.UpgradeComponents;
+import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;

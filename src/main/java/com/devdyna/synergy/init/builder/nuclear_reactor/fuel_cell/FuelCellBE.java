@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.be.MachineBE;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
-import com.devdyna.synergy.common.recipes.type.FuelCellRecipe;
+import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import net.minecraft.core.BlockPos;

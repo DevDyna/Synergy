@@ -11,7 +11,7 @@ import com.devdyna.synergy.api.basebe.block.TickingBlock;
 import com.devdyna.synergy.api.utils.ColorUtil;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
-import com.devdyna.synergy.common.recipes.type.VoidBoxInfusionRecipe;
+import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionRecipe;
 import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 

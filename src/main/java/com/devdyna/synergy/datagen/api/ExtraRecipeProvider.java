@@ -12,13 +12,13 @@ import com.devdyna.synergy.api.registers.FluidRegister;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.builders.CropResultBuilder;
 import com.devdyna.synergy.common.recipes.builders.DryableBricksBuilder;
-import com.devdyna.synergy.common.recipes.builders.QuernMillingBuilder;
-import com.devdyna.synergy.common.recipes.builders.ReactorCellBuilder;
-import com.devdyna.synergy.common.recipes.builders.UrnRitualBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.CasterRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.recipe.MelterRecipeBuilder;
+import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingBuilder;
+import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualBuilder;
+import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.ReactorCellBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup.Provider;

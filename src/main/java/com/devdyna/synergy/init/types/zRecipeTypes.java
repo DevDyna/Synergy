@@ -8,6 +8,14 @@ import com.devdyna.synergy.common.recipes.serializer.*;
 import com.devdyna.synergy.common.recipes.type.*;
 import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecipe;
 import com.devdyna.synergy.common.recipes.type.node_providers.ItemProviderRecipe;
+import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingRecipe;
+import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingRecipeSerializer;
+import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualRecipe;
+import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualRecipeSerializer;
+import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionRecipe;
+import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionRecipeSerializer;
+import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.FuelCellRecipe;
+import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.FuelCellRecipeSerializer;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.ItemStack;

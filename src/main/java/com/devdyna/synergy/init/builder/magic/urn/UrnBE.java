@@ -9,7 +9,7 @@ import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.common.recipes.input.ItemListInput;
-import com.devdyna.synergy.common.recipes.type.UrnRitualRecipe;
+import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.init.types.zRecipeTypes;
