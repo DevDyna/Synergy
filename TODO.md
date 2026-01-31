@@ -1,6 +1,6 @@
 # TODO
 
-## ISSUES
+## GENERAL
 
 - [ ] quickMoveStack (i hate you!)
 
@@ -8,17 +8,11 @@
 
 - [ ] Fuel Cells dont sync with client
 
-## COMPATS AND TWEAKS
-
 - [ ] Node Upgrades
 
 - [ ] Differents styles for Nodes / Node model rework
 
 - [ ] GuideMe quantum reactor GameScene
-
-- [x] GuideMe laser stuff
-
-- [x] GuideMe machinery
 
 - [ ] rework any machine with AreaOfEffect and soldering gun to simplify
 
@@ -49,8 +43,8 @@
 - [ ] mechanical crushing tub (piston)
 - [ ] evaporation basin booster blocktag (magmablock)
 
-- [ ] functional grindstone
-- [ ] copper grindstone (damagable)
+- [ ] functional grindstone (?)
+- [ ] copper grindstone (damagable) (?)
 
 ## NEWS
 
