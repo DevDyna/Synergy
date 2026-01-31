@@ -46,13 +46,19 @@
 
 - [ ] safe decoration drying racks
 
+- [ ] mechanical crushing tub (piston)
+- [ ] evaporation basin booster blocktag (magmablock)
+
+- [ ] functional grindstone
+- [ ] copper grindstone (damagable)
+
 ## NEWS
 
 ### Survival expansion
 
 - [ ] brick oven
 
-- [ ] Sun drying items (item render)
+- [x] Sun drying items (item render)
 
 - [ ] salt leather
 
@@ -63,8 +69,8 @@
 ### Automation
 
 - [ ] GreenHouse (in-gui plant farmer)
-- [ ] CobbleGen (like NC)
-- [ ] WaterGen (like NC)
+- [x] CobbleGen (like NC)
+- [x] WaterGen (like NC)
 - [ ] Framed CobbleGen (EnderioAddons-Like)
 - [ ] block placer (harvester like but place blocks)
 - [ ] platform network (industry indiegame like)
@@ -72,7 +78,7 @@
 
 ### Agriculture
 
-- [ ] Rustic-like crushing tub
+- [x] Rustic-like crushing tub
 
 - [ ] EnderLilly
 - [ ] cave mushroom -> press -> liquid lapis/ liquid coal
