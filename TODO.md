@@ -48,6 +48,8 @@
 
 - [ ] drying racks and evaporation basin block boosters tooltip
 
+- [ ] dryable bricks not customizable tooltip on jei (+config)
+
 ## NEWS
 
 ### Survival expansion
