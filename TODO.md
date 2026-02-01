@@ -35,7 +35,7 @@
 - [ ] guideme for machines and upgrades
 
 - [ ] drying racks jade
-- [ ] drying racks jei
+- [x] drying racks jei
 - [ ] evaporation basin jade
 
 - [ ] safe decoration drying racks
@@ -49,6 +49,10 @@
 - [ ] drying racks and evaporation basin block boosters tooltip
 
 - [ ] dryable bricks not customizable tooltip on jei (+config)
+
+- [ ] industrial machines process warning tooltips (meka like?)
+
+- [ ] migrate hand-coded batteries capabilities to Neoforge FE capabilities
 
 ## NEWS
 
