@@ -157,7 +157,7 @@ public class SimpleMelterBE extends TickingBE implements NoGuiStorage, ItemStora
         updateState(true);
 
         if (ticker == null)
-            ticker = Ticker.of(recipe.getTicks());
+            ticker = Ticker.of(calcTicks(recipe.getTicks()));
 
         if (ticker.commit()) {
             getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.EXECUTE);
@@ -167,6 +167,10 @@ public class SimpleMelterBE extends TickingBE implements NoGuiStorage, ItemStora
 
         update();
 
+    }
+
+    private int calcTicks(int base) {
+        return Math.max(1, base / (getFluidStorage().isEmpty() ? 1 : 2));
     }
 
     public void fail() {
