@@ -56,5 +56,8 @@ public class zCreativeTab {
 
         public static final DeferredHolder<CreativeModeTab, CreativeModeTab> REDSTONE = Material
                         .createCreativeTab(zStatic.CreativeTab.redstone, () -> zBlocks.PULSE_REPEATER.get().asItem());
+      
+                        public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SURVIVAL = Material
+                        .createCreativeTab(zStatic.CreativeTab.survival, () -> zBlocks.CRUSHING_TUB.get().asItem());
 
 }

@@ -28,6 +28,27 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
+/**
+ * <b>INDUSTRIAL MACHINE BASE BE</b>
+ * <br/>
+ * <br/>
+ * Base BE of all Industrial Machine
+ * <br/>
+ * <br/>
+ * It can handle by default Items and Energy Capability
+ * <br/>
+ * <br/>
+ * Also it contain multiple ready-to-use methods useful on recipe handling
+ * <br/>
+ * <br/>
+ * |-----------------------------------------------------------------|<br/>
+ * <br/>
+ * The Machine much be registred using
+ * <code>com.devdyna.synergy.api.registers.MachineType</code>
+ * <br/>
+ * <br/>
+ * credit: @DevDyna
+ */
 @SuppressWarnings("null")
 public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomation, EnergyBlock {
 
@@ -433,14 +454,14 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         var upgrade = item.copy();
         upgrade.setCount(1);
 
-        if(!upgrade.has(zComponents.UPGRADE_COMPONENTS))
-        return false;
+        if (!upgrade.has(zComponents.UPGRADE_COMPONENTS))
+            return false;
 
         for (int index = 0; index < MAX_UPGRADE_SLOTS; index++) {
             var slot = getStackInSlot(index);
 
             if (slot.isEmpty()) {
-                setStackInSlot(index,upgrade);
+                setStackInSlot(index, upgrade);
                 return true;
             }
 

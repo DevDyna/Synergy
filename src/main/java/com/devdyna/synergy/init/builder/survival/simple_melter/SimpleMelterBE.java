@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.survival.crushing_tub;
+package com.devdyna.synergy.init.builder.survival.simple_melter;
 
 import java.util.Optional;
 
@@ -9,10 +9,13 @@ import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
-import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
-import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubRecipe;
+import com.devdyna.synergy.init.builder.automation.tank.FluidTankBE;
+import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.SimpleMelterRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
+import com.devdyna.synergy.init.types.zFluidTags;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -24,14 +27,13 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
@@ -39,16 +41,18 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage {
+public class SimpleMelterBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
-    public CrushingTubBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public static final int FLUID_BURN_RATE = 25;
+
+    public SimpleMelterBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
-    public CrushingTubBE(BlockPos pos, BlockState blockState) {
-        this(zBlockEntities.CRUSHING_TUB.get(), pos, blockState);
+    public SimpleMelterBE(BlockPos pos, BlockState blockState) {
+        this(zBlockEntities.SIMPLE_MELTER.get(), pos, blockState);
     }
 
     @Override
@@ -92,87 +96,93 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
         return ItemStack.EMPTY;
     }
 
-    public ItemStack getNextDroppedItem() {
-        if (level == null)
-            return ItemStack.EMPTY;
+    private Ticker ticker = null;
 
-        if (cache == null)
-            return ItemStack.EMPTY;
+    @Override
+    public void tickServer() {
+
+        if (level == null) {
+            fail();
+            return;
+        }
+
+        if (cache == null) {
+            fail();
+            return;
+        }
 
         var slot = this.cache.getCapability();
 
-        if (slot == null)
-            return ItemStack.EMPTY;
-
-        var item = slot.getStackInSlot(0);
-
-        if (item.isEmpty())
-            return ItemStack.EMPTY;
-
-        Optional<RecipeHolder<CrushingTubRecipe>> r = level.getRecipeManager()
-                .getRecipeFor(zRecipeTypes.CRUSHING_TUB.getType(),
-                        new MonoItemInput(item), level);
-
-        if (r.isEmpty())
-            return ItemStack.EMPTY;
-
-        var recipe = r.get().value();
-
-        if (getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.SIMULATE) != 0)
-            return ItemStack.EMPTY;
-
-        return recipe.getOutput().copy();
-
-    }
-
-    public void craft(boolean dropWhenCrafted) {
-
-        if (level == null)
+        if (slot == null) {
+            fail();
             return;
-
-        if (cache == null)
-            return;
-
-        var slot = this.cache.getCapability();
-
-        if (slot == null)
-            return;
+        }
 
         var item = slot.getStackInSlot(0);
 
         update();
 
-        if (item.isEmpty())
+        if (item.isEmpty()) {
+            fail();
             return;
+        }
 
-        Optional<RecipeHolder<CrushingTubRecipe>> r = level.getRecipeManager()
-                .getRecipeFor(zRecipeTypes.CRUSHING_TUB.getType(),
+        if (getFuelTankStorage() == null) {
+            fail();
+            return;
+        }
+
+        if (getFuelTankStorage().isEmpty() || !getFuelTankStorage().getFluidInTank(0).is(zFluidTags.MELTER_FUELS)
+                || getFuelTankStorage().drain(FLUID_BURN_RATE, FluidAction.SIMULATE).getAmount() != FLUID_BURN_RATE) {
+            fail();
+            return;
+        }
+
+        Optional<RecipeHolder<SimpleMelterRecipe>> r = level.getRecipeManager()
+                .getRecipeFor(zRecipeTypes.SIMPLE_MELTER.getType(),
                         new MonoItemInput(item), level);
 
-        if (r.isEmpty())
+        if (r.isEmpty()) {
+            fail();
             return;
+        }
 
         var recipe = r.get().value();
 
-        if (getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.SIMULATE) == 0)
+        if (getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.SIMULATE) == 0) {
+            fail();
             return;
+        }
 
-        getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.EXECUTE);
-        getStorage().extractItem(0, 1, false);
+        updateState(true);
 
-        if (dropWhenCrafted)
-            LevelUtil.popItemFromPos(level, getBlockPos().above(), recipe.getOutput().copy());
+        if (ticker == null)
+            ticker = Ticker.of(recipe.getTicks());
 
-        level.playSound(null, getBlockPos(),
-                LevelUtil.chance(50, level) ? SoundEvents.SLIME_BLOCK_FALL : SoundEvents.SNIFFER_EGG_CRACK,
-                SoundSource.BLOCKS, 1f, 1f);
+        if (ticker.commit()) {
+            getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.EXECUTE);
+            getStorage().extractItem(0, 1, false);
+            getFuelTankStorage().drain(FLUID_BURN_RATE, FluidAction.EXECUTE);
+        }
 
         update();
+
     }
 
-    protected void update() {
-        setChanged();
-        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+    public void fail() {
+
+        if (getBlockState().getValue(BaseMachineBlock.ENABLED))
+            updateState(false);
+    }
+
+    public void updateState(boolean v) {
+        level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED, v));
+
+    }
+
+    public FluidStorageTank getFuelTankStorage() {
+        return (level.getBlockEntity(getBlockPos().below()) instanceof FluidTankBE tank) ? tank.getFluidStorage()
+                : null;
     }
 
     @Override
@@ -183,6 +193,11 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
     @Override
     public int getFluidCapacity() {
         return 16_000;
+    }
+
+    protected void update() {
+        setChanged();
+        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
     }
 
     @Override

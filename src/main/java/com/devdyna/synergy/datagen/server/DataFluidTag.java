@@ -12,6 +12,7 @@ import com.devdyna.synergy.init.types.zFluids;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -44,6 +45,9 @@ public class DataFluidTag extends FluidTagsProvider {
                 tag(zFluidTags.STEEL_MOLTEN).add(zFluids.MOLTEN_STEEL.getFluid());
                 tag(zFluidTags.TIN_MOLTEN).add(zFluids.MOLTEN_TIN.getFluid());
                 tag(zFluidTags.URANIUM_MOLTEN).add(zFluids.MOLTEN_URANIUM.getFluid());
+
+                tag(zFluidTags.MELTER_FUELS)
+                                .addTag(FluidTags.LAVA);
 
         }
 

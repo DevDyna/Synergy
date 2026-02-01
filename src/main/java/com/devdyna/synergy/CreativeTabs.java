@@ -97,7 +97,7 @@ public class CreativeTabs {
             event.accept(zBlocks.SOLAR_PANEL.get());
             event.accept(zBlocks.HARVESTER.get());
             event.accept(zBlocks.SPRINKLER.get());
-            event.accept(zBlocks.FLUID_TANK.get());
+            event.accept(zBlocks.SIMPLE_TANK.get());
             ClazzUtil.getAllzBlocks(zBlocks.zResourceGenerators)
                     .forEach(i -> event.accept(i.get()));
         }
@@ -126,6 +126,12 @@ public class CreativeTabs {
             event.accept(zBlocks.STONE_TINY_CHEST.get());
             event.accept(zBlocks.ORNATE_TINY_CHEST.get());
             event.accept(zBlocks.VOID_BOX.get());
+        }
+        // ---------------------------------------------------------- //
+        // SURVIVAL
+        if (event.getTabKey() == zCreativeTab.SURVIVAL.getKey()) {
+            event.accept(zBlocks.SIMPLE_MELTER.get());
+            event.accept(zBlocks.FUEL_TANK.get());
             event.accept(zBlocks.CRUSHING_TUB.get());
             event.accept(zBlocks.EVAPORATION_BASIN.get());
             zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get).forEach(event::accept);

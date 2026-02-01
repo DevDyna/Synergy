@@ -10,7 +10,21 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.IItemHandler;
-
+/**
+ * <b>STANDALONE BASE BE</b>
+ * <br/>
+ * <br/>
+ * Base BE storage with menu and a custom handler to filter multiple slots on automation handling
+ * <br/>
+ * <br/>
+ * This Base BE is inspired from <code>com.devdyna.synergy.api.machine.BaseMachineBE</code> to be used to create simple-complex machines
+ * <br/>
+ * <br/>
+ * |-----------------------------------------------------------------|<br/>
+ * <br/>
+ * <br/>
+ * credit: @DevDyna
+ */
 @SuppressWarnings("null")
 public abstract class MachineBE extends BEStorage {
 

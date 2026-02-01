@@ -21,6 +21,7 @@ import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBlock;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBlock;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
+import com.devdyna.synergy.init.builder.survival.simple_melter.SimpleMelterBlock;
 import com.devdyna.synergy.init.builder.*;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterBLK;
 import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.advanced.AdvancedCobbleGenBlock;
@@ -424,16 +425,18 @@ public class zBlocks {
                         zStatic.Lazers.rotor,
                         () -> new LaserRotorBlock());
 
-        public static final DeferredHolder<Block, Block> FLUID_TANK = Material.registerItemBlock(
-                        zStatic.Blocks.fluid_tank,
+        public static final DeferredHolder<Block, Block> SIMPLE_TANK = Material.registerItemBlock(
+                        zStatic.FluidTanks.normal,
                         () -> new FluidTankBlock());
+
+        public static final DeferredHolder<Block, Block> FUEL_TANK = Material.registerItemBlock(
+                        zStatic.FluidTanks.fuel,
+                        () -> new FluidTankBlock(Properties.of().sound(SoundType.METAL).mapColor(MapColor.METAL).strength(3f)));
 
         public static final DeferredHolder<Block, Block> VOID_BOX = Material.registerItemBlock(
                         zStatic.Blocks.void_box,
                         () -> new VoidBoxBlock());
 
-        // public static final DeferredHolder<Block, Block> VOID_BOX_LID = zOnlyBlock.registerSimpleBlock(
-        //                 zStatic.Blocks.void_box + "_lid");
 
         @SuppressWarnings("deprecation")
         public static final DeferredHolder<Block, Block> BLAST_BRICKS = Material
@@ -487,9 +490,11 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> SIMPLE_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.simple,
                         () -> new SimpleWaterGenBlock(), zResourceGenerators);
+                        
         public static final DeferredHolder<Block, Block> ADVANCED_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.advanced,
                         () -> new AdvancedWaterGenBlock(), zResourceGenerators);
+
         public static final DeferredHolder<Block, Block> ELITE_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.elite,
                         () -> new EliteWaterGenBlock(), zResourceGenerators);
@@ -497,9 +502,11 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> SIMPLE_COBBLE_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.CobbleStone.simple,
                         () -> new SimpleCobbleGenBlock(), zResourceGenerators);
+
         public static final DeferredHolder<Block, Block> ADVANCED_COBBLE_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.CobbleStone.advanced,
                         () -> new AdvancedCobbleGenBlock(), zResourceGenerators);
+
         public static final DeferredHolder<Block, Block> ELITE_COBBLE_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.CobbleStone.elite,
                         () -> new EliteCobbleGenBlock(), zResourceGenerators);
@@ -507,9 +514,14 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> CRUSHING_TUB = Material.registerItemBlock(
                         zStatic.Blocks.crushing_tub,
                         () -> new CrushingTubBlock());
+
         public static final DeferredHolder<Block, Block> EVAPORATION_BASIN = Material.registerItemBlock(
                         zStatic.Blocks.evaporation_basin,
                         () -> new EvaporationBasinBlock());
+
+        public static final DeferredHolder<Block, Block> SIMPLE_MELTER = Material.registerItemBlock(
+                        zStatic.Blocks.simple_melter,
+                        () -> new SimpleMelterBlock());
 
         public static final DeferredHolder<Block, Block> ACACIA_DRYING_RACK = Material.registerItemBlock(
                         WoodType.ACACIA.name() + "_" + zStatic.Blocks.drying_rack,

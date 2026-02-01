@@ -16,6 +16,7 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 
+@SuppressWarnings("null")
 public interface BucketInteraction {
 
     default ItemInteractionResult executeWhenEmpty(ItemStack stack, BlockState state, Level level, BlockPos pos,
@@ -31,11 +32,14 @@ public interface BucketInteraction {
     default ItemInteractionResult bucketAction(ItemStack item, BlockState blockState, Level level,
             BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
 
+        // for (Direction dir : Direction.values()) {
+        //     level.neighborChanged(level.getBlockState(blockPos.relative(dir)), blockPos.relative(dir), level.getBlockState(blockPos.relative(dir)).getBlock(), blockPos, false);
+        //         if(level.getBlockEntity(blockPos.relative(dir)) != null)
+        //     level.getBlockEntity(blockPos.relative(dir)).setChanged();
+        // }
+
         if (item.isEmpty())
             return executeWhenEmpty(item, blockState, level, blockPos, player, hand, blockHitResult);
-
-        if (level.isClientSide)
-            return ItemInteractionResult.SUCCESS;
 
         IFluidHandlerItem bucket = item.getCapability(Capabilities.FluidHandler.ITEM);
         if (bucket == null)
@@ -46,6 +50,9 @@ public interface BucketInteraction {
 
         if (cap == null)
             return executeWhenNotBucket(item, blockState, level, blockPos, player, hand, blockHitResult);
+
+        if (level.isClientSide)
+            return ItemInteractionResult.SUCCESS;
 
         int droplet = 0;
 

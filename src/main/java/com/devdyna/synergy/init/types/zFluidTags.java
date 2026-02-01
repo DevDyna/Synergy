@@ -26,5 +26,7 @@ public class zFluidTags {
     public static final TagKey<Fluid> STEEL_MOLTEN = Material.tagFluid("molten_fluids/steel");
     public static final TagKey<Fluid> TIN_MOLTEN = Material.tagFluid("molten_fluids/tin");
     public static final TagKey<Fluid> URANIUM_MOLTEN = Material.tagFluid("molten_fluids/uranium");
+    
+    public static final TagKey<Fluid> MELTER_FUELS = Material.tagFluid("melter/fuels");
 
 }

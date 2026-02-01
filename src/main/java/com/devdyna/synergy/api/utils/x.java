@@ -26,6 +26,7 @@ import java.util.List;
 import com.devdyna.synergy.api.registers.FluidRegister;
 import com.devdyna.synergy.api.registers.MachineType;
 
+@SuppressWarnings("unchecked")
 public class x {
 
     public static ResourceLocation rl(String modid, String s) {
@@ -279,6 +280,29 @@ public class x {
 
     public static List<ItemStack> getItems(SizedIngredient i) {
         return Arrays.asList(i.getItems());
+    }
+
+    public static Block[] toBlocks(DeferredHolder<Block, ?>... blocks) {
+        return Arrays.asList(blocks).stream().map(DeferredHolder::get).toArray(Block[]::new);
+    }
+
+    public static DeferredHolder<Block, ?>[] toDefHolders(MachineType<?, ?, ?, ?>... machines) {
+        return Arrays.asList(machines).stream().map(MachineType::block).toArray(DeferredHolder[]::new);
+    }
+    public static Block[] toBlocks(MachineType<?, ?, ?, ?>... machines) {
+        return toBlocks(toDefHolders(machines));
+    }
+
+    public static Item[] toItems(DeferredHolder<Block, ?>... blocks) {
+        return toItems(toBlocks(blocks));
+    }
+
+    public static Item[] toItems(Block... blocks) {
+        return Arrays.asList(blocks).stream().map(Block::asItem).toArray(Item[]::new);
+    }
+
+    public static DeferredHolder<Item, ?>[] toItems(MachineType<?, ?, ?, ?>... machines) {
+        return Arrays.asList(machines).stream().map(MachineType::item).toArray(DeferredHolder[]::new);
     }
 
 }

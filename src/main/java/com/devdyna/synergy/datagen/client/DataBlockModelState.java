@@ -10,6 +10,7 @@ import com.devdyna.synergy.datagen.api.ExtraBlockStateProvider;
 import com.devdyna.synergy.init.types.zBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class DataBlockModelState extends ExtraBlockStateProvider {
@@ -64,6 +65,11 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 simpleBlockDecorative(zBlocks.FIRECLAY_BRICK_MOSSY.getTiles());
 
                 simpleFlexibleBlock(zBlocks.COOLER_BASE, "machine/nuclear/cooler/base");
+
+                simpleBlockDecorative(zBlocks.CAST_IRON_BLOCK);
+                simpleBlockDecorative(zBlocks.CAST_IRON_TILES);
+                simpleBlockDecorative(zBlocks.CALCITE_BRICKS);
+
                 simpleFullBlock(zBlocks.HEALER, "");
                 simpleFlexibleBlock(zBlocks.REACTOR_FUEL_CELL, "machine/nuclear/fuel_cell");
 
@@ -139,7 +145,19 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 "block/redstone/input/" + c + "_"
                                                                 + (a ? "off" : "on"))));
 
-                // this require to stay at the end of all
+                horizontalBlockBiPhace(zBlocks.SIMPLE_MELTER.get(), BlockStateProperties.ENABLED,
+                                models().withExistingParent(
+                                                zBlocks.SIMPLE_MELTER.getRegisteredName() + "_off",
+                                                modLoc("block/melter"))
+                                                .texture("front", "synergy:block/melter/front/off")
+                                                .renderType(DataGenUtil.CUTOUT),
+                                models().withExistingParent(
+                                                zBlocks.SIMPLE_MELTER.getRegisteredName() + "_on",
+                                                modLoc("block/melter"))
+                                                .texture("front", "synergy:block/melter/front/on")
+                                                .renderType(DataGenUtil.CUTOUT));
+
+                // this require to stay at the end of all !
                 decorativeBlocks();
                 reactorController();
                 laserBlocks();
@@ -150,8 +168,11 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                 models().withExistingParent(zBlocks.VOID_BOX.getRegisteredName(),
                                                 modLoc("block/tiny_block/void_box/block")));
 
-                simpleBlock(zBlocks.FLUID_TANK.get(), models().cubeAll(zBlocks.FLUID_TANK.getRegisteredName(),
-                                modLoc("block/fluid_tank")).renderType(DataGenUtil.CUTOUT));
+                simpleBlock(zBlocks.SIMPLE_TANK.get(), models().cubeAll(zBlocks.SIMPLE_TANK.getRegisteredName(),
+                                modLoc("block/tank/simple")).renderType(DataGenUtil.CUTOUT));
+
+                simpleBlock(zBlocks.FUEL_TANK.get(), models().cubeAll(zBlocks.FUEL_TANK.getRegisteredName(),
+                                modLoc("block/tank/fuel")).renderType(DataGenUtil.CUTOUT));
 
                 simpleBlock(zBlocks.SIMPLE_WATER_GEN.get(),
                                 models().withExistingParent(zBlocks.SIMPLE_WATER_GEN.getRegisteredName(),
@@ -205,21 +226,20 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 simpleBlock(zBlocks.EVAPORATION_BASIN.get(),
                                 models().getExistingFile(modLoc("block/evaporation_basin")));
 
-               
                 zStatic.ALL_DRYING_RACKS.forEach(t -> {
 
                         var log = "_log";
                         var toplog = "_log_top";
 
                         var id = t.getRegisteredName();
-                        var text = id.replace(ID+":", "").replace("_" + zStatic.Blocks.drying_rack, "");
+                        var text = id.replace(ID + ":", "").replace("_" + zStatic.Blocks.drying_rack, "");
 
-                        if(text.contains("bamboo")){
+                        if (text.contains("bamboo")) {
                                 log = log.replace("log", "block");
                                 toplog = toplog.replace("log", "block");
                         }
 
-                        if(text.contains("crimson") || text.contains("warped")){
+                        if (text.contains("crimson") || text.contains("warped")) {
                                 log = log.replace("log", "stem");
                                 toplog = toplog.replace("log", "stem");
                         }

@@ -19,6 +19,7 @@ import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingBuilder;
 import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualBuilder;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.ReactorCellBuilder;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksBuilder;
+import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.SimpleMelterBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup.Provider;
@@ -117,6 +118,12 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         protected void moltenIngots(RecipeOutput c, Item ingot, TagKey<Item> input, FluidRegister fluid) {
 
                 MelterRecipeBuilder.of()
+                                .input(input)
+                                .fluid(fluid, 90)
+                                .unlockedBy()
+                                .save(c, "_from_ingot");
+
+                SimpleMelterBuilder.of()
                                 .input(input)
                                 .fluid(fluid, 90)
                                 .unlockedBy()
@@ -467,7 +474,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                         zItems.RED_BATTERY.get(),
                         zItems.BLUE_BATTERY.get(),
                         zItems.GREEN_BATTERY.get(),
-                        zBlocks.FLUID_TANK.get().asItem());
+                        zBlocks.SIMPLE_TANK.get().asItem(),
+                        zBlocks.FUEL_TANK.get().asItem());
 
         protected void clearNBT(RecipeOutput c) {
 

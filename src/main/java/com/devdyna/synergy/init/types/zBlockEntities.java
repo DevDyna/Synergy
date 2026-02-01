@@ -28,6 +28,7 @@ import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBE;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBE;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBE;
+import com.devdyna.synergy.init.builder.survival.simple_melter.SimpleMelterBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -132,15 +133,17 @@ public class zBlockEntities {
                                         zBlocks.VOID_BOX);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FluidTankBE>> FLUID_TANK = Material
-                        .createBlockEntity(zStatic.Blocks.fluid_tank, FluidTankBE::new,
-                                        zBlocks.FLUID_TANK);
+                        .createBlockEntity(zStatic.FluidTanks.normal, FluidTankBE::new,
+                                        zBlocks.SIMPLE_TANK, zBlocks.FUEL_TANK);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SimpleWaterGenBE>> SIMPLE_WATER_GEN = Material
                         .createBlockEntity(zStatic.ResourceGenerators.Water.simple, SimpleWaterGenBE::new,
                                         zBlocks.SIMPLE_WATER_GEN);
+
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AdvancedWaterGenBE>> ADVANCED_WATER_GEN = Material
                         .createBlockEntity(zStatic.ResourceGenerators.Water.advanced, AdvancedWaterGenBE::new,
                                         zBlocks.ADVANCED_WATER_GEN);
+
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EliteWaterGenBE>> ELITE_WATER_GEN = Material
                         .createBlockEntity(zStatic.ResourceGenerators.Water.elite, EliteWaterGenBE::new,
                                         zBlocks.ELITE_WATER_GEN);
@@ -148,6 +151,7 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SimpleCobbleGenBE>> SIMPLE_COBBLE_GEN = Material
                         .createBlockEntity(zStatic.ResourceGenerators.CobbleStone.simple, SimpleCobbleGenBE::new,
                                         zBlocks.SIMPLE_COBBLE_GEN);
+
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<AdvancedCobbleGenBE>> ADVANCED_COBBLE_GEN = Material
                         .createBlockEntity(zStatic.ResourceGenerators.CobbleStone.advanced, AdvancedCobbleGenBE::new,
                                         zBlocks.ADVANCED_COBBLE_GEN);
@@ -167,5 +171,9 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DryingRackBE>> DRYING_RACK = Material
                         .createBlockEntity(zStatic.Blocks.drying_rack, DryingRackBE::new,
                                         zStatic.ALL_DRYING_RACKS.toArray(DeferredHolder[]::new));
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SimpleMelterBE>> SIMPLE_MELTER = Material
+                        .createBlockEntity(zStatic.Blocks.simple_melter, SimpleMelterBE::new,
+                                        zBlocks.SIMPLE_MELTER);
 
 }

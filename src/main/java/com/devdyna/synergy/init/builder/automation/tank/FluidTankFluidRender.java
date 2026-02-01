@@ -18,12 +18,11 @@ public class FluidTankFluidRender<T extends FluidTankBE> implements BlockEntityR
 
                 var storage = be.getFluidStorage();
 
-                if (storage.getFluidAmount() > 0) {
-
+                if (storage.getFluidAmount() > 0) 
                         FluidRenderHelper.of()
                                         .textureAndColor(storage.getFluid())
                                         .amount(storage.getPercentuage())
                                         .build(poseStack, bufferSource, packedLight);
-                }
+                
         }
 }

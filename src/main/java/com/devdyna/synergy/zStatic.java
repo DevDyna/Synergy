@@ -22,7 +22,7 @@ public class zStatic {
         public static String decorative = "decorative";
         public static String automation = "automation";
         public static String logistics = "logistics";
-        // public static String storage = "storage";
+        public static String survival = "survival";
         public static String magic = "magic";
         public static String redstone = "redstone";
 
@@ -228,7 +228,8 @@ public class zStatic {
         public static String healer = "healer";
 
         public static String void_box = "void_box";
-        public static String fluid_tank = "fluid_tank";
+        public static String simple_melter = "simple_melter";
+        
 
         public static String urn = "urn";
         public static String quern = "quern";
@@ -245,6 +246,12 @@ public class zStatic {
         public static String pulse_repeater = "pulse_repeater";
         public static String recursive_repeater = "recursive_repeater";
         public static String inverted_repeater = "inverted_repeater";
+    }
+
+    public class FluidTanks{
+        public static final String AFFIX = "_tank";
+        public static String normal = "fluid"+AFFIX;
+        public static String fuel = "fuel"+AFFIX;
     }
 
     public class Tiers {

@@ -144,7 +144,8 @@ public class DataItemModel extends ExtraItemModelProvider {
                 withExistingParent(x.path(zBlocks.INVERTED_REPEATER.get()), "minecraft:item/generated")
                                 .texture("layer0", modLoc("item/redstone/inverted_repeater"));
 
-                simpleFlexibleBlock(zBlocks.FLUID_TANK, "fluid_tank").renderType(DataGenUtil.CUTOUT);
+                simpleFlexibleBlock(zBlocks.SIMPLE_TANK, "tank/simple").renderType(DataGenUtil.CUTOUT);
+                simpleFlexibleBlock(zBlocks.FUEL_TANK, "tank/fuel").renderType(DataGenUtil.CUTOUT);
 
                 withExistingParent(zBlocks.SIMPLE_WATER_GEN.getRegisteredName(), modLoc("block/triple_layer"))
                                 .texture("top", "block/resource_gen/water")
@@ -184,6 +185,10 @@ public class DataItemModel extends ExtraItemModelProvider {
 
                 withExistingParent(zBlocks.CRUSHING_TUB.getRegisteredName(), modLoc("block/crushing_tub"));
                 withExistingParent(zBlocks.EVAPORATION_BASIN.getRegisteredName(), modLoc("block/evaporation_basin"));
+
+                withExistingParent(zBlocks.SIMPLE_MELTER.getRegisteredName(),
+                                modLoc("block/melter"))
+                                .texture("front", "synergy:block/melter/front/off");
 
                 zStatic.ALL_DRYING_RACKS.forEach(t -> {
 

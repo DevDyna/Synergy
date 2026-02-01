@@ -24,6 +24,7 @@ import com.devdyna.synergy.init.builder.plants.cultivated.azalea;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubBuilder;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackBuilder;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporatingBasinBuilder;
+import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.SimpleMelterBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup;
@@ -1227,7 +1228,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                         stonecutter(c, i, zItemTag.MOLDS);
                                 });
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.FLUID_TANK.get())
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.SIMPLE_TANK.get())
                                 .define('#', Tags.Items.NUGGETS_IRON)
                                 .define('G', Tags.Items.GLASS_BLOCKS_COLORLESS)
                                 .pattern(" # ")
@@ -1235,6 +1236,17 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern(" # ")
                                 .unlockedBy(getHasName(Items.IRON_NUGGET),
                                                 has(Items.IRON_NUGGET))
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.FUEL_TANK.get())
+                                .define('I', Tags.Items.INGOTS_IRON)
+                                .define('#', Tags.Items.NUGGETS_IRON)
+                                .define('G', zBlocks.SIMPLE_TANK.get())
+                                .pattern("I#I")
+                                .pattern("#G#")
+                                .pattern("I#I")
+                                .unlockedBy(getHasName(zBlocks.SIMPLE_TANK.get()),
+                                                has(zBlocks.SIMPLE_TANK.get()))
                                 .save(c);
 
                 ExtractorRecipeBuilder.of()
@@ -1348,6 +1360,12 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
+                SimpleMelterBuilder.of()
+                                .input(Tags.Items.GLASS_BLOCKS_COLORLESS)
+                                .fluid(zFluids.LIQUID_GLASS, 1000)
+                                .unlockedBy()
+                                .save(c);
+
                 CasterRecipeBuilder.of()
                                 .input(zItems.CHIP)
                                 .fluid(zFluids.LIQUID_GLASS, 250)
@@ -1414,7 +1432,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern(" C ")
                                 .define('S', zItems.LIGHT_BULB.get())
                                 .define('R', zItems.RESISTOR.get())
-                                .define('Q', zBlocks.FLUID_TANK.get())
+                                .define('Q', zBlocks.SIMPLE_TANK.get())
                                 .define('C', zItems.BLUE_BATTERY.get())
                                 .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))

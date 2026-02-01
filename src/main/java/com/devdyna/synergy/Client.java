@@ -22,6 +22,7 @@ import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen
 import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubRender;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackRender;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinRender;
+import com.devdyna.synergy.init.builder.survival.simple_melter.SimpleMelterRender;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zContainer;
 import com.devdyna.synergy.init.types.zItems;
@@ -57,6 +58,7 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.EVAPORATION_BASIN.get(), EvaporationBasinRender::new);
 
         event.registerBlockEntityRenderer(zBlockEntities.DRYING_RACK.get(), DryingRackRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.SIMPLE_MELTER.get(), SimpleMelterRender::new);
 
     }
 
