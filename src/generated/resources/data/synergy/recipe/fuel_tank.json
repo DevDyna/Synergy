@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:nuggets/iron"
+    },
+    "G": {
+      "item": "synergy:fluid_tank"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "I#I",
+    "#G#",
+    "I#I"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:fuel_tank"
+  }
+}

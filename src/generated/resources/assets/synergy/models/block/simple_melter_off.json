@@ -1,0 +1,7 @@
+{
+  "parent": "synergy:block/melter",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "front": "synergy:block/melter/front/off"
+  }
+}

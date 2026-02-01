@@ -1,0 +1,11 @@
+{
+  "type": "synergy:simple_melter",
+  "fluid": {
+    "amount": 90,
+    "id": "synergy:molten_silver_source"
+  },
+  "input": {
+    "tag": "c:ingots/silver"
+  },
+  "ticks": 100
+}

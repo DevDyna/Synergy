@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cube_all",
   "render_type": "minecraft:cutout",
   "textures": {
-    "all": "synergy:block/fluid_tank"
+    "all": "synergy:block/tank/simple"
   }
 }

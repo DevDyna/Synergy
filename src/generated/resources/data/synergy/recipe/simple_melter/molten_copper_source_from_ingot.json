@@ -1,0 +1,11 @@
+{
+  "type": "synergy:simple_melter",
+  "fluid": {
+    "amount": 90,
+    "id": "synergy:molten_copper_source"
+  },
+  "input": {
+    "tag": "c:ingots/copper"
+  },
+  "ticks": 100
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fluid_tank": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:fluid_tank"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:fuel_tank"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fluid_tank"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:fuel_tank"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "synergy:block/melter",
+  "textures": {
+    "front": "synergy:block/melter/front/off"
+  }
+}

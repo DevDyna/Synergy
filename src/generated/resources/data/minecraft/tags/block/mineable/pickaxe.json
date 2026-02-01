@@ -24,6 +24,7 @@
     "synergy:quantum_reactor_controller",
     "synergy:blast_bricks",
     "synergy:fluid_tank",
+    "synergy:fuel_tank",
     "synergy:evaporation_basin"
   ]
 }
