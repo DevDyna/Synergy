@@ -1,7 +1,7 @@
 {
   "type": "synergy:drying_rack",
   "input": {
-    "item": "minecraft:rotten_flesh"
+    "item": "synergy:salty_rotten_flesh"
   },
   "output": {
     "count": 1,
