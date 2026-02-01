@@ -46,6 +46,8 @@
 - [ ] functional grindstone (?)
 - [ ] copper grindstone (damagable) (?)
 
+- [ ] drying racks and evaporation basin block boosters tooltip
+
 ## NEWS
 
 ### Survival expansion
