@@ -1390,7 +1390,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern(" C ")
                                 .define('S', zItems.STEEL_GEAR.get())
                                 .define('R', zItems.RESISTOR.get())
-                                .define('Q', zBlocks.FLUID_TANK.get())
+                                .define('Q', zBlocks.EVAPORATION_BASIN.get())
                                 .define('C', zItems.BLUE_BATTERY.get())
                                 .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
@@ -1402,7 +1402,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern(" C ")
                                 .define('S', zItems.STEEL_ELECTRON_TUBE.get())
                                 .define('R', zItems.RESISTOR.get())
-                                .define('Q', zItems.AQUAMARINE_PLATE.get())
+                                .define('Q', zBlocks.CRUSHING_TUB.get())
                                 .define('C', zItems.BLUE_BATTERY.get())
                                 .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
@@ -1414,7 +1414,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern(" C ")
                                 .define('S', zItems.LIGHT_BULB.get())
                                 .define('R', zItems.RESISTOR.get())
-                                .define('Q', zItems.SUPERCONDUCTOR.get())
+                                .define('Q', zBlocks.FLUID_TANK.get())
                                 .define('C', zItems.BLUE_BATTERY.get())
                                 .define('M', zBlocks.BASIC_MACHINE_FRAME.get())
                                 .unlockedBy(ID, has(zBlocks.BASIC_MACHINE_FRAME.get()))
@@ -1577,8 +1577,15 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(Items.CALCITE))
                                 .save(c);
 
+                ShapelessRecipeBuilder.shapeless(MISC, zItems.SALTY_ROTTEN_FLESH.get(), 2)
+                                .requires(zItems.SALT.get())
+                                .requires(Items.ROTTEN_FLESH)
+                                .requires(Items.ROTTEN_FLESH)
+                                .unlockedBy(ID, has(Items.ROTTEN_FLESH))
+                                .save(c);
+
                 DryingRackBuilder.of()
-                                .input(Items.ROTTEN_FLESH)
+                                .input(zItems.SALTY_ROTTEN_FLESH)
                                 .output(Items.LEATHER)
                                 .unlockedBy()
                                 .save(c);
@@ -1588,7 +1595,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 Items.DARK_OAK_LOG, Items.JUNGLE_LOG, Items.MANGROVE_LOG,
                                 Items.OAK_LOG, Items.SPRUCE_LOG, Items.WARPED_STEM);
 
-                zStatic.ALL_DRYING_RACKS.forEach(a -> ShapedRecipeBuilder.shaped(MISC, a.get(),4)
+                zStatic.ALL_DRYING_RACKS.forEach(a -> ShapedRecipeBuilder.shaped(MISC, a.get(), 4)
                                 .pattern(" L ")
                                 .pattern("C C")
                                 .pattern("LLL")

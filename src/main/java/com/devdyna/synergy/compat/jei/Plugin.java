@@ -4,6 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.List;
 
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.api.utils.x;
@@ -40,11 +41,14 @@ import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
 
 @SuppressWarnings({ "unchecked", "null" })
@@ -96,6 +100,9 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item(zBlocks.CRUSHING_TUB), CrushingTubCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.EVAPORATION_BASIN), EvaporationBasinCategory.TYPE);
 
+                r.addRecipeCatalysts(DryingRackCategory.TYPE, zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get)
+                                .map(Block::asItem).toArray(Item[]::new));
+
         }
 
         @Override
@@ -123,6 +130,8 @@ public class Plugin implements IModPlugin {
 
                 r.addRecipeCategories(new CrushingTubCategory(helper));
                 r.addRecipeCategories(new EvaporationBasinCategory(helper));
+
+                r.addRecipeCategories(new DryingRackCategory(helper));
 
         }
 
@@ -211,9 +220,12 @@ public class Plugin implements IModPlugin {
 
                 r.addRecipes(CrushingTubCategory.TYPE,
                                 RecipeUtils.getRecipes(zRecipeTypes.CRUSHING_TUB));
-                                
+
                 r.addRecipes(EvaporationBasinCategory.TYPE,
                                 RecipeUtils.getRecipes(zRecipeTypes.EVAPORATING_BASIN));
+
+                r.addRecipes(DryingRackCategory.TYPE,
+                                RecipeUtils.getRecipes(zRecipeTypes.DRYING_RACK));
 
         }
 

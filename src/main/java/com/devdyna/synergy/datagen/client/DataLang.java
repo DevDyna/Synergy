@@ -202,6 +202,8 @@ public class DataLang extends LanguageProvider {
                                 "Crushing Tub Recipes");
                 add(Main.ID + ".jei." + zStatic.Blocks.evaporation_basin,
                                 "Evaporation Basin Recipes");
+                add(Main.ID + ".jei." + zStatic.Blocks.drying_rack,
+                                "Drying Rack Recipes");
 
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.SHADOW,

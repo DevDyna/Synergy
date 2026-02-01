@@ -568,6 +568,9 @@ public class zItems {
         public static final DeferredHolder<Item, Item> IRONBERRIES = Material
                         .resourceItem("ironberries");
 
+        public static final DeferredHolder<Item, Item> SALTY_ROTTEN_FLESH = Material
+                        .resourceItem("salty_rotten_flesh");
+
         public static final DeferredHolder<Item, Item> TINY_IRON_DUST = Material
                         .resourceItem("tiny_iron_dust");
         // ---------------------------------------------------------------------------------------//
