@@ -73,4 +73,9 @@ public class EvaporationBasinCategory extends BaseRecipeCategory<EvaporationBasi
         return recipe.getTicks();
     }
 
+    @Override
+    public Size tickPos() {
+        return Size.of(21, 53);
+    }
+
 }
