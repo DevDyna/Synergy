@@ -32,12 +32,12 @@ public class SimpleMelterCategory extends BaseRecipeCategory<SimpleMelterRecipe>
 
     @Override
     public String getTitleKey() {
-        return zStatic.Blocks.evaporation_basin;
+        return zStatic.Blocks.simple_melter;
     }
 
     @Override
     public ItemLike getIconItem() {
-        return zBlocks.EVAPORATION_BASIN.get();
+        return zBlocks.SIMPLE_MELTER.get();
     }
 
     @Override
@@ -55,7 +55,7 @@ public class SimpleMelterCategory extends BaseRecipeCategory<SimpleMelterRecipe>
 
         JEIFluidTankHelper.of()
                 .fluid(recipe.getFluid())
-                .offset(50,34)
+                .offset(50,34+1)
                 .scale(2.0f, 1.0f)
                 .build((x, y) -> builder.addOutputSlot(x, y));
 
@@ -70,6 +70,11 @@ public class SimpleMelterCategory extends BaseRecipeCategory<SimpleMelterRecipe>
     @Override
     public int tickValue(SimpleMelterRecipe recipe) {
         return recipe.getTicks();
+    }
+
+        @Override
+    public Size tickPos() {
+        return Size.of(11, 30);
     }
 
 }
