@@ -18,6 +18,8 @@ import com.devdyna.synergy.compat.jei.categories.machines.ElectricFurnaceCategor
 import com.devdyna.synergy.compat.jei.categories.machines.ExtractorCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.MelterCategory;
+import com.devdyna.synergy.compat.jei.categories.provider.FluidProviderCategory;
+import com.devdyna.synergy.compat.jei.categories.provider.ItemProviderCategory;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.caster.CasterScreen;

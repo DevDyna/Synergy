@@ -1,4 +1,4 @@
-package com.devdyna.synergy.compat.jei.categories;
+package com.devdyna.synergy.compat.jei.categories.provider;
 
 import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.utils.x;
