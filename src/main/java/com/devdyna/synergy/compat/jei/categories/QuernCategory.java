@@ -8,13 +8,10 @@ import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
@@ -62,20 +59,13 @@ public class QuernCategory extends BaseRecipeCategory<QuernMillingRecipe> {
     }
 
     @Override
-    public void draw(QuernMillingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
-            double mouseX, double mouseY) {
-        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
-        guiGraphics.drawString(font,
-                Component.literal(recipe.getTime() == 1 ? "no tick delay"
-                        : (recipe.getTime() >= 20 ? (recipe.getTime() >= 1200 ? (recipe.getTime() >= 72000
-                                ? recipe.getTime() / 72000 + " hour" + (recipe.getTime() > 72000 ? "s" : "")
-                                : recipe.getTime() / 1200 + " minute" + (recipe.getTime() > 1200 ? "s" : "")
+    public boolean enableTimerRender() {
+        return true;
+    }
 
-                        )
-                                : recipe.getTime() / 20 + " sec" + (recipe.getTime() > 20 ? "s" : ""))
-                                : recipe.getTime() + " tick" + (recipe.getTime() > 1 ? "s" : ""))),
-                21, 14, 0xA0A0A0);
-
+    @Override
+    public int tickValue(QuernMillingRecipe recipe) {
+        return recipe.getTime();
     }
 
 }

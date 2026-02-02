@@ -4,7 +4,6 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -72,9 +71,6 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
     public void draw(FuelCellRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
             double mouseY) {
         super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
-        guiGraphics.drawString(font,
-                FuelCellBE.getTimeValue(recipe.getDuration()),
-                27, 4, 0xA0A0A0);
 
         guiGraphics.drawString(font, "Heat " + (recipe.getHeat() >= 0 ? "+" : "") + recipe.getHeat() + "°/t",
                 7, 39, 0xA0A0A0);
@@ -83,7 +79,21 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
                 7, 49, 0xA0A0A0);
 
         arrow.draw(guiGraphics, 35, 16);
+    }
 
+    @Override
+    public boolean enableTimerRender() {
+        return true;
+    }
+
+    @Override
+    public int tickValue(FuelCellRecipe recipe) {
+        return recipe.getDuration();
+    }
+
+    @Override
+    public Size tickPos() {
+        return Size.of(27, 4);
     }
 
 }

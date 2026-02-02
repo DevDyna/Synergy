@@ -60,7 +60,17 @@ public class EvaporationBasinCategory extends BaseRecipeCategory<EvaporationBasi
                 .scale(2.0f, 1.0f)
                 .build((x, y) -> builder.addInputSlot(x, y));
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 71+1, 28+1).addItemStack(recipe.getOutput());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 71 + 1, 28 + 1).addItemStack(recipe.getOutput());
+    }
+
+    @Override
+    public boolean enableTimerRender() {
+        return true;
+    }
+
+    @Override
+    public int tickValue(EvaporationBasinRecipe recipe) {
+        return recipe.getTicks();
     }
 
 }

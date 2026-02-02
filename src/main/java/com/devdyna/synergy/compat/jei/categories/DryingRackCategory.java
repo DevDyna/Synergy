@@ -8,13 +8,10 @@ import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
@@ -59,21 +56,16 @@ public class DryingRackCategory extends BaseRecipeCategory<DryingRackRecipe> {
         builder.addSlot(RecipeIngredientRole.OUTPUT, 57, 2).addItemStack(recipe.getOutput());
     }
 
+  
+
     @Override
-    public void draw(DryingRackRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
-            double mouseX, double mouseY) {
-        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
-        guiGraphics.drawString(font,
-                Component.literal(recipe.getTicks() == 1 ? "no tick delay"
-                        : (recipe.getTicks() >= 20 ? (recipe.getTicks() >= 1200 ? (recipe.getTicks() >= 72000
-                                ? recipe.getTicks() / 72000 + " hour" + (recipe.getTicks() > 72000 ? "s" : "")
-                                : recipe.getTicks() / 1200 + " minute" + (recipe.getTicks() > 1200 ? "s" : "")
+    public boolean enableTimerRender() {
+        return true;
+    }
 
-                        )
-                                : recipe.getTicks() / 20 + " sec" + (recipe.getTicks() > 20 ? "s" : ""))
-                                : recipe.getTicks() + " tick" + (recipe.getTicks() > 1 ? "s" : ""))),
-                21, 14, 0xA0A0A0);
-
+    @Override
+    public int tickValue(DryingRackRecipe recipe) {
+        return recipe.getTicks();
     }
 
 }

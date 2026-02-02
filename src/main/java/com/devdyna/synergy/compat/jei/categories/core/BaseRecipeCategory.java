@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import com.devdyna.synergy.api.utils.ColorUtil;
 import com.devdyna.synergy.api.utils.Image;
 import com.devdyna.synergy.api.utils.Size;
+import com.devdyna.synergy.api.utils.TimeUtil;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -96,6 +97,8 @@ public abstract class BaseRecipeCategory<T extends Recipe<?>> implements IRecipe
     public void draw(T recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
             double mouseY) {
         background(guiGraphics);
+        if (enableTimerRender())
+            renderTickDelay(recipe, guiGraphics);
     }
 
     @Override
@@ -106,7 +109,43 @@ public abstract class BaseRecipeCategory<T extends Recipe<?>> implements IRecipe
 
     public void getTooltip(ITooltipBuilder tooltip, T recipe, IRecipeSlotsView recipeSlotsView,
             double mouseX, double mouseY) {
+    }
 
+    /**
+     * Default : false
+     */
+    public boolean enableTimerRender() {
+        return false;
+    }
+
+    /**
+     * This method is already used by default!
+     */
+    public void renderTickDelay(T recipe, GuiGraphics guiGraphics) {
+        guiGraphics.drawString(font,
+                Component.literal(TimeUtil.getTimeValue(tickValue(recipe))),
+                tickPos().getX(), tickPos().getY(), tickColor());
+    }
+
+    /**
+     * Default : 0
+     */
+    public int tickValue(T recipe) {
+        return 0;
+    }
+
+    /**
+     * Default : 21 | 14
+     */
+    public Size tickPos() {
+        return Size.of(21, 14);
+    }
+
+    /**
+     * Default : 0xA0A0A0
+     */
+    public int tickColor() {
+        return 0xA0A0A0;
     }
 
 }

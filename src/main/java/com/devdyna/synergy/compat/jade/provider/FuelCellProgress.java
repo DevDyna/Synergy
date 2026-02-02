@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.utils.TimeUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;
 
@@ -35,7 +36,7 @@ public enum FuelCellProgress
     if (!((data.inv.get(0).isEmpty() || data.inv.get(0) == null)
         && (data.inv.get(1).isEmpty() || data.inv.get(1) == null)) || data.progress != 0) {
 
-      tooltip.add(Component.literal(FuelCellBE.getTimeValue(data.total - data.progress) + " left"));
+      tooltip.add(Component.literal(TimeUtil.getTimeValue(data.total - data.progress) + " left"));
 
       IElementHelper helper = IElementHelper.get();
 
