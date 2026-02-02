@@ -66,7 +66,7 @@ public class DryableBricksCategory extends BaseRecipeCategory<DryableBricksRecip
 
     @Override
     public String setBackGround() {
-        return "textures/gui/delay.png";
+        return "textures/gui/jei/delay.png";
     }
 
 }

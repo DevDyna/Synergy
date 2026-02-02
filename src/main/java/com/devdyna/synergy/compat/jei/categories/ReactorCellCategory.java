@@ -29,7 +29,7 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
         super(helper);
         // change timespan based on duration
         this.arrow = helper.drawableBuilder(x.rl(
-                "textures/gui/green_progress_arrow.png"), 0, 0, 24, 16)
+                "textures/gui/sprite/green_progress_arrow.png"), 0, 0, 24, 16)
                 .setTextureSize(24, 16).buildAnimated(200,
                         IDrawableAnimated.StartDirection.LEFT, false);
     }
@@ -59,7 +59,7 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
 
     @Override
     public String setBackGround() {
-        return "textures/gui/dark_slots.png";
+        return "textures/gui/jei/dark_slots.png";
     }
 
     @Override

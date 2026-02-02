@@ -47,7 +47,7 @@ public class VoidBoxInfusionCategory extends BaseRecipeCategory<VoidBoxInfusionR
 
     @Override
     public String setBackGround() {
-        return "textures/gui/simple.png";
+        return "textures/gui/jei/simple.png";
     }
 
     @Override

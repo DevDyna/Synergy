@@ -34,7 +34,7 @@ public class FuelCellScreen extends BaseScreen<FuelCellMenu> {
 
     @Override
     protected @Nullable ResourceLocation arrow() {
-        return x.rl("textures/gui/green_progress_arrow.png");
+        return x.rl("textures/gui/sprite/green_progress_arrow.png");
     }
 
     @Override

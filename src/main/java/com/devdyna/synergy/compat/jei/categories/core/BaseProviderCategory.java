@@ -54,7 +54,7 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
     }
 
     public String setBackGround() {
-        return "textures/gui/provider.png";
+        return "textures/gui/jei/provider.png";
     }
 
     protected abstract void defineOutput(IRecipeLayoutBuilder builder, BaseProviderRecipe<J> recipe,

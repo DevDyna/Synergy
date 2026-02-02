@@ -47,7 +47,7 @@ public class UrnCategory extends BaseRecipeCategory<UrnRitualRecipe> {
 
     @Override
     public String setBackGround() {
-        return "textures/gui/urn_window.png";
+        return "textures/gui/jei/urn_window.png";
     }
 
     @Override

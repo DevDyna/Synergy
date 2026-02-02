@@ -50,7 +50,7 @@ public class DryingRackCategory extends BaseRecipeCategory<DryingRackRecipe> {
 
     @Override
     public String setBackGround() {
-        return "textures/gui/simple.png";
+        return "textures/gui/jei/simple.png";
     }
 
     @Override

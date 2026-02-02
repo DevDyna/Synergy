@@ -57,7 +57,7 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
 
     @Override
     public String setBackGround() {
-        return "textures/gui/item_use.png";
+        return "textures/gui/jei/item_use.png";
     }
 
     @Override
@@ -111,7 +111,7 @@ public class ItemUseCategory extends BaseRecipeCategory<ItemUseRecipe> {
 
         if (recipe.getOutputitem() != null && !recipe.getOutputitem().isEmpty())
             Image.of().rl(
-                    "textures/gui/item_use_output.png")
+                    "textures/gui/sprite/item_use_output.png")
                     .size(32, 19)
                     .offset(40, 0).render(helper, guiGraphics);
 

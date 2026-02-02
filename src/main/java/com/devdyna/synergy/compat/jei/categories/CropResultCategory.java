@@ -55,7 +55,7 @@ public class CropResultCategory extends BaseRecipeCategory<CropResultRecipe> {
 
     @Override
     public String setBackGround() {
-        return "textures/gui/crop_result.png";
+        return "textures/gui/jei/crop_result.png";
     }
 
 }
