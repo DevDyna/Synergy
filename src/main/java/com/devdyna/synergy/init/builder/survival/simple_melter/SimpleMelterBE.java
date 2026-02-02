@@ -174,7 +174,7 @@ public class SimpleMelterBE extends TickingBE implements NoGuiStorage, ItemStora
     }
 
     public void fail() {
-
+        ticker = null;
         if (getBlockState().getValue(BaseMachineBlock.ENABLED))
             updateState(false);
     }
