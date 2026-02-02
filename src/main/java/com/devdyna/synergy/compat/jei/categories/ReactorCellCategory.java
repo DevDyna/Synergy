@@ -96,4 +96,9 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
         return Size.of(27, 4);
     }
 
+    @Override
+    public boolean shortTicks() {
+        return false;
+    }
+
 }

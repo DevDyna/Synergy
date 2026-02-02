@@ -119,11 +119,18 @@ public abstract class BaseRecipeCategory<T extends Recipe<?>> implements IRecipe
     }
 
     /**
+     * Default : true
+     */
+    public boolean shortTicks() {
+        return true;
+    }
+
+    /**
      * This method is already used by default!
      */
     public void renderTickDelay(T recipe, GuiGraphics guiGraphics) {
         guiGraphics.drawString(font,
-                Component.literal(TimeUtil.getTimeValue(tickValue(recipe))),
+                Component.literal(TimeUtil.getTimeValue(tickValue(recipe),shortTicks())),
                 tickPos().getX(), tickPos().getY(), tickColor());
     }
 

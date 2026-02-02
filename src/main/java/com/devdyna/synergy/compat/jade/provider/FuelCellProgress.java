@@ -36,7 +36,7 @@ public enum FuelCellProgress
     if (!((data.inv.get(0).isEmpty() || data.inv.get(0) == null)
         && (data.inv.get(1).isEmpty() || data.inv.get(1) == null)) || data.progress != 0) {
 
-      tooltip.add(Component.literal(TimeUtil.getTimeValue(data.total - data.progress) + " left"));
+      tooltip.add(Component.literal(TimeUtil.getTimeValue(data.total - data.progress,false) + " left"));
 
       IElementHelper helper = IElementHelper.get();
 
