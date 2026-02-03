@@ -1,5 +1,5 @@
 {
-  "type": "synergy:simple_melter",
+  "type": "synergy:foundry",
   "fluid": {
     "amount": 90,
     "id": "synergy:molten_platinum_source"
