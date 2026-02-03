@@ -28,20 +28,20 @@
 
 - [ ] urn jei category rework to dynamic handling
 
-- [ ] jade drying time
+- [x] jade drying time
 
-- [ ] machines jei compat dont show anymore
+- [x] machines jade compat dont show anymore
 
 - [ ] guideme for machines and upgrades
 
-- [ ] drying racks jade
+- [x] drying racks jade
 - [x] drying racks jei
-- [ ] evaporation basin jade
+- [x] evaporation basin jade
 
 - [ ] safe decoration drying racks
 
 - [ ] mechanical crushing tub (piston)
-- [ ] evaporation basin booster blocktag (magmablock)
+- [x] evaporation basin booster blocktag (magmablock)
 
 - [ ] functional grindstone (?)
 - [ ] copper grindstone (damagable) (?)
@@ -62,11 +62,13 @@
 
 - [x] Sun drying items (item render)
 
-- [ ] salt leather
+- [x] salt leather
 
 - [ ] enchanting table-like that require enchanted books on chiseled bookshelf to be used
 
-- [ ] Foundry (tiny tinker-like)
+- [ ] 
+
+- [x] Foundry (tiny tinker-like)
 
 ### Automation
 
