@@ -4,13 +4,14 @@ public class Ticker {
 
     private int value;
     private int delay;
+    private int base = 0;
 
     public Ticker(int delay) {
-        this.value = 0;
+        this.value = base;
         this.delay = delay;
     }
 
-    public static Ticker of(int delay){
+    public static Ticker of(int delay) {
         return new Ticker(delay);
     }
 
@@ -18,18 +19,34 @@ public class Ticker {
         this.value = value;
     }
 
+    public void changeDelay(int d) {
+        this.delay = d;
+    }
+
     public int get() {
         return value;
+    }
+
+    public int min() {
+        return base;
+    }
+
+    public int max() {
+        return delay;
     }
 
     public boolean commit() {
         var check = value >= delay;
         if (check)
-            value = 0;
+            value = base;
         else
             value++;
 
         return check;
+    }
+
+    public void cancel(){
+        value = base;
     }
 
 }
