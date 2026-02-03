@@ -16,11 +16,13 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.item.crafting.StonecutterRecipe;
+import net.minecraft.world.level.block.EntityBlock;
 
 @SuppressWarnings("null")
 public class Chisel extends Item {
@@ -76,7 +78,10 @@ public class Chisel extends Item {
                 if (result.is(saved)) {
 
                     if (saved instanceof BlockItem bi) {
-                        level.setBlockAndUpdate(pos, bi.getBlock().defaultBlockState());
+                        level.setBlockAndUpdate(pos, bi.getBlock().getStateForPlacement(new BlockPlaceContext(c)));
+                        if (bi.getBlock() instanceof EntityBlock) {
+                            level.getBlockEntity(pos).setChanged();
+                        }
                     } else {
                         level.removeBlock(pos, false);
                         level.addFreshEntity(
