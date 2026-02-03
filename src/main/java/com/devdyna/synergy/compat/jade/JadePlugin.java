@@ -7,6 +7,7 @@ import com.devdyna.synergy.api.reactor.CoolerBlockBase;
 import com.devdyna.synergy.api.reactor.ModeratorBase;
 import com.devdyna.synergy.compat.jade.provider.AOEMachines;
 import com.devdyna.synergy.compat.jade.provider.CoolerProvider;
+import com.devdyna.synergy.compat.jade.provider.DryableBricksProvider;
 import com.devdyna.synergy.compat.jade.provider.EnergyTipProviders;
 import com.devdyna.synergy.compat.jade.provider.FuelCellProgress;
 import com.devdyna.synergy.compat.jade.provider.LaserMachineGunProvider;
@@ -20,7 +21,7 @@ import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
-
+import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
@@ -42,6 +43,7 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(ModeratorProvider.INSTANCE, ModeratorBase.class);
         r.registerBlockComponent(FuelCellProgress.INSTANCE, FuelCellBlock.class);
         r.registerBlockComponent(TickProgressBlock.INSTANCE, TickingBlock.class);
+        r.registerBlockComponent(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
     }
 
     @Override
@@ -57,5 +59,6 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockDataProvider(ModeratorProvider.INSTANCE, ModeratorBase.class);
         r.registerBlockDataProvider(FuelCellProgress.INSTANCE, FuelCellBlock.class);
         r.registerBlockDataProvider(TickProgressBlock.INSTANCE, TickingBlock.class);
+        r.registerBlockDataProvider(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
     }
 }

@@ -319,6 +319,8 @@ public class DataLang extends LanguageProvider {
                 add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.cooler, "Cooler Provider Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.fuel_cell,
                                 "Fuel Cell Recipe Provider Info");
+                add("config.jade.plugin_" + ID + "." + zStatic.DryableBricks.TYPE,
+                                "Dryable Bricks Info");
                 add("config.jade.plugin_" + ID + ".timered_recipes",
                                 "Recipe Timered Info");
 
@@ -397,6 +399,10 @@ public class DataLang extends LanguageProvider {
                                 + "Dry items into other items\nA campfire placed below can speed up the process");
                 add(ID + "." + zStatic.Blocks.simple_melter, TIP_COLOR
                                 + "Melt items into fluids\nRequire a fuel tank with a liquid fuel to process\nIf already contain a fluid , the process time will reduced");
+
+                add(ID + ".jade.bricks.dried", "Drying stage: §aMature");
+                add(ID + ".jade.bricks.wet", "§cDrying conditions don't match!");
+                add(ID + ".jade.bricks.stage", "Drying stage: %s");
 
         }
 
