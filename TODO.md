@@ -49,7 +49,10 @@
 
 - [ ] faucet & casting table (tcon like)
 
-- [ ] foundry fuel efficiency and jei
+- [ ] foundry fuel efficiency and boost jei
+
+- [ ] evaporation basin booster jei
+- [ ] drying racks booster jei
 
 ### Automation
 
