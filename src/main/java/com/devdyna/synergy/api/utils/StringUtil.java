@@ -33,4 +33,11 @@ public class StringUtil {
         return format;
     }
 
+    public static float cut(float v,float p){
+       return Math.round(v * p) / p;
+    }
+    public static float cut(float v){
+       return cut(v,100f);
+    }
+
 }
