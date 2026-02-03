@@ -1652,13 +1652,13 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(Items.BLAZE_ROD)
                                 .fluid(zFluids.MOLTEN_BLAZE, 500)
                                 .unlockedBy()
-                                .save(c);
+                                .save(c,"_from_blaze_rod");
 
                 FoundryBuilder.of()
                                 .input(Items.BLAZE_POWDER)
                                 .fluid(zFluids.MOLTEN_BLAZE, 125)
                                 .unlockedBy()
-                                .save(c);
+                                .save(c,"_from_blaze_powder");
 
         }
 
