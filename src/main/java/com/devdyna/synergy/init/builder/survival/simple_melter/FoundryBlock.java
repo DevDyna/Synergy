@@ -36,14 +36,14 @@ import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import static com.devdyna.synergy.Main.ID;
 
 @SuppressWarnings("null")
-public class SimpleMelterBlock extends TickingBlock
+public class FoundryBlock extends TickingBlock
         implements BucketInteraction, FluidClearableTank, FluidTooltipWhenEmpty {
 
-    public SimpleMelterBlock(Properties properties) {
+    public FoundryBlock(Properties properties) {
         super(properties);
     }
 
-    public SimpleMelterBlock() {
+    public FoundryBlock() {
         this(Properties.of().mapColor(MapColor.METAL).instrument(NoteBlockInstrument.BASS).strength(1F, 2.25F)
                 .noOcclusion());
     }
@@ -69,13 +69,13 @@ public class SimpleMelterBlock extends TickingBlock
     @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new SimpleMelterBE(pos, state);
+        return new FoundryBE(pos, state);
     }
 
     @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (state.getBlock() != newState.getBlock())
-            if (level.getBlockEntity(pos) instanceof SimpleMelterBE be) {
+            if (level.getBlockEntity(pos) instanceof FoundryBE be) {
                 be.drops();
                 level.updateNeighbourForOutputSignal(pos, this);
             }
@@ -84,13 +84,13 @@ public class SimpleMelterBlock extends TickingBlock
 
     @Override
     public boolean showWhen(BlockEntity be) {
-        return (be instanceof SimpleMelterBE tank) ? tank.getStorage().getStackInSlot(0).isEmpty() : true;
+        return (be instanceof FoundryBE tank) ? tank.getStorage().getStackInSlot(0).isEmpty() : true;
     }
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (level.getBlockEntity(pos) instanceof SimpleMelterBE)
+        if (level.getBlockEntity(pos) instanceof FoundryBE)
             return bucketAction(stack, state, level, pos, player, hand, hitResult);
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
@@ -107,7 +107,7 @@ public class SimpleMelterBlock extends TickingBlock
     @Override
     public ItemInteractionResult onTooltipFail(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (level.getBlockEntity(pos) instanceof SimpleMelterBE be)
+        if (level.getBlockEntity(pos) instanceof FoundryBE be)
             return be.itemUseOn(player, level, pos, hand);
         return ItemInteractionResult.FAIL;
     }
@@ -115,7 +115,7 @@ public class SimpleMelterBlock extends TickingBlock
     @Override
     public ItemInteractionResult executeWhenNotBucket(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (level.getBlockEntity(pos) instanceof SimpleMelterBE be)
+        if (level.getBlockEntity(pos) instanceof FoundryBE be)
             return be.itemUseOn(player, level, pos, hand);
         return ItemInteractionResult.FAIL;
     }
@@ -156,13 +156,13 @@ public class SimpleMelterBlock extends TickingBlock
     @Override
     public FluidTank getFluidTank(BlockEntity be, BlockState state, Level level, BlockPos pos, Player player,
             InteractionHand hand, BlockHitResult hitResult) {
-        return (be instanceof SimpleMelterBE tank) ? tank.getFluidStorage() : null;
+        return (be instanceof FoundryBE tank) ? tank.getFluidStorage() : null;
     }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context,
             List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable(ID + "." + zStatic.Blocks.simple_melter));
+        tooltip.add(Component.translatable(ID + "." + zStatic.Blocks.foundry));
     }
 
 }

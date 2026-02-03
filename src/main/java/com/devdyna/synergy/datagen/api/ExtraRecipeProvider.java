@@ -19,7 +19,7 @@ import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingBuilder;
 import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualBuilder;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.ReactorCellBuilder;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksBuilder;
-import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.SimpleMelterBuilder;
+import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.FoundryBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup.Provider;
@@ -123,7 +123,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy()
                                 .save(c, "_from_ingot");
 
-                SimpleMelterBuilder.of()
+                FoundryBuilder.of()
                                 .input(input)
                                 .fluid(fluid, 90)
                                 .unlockedBy()

@@ -4,7 +4,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.compat.jei.api.JEIFluidTankHelper;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.SimpleMelterRecipe;
+import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.FoundryRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -16,28 +16,28 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
-public class SimpleMelterCategory extends BaseRecipeCategory<SimpleMelterRecipe> {
+public class FoundryCategory extends BaseRecipeCategory<FoundryRecipe> {
 
-    public SimpleMelterCategory(IGuiHelper helper) {
+    public FoundryCategory(IGuiHelper helper) {
         super(helper);
     }
 
-    public static final RecipeType<RecipeHolder<SimpleMelterRecipe>> TYPE = RecipeType
-            .createFromVanilla(zRecipeTypes.SIMPLE_MELTER.getType());
+    public static final RecipeType<RecipeHolder<FoundryRecipe>> TYPE = RecipeType
+            .createFromVanilla(zRecipeTypes.FOUNDRY.getType());
 
     @Override
-    public RecipeType<RecipeHolder<SimpleMelterRecipe>> getRecipeType() {
+    public RecipeType<RecipeHolder<FoundryRecipe>> getRecipeType() {
         return TYPE;
     }
 
     @Override
     public String getTitleKey() {
-        return zStatic.Blocks.simple_melter;
+        return zStatic.Blocks.foundry;
     }
 
     @Override
     public ItemLike getIconItem() {
-        return zBlocks.SIMPLE_MELTER.get();
+        return zBlocks.FOUNDRY.get();
     }
 
     @Override
@@ -47,11 +47,11 @@ public class SimpleMelterCategory extends BaseRecipeCategory<SimpleMelterRecipe>
 
     @Override
     public String setBackGround() {
-        return "textures/gui/jei/simple_melter.png";
+        return "textures/gui/jei/foundry.png";
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, SimpleMelterRecipe recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, FoundryRecipe recipe, IFocusGroup focuses) {
 
         JEIFluidTankHelper.of()
                 .fluid(recipe.getFluid())
@@ -68,7 +68,7 @@ public class SimpleMelterCategory extends BaseRecipeCategory<SimpleMelterRecipe>
     }
 
     @Override
-    public int tickValue(SimpleMelterRecipe recipe) {
+    public int tickValue(FoundryRecipe recipe) {
         return recipe.getTicks();
     }
 

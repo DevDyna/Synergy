@@ -24,8 +24,8 @@ import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.Evapor
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporationBasinRecipeSerializer;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipe;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipeSerializer;
-import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.SimpleMelterRecipe;
-import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.SimpleMelterRecipeSerializer;
+import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.FoundryRecipe;
+import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.FoundryRecipeSerializer;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.ItemStack;
@@ -82,8 +82,8 @@ public class zRecipeTypes {
         public static final RecipeRegister<EvaporationBasinRecipe> EVAPORATING_BASIN = RecipeRegister.of("evaporating_tub",
                         EvaporationBasinRecipeSerializer::new);
 
-        public static final RecipeRegister<SimpleMelterRecipe> SIMPLE_MELTER = RecipeRegister.of("simple_melter",
-                        SimpleMelterRecipeSerializer::new);
+        public static final RecipeRegister<FoundryRecipe> FOUNDRY = RecipeRegister.of("foundry",
+                        FoundryRecipeSerializer::new);
 
 
         // ------------------------------------------------------------------------------------------------------------------------------------//

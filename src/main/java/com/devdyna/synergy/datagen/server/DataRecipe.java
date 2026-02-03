@@ -24,7 +24,7 @@ import com.devdyna.synergy.init.builder.plants.cultivated.azalea;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubBuilder;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackBuilder;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporatingBasinBuilder;
-import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.SimpleMelterBuilder;
+import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.FoundryBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup;
@@ -1360,7 +1360,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                SimpleMelterBuilder.of()
+                FoundryBuilder.of()
                                 .input(Tags.Items.GLASS_BLOCKS_COLORLESS)
                                 .fluid(zFluids.LIQUID_GLASS, 1000)
                                 .unlockedBy()

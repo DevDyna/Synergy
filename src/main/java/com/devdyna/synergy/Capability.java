@@ -31,7 +31,7 @@ public class Capability {
                                                 zBlocks.ELITE_COBBLE_GEN,
                                                 zBlocks.CRUSHING_TUB,
                                                 zBlocks.EVAPORATION_BASIN,
-                                                zBlocks.SIMPLE_MELTER));
+                                                zBlocks.FOUNDRY));
 
                 registerEnergyBlock(event, x.toBlocks(
                                 zBlocks.HARVESTER,
@@ -49,7 +49,7 @@ public class Capability {
                                 zBlocks.ELITE_WATER_GEN,
                                 zBlocks.CRUSHING_TUB,
                                 zBlocks.EVAPORATION_BASIN,
-                                zBlocks.SIMPLE_MELTER));
+                                zBlocks.FOUNDRY));
 
                 registerFluidItems(event, x.toItems(
                                 zBlocks.SIMPLE_TANK,

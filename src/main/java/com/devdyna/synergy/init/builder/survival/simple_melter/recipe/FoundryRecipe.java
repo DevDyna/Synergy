@@ -17,20 +17,20 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings("null")
-public class SimpleMelterRecipe extends BaseRecipeType<MonoItemInput> {
+public class FoundryRecipe extends BaseRecipeType<MonoItemInput> {
 
     private final Ingredient input;
     private final int ticks;
     private final FluidStack fluid;
 
-    public SimpleMelterRecipe(Ingredient input, int ticks, FluidStack fluid) {
+    public FoundryRecipe(Ingredient input, int ticks, FluidStack fluid) {
         this.fluid = fluid;
         this.ticks = ticks;
         this.input = input;
     }
 
-    public static SimpleMelterRecipe of(Ingredient input, int ticks, FluidStack fluid) {
-        return new SimpleMelterRecipe(input,ticks,fluid);
+    public static FoundryRecipe of(Ingredient input, int ticks, FluidStack fluid) {
+        return new FoundryRecipe(input,ticks,fluid);
     }
 
     public boolean matches(MonoItemInput r, Level l) {
@@ -66,11 +66,11 @@ public class SimpleMelterRecipe extends BaseRecipeType<MonoItemInput> {
 
     @Override
     public RecipeRegister<? extends BaseRecipeType<MonoItemInput>> getRecipe() {
-        return zRecipeTypes.SIMPLE_MELTER;
+        return zRecipeTypes.FOUNDRY;
     }
 
     @Override
     public Item getToastIcon() {
-        return zBlocks.SIMPLE_MELTER.get().asItem();
+        return zBlocks.FOUNDRY.get().asItem();
     }
 }

@@ -21,7 +21,7 @@ import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBlock;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBlock;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
-import com.devdyna.synergy.init.builder.survival.simple_melter.SimpleMelterBlock;
+import com.devdyna.synergy.init.builder.survival.simple_melter.FoundryBlock;
 import com.devdyna.synergy.init.builder.*;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterBLK;
 import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.advanced.AdvancedCobbleGenBlock;
@@ -519,9 +519,9 @@ public class zBlocks {
                         zStatic.Blocks.evaporation_basin,
                         () -> new EvaporationBasinBlock());
 
-        public static final DeferredHolder<Block, Block> SIMPLE_MELTER = Material.registerItemBlock(
-                        zStatic.Blocks.simple_melter,
-                        () -> new SimpleMelterBlock());
+        public static final DeferredHolder<Block, Block> FOUNDRY = Material.registerItemBlock(
+                        zStatic.Blocks.foundry,
+                        () -> new FoundryBlock());
 
         public static final DeferredHolder<Block, Block> ACACIA_DRYING_RACK = Material.registerItemBlock(
                         WoodType.ACACIA.name() + "_" + zStatic.Blocks.drying_rack,

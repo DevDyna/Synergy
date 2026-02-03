@@ -28,7 +28,7 @@ import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities.*;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBE;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBE;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBE;
-import com.devdyna.synergy.init.builder.survival.simple_melter.SimpleMelterBE;
+import com.devdyna.synergy.init.builder.survival.simple_melter.FoundryBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -172,8 +172,8 @@ public class zBlockEntities {
                         .createBlockEntity(zStatic.Blocks.drying_rack, DryingRackBE::new,
                                         zStatic.ALL_DRYING_RACKS.toArray(DeferredHolder[]::new));
 
-        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SimpleMelterBE>> SIMPLE_MELTER = Material
-                        .createBlockEntity(zStatic.Blocks.simple_melter, SimpleMelterBE::new,
-                                        zBlocks.SIMPLE_MELTER);
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FoundryBE>> FOUNDRY = Material
+                        .createBlockEntity(zStatic.Blocks.foundry, FoundryBE::new,
+                                        zBlocks.FOUNDRY);
 
 }

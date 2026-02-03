@@ -101,7 +101,7 @@ public class Plugin implements IModPlugin {
 
                 r.addRecipeCatalyst(x.item(zBlocks.CRUSHING_TUB), CrushingTubCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.EVAPORATION_BASIN), EvaporationBasinCategory.TYPE);
-                r.addRecipeCatalyst(x.item(zBlocks.SIMPLE_MELTER), SimpleMelterCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zBlocks.FOUNDRY), FoundryCategory.TYPE);
 
                 r.addRecipeCatalysts(DryingRackCategory.TYPE, zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get)
                                 .map(Block::asItem).toArray(Item[]::new));
@@ -135,7 +135,7 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCategories(new EvaporationBasinCategory(helper));
 
                 r.addRecipeCategories(new DryingRackCategory(helper));
-                r.addRecipeCategories(new SimpleMelterCategory(helper));
+                r.addRecipeCategories(new FoundryCategory(helper));
 
         }
 
@@ -230,8 +230,8 @@ public class Plugin implements IModPlugin {
 
                 r.addRecipes(DryingRackCategory.TYPE,
                                 RecipeUtils.getRecipes(zRecipeTypes.DRYING_RACK));
-                r.addRecipes(SimpleMelterCategory.TYPE,
-                                RecipeUtils.getRecipes(zRecipeTypes.SIMPLE_MELTER));
+                r.addRecipes(FoundryCategory.TYPE,
+                                RecipeUtils.getRecipes(zRecipeTypes.FOUNDRY));
 
         }
 

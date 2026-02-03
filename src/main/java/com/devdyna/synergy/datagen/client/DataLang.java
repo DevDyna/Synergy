@@ -174,7 +174,7 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei." + zStatic.ReactorStuff.fuel_cell,
                                 "Reactor Reactions");
 
-                add(Main.ID + ".jei." + zStatic.Blocks.simple_melter,
+                add(Main.ID + ".jei." + zStatic.Blocks.foundry,
                                 "Simple Melter Recipes");
 
                 add(Main.ID + ".jei." + zStatic.Blocks.urn,
@@ -397,7 +397,7 @@ public class DataLang extends LanguageProvider {
 
                 add(ID + "." + zStatic.Blocks.drying_rack, TIP_COLOR
                                 + "Dry items into other items\nA campfire placed below can speed up the process");
-                add(ID + "." + zStatic.Blocks.simple_melter, TIP_COLOR
+                add(ID + "." + zStatic.Blocks.foundry, TIP_COLOR
                                 + "Melt items into fluids\nRequire a fuel tank with a liquid fuel to process\nIf already contain a fluid , the process time will reduced");
 
                 add(ID + ".jade.bricks.dried", "Drying stage: §aMature");

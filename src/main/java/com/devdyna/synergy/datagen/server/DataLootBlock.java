@@ -115,7 +115,7 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.VOID_BOX,
                                 zBlocks.SIMPLE_TANK,
                                 zBlocks.FUEL_TANK,
-                                zBlocks.SIMPLE_MELTER,
+                                zBlocks.FOUNDRY,
 
                                 zBlocks.SIMPLE_COBBLE_GEN,
                                 zBlocks.SIMPLE_WATER_GEN,

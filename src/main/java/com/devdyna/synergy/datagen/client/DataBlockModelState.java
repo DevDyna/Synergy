@@ -145,16 +145,16 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 "block/redstone/input/" + c + "_"
                                                                 + (a ? "off" : "on"))));
 
-                horizontalBlockBiPhace(zBlocks.SIMPLE_MELTER.get(), BlockStateProperties.ENABLED,
+                horizontalBlockBiPhace(zBlocks.FOUNDRY.get(), BlockStateProperties.ENABLED,
                                 models().withExistingParent(
-                                                zBlocks.SIMPLE_MELTER.getRegisteredName() + "_off",
-                                                modLoc("block/melter"))
-                                                .texture("front", "synergy:block/melter/front/off")
+                                                zBlocks.FOUNDRY.getRegisteredName() + "_off",
+                                                modLoc("block/foundry"))
+                                                .texture("front", "synergy:block/foundry/front/off")
                                                 .renderType(DataGenUtil.CUTOUT),
                                 models().withExistingParent(
-                                                zBlocks.SIMPLE_MELTER.getRegisteredName() + "_on",
-                                                modLoc("block/melter"))
-                                                .texture("front", "synergy:block/melter/front/on")
+                                                zBlocks.FOUNDRY.getRegisteredName() + "_on",
+                                                modLoc("block/foundry"))
+                                                .texture("front", "synergy:block/foundry/front/on")
                                                 .renderType(DataGenUtil.CUTOUT));
 
                 // this require to stay at the end of all !

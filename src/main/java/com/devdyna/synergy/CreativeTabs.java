@@ -130,7 +130,7 @@ public class CreativeTabs {
         // ---------------------------------------------------------- //
         // SURVIVAL
         if (event.getTabKey() == zCreativeTab.SURVIVAL.getKey()) {
-            event.accept(zBlocks.SIMPLE_MELTER.get());
+            event.accept(zBlocks.FOUNDRY.get());
             event.accept(zBlocks.FUEL_TANK.get());
             event.accept(zBlocks.CRUSHING_TUB.get());
             event.accept(zBlocks.EVAPORATION_BASIN.get());

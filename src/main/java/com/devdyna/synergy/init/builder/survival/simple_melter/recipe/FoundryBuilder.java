@@ -20,28 +20,28 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings({ "null" })
-public class SimpleMelterBuilder extends BaseRecipeBuilder
-        implements SimpleInputItem<SimpleMelterBuilder>,
-        SimpleFluidAttach<SimpleMelterBuilder> {
+public class FoundryBuilder extends BaseRecipeBuilder
+        implements SimpleInputItem<FoundryBuilder>,
+        SimpleFluidAttach<FoundryBuilder> {
 
     private Ingredient input;
     private int ticks = 100;
     private FluidStack fluid;
 
-    private SimpleMelterBuilder() {
+    private FoundryBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static SimpleMelterBuilder of() {
-        return new SimpleMelterBuilder();
+    public static FoundryBuilder of() {
+        return new FoundryBuilder();
     }
 
-    public SimpleMelterBuilder unlockedBy() {
+    public FoundryBuilder unlockedBy() {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                 .hasItems(IngredientUtils.getItemLike(input)));
     }
 
-    public SimpleMelterBuilder unlockedBy(String name, Criterion<?> criterion) {
+    public FoundryBuilder unlockedBy(String name, Criterion<?> criterion) {
         this.criteria.put(name, criterion);
         return this;
     }
@@ -52,27 +52,27 @@ public class SimpleMelterBuilder extends BaseRecipeBuilder
 
     @Override
     public Recipe<?> createRecipe() {
-        return new SimpleMelterRecipe(input, ticks, fluid);
+        return new FoundryRecipe(input, ticks, fluid);
     }
 
     @Override
-    public SimpleMelterBuilder getBuilder() {
+    public FoundryBuilder getBuilder() {
         return this;
     }
 
     @Override
-    public SimpleMelterBuilder group(@Nullable String groupName) {
+    public FoundryBuilder group(@Nullable String groupName) {
         return this;
     }
 
     @Override
-    public SimpleMelterBuilder fluid(FluidStack fluid) {
+    public FoundryBuilder fluid(FluidStack fluid) {
         this.fluid = fluid;
         return this;
     }
 
     @Override
-    public SimpleMelterBuilder input(Ingredient input) {
+    public FoundryBuilder input(Ingredient input) {
         this.input = input;
         return this;
     }

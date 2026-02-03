@@ -186,9 +186,9 @@ public class DataItemModel extends ExtraItemModelProvider {
                 withExistingParent(zBlocks.CRUSHING_TUB.getRegisteredName(), modLoc("block/crushing_tub"));
                 withExistingParent(zBlocks.EVAPORATION_BASIN.getRegisteredName(), modLoc("block/evaporation_basin"));
 
-                withExistingParent(zBlocks.SIMPLE_MELTER.getRegisteredName(),
-                                modLoc("block/melter"))
-                                .texture("front", "synergy:block/melter/front/off");
+                withExistingParent(zBlocks.FOUNDRY.getRegisteredName(),
+                                modLoc("block/foundry"))
+                                .texture("front", "synergy:block/foundry/front/off");
 
                 zStatic.ALL_DRYING_RACKS.forEach(t -> {
 

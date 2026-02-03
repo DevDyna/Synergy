@@ -14,7 +14,7 @@ import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankBE;
-import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.SimpleMelterRecipe;
+import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.FoundryRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zFluidTags;
 import com.devdyna.synergy.init.types.zHandlers;
@@ -42,18 +42,18 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class SimpleMelterBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage , TimeredRecipe{
+public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage , TimeredRecipe{
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
     public static final int FLUID_BURN_RATE = 25;
 
-    public SimpleMelterBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public FoundryBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
-    public SimpleMelterBE(BlockPos pos, BlockState blockState) {
-        this(zBlockEntities.SIMPLE_MELTER.get(), pos, blockState);
+    public FoundryBE(BlockPos pos, BlockState blockState) {
+        this(zBlockEntities.FOUNDRY.get(), pos, blockState);
     }
 
     @Override
@@ -139,8 +139,8 @@ public class SimpleMelterBE extends TickingBE implements NoGuiStorage, ItemStora
             return;
         }
 
-        Optional<RecipeHolder<SimpleMelterRecipe>> r = level.getRecipeManager()
-                .getRecipeFor(zRecipeTypes.SIMPLE_MELTER.getType(),
+        Optional<RecipeHolder<FoundryRecipe>> r = level.getRecipeManager()
+                .getRecipeFor(zRecipeTypes.FOUNDRY.getType(),
                         new MonoItemInput(item), level);
 
         if (r.isEmpty()) {

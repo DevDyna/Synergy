@@ -4,7 +4,7 @@
   "parent": "block/block",
   "render_type": "cutout",
   "textures": {
-    "side": "synergy:block/melter/side",
+    "side": "synergy:block/foundry/side",
     "top": "synergy:block/tank/fuel",
     "particle": "block/smooth_stone",
     "plate": "block/smooth_stone"

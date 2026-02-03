@@ -229,7 +229,7 @@ public class zStatic {
         public static String healer = "healer";
 
         public static String void_box = "void_box";
-        public static String simple_melter = "simple_melter";
+        public static String foundry = "foundry";
         
 
         public static String urn = "urn";

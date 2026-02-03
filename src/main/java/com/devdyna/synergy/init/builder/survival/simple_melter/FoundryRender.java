@@ -12,11 +12,11 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.util.Mth;
 
 @SuppressWarnings("null")
-public class SimpleMelterRender<T extends SimpleMelterBE> implements BlockEntityRenderer<T> {
+public class FoundryRender<T extends FoundryBE> implements BlockEntityRenderer<T> {
 
     private final ItemRenderer itemRenderer;
 
-    public SimpleMelterRender(Context ctx) {
+    public FoundryRender(Context ctx) {
         this.itemRenderer = ctx.getItemRenderer();
     }
 
