@@ -42,7 +42,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage , TimeredRecipe{
+public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage, TimeredRecipe {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
@@ -171,7 +171,7 @@ public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
     }
 
     private int calcTicks(int base) {
-        return Math.max(1, base / (getFluidStorage().isEmpty() ? 1 : (getFluidStorage().getPercentuage() >= 0.5f ? 4 : 2)));
+        return (int) Math.max(1, base / getTickerSpeed());
     }
 
     public void fail() {
@@ -237,7 +237,7 @@ public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
 
     @Override
     public float getTickerSpeed() {
-        return 1.0f * (getFluidStorage().isEmpty() ? 1 : (getFluidStorage().getPercentuage() >= 0.5f ? 4 : 2));
+        return Math.max(1f, ((getFluidStorage().getPercentuage()+0.25f) / 0.25f));
     }
 
 }
