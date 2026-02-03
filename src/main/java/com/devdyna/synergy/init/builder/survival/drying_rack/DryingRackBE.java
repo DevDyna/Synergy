@@ -153,20 +153,7 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
     }
 
     private int calcTicks(int base) {
-
-        var range = List.of(
-                getBlockPos().below(),
-                getBlockPos().below().below(),
-                getBlockPos().below().below().below(),
-                getBlockPos().below().below().below().below(),
-                getBlockPos().below().below().below().below().below());
-
-        var result = range
-                .stream()
-                .map(level::getBlockState)
-                .anyMatch(s -> s.is(zBlockTag.DRYING_RACK_HEATER));
-
-        return Math.max(1, (base * getStorage().getStackInSlot(0).getCount()) / (result ? 2 : 1));
+        return (int) Math.max(1, base / getTickerSpeed());
     }
 
     protected void update() {

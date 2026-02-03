@@ -154,8 +154,8 @@ public class EvaporationBasinBE extends TickingBE
     }
 
     private int calcTicks(int base) {
-        return Math.max(1,
-                base / (level.getBlockState(getBlockPos().below()).is(zBlockTag.EVAPORATION_BASIC_HEATER) ? 2 : 1));
+        return (int) Math.max(1,
+                base / getTickerSpeed());
     }
 
     @Override
