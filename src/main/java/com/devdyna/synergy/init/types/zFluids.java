@@ -45,7 +45,7 @@ public class zFluids {
     public static final FluidRegister MOLTEN_IRON = FluidRegister.create(zStatic.Fluids.iron, Color.LIGHT_GRAY.brighter())
             .pushEntity().setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
-    public static final FluidRegister MOLTEN_COPPER = FluidRegister.create(zStatic.Fluids.copper, Color.ORANGE.darker().darker())
+    public static final FluidRegister MOLTEN_COPPER = FluidRegister.create(zStatic.Fluids.copper, Color.ORANGE.darker())
             .pushEntity().setTextures(x.rl("block/fluid/still"), x.rl("block/fluid/flow"));
 
     public static final FluidRegister MOLTEN_GOLD = FluidRegister.create(zStatic.Fluids.gold, Color.YELLOW.brighter()).pushEntity()
