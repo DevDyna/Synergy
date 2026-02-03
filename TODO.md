@@ -66,9 +66,9 @@
 
 - [ ] enchanting table-like that require enchanted books on chiseled bookshelf to be used
 
-- [ ] 
-
 - [x] Foundry (tiny tinker-like)
+
+- [ ] faucet & casting table (tcon like)
 
 ### Automation
 
