@@ -147,7 +147,10 @@
 
 - [ ] Fans & Wind (fluid-like)
 - [ ] Jukebox Network (jukebox that consume discs)
+
 - [ ] Chimney & smoke tubes
+- [ ] item vacuum (steam logistic)
+
 - [ ] Mindustry/DE like Fusion Reactor (?) multiblock (?)
 
 ## Skyblock stuff
