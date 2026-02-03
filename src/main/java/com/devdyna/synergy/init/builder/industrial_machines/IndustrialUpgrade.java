@@ -193,7 +193,7 @@ public class IndustrialUpgrade extends Item {
             if (UpgradeComponents.has(nbt, TYPE.FLUID)) {
                 var fluid = UpgradeComponents.get(nbt, TYPE.FLUID);
                 t.add(Component.translatable(ID + ".upgrades.modifier.fluid",
-                        ((String)(fluid > 0 ? "§a+" : "§c") + fluid+"%") ));
+                        ((String)(fluid < 0 ? "§a+" : "§c") + fluid+"%") ));
             }
 
         }
