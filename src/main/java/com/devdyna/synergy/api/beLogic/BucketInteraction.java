@@ -32,12 +32,6 @@ public interface BucketInteraction {
     default ItemInteractionResult bucketAction(ItemStack item, BlockState blockState, Level level,
             BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
 
-        // for (Direction dir : Direction.values()) {
-        //     level.neighborChanged(level.getBlockState(blockPos.relative(dir)), blockPos.relative(dir), level.getBlockState(blockPos.relative(dir)).getBlock(), blockPos, false);
-        //         if(level.getBlockEntity(blockPos.relative(dir)) != null)
-        //     level.getBlockEntity(blockPos.relative(dir)).setChanged();
-        // }
-
         if (item.isEmpty())
             return executeWhenEmpty(item, blockState, level, blockPos, player, hand, blockHitResult);
 
