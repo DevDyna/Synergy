@@ -71,7 +71,7 @@ public class CapabilityUtils {
                         return m.getAutomationHandler();
 
                     if (be instanceof MachineBE machineBE)
-                        return machineBE.getAutomatioHandler();
+                        return machineBE.getAutomationItemHandler();
 
                     return (be != null) ? be.getData(zHandlers.ITEM_STORAGE) : null;
 
@@ -81,13 +81,10 @@ public class CapabilityUtils {
         );
     }
 
-    public static void registerBlockAll(RegisterCapabilitiesEvent e,Block... blocks){
+    public static void registerBlockAll(RegisterCapabilitiesEvent e, Block... blocks) {
         registerEnergyBlock(e, blocks);
         registerFluidBlocks(e, blocks);
         registerItemBlock(e, blocks);
     }
-
-
-
 
 }
