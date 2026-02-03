@@ -9,6 +9,7 @@ import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
+import com.devdyna.synergy.api.beLogic.TimeredRecipe;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
@@ -41,7 +42,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class SimpleMelterBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage {
+public class SimpleMelterBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage , TimeredRecipe{
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
@@ -227,6 +228,16 @@ public class SimpleMelterBE extends TickingBE implements NoGuiStorage, ItemStora
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
         return saveWithoutMetadata(pRegistries);
+    }
+
+    @Override
+    public Ticker getTicker() {
+        return ticker;
+    }
+
+    @Override
+    public float getTickerSpeed() {
+        return 1.0f * (getFluidStorage().isEmpty() ? 1 : 2);
     }
 
 }

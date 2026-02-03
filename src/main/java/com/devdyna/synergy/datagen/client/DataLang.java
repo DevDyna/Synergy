@@ -319,6 +319,8 @@ public class DataLang extends LanguageProvider {
                 add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.cooler, "Cooler Provider Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.ReactorStuff.fuel_cell,
                                 "Fuel Cell Recipe Provider Info");
+                add("config.jade.plugin_" + ID + ".timered_recipes",
+                                "Recipe Timered Info");
 
                 add(Main.ID + ".color", "Color: %d");
 

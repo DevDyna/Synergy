@@ -9,6 +9,7 @@ import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
+import com.devdyna.synergy.api.beLogic.TimeredRecipe;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.common.recipes.input.FluidInput;
@@ -40,7 +41,8 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage {
+public class EvaporationBasinBE extends TickingBE
+        implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage, TimeredRecipe {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
@@ -97,14 +99,20 @@ public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemS
     @Override
     public void tickBoth() {
 
-        if (level == null)
+        if (level == null) {
+            fail();
             return;
+        }
 
-        if (cache == null)
+        if (cache == null) {
+            fail();
             return;
+        }
 
-        if (getFluidStorage().getFluid().isEmpty())
+        if (getFluidStorage().getFluid().isEmpty()) {
+            fail();
             return;
+        }
 
         update();
 
@@ -112,14 +120,18 @@ public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemS
                 .getRecipeFor(zRecipeTypes.EVAPORATING_BASIN.getType(),
                         new FluidInput(getFluidStorage().getFluid()), level);
 
-        if (r.isEmpty())
+        if (r.isEmpty()) {
+            fail();
             return;
+        }
 
         var recipe = r.get().value();
 
         if (getStorage().getStackInSlot(0).getMaxStackSize() < recipe.getOutput().getCount()
-                + getStorage().getStackInSlot(0).getCount())
+                + getStorage().getStackInSlot(0).getCount()) {
+            fail();
             return;
+        }
 
         if (LevelUtil.chance(5, level))
             LevelUtil.addParticle(ParticleTypes.CLOUD, level, getBlockPos(), true);
@@ -130,14 +142,20 @@ public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemS
         if (ticker.commit()) {
             getFluidStorage().drain(recipe.getFluid().amount(), FluidAction.EXECUTE);
             getStorage().insertItem(0, recipe.getOutput().copy(), false);
+            ticker = null;
         }
 
         update();
 
     }
 
+    public void fail() {
+        ticker = null;
+    }
+
     private int calcTicks(int base) {
-        return Math.max(1, base / (level.getBlockState(getBlockPos().below()).is(zBlockTag.EVAPORATION_BASIC_HEATER) ? 2 : 1));
+        return Math.max(1,
+                base / (level.getBlockState(getBlockPos().below()).is(zBlockTag.EVAPORATION_BASIC_HEATER) ? 2 : 1));
     }
 
     @Override
@@ -183,6 +201,16 @@ public class EvaporationBasinBE extends TickingBE implements NoGuiStorage, ItemS
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
         return saveWithoutMetadata(pRegistries);
+    }
+
+    @Override
+    public Ticker getTicker() {
+        return ticker;
+    }
+
+    @Override
+    public float getTickerSpeed() {
+        return  1.0f * (level.getBlockState(getBlockPos().below()).is(zBlockTag.EVAPORATION_BASIC_HEATER) ? 2 : 1);
     }
 
 }

@@ -15,6 +15,7 @@ import com.devdyna.synergy.compat.jade.provider.MachineProgress;
 import com.devdyna.synergy.compat.jade.provider.ModeratorProvider;
 import com.devdyna.synergy.compat.jade.provider.NodeProvider;
 import com.devdyna.synergy.compat.jade.provider.ReactorControllerProvider;
+import com.devdyna.synergy.compat.jade.provider.TickProgressBlock;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
@@ -40,6 +41,7 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(CoolerProvider.INSTANCE, CoolerBlockBase.class);
         r.registerBlockComponent(ModeratorProvider.INSTANCE, ModeratorBase.class);
         r.registerBlockComponent(FuelCellProgress.INSTANCE, FuelCellBlock.class);
+        r.registerBlockComponent(TickProgressBlock.INSTANCE, TickingBlock.class);
     }
 
     @Override
@@ -54,5 +56,6 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockDataProvider(CoolerProvider.INSTANCE, CoolerBlockBase.class);
         r.registerBlockDataProvider(ModeratorProvider.INSTANCE, ModeratorBase.class);
         r.registerBlockDataProvider(FuelCellProgress.INSTANCE, FuelCellBlock.class);
+        r.registerBlockDataProvider(TickProgressBlock.INSTANCE, TickingBlock.class);
     }
 }

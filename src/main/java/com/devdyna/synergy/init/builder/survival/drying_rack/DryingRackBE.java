@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
+import com.devdyna.synergy.api.beLogic.TimeredRecipe;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.api.utils.x;
@@ -39,7 +40,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorageBlock {
+public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, TimeredRecipe {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
@@ -97,16 +98,22 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
     @Override
     public void tickBoth() {
 
-        if (level == null)
+        if (level == null) {
+            fail();
             return;
+        }
 
-        if (cache == null)
+        if (cache == null) {
+            fail();
             return;
+        }
 
         var slot = this.cache.getCapability();
 
-        if (slot == null)
+        if (slot == null) {
+            fail();
             return;
+        }
 
         var item = slot.getStackInSlot(0);
 
@@ -116,8 +123,10 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
                 .getRecipeFor(zRecipeTypes.DRYING_RACK.getType(),
                         new MonoItemInput(item), level);
 
-        if (r.isEmpty())
+        if (r.isEmpty()) {
+            fail();
             return;
+        }
 
         var recipe = r.get().value();
 
@@ -125,17 +134,22 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
             LevelUtil.addParticle(ParticleTypes.CLOUD, level, getBlockPos().below(), true);
 
         if (ticker == null)
-            ticker = Ticker.of(calcTicks(recipe.getTicks() * item.getCount()));
+            ticker = Ticker.of(calcTicks(recipe.getTicks()));
 
         if (ticker.commit()) {
             getStorage().extractItem(0, item.getCount(), false);
             getStorage().insertItem(0,
                     x.item(recipe.getOutput().copy().getItem(), recipe.getOutput().copy().getCount() * item.getCount()),
                     false);
+            ticker = null;
         }
 
         update();
 
+    }
+
+    public void fail() {
+        ticker = null;
     }
 
     private int calcTicks(int base) {
@@ -152,7 +166,7 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
                 .map(level::getBlockState)
                 .anyMatch(s -> s.is(zBlockTag.DRYING_RACK_HEATER));
 
-        return Math.max(1, base / (result ? 2 : 1));
+        return Math.max(1, (base * getStorage().getStackInSlot(0).getCount()) / (result ? 2 : 1));
     }
 
     protected void update() {
@@ -181,6 +195,29 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
         return saveWithoutMetadata(pRegistries);
+    }
+
+    @Override
+    public Ticker getTicker() {
+        return ticker;
+    }
+
+    @Override
+    public float getTickerSpeed() {
+        var range = List.of(
+                getBlockPos().below(),
+                getBlockPos().below().below(),
+                getBlockPos().below().below().below(),
+                getBlockPos().below().below().below().below(),
+                getBlockPos().below().below().below().below().below());
+
+        var result = range
+                .stream()
+                .map(level::getBlockState)
+                .anyMatch(s -> s.is(zBlockTag.DRYING_RACK_HEATER));
+
+        return 1.0f / getStorage().getStackInSlot(0).getCount() * (result ? 2 : 1);
+
     }
 
 }
