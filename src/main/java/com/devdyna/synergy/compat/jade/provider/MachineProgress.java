@@ -5,9 +5,7 @@ import java.util.List;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.ExtraMachineSlots;
-import com.devdyna.synergy.api.machine.FluidTankStorage;
 import com.devdyna.synergy.api.machine.ExtraMachineSlots.SlotType;
-import com.devdyna.synergy.api.machine.FluidTankStorage.FluidTankType;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -16,10 +14,8 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec2;
-import net.neoforged.neoforge.fluids.FluidStack;
 import snownee.jade.api.*;
 import snownee.jade.api.config.IPluginConfig;
-import snownee.jade.api.fluid.JadeFluidObject;
 import snownee.jade.api.ui.IElementHelper;
 
 public enum MachineProgress
@@ -38,24 +34,29 @@ public enum MachineProgress
     var be = (BaseMachineBE) accessor.getBlockEntity();
 
     // render only when has content
-    if (data.inv.isEmpty() && data.progress != 0) {
+    if (!data.inv.isEmpty() && data.progress != 0) {
 
       IElementHelper helper = IElementHelper.get();
 
-      calculateTanks(be, data, helper, tooltip, FluidTankType.INPUT);
+      // calculateTanks(be, data, helper, tooltip, FluidTankType.INPUT);
 
-      tooltip.add(helper.item(data.inv.get(0)));
+      if (data.inv.size() > 0) {
+        tooltip.add(helper.item(data.inv.get(0)));
 
-      tooltip.append(helper.spacer(4, 0));
+        tooltip.append(helper.spacer(4, 0));
+      }
 
       calculateSlots(be, data, helper, tooltip, SlotType.INPUT);
 
       // arrow
       tooltip.append(helper.progress((float) data.progress / data.total).translate(new Vec2(-2, 0)));
 
-      tooltip.append(helper.item(data.inv.get(1)));
+      if (data.inv.size() > 1) {
+        tooltip.append(helper.item(data.inv.get(1)));
+        tooltip.append(helper.spacer(4, 0));
+      }
 
-      calculateTanks(be, data, helper, tooltip, FluidTankType.OUTPUT);
+      // calculateTanks(be, data, helper, tooltip, FluidTankType.OUTPUT);
 
       calculateSlots(be, data, helper, tooltip, SlotType.OUTPUT);
 
@@ -76,22 +77,22 @@ public enum MachineProgress
     }
   }
 
-  protected void calculateTanks(BaseMachineBE be, Data data, IElementHelper helper, ITooltip tooltip,
-      FluidTankType type) {
-    if (be instanceof FluidTankStorage tank)
-      if (data.fluidTank != null && !data.fluidTank.isEmpty())
-        if (tank.getTankIOType().equals(type)) {
-          tooltip.add(helper.fluid(JadeFluidObject.of(data.fluidTank.getFluid())));
-          tooltip.append(helper.spacer(4, 0));
-        }
-  }
+  // protected void calculateTanks(BaseMachineBE be, Data data, IElementHelper helper, ITooltip tooltip,
+  //     FluidTankType type) {
+  //   if (be instanceof FluidTankStorage tank)
+  //     if (data.fluidTank != null && !data.fluidTank.isEmpty())
+  //       if (tank.getTankIOType().equals(type)) {
+  //         tooltip.add(helper.fluid(JadeFluidObject.of(data.fluidTank.getFluid(),data.fluidTank.getAmount())));
+  //         tooltip.append(helper.spacer(4, 0));
+  //       }
+  // }
 
   @Override
   public Data streamData(BlockAccessor accessor) {
     BaseMachineBE machineBE = (BaseMachineBE) accessor.getBlockEntity();
 
     List<ItemStack> slots = new ArrayList<>();
-    FluidStack fluidTank = FluidStack.EMPTY;
+    // FluidStack fluidTank = FluidStack.EMPTY;
     if (machineBE.getMachineSlots() > 4)
       slots.add(machineBE.getInput());
     if (machineBE.getMachineSlots() > 5)
@@ -103,14 +104,14 @@ public enum MachineProgress
       }
     }
 
-    if (machineBE instanceof FluidTankStorage tank) {
-      fluidTank = tank.getFluidStorage().getFluid();
-    }
+    // if (machineBE instanceof FluidTankStorage tank) {
+    //   fluidTank = tank.getFluidStorage().getFluid();
+    // }
 
     return new Data(
         machineBE.getProgress(),
         machineBE.getMaxProgress(),
-        slots, fluidTank);
+        slots);
   }
 
   @Override
@@ -118,13 +119,12 @@ public enum MachineProgress
     return Data.STREAM_CODEC;
   }
 
-  public record Data(int progress, int total, List<ItemStack> inv, FluidStack fluidTank) {
+  public record Data(int progress, int total, List<ItemStack> inv) {
     public static final StreamCodec<RegistryFriendlyByteBuf, Data> STREAM_CODEC = StreamCodec.composite(
         ByteBufCodecs.VAR_INT, Data::progress,
         ByteBufCodecs.VAR_INT, Data::total,
         ItemStack.OPTIONAL_LIST_STREAM_CODEC, Data::inv,
-        FluidStack.STREAM_CODEC,
-        Data::fluidTank,
+        // FluidStack.OPTIONAL_STREAM_CODEC,Data::fluidTank,
         Data::new);
   }
 
