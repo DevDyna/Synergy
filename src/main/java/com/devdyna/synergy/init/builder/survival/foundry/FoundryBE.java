@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.survival.simple_melter;
+package com.devdyna.synergy.init.builder.survival.foundry;
 
 import java.util.Optional;
 
@@ -6,17 +6,19 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
+import com.devdyna.synergy.api.beLogic.EnvironmentModifier;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
 import com.devdyna.synergy.api.beLogic.TimeredRecipe;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.utils.Ticker;
+import com.devdyna.synergy.common.recipes.input.FluidInput;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
+import com.devdyna.synergy.common.recipes.type.FoundryFuelEfficiencyRecipe;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankBE;
-import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.FoundryRecipe;
+import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
-import com.devdyna.synergy.init.types.zFluidTags;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -42,7 +44,8 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage, TimeredRecipe {
+public class FoundryBE extends TickingBE
+        implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage, TimeredRecipe, EnvironmentModifier {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
@@ -133,8 +136,23 @@ public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
             return;
         }
 
-        if (getFuelTankStorage().isEmpty() || !getFuelTankStorage().getFluidInTank(0).is(zFluidTags.MELTER_FUELS)
-                || getFuelTankStorage().drain(FLUID_BURN_RATE, FluidAction.SIMULATE).getAmount() != FLUID_BURN_RATE) {
+        if (getFuelTankStorage().isEmpty()) {
+            fail();
+            return;
+        }
+
+        Optional<RecipeHolder<FoundryFuelEfficiencyRecipe>> f = level.getRecipeManager()
+                .getRecipeFor(zRecipeTypes.FOUNDRY_FUELS.getType(),
+                        new FluidInput(getFuelTankStorage().getFluid()), level);
+
+        if (f.isEmpty()) {
+            fail();
+            return;
+        }
+
+        var fuel = f.get().value();
+
+        if (getFuelTankStorage().getFluidAmount() < (FLUID_BURN_RATE * fuel.getUsageModifier())) {
             fail();
             return;
         }
@@ -163,7 +181,7 @@ public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
         if (ticker.commit()) {
             getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.EXECUTE);
             getStorage().extractItem(0, 1, false);
-            getFuelTankStorage().drain(FLUID_BURN_RATE, FluidAction.EXECUTE);
+            getFuelTankStorage().drain((int) (FLUID_BURN_RATE * fuel.getUsageModifier()), FluidAction.EXECUTE);
         }
 
         update();
@@ -175,6 +193,7 @@ public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
     }
 
     public void fail() {
+        update();
         ticker = null;
         if (getBlockState().getValue(BaseMachineBlock.ENABLED))
             updateState(false);
@@ -237,7 +256,17 @@ public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
 
     @Override
     public float getTickerSpeed() {
-        return Math.max(1f, ((getFluidStorage().getPercentuage()+0.25f) / 0.25f));
+        return Math.max(1f, ((getFluidStorage().getPercentuage() + 0.25f) / 0.25f)
+                * getSpeedModifier());
+    }
+
+    @Override
+    public float getSpeedModifier() {
+        Optional<RecipeHolder<FoundryFuelEfficiencyRecipe>> f = level.getRecipeManager()
+                .getRecipeFor(zRecipeTypes.FOUNDRY_FUELS.getType(),
+                        new FluidInput(getFuelTankStorage().getFluid()), level);
+
+        return (f.isEmpty() ? 1.0f : f.get().value().getSpeedModifier());
     }
 
 }

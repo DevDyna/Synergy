@@ -5,9 +5,8 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.*;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
-import com.devdyna.synergy.api.recipes.builders.InputIngredientItem;
-import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
+import com.devdyna.synergy.api.recipes.builders.*;
+import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
 
@@ -21,7 +20,7 @@ import net.minecraft.world.item.crafting.Recipe;
 
 @SuppressWarnings({ "null" })
 public class UrnRitualBuilder extends BaseRecipeBuilder
-        implements SimpleOutputItem<UrnRitualBuilder>, InputIngredientItem<UrnRitualBuilder> {
+        implements ItemAttach.Output.SimpleOutputItem<UrnRitualBuilder>, ItemAttach.Input.ListedNoItemCount<UrnRitualBuilder> {
 
     private List<Ingredient> inputList = new ArrayList<>();
     private ItemStack output;

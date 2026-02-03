@@ -5,10 +5,8 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.*;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
-import com.devdyna.synergy.api.recipes.builders.SimpleFluidAttach;
-import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
-import com.devdyna.synergy.api.recipes.builders.legacy.SimpleInputItem;
+import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
+import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
 
@@ -23,8 +21,8 @@ import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings({ "null" })
 public class CrushingTubBuilder extends BaseRecipeBuilder
-        implements SimpleOutputItem<CrushingTubBuilder>, SimpleInputItem<CrushingTubBuilder>,
-        SimpleFluidAttach<CrushingTubBuilder> {
+        implements ItemAttach.Output.SimpleOutputItem<CrushingTubBuilder>, ItemAttach.Input.NoItemCount<CrushingTubBuilder>,
+        FluidAttach.Any.SimpleFluidAttach<CrushingTubBuilder> {
 
     private Ingredient input;
     private FluidStack fluid;

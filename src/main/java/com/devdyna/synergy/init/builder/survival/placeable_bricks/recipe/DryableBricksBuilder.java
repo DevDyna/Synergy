@@ -6,9 +6,8 @@ import java.util.LinkedHashMap;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
-import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
-import com.devdyna.synergy.api.recipes.builders.legacy.SimpleInputItem;
+import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
+import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
 
@@ -24,7 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
 public class DryableBricksBuilder extends BaseRecipeBuilder implements
-        SimpleInputItem<DryableBricksBuilder>, SimpleOutputItem<DryableBricksBuilder> {
+        ItemAttach.Input.NoItemCount<DryableBricksBuilder>, ItemAttach.Output.SimpleOutputItem<DryableBricksBuilder> {
 
     private Ingredient input;
     private BlockState block;

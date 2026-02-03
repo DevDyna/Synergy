@@ -23,9 +23,9 @@ public enum TickProgressBlock
 
     if ((nbt.getInt("max") - nbt.getInt("status")) > 0)
       t.add(Component
-          .literal("[" +  (nbt.getFloat("multiplier") >= 1.0f ? "§a" : "§c")
+          .literal("[" + (nbt.getFloat("multiplier") >= 1.0f ? "§a" : "§c")
               + StringUtil.cut(nbt.getFloat("multiplier")) + "x§7] "
-              + TimeUtil.getTimeValue(nbt.getInt("max") - nbt.getInt("status"),0, false) + " left"));
+              + TimeUtil.getTimeValue(nbt.getInt("max") - nbt.getInt("status"), 0, false) + " left"));
 
   }
 
@@ -40,12 +40,11 @@ public enum TickProgressBlock
     if (be instanceof TimeredRecipe t) {
       var ticker = t.getTicker();
 
-      if (ticker == null)
-        return;
-
-      c.putFloat("multiplier", t.getTickerSpeed());
-      c.putInt("status", ticker.get());
-      c.putInt("max", ticker.max());
+      if (ticker != null) {
+        c.putFloat("multiplier", t.getTickerSpeed());
+        c.putInt("status", ticker.get());
+        c.putInt("max", ticker.max());
+      }
     }
 
   }

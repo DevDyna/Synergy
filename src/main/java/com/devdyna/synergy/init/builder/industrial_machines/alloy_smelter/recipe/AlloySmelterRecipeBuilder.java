@@ -7,7 +7,7 @@ import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
-import com.devdyna.synergy.api.recipes.builders.DoubleInputItem;
+import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
@@ -17,7 +17,7 @@ import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 @SuppressWarnings({ "null" })
 public class AlloySmelterRecipeBuilder extends BaseMachineRecipeBuilder<AlloySmelterRecipeBuilder>
-        implements DoubleInputItem<AlloySmelterRecipeBuilder> {
+        implements ItemAttach.Input.DoubleItemCounted<AlloySmelterRecipeBuilder> {
 
     private AlloySmelterRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();

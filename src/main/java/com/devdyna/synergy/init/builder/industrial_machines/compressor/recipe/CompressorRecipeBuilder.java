@@ -7,7 +7,7 @@ import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
-import com.devdyna.synergy.api.recipes.builders.CatalystItem;
+import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
@@ -17,7 +17,7 @@ import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 @SuppressWarnings({ "null" })
 public class CompressorRecipeBuilder extends BaseMachineRecipeBuilder<CompressorRecipeBuilder>
-        implements CatalystItem<CompressorRecipeBuilder> {
+        implements ItemAttach.Input.CatalystItem<CompressorRecipeBuilder> {
 
     private CompressorRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();

@@ -7,17 +7,17 @@ import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
-import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
+import com.devdyna.synergy.api.recipes.builders.*;
 
 @SuppressWarnings({ "null" })
 public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder<MaceratorRecipeBuilder>
-        implements SecondaryOutputItem<MaceratorRecipeBuilder> {
+        implements ItemAttach.Output.SecondaryOutputItem<MaceratorRecipeBuilder> {
 
     private MaceratorRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();

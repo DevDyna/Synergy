@@ -4,7 +4,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.compat.jei.api.JEIFluidTankHelper;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.FoundryRecipe;
+import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 

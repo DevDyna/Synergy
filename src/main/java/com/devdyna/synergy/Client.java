@@ -22,7 +22,7 @@ import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen
 import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubRender;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackRender;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinRender;
-import com.devdyna.synergy.init.builder.survival.simple_melter.FoundryRender;
+import com.devdyna.synergy.init.builder.survival.foundry.FoundryRender;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zContainer;
 import com.devdyna.synergy.init.types.zItems;

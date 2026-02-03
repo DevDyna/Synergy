@@ -5,9 +5,8 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.*;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
-import com.devdyna.synergy.api.recipes.builders.InputFluidAttach;
-import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
+import com.devdyna.synergy.api.recipes.builders.*;
+import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.advancements.Criterion;
@@ -20,8 +19,8 @@ import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
 @SuppressWarnings({ "null" })
 public class EvaporatingBasinBuilder extends BaseRecipeBuilder
-        implements SimpleOutputItem<EvaporatingBasinBuilder>,
-        InputFluidAttach<EvaporatingBasinBuilder> {
+        implements ItemAttach.Output.SimpleOutputItem<EvaporatingBasinBuilder>,
+        FluidAttach.Input.SizedFluid<EvaporatingBasinBuilder> {
 
     private SizedFluidIngredient fluid;
     private int ticks = 100;

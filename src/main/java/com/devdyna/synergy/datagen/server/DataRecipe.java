@@ -8,6 +8,8 @@ import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.builders.*;
+import com.devdyna.synergy.common.recipes.builders.node_provider.FluidProviderBuilder;
+import com.devdyna.synergy.common.recipes.builders.node_provider.ItemProviderBuilder;
 import com.devdyna.synergy.datagen.api.ExtraRecipeProvider;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe.AlloySmelterRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.CasterRecipeBuilder;
@@ -24,7 +26,7 @@ import com.devdyna.synergy.init.builder.plants.cultivated.azalea;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubBuilder;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackBuilder;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporatingBasinBuilder;
-import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.FoundryBuilder;
+import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup;
@@ -1318,7 +1320,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 CasterRecipeBuilder.of()
                                 .fluid(Tags.Fluids.WATER, 250)
                                 .input(Items.COBBLESTONE)
-                                .consumeCatalyst()
+                                .consumeItemInput()
                                 .output(Items.MOSSY_COBBLESTONE)
                                 .unlockedBy()
                                 .save(c);
@@ -1369,7 +1371,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 CasterRecipeBuilder.of()
                                 .input(zItems.CHIP)
                                 .fluid(zFluids.LIQUID_GLASS, 250)
-                                .consumeCatalyst()
+                                .consumeItemInput()
                                 .output(zItems.ELECTRON_TUBE_BASE)
                                 .unlockedBy()
                                 .save(c);
@@ -1631,6 +1633,20 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .define('L', logs.get(zStatic.ALL_DRYING_RACKS.indexOf(a)))
                                 .unlockedBy(ID, has(Items.CHAIN))
                                 .save(c));
+
+                FoundryFuelEfficiencyBuilder.of()
+                                .fluid(Fluids.LAVA)
+                                .speed(1.0f)
+                                .usage(1.0f)
+                                .unlockedBy()
+                                .save(c);
+
+                FoundryFuelEfficiencyBuilder.of()
+                                .fluid(zFluids.MOLTEN_BLAZE)
+                                .speed(2.0f)
+                                .usage(0.5f)
+                                .unlockedBy()
+                                .save(c);
 
         }
 

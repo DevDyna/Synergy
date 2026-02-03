@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.survival.simple_melter.recipe;
+package com.devdyna.synergy.init.builder.survival.foundry.recipe;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

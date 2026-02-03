@@ -6,9 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
-import com.devdyna.synergy.api.recipes.builders.ListedOutputItemStack;
-import com.devdyna.synergy.api.recipes.builders.legacy.SimpleInputItem;
+import com.devdyna.synergy.api.recipes.builders.ItemAttach;
+import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.CropResultRecipe;
 
@@ -22,7 +21,7 @@ import net.minecraft.world.item.crafting.Recipe;
 
 @SuppressWarnings("null")
 public class CropResultBuilder extends BaseRecipeBuilder
-        implements SimpleInputItem<CropResultBuilder>, ListedOutputItemStack<CropResultBuilder> {
+        implements ItemAttach.Input.NoItemCount<CropResultBuilder>, ItemAttach.Output.ListedOutputItemStack<CropResultBuilder> {
 
     private Ingredient input;
     private List<ItemStack> output;

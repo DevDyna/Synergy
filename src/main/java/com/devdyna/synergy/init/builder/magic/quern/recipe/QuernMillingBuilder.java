@@ -5,9 +5,8 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.LinkedHashMap;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
-import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
-import com.devdyna.synergy.api.recipes.builders.legacy.SimpleInputItem;
+import com.devdyna.synergy.api.recipes.builders.*;
+import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
 
@@ -21,7 +20,7 @@ import net.minecraft.world.item.crafting.Recipe;
 
 @SuppressWarnings({ "null" })
 public class QuernMillingBuilder extends BaseRecipeBuilder
-        implements SimpleInputItem<QuernMillingBuilder>, SimpleOutputItem<QuernMillingBuilder> {
+        implements ItemAttach.Input.NoItemCount<QuernMillingBuilder>, ItemAttach.Output.SimpleOutputItem<QuernMillingBuilder> {
 
     private Ingredient input;
     private int tick;

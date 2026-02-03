@@ -7,17 +7,18 @@ import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
-import com.devdyna.synergy.api.recipes.builders.SimpleFluidAttach;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.neoforged.neoforge.fluids.FluidStack;
+import com.devdyna.synergy.api.recipes.builders.*;
+
 
 @SuppressWarnings({ "null" })
 public class MelterRecipeBuilder extends BaseMachineRecipeBuilder<MelterRecipeBuilder>
-        implements SimpleFluidAttach<MelterRecipeBuilder> {
+        implements FluidAttach.Any.SimpleFluidAttach<MelterRecipeBuilder> {
 
     private MelterRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();

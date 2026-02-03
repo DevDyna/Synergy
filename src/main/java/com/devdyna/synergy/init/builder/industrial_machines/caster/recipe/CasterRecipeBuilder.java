@@ -7,8 +7,7 @@ import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
-import com.devdyna.synergy.api.recipes.builders.ConsumeInputItem;
-import com.devdyna.synergy.api.recipes.builders.InputFluidAttach;
+import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
@@ -18,7 +17,7 @@ import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
 @SuppressWarnings({ "null" })
 public class CasterRecipeBuilder extends BaseMachineRecipeBuilder<CasterRecipeBuilder>
-        implements InputFluidAttach<CasterRecipeBuilder>, ConsumeInputItem<CasterRecipeBuilder> {
+        implements ItemAttach.Input.OptionalConsume<CasterRecipeBuilder>, FluidAttach.Input.SizedFluid<CasterRecipeBuilder> {
 
     private CasterRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
@@ -44,7 +43,7 @@ public class CasterRecipeBuilder extends BaseMachineRecipeBuilder<CasterRecipeBu
     }
 
     @Override
-    public CasterRecipeBuilder consumeCatalyst() {
+    public CasterRecipeBuilder consumeItemInput() {
         this.consumeCatalyst = true;
         return getBuilder();
     }

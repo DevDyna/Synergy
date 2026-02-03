@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.be.TickingBE;
+import com.devdyna.synergy.api.beLogic.EnvironmentModifier;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.TimeredRecipe;
@@ -40,7 +41,8 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorageBlock, TimeredRecipe {
+public class DryingRackBE extends TickingBE
+        implements NoGuiStorage, ItemStorageBlock, TimeredRecipe, EnvironmentModifier {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
@@ -191,6 +193,11 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
 
     @Override
     public float getTickerSpeed() {
+        return 1.0f / getStorage().getStackInSlot(0).getCount() * getSpeedModifier();
+    }
+
+    @Override
+    public float getSpeedModifier() {
         var range = List.of(
                 getBlockPos().below(),
                 getBlockPos().below().below(),
@@ -202,9 +209,7 @@ public class DryingRackBE extends TickingBE implements NoGuiStorage, ItemStorage
                 .stream()
                 .map(level::getBlockState)
                 .anyMatch(s -> s.is(zBlockTag.DRYING_RACK_HEATER));
-
-        return 1.0f / getStorage().getStackInSlot(0).getCount() * (result ? 2 : 1);
-
+        return (result ? 2 : 1);
     }
 
 }

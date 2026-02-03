@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.survival.simple_melter;
+package com.devdyna.synergy.init.builder.survival.foundry;
 
 import java.util.Random;
 

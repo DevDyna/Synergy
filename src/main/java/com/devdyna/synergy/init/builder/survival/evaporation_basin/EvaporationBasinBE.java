@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
+import com.devdyna.synergy.api.beLogic.EnvironmentModifier;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
@@ -42,7 +43,7 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
 public class EvaporationBasinBE extends TickingBE
-        implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage, TimeredRecipe {
+        implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage, TimeredRecipe, EnvironmentModifier {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
@@ -210,7 +211,12 @@ public class EvaporationBasinBE extends TickingBE
 
     @Override
     public float getTickerSpeed() {
-        return  1.0f * (level.getBlockState(getBlockPos().below()).is(zBlockTag.EVAPORATION_BASIC_HEATER) ? 2 : 1);
+        return  1.0f * getSpeedModifier();
+    }
+
+    @Override
+    public float getSpeedModifier() {
+        return (level.getBlockState(getBlockPos().below()).is(zBlockTag.EVAPORATION_BASIC_HEATER) ? 2 : 1);
     }
 
 }

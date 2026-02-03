@@ -4,7 +4,6 @@ import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.registers.RecipeRegister;
-import com.devdyna.synergy.common.recipes.serializer.*;
 import com.devdyna.synergy.common.recipes.type.*;
 import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecipe;
 import com.devdyna.synergy.common.recipes.type.node_providers.ItemProviderRecipe;
@@ -22,10 +21,10 @@ import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackRe
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackRecipeSerializer;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporationBasinRecipe;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporationBasinRecipeSerializer;
+import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryRecipe;
+import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryRecipeSerializer;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipe;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipeSerializer;
-import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.FoundryRecipe;
-import com.devdyna.synergy.init.builder.survival.simple_melter.recipe.FoundryRecipeSerializer;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.ItemStack;
@@ -57,15 +56,15 @@ public class zRecipeTypes {
                         QuernMillingRecipeSerializer::new);
 
         public static final RecipeRegister<CropResultRecipe> CROP_RESULT = RecipeRegister.of("crop_result",
-                        CropResultRecipeSerializer::new);
+                        CropResultRecipe.Serializer::new);
 
-        public static final RecipeRegister<ItemUseRecipe> ITEM_USE = RecipeRegister.of("item_use", ItemUseRecipeSerializer::new);
+        public static final RecipeRegister<ItemUseRecipe> ITEM_USE = RecipeRegister.of("item_use", ItemUseRecipe.Serializer::new);
 
         public static final RecipeRegister<ItemProviderRecipe<ItemStack>> ITEM_PROVIDER = RecipeRegister.of("provider/item",
-                        ItemProviderRecipeSerializer::new);
+                        ItemProviderRecipe.Serializer::new);
 
         public static final RecipeRegister<FluidProviderRecipe<FluidStack>> FLUID_PROVIDER = RecipeRegister.of("provider/fluid",
-                        FluidProviderRecipeSerializer::new);
+                        FluidProviderRecipe.Serializer::new);
 
         public static final RecipeRegister<DryableBricksRecipe> DRYABLE_BRICKS = RecipeRegister.of("dryable_bricks",
                         DryableBricksRecipeSerializer::new);
@@ -84,6 +83,9 @@ public class zRecipeTypes {
 
         public static final RecipeRegister<FoundryRecipe> FOUNDRY = RecipeRegister.of("foundry",
                         FoundryRecipeSerializer::new);
+
+        public static final RecipeRegister<FoundryFuelEfficiencyRecipe> FOUNDRY_FUELS = RecipeRegister.of("foundry_fuels",
+                        FoundryFuelEfficiencyRecipe.Serializer::new);
 
 
         // ------------------------------------------------------------------------------------------------------------------------------------//

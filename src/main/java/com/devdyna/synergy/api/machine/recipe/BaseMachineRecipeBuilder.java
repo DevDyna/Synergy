@@ -11,11 +11,8 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.BaseMachineMenu;
-import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
-import com.devdyna.synergy.api.recipes.builders.SimpleFluidAttach;
-import com.devdyna.synergy.api.recipes.builders.SecondaryOutputItem;
-import com.devdyna.synergy.api.recipes.builders.InputItem;
-import com.devdyna.synergy.api.recipes.builders.SimpleOutputItem;
+import com.devdyna.synergy.api.recipes.builders.ItemAttach;
+import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.api.utils.LogUtil;
 import com.devdyna.synergy.api.utils.x;
@@ -41,10 +38,12 @@ import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import com.devdyna.synergy.api.recipes.builders.*;
+import com.devdyna.synergy.api.recipes.builders.FluidAttach.Any.SimpleFluidAttach;
 
 @SuppressWarnings({ "unused", "null" })
 public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilder<T>> extends BaseRecipeBuilder
-        implements InputItem<T>, SimpleOutputItem<T> {
+        implements ItemAttach.Input.ItemCounted<T>, ItemAttach.Output.SimpleOutputItem<T> {
 
     public abstract MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<? extends RecipeInput>> getMachine();
 

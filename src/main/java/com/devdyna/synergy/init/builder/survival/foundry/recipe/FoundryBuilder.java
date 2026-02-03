@@ -1,13 +1,13 @@
-package com.devdyna.synergy.init.builder.survival.simple_melter.recipe;
+package com.devdyna.synergy.init.builder.survival.foundry.recipe;
 
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.*;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.recipes.builders.BaseRecipeBuilder;
-import com.devdyna.synergy.api.recipes.builders.SimpleFluidAttach;
-import com.devdyna.synergy.api.recipes.builders.legacy.SimpleInputItem;
+
+import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
+import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
 
@@ -21,8 +21,8 @@ import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings({ "null" })
 public class FoundryBuilder extends BaseRecipeBuilder
-        implements SimpleInputItem<FoundryBuilder>,
-        SimpleFluidAttach<FoundryBuilder> {
+        implements ItemAttach.Input.NoItemCount<FoundryBuilder>,
+        FluidAttach.Any.SimpleFluidAttach<FoundryBuilder> {
 
     private Ingredient input;
     private int ticks = 100;

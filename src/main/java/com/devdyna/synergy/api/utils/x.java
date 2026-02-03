@@ -135,10 +135,25 @@ public class x {
         return item(i.getBlock());
     }
 
-    // public static ItemStack item(DeferredHolder<? extends ItemLike, ?> holder) {
-    // return x.item(holder.get().asItem());
-    // }
+    public static FluidIngredient ingredientFluid(FluidStack i) {
+        return FluidIngredient.of(i);
+    }
 
+    public static FluidIngredient ingredientFluid(Fluid i) {
+        return FluidIngredient.of(i);
+    }
+
+    public static FluidIngredient ingredientFluid(FluidRegister i) {
+        return ingredientFluid(i.getFluid());
+    }
+
+    public static FluidIngredient ingredientFluid(TagKey<Fluid> i) {
+        return FluidIngredient.tag(i);
+    }
+
+    public static FluidIngredient ingredientFluid(ResourceLocation tag) {
+        return FluidIngredient.tag(TagKey.create(Registries.FLUID, tag));
+    }
     public static Ingredient ingredient(ItemStack i) {
         return Ingredient.of(i);
     }
@@ -265,6 +280,9 @@ public class x {
     public static List<FluidStack> getFluids(SizedFluidIngredient i) {
         return Arrays.asList(i.getFluids());
     }
+    public static List<FluidStack> getFluids(FluidIngredient i) {
+        return Arrays.asList(i.getStacks());
+    }
 
     public static SizedFluidIngredient fluidSized() {
         return new SizedFluidIngredient(FluidIngredient.empty(), 1);
@@ -279,6 +297,10 @@ public class x {
     }
 
     public static List<ItemStack> getItems(SizedIngredient i) {
+        return Arrays.asList(i.getItems());
+    }
+
+    public static List<ItemStack> getItems(Ingredient i) {
         return Arrays.asList(i.getItems());
     }
 

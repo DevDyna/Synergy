@@ -323,6 +323,8 @@ public class DataLang extends LanguageProvider {
                                 "Dryable Bricks Info");
                 add("config.jade.plugin_" + ID + ".timered_recipes",
                                 "Recipe Timered Info");
+                add("config.jade.plugin_" + ID + ".environment_modifier",
+                                "Environment Modifier Info");
 
                 add(Main.ID + ".color", "Color: %d");
 
@@ -403,6 +405,10 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jade.bricks.dried", "Drying stage: §aMature");
                 add(ID + ".jade.bricks.wet", "§cDrying conditions don't match!");
                 add(ID + ".jade.bricks.stage", "Drying stage: %s");
+                add(ID + ".jade.environment_modifier.tip", "Base Speed %s");
+
+                add(ID + ".jei.fuel.usage", "Fluid amount used every recipe");
+                add(ID + ".jei.fuel.speed", "Base recipe speed");
 
         }
 
