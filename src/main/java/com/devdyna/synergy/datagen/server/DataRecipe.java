@@ -1634,14 +1634,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(Items.CHAIN))
                                 .save(c));
 
-                FoundryFuelEfficiencyBuilder.of()
+                FoundryFuelBuilder.of()
                                 .fluid(Fluids.LAVA)
                                 .speed(1.0f)
                                 .usage(1.0f)
                                 .unlockedBy()
                                 .save(c);
 
-                FoundryFuelEfficiencyBuilder.of()
+                FoundryFuelBuilder.of()
                                 .fluid(zFluids.MOLTEN_BLAZE)
                                 .speed(2.0f)
                                 .usage(0.5f)

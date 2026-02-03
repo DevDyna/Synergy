@@ -18,32 +18,32 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import com.devdyna.synergy.api.recipes.builders.*;
 
 @SuppressWarnings("null")
-public class FoundryFuelEfficiencyBuilder extends BaseRecipeBuilder
-        implements FluidAttach.Any.SimpleFluidAttach<FoundryFuelEfficiencyBuilder> {
+public class FoundryFuelBuilder extends BaseRecipeBuilder
+        implements FluidAttach.Any.SimpleFluidAttach<FoundryFuelBuilder> {
 
     private FluidStack fluid;
     private float usageModifier;
     private float speedModifier;
 
-    public FoundryFuelEfficiencyBuilder() {
+    public FoundryFuelBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static FoundryFuelEfficiencyBuilder of() {
-        return new FoundryFuelEfficiencyBuilder();
+    public static FoundryFuelBuilder of() {
+        return new FoundryFuelBuilder();
     }
 
-    public FoundryFuelEfficiencyBuilder unlockedBy() {
+    public FoundryFuelBuilder unlockedBy() {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                 .hasItems(fluid.getFluid().getBucket()));
     }
 
-    public FoundryFuelEfficiencyBuilder unlockedBy(String name, Criterion<?> criterion) {
+    public FoundryFuelBuilder unlockedBy(String name, Criterion<?> criterion) {
         this.criteria.put(name, criterion);
         return this;
     }
 
-    public FoundryFuelEfficiencyBuilder group(@Nullable String groupName) {
+    public FoundryFuelBuilder group(@Nullable String groupName) {
         return this;
     }
 
@@ -63,22 +63,22 @@ public class FoundryFuelEfficiencyBuilder extends BaseRecipeBuilder
     }
 
     @Override
-    public FoundryFuelEfficiencyBuilder getBuilder() {
+    public FoundryFuelBuilder getBuilder() {
         return this;
     }
 
-    public FoundryFuelEfficiencyBuilder speed(float s) {
+    public FoundryFuelBuilder speed(float s) {
         this.speedModifier = s;
         return getBuilder();
     }
 
-    public FoundryFuelEfficiencyBuilder usage(float u) {
+    public FoundryFuelBuilder usage(float u) {
         this.usageModifier = u;
         return getBuilder();
     }
 
     @Override
-    public FoundryFuelEfficiencyBuilder fluid(FluidStack fluid) {
+    public FoundryFuelBuilder fluid(FluidStack fluid) {
         this.fluid = fluid;
         return getBuilder();
     }
