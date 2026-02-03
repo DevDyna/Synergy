@@ -171,7 +171,7 @@ public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
     }
 
     private int calcTicks(int base) {
-        return Math.max(1, base / (getFluidStorage().isEmpty() ? 1 : 2));
+        return Math.max(1, base / (getFluidStorage().isEmpty() ? 1 : (getFluidStorage().getPercentuage() >= 0.5f ? 4 : 2)));
     }
 
     public void fail() {
@@ -237,7 +237,7 @@ public class FoundryBE extends TickingBE implements NoGuiStorage, ItemStorageBlo
 
     @Override
     public float getTickerSpeed() {
-        return 1.0f * (getFluidStorage().isEmpty() ? 1 : 2);
+        return 1.0f * (getFluidStorage().isEmpty() ? 1 : (getFluidStorage().getPercentuage() >= 0.5f ? 4 : 2));
     }
 
 }
