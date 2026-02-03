@@ -207,6 +207,8 @@ public class DataLang extends LanguageProvider {
                                 "Evaporation Basin Recipes");
                 add(Main.ID + ".jei." + zStatic.Blocks.drying_rack,
                                 "Drying Rack Recipes");
+                add(Main.ID + ".jei." + zStatic.Blocks.foundry+"_fuels",
+                                "Foundry Fuels Info");
 
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.SHADOW,
@@ -405,7 +407,7 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jade.bricks.dried", "Drying stage: §aMature");
                 add(ID + ".jade.bricks.wet", "§cDrying conditions don't match!");
                 add(ID + ".jade.bricks.stage", "Drying stage: %s");
-                add(ID + ".jade.environment_modifier.tip", "Base Speed %s");
+                add(ID + ".jade.environment_modifier.tip", "Base Speed: %s");
 
                 add(ID + ".jei.fuel.usage", "Fluid amount used every recipe");
                 add(ID + ".jei.fuel.speed", "Base recipe speed");
