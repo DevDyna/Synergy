@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:simple_melter"
+          "name": "synergy:foundry"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "synergy:blocks/simple_melter"
+  "random_sequence": "synergy:blocks/foundry"
 }

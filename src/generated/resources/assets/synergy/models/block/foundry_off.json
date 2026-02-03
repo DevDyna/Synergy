@@ -1,0 +1,7 @@
+{
+  "parent": "synergy:block/foundry",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "front": "synergy:block/foundry/front/off"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "synergy:block/foundry",
+  "textures": {
+    "front": "synergy:block/foundry/front/off"
+  }
+}
