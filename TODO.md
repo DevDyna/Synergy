@@ -16,32 +16,19 @@
 
 - [ ] rework any machine with AreaOfEffect and soldering gun to simplify
 
-- [x] rework slot index industrial machines
-
 - [ ] Laser Infusion RecipeType
 
 - [ ] All Recipe Types compat with GuideMe (?)
-
-- [x] gear recycle
 
 - [ ] sulfur usage
 
 - [ ] urn jei category rework to dynamic handling
 
-- [x] jade drying time
-
-- [x] machines jade compat dont show anymore
-
 - [ ] guideme for machines and upgrades
-
-- [x] drying racks jade
-- [x] drying racks jei
-- [x] evaporation basin jade
 
 - [ ] safe decoration drying racks
 
 - [ ] mechanical crushing tub (piston)
-- [x] evaporation basin booster blocktag (magmablock)
 
 - [ ] functional grindstone (?)
 - [ ] copper grindstone (damagable) (?)
@@ -58,13 +45,7 @@
 
 - [ ] brick oven
 
-- [x] Sun drying items (item render)
-
-- [x] salt leather
-
 - [ ] enchanting table-like that require enchanted books on chiseled bookshelf to be used
-
-- [x] Foundry (tiny tinker-like)
 
 - [ ] faucet & casting table (tcon like)
 
@@ -79,8 +60,6 @@
 - [ ] Planter (farmland like but bypass conditions)
 
 ### Agriculture
-
-- [x] Rustic-like crushing tub
 
 - [ ] EnderLilly
 - [ ] cave mushroom -> press -> liquid lapis/ liquid coal
