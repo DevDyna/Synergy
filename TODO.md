@@ -54,8 +54,6 @@
 
 - [ ] migrate hand-coded batteries capabilities to Neoforge FE capabilities
 
-## NEWS
-
 ### Survival expansion
 
 - [ ] brick oven
@@ -70,11 +68,11 @@
 
 - [ ] faucet & casting table (tcon like)
 
+- [ ] foundry fuel efficiency and jei
+
 ### Automation
 
 - [ ] GreenHouse (in-gui plant farmer)
-- [x] CobbleGen (like NC)
-- [x] WaterGen (like NC)
 - [ ] Framed CobbleGen (EnderioAddons-Like)
 - [ ] block placer (harvester like but place blocks)
 - [ ] platform network (industry indiegame like)
