@@ -1,0 +1,11 @@
+{
+  "type": "synergy:foundry",
+  "fluid": {
+    "amount": 500,
+    "id": "synergy:molten_blaze_source"
+  },
+  "input": {
+    "item": "minecraft:blaze_rod"
+  },
+  "ticks": 100
+}

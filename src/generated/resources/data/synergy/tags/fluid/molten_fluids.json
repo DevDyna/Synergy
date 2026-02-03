@@ -12,6 +12,7 @@
     "synergy:molten_iridium_source",
     "synergy:molten_platinum_source",
     "synergy:molten_osmium_source",
-    "synergy:molten_lead_source"
+    "synergy:molten_lead_source",
+    "synergy:molten_blaze_source"
   ]
 }

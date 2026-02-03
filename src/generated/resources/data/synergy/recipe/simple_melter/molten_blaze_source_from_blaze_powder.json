@@ -1,0 +1,11 @@
+{
+  "type": "synergy:foundry",
+  "fluid": {
+    "amount": 125,
+    "id": "synergy:molten_blaze_source"
+  },
+  "input": {
+    "item": "minecraft:blaze_powder"
+  },
+  "ticks": 100
+}

@@ -1,0 +1,9 @@
+{
+  "type": "synergy:foundry_fuels",
+  "fluid": {
+    "amount": 1000,
+    "id": "minecraft:lava"
+  },
+  "speed": 1.0,
+  "usage": 1.0
+}

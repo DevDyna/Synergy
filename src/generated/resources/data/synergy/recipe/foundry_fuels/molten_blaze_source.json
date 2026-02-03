@@ -1,0 +1,9 @@
+{
+  "type": "synergy:foundry_fuels",
+  "fluid": {
+    "amount": 1000,
+    "id": "synergy:molten_blaze_source"
+  },
+  "speed": 2.0,
+  "usage": 0.5
+}
