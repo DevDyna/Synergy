@@ -1595,6 +1595,16 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(Items.CALCITE))
                                 .save(c);
 
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.FOUNDRY.get().asItem())
+                                .pattern("III")
+                                .pattern("IFI")
+                                .pattern("SSS")
+                                .define('F', zBlocks.FUEL_TANK.get())
+                                .define('S', Items.SMOOTH_STONE)
+                                .define('I', Items.IRON_INGOT)
+                                .unlockedBy(ID, has(zBlocks.FUEL_TANK.get()))
+                                .save(c);
+
                 ShapelessRecipeBuilder.shapeless(MISC, zItems.SALTY_ROTTEN_FLESH.get(), 2)
                                 .requires(zItems.SALT.get())
                                 .requires(Items.ROTTEN_FLESH)
