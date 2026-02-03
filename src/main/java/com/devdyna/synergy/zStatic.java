@@ -460,6 +460,7 @@ public class zStatic {
         public static String platinum = AFFIX_MOLTEN + "platinum";
         public static String osmium = AFFIX_MOLTEN + "osmium";
         public static String lead = AFFIX_MOLTEN + "lead";
+        public static String blaze = AFFIX_MOLTEN + "blaze";
 
     }
 
