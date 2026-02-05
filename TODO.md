@@ -43,6 +43,8 @@
 
 ### Survival expansion
 
+- [ ] scrap and slags
+
 - [ ] brick oven
 
 - [ ] enchanting table-like that require enchanted books on chiseled bookshelf to be used
