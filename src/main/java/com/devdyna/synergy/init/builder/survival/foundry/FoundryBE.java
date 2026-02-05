@@ -262,6 +262,10 @@ public class FoundryBE extends TickingBE
 
     @Override
     public float getSpeedModifier() {
+
+        if (getFuelTankStorage() == null)
+            return 0.0f;
+
         Optional<RecipeHolder<FoundryFuelEfficiencyRecipe>> f = level.getRecipeManager()
                 .getRecipeFor(zRecipeTypes.FOUNDRY_FUELS.getType(),
                         new FluidInput(getFuelTankStorage().getFluid()), level);
