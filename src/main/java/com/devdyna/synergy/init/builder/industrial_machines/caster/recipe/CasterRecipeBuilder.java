@@ -21,6 +21,7 @@ public class CasterRecipeBuilder extends BaseMachineRecipeBuilder<CasterRecipeBu
 
     private CasterRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
+        this.ticks = 10;
     }
 
     public static CasterRecipeBuilder of() {
