@@ -190,6 +190,9 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 modLoc("block/foundry"))
                                 .texture("front", "synergy:block/foundry/front/off");
 
+                withExistingParent(zBlocks.CASTING_TABLE.getRegisteredName(),
+                                modLoc("block/casting_table"));
+
                 zStatic.ALL_DRYING_RACKS.forEach(t -> {
 
                         var log = "_log";

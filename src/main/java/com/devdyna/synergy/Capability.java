@@ -31,7 +31,10 @@ public class Capability {
                                                 zBlocks.ELITE_COBBLE_GEN,
                                                 zBlocks.CRUSHING_TUB,
                                                 zBlocks.EVAPORATION_BASIN,
-                                                zBlocks.FOUNDRY));
+                                                zBlocks.FOUNDRY,
+                                                zBlocks.CASTING_TABLE
+
+                                ));
 
                 registerEnergyBlock(event, x.toBlocks(
                                 zBlocks.HARVESTER,
@@ -39,7 +42,9 @@ public class Capability {
                                 zBlocks.SOLAR_PANEL,
                                 zBlocks.REACTOR_CONTROLLER,
                                 zBlocks.LASER_MACHINE,
-                                zBlocks.LASER_ROTOR));
+                                zBlocks.LASER_ROTOR
+
+                ));
 
                 registerFluidBlocks(event, x.toBlocks(
                                 zBlocks.SIMPLE_TANK,
@@ -49,11 +54,16 @@ public class Capability {
                                 zBlocks.ELITE_WATER_GEN,
                                 zBlocks.CRUSHING_TUB,
                                 zBlocks.EVAPORATION_BASIN,
-                                zBlocks.FOUNDRY));
+                                zBlocks.FOUNDRY,
+                                zBlocks.CASTING_TABLE
+
+                ));
 
                 registerFluidItems(event, x.toItems(
                                 zBlocks.SIMPLE_TANK,
-                                zBlocks.FUEL_TANK));
+                                zBlocks.FUEL_TANK
+
+                ));
 
         }
 

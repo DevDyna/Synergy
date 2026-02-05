@@ -25,6 +25,7 @@ import com.devdyna.synergy.init.builder.magic.void_box.VoidBoxBE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities.*;
+import com.devdyna.synergy.init.builder.survival.casting_table.CastingTableBE;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBE;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBE;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBE;
@@ -167,6 +168,10 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EvaporationBasinBE>> EVAPORATION_BASIN = Material
                         .createBlockEntity(zStatic.Blocks.evaporation_basin, EvaporationBasinBE::new,
                                         zBlocks.EVAPORATION_BASIN);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CastingTableBE>> CASTING_TABLE = Material
+                        .createBlockEntity(zStatic.Blocks.casting_table, CastingTableBE::new,
+                                        zBlocks.CASTING_TABLE);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DryingRackBE>> DRYING_RACK = Material
                         .createBlockEntity(zStatic.Blocks.drying_rack, DryingRackBE::new,

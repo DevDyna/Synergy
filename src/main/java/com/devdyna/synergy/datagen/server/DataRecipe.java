@@ -23,6 +23,7 @@ import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualBuilder;
 import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionBuilder;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.ReactorCellBuilder;
 import com.devdyna.synergy.init.builder.plants.cultivated.azalea;
+import com.devdyna.synergy.init.builder.survival.casting_table.recipe.CastingTableBuilder;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubBuilder;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackBuilder;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporatingBasinBuilder;
@@ -1376,6 +1377,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
+                                CastingTableBuilder.of()
+                                .fluid(zFluids.LIQUID_GLASS, 250)
+                                .input(zItems.CHIP)
+                                .output(zItems.ELECTRON_TUBE_BASE)
+                                .consumeItemInput()
+                                .unlockedBy()
+                                .save(c);
+
                 moltenIngots(c, zItems.TIN_INGOT.get(), zItemTag.INGOT_TIN, zFluids.MOLTEN_TIN);
                 moltenIngots(c, Items.GOLD_INGOT, Tags.Items.INGOTS_GOLD, zFluids.MOLTEN_GOLD);
                 moltenIngots(c, Items.IRON_INGOT, Tags.Items.INGOTS_IRON, zFluids.MOLTEN_IRON);
@@ -1659,6 +1668,16 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .fluid(zFluids.MOLTEN_BLAZE, 125)
                                 .unlockedBy()
                                 .save(c,"_from_blaze_powder");
+
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.CASTING_TABLE.get().asItem())
+                                .pattern("ITI")
+                                .pattern("III")
+                                .pattern("I I")
+                                .define('T', zBlocks.FUEL_TANK.get())
+                                .define('I', Items.IRON_INGOT)
+                                .unlockedBy(ID, has(zBlocks.FUEL_TANK.get()))
+                                .save(c);
 
         }
 

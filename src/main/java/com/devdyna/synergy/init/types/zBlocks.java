@@ -17,6 +17,7 @@ import com.devdyna.synergy.init.Material;
 import com.devdyna.synergy.init.builder.redstone.InvertedRepeater;
 import com.devdyna.synergy.init.builder.redstone.PulseRepeater;
 import com.devdyna.synergy.init.builder.redstone.RecursiveRepeater;
+import com.devdyna.synergy.init.builder.survival.casting_table.CastingTableBlock;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBlock;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBlock;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBlock;
@@ -518,6 +519,10 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> EVAPORATION_BASIN = Material.registerItemBlock(
                         zStatic.Blocks.evaporation_basin,
                         () -> new EvaporationBasinBlock());
+
+        public static final DeferredHolder<Block, Block> CASTING_TABLE = Material.registerItemBlock(
+                        zStatic.Blocks.casting_table,
+                        () -> new CastingTableBlock());
 
         public static final DeferredHolder<Block, Block> FOUNDRY = Material.registerItemBlock(
                         zStatic.Blocks.foundry,

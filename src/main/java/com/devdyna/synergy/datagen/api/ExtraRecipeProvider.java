@@ -18,6 +18,7 @@ import com.devdyna.synergy.init.builder.industrial_machines.melter.recipe.Melter
 import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingBuilder;
 import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualBuilder;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.ReactorCellBuilder;
+import com.devdyna.synergy.init.builder.survival.casting_table.recipe.CastingTableBuilder;
 import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryBuilder;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksBuilder;
 import com.devdyna.synergy.init.types.*;
@@ -113,6 +114,13 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .output(gear)
                                 .unlockedBy()
                                 .save(c);
+
+                CastingTableBuilder.of()
+                                .fluid(fluid, 180)
+                                .input(zItems.MOLD_GEAR)
+                                .output(gear)
+                                .unlockedBy()
+                                .save(c);
         }
 
         protected void moltenIngots(RecipeOutput c, Item ingot, TagKey<Item> input, FluidRegister fluid) {
@@ -136,11 +144,27 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
+                CastingTableBuilder.of()
+                                .fluid(fluid, 90)
+                                .input(zItems.MOLD_INGOT)
+                                .output(ingot)
+                                .unlockedBy()
+                                .save(c);
+
         }
 
         protected void electron_tube(RecipeOutput c, DeferredHolder<Item, Item> tube, FluidRegister fluid) {
 
                 CasterRecipeBuilder.of()
+                                .fluid(fluid, 180)
+                                .input(zItems.ELECTRON_TUBE_BASE)
+                                .output(tube)
+                                .delay(100)
+                                .consumeItemInput()
+                                .unlockedBy()
+                                .save(c);
+
+                                CastingTableBuilder.of()
                                 .fluid(fluid, 180)
                                 .input(zItems.ELECTRON_TUBE_BASE)
                                 .output(tube)

@@ -15,6 +15,7 @@ import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionRec
 import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionRecipeSerializer;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.FuelCellRecipe;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.FuelCellRecipeSerializer;
+import com.devdyna.synergy.init.builder.survival.casting_table.recipe.CastingTableRecipe;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubRecipe;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubRecipeSerializer;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackRecipe;
@@ -86,6 +87,9 @@ public class zRecipeTypes {
 
         public static final RecipeRegister<FoundryFuelEfficiencyRecipe> FOUNDRY_FUELS = RecipeRegister.of("foundry_fuels",
                         FoundryFuelEfficiencyRecipe.Serializer::new);
+
+        public static final RecipeRegister<CastingTableRecipe> CASTING_TABLE = RecipeRegister.of("casting_table",
+                        CastingTableRecipe.Serializer::new);
 
 
         // ------------------------------------------------------------------------------------------------------------------------------------//

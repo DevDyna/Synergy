@@ -236,6 +236,7 @@ public class zStatic {
         public static String quern = "quern";
 
         public static String evaporation_basin = "evaporation_basin";
+        public static String casting_table = "casting_table";
         public static String drying_rack = "drying_rack";
         public static String crushing_tub = "crushing_tub";
 

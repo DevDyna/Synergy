@@ -207,8 +207,10 @@ public class DataLang extends LanguageProvider {
                                 "Evaporation Basin Recipes");
                 add(Main.ID + ".jei." + zStatic.Blocks.drying_rack,
                                 "Drying Rack Recipes");
-                add(Main.ID + ".jei." + zStatic.Blocks.foundry+"_fuels",
+                add(Main.ID + ".jei." + zStatic.Blocks.foundry + "_fuels",
                                 "Foundry Fuels Info");
+                add(Main.ID + ".jei." + zStatic.Blocks.casting_table,
+                                "Casting Table recipes");
 
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.SHADOW,
@@ -327,6 +329,8 @@ public class DataLang extends LanguageProvider {
                                 "Recipe Timered Info");
                 add("config.jade.plugin_" + ID + ".environment_modifier",
                                 "Environment Modifier Info");
+                add("config.jade.plugin_" + ID + ".simple_timer",
+                                "Simple Delay Info");
 
                 add(Main.ID + ".color", "Color: %d");
 
@@ -411,6 +415,8 @@ public class DataLang extends LanguageProvider {
 
                 add(ID + ".jei.fuel.usage", "Fluid amount used every recipe");
                 add(ID + ".jei.fuel.speed", "Base recipe speed");
+
+                add(ID + "." + zStatic.Blocks.casting_table, TIP_COLOR + "Use molds to solidify liquids");
 
         }
 
