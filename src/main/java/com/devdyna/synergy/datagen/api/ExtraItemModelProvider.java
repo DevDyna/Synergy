@@ -160,8 +160,8 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
 
                 zItems.zMolds.getEntries().stream().map(DeferredHolder::get)
                                 .forEach(d -> withExistingParent(x.path(d), "minecraft:item/generated")
-                                                .texture("layer0", x.rl("item/resources/blank_mold"))
-                                                .texture("layer1", x.rl("item/resources/mold/"
+                                                // .texture("layer0", x.rl("item/resources/blank_mold"))
+                                                .texture("layer0", x.rl("item/resources/mold/"
                                                                 + x.path(d).replace(zStatic.ResourceType.mold, ""))));
 
                 zItems.zElectronTubes.getEntries().stream().map(DeferredHolder::get)
