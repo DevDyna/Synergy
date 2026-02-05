@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:casting/uranium_ingot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "synergy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:molten_uranium_bucket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "synergy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:casting/uranium_ingot"
+    ]
+  }
+}

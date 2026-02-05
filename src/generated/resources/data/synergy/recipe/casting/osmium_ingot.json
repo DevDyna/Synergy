@@ -1,0 +1,16 @@
+{
+  "type": "synergy:casting_table",
+  "consume_input": false,
+  "fluid": {
+    "amount": 90,
+    "fluid": "synergy:molten_osmium_source"
+  },
+  "input": {
+    "item": "synergy:ingot_mold"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:osmium_ingot"
+  },
+  "ticks": 40
+}

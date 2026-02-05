@@ -1,0 +1,16 @@
+{
+  "type": "synergy:casting_table",
+  "consume_input": true,
+  "fluid": {
+    "amount": 250,
+    "fluid": "synergy:liquid_glass_source"
+  },
+  "input": {
+    "item": "synergy:chip"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:electron_tube_base"
+  },
+  "ticks": 40
+}

@@ -1,0 +1,16 @@
+{
+  "type": "synergy:casting_table",
+  "consume_input": true,
+  "fluid": {
+    "amount": 180,
+    "fluid": "synergy:molten_copper_source"
+  },
+  "input": {
+    "item": "synergy:electron_tube_base"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:copper_electron_tube"
+  },
+  "ticks": 100
+}

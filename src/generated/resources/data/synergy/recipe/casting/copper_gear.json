@@ -1,0 +1,16 @@
+{
+  "type": "synergy:casting_table",
+  "consume_input": false,
+  "fluid": {
+    "amount": 180,
+    "fluid": "synergy:molten_copper_source"
+  },
+  "input": {
+    "item": "synergy:gear_mold"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:copper_gear"
+  },
+  "ticks": 40
+}
