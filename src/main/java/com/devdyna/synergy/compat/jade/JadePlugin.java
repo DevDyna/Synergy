@@ -17,6 +17,7 @@ import com.devdyna.synergy.compat.jade.provider.MachineProgress;
 import com.devdyna.synergy.compat.jade.provider.ModeratorProvider;
 import com.devdyna.synergy.compat.jade.provider.NodeProvider;
 import com.devdyna.synergy.compat.jade.provider.ReactorControllerProvider;
+import com.devdyna.synergy.compat.jade.provider.SimpleDelayProvider;
 import com.devdyna.synergy.compat.jade.provider.TickProgressBlock;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
@@ -45,6 +46,7 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(FuelCellProgress.INSTANCE, FuelCellBlock.class);
         r.registerBlockComponent(TickProgressBlock.INSTANCE, TickingBlock.class);
         r.registerBlockComponent(EnvironmentModifierProvider.INSTANCE, TickingBlock.class);
+        r.registerBlockComponent(SimpleDelayProvider.INSTANCE, TickingBlock.class);
         r.registerBlockComponent(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
     }
 
@@ -62,6 +64,7 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockDataProvider(FuelCellProgress.INSTANCE, FuelCellBlock.class);
         r.registerBlockDataProvider(TickProgressBlock.INSTANCE, TickingBlock.class);
         r.registerBlockDataProvider(EnvironmentModifierProvider.INSTANCE, TickingBlock.class);
+        r.registerBlockDataProvider(SimpleDelayProvider.INSTANCE, TickingBlock.class);
         r.registerBlockDataProvider(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
     }
 }
