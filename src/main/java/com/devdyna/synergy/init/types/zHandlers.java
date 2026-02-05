@@ -43,6 +43,8 @@ public class zHandlers {
 
     public static final Supplier<AttachmentType<FluidStorageTank>> FLUID_TANK = zHandler.register(
             "fluid_tank", () -> AttachmentType.serializable(h -> {
+                if (h instanceof BlockEntity be && h instanceof RestrictedFluidHandler && h instanceof SimpleFluidStorage v)
+                    return new FluidStorageTank(be,v.getFluidCapacity());
                 if (h instanceof BlockEntity be && h instanceof SimpleFluidStorage t)
                     return new FluidStorageTank(be,t.getFluidCapacity());
                 return null;

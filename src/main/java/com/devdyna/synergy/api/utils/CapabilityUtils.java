@@ -4,6 +4,8 @@ import com.devdyna.synergy.api.basebe.be.BETank;
 import com.devdyna.synergy.api.basebe.be.MachineBE;
 import com.devdyna.synergy.api.basebe.block.BlockTank;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
+import com.devdyna.synergy.api.beLogic.RestrictedFluidHandler;
+import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.machine.FluidTankStorage;
@@ -31,7 +33,10 @@ public class CapabilityUtils {
                     if (be instanceof SimpleFluidStorage)
                         return be.getData(zHandlers.FLUID_TANK);
 
-                    return null;
+                    if (be instanceof RestrictedFluidHandler h)
+                        return h.getFluidStorageRestricted();
+
+                    return (be != null) ? be.getData(zHandlers.FLUID_TANK) : null;
                 },
                 blocks);
     }
@@ -72,6 +77,9 @@ public class CapabilityUtils {
 
                     if (be instanceof MachineBE machineBE)
                         return machineBE.getAutomationItemHandler();
+
+                    if (be instanceof RestrictedItemHandler r)
+                        return r.getStorageRestricted();
 
                     return (be != null) ? be.getData(zHandlers.ITEM_STORAGE) : null;
 
