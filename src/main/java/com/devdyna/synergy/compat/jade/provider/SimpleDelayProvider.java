@@ -1,6 +1,7 @@
 package com.devdyna.synergy.compat.jade.provider;
 
 import com.devdyna.synergy.api.beLogic.SimpleTickerDelay;
+import com.devdyna.synergy.api.beLogic.TimeredRecipe;
 import com.devdyna.synergy.api.utils.TimeUtil;
 import com.devdyna.synergy.api.utils.x;
 import net.minecraft.nbt.CompoundTag;
@@ -20,7 +21,7 @@ public enum SimpleDelayProvider
     if (!nbt.contains("delay") || !nbt.contains("max"))
       return;
 
-    t.add(Component.literal(TimeUtil.getTimeValue(nbt.getInt("max")-nbt.getInt("delay"), 0, false)));
+    t.add(Component.literal(TimeUtil.getTimeValue(nbt.getInt("max")-nbt.getInt("delay"), 0, false)+ " left"));
 
   }
 
@@ -33,7 +34,7 @@ public enum SimpleDelayProvider
   public void appendServerData(CompoundTag c, BlockAccessor a) {
     var be = a.getBlockEntity();
 
-    if (be instanceof SimpleTickerDelay m && m.getTicker() != null) {
+    if (be instanceof SimpleTickerDelay m && m.getTicker() != null && !(be instanceof TimeredRecipe)) {
       c.putInt("delay", m.getTicker().get());
       c.putInt("max", m.getTicker().max());
     }
