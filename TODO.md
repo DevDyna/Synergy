@@ -26,7 +26,7 @@
 
 - [ ] guideme for machines and upgrades
 
-- [ ] safe decoration drying racks
+- [ ] safe decoration drying racks (?)
 
 - [ ] mechanical crushing tub (piston)
 
@@ -49,12 +49,12 @@
 
 - [ ] enchanting table-like that require enchanted books on chiseled bookshelf to be used
 
-- [ ] faucet & casting table (tcon like)
+- [x] faucet & casting table (tcon like)
 
-- [ ] foundry fuel efficiency and boost jei
+- [x] foundry fuel efficiency and boost jei
 
-- [ ] evaporation basin booster jei
-- [ ] drying racks booster jei
+- [ ] evaporation basin booster jei(?)
+- [ ] drying racks booster jei(?)
 
 ### Automation
 
