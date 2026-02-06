@@ -28,6 +28,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -47,26 +48,84 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         }
 
         protected void compatIngotsAndDusts(RecipeOutput c) {
-                raw_dust_smelt(c, x.rl("c", "raw_materials/tin"), zItems.TIN_DUST.get(),
+                // minecraft ores
+                oreProcessing(c, zFluids.MOLTEN_COPPER, x.rl("c", "raw_materials/copper"), zItems.COPPER_DUST.get(),
+                                Items.COPPER_INGOT, x.rl("c", "ingots/copper"), zItems.GOLD_DUST.get(), 0.25f);
+                oreProcessing(c, zFluids.MOLTEN_GOLD, x.rl("c", "raw_materials/gold"), zItems.GOLD_DUST.get(),
+                                Items.GOLD_INGOT, x.rl("c", "ingots/gold"), zItems.SILVER_DUST.get(), 0.25f);
+                oreProcessing(c, zFluids.MOLTEN_IRON, x.rl("c", "raw_materials/iron"), zItems.IRON_DUST.get(),
+                                Items.IRON_INGOT, x.rl("c", "ingots/iron"), zItems.NICKEL_DUST.get(), 0.25f);
+                // compat ores
+                oreProcessing(c, zFluids.MOLTEN_TIN, x.rl("c", "raw_materials/tin"), zItems.TIN_DUST.get(),
                                 zItems.TIN_INGOT.get(), x.rl("c", "ingots/tin"), zItems.IRON_DUST.get(), 0.25f);
-                raw_dust_smelt(c, x.rl("c", "raw_materials/silver"), zItems.SILVER_DUST.get(),
+                oreProcessing(c, zFluids.MOLTEN_SILVER, x.rl("c", "raw_materials/silver"), zItems.SILVER_DUST.get(),
                                 zItems.SILVER_INGOT.get(), x.rl("c", "ingots/silver"), zItems.TIN_DUST.get(), 0.25f);
-                raw_dust_smelt(c, x.rl("c", "raw_materials/nickel"), zItems.NICKEL_DUST.get(),
+                oreProcessing(c, zFluids.MOLTEN_NICKEL, x.rl("c", "raw_materials/nickel"), zItems.NICKEL_DUST.get(),
                                 zItems.NICKEL_INGOT.get(), x.rl("c", "ingots/nickel"), zItems.SILVER_DUST.get(), 0.25f);
-                raw_dust_smelt(c, x.rl("c", "raw_materials/iridium"), zItems.IRIDIUM_DUST.get(),
+                oreProcessing(c, zFluids.MOLTEN_IRIDIUM, x.rl("c", "raw_materials/iridium"), zItems.IRIDIUM_DUST.get(),
                                 zItems.IRIDIUM_INGOT.get(), x.rl("c", "ingots/iridium"), zItems.IRON_DUST.get(), 0.25f);
-                raw_dust_smelt(c, x.rl("c", "raw_materials/uranium"), zItems.URANIUM_DUST.get(),
+                oreProcessing(c, zFluids.MOLTEN_URANIUM, x.rl("c", "raw_materials/uranium"), zItems.URANIUM_DUST.get(),
                                 zItems.URANIUM_INGOT.get(), x.rl("c", "ingots/uranium"), zItems.LEAD_DUST.get(), 0.25f);
-                raw_dust_smelt(c, x.rl("c", "raw_materials/platinum"), zItems.PLATINUM_DUST.get(),
+                oreProcessing(c, zFluids.MOLTEN_PLATINUM, x.rl("c", "raw_materials/platinum"),
+                                zItems.PLATINUM_DUST.get(),
                                 zItems.PLATINUM_INGOT.get(), x.rl("c", "ingots/platinum"), zItems.IRIDIUM_DUST.get(),
                                 0.25f);
-                raw_dust_smelt(c, x.rl("c", "raw_materials/osmium"), zItems.OSMIUM_DUST.get(),
+                oreProcessing(c, zFluids.MOLTEN_OSMIUM, x.rl("c", "raw_materials/osmium"), zItems.OSMIUM_DUST.get(),
                                 zItems.OSMIUM_INGOT.get(), x.rl("c", "ingots/osmium"), zItems.IRON_DUST.get(), 0.25f);
-                raw_dust_smelt(c, x.rl("c", "raw_materials/aluminum"), zItems.ALUMINUM_DUST.get(),
+                oreProcessing(c, zFluids.MOLTEN_ALUMINUM, x.rl("c", "raw_materials/aluminum"),
+                                zItems.ALUMINUM_DUST.get(),
                                 zItems.ALUMINUM_INGOT.get(), x.rl("c", "ingots/aluminum"), zItems.IRON_DUST.get(),
                                 0.25f);
-                raw_dust_smelt(c, x.rl("c", "raw_materials/lead"), zItems.LEAD_DUST.get(),
+                oreProcessing(c, zFluids.MOLTEN_LEAD, x.rl("c", "raw_materials/lead"), zItems.LEAD_DUST.get(),
                                 zItems.LEAD_INGOT.get(), x.rl("c", "ingots/lead"), zItems.SILVER_DUST.get(), 0.25f);
+
+                moltenIngots(c, zItems.STEEL_INGOT.get(), zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
+
+        }
+
+        protected void ingredients(RecipeOutput c) {
+
+                gear(c, zItems.WOODEN_GEAR, Tags.Items.RODS_WOODEN, ItemTags.PLANKS);
+                gear(c, zItems.TIN_GEAR, zItemTag.INGOT_TIN, zFluids.MOLTEN_TIN);
+                gear(c, zItems.GOLD_GEAR, Tags.Items.INGOTS_GOLD, zFluids.MOLTEN_GOLD);
+                gear(c, zItems.IRON_GEAR, Tags.Items.INGOTS_IRON, zFluids.MOLTEN_IRON);
+                gear(c, zItems.LEAD_GEAR, zItemTag.INGOT_LEAD, zFluids.MOLTEN_LEAD);
+                gear(c, zItems.STEEL_GEAR, zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
+                gear(c, zItems.COPPER_GEAR, Tags.Items.INGOTS_COPPER, zFluids.MOLTEN_COPPER);
+                gear(c, zItems.NICKEL_GEAR, zItemTag.INGOT_NICKEL, zFluids.MOLTEN_NICKEL);
+
+                plate(Items.IRON_INGOT, zItems.IRON_PLATE.get(), c);
+                plate(Items.GOLD_INGOT, zItems.GOLD_PLATE.get(), c);
+                plate(Items.COPPER_INGOT, zItems.COPPER_PLATE.get(), c);
+                plate(zItemTag.INGOT_SILVER, zItems.SILVER_PLATE.get(), c);
+                plate(zItemTag.INGOT_STEEL, zItems.STEEL_PLATE.get(), c);
+                plate(zItemTag.INGOT_ADVANCEDALLOY, zItems.ADVANCED_ALLOY_PLATE.get(), c);
+                plate(zItemTag.GEMS_AQUAMARINE, zItems.AQUAMARINE_PLATE.get(), c);
+                plate(zItemTag.INGOT_WROUGHT_IRON, zItems.WROUGHT_IRON_PLATE.get(), c);
+
+                foil(c, zItemTag.PLATE_GOLD, zItems.GOLD_FOIL.get());
+                foil(c, zItemTag.PLATE_COPPER, zItems.COPPER_FOIL.get());
+                foil(c, zItemTag.PLATE_SILVER, zItems.SILVER_FOIL.get());
+                foil(c, zItemTag.PLATE_IRON, zItems.IRON_FOIL.get());
+
+                coil(c, zItemTag.FOIL_COPPER, zItems.COPPER_COIL.get());
+                coil(c, zItemTag.FOIL_GOLD, zItems.GOLD_COIL.get());
+                coil(c, zItemTag.FOIL_IRON, zItems.IRON_COIL.get());
+                coil(c, zItemTag.FOIL_SILVER, zItems.SILVER_COIL.get());
+
+                electron_tube(c, zItems.TIN_ELECTRON_TUBE, zFluids.MOLTEN_TIN);
+                electron_tube(c, zItems.GOLD_ELECTRON_TUBE, zFluids.MOLTEN_GOLD);
+                electron_tube(c, zItems.IRON_ELECTRON_TUBE, zFluids.MOLTEN_IRON);
+                electron_tube(c, zItems.LEAD_ELECTRON_TUBE, zFluids.MOLTEN_LEAD);
+                electron_tube(c, zItems.STEEL_ELECTRON_TUBE, zFluids.MOLTEN_STEEL);
+                electron_tube(c, zItems.COPPER_ELECTRON_TUBE, zFluids.MOLTEN_COPPER);
+                electron_tube(c, zItems.NICKEL_ELECTRON_TUBE, zFluids.MOLTEN_NICKEL);
+                electron_tube(c, zItems.OSMIUM_ELECTRON_TUBE, zFluids.MOLTEN_OSMIUM);
+                electron_tube(c, zItems.SILVER_ELECTRON_TUBE, zFluids.MOLTEN_SILVER);
+                electron_tube(c, zItems.IRIDIUM_ELECTRON_TUBE, zFluids.MOLTEN_IRIDIUM);
+                electron_tube(c, zItems.URANIUM_ELECTRON_TUBE, zFluids.MOLTEN_URANIUM);
+                electron_tube(c, zItems.ALUMINUM_ELECTRON_TUBE, zFluids.MOLTEN_ALUMINUM);
+                electron_tube(c, zItems.PLATINUM_ELECTRON_TUBE, zFluids.MOLTEN_PLATINUM);
         }
 
         protected void nuggetIngotBlock(RecipeOutput c, ItemLike nugget, ItemLike ingot, ItemLike block) {
@@ -164,7 +223,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                                CastingTableBuilder.of()
+                CastingTableBuilder.of()
                                 .fluid(fluid, 180)
                                 .input(zItems.ELECTRON_TUBE_BASE)
                                 .output(tube)
@@ -175,63 +234,68 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot, Item secondary,
-                        float chance) {
+        // @Deprecated
+        // protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust,
+        // ItemLike ingot, Item secondary,
+        // float chance) {
 
-                QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
-                                .output(x.item(dust.asItem(), 2))
-                                .unlockedBy().save(c, "_from_raw");
+        // QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
+        // .output(x.item(dust.asItem(), 2))
+        // .unlockedBy().save(c, "_from_raw");
 
-                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
-                                .output(x.item(dust.asItem()))
-                                .unlockedBy().save(c, "_from_ingot");
+        // QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+        // .output(x.item(dust.asItem()))
+        // .unlockedBy().save(c, "_from_ingot");
 
-                MaceratorRecipeBuilder.of().input(x.itemSized(raw.asItem()))
-                                .output(x.item(dust.asItem(), 3))
-                                .secondary(secondary)
-                                .chance(chance)
-                                .unlockedBy().save(c, "_from_raw");
+        // MaceratorRecipeBuilder.of().input(x.itemSized(raw.asItem()))
+        // .output(x.item(dust.asItem(), 3))
+        // .secondary(secondary)
+        // .chance(chance)
+        // .unlockedBy().save(c, "_from_raw");
 
-                MaceratorRecipeBuilder.of().input(x.itemSized(ingot.asItem()))
-                                .output(x.item(dust.asItem()))
-                                .unlockedBy().save(c, "_from_ingot");
+        // MaceratorRecipeBuilder.of().input(x.itemSized(ingot.asItem()))
+        // .output(x.item(dust.asItem()))
+        // .unlockedBy().save(c, "_from_ingot");
 
-                doubleSmelt(c, dust, ingot);
-        }
+        // doubleSmelt(c, dust, ingot);
+        // }
 
-        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot,
-                        Item secondary, float chance) {
+        // @Deprecated
+        // protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike
+        // dust, ItemLike ingot,
+        // Item secondary, float chance) {
 
-                QuernMillingBuilder.of().input(x.ingredient(raw))
-                                .output(x.item(dust.asItem(), 2))
-                                .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }),
-                                                "_from_raw");
+        // QuernMillingBuilder.of().input(x.ingredient(raw))
+        // .output(x.item(dust.asItem(), 2))
+        // .unlockedBy().save(c.withConditions(
+        // new ICondition[] {
+        // new NotCondition(
+        // new TagEmptyCondition(raw)) }),
+        // "_from_raw");
 
-                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
-                                .output(x.item(dust.asItem()))
-                                .unlockedBy().save(c, "_from_ingot");
+        // QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+        // .output(x.item(dust.asItem()))
+        // .unlockedBy().save(c, "_from_ingot");
 
-                MaceratorRecipeBuilder.of().input(x.itemSized(raw))
-                                .output(x.item(dust.asItem(), 3))
-                                .secondary(secondary)
-                                .chance(chance)
-                                .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }),
-                                                "_from_raw");
+        // MaceratorRecipeBuilder.of().input(x.itemSized(raw))
+        // .output(x.item(dust.asItem(), 3))
+        // .secondary(secondary)
+        // .chance(chance)
+        // .unlockedBy().save(c.withConditions(
+        // new ICondition[] {
+        // new NotCondition(
+        // new TagEmptyCondition(raw)) }),
+        // "_from_raw");
 
-                MaceratorRecipeBuilder.of().input(x.itemSized(ingot.asItem()))
-                                .output(x.item(dust.asItem()))
-                                .unlockedBy().save(c, "_from_ingot");
+        // MaceratorRecipeBuilder.of().input(x.itemSized(ingot.asItem()))
+        // .output(x.item(dust.asItem()))
+        // .unlockedBy().save(c, "_from_ingot");
 
-                doubleSmelt(c, dust, ingot);
-        }
+        // doubleSmelt(c, dust, ingot);
+        // }
 
-        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot,
+        protected void oreProcessing(RecipeOutput c, FluidRegister fluid, ResourceLocation raw, ItemLike dust,
+                        ItemLike ingot,
                         ResourceLocation ingotTag, Item secondary, float chance) {
 
                 QuernMillingBuilder.of().input(x.ingredient(raw))
@@ -269,59 +333,116 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 "_from_ingot");
 
                 doubleSmelt(c, dust, ingot);
+
+                MelterRecipeBuilder.of()
+                                .input(x.itemSized(ingotTag))
+                                .fluid(fluid, 90)
+                                .unlockedBy()
+                                .save(c, "_from_ingot");
+
+                FoundryBuilder.of()
+                                .input(x.ingredient(ingotTag))
+                                .fluid(fluid, 90)
+                                .unlockedBy()
+                                .save(c, "_from_ingot");
+
+                MelterRecipeBuilder.of()
+                                .input(x.itemSized(raw))
+                                .fluid(fluid, 180)
+                                .unlockedBy()
+                                .save(c, "_from_raw");
+
+                FoundryBuilder.of()
+                                .input(x.ingredient(raw))
+                                .fluid(fluid, 180)
+                                .unlockedBy()
+                                .save(c, "_from_raw");
+
+                MelterRecipeBuilder.of()
+                                .input(x.itemSized(dust))
+                                .fluid(fluid, 90)
+                                .unlockedBy()
+                                .save(c, "_from_dust");
+
+                FoundryBuilder.of()
+                                .input(x.ingredient(dust))
+                                .fluid(fluid, 90)
+                                .unlockedBy()
+                                .save(c, "_from_dust");
+
+                CasterRecipeBuilder.of()
+                                .fluid(fluid, 90)
+                                .input(zItems.MOLD_INGOT)
+                                .output(ingot)
+                                .unlockedBy()
+                                .save(c);
+
+                CastingTableBuilder.of()
+                                .fluid(fluid, 90)
+                                .input(zItems.MOLD_INGOT)
+                                .output(ingot)
+                                .unlockedBy()
+                                .save(c);
+
         }
 
-        protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust, ItemLike ingot) {
+        // @Deprecated
+        // protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust,
+        // ItemLike ingot) {
 
-                QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
-                                .output(x.item(dust.asItem(), 2))
-                                .unlockedBy().save(c, "_from_raw");
+        // QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
+        // .output(x.item(dust.asItem(), 2))
+        // .unlockedBy().save(c, "_from_raw");
 
-                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
-                                .output(x.item(dust.asItem()))
-                                .unlockedBy().save(c, "_from_ingot");
+        // QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+        // .output(x.item(dust.asItem()))
+        // .unlockedBy().save(c, "_from_ingot");
 
-                doubleSmelt(c, dust, ingot);
-        }
+        // doubleSmelt(c, dust, ingot);
+        // }
 
-        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot) {
+        // @Deprecated
+        // protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike
+        // dust, ItemLike ingot) {
 
-                QuernMillingBuilder.of().input(x.ingredient(raw))
-                                .output(x.item(dust.asItem(), 2))
-                                .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }),
-                                                "_from_raw");
+        // QuernMillingBuilder.of().input(x.ingredient(raw))
+        // .output(x.item(dust.asItem(), 2))
+        // .unlockedBy().save(c.withConditions(
+        // new ICondition[] {
+        // new NotCondition(
+        // new TagEmptyCondition(raw)) }),
+        // "_from_raw");
 
-                QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
-                                .output(x.item(dust.asItem()))
-                                .unlockedBy().save(c, "_from_ingot");
+        // QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
+        // .output(x.item(dust.asItem()))
+        // .unlockedBy().save(c, "_from_ingot");
 
-                doubleSmelt(c, dust, ingot);
-        }
+        // doubleSmelt(c, dust, ingot);
+        // }
 
-        protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike dust, ItemLike ingot,
-                        ResourceLocation ingotTag) {
+        // @Deprecated
+        // protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike
+        // dust, ItemLike ingot,
+        // ResourceLocation ingotTag) {
 
-                QuernMillingBuilder.of().input(x.ingredient(raw))
-                                .output(x.item(dust.asItem(), 2))
-                                .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }),
-                                                "_from_raw");
+        // QuernMillingBuilder.of().input(x.ingredient(raw))
+        // .output(x.item(dust.asItem(), 2))
+        // .unlockedBy().save(c.withConditions(
+        // new ICondition[] {
+        // new NotCondition(
+        // new TagEmptyCondition(raw)) }),
+        // "_from_raw");
 
-                QuernMillingBuilder.of().input(x.ingredient(ingotTag))
-                                .output(x.item(dust.asItem()))
-                                .unlockedBy().save(c.withConditions(
-                                                new ICondition[] {
-                                                                new NotCondition(
-                                                                                new TagEmptyCondition(ingotTag)) }),
-                                                "_from_ingot");
+        // QuernMillingBuilder.of().input(x.ingredient(ingotTag))
+        // .output(x.item(dust.asItem()))
+        // .unlockedBy().save(c.withConditions(
+        // new ICondition[] {
+        // new NotCondition(
+        // new TagEmptyCondition(ingotTag)) }),
+        // "_from_ingot");
 
-                doubleSmelt(c, dust, ingot);
-        }
+        // doubleSmelt(c, dust, ingot);
+        // }
 
         protected void doubleSmelt(RecipeOutput c, ItemLike input, ItemLike output) {
                 SimpleCookingRecipeBuilder.blasting(x.ingredient(input.asItem()), MISC, output.asItem(), 0.1F, 100)

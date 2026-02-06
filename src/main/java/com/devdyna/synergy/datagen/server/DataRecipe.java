@@ -65,16 +65,8 @@ public class DataRecipe extends ExtraRecipeProvider {
                 droplets(c);
                 brickRecipes(c);
                 lasers(c);
-
-                foil(c, zItemTag.PLATE_GOLD, zItems.GOLD_FOIL.get());
-                foil(c, zItemTag.PLATE_COPPER, zItems.COPPER_FOIL.get());
-                foil(c, zItemTag.PLATE_SILVER, zItems.SILVER_FOIL.get());
-                foil(c, zItemTag.PLATE_IRON, zItems.IRON_FOIL.get());
-
-                coil(c, zItemTag.FOIL_COPPER, zItems.COPPER_COIL.get());
-                coil(c, zItemTag.FOIL_GOLD, zItems.GOLD_COIL.get());
-                coil(c, zItemTag.FOIL_IRON, zItems.IRON_COIL.get());
-                coil(c, zItemTag.FOIL_SILVER, zItems.SILVER_COIL.get());
+                ingredients(c);
+                
 
                 nodeRecipe(c, zBlocks.ITEM_TRANSFER.get(), Blocks.CHEST);
                 nodeRecipe(c, zBlocks.ITEM_PROVIDER.get(), Items.IRON_PICKAXE);
@@ -279,15 +271,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.GHOUL_HEART)
                                 .unlockedBy().save(c);
 
-                plate(Items.IRON_INGOT, zItems.IRON_PLATE.get(), c);
-                plate(Items.GOLD_INGOT, zItems.GOLD_PLATE.get(), c);
-                plate(Items.COPPER_INGOT, zItems.COPPER_PLATE.get(), c);
-                plate(zItemTag.INGOT_SILVER, zItems.SILVER_PLATE.get(), c);
-                plate(zItemTag.INGOT_STEEL, zItems.STEEL_PLATE.get(), c);
-                plate(zItemTag.INGOT_ADVANCEDALLOY, zItems.ADVANCED_ALLOY_PLATE.get(), c);
-                plate(zItemTag.GEMS_AQUAMARINE, zItems.AQUAMARINE_PLATE.get(), c);
-                plate(zItemTag.INGOT_WROUGHT_IRON, zItems.WROUGHT_IRON_PLATE.get(), c);
-
+              
                 packUnpack(c, zItems.WASTE_FRAGMENT.get(), zItems.WASTE.get(), false);
                 packUnpack(c, zItems.SILICON_SHARD.get(), zItems.RAW_SILICON.get(), false);
 
@@ -518,12 +502,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                raw_dust_smelt(c, Items.RAW_COPPER, zItems.COPPER_DUST.get(), Items.COPPER_INGOT,
-                                zItems.GOLD_DUST.get(), 0.25f);
-                raw_dust_smelt(c, Items.RAW_GOLD, zItems.GOLD_DUST.get(), Items.GOLD_INGOT, zItems.SILVER_DUST.get(),
-                                0.25f);
-                raw_dust_smelt(c, Items.RAW_IRON, zItems.IRON_DUST.get(), Items.IRON_INGOT, zItems.NICKEL_DUST.get(),
-                                0.25f);
+                
 
                 doubleSmelt(c, zItems.ANCIENT_DEBRIS_DUST.get(), Items.NETHERITE_SCRAP);
 
@@ -547,15 +526,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .define('T', Items.STICK)
                                 .unlockedBy(ID, has(zItems.WOODEN_GEAR.get()))
                                 .save(c);
-
-                gear(c, zItems.WOODEN_GEAR, Tags.Items.RODS_WOODEN, ItemTags.PLANKS);
-                gear(c, zItems.TIN_GEAR, zItemTag.INGOT_TIN, zFluids.MOLTEN_TIN);
-                gear(c, zItems.GOLD_GEAR, Tags.Items.INGOTS_GOLD, zFluids.MOLTEN_GOLD);
-                gear(c, zItems.IRON_GEAR, Tags.Items.INGOTS_IRON, zFluids.MOLTEN_IRON);
-                gear(c, zItems.LEAD_GEAR, zItemTag.INGOT_LEAD, zFluids.MOLTEN_LEAD);
-                gear(c, zItems.STEEL_GEAR, zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
-                gear(c, zItems.COPPER_GEAR, Tags.Items.INGOTS_COPPER, zFluids.MOLTEN_COPPER);
-                gear(c, zItems.NICKEL_GEAR, zItemTag.INGOT_NICKEL, zFluids.MOLTEN_NICKEL);
 
                 nuggetIngotBlock(c, zItems.STEEL_NUGGET.get(), zItems.STEEL_INGOT.get(),
                                 zBlocks.STEEL_BLOCK.get().asItem());
@@ -1384,34 +1354,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .consumeItemInput()
                                 .unlockedBy()
                                 .save(c);
-
-                moltenIngots(c, zItems.TIN_INGOT.get(), zItemTag.INGOT_TIN, zFluids.MOLTEN_TIN);
-                moltenIngots(c, Items.GOLD_INGOT, Tags.Items.INGOTS_GOLD, zFluids.MOLTEN_GOLD);
-                moltenIngots(c, Items.IRON_INGOT, Tags.Items.INGOTS_IRON, zFluids.MOLTEN_IRON);
-                moltenIngots(c, zItems.LEAD_INGOT.get(), zItemTag.INGOT_LEAD, zFluids.MOLTEN_LEAD);
-                moltenIngots(c, zItems.STEEL_INGOT.get(), zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
-                moltenIngots(c, Items.COPPER_INGOT, Tags.Items.INGOTS_COPPER, zFluids.MOLTEN_COPPER);
-                moltenIngots(c, zItems.NICKEL_INGOT.get(), zItemTag.INGOT_NICKEL, zFluids.MOLTEN_NICKEL);
-                moltenIngots(c, zItems.OSMIUM_INGOT.get(), zItemTag.INGOT_OSMIUM, zFluids.MOLTEN_OSMIUM);
-                moltenIngots(c, zItems.SILVER_INGOT.get(), zItemTag.INGOT_SILVER, zFluids.MOLTEN_SILVER);
-                moltenIngots(c, zItems.IRIDIUM_INGOT.get(), zItemTag.INGOT_IRIDIUM, zFluids.MOLTEN_IRIDIUM);
-                moltenIngots(c, zItems.URANIUM_INGOT.get(), zItemTag.INGOT_URANIUM, zFluids.MOLTEN_URANIUM);
-                moltenIngots(c, zItems.ALUMINUM_INGOT.get(), zItemTag.INGOT_ALUMINUM, zFluids.MOLTEN_ALUMINUM);
-                moltenIngots(c, zItems.PLATINUM_INGOT.get(), zItemTag.INGOT_PLATINUM, zFluids.MOLTEN_PLATINUM);
-
-                electron_tube(c, zItems.TIN_ELECTRON_TUBE, zFluids.MOLTEN_TIN);
-                electron_tube(c, zItems.GOLD_ELECTRON_TUBE, zFluids.MOLTEN_GOLD);
-                electron_tube(c, zItems.IRON_ELECTRON_TUBE, zFluids.MOLTEN_IRON);
-                electron_tube(c, zItems.LEAD_ELECTRON_TUBE, zFluids.MOLTEN_LEAD);
-                electron_tube(c, zItems.STEEL_ELECTRON_TUBE, zFluids.MOLTEN_STEEL);
-                electron_tube(c, zItems.COPPER_ELECTRON_TUBE, zFluids.MOLTEN_COPPER);
-                electron_tube(c, zItems.NICKEL_ELECTRON_TUBE, zFluids.MOLTEN_NICKEL);
-                electron_tube(c, zItems.OSMIUM_ELECTRON_TUBE, zFluids.MOLTEN_OSMIUM);
-                electron_tube(c, zItems.SILVER_ELECTRON_TUBE, zFluids.MOLTEN_SILVER);
-                electron_tube(c, zItems.IRIDIUM_ELECTRON_TUBE, zFluids.MOLTEN_IRIDIUM);
-                electron_tube(c, zItems.URANIUM_ELECTRON_TUBE, zFluids.MOLTEN_URANIUM);
-                electron_tube(c, zItems.ALUMINUM_ELECTRON_TUBE, zFluids.MOLTEN_ALUMINUM);
-                electron_tube(c, zItems.PLATINUM_ELECTRON_TUBE, zFluids.MOLTEN_PLATINUM);
 
                 ShapedRecipeBuilder.shaped(MISC, zMachines.CASTING_FACTORY.block().get())
                                 .pattern(" Q ")
