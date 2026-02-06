@@ -92,6 +92,10 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
         return ItemStack.EMPTY;
     }
 
+    /**
+     * TODO
+     * unused but can be useful on a future automation
+     */
     public ItemStack getNextDroppedItem() {
         if (level == null)
             return ItemStack.EMPTY;
