@@ -354,25 +354,37 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .input(x.itemSized(ingotTag))
                                 .fluid(fluid, 90)
                                 .unlockedBy()
-                                .save(c, "_from_ingot");
+                                .save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(ingotTag)) }), "_from_ingot");
 
                 FoundryBuilder.of()
                                 .input(x.ingredient(ingotTag))
                                 .fluid(fluid, 90)
                                 .unlockedBy()
-                                .save(c, "_from_ingot");
+                                .save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(ingotTag)) }), "_from_ingot");
 
                 MelterRecipeBuilder.of()
                                 .input(x.itemSized(raw))
                                 .fluid(fluid, 180)
                                 .unlockedBy()
-                                .save(c, "_from_raw");
+                                .save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(raw)) }), "_from_raw");
 
                 FoundryBuilder.of()
                                 .input(x.ingredient(raw))
                                 .fluid(fluid, 180)
                                 .unlockedBy()
-                                .save(c, "_from_raw");
+                                .save(c.withConditions(
+                                                new ICondition[] {
+                                                                new NotCondition(
+                                                                                new TagEmptyCondition(raw)) }), "_from_raw");
 
                 MelterRecipeBuilder.of()
                                 .input(x.itemSized(dust))
