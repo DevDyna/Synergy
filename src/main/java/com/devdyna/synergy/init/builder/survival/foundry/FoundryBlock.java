@@ -120,20 +120,6 @@ public class FoundryBlock extends TickingBlock
         return ItemInteractionResult.FAIL;
     }
 
-    // @Override
-    // protected void neighborChanged(BlockState state, Level level, BlockPos pos,
-    // Block neighborBlock,
-    // BlockPos neighborPos, boolean movedByPiston) {
-    // level.setBlockAndUpdate(pos,
-    // state.setValue(BlockStateProperties.ENABLED, checkFuelTank(level, pos)));
-    // }
-
-    // private boolean checkFuelTank(Level level, BlockPos pos) {
-    // return level.getBlockState(pos.below()).is(zBlocks.FUEL_TANK)
-    // && level.getBlockEntity(pos.below()) instanceof FluidTankBE tank
-    // && tank.getFluidStorage().getFluid().is(zFluidTags.MELTER_FUELS);
-    // }
-
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         if (state.getValue(BlockStateProperties.ENABLED)) {
