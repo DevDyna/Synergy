@@ -1,0 +1,11 @@
+{
+  "type": "synergy:foundry",
+  "fluid": {
+    "amount": 45,
+    "id": "synergy:molten_silver_source"
+  },
+  "input": {
+    "tag": "c:plates/silver"
+  },
+  "ticks": 100
+}

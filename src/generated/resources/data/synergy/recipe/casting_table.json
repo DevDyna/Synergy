@@ -4,14 +4,11 @@
   "key": {
     "I": {
       "item": "synergy:wrought_iron_ingot"
-    },
-    "T": {
-      "item": "synergy:fuel_tank"
     }
   },
   "pattern": [
-    "ITI",
     "III",
+    "I I",
     "I I"
   ],
   "result": {

@@ -1,0 +1,11 @@
+{
+  "type": "synergy:foundry",
+  "fluid": {
+    "amount": 45,
+    "id": "synergy:molten_steel_source"
+  },
+  "input": {
+    "tag": "c:plates/steel"
+  },
+  "ticks": 100
+}

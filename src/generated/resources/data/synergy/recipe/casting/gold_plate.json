@@ -1,0 +1,16 @@
+{
+  "type": "synergy:casting_table",
+  "consume_input": false,
+  "fluid": {
+    "amount": 45,
+    "fluid": "synergy:molten_gold_source"
+  },
+  "input": {
+    "item": "synergy:plate_mold"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:gold_plate"
+  },
+  "ticks": 40
+}

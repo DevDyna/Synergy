@@ -1,0 +1,11 @@
+{
+  "type": "synergy:foundry",
+  "fluid": {
+    "amount": 45,
+    "id": "synergy:molten_gold_source"
+  },
+  "input": {
+    "tag": "c:plates/gold"
+  },
+  "ticks": 100
+}
