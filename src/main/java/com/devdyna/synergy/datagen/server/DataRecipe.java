@@ -1613,10 +1613,9 @@ public class DataRecipe extends ExtraRecipeProvider {
 
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.CASTING_TABLE.get().asItem())
-                                .pattern("ITI")
                                 .pattern("III")
                                 .pattern("I I")
-                                .define('T', zBlocks.FUEL_TANK.get())
+                                .pattern("I I")
                                 .define('I', zItems.WROUGHT_IRON_INGOT.get())
                                 .unlockedBy(ID, has(zItems.WROUGHT_IRON_INGOT.get()))
                                 .save(c);
