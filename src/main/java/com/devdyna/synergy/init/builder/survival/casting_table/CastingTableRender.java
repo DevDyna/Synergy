@@ -56,7 +56,7 @@ public class CastingTableRender<T extends CastingTableBE> implements BlockEntity
                     .rotateYN(rotation)
                     .rotateXN(90)
                     .move(pos.x, pos.y + 0.05, pos.z)
-                    .scale(1.75f, 1.75f, 1.75f)
+                    .scale(2, 2, 2)
                     .build(itemRenderer, poseStack, light, overlay, buffer, be.getLevel());
 
         }
