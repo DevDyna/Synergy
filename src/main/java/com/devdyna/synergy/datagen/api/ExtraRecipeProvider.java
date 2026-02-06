@@ -86,6 +86,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
         protected void ingredients(RecipeOutput c) {
 
                 gear(c, zItems.WOODEN_GEAR, Tags.Items.RODS_WOODEN, ItemTags.PLANKS);
+
                 gear(c, zItems.TIN_GEAR, zItemTag.INGOT_TIN, zFluids.MOLTEN_TIN);
                 gear(c, zItems.GOLD_GEAR, Tags.Items.INGOTS_GOLD, zFluids.MOLTEN_GOLD);
                 gear(c, zItems.IRON_GEAR, Tags.Items.INGOTS_IRON, zFluids.MOLTEN_IRON);
@@ -102,6 +103,12 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 plate(zItemTag.INGOT_ADVANCEDALLOY, zItems.ADVANCED_ALLOY_PLATE.get(), c);
                 plate(zItemTag.GEMS_AQUAMARINE, zItems.AQUAMARINE_PLATE.get(), c);
                 plate(zItemTag.INGOT_WROUGHT_IRON, zItems.WROUGHT_IRON_PLATE.get(), c);
+
+                moltenPlates(c, zItems.IRON_PLATE.get(), zItemTag.PLATE_IRON, zFluids.MOLTEN_IRON);
+                moltenPlates(c, zItems.GOLD_PLATE.get(), zItemTag.PLATE_GOLD, zFluids.MOLTEN_GOLD);
+                moltenPlates(c, zItems.COPPER_PLATE.get(), zItemTag.PLATE_COPPER, zFluids.MOLTEN_COPPER);
+                moltenPlates(c, zItems.SILVER_PLATE.get(), zItemTag.PLATE_SILVER, zFluids.MOLTEN_SILVER);
+                moltenPlates(c, zItems.STEEL_PLATE.get(), zItemTag.PLATE_STEEL, zFluids.MOLTEN_STEEL);
 
                 foil(c, zItemTag.PLATE_GOLD, zItems.GOLD_FOIL.get());
                 foil(c, zItemTag.PLATE_COPPER, zItems.COPPER_FOIL.get());
@@ -182,31 +189,40 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
         }
 
-        protected void moltenIngots(RecipeOutput c, Item ingot, TagKey<Item> input, FluidRegister fluid) {
+        protected void moltenIngots(RecipeOutput c, Item ingot, TagKey<Item> ingot_tag, FluidRegister fluid) {
+                moltenRecipes(c, "_from_ingot", zItems.MOLD_INGOT.get(), ingot, ingot_tag, fluid, 90);
+        }
+
+        protected void moltenPlates(RecipeOutput c, Item plate, TagKey<Item> plate_tag, FluidRegister fluid) {
+                moltenRecipes(c, "_from_plate", zItems.MOLD_PLATE.get(), plate, plate_tag, fluid, 45);
+        }
+
+        protected void moltenRecipes(RecipeOutput c, String suffix, Item mold, Item result, TagKey<Item> input,
+                        FluidRegister fluid, int amount) {
 
                 MelterRecipeBuilder.of()
                                 .input(input)
-                                .fluid(fluid, 90)
+                                .fluid(fluid, amount)
                                 .unlockedBy()
-                                .save(c, "_from_ingot");
+                                .save(c, suffix);
 
                 FoundryBuilder.of()
                                 .input(input)
-                                .fluid(fluid, 90)
+                                .fluid(fluid, amount)
                                 .unlockedBy()
-                                .save(c, "_from_ingot");
+                                .save(c, suffix);
 
                 CasterRecipeBuilder.of()
-                                .fluid(fluid, 90)
-                                .input(zItems.MOLD_INGOT)
-                                .output(ingot)
+                                .fluid(fluid, amount)
+                                .input(mold)
+                                .output(result)
                                 .unlockedBy()
                                 .save(c);
 
                 CastingTableBuilder.of()
-                                .fluid(fluid, 90)
-                                .input(zItems.MOLD_INGOT)
-                                .output(ingot)
+                                .fluid(fluid, amount)
+                                .input(mold)
+                                .output(result)
                                 .unlockedBy()
                                 .save(c);
 
