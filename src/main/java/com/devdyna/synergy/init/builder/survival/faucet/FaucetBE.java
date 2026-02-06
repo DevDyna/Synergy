@@ -54,16 +54,12 @@ public class FaucetBE extends TickingBE {
 
             var moved = FluidUtil.tryFluidTransfer(out, in, 25, true);
 
-            // LogUtil.info("m " + moved);
-
             if (moved.isEmpty())
                 set(false);
         }
     }
 
     public boolean canActivate() {
-        // if (level == null)
-        // return false;
 
         IFluidHandler in = Capabilities.FluidHandler.BLOCK.getCapability(level,
                 getBlockPos().relative(inputDir),
@@ -79,8 +75,6 @@ public class FaucetBE extends TickingBE {
         if (in == null || out == null)
             return false;
 
-        // LogUtil.info("res " + !FluidUtil.tryFluidTransfer(out, in, 25, false).isEmpty());
-
         return !FluidUtil.tryFluidTransfer(out, in, 25, false).isEmpty();
     }
 
@@ -93,10 +87,8 @@ public class FaucetBE extends TickingBE {
     }
 
     public ItemInteractionResult onClick() {
-        // LogUtil.info("click try");
         if (canActivate()) {
             set(true);
-            // LogUtil.info("click success");
             return ItemInteractionResult.SUCCESS;
         }
 
