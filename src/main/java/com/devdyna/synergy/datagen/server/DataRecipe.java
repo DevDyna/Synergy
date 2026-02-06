@@ -1679,7 +1679,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItems.WROUGHT_IRON_INGOT.get()))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.FAUCET.get().asItem())
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.FAUCET.get().asItem(),3)
                                 .pattern("I I")
                                 .pattern(" I ")
                                 .define('I', zItems.WROUGHT_IRON_INGOT.get())
