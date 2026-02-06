@@ -1242,8 +1242,8 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.FUEL_TANK.get())
-                                .define('I', Tags.Items.INGOTS_IRON)
-                                .define('#', Tags.Items.NUGGETS_IRON)
+                                .define('I', zItems.WROUGHT_IRON_INGOT.get())
+                                .define('#', zItems.WROUGHT_IRON_NUGGET.get())
                                 .define('G', zBlocks.SIMPLE_TANK.get())
                                 .pattern("I#I")
                                 .pattern("#G#")
@@ -1612,7 +1612,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern("SSS")
                                 .define('F', zBlocks.FUEL_TANK.get())
                                 .define('S', Items.SMOOTH_STONE)
-                                .define('I', Items.IRON_INGOT)
+                                .define('I', zItems.WROUGHT_IRON_INGOT.get())
                                 .unlockedBy(ID, has(zBlocks.FUEL_TANK.get()))
                                 .save(c);
 
@@ -1675,8 +1675,15 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern("III")
                                 .pattern("I I")
                                 .define('T', zBlocks.FUEL_TANK.get())
-                                .define('I', Items.IRON_INGOT)
-                                .unlockedBy(ID, has(zBlocks.FUEL_TANK.get()))
+                                .define('I', zItems.WROUGHT_IRON_INGOT.get())
+                                .unlockedBy(ID, has(zItems.WROUGHT_IRON_INGOT.get()))
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.FAUCET.get().asItem())
+                                .pattern("I I")
+                                .pattern(" I ")
+                                .define('I', zItems.WROUGHT_IRON_INGOT.get())
+                                .unlockedBy(ID, has(zItems.WROUGHT_IRON_INGOT.get()))
                                 .save(c);
 
         }
