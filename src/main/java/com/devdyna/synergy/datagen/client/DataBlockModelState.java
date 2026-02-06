@@ -114,6 +114,9 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 horizontalBlock(zBlocks.CASTING_TABLE.get(), models()
                                 .getExistingFile(modLoc("block/casting_table")));
 
+                horizontalBlock(zBlocks.FAUCET.get(), models()
+                                .getExistingFile(modLoc("block/faucet")));
+
                 directionalBlock(zBlocks.BASIC_MACHINE_FRAME.get(),
                                 models().cubeBottomTop(zBlocks.BASIC_MACHINE_FRAME.getRegisteredName(),
                                                 modLoc("block/machine/frame/basic/side"),

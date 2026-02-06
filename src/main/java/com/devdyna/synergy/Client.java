@@ -23,6 +23,7 @@ import com.devdyna.synergy.init.builder.survival.casting_table.CastingTableRende
 import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubRender;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackRender;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinRender;
+import com.devdyna.synergy.init.builder.survival.faucet.FaucetRender;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryRender;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zContainer;
@@ -61,6 +62,7 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.DRYING_RACK.get(), DryingRackRender::new);
         event.registerBlockEntityRenderer(zBlockEntities.FOUNDRY.get(), FoundryRender::new);
         event.registerBlockEntityRenderer(zBlockEntities.CASTING_TABLE.get(), CastingTableRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.FAUCET.get(), FaucetRender::new);
 
     }
 

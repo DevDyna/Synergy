@@ -29,6 +29,7 @@ import com.devdyna.synergy.init.builder.survival.casting_table.CastingTableBE;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBE;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBE;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBE;
+import com.devdyna.synergy.init.builder.survival.faucet.FaucetBE;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -180,5 +181,9 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FoundryBE>> FOUNDRY = Material
                         .createBlockEntity(zStatic.Blocks.foundry, FoundryBE::new,
                                         zBlocks.FOUNDRY);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FaucetBE>> FAUCET = Material
+                        .createBlockEntity(zStatic.Blocks.faucet, FaucetBE::new,
+                                        zBlocks.FAUCET);
 
 }

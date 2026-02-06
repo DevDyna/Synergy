@@ -417,6 +417,7 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jei.fuel.speed", "Base recipe speed");
 
                 add(ID + "." + zStatic.Blocks.casting_table, TIP_COLOR + "Use molds to solidify liquids");
+                add(ID + "." + zStatic.Blocks.faucet, TIP_COLOR + "Move fluids when active");
 
         }
 

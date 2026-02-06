@@ -130,10 +130,12 @@ public class CreativeTabs {
         // ---------------------------------------------------------- //
         // SURVIVAL
         if (event.getTabKey() == zCreativeTab.SURVIVAL.getKey()) {
-            event.accept(zBlocks.FOUNDRY.get());
-            event.accept(zBlocks.FUEL_TANK.get());
             event.accept(zBlocks.CRUSHING_TUB.get());
             event.accept(zBlocks.EVAPORATION_BASIN.get());
+            event.accept(zBlocks.FOUNDRY.get());
+            event.accept(zBlocks.FUEL_TANK.get());
+            event.accept(zBlocks.CASTING_TABLE.get());
+            event.accept(zBlocks.FAUCET.get());
             zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get).forEach(event::accept);
         }
 

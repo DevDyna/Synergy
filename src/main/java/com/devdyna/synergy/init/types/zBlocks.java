@@ -21,6 +21,7 @@ import com.devdyna.synergy.init.builder.survival.casting_table.CastingTableBlock
 import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBlock;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBlock;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBlock;
+import com.devdyna.synergy.init.builder.survival.faucet.FaucetBlock;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
 import com.devdyna.synergy.init.builder.*;
@@ -523,6 +524,10 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> CASTING_TABLE = Material.registerItemBlock(
                         zStatic.Blocks.casting_table,
                         () -> new CastingTableBlock());
+
+        public static final DeferredHolder<Block, Block> FAUCET = Material.registerItemBlock(
+                        zStatic.Blocks.faucet,
+                        () -> new FaucetBlock());
 
         public static final DeferredHolder<Block, Block> FOUNDRY = Material.registerItemBlock(
                         zStatic.Blocks.foundry,

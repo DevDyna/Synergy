@@ -230,6 +230,7 @@ public class zStatic {
 
         public static String void_box = "void_box";
         public static String foundry = "foundry";
+        public static String faucet = "faucet";
         
 
         public static String urn = "urn";

@@ -192,6 +192,8 @@ public class DataItemModel extends ExtraItemModelProvider {
 
                 withExistingParent(zBlocks.CASTING_TABLE.getRegisteredName(),
                                 modLoc("block/casting_table"));
+                withExistingParent(zBlocks.FAUCET.getRegisteredName(),
+                                modLoc("block/faucet"));
 
                 zStatic.ALL_DRYING_RACKS.forEach(t -> {
 
