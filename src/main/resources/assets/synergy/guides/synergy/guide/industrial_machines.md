@@ -40,13 +40,6 @@ All machines can be upgraded with some upgrades , can be automated using any pip
   <Block x="3" y="1" z="0" id="synergy:alloy_smelter" p:enabled="true" p:facing="north"/>
 </GameScene>
 
-<RecipeFor id="synergy:macerator" />
-<RecipeFor id="synergy:compressor" />
-<RecipeFor id="synergy:electric_furnace" />
-<RecipeFor id="synergy:electric_melter" />
-<RecipeFor id="synergy:casting_factory" />
-<RecipeFor id="synergy:alloy_smelter" />
-
 Other info
 
 <CategoryIndex category="machines"></CategoryIndex>
