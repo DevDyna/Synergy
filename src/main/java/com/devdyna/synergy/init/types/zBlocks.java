@@ -368,9 +368,6 @@ public class zBlocks {
                         zStatic.Blocks.quern,
                         () -> new QuernBlock());
 
-        // public static final DeferredHolder<Block, Block> QUERN_MOVING = zOnlyBlock.registerSimpleBlock(
-        //                 zStatic.Blocks.quern + "_moving");
-
         public static final DeferredHolder<Block, Block> CLAY_BRICK = Material.registerItemBlock(
                         zStatic.DryableBricks.brick.clay + "_block",
                         () -> new PlaceableBrickBlock(BlockBehaviour.Properties.of()
@@ -433,12 +430,12 @@ public class zBlocks {
 
         public static final DeferredHolder<Block, Block> FUEL_TANK = Material.registerItemBlock(
                         zStatic.FluidTanks.fuel,
-                        () -> new FluidTankBlock(Properties.of().strength(1.0f).sound(SoundType.METAL).mapColor(MapColor.METAL)));
+                        () -> new FluidTankBlock(Properties.of().strength(1.0f).sound(SoundType.METAL)
+                                        .mapColor(MapColor.METAL)));
 
         public static final DeferredHolder<Block, Block> VOID_BOX = Material.registerItemBlock(
                         zStatic.Blocks.void_box,
                         () -> new VoidBoxBlock());
-
 
         @SuppressWarnings("deprecation")
         public static final DeferredHolder<Block, Block> BLAST_BRICKS = Material
@@ -492,7 +489,7 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> SIMPLE_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.simple,
                         () -> new SimpleWaterGenBlock(), zResourceGenerators);
-                        
+
         public static final DeferredHolder<Block, Block> ADVANCED_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.advanced,
                         () -> new AdvancedWaterGenBlock(), zResourceGenerators);
