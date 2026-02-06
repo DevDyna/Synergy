@@ -419,6 +419,11 @@ public class DataLang extends LanguageProvider {
                 add(ID + "." + zStatic.Blocks.casting_table, TIP_COLOR + "Use molds to solidify liquids");
                 add(ID + "." + zStatic.Blocks.faucet, TIP_COLOR + "Move fluids when active");
 
+                add(ID + ".boost.evaporation_basin",
+                                TIP_COLOR + "When placed below a Evaporation Basin it will speed up the process");
+                add(ID + ".boost.drying_rack",
+                                TIP_COLOR + "When placed below a Drying Rack it will speed up the process");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {
