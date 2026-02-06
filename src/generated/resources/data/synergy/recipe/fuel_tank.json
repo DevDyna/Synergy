@@ -3,13 +3,13 @@
   "category": "misc",
   "key": {
     "#": {
-      "tag": "c:nuggets/iron"
+      "item": "synergy:wrought_iron_nugget"
     },
     "G": {
       "item": "synergy:fluid_tank"
     },
     "I": {
-      "tag": "c:ingots/iron"
+      "item": "synergy:wrought_iron_ingot"
     }
   },
   "pattern": [

@@ -2,23 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "F": {
-      "item": "synergy:fuel_tank"
-    },
     "I": {
       "item": "synergy:wrought_iron_ingot"
-    },
-    "S": {
-      "item": "minecraft:smooth_stone"
     }
   },
   "pattern": [
-    "III",
-    "IFI",
-    "SSS"
+    "I I",
+    " I "
   ],
   "result": {
     "count": 1,
-    "id": "synergy:foundry"
+    "id": "synergy:faucet"
   }
 }

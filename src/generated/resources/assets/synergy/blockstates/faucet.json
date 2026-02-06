@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "enabled=false,facing=east": {
+      "model": "synergy:block/faucet",
+      "y": 90
+    },
+    "enabled=false,facing=north": {
+      "model": "synergy:block/faucet"
+    },
+    "enabled=false,facing=south": {
+      "model": "synergy:block/faucet",
+      "y": 180
+    },
+    "enabled=false,facing=west": {
+      "model": "synergy:block/faucet",
+      "y": 270
+    },
+    "enabled=true,facing=east": {
+      "model": "synergy:block/faucet",
+      "y": 90
+    },
+    "enabled=true,facing=north": {
+      "model": "synergy:block/faucet"
+    },
+    "enabled=true,facing=south": {
+      "model": "synergy:block/faucet",
+      "y": 180
+    },
+    "enabled=true,facing=west": {
+      "model": "synergy:block/faucet",
+      "y": 270
+    }
+  }
+}
