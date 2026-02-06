@@ -1,8 +1,17 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:raw_materials/gold"
+      }
+    }
+  ],
   "type": "synergy:quern",
   "frequence": 60,
   "ingredient": {
-    "item": "minecraft:raw_gold"
+    "tag": "c:raw_materials/gold"
   },
   "result": {
     "count": 2,

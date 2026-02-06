@@ -382,6 +382,8 @@
   "synergy.aoe.small": "§cArea too small",
   "synergy.block.blast_proof": "§7Blast resistance",
   "synergy.blockpos": "§7BlockPos : ",
+  "synergy.boost.drying_rack": "§7When placed below a Drying Rack it will speed up the process",
+  "synergy.boost.evaporation_basin": "§7When placed below a Evaporation Basin it will speed up the process",
   "synergy.cake_stick": "§7Place cake slices",
   "synergy.casting_table": "§7Use molds to solidify liquids",
   "synergy.chisel": "§7Craft in-world Stonecutter recipes when bound to the result block",

@@ -4,7 +4,7 @@
       "type": "neoforge:not",
       "value": {
         "type": "neoforge:tag_empty",
-        "tag": "c:raw_materials/tin"
+        "tag": "c:raw_materials/iron"
       }
     }
   ],
@@ -13,15 +13,15 @@
   "energy": 500,
   "input": {
     "count": 1,
-    "tag": "c:raw_materials/tin"
+    "tag": "c:raw_materials/iron"
   },
   "output": {
     "count": 3,
-    "id": "synergy:tin_dust"
+    "id": "synergy:iron_dust"
   },
   "secondary": {
     "count": 1,
-    "id": "synergy:iron_dust"
+    "id": "synergy:nickel_dust"
   },
   "ticks": 100
 }

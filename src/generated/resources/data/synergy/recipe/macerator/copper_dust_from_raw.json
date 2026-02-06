@@ -1,10 +1,19 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:raw_materials/copper"
+      }
+    }
+  ],
   "type": "synergy:macerator",
   "chance": 0.25,
   "energy": 500,
   "input": {
     "count": 1,
-    "item": "minecraft:raw_copper"
+    "tag": "c:raw_materials/copper"
   },
   "output": {
     "count": 3,

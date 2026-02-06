@@ -1,0 +1,11 @@
+{
+  "type": "synergy:foundry",
+  "fluid": {
+    "amount": 90,
+    "id": "synergy:molten_osmium_source"
+  },
+  "input": {
+    "item": "synergy:osmium_dust"
+  },
+  "ticks": 100
+}

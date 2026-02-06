@@ -1,8 +1,17 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/iron"
+      }
+    }
+  ],
   "type": "synergy:quern",
   "frequence": 60,
   "ingredient": {
-    "item": "minecraft:iron_ingot"
+    "tag": "c:ingots/iron"
   },
   "result": {
     "count": 1,

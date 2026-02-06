@@ -1,0 +1,11 @@
+{
+  "type": "synergy:foundry",
+  "fluid": {
+    "amount": 90,
+    "id": "synergy:molten_gold_source"
+  },
+  "input": {
+    "item": "synergy:gold_dust"
+  },
+  "ticks": 100
+}

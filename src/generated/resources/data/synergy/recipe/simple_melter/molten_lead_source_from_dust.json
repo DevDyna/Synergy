@@ -1,0 +1,11 @@
+{
+  "type": "synergy:foundry",
+  "fluid": {
+    "amount": 90,
+    "id": "synergy:molten_lead_source"
+  },
+  "input": {
+    "item": "synergy:lead_dust"
+  },
+  "ticks": 100
+}

@@ -1,10 +1,19 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/copper"
+      }
+    }
+  ],
   "type": "synergy:macerator",
   "chance": 0.0,
   "energy": 500,
   "input": {
     "count": 1,
-    "item": "minecraft:copper_ingot"
+    "tag": "c:ingots/copper"
   },
   "output": {
     "count": 1,

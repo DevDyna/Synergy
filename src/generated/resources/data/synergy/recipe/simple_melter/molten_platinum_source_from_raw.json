@@ -1,0 +1,11 @@
+{
+  "type": "synergy:foundry",
+  "fluid": {
+    "amount": 180,
+    "id": "synergy:molten_platinum_source"
+  },
+  "input": {
+    "tag": "c:raw_materials/platinum"
+  },
+  "ticks": 100
+}

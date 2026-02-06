@@ -1,4 +1,13 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:raw_materials/copper"
+      }
+    }
+  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_the_recipe": {
@@ -8,6 +17,13 @@
       "trigger": "minecraft:recipe_unlocked"
     },
     "synergy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:barrier"
+          }
+        ]
+      },
       "trigger": "minecraft:inventory_changed"
     }
   },

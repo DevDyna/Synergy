@@ -1,0 +1,11 @@
+{
+  "type": "synergy:foundry",
+  "fluid": {
+    "amount": 180,
+    "id": "synergy:molten_nickel_source"
+  },
+  "input": {
+    "tag": "c:raw_materials/nickel"
+  },
+  "ticks": 100
+}

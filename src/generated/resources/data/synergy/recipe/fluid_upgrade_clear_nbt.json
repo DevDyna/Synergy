@@ -10,7 +10,7 @@
     "components": {
       "synergy:upgrade_components": {
         "energy": 150,
-        "fluid_usage": 20
+        "fluid_usage": -20
       }
     },
     "count": 1,

@@ -1,8 +1,17 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:raw_materials/iron"
+      }
+    }
+  ],
   "type": "synergy:quern",
   "frequence": 60,
   "ingredient": {
-    "item": "minecraft:raw_iron"
+    "tag": "c:raw_materials/iron"
   },
   "result": {
     "count": 2,

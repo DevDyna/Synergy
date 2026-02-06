@@ -1,10 +1,19 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:raw_materials/gold"
+      }
+    }
+  ],
   "type": "synergy:macerator",
   "chance": 0.25,
   "energy": 500,
   "input": {
     "count": 1,
-    "item": "minecraft:raw_gold"
+    "tag": "c:raw_materials/gold"
   },
   "output": {
     "count": 3,
