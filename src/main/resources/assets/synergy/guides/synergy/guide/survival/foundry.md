@@ -25,6 +25,3 @@ item_ids:
 A new set of blocks to melt resources into fluids and cast into other items using molds
 
 <RecipeFor id="synergy:foundry" />
-<RecipeFor id="synergy:fuel_tank" />
-<RecipeFor id="synergy:faucet" />
-<RecipeFor id="synergy:casting_table" />
