@@ -50,7 +50,7 @@ public class CastingTableBE extends TickingBE
 
     public static final int MOLD_SLOT = 0;
     public static final int OUTPUT_SLOT = 1;
-    private static final int DEFAULT_TANK_CAPACITY = 10_000;
+    private static final int DEFAULT_TANK_CAPACITY = 1_000;
 
     public CastingTableBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -185,6 +185,8 @@ public class CastingTableBE extends TickingBE
             ticker = Ticker.of(recipe.getTicks());
 
         if (ticker.commit()) {
+            if (recipe.consumeInput())
+                getStorage().extractItem(MOLD_SLOT, 1, false);
             getFluidStorage().drain(recipe.getFluid().amount(), FluidAction.EXECUTE);
             getStorage().insertItem(OUTPUT_SLOT, recipe.getOutput().copy(), false);
             level.playSound(null, getBlockPos(), SoundEvents.LAVA_EXTINGUISH, SoundSource.BLOCKS, 1f, 1f);
