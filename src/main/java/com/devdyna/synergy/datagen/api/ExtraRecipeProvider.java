@@ -414,64 +414,6 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        // @Deprecated
-        // protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust,
-        // ItemLike ingot) {
-
-        // QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
-        // .output(x.item(dust.asItem(), 2))
-        // .unlockedBy().save(c, "_from_raw");
-
-        // QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
-        // .output(x.item(dust.asItem()))
-        // .unlockedBy().save(c, "_from_ingot");
-
-        // doubleSmelt(c, dust, ingot);
-        // }
-
-        // @Deprecated
-        // protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike
-        // dust, ItemLike ingot) {
-
-        // QuernMillingBuilder.of().input(x.ingredient(raw))
-        // .output(x.item(dust.asItem(), 2))
-        // .unlockedBy().save(c.withConditions(
-        // new ICondition[] {
-        // new NotCondition(
-        // new TagEmptyCondition(raw)) }),
-        // "_from_raw");
-
-        // QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
-        // .output(x.item(dust.asItem()))
-        // .unlockedBy().save(c, "_from_ingot");
-
-        // doubleSmelt(c, dust, ingot);
-        // }
-
-        // @Deprecated
-        // protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike
-        // dust, ItemLike ingot,
-        // ResourceLocation ingotTag) {
-
-        // QuernMillingBuilder.of().input(x.ingredient(raw))
-        // .output(x.item(dust.asItem(), 2))
-        // .unlockedBy().save(c.withConditions(
-        // new ICondition[] {
-        // new NotCondition(
-        // new TagEmptyCondition(raw)) }),
-        // "_from_raw");
-
-        // QuernMillingBuilder.of().input(x.ingredient(ingotTag))
-        // .output(x.item(dust.asItem()))
-        // .unlockedBy().save(c.withConditions(
-        // new ICondition[] {
-        // new NotCondition(
-        // new TagEmptyCondition(ingotTag)) }),
-        // "_from_ingot");
-
-        // doubleSmelt(c, dust, ingot);
-        // }
-
         protected void doubleSmelt(RecipeOutput c, ItemLike input, ItemLike output) {
                 SimpleCookingRecipeBuilder.blasting(x.ingredient(input.asItem()), MISC, output.asItem(), 0.1F, 100)
                                 .unlockedBy(getHasName(input), has(output))
