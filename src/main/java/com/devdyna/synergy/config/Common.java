@@ -158,6 +158,12 @@ public class Common {
 
         public static BooleanValue DISABLE_DRYABLE_BRICKS_DECREASE_STAGE_WHEN_WET;// false
 
+        public static BooleanValue DISABLE_DRYING_RACK_STACK_NERFER;// false
+        public static DoubleValue DRYING_RACK_STACK_NERFER_RATE;// 100%
+
+        public static BooleanValue DISABLE_FOUNDRY_SPEED_BOOSTER;// false
+        public static DoubleValue FOUNDRY_SPEED_BOOSTER_MULTIPLIER;// 1x
+
         // rpg
 
         public static BooleanValue DISABLE_HEALER_HEAL_HP;// false
@@ -330,13 +336,15 @@ public class Common {
 
                 MACHINE_FURNACE_PROCESS_VANILLA_FE_COST = number("Vanilla Recipe Base FE consumed every tick",
                                 "machine_furnace_vanilla_fe_cost", BaseMachineBE.DEFAULT_FE_COST);
-              
-                DISABLE_MACHINE_FURNACE_VANILLA_TICK_REDUCER = bool("Disable Vanilla Recipe Tick Reducer", "machine_furnace_vanilla_disable_tick_reducer");
 
-                                MACHINE_FURNACE_PROCESS_VANILLA_MIN_TICK_DELAY = number("Vanilla Recipe Mininal Tick Delay",
+                DISABLE_MACHINE_FURNACE_VANILLA_TICK_REDUCER = bool("Disable Vanilla Recipe Tick Reducer",
+                                "machine_furnace_vanilla_disable_tick_reducer");
+
+                MACHINE_FURNACE_PROCESS_VANILLA_MIN_TICK_DELAY = number("Vanilla Recipe Mininal Tick Delay",
                                 "machine_furnace_vanilla_min_tick_delay", BaseMachineBE.DEFAULT_TICK_DURATION);
-                MACHINE_FURNACE_PROCESS_VANILLA_PERCENTUAGE_TICK_DELAY = number("Vanilla Recipe Tick Delay reduction of total Tick Delay",
-                                "machine_furnace_vanilla_percentuage_tick_delay", 50,0,100);
+                MACHINE_FURNACE_PROCESS_VANILLA_PERCENTUAGE_TICK_DELAY = number(
+                                "Vanilla Recipe Tick Delay reduction of total Tick Delay",
+                                "machine_furnace_vanilla_percentuage_tick_delay", 50, 0, 100);
 
                 qCOMMON.pop();
         }
@@ -483,6 +491,22 @@ public class Common {
 
                 DISABLE_DRYABLE_BRICKS_DECREASE_STAGE_WHEN_WET = bool("Disable DryingBricks decrease stage when wet",
                                 "dryable_bricks_decrease_stage_when_wet");
+
+                decor.simple("Drying Racks");
+
+                DISABLE_DRYING_RACK_STACK_NERFER = bool(
+                                "Disable Drying Racks reduce the efficiency to prevent to dry at same speed one entire stack as a single item",
+                                "disable_drying_rack_nerfer");
+                DRYING_RACK_STACK_NERFER_RATE = numberFloat(
+                                "Drying Racks Speed reducer to balance Stack Nerfer\nExample : 64 items \n 1x -> 64x time required \n 4x -> 64x/4 -> 16x time required \n 0.5x -> 64x/0.5 -> 128x time required ",
+                                "drying_rack_nerfer_decreaser", 1,0.001);
+
+                decor.simple("Foundry");
+
+                 DISABLE_FOUNDRY_SPEED_BOOSTER = bool("Disable Foundry speed boost based on fluid amount", "disable_foundry_speed_boost");
+                FOUNDRY_SPEED_BOOSTER_MULTIPLIER = numberFloat(
+                                "Foundry Speed increaser based on fluid amount",
+                                "foundry_speed_increaser", 0.25,0.001);
 
                 qCOMMON.pop();
         }

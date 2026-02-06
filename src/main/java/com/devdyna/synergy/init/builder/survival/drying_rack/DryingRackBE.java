@@ -14,6 +14,7 @@ import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zBlockTag;
@@ -193,7 +194,11 @@ public class DryingRackBE extends TickingBE
 
     @Override
     public float getTickerSpeed() {
-        return 1.0f / getStorage().getStackInSlot(0).getCount() * getSpeedModifier();
+        return (float) (1.0f
+                / (Common.DISABLE_DRYING_RACK_STACK_NERFER.get() ? 1.0f
+                        : getStorage().getStackInSlot(0).getCount()
+                                / Common.DRYING_RACK_STACK_NERFER_RATE.get())
+                * getSpeedModifier());
     }
 
     @Override

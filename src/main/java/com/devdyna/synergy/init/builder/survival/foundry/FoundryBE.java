@@ -16,6 +16,7 @@ import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.common.recipes.input.FluidInput;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.common.recipes.type.FoundryFuelEfficiencyRecipe;
+import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankBE;
 import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
@@ -256,8 +257,11 @@ public class FoundryBE extends TickingBE
 
     @Override
     public float getTickerSpeed() {
-        return Math.max(1f, ((getFluidStorage().getPercentuage() + 0.25f) / 0.25f)
-                * getSpeedModifier());
+        return (float) Math.max(1f,
+                getSpeedModifier() *
+                        (Common.DISABLE_FOUNDRY_SPEED_BOOSTER.get() ? 1.0f
+                                : ((getFluidStorage().getPercentuage() + Common.FOUNDRY_SPEED_BOOSTER_MULTIPLIER.get())
+                                        / Common.FOUNDRY_SPEED_BOOSTER_MULTIPLIER.get())));
     }
 
     @Override
