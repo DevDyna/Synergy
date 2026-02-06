@@ -357,7 +357,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c.withConditions(
                                                 new ICondition[] {
                                                                 new NotCondition(
-                                                                                new TagEmptyCondition(ingotTag)) }), "_from_ingot");
+                                                                                new TagEmptyCondition(ingotTag)) }),
+                                                "_from_ingot");
 
                 FoundryBuilder.of()
                                 .input(x.ingredient(ingotTag))
@@ -366,7 +367,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c.withConditions(
                                                 new ICondition[] {
                                                                 new NotCondition(
-                                                                                new TagEmptyCondition(ingotTag)) }), "_from_ingot");
+                                                                                new TagEmptyCondition(ingotTag)) }),
+                                                "_from_ingot");
 
                 MelterRecipeBuilder.of()
                                 .input(x.itemSized(raw))
@@ -375,7 +377,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c.withConditions(
                                                 new ICondition[] {
                                                                 new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }), "_from_raw");
+                                                                                new TagEmptyCondition(raw)) }),
+                                                "_from_raw");
 
                 FoundryBuilder.of()
                                 .input(x.ingredient(raw))
@@ -384,7 +387,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c.withConditions(
                                                 new ICondition[] {
                                                                 new NotCondition(
-                                                                                new TagEmptyCondition(raw)) }), "_from_raw");
+                                                                                new TagEmptyCondition(raw)) }),
+                                                "_from_raw");
 
                 MelterRecipeBuilder.of()
                                 .input(x.itemSized(dust))
