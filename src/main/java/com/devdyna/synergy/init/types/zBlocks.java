@@ -433,7 +433,7 @@ public class zBlocks {
 
         public static final DeferredHolder<Block, Block> FUEL_TANK = Material.registerItemBlock(
                         zStatic.FluidTanks.fuel,
-                        () -> new FluidTankBlock(Properties.of().sound(SoundType.METAL).mapColor(MapColor.METAL).strength(3f)));
+                        () -> new FluidTankBlock(Properties.of().strength(1.0f).sound(SoundType.METAL).mapColor(MapColor.METAL)));
 
         public static final DeferredHolder<Block, Block> VOID_BOX = Material.registerItemBlock(
                         zStatic.Blocks.void_box,

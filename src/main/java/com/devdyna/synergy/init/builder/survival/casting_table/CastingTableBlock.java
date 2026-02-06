@@ -17,6 +17,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
@@ -39,7 +40,7 @@ public class CastingTableBlock extends TickingBlock {
     }
 
     public CastingTableBlock() {
-        this(Properties.of().mapColor(MapColor.COLOR_ORANGE).instrument(NoteBlockInstrument.BASEDRUM).strength(1F,
+        this(Properties.of().sound(SoundType.METAL).mapColor(MapColor.METAL).instrument(NoteBlockInstrument.BASEDRUM).strength(1F,
                 2.25F));
     }
 
