@@ -577,7 +577,7 @@ public class Common {
          * max = Double.MAX_VALUE
          */
         private static DoubleValue numberFloat(String c, String k, double d) {
-                return numberFloat(c, k, d, 0, Double.MAX_VALUE);
+                return numberFloat(c, k, d, 0, Integer.MAX_VALUE);
         }
 
         /**
@@ -585,7 +585,7 @@ public class Common {
          */
         @SuppressWarnings("unused")
         private static DoubleValue numberFloat(String c, String k, double d, double min) {
-                return numberFloat(c, k, d, min, Double.MAX_VALUE);
+                return numberFloat(c, k, d, min, Integer.MAX_VALUE);
         }
 
         /**
