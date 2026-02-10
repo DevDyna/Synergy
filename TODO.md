@@ -41,6 +41,12 @@
 
 - [ ] migrate hand-coded batteries capabilities to Neoforge FE capabilities
 
+- [ ] chopper
+
+- [ ] dimensional miner like?
+
+- [ ] gardener (plant grower that require fertilizer to process)
+
 ### Survival expansion
 
 - [ ] scrap and slags
@@ -91,6 +97,8 @@
 - [ ] Scrap Generator (recycle items to scraps and item used to craft)
 
 ### Magic
+
+- [ ] magic item repair
 
 - [ ] Buddings
 - [ ] Growable Crystals (astral like?)
