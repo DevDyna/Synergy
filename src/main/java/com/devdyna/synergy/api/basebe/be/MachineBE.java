@@ -2,11 +2,7 @@ package com.devdyna.synergy.api.basebe.be;
 
 import java.util.List;
 
-import com.devdyna.synergy.api.beLogic.AreaOfEffect;
-
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup.Provider;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,9 +29,9 @@ import net.neoforged.neoforge.items.IItemHandler;
 @SuppressWarnings("null")
 public abstract class MachineBE extends BEStorage {
 
-    public final static String RADIUS = "aoe";
+    // public final static String RADIUS = "aoe";
 
-    protected int radius;
+    // protected int radius;
 
     public MachineBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -63,21 +59,21 @@ public abstract class MachineBE extends BEStorage {
     public void tickBoth() {
     }
 
-    @Override
-    protected void saveAdditional(CompoundTag tag, Provider registries) {
-        if (this instanceof AreaOfEffect)
-            tag.putInt(RADIUS, radius);
-        super.saveAdditional(tag, registries);
-    }
+    // @Override
+    // protected void saveAdditional(CompoundTag tag, Provider registries) {
+    //     // if (this instanceof AreaOfEffect)
+    //         // tag.putInt(RADIUS, radius);
+    //     super.saveAdditional(tag, registries);
+    // }
 
-    @Override
-    protected void loadAdditional(CompoundTag tag, Provider registries) {
+    // @Override
+    // protected void loadAdditional(CompoundTag tag, Provider registries) {
 
-        if (this instanceof AreaOfEffect)
-            if (tag.contains(RADIUS))
-                radius = tag.getInt(RADIUS);
-        super.loadAdditional(tag, registries);
-    }
+    //     if (this instanceof AreaOfEffect)
+    //         if (tag.contains(RADIUS))
+    //             radius = tag.getInt(RADIUS);
+    //     super.loadAdditional(tag, registries);
+    // }
 
     public abstract List<Integer> getInputSlotIndex();
 
