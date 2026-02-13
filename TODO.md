@@ -47,6 +47,10 @@
 
 - [ ] gardener (plant grower that require fertilizer to process)
 
+- [ ] enchant extractor
+
+- [ ] unify redstone sensible machines + jade compat
+
 ### Survival expansion
 
 - [ ] scrap and slags
