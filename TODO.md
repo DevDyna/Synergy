@@ -12,9 +12,7 @@
 
 - [ ] Differents styles for Nodes / Node model rework
 
-- [ ] GuideMe quantum reactor GameScene
-
-- [ ] rework any machine with AreaOfEffect and soldering gun to simplify
+- [x] rework any machine with AreaOfEffect and soldering gun to simplify
 
 - [ ] Laser Infusion RecipeType
 
@@ -24,9 +22,7 @@
 
 - [ ] urn jei category rework to dynamic handling
 
-- [ ] guideme for machines and upgrades
-
-- [ ] safe decoration drying racks (?)
+- [x] guideme for machines and upgrades
 
 - [ ] mechanical crushing tub (piston)
 
