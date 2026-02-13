@@ -3,6 +3,7 @@ package com.devdyna.synergy.api.basebe.be;
 import java.util.List;
 
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.nbt.CompoundTag;

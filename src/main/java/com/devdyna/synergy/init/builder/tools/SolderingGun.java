@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.basebe.be.TickingBE;
+import com.devdyna.synergy.api.basebe.be.AreaBE;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.utils.PlayerUtil;
 import net.minecraft.network.chat.Component;
@@ -30,38 +30,43 @@ public class SolderingGun extends Item {
         var pos = c.getClickedPos();
         var player = c.getPlayer();
 
-        if(level.isClientSide()) return InteractionResult.FAIL;
+        if (level.isClientSide())
+            return InteractionResult.FAIL;
 
-        if (level.getBlockEntity(pos) instanceof TickingBE be
-                && be instanceof AreaOfEffect aoe && c.getHand().equals(InteractionHand.MAIN_HAND)) {
+            //only support atm reactor controller AOE
+        if (level.getBlockEntity(pos) instanceof AreaBE be
+                && be instanceof AreaOfEffect aoe
+                && c.getHand().equals(InteractionHand.MAIN_HAND)
+                && aoe.editalbe()) {
 
             var nbt = be.saveWithFullMetadata(level.registryAccess());
 
-            int radius = nbt.getInt(TickingBE.RADIUS);
+            int radius = nbt.getInt(AreaBE.HEIGHT);
             int newrange = radius;
 
             if (!player.isCrouching()) {
-                if (aoe.radiusLimit().test(radius + 1))
-                    newrange++;
+                if (aoe.getHeigthLimits().test(radius + 2))
+                    newrange+=2;
                 else
-                    PlayerUtil.traslableActionMessage( "aoe.big", player);
+                    PlayerUtil.traslableActionMessage("aoe.big", player);
             } else {
-                if (aoe.radiusLimit().test(radius - 1))
-                    newrange--;
+                if (aoe.getHeigthLimits().test(radius - 2))
+                    newrange-=2;
                 else
-                    PlayerUtil.traslableActionMessage( "aoe.small", player);
+                    PlayerUtil.traslableActionMessage("aoe.small", player);
             }
 
             if (newrange == radius)
                 return InteractionResult.FAIL;
 
-            nbt.putInt(TickingBE.RADIUS, newrange);
+            nbt.putInt(AreaBE.HEIGHT, newrange);
+            nbt.putInt(AreaBE.WIDTH, newrange);
 
             be.loadWithComponents(nbt, level.registryAccess());
 
             be.setChanged();
 
-            be.updateAOE();
+            be.resetAOE();
 
             player.playSound(SoundEvents.ITEM_FRAME_ROTATE_ITEM);
 

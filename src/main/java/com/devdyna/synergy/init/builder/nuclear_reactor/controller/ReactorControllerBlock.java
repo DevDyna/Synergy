@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.basebe.block.TickingBlock;
+import com.devdyna.synergy.api.basebe.block.AreaBlock;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
 import com.devdyna.synergy.api.utils.PlayerUtil;
 import com.devdyna.synergy.api.utils.StringUtil;
@@ -32,7 +32,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 
 @SuppressWarnings("null")
-public class ReactorControllerBlock extends TickingBlock {
+public class ReactorControllerBlock extends AreaBlock {
 
     public final static EnumProperty<ControllerProperties> STATUS = EnumProperty.create("status",
             ControllerProperties.class);
@@ -62,10 +62,11 @@ public class ReactorControllerBlock extends TickingBlock {
                 && level.getBlockEntity(pos) instanceof ReactorControllerBE be) {
 
             PlayerUtil.messageActionBar(
-                     (be.heat > 0 ? "§c" : "§a") +
-                    StringUtil.getFormat().format(be.heat)
-                    + "°/t§f | §6" +
-                    StringUtil.getFormat().format(be.fe)+"fe/t", player);
+                    (be.heat > 0 ? "§c" : "§a") +
+                            StringUtil.getFormat().format(be.heat)
+                            + "°/t§f | §6" +
+                            StringUtil.getFormat().format(be.fe) + "fe/t",
+                    player);
 
             return ItemInteractionResult.SUCCESS;
         }

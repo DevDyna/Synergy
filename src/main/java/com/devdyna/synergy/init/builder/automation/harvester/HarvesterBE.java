@@ -1,16 +1,14 @@
 package com.devdyna.synergy.init.builder.automation.harvester;
 
 import java.util.*;
+
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.ItemProducer;
-import com.devdyna.synergy.api.basebe.be.TickingBE;
-import com.devdyna.synergy.api.beLogic.AreaOfEffect;
+import com.devdyna.synergy.api.basebe.be.AreaBE;
 import com.devdyna.synergy.api.harvester.PlantHandler;
 import com.devdyna.synergy.api.harvester.VanillaPlants;
-import com.devdyna.synergy.api.utils.BiBool;
 import com.devdyna.synergy.api.utils.ColorUtil;
 import com.devdyna.synergy.api.utils.LevelUtil;
-import com.devdyna.synergy.api.utils.Range;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
@@ -31,7 +29,7 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 
 @SuppressWarnings("null")
-public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect, ItemProducer {
+public class HarvesterBE extends AreaBE implements EnergyBlock, ItemProducer {
 
     private final Map<Direction, BlockCapabilityCache<IItemHandler, Direction>> cache = new HashMap<>();
 
@@ -43,7 +41,6 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
     }
 
     int i = 0;
-    List<BlockPos> area = null;
     boolean soundToggle = false;
     List<Integer> rgbColor;
 
@@ -57,8 +54,7 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
                         area != null && canExtract() && !level.hasNeighborSignal(getBlockPos())));
 
         if (area == null) {
-            area = getAreaSelection(level, getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING),
-                    getBlockPos());
+            area = getArea();
         }
 
         if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
@@ -88,8 +84,9 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
     public List<ItemStack> getAPICrops(Level level, BlockPos pos) {
         var state = level.getBlockState(pos);
         var block = state.getBlock();
-        
-        if(Common.HARVESTER_DISABLE_CHECK_API.get()) return null;
+
+        if (Common.HARVESTER_DISABLE_CHECK_API.get())
+            return null;
 
         if (block instanceof PlantHandler plant)
             return plant.execute(level, pos);
@@ -134,16 +131,6 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
     }
 
     @Override
-    public int radius() {
-        return 4;
-    }
-
-    @Override
-    public int height() {
-        return 1;
-    }
-
-    @Override
     public boolean dropWhenFail() {
         return !Common.HARVESTER_DISABLE_DROP_WHEN_FULL.get();
     }
@@ -154,30 +141,28 @@ public class HarvesterBE extends TickingBE implements EnergyBlock, AreaOfEffect,
     }
 
     @Override
-    public Range radiusLimit() {
-        return Range.of(1, 6, BiBool.of(true, false));
-    }
-
-    @Override
-    public Range heightLimit() {
-        return Range.of(1, 8, BiBool.of(true, false));
-    }
-
-    @Override
-    public boolean hasSizeEqual() {
-        return false;
-    }
-
-    @Override
-    public void onLoad() {
-        super.onLoad();
-        if (level.isClientSide)
-            rebuildArea();
-    }
-
-    @Override
     public boolean applySoundWhenFail() {
         return true;
+    }
+
+    @Override
+    public AreaType getAreaType() {
+        return AreaType.SIDE;
+    }
+
+    @Override
+    public int getHeight() {
+        return 1;
+    }
+
+    @Override
+    public int getWidth() {
+        return 9;
+    }
+
+    @Override
+    public List<BlockPos> getArea() {
+        return getDirectionalArea(BlockStateProperties.HORIZONTAL_FACING);
     }
 
 }

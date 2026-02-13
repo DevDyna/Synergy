@@ -1,146 +1,159 @@
 package com.devdyna.synergy.api.beLogic;
 
 import java.util.*;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
 import com.devdyna.synergy.api.utils.Range;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
-public interface AreaOfEffect extends SimpleAOE {
+public interface AreaOfEffect {
 
-    abstract void onLoad();
+    public enum AreaType {
+        CUSTOM(),
+        MIDDLE(),
+        SIDE();
 
-    /**
-     * set true to exclude <code>height();</code> and use only
-     * <code>radius();</code> to define all coords
-     */
-    boolean hasSizeEqual();
+        public boolean isCustom() {
+            return this.equals(CUSTOM);
+        }
 
-    /*
-     * height of AOE around the controller blocks
-     */
-    int height();
+        public boolean is(AreaType type) {
+            return this.equals(type);
+        }
 
-    /**
-     * Limits of <code>int radius();</code>
-     */
-    Range radiusLimit();
+    }
 
-    /**
-     * Limits of <code>int height();</code>
-     */
-    Range heightLimit();
+    // BE default
+    BlockPos getBlockPos();
 
-    /**
-     * @return map<Start,End>
-     */
-    default Entry<BlockPos, BlockPos> getPoints(Level level, BlockPos baseBlock, Direction dir, boolean isUp) {
-        BlockPos relPos = baseBlock.relative(dir);
-        Direction upDown = isUp ? Direction.UP : Direction.DOWN;
+    // BE default
+    BlockState getBlockState();
 
-        ArrayList<Direction> validDirs = getHorizontalDirections(dir);
+    AreaType getAreaType();
 
-        return Map.entry(relPos.relative(validDirs.get(0), radius()),
-                relPos.relative(validDirs.get(1), radius()).relative(dir, (radius()) * 2).relative(upDown,
-                        height() - 1));
+    int getHeight();
+
+    int getWidth();
+
+    List<BlockPos> getArea();
+
+    Level getLevel();
+
+    default boolean editalbe() {
+        return false;
+    }
+
+    default Range getHeigthLimits() {
+        return Range.of(1, getHeight());
+    }
+
+    default Range getWidthLimits() {
+        return Range.of(1, getWidth());
+    }
+
+    default boolean isAreaNull() {
+        return getArea() == null;
+    }
+
+    default List<BlockPos> getBasicArea(BlockPos start, BlockPos end) {
+        return BlockPos
+                .betweenClosedStream(start, end)
+                .map(BlockPos::immutable)
+                .toList();
+
+    }
+
+    default int getCenterXZ() {
+        return getWidth() / 2;
+    }
+
+    default int getCenterY() {
+        return getHeight() / 2;
     }
 
     /**
-     * @return map<Start,End>
+     * return an AOE based on a controller block on middle of it
      */
-    default Entry<BlockPos, BlockPos> getPoints(Level level, BlockPos baseBlock, Direction dir, boolean isUp,
-            int height, int radius) {
-        BlockPos relPos = baseBlock.relative(dir);
-        Direction upDown = isUp ? Direction.UP : Direction.DOWN;
-
-        ArrayList<Direction> validDirs = getHorizontalDirections(dir);
-
-        return Map.entry(relPos.relative(validDirs.get(0), radius),
-                relPos.relative(validDirs.get(1), radius).relative(dir, (radius) * 2).relative(upDown,
-                        height - 1));
+    default List<BlockPos> getCentredPosArea() {
+        return getCentredPosArea(getBlockPos());
     }
 
     /**
-     * check all directions and remove all blacklisted
-     * NORTH -> EAST | WEST | UP | DOWN
-     * <br/>
-     * <br/>
-     * Edit. DONT WORK AS INTENDED BUT WORK SO THIS IS FINE!
+     * return an AOE based on a controller block on middle of it
      */
-    default ArrayList<Direction> getDirections(ArrayList<Direction> blacklist) {
+    default List<BlockPos> getCentredPosArea(BlockPos centre) {
 
-        ArrayList<Direction> directions = new ArrayList<>(
-                Arrays.stream(Direction.values()).distinct().collect(Collectors.toList()));
+        var start = centre.offset(-getCenterXZ(), 0, -getCenterXZ());
+        var end = centre.offset(getCenterXZ(), getHeight() - 1, getCenterXZ());
 
-        directions = directions.stream().filter(d -> !blacklist.contains(d))
-                .collect(Collectors.toCollection(ArrayList::new));
-
-        return directions;
+        return getBasicArea(start, end);
     }
 
     /**
-     * return the values removing UP and DOWN
-     * NORTH -> EAST | WEST
+     * return an AOE based on a controller block and directional face
      */
-    default ArrayList<Direction> getHorizontalDirections(Direction exclude) {
-        return getDirections(new ArrayList<>(List.of(Direction.UP, Direction.DOWN, exclude, exclude.getOpposite())));
+    default List<BlockPos> getDirectionalArea(DirectionProperty p) {
+        return getDirectionalArea(getBlockPos(), getBlockState().getValue(p));
     }
 
     /**
-     * get start blockpos of AOE
+     * return an AOE based on a controller block and directional face
      */
-    default BlockPos getStartPoint(Entry<BlockPos, BlockPos> map) {
-        return map.getKey();
+    default List<BlockPos> getDirectionalArea(Direction face) {
+        return getDirectionalArea(getBlockPos(), face);
     }
 
     /**
-     * get end blockpos of AOE
+     * return an AOE based on a controller block and directional face
      */
-    default BlockPos getEndPoint(Entry<BlockPos, BlockPos> map) {
-        return map.getValue();
+    default List<BlockPos> getDirectionalArea(BlockPos origin, Direction face) {
+
+        BlockPos start = origin.relative(face);
+        BlockPos end = origin.relative(face);
+
+        switch (face) {
+
+            case NORTH -> {
+                start = start.offset(-getCenterXZ(), 0, -(getWidth() - 1));
+                end = end.offset(getCenterXZ(), getHeight() - 1, 0);
+            }
+
+            case SOUTH -> {
+                start = start.offset(-getCenterXZ(), 0, 0);
+                end = end.offset(getCenterXZ(), getHeight() - 1, getWidth() - 1);
+            }
+
+            case WEST -> {
+                start = start.offset(-(getWidth() - 1), 0, -getCenterXZ());
+                end = end.offset(0, getHeight() - 1, getCenterXZ());
+            }
+
+            case EAST -> {
+                start = start.offset(0, 0, -getCenterXZ());
+                end = end.offset(getWidth() - 1, getHeight() - 1, getCenterXZ());
+            }
+
+            // case UP -> {
+            // start = start.offset(-getCenterXZ(), 0, -getCenterXZ());
+            // corner2 = origin.offset(getCenterXZ(), getHeight() - 1, getCenterXZ());
+            // }
+
+            // case DOWN -> {
+            // start = start.offset(-getCenterXZ(), -(getHeight() - 1), -getCenterXZ());
+            // corner2 = origin.offset(getCenterXZ(), 0, getCenterXZ());
+            // }
+
+            default -> throw new IllegalStateException("Unexpected value: " + face);
+        }
+
+        return getBasicArea(start, end);
     }
 
-    /**
-     * get center blockpos of AOE
-     */
-    default BlockPos getCenter(Direction dir, BlockPos pos) {
-        return pos.relative(dir).relative(dir, radius());
-    }
-
-    /**
-     * return a list of blockpos inside the AOE
-     */
-    default List<BlockPos> getAreaSelection(BlockPos start, BlockPos end) {
-        List<BlockPos> slots = new ArrayList<>();
-
-        for (int y = Math.min(start.getY(), end.getY()); y <= Math.max(start.getY(), end.getY()); y++)
-            for (int x = Math.min(start.getX(), end.getX()); x <= Math.max(start.getX(), end.getX()); x++)
-                for (int z = Math.min(start.getZ(), end.getZ()); z <= Math.max(start.getZ(), end.getZ()); z++)
-                    slots.add(new BlockPos(x, y, z));
-
-        return slots;
-    }
-
-    /**
-     * probably not necessary atm
-     * return a list of blockpos inside the AOE
-     */
-    // default List<BlockPos> getHorizontalAreaSelection(Level level, Direction dir,
-    // BlockPos baseBlock) {
-    // var points = getHorizontalPoints(level, baseBlock,dir);
-    // return getAreaSelection(getStartPoint(points), getEndPoint(points));
-    // }
-
-    /**
-     * return a list of blockpos inside the AOE
-     */
-    default List<BlockPos> getAreaSelection(Level level, Direction dir, BlockPos baseBlock) {
-        var points = getPoints(level, baseBlock, dir, true);
-        return getAreaSelection(getStartPoint(points), getEndPoint(points));
+    default BlockPos getRandomPos(List<BlockPos> area) {
+        return area.get(getLevel().random.nextInt(area.size()));
     }
 
 }

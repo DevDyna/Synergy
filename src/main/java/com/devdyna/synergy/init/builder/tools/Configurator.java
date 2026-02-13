@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.beLogic.SimpleAOE;
+import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.init.types.zComponents;
 
 import net.minecraft.ChatFormatting;
@@ -40,7 +40,7 @@ public class Configurator extends Item {
 
                 if (hand == InteractionHand.MAIN_HAND)
                         if (be != null)
-                                if (be instanceof SimpleAOE) {
+                                if (be instanceof AreaOfEffect) {
 
                                         if (level.isClientSide)
                                                 player.playSound(SoundEvents.AMETHYST_BLOCK_RESONATE);

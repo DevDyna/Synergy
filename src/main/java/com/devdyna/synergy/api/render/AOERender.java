@@ -2,11 +2,11 @@ package com.devdyna.synergy.api.render;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.beLogic.AreaOfEffect;
+import com.devdyna.synergy.api.beLogic.AreaOfEffect.AreaType;
 import com.devdyna.synergy.init.types.zComponents;
 import com.devdyna.synergy.init.types.zItems;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -19,51 +19,154 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 @SuppressWarnings("null")
 public interface AOERender {
 
-    /*
-     * Distance of player from BE to render
-     */
     default int getPlayerDistance() {
         return 16;
     }
 
-    default void renderDebugBox(BlockEntity be, BlockPos start, BlockPos end, @Nullable Direction dir, PoseStack stack,
-            MultiBufferSource bufferIn) {
+    default void renderAOE(BlockEntity be,
+                           @Nullable Direction dir,
+                           PoseStack stack,
+                           MultiBufferSource buffer) {
 
-        var player = be.getLevel().getNearestPlayer(be.getBlockPos().getX(),
+        if (!(be instanceof AreaOfEffect aoe))
+            return;
+
+        if (be.getLevel() == null)
+            return;
+
+        var player = be.getLevel().getNearestPlayer(
+                be.getBlockPos().getX(),
                 be.getBlockPos().getY(),
-                be.getBlockPos().getZ(), getPlayerDistance(), false);
+                be.getBlockPos().getZ(),
+                getPlayerDistance(),
+                false);
 
-        VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.lines());
+        if (!checkTool(player, be.getBlockPos()))
+            return;
 
-        if (dir != null)
-            switch (dir) {
-                case Direction.NORTH:
-                    start = start.relative(Direction.SOUTH, 1);
-                    end = end.relative(Direction.EAST, 1);
-                    break;
-                case Direction.SOUTH:
-                    // start = start.relative(Direction.EAST, 2);
-                    end = end.relative(Direction.SOUTH, 1).relative(Direction.EAST, 1);
-                    break;
-                case Direction.EAST:
-                    end = end.relative(Direction.SOUTH, 1);
-                    end = end.relative(Direction.EAST, 1);
-                    break;
-                case Direction.WEST:
-                    start = start.relative(Direction.EAST, 1);
-                    end = end.relative(Direction.SOUTH, 1);
-                    break;
-                default:
-                    break;
+        stack.pushPose();
+
+        int width = aoe.getWidth();
+        int height = aoe.getHeight();
+
+        if (dir == null && aoe.getAreaType().is(AreaType.MIDDLE)) {
+            renderMiddleAOE(width, height, stack, buffer);
+        }
+
+        if (dir != null && aoe.getAreaType().is(AreaType.SIDE)) {
+            renderSideAOE(width, height, dir, stack, buffer);
+        }
+
+        stack.popPose();
+    }
+
+    /*
+     * CENTERED AOE
+     * Rendered relative to BE position (0,0,0)
+     */
+    default void renderMiddleAOE(int width,
+                                 int height,
+                                 PoseStack stack,
+                                 MultiBufferSource buffer) {
+
+        int half = width / 2;
+
+        double minX = -half;
+        double maxX = half + 1;
+
+        double minZ = -half;
+        double maxZ = half + 1;
+
+        double minY = 0;
+        double maxY = height;
+
+        LevelRenderer.renderLineBox(
+                stack,
+                buffer.getBuffer(RenderType.lines()),
+                minX, minY, minZ,
+                maxX, maxY, maxZ,
+                0.9F, 0.9F, 0.9F, 1.0F,
+                0.5F, 0.5F, 0.5F
+        );
+    }
+
+    /*
+     * DIRECTIONAL AOE
+     * Rendered relative to BE position (0,0,0)
+     */
+    default void renderSideAOE(int width,
+                               int height,
+                               Direction face,
+                               PoseStack stack,
+                               MultiBufferSource buffer) {
+
+        int half = width / 2;
+
+        double minX = face.getStepX();
+        double maxX = face.getStepX();
+        double minY = face.getStepY();
+        double maxY = height + face.getStepY();
+        double minZ = face.getStepZ();
+        double maxZ = face.getStepZ();
+
+        switch (face) {
+
+            case NORTH -> {
+                minX += -half;
+                maxX += half + 1;
+                minZ += -width + 1;
+                maxZ += 1;
             }
 
-        if (checkTool(player, be.getBlockPos())) {
-            stack.pushPose();
-            LevelRenderer.renderLineBox(stack, vertexconsumer,
-                    start.getX(), start.getY(), start.getZ(), end.getX(), end.getY() + 1, end.getZ(),
-                    0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
-            stack.popPose();
+            case SOUTH -> {
+                minX += -half;
+                maxX += half + 1;
+                // minZ += 0;
+                maxZ += width;
+            }
+
+            case WEST -> {
+                minX += -width + 1;
+                maxX += 1;
+                minZ += -half;
+                maxZ += half + 1;
+            }
+
+            case EAST -> {
+                // minX += 0;
+                maxX += width;
+                minZ += -half;
+                maxZ += half + 1;
+            }
+            default -> throw new IllegalArgumentException("Unexpected value: " + face);
+
+            // case UP -> {
+            //     minX += -half;
+            //     maxX += half + 1;
+            //     minZ += -half;
+            //     maxZ += half + 1;
+            //     minY += 0;
+            //     maxY += height;
+            // }
+
+            // case DOWN -> {
+            //     minX += -half;
+            //     maxX += half + 1;
+            //     minZ += -half;
+            //     maxZ += half + 1;
+            //     minY += -height + 1;
+            //     maxY += 1;
+            // }
         }
+
+        LevelRenderer.renderLineBox(
+                stack,
+                buffer.getBuffer(RenderType.lines()),
+                minX, minY, minZ,
+                maxX, maxY, maxZ,
+                0.9F, 0.9F, 0.9F, 1.0F,
+                0.5F, 0.5F, 0.5F
+        );
     }
 
     default boolean checkTool(Player player, BlockPos pos) {
@@ -76,16 +179,11 @@ public interface AOERender {
 
         if (mainH != null && mainH.is(zItems.CONFIGURATOR)) {
             item = mainH;
+        } else if (offH != null && offH.is(zItems.CONFIGURATOR)) {
+            item = offH;
         } else {
-            if (offH != null && offH.is(zItems.CONFIGURATOR)) {
-                item = offH;
-            } else {
-                return false;
-            }
-        }
-
-        if (!item.is(zItems.CONFIGURATOR))
             return false;
+        }
 
         if (item.get(zComponents.GLOBAL_POS) == null)
             return false;
@@ -93,11 +191,6 @@ public interface AOERender {
         if (item.get(zComponents.GLOBAL_POS).dimension() != player.level().dimension())
             return false;
 
-        if (item.get(zComponents.GLOBAL_POS).pos().getX() != pos.getX()
-                || item.get(zComponents.GLOBAL_POS).pos().getY() != pos.getY()
-                || item.get(zComponents.GLOBAL_POS).pos().getZ() != pos.getZ())
-            return false;
-        return true;
+        return item.get(zComponents.GLOBAL_POS).pos().equals(pos);
     }
-
 }

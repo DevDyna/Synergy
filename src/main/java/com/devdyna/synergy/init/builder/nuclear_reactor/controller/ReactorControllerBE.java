@@ -3,8 +3,7 @@ package com.devdyna.synergy.init.builder.nuclear_reactor.controller;
 import java.util.*;
 
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
-import com.devdyna.synergy.api.basebe.be.TickingBE;
-import com.devdyna.synergy.api.beLogic.AreaOfEffect;
+import com.devdyna.synergy.api.basebe.be.AreaBE;
 import com.devdyna.synergy.api.reactor.ControllerProperties;
 import com.devdyna.synergy.api.reactor.CoolerBlockBase;
 import com.devdyna.synergy.api.reactor.ModeratorBase;
@@ -32,14 +31,12 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
 @SuppressWarnings("null")
-public class ReactorControllerBE extends TickingBE implements EnergyProvider, AreaOfEffect {
+public class ReactorControllerBE extends AreaBE implements EnergyProvider {
 
     private final Map<Direction, BlockCapabilityCache<IEnergyStorage, Direction>> cache = new HashMap<>();
 
     public ReactorControllerBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.REACTOR_CONTROLLER.get(), pos, state);
-        if (radius == 0)
-            this.radius = 4;
         var random = new Random();
         var color = ColorUtil.colorfulColorList.get(random.nextInt(ColorUtil.colorfulColorList.size()));
         rgbColor = List.of(color.getRed(), color.getGreen(), color.getBlue());
@@ -70,8 +67,7 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
                                         : ControllerProperties.WAITING));
 
         if (isAreaNull())
-            area = getAreaSelection(level, getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING),
-                    getBlockPos());
+            area = getArea();
 
         if (enable()) {
             resetStats();
@@ -93,8 +89,8 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
     }
 
     @Override
-    public void updateAOE() {
-        super.updateAOE();
+    public void resetAOE() {
+        super.resetAOE();
         resetStats();
     }
 
@@ -189,32 +185,8 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
     }
 
     @Override
-    public int radius() {
-        return radius;
-    }
-
-    @Override
-    public int height() {
-        return radius;
-    }
-
-    @Override
     public int MaxFE() {
         return Common.REACTOR_CONTROLLER_MAX_FE.get();
-    }
-
-    @Override
-    public Range radiusLimit() {
-        return getRange();
-    }
-
-    @Override
-    public Range heightLimit() {
-        return getRange();
-    }
-
-    public Range getRange() {
-        return Range.of(1, 8, BiBool.of(true, false));
     }
 
     public double getHeat() {
@@ -238,24 +210,47 @@ public class ReactorControllerBE extends TickingBE implements EnergyProvider, Ar
         super.handleUpdateTag(tag, lookupProvider);
         heat = tag.getDouble("heat");
         fe = tag.getInt("fe");
-        rebuildArea();
-    }
-
-    @Override
-    public void onLoad() {
-        super.onLoad();
-        if (level.isClientSide)
-            rebuildArea();
-    }
-
-    @Override
-    public boolean hasSizeEqual() {
-        return true;
+        resetAOE();
     }
 
     @Override
     public int getFERate() {
         return fe;
+    }
+
+    @Override
+    public AreaType getAreaType() {
+        return AreaType.SIDE;
+    }
+
+    @Override
+    public int getHeight() {
+        return 5;
+    }
+
+    @Override
+    public int getWidth() {
+        return 5;
+    }
+
+    @Override
+    public List<BlockPos> getArea() {
+        return getDirectionalArea(BlockStateProperties.HORIZONTAL_FACING);
+    }
+
+    @Override
+    public boolean editalbe() {
+        return true;
+    }
+
+    @Override
+    public Range getWidthLimits() {
+        return Range.of(1, 9, BiBool.of(true, false));
+    }
+
+    @Override
+    public Range getHeigthLimits() {
+        return Range.of(1, 9, BiBool.of(true, false));
     }
 
 }

@@ -1,8 +1,9 @@
 package com.devdyna.synergy.init.builder.automation.sprinkler;
 
-import com.devdyna.synergy.api.basebe.be.TickingBE;
+import java.util.List;
+
+import com.devdyna.synergy.api.basebe.be.AreaBE;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
-import com.devdyna.synergy.api.beLogic.SimpleAOE;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
@@ -21,48 +22,43 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
-public class SprinklerBE extends TickingBE implements EnergyBlock, SimpleAOE {
+public class SprinklerBE extends AreaBE implements EnergyBlock {
 
     public SprinklerBE(BlockPos pos, BlockState state) {
         super(zBlockEntities.SPRINKLER.get(), pos, state);
-        if (radius == 0)
-            this.radius = 4;
     }
 
     @Override
     public void tickServer() {
-
-        var x = getBlockPos().getX();
-        var y = getBlockPos().getY();
-        var z = getBlockPos().getZ();
 
         level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BlockStateProperties.ENABLED,
                 canExtract() && !level.hasNeighborSignal(getBlockPos())));
 
         if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
 
-            BlockPos.randomBetweenClosed(level.random, 1,
-                    x - radius, y, z - radius,
-                    x + radius, y + 2, z + radius)
-                    .forEach(pos -> {
-                        BlockState state = level.getBlockState(pos);
-                        if (state.isRandomlyTicking() && LevelUtil.chance(75, level)) {
-                            if (LevelUtil.chance(25, level))
-                                LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER, (ServerLevel) level, pos, true);
+            if (area == null)
+                area = getArea();
 
-                            if (LevelUtil.chance(25, level))
-                                level.playSound(null, getBlockPos(), SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,
-                                        0.75F,
-                                        1F);
+            var selectedPos = getRandomPos(area);
 
-                            if (state.getBlock() instanceof CropBlock cropBlock) {
-                                if (!cropBlock.isMaxAge(state))
-                                    cropBlock.performBonemeal((ServerLevel) level, level.random, pos, state);
-                            } else
-                                state.randomTick((ServerLevel) level, pos, level.random);
-                            extractFE(Common.SPRINKLER_FE_COST.get(), false);
-                        }
-                    });
+            BlockState state = level.getBlockState(selectedPos);
+            if (state.isRandomlyTicking() && LevelUtil.chance(75, level)) {
+                if (LevelUtil.chance(25, level))
+                    LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER, (ServerLevel) level, selectedPos, true);
+
+                if (LevelUtil.chance(25, level))
+                    level.playSound(null, getBlockPos(), SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS,
+                            0.75F,
+                            1F);
+
+                if (state.getBlock() instanceof CropBlock cropBlock) {
+                    if (!cropBlock.isMaxAge(state))
+                        cropBlock.performBonemeal((ServerLevel) level, level.random, selectedPos, state);
+                } else
+                    state.randomTick((ServerLevel) level, selectedPos, level.random);
+                extractFE(Common.SPRINKLER_FE_COST.get(), false);
+            }
+
         }
 
     }
@@ -83,16 +79,23 @@ public class SprinklerBE extends TickingBE implements EnergyBlock, SimpleAOE {
     }
 
     @Override
-    public void onLoad() {
-        super.onLoad();
-        if (level.isClientSide)
-            rebuildArea();
+    public AreaType getAreaType() {
+        return AreaType.MIDDLE;
     }
 
+    @Override
+    public int getHeight() {
+        return 5;
+    }
 
     @Override
-    public int radius() {
-        return radius;
+    public int getWidth() {
+        return 9;
+    }
+
+    @Override
+    public List<BlockPos> getArea() {
+        return getCentredPosArea();
     }
 
 }
