@@ -25,8 +25,6 @@ public enum MachineProgress
   @Override
   public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
 
-    // remove default item capability tooltip
-
     Data data = decodeFromData(accessor).orElse(null);
     if (data == null || data.inv == null)
       return;
@@ -60,8 +58,16 @@ public enum MachineProgress
 
       calculateSlots(be, data, helper, tooltip, SlotType.OUTPUT);
 
+      // tooltip.remove(JadeIds.CORE_MOD_NAME);
+      tooltip.remove(JadeIds.UNIVERSAL_ITEM_STORAGE);
+      tooltip.remove(JadeIds.UNIVERSAL_ITEM_STORAGE_ITEMS_PER_LINE);
     }
 
+  }
+
+  @Override
+  public int getDefaultPriority() {
+    return TooltipPosition.TAIL-2;
   }
 
   protected void calculateSlots(BaseMachineBE be, Data data, IElementHelper helper, ITooltip tooltip, SlotType type) {
@@ -77,14 +83,15 @@ public enum MachineProgress
     }
   }
 
-  // protected void calculateTanks(BaseMachineBE be, Data data, IElementHelper helper, ITooltip tooltip,
-  //     FluidTankType type) {
-  //   if (be instanceof FluidTankStorage tank)
-  //     if (data.fluidTank != null && !data.fluidTank.isEmpty())
-  //       if (tank.getTankIOType().equals(type)) {
-  //         tooltip.add(helper.fluid(JadeFluidObject.of(data.fluidTank.getFluid(),data.fluidTank.getAmount())));
-  //         tooltip.append(helper.spacer(4, 0));
-  //       }
+  // protected void calculateTanks(BaseMachineBE be, Data data, IElementHelper
+  // helper, ITooltip tooltip,
+  // FluidTankType type) {
+  // if (be instanceof FluidTankStorage tank)
+  // if (data.fluidTank != null && !data.fluidTank.isEmpty())
+  // if (tank.getTankIOType().equals(type)) {
+  // tooltip.add(helper.fluid(JadeFluidObject.of(data.fluidTank.getFluid(),data.fluidTank.getAmount())));
+  // tooltip.append(helper.spacer(4, 0));
+  // }
   // }
 
   @Override
@@ -105,7 +112,7 @@ public enum MachineProgress
     }
 
     // if (machineBE instanceof FluidTankStorage tank) {
-    //   fluidTank = tank.getFluidStorage().getFluid();
+    // fluidTank = tank.getFluidStorage().getFluid();
     // }
 
     return new Data(
