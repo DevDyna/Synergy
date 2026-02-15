@@ -54,10 +54,6 @@ public interface AreaOfEffect {
         return Range.of(1, getWidth());
     }
 
-    default boolean isAreaNull() {
-        return getArea() == null;
-    }
-
     default List<BlockPos> getBasicArea(BlockPos start, BlockPos end) {
         return BlockPos
                 .betweenClosedStream(start, end)

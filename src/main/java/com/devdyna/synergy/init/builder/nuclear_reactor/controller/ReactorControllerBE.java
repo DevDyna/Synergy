@@ -59,14 +59,14 @@ public class ReactorControllerBE extends AreaBE implements EnergyProvider {
         level.setBlockAndUpdate(getBlockPos(),
                 getBlockState()
                         .setValue(BlockStateProperties.ENABLED,
-                                canReceive() && !isAreaNull() && level.hasNeighborSignal(getBlockPos()))
+                                canReceive() && area != null && level.hasNeighborSignal(getBlockPos()))
                         .setValue(ReactorControllerBlock.STATUS,
                                 enable() ? (isOverHeated ? ControllerProperties.OVERHEATED
                                         : (cellFound() ? ControllerProperties.PRODUCTION
                                                 : ControllerProperties.NOFUEL))
                                         : ControllerProperties.WAITING));
 
-        if (isAreaNull())
+        if (area == null)
             area = getArea();
 
         if (enable()) {
