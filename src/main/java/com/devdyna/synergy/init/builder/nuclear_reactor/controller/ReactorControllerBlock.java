@@ -78,7 +78,7 @@ public class ReactorControllerBlock extends AreaBlock {
 
         var be = (ReactorControllerBE) level.getBlockEntity(pos);
 
-        if (!be.isAreaNull()) {
+        if (!be.getArea().isEmpty()) {
             be.updateCells(false);
         }
         super.onRemove(state, level, pos, newState, movedByPiston);
