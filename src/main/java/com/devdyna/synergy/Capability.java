@@ -32,7 +32,8 @@ public class Capability {
                                                 zBlocks.CRUSHING_TUB,
                                                 zBlocks.EVAPORATION_BASIN,
                                                 zBlocks.FOUNDRY,
-                                                zBlocks.CASTING_TABLE
+                                                zBlocks.CASTING_TABLE,
+                                                zBlocks.CHOPPER
 
                                 ));
 
@@ -42,7 +43,8 @@ public class Capability {
                                 zBlocks.SOLAR_PANEL,
                                 zBlocks.REACTOR_CONTROLLER,
                                 zBlocks.LASER_MACHINE,
-                                zBlocks.LASER_ROTOR
+                                zBlocks.LASER_ROTOR,
+                                zBlocks.CHOPPER
 
                 ));
 

@@ -558,7 +558,6 @@ public class zItems {
         public static final DeferredHolder<Item, Item> VOID_CRYSTAL = Material
                         .resourceItem("void_crystal");
 
-
         public static final DeferredHolder<Item, Item> BEEWAX = Material
                         .resourceItem("beewax");
 
@@ -573,6 +572,10 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> TINY_IRON_DUST = Material
                         .resourceItem("tiny_iron_dust");
+        
+        public static final DeferredHolder<Item, Item> FLOPPY_DISK = Material
+                        .tooltippedItem("floppy_disk",zTool);
+
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,

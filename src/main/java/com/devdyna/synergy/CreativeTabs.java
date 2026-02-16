@@ -98,6 +98,7 @@ public class CreativeTabs {
             event.accept(zBlocks.HARVESTER.get());
             event.accept(zBlocks.SPRINKLER.get());
             event.accept(zBlocks.SIMPLE_TANK.get());
+            event.accept(zBlocks.CHOPPER.get());
             ClazzUtil.getAllzBlocks(zBlocks.zResourceGenerators)
                     .forEach(i -> event.accept(i.get()));
         }

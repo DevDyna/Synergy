@@ -225,6 +225,7 @@ public class zStatic {
         public static String azalea = "azalea";
         public static String sprinkler = "sprinkler";
         public static String harvester = "harvester";
+        public static String chopper = "chopper";
         public static String solar_panel = "solar_panel";
         public static String healer = "healer";
 

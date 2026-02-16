@@ -2,11 +2,13 @@ package com.devdyna.synergy.api.basebe.be;
 
 import java.util.List;
 
+import com.devdyna.synergy.api.beLogic.AreaOfEffect;
+import net.minecraft.core.HolderLookup.Provider;
+
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.IItemHandler;
 
 /**
  * <b>STANDALONE BASE BE</b>
@@ -29,12 +31,17 @@ import net.neoforged.neoforge.items.IItemHandler;
 @SuppressWarnings("null")
 public abstract class MachineBE extends BEStorage {
 
-    // public final static String RADIUS = "aoe";
+    public final static String WIDTH = "width";
+    public final static String HEIGHT = "height";
 
-    // protected int radius;
+    protected int width;
+    protected int height;
+    protected List<BlockPos> area = null;
 
     public MachineBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
+        // this.width = getWidth();
+        // this.height = getHeight();
     }
 
     /**
@@ -59,64 +66,68 @@ public abstract class MachineBE extends BEStorage {
     public void tickBoth() {
     }
 
-    // @Override
-    // protected void saveAdditional(CompoundTag tag, Provider registries) {
-    //     // if (this instanceof AreaOfEffect)
-    //         // tag.putInt(RADIUS, radius);
-    //     super.saveAdditional(tag, registries);
-    // }
+    @Override
+    protected void saveAdditional(CompoundTag tag, Provider registries) {
 
-    // @Override
-    // protected void loadAdditional(CompoundTag tag, Provider registries) {
+        if (this instanceof AreaOfEffect) {
+            tag.putInt(HEIGHT, height);
+            tag.putInt(WIDTH, width);
+        }
+        super.saveAdditional(tag, registries);
+    }
 
-    //     if (this instanceof AreaOfEffect)
-    //         if (tag.contains(RADIUS))
-    //             radius = tag.getInt(RADIUS);
-    //     super.loadAdditional(tag, registries);
-    // }
+    @Override
+    protected void loadAdditional(CompoundTag tag, Provider registries) {
 
-    public abstract List<Integer> getInputSlotIndex();
+        if (this instanceof AreaOfEffect) {
+            if (tag.contains(HEIGHT))
+                height = tag.getInt(HEIGHT);
+            if (tag.contains(WIDTH))
+                width = tag.getInt(WIDTH);
+        }
+        super.loadAdditional(tag, registries);
+    }
 
-    public abstract List<Integer> getOutputSlotIndex();
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        if (this instanceof AreaOfEffect)
+            if (level.isClientSide())
+                rebuildArea();
+    }
 
-    public IItemHandler getAutomationItemHandler() {
-        return new IItemHandler() {
+    private void rebuildArea() {
+        if (this instanceof AreaOfEffect be)
+            if (level != null)
+                area = be.getArea();
+    }
 
-            @Override
-            public int getSlots() {
-                return getStorage().getSlots();
-            }
+    @Override
+    public CompoundTag getUpdateTag(Provider lookupProvider) {
+        CompoundTag tag = super.getUpdateTag(lookupProvider);
+        if (this instanceof AreaOfEffect) {
+            tag.putInt(HEIGHT, height);
+            tag.putInt(WIDTH, width);
+        }
+        return tag;
+    }
 
-            @Override
-            public ItemStack getStackInSlot(int slot) {
-                return getStorage().getStackInSlot(slot);
-            }
+    @Override
+    public void handleUpdateTag(CompoundTag tag, Provider lookupProvider) {
+        super.handleUpdateTag(tag, lookupProvider);
+        if (this instanceof AreaOfEffect) {
+            if (tag.contains(HEIGHT))
+                height = tag.getInt(HEIGHT);
+            if (tag.contains(WIDTH))
+                width = tag.getInt(WIDTH);
+            rebuildArea();
+        }
 
-            @Override
-            public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-                if (getInputSlotIndex().contains(slot))
-                    return getStorage().insertItem(slot, stack, simulate);
-                return stack;
-            }
+    }
 
-            @Override
-            public ItemStack extractItem(int slot, int amount, boolean simulate) {
-                if (getOutputSlotIndex().contains(slot))
-                    return getStorage().extractItem(slot, amount, simulate);
-                return ItemStack.EMPTY;
-            }
-
-            @Override
-            public int getSlotLimit(int slot) {
-                return getStorage().getSlotLimit(slot);
-            }
-
-            @Override
-            public boolean isItemValid(int slot, ItemStack stack) {
-                return getInputSlotIndex().contains(slot);
-            }
-
-        };
+    public void resetAOE() {
+        if (this instanceof AreaOfEffect)
+            area = null;
     }
 
 }

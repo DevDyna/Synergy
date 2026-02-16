@@ -34,8 +34,10 @@ public abstract class BlockMenu extends Block implements EntityBlock {
             BlockHitResult hitResult) {
 
         if (level.getBlockEntity(pos) instanceof BEMenu be) {
-            onClickAction(state, level, pos, player);
-            player.openMenu(new SimpleMenuProvider(be, be.getContainerName()), pos);
+            var click = onClickAction(state, level, pos, player);
+            if(click != null)
+            return click;
+                player.openMenu(new SimpleMenuProvider(be, be.getContainerName()), pos);
             return InteractionResult.SUCCESS;
         }
         return super.useWithoutItem(state, level, pos, player, hitResult);
@@ -43,9 +45,11 @@ public abstract class BlockMenu extends Block implements EntityBlock {
 
     /**
      * Event to allow to set animations or events when menu was opened
+     * <br/><br/>
+     * return true to cancel menu open
      */
-    protected void onClickAction(BlockState state, Level level, BlockPos pos, Player player) {
-
+    protected InteractionResult onClickAction(BlockState state, Level level, BlockPos pos, Player player) {
+        return null;
     }
 
 }

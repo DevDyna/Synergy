@@ -3,6 +3,7 @@ package com.devdyna.synergy.init.types;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.init.builder.automation.chopper.ChopperMenu;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.ornated.OrnatedTinyChestMenu;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.stone.StoneTinyChestMenu;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.wooden.WoodenTinyChestMenu;
@@ -37,5 +38,9 @@ public class zContainer {
         public static final DeferredHolder<MenuType<?>, MenuType<FuelCellMenu>> FUEL_CELL_MENU = zCTNR
                         .register(zStatic.ReactorStuff.fuel_cell,
                                         () -> IMenuTypeExtension.create(FuelCellMenu::new));
+
+        public static final DeferredHolder<MenuType<?>, MenuType<ChopperMenu>> CHOPPER = zCTNR
+                        .register(zStatic.Blocks.chopper,
+                                        () -> IMenuTypeExtension.create(ChopperMenu::new));
 
 }

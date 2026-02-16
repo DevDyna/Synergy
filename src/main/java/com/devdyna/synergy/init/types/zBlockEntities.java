@@ -3,6 +3,7 @@ package com.devdyna.synergy.init.types;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.init.Material;
+import com.devdyna.synergy.init.builder.automation.chopper.ChopperBE;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterBE;
 import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.advanced.AdvancedCobbleGenBE;
 import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.elite.EliteCobbleGenBE;
@@ -185,5 +186,9 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FaucetBE>> FAUCET = Material
                         .createBlockEntity(zStatic.Blocks.faucet, FaucetBE::new,
                                         zBlocks.FAUCET);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ChopperBE>> CHOPPER = Material
+                        .createBlockEntity(zStatic.Blocks.chopper, ChopperBE::new,
+                                        zBlocks.CHOPPER);
 
 }

@@ -1,9 +1,9 @@
 package com.devdyna.synergy.api.utils;
 
 import com.devdyna.synergy.api.basebe.be.BETank;
-import com.devdyna.synergy.api.basebe.be.MachineBE;
 import com.devdyna.synergy.api.basebe.block.BlockTank;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
+import com.devdyna.synergy.api.beLogic.SimpleMachineItemStorage;
 import com.devdyna.synergy.api.beLogic.RestrictedFluidHandler;
 import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
@@ -75,7 +75,7 @@ public class CapabilityUtils {
                     if (be instanceof BaseMachineBE m)
                         return m.getAutomationHandler();
 
-                    if (be instanceof MachineBE machineBE)
+                    if (be instanceof SimpleMachineItemStorage machineBE)
                         return machineBE.getAutomationItemHandler();
 
                     if (be instanceof RestrictedItemHandler r)

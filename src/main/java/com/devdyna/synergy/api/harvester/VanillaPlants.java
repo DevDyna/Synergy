@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
+import java.util.function.BiFunction;
 
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.api.utils.LogUtil;
@@ -159,10 +160,16 @@ public class VanillaPlants {
         return null;
     }
 
-    public static List<ItemStack> checkTree(Level level, BlockPos pos) {
+    public static List<ItemStack> checkTree(Level level, BlockPos pos, boolean configFlag) {
+        return checkTree(level, pos, configFlag, (i, p) -> false);
+    }
+
+    public static List<ItemStack> checkTree(Level level, BlockPos pos, boolean configFlag,
+            BiFunction<BlockState, BlockPos, Boolean> tool) {
+
         var state = level.getBlockState(pos);
 
-        if (Common.HARVESTER_DISABLE_CHECK_TREE.get())
+        if (configFlag)
             return null;
 
         boolean canProcede = false;
@@ -186,6 +193,7 @@ public class VanillaPlants {
             visited.add(pos);
 
             int checkBlocks = 0;
+            boolean toolFlag = false;
 
             while (!queue.isEmpty()) {
                 BlockPos currentPos = queue.poll();
@@ -200,12 +208,19 @@ public class VanillaPlants {
                         level.setBlockAndUpdate(adjacentPos, Blocks.AIR.defaultBlockState());
                         Block.getDrops(adjacentState, (ServerLevel) level, adjacentPos, null)
                                 .forEach(t -> itemList.add(t));
+
+                        toolFlag = tool.apply(adjacentState, adjacentPos);
                     }
                 }
                 checkBlocks++;
+
                 if (checkBlocks >= treeHarvestingBlockLimit)
                     break;
+
+                if (toolFlag)
+                    break;
             }
+
             level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
             Block.getDrops(state, (ServerLevel) level, pos, null).forEach(t -> itemList.add(t));
 
@@ -235,5 +250,41 @@ public class VanillaPlants {
 
         }
         return null;
+    }
+
+    /**
+     * unify all dropped items
+     */
+    public static ArrayList<ItemStack> unifyDrops(List<ItemStack> items) {
+        ArrayList<ItemStack> newItems = new ArrayList<>();
+
+        for (int i = 0; i < items.size(); i++) {
+
+            var check = false;
+            int index = -1;
+            for (ItemStack itemStack : newItems) {
+                if (itemStack.getItem() == items.get(i).getItem()) {
+                    if (itemStack.getCount() >= 64)
+                        continue;
+                    index = newItems.indexOf(itemStack);
+                    check = true;
+                    break;
+                }
+            }
+
+            if (check) {
+
+                newItems.set(index,
+                        new ItemStack(newItems.get(index).getItem(),
+                                newItems.get(index).getCount() + 1));
+
+            } else {
+
+                newItems.add(items.get(i));
+
+            }
+
+        }
+        return newItems;
     }
 }

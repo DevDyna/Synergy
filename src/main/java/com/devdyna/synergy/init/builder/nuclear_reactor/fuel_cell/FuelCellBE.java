@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.be.MachineBE;
+import com.devdyna.synergy.api.beLogic.SimpleMachineItemStorage;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.FuelCellRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
@@ -23,7 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 @SuppressWarnings("null")
-public class FuelCellBE extends MachineBE {
+public class FuelCellBE extends MachineBE implements SimpleMachineItemStorage {
 
     protected static final int INPUT_SLOT = 0;
     protected static final int OUTPUT_SLOT = 1;

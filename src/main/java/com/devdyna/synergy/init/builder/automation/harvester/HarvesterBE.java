@@ -68,7 +68,7 @@ public class HarvesterBE extends AreaBE implements EnergyBlock, ItemProducer {
         ArrayList<List<ItemStack>> list = new ArrayList<>(Arrays.asList(
                 VanillaPlants.checkReplant(level, pos),
                 VanillaPlants.checkNoReplant(level, pos),
-                VanillaPlants.checkTree(level, pos),
+                VanillaPlants.checkTree(level, pos, Common.HARVESTER_DISABLE_CHECK_TREE.get()),
                 VanillaPlants.checkBigPlant(level, pos),
                 getAPICrops(level, pos)));
 
@@ -104,7 +104,7 @@ public class HarvesterBE extends AreaBE implements EnergyBlock, ItemProducer {
             List<ItemStack> items = collectItemDrops(level, area.get(i));
 
             if (items != null)
-                for (ItemStack itemStack : unifyDrops(items))
+                for (ItemStack itemStack : VanillaPlants.unifyDrops(items))
                     exportItems(itemStack, List.of(getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING)),
                             level, getBlockPos(), cache);
 

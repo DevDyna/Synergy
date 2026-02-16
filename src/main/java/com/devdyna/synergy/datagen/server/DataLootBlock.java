@@ -68,9 +68,7 @@ public class DataLootBlock extends BlockLootSubProvider {
         @Override
         protected void generate() {
 
-                
-
-                 Set.of(
+                Set.of(
                                 zBlocks.BASIC_MACHINE_FRAME,
                                 zBlocks.PIPE,
 
@@ -127,7 +125,8 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.EVAPORATION_BASIN,
                                 zBlocks.CRUSHING_TUB,
                                 zBlocks.CASTING_TABLE,
-                                zBlocks.FAUCET
+                                zBlocks.FAUCET,
+                                zBlocks.CHOPPER
 
                 ).stream().map(DeferredHolder::get).forEach(this::dropSelf);
 

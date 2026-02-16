@@ -2,6 +2,8 @@ package com.devdyna.synergy;
 
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.init.builder.automation.chopper.ChopperAOE;
+import com.devdyna.synergy.init.builder.automation.chopper.ChopperScreen;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterAOE;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerAOE;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankFluidRender;
@@ -64,6 +66,8 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.CASTING_TABLE.get(), CastingTableRender::new);
         event.registerBlockEntityRenderer(zBlockEntities.FAUCET.get(), FaucetRender::new);
 
+        event.registerBlockEntityRenderer(zBlockEntities.CHOPPER.get(), ChopperAOE::new);
+
     }
 
     @SubscribeEvent
@@ -80,6 +84,8 @@ public class Client {
         event.register(zMachines.EXTRACTOR.menu().get(), ExtractorScreen::new);
         event.register(zMachines.CASTING_FACTORY.menu().get(), CasterScreen::new);
         event.register(zMachines.MELTER.menu().get(), MelterScreen::new);
+
+        event.register(zContainer.CHOPPER.get(), ChopperScreen::new);
     }
 
     @SuppressWarnings("deprecation")

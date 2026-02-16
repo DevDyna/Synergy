@@ -31,12 +31,13 @@ public abstract class BaseScreen<T extends BaseMenu> extends AbstractContainerSc
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float v, int i, int j) {
-
         guiGraphics.blit(background(), getGuiLeft(), getGuiTop(), 0, 0, imageWidth, imageHeight);
+        renderArrow(guiGraphics);
+    }
 
+    protected void renderArrow(GuiGraphics guiGraphics) {
         if (arrow() != null && whenAnimateArrow())
             guiGraphics.blit(arrow(), getGuiLeft() + 73, getGuiTop() + 35, 0, 0, getScaledArrowProgress(), 16, 24, 16);
-
     }
 
     @Override

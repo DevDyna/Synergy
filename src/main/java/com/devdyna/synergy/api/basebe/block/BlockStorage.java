@@ -6,13 +6,9 @@ import com.devdyna.synergy.api.basebe.be.*;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
 
 @SuppressWarnings("null")
 public abstract class BlockStorage extends BlockMenu {
@@ -28,17 +24,17 @@ public abstract class BlockStorage extends BlockMenu {
         return simpleCodec(getFactory());
     }
 
-    @Override
-    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
-            BlockHitResult hitResult) {
+    // @Override
+    // public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
+    //         BlockHitResult hitResult) {
 
-        if (level.getBlockEntity(pos) instanceof BEStorage be) {
-            onClickAction(state, level, pos, player);
-            player.openMenu(new SimpleMenuProvider(be, be.getContainerName()), pos);
-            return InteractionResult.SUCCESS;
-        }
-        return super.useWithoutItem(state, level, pos, player, hitResult);
-    }
+    //     if (level.getBlockEntity(pos) instanceof BEStorage be) {
+
+    //         super.useWithoutItem(state, level, pos, player, hitResult);
+    //         return InteractionResult.SUCCESS;
+    //     }
+    //     return super.useWithoutItem(state, level, pos, player, hitResult);
+    // }
 
     @Override
     protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
@@ -54,11 +50,6 @@ public abstract class BlockStorage extends BlockMenu {
         super.onRemove(state, level, pos, newState, movedByPiston);
     }
 
-    /**
-     * Event to allow to set animations or events when menu was opened
-     */
-    protected void onClickAction(BlockState state, Level level, BlockPos pos, Player player){
-        
-    }
+
 
 }

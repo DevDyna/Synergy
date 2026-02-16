@@ -241,6 +241,12 @@ public class zItemTag {
 
 
         public static final TagKey<Item> CAST_IRON_BLOCKS = Material.tagItem("cast_iron_blocks");
+     
+     
+     
+        public static final TagKey<Item> CHOPPER_AREA_INCREASE = Material.tagItem("chopper/area_increaser");
+       
+        public static final TagKey<Item> CHOPPER_ENERGY_UPGRADE = Material.tagItem("chopper/energy_upgrade");
 
 
 

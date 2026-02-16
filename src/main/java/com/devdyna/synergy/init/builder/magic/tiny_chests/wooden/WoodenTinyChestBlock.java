@@ -13,6 +13,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -70,8 +71,9 @@ public class WoodenTinyChestBlock extends BlockStorage {
     }
 
     @Override
-    protected void onClickAction(BlockState state, Level level, BlockPos pos, Player player) {
+    protected InteractionResult onClickAction(BlockState state, Level level, BlockPos pos, Player player) {
         level.playSound(player, pos, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 1, 1.75f);
+        return null;
     }
 
     @Override

@@ -25,6 +25,7 @@ import com.devdyna.synergy.init.builder.survival.faucet.FaucetBlock;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
 import com.devdyna.synergy.init.builder.*;
+import com.devdyna.synergy.init.builder.automation.chopper.ChopperBlock;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterBLK;
 import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.advanced.AdvancedCobbleGenBlock;
 import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.elite.EliteCobbleGenBlock;
@@ -584,6 +585,10 @@ public class zBlocks {
                         WoodType.WARPED.name() + "_" + zStatic.Blocks.drying_rack,
                         () -> new DryingRackBlock(BlockBehaviour.Properties.of()
                                         .mapColor(MapColor.WARPED_STEM).sound(SoundType.NETHER_WOOD)));
+
+        public static final DeferredHolder<Block, Block> CHOPPER = Material.registerItemBlock(
+                        zStatic.Blocks.chopper,
+                        () -> new ChopperBlock());
 
         // ---------------------------------------------------------------------------------------//
 
