@@ -227,33 +227,21 @@ public class zItemTag {
         public static final TagKey<Item> TIN_ELECTRON_TUBE = Material.tagItem("electron_tubes/tin", "c");
         public static final TagKey<Item> URANIUM_ELECTRON_TUBE = Material.tagItem("electron_tubes/uranium", "c");
 
-
         public static final TagKey<Item> BLOCK_STEEL = Material
                         .tagItem("storage_blocks/steel", "c");
 
         public static final TagKey<Item> BLOCK_ADVANCED_ALLOY = Material
                         .tagItem("storage_blocks/advanced_alloy", "c");
-                        
+
         public static final TagKey<Item> BLOCK_WROUGHT_IRON = Material
                         .tagItem("storage_blocks/wrought_iron", "c");
 
-
-
-
         public static final TagKey<Item> CAST_IRON_BLOCKS = Material.tagItem("cast_iron_blocks");
-       
+
         public static final TagKey<Item> MIXTURE_ALTERNATIVE = Material.tagItem("mixture_alternative");
-     
-     
-     
+
         public static final TagKey<Item> CHOPPER_AREA_INCREASE = Material.tagItem("chopper/area_increaser");
-       
+
         public static final TagKey<Item> CHOPPER_ENERGY_UPGRADE = Material.tagItem("chopper/energy_upgrade");
-
-
-
-
-
-
 
 }
