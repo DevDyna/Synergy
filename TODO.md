@@ -47,6 +47,8 @@
 
 - [ ] unify redstone sensible machines + jade compat
 
+- [ ] ponder plugin?
+
 ### Survival expansion
 
 - [ ] scrap and slags
