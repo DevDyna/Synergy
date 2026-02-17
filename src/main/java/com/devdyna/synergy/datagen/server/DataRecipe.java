@@ -1605,7 +1605,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 CasterRecipeBuilder.of()
-                                .fluid(zFluids.RUBBER, 250)
+                                .fluid(zFluids.RUBBER, 125)
                                 .input(zItems.MOLD_PLATE)
                                 .output(zItems.PLASTIC)
                                 .unlockedBy()
