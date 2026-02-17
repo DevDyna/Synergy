@@ -1,6 +1,6 @@
 {
   "type": "synergy:electric_melter",
-  "energy": 5000,
+  "energy": 100,
   "fluid": {
     "amount": 250,
     "id": "synergy:oil_source"
@@ -9,5 +9,5 @@
     "count": 1,
     "item": "synergy:oil"
   },
-  "ticks": 400
+  "ticks": 40
 }
