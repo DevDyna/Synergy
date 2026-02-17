@@ -1,32 +1,32 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "synergy:bone_meal_mixture"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "synergy": {
+    "has_packed_mud_ball": {
       "conditions": {
         "items": [
           {
-            "items": "#synergy:mixture_alternative"
+            "items": "synergy:packed_mud_ball"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:packed_mud_pack_x4"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "synergy"
+      "has_packed_mud_ball"
     ]
   ],
   "rewards": {
     "recipes": [
-      "synergy:bone_meal_mixture"
+      "synergy:packed_mud_pack_x4"
     ]
   }
 }

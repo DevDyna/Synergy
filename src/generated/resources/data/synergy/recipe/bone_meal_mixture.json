@@ -13,7 +13,7 @@
       "tag": "c:dusts/redstone"
     },
     {
-      "item": "minecraft:blaze_powder"
+      "tag": "synergy:mixture_alternative"
     }
   ],
   "result": {
