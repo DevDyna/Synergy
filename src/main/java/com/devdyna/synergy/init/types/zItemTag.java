@@ -241,6 +241,8 @@ public class zItemTag {
 
 
         public static final TagKey<Item> CAST_IRON_BLOCKS = Material.tagItem("cast_iron_blocks");
+       
+        public static final TagKey<Item> MIXTURE_ALTERNATIVE = Material.tagItem("mixture_alternative");
      
      
      

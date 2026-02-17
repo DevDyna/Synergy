@@ -323,14 +323,15 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.CAST_IRON_BLOCKS)
                                 .add(zBlocks.CAST_IRON_BLOCK.get().asItem(), zBlocks.CAST_IRON_TILES.get().asItem());
 
-
                 tag(zItemTag.CHOPPER_ENERGY_UPGRADE)
-                .add(zItems.RED_BATTERY.get());
+                                .add(zItems.RED_BATTERY.get());
 
                 tag(zItemTag.CHOPPER_AREA_INCREASE)
-                .add(zItems.FLOPPY_DISK.get());
+                                .add(zItems.FLOPPY_DISK.get());
 
-
+                tag(zItemTag.MIXTURE_ALTERNATIVE)
+                                .addTag(zItemTag.DUST_SULFUR)
+                                .add(Items.BLAZE_POWDER);
 
         }
 

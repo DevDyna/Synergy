@@ -885,9 +885,9 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .requires(Tags.Items.SLIME_BALLS)
                                 .requires(Items.BONE_MEAL)
                                 .requires(Tags.Items.DUSTS_REDSTONE)
-                                .requires(Items.BLAZE_POWDER)
+                                .requires(zItemTag.MIXTURE_ALTERNATIVE)
                                 .unlockedBy(ID,
-                                                has(Items.BLAZE_POWDER))
+                                                has(zItemTag.MIXTURE_ALTERNATIVE))
                                 .group(zStatic.tips.MIXTURE_TIP).save(c);
 
                 UrnRitualBuilder.of()
