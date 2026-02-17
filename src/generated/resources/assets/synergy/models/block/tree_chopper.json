@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "synergy:block/decorative/wrought_iron_block",
+    "side": "synergy:block/chopper/side",
+    "top": "synergy:block/chopper/top"
+  }
+}

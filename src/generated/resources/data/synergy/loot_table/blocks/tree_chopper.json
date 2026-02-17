@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:chopper"
+          "name": "synergy:tree_chopper"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "synergy:blocks/chopper"
+  "random_sequence": "synergy:blocks/tree_chopper"
 }

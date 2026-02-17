@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_axe"
+    },
+    "F": {
+      "item": "synergy:fireclay_bricks"
+    },
+    "H": {
+      "item": "minecraft:hopper"
+    },
+    "W": {
+      "item": "synergy:wrought_iron_ingot"
+    }
+  },
+  "pattern": [
+    " H ",
+    "AFA",
+    "WWW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:tree_chopper"
+  }
+}
