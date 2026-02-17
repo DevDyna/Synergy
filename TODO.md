@@ -51,6 +51,8 @@
 
 - [ ] sap & rubber recipe
 
+- [ ] rework batteries
+
 ### Survival expansion
 
 - [ ] scrap and slags
