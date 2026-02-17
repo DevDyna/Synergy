@@ -17,6 +17,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BambooStalkBlock;
@@ -34,6 +36,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
+@SuppressWarnings("null")
 public class VanillaPlants {
 
     static int treeHarvestingBlockLimit = Common.HARVESTER_TREE_CUTTING_LIMIT.get();
@@ -186,6 +189,10 @@ public class VanillaPlants {
 
             ArrayList<ItemStack> itemList = new ArrayList<>();
 
+            ArrayList<SoundEvent> souldList = new ArrayList<>();
+
+            souldList.add(state.getSoundType(level, pos, null).getBreakSound());
+
             Queue<BlockPos> queue = new LinkedList<>();
             Set<BlockPos> visited = new HashSet<>();
 
@@ -210,6 +217,10 @@ public class VanillaPlants {
                                 .forEach(t -> itemList.add(t));
 
                         toolFlag = tool.apply(adjacentState, adjacentPos);
+
+                        if (!souldList.contains(adjacentState.getSoundType(level, adjacentPos, null).getBreakSound())) {
+                            souldList.add(adjacentState.getSoundType(level, adjacentPos, null).getBreakSound());
+                        }
                     }
                 }
                 checkBlocks++;
@@ -223,6 +234,8 @@ public class VanillaPlants {
 
             level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
             Block.getDrops(state, (ServerLevel) level, pos, null).forEach(t -> itemList.add(t));
+
+            souldList.forEach(s -> level.playSound(null, pos, s, SoundSource.BLOCKS));
 
             return itemList;
         }

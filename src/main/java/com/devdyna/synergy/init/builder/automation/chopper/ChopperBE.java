@@ -35,6 +35,7 @@ import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
@@ -155,6 +156,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
         if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
             checkBlocks(level);
+            exportItems();
         }
 
     }
@@ -169,7 +171,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
                 maxProgress = fuel.getBurnTime(RecipeType.SMELTING);
                 fuel.shrink(1);
             } else if (handleEnergy() && canExtract() && hasEnergy(energy_usage)) {
-                maxProgress = 5;//TODO config
+                maxProgress = 5;// TODO config
                 extractFE(energy_usage, false);
             }
 
@@ -181,9 +183,17 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
     private void checkBlocks(Level level) {
         int size = area.size();
 
+        this.width = getWidth();
+        this.height = getHeight();
+
         if (i < size && level.getGameTime() % delay == 0) {
 
             var pos = area.get(i);
+
+            if (level.getBlockState(pos).isAir() && getStorage().getStackInSlot(SAPLING_SLOT).isEmpty()) {
+                i++;
+                return;
+            }
 
             LevelUtil.addDustParticle(rgbColor.get(0), rgbColor.get(1), rgbColor.get(2),
                     (ServerLevel) level, pos, false, 4);
@@ -224,27 +234,35 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
                 }
 
                 // void overflow
+
                 VanillaPlants.unifyDrops(items)
                         .forEach(s -> {
-                            for (i = OUTPUT_SLOT_0; i < OUTPUT_SLOTS.size(); ++i) {
-                                ItemStack slot = getStorage().getStackInSlot(i);
-                                if (ItemStack.isSameItemSameComponents(slot, s)) {
-                                    s = getStorage().insertItem(i, s, false);
-                                    if (s.isEmpty()) {
-                                        break;
-                                    }
-                                }
+
+                            if (!s.isEmpty() && s.getItem() instanceof BlockItem bi
+                                    && bi.getBlock() instanceof SaplingBlock) {
+                                if (getStorage().getStackInSlot(SAPLING_SLOT).isEmpty() || ItemStack
+                                        .isSameItemSameComponents(getStorage().getStackInSlot(SAPLING_SLOT), s))
+                                    s = getStorage().insertItem(SAPLING_SLOT, s, false);
+                            }
+
+                            if (!s.isEmpty() && AbstractFurnaceBlockEntity.isFuel(s)) {
+                                if (getStorage().getStackInSlot(FUEL_SLOT).isEmpty() || ItemStack
+                                        .isSameItemSameComponents(getStorage().getStackInSlot(FUEL_SLOT), s))
+                                    s = getStorage().insertItem(FUEL_SLOT, s, false);
                             }
 
                             if (!s.isEmpty()) {
-                                for (i = OUTPUT_SLOT_0; i < OUTPUT_SLOTS.size(); ++i) {
-                                    if (getStorage().getStackInSlot(i).isEmpty()) {
-                                        s = getStorage().insertItem(i, s, false);
+                                for (var io = OUTPUT_SLOT_0; io < OUTPUT_SLOTS.size(); ++io) {
+                                    ItemStack slot = getStorage().getStackInSlot(io);
+                                    if (ItemStack.isSameItemSameComponents(slot, s)
+                                            || getStorage().getStackInSlot(io).isEmpty()) {
+                                        s = getStorage().insertItem(io, s, false);
                                         if (s.isEmpty()) {
                                             break;
                                         }
                                     }
                                 }
+
                             }
                         });
             } else// one action every fuel burn
@@ -267,6 +285,26 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
         if (i >= size)
             i = 0;
+
+    }
+
+    private void exportItems() {
+        var above = getBlockPos().above();
+        var cap = Capabilities.ItemHandler.BLOCK.getCapability(level, above, level.getBlockState(above),
+                level.getBlockEntity(above), null);
+
+        if (cap != null)
+            for (var io = OUTPUT_SLOT_0; io < OUTPUT_SLOTS.size(); ++io) {
+                ItemStack in = getStorage().extractItem(io, getStorage().getStackInSlot(io).getCount(), false);
+                for (int j = 0; j < cap.getSlots(); ++j) {
+                    if (cap.getStackInSlot(j).isEmpty()
+                            || ItemStack.isSameItemSameComponents(cap.getStackInSlot(j), in)) {
+                        in = cap.insertItem(j, in, false);
+                        if (in.isEmpty())
+                            break;
+                    }
+                }
+            }
 
     }
 
