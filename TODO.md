@@ -49,6 +49,8 @@
 
 - [ ] ponder plugin?
 
+- [ ] sap & rubber recipe
+
 ### Survival expansion
 
 - [ ] scrap and slags
