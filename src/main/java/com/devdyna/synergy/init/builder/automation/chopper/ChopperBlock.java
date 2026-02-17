@@ -32,7 +32,7 @@ import net.minecraft.world.level.material.MapColor;
 public class ChopperBlock extends MachineBlock {
 
     public ChopperBlock() {
-        this(Properties.of().forceSolidOn().destroyTime(1.0f).sound(SoundType.METAL).mapColor(MapColor.METAL));
+        this(Properties.of().forceSolidOn().sound(SoundType.STONE).strength(1.0f).mapColor(MapColor.TERRACOTTA_ORANGE));
     }
 
     public ChopperBlock(Properties p) {
