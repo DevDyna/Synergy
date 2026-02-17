@@ -2,7 +2,6 @@ package com.devdyna.synergy.compat.jade.provider;
 
 import static com.devdyna.synergy.Main.ID;
 
-import com.devdyna.synergy.api.basebe.be.AreaBE;
 import com.devdyna.synergy.api.beLogic.AreaOfEffect;
 import com.devdyna.synergy.api.utils.x;
 import net.minecraft.nbt.CompoundTag;
@@ -31,9 +30,8 @@ public enum AOEMachines implements IBlockComponentProvider, IServerDataProvider<
 
     @Override
     public void appendServerData(CompoundTag data, BlockAccessor accessor) {
-        var be = (AreaBE) accessor.getBlockEntity();
 
-        if (be instanceof AreaOfEffect aoe) {
+        if (accessor.getBlockEntity() instanceof AreaOfEffect aoe) {
             data.putInt("h", aoe.getHeight());
             data.putInt("w", aoe.getWidth());
             data.putBoolean("edit", aoe.editalbe());
