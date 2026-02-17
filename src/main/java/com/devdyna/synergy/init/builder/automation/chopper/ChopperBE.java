@@ -26,7 +26,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -86,6 +85,10 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
                 return switch (i) {
                     case 0 -> progress;
                     case 1 -> maxProgress;
+                    case 2 -> getCapEnergy() == null ? 0 : getCapEnergy().getEnergyStored();
+                    case 3 -> getCapEnergy() == null ? 0 : getCapEnergy().getMaxEnergyStored();
+                    case 4 -> handleEnergy() ? 1 : 0;
+                    case 5 -> getWidth();
                     default -> 0;
                 };
             }
@@ -97,12 +100,15 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
                         progress = value;
                     case 1:
                         maxProgress = value;
+                    case 2:
+                    default:
+
                 }
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 6;
             }
 
         };
@@ -119,31 +125,38 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
     int delay = 40;
 
+    int energy_usage = 25; // TODO config
+
     @Override
     public void tickServer() {
 
         level.setBlockAndUpdate(getBlockPos(),
                 getBlockState().setValue(BlockStateProperties.ENABLED,
-                        whenEnable()));
+
+                        area != null
+                                // && getStorage().getStackInSlot(AXE_SLOT).is(ItemTags.AXES)
+                                && (AbstractFurnaceBlockEntity.isFuel(getStorage().getStackInSlot(FUEL_SLOT))
+                                        || (handleEnergy()
+                                                && canExtract() && hasEnergy(energy_usage))
+                                        || maxProgress != 0)));
 
         if (area == null) {
             area = getArea();
         }
 
+        if (maxProgress != 0)
+            if (progress <= 1) {
+                maxProgress = 0;
+                progress = 0;
+            } else
+                progress--;
+
+        processFuel();
+
         if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
-            processFuel();
             checkBlocks(level);
         }
 
-    }
-
-    public boolean whenEnable() {
-        return area != null
-                && getStorage().getStackInSlot(AXE_SLOT).is(ItemTags.AXES)
-                && (AbstractFurnaceBlockEntity.isFuel(getStorage().getStackInSlot(FUEL_SLOT))
-                        || (handleEnergy()
-                                && canExtract()))
-                && !level.hasNeighborSignal(getBlockPos());
     }
 
     private void processFuel() {
@@ -153,19 +166,15 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
             var fuel = getStorage().getStackInSlot(FUEL_SLOT);
 
             if (AbstractFurnaceBlockEntity.isFuel(fuel)) {
-                maxProgress = fuel.getBurnTime(RecipeType.SMELTING) * 2;
+                maxProgress = fuel.getBurnTime(RecipeType.SMELTING);
                 fuel.shrink(1);
-            } else if (fuel.is(zItemTag.CHOPPER_ENERGY_UPGRADE)) {
-                extractFE(2, false);
+            } else if (handleEnergy() && canExtract() && hasEnergy(energy_usage)) {
+                maxProgress = 5;//TODO config
+                extractFE(energy_usage, false);
             }
 
             progress = maxProgress;
         }
-
-        if (progress <= 1) {
-            maxProgress = 0;
-        } else
-            progress--;
 
     }
 
@@ -179,28 +188,30 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
             LevelUtil.addDustParticle(rgbColor.get(0), rgbColor.get(1), rgbColor.get(2),
                     (ServerLevel) level, pos, false, 4);
 
-            List<ItemStack> items = VanillaPlants.checkTree(level, pos,
-                    Common.HARVESTER_DISABLE_CHECK_TREE.get(), // TODO
-                    (l_state, l_pos) -> {
+            List<ItemStack> items = !getStorage().getStackInSlot(AXE_SLOT).is(ItemTags.AXES)
+                    ? null
+                    : VanillaPlants.checkTree(level, pos,
+                            Common.HARVESTER_DISABLE_CHECK_TREE.get(), // TODO
+                            (l_state, l_pos) -> {
 
-                        var result = Block.getDrops(l_state, (ServerLevel) level, l_pos, null);
-                        if (result == null || result.isEmpty())
-                            return false;
+                                var result = Block.getDrops(l_state, (ServerLevel) level, l_pos, null);
+                                if (result == null || result.isEmpty())
+                                    return false;
 
-                        if (result.stream().filter(i -> i.is(ItemTags.LOGS)).count() <= 0)
-                            return false;
+                                if (result.stream().filter(i -> i.is(ItemTags.LOGS)).count() <= 0)
+                                    return false;
 
-                        var axe = getStorage().getStackInSlot(AXE_SLOT);
-                        if (axe.isDamageableItem()) {
-                            axe.setDamageValue(axe.getDamageValue() + 1);
-                            if (axe.getDamageValue() >= axe.getMaxDamage())
-                                axe.shrink(1);
-                        }
+                                var axe = getStorage().getStackInSlot(AXE_SLOT);
+                                if (axe.isDamageableItem()) {
+                                    axe.setDamageValue(axe.getDamageValue() + 1);
+                                    if (axe.getDamageValue() >= axe.getMaxDamage())
+                                        axe.shrink(1);
+                                }
 
-                        return !getStorage().getStackInSlot(AXE_SLOT).is(ItemTags.AXES);
-                    }
+                                return !getStorage().getStackInSlot(AXE_SLOT).is(ItemTags.AXES);
+                            }
 
-            );
+                    );
 
             if (items != null) {
 
@@ -366,7 +377,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
     @Override
     public ContainerData getContainerData() {
-        return new SimpleContainerData(MaxFE());
+        return this.data;
     }
 
     @Override
@@ -378,12 +389,11 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
     @Override
     public int MaxFE() {
-        return  handleEnergy() ? 1_000 : 0;
+        return handleEnergy() ? 1_000 : 0;
     }
 
-    public boolean handleEnergy(){
-return getStorage().getStackInSlot(FUEL_SLOT).is(zItemTag.CHOPPER_ENERGY_UPGRADE);
+    public boolean handleEnergy() {
+        return getStorage().getStackInSlot(FUEL_SLOT).is(zItemTag.CHOPPER_ENERGY_UPGRADE);
     }
-
 
 }

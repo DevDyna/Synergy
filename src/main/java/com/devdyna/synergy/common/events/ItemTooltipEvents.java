@@ -1,8 +1,11 @@
 package com.devdyna.synergy.common.events;
 
+import static com.devdyna.synergy.Main.ID;
+
 import java.util.List;
 
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.BlockItemUtils;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.init.types.zItemTag;
@@ -25,7 +28,17 @@ public class ItemTooltipEvents {
         itemTooltipLaserColorApplicator(item, tooltip);
         itemTooltipNoGrowingItems(item, tooltip);
         itemTooltipPlaceable(item, tooltip);
+        itemTooltipChopperUpgrades(item, tooltip);
 
+    }
+
+    private static void itemTooltipChopperUpgrades(ItemStack i, List<Component> t) {
+        if (i.is(zItemTag.CHOPPER_AREA_INCREASE)) {
+            t.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + zStatic.Blocks.chopper+".aoe"));
+        }
+        if (i.is(zItemTag.CHOPPER_ENERGY_UPGRADE)) {
+            t.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + zStatic.Blocks.chopper+".energy"));
+        }
     }
 
     public static void itemTooltipPlaceable(ItemStack i, List<Component> t) {

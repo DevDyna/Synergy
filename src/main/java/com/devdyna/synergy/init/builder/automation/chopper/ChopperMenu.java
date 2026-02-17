@@ -22,7 +22,7 @@ public class ChopperMenu extends BaseMenu {
 
     public ChopperMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()),
-                new SimpleContainerData(2));
+                new SimpleContainerData(6));
     }
 
     public ChopperMenu(int i, Inventory inv, BlockEntity be, ContainerData data) {
@@ -57,8 +57,23 @@ public class ChopperMenu extends BaseMenu {
         return !blockEntity.getStorage().getStackInSlot(ChopperBE.AXE_SLOT).isEmpty();
     }
 
+    public boolean handleEnergy() {
+        return data.get(4) == 1;
+    }
+
     public int getRange() {
-        return (int) (blockEntity.getWidth() / 2);
+        return (int) (data.get(5) / 2);
+    }
+
+    public int getProgress() {
+        return data.get(0);
+    }
+
+    public int getEnergy() {
+        return data.get(2);
+    }
+    public int getMaxEnergy() {
+        return data.get(3);
     }
 
     public boolean isCrafting() {

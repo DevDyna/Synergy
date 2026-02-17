@@ -425,7 +425,9 @@ public class DataLang extends LanguageProvider {
                                 TIP_COLOR + "When placed below a Drying Rack it will speed up the process");
 
                 add(ID + "." + zStatic.Blocks.chopper, TIP_COLOR + "Harvest trees using axes and a solid fuel");
-                add(ID + ".floppy_disk.tip", TIP_COLOR + "Increase the area of Chopper");
+                add(ID + "." + zStatic.Blocks.chopper + ".aoe", TIP_COLOR + "Increase the area of Chopper");
+                add(ID + "." + zStatic.Blocks.chopper + ".energy",
+                                TIP_COLOR + "Allow to use FE intend of solid fuel to power the Chopper");
 
         }
 
