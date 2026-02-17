@@ -1621,6 +1621,17 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .define('P', zItems.PLASTIC.get())
                                 .unlockedBy(ID, has(zItems.PLASTIC.get()))
                                 .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.CHOPPER.get())
+                                .pattern(" H ")
+                                .pattern("AFA")
+                                .pattern("WWW")
+                                .define('W', zItems.WROUGHT_IRON_INGOT.get())
+                                .define('H', Items.HOPPER)
+                                .define('F', zBlocks.FIRECLAY_BRICKS.getBricks().get())
+                                .define('A', Items.IRON_AXE)
+                                .unlockedBy(ID, has(zItems.PLASTIC.get()))
+                                .save(c);
         }
 
 }
