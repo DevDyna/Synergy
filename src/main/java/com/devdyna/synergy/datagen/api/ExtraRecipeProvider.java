@@ -1113,6 +1113,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                         .save(c);
 
                         MelterRecipeBuilder.of()
+                                        .energy(100)
+                                        .delay(40)
                                         .input(d)
                                         .fluid(fluid, 250)
                                         .unlockedBy()
