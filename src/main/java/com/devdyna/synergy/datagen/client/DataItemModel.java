@@ -219,6 +219,11 @@ public class DataItemModel extends ExtraItemModelProvider {
                                         .texture("top", mcLoc("block/" + text + toplog));
 
                 });
+
+                cubeBottomTop(zBlocks.CHOPPER.getRegisteredName(),
+                                modLoc("block/chopper/side"),
+                                modLoc("block/decorative/wrought_iron_block"),
+                                modLoc("block/chopper/top"));
         }
 
 }

@@ -258,6 +258,12 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                         .renderType(DataGenUtil.CUTOUT));
                 });
 
+                simpleBlock(zBlocks.CHOPPER.get(),
+                                models().cubeBottomTop(zBlocks.CHOPPER.getRegisteredName(),
+                                                modLoc("block/chopper/side"),
+                                                modLoc("block/decorative/wrought_iron_block"),
+                                                modLoc("block/chopper/top")));
+
         }
 
 }
