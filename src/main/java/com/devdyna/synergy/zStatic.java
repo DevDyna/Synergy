@@ -55,6 +55,7 @@ public class zStatic {
         public static String carbon = "carbon";
         public static String netherrack = "netherrack";
         public static String stone = "stone";
+        public static String plastic = "plastic";
         public static String americium = "americium";
         public static String berkelium = "berkelium";
         public static String californium = "californium";
@@ -446,6 +447,8 @@ public class zStatic {
         public static String oil = "oil";
         public static String glue = "glue";
         public static String sap = "sap";
+        public static String rubber = "rubber";
+
         public static String ironberry_juice = "ironberry_juice";
         public static String liquid_glass = "liquid_glass";
         public static String honey = "honey";

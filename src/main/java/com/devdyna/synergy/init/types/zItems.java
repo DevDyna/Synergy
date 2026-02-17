@@ -460,7 +460,7 @@ public class zItems {
                         .resourceMold(zStatic.ResourceType.block);
 
         // ---------------------------------------------------------------------------------------//
-        
+
         public static final DeferredHolder<Item, Item> IRON_ELECTRON_TUBE = Material
                         .resourceElectronTube(zStatic.ResourceMaterial.iron);
         public static final DeferredHolder<Item, Item> GOLD_ELECTRON_TUBE = Material
@@ -487,7 +487,7 @@ public class zItems {
                         .resourceElectronTube(zStatic.ResourceMaterial.tin);
         public static final DeferredHolder<Item, Item> URANIUM_ELECTRON_TUBE = Material
                         .resourceElectronTube(zStatic.ResourceMaterial.uranium);
-        
+
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Item, Item> BLANK_MOLD = Material
@@ -507,6 +507,8 @@ public class zItems {
         public static final DeferredHolder<Item, Item> OIL = Material.droplet(zStatic.Fluids.oil);
 
         public static final DeferredHolder<Item, Item> SAP = Material.droplet(zStatic.Fluids.sap);
+
+        public static final DeferredHolder<Item, Item> RUBBER = Material.droplet(zStatic.Fluids.rubber);
 
         public static final DeferredHolder<Item, Item> WASTE_FRAGMENT = Material
                         .resourceItem("waste_fragment");
@@ -558,6 +560,9 @@ public class zItems {
         public static final DeferredHolder<Item, Item> VOID_CRYSTAL = Material
                         .resourceItem("void_crystal");
 
+        public static final DeferredHolder<Item, Item> PLASTIC = Material
+                        .resourceItem(zStatic.ResourceMaterial.plastic);
+
         public static final DeferredHolder<Item, Item> BEEWAX = Material
                         .resourceItem("beewax");
 
@@ -572,9 +577,9 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> TINY_IRON_DUST = Material
                         .resourceItem("tiny_iron_dust");
-        
-        public static final DeferredHolder<Item, Item> FLOPPY_DISK = Material
-                        .tooltippedItem("floppy_disk",zTool);
+
+        public static final DeferredHolder<Item, Item> FLOPPY_DISK = zTool
+                        .registerSimpleItem("floppy_disk");
 
         // ---------------------------------------------------------------------------------------//
 
@@ -592,7 +597,7 @@ public class zItems {
 
         public static final DeferredHolder<Item, IndustrialUpgrade> UPGRADE_LUCK = Material
                         .machineUpgrade(zStatic.MachineUpgrades.luck);
-                        
+
         public static final DeferredHolder<Item, IndustrialUpgrade> UPGRADE_FLUID = Material
                         .machineUpgrade(zStatic.MachineUpgrades.fluid);
 

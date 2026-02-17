@@ -66,7 +66,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                 brickRecipes(c);
                 lasers(c);
                 ingredients(c);
-                
 
                 nodeRecipe(c, zBlocks.ITEM_TRANSFER.get(), Blocks.CHEST);
                 nodeRecipe(c, zBlocks.ITEM_PROVIDER.get(), Items.IRON_PICKAXE);
@@ -271,7 +270,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.GHOUL_HEART)
                                 .unlockedBy().save(c);
 
-              
                 packUnpack(c, zItems.WASTE_FRAGMENT.get(), zItems.WASTE.get(), false);
                 packUnpack(c, zItems.SILICON_SHARD.get(), zItems.RAW_SILICON.get(), false);
 
@@ -501,8 +499,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zItems.AQUAMARINE, 2)
                                 .unlockedBy()
                                 .save(c);
-
-                
 
                 doubleSmelt(c, zItems.ANCIENT_DEBRIS_DUST.get(), Items.NETHERITE_SCRAP);
 
@@ -1303,24 +1299,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                CasterRecipeBuilder.of()
-                                .fluid(zFluids.GLUE, 250)
-                                .output(zItems.GLUE)
-                                .unlockedBy()
-                                .save(c);
-
-                CasterRecipeBuilder.of()
-                                .fluid(zFluids.OIL, 250)
-                                .output(zItems.OIL)
-                                .unlockedBy()
-                                .save(c);
-
-                CasterRecipeBuilder.of()
-                                .fluid(zFluids.SAP, 250)
-                                .output(zItems.SAP)
-                                .unlockedBy()
-                                .save(c);
-
                 MelterRecipeBuilder.of()
                                 .input(Tags.Items.COBBLESTONES)
                                 .fluid(Fluids.LAVA, 250)
@@ -1347,7 +1325,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                                CastingTableBuilder.of()
+                CastingTableBuilder.of()
                                 .fluid(zFluids.LIQUID_GLASS, 250)
                                 .input(zItems.CHIP)
                                 .output(zItems.ELECTRON_TUBE_BASE)
@@ -1603,14 +1581,13 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(Items.BLAZE_ROD)
                                 .fluid(zFluids.MOLTEN_BLAZE, 500)
                                 .unlockedBy()
-                                .save(c,"_from_blaze_rod");
+                                .save(c, "_from_blaze_rod");
 
                 FoundryBuilder.of()
                                 .input(Items.BLAZE_POWDER)
                                 .fluid(zFluids.MOLTEN_BLAZE, 125)
                                 .unlockedBy()
-                                .save(c,"_from_blaze_powder");
-
+                                .save(c, "_from_blaze_powder");
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.CASTING_TABLE.get().asItem())
                                 .pattern("III")
@@ -1620,13 +1597,30 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItems.WROUGHT_IRON_INGOT.get()))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.FAUCET.get().asItem(),3)
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.FAUCET.get().asItem(), 3)
                                 .pattern("I I")
                                 .pattern(" I ")
                                 .define('I', zItems.WROUGHT_IRON_INGOT.get())
                                 .unlockedBy(ID, has(zItems.WROUGHT_IRON_INGOT.get()))
                                 .save(c);
 
+                CasterRecipeBuilder.of()
+                                .fluid(zFluids.RUBBER, 250)
+                                .input(zItems.MOLD_PLATE)
+                                .output(zItems.PLASTIC)
+                                .unlockedBy()
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zItems.FLOPPY_DISK.get(), 2)
+                                .pattern(" P ")
+                                .pattern("CNF")
+                                .pattern(" P ")
+                                .define('N', zItems.ADVANCED_ALLOY_NUGGET.get())
+                                .define('F', zItems.IRON_FOIL.get())
+                                .define('C', zItems.COPPER_COIL.get())
+                                .define('P', zItems.PLASTIC.get())
+                                .unlockedBy(ID, has(zItems.PLASTIC.get()))
+                                .save(c);
         }
 
 }
