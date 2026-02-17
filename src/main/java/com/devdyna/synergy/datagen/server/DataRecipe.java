@@ -780,6 +780,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 zItems.PACKED_MUD_BRICK.get()));
 
                 packUnpack(c, zItems.MUD_BALL.get(), Items.MUD, true);
+                packUnpack(c, zItems.PACKED_MUD_BALL.get(), Items.PACKED_MUD, true);
 
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, zItems.PACKED_MUD_BALL.get(), 4)
                                 .requires(zItems.MUD_BALL.get(), 4).requires(Items.WHEAT)
