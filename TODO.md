@@ -52,6 +52,8 @@
 - [ ] sap & rubber recipe
 
 - [ ] rework batteries
+- [ ] foundry recipes use deprecated namespace
+- [ ] tool models dont work correctly
 
 ### Survival expansion
 
