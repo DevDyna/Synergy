@@ -54,6 +54,7 @@
 - [ ] rework batteries
 - [ ] foundry recipes use deprecated namespace
 - [ ] tool models dont work correctly
+- [ ] evaporating basin use incorrect recipetype namespace
 
 ### Survival expansion
 
