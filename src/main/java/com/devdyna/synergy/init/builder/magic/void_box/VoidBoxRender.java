@@ -3,6 +3,7 @@ package com.devdyna.synergy.init.builder.magic.void_box;
 import java.util.Random;
 
 import com.devdyna.synergy.api.render.SimpleItemRender;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.render.PreFabRender;
 import com.devdyna.synergy.init.types.zItems;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -28,8 +29,9 @@ public class VoidBoxRender<T extends VoidBoxBE> implements BlockEntityRenderer<T
 
         var condition = be.getAnimationProgress() > 0.1;
 
-        PreFabRender.renderChest(be, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
-        
+        PreFabRender.renderChest(be, zStatic.AdditionalModel.VOID_BOX, partialTick, poseStack, bufferSource,
+                packedLight, packedOverlay);
+
         if (condition) {
             timer++;
 
