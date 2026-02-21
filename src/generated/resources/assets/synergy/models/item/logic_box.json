@@ -1,0 +1,12 @@
+{
+  "parent": "synergy:block/tiny_block/chest",
+  "textures": {
+    "down": "synergy:block/tiny_block/logic_box/item",
+    "east": "synergy:block/tiny_block/logic_box/item",
+    "north": "synergy:block/tiny_block/logic_box/item",
+    "particle": "synergy:block/tiny_block/logic_box/item",
+    "south": "synergy:block/tiny_block/logic_box/item",
+    "up": "synergy:block/tiny_block/logic_box/item",
+    "west": "synergy:block/tiny_block/logic_box/item"
+  }
+}
