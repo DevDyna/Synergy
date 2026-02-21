@@ -230,10 +230,10 @@ public class zStatic {
         public static String solar_panel = "solar_panel";
         public static String healer = "healer";
 
+        public static String logic_box = "logic_box";
         public static String void_box = "void_box";
         public static String foundry = "foundry";
         public static String faucet = "faucet";
-        
 
         public static String urn = "urn";
         public static String quern = "quern";
@@ -253,10 +253,10 @@ public class zStatic {
         public static String inverted_repeater = "inverted_repeater";
     }
 
-    public class FluidTanks{
+    public class FluidTanks {
         public static final String AFFIX = "_tank";
-        public static String normal = "fluid"+AFFIX;
-        public static String fuel = "fuel"+AFFIX;
+        public static String normal = "fluid" + AFFIX;
+        public static String fuel = "fuel" + AFFIX;
     }
 
     public class Tiers {
@@ -518,6 +518,8 @@ public class zStatic {
 
         public static final String QUERN = "block/quern/moving";
         public static final String VOID_BOX = "block/tiny_block/void_box/animation";
+        public static final String LOGIC_BOX_OFF = "block/tiny_block/logic_box/animation/red";
+        public static final String LOGIC_BOX_ON = "block/tiny_block/logic_box/animation/green";
 
     }
 

@@ -33,7 +33,8 @@ public class Capability {
                                                 zBlocks.EVAPORATION_BASIN,
                                                 zBlocks.FOUNDRY,
                                                 zBlocks.CASTING_TABLE,
-                                                zBlocks.CHOPPER
+                                                zBlocks.CHOPPER,
+                                                zBlocks.LOGIC_BOX
 
                                 ));
 

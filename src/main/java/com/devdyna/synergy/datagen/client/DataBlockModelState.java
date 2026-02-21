@@ -31,8 +31,6 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 block(zBlocks.URN, "block/tiny_block/urn");
 
                 block(zBlocks.QUERN, "block/quern/base");
-                // block(zBlocks.QUERN_MOVING, "block/quern/moving");
-                // block(zBlocks.VOID_BOX_LID, "block/tiny_block/void_box/animation");
 
                 node(zBlocks.ITEM_PROVIDER.get(), "green");
                 node(zBlocks.ITEM_RETRIEVAL.get(), "aqua");
@@ -173,6 +171,20 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 horizontalBlock(zBlocks.VOID_BOX.get(),
                                 models().withExistingParent(zBlocks.VOID_BOX.getRegisteredName(),
                                                 modLoc("block/tiny_block/void_box/block")));
+
+                horizontalBlockBiPhace(zBlocks.LOGIC_BOX.get(), BlockStateProperties.INVERTED,
+                                models().withExistingParent(
+                                                zBlocks.LOGIC_BOX.getRegisteredName() + "_off",
+                                                modLoc("block/tiny_block/base/animated/block"))
+                                                .texture("inside", modLoc("block/tiny_block/logic_box/green/inside"))
+                                                .texture("all", modLoc("block/tiny_block/logic_box/green/chest"))
+                                                .renderType(DataGenUtil.CUTOUT),
+                                models().withExistingParent(
+                                                zBlocks.LOGIC_BOX.getRegisteredName() + "_on",
+                                                modLoc("block/tiny_block/base/animated/block"))
+                                                .texture("inside", modLoc("block/tiny_block/logic_box/red/inside"))
+                                                .texture("all", modLoc("block/tiny_block/logic_box/red/chest"))
+                                                .renderType(DataGenUtil.CUTOUT));
 
                 simpleBlock(zBlocks.SIMPLE_TANK.get(), models().cubeAll(zBlocks.SIMPLE_TANK.getRegisteredName(),
                                 modLoc("block/tank/simple")).renderType(DataGenUtil.CUTOUT));

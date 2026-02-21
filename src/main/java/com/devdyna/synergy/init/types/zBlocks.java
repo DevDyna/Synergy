@@ -42,6 +42,7 @@ import com.devdyna.synergy.init.builder.laser.*;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBlock;
+import com.devdyna.synergy.init.builder.magic.logic_box.LogicBoxBlock;
 import com.devdyna.synergy.init.builder.magic.quern.QuernBlock;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.ornated.OrnatedTinyChestBlock;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.stone.StoneTinyChestBlock;
@@ -437,6 +438,10 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> VOID_BOX = Material.registerItemBlock(
                         zStatic.Blocks.void_box,
                         () -> new VoidBoxBlock());
+
+        public static final DeferredHolder<Block, Block> LOGIC_BOX = Material.registerItemBlock(
+                        zStatic.Blocks.logic_box,
+                        () -> new LogicBoxBlock());
 
         @SuppressWarnings("deprecation")
         public static final DeferredHolder<Block, Block> BLAST_BRICKS = Material

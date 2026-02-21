@@ -14,6 +14,7 @@ import com.devdyna.synergy.init.builder.industrial_machines.extractor.ExtractorS
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurnaceScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterScreen;
+import com.devdyna.synergy.init.builder.magic.logic_box.LogicBoxRender;
 import com.devdyna.synergy.init.builder.magic.quern.QuernRendering;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.ornated.OrnatedTinyChestScreen;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.stone.StoneTinyChestScreen;
@@ -56,6 +57,8 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.REACTOR_CONTROLLER.get(), ReactorAOE::new);
         event.registerBlockEntityRenderer(zBlockEntities.QUERN.get(), QuernRendering::new);
         event.registerBlockEntityRenderer(zBlockEntities.VOID_BOX.get(), VoidBoxRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.LOGIC_BOX.get(), LogicBoxRender::new);
+      
         event.registerBlockEntityRenderer(zBlockEntities.FLUID_TANK.get(), FluidTankFluidRender::new);
 
         event.registerBlockEntityRenderer(zBlockEntities.CRUSHING_TUB.get(), CrushingTubRender::new);

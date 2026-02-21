@@ -17,6 +17,7 @@ import com.devdyna.synergy.init.builder.automation.tank.FluidTankBE;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBE;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBE;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
+import com.devdyna.synergy.init.builder.magic.logic_box.LogicBoxBE;
 import com.devdyna.synergy.init.builder.magic.quern.QuernBE;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.ornated.OrnatedTinyChestBE;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.stone.StoneTinyChestBE;
@@ -190,5 +191,9 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ChopperBE>> CHOPPER = Material
                         .createBlockEntity(zStatic.Blocks.chopper, ChopperBE::new,
                                         zBlocks.CHOPPER);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LogicBoxBE>> LOGIC_BOX = Material
+                        .createBlockEntity(zStatic.Blocks.logic_box, LogicBoxBE::new,
+                                        zBlocks.LOGIC_BOX);
 
 }

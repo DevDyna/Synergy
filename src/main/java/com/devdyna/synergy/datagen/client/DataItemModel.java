@@ -105,6 +105,7 @@ public class DataItemModel extends ExtraItemModelProvider {
                 tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
                 tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
                 tinyChestAll(zBlocks.VOID_BOX, "block/tiny_block/void_box/chest");
+                tinyChestAll(zBlocks.LOGIC_BOX, "block/tiny_block/logic_box/item");
 
                 withExistingParent(zBlocks.URN.getRegisteredName(),
                                 modLoc("block/tiny_block/urn"));

@@ -126,7 +126,8 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.CRUSHING_TUB,
                                 zBlocks.CASTING_TABLE,
                                 zBlocks.FAUCET,
-                                zBlocks.CHOPPER
+                                zBlocks.CHOPPER,
+                                zBlocks.LOGIC_BOX
 
                 ).stream().map(DeferredHolder::get).forEach(this::dropSelf);
 

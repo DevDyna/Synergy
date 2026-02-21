@@ -331,6 +331,8 @@ public class DataLang extends LanguageProvider {
                                 "Environment Modifier Info");
                 add("config.jade.plugin_" + ID + ".simple_timer",
                                 "Simple Delay Info");
+                add("config.jade.plugin_" + ID + "."+zStatic.Blocks.logic_box,
+                                "Logic Box Info");
 
                 add(Main.ID + ".color", "Color: %d");
 
@@ -366,6 +368,9 @@ public class DataLang extends LanguageProvider {
 
                 add(ID + ".jade.info.cooler_status.false", "Status: §cInactive");
                 add(ID + ".jade.info.cooler_status.true", "Status: §aActive");
+
+                add(ID + ".jade.info.whitelist", "Whitelist:");
+                add(ID + ".jade.info.blacklist", "Blacklist:");
 
                 add(ID + ".jei.tip.dont_consume", "§cNot consume");
 
