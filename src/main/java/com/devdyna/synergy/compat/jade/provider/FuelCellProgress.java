@@ -36,7 +36,7 @@ public enum FuelCellProgress
     if (!((data.inv.get(0).isEmpty() || data.inv.get(0) == null)
         && (data.inv.get(1).isEmpty() || data.inv.get(1) == null)) || data.progress != 0) {
 
-      tooltip.add(Component.literal(TimeUtil.getTimeValue(data.total - data.progress,false) + " left"));
+      tooltip.add(Component.literal(TimeUtil.getTimeValue(data.total - data.progress, false) + " left"));
 
       IElementHelper helper = IElementHelper.get();
 
@@ -47,6 +47,9 @@ public enum FuelCellProgress
       tooltip.append(helper.progress((float) data.progress / data.total).translate(new Vec2(-2, 0)));
 
       tooltip.append(helper.item(data.inv.get(1)));
+
+      tooltip.remove(JadeIds.UNIVERSAL_ITEM_STORAGE);
+      tooltip.remove(JadeIds.UNIVERSAL_ITEM_STORAGE_ITEMS_PER_LINE);
 
     }
 
@@ -69,6 +72,11 @@ public enum FuelCellProgress
         fuelCellBE.getProgress(),
         fuelCellBE.getMaxProgress(),
         slots);
+  }
+
+  @Override
+  public int getDefaultPriority() {
+    return TooltipPosition.TAIL - 2;
   }
 
   @Override
