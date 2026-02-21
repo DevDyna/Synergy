@@ -1,40 +1,7 @@
 {
-  "format_version": "1.21.5",
-  "credit": "Made with Blockbench",
-  "parent": "block/block",
-  "render_type": "cutout",
+  "parent": "synergy:block/tiny_block/base/animated/animation",
   "textures": {
     "inside": "synergy:block/tiny_block/void_box/inside",
-    "particle": "synergy:block/tiny_block/void_box/chest",
     "all": "synergy:block/tiny_block/void_box/chest"
-  },
-  "elements": [
-    {
-      "from": [4, 5, 4],
-      "to": [12, 8, 12],
-      "rotation": { "angle": 0, "axis": "y", "origin": [4, 5, 4] },
-      "faces": {
-        "north": { "uv": [8, 0, 16, 3], "texture": "#all" },
-        "east": { "uv": [8, 0, 16, 3], "texture": "#all" },
-        "south": { "uv": [8, 0, 16, 3], "texture": "#all" },
-        "west": { "uv": [8, 0, 16, 3], "texture": "#all" },
-        "up": { "uv": [0, 0, 8, 8], "texture": "#all" },
-        "down": { "uv": [8, 0, 16, 8], "texture": "#inside" }
-      }
-    },
-    {
-      "from": [7, 3, 3],
-      "to": [9, 6, 4],
-      "rotation": { "angle": 0, "axis": "y", "origin": [7, 4, 2] },
-      "faces": {
-        "north": { "uv": [3, 10, 5, 13], "texture": "#all" },
-        "east": { "uv": [3, 10, 4, 13], "texture": "#all" },
-        "south": { "uv": [5, 10, 3, 13], "texture": "#all" },
-        "west": { "uv": [4, 10, 5, 13], "texture": "#all" },
-        "up": { "uv": [3, 10, 5, 11], "texture": "#all" },
-        "down": { "uv": [3, 12, 5, 13], "rotation": 180, "texture": "#all" }
-      }
-    }
-  ],
-  "display": { "gui": { "rotation": [30, -135, 0], "translation": [0, 4, 0] } }
+  }
 }
