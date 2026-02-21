@@ -12,6 +12,7 @@ import com.devdyna.synergy.compat.jade.provider.CoolerProvider;
 import com.devdyna.synergy.compat.jade.provider.DryableBricksProvider;
 import com.devdyna.synergy.compat.jade.provider.EnergyTipProviders;
 import com.devdyna.synergy.compat.jade.provider.EnvironmentModifierProvider;
+import com.devdyna.synergy.compat.jade.provider.FilterProvider;
 import com.devdyna.synergy.compat.jade.provider.FuelCellProgress;
 import com.devdyna.synergy.compat.jade.provider.LaserMachineGunProvider;
 import com.devdyna.synergy.compat.jade.provider.LaserRotorProvider;
@@ -23,6 +24,7 @@ import com.devdyna.synergy.compat.jade.provider.SimpleDelayProvider;
 import com.devdyna.synergy.compat.jade.provider.TickProgressBlock;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
+import com.devdyna.synergy.init.builder.magic.logic_box.LogicBoxBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
@@ -51,6 +53,7 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(EnvironmentModifierProvider.INSTANCE, TickingBlock.class);
         r.registerBlockComponent(SimpleDelayProvider.INSTANCE, TickingBlock.class);
         r.registerBlockComponent(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
+        r.registerBlockComponent(FilterProvider.INSTANCE, LogicBoxBlock.class);
     }
 
     @Override
@@ -70,5 +73,6 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockDataProvider(EnvironmentModifierProvider.INSTANCE, TickingBlock.class);
         r.registerBlockDataProvider(SimpleDelayProvider.INSTANCE, TickingBlock.class);
         r.registerBlockDataProvider(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
+        r.registerBlockDataProvider(FilterProvider.INSTANCE, LogicBoxBlock.class);
     }
 }
