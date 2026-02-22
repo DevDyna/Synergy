@@ -36,10 +36,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
+/**
+ * Utility class to harvest most of plants safetly
+ * 
+ * Credits : @DevDyna
+ */
 @SuppressWarnings("null")
 public class VanillaPlants {
 
-    static int treeHarvestingBlockLimit = Common.HARVESTER_TREE_CUTTING_LIMIT.get();
+    static int treeHarvestingBlockLimit = Common.TREE_CUTTING_LIMIT.get();
 
     public static List<List<Integer>> getTreeDirections() {
         ArrayList<List<Integer>> coordinates = new ArrayList<>();

@@ -22,7 +22,7 @@ public class Common {
         public static IntValue HARVESTER_TICK_DELAY;// 5
         public static IntValue HARVESTER_FE_COST;// 25
         public static IntValue HARVESTER_MAX_FE;// 10k
-        public static IntValue HARVESTER_TREE_CUTTING_LIMIT;// 2048
+        public static IntValue TREE_CUTTING_LIMIT;// 2048
         public static BooleanValue HARVESTER_DISABLE_CHECK_REPLANT;// false
         public static BooleanValue HARVESTER_DISABLE_CHECK_NOREPLANT;// false
         public static BooleanValue HARVESTER_DISABLE_CHECK_TREE;// false
@@ -223,7 +223,7 @@ public class Common {
                                 "harvester_fe_rate", 25);
                 HARVESTER_MAX_FE = number(zStatic.Config.FE_CAPACITY,
                                 "harvester_fe_max", 10_000);
-                HARVESTER_TREE_CUTTING_LIMIT = number(
+                TREE_CUTTING_LIMIT = number(
                                 "Max number of harvestable blocks harvestable foreach interaction",
                                 "harvester_limit", 2048);
                 HARVESTER_DISABLE_CHECK_REPLANT = bool("Disable any crop-plant replantable harvest",
