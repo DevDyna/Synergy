@@ -14,69 +14,82 @@ public abstract class AnimatedChestBE extends TickingBE {
         super(type, pos, blockState);
     }
 
-    private float prevLidProgress;
+    private float lidSnapshot;
     private float lidProgress;
-    private boolean startSound = false;
-    private float temp;
+    private boolean lastOpenState = false;
 
+    /** 
+     * Can be used to customize opening animation event
+    */
     public boolean defineOpen() {
-        return level.getNearestPlayer(getBlockPos().getX() + 0.5, getBlockPos().getY() + 0.5,
-                getBlockPos().getZ() + 0.5, 4.5f, false) == null;
+        return level.getNearestPlayer(
+                getBlockPos().getX() + 0.5,
+                getBlockPos().getY() + 0.5,
+                getBlockPos().getZ() + 0.5,
+                4.5f,
+                false) == null;
     }
 
+    /**
+     * Define sound opening
+     */
     public void soundOpening() {
-        level.playSound(null, getBlockPos(), SoundEvents.ENDER_CHEST_OPEN,
-                SoundSource.BLOCKS, 1f, 1.1f);
+            level.playSound(
+                    null,
+                    getBlockPos(),
+                    SoundEvents.ENDER_CHEST_OPEN,
+                    SoundSource.BLOCKS,
+                    1f,
+                    1.1f);
     }
 
+    /**
+     * Define sound closing
+     */
     public void soundClosing() {
-        level.playSound(null, getBlockPos(), SoundEvents.ENDER_CHEST_CLOSE,
-                SoundSource.BLOCKS, 1f, 1.1f);
+            level.playSound(
+                    null,
+                    getBlockPos(),
+                    SoundEvents.ENDER_CHEST_CLOSE,
+                    SoundSource.BLOCKS,
+                    1f,
+                    1.1f);
     }
 
     @Override
     public void tickBoth() {
         super.tickBoth();
 
-        if (level == null)
-            return;
+        var isOpening = !defineOpen();
+        lidSnapshot = lidProgress;
 
-        prevLidProgress = lidProgress;
-
-        if (!defineOpen() && lidProgress < 1.0f)
+        if (isOpening && lidProgress < 1.0f)
             lidProgress += 0.1f;
-        else if (defineOpen() && lidProgress > 0.0f)
+        else if (!isOpening && lidProgress > 0.0f)
             lidProgress -= 0.1f;
 
         lidProgress = Mth.clamp(lidProgress, 0.0f, 1.0f);
 
         if (!level.isClientSide) {
-            float current = lidProgress;
 
-            if (current != temp && startSound) {
-                if (current > temp)
+            if (isOpening != lastOpenState) {
+
+                if (isOpening)
                     soundOpening();
                 else
                     soundClosing();
 
-                startSound = false;
+                lastOpenState = isOpening;
             }
 
-            if (current <= 0.05f || current >= 0.95f) {
-                startSound = true;
-            }
-
-            temp = current;
         }
-
     }
 
     public float getLidProgress(float partialTick) {
-        return Mth.lerp(partialTick, prevLidProgress, lidProgress);
+        return Mth.lerp(partialTick, lidSnapshot, lidProgress);
     }
 
     public float getAnimationProgress() {
         return lidProgress;
     }
-
 }
