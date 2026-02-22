@@ -435,6 +435,8 @@ public class DataLang extends LanguageProvider {
                 add(ID + "." + zStatic.Blocks.chopper + ".energy",
                                 TIP_COLOR + "Allow to use FE intend of solid fuel to power the Chopper");
 
+                add(ID + ".jei.dryable_rack.tip", "Tick delay can change based on stack size");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {
