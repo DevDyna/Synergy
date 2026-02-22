@@ -6,7 +6,7 @@
       "tag": "synergy:urn_mixtures"
     },
     "M": {
-      "tag": "c:gems/aquamarine"
+      "tag": "synergy:resistor_ingredient"
     },
     "N": {
       "tag": "c:nuggets/steel"

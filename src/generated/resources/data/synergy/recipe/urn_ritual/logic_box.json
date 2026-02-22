@@ -1,0 +1,15 @@
+{
+  "type": "synergy:urn",
+  "ingredient": [
+    {
+      "item": "synergy:energized_redstone_dust"
+    },
+    {
+      "item": "synergy:tiny_wooden_chest"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:logic_box"
+  }
+}
