@@ -192,24 +192,19 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
     }
 
+    private boolean success_tree = false;
+    private boolean success_sapling = false;
+    private boolean bypass = false;
+
     private void checkBlocks(Level level) {
         int size = area.size();
 
         this.width = getWidth();
         this.height = getHeight();
 
-        if (i < size && level.getGameTime() % delay == 0) {
+        if (i < size && (bypass || level.getGameTime() % delay == 0)) {
 
             var pos = area.get(i);
-
-            if (level.getBlockState(pos).isAir() && getStorage().getStackInSlot(SAPLING_SLOT).isEmpty()) {
-                i++;
-                return;
-            }
-
-            if (!level.isClientSide())
-                LevelUtil.addDustParticle(rgbColor.get(0), rgbColor.get(1), rgbColor.get(2),
-                        (ServerLevel) level, pos, false, 4);
 
             List<ItemStack> items = !getStorage().getStackInSlot(AXE_SLOT).is(ItemTags.AXES)
                     ? null
@@ -237,6 +232,8 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
                     );
 
             if (items != null) {
+
+                success_tree = true;
 
                 // consume durab of first block
                 var axe = getStorage().getStackInSlot(AXE_SLOT);
@@ -278,20 +275,33 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
                             }
                         });
-            } else// one action every fuel burn
-            if (getStorage().getStackInSlot(SAPLING_SLOT).getItem() instanceof BlockItem bi) {
-                if (bi.getBlock() instanceof SaplingBlock sapling) {
-                    if (sapling.defaultBlockState().canSurvive(level, pos)
-                            && level.getBlockState(pos).canBeReplaced()) {
-                        level.setBlockAndUpdate(pos, sapling.defaultBlockState());
-                        level.playSound(null, pos,
-                                sapling.defaultBlockState().getSoundType(level, pos, null).getPlaceSound(),
-                                SoundSource.BLOCKS);
-                        getStorage().getStackInSlot(SAPLING_SLOT).shrink(1);
-                    }
-                }
+            } else
+                success_tree = false;
 
-            }
+            if (!getStorage().getStackInSlot(SAPLING_SLOT).isEmpty() &&
+                    getStorage().getStackInSlot(SAPLING_SLOT).getItem() instanceof BlockItem bi &&
+                    bi.getBlock() instanceof SaplingBlock sapling &&
+                    sapling.defaultBlockState().canSurvive(level, pos)
+                    && level.getBlockState(pos).canBeReplaced()) {
+                success_sapling = true;
+                level.setBlockAndUpdate(pos, sapling.defaultBlockState());
+                level.playSound(null, pos,
+                        sapling.defaultBlockState().getSoundType(level, pos, null).getPlaceSound(),
+                        SoundSource.BLOCKS);
+                getStorage().getStackInSlot(SAPLING_SLOT).shrink(1);
+            } else
+                success_sapling = false;
+
+            if (!bypass)
+                LevelUtil.addDustParticle(rgbColor.get(0), rgbColor.get(1), rgbColor.get(2),
+                        (ServerLevel) level, pos, false, 4);
+
+            if (!success_sapling && !success_tree) {
+                success_tree = false;
+                success_sapling = false;
+                bypass = true;
+            } else
+                bypass = false;
 
             i++;
         }
@@ -325,7 +335,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
                         break;
                 }
             }
-
+        }
     }
 
     @Override
