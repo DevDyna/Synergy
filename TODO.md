@@ -45,7 +45,7 @@
 
 - [ ] enchant extractor
 
-- [ ] unify redstone sensible machines + jade compat
+- [ ] unify redstone sensible machines + jade compat ?
 
 - [ ] ponder plugin?
 
@@ -57,6 +57,9 @@
 - [ ] evaporating basin use incorrect recipetype namespace
 
 - [ ] chopper slots need to change when item isn't empty to blank
+
+- [ ] evaporation basin booster jei(?)
+- [ ] drying racks booster jei(?)
 
 ### Survival expansion
 
@@ -70,8 +73,7 @@
 
 - [x] foundry fuel efficiency and boost jei
 
-- [ ] evaporation basin booster jei(?)
-- [ ] drying racks booster jei(?)
+
 
 ### Automation
 
