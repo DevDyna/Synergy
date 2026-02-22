@@ -124,7 +124,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
     int i = 0;
     List<Integer> rgbColor;
 
-    int delay = 40;
+    int delay = 20; // TODO config
 
     int energy_usage = 25; // TODO config
 
