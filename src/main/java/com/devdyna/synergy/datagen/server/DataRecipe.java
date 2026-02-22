@@ -1633,6 +1633,12 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .define('A', Items.IRON_AXE)
                                 .unlockedBy(ID, has(zItems.PLASTIC.get()))
                                 .save(c);
+
+                UrnRitualBuilder.of()
+                                .add(zItems.ENERGIZED_REDSTONE)
+                                .add(zBlocks.WOODEN_TINY_CHEST.get().asItem())
+                                .output(zBlocks.LOGIC_BOX.get())
+                                .unlockedBy().save(c);
         }
 
 }
