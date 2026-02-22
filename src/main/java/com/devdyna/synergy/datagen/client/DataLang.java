@@ -15,6 +15,7 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
+@SuppressWarnings({ "unchecked" })
 public class DataLang extends LanguageProvider {
 
         public DataLang(PackOutput o) {
@@ -23,7 +24,6 @@ public class DataLang extends LanguageProvider {
 
         public static final String TIP_COLOR = "§7";
 
-        @SuppressWarnings({ "deprecation", "unchecked" })
         @Override
         protected void addTranslations() {
 
@@ -42,7 +42,8 @@ public class DataLang extends LanguageProvider {
                 zBlocks.zMachineFrame.getEntries().forEach(b -> addBlock(b, named(b)));
 
                 ClazzUtil.getAllzItems().stream()
-                                .filter(d -> !d.is(zItems.CAKE_STICK) && !zItems.zMolds.getEntries().contains(d))
+                                .filter(d -> !d.is(zItems.CAKE_STICK.getId())
+                                                && !zItems.zMolds.getEntries().contains(d))
                                 .forEach(c -> addItem(c, named(c)));
 
                 zItems.zBucketItems.getEntries().forEach(b -> addItem(b, named(b)));
@@ -331,7 +332,7 @@ public class DataLang extends LanguageProvider {
                                 "Environment Modifier Info");
                 add("config.jade.plugin_" + ID + ".simple_timer",
                                 "Simple Delay Info");
-                add("config.jade.plugin_" + ID + "."+zStatic.Blocks.logic_box,
+                add("config.jade.plugin_" + ID + "." + zStatic.Blocks.logic_box,
                                 "Logic Box Info");
 
                 add(Main.ID + ".color", "Color: %d");
