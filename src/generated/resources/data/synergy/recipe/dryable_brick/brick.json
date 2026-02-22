@@ -1,0 +1,19 @@
+{
+  "type": "synergy:dryable_brick",
+  "block": {
+    "Name": "synergy:clay_brick_block",
+    "Properties": {
+      "dried": "false",
+      "facing": "north",
+      "stage": "0",
+      "wet": "false"
+    }
+  },
+  "input": {
+    "item": "minecraft:clay_ball"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:brick"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "synergy:dryable_brick",
+  "block": {
+    "Name": "synergy:fireclay_brick_block",
+    "Properties": {
+      "dried": "false",
+      "facing": "north",
+      "stage": "0",
+      "wet": "false"
+    }
+  },
+  "input": {
+    "item": "synergy:fireclay_ball"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:fireclay_brick"
+  }
+}

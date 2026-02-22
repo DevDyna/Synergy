@@ -1,5 +1,5 @@
 {
-  "type": "synergy:void_box_infusion",
+  "type": "synergy:void_box_conversion",
   "input": {
     "item": "minecraft:diamond"
   },

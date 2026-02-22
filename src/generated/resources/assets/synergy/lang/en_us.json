@@ -151,7 +151,7 @@
   "block.synergy.wrought_iron_block": "Wrought Iron Block",
   "config.jade.plugin_synergy.aoe": "AreaOfEffect Machines Info",
   "config.jade.plugin_synergy.cooler": "Cooler Provider Info",
-  "config.jade.plugin_synergy.dryable_bricks": "Dryable Bricks Info",
+  "config.jade.plugin_synergy.dryable_brick": "Dryable Bricks Info",
   "config.jade.plugin_synergy.environment_modifier": "Environment Modifier Info",
   "config.jade.plugin_synergy.fegen": "Energy Provider Info",
   "config.jade.plugin_synergy.fuel_cell": "Fuel Cell Recipe Provider Info",
