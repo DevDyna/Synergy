@@ -128,8 +128,20 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
     int energy_usage = 25; // TODO config
 
+    int upgrades = 0;
+
     @Override
-    public void tickServer() {
+    public void tickBoth() {
+        var installed = (getStorage().getStackInSlot(UPGRADE_SLOT).isEmpty() ? 0
+                : getStorage().getStackInSlot(UPGRADE_SLOT).getCount());
+        if (upgrades != installed) {
+            upgrades = installed;
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+            area = null;
+        }
+
+        if (level.isClientSide())
+            return;
 
         level.setBlockAndUpdate(getBlockPos(),
                 getBlockState().setValue(BlockStateProperties.ENABLED,
@@ -320,7 +332,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
     @Override
     public int getWidth() {
-        return 3 + (2 * getStorage().getStackInSlot(UPGRADE_SLOT).getCount());
+        return 3 + upgrades * 2;
     }
 
     @Override
