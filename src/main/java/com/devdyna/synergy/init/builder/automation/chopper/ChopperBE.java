@@ -262,7 +262,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
                             }
 
                             if (!s.isEmpty()) {
-                                for (var io = OUTPUT_SLOT_0; io < OUTPUT_SLOTS.size(); ++io) {
+                                for (int io : OUTPUT_SLOTS) {
                                     ItemStack slot = getStorage().getStackInSlot(io);
                                     if (ItemStack.isSameItemSameComponents(slot, s)
                                             || getStorage().getStackInSlot(io).isEmpty()) {
