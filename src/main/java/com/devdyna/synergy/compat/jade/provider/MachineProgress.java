@@ -73,8 +73,8 @@ public enum MachineProgress
   protected void calculateSlots(BaseMachineBE be, Data data, IElementHelper helper, ITooltip tooltip, SlotType type) {
     if (be instanceof ExtraMachineSlots extra) {
       if (data.inv().size() > 2) {
-        for (int i = 2; i < data.inv.size() - 2; i++) {
-          if (!data.inv.get(i).isEmpty() && extra.getSlotTypes().get().get(i - 2).equals(type)) {
+        for (int i = 2; i < data.inv.size(); i++) {
+          if (!data.inv.get(i).isEmpty() && extra.getSlotTypes().get(i - 2).equals(type)) {
             tooltip.append(helper.item(data.inv.get(i)));
             tooltip.append(helper.spacer(4, 0));
           }
