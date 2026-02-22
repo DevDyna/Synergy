@@ -700,19 +700,21 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .pattern("MGM")
                                 .pattern("NM ")
                                 .define('N', Items.IRON_NUGGET)
-                                .define('M', zItems.GUARDIAN_SCALE.get())
+                                .define('M', zItems.BLUE_CUP_MUSHROOM.get())
                                 .define('G', zItems.BONE_MEAL_MIXTURE.get())
                                 .unlockedBy(ID,
                                                 has(
                                                                 zItems.BONE_MEAL_MIXTURE.get()))
                                 .save(c);
 
+               
+
                 ShapedRecipeBuilder.shaped(MISC, zItems.RESISTOR.get(), 8)
                                 .pattern(" MN")
                                 .pattern("MGM")
                                 .pattern("NM ")
                                 .define('N', zItemTag.NUGGET_STEEL)
-                                .define('M', zItemTag.GEMS_AQUAMARINE)
+                                .define('M', zItemTag.RESISTOR_INGREDIENT)
                                 .define('G', zItemTag.URN_MIXTURES)
                                 .unlockedBy(ID,
                                                 has(zItems.STEEL_NUGGET.get()))

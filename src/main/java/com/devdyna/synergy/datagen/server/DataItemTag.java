@@ -333,6 +333,10 @@ public class DataItemTag extends ItemTagsProvider {
                                 .addTag(zItemTag.DUST_SULFUR)
                                 .add(Items.BLAZE_POWDER);
 
+                tag(zItemTag.RESISTOR_INGREDIENT)
+                                .addTag(zItemTag.GEMS_AQUAMARINE)
+                                .add(zItems.GUARDIAN_SCALE.get());
+
         }
 
 }
