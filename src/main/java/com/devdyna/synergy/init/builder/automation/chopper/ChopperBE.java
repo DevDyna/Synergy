@@ -134,24 +134,21 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
     public void tickBoth() {
         var installed = (getStorage().getStackInSlot(UPGRADE_SLOT).isEmpty() ? 0
                 : getStorage().getStackInSlot(UPGRADE_SLOT).getCount());
+
         if (upgrades != installed) {
             upgrades = installed;
-            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
             area = null;
         }
 
-        if (level.isClientSide())
-            return;
+        if (!level.isClientSide())
+            level.setBlockAndUpdate(getBlockPos(),
+                    getBlockState().setValue(BlockStateProperties.ENABLED,
 
-        level.setBlockAndUpdate(getBlockPos(),
-                getBlockState().setValue(BlockStateProperties.ENABLED,
-
-                        area != null
-                                // && getStorage().getStackInSlot(AXE_SLOT).is(ItemTags.AXES)
-                                && (AbstractFurnaceBlockEntity.isFuel(getStorage().getStackInSlot(FUEL_SLOT))
-                                        || (handleEnergy()
-                                                && canExtract() && hasEnergy(energy_usage))
-                                        || maxProgress != 0)));
+                            area != null
+                                    && (AbstractFurnaceBlockEntity.isFuel(getStorage().getStackInSlot(FUEL_SLOT))
+                                            || (handleEnergy()
+                                                    && canExtract() && hasEnergy(energy_usage))
+                                            || maxProgress != 0)));
 
         if (area == null) {
             area = getArea();
@@ -164,7 +161,8 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
             } else
                 progress--;
 
-        processFuel();
+        if (!level.isClientSide())
+            processFuel();
 
         if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
             checkBlocks(level);
@@ -207,8 +205,9 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
                 return;
             }
 
-            LevelUtil.addDustParticle(rgbColor.get(0), rgbColor.get(1), rgbColor.get(2),
-                    (ServerLevel) level, pos, false, 4);
+            if (!level.isClientSide())
+                LevelUtil.addDustParticle(rgbColor.get(0), rgbColor.get(1), rgbColor.get(2),
+                        (ServerLevel) level, pos, false, 4);
 
             List<ItemStack> items = !getStorage().getStackInSlot(AXE_SLOT).is(ItemTags.AXES)
                     ? null
