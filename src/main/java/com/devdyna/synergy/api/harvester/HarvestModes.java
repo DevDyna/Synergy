@@ -12,16 +12,6 @@ public enum HarvestModes {
      */
     BLOCK_REPLANT,
 
-    /*
-     * Any type of standard tree
-     */
-    TREE,
-
-    /*
-     * Special type of trees without logs as base
-     */
-    // TREE_FIXED,
-
     /**
      * SugarCanes , Cactus and Bamboo
      */

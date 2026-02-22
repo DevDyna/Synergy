@@ -1,6 +1,5 @@
 package com.devdyna.synergy.api.plants.builder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.devdyna.synergy.api.harvester.HarvestModes;
@@ -74,11 +73,6 @@ public class BaseCropBlock extends CropBlock implements Harvestable, PlantHandle
     @Override
     public void blockReplanted(Level level, BlockPos pos) {
         level.setBlockAndUpdate(pos, level.getBlockState(pos).setValue(getAgeProperty(), 0));
-    }
-
-    @Override
-    public ArrayList<Block> blockTree() {
-        return null;
     }
 
     @Override
