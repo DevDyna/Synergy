@@ -97,12 +97,12 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
             @Override
             public void set(int i, int value) {
                 switch (i) {
-                    case 0:
+                    case 0 ->
                         progress = value;
-                    case 1:
+                    case 1 ->
                         maxProgress = value;
-                    case 2:
-                    default:
+                    default -> {
+                    }
 
                 }
             }
@@ -164,10 +164,12 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
         if (!level.isClientSide())
             processFuel();
 
-        if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
-            checkBlocks(level);
-            exportItems();
-        }
+        if (!level.isClientSide())
+            if (getBlockState().getValue(BlockStateProperties.ENABLED)) {
+
+                checkBlocks(level);
+                exportItems();
+            }
 
     }
 
@@ -301,19 +303,26 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
     private void exportItems() {
         var above = getBlockPos().above();
-        var cap = Capabilities.ItemHandler.BLOCK.getCapability(level, above, level.getBlockState(above),
+        var cap = Capabilities.ItemHandler.BLOCK.getCapability(level,
+                above, level.getBlockState(above),
                 level.getBlockEntity(above), null);
 
-        if (cap != null)
-            for (var io = OUTPUT_SLOT_0; io < OUTPUT_SLOTS.size(); ++io) {
-                ItemStack in = getStorage().extractItem(io, getStorage().getStackInSlot(io).getCount(), false);
-                for (int j = 0; j < cap.getSlots(); ++j) {
-                    if (cap.getStackInSlot(j).isEmpty()
-                            || ItemStack.isSameItemSameComponents(cap.getStackInSlot(j), in)) {
-                        in = cap.insertItem(j, in, false);
-                        if (in.isEmpty())
-                            break;
-                    }
+        if (cap == null)
+            return;
+
+        for (int io : OUTPUT_SLOTS) {
+
+            if (getStorage().getStackInSlot(io).isEmpty())
+                continue;
+
+            ItemStack out = getStorage().getStackInSlot(io).copy();
+            for (int j = 0; j < cap.getSlots(); ++j) {
+                int canInsert = out.getCount() - cap.insertItem(j, out, true).getCount();
+
+                if (canInsert > 0) {
+                    out = cap.insertItem(j, getStorage().extractItem(io, canInsert, false), false);
+                    if (out.isEmpty())
+                        break;
                 }
             }
 
