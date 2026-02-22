@@ -9,7 +9,6 @@ import java.util.stream.Stream;
 import com.devdyna.synergy.datagen.server.DataGlobalLootModifier;
 
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -34,7 +33,6 @@ import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-@SuppressWarnings("unchecked")
 public class DataGenUtil {
 
     public static final ResourceLocation CUTOUT = ResourceLocation.withDefaultNamespace("cutout");
@@ -44,84 +42,37 @@ public class DataGenUtil {
     public static String ITEM = mc + "item/generated";
     private static String mod = ID + ":";
 
-    /**
-     * @deprecated use <code> x.get() </code>
-     */
-    @Deprecated
-    public static Block getBlock(String id) {
-        return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(ID, id));
-    }
-
-    /**
-     * @deprecated use <code> x.get() </code>
-     */
-    @Deprecated
-    public static Block getBlock(String id, String modid) {
-        return BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath(modid, id));
-    }
-
-    /**
-     * @deprecated use <code> x.path() </code>
-     */
-    @Deprecated
-    public static String getPath(Block b) {
-        return BuiltInRegistries.BLOCK.getKey(b).getPath();
-    }
-
-    /**
-     * @deprecated use <code> x.path() </code>
-     */
-    @Deprecated
-    public static String getPath(Item i) {
-        return BuiltInRegistries.ITEM.getKey(i).getPath();
-    }
-
-    /**
-     * @deprecated use <code> x.rl() </code>
-     */
-    @Deprecated
-    public static ResourceLocation getResource(String s) {
-        return ResourceLocation.fromNamespaceAndPath(ID, s);
-    }
-
-    /**
-     * @deprecated use <code> x.rl() </code>
-     */
-    @Deprecated
-    public static ResourceLocation getResource(Block b) {
-        return ResourceLocation.fromNamespaceAndPath(ID, getPath(b));
-    }
-
-    /**
-     * @deprecated use <code> x.rl() </code>
-     */
-    @Deprecated
-    public static ResourceLocation getResource(Item i) {
-        return ResourceLocation.fromNamespaceAndPath(ID, getPath(i));
-    }
 
     public static ItemModelBuilder itemTool(Item item, ItemModelProvider b) {
-        return b.withExistingParent(getPath(item), TOOL).texture("layer0",
-                getResource("item/" + getPath(item)));
+        return itemModel(item, b, "", x.path(item), TOOL);
+    }
+    public static ItemModelBuilder itemTool(Item item, ItemModelProvider b,String pathSuffix) {
+        return itemModel(item, b, pathSuffix, x.path(item), TOOL);
+    }
+    public static ItemModelBuilder itemTool(Item item, ItemModelProvider b,String pathSuffix, String itemPath) {
+        return itemModel(item, b, pathSuffix, itemPath, TOOL);
     }
 
     public static ItemModelBuilder itemModel(Item item, ItemModelProvider b) {
-        return b.withExistingParent(getPath(item), ITEM).texture("layer0",
-                getResource("item/" + getPath(item)));
+        return itemModel(item, b, "");
     }
 
     public static ItemModelBuilder itemModel(Item item, ItemModelProvider b, String pathSuffix) {
-        return b.withExistingParent(getPath(item), ITEM).texture("layer0",
-                getResource("item/" + pathSuffix + getPath(item)));
+        return itemModel(item, b, pathSuffix, x.path(item));
     }
 
     public static ItemModelBuilder itemModel(Item item, ItemModelProvider b, String pathSuffix, String itemPath) {
-        return b.withExistingParent(getPath(item), ITEM).texture("layer0",
-                getResource("item/" + pathSuffix + itemPath));
+        return itemModel(item, b, pathSuffix, itemPath, ITEM);
+    }
+
+    public static ItemModelBuilder itemModel(Item item, ItemModelProvider b, String pathSuffix, String itemPath,
+            String modelType) {
+        return b.withExistingParent(x.path(item), modelType).texture("layer0",
+                x.rl("item/" + pathSuffix + itemPath));
     }
 
     public static ItemModelBuilder itemBlock(Block block, ItemModelProvider b) {
-        return b.withExistingParent(getPath(block), mod + "block/" + getPath(block));
+        return b.withExistingParent(x.path(block), mod + "block/" + x.path(block));
     }
 
     public static BlockModelBuilder cross(BlockStateProvider t, String filePath, ResourceLocation texturePath) {
@@ -148,7 +99,7 @@ public class DataGenUtil {
      */
     public static BlockModelBuilder BlockwithParent(Block block, BlockStateProvider b,
             String parent) {
-        return b.models().withExistingParent(getPath(block), parent);
+        return b.models().withExistingParent(x.path(block), parent);
     }
 
     public static void BiStateBlock(BlockStateProvider t, Block b, BooleanProperty p, ModelFile on,
@@ -161,7 +112,7 @@ public class DataGenUtil {
     }
 
     public static ItemModelBuilder itemBlockwithParent(Block block, ItemModelProvider b, String parent) {
-        return b.withExistingParent(getPath(block), parent);
+        return b.withExistingParent(x.path(block), parent);
     }
 
     public static LootItemBlockStatePropertyCondition.Builder lootTableCondition(Block block, IntegerProperty prop,
@@ -174,8 +125,9 @@ public class DataGenUtil {
         return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(prop, true));
     }
-    
-    public static LootItemBlockStatePropertyCondition.Builder lootTableConditionInverse(Block block, BooleanProperty prop) {
+
+    public static LootItemBlockStatePropertyCondition.Builder lootTableConditionInverse(Block block,
+            BooleanProperty prop) {
         return LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(prop, false));
     }
@@ -196,6 +148,7 @@ public class DataGenUtil {
 
     }
 
+    @SuppressWarnings("unchecked")
     public static void modifyLootTables(DataGlobalLootModifier g, String lootModifier,
             ResourceKey<LootTable>... lootTables) {
         modifyLootTables(g, lootModifier,

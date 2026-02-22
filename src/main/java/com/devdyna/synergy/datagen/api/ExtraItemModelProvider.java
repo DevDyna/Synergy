@@ -131,13 +131,14 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                                                 .forEach(item -> {
                                                                         if (entries == zItems.zTool)
                                                                                 DataGenUtil.itemTool(
-                                                                                                item.get(), this);
+                                                                                                item.get(),
+                                                                                                this,
+                                                                                                folder);
                                                                         else
                                                                                 DataGenUtil.itemModel(
                                                                                                 item.get(),
                                                                                                 this,
-                                                                                                folder,
-                                                                                                x.path(item.get()));
+                                                                                                folder);
                                                                 }));
 
                 List<Item> plants = List.of(
@@ -157,8 +158,7 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                 .forEach(item -> DataGenUtil.itemModel(
                                                 item.get(),
                                                 this,
-                                                "plants/seeds/",
-                                                x.path(item.get())));
+                                                "plants/seeds/"));
 
                 plants.forEach(w -> withExistingParent(
                                 x.path(w), "minecraft:item/generated")
