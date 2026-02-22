@@ -34,7 +34,7 @@ public class AlloySmelterMenu extends BaseMachineMenu {
         addPlayerSlots(inv);
         addMachineInputSlot(blockEntity.getStorage(), AlloySmelterBE.INPUT_SLOT, 34, 33);
         addMachineOutputSlot(blockEntity.getStorage(), AlloySmelterBE.OUTPUT_SLOT, 119, 34);
-        addMachineInputSlot(blockEntity.getStorage(), AlloySmelterBE.EXTRA_SLOT_1, 54, 33);
+        addMachineInputSlot(blockEntity.getStorage(), AlloySmelterBE.SECONDARY_INPUT, 54, 33);
 
         addDataSlots(data);
     }

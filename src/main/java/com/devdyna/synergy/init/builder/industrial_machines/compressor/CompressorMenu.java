@@ -34,7 +34,7 @@ public class CompressorMenu extends BaseMachineMenu {
         addPlayerSlots(inv);
         addMachineInputSlot(blockEntity.getStorage(), CompressorBE.INPUT_SLOT, 47, 15);
         addMachineOutputSlot(blockEntity.getStorage(), CompressorBE.OUTPUT_SLOT, 119, 34);
-        addMachineInputSlot(blockEntity.getStorage(), CompressorBE.EXTRA_SLOT_1, 47, 51);
+        addMachineInputSlot(blockEntity.getStorage(), CompressorBE.PLATE_SLOT, 47, 51);
 
         addDataSlots(data);
     }

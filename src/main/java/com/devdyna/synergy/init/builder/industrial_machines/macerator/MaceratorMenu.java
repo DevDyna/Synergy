@@ -34,7 +34,7 @@ public class MaceratorMenu extends BaseMachineMenu {
         addPlayerSlots(inv);
         addMachineInputSlot(blockEntity.getStorage(), MaceratorBE.INPUT_SLOT, 47, 33);
         addMachineOutputSlot(blockEntity.getStorage(), MaceratorBE.OUTPUT_SLOT, 119, 25);
-        addMachineOutputSlot(blockEntity.getStorage(), MaceratorBE.EXTRA_SLOT_1, 119, 50);
+        addMachineOutputSlot(blockEntity.getStorage(), MaceratorBE.SECONDARY_SLOT, 119, 50);
         addDataSlots(data);
     }
 

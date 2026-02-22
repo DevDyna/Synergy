@@ -25,6 +25,8 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 @SuppressWarnings("null")
 public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
 
+public static final int SECONDARY_INPUT = 6;
+
     public AlloySmelterBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
         this.storage = new MachineItemHandler(7);
@@ -66,7 +68,7 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
 
     @Override
     public List<Integer> getInputSlotIndex() {
-        return List.of(INPUT_SLOT, EXTRA_SLOT_1);
+        return List.of(INPUT_SLOT, SECONDARY_INPUT);
     }
 
     public AlloySmelterBE(BlockPos pos, BlockState blockState) {
@@ -92,11 +94,11 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
 
         Optional<RecipeHolder<AlloySmelterRecipeType>> r = level.getRecipeManager()
                 .getRecipeFor(zMachines.ALLOY_SMELTER.recipe().getType(),
-                        new BiItemInput(getInput(), getExtraSlot1()), level);
+                        new BiItemInput(getInput(), getSecondaryInput()), level);
 
         Optional<RecipeHolder<AlloySmelterRecipeType>> r2 = level.getRecipeManager()
                 .getRecipeFor(zMachines.ALLOY_SMELTER.recipe().getType(),
-                        new BiItemInput(getExtraSlot1(), getInput()), level);
+                        new BiItemInput(getSecondaryInput(), getInput()), level);
 
         AlloySmelterRecipeType recipe;
 
@@ -140,7 +142,7 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
         updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
 
         getInput().shrink(recipe.getInputItem().count());
-        getExtraSlot1().shrink(recipe.getCatalystItem().count());
+        getSecondaryInput().shrink(recipe.getCatalystItem().count());
 
         progress = 0;
         setChanged();
@@ -169,7 +171,11 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
 
    @Override
     public SlotBuilder getSlotTypes() {
-        return SlotBuilder.of().set(EXTRA_SLOT_1, SlotType.INPUT);
+        return SlotBuilder.of(1).set(SECONDARY_INPUT, SlotType.INPUT);
+    }
+
+    public ItemStack getSecondaryInput(){
+        return getStorage().getStackInSlot(SECONDARY_INPUT);
     }
 
 }

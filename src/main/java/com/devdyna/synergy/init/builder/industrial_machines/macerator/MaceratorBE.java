@@ -26,6 +26,8 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 @SuppressWarnings("null")
 public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
 
+    public static final int SECONDARY_SLOT = 6;
+
     public MaceratorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
         this.storage = new MachineItemHandler(7);
@@ -67,7 +69,7 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
 
     @Override
     public List<Integer> getOutputSlotIndex() {
-        return List.of(OUTPUT_SLOT,EXTRA_SLOT_1);
+        return List.of(OUTPUT_SLOT,SECONDARY_SLOT);
     }
 
     public MaceratorBE(BlockPos pos, BlockState blockState) {
@@ -108,7 +110,7 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
 
         boolean success = calculateSecondarySuccess(recipe.getSecondaryItemChance());
 
-        if (!(checkSlot(getOutput(), output) && checkSlot(getExtraSlot1(), secondary))) {
+        if (!(checkSlot(getOutput(), output) && checkSlot(getSecondarySlot(), secondary))) {
             resetProgress();
             return;
         }
@@ -134,7 +136,7 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
         updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
 
         if (!secondary.isEmpty() && success)
-            updateOutputSlot(getExtraSlot1(), secondary, EXTRA_SLOT_1);
+            updateOutputSlot(getSecondarySlot(), secondary, SECONDARY_SLOT);
 
         getInput().shrink(recipe.getInputItem().count());
 
@@ -187,6 +189,10 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
 
     @Override
     public SlotBuilder getSlotTypes() {
-        return SlotBuilder.of().set(EXTRA_SLOT_1, SlotType.OUTPUT);
+        return SlotBuilder.of(1).set(SECONDARY_SLOT, SlotType.OUTPUT);
+    }
+
+    public ItemStack getSecondarySlot(){
+        return getStorage().getStackInSlot(SECONDARY_SLOT);
     }
 }

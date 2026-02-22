@@ -23,6 +23,8 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 @SuppressWarnings("null")
 public class CompressorBE extends BaseMachineBE implements ExtraMachineSlots {
 
+    public static final int PLATE_SLOT = 6;
+
     public CompressorBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
         this.storage = new MachineItemHandler(7);
@@ -85,7 +87,7 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlots {
 
         Optional<RecipeHolder<CompressorRecipeType>> r = level.getRecipeManager()
                 .getRecipeFor(zMachines.COMPRESSOR.recipe().getType(),
-                        new BiItemInput(getInput(), getExtraSlot1()), level);
+                        new BiItemInput(getInput(), getPlateSlot()), level);
 
         // no recipe
         if (r.isEmpty()) {
@@ -127,7 +129,7 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlots {
         getInput().shrink(recipe.getInputItem().count());
 
         if (recipe.consumeCatalyst())
-            getExtraSlot1().shrink(recipe.getCatalystItem().count());
+            getPlateSlot().shrink(recipe.getCatalystItem().count());
 
         progress = 0;
         setChanged();
@@ -156,7 +158,11 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlots {
 
     @Override
     public SlotBuilder getSlotTypes() {
-        return SlotBuilder.of().set(EXTRA_SLOT_1, SlotType.INPUT);
+        return SlotBuilder.of(1).set(PLATE_SLOT, SlotType.INPUT);
+    }
+
+    public ItemStack getPlateSlot() {
+        return getStorage().getStackInSlot(PLATE_SLOT);
     }
 
 }
