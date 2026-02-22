@@ -8,6 +8,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
 import com.devdyna.synergy.api.utils.ColorUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
@@ -39,6 +40,12 @@ public class LogicBoxBlock extends TickingBlock {
                 .destroyTime(0.4f)
                 .sound(SoundType.CORAL_BLOCK)
                 .mapColor(MapColor.COLOR_CYAN));
+
+        this.registerDefaultState(
+                this.stateDefinition
+                        .any()
+                        .setValue(BlockStateProperties.INVERTED, false)
+                        .setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH));
     }
 
     public LogicBoxBlock() {
