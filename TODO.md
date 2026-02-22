@@ -61,6 +61,8 @@
 - [ ] evaporation basin booster jei(?)
 - [ ] drying racks booster jei(?)
 
+- [ ] Forestry Peatfarm (?)
+
 ### Survival expansion
 
 - [ ] scrap and slags
