@@ -5,6 +5,7 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.*;
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.x;
@@ -91,7 +92,7 @@ public class CastingTableBuilder extends BaseRecipeBuilder
 
     @Override
     public ResourceLocation getSuffix(String extra) {
-        return x.rl("casting/" + x.path(this.output.getItem()) + extra);
+        return x.rl(zStatic.Blocks.casting_table+"/" + x.path(this.output.getItem()) + extra);
     }
 
     @Override

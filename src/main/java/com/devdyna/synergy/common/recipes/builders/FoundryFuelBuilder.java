@@ -15,6 +15,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Recipe;
 import net.neoforged.neoforge.fluids.FluidStack;
+
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.recipes.builders.*;
 
 @SuppressWarnings("null")
@@ -53,7 +55,7 @@ public class FoundryFuelBuilder extends BaseRecipeBuilder
 
     @Override
     public ResourceLocation getSuffix(String extra) {
-        return x.rl("foundry_fuels/" + x.path(fluid.getFluid())
+        return x.rl(zStatic.Blocks.foundry+"_fuels/" + x.path(fluid.getFluid())
                 + extra);
     }
 

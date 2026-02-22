@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
@@ -80,7 +81,7 @@ public class DryableBricksBuilder extends BaseRecipeBuilder implements
 
     @Override
     public ResourceLocation getSuffix(String extra) {
-        return x.rl("dryable_bricks/" + x.path(output)
+        return x.rl(zStatic.DryableBricks.TYPE+"/" + x.path(output)
                 + extra);
     }
 

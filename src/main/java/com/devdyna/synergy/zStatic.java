@@ -202,7 +202,8 @@ public class zStatic {
     public class DryableBricks {
         public static String BALL = "_ball";
         public static String BRICK = "_brick";
-        public static final String TYPE = "dryable_bricks";
+
+        public static final String TYPE = "dryable_brick";
 
         public class brick {
             public static String clay = "clay" + BRICK;

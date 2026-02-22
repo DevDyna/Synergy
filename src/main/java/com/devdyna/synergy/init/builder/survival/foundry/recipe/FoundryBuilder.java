@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
@@ -79,7 +80,7 @@ public class FoundryBuilder extends BaseRecipeBuilder
 
     @Override
     public ResourceLocation getSuffix(String extra) {
-        return x.rl("simple_melter/" + x.path(this.fluid.getFluid()) + extra);
+        return x.rl(zStatic.Blocks.foundry+"/" + x.path(this.fluid.getFluid()) + extra);
     }
 
 }

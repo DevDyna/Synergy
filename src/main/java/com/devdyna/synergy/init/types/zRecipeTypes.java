@@ -67,28 +67,28 @@ public class zRecipeTypes {
         public static final RecipeRegister<FluidProviderRecipe<FluidStack>> FLUID_PROVIDER = RecipeRegister.of("provider/fluid",
                         FluidProviderRecipe.Serializer::new);
 
-        public static final RecipeRegister<DryableBricksRecipe> DRYABLE_BRICKS = RecipeRegister.of("dryable_bricks",
+        public static final RecipeRegister<DryableBricksRecipe> DRYABLE_BRICKS = RecipeRegister.of(zStatic.DryableBricks.TYPE,
                         DryableBricksRecipeSerializer::new);
 
-        public static final RecipeRegister<VoidBoxInfusionRecipe> VOID_BOX_INFUSION = RecipeRegister.of("void_box_infusion",
+        public static final RecipeRegister<VoidBoxInfusionRecipe> VOID_BOX_INFUSION = RecipeRegister.of(zStatic.Blocks.void_box+"_conversion",
                         VoidBoxInfusionRecipeSerializer::new);
 
-        public static final RecipeRegister<DryingRackRecipe> DRYING_RACK = RecipeRegister.of("drying_rack",
+        public static final RecipeRegister<DryingRackRecipe> DRYING_RACK = RecipeRegister.of(zStatic.Blocks.drying_rack,
                         DryingRackRecipeSerializer::new);
 
-        public static final RecipeRegister<CrushingTubRecipe> CRUSHING_TUB = RecipeRegister.of("crushing_tub",
+        public static final RecipeRegister<CrushingTubRecipe> CRUSHING_TUB = RecipeRegister.of(zStatic.Blocks.crushing_tub,
                         CrushingTubRecipeSerializer::new);
 
-        public static final RecipeRegister<EvaporationBasinRecipe> EVAPORATING_BASIN = RecipeRegister.of("evaporating_tub",
+        public static final RecipeRegister<EvaporationBasinRecipe> EVAPORATING_BASIN = RecipeRegister.of(zStatic.Blocks.evaporation_basin,
                         EvaporationBasinRecipeSerializer::new);
 
-        public static final RecipeRegister<FoundryRecipe> FOUNDRY = RecipeRegister.of("foundry",
+        public static final RecipeRegister<FoundryRecipe> FOUNDRY = RecipeRegister.of(zStatic.Blocks.foundry,
                         FoundryRecipeSerializer::new);
 
-        public static final RecipeRegister<FoundryFuelEfficiencyRecipe> FOUNDRY_FUELS = RecipeRegister.of("foundry_fuels",
+        public static final RecipeRegister<FoundryFuelEfficiencyRecipe> FOUNDRY_FUELS = RecipeRegister.of(zStatic.Blocks.foundry+"_fuels",
                         FoundryFuelEfficiencyRecipe.Serializer::new);
 
-        public static final RecipeRegister<CastingTableRecipe> CASTING_TABLE = RecipeRegister.of("casting_table",
+        public static final RecipeRegister<CastingTableRecipe> CASTING_TABLE = RecipeRegister.of(zStatic.Blocks.casting_table,
                         CastingTableRecipe.Serializer::new);
 
 

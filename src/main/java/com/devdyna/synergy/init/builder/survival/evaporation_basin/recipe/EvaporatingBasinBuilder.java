@@ -5,6 +5,7 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.*;
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.x;
@@ -77,7 +78,7 @@ public class EvaporatingBasinBuilder extends BaseRecipeBuilder
 
     @Override
     public ResourceLocation getSuffix(String extra) {
-        return x.rl("evaporating_tub/" + x.path(this.output.getItem()) + extra);
+        return x.rl(zStatic.Blocks.evaporation_basin+"/" + x.path(this.output.getItem()) + extra);
     }
 
 }

@@ -6,6 +6,7 @@ import java.util.*;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
@@ -85,7 +86,7 @@ public class CrushingTubBuilder extends BaseRecipeBuilder
 
     @Override
     public ResourceLocation getSuffix(String extra) {
-        return x.rl("crushing_tub/" + x.path(this.output.getItem())
+        return x.rl(zStatic.Blocks.crushing_tub+"/" + x.path(this.output.getItem())
                 + extra);
     }
 
