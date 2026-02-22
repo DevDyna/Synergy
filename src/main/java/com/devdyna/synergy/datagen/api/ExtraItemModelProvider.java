@@ -128,11 +128,17 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                 zItems.zFoods, "foods/",
                                 zItems.zTool, "tools/").forEach(
                                                 (entries, folder) -> entries.getEntries()
-                                                                .forEach(item -> DataGenUtil.itemModel(
-                                                                                item.get(),
-                                                                                this,
-                                                                                folder,
-                                                                                x.path(item.get()))));
+                                                                .forEach(item -> {
+                                                                        if (entries == zItems.zTool)
+                                                                                DataGenUtil.itemTool(
+                                                                                                item.get(), this);
+                                                                        else
+                                                                                DataGenUtil.itemModel(
+                                                                                                item.get(),
+                                                                                                this,
+                                                                                                folder,
+                                                                                                x.path(item.get()));
+                                                                }));
 
                 List<Item> plants = List.of(
                                 zBlocks.WILD_CAVE_WHEAT,
