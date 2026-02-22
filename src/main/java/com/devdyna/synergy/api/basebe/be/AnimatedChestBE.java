@@ -18,9 +18,9 @@ public abstract class AnimatedChestBE extends TickingBE {
     private float lidProgress;
     private boolean lastOpenState = false;
 
-    /** 
+    /**
      * Can be used to customize opening animation event
-    */
+     */
     public boolean defineOpen() {
         return level.getNearestPlayer(
                 getBlockPos().getX() + 0.5,
@@ -34,26 +34,26 @@ public abstract class AnimatedChestBE extends TickingBE {
      * Define sound opening
      */
     public void soundOpening() {
-            level.playSound(
-                    null,
-                    getBlockPos(),
-                    SoundEvents.ENDER_CHEST_OPEN,
-                    SoundSource.BLOCKS,
-                    1f,
-                    1.1f);
+        level.playSound(
+                null,
+                getBlockPos(),
+                SoundEvents.ENDER_CHEST_OPEN,
+                SoundSource.BLOCKS,
+                1f,
+                1.1f);
     }
 
     /**
      * Define sound closing
      */
     public void soundClosing() {
-            level.playSound(
-                    null,
-                    getBlockPos(),
-                    SoundEvents.ENDER_CHEST_CLOSE,
-                    SoundSource.BLOCKS,
-                    1f,
-                    1.1f);
+        level.playSound(
+                null,
+                getBlockPos(),
+                SoundEvents.ENDER_CHEST_CLOSE,
+                SoundSource.BLOCKS,
+                1f,
+                1.1f);
     }
 
     @Override
