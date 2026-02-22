@@ -56,6 +56,8 @@
 - [ ] tool models dont work correctly
 - [ ] evaporating basin use incorrect recipetype namespace
 
+- [ ] chopper slots need to change when item isn't empty to blank
+
 ### Survival expansion
 
 - [ ] scrap and slags
