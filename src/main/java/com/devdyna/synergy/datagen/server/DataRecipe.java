@@ -1634,10 +1634,10 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItems.PLASTIC.get()))
                                 .save(c);
 
-                UrnRitualBuilder.of()
-                                .add(zItems.ENERGIZED_REDSTONE)
-                                .add(zBlocks.WOODEN_TINY_CHEST.get().asItem())
-                                .output(zBlocks.LOGIC_BOX.get())
+                ItemUseBuilder.of()
+                                .inputItem(zItems.ENERGIZED_REDSTONE)
+                                .inputBlock(zBlocks.WOODEN_TINY_CHEST)
+                                .outputBlock(zBlocks.LOGIC_BOX)
                                 .unlockedBy().save(c);
         }
 
