@@ -438,7 +438,7 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jei.dryable_rack.tip", "Tick delay can change based on stack size");
 
                 add(ID + "." + zStatic.Blocks.logic_box, TIP_COLOR
-                                + "Work like a whitelist mono-filter\nWhen powered it will invert to blacklist");
+                                + "Filtered tiny chest");
 
         }
 
