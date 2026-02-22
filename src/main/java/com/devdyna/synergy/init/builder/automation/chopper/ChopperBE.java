@@ -395,21 +395,14 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        // tag.put("inventory", getStorage().serializeNBT(registries));
         tag.putInt("progress", progress);
-        // tag.putInt("energy", energyStorage.getEnergyStored());
         super.saveAdditional(tag, registries);
     }
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        // getStorage().deserializeNBT(registries, tag.getCompound("inventory"));
         if (tag.contains("progress"))
             progress = tag.getInt("progress");
-        // if (tag.contains("energy"))
-        // energyStorage.receiveEnergy(Math.min(tag.getInt("energy"),
-        // energyStorage.getMaxEnergyStored()), false);
-
         super.loadAdditional(tag, registries);
     }
 
