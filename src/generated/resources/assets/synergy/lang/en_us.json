@@ -500,7 +500,7 @@
   "synergy.laser_use.max": "§7Can increase all colors",
   "synergy.laser_use.red": "§7Can increase red color on laser beam",
   "synergy.laser_use.reset": "§7Can decrease all colors",
-  "synergy.logic_box": "§7Work like a whitelist mono-filter\nWhen powered it will invert to blacklist",
+  "synergy.logic_box": "§7Filtered tiny chest",
   "synergy.mixture_tip": "§7Can be used to speed the grow of any plant",
   "synergy.moderator": "§7Increase Heat and FE production",
   "synergy.moderator.condition": "§7Active when near to a Fuel Cell",
