@@ -37,7 +37,7 @@
 
 - [ ] migrate hand-coded batteries capabilities to Neoforge FE capabilities
 
-- [ ] chopper
+- [x] chopper
 
 - [ ] dimensional miner like?
 
