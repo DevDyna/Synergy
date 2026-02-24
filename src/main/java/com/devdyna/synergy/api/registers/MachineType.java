@@ -3,15 +3,14 @@ package com.devdyna.synergy.api.registers;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import com.devdyna.synergy.api.machine.*;
+import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BlockEntityType.BlockEntitySupplier;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -21,10 +20,10 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings("null")
 public class MachineType<
-BLOCK extends Block, 
-BE extends BlockEntity, 
-MENU extends AbstractContainerMenu,
- RECIPE extends Recipe<?>> {
+BLOCK extends BaseMachineBlock, 
+BE extends BaseMachineBE, 
+MENU extends BaseMachineMenu,
+ RECIPE extends BaseMachineRecipeType<?>> {
 
     private final String id;
 
