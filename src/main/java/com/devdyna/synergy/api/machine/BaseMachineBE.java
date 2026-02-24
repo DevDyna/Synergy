@@ -233,11 +233,23 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         return networkData;
     }
 
-    // @SuppressWarnings("unchecked")
-    // public <RECIPE extends BaseMachineRecipeType<INPUT>,INPUT extends
-    // RecipeInput> Optional<RecipeHolder<RECIPE>> getRecipe(INPUT input) {
-    // return RecipeUtils.getRecipes(level,(MachineType<?,?,?,RECIPE>) getMachine(),
-    // input);
+    protected void resetProgress() {
+        progress_cancel = true;
+        if (progress > 0)
+            progress--;
+        if (progress == 0)
+            progress_cancel = false;
+
+        if (getBlockState().getValue(BaseMachineBlock.ENABLED))
+            update(false);
+
+        setChanged();
+    }
+
+    protected void update(boolean v) {
+        level.setBlockAndUpdate(getBlockPos(),
+                getBlockState().setValue(BaseMachineBlock.ENABLED, v));
+    }
 
     // }
     protected class MachineItemHandler extends ItemStackHandler {
