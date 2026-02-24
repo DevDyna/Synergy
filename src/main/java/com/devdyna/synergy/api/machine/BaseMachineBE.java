@@ -251,7 +251,6 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
                 getBlockState().setValue(BaseMachineBlock.ENABLED, v));
     }
 
-    // }
     protected class MachineItemHandler extends ItemStackHandler {
 
         public MachineItemHandler(int machineSlots) {
