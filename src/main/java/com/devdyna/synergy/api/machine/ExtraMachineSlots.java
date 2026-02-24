@@ -7,9 +7,11 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 
 /**
  * Industrial Machine attach to allow more slots
- * <br/><br/>
+ * <br/>
+ * <br/>
  * Slot Indexs need to be 6 -> Integer.MAX_VALUE
- * <br/><br/>
+ * <br/>
+ * <br/>
  * Credits : @DevDyna
  */
 public interface ExtraMachineSlots {
@@ -38,7 +40,7 @@ public interface ExtraMachineSlots {
     abstract SlotBuilder getSlotTypes();
 
     // default List<Integer> getExtraSlots(){
-    //     return List.of();
+    // return List.of();
     // }
 
     class SlotBuilder {
@@ -64,6 +66,18 @@ public interface ExtraMachineSlots {
             if (slot >= 6)
                 list.set(slot - 6, type);
             return this;
+        }
+
+        public SlotBuilder setAll(SlotType type, Integer... slots) {
+            for (int s : slots) {
+                if (s >= 6)
+                    list.set(s - 6, type);
+            }
+            return this;
+        }
+
+        public SlotBuilder setAll(SlotType type, List<Integer> slots) {
+            return setAll(type, slots.toArray(Integer[]::new));
         }
 
         public List<SlotType> get() {
