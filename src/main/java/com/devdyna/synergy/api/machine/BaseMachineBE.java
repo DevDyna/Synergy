@@ -76,11 +76,25 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     public static final int MAX_UPGRADE_SLOTS = 4;
 
+    /**
+     * To add new slots you should use ExtraMachineSlots interface!
+     * <br/>
+     * <br/>
+     * The first slot Index must be 6 -> ?
+     */
     public static final int INPUT_SLOT = 4;
+    /**
+     * To add new slots you should use ExtraMachineSlots interface!
+     * <br/>
+     * <br/>
+     * The first slot Index must be 6 -> ?
+     */
     public static final int OUTPUT_SLOT = 5;
 
+    @Deprecated
     public static final int BASE_SLOT_IO = 2;
 
+    @Deprecated
     public static final int TOTAL_BASE_SLOT_IO = MAX_UPGRADE_SLOTS + BASE_SLOT_IO;
 
     protected boolean progress_cancel;
@@ -109,11 +123,6 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
             inv.setItem(i, getStorage().getStackInSlot(i));
         Containers.dropContents(this.level, this.worldPosition, inv);
     }
-
-    // @Override
-    // public int getMachineSlots() {
-    // return 2;
-    // }
 
     @Override
     public List<Integer> getInputSlotIndex() {
@@ -224,6 +233,13 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         return networkData;
     }
 
+    // @SuppressWarnings("unchecked")
+    // public <RECIPE extends BaseMachineRecipeType<INPUT>,INPUT extends
+    // RecipeInput> Optional<RecipeHolder<RECIPE>> getRecipe(INPUT input) {
+    // return RecipeUtils.getRecipes(level,(MachineType<?,?,?,RECIPE>) getMachine(),
+    // input);
+
+    // }
     protected class MachineItemHandler extends ItemStackHandler {
 
         public MachineItemHandler(int machineSlots) {
@@ -270,7 +286,6 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
                     tickServer();
 
             } catch (RuntimeException e) {
-
                 // catch potential crashes
                 if (level.getBlockEntity(getBlockPos()) instanceof BaseMachineBE) {
                     LogUtil.error(
@@ -353,19 +368,6 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         return true;
     }
 
-    // /**
-    // * Return <code>true</code> when success
-    // */
-    // public boolean checkOptionalSlot(ItemStack slot, Ingredient recipeSlot) {
-    // if (!slot.isEmpty()) {
-    // // not same item or no items
-    // if (recipeSlot.hasNoItems() || !recipeSlot.test(slot)) {
-    // return false;
-    // }
-    // }
-    // return true;
-    // }
-
     public void updateOutputSlot(ItemStack stack, ItemStack slotStack, int slotIndex) {
         if (stack.isEmpty())
             storage.setStackInSlot(slotIndex, slotStack);
@@ -417,19 +419,22 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     public int calculateMaxProgress(int base) {
         var upgrades = getValues(TYPE.SPEED);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Common.MACHINE_MAX_SPEED_UPGRADES_TYPE.get() == 0 ? base : Math.max(Common.MACHINE_MINIMAL_TICK_DELAY.get(), (int) (base - (base * (((float) sum) / 100))));
+        return Common.MACHINE_MAX_SPEED_UPGRADES_TYPE.get() == 0 ? base
+                : Math.max(Common.MACHINE_MINIMAL_TICK_DELAY.get(), (int) (base - (base * (((float) sum) / 100))));
     }
 
     private int calculateFEUsage(int base) {
         var upgrades = getValues(TYPE.ENERGY);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Common.MACHINE_MAX_ENERGY_UPGRADES_TYPE.get() == 0 ? base : Math.max(Common.MACHINE_MINIMAL_FE_COST.get(), (int) (base + (base * (((float) sum) / 100))));
+        return Common.MACHINE_MAX_ENERGY_UPGRADES_TYPE.get() == 0 ? base
+                : Math.max(Common.MACHINE_MINIMAL_FE_COST.get(), (int) (base + (base * (((float) sum) / 100))));
     }
 
     public int calculateMBUsage(int base) {
         var upgrades = getValues(TYPE.FLUID);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Common.MACHINE_MAX_FLUID_UPGRADES_TYPE.get() == 0 ? base : Math.max(Common.MACHINE_MINIMAL_FLUID_COST.get(), (int) (base - (base * (((float) sum) / 100))));
+        return Common.MACHINE_MAX_FLUID_UPGRADES_TYPE.get() == 0 ? base
+                : Math.max(Common.MACHINE_MINIMAL_FLUID_COST.get(), (int) (base - (base * (((float) sum) / 100))));
     }
 
     public boolean calculateSecondarySuccess(float base) {
