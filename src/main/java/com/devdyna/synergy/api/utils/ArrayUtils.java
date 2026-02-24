@@ -1,6 +1,7 @@
 package com.devdyna.synergy.api.utils;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class ArrayUtils {
 
@@ -9,4 +10,13 @@ public class ArrayUtils {
         list.addAll(Arrays.asList(a2));
         return list.toArray(size -> Arrays.copyOf(a1, size));
     }
+
+    public static <T> List<T> concat(T a1, List<T> a2) {
+        return Stream.concat(Stream.of(a1), a2.stream()).toList();
+    }
+
+    public static <T> List<T> concat(T a1, Stream<T> a2) {
+        return Stream.concat(Stream.of(a1), a2).toList();
+    }
+
 }
