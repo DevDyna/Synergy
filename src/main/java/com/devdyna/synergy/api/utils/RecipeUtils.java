@@ -1,7 +1,10 @@
 package com.devdyna.synergy.api.utils;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeBuilder;
+import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 
@@ -11,6 +14,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
 
 @SuppressWarnings("null")
 public class RecipeUtils {
@@ -19,11 +23,21 @@ public class RecipeUtils {
         return Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(r);
     }
 
+    public static <T extends BaseMachineRecipeType<I>,I extends RecipeInput> Optional<RecipeHolder<T>> getRecipes(Level level , MachineType<?,?,?,T> m,I input) {
+        return level.getRecipeManager().getRecipeFor(m.recipe().getType(), input, level);
+    }
+
+    public static <T extends BaseMachineRecipeType<I>,I extends RecipeInput> T getUnsafeRecipes(Level level , MachineType<?,?,?,T> m,I input) {
+        return level.getRecipeManager().getRecipeFor(m.recipe().getType(), input, level).get().value();
+    }
+
+
+
     public static <T extends Recipe<I>, I extends RecipeInput> List<RecipeHolder<T>> getRecipes(RecipeRegister<T> r) {
         return getRecipes(r.getType());
     }
 
-    public static <T extends Recipe<I>, I extends RecipeInput> List<RecipeHolder<T>> getRecipes(
+    public static <T extends BaseMachineRecipeType<I>, I extends RecipeInput> List<RecipeHolder<T>> getRecipes(
             MachineType<?, ?, ?, T> r) {
         return getRecipes(r.recipe().getType());
     }
