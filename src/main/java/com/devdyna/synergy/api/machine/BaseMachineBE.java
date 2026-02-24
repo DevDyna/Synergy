@@ -319,6 +319,40 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     public void tickServer() {
 
+        progress_cancel = false;
+
+        if (progress_cancel)
+            return;
+        else
+            this.progress++;
+
+        if(!initProgress())
+        return;
+
+        
+
+        // if the recipe is modified by player
+
+        if (this.progress < this.maxProgress) {
+            setChanged();
+            return;
+        }
+
+        endProgress();
+
+        progress = 0;
+        setChanged();
+    }
+
+    /**
+     * Return false to cancel
+     */
+    public boolean initProgress() {
+        return false;
+    }
+
+    public void endProgress() {
+
     }
 
     public boolean isCrafting() {
