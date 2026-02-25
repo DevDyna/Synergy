@@ -64,8 +64,7 @@
 - [ ] Forestry Peatfarm (?)
 
 - [ ] energy upgrade increase capacity
-- [ ] energy consumed tooltip on menu
-- [x] FALSE , YOU DON'T REMEMBER YOUR OWN MOD LOGIC!
+- [x] energy consumed tooltip on menu
 
 ### Survival expansion
 
