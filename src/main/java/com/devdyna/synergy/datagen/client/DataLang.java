@@ -470,6 +470,30 @@ public class DataLang extends LanguageProvider {
                                                                                 .getAllStrings(zStatic.ResourceMaterial.deposits.class))
                                                                                 .indexOf(s))));
 
+
+                        add(ID + ".jei.atlas.generator", "Energy Generator");
+                        add(ID + ".jei.atlas.redstone", "Redstone Component");
+                        add(ID + ".jei.atlas.storage.item", "Item Storage");
+                        add(ID + ".jei.atlas.storage.fluid", "Fluid Storage");
+
+                        add(ID + ".jei.atlas.portable", "Portable Storage");
+                        add(ID + ".jei.atlas.filter.item", "Item Filter");
+                        add(ID + ".jei.atlas.trash_can.item", "Item Trash Can");
+                        add(ID + ".jei.atlas.conduit", "Conduit");
+                        add(ID + ".jei.atlas.pipe", "Pipe");
+                        add(ID + ".jei.atlas.tube", "Tube");
+
+                        add(ID + ".jei.atlas.transfer.item", "Item Transfer");
+                        add(ID + ".jei.atlas.transfer.fluid", "Fluid Transfer");
+                        add(ID + ".jei.atlas.transfer.energy", "Energy Transfer");
+
+                        add(ID + ".jei.atlas.type.transmitter", "Transmitter");
+                        add(ID + ".jei.atlas.type.reciever", "Reciever");
+                        add(ID + ".jei.atlas.type.producer", "Producer");
+
+
+
+
         }
 
         private String named(DeferredHolder<?, ?> b) {

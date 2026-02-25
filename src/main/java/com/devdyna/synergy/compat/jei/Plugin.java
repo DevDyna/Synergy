@@ -100,7 +100,7 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item(zMachines.CASTING_FACTORY.item().get()), CasterCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zMachines.MELTER.item().get()), MelterCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zMachines.ROCK_CRUSHER.item().get()), RockCrusherCategory.TYPE);
-               
+
                 r.addRecipeCatalyst(x.item(zItems.CHISEL), RecipeTypes.STONECUTTING);
 
                 r.addRecipeCatalyst(x.item(zBlocks.CRUSHING_TUB), CrushingTubCategory.TYPE);
@@ -289,6 +289,76 @@ public class Plugin implements IModPlugin {
                                                                                 32,
                                                                                 86));
                                         }
+                                });
+
+        }
+
+        public void registerIngredientAliases(IIngredientAliasRegistration r) {
+                List.of(zBlocks.SOLAR_PANEL, zBlocks.REACTOR_CONTROLLER, zBlocks.LASER_ROTOR).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.generator"));
+
+                List.of(zBlocks.RECURSIVE_REPEATER, zBlocks.PULSE_REPEATER, zBlocks.INVERTED_REPEATER).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.redstone"));
+
+                List.of(zBlocks.WOODEN_TINY_CHEST, zBlocks.STONE_TINY_CHEST, zBlocks.ORNATE_TINY_CHEST).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.storage.item"));
+
+                List.of(zBlocks.LOGIC_BOX).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.filter.item"));
+
+                List.of(zBlocks.VOID_BOX).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.trash_can.item"));
+
+                List.of(zBlocks.FAUCET).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> {
+                                        r.addAlias(e, ID + ".jei.atlas.transfer.fluid");
+                                        r.addAlias(e, ID + ".jei.atlas.type.transmitter");
+                                });
+
+                List.of(zBlocks.SIMPLE_TANK, zBlocks.FUEL_TANK).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> {
+                                        r.addAlias(e, ID + ".jei.atlas.portable");
+                                        r.addAlias(e, ID + ".jei.atlas.storage.fluid");
+                                });
+
+                List.of(
+                                zBlocks.ITEM_PROVIDER,
+                                zBlocks.ITEM_RETRIEVAL,
+                                zBlocks.ITEM_TRANSFER,
+                                zBlocks.FLUID_PROVIDER,
+                                zBlocks.FLUID_RETRIEVAL,
+                                zBlocks.FLUID_TRANSFER,
+                                zBlocks.ENERGY_RETRIEVAL,
+                                zBlocks.ENERGY_TRANSFER).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> {
+                                        r.addAlias(e, ID + ".jei.atlas.conduit");
+                                        r.addAlias(e, ID + ".jei.atlas.pipe");
+                                        r.addAlias(e, ID + ".jei.atlas.tube");
+
+                                        if (e.is(zItemTag.NODE_ITEM))
+                                                r.addAlias(e, ID + ".jei.atlas.transfer.item");
+                                        if (e.is(zItemTag.NODE_FLUID))
+                                                r.addAlias(e, ID + ".jei.atlas.transfer.fluid");
+                                        if (e.is(zItemTag.NODE_ENERGY))
+                                                r.addAlias(e, ID + ".jei.atlas.transfer.energy");
+
+                                        if (e.is(zItemTag.NODES_TRANSFER))
+                                                r.addAlias(e, ID + ".jei.atlas.type.transmitter");
+
+                                        if (e.is(zItemTag.NODES_PROVIDER))
+                                                r.addAlias(e, ID + ".jei.atlas.type.producer");
+
+                                        if (e.is(zItemTag.NODES_RETRIEVAL))
+                                                r.addAlias(e, ID + ".jei.atlas.type.attractor");
+
                                 });
 
         }
