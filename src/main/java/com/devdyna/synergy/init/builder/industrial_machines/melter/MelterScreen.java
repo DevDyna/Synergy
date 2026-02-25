@@ -118,4 +118,10 @@ public class MelterScreen extends BaseMachineScreen<MelterMenu> {
 
     }
 
+    @Override
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        guiGraphics.drawString(this.font, this.title, this.titleLabelX + 47, this.titleLabelY,
+                defaultToolTipColor.getRGB(), false);
+    }
+
 }

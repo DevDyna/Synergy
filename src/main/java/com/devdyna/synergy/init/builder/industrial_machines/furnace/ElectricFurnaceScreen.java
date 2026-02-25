@@ -1,7 +1,5 @@
 package com.devdyna.synergy.init.builder.industrial_machines.furnace;
 
-import javax.annotation.Nullable;
-
 import com.devdyna.synergy.api.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.utils.x;
 
@@ -45,6 +43,12 @@ public class ElectricFurnaceScreen extends BaseMachineScreen<ElectricFurnaceMenu
     @Override
     protected int getRemainProgress() {
         return menu.getRemainProgress();
+    }
+
+    @Override
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        guiGraphics.drawString(this.font, this.title, this.titleLabelX + 47, this.titleLabelY,
+                defaultToolTipColor.getRGB(), false);
     }
 
 }

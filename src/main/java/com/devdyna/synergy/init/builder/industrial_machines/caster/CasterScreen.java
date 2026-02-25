@@ -2,8 +2,6 @@ package com.devdyna.synergy.init.builder.industrial_machines.caster;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import com.devdyna.synergy.api.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.render.FluidGUITank;
 import com.devdyna.synergy.api.utils.Pos;
@@ -126,6 +124,12 @@ public class CasterScreen extends BaseMachineScreen<CasterMenu> {
                     pMouseY);
         }
 
+    }
+
+    @Override
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        guiGraphics.drawString(this.font, this.title, this.titleLabelX + 47, this.titleLabelY,
+                defaultToolTipColor.getRGB(), false);
     }
 
 }
