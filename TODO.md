@@ -66,6 +66,8 @@
 - [ ] energy upgrade increase capacity
 - [x] energy consumed tooltip on menu
 
+- [ ] fossil usage
+
 ### Survival expansion
 
 - [ ] scrap and slags
