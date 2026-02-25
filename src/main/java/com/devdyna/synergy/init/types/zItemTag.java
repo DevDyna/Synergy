@@ -249,5 +249,10 @@ public class zItemTag {
         public static final TagKey<Item> DEEPSLATE_STONES = Material.tagItem("deepslate_stones","c");
 
         public static final TagKey<Item> ORE_DEPOSITS = Material.tagItem("deposit","c");
+       
+       
+        public static final TagKey<Item> NODE_ITEM = Material.tagItem("nodes/item");
+        public static final TagKey<Item> NODE_FLUID = Material.tagItem("nodes/fluid");
+        public static final TagKey<Item> NODE_ENERGY = Material.tagItem("nodes/energy");
 
 }

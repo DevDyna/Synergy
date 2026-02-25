@@ -219,6 +219,11 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.NODES_PROVIDER)
                                 .add(zBlocks.ITEM_PROVIDER.get().asItem(), zBlocks.FLUID_PROVIDER.get().asItem());
 
+
+                tag(zItemTag.NODE_ENERGY).add(zBlocks.ENERGY_RETRIEVAL.get().asItem(),zBlocks.ENERGY_TRANSFER.get().asItem());
+                tag(zItemTag.NODE_FLUID).add(zBlocks.FLUID_PROVIDER.get().asItem(),zBlocks.FLUID_RETRIEVAL.get().asItem(),zBlocks.FLUID_TRANSFER.get().asItem());
+                tag(zItemTag.NODE_ITEM).add(zBlocks.ITEM_PROVIDER.get().asItem(),zBlocks.ITEM_RETRIEVAL.get().asItem(),zBlocks.ITEM_TRANSFER.get().asItem());
+
                 tag(zItemTag.NODES)
                                 .addTag(zItemTag.NODES_TRANSFER)
                                 .addTag(zItemTag.NODES_PROVIDER)
