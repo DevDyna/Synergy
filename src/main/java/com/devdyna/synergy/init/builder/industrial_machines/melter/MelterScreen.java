@@ -2,8 +2,6 @@ package com.devdyna.synergy.init.builder.industrial_machines.melter;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import com.devdyna.synergy.api.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.render.FluidGUITank;
 import com.devdyna.synergy.api.utils.Pos;
@@ -26,11 +24,6 @@ public class MelterScreen extends BaseMachineScreen<MelterMenu> {
     @Override
     protected ResourceLocation background() {
         return x.rl("textures/gui/container/only_input.png");
-    }
-
-    @Override
-    protected @Nullable ResourceLocation arrow() {
-        return x.rl("minecraft", "textures/gui/sprites/container/furnace/burn_progress.png");
     }
 
     @Override

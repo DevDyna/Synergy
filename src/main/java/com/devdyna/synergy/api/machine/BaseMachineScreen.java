@@ -5,6 +5,8 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.devdyna.synergy.api.gui.BaseScreen;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
@@ -17,6 +19,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -26,6 +29,16 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
 
         public BaseMachineScreen(T menu, Inventory playerInventory, Component title) {
                 super(menu, playerInventory, title);
+        }
+
+        @Override
+        protected ResourceLocation background() {
+                return x.rl("textures/gui/container/"+menu.getMachine().id()+".png");
+        }
+
+        @Override
+        protected @Nullable ResourceLocation arrow() {
+                return x.rl("minecraft", "textures/gui/sprites/container/furnace/burn_progress.png");
         }
 
         protected abstract int getEnergyStored();
@@ -123,7 +136,6 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
         protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
                 guiGraphics.drawString(this.font, this.title, this.titleLabelX + 57, this.titleLabelY,
                                 defaultToolTipColor.getRGB(), false);
-
         }
 
         private List<Component> calculateTooltipUpgrades() {

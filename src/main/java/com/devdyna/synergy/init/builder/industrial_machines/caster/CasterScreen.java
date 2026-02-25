@@ -25,12 +25,7 @@ public class CasterScreen extends BaseMachineScreen<CasterMenu> {
 
     @Override
     protected ResourceLocation background() {
-        return x.rl("textures/gui/container/electric_furnace.png");
-    }
-
-    @Override
-    protected @Nullable ResourceLocation arrow() {
-        return x.rl("minecraft", "textures/gui/sprites/container/furnace/burn_progress.png");
+        return x.rl("textures/gui/container/simple_dual.png");
     }
 
     @Override
