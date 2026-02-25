@@ -120,19 +120,21 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
 
         String path = getMachine().id() + "/";
 
-        if (output != null && !output.isEmpty()) 
+        if (output != null && !output.isEmpty())
             return x.rl(path + x.path(output.getItem()) + extra);
 
         if (this instanceof SimpleFluidAttach
                 && fluid_output != null
-                && !fluid_output.isEmpty()) 
+                && !fluid_output.isEmpty())
             return x.rl(path + x.path(fluid_output.getFluid()) + extra);
 
-        if (optional_output != null && !optional_output.isEmpty()) 
+        if (optional_output != null && !optional_output.isEmpty())
             return x.rl(path + x.path(optional_output.getItem()) + extra);
-        
 
-        throw new IllegalStateException("No valid output found for " + getMachine().id());
+        if (input != null && input.getItems().length > 0)
+            return x.rl(path + x.path(input.getItems()[0]) + extra);
+
+        throw new IllegalStateException("No valid ID found for " + getMachine().id());
 
     }
 
