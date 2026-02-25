@@ -25,7 +25,7 @@ import net.minecraft.world.level.material.MapColor;
 @SuppressWarnings("null")
 public abstract class BaseMachineBlock extends BlockMenu {
 
-    public static DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static DirectionProperty FACING = BlockStateProperties.FACING;
     public static BooleanProperty ENABLED = BlockStateProperties.ENABLED;
 
     public BaseMachineBlock(Properties p) {
@@ -53,7 +53,8 @@ public abstract class BaseMachineBlock extends BlockMenu {
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext c) {
-        return defaultBlockState().setValue(FACING, c.getHorizontalDirection().getOpposite()).setValue(ENABLED, false);
+        return defaultBlockState().setValue(FACING, c.getPlayer().isCrouching() ? c.getNearestLookingDirection()
+                : c.getNearestLookingDirection().getOpposite()).setValue(ENABLED, false);
     }
 
     @Override

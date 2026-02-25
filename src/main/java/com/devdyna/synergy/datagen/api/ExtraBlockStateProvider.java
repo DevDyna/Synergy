@@ -42,22 +42,71 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
         }
 
         protected void machines() {
-                ClazzUtil.getAllMachineTypes()
-                                .forEach(m -> horizontalBlockBiPhace((Block) m.block().get(), BaseMachineBlock.ENABLED,
-                                                models().orientableWithBottom(
-                                                                m.id() + "_off",
-                                                                modLoc("block/machine/frame/basic/side"),
-                                                                modLoc("block/machine/processing/" + m.id()
-                                                                                + "/off"),
-                                                                modLoc("block/machine/frame/basic/bottom"),
-                                                                modLoc("block/machine/frame/basic/top")),
-                                                models().orientableWithBottom(
-                                                                m.id() + "_on",
-                                                                modLoc("block/machine/frame/basic/side"),
-                                                                modLoc("block/machine/processing/" + m.id()
-                                                                                + "/on"),
-                                                                modLoc("block/machine/frame/basic/bottom"),
-                                                                modLoc("block/machine/frame/basic/top"))));
+                ClazzUtil.getAllMachineTypes().forEach(m -> biPhaceBLock(
+                                (Block) m.block().get(),
+                                BaseMachineBlock.ENABLED,
+                                models().cube(
+                                                m.id() + "_off",
+                                                modLoc("block/machine/frame/basic/bottom"),
+                                                modLoc("block/machine/frame/basic/top"),
+                                                modLoc("block/machine/processing/" + m.id() + "/off"),
+                                                modLoc("block/machine/frame/basic/side"),
+                                                modLoc("block/machine/frame/basic/side"),
+                                                modLoc("block/machine/frame/basic/side"))
+                                                .texture("particle", modLoc("block/machine/frame/basic/side")),
+                                models().cube(
+                                                m.id() + "_on",
+                                                modLoc("block/machine/frame/basic/bottom"),
+                                                modLoc("block/machine/frame/basic/top"),
+                                                modLoc("block/machine/processing/" + m.id() + "/on"),
+                                                modLoc("block/machine/frame/basic/side"),
+                                                modLoc("block/machine/frame/basic/side"),
+                                                modLoc("block/machine/frame/basic/side"))
+                                                .texture("particle", modLoc("block/machine/frame/basic/side"))));
+        }
+
+        protected void biPhaceBLock(Block block, BooleanProperty prop, ModelFile off, ModelFile on) {
+                getVariantBuilder(block).forAllStates(state -> {
+
+                        Direction dir = state.getValue(BlockStateProperties.FACING);
+
+                        int rotX = 0;
+                        int rotY = 0;
+
+                        switch (dir) {
+                                case NORTH -> {
+                                        rotX = 0;
+                                        rotY = 0;
+                                }
+                                case SOUTH -> {
+                                        rotX = 0;
+                                        rotY = 180;
+                                }
+                                case EAST -> {
+                                        rotX = 0;
+                                        rotY = 90;
+                                }
+                                case WEST -> {
+                                        rotX = 0;
+                                        rotY = 270;
+                                }
+                                case UP -> {
+                                        rotX = 270;
+                                        rotY = 0;
+                                }
+                                case DOWN -> {
+                                        rotX = 90;
+                                        rotY = 0;
+                                }
+                        }
+
+                        return ConfiguredModel.builder()
+                                        .modelFile(state.getValue(prop) ? on : off)
+                                        .rotationX(rotX)
+                                        .rotationY(rotY)
+                                        .uvLock(false)
+                                        .build();
+                });
         }
 
         protected void horizontalBlockBiPhace(Block block, BooleanProperty prop, ModelFile off, ModelFile on) {
@@ -74,12 +123,14 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                 getVariantBuilder(b.get()).forAllStates((state) -> {
                         return ConfiguredModel.builder().modelFile(
                                         models().withExistingParent(
-                                                        b.getRegisteredName() + (state.getValue(PlaceableBrickBlock.DRIED)
-                                                                        ? "_dried"
-                                                                        : "_not_dried"),
+                                                        b.getRegisteredName()
+                                                                        + (state.getValue(PlaceableBrickBlock.DRIED)
+                                                                                        ? "_dried"
+                                                                                        : "_not_dried"),
                                                         modLoc("block/base_brick"))
                                                         .texture("texture",
-                                                                        (state.getValue(PlaceableBrickBlock.DRIED) ? dried
+                                                                        (state.getValue(PlaceableBrickBlock.DRIED)
+                                                                                        ? dried
                                                                                         : working)))
                                         .rotationY(((int) (state
                                                         .getValue(BlockStateProperties.HORIZONTAL_FACING)).toYRot()
