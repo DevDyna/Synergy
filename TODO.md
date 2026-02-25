@@ -63,6 +63,10 @@
 
 - [ ] Forestry Peatfarm (?)
 
+- [ ] energy upgrade increase capacity
+- [ ] energy consumed tooltip on menu
+- [ ] upgrade limiter dont work correctly (speed upgrade)
+
 ### Survival expansion
 
 - [ ] scrap and slags
