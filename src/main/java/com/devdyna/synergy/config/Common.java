@@ -61,7 +61,7 @@ public class Common {
         public static IntValue ELITE_WATER_GEN_CAPACITY;// 64000
 
         // ic4
-        public static IntValue MACHINE_MAX_FE;// 10k
+        public static IntValue MACHINE_MAX_FE;// 100k
 
         public static IntValue MACHINE_MAX_SPEED_UPGRADES_TYPE;// 4
         public static IntValue MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE;// max
@@ -308,7 +308,7 @@ public class Common {
                 decor.simple("Base Machine and Upgrades");
 
                 MACHINE_MAX_FE = number("Base max energy stored",
-                                "base_machine_max_fe", 10_000);
+                                "base_machine_max_fe", 100_000);
 
                 MACHINE_MAX_SPEED_UPGRADES_TYPE = number("Max Speed Increaser Upgrade Types usable foreach machine",
                                 "max_speed_upgrades", 4,0,16);
