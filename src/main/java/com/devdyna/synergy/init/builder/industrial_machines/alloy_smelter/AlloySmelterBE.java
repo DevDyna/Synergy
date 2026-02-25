@@ -17,7 +17,6 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.energy.EnergyStorage;
 
 @SuppressWarnings("null")
 public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
@@ -26,8 +25,6 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
 
     public AlloySmelterBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-        this.storage = new MachineItemHandler(7);
-        this.energyStorage = new EnergyStorage(MaxFE());
     }
 
     @Override
