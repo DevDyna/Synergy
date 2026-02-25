@@ -71,8 +71,8 @@ public class Common {
 
         public static IntValue MACHINE_MINIMAL_TICK_DELAY;// 1
         public static IntValue MACHINE_MINIMAL_FE_COST;// 0
-        public static IntValue MACHINE_MINIMAL_FE_CAPACITY;// 0
-        public static IntValue MACHINE_MAXIMAL_FE_CAPACITY;// 0
+        // public static IntValue MACHINE_MINIMAL_FE_CAPACITY;
+        // public static IntValue MACHINE_MAXIMAL_FE_CAPACITY;
         public static IntValue MACHINE_MINIMAL_FLUID_COST;// 0
         public static IntValue MACHINE_MAXIMAL_LUCK;// 100
 
@@ -330,11 +330,11 @@ public class Common {
                 MACHINE_MINIMAL_FE_COST = number("Minimal Energy cost based on upgrade installed",
                                 "min_fe_cost", 5);
 
-                MACHINE_MINIMAL_FE_CAPACITY = number("Minimal Energy cost based on upgrade installed",
-                                "min_fe_capacity", 100);
+                // MACHINE_MINIMAL_FE_CAPACITY = number("Minimal Energy cost based on upgrade installed",
+                //                 "min_fe_capacity", 100);
 
-                MACHINE_MAXIMAL_FE_CAPACITY = number("Minimal Energy cost based on upgrade installed",
-                                "max_fe_capacity", Integer.MAX_VALUE);
+                // MACHINE_MAXIMAL_FE_CAPACITY = number("Minimal Energy cost based on upgrade installed",
+                //                 "max_fe_capacity", Integer.MAX_VALUE);
 
 
 

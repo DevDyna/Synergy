@@ -80,10 +80,10 @@ public class IndustrialUpgrade extends Item {
             Optional<Integer> energy_capacity) {
         public static final Codec<UpgradeComponents> CODEC = RecordCodecBuilder.create(i -> i.group(
                 Codec.INT.optionalFieldOf("speed").forGetter(UpgradeComponents::speed),
-                Codec.INT.optionalFieldOf("energy").forGetter(UpgradeComponents::energy_usage),
+                Codec.INT.optionalFieldOf("energy_efficiency").forGetter(UpgradeComponents::energy_usage),
                 Codec.INT.optionalFieldOf("secondary_luck").forGetter(UpgradeComponents::luck),
                 Codec.INT.optionalFieldOf("fluid_usage").forGetter(UpgradeComponents::fluid_usage),
-                Codec.INT.optionalFieldOf("energy").forGetter(UpgradeComponents::energy_usage))
+                Codec.INT.optionalFieldOf("energy_capacity").forGetter(UpgradeComponents::energy_capacity))
                 .apply(i, UpgradeComponents::new));
 
         public static final StreamCodec<FriendlyByteBuf, UpgradeComponents> STREAM_CODEC = StreamCodec.composite(
