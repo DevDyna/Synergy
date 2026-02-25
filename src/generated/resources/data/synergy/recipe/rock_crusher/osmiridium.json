@@ -7,42 +7,35 @@
   },
   "input_item": {
     "count": 1,
-    "item": "minecraft:stone"
+    "item": "synergy:osmiridium"
   },
   "result": [
-    {
-      "chance": 0.95,
-      "item": {
-        "count": 1,
-        "id": "synergy:stone_pebble"
-      }
-    },
     {
       "chance": 0.75,
       "item": {
         "count": 1,
-        "id": "synergy:cassiterite"
-      }
-    },
-    {
-      "chance": 0.65,
-      "item": {
-        "count": 1,
-        "id": "synergy:hematite"
+        "id": "synergy:osmium_dust"
       }
     },
     {
       "chance": 0.45,
       "item": {
         "count": 1,
-        "id": "synergy:chalcopyrite"
+        "id": "synergy:osmium_dust"
+      }
+    },
+    {
+      "chance": 0.35,
+      "item": {
+        "count": 1,
+        "id": "synergy:platinum_dust"
       }
     },
     {
       "chance": 0.15,
       "item": {
         "count": 1,
-        "id": "synergy:cylindrite"
+        "id": "synergy:iridium_dust"
       }
     }
   ],

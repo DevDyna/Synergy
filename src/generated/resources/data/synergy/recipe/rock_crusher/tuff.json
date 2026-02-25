@@ -7,11 +7,11 @@
   },
   "input_item": {
     "count": 1,
-    "item": "minecraft:stone"
+    "item": "minecraft:tuff"
   },
   "result": [
     {
-      "chance": 0.95,
+      "chance": 0.85,
       "item": {
         "count": 1,
         "id": "synergy:stone_pebble"
@@ -21,28 +21,42 @@
       "chance": 0.75,
       "item": {
         "count": 1,
-        "id": "synergy:cassiterite"
+        "id": "synergy:hematite"
       }
     },
     {
-      "chance": 0.65,
+      "chance": 0.75,
       "item": {
         "count": 1,
-        "id": "synergy:hematite"
+        "id": "synergy:galena"
       }
     },
     {
       "chance": 0.45,
       "item": {
         "count": 1,
-        "id": "synergy:chalcopyrite"
+        "id": "synergy:bauxite"
       }
     },
     {
-      "chance": 0.15,
+      "chance": 0.45,
       "item": {
         "count": 1,
-        "id": "synergy:cylindrite"
+        "id": "synergy:pentlandite"
+      }
+    },
+    {
+      "chance": 0.35,
+      "item": {
+        "count": 1,
+        "id": "synergy:cassiterite"
+      }
+    },
+    {
+      "chance": 0.35,
+      "item": {
+        "count": 1,
+        "id": "synergy:osmiridium"
       }
     }
   ],

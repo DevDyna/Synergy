@@ -7,42 +7,42 @@
   },
   "input_item": {
     "count": 1,
-    "item": "minecraft:stone"
+    "item": "synergy:argentite"
   },
   "result": [
-    {
-      "chance": 0.95,
-      "item": {
-        "count": 1,
-        "id": "synergy:stone_pebble"
-      }
-    },
     {
       "chance": 0.75,
       "item": {
         "count": 1,
-        "id": "synergy:cassiterite"
-      }
-    },
-    {
-      "chance": 0.65,
-      "item": {
-        "count": 1,
-        "id": "synergy:hematite"
+        "id": "synergy:silver_dust"
       }
     },
     {
       "chance": 0.45,
       "item": {
         "count": 1,
-        "id": "synergy:chalcopyrite"
+        "id": "synergy:silver_dust"
+      }
+    },
+    {
+      "chance": 0.35,
+      "item": {
+        "count": 1,
+        "id": "synergy:lead_dust"
       }
     },
     {
       "chance": 0.15,
       "item": {
         "count": 1,
-        "id": "synergy:cylindrite"
+        "id": "synergy:iron_dust"
+      }
+    },
+    {
+      "chance": 0.05,
+      "item": {
+        "count": 1,
+        "id": "minecraft:glowstone_dust"
       }
     }
   ],

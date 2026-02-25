@@ -1,0 +1,36 @@
+{
+  "type": "synergy:rock_crusher",
+  "energy": 1500,
+  "input_fluid": {
+    "amount": 250,
+    "fluid": "minecraft:water"
+  },
+  "input_item": {
+    "count": 1,
+    "item": "synergy:cylindrite"
+  },
+  "result": [
+    {
+      "chance": 0.75,
+      "item": {
+        "count": 1,
+        "id": "synergy:tin_dust"
+      }
+    },
+    {
+      "chance": 0.5,
+      "item": {
+        "count": 1,
+        "id": "synergy:tin_dust"
+      }
+    },
+    {
+      "chance": 0.25,
+      "item": {
+        "count": 1,
+        "id": "synergy:iron_dust"
+      }
+    }
+  ],
+  "ticks": 120
+}

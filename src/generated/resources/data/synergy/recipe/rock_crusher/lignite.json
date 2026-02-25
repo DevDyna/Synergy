@@ -7,42 +7,49 @@
   },
   "input_item": {
     "count": 1,
-    "item": "minecraft:stone"
+    "item": "synergy:lignite"
   },
   "result": [
     {
       "chance": 0.95,
       "item": {
         "count": 1,
-        "id": "synergy:stone_pebble"
+        "id": "synergy:carbon_dust"
       }
     },
     {
       "chance": 0.75,
       "item": {
         "count": 1,
-        "id": "synergy:cassiterite"
+        "id": "synergy:carbon_dust"
       }
     },
     {
-      "chance": 0.65,
+      "chance": 0.5,
       "item": {
         "count": 1,
-        "id": "synergy:hematite"
+        "id": "synergy:carbon_dust"
       }
     },
     {
-      "chance": 0.45,
+      "chance": 0.25,
       "item": {
         "count": 1,
-        "id": "synergy:chalcopyrite"
+        "id": "synergy:carbon_dust"
+      }
+    },
+    {
+      "chance": 0.25,
+      "item": {
+        "count": 1,
+        "id": "synergy:sulfur_dust"
       }
     },
     {
       "chance": 0.15,
       "item": {
         "count": 1,
-        "id": "synergy:cylindrite"
+        "id": "synergy:sulfur_dust"
       }
     }
   ],

@@ -7,11 +7,11 @@
   },
   "input_item": {
     "count": 1,
-    "item": "minecraft:stone"
+    "item": "minecraft:andesite"
   },
   "result": [
     {
-      "chance": 0.95,
+      "chance": 0.85,
       "item": {
         "count": 1,
         "id": "synergy:stone_pebble"
@@ -21,25 +21,11 @@
       "chance": 0.75,
       "item": {
         "count": 1,
-        "id": "synergy:cassiterite"
+        "id": "synergy:quartzite"
       }
     },
     {
-      "chance": 0.65,
-      "item": {
-        "count": 1,
-        "id": "synergy:hematite"
-      }
-    },
-    {
-      "chance": 0.45,
-      "item": {
-        "count": 1,
-        "id": "synergy:chalcopyrite"
-      }
-    },
-    {
-      "chance": 0.15,
+      "chance": 0.5,
       "item": {
         "count": 1,
         "id": "synergy:cylindrite"

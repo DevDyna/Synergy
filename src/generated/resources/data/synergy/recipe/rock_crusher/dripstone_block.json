@@ -7,42 +7,49 @@
   },
   "input_item": {
     "count": 1,
-    "item": "minecraft:stone"
+    "item": "minecraft:dripstone_block"
   },
   "result": [
     {
-      "chance": 0.95,
+      "chance": 0.85,
       "item": {
         "count": 1,
-        "id": "synergy:stone_pebble"
+        "id": "minecraft:clay_ball"
       }
     },
     {
       "chance": 0.75,
       "item": {
         "count": 1,
-        "id": "synergy:cassiterite"
+        "id": "synergy:kaolin"
       }
     },
     {
-      "chance": 0.65,
+      "chance": 0.55,
       "item": {
         "count": 1,
         "id": "synergy:hematite"
       }
     },
     {
-      "chance": 0.45,
+      "chance": 0.3,
       "item": {
         "count": 1,
-        "id": "synergy:chalcopyrite"
+        "id": "synergy:bauxite"
       }
     },
     {
       "chance": 0.15,
       "item": {
         "count": 1,
-        "id": "synergy:cylindrite"
+        "id": "synergy:malachite"
+      }
+    },
+    {
+      "chance": 0.15,
+      "item": {
+        "count": 1,
+        "id": "synergy:lignite"
       }
     }
   ],

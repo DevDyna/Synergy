@@ -7,42 +7,28 @@
   },
   "input_item": {
     "count": 1,
-    "item": "minecraft:stone"
+    "item": "synergy:xenothite"
   },
   "result": [
-    {
-      "chance": 0.95,
-      "item": {
-        "count": 1,
-        "id": "synergy:stone_pebble"
-      }
-    },
-    {
-      "chance": 0.75,
-      "item": {
-        "count": 1,
-        "id": "synergy:cassiterite"
-      }
-    },
     {
       "chance": 0.65,
       "item": {
         "count": 1,
-        "id": "synergy:hematite"
+        "id": "synergy:ancient_debris_dust"
       }
     },
     {
-      "chance": 0.45,
+      "chance": 0.35,
       "item": {
         "count": 1,
-        "id": "synergy:chalcopyrite"
+        "id": "synergy:lead_dust"
       }
     },
     {
       "chance": 0.15,
       "item": {
         "count": 1,
-        "id": "synergy:cylindrite"
+        "id": "synergy:iron_dust"
       }
     }
   ],
