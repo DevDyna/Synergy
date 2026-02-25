@@ -33,6 +33,10 @@ import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterBE;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterBlock;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterMenu;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.recipe.MelterRecipeType;
+import com.devdyna.synergy.init.builder.industrial_machines.rock_crusher.RockCrusherBE;
+import com.devdyna.synergy.init.builder.industrial_machines.rock_crusher.RockCrusherBlock;
+import com.devdyna.synergy.init.builder.industrial_machines.rock_crusher.RockCrusherMenu;
+import com.devdyna.synergy.init.builder.industrial_machines.rock_crusher.recipe.RockCrusherRecipeType;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -151,6 +155,19 @@ public class zMachines {
                 MelterBE::new,
                 MelterMenu::new,
                 MelterRecipeType.Serializer::new
+        );
+
+    public static final MachineType<
+        RockCrusherBlock,
+        RockCrusherBE,
+        RockCrusherMenu,
+        RockCrusherRecipeType
+        > ROCK_CRUSHER = new MachineType<>(
+                zStatic.Machines.rock_crusher,
+                RockCrusherBlock::new,
+                RockCrusherBE::new,
+                RockCrusherMenu::new,
+                RockCrusherRecipeType.Serializer::new
         );
 
 

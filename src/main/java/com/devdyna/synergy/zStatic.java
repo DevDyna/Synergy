@@ -294,6 +294,7 @@ public class zStatic {
         public static String extractor = "extractor";
         public static String casting_factory = "casting_factory";
         public static String melter = "electric_melter";
+        public static String rock_crusher = "rock_crusher";
     }
 
     public class Chests {

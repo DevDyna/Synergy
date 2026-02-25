@@ -18,6 +18,7 @@ import com.devdyna.synergy.compat.jei.categories.machines.ElectricFurnaceCategor
 import com.devdyna.synergy.compat.jei.categories.machines.ExtractorCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.MaceratorCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.MelterCategory;
+import com.devdyna.synergy.compat.jei.categories.machines.RockCrusherCategory;
 import com.devdyna.synergy.compat.jei.categories.provider.FluidProviderCategory;
 import com.devdyna.synergy.compat.jei.categories.provider.ItemProviderCategory;
 import com.devdyna.synergy.config.Common;
@@ -31,6 +32,7 @@ import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.Elect
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeType;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterScreen;
+import com.devdyna.synergy.init.builder.industrial_machines.rock_crusher.RockCrusherScreen;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.init.types.*;
 
@@ -97,6 +99,8 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item(zMachines.EXTRACTOR.item().get()), ExtractorCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zMachines.CASTING_FACTORY.item().get()), CasterCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zMachines.MELTER.item().get()), MelterCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zMachines.ROCK_CRUSHER.item().get()), RockCrusherCategory.TYPE);
+               
                 r.addRecipeCatalyst(x.item(zItems.CHISEL), RecipeTypes.STONECUTTING);
 
                 r.addRecipeCatalyst(x.item(zBlocks.CRUSHING_TUB), CrushingTubCategory.TYPE);
@@ -132,6 +136,7 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCategories(new ExtractorCategory(helper));
                 r.addRecipeCategories(new CasterCategory(helper));
                 r.addRecipeCategories(new MelterCategory(helper));
+                r.addRecipeCategories(new RockCrusherCategory(helper));
 
                 r.addRecipeCategories(new CrushingTubCategory(helper));
                 r.addRecipeCategories(new EvaporationBasinCategory(helper));
@@ -194,6 +199,9 @@ public class Plugin implements IModPlugin {
 
                 r.addRecipes(MelterCategory.TYPE,
                                 RecipeUtils.getRecipes(zMachines.MELTER));
+
+                r.addRecipes(RockCrusherCategory.TYPE,
+                                RecipeUtils.getRecipes(zMachines.ROCK_CRUSHER));
 
                 if (!Common.DISABLE_MACHINE_FURNACE_PROCESS_VANILLA.get())
                         r.addRecipes(ElectricFurnaceCategory.TYPE,
@@ -266,6 +274,8 @@ public class Plugin implements IModPlugin {
                                 CasterCategory.TYPE);
                 r.addRecipeClickArea(MelterScreen.class, 75, 35, 22, 15,
                                 MelterCategory.TYPE);
+                r.addRecipeClickArea(RockCrusherScreen.class, 75, 35, 22, 15,
+                                RockCrusherCategory.TYPE);
 
                 r.addGuiContainerHandler(
                                 (Class<? extends BaseMachineScreen<?>>) (Class<?>) BaseMachineScreen.class,

@@ -13,6 +13,7 @@ item_ids:
   - synergy:extractor
   - synergy:casting_factory
   - synergy:alloy_smelter
+  - synergy:rock_crusher
 ---
 
 # Industrial Machines
@@ -22,6 +23,9 @@ Functional blocks that use Energy to process items and fluids
 All machines can be upgraded with some upgrades , can be automated using any pipe and allow to craft some resources more easily
 
 <GameScene zoom="2" interactive={true}>
+  <Block x="-4" y="0" z="0" id="synergy:rock_crusher" p:enabled="false" p:facing="north"/>
+  <Block x="-4" y="1" z="0" id="synergy:rock_crusher" p:enabled="true" p:facing="north"/>
+ 
   <Block x="-3" y="0" z="0" id="synergy:extractor" p:enabled="false" p:facing="north"/>
   <Block x="-3" y="1" z="0" id="synergy:extractor" p:enabled="true" p:facing="north"/>
  

@@ -14,6 +14,7 @@ import com.devdyna.synergy.init.builder.industrial_machines.extractor.ExtractorS
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurnaceScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterScreen;
+import com.devdyna.synergy.init.builder.industrial_machines.rock_crusher.RockCrusherScreen;
 import com.devdyna.synergy.init.builder.magic.logic_box.LogicBoxRender;
 import com.devdyna.synergy.init.builder.magic.quern.QuernRendering;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.ornated.OrnatedTinyChestScreen;
@@ -87,6 +88,7 @@ public class Client {
         event.register(zMachines.EXTRACTOR.menu().get(), ExtractorScreen::new);
         event.register(zMachines.CASTING_FACTORY.menu().get(), CasterScreen::new);
         event.register(zMachines.MELTER.menu().get(), MelterScreen::new);
+        event.register(zMachines.ROCK_CRUSHER.menu().get(), RockCrusherScreen::new);
 
         event.register(zContainer.CHOPPER.get(), ChopperScreen::new);
     }
