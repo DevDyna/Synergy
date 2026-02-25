@@ -1,0 +1,7 @@
+{
+  "values": [
+    "synergy:fluid_provider_node",
+    "synergy:fluid_retrieval_node",
+    "synergy:fluid_transfer_node"
+  ]
+}

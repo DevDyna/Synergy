@@ -23,7 +23,7 @@
   "result": {
     "components": {
       "synergy:upgrade_components": {
-        "energy": 150,
+        "energy_efficiency": 150,
         "fluid_usage": -20
       }
     },

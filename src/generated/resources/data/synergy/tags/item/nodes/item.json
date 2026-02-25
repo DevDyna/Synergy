@@ -1,0 +1,7 @@
+{
+  "values": [
+    "synergy:item_provider_node",
+    "synergy:item_retrieval_node",
+    "synergy:item_transfer_node"
+  ]
+}
