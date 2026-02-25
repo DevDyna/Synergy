@@ -1,9 +1,12 @@
 {
-  "parent": "minecraft:block/orientable_with_bottom",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "bottom": "synergy:block/machine/frame/basic/bottom",
-    "front": "synergy:block/machine/processing/compressor/off",
-    "side": "synergy:block/machine/frame/basic/side",
-    "top": "synergy:block/machine/frame/basic/top"
+    "down": "synergy:block/machine/frame/basic/bottom",
+    "east": "synergy:block/machine/frame/basic/side",
+    "north": "synergy:block/machine/processing/compressor/off",
+    "particle": "synergy:block/machine/frame/basic/side",
+    "south": "synergy:block/machine/frame/basic/side",
+    "up": "synergy:block/machine/frame/basic/top",
+    "west": "synergy:block/machine/frame/basic/side"
   }
 }

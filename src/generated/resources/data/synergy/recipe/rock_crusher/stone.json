@@ -1,0 +1,78 @@
+{
+  "type": "synergy:rock_crusher",
+  "energy": 500,
+  "input_fluid": {
+    "amount": 1000,
+    "fluid": "minecraft:water"
+  },
+  "input_item": {
+    "count": 1,
+    "item": "minecraft:stone"
+  },
+  "result": [
+    {
+      "chance": 0.75,
+      "item": {
+        "count": 1,
+        "id": "minecraft:coal"
+      }
+    },
+    {
+      "chance": 0.5,
+      "item": {
+        "count": 1,
+        "id": "minecraft:raw_copper"
+      }
+    },
+    {
+      "chance": 0.45,
+      "item": {
+        "count": 1,
+        "id": "minecraft:raw_iron"
+      }
+    },
+    {
+      "chance": 0.35,
+      "item": {
+        "count": 1,
+        "id": "minecraft:raw_gold"
+      }
+    },
+    {
+      "chance": 0.25,
+      "item": {
+        "count": 1,
+        "id": "minecraft:diamond"
+      }
+    },
+    {
+      "chance": 0.15,
+      "item": {
+        "count": 1,
+        "id": "synergy:sulfur_dust"
+      }
+    },
+    {
+      "chance": 0.15,
+      "item": {
+        "count": 1,
+        "id": "synergy:advanced_alloy_plate"
+      }
+    },
+    {
+      "chance": 0.15,
+      "item": {
+        "count": 1,
+        "id": "synergy:copper_dust"
+      }
+    },
+    {
+      "chance": 0.15,
+      "item": {
+        "count": 1,
+        "id": "synergy:americium_pellet"
+      }
+    }
+  ],
+  "ticks": 100
+}

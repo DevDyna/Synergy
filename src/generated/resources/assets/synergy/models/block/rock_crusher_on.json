@@ -3,7 +3,7 @@
   "textures": {
     "down": "synergy:block/machine/frame/basic/bottom",
     "east": "synergy:block/machine/frame/basic/side",
-    "north": "synergy:block/machine/processing/compressor/on",
+    "north": "synergy:block/machine/processing/rock_crusher/on",
     "particle": "synergy:block/machine/frame/basic/side",
     "south": "synergy:block/machine/frame/basic/side",
     "up": "synergy:block/machine/frame/basic/top",
