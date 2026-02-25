@@ -19,4 +19,12 @@ public class ArrayUtils {
         return Stream.concat(Stream.of(a1), a2).toList();
     }
 
+    public static <T> List<T> concat(List<T> a1, T a2) {
+        return concat(a2, a1);
+    }
+
+    public static <T> List<T> concat(Stream<T> a1, T a2) {
+        return concat(a2, a1);
+    }
+
 }

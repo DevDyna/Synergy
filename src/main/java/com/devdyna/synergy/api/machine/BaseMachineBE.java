@@ -270,7 +270,11 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     @Override
     public int MaxFE() {
-        return calculateFECapacity(Common.MACHINE_MAX_FE.get());
+        return 
+        // calculateFECapacity(
+            Common.MACHINE_MAX_FE.get()
+            // )
+            ;
     }
 
     @Override
@@ -539,12 +543,12 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
                 : Math.max(Common.MACHINE_MINIMAL_FE_COST.get(), (int) (base + (base * (((float) sum) / 100))));
     }
 
-    private int calculateFECapacity(int base) {
-        var upgrades = getValues(UpgradeType.ENERGY_CAPACITY);
-        var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Common.MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE.get() == 0 ? base
-                : Math.min(Common.MACHINE_MAXIMAL_FE_CAPACITY.get(),Math.max(Common.MACHINE_MINIMAL_FE_CAPACITY.get(), (int) (base + (base * (((float) sum) / 100)))));
-    }
+    // private int calculateFECapacity(int base) {
+    //     var upgrades = getValues(UpgradeType.ENERGY_CAPACITY);
+    //     var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
+    //     return Common.MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE.get() == 0 ? base
+    //             : Math.min(Common.MACHINE_MAXIMAL_FE_CAPACITY.get(),Math.max(Common.MACHINE_MINIMAL_FE_CAPACITY.get(), (int) (base + (base * (((float) sum) / 100)))));
+    // }
 
     public int calculateMBUsage(int base) {
         var upgrades = getValues(UpgradeType.FLUID);

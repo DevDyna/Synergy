@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.devdyna.synergy.api.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.render.FluidGUITank;
+import com.devdyna.synergy.api.utils.ArrayUtils;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
@@ -84,7 +85,7 @@ public class ExtractorScreen extends BaseMachineScreen<ExtractorMenu> {
 
     @Override
     public List<UpgradeType> validUpgrades() {
-        return List.of(UpgradeType.ENERGY_CAPACITY,UpgradeType.ENERGY_EFFICIENCY, UpgradeType.SPEED, UpgradeType.LUCK);
+        return ArrayUtils.concat(DEFAULT_UPGRADES, UpgradeType.LUCK);
     }
 
 }

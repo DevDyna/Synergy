@@ -195,8 +195,10 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
         }
 
         public List<UpgradeType> validUpgrades() {
-                return List.of(UpgradeType.ENERGY_CAPACITY,UpgradeType.ENERGY_EFFICIENCY, UpgradeType.SPEED);
+                return DEFAULT_UPGRADES;
         }
+
+        public static final List<UpgradeType> DEFAULT_UPGRADES = List.of(UpgradeType.ENERGY_EFFICIENCY, UpgradeType.SPEED);
 
         public int getConfigLimits(UpgradeType type) {
                 return switch (type) {
