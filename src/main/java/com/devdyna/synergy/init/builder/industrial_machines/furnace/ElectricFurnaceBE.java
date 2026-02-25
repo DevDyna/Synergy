@@ -4,7 +4,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeType;
@@ -76,126 +75,69 @@ public class ElectricFurnaceBE extends BaseMachineBE {
         return new ElectricFurnaceMenu(i, inventory, this, this.networkData);
     }
 
-    @Override
-    public void tickServer() {
-        super.tickServer();
+    private MixedRecipeHolder recipeHolder;
 
-        if (getInput().isEmpty()) {
-            resetProgress();
-            return;
-        } else
-            progress_cancel = false;
+    @Override
+    public boolean initProgress() {
+
+        if (getInput().isEmpty())
+            return cancel();
+
+        progress_cancel = false;
 
         Optional<RecipeHolder<ElectricFurnaceRecipeType>> r = level.getRecipeManager()
                 .getRecipeFor(zMachines.ELECTRIC_FURNACE.recipe().getType(),
                         new MonoItemInput(getInput()), level);
 
-        Optional<RecipeHolder<SmeltingRecipe>> vanilla = level.getRecipeManager()
+        Optional<RecipeHolder<SmeltingRecipe>> r2 = level.getRecipeManager()
                 .getRecipeFor(RecipeType.SMELTING, new SingleRecipeInput(getInput()), level);
 
-        // no recipe
-        if (r.isEmpty() && !vanilla.isEmpty())
-            processVanillaType(vanilla.get().value());
-        else if (!r.isEmpty())
-            processStandaloneType(r.get().value());
-        else {
-            resetProgress();
-            return;
+        ElectricFurnaceRecipeType electric = null;
+        SmeltingRecipe smelting = null;
+
+        if (r.isEmpty()) {
+            if (r2.isEmpty() || Common.DISABLE_MACHINE_FURNACE_PROCESS_VANILLA.get())
+                return cancel();
+
+            smelting = r2.get().value();
+        } else
+            electric = r.get().value();
+
+        recipeHolder = new MixedRecipeHolder(
+
+                (r.isEmpty()
+                        ? getCalculatedDelay(smelting)
+                        : electric.getTime()),
+
+                (r.isEmpty()
+                        ? Common.MACHINE_FURNACE_PROCESS_VANILLA_FE_COST.get()
+                        : electric.getEnergy()),
+
+                (r.isEmpty()
+                        ? smelting.getResultItem(level.registryAccess()).copy()
+                        : electric.getOutputItem().copy()));
+
+        if (!checkSlot(getOutput(), recipeHolder.result_item)) {
+            return cancel();
         }
+
+        if (!calculateAndConsumeFE(recipeHolder.energy_every_tick))
+            return cancel();
+
+        update(true);
+
+        this.maxProgress = calculateMaxProgress(recipeHolder.tick_delay);
+
+        return true;
 
     }
 
-    private void processStandaloneType(ElectricFurnaceRecipeType recipe) {
+    @Override
+    public void endProgress() {
 
-        ItemStack output = recipe.getOutputItem().copy();
-
-        this.maxProgress = calculateMaxProgress(recipe.getTime());
-
-        if (!(checkSlot(getOutput(), output))) {
-            resetProgress();
-            return;
-        }
-
-        if (progress_cancel)
-            return;
-        else
-            this.progress++;
-
-        if (calculateAndConsumeFE(recipe.getEnergy())) {
-            if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
-                update(true);
-        } else {
-            resetProgress();
-            return;
-        }
-
-        if (this.progress < this.maxProgress) {
-            setChanged();
-            return;
-        }
-
-        updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
-
-        getInput().shrink(recipe.getInputItem().count());
-
-        progress = 0;
-        setChanged();
-    }
-
-    private void processVanillaType(SmeltingRecipe recipe) {
-
-        if (Common.DISABLE_MACHINE_FURNACE_PROCESS_VANILLA.get())
-            return;
-
-        ItemStack output = recipe.getResultItem(level.registryAccess()).copy();
-
-        this.maxProgress = calculateMaxProgress(getCalculatedDelay(recipe));
-
-        if (!(checkSlot(getOutput(), output))) {
-            resetProgress();
-            return;
-        }
-
-        if (progress_cancel)
-            return;
-        else
-            this.progress++;
-
-        if (calculateAndConsumeFE(Common.MACHINE_FURNACE_PROCESS_VANILLA_FE_COST.get())) {
-            if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
-                update(true);
-        } else {
-            resetProgress();
-            return;
-        }
-
-        if (this.progress < this.maxProgress) {
-            setChanged();
-            return;
-        }
-
-        updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
+        updateOutputSlot(getOutput(), recipeHolder.result_item, OUTPUT_SLOT);
 
         getInput().shrink(1);
-
-        progress = 0;
-        setChanged();
-    }
-
-    private void update(boolean v) {
-        level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BaseMachineBlock.ENABLED, v));
-    }
-
-    private void resetProgress() {
-
-        progress_cancel = true;
-        if (progress > 0)
-            progress--;
-        if (progress == 0)
-            progress_cancel = false;
-
-        if (getBlockState().getValue(BaseMachineBlock.ENABLED))
-            update(false);
     }
 
     @Override
@@ -207,6 +149,10 @@ public class ElectricFurnaceBE extends BaseMachineBE {
         return Common.DISABLE_MACHINE_FURNACE_VANILLA_TICK_REDUCER.get() ? recipe.getCookingTime()
                 : Math.max(Common.MACHINE_FURNACE_PROCESS_VANILLA_MIN_TICK_DELAY.get(), recipe.getCookingTime()
                         * Common.MACHINE_FURNACE_PROCESS_VANILLA_PERCENTUAGE_TICK_DELAY.get() / 100);
+    }
+
+    private record MixedRecipeHolder(int tick_delay, int energy_every_tick, ItemStack result_item) {
+
     }
 
 }

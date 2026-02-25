@@ -1,13 +1,11 @@
 package com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter;
 
 import java.util.List;
-import java.util.Optional;
-
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.ExtraMachineSlots;
+import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.common.recipes.input.BiItemInput;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe.AlloySmelterRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
@@ -17,7 +15,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
@@ -25,7 +22,7 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 @SuppressWarnings("null")
 public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
 
-public static final int SECONDARY_INPUT = 6;
+    public static final int SECONDARY_INPUT = 6;
 
     public AlloySmelterBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -82,86 +79,61 @@ public static final int SECONDARY_INPUT = 6;
     }
 
     @Override
-    public void tickServer() {
-        super.tickServer();
+    public boolean initProgress() {
 
-        // empty
-        if (getInput().isEmpty()) {
-            resetProgress();
-            return;
-        } else
-            progress_cancel = false;
+        if (getInput().isEmpty())
+            return cancel();
 
-        Optional<RecipeHolder<AlloySmelterRecipeType>> r = level.getRecipeManager()
-                .getRecipeFor(zMachines.ALLOY_SMELTER.recipe().getType(),
-                        new BiItemInput(getInput(), getSecondaryInput()), level);
+        progress_cancel = false;
 
-        Optional<RecipeHolder<AlloySmelterRecipeType>> r2 = level.getRecipeManager()
-                .getRecipeFor(zMachines.ALLOY_SMELTER.recipe().getType(),
-                        new BiItemInput(getSecondaryInput(), getInput()), level);
+        var r = RecipeUtils.getRecipes(level, zMachines.ALLOY_SMELTER,
+                new BiItemInput(getSecondaryInput(), getInput()));
+        var r2 = RecipeUtils.getRecipes(level, zMachines.ALLOY_SMELTER,
+                new BiItemInput(getInput(), getSecondaryInput()));
 
         AlloySmelterRecipeType recipe;
 
         boolean inverse = r.isEmpty();
 
         // no recipe
-        if (inverse && r2.isEmpty()) {
-            resetProgress();
-            return;
-        }
+        if (inverse && r2.isEmpty())
+            return cancel();
 
-        recipe = inverse ? r2.get().value() : r.get().value();
+        recipe = (inverse ? r2 : r).get().value();
 
-        ItemStack output = recipe.getOutputItem().copy();
+        if (!checkSlot(getOutput(), recipe.getOutputItem().copy()))
+            return cancel();
+
+        if (!calculateAndConsumeFE(recipe.getEnergy()))
+            return cancel();
+
+        update(true);
 
         this.maxProgress = calculateMaxProgress(recipe.getTime());
 
-        if (!(checkSlot(getOutput(), output))) {
-            resetProgress();
-            return;
-        }
+        return true;
 
-        if (progress_cancel)
-            return;
-        else
-            this.progress++;
+    }
 
-        if (calculateAndConsumeFE(recipe.getEnergy())) {
-            if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
-                update(true);
-        } else {
-            resetProgress();
-            return;
-        }
+    @Override
+    public void endProgress() {
 
-        if (this.progress < this.maxProgress) {
-            setChanged();
-            return;
-        }
+        var r = RecipeUtils.getRecipes(level, zMachines.ALLOY_SMELTER,
+                new BiItemInput(getSecondaryInput(), getInput()));
 
-        updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
+        var r2 = RecipeUtils.getRecipes(level, zMachines.ALLOY_SMELTER,
+                new BiItemInput(getInput(), getSecondaryInput()));
+
+        AlloySmelterRecipeType recipe;
+
+        boolean inverse = r.isEmpty();
+
+        recipe = (inverse ? r2 : r).get().value();
+
+        updateOutputSlot(getOutput(), recipe.getOutputItem().copy(), OUTPUT_SLOT);
 
         getInput().shrink(recipe.getInputItem().count());
         getSecondaryInput().shrink(recipe.getCatalystItem().count());
-
-        progress = 0;
-        setChanged();
-    }
-
-    private void update(boolean v) {
-        level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BaseMachineBlock.ENABLED, v));
-    }
-
-    private void resetProgress() {
-
-        progress_cancel = true;
-        if (progress > 0)
-            progress--;
-        if (progress == 0)
-            progress_cancel = false;
-
-        if (getBlockState().getValue(BaseMachineBlock.ENABLED))
-            update(false);
     }
 
     @Override
@@ -169,12 +141,12 @@ public static final int SECONDARY_INPUT = 6;
         return networkData;
     }
 
-   @Override
+    @Override
     public SlotBuilder getSlotTypes() {
         return SlotBuilder.of(1).set(SECONDARY_INPUT, SlotType.INPUT);
     }
 
-    public ItemStack getSecondaryInput(){
+    public ItemStack getSecondaryInput() {
         return getStorage().getStackInSlot(SECONDARY_INPUT);
     }
 

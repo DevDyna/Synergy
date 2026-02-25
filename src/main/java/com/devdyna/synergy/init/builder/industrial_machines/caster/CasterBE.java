@@ -1,15 +1,12 @@
 package com.devdyna.synergy.init.builder.industrial_machines.caster;
 
-import java.util.Optional;
-
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.FluidTankStorage;
+import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.common.recipes.input.ItemFluidInput;
-import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.CasterRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -18,13 +15,10 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
-import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
 @SuppressWarnings("null")
 public class CasterBE extends BaseMachineBE implements FluidTankStorage {
@@ -84,87 +78,53 @@ public class CasterBE extends BaseMachineBE implements FluidTankStorage {
     }
 
     @Override
-    public void tickServer() {
-        super.tickServer();
+    public boolean initProgress() {
 
-        if (getFluidStorage().isEmpty()) {
-            resetProgress();
-            return;
-        } else
-            progress_cancel = false;
+        if (getFluidStorage().isEmpty())
+            return cancel();
 
-        Optional<RecipeHolder<CasterRecipeType>> r = level.getRecipeManager()
-                .getRecipeFor(zMachines.CASTING_FACTORY.recipe().getType(),
-                        new ItemFluidInput(getFluidStorage().getFluid(), getInput()), level);
+        progress_cancel = false;
+
+        var r = RecipeUtils.getRecipes(level, zMachines.CASTING_FACTORY,
+                new ItemFluidInput(getFluidStorage().getFluid(), getInput()));
 
         // no recipe
-        if (r.isEmpty()) {
-            resetProgress();
-            return;
-        }
-        CasterRecipeType recipe = r.get().value();
+        if (r.isEmpty())
+            return cancel();
 
-        ItemStack item_out = recipe.getOutputItem().copy();
-        SizedFluidIngredient fluid_input = recipe.getFluidInput();
+        var recipe = r.get().value();
+
+        if (getFluidStorage().getFluidAmount() < recipe.getFluidInput().amount()) {
+            return cancel();
+        }
+
+        if (!(checkSlot(getOutput(), recipe.getOutputItem().copy()))) {
+            return cancel();
+        }
+
+        if (!calculateAndConsumeFE(recipe.getEnergy()))
+            return cancel();
+
+        update(true);
 
         this.maxProgress = calculateMaxProgress(recipe.getTime());
-        
-        if (getFluidStorage().getFluidAmount() < fluid_input.amount()) {
-            resetProgress();
-            return;
-        }
 
-        if (!(checkSlot(getOutput(), item_out))) {
-            resetProgress();
-            return;
-        }
+        return true;
 
-        if (progress_cancel)
-            return;
-        else
-            this.progress++;
+    }
 
-        if (calculateAndConsumeFE(recipe.getEnergy())) {
-            if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
-                update(true);
-        } else {
-            resetProgress();
-            return;
-        }
+    @Override
+    public void endProgress() {
 
-        if (this.progress < this.maxProgress) {
-            setChanged();
-            return;
-        }
+        var recipe = RecipeUtils.getUnsafeRecipes(level, zMachines.CASTING_FACTORY,
+                new ItemFluidInput(getFluidStorage().getFluid(), getInput()));
 
-        updateOutputSlot(getOutput(), item_out, OUTPUT_SLOT);
+        updateOutputSlot(getOutput(), recipe.getOutputItem().copy(), OUTPUT_SLOT);
 
         getFluidStorage().drain(recipe.getFluidInput().amount(), FluidAction.EXECUTE);
 
         if (!getInput().isEmpty() && recipe.consumeCatalyst())
             getInput().shrink(recipe.getInputItem().count());
-
-        progress = 0;
-        setChanged();
-    }
-
-    private void update(boolean v) {
-        level.setBlockAndUpdate(getBlockPos(),
-                getBlockState().setValue(BaseMachineBlock.ENABLED, v));
-    }
-
-    private void resetProgress() {
-
-        progress_cancel = true;
-        if (progress > 0)
-            progress--;
-        if (progress == 0)
-            progress_cancel = false;
-
-        if (getBlockState().getValue(BaseMachineBlock.ENABLED))
-            update(false);
-
-        setChanged();
     }
 
     @Override
@@ -174,23 +134,13 @@ public class CasterBE extends BaseMachineBE implements FluidTankStorage {
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        tag.put("inventory", getStorage().serializeNBT(registries));
         tag.put("tank", getFluidStorage().serializeNBT(registries));
-        tag.putInt("progress", progress);
-        tag.putInt("energy", energyStorage.getEnergyStored());
         super.saveAdditional(tag, registries);
     }
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        getStorage().deserializeNBT(registries, tag.getCompound("inventory"));
         getFluidStorage().deserializeNBT(registries, tag.getCompound("tank"));
-        if (tag.contains("progress"))
-            progress = tag.getInt("progress");
-
-        if (tag.contains("energy"))
-            energyStorage.receiveEnergy(Math.min(tag.getInt("energy"), energyStorage.getMaxEnergyStored()), false);
-
         super.loadAdditional(tag, registries);
     }
 

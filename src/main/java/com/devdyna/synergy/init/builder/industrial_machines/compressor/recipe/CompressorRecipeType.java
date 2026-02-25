@@ -40,11 +40,6 @@ public class CompressorRecipeType extends BaseMachineRecipeType<BiItemInput> {
     }
 
     @Override
-    public boolean hasCatalyst() {
-        return true;
-    }
-
-    @Override
     public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<BiItemInput>> getMachine() {
         return zMachines.COMPRESSOR;
     }

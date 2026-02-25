@@ -1,13 +1,11 @@
 package com.devdyna.synergy.init.builder.industrial_machines.compressor;
 
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.machine.ExtraMachineSlots;
+import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.common.recipes.input.BiItemInput;
-import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -15,7 +13,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
@@ -75,80 +72,44 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlots {
     }
 
     @Override
-    public void tickServer() {
-        super.tickServer();
+    public boolean initProgress() {
 
-        // empty
-        if (getInput().isEmpty()) {
-            resetProgress();
-            return;
-        } else
-            progress_cancel = false;
+        if (getInput().isEmpty())
+            return cancel();
 
-        Optional<RecipeHolder<CompressorRecipeType>> r = level.getRecipeManager()
-                .getRecipeFor(zMachines.COMPRESSOR.recipe().getType(),
-                        new BiItemInput(getInput(), getPlateSlot()), level);
+        progress_cancel = false;
+
+        var r = RecipeUtils.getRecipes(level, zMachines.COMPRESSOR, new BiItemInput(getInput(), getPlateSlot()));
 
         // no recipe
-        if (r.isEmpty()) {
-            resetProgress();
-            return;
-        }
+        if (r.isEmpty())
+            return cancel();
 
-        CompressorRecipeType recipe = r.get().value();
+        var recipe = r.get().value();
 
-        ItemStack output = recipe.getOutputItem().copy();
+        if (!calculateAndConsumeFE(recipe.getEnergy()))
+            return cancel();
+
+        update(true);
 
         this.maxProgress = calculateMaxProgress(recipe.getTime());
 
-        if (!(checkSlot(getOutput(), output))) {
-            resetProgress();
-            return;
-        }
+        return true;
 
-        if (progress_cancel)
-            return;
-        else
-            this.progress++;
+    }
 
-        if (calculateAndConsumeFE(recipe.getEnergy())) {
-            if (!getBlockState().getValue(BaseMachineBlock.ENABLED))
-                update(true);
-        } else {
-            resetProgress();
-            return;
-        }
+    @Override
+    public void endProgress() {
 
-        if (this.progress < this.maxProgress) {
-            setChanged();
-            return;
-        }
+        var recipe = RecipeUtils.getUnsafeRecipes(level, zMachines.COMPRESSOR,
+                new BiItemInput(getInput(), getPlateSlot()));
 
-        updateOutputSlot(getOutput(), output, OUTPUT_SLOT);
-
-        getInput().shrink(recipe.getInputItem().count());
+        updateOutputSlot(getOutput(), recipe.getOutputItem().copy(), OUTPUT_SLOT);
 
         if (recipe.consumeCatalyst())
             getPlateSlot().shrink(recipe.getCatalystItem().count());
 
-        progress = 0;
-        setChanged();
-    }
-
-    private void update(boolean v) {
-        level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(BaseMachineBlock.ENABLED, v));
-    }
-
-    private void resetProgress() {
-
-        progress_cancel = true;
-        if (progress > 0)
-            progress--;
-        if (progress == 0)
-            progress_cancel = false;
-
-        if (getBlockState().getValue(BaseMachineBlock.ENABLED))
-            update(false);
+        getInput().shrink(recipe.getInputItem().count());
     }
 
     @Override

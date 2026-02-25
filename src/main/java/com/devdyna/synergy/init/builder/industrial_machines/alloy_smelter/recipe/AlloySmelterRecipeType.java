@@ -35,12 +35,7 @@ public class AlloySmelterRecipeType extends BaseMachineRecipeType<BiItemInput> {
             SizedIngredient  left, ItemStack output) {
         return new AlloySmelterRecipeType(ticks, energy, right, left, output);
     }
-
-    @Override
-    public boolean hasCatalyst() {
-        return true;
-    }
-
+    
     @Override
     public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<BiItemInput>> getMachine() {
         return zMachines.ALLOY_SMELTER;

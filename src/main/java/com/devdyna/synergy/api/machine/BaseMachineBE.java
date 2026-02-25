@@ -240,15 +240,28 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         if (progress == 0)
             progress_cancel = false;
 
-        if (getBlockState().getValue(BaseMachineBlock.ENABLED))
-            update(false);
+        update(false);
 
         setChanged();
     }
 
+    /**
+     * This must be used the return value as return of initProgress();
+     */
+    protected boolean cancel(){
+        resetProgress();
+        return false;
+    }
+
+    private boolean toggle = false;
+
     protected void update(boolean v) {
-        level.setBlockAndUpdate(getBlockPos(),
-                getBlockState().setValue(BaseMachineBlock.ENABLED, v));
+        if (v != toggle) {
+            toggle = !toggle;
+            level.setBlockAndUpdate(getBlockPos(),
+                    getBlockState().setValue(BaseMachineBlock.ENABLED, v));
+        }
+
     }
 
     protected class MachineItemHandler extends ItemStackHandler {
@@ -303,6 +316,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
                             "BlockEntity at " + getBlockPos() + " has invalid data -> Broken to prevent crash");
                     LogUtil.error("Contact Mod Author and report this as BUG");
                     LogUtil.error(e.getMessage());
+                    e.printStackTrace();
                     level.removeBlockEntity(getBlockPos());
                     level.destroyBlock(getBlockPos(), true);
                 }
@@ -317,19 +331,16 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     public void tickClient() {
     }
 
+    @Deprecated
     public void tickServer() {
 
-        progress_cancel = false;
+        if (!initProgress())
+            return;
 
         if (progress_cancel)
             return;
         else
             this.progress++;
-
-        if(!initProgress())
-        return;
-
-        
 
         // if the recipe is modified by player
 
@@ -377,6 +388,8 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     /**
      * Return <code>true</code> when success
+     * <br/><br/>
+     * Use this ONLY to check output slots
      */
     public boolean checkSlot(ItemStack slot, ItemStack recipeSlot) {
         if (!slot.isEmpty()) {
@@ -396,8 +409,10 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     /**
      * Return <code>true</code> when success
+     * <br/><br/>
+     * Use this ONLY to check output slots
      */
-    public boolean checkSlot(FluidStack slot, FluidStack recipeSlot, int max_fluid_tank) {
+    public boolean checkTank(FluidStack slot, FluidStack recipeSlot, int max_fluid_tank) {
         if (!slot.isEmpty()) {
             // same item
             if (FluidStack.isSameFluidSameComponents(slot, recipeSlot)) {
