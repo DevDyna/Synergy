@@ -12,7 +12,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.level.material.Fluid;
 
 @SuppressWarnings("null")
 public class MelterScreen extends BaseMachineScreen<MelterMenu> {
@@ -24,43 +23,6 @@ public class MelterScreen extends BaseMachineScreen<MelterMenu> {
     @Override
     protected ResourceLocation background() {
         return x.rl("textures/gui/container/only_input.png");
-    }
-
-    @Override
-    protected boolean whenAnimateArrow() {
-        return menu.isCrafting();
-    }
-
-    @Override
-    protected int getScaledArrowProgress() {
-        return menu.getScaledArrowProgress();
-    }
-
-    @Override
-    protected int getEnergyStored() {
-        return menu.getEnergyStored();
-    }
-
-    @Override
-    protected int getMaxEnergy() {
-        return menu.getMaxEnergy();
-    }
-
-    @Override
-    protected int getRemainProgress() {
-        return menu.getRemainProgress();
-    }
-
-    protected int getFluidAmount() {
-        return menu.getFluidAmount();
-    }
-
-    protected Fluid getFluid() {
-        return menu.getFluid();
-    }
-
-    protected int getMaxFluidAmount() {
-        return menu.getMaxFluidAmount();
     }
 
     @Override

@@ -21,31 +21,6 @@ public class ElectricFurnaceScreen extends BaseMachineScreen<ElectricFurnaceMenu
     }
 
     @Override
-    protected boolean whenAnimateArrow() {
-        return menu.isCrafting();
-    }
-
-    @Override
-    protected int getScaledArrowProgress() {
-        return menu.getScaledArrowProgress();
-    }
-
-    @Override
-    protected int getEnergyStored() {
-        return menu.getEnergyStored();
-    }
-
-    @Override
-    protected int getMaxEnergy() {
-        return menu.getMaxEnergy();
-    }
-
-    @Override
-    protected int getRemainProgress() {
-        return menu.getRemainProgress();
-    }
-
-    @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         guiGraphics.drawString(this.font, this.title, this.titleLabelX + 47, this.titleLabelY,
                 defaultToolTipColor.getRGB(), false);

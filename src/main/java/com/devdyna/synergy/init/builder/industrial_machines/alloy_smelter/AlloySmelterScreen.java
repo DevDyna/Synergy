@@ -11,29 +11,4 @@ public class AlloySmelterScreen extends BaseMachineScreen<AlloySmelterMenu> {
         super(menu, playerInventory, title);
     }
 
-    @Override
-    protected boolean whenAnimateArrow() {
-        return menu.isCrafting();
-    }
-
-    @Override
-    protected int getScaledArrowProgress() {
-        return menu.getScaledArrowProgress();
-    }
-
-    @Override
-    protected int getEnergyStored() {
-        return menu.getEnergyStored();
-    }
-
-    @Override
-    protected int getMaxEnergy() {
-        return menu.getMaxEnergy();
-    }
-
-    @Override
-    protected int getRemainProgress() {
-        return menu.getRemainProgress();
-    }
-
 }

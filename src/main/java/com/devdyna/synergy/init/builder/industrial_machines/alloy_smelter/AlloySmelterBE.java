@@ -28,34 +28,6 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
         super(type, pos, blockState);
         this.storage = new MachineItemHandler(7);
         this.energyStorage = new EnergyStorage(MaxFE());
-        networkData = new ContainerData() {
-            @Override
-            public int get(int i) {
-                return switch (i) {
-                    case PROGRESS_INDEX -> progress;
-                    case MAX_PROGRESS_INDEX -> maxProgress;
-                    case ENERGY_INDEX -> (level != null && !level.isClientSide()) ? getStoredFE() : energy;
-                    case MAX_ENERGY_INDEX -> (level != null && !level.isClientSide()) ? getMaxFE() : maxEnergy;
-                    default -> 0;
-                };
-            }
-
-            @Override
-            public void set(int i, int value) {
-                switch (i) {
-                    case PROGRESS_INDEX -> progress = value;
-                    case MAX_PROGRESS_INDEX -> maxProgress = value;
-                    case ENERGY_INDEX -> energy = value;
-                    case MAX_ENERGY_INDEX -> maxEnergy = value;
-                }
-            }
-
-            @Override
-            public int getCount() {
-                return 4;
-            }
-        };
-
     }
 
     @Override

@@ -7,11 +7,12 @@ import com.devdyna.synergy.api.render.FluidGUITank;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents.UpgradeType;
+
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.level.material.Fluid;
 
 @SuppressWarnings("null")
 public class RockCrusherScreen extends BaseMachineScreen<RockCrusherMenu> {
@@ -21,40 +22,8 @@ public class RockCrusherScreen extends BaseMachineScreen<RockCrusherMenu> {
     }
 
     @Override
-    protected boolean whenAnimateArrow() {
-        return menu.isCrafting();
-    }
-
-    @Override
-    protected int getScaledArrowProgress() {
-        return menu.getScaledArrowProgress();
-    }
-
-    @Override
-    protected int getEnergyStored() {
-        return menu.getEnergyStored();
-    }
-
-    @Override
-    protected int getMaxEnergy() {
-        return menu.getMaxEnergy();
-    }
-
-    @Override
-    protected int getRemainProgress() {
-        return menu.getRemainProgress();
-    }
-
-    protected int getFluidAmount() {
-        return menu.getFluidAmount();
-    }
-
-    protected Fluid getFluid() {
-        return menu.getFluid();
-    }
-
-    protected int getMaxFluidAmount() {
-        return menu.getMaxFluidAmount();
+    public List<UpgradeType> validUpgrades() {
+        return List.of(UpgradeType.ENERGY_CAPACITY,UpgradeType.ENERGY_EFFICIENCY, UpgradeType.SPEED, UpgradeType.LUCK);
     }
 
     @Override

@@ -10,7 +10,7 @@ import com.devdyna.synergy.api.utils.LogUtil;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade;
 import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents;
-import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents.TYPE;
+import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents.UpgradeType;
 import com.devdyna.synergy.init.types.zComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -61,13 +61,15 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     protected int maxEnergy = 0;
     protected int fluid_amount = 0;
     protected int maxFluid = 0;
+    protected int fe_usage = 0;
 
     public static final int PROGRESS_INDEX = 0;
     public static final int MAX_PROGRESS_INDEX = 1;
     public static final int ENERGY_INDEX = 2;
     public static final int MAX_ENERGY_INDEX = 3;
-    public static final int FLUID_INDEX = 4;
-    public static final int MAX_FLUID_INDEX = 5;
+    public static final int ENERGY_USAGE = 4;
+    public static final int FLUID_INDEX = 5;
+    public static final int MAX_FLUID_INDEX = 6;
 
     public static final int SLOT_UPGRADE_1 = 0;
     public static final int SLOT_UPGRADE_2 = 1;
@@ -115,6 +117,44 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     public BaseMachineBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
+        this.storage = new MachineItemHandler(getMachineSlots());
+        this.energyStorage = new EnergyStorage(MaxFE());
+
+        if (this instanceof FluidTankStorage tank)
+            this.fluid_tank = new FluidStorageTank(this, tank.getFluidCapacity());
+
+        this.networkData = new ContainerData() {
+            @Override
+            public int get(int i) {
+
+                if (this instanceof FluidTankStorage fluid)
+                    switch (i) {
+                        case FLUID_INDEX:
+                            return check(level, fluid.getFluidStorage().getFluidAmount(), fluid_amount);
+                        case MAX_FLUID_INDEX:
+                            return check(level, fluid.getFluidCapacity(), maxFluid);
+
+                    }
+
+                return switch (i) {
+                    case PROGRESS_INDEX -> getProgress();
+                    case MAX_PROGRESS_INDEX -> getMaxProgress();
+                    case ENERGY_INDEX -> check(level, getStoredFE(), energy);
+                    case MAX_ENERGY_INDEX -> check(level, getMaxFE(), maxEnergy);
+                    case ENERGY_USAGE -> getEnergyUsage();
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int i, int value) {
+            }
+
+            @Override
+            public int getCount() {
+                return 5 + ((this instanceof FluidTankStorage) ? 2 : 0);
+            }
+        };
     }
 
     public void dropItems() {
@@ -203,6 +243,8 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         tag.put("inventory", getStorage().serializeNBT(registries));
         tag.putInt("progress", progress);
         tag.putInt("energy", energyStorage.getEnergyStored());
+        if (this instanceof FluidTankStorage tank)
+            tag.put("tank", tank.getFluidStorage().serializeNBT(registries));
         super.saveAdditional(tag, registries);
     }
 
@@ -215,6 +257,9 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         if (tag.contains("energy"))
             energyStorage.receiveEnergy(Math.min(tag.getInt("energy"), energyStorage.getMaxEnergyStored()), false);
 
+        if (this instanceof FluidTankStorage tank)
+            tank.getFluidStorage().deserializeNBT(registries, tag.getCompound("tank"));
+
         super.loadAdditional(tag, registries);
     }
 
@@ -225,7 +270,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     @Override
     public int MaxFE() {
-        return Common.MACHINE_MAX_FE.get();
+        return calculateFECapacity(Common.MACHINE_MAX_FE.get());
     }
 
     @Override
@@ -248,7 +293,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     /**
      * This must be used the return value as return of initProgress();
      */
-    protected boolean cancel(){
+    protected boolean cancel() {
         resetProgress();
         return false;
     }
@@ -388,7 +433,8 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     /**
      * Return <code>true</code> when success
-     * <br/><br/>
+     * <br/>
+     * <br/>
      * Use this ONLY to check output slots
      */
     public boolean checkSlot(ItemStack slot, ItemStack recipeSlot) {
@@ -409,7 +455,8 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
     /**
      * Return <code>true</code> when success
-     * <br/><br/>
+     * <br/>
+     * <br/>
      * Use this ONLY to check output slots
      */
     public boolean checkTank(FluidStack slot, FluidStack recipeSlot, int max_fluid_tank) {
@@ -449,7 +496,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
                 .toList();
     }
 
-    public List<Integer> getValues(UpgradeComponents.TYPE type) {
+    public List<Integer> getValues(UpgradeType type) {
         List<ItemStack> upgrades = getUpgradeInstalled().stream()
                 .filter(i -> UpgradeComponents.has(i, type))
                 .toList();
@@ -464,41 +511,50 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         return validSlots;
     }
 
-    public int getTypeLimiter(UpgradeComponents.TYPE type) {
-        if (type.equals(TYPE.SPEED))
+    public int getTypeLimiter(UpgradeType type) {
+        if (type.equals(UpgradeType.SPEED))
             return Common.MACHINE_MAX_SPEED_UPGRADES_TYPE.get();
-        if (type.equals(TYPE.ENERGY))
-            return Common.MACHINE_MAX_ENERGY_UPGRADES_TYPE.get();
-        if (type.equals(TYPE.LUCK))
+        if (type.equals(UpgradeType.ENERGY_EFFICIENCY))
+            return Common.MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE.get();
+        if (type.equals(UpgradeType.ENERGY_CAPACITY))
+            return Common.MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE.get();
+        if (type.equals(UpgradeType.LUCK))
             return Common.MACHINE_MAX_LUCK_UPGRADES_TYPE.get();
-        if (type.equals(TYPE.FLUID))
+        if (type.equals(UpgradeType.FLUID))
             return Common.MACHINE_MAX_FLUID_UPGRADES_TYPE.get();
         return Integer.MAX_VALUE;
     }
 
     public int calculateMaxProgress(int base) {
-        var upgrades = getValues(TYPE.SPEED);
+        var upgrades = getValues(UpgradeType.SPEED);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
         return Common.MACHINE_MAX_SPEED_UPGRADES_TYPE.get() == 0 ? base
                 : Math.max(Common.MACHINE_MINIMAL_TICK_DELAY.get(), (int) (base - (base * (((float) sum) / 100))));
     }
 
     private int calculateFEUsage(int base) {
-        var upgrades = getValues(TYPE.ENERGY);
+        var upgrades = getValues(UpgradeType.ENERGY_EFFICIENCY);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
-        return Common.MACHINE_MAX_ENERGY_UPGRADES_TYPE.get() == 0 ? base
+        return Common.MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE.get() == 0 ? base
                 : Math.max(Common.MACHINE_MINIMAL_FE_COST.get(), (int) (base + (base * (((float) sum) / 100))));
     }
 
+    private int calculateFECapacity(int base) {
+        var upgrades = getValues(UpgradeType.ENERGY_CAPACITY);
+        var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
+        return Common.MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE.get() == 0 ? base
+                : Math.min(Common.MACHINE_MAXIMAL_FE_CAPACITY.get(),Math.max(Common.MACHINE_MINIMAL_FE_CAPACITY.get(), (int) (base + (base * (((float) sum) / 100)))));
+    }
+
     public int calculateMBUsage(int base) {
-        var upgrades = getValues(TYPE.FLUID);
+        var upgrades = getValues(UpgradeType.FLUID);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
         return Common.MACHINE_MAX_FLUID_UPGRADES_TYPE.get() == 0 ? base
                 : Math.max(Common.MACHINE_MINIMAL_FLUID_COST.get(), (int) (base - (base * (((float) sum) / 100))));
     }
 
     public boolean calculateSecondarySuccess(float base) {
-        var upgrades = getValues(TYPE.LUCK);
+        var upgrades = getValues(UpgradeType.LUCK);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
         return Common.MACHINE_MAX_LUCK_UPGRADES_TYPE.get() == 0 ? false
                 : level.random.nextFloat() < Math.min(Common.MACHINE_MAXIMAL_LUCK.get(),
@@ -510,6 +566,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
      */
     public boolean calculateAndConsumeFE(int min) {
         var base = calculateFEUsage(min);
+        this.fe_usage = base;
         if (energyStorage.getEnergyStored() >= base && !progress_cancel) {
             energyStorage.extractEnergy(base, false);
             return true;
@@ -539,5 +596,9 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         }
 
         return false;
+    }
+
+    public int getEnergyUsage() {
+        return fe_usage;
     }
 }

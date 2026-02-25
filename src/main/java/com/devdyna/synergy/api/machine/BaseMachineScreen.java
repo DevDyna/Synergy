@@ -13,7 +13,7 @@ import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents;
-import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents.TYPE;
+import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents.UpgradeType;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
@@ -23,6 +23,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.material.Fluid;
 
 @SuppressWarnings("null")
 public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseScreen<T> {
@@ -33,7 +34,7 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
 
         @Override
         protected ResourceLocation background() {
-                return x.rl("textures/gui/container/"+menu.getMachine().id()+".png");
+                return x.rl("textures/gui/container/" + menu.getMachine().id() + ".png");
         }
 
         @Override
@@ -41,11 +42,41 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
                 return x.rl("minecraft", "textures/gui/sprites/container/furnace/burn_progress.png");
         }
 
-        protected abstract int getEnergyStored();
+        protected boolean whenAnimateArrow() {
+                return menu.isCrafting();
+        }
 
-        protected abstract int getMaxEnergy();
+        protected int getScaledArrowProgress() {
+                return menu.getScaledArrowProgress();
+        }
 
-        protected abstract int getRemainProgress();
+        protected int getEnergyStored() {
+                return menu.getEnergyStored();
+        }
+
+        protected int getMaxEnergy() {
+                return menu.getMaxEnergy();
+        }
+
+        protected int getRemainProgress() {
+                return menu.getRemainProgress();
+        }
+
+        protected int getFluidAmount() {
+                return menu.getFluidAmount();
+        }
+
+        protected Fluid getFluid() {
+                return menu.getFluid();
+        }
+
+        protected int getMaxFluidAmount() {
+                return menu.getMaxFluidAmount();
+        }
+
+        protected int getEnergyUsage() {
+                return menu.getEnergyUsage();
+        }
 
         @Override
         protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
@@ -95,17 +126,25 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
                 super.render(graphics, pMouseX, pMouseY, pPartialTick);
                 if (Pos.of(getGuiLeft() + 8, getGuiTop() + 5).setSize(18, 72).test(pMouseX, pMouseY)) {
 
-                        graphics.renderTooltip(font,
-
-                                        Component.literal(
-                                                        (Screen.hasShiftDown() ? getEnergyStored()
-                                                                        : StringUtil.getFormatNoRound()
-                                                                                        .format(getEnergyStored()))
-                                                                        + " FE / " +
-                                                                        (Screen.hasShiftDown() ? getMaxEnergy()
+                        graphics.renderComponentTooltip(font,
+                                        List.of(
+                                                        Component.literal(
+                                                                        (Screen.hasShiftDown() ? getEnergyStored()
                                                                                         : StringUtil.getFormatNoRound()
-                                                                                                        .format(getMaxEnergy()))
-                                                                        + " FE"),
+                                                                                                        .format(getEnergyStored()))
+                                                                                        + " FE / " +
+                                                                                        (Screen.hasShiftDown()
+                                                                                                        ? getMaxEnergy()
+                                                                                                        : StringUtil.getFormatNoRound()
+                                                                                                                        .format(getMaxEnergy()))
+                                                                                        + " FE"),
+                                                        Component.literal(
+                                                                        getEnergyUsage() <= 0 ? "No valid recipe found"
+                                                                                        : ("Usage : " + (getMaxEnergy() <= getEnergyUsage()
+                                                                                                        ? "§c"
+                                                                                                        : "")
+                                                                                                        + getEnergyUsage()
+                                                                                                        + "§f FE/tick"))),
 
                                         pMouseX,
                                         pMouseY);
@@ -142,7 +181,7 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
                 List<Component> result = new ArrayList<>();
 
                 result.add(Component.translatable(ID + ".screen.upgrades"));
-                for (TYPE upgrade : validUpgrades())
+                for (UpgradeType upgrade : validUpgrades())
                         result.add(Component
                                         .translatable(ID + ".screen.modifier." + upgrade.name().toLowerCase(),
                                                         getConfigLimits(upgrade))
@@ -155,20 +194,22 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
                 return result;
         }
 
-        public List<TYPE> validUpgrades() {
-                return List.of(TYPE.ENERGY, TYPE.SPEED);
+        public List<UpgradeType> validUpgrades() {
+                return List.of(UpgradeType.ENERGY_CAPACITY,UpgradeType.ENERGY_EFFICIENCY, UpgradeType.SPEED);
         }
 
-        public int getConfigLimits(TYPE type) {
+        public int getConfigLimits(UpgradeType type) {
                 return switch (type) {
-                        case TYPE.ENERGY -> Common.MACHINE_MAX_ENERGY_UPGRADES_TYPE.get();
-                        case TYPE.SPEED -> Common.MACHINE_MAX_SPEED_UPGRADES_TYPE.get();
-                        case TYPE.LUCK -> Common.MACHINE_MAX_LUCK_UPGRADES_TYPE.get();
-                        case TYPE.FLUID -> Common.MACHINE_MAX_FLUID_UPGRADES_TYPE.get();
+                        case UpgradeType.ENERGY_CAPACITY -> Common.MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE.get();
+                        case UpgradeType.ENERGY_EFFICIENCY -> Common.MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE.get();
+                        case UpgradeType.SPEED -> Common.MACHINE_MAX_SPEED_UPGRADES_TYPE.get();
+                        case UpgradeType.LUCK -> Common.MACHINE_MAX_LUCK_UPGRADES_TYPE.get();
+                        case UpgradeType.FLUID -> Common.MACHINE_MAX_FLUID_UPGRADES_TYPE.get();
+                        default -> 0;
                 };
         }
 
-        public int getInstalledUpgradesOnSlots(TYPE type) {
+        public int getInstalledUpgradesOnSlots(UpgradeType type) {
                 return List.of(
                                 BaseMachineBE.SLOT_UPGRADE_1,
                                 BaseMachineBE.SLOT_UPGRADE_2,

@@ -27,6 +27,8 @@ public class RockCrusherRecipeBuilder extends BaseMachineRecipeBuilder<RockCrush
     private List<ChanceOutputItem> result;
 
     private RockCrusherRecipeBuilder() {
+        this.energy = 1500;
+        this.ticks = 120;
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
         this.result = new ArrayList<>(9);
     }

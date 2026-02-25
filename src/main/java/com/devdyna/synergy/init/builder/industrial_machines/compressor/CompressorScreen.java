@@ -29,29 +29,4 @@ public class CompressorScreen extends BaseMachineScreen<CompressorMenu> {
         super.renderBg(guiGraphics, v, i, i1);
     }
 
-    @Override
-    protected boolean whenAnimateArrow() {
-        return menu.isCrafting();
-    }
-
-    @Override
-    protected int getScaledArrowProgress() {
-        return menu.getScaledArrowProgress();
-    }
-
-    @Override
-    protected int getEnergyStored() {
-        return menu.getEnergyStored();
-    }
-
-    @Override
-    protected int getMaxEnergy() {
-        return menu.getMaxEnergy();
-    }
-
-    @Override
-    protected int getRemainProgress() {
-        return menu.getRemainProgress();
-    }
-
 }
