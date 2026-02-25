@@ -79,19 +79,20 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return chance;
     }
 
-    public boolean hasCatalyst() {
-        return false;
-    }
+    // public boolean hasCatalyst(T r) {
+    // return false;
+    // }
 
     public boolean hasSecondaryOutput() {
         return false;
     }
 
+    @Deprecated
     public NonNullList<Ingredient> getIngredients() {
         var list = new ArrayList<Ingredient>();
-        if(getInputItem() != null)
-        list.add(getInputItem().ingredient());
-        if (hasCatalyst() && getCatalystItem() != null)
+        if (getInputItem() != null)
+            list.add(getInputItem().ingredient());
+        if (getCatalystItem() != null)
             list.add(getCatalystItem().ingredient());
         return NonNullList.copyOf(list);
     }
@@ -108,30 +109,42 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
 
     public boolean matches(T r, Level l) {
 
-        if (x.getItems(getInputItem()).isEmpty() || getInputItem() == null) {
-            if (getFluidInput() != null && !x.getFluids(getFluidInput()).isEmpty())
-                return x.getFluids(getRecipeFluidInput(r)).stream().anyMatch(i -> getFluidInput().test(i));
-        } else {
-            if (getFluidInput() != null && !x.getFluids(getFluidInput()).isEmpty())
-                return x.getFluids(getRecipeFluidInput(r)).stream().anyMatch(i -> getFluidInput().test(i))
-                        && getInputItem().test(getRecipeInput(r));
+        if (!getInputItem().test(getRecipeInput(r)))
+            return false;
+
+        if (getFluidInput() != null && !x.getFluids(getFluidInput()).isEmpty()) {
+            if (!x.getFluids(getRecipeFluidInput(r))
+                    .stream()
+                    .anyMatch(i -> getFluidInput().test(i)))
+                return false;
         }
 
-        var check = getInputItem().test(getRecipeInput(r));
-        if (hasCatalyst() && getCatalystItem() != null && getRecipeInput2(r) != null)
-            check = check && getCatalystItem().test(getRecipeInput2(r));
-        return check;
+        if (getCatalystItem() != null && !x.getItems(getCatalystItem()).isEmpty()) {
+
+            // required catalyst empty -> fail
+            if (getRecipeInput2(r) == null || getRecipeInput2(r).isEmpty())
+                return false;
+
+            // catalyst dont match -> fail
+            if (!getCatalystItem().test(getRecipeInput2(r)))
+                return false;
+        }
+
+        return true;
     }
 
+    @Deprecated
     public ItemStack assemble(T i, HolderLookup.Provider r) {
         return getOutputItem().copy();
     }
 
+    @Deprecated
     public boolean canCraftInDimensions(int xz, int y) {
         return false;
     }
 
     @Override
+    @Deprecated
     public ItemStack getResultItem(HolderLookup.Provider a) {
         return getOutputItem() == null ? ItemStack.EMPTY : getOutputItem();
     }
