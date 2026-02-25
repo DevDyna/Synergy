@@ -272,9 +272,9 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 simpleBlock(zBlocks.CHOPPER.get(),
                                 models().cubeBottomTop(zBlocks.CHOPPER.getRegisteredName(),
-                                                modLoc("block/chopper/side"),
+                                                modLoc("block/machine/farming/chopper/side"),
                                                 modLoc("block/decorative/wrought_iron_block"),
-                                                modLoc("block/chopper/top")));
+                                                modLoc("block/machine/farming/chopper/top")));
 
         }
 

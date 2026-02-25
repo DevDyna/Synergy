@@ -222,9 +222,9 @@ public class DataItemModel extends ExtraItemModelProvider {
                 });
 
                 cubeBottomTop(zBlocks.CHOPPER.getRegisteredName(),
-                                modLoc("block/chopper/side"),
+                                modLoc("block/machine/farming/chopper/side"),
                                 modLoc("block/decorative/wrought_iron_block"),
-                                modLoc("block/chopper/top"));
+                                modLoc("block/machine/farming/chopper/top"));
         }
 
 }
