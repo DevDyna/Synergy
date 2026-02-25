@@ -65,7 +65,7 @@
 
 - [ ] energy upgrade increase capacity
 - [ ] energy consumed tooltip on menu
-- [ ] upgrade limiter dont work correctly (speed upgrade)
+- [x] FALSE , YOU DON'T REMEMBER YOUR OWN MOD LOGIC!
 
 ### Survival expansion
 
