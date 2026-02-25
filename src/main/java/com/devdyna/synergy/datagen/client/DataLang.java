@@ -440,6 +440,34 @@ public class DataLang extends LanguageProvider {
                 add(ID + "." + zStatic.Blocks.logic_box, TIP_COLOR
                                 + "Filtered tiny chest");
 
+                var deposit_suffixs = List.of(
+                                "aluminum",
+                                "tin",
+                                "gold",
+                                "nickel",
+                                "lead",
+                                "osmium",
+                                "silver",
+                                "tin",
+                                "copper",
+                                "uranium",
+                                "organic sediments",
+                                "heavy metals",
+                                "quartz",
+                                "copper",
+                                "sulfur",
+                                "coal",
+                                "iron"
+
+                );
+
+                Arrays.asList(ClazzUtil.getAllStrings(zStatic.ResourceMaterial.deposits.class))
+                                .forEach(
+                                                s -> add(ID + "." + s + ".tip", TIP_COLOR + "High concentration of "
+                                                                + deposit_suffixs.get(Arrays.asList(ClazzUtil
+                                                                                .getAllStrings(zStatic.ResourceMaterial.deposits.class))
+                                                                                .indexOf(s))));
+
         }
 
         private String named(DeferredHolder<?, ?> b) {

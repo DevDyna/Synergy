@@ -24,17 +24,12 @@ public class zItems {
                 zTool.register(bus);
                 zCraftingComponents.register(bus);
                 zNodeModules.register(bus);
-
                 zFoods.register(bus);
                 zCropExtra.register(bus);
                 zSeeds.register(bus);
-
                 zBucketItems.register(bus);
-
                 zDropLets.register(bus);
-
                 zResources.register(bus);
-
                 zDusts.register(bus);
                 zElectronTubes.register(bus);
                 zFoils.register(bus);
@@ -49,7 +44,7 @@ public class zItems {
                 zCoils.register(bus);
                 zGears.register(bus);
                 zMolds.register(bus);
-
+                zDepositOres.register(bus);
                 zMachineUpgrades.register(bus);
         }
 
@@ -123,6 +118,7 @@ public class zItems {
         public static final DeferredRegister.Items zDusts = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zMobDrop = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zPellets = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zDepositOres = DeferredRegister.createItems(Main.ID);
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> AZALEA_SEEDS = zSeeds
                         .registerSimpleItem(zStatic.Items.Azalea.seeds);
@@ -581,6 +577,9 @@ public class zItems {
         public static final DeferredHolder<Item, Item> FLOPPY_DISK = zTool
                         .registerSimpleItem("floppy_disk");
 
+        public static final DeferredHolder<Item, Item> FOSSIL = Material
+                        .resourceItem("fossil");
+
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,
@@ -588,6 +587,43 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> CHISEL = zTool.register(zStatic.Items.chisel,
                         () -> new Chisel());
+        // ---------------------------------------------------------------------------------------//
+
+        public static final DeferredHolder<Item, Item> BAUXITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.bauxite);
+        public static final DeferredHolder<Item, Item> CYLINDRITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.cylindrite);
+        public static final DeferredHolder<Item, Item> AURICUPRIDE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.auricupride);
+        public static final DeferredHolder<Item, Item> PENTLANDITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.pentlandite);
+        public static final DeferredHolder<Item, Item> GALENA = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.galena);
+        public static final DeferredHolder<Item, Item> OSMIRIDIUM = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.osmiridium);
+        public static final DeferredHolder<Item, Item> ARGENTITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.argentite);
+        public static final DeferredHolder<Item, Item> CASSITERITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.cassiterite);
+        public static final DeferredHolder<Item, Item> MALACHITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.malachite);
+        public static final DeferredHolder<Item, Item> URANINITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.uraninite);
+        public static final DeferredHolder<Item, Item> KAOLIN = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.kaolin);
+        public static final DeferredHolder<Item, Item> XENOTHITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.xenothite);
+        public static final DeferredHolder<Item, Item> QUARTZITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.quartzite);
+        public static final DeferredHolder<Item, Item> CHALCOPYRITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.chalcopyrite);
+        public static final DeferredHolder<Item, Item> PYROLITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.pyrolite);
+        public static final DeferredHolder<Item, Item> LIGNITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.lignite);
+        public static final DeferredHolder<Item, Item> HEMATITE = Material
+                        .resourceDepositOre(zStatic.ResourceMaterial.deposits.hematite);
+
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, IndustrialUpgrade> UPGRADE_SPEED = Material
                         .machineUpgrade(zStatic.MachineUpgrades.speed);

@@ -247,6 +247,10 @@ public class Material {
                                 .registerSimpleItem(name + zStatic.ResourceType.coil);
         }
 
+        public static DeferredHolder<Item, Item> resourceDepositOre(String name) {
+                return Material.tooltippedItem(name, zItems.zDepositOres);
+        }
+
         public static DeferredHolder<Item, Item> resourceGem(String name) {
                 return zItems.zGems
                                 .registerSimpleItem(name + zStatic.ResourceType.gem);

@@ -85,6 +85,27 @@ public class zStatic {
         public static String zinc = "zinc";
         public static String wooden = "wooden";
         public static String salt = "salt";
+
+        public class deposits {
+            public static String bauxite = "bauxite";
+            public static String cylindrite = "cylindrite";
+            public static String auricupride = "auricupride";
+            public static String pentlandite = "pentlandite";
+            public static String galena = "galena";
+            public static String osmiridium = "osmiridium";
+            public static String argentite = "argentite";
+            public static String cassiterite = "cassiterite";
+            public static String malachite = "malachite";
+            public static String uraninite = "uraninite";
+            public static String kaolin = "kaolin";
+            public static String xenothite = "xenothite";
+            public static String quartzite = "quartzite";
+            public static String chalcopyrite = "chalcopyrite";
+            public static String pyrolite = "pyrolite";
+            public static String lignite = "lignite";
+            public static String hematite = "hematite";
+        }
+
     }
 
     public class ResourceType {

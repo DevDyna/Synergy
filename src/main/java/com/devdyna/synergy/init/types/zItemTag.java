@@ -245,5 +245,9 @@ public class zItemTag {
         public static final TagKey<Item> CHOPPER_AREA_INCREASE = Material.tagItem("chopper/area_increaser");
 
         public static final TagKey<Item> CHOPPER_ENERGY_UPGRADE = Material.tagItem("chopper/energy_upgrade");
+      
+        public static final TagKey<Item> DEEPSLATE_STONES = Material.tagItem("deepslate_stones","c");
+
+        public static final TagKey<Item> ORE_DEPOSITS = Material.tagItem("deposit","c");
 
 }

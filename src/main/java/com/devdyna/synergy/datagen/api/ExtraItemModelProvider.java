@@ -121,6 +121,7 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                 // special resource types
                 Map.of(
                                 zItems.zResources, "resources/",
+                                zItems.zDepositOres, "resources/deposit/",
                                 zItems.zMobDrop, "resources/mob_drop/",
                                 zItems.zDropLets, "resources/droplet/",
                                 zItems.zCraftingComponents, "components/",

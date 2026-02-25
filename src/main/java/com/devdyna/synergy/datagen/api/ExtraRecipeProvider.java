@@ -15,6 +15,7 @@ import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.Caster
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.recipe.MelterRecipeBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.rock_crusher.recipe.RockCrusherRecipeBuilder;
 import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingBuilder;
 import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualBuilder;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.ReactorCellBuilder;
@@ -35,6 +36,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
@@ -45,6 +47,282 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
         public ExtraRecipeProvider(PackOutput output, CompletableFuture<Provider> registries) {
                 super(output, registries);
+        }
+
+        protected void depositsProcessing(RecipeOutput c) {
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(Items.STONE)
+                                .addResult(zItems.STONE_PEBBLE, 0.95f)
+                                .addResult(zItems.CASSITERITE, 0.75f)
+                                .addResult(zItems.HEMATITE, 0.65f)
+                                .addResult(zItems.CHALCOPYRITE, 0.45f)
+                                .addResult(zItems.CYLINDRITE, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(Items.ANDESITE)
+                                .addResult(zItems.STONE_PEBBLE, 0.85f)
+                                .addResult(zItems.QUARTZITE, 0.75f)
+                                .addResult(zItems.CYLINDRITE, 0.5f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(Items.DIORITE)
+                                .addResult(zItems.STONE_PEBBLE, 0.65f)
+                                .addResult(zItems.QUARTZITE, 0.75f)
+                                .addResult(zItems.CASSITERITE, 0.55f)
+                                .addResult(zItems.ARGENTITE, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(Items.GRANITE)
+                                .addResult(zItems.STONE_PEBBLE, 0.75f)
+                                .addResult(zItems.QUARTZITE, 0.85f)
+                                .addResult(zItems.BAUXITE, 0.65f)
+                                .addResult(zItems.HEMATITE, 0.75f)
+                                .addResult(zItems.LIGNITE, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(Items.DRIPSTONE_BLOCK)
+                                .addResult(Items.CLAY_BALL, 0.85f)
+                                .addResult(zItems.KAOLIN, 0.75f)
+                                .addResult(zItems.HEMATITE, 0.55f)
+                                .addResult(zItems.BAUXITE, 0.3f)
+                                .addResult(zItems.MALACHITE, 0.15f)
+                                .addResult(zItems.LIGNITE, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(Items.TUFF)
+                                .addResult(zItems.STONE_PEBBLE, 0.85f)
+                                .addResult(zItems.HEMATITE, 0.75f)
+                                .addResult(zItems.GALENA, 0.75f)
+                                .addResult(zItems.BAUXITE, 0.45f)
+                                .addResult(zItems.PENTLANDITE, 0.45f)
+                                .addResult(zItems.CASSITERITE, 0.35f)
+                                .addResult(zItems.OSMIRIDIUM, 0.35f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItemTag.DEEPSLATE_STONES)
+                                .addResult(zItems.STONE_PEBBLE, 0.85f)
+                                .addResult(zItems.HEMATITE, 0.75f)
+                                .addResult(zItems.PENTLANDITE, 0.75f)
+                                .addResult(zItems.GALENA, 0.65f)
+                                .addResult(zItems.ARGENTITE, 0.35f)
+                                .addResult(zItems.AURICUPRIDE, 0.25f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(Items.NETHERRACK)
+                                .addResult(zItems.NETHERRACK_PEBBLE, 0.85f)
+                                .addResult(zItems.PYROLITE, 0.65f)
+                                .addResult(zItems.QUARTZITE, 0.35f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(Items.BLACKSTONE)
+                                .addResult(zItems.NETHERRACK_PEBBLE, 0.15f)
+                                .addResult(zItems.LIGNITE, 0.75f)
+                                .addResult(zItems.HEMATITE, 0.35f)
+                                .addResult(zItems.PYROLITE, 0.15f)
+                                .addResult(zItems.XENOTHITE, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(Items.END_STONE)
+                                .addResult(zItems.URANINITE, 0.5f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.BAUXITE)
+                                .addResult(zItems.ALUMINUM_DUST, 0.75f)
+                                .addResult(zItems.ALUMINUM_DUST, 0.5f)
+                                .addResult(zItems.IRON_DUST, 0.5f)
+                                .addResult(zItems.IRON_DUST, 0.25f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.CYLINDRITE)
+                                .addResult(zItems.TIN_DUST, 0.75f)
+                                .addResult(zItems.TIN_DUST, 0.5f)
+                                .addResult(zItems.IRON_DUST, 0.25f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.AURICUPRIDE)
+                                .addResult(zItems.GOLD_DUST, 0.75f)
+                                .addResult(zItems.GOLD_DUST, 0.5f)
+                                .addResult(zItems.COPPER_DUST, 0.5f)
+                                .addResult(zItems.COPPER_DUST, 0.25f)
+                                .addResult(Items.GLOWSTONE_DUST, 0.05f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.PENTLANDITE)
+                                .addResult(zItems.NICKEL_DUST, 0.75f)
+                                .addResult(zItems.NICKEL_DUST, 0.5f)
+                                .addResult(zItems.IRON_DUST, 0.25f)
+                                .addResult(zItems.COPPER_DUST, 0.25f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.GALENA)
+                                .addResult(zItems.LEAD_DUST, 0.75f)
+                                .addResult(zItems.LEAD_DUST, 0.65f)
+                                .addResult(zItems.SILVER_DUST, 0.5f)
+                                .addResult(zItems.SILVER_DUST, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.OSMIRIDIUM)
+                                .addResult(zItems.OSMIUM_DUST, 0.75f)
+                                .addResult(zItems.OSMIUM_DUST, 0.45f)
+                                .addResult(zItems.PLATINUM_DUST, 0.35f)
+                                .addResult(zItems.IRIDIUM_DUST, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.ARGENTITE)
+                                .addResult(zItems.SILVER_DUST, 0.75f)
+                                .addResult(zItems.SILVER_DUST, 0.45f)
+                                .addResult(zItems.LEAD_DUST, 0.35f)
+                                .addResult(zItems.IRON_DUST, 0.15f)
+                                .addResult(Items.GLOWSTONE_DUST, 0.05f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.CASSITERITE)
+                                .addResult(zItems.TIN_DUST, 0.75f)
+                                .addResult(zItems.TIN_DUST, 0.5f)
+                                .addResult(zItems.IRON_DUST, 0.45f)
+                                .addResult(zItems.IRON_DUST, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.MALACHITE)
+                                .addResult(zItems.COPPER_DUST, 0.75f)
+                                .addResult(zItems.COPPER_DUST, 0.5f)
+                                .addResult(zItems.COPPER_DUST, 0.25f)
+                                .addResult(zItems.GOLD_DUST, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.URANINITE)
+                                .addResult(zItems.URANIUM_DUST, 0.75f)
+                                .addResult(zItems.PLATINUM_DUST, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.KAOLIN)
+                                .addResult(Items.CLAY_BALL, 0.75f)
+                                .addResult(Items.CLAY_BALL, 0.5f)
+                                .addResult(zItems.FOSSIL, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.XENOTHITE)
+                                .addResult(zItems.ANCIENT_DEBRIS_DUST, 0.65f)
+                                .addResult(zItems.LEAD_DUST, 0.35f)
+                                .addResult(zItems.IRON_DUST, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.QUARTZITE)
+                                .addResult(zItems.QUARTZ_DUST, 0.75f)
+                                .addResult(zItems.QUARTZ_DUST, 0.5f)
+                                .addResult(Items.QUARTZ, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.CHALCOPYRITE)
+                                .addResult(zItems.COPPER_DUST, 0.75f)
+                                .addResult(zItems.COPPER_DUST, 0.5f)
+                                .addResult(zItems.IRON_DUST, 0.25f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.PYROLITE)
+                                .addResult(zItems.NETHERRACK_PEBBLE, 0.75f)
+                                .addResult(zItems.NETHERRACK_PEBBLE, 0.5f)
+                                .addResult(zItems.GOLD_DUST, 0.45f)
+                                .addResult(zItems.SULFUR_DUST, 0.25f)
+                                .addResult(Items.GLOWSTONE_DUST, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.LIGNITE)
+                                .addResult(zItems.CARBON_DUST, 0.95f)
+                                .addResult(zItems.CARBON_DUST, 0.75f)
+                                .addResult(zItems.CARBON_DUST, 0.5f)
+                                .addResult(zItems.CARBON_DUST, 0.25f)
+                                .addResult(zItems.SULFUR_DUST, 0.25f)
+                                .addResult(zItems.SULFUR_DUST, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
+                                .input(zItems.HEMATITE)
+                                .addResult(zItems.IRON_DUST, 0.75f)
+                                .addResult(zItems.IRON_DUST, 0.5f)
+                                .addResult(zItems.TIN_DUST, 0.15f)
+                                .unlockedBy()
+                                .save(c);
+
         }
 
         protected void compatIngotsAndDusts(RecipeOutput c) {
@@ -706,8 +984,6 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 has(
                                                                 zItems.BONE_MEAL_MIXTURE.get()))
                                 .save(c);
-
-               
 
                 ShapedRecipeBuilder.shaped(MISC, zItems.RESISTOR.get(), 8)
                                 .pattern(" MN")

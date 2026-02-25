@@ -303,9 +303,10 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.VOID_BOX_DENY)
                                 .add(zBlocks.VOID_BOX.get().asItem());
 
-                tag(zItemTag.MOLDS).add(ClazzUtil.getAllzItems(zItems.zMolds).stream()
-                                .map(DeferredHolder::get)
-                                .toArray(Item[]::new));
+                tag(zItemTag.MOLDS)
+                                .add(ClazzUtil.getAllzItems(zItems.zMolds).stream()
+                                                .map(DeferredHolder::get)
+                                                .toArray(Item[]::new));
 
                 tag(Tags.Items.STORAGE_BLOCKS)
                                 .add(zBlocks.ADVANCED_ALLOY_BLOCK.get().asItem(), zBlocks.STEEL_BLOCK.get().asItem(),
@@ -336,6 +337,14 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.RESISTOR_INGREDIENT)
                                 .addTag(zItemTag.GEMS_AQUAMARINE)
                                 .add(zItems.GUARDIAN_SCALE.get());
+
+                tag(zItemTag.DEEPSLATE_STONES)
+                                .add(Items.DEEPSLATE, Items.COBBLED_DEEPSLATE);
+
+                tag(zItemTag.ORE_DEPOSITS)
+                                .add(ClazzUtil.getAllzItems(zItems.zDepositOres).stream()
+                                                .map(DeferredHolder::get)
+                                                .toArray(Item[]::new));
 
         }
 

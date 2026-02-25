@@ -18,7 +18,6 @@ import com.devdyna.synergy.init.builder.industrial_machines.extractor.recipe.Ext
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.recipe.MelterRecipeBuilder;
-import com.devdyna.synergy.init.builder.industrial_machines.rock_crusher.recipe.RockCrusherRecipeBuilder;
 import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingBuilder;
 import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualBuilder;
 import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionBuilder;
@@ -67,6 +66,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 brickRecipes(c);
                 lasers(c);
                 ingredients(c);
+                depositsProcessing(c);
 
                 nodeRecipe(c, zBlocks.ITEM_TRANSFER.get(), Blocks.CHEST);
                 nodeRecipe(c, zBlocks.ITEM_PROVIDER.get(), Items.IRON_PICKAXE);
@@ -1641,20 +1641,12 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .outputBlock(zBlocks.LOGIC_BOX)
                                 .unlockedBy().save(c);
 
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER)
-                                .input(Items.STONE)
-                                .addResult(Items.COAL, 0.75f)
-                                .addResult(Items.RAW_COPPER, 0.5f)
-                                .addResult(Items.RAW_IRON, 0.45f)
-                                .addResult(Items.RAW_GOLD, 0.35f)
-                                .addResult(Items.DIAMOND, 0.25f)
-                                .addResult(zItems.SULFUR_DUST, 0.15f)
-                                .addResult(zItems.ADVANCED_ALLOY_PLATE, 0.15f)
-                                .addResult(zItems.COPPER_DUST, 0.15f)
-                                .addResult(zItems.AMERICIUM, 0.15f)
-                                .unlockedBy()
-                                .save(c);
+                
+
+
+
+
+
         }
 
 }
