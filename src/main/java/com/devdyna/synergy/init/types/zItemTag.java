@@ -255,4 +255,6 @@ public class zItemTag {
         public static final TagKey<Item> NODE_FLUID = Material.tagItem("nodes/fluid");
         public static final TagKey<Item> NODE_ENERGY = Material.tagItem("nodes/energy");
 
+        public static final TagKey<Item> DIRTS = Material.tagItem("dirts","c");
+
 }

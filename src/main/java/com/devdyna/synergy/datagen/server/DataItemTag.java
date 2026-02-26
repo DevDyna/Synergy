@@ -351,6 +351,9 @@ public class DataItemTag extends ItemTagsProvider {
                                                 .map(DeferredHolder::get)
                                                 .toArray(Item[]::new));
 
+                tag(zItemTag.DIRTS)
+                .add(Items.DIRT,Items.ROOTED_DIRT,Items.COARSE_DIRT);
+
         }
 
 }
