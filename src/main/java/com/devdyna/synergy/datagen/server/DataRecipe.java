@@ -847,7 +847,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 MaceratorRecipeBuilder.of()
-                                .input(Tags.Items.STONES)
+                                .input(Items.STONE)
                                 .delay(40)
                                 .unlockedBy()
 
