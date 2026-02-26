@@ -71,8 +71,21 @@
 - [ ] sand pebble
 
 - [ ] rock crusher gems
+- [ ] : redstone
+- [ ] : emerald
+- [ ] : diamond
+- [ ] : aquamarine
+- [ ] : ruby?
+- [ ] : amethyst
+- [ ] : lapis
+- [ ] : glowstone?
+- [ ] : quartz early?
+
+- [ ] rock crusher soils / electric sluice? (dirt,gravel,sand)
 
 - [ ] fuel deprecation
+
+- [ ] calcite on rock crusher
 
 ### Survival expansion
 
