@@ -127,7 +127,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .addResult(zItems.ARGENTITE, 0.25f)
                                 .addResult(zItems.AURICUPRIDE, 0.15f)
                                 .unlockedBy()
-                                .save(c);
+                                .save(c,x.rl("rock_crusher/deepslate"));
 
                 RockCrusherRecipeBuilder.of()
                                 .fluid(Fluids.WATER, 250)
