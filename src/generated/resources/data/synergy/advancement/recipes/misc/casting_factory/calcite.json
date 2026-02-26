@@ -1,18 +1,9 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:not",
-      "value": {
-        "type": "neoforge:tag_empty",
-        "tag": "c:raw_materials/tin"
-      }
-    }
-  ],
   "parent": "minecraft:recipes/root",
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:macerator/tin_dust_from_raw"
+        "recipe": "synergy:casting_factory/calcite"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -20,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:barrier"
+            "items": "minecraft:diorite"
           }
         ]
       },
@@ -35,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:macerator/tin_dust_from_raw"
+      "synergy:casting_factory/calcite"
     ]
   }
 }
