@@ -68,6 +68,11 @@
 
 - [ ] fossil usage
 
+- [ ] end pebble
+- [ ] sand pebble
+
+- [ ] rock crusher gems
+
 ### Survival expansion
 
 - [ ] scrap and slags
