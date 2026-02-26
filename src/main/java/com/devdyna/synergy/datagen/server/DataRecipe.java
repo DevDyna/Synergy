@@ -1659,6 +1659,10 @@ public class DataRecipe extends ExtraRecipeProvider {
                 MaceratorRecipeBuilder.of().input(Items.STONE)
                                 .output(Items.COBBLESTONE)
                                 .unlockedBy().save(c);
+                                
+                MaceratorRecipeBuilder.of().input(Items.CLAY)
+                                .output(Items.CLAY_BALL,4)
+                                .unlockedBy().save(c);
 
                 CasterRecipeBuilder.of()
                                 .fluid(Fluids.WATER, 125)
@@ -1675,6 +1679,26 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(Items.STONE)
                                 .consumeItemInput()
                                 .output(Items.TUFF)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 7500)
+                                .delay(320)
+                                .energy(1000)
+                                .input(Items.DIORITE)
+                                .consumeItemInput()
+                                .output(Items.CALCITE)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 7500)
+                                .delay(320)
+                                .energy(1000)
+                                .input(Items.CALCITE)
+                                .consumeItemInput()
+                                .output(Items.DRIPSTONE_BLOCK)
                                 .unlockedBy()
                                 .save(c);
 
