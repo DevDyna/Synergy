@@ -29,7 +29,7 @@
 - [ ] functional grindstone (?)
 - [ ] copper grindstone (damagable) (?)
 
-- [ ] drying racks and evaporation basin block boosters tooltip
+- [x] drying racks and evaporation basin block boosters tooltip
 
 - [ ] dryable bricks not customizable tooltip on jei (+config)
 
@@ -52,9 +52,9 @@
 - [ ] sap & rubber recipe
 
 - [ ] rework batteries
-- [ ] foundry recipes use deprecated namespace
-- [ ] tool models dont work correctly
-- [ ] evaporating basin use incorrect recipetype namespace
+- [x] foundry recipes use deprecated namespace
+- [x] tool models dont work correctly
+- [x] evaporating basin use incorrect recipetype namespace
 
 - [ ] chopper slots need to change when item isn't empty to blank
 
@@ -63,7 +63,6 @@
 
 - [ ] Forestry Peatfarm (?)
 
-- [ ] energy upgrade increase capacity
 - [x] energy consumed tooltip on menu
 
 - [ ] fossil usage
@@ -72,6 +71,8 @@
 - [ ] sand pebble
 
 - [ ] rock crusher gems
+
+- [ ] fuel deprecation
 
 ### Survival expansion
 
@@ -84,8 +85,6 @@
 - [x] faucet & casting table (tcon like)
 
 - [x] foundry fuel efficiency and boost jei
-
-
 
 ### Automation
 
@@ -116,6 +115,8 @@
 - [ ] magic beans (giant plant) (randomthings like?)
 - [ ] blight spore (thorny giant plant)
 - [ ] grapple cultivated (multiblock)
+
+- [ ] modular tree (dynamic tree like but magic?)
 
 ### Industrial machines
 
