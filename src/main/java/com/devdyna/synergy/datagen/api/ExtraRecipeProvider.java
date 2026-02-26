@@ -1381,14 +1381,12 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                 var droplets = List.of(
                                 zItems.SAP,
                                 zItems.OIL,
-                                zItems.GLUE,
-                                zItems.RUBBER);
+                                zItems.GLUE);
 
                 var fluids = List.of(
                                 zFluids.SAP,
                                 zFluids.OIL,
-                                zFluids.GLUE,
-                                zFluids.RUBBER);
+                                zFluids.GLUE);
 
                 droplets.forEach(d -> {
                         var fluid = fluids.get(droplets.indexOf(d));

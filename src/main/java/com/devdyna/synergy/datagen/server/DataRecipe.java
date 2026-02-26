@@ -1605,10 +1605,22 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItems.WROUGHT_IRON_INGOT.get()))
                                 .save(c);
 
+                CompressorRecipeBuilder.of()
+                                .input(zItems.RUBBER)
+                                .catalyst(zItems.MOLD_PLATE.get())
+                                .output(zItems.PLASTIC, 2)
+                                .unlockedBy()
+                                .save(c);
+
+                EvaporatingBasinBuilder.of()
+                                .fluid(zFluids.RUBBER, 250)
+                                .output(zItems.RUBBER)
+                                .unlockedBy()
+                                .save(c);
+
                 CasterRecipeBuilder.of()
-                                .fluid(zFluids.RUBBER, 125)
-                                .input(zItems.MOLD_PLATE)
-                                .output(zItems.PLASTIC)
+                                .fluid(zFluids.RUBBER, 250)
+                                .output(zItems.RUBBER)
                                 .unlockedBy()
                                 .save(c);
 
