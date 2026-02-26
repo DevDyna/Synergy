@@ -400,8 +400,8 @@ public class DataLang extends LanguageProvider {
 
                 add(ID + ".screen.upgrades", "Supported Upgrades:");
 
-                add(ID + ".screen.modifier.energy_efficiency", TIP_COLOR + "Energy Efficiency Modifier §7[§f§a%s§7]");
-                add(ID + ".screen.modifier.energy_capacity", TIP_COLOR + "Energy Capacity Modifier §7[§f§a%s§7]");
+                add(ID + ".screen.modifier.energy", TIP_COLOR + "Energy Modifier §7[§f§a%s§7]");
+                // add(ID + ".screen.modifier.energy_capacity", TIP_COLOR + "Energy Capacity Modifier §7[§f§a%s§7]");
                 add(ID + ".screen.modifier.speed", TIP_COLOR + "Speed Modifier §7[§f§a%s§7]");
                 add(ID + ".screen.modifier.luck", TIP_COLOR + "Luck Modifier §7[§f§a%s§7]");
                 add(ID + ".screen.modifier.fluid", TIP_COLOR + "Fluid Modifier §7[§f§a%s§7]");
@@ -440,7 +440,7 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jei.dryable_rack.tip", "Tick delay can change based on stack size");
 
                 add(ID + "." + zStatic.Blocks.logic_box, TIP_COLOR
-                                + "Filtered tiny chest");
+                                + "Input filtered tiny chest");
 
                 var deposit_suffixs = List.of(
                                 "aluminum",
