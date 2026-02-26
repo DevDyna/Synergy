@@ -115,24 +115,26 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
         return this.output.getItem();
     }
 
+    public String getMachinePath() {
+        return getMachine().id() + "/";
+    }
+
     @Override
     public ResourceLocation getSuffix(String extra) {
 
-        String path = getMachine().id() + "/";
-
         if (output != null && !output.isEmpty())
-            return x.rl(path + x.path(output.getItem()) + extra);
+            return x.rl(getMachinePath() + x.path(output.getItem()) + extra);
 
         if (this instanceof SimpleFluidAttach
                 && fluid_output != null
                 && !fluid_output.isEmpty())
-            return x.rl(path + x.path(fluid_output.getFluid()) + extra);
+            return x.rl(getMachinePath() + x.path(fluid_output.getFluid()) + extra);
 
         if (optional_output != null && !optional_output.isEmpty())
-            return x.rl(path + x.path(optional_output.getItem()) + extra);
+            return x.rl(getMachinePath() + x.path(optional_output.getItem()) + extra);
 
         if (input != null && input.getItems().length > 0)
-            return x.rl(path + x.path(input.getItems()[0]) + extra);
+            return x.rl(getMachinePath() + x.path(input.getItems()[0]) + extra);
 
         throw new IllegalStateException("No valid ID found for " + getMachine().id());
 
