@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:electric_melter/rubber_source"
+        "recipe": "synergy:compressor/plastic"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:electric_melter/rubber_source"
+      "synergy:compressor/plastic"
     ]
   }
 }

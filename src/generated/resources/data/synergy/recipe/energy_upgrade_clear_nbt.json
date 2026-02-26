@@ -9,7 +9,7 @@
   "result": {
     "components": {
       "synergy:upgrade_components": {
-        "energy_efficiency": -50
+        "energy": -50
       }
     },
     "count": 1,

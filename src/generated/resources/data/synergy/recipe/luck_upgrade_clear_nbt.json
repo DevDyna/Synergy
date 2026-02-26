@@ -9,7 +9,7 @@
   "result": {
     "components": {
       "synergy:upgrade_components": {
-        "energy_efficiency": 150,
+        "energy": 150,
         "secondary_luck": 25
       }
     },

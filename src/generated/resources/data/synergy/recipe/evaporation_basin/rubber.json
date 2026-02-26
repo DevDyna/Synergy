@@ -1,0 +1,12 @@
+{
+  "type": "synergy:evaporation_basin",
+  "fluid": {
+    "amount": 250,
+    "fluid": "synergy:rubber_source"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:rubber"
+  },
+  "ticks": 100
+}

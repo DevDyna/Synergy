@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:rubber"
+        "recipe": "synergy:evaporation_basin/rubber"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:rubber"
+      "synergy:evaporation_basin/rubber"
     ]
   }
 }
