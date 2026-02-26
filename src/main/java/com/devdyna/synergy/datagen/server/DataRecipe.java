@@ -850,7 +850,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(Items.STONE)
                                 .delay(40)
                                 .unlockedBy()
-
                                 .output(zItems.STONE_PEBBLE, 4)
                                 .secondary(zItems.SILVERFISH_DUST)
                                 .chance(0.45f)
@@ -1641,11 +1640,61 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .outputBlock(zBlocks.LOGIC_BOX)
                                 .unlockedBy().save(c);
 
-                
+                MaceratorRecipeBuilder.of().input(Items.DEEPSLATE)
+                                .output(Items.COBBLED_DEEPSLATE)
+                                .unlockedBy().save(c);
 
+                MaceratorRecipeBuilder.of().input(Items.STONE)
+                                .output(Items.COBBLESTONE)
+                                .unlockedBy().save(c);
 
+                CasterRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 125)
+                                .input(zItemTag.DIRTS)
+                                .consumeItemInput()
+                                .output(Items.MUD)
+                                .unlockedBy()
+                                .save(c);
 
+                CasterRecipeBuilder.of()
+                                .fluid(Fluids.LAVA, 7500)
+                                .delay(320)
+                                .energy(1000)
+                                .input(Items.STONE)
+                                .consumeItemInput()
+                                .output(Items.TUFF)
+                                .unlockedBy()
+                                .save(c);
 
+                CasterRecipeBuilder.of()
+                                .fluid(Fluids.LAVA, 7500)
+                                .energy(1000)
+                                .delay(320)
+                                .input(Items.TUFF)
+                                .consumeItemInput()
+                                .output(Items.DEEPSLATE)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(Fluids.LAVA, 1000)
+                                .input(Items.NETHERRACK)
+                                .consumeItemInput()
+                                .output(Items.MAGMA_BLOCK)
+                                .unlockedBy()
+                                .save(c);
+
+                CasterRecipeBuilder.of()
+                                .fluid(Fluids.LAVA, 1000)
+                                .input(zItems.MOLD_BLOCK)
+                                .output(Items.OBSIDIAN)
+                                .unlockedBy()
+                                .save(c);
+
+                ElectricFurnaceRecipeBuilder.of()
+                                .input(Items.MUD)
+                                .output(Items.CLAY)
+                                .unlockedBy().save(c);
 
         }
 
