@@ -1,18 +1,14 @@
 {
   "type": "synergy:macerator",
-  "chance": 0.45,
+  "chance": 0.0,
   "energy": 500,
   "input": {
     "count": 1,
     "item": "minecraft:stone"
   },
   "output": {
-    "count": 4,
-    "id": "synergy:stone_pebble"
-  },
-  "secondary": {
     "count": 1,
-    "id": "synergy:silverfish_dust"
+    "id": "minecraft:cobblestone"
   },
-  "ticks": 40
+  "ticks": 100
 }

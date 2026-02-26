@@ -18,21 +18,21 @@
       }
     },
     {
-      "chance": 0.75,
+      "chance": 0.55,
       "item": {
         "count": 1,
         "id": "synergy:kaolin"
       }
     },
     {
-      "chance": 0.55,
+      "chance": 0.35,
       "item": {
         "count": 1,
         "id": "synergy:hematite"
       }
     },
     {
-      "chance": 0.3,
+      "chance": 0.2,
       "item": {
         "count": 1,
         "id": "synergy:bauxite"
@@ -46,7 +46,7 @@
       }
     },
     {
-      "chance": 0.15,
+      "chance": 0.05,
       "item": {
         "count": 1,
         "id": "synergy:lignite"

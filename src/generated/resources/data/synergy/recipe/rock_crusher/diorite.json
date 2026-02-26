@@ -18,14 +18,14 @@
       }
     },
     {
-      "chance": 0.75,
+      "chance": 0.35,
       "item": {
         "count": 1,
         "id": "synergy:quartzite"
       }
     },
     {
-      "chance": 0.55,
+      "chance": 0.25,
       "item": {
         "count": 1,
         "id": "synergy:cassiterite"

@@ -11,21 +11,21 @@
   },
   "result": [
     {
-      "chance": 0.15,
+      "chance": 0.65,
       "item": {
         "count": 1,
         "id": "synergy:netherrack_pebble"
       }
     },
     {
-      "chance": 0.75,
+      "chance": 0.35,
       "item": {
         "count": 1,
         "id": "synergy:lignite"
       }
     },
     {
-      "chance": 0.35,
+      "chance": 0.25,
       "item": {
         "count": 1,
         "id": "synergy:hematite"

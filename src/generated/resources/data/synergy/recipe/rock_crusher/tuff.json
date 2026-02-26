@@ -18,45 +18,45 @@
       }
     },
     {
-      "chance": 0.75,
+      "chance": 0.45,
       "item": {
         "count": 1,
         "id": "synergy:hematite"
       }
     },
     {
-      "chance": 0.75,
+      "chance": 0.35,
       "item": {
         "count": 1,
         "id": "synergy:galena"
       }
     },
     {
-      "chance": 0.45,
+      "chance": 0.35,
       "item": {
         "count": 1,
         "id": "synergy:bauxite"
       }
     },
     {
-      "chance": 0.45,
+      "chance": 0.25,
+      "item": {
+        "count": 1,
+        "id": "synergy:osmiridium"
+      }
+    },
+    {
+      "chance": 0.15,
       "item": {
         "count": 1,
         "id": "synergy:pentlandite"
       }
     },
     {
-      "chance": 0.35,
+      "chance": 0.15,
       "item": {
         "count": 1,
         "id": "synergy:cassiterite"
-      }
-    },
-    {
-      "chance": 0.35,
-      "item": {
-        "count": 1,
-        "id": "synergy:osmiridium"
       }
     }
   ],

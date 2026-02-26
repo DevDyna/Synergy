@@ -1,0 +1,18 @@
+{
+  "type": "synergy:casting_factory",
+  "consume_item": true,
+  "energy": 500,
+  "input_fluid": {
+    "amount": 125,
+    "fluid": "minecraft:water"
+  },
+  "input_item": {
+    "count": 1,
+    "tag": "c:dirts"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:mud"
+  },
+  "ticks": 10
+}

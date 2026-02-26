@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:macerator/stone_pebble"
+        "recipe": "synergy:electric_furnace/clay"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stone"
+            "items": "minecraft:mud"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:macerator/stone_pebble"
+      "synergy:electric_furnace/clay"
     ]
   }
 }

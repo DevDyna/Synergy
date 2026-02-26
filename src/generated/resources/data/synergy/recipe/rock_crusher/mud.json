@@ -7,35 +7,28 @@
   },
   "input_item": {
     "count": 1,
-    "item": "minecraft:granite"
+    "item": "minecraft:mud"
   },
   "result": [
     {
-      "chance": 0.75,
+      "chance": 0.85,
       "item": {
         "count": 1,
-        "id": "synergy:stone_pebble"
+        "id": "synergy:mud_ball"
       }
     },
     {
-      "chance": 0.35,
+      "chance": 0.45,
       "item": {
         "count": 1,
-        "id": "synergy:quartzite"
+        "id": "minecraft:flint"
       }
     },
     {
       "chance": 0.25,
       "item": {
         "count": 1,
-        "id": "synergy:bauxite"
-      }
-    },
-    {
-      "chance": 0.15,
-      "item": {
-        "count": 1,
-        "id": "synergy:hematite"
+        "id": "synergy:kaolin"
       }
     },
     {

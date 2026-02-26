@@ -11,7 +11,7 @@
   },
   "result": [
     {
-      "chance": 0.5,
+      "chance": 0.15,
       "item": {
         "count": 1,
         "id": "synergy:uraninite"

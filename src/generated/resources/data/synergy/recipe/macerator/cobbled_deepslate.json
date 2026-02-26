@@ -1,0 +1,14 @@
+{
+  "type": "synergy:macerator",
+  "chance": 0.0,
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "minecraft:deepslate"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:cobbled_deepslate"
+  },
+  "ticks": 100
+}

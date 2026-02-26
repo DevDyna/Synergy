@@ -18,35 +18,35 @@
       }
     },
     {
-      "chance": 0.75,
+      "chance": 0.55,
       "item": {
         "count": 1,
         "id": "synergy:hematite"
       }
     },
     {
-      "chance": 0.75,
+      "chance": 0.45,
       "item": {
         "count": 1,
         "id": "synergy:pentlandite"
       }
     },
     {
-      "chance": 0.65,
+      "chance": 0.35,
       "item": {
         "count": 1,
         "id": "synergy:galena"
       }
     },
     {
-      "chance": 0.35,
+      "chance": 0.25,
       "item": {
         "count": 1,
         "id": "synergy:argentite"
       }
     },
     {
-      "chance": 0.25,
+      "chance": 0.15,
       "item": {
         "count": 1,
         "id": "synergy:auricupride"
