@@ -136,10 +136,10 @@ public class zStatic {
 
         public class TemplateUpgrades {
 
-            public static ItemStack SPEED = zItems.UPGRADE_SPEED.get().set(20, 125, 0, 0,0);
-            public static ItemStack ENERGY = zItems.UPGRADE_ENERGY.get().set(0, -50, 0, 0,0);
-            public static ItemStack LUCK = zItems.UPGRADE_LUCK.get().set(0, 150, 25, 0,0);
-            public static ItemStack FLUID = zItems.UPGRADE_FLUID.get().set(0, 150, 0, -20,0);
+            public static ItemStack SPEED = zItems.UPGRADE_SPEED.get().set(20, 125, 0, 0);
+            public static ItemStack ENERGY = zItems.UPGRADE_ENERGY.get().set(0, -50, 0, 0);
+            public static ItemStack LUCK = zItems.UPGRADE_LUCK.get().set(0, 150, 25, 0);
+            public static ItemStack FLUID = zItems.UPGRADE_FLUID.get().set(0, 150, 0, -20);
 
             public static List<ItemStack> ALL = List.of(SPEED, ENERGY, LUCK, FLUID);
 

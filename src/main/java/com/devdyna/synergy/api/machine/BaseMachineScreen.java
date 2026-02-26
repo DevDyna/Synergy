@@ -198,12 +198,12 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
                 return DEFAULT_UPGRADES;
         }
 
-        public static final List<UpgradeType> DEFAULT_UPGRADES = List.of(UpgradeType.ENERGY_EFFICIENCY, UpgradeType.SPEED);
+        public static final List<UpgradeType> DEFAULT_UPGRADES = List.of(UpgradeType.ENERGY, UpgradeType.SPEED);
 
         public int getConfigLimits(UpgradeType type) {
                 return switch (type) {
-                        case UpgradeType.ENERGY_CAPACITY -> Common.MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE.get();
-                        case UpgradeType.ENERGY_EFFICIENCY -> Common.MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE.get();
+                        // case UpgradeType.ENERGY -> Common.MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE.get();
+                        case UpgradeType.ENERGY -> Common.MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE.get();
                         case UpgradeType.SPEED -> Common.MACHINE_MAX_SPEED_UPGRADES_TYPE.get();
                         case UpgradeType.LUCK -> Common.MACHINE_MAX_LUCK_UPGRADES_TYPE.get();
                         case UpgradeType.FLUID -> Common.MACHINE_MAX_FLUID_UPGRADES_TYPE.get();

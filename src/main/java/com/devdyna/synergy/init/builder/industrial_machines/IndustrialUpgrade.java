@@ -68,41 +68,37 @@ public class IndustrialUpgrade extends Item {
      * @param f  fluid usage %
      * @param ec energy capacity %
      */
-    public ItemStack set(int s, int ef, int l, int f, int ec) {
-        return UpgradeComponents.create(this, s, ef, l, f, ec);
+    public ItemStack set(int s, int e, int l, int f) {
+        return UpgradeComponents.create(this, s, e, l, f);
     }
 
     public record UpgradeComponents(
             Optional<Integer> speed,
-            Optional<Integer> energy_usage,
+            Optional<Integer> energy,
             Optional<Integer> luck,
-            Optional<Integer> fluid_usage,
-            Optional<Integer> energy_capacity) {
+            Optional<Integer> fluid_usage) {
         public static final Codec<UpgradeComponents> CODEC = RecordCodecBuilder.create(i -> i.group(
                 Codec.INT.optionalFieldOf("speed").forGetter(UpgradeComponents::speed),
-                Codec.INT.optionalFieldOf("energy_efficiency").forGetter(UpgradeComponents::energy_usage),
+                Codec.INT.optionalFieldOf("energy").forGetter(UpgradeComponents::energy),
                 Codec.INT.optionalFieldOf("secondary_luck").forGetter(UpgradeComponents::luck),
-                Codec.INT.optionalFieldOf("fluid_usage").forGetter(UpgradeComponents::fluid_usage),
-                Codec.INT.optionalFieldOf("energy_capacity").forGetter(UpgradeComponents::energy_capacity))
+                Codec.INT.optionalFieldOf("fluid_usage").forGetter(UpgradeComponents::fluid_usage))
                 .apply(i, UpgradeComponents::new));
 
         public static final StreamCodec<FriendlyByteBuf, UpgradeComponents> STREAM_CODEC = StreamCodec.composite(
                 ByteBufCodecs.optional(ByteBufCodecs.INT), UpgradeComponents::speed,
-                ByteBufCodecs.optional(ByteBufCodecs.INT), UpgradeComponents::energy_usage,
+                ByteBufCodecs.optional(ByteBufCodecs.INT), UpgradeComponents::energy,
                 ByteBufCodecs.optional(ByteBufCodecs.INT), UpgradeComponents::luck,
                 ByteBufCodecs.optional(ByteBufCodecs.INT), UpgradeComponents::fluid_usage,
-                ByteBufCodecs.optional(ByteBufCodecs.INT), UpgradeComponents::energy_capacity,
                 UpgradeComponents::new);
 
         public static final UpgradeComponents EMPTY = new UpgradeComponents(Optional.empty(), Optional.empty(),
-                Optional.empty(), Optional.empty(), Optional.empty());
+                Optional.empty(), Optional.empty());
 
         public static final boolean isEmpty(UpgradeComponents c) {
             return c.speed().isEmpty() &&
-                    c.energy_usage().isEmpty() &&
+                    c.energy().isEmpty() &&
                     c.luck().isEmpty() &&
-                    c.fluid_usage().isEmpty() &&
-                    c.energy_capacity().isEmpty();
+                    c.fluid_usage().isEmpty();
         }
 
         public static final boolean has(UpgradeComponents c, UpgradeType type) {
@@ -129,37 +125,35 @@ public class IndustrialUpgrade extends Item {
         }
 
         public static final List<Optional<Integer>> getAll(UpgradeComponents c) {
-            return List.of(c.speed(), c.energy_usage(), c.luck(), c.fluid_usage(),c.energy_capacity());
+            return List.of(c.speed(), c.energy(), c.luck(), c.fluid_usage());
         }
 
         /**
          * Value 0 will set Optional.empty()
          */
-        public static final UpgradeComponents builder(int speed, int energy_eff, int luck, int fluid, int energy_cap) {
+        public static final UpgradeComponents builder(int speed, int energy, int luck, int fluid) {
             return new UpgradeComponents(
                     speed == 0 ? Optional.empty() : Optional.of(speed),
-                    energy_eff == 0 ? Optional.empty() : Optional.of(energy_eff),
+                    energy == 0 ? Optional.empty() : Optional.of(energy),
                     luck == 0 ? Optional.empty() : Optional.of(luck),
-                    fluid == 0 ? Optional.empty() : Optional.of(fluid),
-                    energy_cap == 0 ? Optional.empty() : Optional.of(energy_cap));
+                    fluid == 0 ? Optional.empty() : Optional.of(fluid));
         }
 
         /**
          * Value 0 will set Optional.empty()
          */
-        public static ItemStack create(Item i, int speed, int energy_eff, int luck, int fluid, int energy_cap) {
+        public static ItemStack create(Item i, int speed, int energy, int luck, int fluid) {
             var item = x.item(i);
-            item.set(zComponents.UPGRADE_COMPONENTS, builder(speed, energy_eff, luck, fluid, energy_cap));
+            item.set(zComponents.UPGRADE_COMPONENTS, builder(speed, energy, luck, fluid));
             return item;
         }
 
         public enum UpgradeType {
 
             SPEED(0),
-            ENERGY_EFFICIENCY(1),
+            ENERGY(1),
             LUCK(2),
-            FLUID(3),
-            ENERGY_CAPACITY(4);
+            FLUID(3);
 
             private int i;
 
@@ -182,16 +176,16 @@ public class IndustrialUpgrade extends Item {
         if (nbt != null && !UpgradeComponents.isEmpty(nbt)) {
             t.add(Component.translatable(ID + ".upgrades.title"));
 
-            if (UpgradeComponents.has(nbt, UpgradeType.ENERGY_EFFICIENCY)) {
-                var energy_eff = UpgradeComponents.get(nbt, UpgradeType.ENERGY_EFFICIENCY);
-                t.add(Component.translatable(ID + ".upgrades.modifier.energy.efficiency",
-                        ((energy_eff < 0 ? "§a" : "§c+") + energy_eff + "%")));
+            if (UpgradeComponents.has(nbt, UpgradeType.ENERGY)) {
+                var energy = UpgradeComponents.get(nbt, UpgradeType.ENERGY);
+                t.add(Component.translatable(ID + ".upgrades.modifier.energy",
+                        ((energy < 0 ? "§a" : "§c+") + energy + "%")));
             }
-            if (UpgradeComponents.has(nbt, UpgradeType.ENERGY_CAPACITY)) {
-                var energy_cap = UpgradeComponents.get(nbt, UpgradeType.ENERGY_CAPACITY);
-                t.add(Component.translatable(ID + ".upgrades.modifier.energy.capacity",
-                        ((energy_cap < 0 ? "§c" : "§a+") + energy_cap + "%")));
-            }
+            // if (UpgradeComponents.has(nbt, UpgradeType.ENERGY_CAPACITY)) {
+            //     var energy_cap = UpgradeComponents.get(nbt, UpgradeType.ENERGY_CAPACITY);
+            //     t.add(Component.translatable(ID + ".upgrades.modifier.energy.capacity",
+            //             ((energy_cap < 0 ? "§c" : "§a+") + energy_cap + "%")));
+            // }
             if (UpgradeComponents.has(nbt, UpgradeType.SPEED)) {
                 var speed = UpgradeComponents.get(nbt, UpgradeType.SPEED);
                 t.add(Component.translatable(ID + ".upgrades.modifier.speed",

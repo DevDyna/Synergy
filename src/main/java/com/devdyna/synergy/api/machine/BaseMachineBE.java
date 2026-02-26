@@ -518,10 +518,10 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     public int getTypeLimiter(UpgradeType type) {
         if (type.equals(UpgradeType.SPEED))
             return Common.MACHINE_MAX_SPEED_UPGRADES_TYPE.get();
-        if (type.equals(UpgradeType.ENERGY_EFFICIENCY))
+        if (type.equals(UpgradeType.ENERGY))
             return Common.MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE.get();
-        if (type.equals(UpgradeType.ENERGY_CAPACITY))
-            return Common.MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE.get();
+        // if (type.equals(UpgradeType.ENERGY_CAPACITY))
+        //     return Common.MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE.get();
         if (type.equals(UpgradeType.LUCK))
             return Common.MACHINE_MAX_LUCK_UPGRADES_TYPE.get();
         if (type.equals(UpgradeType.FLUID))
@@ -537,7 +537,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
     }
 
     private int calculateFEUsage(int base) {
-        var upgrades = getValues(UpgradeType.ENERGY_EFFICIENCY);
+        var upgrades = getValues(UpgradeType.ENERGY);
         var sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
         return Common.MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE.get() == 0 ? base
                 : Math.max(Common.MACHINE_MINIMAL_FE_COST.get(), (int) (base + (base * (((float) sum) / 100))));

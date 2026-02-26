@@ -65,7 +65,7 @@ public class Common {
 
         public static IntValue MACHINE_MAX_SPEED_UPGRADES_TYPE;// 4
         public static IntValue MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE;// max
-        public static IntValue MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE;// max
+        // public static IntValue MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE;// max
         public static IntValue MACHINE_MAX_LUCK_UPGRADES_TYPE;// max
         public static IntValue MACHINE_MAX_FLUID_UPGRADES_TYPE;// max
 
@@ -311,32 +311,36 @@ public class Common {
                                 "base_machine_max_fe", 100_000);
 
                 MACHINE_MAX_SPEED_UPGRADES_TYPE = number("Max Speed Increaser Upgrade Types usable foreach machine",
-                                "max_speed_upgrades", 4,0,16);
+                                "max_speed_upgrades", 4, 0, 16);
 
-                MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE = number("Max Energy Efficiency Upgrade Types usable foreach machine",
-                                "max_energy_upgrades", 16,0,16);
+                MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE = number(
+                                "Max Energy Efficiency Upgrade Types usable foreach machine",
+                                "max_energy_upgrades", 16, 0, 16);
 
-                MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE = number("Max Energy Capacity Upgrade Types usable foreach machine",
-                                "max_energy_upgrades", 16,0,16);
+                // MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE = number("Max Energy Capacity
+                // Upgrade Types usable foreach machine",
+                // "max_energy_upgrades", 16,0,16);
 
                 MACHINE_MAX_LUCK_UPGRADES_TYPE = number(
                                 "Max Secondary Output Increaser Upgrade Types usable foreach machine",
-                                "max_luck_upgrades", 16,0,16);
+                                "max_luck_upgrades", 16, 0, 16);
+
                 MACHINE_MAX_FLUID_UPGRADES_TYPE = number("Max Fluid Efficiency Upgrade Types usable foreach machine",
-                                "max_fluid_upgrades", 16,0,16);
+                                "max_fluid_upgrades", 16, 0, 16);
 
                 MACHINE_MINIMAL_TICK_DELAY = number("Minimal tick delay based on upgrade installed",
                                 "min_tick_rate", 1);
+                                
                 MACHINE_MINIMAL_FE_COST = number("Minimal Energy cost based on upgrade installed",
                                 "min_fe_cost", 5);
 
-                // MACHINE_MINIMAL_FE_CAPACITY = number("Minimal Energy cost based on upgrade installed",
-                //                 "min_fe_capacity", 100);
+                // MACHINE_MINIMAL_FE_CAPACITY = number("Minimal Energy cost based on upgrade
+                // installed",
+                // "min_fe_capacity", 100);
 
-                // MACHINE_MAXIMAL_FE_CAPACITY = number("Minimal Energy cost based on upgrade installed",
-                //                 "max_fe_capacity", Integer.MAX_VALUE);
-
-
+                // MACHINE_MAXIMAL_FE_CAPACITY = number("Minimal Energy cost based on upgrade
+                // installed",
+                // "max_fe_capacity", Integer.MAX_VALUE);
 
                 MACHINE_MINIMAL_FLUID_COST = number("Minimal Fluid cost based on upgrade installed",
                                 "min_mb_cost", 0);
@@ -516,14 +520,15 @@ public class Common {
                                 "disable_drying_rack_nerfer");
                 DRYING_RACK_STACK_NERFER_RATE = numberFloat(
                                 "Drying Racks Speed reducer to balance Stack Nerfer\nExample : 64 items \n 1x -> 64x time required \n 4x -> 64x/4 -> 16x time required \n 0.5x -> 64x/0.5 -> 128x time required ",
-                                "drying_rack_nerfer_decreaser", 1,0.001);
+                                "drying_rack_nerfer_decreaser", 1, 0.001);
 
                 decor.simple("Foundry");
 
-                 DISABLE_FOUNDRY_SPEED_BOOSTER = bool("Disable Foundry speed boost based on fluid amount", "disable_foundry_speed_boost");
+                DISABLE_FOUNDRY_SPEED_BOOSTER = bool("Disable Foundry speed boost based on fluid amount",
+                                "disable_foundry_speed_boost");
                 FOUNDRY_SPEED_BOOSTER_MULTIPLIER = numberFloat(
                                 "Foundry Speed increaser based on fluid amount",
-                                "foundry_speed_increaser", 0.25,0.001);
+                                "foundry_speed_increaser", 0.25, 0.001);
 
                 qCOMMON.pop();
         }
