@@ -106,6 +106,16 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                 RockCrusherRecipeBuilder.of()
                                 .fluid(Fluids.WATER, 250)
+                                .input(Items.MUD)
+                                .addResult(zItems.MUD_BALL, 0.85f)
+                                .addResult(Items.FLINT, 0.45f)
+                                .addResult(zItems.KAOLIN, 0.25f)
+                                .addResult(zItems.LIGNITE, 0.05f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(Fluids.WATER, 250)
                                 .input(Items.TUFF)
                                 .addResult(zItems.STONE_PEBBLE, 0.85f)
                                 .addResult(zItems.HEMATITE, 0.45f)
