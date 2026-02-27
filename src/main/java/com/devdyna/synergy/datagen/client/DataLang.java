@@ -176,7 +176,7 @@ public class DataLang extends LanguageProvider {
                                 "Reactor Reactions");
 
                 add(Main.ID + ".jei." + zStatic.Blocks.foundry,
-                                "Simple Melter Recipes");
+                                "Foundry Recipes");
 
                 add(Main.ID + ".jei." + zStatic.Blocks.urn,
                                 "Urn Rituals");
