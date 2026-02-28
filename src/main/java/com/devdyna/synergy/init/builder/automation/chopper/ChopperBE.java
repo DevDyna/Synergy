@@ -38,7 +38,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
 public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaOfEffect, EnergyBlock {
@@ -356,11 +355,6 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
     @Override
     public List<BlockPos> getArea() {
         return getCentredPosArea();
-    }
-
-    @Override
-    public ItemStackHandler getStorage() {
-        return getData(zHandlers.ITEM_STORAGE);
     }
 
     @Override
