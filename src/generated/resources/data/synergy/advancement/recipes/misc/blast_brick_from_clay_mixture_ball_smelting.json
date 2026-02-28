@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_clay_mixture_ball": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:blast_brick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:blast_brick_from_clay_mixture_ball_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_clay_mixture_ball"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:blast_brick_from_clay_mixture_ball_smelting"
+    ]
+  }
+}
