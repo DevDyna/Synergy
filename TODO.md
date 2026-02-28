@@ -89,7 +89,7 @@
 
 - [ ] replace many drawString -> drawCenteredString
 
-- [ ] nodes void items when interact with Routers
+- [x] nodes void items when interact with Routers
 
 ### Survival expansion
 
