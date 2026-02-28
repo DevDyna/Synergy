@@ -87,6 +87,9 @@
 
 - [ ] calcite on rock crusher
 
+- [ ] replace many drawString -> drawCenteredString
+
+
 ### Survival expansion
 
 - [ ] scrap and slags
@@ -109,7 +112,11 @@
 
 ### Agriculture
 
-- [ ] EnderLilly
+- [ ] Ender Lily
+- [ ] Blaze Lily
+- [ ] Experience Lily
+
+
 - [ ] cave mushroom -> press -> liquid lapis/ liquid coal
 - [ ] weed crop plant (unwanted plant) -> farmland spreaddable crop -> fibers(?)
 - [ ] Truffles
