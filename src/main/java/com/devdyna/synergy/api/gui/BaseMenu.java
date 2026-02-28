@@ -8,7 +8,6 @@ import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntUnaryOperator;
-
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -175,6 +174,36 @@ public abstract class BaseMenu extends AbstractContainerMenu {
             public boolean mayPickup(Player playerIn) {
                 return true;
             }
+
+            @Override
+            public int getMaxStackSize() {
+                return 1;
+            }
+
+            @Override
+            public int getMaxStackSize(ItemStack stack) {
+                return 1;
+            }
+
+        });
+    }
+
+ 
+
+
+    protected void addSingleMachineSlot(ItemStackHandler beSlot, int id, int x,
+            int y) {
+        addSlot(new SlotItemHandler(beSlot, id, x, y) {
+
+            // @Override
+            // public boolean mayPlace(ItemStack stack) {
+            //     return true;
+            // }
+
+            // @Override
+            // public boolean mayPickup(Player playerIn) {
+            //     return true;
+            // }
 
             @Override
             public int getMaxStackSize() {
