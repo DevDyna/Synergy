@@ -221,6 +221,8 @@ public class DataItemModel extends ExtraItemModelProvider {
 
                 });
 
+                withExistingParent(zBlocks.ROUTER.getRegisteredName(), x.rl("block/router"));
+
                 cubeBottomTop(zBlocks.CHOPPER.getRegisteredName(),
                                 modLoc("block/machine/farming/chopper/side"),
                                 modLoc("block/decorative/wrought_iron_block"),

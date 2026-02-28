@@ -6,6 +6,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.datagen.api.ExtraBlockStateProvider;
 import com.devdyna.synergy.init.types.zBlocks;
 import net.minecraft.data.PackOutput;
@@ -191,6 +192,8 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 simpleBlock(zBlocks.FUEL_TANK.get(), models().cubeAll(zBlocks.FUEL_TANK.getRegisteredName(),
                                 modLoc("block/tank/fuel")).renderType(DataGenUtil.CUTOUT));
+
+                simpleBlock(zBlocks.ROUTER.get(), models().getExistingFile(x.rl("block/router")));
 
                 simpleBlock(zBlocks.SIMPLE_WATER_GEN.get(),
                                 models().withExistingParent(zBlocks.SIMPLE_WATER_GEN.getRegisteredName(),
