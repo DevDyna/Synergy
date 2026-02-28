@@ -64,13 +64,14 @@ public class FluidProviderBE extends NodeBaseBE
     }
 
     @Override
-    public BlockPos getInput() {
-        return getInputPos();
+    public FluidStack getFluidStack() {
+        return getRecipe(defineInput()).isPresent() ? getRecipe(defineInput()).get().value().getOutput()
+                : FluidStack.EMPTY;
     }
 
     @Override
-    public FluidStack getFluidStack() {
-        return getRecipe(getInput()).isPresent() ? getRecipe(getInput()).get().value().getOutput() : FluidStack.EMPTY;
+    public BlockPos defineInput() {
+        return getInputPos();
     }
 
 }

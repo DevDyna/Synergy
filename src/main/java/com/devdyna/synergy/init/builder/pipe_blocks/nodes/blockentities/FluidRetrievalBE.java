@@ -5,6 +5,7 @@ import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.BlockCapability;
@@ -13,7 +14,7 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 @SuppressWarnings({ "null" })
-public class FluidRetrievalBE extends NodeBaseBE implements FluidNodeType{
+public class FluidRetrievalBE extends NodeBaseBE implements FluidNodeType {
 
     public FluidRetrievalBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -41,6 +42,21 @@ public class FluidRetrievalBE extends NodeBaseBE implements FluidNodeType{
     @Override
     public FluidStack getFluidStack() {
         return getFirstFluid((IFluidHandler) getOutputCap());
+    }
+
+    @Override
+    public BlockPos defineInput() {
+        return getOutputPos();
+    }
+
+    @Override
+    public Direction getInputDirection(Level level, BlockPos start) {
+        return getDirectionFromPath(level, start);
+    }
+
+    @Override
+    public Direction getOutputDirection(Level level, BlockPos start) {
+        return getNodeDirection();
     }
 
 }

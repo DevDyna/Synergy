@@ -5,6 +5,7 @@ import com.devdyna.synergy.api.node.builder.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.BlockCapability;
@@ -12,7 +13,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
 @SuppressWarnings("null")
-public class EnergyRetrievalBE extends NodeBaseBE implements EnergyNodeType{
+public class EnergyRetrievalBE extends NodeBaseBE implements EnergyNodeType {
 
     public EnergyRetrievalBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -35,6 +36,21 @@ public class EnergyRetrievalBE extends NodeBaseBE implements EnergyNodeType{
     @Override
     public BlockPos defineOutput() {
         return getInputPos();
+    }
+
+    @Override
+    public BlockPos defineInput() {
+        return getOutputPos();
+    }
+
+    @Override
+    public Direction getInputDirection(Level level, BlockPos start) {
+        return getDirectionFromPath(level, start);
+    }
+
+    @Override
+    public Direction getOutputDirection(Level level, BlockPos start) {
+        return getNodeDirection();
     }
 
 }

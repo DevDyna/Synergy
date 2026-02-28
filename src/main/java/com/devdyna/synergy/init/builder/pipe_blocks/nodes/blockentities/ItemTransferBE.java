@@ -43,4 +43,9 @@ public class ItemTransferBE extends NodeBaseBE implements ItemNodeType {
         return getFirstItem((IItemHandler) getInputCap());
     }
 
+    @Override
+    public BlockPos defineInput() {
+        return getInputPos();
+    }
+
 }

@@ -12,7 +12,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 
 @SuppressWarnings({ "null" })
-public class EnergyTransferBE extends NodeBaseBE implements EnergyNodeType{
+public class EnergyTransferBE extends NodeBaseBE implements EnergyNodeType {
 
     public EnergyTransferBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -24,7 +24,7 @@ public class EnergyTransferBE extends NodeBaseBE implements EnergyNodeType{
 
     @Override
     protected void executeEnergy(IEnergyStorage input, IEnergyStorage output) {
-        moveEnergy(input, output, input.getEnergyStored());//TODO UPGRADE, #WE_NEED_NODE_UPGRADES_NOW
+        moveEnergy(input, output, input.getEnergyStored());// TODO UPGRADE, #WE_NEED_NODE_UPGRADES_NOW
     }
 
     @Override
@@ -35,6 +35,11 @@ public class EnergyTransferBE extends NodeBaseBE implements EnergyNodeType{
     @Override
     public BlockPos defineOutput() {
         return getOutputPos();
+    }
+
+    @Override
+    public BlockPos defineInput() {
+        return getInputPos();
     }
 
 }

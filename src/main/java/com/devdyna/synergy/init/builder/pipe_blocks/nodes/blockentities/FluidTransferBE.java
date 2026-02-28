@@ -13,7 +13,7 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
 @SuppressWarnings({ "null" })
-public class FluidTransferBE extends NodeBaseBE implements FluidNodeType{
+public class FluidTransferBE extends NodeBaseBE implements FluidNodeType {
 
     public FluidTransferBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -41,6 +41,11 @@ public class FluidTransferBE extends NodeBaseBE implements FluidNodeType{
     @Override
     public FluidStack getFluidStack() {
         return getFirstFluid((IFluidHandler) getInputCap());
+    }
+
+    @Override
+    public BlockPos defineInput() {
+        return getInputPos();
     }
 
 }

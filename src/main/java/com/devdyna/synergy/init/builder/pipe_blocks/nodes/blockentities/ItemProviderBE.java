@@ -65,13 +65,13 @@ public class ItemProviderBE extends NodeBaseBE
     }
 
     @Override
-    public BlockPos getInput() {
-        return getInputPos();
+    public ItemStack getItemStack() {
+        return getRecipe(defineInput()).isPresent() ? getRecipe(defineInput()).get().value().getOutput()
+                : ItemStack.EMPTY;
     }
 
     @Override
-    public ItemStack getItemStack() {
-        return getRecipe(getInput()).isPresent() ? getRecipe(getInput()).get().value().getOutput() : ItemStack.EMPTY;
+    public BlockPos defineInput() {
+        return getInputPos();
     }
-
 }
