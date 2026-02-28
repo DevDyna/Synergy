@@ -115,18 +115,17 @@ public class LogicBoxBE extends AnimatedChestBE implements NoGuiStorage, Restric
 
             @Override
             public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-                return slot == FUNCTIONAL_SLOT ? (getStorage().getStackInSlot(FILTER_SLOT).isEmpty()
+                return getFilterSlot().isEmpty()
                         ? getStorage().insertItem(slot, stack, simulate)
                         : (ItemStack.isSameItemSameComponents(stack,
-                                getStorage().getStackInSlot(FILTER_SLOT)) == !isInverted()
+                                getFilterSlot()) == !isInverted()
                                         ? getStorage().insertItem(slot, stack, simulate)
-                                        : stack))
-                        : stack;
+                                        : stack);
             }
 
             @Override
             public ItemStack extractItem(int slot, int amount, boolean simulate) {
-                return slot == FUNCTIONAL_SLOT ? getStorage().extractItem(slot, amount, simulate) : ItemStack.EMPTY;
+                return getStorage().extractItem(slot, amount, simulate);
             }
 
             @Override
@@ -136,13 +135,12 @@ public class LogicBoxBE extends AnimatedChestBE implements NoGuiStorage, Restric
 
             @Override
             public boolean isItemValid(int slot, ItemStack stack) {
-                return slot == FUNCTIONAL_SLOT ? (getStorage().getStackInSlot(FILTER_SLOT).isEmpty()
+                return getFilterSlot().isEmpty()
                         ? getStorage().isItemValid(slot, stack)
                         : (ItemStack.isSameItemSameComponents(stack,
-                                getStorage().getStackInSlot(FILTER_SLOT)) == !isInverted()
+                                getFilterSlot()) == !isInverted()
                                         ? getStorage().isItemValid(slot, stack)
-                                        : false))
-                        : false;
+                                        : false);
             }
 
         };
