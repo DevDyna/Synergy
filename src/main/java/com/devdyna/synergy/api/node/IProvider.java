@@ -22,7 +22,7 @@ public interface IProvider<I extends RecipeInput, T extends Recipe<I>, L> {
      */
     abstract Optional<RecipeHolder<T>> getRecipe(BlockPos pos);
 
-    abstract BlockPos getInput();
+    abstract BlockPos defineInput();
 
     default boolean isValidSet(BlockState state, Direction dir, BlockPos pos, Level level) {
 
@@ -41,7 +41,7 @@ public interface IProvider<I extends RecipeInput, T extends Recipe<I>, L> {
         var requireRight = !(recipe.getRight() == null || recipe.getRight().isAir());
 
         if (requireBelow)
-            if (!NodeBaseBE.check(level, getInput().relative(dir), recipe.getBelow()))
+            if (!NodeBaseBE.check(level, defineInput().relative(dir), recipe.getBelow()))
                 return false;
 
         var dirs = Arrays.asList(Direction.values()).stream()

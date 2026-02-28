@@ -4,6 +4,7 @@ import java.util.*;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.api.beLogic.DirectionBasedItemHandler;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.node.FluidNodeType;
 import com.devdyna.synergy.api.node.ItemNodeType;
@@ -57,6 +58,18 @@ public abstract class NodeBaseBE extends BlockEntity {
     public void tickBoth() {
     }
 
+    public Direction getInputDirection(Level level, BlockPos start) {
+        return getNodeDirection();
+    }
+
+    public Direction getNodeDirection(){
+        return getBlockState().getValue(nodeType.FACING).getOpposite();
+    }
+
+    public Direction getOutputDirection(Level level, BlockPos start) {
+        return getDirectionFromPath(level, start);
+    }
+
     /**
      * Server only ticking
      * <br/>
@@ -82,8 +95,8 @@ public abstract class NodeBaseBE extends BlockEntity {
         var inBE = level.getBlockEntity(input);
         var outBE = level.getBlockEntity(output);
         var capType = getCapType();
-        this.inCap = capType.getCapability(level, input, inState, inBE, null);
-        this.outCap = capType.getCapability(level, output, outState, outBE, null);
+        this.inCap = capType.getCapability(level, input, inState, inBE, getInputDirection(level, defineInput()));
+        this.outCap = capType.getCapability(level, output, outState, outBE, getOutputDirection(level, defineOutput()));
         if (capType == Capabilities.ItemHandler.BLOCK) {
             executeItem((IItemHandler) inCap, (IItemHandler) outCap);
         } else if (capType == Capabilities.EnergyStorage.BLOCK) {
@@ -170,6 +183,14 @@ public abstract class NodeBaseBE extends BlockEntity {
             if (itemHandler instanceof IItemHandler handler) {
                 if (getNodeBE() instanceof ItemNodeType it) {
 
+                    if (blockEntity instanceof DirectionBasedItemHandler directional) {
+                        for (Integer validSlots : directional.getValidSlots()) {
+                            if (directional.getStorageRestricted(dir).isItemValid(validSlots, it.getItemStack()))
+                                ;
+                            return true;
+                        }
+                    }
+
                     if (blockEntity instanceof BaseMachineBE machineBE) {
                         for (int index = 0; index < machineBE.getInputSlotIndex().size(); index++) {
                             if (machineBE.isItemValid(machineBE.getInputSlotIndex().get(index), it.getItemStack())) {
@@ -254,6 +275,47 @@ public abstract class NodeBaseBE extends BlockEntity {
     }
 
     /**
+     * return the output direction
+     */
+    @Nullable
+    protected Direction getDirectionFromPath(Level level, BlockPos start) {
+        Queue<BlockPos> queue = new ArrayDeque<>();
+        Set<BlockPos> visited = new HashSet<>();
+        queue.add(start);
+
+        while (!queue.isEmpty()) {
+            BlockPos current = queue.poll();
+
+            if (failedRoutes.contains(current))
+                continue;
+
+            visited.add(current);
+            BlockState state = level.getBlockState(current);
+
+            for (Direction dir : Direction.values()) {
+                BlockPos next = current.relative(dir);
+
+                if (!visited.contains(next) &&
+                        state.getValue(pipeType.D2P(dir)) == pipeProperties.TRUE) {
+
+                    BlockState neighbor = level.getBlockState(next);
+
+                    if (match(level, current, state, dir, next, neighbor)) {
+                        return dir;
+                    }
+
+                    if (neighbor.is(zBlockTag.CAN_CONNECT)) {
+                        queue.add(next);
+                    }
+                }
+            }
+        }
+
+        failedRoutes.add(start);
+        return null;
+    }
+
+    /**
      * return the input blockpos
      */
     @Nullable
@@ -289,5 +351,7 @@ public abstract class NodeBaseBE extends BlockEntity {
     }
 
     public abstract BlockPos defineOutput();
+
+    public abstract BlockPos defineInput();
 
 }
