@@ -392,8 +392,7 @@ public class DataLang extends LanguageProvider {
 
                 add(ID + ".upgrades.title", TIP_COLOR + "Upgrade Modifiers");
 
-                add(ID + ".upgrades.modifier.energy.efficiency", TIP_COLOR + "Energy Usage: %s");
-                add(ID + ".upgrades.modifier.energy.capacity", TIP_COLOR + "Energy Capacity: %s");
+                add(ID + ".upgrades.modifier.energy", TIP_COLOR + "Energy Usage: %s");
                 add(ID + ".upgrades.modifier.speed", TIP_COLOR + "Recipe Speed: %s");
                 add(ID + ".upgrades.modifier.luck", TIP_COLOR + "Secondary Output: %s");
                 add(ID + ".upgrades.modifier.fluid", TIP_COLOR + "Fluid Usage: %s");
