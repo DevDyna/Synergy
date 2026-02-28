@@ -5,6 +5,7 @@ import java.util.*;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.beLogic.DirectionBasedItemHandler;
+import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
 import com.devdyna.synergy.api.machine.BaseMachineBE;
 import com.devdyna.synergy.api.node.FluidNodeType;
 import com.devdyna.synergy.api.node.ItemNodeType;
@@ -189,11 +190,17 @@ public abstract class NodeBaseBE extends BlockEntity {
             if (itemHandler instanceof IItemHandler handler) {
                 if (getNodeBE() instanceof ItemNodeType it) {
 
+                    if (blockEntity instanceof RestrictedItemHandler r) {
+                        for (int i = 0; i < r.getStorageRestricted().getSlots(); i++) {
+                            if (r.getStorageRestricted().isItemValid(i, it.getItemStack()))
+                                return true;
+                        }
+                    }
+
                     if (blockEntity instanceof DirectionBasedItemHandler directional) {
                         for (Integer validSlots : directional.getValidSlots()) {
                             if (directional.getStorageRestricted(dir).isItemValid(validSlots, it.getItemStack()))
-                                ;
-                            return true;
+                                return true;
                         }
                     }
 
