@@ -137,7 +137,7 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .addResult(zItems.ARGENTITE, 0.25f)
                                 .addResult(zItems.AURICUPRIDE, 0.15f)
                                 .unlockedBy()
-                                .save(c,x.rl("rock_crusher/deepslate"));
+                                .save(c, x.rl("rock_crusher/deepslate"));
 
                 RockCrusherRecipeBuilder.of()
                                 .fluid(Fluids.WATER, 250)
@@ -752,6 +752,11 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .output(brick)
                                 .unlockedBy()
                                 .save(c);
+
+                SimpleCookingRecipeBuilder.smelting(x.ingredient(ball), MISC, brick, 0.1F, 200)
+                                .unlockedBy(getHasName(ball), has(brick))
+                                .save(c, ID + ":" + x.path(brick) + "_from_" + x.path(ball)
+                                                + "_smelting");
         }
 
         protected static void twoByTwoPacker(RecipeOutput c, ItemLike output, TagKey<Item> tag) {
