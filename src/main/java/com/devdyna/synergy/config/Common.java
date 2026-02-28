@@ -63,6 +63,8 @@ public class Common {
         // ic4
         public static IntValue MACHINE_MAX_FE;// 100k
 
+        public static BooleanValue ENABLE_SHIFT_INVERT_MACHINE_PLACEMENT;
+
         public static IntValue MACHINE_MAX_SPEED_UPGRADES_TYPE;// 4
         public static IntValue MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE;// max
         // public static IntValue MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE;// max
@@ -307,6 +309,10 @@ public class Common {
 
                 decor.simple("Base Machine and Upgrades");
 
+                ENABLE_SHIFT_INVERT_MACHINE_PLACEMENT = bool(
+                                "Allow to place any machine on the opposite side when pressed shift during the placement",
+                                "enable_shift_invert_facing", false);
+
                 MACHINE_MAX_FE = number("Base max energy stored",
                                 "base_machine_max_fe", 100_000);
 
@@ -330,7 +336,7 @@ public class Common {
 
                 MACHINE_MINIMAL_TICK_DELAY = number("Minimal tick delay based on upgrade installed",
                                 "min_tick_rate", 1);
-                                
+
                 MACHINE_MINIMAL_FE_COST = number("Minimal Energy cost based on upgrade installed",
                                 "min_fe_cost", 5);
 

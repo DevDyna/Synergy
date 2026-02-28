@@ -3,6 +3,8 @@ package com.devdyna.synergy.api.machine;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.block.BlockMenu;
+import com.devdyna.synergy.config.Common;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
@@ -53,8 +55,13 @@ public abstract class BaseMachineBlock extends BlockMenu {
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext c) {
-        return defaultBlockState().setValue(FACING, c.getPlayer().isCrouching() ? c.getNearestLookingDirection()
-                : c.getNearestLookingDirection().getOpposite()).setValue(ENABLED, false);
+        return defaultBlockState().setValue(FACING,
+                Common.ENABLE_SHIFT_INVERT_MACHINE_PLACEMENT
+                        .get() ? (c.getPlayer().isCrouching() ? c.getNearestLookingDirection()
+                                : c.getNearestLookingDirection().getOpposite())
+                                : c.getNearestLookingDirection().getOpposite()
+        )
+                .setValue(ENABLED, false);
     }
 
     @Override
