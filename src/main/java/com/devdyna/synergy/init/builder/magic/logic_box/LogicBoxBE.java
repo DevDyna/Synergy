@@ -1,5 +1,7 @@
 package com.devdyna.synergy.init.builder.magic.logic_box;
 
+import java.util.List;
+
 import com.devdyna.synergy.api.basebe.be.AnimatedChestBE;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
@@ -26,8 +28,9 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 @SuppressWarnings("null")
 public class LogicBoxBE extends AnimatedChestBE implements NoGuiStorage, RestrictedItemHandler {
 
-    public static final int FILTER_SLOT = 0;
-    public static final int FUNCTIONAL_SLOT = 1;
+    
+    public static final int FUNCTIONAL_SLOT = 0;
+    public static final int FILTER_SLOT = 1;
 
     public LogicBoxBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -163,6 +166,11 @@ public class LogicBoxBE extends AnimatedChestBE implements NoGuiStorage, Restric
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
         return saveWithoutMetadata(pRegistries);
+    }
+
+    @Override
+    public List<Integer> getValidSlots() {
+       return List.of(FUNCTIONAL_SLOT);
     }
 
 }

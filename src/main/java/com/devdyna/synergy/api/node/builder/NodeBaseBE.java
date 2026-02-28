@@ -191,8 +191,9 @@ public abstract class NodeBaseBE extends BlockEntity {
                 if (getNodeBE() instanceof ItemNodeType it) {
 
                     if (blockEntity instanceof RestrictedItemHandler r) {
-                        for (int i = 0; i < r.getStorageRestricted().getSlots(); i++) {
-                            if (r.getStorageRestricted().isItemValid(i, it.getItemStack()))
+                        if(r.getValidSlots() != null)
+                        for (Integer validSlots : r.getValidSlots()) {
+                            if (r.getStorageRestricted().isItemValid(validSlots, it.getItemStack()))
                                 return true;
                         }
                     }

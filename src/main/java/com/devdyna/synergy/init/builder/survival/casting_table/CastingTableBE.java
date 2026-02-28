@@ -1,5 +1,6 @@
 package com.devdyna.synergy.init.builder.survival.casting_table;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.Nullable;
@@ -356,6 +357,11 @@ public class CastingTableBE extends TickingBE
     @Override
     public Ticker getTicker() {
         return ticker;
+    }
+
+    @Override
+    public List<Integer> getValidSlots() {
+        return List.of(MOLD_SLOT);
     }
 
 }
