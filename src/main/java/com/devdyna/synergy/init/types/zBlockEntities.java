@@ -11,6 +11,7 @@ import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.simple.Si
 import com.devdyna.synergy.init.builder.automation.resource_gen.water.advanced.AdvancedWaterGenBE;
 import com.devdyna.synergy.init.builder.automation.resource_gen.water.elite.EliteWaterGenBE;
 import com.devdyna.synergy.init.builder.automation.resource_gen.water.simple.SimpleWaterGenBE;
+import com.devdyna.synergy.init.builder.automation.router.RouterBE;
 import com.devdyna.synergy.init.builder.automation.solar_panel.SolarPanelBE;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerBE;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankBE;
@@ -195,5 +196,9 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LogicBoxBE>> LOGIC_BOX = Material
                         .createBlockEntity(zStatic.Blocks.logic_box, LogicBoxBE::new,
                                         zBlocks.LOGIC_BOX);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<RouterBE>> ROUTER = Material
+                        .createBlockEntity(zStatic.Blocks.router, RouterBE::new,
+                                        zBlocks.ROUTER);
 
 }

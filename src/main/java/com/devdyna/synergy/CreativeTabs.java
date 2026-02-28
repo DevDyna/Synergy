@@ -99,6 +99,7 @@ public class CreativeTabs {
             event.accept(zBlocks.SPRINKLER.get());
             event.accept(zBlocks.SIMPLE_TANK.get());
             event.accept(zBlocks.CHOPPER.get());
+            event.accept(zBlocks.ROUTER.get());
             ClazzUtil.getAllzBlocks(zBlocks.zResourceGenerators)
                     .forEach(i -> event.accept(i.get()));
         }

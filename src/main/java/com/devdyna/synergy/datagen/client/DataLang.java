@@ -334,6 +334,8 @@ public class DataLang extends LanguageProvider {
                                 "Simple Delay Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.Blocks.logic_box,
                                 "Logic Box Info");
+                add("config.jade.plugin_" + ID + "." + zStatic.Blocks.router,
+                                "Router Info");
 
                 add(Main.ID + ".color", "Color: %d");
 
@@ -490,6 +492,8 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jei.atlas.type.reciever", "Reciever");
                 add(ID + ".jei.atlas.type.producer", "Producer");
 
+                add(ID + "." + zStatic.Blocks.router, TIP_COLOR
+                                + "Route items to be extracted from differents sides based on some internal filters");
 
         }
 

@@ -34,8 +34,8 @@ public class Capability {
                                                 zBlocks.FOUNDRY,
                                                 zBlocks.CASTING_TABLE,
                                                 zBlocks.CHOPPER,
-                                                zBlocks.LOGIC_BOX
-
+                                                zBlocks.LOGIC_BOX,
+                                                zBlocks.ROUTER
                                 ));
 
                 registerEnergyBlock(event, x.toBlocks(

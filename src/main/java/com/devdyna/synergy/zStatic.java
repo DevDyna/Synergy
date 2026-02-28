@@ -249,6 +249,7 @@ public class zStatic {
         public static String sprinkler = "sprinkler";
         public static String harvester = "harvester";
         public static String chopper = "tree_chopper";
+        public static String router = "router";
         public static String solar_panel = "solar_panel";
         public static String healer = "healer";
 

@@ -33,6 +33,7 @@ import com.devdyna.synergy.init.builder.automation.resource_gen.cobble.simple.Si
 import com.devdyna.synergy.init.builder.automation.resource_gen.water.advanced.AdvancedWaterGenBlock;
 import com.devdyna.synergy.init.builder.automation.resource_gen.water.elite.EliteWaterGenBlock;
 import com.devdyna.synergy.init.builder.automation.resource_gen.water.simple.SimpleWaterGenBlock;
+import com.devdyna.synergy.init.builder.automation.router.RouterBlock;
 import com.devdyna.synergy.init.builder.automation.solar_panel.SolarPanelBLK;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerBLK;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankBlock;
@@ -594,6 +595,10 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> CHOPPER = Material.registerItemBlock(
                         zStatic.Blocks.chopper,
                         () -> new ChopperBlock());
+
+        public static final DeferredHolder<Block, Block> ROUTER = Material.registerItemBlock(
+                        zStatic.Blocks.router,
+                        () -> new RouterBlock());
 
         // ---------------------------------------------------------------------------------------//
 

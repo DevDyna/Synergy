@@ -5,6 +5,7 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.automation.chopper.ChopperAOE;
 import com.devdyna.synergy.init.builder.automation.chopper.ChopperScreen;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterAOE;
+import com.devdyna.synergy.init.builder.automation.router.RouterScreen;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerAOE;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankFluidRender;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterScreen;
@@ -91,6 +92,7 @@ public class Client {
         event.register(zMachines.ROCK_CRUSHER.menu().get(), RockCrusherScreen::new);
 
         event.register(zContainer.CHOPPER.get(), ChopperScreen::new);
+        event.register(zContainer.ROUTER.get(), RouterScreen::new);
     }
 
     @SuppressWarnings("deprecation")
