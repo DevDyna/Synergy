@@ -52,18 +52,13 @@
 - [ ] sap & rubber recipe
 
 - [ ] rework batteries
-- [x] foundry recipes use deprecated namespace
-- [x] tool models dont work correctly
-- [x] evaporating basin use incorrect recipetype namespace
 
-- [ ] chopper slots need to change when item isn't empty to blank
+
 
 - [ ] evaporation basin booster jei(?)
 - [ ] drying racks booster jei(?)
 
 - [ ] Forestry Peatfarm (?)
-
-- [x] energy consumed tooltip on menu
 
 - [ ] fossil usage
 
@@ -89,7 +84,8 @@
 
 - [ ] replace many drawString -> drawCenteredString
 
-- [x] nodes void items when interact with Routers
+- [ ] chopper slots need to change when item isn't empty to blank
+- [ ] chopper configs
 
 ### Survival expansion
 
