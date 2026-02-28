@@ -87,6 +87,8 @@
 - [ ] chopper slots need to change when item isn't empty to blank
 - [ ] chopper configs
 
+- [ ] coockoo clock SoundEvents.UI_BUTTON_CLICK
+
 ### Survival expansion
 
 - [ ] scrap and slags
