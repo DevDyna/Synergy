@@ -37,6 +37,8 @@ public abstract class NodeBaseBE extends BlockEntity {
     private BlockPos output;
     private Object inCap;
     private Object outCap;
+
+    private Direction outputDir;
     // private BlockEntity inBE;
     // private BlockEntity outBE;
 
@@ -58,16 +60,20 @@ public abstract class NodeBaseBE extends BlockEntity {
     public void tickBoth() {
     }
 
-    public Direction getInputDirection(Level level, BlockPos start) {
+    public Direction getInputDirection() {
         return getNodeDirection();
     }
 
-    public Direction getNodeDirection(){
+    public Direction getNodeDirection() {
         return getBlockState().getValue(nodeType.FACING).getOpposite();
     }
 
-    public Direction getOutputDirection(Level level, BlockPos start) {
-        return getDirectionFromPath(level, start);
+    public Direction getOutputDirection() {
+        return getDirectionFromPath();
+    }
+
+    public Direction getDirectionFromPath() {
+        return this.outputDir;
     }
 
     /**
@@ -95,8 +101,8 @@ public abstract class NodeBaseBE extends BlockEntity {
         var inBE = level.getBlockEntity(input);
         var outBE = level.getBlockEntity(output);
         var capType = getCapType();
-        this.inCap = capType.getCapability(level, input, inState, inBE, getInputDirection(level, defineInput()));
-        this.outCap = capType.getCapability(level, output, outState, outBE, getOutputDirection(level, defineOutput()));
+        this.inCap = capType.getCapability(level, input, inState, inBE, getInputDirection());
+        this.outCap = capType.getCapability(level, output, outState, outBE, getOutputDirection());
         if (capType == Capabilities.ItemHandler.BLOCK) {
             executeItem((IItemHandler) inCap, (IItemHandler) outCap);
         } else if (capType == Capabilities.EnergyStorage.BLOCK) {
@@ -245,7 +251,11 @@ public abstract class NodeBaseBE extends BlockEntity {
     private BlockPos getOutputPos(Level level, BlockPos start) {
         Queue<BlockPos> queue = new ArrayDeque<>();
         Set<BlockPos> visited = new HashSet<>();
+        // remove node from new possible connection
         queue.add(start);
+
+        this.outputDir = getNodeDirection().getOpposite();
+
         while (!queue.isEmpty()) {
             BlockPos current = queue.poll();
             if (failedRoutes.contains(current))
@@ -261,6 +271,7 @@ public abstract class NodeBaseBE extends BlockEntity {
                     BlockState neighbor = level.getBlockState(next);
 
                     if (match(level, current, state, dir, next, neighbor)) {
+                        this.outputDir = dir;
                         return next;
                     }
 
@@ -270,47 +281,6 @@ public abstract class NodeBaseBE extends BlockEntity {
                 }
             }
         }
-        failedRoutes.add(start);
-        return null;
-    }
-
-    /**
-     * return the output direction
-     */
-    @Nullable
-    protected Direction getDirectionFromPath(Level level, BlockPos start) {
-        Queue<BlockPos> queue = new ArrayDeque<>();
-        Set<BlockPos> visited = new HashSet<>();
-        queue.add(start);
-
-        while (!queue.isEmpty()) {
-            BlockPos current = queue.poll();
-
-            if (failedRoutes.contains(current))
-                continue;
-
-            visited.add(current);
-            BlockState state = level.getBlockState(current);
-
-            for (Direction dir : Direction.values()) {
-                BlockPos next = current.relative(dir);
-
-                if (!visited.contains(next) &&
-                        state.getValue(pipeType.D2P(dir)) == pipeProperties.TRUE) {
-
-                    BlockState neighbor = level.getBlockState(next);
-
-                    if (match(level, current, state, dir, next, neighbor)) {
-                        return dir;
-                    }
-
-                    if (neighbor.is(zBlockTag.CAN_CONNECT)) {
-                        queue.add(next);
-                    }
-                }
-            }
-        }
-
         failedRoutes.add(start);
         return null;
     }

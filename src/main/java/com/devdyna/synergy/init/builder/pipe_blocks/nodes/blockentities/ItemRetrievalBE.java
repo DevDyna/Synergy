@@ -6,7 +6,6 @@ import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.BlockCapability;
@@ -50,13 +49,13 @@ public class ItemRetrievalBE extends NodeBaseBE implements ItemNodeType {
     }
 
     @Override
-    public Direction getInputDirection(Level level, BlockPos start) {
-        return getDirectionFromPath(level, start);
+    public Direction getInputDirection() {
+        return getDirectionFromPath();
     }
 
     @Override
-    public Direction getOutputDirection(Level level, BlockPos start) {
-        return getNodeDirection();
+    public Direction getOutputDirection() {
+        return getNodeDirection().getOpposite();
     }
 
 }
