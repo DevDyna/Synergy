@@ -105,7 +105,7 @@ public class LogicBoxBE extends AnimatedChestBE implements NoGuiStorage, Restric
 
             @Override
             public int getSlots() {
-                return getStorage().getSlots();
+                return 1;
             }
 
             @Override
