@@ -256,5 +256,7 @@ public class zItemTag {
         public static final TagKey<Item> NODE_ENERGY = Material.tagItem("nodes/energy");
 
         public static final TagKey<Item> DIRTS = Material.tagItem("dirts","c");
+       
+        public static final TagKey<Item> IRONWOOD_LOGS = Material.tagItem("ironwood_logs");
 
 }

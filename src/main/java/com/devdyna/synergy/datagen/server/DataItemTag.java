@@ -375,6 +375,22 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(ItemTags.LEAVES)
                                 .add(zBlocks.IRON_WOOD.getLeaves().get().asItem());
 
+                tag(ItemTags.PLANKS)
+                                .add(zBlocks.IRON_WOOD.getPlanks().get().asItem());
+
+                tag(ItemTags.WOODEN_SLABS)
+                                .add(zBlocks.IRON_WOOD.getSlab().get().asItem());
+                tag(ItemTags.SLABS)
+                                .add(zBlocks.IRON_WOOD.getSlab().get().asItem());
+
+                tag(ItemTags.WOODEN_STAIRS)
+                                .add(zBlocks.IRON_WOOD.getStair().get().asItem());
+                tag(ItemTags.STAIRS)
+                                .add(zBlocks.IRON_WOOD.getStair().get().asItem());
+
+                tag(zItemTag.IRONWOOD_LOGS)
+                                .add(ArrayUtils.map(zBlocks.IRON_WOOD.getLogs(), Block::asItem, Item[]::new));
+
         }
 
 }

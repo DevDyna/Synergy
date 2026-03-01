@@ -76,4 +76,7 @@ public class zBlockTag {
 
         public static final TagKey<Block> DRYING_RACK_HEATER = Material
                         .tagBlock("drying_rack_heater");
+
+        public static final TagKey<Block> IRONWOOD_LOGS = Material.tagBlock("ironwood_logs");
+
 }

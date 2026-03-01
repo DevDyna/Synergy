@@ -69,6 +69,7 @@ public class DataBlockTag extends BlockTagsProvider {
                                 .add(zBlocks.IRON_WOOD.getLogs())
                                 .add(zBlocks.IRON_WOOD.getDerivates())
                                 .add(zBlocks.IRON_WOOD.getSapling().get())
+                                .add(zBlocks.IRON_WOOD.getPlanks().get())
                                 .add(
                                                 zBlocks.WOODEN_TINY_CHEST.get(),
                                                 zBlocks.WAXED_PLANKS.get(),
@@ -226,6 +227,22 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(BlockTags.LEAVES)
                                 .add(zBlocks.IRON_WOOD.getLeaves().get());
+
+                tag(BlockTags.PLANKS)
+                                .add(zBlocks.IRON_WOOD.getPlanks().get());
+
+                tag(BlockTags.WOODEN_SLABS)
+                                .add(zBlocks.IRON_WOOD.getSlab().get());
+                tag(BlockTags.SLABS)
+                                .add(zBlocks.IRON_WOOD.getSlab().get());
+
+                tag(BlockTags.WOODEN_STAIRS)
+                                .add(zBlocks.IRON_WOOD.getStair().get());
+                tag(BlockTags.STAIRS)
+                                .add(zBlocks.IRON_WOOD.getStair().get());
+
+                tag(zBlockTag.IRONWOOD_LOGS)
+                                .add(zBlocks.IRON_WOOD.getLogs());
 
         }
 
