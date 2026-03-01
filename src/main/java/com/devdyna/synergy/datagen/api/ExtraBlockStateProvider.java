@@ -81,8 +81,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
 
         protected void leaveBlock(DeferredHolder<Block, Block> b, String prefix) {
                 simpleBlock(b.get(), models().singleTexture(b.getRegisteredName(), mcLoc("block/leaves"), "all",
-                                x.rl(b.getRegisteredName().replace(ID + ":", prefix)))
-                                .renderType(DataGenUtil.CUTOUT));
+                                x.rl(b.getRegisteredName().replace(ID + ":", prefix))));
         }
 
         protected void biPhaceBLock(Block block, BooleanProperty prop, ModelFile off, ModelFile on) {
