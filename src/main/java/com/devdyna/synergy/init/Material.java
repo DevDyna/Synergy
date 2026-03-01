@@ -72,7 +72,7 @@ public class Material {
                 zComponents.register(bus);
                 zCreativeTab.register(bus);
                 zRecipeTypes.register(bus);
-
+                zBiomeTags.register(bus);
                 zMachines.register(bus);
                 zEntityTag.register(bus);
                 zWorldGenFeatures.register(bus);
