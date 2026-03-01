@@ -1,5 +1,12 @@
 {
   "values": [
+    "synergy:ironwood_log",
+    "synergy:stripped_ironwood_log",
+    "synergy:ironwood_wood",
+    "synergy:stripped_ironwood_wood",
+    "synergy:ironwood_planks_slab",
+    "synergy:ironwood_planks_stair",
+    "synergy:ironwood_sapling",
     "synergy:tiny_wooden_chest",
     "synergy:waxed_planks",
     "synergy:waxed_planks_slab",

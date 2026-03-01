@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "synergy:block/decorative/ironwood_leaves"
+  }
+}

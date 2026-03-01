@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "synergy:block/decorative/ironwood_planks",
+    "side": "synergy:block/decorative/ironwood_planks",
+    "top": "synergy:block/decorative/ironwood_planks"
+  }
+}

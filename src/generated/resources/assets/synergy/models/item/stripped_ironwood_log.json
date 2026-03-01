@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "synergy:block/decorative/column/end/stripped_ironwood_log",
+    "side": "synergy:block/decorative/column/side/stripped_ironwood_log"
+  }
+}

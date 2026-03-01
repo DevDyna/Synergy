@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "synergy:block/stripped_ironwood_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "synergy:block/stripped_ironwood_log"
+    },
+    "axis=z": {
+      "model": "synergy:block/stripped_ironwood_log_horizontal",
+      "x": 90
+    }
+  }
+}
