@@ -134,8 +134,6 @@ public class DataLootBlock extends BlockLootSubProvider {
 
                 ).stream().map(DeferredHolder::get).forEach(this::dropSelf);
 
-                Arrays.asList(zBlocks.IRON_WOOD.getLogs()).forEach(this::dropSelf);
-
                 zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get).forEach(this::dropSelf);
 
                 List.of(
@@ -143,7 +141,8 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.zCoolers,
                                 zBlocks.zBlockSlab,
                                 zBlocks.zBlockStair,
-                                zBlocks.zDecorative
+                                zBlocks.zDecorative,
+                                zBlocks.zColumn
 
                 ).forEach(t -> t.getEntries().forEach(b -> dropSelf(b.get())));
 
