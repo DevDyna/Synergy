@@ -357,7 +357,7 @@ public class Plugin implements IModPlugin {
                                                 r.addAlias(e, ID + ".jei.atlas.type.producer");
 
                                         if (e.is(zItemTag.NODES_RETRIEVAL))
-                                                r.addAlias(e, ID + ".jei.atlas.type.attractor");
+                                                r.addAlias(e, ID + ".jei.atlas.type.reciever");
 
                                 });
 
