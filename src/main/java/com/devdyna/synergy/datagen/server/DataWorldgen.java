@@ -68,7 +68,7 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
                 new PlacedFeature(
                         c.lookup(Registries.CONFIGURED_FEATURE)
                                 .getOrThrow(zWorldGenFeatures.ConfiguredFeatures.IRONWOOD),
-                        VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.05f, 3),
+                        VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.005f, 3),
                                 zBlocks.IRON_WOOD.getSapling().get())));
     }
 
