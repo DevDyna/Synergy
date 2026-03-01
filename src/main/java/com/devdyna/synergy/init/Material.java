@@ -344,13 +344,13 @@ public class Material {
         }
 
         public static DeferredHolder<Block, Block> log(String id, Properties prop,
-                        DeferredHolder<Block, Block> stripped) {
+                        Supplier<DeferredHolder<Block, Block>> stripped) {
                 return Material.registerItemBlock(id, () -> new RotatedPillarBlock(prop) {
                         @Override
                         public BlockState getToolModifiedState(BlockState state, UseOnContext use, ItemAbility ability,
                                         boolean sim) {
                                 return ability == ItemAbilities.AXE_STRIP
-                                                ? stripped.get().defaultBlockState().setValue(AXIS,
+                                                ? stripped.get().get().defaultBlockState().setValue(AXIS,
                                                                 state.getValue(AXIS))
                                                 : super.getToolModifiedState(state, use,
                                                                 ability, sim);

@@ -74,7 +74,7 @@ public class WoodFamily extends BaseBlockFamily<WoodFamily> {
         public WoodFamily log() {
                 this.log = Material.log(id + "_log", log_prop.mapColor(
                                 (s) -> s.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? plank_map : log_map),
-                                stripped_log);
+                                () -> stripped_log);
                 allBlocks.add(log);
                 wooden.add(log);
                 return this;
@@ -88,7 +88,7 @@ public class WoodFamily extends BaseBlockFamily<WoodFamily> {
         }
 
         public WoodFamily wood() {
-                this.wood = Material.log(id + "_wood", log_prop.mapColor(log_map), stripped_wood);
+                this.wood = Material.log(id + "_wood", log_prop.mapColor(log_map), () -> stripped_wood);
                 allBlocks.add(wood);
                 wooden.add(wood);
                 return this;
@@ -176,14 +176,14 @@ public class WoodFamily extends BaseBlockFamily<WoodFamily> {
                 return wood;
         }
 
-        public Block[] getLogs(){
-         return wooden.stream().map(DeferredHolder::get)
-                .toArray(Block[]::new);
+        public Block[] getLogs() {
+                return wooden.stream().map(DeferredHolder::get)
+                                .toArray(Block[]::new);
         }
 
         public Block[] getDerivates() {
-            return derivates.stream().map(DeferredHolder::get)
-                .toArray(Block[]::new);
+                return derivates.stream().map(DeferredHolder::get)
+                                .toArray(Block[]::new);
         }
 
 }
