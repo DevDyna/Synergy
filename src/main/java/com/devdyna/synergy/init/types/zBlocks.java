@@ -610,7 +610,7 @@ public class zBlocks {
                         zStatic.Blocks.router,
                         () -> new RouterBlock());
 
-        public static final WoodFamily IRON_WOOD = WoodFamily.of("ironwood",
+        public static final WoodFamily IRON_WOOD = WoodFamily.of(zStatic.DecorativeBlocks.ironwood,
                         Properties.of()
                                         .strength(2.0F, 3.0F)
                                         .sound(SoundType.WOOD)
