@@ -92,13 +92,15 @@ public class zBlocks {
         public static final DeferredRegister.Blocks zBlock = DeferredRegister.createBlocks(Main.ID);
         /**
          * blocks not items
-         * <br/><br/>
+         * <br/>
+         * <br/>
          * prefab item traslation key
          */
         public static final DeferredRegister.Blocks zOnlyBlock = DeferredRegister.createBlocks(Main.ID);
         /**
          * blocks with hidden item
-         * <br/><br/>
+         * <br/>
+         * <br/>
          * item traslation key respect block key
          */
         public static final DeferredRegister.Blocks zHiddenBlock = DeferredRegister.createBlocks(Main.ID);
@@ -609,22 +611,38 @@ public class zBlocks {
                         () -> new RouterBlock());
 
         public static final WoodFamily IRON_WOOD = WoodFamily.of("ironwood",
-                        Properties.of().strength(2.0F, 3.0F).sound(SoundType.WOOD).instrument(NoteBlockInstrument.BASS),
+                        Properties.of()
+                                        .strength(2.0F, 3.0F)
+                                        .sound(SoundType.WOOD)
+                                        .ignitedByLava()
+                                        .instrument(NoteBlockInstrument.BASS),
                         MapColor.TERRACOTTA_BLACK, MapColor.RAW_IRON)
                         .sapling(zWorldGenFeatures.ConfiguredFeatures.IRONWOOD,
-                                        Properties.of().pushReaction(PushReaction.DESTROY).instabreak()
-                                                        .sound(SoundType.GRASS).noCollission().randomTicks()
+                                        Properties.of()
+                                                        .pushReaction(PushReaction.DESTROY)
+                                                        .instabreak()
+                                                        .sound(SoundType.GRASS)
+                                                        .noCollission()
+                                                        .randomTicks()
+                                                        .ignitedByLava()
                                                         .mapColor(MapColor.PLANT))
                         .log()
                         .stripped_log()
                         .wood()
                         .stripped_wood()
                         .planks()
-                        .leaves(Properties.of().strength(0.2F).sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)
-                                        .noOcclusion().randomTicks()
+                        .leaves(Properties.of()
+                                        .strength(0.2F)
+                                        .sound(SoundType.GRASS)
+                                        .pushReaction(PushReaction.DESTROY)
+                                        .noOcclusion()
+                                        .ignitedByLava()
+                                        .randomTicks()
                                         .isValidSpawn((s, g, p, e) -> e == EntityType.OCELOT || e == EntityType.PARROT)
-                                        .isSuffocating((s, g, p) -> false).isViewBlocking((s, g, p) -> false)
-                                        .isRedstoneConductor((s, g, p) -> false).mapColor(MapColor.PLANT))
+                                        .isSuffocating((s, g, p) -> false)
+                                        .isViewBlocking((s, g, p) -> false)
+                                        .isRedstoneConductor((s, g, p) -> false)
+                                        .mapColor(MapColor.PLANT))
                         .slab()
                         .flower_pot()
                         .stair()
