@@ -10,37 +10,38 @@ public interface ItemNodeType {
 
     default void moveItems(IItemHandler input, IItemHandler output, int maxCount) {
 
-        if (input == null || output == null)
+        if (input == null || output == null || maxCount <= 0)
             return;
 
-        for (int inSlot = 0; inSlot < input.getSlots(); inSlot++) {
+        int remaining = maxCount;
+
+        for (int inSlot = 0; inSlot < input.getSlots() && remaining > 0; inSlot++) {
+
             ItemStack inStack = input.getStackInSlot(inSlot);
             if (inStack.isEmpty())
                 continue;
 
-            ItemStack extracted = input.extractItem(inSlot, Math.min(inStack.getCount(), maxCount), true);
-            if (extracted.isEmpty())
+            ItemStack simulatedExtract = input.extractItem(inSlot, remaining, true);
+            if (simulatedExtract.isEmpty())
                 continue;
 
-            var copyExtracted = extracted.copy();
+            ItemStack toInsert = simulatedExtract.copy();
 
-            for (int outSlot = 0; outSlot < output.getSlots() && !copyExtracted.isEmpty(); outSlot++) {
-                var insered = output.insertItem(outSlot, copyExtracted, true);
+            for (int outSlot = 0; outSlot < output.getSlots() && !toInsert.isEmpty(); outSlot++) {
 
-                if (insered.isEmpty()) {
-                    output.insertItem(outSlot, input.extractItem(inSlot, copyExtracted.getCount(), false), false);
-                    break;
-                }
+                ItemStack remainder = output.insertItem(outSlot, toInsert, true);
 
-                if (insered.getCount() != copyExtracted.getCount()) {
-                    output.insertItem(outSlot,
-                            input.extractItem(inSlot, copyExtracted.getCount() - insered.getCount(), false), false);
-                    copyExtracted = insered.copy();
-                }
+                int accepted = toInsert.getCount() - remainder.getCount();
+                if (accepted <= 0)
+                    continue;
+
+                output.insertItem(outSlot, input.extractItem(inSlot, accepted, false), false);
+
+                remaining -= accepted;
+
+                toInsert = remainder;
             }
-
         }
-
     }
 
     default ItemStack getFirstItem(IItemHandler handler) {
