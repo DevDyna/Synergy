@@ -20,11 +20,8 @@ public class Main {
         Material.register(bus);
         core.registerCompat();
 
-        GameEvents.register();
+        GameEvents.register(bus);
 
-        bus.addListener(Capability::register);
-
-        bus.addListener(CreativeTabs::register);
         Config.register(mc);
 
     }
