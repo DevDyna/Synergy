@@ -119,7 +119,7 @@ public class WoodFamily extends BaseBlockFamily<WoodFamily> {
         }
 
         public WoodFamily leaves() {
-                this.leaves = Material.leaves(id + "_leaves", leaves_prop.randomTicks()
+                this.leaves = Material.leaves(id + "_leaves", leaves_prop.randomTicks().forceSolidOn()
                                 .isValidSpawn((s, g, p, e) -> e == EntityType.OCELOT || e == EntityType.PARROT));
                 allBlocks.add(leaves);
                 return this;
