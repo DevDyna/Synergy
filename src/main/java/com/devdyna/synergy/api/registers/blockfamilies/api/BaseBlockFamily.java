@@ -53,7 +53,7 @@ public abstract class BaseBlockFamily<T extends BaseBlockFamily<T>> {
     }
 
     public T createTag() {
-        return createTag(id + "_any");
+        return createTag(id + "_group");
     }
 
     public TagKey<Block> getTagkey() {
