@@ -200,6 +200,7 @@ public class zStatic {
 
     public class DecorativeBlocks {
         public static String waxed_planks = "waxed_planks";
+        public static String ironwood = "ironwood";
         public static String adobe = "adobe";
         public static String smooth_adobe = "smooth_adobe";
 
