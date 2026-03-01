@@ -56,12 +56,16 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 simpleBlockDecorative(zBlocks.SMOOTH_ADOBE);
                 simpleBlockDecorative(zBlocks.BLAST_BRICKS);
 
-                simpleBlockDecorative(zBlocks.FIRECLAY_BRICKS.getBricks());
-                simpleBlockDecorative(zBlocks.FIRECLAY_BRICKS.getTiles());
-                simpleBlockDecorative(zBlocks.FIRECLAY_BRICK_CRACKED.getBricks());
-                simpleBlockDecorative(zBlocks.FIRECLAY_BRICK_CRACKED.getTiles());
-                simpleBlockDecorative(zBlocks.FIRECLAY_BRICK_MOSSY.getBricks());
-                simpleBlockDecorative(zBlocks.FIRECLAY_BRICK_MOSSY.getTiles());
+                simpleFullBlock(zBlocks.FIRECLAY_BRICKS.getBricks(),"decorative/");
+                simpleFullBlock(zBlocks.FIRECLAY_BRICKS.getTiles(),"decorative/");
+                simpleFullBlock(zBlocks.FIRECLAY_BRICK_CRACKED.getBricks(),"decorative/");
+                simpleFullBlock(zBlocks.FIRECLAY_BRICK_CRACKED.getTiles(),"decorative/");
+                simpleFullBlock(zBlocks.FIRECLAY_BRICK_MOSSY.getBricks(),"decorative/");
+                simpleFullBlock(zBlocks.FIRECLAY_BRICK_MOSSY.getTiles(),"decorative/");
+
+                simpleFullBlock(zBlocks.IRON_WOOD.getPlanks(),"decorative/");
+                leaveBlock(zBlocks.IRON_WOOD.getLeaves(),"block/decorative/");
+                pottedPlant(zBlocks.IRON_WOOD.getFlowerPot(),"block/decorative/ironwood_sapling");
 
                 simpleFlexibleBlock(zBlocks.COOLER_BASE, "machine/nuclear/cooler/base");
 

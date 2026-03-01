@@ -63,6 +63,7 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.EVAPORATION_BASIN.get());
 
                 tag(BlockTags.MINEABLE_WITH_AXE)
+                .addTag(zBlocks.IRON_WOOD.getTagkey())
                                 .add(
                                                 zBlocks.WOODEN_TINY_CHEST.get(),
                                                 zBlocks.WAXED_PLANKS.get(),
@@ -189,6 +190,9 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(zBlocks.FIRECLAY_BRICKS.getTagkey())
                                 .add(zBlocks.FIRECLAY_BRICKS.getAll());
+
+                tag(zBlocks.IRON_WOOD.getTagkey())
+                                .add(zBlocks.IRON_WOOD.getAll());
 
                 tag(zBlocks.FIRECLAY_BRICK_CRACKED.getTagkey())
                                 .add(zBlocks.FIRECLAY_BRICK_CRACKED.getAll());

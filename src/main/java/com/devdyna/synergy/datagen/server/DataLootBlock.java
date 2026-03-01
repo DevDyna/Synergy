@@ -37,6 +37,7 @@ public class DataLootBlock extends BlockLootSubProvider {
         }
 
         List<DeferredRegister.Blocks> blocktypes = List.of(
+                        zBlocks.zOnlyBlock,
                         zBlocks.zBlock,
                         zBlocks.zBlockItem,
                         zBlocks.zCrop,
@@ -188,6 +189,17 @@ public class DataLootBlock extends BlockLootSubProvider {
                 brick(zBlocks.FIRECLAY_BRICK, zItems.FIRECLAY_BALL.get(), zItems.FIRECLAY_BRICK.get());
                 brick(zBlocks.BLAST_BRICK, zItems.CLAY_MIXTURE_BALL.get(), zItems.BLAST_BRICK.get());
 
+                leaves(
+                                zBlocks.IRON_WOOD.getLeaves().get(),
+                                zBlocks.IRON_WOOD.getSapling().get(),
+                                zItems.IRONBERRIES.get(),
+                                new float[] { 0.05F, 0.0625F, 0.084F, 0.1F },
+                                new float[] { 0.30F, 0.40F, 0.68F, 0.76F, 0.64F });
+
+                dropPottedContents(zBlocks.IRON_WOOD.getFlowerPot().get());
+
+                dropSelf(zBlocks.IRON_WOOD.getSapling().get());
+
         }
 
         private void brick(DeferredHolder<Block, Block> b, Item fail, Item success) {
@@ -294,6 +306,25 @@ public class DataLootBlock extends BlockLootSubProvider {
 
         private void cropDropNoConditions(Block b, Item... items) {
                 cropDropNoConditions(b, 1, 3, items);
+        }
+
+        private void leaves(Block leaves, Block sap, Item extra,
+                        float[] sapChance, float[] extraChances) {
+
+                add(leaves, block -> createLeavesDrops(block, sap, sapChance).withPool(
+                                LootPool.lootPool()
+                                                .setRolls(ConstantValue.exactly(1.0F))
+                                                .when(HAS_SHEARS.or(hasSilkTouch()).invert())
+                                                .add(
+                                                                applyExplosionCondition(leaves,
+                                                                                LootItem.lootTableItem(extra))
+                                                                                .when(
+                                                                                                BonusLevelTableCondition
+                                                                                                                .bonusLevelFlatChance(
+                                                                                                                                EnchantUtil.getEnchantHolder(
+                                                                                                                                                registries,
+                                                                                                                                                Enchantments.FORTUNE),
+                                                                                                                                extraChances)))));
         }
 
 }

@@ -65,6 +65,25 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                                 .texture("particle", modLoc("block/machine/frame/basic/side"))));
         }
 
+        protected void crossBlock(DeferredHolder<Block, Block> b, String loc) {
+                simpleBlock(b.get(), models().cross(b.getRegisteredName(), modLoc(loc))
+                                .renderType(DataGenUtil.CUTOUT));
+        }
+
+        protected void pottedPlant(DeferredHolder<Block, Block> potted, String loc) {
+                simpleBlock(
+                                potted.get(),
+                                models().singleTexture(potted.getRegisteredName(),
+                                                mcLoc("block/flower_pot_cross"), "plant", modLoc(loc))
+                                                .renderType(DataGenUtil.CUTOUT));
+        }
+
+        protected void leaveBlock(DeferredHolder<Block, Block> b, String prefix) {
+                simpleBlock(b.get(), models().singleTexture(b.getRegisteredName(), mcLoc("block/leaves"), "all",
+                                x.rl(b.getRegisteredName().replace(ID + ":", prefix)))
+                                .renderType(DataGenUtil.CUTOUT));
+        }
+
         protected void biPhaceBLock(Block block, BooleanProperty prop, ModelFile off, ModelFile on) {
                 getVariantBuilder(block).forAllStates(state -> {
 

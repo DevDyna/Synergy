@@ -227,6 +227,12 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 modLoc("block/machine/farming/chopper/side"),
                                 modLoc("block/decorative/wrought_iron_block"),
                                 modLoc("block/machine/farming/chopper/top"));
+
+                leaves(zBlocks.IRON_WOOD.getLeaves().getRegisteredName(), modLoc("block/decorative/ironwood_leaves"));
+
+                withExistingParent(zBlocks.IRON_WOOD.getSapling().getRegisteredName(), DataGenUtil.ITEM)
+                                .texture("layer0", x.rl("block/decorative/ironwood_sapling"));
+
         }
 
 }
