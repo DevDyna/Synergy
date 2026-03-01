@@ -1,7 +1,7 @@
 {
   "type": "synergy:compressor",
   "consume_catalyst": false,
-  "energy": 500,
+  "energy": 100,
   "input": {
     "count": 1,
     "item": "minecraft:clay_ball"
@@ -14,5 +14,5 @@
     "count": 1,
     "item": "synergy:ingot_mold"
   },
-  "ticks": 100
+  "ticks": 20
 }
