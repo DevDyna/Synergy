@@ -1659,9 +1659,9 @@ public class DataRecipe extends ExtraRecipeProvider {
                 MaceratorRecipeBuilder.of().input(Items.STONE)
                                 .output(Items.COBBLESTONE)
                                 .unlockedBy().save(c);
-                                
+
                 MaceratorRecipeBuilder.of().input(Items.CLAY)
-                                .output(Items.CLAY_BALL,4)
+                                .output(Items.CLAY_BALL, 4)
                                 .unlockedBy().save(c);
 
                 CasterRecipeBuilder.of()
@@ -1731,6 +1731,17 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(Items.MUD)
                                 .output(Items.CLAY)
                                 .unlockedBy().save(c);
+
+                stairBuilder(zBlocks.IRON_WOOD.getStair().get().asItem(), Ingredient.of(zBlocks.IRON_WOOD.getPlanks().get().asItem()))
+                                .unlockedBy(ID, has(zBlocks.IRON_WOOD.getPlanks().get().asItem()))
+                                .group(zStatic.DecorativeBlocks.ironwood).save(c);
+
+                slabBuilder(BUILDING_BLOCKS, zBlocks.IRON_WOOD.getSlab().get().asItem(),
+                                Ingredient.of(zBlocks.IRON_WOOD.getPlanks().get().asItem()))
+                                .unlockedBy(ID, has(zBlocks.IRON_WOOD.getPlanks().get().asItem()))
+                                .group(zStatic.DecorativeBlocks.ironwood).save(c);
+
+                planksFromLog(c, zBlocks.IRON_WOOD.getPlanks().get().asItem(), zItemTag.IRONWOOD_LOGS, 4);
 
         }
 
