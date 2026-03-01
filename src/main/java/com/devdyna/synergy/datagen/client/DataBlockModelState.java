@@ -66,6 +66,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 simpleFullBlock(zBlocks.IRON_WOOD.getPlanks(),"decorative/");
                 leaveBlock(zBlocks.IRON_WOOD.getLeaves(),"block/decorative/");
                 pottedPlant(zBlocks.IRON_WOOD.getFlowerPot(),"block/decorative/ironwood_sapling");
+                crossBlock(zBlocks.IRON_WOOD.getSapling(),"block/decorative/ironwood_sapling");
 
                 simpleFlexibleBlock(zBlocks.COOLER_BASE, "machine/nuclear/cooler/base");
 
