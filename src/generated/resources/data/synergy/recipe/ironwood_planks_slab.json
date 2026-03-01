@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "ironwood",
+  "key": {
+    "#": {
+      "item": "synergy:ironwood_planks"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "synergy:ironwood_planks_slab"
+  }
+}
