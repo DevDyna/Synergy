@@ -169,7 +169,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
                 checkBlocks(level);
                 exportItems();
             }
-
+            setChanged();
     }
 
     private void processFuel() {

@@ -1,7 +1,5 @@
 package com.devdyna.synergy.init.builder.magic.logic_box;
 
-import java.util.List;
-
 import com.devdyna.synergy.api.basebe.be.AnimatedChestBE;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
@@ -28,7 +26,6 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 @SuppressWarnings("null")
 public class LogicBoxBE extends AnimatedChestBE implements NoGuiStorage, RestrictedItemHandler {
 
-    
     public static final int FUNCTIONAL_SLOT = 0;
     public static final int FILTER_SLOT = 1;
 
@@ -117,16 +114,6 @@ public class LogicBoxBE extends AnimatedChestBE implements NoGuiStorage, Restric
             }
 
             @Override
-            public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-                return getFilterSlot().isEmpty()
-                        ? getStorage().insertItem(slot, stack, simulate)
-                        : (ItemStack.isSameItemSameComponents(stack,
-                                getFilterSlot()) == !isInverted()
-                                        ? getStorage().insertItem(slot, stack, simulate)
-                                        : stack);
-            }
-
-            @Override
             public ItemStack extractItem(int slot, int amount, boolean simulate) {
                 return getStorage().extractItem(slot, amount, simulate);
             }
@@ -137,13 +124,24 @@ public class LogicBoxBE extends AnimatedChestBE implements NoGuiStorage, Restric
             }
 
             @Override
+            public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+                if (getFilterSlot().isEmpty())
+                    return isInverted()
+                            ? getStorage().insertItem(slot, stack, simulate)
+                            : stack;
+
+                return ItemStack.isSameItemSameComponents(stack, getFilterSlot()) != isInverted()
+                        ? getStorage().insertItem(slot, stack, simulate)
+                        : stack;
+            }
+
+            @Override
             public boolean isItemValid(int slot, ItemStack stack) {
-                return getFilterSlot().isEmpty()
-                        ? getStorage().isItemValid(slot, stack)
-                        : (ItemStack.isSameItemSameComponents(stack,
-                                getFilterSlot()) == !isInverted()
-                                        ? getStorage().isItemValid(slot, stack)
-                                        : false);
+                if (getFilterSlot().isEmpty())
+                    return isInverted();
+
+                return ItemStack.isSameItemSameComponents(stack, getFilterSlot()) != isInverted()
+                        && getStorage().isItemValid(slot, stack);
             }
 
         };
@@ -168,9 +166,9 @@ public class LogicBoxBE extends AnimatedChestBE implements NoGuiStorage, Restric
         return saveWithoutMetadata(pRegistries);
     }
 
-    @Override
-    public List<Integer> getValidSlots() {
-       return List.of(FUNCTIONAL_SLOT);
-    }
+    // @Override
+    // public List<Integer> getValidSlots() {
+    // return List.of(FUNCTIONAL_SLOT);
+    // }
 
 }

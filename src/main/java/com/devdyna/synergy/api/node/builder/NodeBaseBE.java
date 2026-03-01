@@ -113,6 +113,13 @@ public abstract class NodeBaseBE extends BlockEntity {
         } else {
             // add other capabilities
         }
+
+        setChanged();
+        level.sendBlockUpdated(getInputPos(), inState, inState, 3);
+        level.sendBlockUpdated(getOutputPos(), outState, outState, 3);
+        if (outBE != null)
+            outBE.setChanged();
+
         // refresh
         this.failedRoutes.removeAll(this.failedRoutes);
         this.input = null;
@@ -191,11 +198,11 @@ public abstract class NodeBaseBE extends BlockEntity {
                 if (getNodeBE() instanceof ItemNodeType it) {
 
                     if (blockEntity instanceof RestrictedItemHandler r) {
-                        if(r.getValidSlots() != null)
-                        for (Integer validSlots : r.getValidSlots()) {
-                            if (r.getStorageRestricted().isItemValid(validSlots, it.getItemStack()))
-                                return true;
-                        }
+                        if (r.getValidSlots() != null)
+                            for (Integer validSlots : r.getValidSlots()) {
+                                if (r.getStorageRestricted().isItemValid(validSlots, it.getItemStack()))
+                                    return true;
+                            }
                     }
 
                     if (blockEntity instanceof DirectionBasedItemHandler directional) {
@@ -206,12 +213,13 @@ public abstract class NodeBaseBE extends BlockEntity {
                     }
 
                     if (blockEntity instanceof BaseMachineBE machineBE) {
-                        for (int index = 0; index < machineBE.getInputSlotIndex().size(); index++) {
-                            if (machineBE.isItemValid(machineBE.getInputSlotIndex().get(index), it.getItemStack())) {
+                        for (Integer slot : machineBE.getInputSlotIndex()) {
+                            var insered = machineBE
+                                    .insertItem(slot, it.getItemStack(), true);
+                            if (insered.isEmpty() || insered.getCount() < it.getItemStack().getCount())
                                 return true;
-                            }
                         }
-                    }
+                    } else
 
                     if (blockEntity instanceof WorldlyContainer container) {
                         for (int index = 0; index < container.getContainerSize(); index++) {
@@ -219,13 +227,14 @@ public abstract class NodeBaseBE extends BlockEntity {
                                 return true;
                             }
                         }
-                    }
+                    } else
 
-                    for (int slot = 0; slot < handler.getSlots(); slot++) {
-                        if (handler.getStackInSlot(slot).isEmpty() || handler.isItemValid(slot, it.getItemStack())) {
-                            return true;
+                        for (int slot = 0; slot < handler.getSlots(); slot++) {
+                            if (handler.getStackInSlot(slot).isEmpty()
+                                    || handler.isItemValid(slot, it.getItemStack())) {
+                                return true;
+                            }
                         }
-                    }
                 }
             }
         } else if (capType == Capabilities.EnergyStorage.BLOCK) {

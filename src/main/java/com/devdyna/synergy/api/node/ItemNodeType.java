@@ -13,34 +13,34 @@ public interface ItemNodeType {
         if (input == null || output == null)
             return;
 
-        int remaining = maxCount;
-
-        for (int inSlot = 0; inSlot < input.getSlots() && remaining > 0; inSlot++) {
+        for (int inSlot = 0; inSlot < input.getSlots(); inSlot++) {
             ItemStack inStack = input.getStackInSlot(inSlot);
             if (inStack.isEmpty())
                 continue;
 
-            int extractAmount = Math.min(inStack.getCount(), remaining);
-            ItemStack extracted = input.extractItem(inSlot, extractAmount, false);
+            ItemStack extracted = input.extractItem(inSlot, Math.min(inStack.getCount(), maxCount), true);
             if (extracted.isEmpty())
                 continue;
 
-            ItemStack leftover = extracted.copy();
+            var copyExtracted = extracted.copy();
 
-            // Attempt to insert into all output slots
-            for (int outSlot = 0; outSlot < output.getSlots() && !leftover.isEmpty(); outSlot++) {
-                leftover = output.insertItem(outSlot, leftover, false);
+            for (int outSlot = 0; outSlot < output.getSlots() && !copyExtracted.isEmpty(); outSlot++) {
+                var insered = output.insertItem(outSlot, copyExtracted, true);
+
+                if (insered.isEmpty()) {
+                    output.insertItem(outSlot, input.extractItem(inSlot, copyExtracted.getCount(), false), false);
+                    break;
+                }
+
+                if (insered.getCount() != copyExtracted.getCount()) {
+                    output.insertItem(outSlot,
+                            input.extractItem(inSlot, copyExtracted.getCount() - insered.getCount(), false), false);
+                    copyExtracted = insered.copy();
+                }
             }
 
-            // Update remaining based on successfully inserted items
-            int inserted = extracted.getCount() - leftover.getCount();
-            remaining -= inserted;
-
-            // If anything couldn't be inserted, return it to input
-            if (!leftover.isEmpty()) {
-                input.insertItem(inSlot, leftover, false);
-            }
         }
+
     }
 
     default ItemStack getFirstItem(IItemHandler handler) {

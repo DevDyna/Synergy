@@ -12,7 +12,6 @@ import com.devdyna.synergy.api.beLogic.RestrictedFluidHandler;
 import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
 import com.devdyna.synergy.api.beLogic.SimpleTickerDelay;
 import com.devdyna.synergy.api.utils.Ticker;
-import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.ItemFluidInput;
 import com.devdyna.synergy.init.builder.survival.casting_table.recipe.CastingTableRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
@@ -49,8 +48,8 @@ public class CastingTableBE extends TickingBE
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
-    public static final int MOLD_SLOT = 0;
-    public static final int OUTPUT_SLOT = 1;
+    public static final int OUTPUT_SLOT = 0;
+    public static final int MOLD_SLOT = 1;
     private static final int DEFAULT_TANK_CAPACITY = 1_000;
 
     public CastingTableBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
@@ -248,12 +247,10 @@ public class CastingTableBE extends TickingBE
                 if (!this.isItemValid(slot, stack))
                     return stack;
 
-                if (getStackInSlot(slot).isEmpty()) {
-                    getStorage().setStackInSlot(slot, x.item(stack.copy().getItem()));
-                    return x.item(stack.getItem(), stack.getCount() - 1);
-                }
+                if (slot == MOLD_SLOT && !getStorage().getStackInSlot(MOLD_SLOT).isEmpty())
+                    return stack;
 
-                return ItemStack.EMPTY;
+                return getStorage().insertItem(slot, stack, simulate);
             }
 
             @Override
@@ -261,6 +258,10 @@ public class CastingTableBE extends TickingBE
                 if (slot == MOLD_SLOT) {
                     if (ticker == null && getFluidStorage().isEmpty() && level.hasNeighborSignal(getBlockPos())) {
                         update();
+                        if (!level.isClientSide())
+                            level.playSound(null, getBlockPos(), SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 1f,
+                                    1.15f);
+
                         return getStorage().extractItem(slot, amount, simulate);
                     }
                     return ItemStack.EMPTY;
