@@ -19,7 +19,6 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -49,7 +48,7 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
         protected static void biomeModifiers(BootstrapContext<BiomeModifier> c) {
                 c.register(zWorldGenFeatures.BiomeModifiers.IRONWOOD,
                                 new AddFeaturesBiomeModifier(
-                                                HolderSet.direct(c.lookup(Registries.BIOME).getOrThrow(Biomes.PLAINS)),
+                                                c.lookup(Registries.BIOME).getOrThrow(zBiomeTags.IRONWOOD_TREE_SPAWN),
                                                 HolderSet.direct(c.lookup(Registries.PLACED_FEATURE)
                                                                 .getOrThrow(PlacedFeatures.IRONWOOD)),
                                                 GenerationStep.Decoration.VEGETAL_DECORATION));

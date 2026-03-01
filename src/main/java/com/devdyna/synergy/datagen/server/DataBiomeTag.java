@@ -11,6 +11,7 @@ import com.devdyna.synergy.init.types.zBiomeTags;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
+import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -43,6 +44,12 @@ public class DataBiomeTag extends BiomeTagsProvider {
                 .addTag(Tags.Biomes.IS_JUNGLE)
                 .addTag(Tags.Biomes.IS_RIVER)
                 .addTag(Tags.Biomes.IS_SWAMP)
+                .addTag(Tags.Biomes.IS_BEACH);
+
+        tag(zBiomeTags.IRONWOOD_TREE_SPAWN)
+                .addTag(Tags.Biomes.IS_FOREST)
+                .add(Biomes.MEADOW)
+                .addTag(Tags.Biomes.IS_WINDSWEPT)
                 .addTag(Tags.Biomes.IS_BEACH);
     }
 

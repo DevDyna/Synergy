@@ -10,6 +10,8 @@ public class zBiomeTags {
     public static void register(IEventBus bus) {
     }
 
+    public static final TagKey<Biome> IRONWOOD_TREE_SPAWN = Material.tagBiome("ironwood_spawn");
+    
     public static final TagKey<Biome> BLUE_CUP_SPAWN = Material.tagBiome("blue_cup_spawn");
     public static final TagKey<Biome> VIOLET_WEBCAP_SPAWN = Material.tagBiome("violet_webcap_spawn");
     public static final TagKey<Biome> WILD_CAVE_WHEAT_SPAWN = Material.tagBiome("wild_cave_wheat_spawn");
