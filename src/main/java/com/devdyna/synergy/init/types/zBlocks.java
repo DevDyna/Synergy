@@ -92,10 +92,14 @@ public class zBlocks {
         public static final DeferredRegister.Blocks zBlock = DeferredRegister.createBlocks(Main.ID);
         /**
          * blocks not items
+         * <br/><br/>
+         * prefab item traslation key
          */
         public static final DeferredRegister.Blocks zOnlyBlock = DeferredRegister.createBlocks(Main.ID);
         /**
          * blocks with hidden item
+         * <br/><br/>
+         * item traslation key respect block key
          */
         public static final DeferredRegister.Blocks zHiddenBlock = DeferredRegister.createBlocks(Main.ID);
         /**
