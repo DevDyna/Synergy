@@ -89,6 +89,8 @@
 
 - [ ] coockoo clock SoundEvents.UI_BUTTON_CLICK
 
+- [ ] Ticker need to use level.gameTime intend of tick
+
 ### Survival expansion
 
 - [ ] scrap and slags
