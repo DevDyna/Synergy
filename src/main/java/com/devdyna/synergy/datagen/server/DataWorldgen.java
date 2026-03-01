@@ -85,15 +85,15 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
         protected static void configuredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> c) {
 
                 WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.MUSH_BLUE_CUP,
-                                zBlocks.BLUE_CUP_MUSHROOM.get(), 40, 5, 5);
+                                zBlocks.BLUE_CUP_MUSHROOM.get(), 20, 5, 5);
                 WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.MUSH_VIOLET_WEBCAP,
-                                zBlocks.VIOLET_WEBCAP_MUSHROOM.get(), 30, 7, 3);
+                                zBlocks.VIOLET_WEBCAP_MUSHROOM.get(), 10, 7, 3);
                 WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.WILD_CAVE_WHEAT,
-                                zBlocks.WILD_CAVE_WHEAT.get(), 50, 5, 5);
+                                zBlocks.WILD_CAVE_WHEAT.get(), 10, 5, 5);
                 WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.WILD_COTTON,
-                                zBlocks.WILD_COTTON.get(), 30, 8, 3);
+                                zBlocks.WILD_COTTON.get(), 10, 8, 3);
                 WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.WILD_RICE,
-                                zBlocks.WILD_RICE.get(), 18, 4, 3);
+                                zBlocks.WILD_RICE.get(), 8, 4, 3);
 
                 c.register(zWorldGenFeatures.ConfiguredFeatures.IRONWOOD,
                                 new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -109,11 +109,11 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
         protected static void placedFeatures(BootstrapContext<PlacedFeature> c) {
 
                 WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.MUSH_BLUE_CUP,
-                                zWorldGenFeatures.ConfiguredFeatures.MUSH_BLUE_CUP, 20, -60, 4);
+                                zWorldGenFeatures.ConfiguredFeatures.MUSH_BLUE_CUP, 10, -60, 4);
                 WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.MUSH_VIOLET_WEBCAP,
-                                zWorldGenFeatures.ConfiguredFeatures.MUSH_VIOLET_WEBCAP, 25, -40, 20);
+                                zWorldGenFeatures.ConfiguredFeatures.MUSH_VIOLET_WEBCAP, 5, -40, 20);
                 WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.WILD_CAVE_WHEAT,
-                                zWorldGenFeatures.ConfiguredFeatures.WILD_CAVE_WHEAT, 6, -40, 24);
+                                zWorldGenFeatures.ConfiguredFeatures.WILD_CAVE_WHEAT, 3, -40, 24);
                 WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.WILD_COTTON,
                                 zWorldGenFeatures.ConfiguredFeatures.WILD_COTTON, 1, 44, 120);
                 WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.WILD_RICE,
