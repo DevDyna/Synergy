@@ -322,7 +322,21 @@ public class Plugin implements IModPlugin {
 
                 List.of(zBlocks.RECURSIVE_REPEATER, zBlocks.PULSE_REPEATER, zBlocks.INVERTED_REPEATER).stream()
                                 .map(DeferredHolder::get).map(x::item)
-                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.redstone"));
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.redstone.component"));
+             
+                                List.of(zBlocks.LASER_SENSOR).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.redstone.emitter"));
+               
+                                List.of(zBlocks.LASER_MACHINE, zBlocks.LASER_MIRROR, zBlocks.REACTOR_CONTROLLER
+                                ,zBlocks.HARVESTER,zBlocks.SOLAR_PANEL,zBlocks.SPRINKLER,zBlocks.VOID_BOX,zBlocks.LOGIC_BOX
+                                ,zBlocks.CASTING_TABLE,zBlocks.FAUCET
+                                ).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.redstone.sensible"));
+
+
+
 
                 List.of(zBlocks.WOODEN_TINY_CHEST, zBlocks.STONE_TINY_CHEST, zBlocks.ORNATE_TINY_CHEST).stream()
                                 .map(DeferredHolder::get).map(x::item)

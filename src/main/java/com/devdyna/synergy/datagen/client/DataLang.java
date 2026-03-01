@@ -479,7 +479,9 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jei.atlas.generator.energy", "Energy Generator");
                 add(ID + ".jei.atlas.generator.cobble", "Cobblestone Generator");
                 add(ID + ".jei.atlas.generator.water", "Water Generator");
-                add(ID + ".jei.atlas.redstone", "Redstone Component");
+                add(ID + ".jei.atlas.redstone.component", "Redstone Component");
+                add(ID + ".jei.atlas.redstone.sensible", "Redstone Sensible");
+                add(ID + ".jei.atlas.redstone.emitter", "Redstone Emitter");
                 add(ID + ".jei.atlas.storage.item", "Item Storage");
                 add(ID + ".jei.atlas.storage.fluid", "Fluid Storage");
 
