@@ -88,6 +88,7 @@ public class CreativeTabs {
             zBlocks.FIRECLAY_BRICKS.buildCreativeTab(() -> event);
             zBlocks.FIRECLAY_BRICK_CRACKED.buildCreativeTab(() -> event);
             zBlocks.FIRECLAY_BRICK_MOSSY.buildCreativeTab(() -> event);
+            zBlocks.IRON_WOOD.buildCreativeTab(()-> event);
 
         }
 
