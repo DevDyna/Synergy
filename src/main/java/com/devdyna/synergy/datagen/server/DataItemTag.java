@@ -3,6 +3,7 @@ package com.devdyna.synergy.datagen.server;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.api.utils.ArrayUtils;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
@@ -219,10 +220,12 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.NODES_PROVIDER)
                                 .add(zBlocks.ITEM_PROVIDER.get().asItem(), zBlocks.FLUID_PROVIDER.get().asItem());
 
-
-                tag(zItemTag.NODE_ENERGY).add(zBlocks.ENERGY_RETRIEVAL.get().asItem(),zBlocks.ENERGY_TRANSFER.get().asItem());
-                tag(zItemTag.NODE_FLUID).add(zBlocks.FLUID_PROVIDER.get().asItem(),zBlocks.FLUID_RETRIEVAL.get().asItem(),zBlocks.FLUID_TRANSFER.get().asItem());
-                tag(zItemTag.NODE_ITEM).add(zBlocks.ITEM_PROVIDER.get().asItem(),zBlocks.ITEM_RETRIEVAL.get().asItem(),zBlocks.ITEM_TRANSFER.get().asItem());
+                tag(zItemTag.NODE_ENERGY).add(zBlocks.ENERGY_RETRIEVAL.get().asItem(),
+                                zBlocks.ENERGY_TRANSFER.get().asItem());
+                tag(zItemTag.NODE_FLUID).add(zBlocks.FLUID_PROVIDER.get().asItem(),
+                                zBlocks.FLUID_RETRIEVAL.get().asItem(), zBlocks.FLUID_TRANSFER.get().asItem());
+                tag(zItemTag.NODE_ITEM).add(zBlocks.ITEM_PROVIDER.get().asItem(), zBlocks.ITEM_RETRIEVAL.get().asItem(),
+                                zBlocks.ITEM_TRANSFER.get().asItem());
 
                 tag(zItemTag.NODES)
                                 .addTag(zItemTag.NODES_TRANSFER)
@@ -352,7 +355,25 @@ public class DataItemTag extends ItemTagsProvider {
                                                 .toArray(Item[]::new));
 
                 tag(zItemTag.DIRTS)
-                .add(Items.DIRT,Items.ROOTED_DIRT,Items.COARSE_DIRT);
+                                .add(Items.DIRT, Items.ROOTED_DIRT, Items.COARSE_DIRT);
+
+                tag(ItemTags.LOGS)
+                                .add(ArrayUtils.map(zBlocks.IRON_WOOD.getLogs(), Block::asItem, Item[]::new));
+
+                tag(ItemTags.SAPLINGS)
+                                .add(zBlocks.IRON_WOOD.getSapling().get().asItem());
+
+                tag(ItemTags.LOGS_THAT_BURN)
+                                .add(ArrayUtils.map(zBlocks.IRON_WOOD.getLogs(), Block::asItem, Item[]::new));
+
+                tag(Tags.Items.STRIPPED_LOGS)
+                                .add(zBlocks.IRON_WOOD.getStrippedLog().get().asItem());
+
+                tag(Tags.Items.STRIPPED_WOODS)
+                                .add(zBlocks.IRON_WOOD.getStrippedWood().get().asItem());
+
+                tag(ItemTags.LEAVES)
+                                .add(zBlocks.IRON_WOOD.getLeaves().get().asItem());
 
         }
 

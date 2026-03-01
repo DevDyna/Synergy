@@ -1,5 +1,7 @@
 package com.devdyna.synergy.api.registers.blockfamilies;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import com.devdyna.synergy.api.registers.blockfamilies.api.BaseBlockFamily;
 import com.devdyna.synergy.init.Material;
@@ -19,6 +21,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings("null")
 public class WoodFamily extends BaseBlockFamily<WoodFamily> {
+
+        protected List<DeferredHolder<Block, Block>> wooden = new ArrayList<>();
+        protected List<DeferredHolder<Block, Block>> derivates = new ArrayList<>();
 
         public WoodFamily(String id, Properties log_prop, MapColor log_map,
                         MapColor plank_map) {
@@ -71,36 +76,42 @@ public class WoodFamily extends BaseBlockFamily<WoodFamily> {
                                 (s) -> s.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? plank_map : log_map),
                                 stripped_log);
                 allBlocks.add(log);
+                wooden.add(log);
                 return this;
         }
 
         public WoodFamily stripped_log() {
                 this.stripped_log = Material.log("stripped_" + id + "_log", log_prop.mapColor(plank_map));
                 allBlocks.add(stripped_log);
+                wooden.add(stripped_log);
                 return this;
         }
 
         public WoodFamily wood() {
                 this.wood = Material.log(id + "_wood", log_prop.mapColor(log_map), stripped_wood);
                 allBlocks.add(wood);
+                wooden.add(wood);
                 return this;
         }
 
         public WoodFamily stripped_wood() {
                 this.stripped_wood = Material.log("stripped_" + id + "_wood", log_prop.mapColor(plank_map));
                 allBlocks.add(stripped_wood);
+                wooden.add(stripped_wood);
                 return this;
         }
 
         public WoodFamily slab() {
                 this.slab = Material.slab(planks);
                 allBlocks.add(slab);
+                derivates.add(slab);
                 return this;
         }
 
         public WoodFamily stair() {
                 this.stair = Material.stair(planks);
                 allBlocks.add(stair);
+                derivates.add(stair);
                 return this;
         }
 
@@ -163,6 +174,16 @@ public class WoodFamily extends BaseBlockFamily<WoodFamily> {
 
         public DeferredHolder<Block, Block> getWood() {
                 return wood;
+        }
+
+        public Block[] getLogs(){
+         return wooden.stream().map(DeferredHolder::get)
+                .toArray(Block[]::new);
+        }
+
+        public Block[] getDerivates() {
+            return derivates.stream().map(DeferredHolder::get)
+                .toArray(Block[]::new);
         }
 
 }

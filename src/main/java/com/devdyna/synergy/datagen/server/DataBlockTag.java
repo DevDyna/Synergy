@@ -33,6 +33,9 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(zBlockTag.CROPS).addTag(BlockTags.CROPS);
 
+                tag(BlockTags.MINEABLE_WITH_HOE)
+                                .add(zBlocks.IRON_WOOD.getLeaves().get());
+
                 tag(BlockTags.MINEABLE_WITH_PICKAXE)
                                 .addTag(zBlockTag.MACHINES)
                                 .addTag(zBlockTag.COOLERS)
@@ -63,7 +66,9 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.EVAPORATION_BASIN.get());
 
                 tag(BlockTags.MINEABLE_WITH_AXE)
-                .addTag(zBlocks.IRON_WOOD.getTagkey())
+                                .add(zBlocks.IRON_WOOD.getLogs())
+                                .add(zBlocks.IRON_WOOD.getDerivates())
+                                .add(zBlocks.IRON_WOOD.getSapling().get())
                                 .add(
                                                 zBlocks.WOODEN_TINY_CHEST.get(),
                                                 zBlocks.WAXED_PLANKS.get(),
@@ -177,14 +182,15 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.REACTOR_FUEL_CELL.get());
 
                 tag(Tags.Blocks.STORAGE_BLOCKS)
-                                .add(zBlocks.ADVANCED_ALLOY_BLOCK.get(), zBlocks.STEEL_BLOCK.get(),zBlocks.WROUGHT_IRON_BLOCK.get());
+                                .add(zBlocks.ADVANCED_ALLOY_BLOCK.get(), zBlocks.STEEL_BLOCK.get(),
+                                                zBlocks.WROUGHT_IRON_BLOCK.get());
 
                 tag(zBlockTag.BLOCK_ADVANCED_ALLOY)
                                 .add(zBlocks.ADVANCED_ALLOY_BLOCK.get());
 
                 tag(zBlockTag.BLOCK_STEEL)
                                 .add(zBlocks.STEEL_BLOCK.get());
-                                
+
                 tag(zBlockTag.BLOCK_WROUGHT_IRON)
                                 .add(zBlocks.WROUGHT_IRON_BLOCK.get());
 
@@ -200,9 +206,23 @@ public class DataBlockTag extends BlockTagsProvider {
                 tag(zBlocks.FIRECLAY_BRICK_MOSSY.getTagkey())
                                 .add(zBlocks.FIRECLAY_BRICK_MOSSY.getAll());
 
-
                 tag(zBlockTag.EVAPORATION_BASIC_HEATER).add(Blocks.MAGMA_BLOCK);
                 tag(zBlockTag.DRYING_RACK_HEATER).addTag(BlockTags.CAMPFIRES);
+
+                tag(BlockTags.LOGS)
+                                .add(zBlocks.IRON_WOOD.getLogs());
+
+                tag(BlockTags.SAPLINGS)
+                                .add(zBlocks.IRON_WOOD.getSapling().get());
+
+                tag(BlockTags.LOGS_THAT_BURN)
+                                .add(zBlocks.IRON_WOOD.getLogs());
+
+                tag(Tags.Blocks.STRIPPED_LOGS)
+                                .add(zBlocks.IRON_WOOD.getStrippedLog().get());
+
+                tag(Tags.Blocks.STRIPPED_WOODS)
+                                .add(zBlocks.IRON_WOOD.getStrippedWood().get());
 
         }
 
