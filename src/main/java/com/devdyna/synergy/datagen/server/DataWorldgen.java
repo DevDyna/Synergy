@@ -123,7 +123,7 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
                                                 c.lookup(Registries.CONFIGURED_FEATURE)
                                                                 .getOrThrow(zWorldGenFeatures.ConfiguredFeatures.IRONWOOD),
                                                 VegetationPlacements.treePlacement(
-                                                                PlacementUtils.countExtra(0, 0.005f, 3),
+                                                                PlacementUtils.countExtra(1, 0.25f, 2),
                                                                 zBlocks.IRON_WOOD.getSapling().get())));
         }
 
