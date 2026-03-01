@@ -224,6 +224,9 @@ public class DataBlockTag extends BlockTagsProvider {
                 tag(Tags.Blocks.STRIPPED_WOODS)
                                 .add(zBlocks.IRON_WOOD.getStrippedWood().get());
 
+                tag(BlockTags.LEAVES)
+                                .add(zBlocks.IRON_WOOD.getLeaves().get());
+
         }
 
 }
