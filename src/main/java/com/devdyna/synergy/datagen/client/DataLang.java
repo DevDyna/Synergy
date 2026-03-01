@@ -472,7 +472,13 @@ public class DataLang extends LanguageProvider {
                                                                                 .getAllStrings(zStatic.ResourceMaterial.deposits.class))
                                                                                 .indexOf(s))));
 
-                add(ID + ".jei.atlas.generator", "Energy Generator");
+                add(ID + ".jei.atlas.consumer.energy", "Energy Consumer");
+
+                add(ID + ".jei.atlas.consumer.optional.energy", "Optional Energy Consumer");
+
+                add(ID + ".jei.atlas.generator.energy", "Energy Generator");
+                add(ID + ".jei.atlas.generator.cobble", "Cobblestone Generator");
+                add(ID + ".jei.atlas.generator.water", "Water Generator");
                 add(ID + ".jei.atlas.redstone", "Redstone Component");
                 add(ID + ".jei.atlas.storage.item", "Item Storage");
                 add(ID + ".jei.atlas.storage.fluid", "Fluid Storage");
@@ -491,6 +497,13 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jei.atlas.type.transmitter", "Transmitter");
                 add(ID + ".jei.atlas.type.reciever", "Reciever");
                 add(ID + ".jei.atlas.type.producer", "Producer");
+
+                add(ID + ".jei.atlas.seed.crop", "Plant Seed");
+                add(ID + ".jei.atlas.seed.mushroom", "Mushroom Seed");
+
+                add(ID + ".jei.atlas.foundry.melter", "Item Melter");
+
+                add(ID + ".jei.atlas.aoe", "Area of Effect Related");
 
                 add(ID + "." + zStatic.Blocks.router, TIP_COLOR
                                 + "Route items to be extracted from differents sides based on some internal filters");

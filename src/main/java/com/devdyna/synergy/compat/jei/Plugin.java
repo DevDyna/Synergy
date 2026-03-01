@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.machine.BaseMachineScreen;
+import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecipe;
@@ -294,9 +295,30 @@ public class Plugin implements IModPlugin {
         }
 
         public void registerIngredientAliases(IIngredientAliasRegistration r) {
+
+                List.of(zBlocks.SIMPLE_COBBLE_GEN, zBlocks.ADVANCED_COBBLE_GEN, zBlocks.ELITE_COBBLE_GEN).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.generator.cobble"));
+
+                List.of(zBlocks.SIMPLE_WATER_GEN, zBlocks.ADVANCED_WATER_GEN, zBlocks.ELITE_WATER_GEN).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.generator.water"));
+
                 List.of(zBlocks.SOLAR_PANEL, zBlocks.REACTOR_CONTROLLER, zBlocks.LASER_ROTOR).stream()
                                 .map(DeferredHolder::get).map(x::item)
-                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.generator"));
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.generator.energy"));
+
+                ClazzUtil.getAllMachineTypes().stream()
+                                .map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.consumer.energy"));
+
+                List.of(zBlocks.LASER_MACHINE, zBlocks.HARVESTER, zBlocks.SPRINKLER).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.consumer.energy"));
+
+                List.of(zBlocks.CHOPPER).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.consumer.optional.energy"));
 
                 List.of(zBlocks.RECURSIVE_REPEATER, zBlocks.PULSE_REPEATER, zBlocks.INVERTED_REPEATER).stream()
                                 .map(DeferredHolder::get).map(x::item)
@@ -306,7 +328,7 @@ public class Plugin implements IModPlugin {
                                 .map(DeferredHolder::get).map(x::item)
                                 .forEach(e -> r.addAlias(e, ID + ".jei.atlas.storage.item"));
 
-                List.of(zBlocks.LOGIC_BOX).stream()
+                List.of(zBlocks.LOGIC_BOX, zBlocks.ROUTER).stream()
                                 .map(DeferredHolder::get).map(x::item)
                                 .forEach(e -> r.addAlias(e, ID + ".jei.atlas.filter.item"));
 
@@ -360,6 +382,33 @@ public class Plugin implements IModPlugin {
                                                 r.addAlias(e, ID + ".jei.atlas.type.reciever");
 
                                 });
+
+                List.of(zItems.RICE_SEED, zItems.AZALEA_SEEDS,
+                                zItems.COTTON_SEEDS, zItems.CAVE_WHEAT_SEEDS).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.seed.crop"));
+
+                List.of(zItems.BLUE_CUP_SPORE, zItems.VIOLET_WEBCAP_SPORE).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.seed.mushroom"));
+
+                List.of(zBlocks.FOUNDRY).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> {
+                                        r.addAlias(e, ID + ".jei.atlas.foundry.melter");
+                                        r.addAlias(e, ID + ".jei.atlas.storage.fluid");
+                                });
+
+                List.of(zBlocks.REACTOR_CONTROLLER, zBlocks.HARVESTER, zBlocks.SPRINKLER, zBlocks.CHOPPER).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.aoe"));
+
+                List.of(zItems.CONFIGURATOR, zItems.FLOPPY_DISK, zItems.SOLDERING_GUN).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> r.addAlias(e, ID + ".jei.atlas.aoe"));
+
+
+                
 
         }
 
