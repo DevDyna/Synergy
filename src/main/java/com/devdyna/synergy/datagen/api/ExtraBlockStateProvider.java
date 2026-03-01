@@ -73,8 +73,9 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
         protected void pottedPlant(DeferredHolder<Block, Block> potted, String loc) {
                 simpleBlock(
                                 potted.get(),
-                                models().singleTexture(potted.getRegisteredName(),
-                                                mcLoc("block/flower_pot_cross"), "plant", modLoc(loc))
+                                models().withExistingParent(potted.getRegisteredName(),
+                                                "block/flower_pot_cross")
+                                                .texture("plant", modLoc(loc))
                                                 .renderType(DataGenUtil.CUTOUT));
         }
 
