@@ -25,26 +25,35 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.BlockEntityType.BlockEntitySupplier;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
-import net.neoforged.neoforge.registries.DeferredRegister.Blocks;
 
 @SuppressWarnings({ "null", "unchecked" })
 public class Material {
@@ -66,8 +75,7 @@ public class Material {
 
                 zMachines.register(bus);
                 zEntityTag.register(bus);
-                zFeatures.register(bus);
-                zBiomeModifiers.register(bus);
+                zWorldGenFeatures.register(bus);
         }
 
         /**
@@ -194,7 +202,8 @@ public class Material {
 
         }
 
-        public static DeferredHolder<Block, Block> DecoBlock(String name, Properties prop, Blocks blockSets) {
+        public static DeferredHolder<Block, Block> DecoBlock(String name, Properties prop,
+                        DeferredRegister.Blocks blockSets) {
                 return registerItemBlock(name, () -> new DecorativeBlock(prop), blockSets);
         }
 
@@ -332,6 +341,40 @@ public class Material {
 
         public static ResourceKey<BiomeModifier> createBiomeModifier(String i) {
                 return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, x.rl(i));
+        }
+
+        public static DeferredHolder<Block, Block> log(String id, Properties prop,
+                        DeferredHolder<Block, Block> stripped) {
+                return Material.registerItemBlock(id, () -> new RotatedPillarBlock(prop) {
+                        @Override
+                        public BlockState getToolModifiedState(BlockState state, UseOnContext use, ItemAbility ability,
+                                        boolean sim) {
+                                return ability == ItemAbilities.AXE_STRIP
+                                                ? stripped.get().defaultBlockState().setValue(AXIS,
+                                                                state.getValue(AXIS))
+                                                : super.getToolModifiedState(state, use,
+                                                                ability, sim);
+                        };
+                }, zBlocks.zColumn);
+        }
+
+        public static DeferredHolder<Block, Block> log(String id, Properties prop) {
+                return Material.registerItemBlock(id, () -> new RotatedPillarBlock(prop), zBlocks.zColumn);
+        }
+
+        public static DeferredHolder<Block, Block> flower_pot(String id, Properties prop,
+                        DeferredHolder<Block, Block> sapling) {
+                return Material.registerItemBlock(id, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT,
+                                () -> sapling.get(), prop));
+        }
+
+        public static DeferredHolder<Block, Block> sapling(String id, Properties prop,
+                        TreeGrower grower) {
+                return Material.registerItemBlock(id, () -> new SaplingBlock(grower, prop));
+        }
+
+        public static DeferredHolder<Block, Block> leaves(String id, Properties prop) {
+                return Material.registerItemBlock(id, () -> new LeavesBlock(prop));
         }
 
 }
