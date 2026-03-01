@@ -91,6 +91,9 @@
 
 - [ ] Ticker need to use level.gameTime intend of tick
 
+- [ ] router recipe
+- [ ] rock crusher recipe
+
 ### Survival expansion
 
 - [ ] scrap and slags
