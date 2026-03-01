@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#synergy:blue_cup_spawn",
+  "features": "synergy:blue_cup",
+  "step": "vegetal_decoration"
+}

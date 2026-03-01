@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#synergy:violet_webcap_spawn",
+  "features": "synergy:violet_webcap",
+  "step": "vegetal_decoration"
+}

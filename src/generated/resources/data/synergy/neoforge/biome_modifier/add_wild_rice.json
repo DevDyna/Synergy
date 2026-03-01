@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#synergy:wild_rice_spawn",
+  "features": "synergy:wild_rice",
+  "step": "vegetal_decoration"
+}
