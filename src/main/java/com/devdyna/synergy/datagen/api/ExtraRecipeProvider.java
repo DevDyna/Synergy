@@ -748,6 +748,8 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
 
                 CompressorRecipeBuilder.of()
                                 .input(ball)
+                                .delay(20)
+                                .energy(100)
                                 .catalyst(zItems.MOLD_INGOT.get())
                                 .output(brick)
                                 .unlockedBy()
