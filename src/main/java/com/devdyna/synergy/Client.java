@@ -31,12 +31,15 @@ import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBa
 import com.devdyna.synergy.init.builder.survival.faucet.FaucetRender;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryRender;
 import com.devdyna.synergy.init.types.zBlockEntities;
+import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zContainer;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zMachines;
 
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.level.FoliageColor;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -60,7 +63,7 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.QUERN.get(), QuernRendering::new);
         event.registerBlockEntityRenderer(zBlockEntities.VOID_BOX.get(), VoidBoxRender::new);
         event.registerBlockEntityRenderer(zBlockEntities.LOGIC_BOX.get(), LogicBoxRender::new);
-      
+
         event.registerBlockEntityRenderer(zBlockEntities.FLUID_TANK.get(), FluidTankFluidRender::new);
 
         event.registerBlockEntityRenderer(zBlockEntities.CRUSHING_TUB.get(), CrushingTubRender::new);
@@ -100,10 +103,14 @@ public class Client {
     public static void registerItemColor(RegisterColorHandlersEvent.Item event) {
         // idk if it work but i will keep it
         for (var bucket : zItems.zBucketItems.getEntries()) {
-            event.getItemColors().register((s, i) -> (i == 1 && s.getItem() instanceof BucketItem)
+            event.register((s, i) -> (i == 1 && s.getItem() instanceof BucketItem)
                     ? IClientFluidTypeExtensions.of(((BucketItem) s.getItem()).content).getTintColor()
                     : 0xFFFFFFFF, bucket.get());
         }
+
+        event.register((s, i) -> {
+            return FoliageColor.getDefaultColor();
+        }, zBlocks.IRON_WOOD.getLeaves().get());
 
     }
 
@@ -114,6 +121,19 @@ public class Client {
                 .map(x::rl)
                 .map(ModelResourceLocation::standalone)
                 .forEach(event::register);
+    }
+
+    @SubscribeEvent
+    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
+
+        event.register((state, level, pos, tintIndex) -> {
+
+            if (pos == null || level == null)
+                return FoliageColor.getDefaultColor();
+
+            return BiomeColors.getAverageFoliageColor(level, pos);
+
+        }, zBlocks.IRON_WOOD.getLeaves().get());
     }
 
 }
