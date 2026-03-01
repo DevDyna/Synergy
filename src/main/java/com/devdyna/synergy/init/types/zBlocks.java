@@ -1,5 +1,6 @@
 package com.devdyna.synergy.init.types;
 
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -605,23 +606,25 @@ public class zBlocks {
 
         public static final WoodFamily IRON_WOOD = WoodFamily.of("ironwood",
                         Properties.of().strength(2.0F, 3.0F).sound(SoundType.WOOD).instrument(NoteBlockInstrument.BASS),
-                        Properties.of().strength(0.2F).sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)
-                                        .noOcclusion().isSuffocating((s, g, p) -> false)
-                                        .isViewBlocking((s, g, p) -> false).isRedstoneConductor((s, g, p) -> false)
-                                        .mapColor(MapColor.PLANT),
                         MapColor.TERRACOTTA_BLACK, MapColor.RAW_IRON)
-                        .sapling(zWorldGenFeatures.ConfiguredFeatures.IRONWOOD)
+                        .sapling(zWorldGenFeatures.ConfiguredFeatures.IRONWOOD,
+                                        Properties.of().pushReaction(PushReaction.DESTROY).instabreak()
+                                                        .sound(SoundType.GRASS).noCollission().randomTicks()
+                                                        .mapColor(MapColor.PLANT))
                         .log()
                         .stripped_log()
                         .wood()
                         .stripped_wood()
                         .planks()
-                        .leaves()
+                        .leaves(Properties.of().strength(0.2F).sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)
+                                        .noOcclusion().randomTicks()
+                                        .isValidSpawn((s, g, p, e) -> e == EntityType.OCELOT || e == EntityType.PARROT)
+                                        .isSuffocating((s, g, p) -> false).isViewBlocking((s, g, p) -> false)
+                                        .isRedstoneConductor((s, g, p) -> false).mapColor(MapColor.PLANT))
                         .slab()
-                        .stair()
                         .flower_pot()
+                        .stair()
                         .createTag();
-                        
 
         // ---------------------------------------------------------------------------------------//
 

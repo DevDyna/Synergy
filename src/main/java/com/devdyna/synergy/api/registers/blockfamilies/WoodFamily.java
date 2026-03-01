@@ -7,7 +7,6 @@ import com.devdyna.synergy.init.types.zBlocks;
 
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.grower.TreeGrower;
@@ -15,27 +14,26 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 @SuppressWarnings("null")
 public class WoodFamily extends BaseBlockFamily<WoodFamily> {
 
-        public WoodFamily(String id, Properties log_prop, Properties leaves_prop, MapColor log_map,
+        public WoodFamily(String id, Properties log_prop, MapColor log_map,
                         MapColor plank_map) {
                 super(id, log_prop);
                 this.log_prop = log_prop;
                 this.plank_map = plank_map;
                 this.log_map = log_map;
-                this.leaves_prop = leaves_prop;
         }
 
-        public static WoodFamily of(String id, Properties log_prop, Properties leaves_prop, MapColor log_map,
+        public static WoodFamily of(String id, Properties log_prop, MapColor log_map,
                         MapColor plank_map) {
-                return new WoodFamily(id, log_prop, leaves_prop, log_map, plank_map);
+                return new WoodFamily(id, log_prop, log_map, plank_map);
         }
 
         private BlockBehaviour.Properties log_prop;
-        private BlockBehaviour.Properties leaves_prop;
 
         private MapColor log_map;
         private MapColor plank_map;
@@ -62,7 +60,8 @@ public class WoodFamily extends BaseBlockFamily<WoodFamily> {
         }
 
         public WoodFamily planks() {
-                this.planks = Material.registerItemBlock(id + "_planks", () -> new Block(log_prop.mapColor(plank_map)),zBlocks.zDecorative);
+                this.planks = Material.registerItemBlock(id + "_planks", () -> new Block(log_prop.mapColor(plank_map)),
+                                zBlocks.zDecorative);
                 allBlocks.add(planks);
                 return this;
         }
@@ -106,21 +105,22 @@ public class WoodFamily extends BaseBlockFamily<WoodFamily> {
         }
 
         public WoodFamily flower_pot() {
-                this.flower_pot = Material.flower_pot("potted_" + id + "_sapling", leaves_prop.instabreak(), sapling);
+                this.flower_pot = Material.flower_pot("potted_" + id + "_sapling",
+                                Properties.of().pushReaction(PushReaction.DESTROY).instabreak().noOcclusion(),
+                                () -> this.sapling);
                 allBlocks.add(flower_pot);
                 return this;
         }
 
-        public WoodFamily sapling(ResourceKey<ConfiguredFeature<?, ?>> key) {
-                this.sapling = Material.sapling(id + "_sapling", leaves_prop.randomTicks().noCollission().instabreak(),
+        public WoodFamily sapling(ResourceKey<ConfiguredFeature<?, ?>> key, Properties p) {
+                this.sapling = Material.sapling(id + "_sapling", p,
                                 new TreeGrower("ironwood", Optional.empty(), Optional.of(key), Optional.empty()));
                 allBlocks.add(sapling);
                 return this;
         }
 
-        public WoodFamily leaves() {
-                this.leaves = Material.leaves(id + "_leaves", leaves_prop.randomTicks().forceSolidOn()
-                                .isValidSpawn((s, g, p, e) -> e == EntityType.OCELOT || e == EntityType.PARROT));
+        public WoodFamily leaves(Properties p) {
+                this.leaves = Material.leaves(id + "_leaves", p);
                 allBlocks.add(leaves);
                 return this;
         }

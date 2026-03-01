@@ -363,9 +363,10 @@ public class Material {
         }
 
         public static DeferredHolder<Block, Block> flower_pot(String id, Properties prop,
-                        DeferredHolder<Block, Block> sapling) {
-                return zBlocks.zOnlyBlock.register(id, () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT,
-                                () -> sapling.get(), prop));
+                        Supplier<DeferredHolder<Block, Block>> sapling) {
+                return zBlocks.zOnlyBlock.register(id,
+                                () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT,
+                                                sapling.get(), prop));
         }
 
         public static DeferredHolder<Block, Block> sapling(String id, Properties prop,
@@ -375,6 +376,7 @@ public class Material {
 
         public static DeferredHolder<Block, Block> leaves(String id, Properties prop) {
                 return Material.registerItemBlock(id, () -> new LeavesBlock(prop));
+
         }
 
 }
