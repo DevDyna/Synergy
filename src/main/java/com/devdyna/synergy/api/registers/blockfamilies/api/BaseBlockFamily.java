@@ -2,10 +2,13 @@ package com.devdyna.synergy.api.registers.blockfamilies.api;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.Material;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
@@ -32,7 +35,12 @@ public abstract class BaseBlockFamily<T extends BaseBlockFamily<T>> {
     }
 
     public void buildCreativeTab(Supplier<BuildCreativeModeTabContentsEvent> s) {
-        allBlocks.stream().map(DeferredHolder::get).forEach(s.get()::accept);
+        allBlocks.stream()
+                .map(DeferredHolder::get)
+                .map(Block::asItem)
+                .map(x::item)
+                .filter(Predicate.not(ItemStack::isEmpty))
+                .forEach(s.get()::accept);
     }
 
     public Block[] getAll() {
