@@ -38,6 +38,7 @@ public class DataLootBlock extends BlockLootSubProvider {
 
         List<DeferredRegister.Blocks> blocktypes = List.of(
                         zBlocks.zOnlyBlock,
+                        zBlocks.zColumn,
                         zBlocks.zBlock,
                         zBlocks.zBlockItem,
                         zBlocks.zCrop,
@@ -132,6 +133,8 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.ROUTER
 
                 ).stream().map(DeferredHolder::get).forEach(this::dropSelf);
+
+                Arrays.asList(zBlocks.IRON_WOOD.getLogs()).forEach(this::dropSelf);
 
                 zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get).forEach(this::dropSelf);
 
