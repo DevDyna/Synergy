@@ -2,7 +2,6 @@ package com.devdyna.synergy.datagen.server;
 
 import static com.devdyna.synergy.Main.ID;
 
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
@@ -11,21 +10,20 @@ import com.devdyna.synergy.init.types.zBiomeTags;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zWorldGenFeatures;
 import com.devdyna.synergy.init.types.zWorldGenFeatures.PlacedFeatures;
-import com.google.common.collect.ImmutableList;
-
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.util.valueproviders.WeightedListInt;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -33,13 +31,8 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
+import net.minecraft.world.level.levelgen.placement.CountPlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
-import net.minecraft.world.level.levelgen.placement.SurfaceWaterDepthFilter;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers.AddFeaturesBiomeModifier;
@@ -134,7 +127,18 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
                                                 c.lookup(Registries.CONFIGURED_FEATURE)
                                                                 .getOrThrow(zWorldGenFeatures.ConfiguredFeatures.IRONWOOD),
                                                 VegetationPlacements.treePlacement(
-                                                                PlacementUtils.countExtra(0, 0.15f, 2),
+                                                                CountPlacement.of(new WeightedListInt(
+                                                                                SimpleWeightedRandomList
+                                                                                                .<IntProvider>builder()
+                                                                                                .add(UniformInt.of(3,
+                                                                                                                4), 1)
+                                                                                                .add(UniformInt.of(2,
+                                                                                                                3), 2)
+                                                                                                .add(UniformInt.of(1,
+                                                                                                                2), 4)
+                                                                                                .add(ConstantInt.of(0),
+                                                                                                                33)
+                                                                                                .build())),
                                                                 zBlocks.IRON_WOOD.getSapling().get())));
         }
 
