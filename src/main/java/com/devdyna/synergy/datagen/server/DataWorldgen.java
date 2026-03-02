@@ -2,6 +2,7 @@ package com.devdyna.synergy.datagen.server;
 
 import static com.devdyna.synergy.Main.ID;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
@@ -10,6 +11,9 @@ import com.devdyna.synergy.init.types.zBiomeTags;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zWorldGenFeatures;
 import com.devdyna.synergy.init.types.zWorldGenFeatures.PlacedFeatures;
+import com.google.common.collect.ImmutableList;
+
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistrySetBuilder;
@@ -21,6 +25,7 @@ import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -28,7 +33,13 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.placement.BiomeFilter;
+import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
+import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.RarityFilter;
+import net.minecraft.world.level.levelgen.placement.SurfaceWaterDepthFilter;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers.AddFeaturesBiomeModifier;
@@ -123,7 +134,7 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
                                                 c.lookup(Registries.CONFIGURED_FEATURE)
                                                                 .getOrThrow(zWorldGenFeatures.ConfiguredFeatures.IRONWOOD),
                                                 VegetationPlacements.treePlacement(
-                                                                PlacementUtils.countExtra(1, 0.25f, 2),
+                                                                PlacementUtils.countExtra(0, 0.15f, 2),
                                                                 zBlocks.IRON_WOOD.getSapling().get())));
         }
 
