@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#c:is_forest",
+    "#c:is_taiga",
+    "minecraft:meadow",
+    "#c:is_windswept",
+    "#c:is_beach"
+  ]
+}

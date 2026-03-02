@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "minecraft:plains",
+  "biomes": "#synergy:ironwood_spawn",
   "features": "synergy:ironwood_tree",
   "step": "vegetal_decoration"
 }
