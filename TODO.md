@@ -12,8 +12,6 @@
 
 - [ ] Differents styles for Nodes / Node model rework
 
-- [x] rework any machine with AreaOfEffect and soldering gun to simplify
-
 - [ ] Laser Infusion RecipeType
 
 - [ ] All Recipe Types compat with GuideMe (?)
@@ -22,22 +20,11 @@
 
 - [ ] urn jei category rework to dynamic handling
 
-- [x] guideme for machines and upgrades
-
 - [ ] mechanical crushing tub (piston)
-
-- [ ] functional grindstone (?)
-- [ ] copper grindstone (damagable) (?)
-
-- [x] drying racks and evaporation basin block boosters tooltip
 
 - [ ] dryable bricks not customizable tooltip on jei (+config)
 
 - [ ] industrial machines process warning tooltips (meka like?)
-
-- [ ] migrate hand-coded batteries capabilities to Neoforge FE capabilities
-
-- [x] chopper
 
 - [ ] dimensional miner like?
 
@@ -53,11 +40,6 @@
 
 - [ ] rework batteries
 
-
-
-- [ ] evaporation basin booster jei(?)
-- [ ] drying racks booster jei(?)
-
 - [ ] Forestry Peatfarm (?)
 
 - [ ] fossil usage
@@ -69,12 +51,12 @@
 - [ ] : redstone
 - [ ] : emerald
 - [ ] : diamond
-- [ ] : aquamarine
-- [ ] : ruby?
+
 - [ ] : amethyst
 - [ ] : lapis
 - [ ] : glowstone?
-- [ ] : quartz early?
+
+- [ ] aquamarine -> underground block cluster
 
 - [ ] rock crusher soils / electric sluice? (dirt,gravel,sand)
 
