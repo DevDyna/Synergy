@@ -119,33 +119,35 @@ public class Plugin implements IModPlugin {
         public void registerCategories(IRecipeCategoryRegistration r) {
                 var helper = r.getJeiHelpers().getGuiHelper();
 
-                r.addRecipeCategories(new ReactorCellCategory(helper));
-                r.addRecipeCategories(new UrnCategory(helper));
-                r.addRecipeCategories(new CropResultCategory(helper));
-                r.addRecipeCategories(new ItemUseCategory(helper));
-                r.addRecipeCategories(new QuernCategory(helper));
+                r.addRecipeCategories(
+                                new ReactorCellCategory(helper),
+                                new UrnCategory(helper),
+                                new CropResultCategory(helper),
+                                new ItemUseCategory(helper),
+                                new QuernCategory(helper),
 
-                r.addRecipeCategories(new ItemProviderCategory(helper));
-                r.addRecipeCategories(new FluidProviderCategory(helper));
-                r.addRecipeCategories(new DryableBricksCategory(helper));
-                r.addRecipeCategories(new VoidBoxInfusionCategory(helper));
+                                new ItemProviderCategory(helper),
+                                new FluidProviderCategory(helper),
 
-                r.addRecipeCategories(new MaceratorCategory(helper));
-                r.addRecipeCategories(new CompressorCategory(helper));
-                r.addRecipeCategories(new AlloySmelterCategory(helper));
-                r.addRecipeCategories(new ElectricFurnaceCategory(helper));
-                r.addRecipeCategories(new ExtractorCategory(helper));
-                r.addRecipeCategories(new CasterCategory(helper));
-                r.addRecipeCategories(new MelterCategory(helper));
-                r.addRecipeCategories(new RockCrusherCategory(helper));
+                                new DryableBricksCategory(helper),
+                                new VoidBoxInfusionCategory(helper),
+                                
+                                new MaceratorCategory(helper),
+                                new CompressorCategory(helper),
+                                new AlloySmelterCategory(helper),
+                                new ElectricFurnaceCategory(helper),
+                                new ExtractorCategory(helper),
+                                new CasterCategory(helper),
+                                new MelterCategory(helper),
+                                new RockCrusherCategory(helper),
 
-                r.addRecipeCategories(new CrushingTubCategory(helper));
-                r.addRecipeCategories(new EvaporationBasinCategory(helper));
+                                new CrushingTubCategory(helper),
+                                new EvaporationBasinCategory(helper),
 
-                r.addRecipeCategories(new DryingRackCategory(helper));
-                r.addRecipeCategories(new FoundryCategory(helper));
-                r.addRecipeCategories(new FoundryFuelRecipeCategory(helper));
-                r.addRecipeCategories(new CastingTableCategory(helper));
+                                new DryingRackCategory(helper),
+                                new FoundryCategory(helper),
+                                new FoundryFuelRecipeCategory(helper),
+                                new CastingTableCategory(helper));
 
         }
 
@@ -323,20 +325,16 @@ public class Plugin implements IModPlugin {
                 List.of(zBlocks.RECURSIVE_REPEATER, zBlocks.PULSE_REPEATER, zBlocks.INVERTED_REPEATER).stream()
                                 .map(DeferredHolder::get).map(x::item)
                                 .forEach(e -> r.addAlias(e, ID + ".jei.atlas.redstone.component"));
-             
-                                List.of(zBlocks.LASER_SENSOR).stream()
+
+                List.of(zBlocks.LASER_SENSOR).stream()
                                 .map(DeferredHolder::get).map(x::item)
                                 .forEach(e -> r.addAlias(e, ID + ".jei.atlas.redstone.emitter"));
-               
-                                List.of(zBlocks.LASER_MACHINE, zBlocks.LASER_MIRROR, zBlocks.REACTOR_CONTROLLER
-                                ,zBlocks.HARVESTER,zBlocks.SOLAR_PANEL,zBlocks.SPRINKLER,zBlocks.VOID_BOX,zBlocks.LOGIC_BOX
-                                ,zBlocks.CASTING_TABLE,zBlocks.FAUCET
-                                ).stream()
+
+                List.of(zBlocks.LASER_MACHINE, zBlocks.LASER_MIRROR, zBlocks.REACTOR_CONTROLLER, zBlocks.HARVESTER,
+                                zBlocks.SOLAR_PANEL, zBlocks.SPRINKLER, zBlocks.VOID_BOX, zBlocks.LOGIC_BOX,
+                                zBlocks.CASTING_TABLE, zBlocks.FAUCET).stream()
                                 .map(DeferredHolder::get).map(x::item)
                                 .forEach(e -> r.addAlias(e, ID + ".jei.atlas.redstone.sensible"));
-
-
-
 
                 List.of(zBlocks.WOODEN_TINY_CHEST, zBlocks.STONE_TINY_CHEST, zBlocks.ORNATE_TINY_CHEST).stream()
                                 .map(DeferredHolder::get).map(x::item)
@@ -420,9 +418,6 @@ public class Plugin implements IModPlugin {
                 List.of(zItems.CONFIGURATOR, zItems.FLOPPY_DISK, zItems.SOLDERING_GUN).stream()
                                 .map(DeferredHolder::get).map(x::item)
                                 .forEach(e -> r.addAlias(e, ID + ".jei.atlas.aoe"));
-
-
-                
 
         }
 
