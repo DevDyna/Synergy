@@ -2,7 +2,6 @@ package com.devdyna.synergy.api.beLogic;
 
 import java.util.ArrayList;
 
-import com.devdyna.synergy.api.utils.ArrayUtils;
 import com.devdyna.synergy.api.utils.DirectionUtil;
 
 import net.minecraft.core.BlockPos;
@@ -71,23 +70,23 @@ public interface NoGuiStorage {
 
         var validDir = new ArrayList<Direction>();
 
-        for (Direction dir : ArrayUtils.concat(DirectionUtil.HORIZONTAL, new Direction[] { Direction.UP })) {
-
-            var relate = pos.relative(dir);
-
-            if (!level.getBlockState(relate).isSolidRender(level, relate)) {
+        for (Direction dir : DirectionUtil.HORIZONTAL)
+            if (!canPlaceItem(level, pos, dir))
                 validDir.add(dir);
-            }
-        }
 
-        spawnItemEntity(level,
-                !validDir.isEmpty()
-                        ? pos.relative(
-                                validDir.get(
-                                        level.random.nextInt(validDir.size())))
-                        : pos,
-                output);
+        var outputPos = pos;
 
+        if (!validDir.isEmpty())
+            outputPos = pos.relative(validDir.get(level.random.nextInt(validDir.size())));
+        else if (canPlaceItem(level, pos, Direction.UP))
+            outputPos = pos.relative(Direction.UP);
+
+        spawnItemEntity(level, outputPos, output);
+
+    }
+
+    private boolean canPlaceItem(Level l, BlockPos p, Direction d) {
+        return !l.getBlockState(p.relative(d)).isSolidRender(l, p.relative(d));
     }
 
     private void spawnItemEntity(Level l, BlockPos p, ItemStack s) {
