@@ -1126,15 +1126,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                                 has(zItems.RESISTOR.get()))
                                 .save(c);
 
-                ShapedRecipeBuilder.shaped(MISC, zItems.BLUE_BATTERY.get())
-                                .pattern("RHR")
-                                .pattern(" R ")
-                                .define('R', zItems.RESISTOR.get())
-                                .define('H', zItems.GREEN_BATTERY.get())
-                                .unlockedBy(ID,
-                                                has(zItems.RESISTOR.get()))
-                                .save(c, asID(zItems.BLUE_BATTERY.get()));
-
                 ShapedRecipeBuilder.shaped(MISC, zItems.GREEN_BATTERY.get())
                                 .pattern(" S ")
                                 .pattern("RHR")
