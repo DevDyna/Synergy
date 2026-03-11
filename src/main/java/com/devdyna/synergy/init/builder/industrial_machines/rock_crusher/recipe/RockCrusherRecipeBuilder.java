@@ -67,6 +67,9 @@ public class RockCrusherRecipeBuilder extends BaseMachineRecipeBuilder<RockCrush
     public RockCrusherRecipeBuilder addResult(Item item, float chance) {
         return addResult(x.item(item), chance);
     }
+    public RockCrusherRecipeBuilder addResult(Item item,int count, float chance) {
+        return addResult(x.item(item,count), chance);
+    }
 
     public RockCrusherRecipeBuilder addResult(DeferredHolder<Item, ?> item, float chance) {
         return addResult(x.item(item), chance);
