@@ -2515,6 +2515,16 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .fluid(Fluids.WATER, 125)
                                 .unlockedBy()
                                 .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.ROUTER.get())
+                                .pattern("WRW")
+                                .pattern("RCR")
+                                .pattern("WRW")
+                                .define('C', Items.CHEST)
+                                .define('R', zItems.STONE_CIRCUIT.get())
+                                .define('W', zItems.WROUGHT_IRON_PLATE.get())
+                                .unlockedBy(getHasName(zItems.WROUGHT_IRON_PLATE.get()),
+                                                has(zItems.WROUGHT_IRON_PLATE.get()))
         }
 
 }
