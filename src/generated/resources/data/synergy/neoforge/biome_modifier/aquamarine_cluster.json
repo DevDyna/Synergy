@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#synergy:aquamarine_cluster_spawn",
+  "features": "synergy:aquamarine_cluster",
+  "step": "vegetal_decoration"
+}
