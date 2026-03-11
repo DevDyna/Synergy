@@ -52,6 +52,11 @@ public class DataBiomeTag extends BiomeTagsProvider {
                 .add(Biomes.MEADOW)
                 .addTag(Tags.Biomes.IS_WINDSWEPT)
                 .addTag(Tags.Biomes.IS_BEACH);
+
+        tag(zBiomeTags.AQUAMARINE_CLUSTER_SPAWN)
+                .addTag(Tags.Biomes.IS_OCEAN)
+                .addTag(Tags.Biomes.IS_COLD)
+                .addTag(Tags.Biomes.IS_FLORAL);
     }
 
 }

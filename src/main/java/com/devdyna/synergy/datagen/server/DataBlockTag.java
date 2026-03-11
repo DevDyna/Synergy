@@ -63,7 +63,8 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.BLAST_BRICKS.get(),
                                                 zBlocks.SIMPLE_TANK.get(),
                                                 zBlocks.FUEL_TANK.get(),
-                                                zBlocks.EVAPORATION_BASIN.get());
+                                                zBlocks.EVAPORATION_BASIN.get(),
+                                                zBlocks.AQUAMARINE_CLUSTER.get());
 
                 tag(BlockTags.MINEABLE_WITH_AXE)
                                 .add(zBlocks.IRON_WOOD.getLogs())
@@ -243,6 +244,9 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(zBlockTag.IRONWOOD_LOGS)
                                 .add(zBlocks.IRON_WOOD.getLogs());
+                                
+                tag(Tags.Blocks.CLUSTERS)
+                                .add(zBlocks.AQUAMARINE_CLUSTER.get());
 
         }
 

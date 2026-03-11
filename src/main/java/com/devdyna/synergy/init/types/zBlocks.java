@@ -1,6 +1,7 @@
 package com.devdyna.synergy.init.types;
 
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.block.AmethystClusterBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -647,6 +648,15 @@ public class zBlocks {
                         .flower_pot()
                         .stair()
                         .createTag();
+
+        public static final DeferredHolder<Block, Block> AQUAMARINE_CLUSTER = Material.registerItemBlock(
+                        "aquamarine_cluster",
+                        () -> new AmethystClusterBlock(7.0F, 3.0F,
+                                        Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).forceSolidOn().noOcclusion()
+                                                        .sound(SoundType.AMETHYST_CLUSTER).strength(1.5F)
+                                                        .lightLevel((s) -> {
+                                                                return 5;
+                                                        }).pushReaction(PushReaction.DESTROY)));
 
         // ---------------------------------------------------------------------------------------//
 

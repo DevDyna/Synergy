@@ -56,17 +56,17 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 simpleBlockDecorative(zBlocks.SMOOTH_ADOBE);
                 simpleBlockDecorative(zBlocks.BLAST_BRICKS);
 
-                simpleFullBlock(zBlocks.FIRECLAY_BRICKS.getBricks(),"decorative/");
-                simpleFullBlock(zBlocks.FIRECLAY_BRICKS.getTiles(),"decorative/");
-                simpleFullBlock(zBlocks.FIRECLAY_BRICK_CRACKED.getBricks(),"decorative/");
-                simpleFullBlock(zBlocks.FIRECLAY_BRICK_CRACKED.getTiles(),"decorative/");
-                simpleFullBlock(zBlocks.FIRECLAY_BRICK_MOSSY.getBricks(),"decorative/");
-                simpleFullBlock(zBlocks.FIRECLAY_BRICK_MOSSY.getTiles(),"decorative/");
+                simpleFullBlock(zBlocks.FIRECLAY_BRICKS.getBricks(), "decorative/");
+                simpleFullBlock(zBlocks.FIRECLAY_BRICKS.getTiles(), "decorative/");
+                simpleFullBlock(zBlocks.FIRECLAY_BRICK_CRACKED.getBricks(), "decorative/");
+                simpleFullBlock(zBlocks.FIRECLAY_BRICK_CRACKED.getTiles(), "decorative/");
+                simpleFullBlock(zBlocks.FIRECLAY_BRICK_MOSSY.getBricks(), "decorative/");
+                simpleFullBlock(zBlocks.FIRECLAY_BRICK_MOSSY.getTiles(), "decorative/");
 
-                simpleFullBlock(zBlocks.IRON_WOOD.getPlanks(),"decorative/");
-                leaveBlock(zBlocks.IRON_WOOD.getLeaves(),"block/decorative/");
-                pottedPlant(zBlocks.IRON_WOOD.getFlowerPot(),"block/decorative/ironwood_sapling");
-                crossBlock(zBlocks.IRON_WOOD.getSapling(),"block/decorative/ironwood_sapling");
+                simpleFullBlock(zBlocks.IRON_WOOD.getPlanks(), "decorative/");
+                leaveBlock(zBlocks.IRON_WOOD.getLeaves(), "block/decorative/");
+                pottedPlant(zBlocks.IRON_WOOD.getFlowerPot(), "block/decorative/ironwood_sapling");
+                crossBlock(zBlocks.IRON_WOOD.getSapling(), "block/decorative/ironwood_sapling");
 
                 simpleFlexibleBlock(zBlocks.COOLER_BASE, "machine/nuclear/cooler/base");
 
@@ -283,6 +283,11 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 modLoc("block/machine/farming/chopper/side"),
                                                 modLoc("block/decorative/wrought_iron_block"),
                                                 modLoc("block/machine/farming/chopper/top")));
+
+                directionalBlock(zBlocks.AQUAMARINE_CLUSTER.get(),
+                                models().cross(zBlocks.AQUAMARINE_CLUSTER.getRegisteredName(),
+                                                modLoc("block/decorative/aquamarine"))
+                                                .renderType(DataGenUtil.CUTOUT));
 
         }
 

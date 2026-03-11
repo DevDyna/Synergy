@@ -17,5 +17,6 @@ public class zBiomeTags {
     public static final TagKey<Biome> WILD_CAVE_WHEAT_SPAWN = Material.tagBiome("wild_cave_wheat_spawn");
     public static final TagKey<Biome> WILD_COTTON_SPAWN = Material.tagBiome("wild_cotton_spawn");
     public static final TagKey<Biome> WILD_RICE_SPAWN = Material.tagBiome("wild_rice_spawn");
+    public static final TagKey<Biome> AQUAMARINE_CLUSTER_SPAWN = Material.tagBiome("aquamarine_cluster_spawn");
 
 }

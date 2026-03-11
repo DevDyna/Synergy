@@ -233,6 +233,9 @@ public class DataItemModel extends ExtraItemModelProvider {
                 withExistingParent(zBlocks.IRON_WOOD.getSapling().getRegisteredName(), DataGenUtil.ITEM)
                                 .texture("layer0", x.rl("block/decorative/ironwood_sapling"));
 
+                withExistingParent(zBlocks.AQUAMARINE_CLUSTER.getRegisteredName(), DataGenUtil.ITEM)
+                                .texture("layer0", x.rl("block/decorative/aquamarine"));
+
         }
 
 }

@@ -343,8 +343,8 @@ public class DataItemTag extends ItemTagsProvider {
                                 .add(Items.BLAZE_POWDER);
 
                 // tag(zItemTag.RESISTOR_INGREDIENT)
-                //                 .addTag(zItemTag.GEMS_AQUAMARINE)
-                //                 .add(zItems.GUARDIAN_SCALE.get());
+                // .addTag(zItemTag.GEMS_AQUAMARINE)
+                // .add(zItems.GUARDIAN_SCALE.get());
 
                 tag(zItemTag.DEEPSLATE_STONES)
                                 .add(Items.DEEPSLATE, Items.COBBLED_DEEPSLATE);
@@ -390,6 +390,9 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.IRONWOOD_LOGS)
                                 .add(ArrayUtils.map(zBlocks.IRON_WOOD.getLogs(), Block::asItem, Item[]::new));
+
+                tag(Tags.Items.CLUSTERS)
+                                .add(zBlocks.AQUAMARINE_CLUSTER.get().asItem());
 
         }
 

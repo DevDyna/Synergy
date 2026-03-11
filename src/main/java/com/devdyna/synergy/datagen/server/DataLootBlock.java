@@ -1,5 +1,6 @@
 package com.devdyna.synergy.datagen.server;
 
+
 import java.util.*;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.plants.builder.BaseCropBlock;
@@ -202,6 +203,18 @@ public class DataLootBlock extends BlockLootSubProvider {
 
                 dropSelf(zBlocks.IRON_WOOD.getSapling().get());
 
+                cluster(zBlocks.AQUAMARINE_CLUSTER.get(), zItems.AQUAMARINE.get());
+
+        }
+
+        private void cluster(Block cluster, Item shard) {
+                add(cluster, createSilkTouchDispatchTable(
+                                cluster,
+                                applyExplosionDecay(
+                                                cluster,
+                                                LootItem.lootTableItem(shard))
+                                                .apply(ApplyBonusCount.addUniformBonusCount(EnchantUtil
+                                                                .getEnchantHolder(registries, Enchantments.FORTUNE)))));
         }
 
         private void brick(DeferredHolder<Block, Block> b, Item fail, Item success) {

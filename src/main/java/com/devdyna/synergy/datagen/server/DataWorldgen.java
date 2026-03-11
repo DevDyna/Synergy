@@ -83,9 +83,25 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
                                                 .getOrThrow(zWorldGenFeatures.PlacedFeatures.WILD_RICE)),
                                 Decoration.VEGETAL_DECORATION);
 
+                WorldgenUtils.registerBiomeModifer(c, zWorldGenFeatures.BiomeModifiers.AQUAMARINE_CLUSTER,
+                                c.lookup(Registries.BIOME).getOrThrow(zBiomeTags.AQUAMARINE_CLUSTER_SPAWN),
+                                HolderSet.direct(c.lookup(Registries.PLACED_FEATURE)
+                                                .getOrThrow(zWorldGenFeatures.PlacedFeatures.AQUAMARINE_CLUSTER)),
+                                Decoration.VEGETAL_DECORATION);
+
         }
 
         protected static void configuredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> c) {
+
+                c.register(zWorldGenFeatures.ConfiguredFeatures.IRONWOOD,
+                                new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                                                BlockStateProvider.simple(zBlocks.IRON_WOOD.getLog().get()),
+                                                new StraightTrunkPlacer(5, 8, 0),
+                                                BlockStateProvider.simple(zBlocks.IRON_WOOD.getLeaves().get()),
+                                                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
+                                                new TwoLayersFeatureSize(1, 0, 1))
+                                                .ignoreVines()
+                                                .build()));
 
                 WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.MUSH_BLUE_CUP,
                                 zBlocks.BLUE_CUP_MUSHROOM.get(), 20, 5, 5);
@@ -97,30 +113,11 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
                                 zBlocks.WILD_COTTON.get(), 10, 8, 3);
                 WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.WILD_RICE,
                                 zBlocks.WILD_RICE.get(), 1, 4, 3);
-
-                c.register(zWorldGenFeatures.ConfiguredFeatures.IRONWOOD,
-                                new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                                                BlockStateProvider.simple(zBlocks.IRON_WOOD.getLog().get()),
-                                                new StraightTrunkPlacer(5, 8, 0),
-                                                BlockStateProvider.simple(zBlocks.IRON_WOOD.getLeaves().get()),
-                                                new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-                                                new TwoLayersFeatureSize(1, 0, 1))
-                                                .ignoreVines()
-                                                .build()));
+                WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.AQUAMARINE_CLUSTER,
+                                zBlocks.AQUAMARINE_CLUSTER.get(), 10, 2, 2);
         }
 
         protected static void placedFeatures(BootstrapContext<PlacedFeature> c) {
-
-                WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.MUSH_BLUE_CUP,
-                                zWorldGenFeatures.ConfiguredFeatures.MUSH_BLUE_CUP, 10, -60, 4);
-                WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.MUSH_VIOLET_WEBCAP,
-                                zWorldGenFeatures.ConfiguredFeatures.MUSH_VIOLET_WEBCAP, 5, -40, 20);
-                WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.WILD_CAVE_WHEAT,
-                                zWorldGenFeatures.ConfiguredFeatures.WILD_CAVE_WHEAT, 3, -40, 24);
-                WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.WILD_COTTON,
-                                zWorldGenFeatures.ConfiguredFeatures.WILD_COTTON, 1, 44, 120);
-                WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.WILD_RICE,
-                                zWorldGenFeatures.ConfiguredFeatures.WILD_RICE, 4, 58, 80);
 
                 c.register(zWorldGenFeatures.PlacedFeatures.IRONWOOD,
                                 new PlacedFeature(
@@ -147,6 +144,20 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
                                                                                                                 33)
                                                                                                 .build())),
                                                                 zBlocks.IRON_WOOD.getSapling().get())));
+
+                WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.MUSH_BLUE_CUP,
+                                zWorldGenFeatures.ConfiguredFeatures.MUSH_BLUE_CUP, 10, -60, 4);
+                WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.MUSH_VIOLET_WEBCAP,
+                                zWorldGenFeatures.ConfiguredFeatures.MUSH_VIOLET_WEBCAP, 5, -40, 20);
+                WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.WILD_CAVE_WHEAT,
+                                zWorldGenFeatures.ConfiguredFeatures.WILD_CAVE_WHEAT, 3, -40, 24);
+                WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.WILD_COTTON,
+                                zWorldGenFeatures.ConfiguredFeatures.WILD_COTTON, 1, 44, 120);
+                WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.WILD_RICE,
+                                zWorldGenFeatures.ConfiguredFeatures.WILD_RICE, 4, 58, 80);
+                WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.AQUAMARINE_CLUSTER,
+                                zWorldGenFeatures.ConfiguredFeatures.AQUAMARINE_CLUSTER, 2, -40, 40);
+
         }
 
 }
