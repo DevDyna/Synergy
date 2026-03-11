@@ -1370,11 +1370,11 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.BASIC_MACHINE_FRAME.get(), 2)
-                                .pattern("PPP")
-                                .pattern("PSP")
-                                .pattern("WWW")
-                                .define('W', zItems.WROUGHT_IRON_PLATE.get())
+                                .pattern(" P ")
+                                .pattern("PWP")
+                                .pattern(" S ")
                                 .define('S', zItems.SILICON.get())
+                                .define('W', zBlocks.WROUGHT_IRON_BLOCK.get())
                                 .define('P', zItems.PLASTIC.get())
                                 .unlockedBy(ID, has(zItems.PLASTIC.get()))
                                 .save(c, asID(zBlocks.BASIC_MACHINE_FRAME.get().asItem()));
