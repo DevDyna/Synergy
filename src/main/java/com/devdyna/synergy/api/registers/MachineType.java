@@ -55,7 +55,7 @@ MENU extends BaseMachineMenu,
                 id,
                 () -> IMenuTypeExtension.create(menuFactory));
 
-        this.recipe = RecipeRegister.of(id, recipeSerializer);
+        this.recipe = RecipeRegister.of("machine/"+id, recipeSerializer);
     }
 
     public DeferredHolder<Block, BLOCK> block() {
