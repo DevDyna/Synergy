@@ -123,9 +123,9 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
     int i = 0;
     List<Integer> rgbColor;
 
-    int delay = 20; // TODO config
+    int delay = Common.CHOPPER_DEFAULT_TICK_DELAY.get();
 
-    int energy_usage = 25; // TODO config
+    int energy_usage = Common.CHOPPER_FE_USAGE.get();
 
     int upgrades = 0;
 
@@ -182,7 +182,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
                 maxProgress = fuel.getBurnTime(RecipeType.SMELTING);
                 fuel.shrink(1);
             } else if (handleEnergy() && canExtract() && hasEnergy(energy_usage)) {
-                maxProgress = 5;// TODO config
+                maxProgress = Common.CHOPPER_ADD_TICKS_WHEN_FE.get();
                 extractFE(energy_usage, false);
             }
 
@@ -208,7 +208,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
             List<ItemStack> items = !getStorage().getStackInSlot(AXE_SLOT).is(ItemTags.AXES)
                     ? null
                     : VanillaPlants.checkTree(level, pos,
-                            Common.HARVESTER_DISABLE_CHECK_TREE.get(), // TODO
+                            false,
                             (l_state, l_pos) -> {
 
                                 var result = Block.getDrops(l_state, (ServerLevel) level, l_pos, null);
@@ -400,7 +400,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
             @Override
             public int getSlotLimit(int slot) {
                 if (slot == UPGRADE_SLOT)
-                    return 15;
+                    return Common.CHOPPER_UPGRADE_SLOT_LIMIT.get();
                 return getStorage().getSlotLimit(slot);
             }
 

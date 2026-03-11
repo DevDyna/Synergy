@@ -30,6 +30,11 @@ public class Common {
         public static BooleanValue HARVESTER_DISABLE_CHECK_API;// false
         public static BooleanValue HARVESTER_DISABLE_DROP_WHEN_FULL;// false
 
+        public static IntValue CHOPPER_UPGRADE_SLOT_LIMIT;// 15
+        public static IntValue CHOPPER_DEFAULT_TICK_DELAY;// 20
+        public static IntValue CHOPPER_FE_USAGE;// 25
+        public static IntValue CHOPPER_ADD_TICKS_WHEN_FE;// 5
+
         public static IntValue SOLAR_PANEL_FE_GEN;// 16
         public static IntValue SOLAR_PANEL_MAX_FE;// 10k
         public static BooleanValue SOLAR_PANEL_DISABLE_CHECK_SEE_SKY;// false
@@ -243,6 +248,15 @@ public class Common {
                                 "harvester_disable_api");
                 HARVESTER_DISABLE_DROP_WHEN_FULL = bool("Disable drop items when output full",
                                 "harvester_disable_drop_when_full");
+
+                decor.complex(zStatic.Blocks.chopper);
+
+                CHOPPER_UPGRADE_SLOT_LIMIT = number("Slot limit of upgrades applicable to the Chopper",
+                                "chopper_upgrade_slot_limit", 15,1,64);
+                CHOPPER_DEFAULT_TICK_DELAY = number("Tick delay on AOE checking the next blockpos", "chopper_tick_rate",
+                                20);
+                CHOPPER_FE_USAGE = number("FE usage every tick when upgraded", "chopper_fe_rate", 25);
+                CHOPPER_ADD_TICKS_WHEN_FE = number("Ticks added when consume FE", "chopper_progress_fe", 5);
 
                 decor.complex(zStatic.Blocks.solar_panel);
 
