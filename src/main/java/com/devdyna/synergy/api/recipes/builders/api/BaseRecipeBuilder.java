@@ -32,16 +32,16 @@ public abstract class BaseRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public void save(RecipeOutput pRecipeOutput, ResourceLocation pId) {
+    public void save(RecipeOutput c, ResourceLocation pId) {
         if (this.criteria.isEmpty())
             throw new IllegalStateException("Missing/Null Criteria " + String.valueOf(pId));
-        Advancement.Builder advancement$builder = pRecipeOutput.advancement()
+        Advancement.Builder adv = c.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pId))
                 .rewards(AdvancementRewards.Builder.recipe(pId))
                 .requirements(AdvancementRequirements.Strategy.OR);
-        this.criteria.forEach(advancement$builder::addCriterion);
-        pRecipeOutput.accept(pId, createRecipe(),
-                advancement$builder.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
+        this.criteria.forEach(adv::addCriterion);
+        c.accept(pId, createRecipe(),
+                adv.build(pId.withPrefix("recipes/" + RecipeCategory.MISC.getFolderName() + "/")));
     }
 
 }
