@@ -97,9 +97,9 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                 zItems.zIngots, zStatic.ResourceType.ingot,
                                 zItems.zNuggets, zStatic.ResourceType.nugget,
                                 zItems.zPlates, zStatic.ResourceType.plate,
+                                zItems.zRockChunk, zStatic.ResourceType.chunk,
                                 zItems.zShards, zStatic.ResourceType.shard,
-                                zItems.zGears, zStatic.ResourceType.gear,
-                                zItems.zPellets, zStatic.ResourceType.pellet)
+                                zItems.zGears, zStatic.ResourceType.gear)
                                 .forEach((entries, data) -> entries.getEntries()
                                                 .forEach(item -> DataGenUtil.itemModel(
                                                                 item.get(),
@@ -117,6 +117,24 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                                                 this,
                                                                 "resources/" + data.replace("_", "/"),
                                                                 x.path(item.get()).replace(data, ""))));
+
+                // pellets
+                Map.of(
+                                zItems.zDepletedPellets, "depleted/",
+                                zItems.zPelletFragments, "fragment/",
+                                zItems.zPellets, "stable/")
+                                .forEach((entries, data) -> entries.getEntries()
+                                                .forEach(item -> DataGenUtil.itemModel(
+                                                                item.get(),
+                                                                this,
+                                                                "resources/pellet/" + data,
+                                                                x.path(item.get())
+                                                                                .replace(zStatic.ResourceType.depleted,
+                                                                                                "")
+                                                                                .replace(zStatic.ResourceType.pellet,
+                                                                                                "")
+                                                                                .replace(zStatic.ResourceType.fragment,
+                                                                                                ""))));
 
                 // special resource types
                 Map.of(
