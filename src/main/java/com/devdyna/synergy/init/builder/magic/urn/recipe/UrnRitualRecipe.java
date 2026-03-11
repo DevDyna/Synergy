@@ -1,12 +1,10 @@
 package com.devdyna.synergy.init.builder.magic.urn.recipe;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
-import com.devdyna.synergy.api.utils.LogUtil;
 import com.devdyna.synergy.common.recipes.input.ItemListInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
