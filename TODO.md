@@ -16,7 +16,7 @@
 
 - [ ] All Recipe Types compat with GuideMe (?)
 
-- [ ] sulfur usage
+- [x] sulfur usage
 
 - [ ] urn jei category rework to dynamic handling
 
@@ -44,25 +44,11 @@
 
 - [ ] fossil usage
 
-- [ ] end pebble
-- [ ] sand pebble
-
-- [ ] rock crusher gems
-- [ ] : redstone
-- [ ] : emerald
-- [ ] : diamond
-
-- [ ] : amethyst
-- [ ] : lapis
-- [ ] : glowstone?
+- [x] end pebble
 
 - [ ] aquamarine -> underground block cluster
 
-- [ ] rock crusher soils / electric sluice? (dirt,gravel,sand)
-
-- [ ] fuel deprecation
-
-- [ ] calcite on rock crusher
+- [x] fuel deprecation
 
 - [ ] replace many drawString -> drawCenteredString
 
@@ -74,9 +60,11 @@
 - [ ] Ticker need to use level.gameTime intend of tick
 
 - [ ] router recipe
-- [ ] rock crusher recipe
+- [x] rock crusher recipe
 
 - [ ] quern output rework (random to direct spawn side orthrow above)
+
+- [ ] rework serializers to be unified with recipetype and use RecipeUtils.optionalCodec() when optional
 
 ### Survival expansion
 
@@ -104,8 +92,7 @@
 - [ ] Blaze Lily
 - [ ] Experience Lily
 
-
-- [ ] cave mushroom -> press -> liquid lapis/ liquid coal
+- [x] cave mushroom -> press -> liquid lapis/ liquid coal
 - [ ] weed crop plant (unwanted plant) -> farmland spreaddable crop -> fibers(?)
 - [ ] Truffles
 
