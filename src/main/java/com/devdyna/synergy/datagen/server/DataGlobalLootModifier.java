@@ -81,6 +81,13 @@ public class DataGlobalLootModifier extends GlobalLootModifierProvider {
                                 BuiltInLootTables.WOODLAND_MANSION,
                                 BuiltInLootTables.SHIPWRECK_SUPPLY);
 
+                DataGenUtil.modifyLootTables(this, DataAnyLoot.RESOURCES,
+                                BuiltInLootTables.ABANDONED_MINESHAFT,
+                                BuiltInLootTables.SIMPLE_DUNGEON,
+                                BuiltInLootTables.WOODLAND_MANSION,
+                                BuiltInLootTables.SHIPWRECK_SUPPLY,
+                                BuiltInLootTables.TRIAL_CHAMBERS_CORRIDOR);
+
                 DataAnyLoot.MOB_DROPS.forEach(item -> asignItemToLootTable(item));
 
                 // asignItemToLootTable(zItems.SULFUR_DUST, 0);

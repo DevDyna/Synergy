@@ -13,6 +13,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
@@ -28,7 +29,9 @@ public class DataAnyLoot implements LootTableSubProvider {
 
         // public final static String CHEST_DROPS = "chests/";
         public final static String PREFIX_DROPS = "entities/extra_mob_drops/";
+
         public final static String MUSHROOMS = "chests/mushrooms";
+        public final static String RESOURCES = "chests/resources";
 
         private HolderLookup.Provider p;
 
@@ -94,10 +97,11 @@ public class DataAnyLoot implements LootTableSubProvider {
 
                 DataGenUtil.registerTable(c, x.rl(MUSHROOMS), mushtable);
 
-                // DataGenUtil.registerTable(c, x.rl("entities/extra_mob_drops/sulfur_dust"),
-                // DataGenUtil.createTable(DataGenUtil.createPool()
-                // .setRolls(UniformGenerator.between(0.0f, 1.0f))
-                // ));
+                DataGenUtil.registerTable(c, x.rl(RESOURCES),
+                                DataGenUtil.createTable(DataGenUtil.createPool()
+                                                .setRolls(UniformGenerator.between(1, 2))
+                                                .add(LootItem.lootTableItem(zItems.AQUAMARINE.get()))
+                                                .add(LootItem.lootTableItem(Items.SLIME_BALL))));
 
         }
 
