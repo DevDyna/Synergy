@@ -1,10 +1,13 @@
 package com.devdyna.synergy.init.builder.automation.chopper;
 
+import static com.devdyna.synergy.Main.ID;
+
 import java.awt.Color;
 import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.gui.BaseScreen;
 import com.devdyna.synergy.api.utils.Image;
 import com.devdyna.synergy.api.utils.Pos;
@@ -133,25 +136,30 @@ public class ChopperScreen extends BaseScreen<ChopperMenu> {
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         super.renderLabels(guiGraphics, mouseX, mouseY);
 
-        guiGraphics.drawString(this.font, Component.literal("Status"), 55 - 5 + 3, 24,
+        guiGraphics.drawString(this.font, Component.translatable(ID + "." + zStatic.Blocks.chopper + ".info.status"),
+                55 - 5 + 3, 24,
                 Color.LIGHT_GRAY.getRGB(), true);
 
-        guiGraphics.drawString(this.font, Component.literal("Range: " + menu.getRange()), 55 - 5, 45,
+        guiGraphics.drawString(this.font,
+                Component.translatable(ID + "." + zStatic.Blocks.chopper + ".info.range", menu.getRange()), 55 - 5, 45,
                 Color.LIGHT_GRAY.getRGB(), true);
 
         if (!menu.hasAxe()) {
-            guiGraphics.drawString(this.font, Component.literal("No valid axe"), 50 - 5 - 5 + 2 - 1, 34,
+            guiGraphics.drawString(this.font, Component.translatable(ID + "." + zStatic.Blocks.chopper + ".info.axe"),
+                    50 - 5 - 5 + 2 - 1, 34,
                     Color.RED.getRGB(), true);
             return;
         }
 
         if (!menu.isCrafting()) {
-            guiGraphics.drawString(this.font, Component.literal("Missing Fuel"), 50 - 5 - 5 + 2 - 1, 34,
+            guiGraphics.drawString(this.font, Component.translatable(ID + "." + zStatic.Blocks.chopper + ".info.fuel"),
+                    50 - 5 - 5 + 2 - 1, 34,
                     Color.RED.getRGB(), true);
             return;
         }
 
-        guiGraphics.drawString(this.font, Component.literal("Ready"), 51 - 3 + 5, 34,
+        guiGraphics.drawString(this.font, Component.translatable(ID + "." + zStatic.Blocks.chopper + ".info.ready"),
+                51 - 3 + 5, 34,
                 Color.GREEN.getRGB(), true);
 
     }
@@ -179,4 +187,5 @@ public class ChopperScreen extends BaseScreen<ChopperMenu> {
                         ymouse);
             }
     }
+
 }

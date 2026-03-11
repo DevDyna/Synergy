@@ -510,6 +510,12 @@ public class DataLang extends LanguageProvider {
                 add(ID + "." + zStatic.Blocks.router, TIP_COLOR
                                 + "Route items to be extracted from differents sides based on some internal filters");
 
+                add(ID + "." + zStatic.Blocks.chopper + ".info.status", "Status");
+                add(ID + "." + zStatic.Blocks.chopper + ".info.range", "Range: %d");
+                add(ID + "." + zStatic.Blocks.chopper + ".info.axe", "No valid axe");
+                add(ID + "." + zStatic.Blocks.chopper + ".info.fuel", "Missing Fuel");
+                add(ID + "." + zStatic.Blocks.chopper + ".info.ready", "Ready");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {
