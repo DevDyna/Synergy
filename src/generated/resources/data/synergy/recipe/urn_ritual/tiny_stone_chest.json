@@ -1,13 +1,16 @@
 {
   "type": "synergy:urn",
-  "ingredient": [
+  "ingredients": [
     {
+      "count": 1,
       "item": "synergy:tiny_wooden_chest"
     },
     {
+      "count": 1,
       "item": "synergy:stone_pebble"
     },
     {
+      "count": 1,
       "item": "synergy:ghast_bladder"
     }
   ],

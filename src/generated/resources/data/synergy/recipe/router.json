@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:chest"
+    },
+    "R": {
+      "item": "synergy:stone_circuit"
+    },
+    "W": {
+      "item": "synergy:wrought_iron_plate"
+    }
+  },
+  "pattern": [
+    "WRW",
+    "RCR",
+    "WRW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:router"
+  }
+}

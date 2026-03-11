@@ -1,10 +1,12 @@
 {
   "type": "synergy:urn",
-  "ingredient": [
+  "ingredients": [
     {
+      "count": 1,
       "tag": "c:dusts/amethyst"
     },
     {
+      "count": 1,
       "tag": "c:dusts/lapis"
     }
   ],

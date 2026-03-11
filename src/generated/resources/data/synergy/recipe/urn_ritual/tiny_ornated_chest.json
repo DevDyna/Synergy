@@ -1,16 +1,20 @@
 {
   "type": "synergy:urn",
-  "ingredient": [
+  "ingredients": [
     {
+      "count": 1,
       "item": "synergy:tiny_wooden_chest"
     },
     {
+      "count": 1,
       "tag": "c:dusts/gold"
     },
     {
+      "count": 1,
       "item": "synergy:advanced_alloy_plate"
     },
     {
+      "count": 1,
       "item": "minecraft:netherite_scrap"
     }
   ],
