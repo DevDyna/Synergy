@@ -41,6 +41,8 @@ public class zItems {
                 zShards.register(bus);
                 zMobDrop.register(bus);
                 zPellets.register(bus);
+                zDepletedPellets.register(bus);
+                zPelletFragments.register(bus);
                 zCoils.register(bus);
                 zGears.register(bus);
                 zMolds.register(bus);
@@ -118,6 +120,8 @@ public class zItems {
         public static final DeferredRegister.Items zDusts = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zMobDrop = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zPellets = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zDepletedPellets = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zPelletFragments = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zDepositOres = DeferredRegister.createItems(Main.ID);
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> AZALEA_SEEDS = zSeeds
@@ -381,22 +385,58 @@ public class zItems {
         public static final DeferredHolder<Item, Item> SILICON_SHARD = Material
                         .resourceShard(zStatic.ResourceMaterial.silicon);
         // ---------------------------------------------------------------------------------------//
-        public static final DeferredHolder<Item, Item> AMERICIUM = Material
+        public static final DeferredHolder<Item, Item> AMERICIUM_PELLET = Material
                         .resourcePellet(zStatic.ResourceMaterial.americium);
-        public static final DeferredHolder<Item, Item> BERKELIUM = Material
+        public static final DeferredHolder<Item, Item> BERKELIUM_PELLET = Material
                         .resourcePellet(zStatic.ResourceMaterial.berkelium);
-        public static final DeferredHolder<Item, Item> CALIFORNIUM = Material
+        public static final DeferredHolder<Item, Item> CALIFORNIUM_PELLET = Material
                         .resourcePellet(zStatic.ResourceMaterial.californium);
-        public static final DeferredHolder<Item, Item> CURIUM = Material
+        public static final DeferredHolder<Item, Item> CURIUM_PELLET = Material
                         .resourcePellet(zStatic.ResourceMaterial.curium);
-        public static final DeferredHolder<Item, Item> NEPTUNIUM = Material
+        public static final DeferredHolder<Item, Item> NEPTUNIUM_PELLET = Material
                         .resourcePellet(zStatic.ResourceMaterial.neptunium);
-        public static final DeferredHolder<Item, Item> PLUTONIUM = Material
+        public static final DeferredHolder<Item, Item> PLUTONIUM_PELLET = Material
                         .resourcePellet(zStatic.ResourceMaterial.plutonium);
-        public static final DeferredHolder<Item, Item> THORIUM = Material
+        public static final DeferredHolder<Item, Item> THORIUM_PELLET = Material
                         .resourcePellet(zStatic.ResourceMaterial.thorium);
-        public static final DeferredHolder<Item, Item> URANIUM = Material
+        public static final DeferredHolder<Item, Item> URANIUM_PELLET = Material
                         .resourcePellet(zStatic.ResourceMaterial.uranium);
+
+        public static final DeferredHolder<Item, Item> AMERICIUM_FRAGMENT = Material
+                        .resourcePelletFragment(zStatic.ResourceMaterial.americium);
+        public static final DeferredHolder<Item, Item> BERKELIUM_FRAGMENT = Material
+                        .resourcePelletFragment(zStatic.ResourceMaterial.berkelium);
+        public static final DeferredHolder<Item, Item> CALIFORNIUM_FRAGMENT = Material
+                        .resourcePelletFragment(zStatic.ResourceMaterial.californium);
+        public static final DeferredHolder<Item, Item> CURIUM_FRAGMENT = Material
+                        .resourcePelletFragment(zStatic.ResourceMaterial.curium);
+        public static final DeferredHolder<Item, Item> NEPTUNIUM_FRAGMENT = Material
+                        .resourcePelletFragment(zStatic.ResourceMaterial.neptunium);
+        public static final DeferredHolder<Item, Item> PLUTONIUM_FRAGMENT = Material
+                        .resourcePelletFragment(zStatic.ResourceMaterial.plutonium);
+        public static final DeferredHolder<Item, Item> THORIUM_FRAGMENT = Material
+                        .resourcePelletFragment(zStatic.ResourceMaterial.thorium);
+        public static final DeferredHolder<Item, Item> URANIUM_FRAGMENT = Material
+                        .resourcePelletFragment(zStatic.ResourceMaterial.uranium);
+
+        public static final DeferredHolder<Item, Item> DEPLETED_AMERICIUM_PELLET = Material
+                        .resourceDepletedPellet(zStatic.ResourceMaterial.americium);
+        public static final DeferredHolder<Item, Item> DEPLETED_BERKELIUM_PELLET = Material
+                        .resourceDepletedPellet(zStatic.ResourceMaterial.berkelium);
+        public static final DeferredHolder<Item, Item> DEPLETED_CALIFORNIUM_PELLET = Material
+                        .resourceDepletedPellet(zStatic.ResourceMaterial.californium);
+        public static final DeferredHolder<Item, Item> DEPLETED_CURIUM_PELLET = Material
+                        .resourceDepletedPellet(zStatic.ResourceMaterial.curium);
+        public static final DeferredHolder<Item, Item> DEPLETED_NEPTUNIUM_PELLET = Material
+                        .resourceDepletedPellet(zStatic.ResourceMaterial.neptunium);
+        public static final DeferredHolder<Item, Item> DEPLETED_PLUTONIUM_PELLET = Material
+                        .resourceDepletedPellet(zStatic.ResourceMaterial.plutonium);
+        public static final DeferredHolder<Item, Item> DEPLETED_THORIUM_PELLET = Material
+                        .resourceDepletedPellet(zStatic.ResourceMaterial.thorium);
+        public static final DeferredHolder<Item, Item> DEPLETED_URANIUM_PELLET = Material
+                        .resourceDepletedPellet(zStatic.ResourceMaterial.uranium);
+
+        
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> COPPER_COIL = Material
                         .resourceCoil(zStatic.ResourceMaterial.copper);
@@ -506,10 +546,14 @@ public class zItems {
 
         public static final DeferredHolder<Item, Item> RUBBER = Material.droplet(zStatic.Fluids.rubber);
 
-        public static final DeferredHolder<Item, Item> WASTE_FRAGMENT = Material
-                        .resourceItem("waste_fragment");
-        public static final DeferredHolder<Item, Item> WASTE = Material
-                        .resourceItem("waste");
+        // public static final DeferredHolder<Item, Item> WASTE_FRAGMENT = Material
+        //                 .resourceItem("waste_fragment");
+
+        // public static final DeferredHolder<Item, Item> YELLOW_CAKE = Material
+        //                 .resourceItem("yellow_cake");
+        // public static final DeferredHolder<Item, Item> WASTE = Material
+        //                 .resourceItem("waste");
+        
         public static final DeferredHolder<Item, Item> GHOUL_HEART = Material
                         .resourceItem("ghoul_heart");
         public static final DeferredHolder<Item, Item> STONE_PEBBLE = Material

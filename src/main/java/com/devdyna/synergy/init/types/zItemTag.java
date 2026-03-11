@@ -45,20 +45,20 @@ public class zItemTag {
 
         public static final TagKey<Item> TOOLS_INTERACTIVE = Material.tagItem("interactive_tools");
 
-        public static final TagKey<Item> AMERICIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.americium,
-                        "c");
-        public static final TagKey<Item> BERKELIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.berkelium,
-                        "c");
-        public static final TagKey<Item> CALIFORNIUM = Material.tagItem(
-                        "pellets/" + zStatic.ResourceMaterial.californium,
-                        "c");
-        public static final TagKey<Item> CURIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.curium, "c");
-        public static final TagKey<Item> NEPTUNIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.neptunium,
-                        "c");
-        public static final TagKey<Item> PLUTONIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.plutonium,
-                        "c");
-        public static final TagKey<Item> THORIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.thorium, "c");
-        public static final TagKey<Item> URANIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.uranium, "c");
+        // public static final TagKey<Item> AMERICIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.americium,
+        //                 "c");
+        // public static final TagKey<Item> BERKELIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.berkelium,
+        //                 "c");
+        // public static final TagKey<Item> CALIFORNIUM = Material.tagItem(
+        //                 "pellets/" + zStatic.ResourceMaterial.californium,
+        //                 "c");
+        // public static final TagKey<Item> CURIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.curium, "c");
+        // public static final TagKey<Item> NEPTUNIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.neptunium,
+        //                 "c");
+        // public static final TagKey<Item> PLUTONIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.plutonium,
+        //                 "c");
+        // public static final TagKey<Item> THORIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.thorium, "c");
+        // public static final TagKey<Item> URANIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.uranium, "c");
 
         public static final TagKey<Item> COAL_LIKE = Material.tagItem("coal_like", "c");
 

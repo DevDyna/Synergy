@@ -312,6 +312,14 @@ public class Material {
                 return zItems.zPellets
                                 .registerSimpleItem(name + zStatic.ResourceType.pellet);
         }
+        public static DeferredHolder<Item, Item> resourceDepletedPellet(String name) {
+                return zItems.zDepletedPellets
+                                .registerSimpleItem(zStatic.ResourceType.depleted+name + zStatic.ResourceType.pellet);
+        }
+        public static DeferredHolder<Item, Item> resourcePelletFragment(String name) {
+                return zItems.zPelletFragments
+                                .registerSimpleItem(name + zStatic.ResourceType.fragment);
+        }
 
         public static DeferredHolder<Item, Item> resourceMold(String name) {
                 return zItems.zMolds

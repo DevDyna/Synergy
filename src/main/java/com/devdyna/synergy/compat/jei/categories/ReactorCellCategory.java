@@ -48,7 +48,7 @@ public class ReactorCellCategory extends BaseRecipeCategory<FuelCellRecipe> {
 
     @Override
     public ItemLike getIconItem() {
-        return zItems.URANIUM.get();
+        return zItems.URANIUM_PELLET.get();
     }
 
     @Override

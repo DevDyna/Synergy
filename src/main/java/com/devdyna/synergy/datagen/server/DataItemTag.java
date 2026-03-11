@@ -85,14 +85,14 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.TOOLS_INTERACTIVE)
                                 .add(zItems.CONFIGURATOR.get(), zItems.SOLDERING_GUN.get());
 
-                tag(zItemTag.AMERICIUM).add(zItems.AMERICIUM.get());
-                tag(zItemTag.BERKELIUM).add(zItems.BERKELIUM.get());
-                tag(zItemTag.CALIFORNIUM).add(zItems.CALIFORNIUM.get());
-                tag(zItemTag.CURIUM).add(zItems.CURIUM.get());
-                tag(zItemTag.NEPTUNIUM).add(zItems.NEPTUNIUM.get());
-                tag(zItemTag.PLUTONIUM).add(zItems.PLUTONIUM.get());
-                tag(zItemTag.THORIUM).add(zItems.THORIUM.get());
-                tag(zItemTag.URANIUM).add(zItems.URANIUM.get());
+                // tag(zItemTag.AMERICIUM).add(zItems.AMERICIUM.get());
+                // tag(zItemTag.BERKELIUM).add(zItems.BERKELIUM.get());
+                // tag(zItemTag.CALIFORNIUM).add(zItems.CALIFORNIUM.get());
+                // tag(zItemTag.CURIUM).add(zItems.CURIUM.get());
+                // tag(zItemTag.NEPTUNIUM).add(zItems.NEPTUNIUM.get());
+                // tag(zItemTag.PLUTONIUM).add(zItems.PLUTONIUM.get());
+                // tag(zItemTag.THORIUM).add(zItems.THORIUM.get());
+                // tag(zItemTag.URANIUM).add(zItems.URANIUM.get());
 
                 tag(zItemTag.COAL_LIKE).add(Items.COAL, Items.CHARCOAL);
 

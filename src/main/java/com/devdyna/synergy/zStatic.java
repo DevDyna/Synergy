@@ -123,8 +123,10 @@ public class zStatic {
         public static String shard = "_shard";
         public static String dust = "_dust";
         public static String pellet = "_pellet";
+        public static String fragment = "_fragment";
         public static String mold = "_mold";
         public static String electron_tube = "_electron_tube";
+        public static String depleted = "depleted_";
     }
 
     public class MachineUpgrades {
