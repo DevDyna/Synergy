@@ -96,7 +96,7 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
                 WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.WILD_COTTON,
                                 zBlocks.WILD_COTTON.get(), 10, 8, 3);
                 WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.WILD_RICE,
-                                zBlocks.WILD_RICE.get(), 8, 4, 3);
+                                zBlocks.WILD_RICE.get(), 1, 4, 3);
 
                 c.register(zWorldGenFeatures.ConfiguredFeatures.IRONWOOD,
                                 new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
@@ -120,7 +120,7 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
                 WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.WILD_COTTON,
                                 zWorldGenFeatures.ConfiguredFeatures.WILD_COTTON, 1, 44, 120);
                 WorldgenUtils.registerPatchPlaced(c, zWorldGenFeatures.PlacedFeatures.WILD_RICE,
-                                zWorldGenFeatures.ConfiguredFeatures.WILD_RICE, 1, 58, 80);
+                                zWorldGenFeatures.ConfiguredFeatures.WILD_RICE, 4, 58, 80);
 
                 c.register(zWorldGenFeatures.PlacedFeatures.IRONWOOD,
                                 new PlacedFeature(
