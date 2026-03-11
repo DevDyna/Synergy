@@ -16,10 +16,6 @@
 
 - [ ] All Recipe Types compat with GuideMe (?)
 
-- [x] sulfur usage
-
-- [ ] urn jei category rework to dynamic handling
-
 - [ ] mechanical crushing tub (piston)
 
 - [ ] dryable bricks not customizable tooltip on jei (+config)
@@ -42,29 +38,31 @@
 
 - [ ] Forestry Peatfarm (?)
 
-- [ ] fossil usage
-
-- [x] end pebble
-
-- [ ] aquamarine -> underground block cluster
-
-- [x] fuel deprecation
-
 - [ ] replace many drawString -> drawCenteredString
-
-- [ ] chopper slots need to change when item isn't empty to blank
-- [ ] chopper configs
 
 - [ ] coockoo clock SoundEvents.UI_BUTTON_CLICK
 
 - [ ] Ticker need to use level.gameTime intend of tick
 
+- [ ] rework serializers to be unified with recipetype and use RecipeUtils.optionalCodec() when optional
+
+## PRIORITIES
+
 - [ ] router recipe
-- [x] rock crusher recipe
 
 - [ ] quern output rework (random to direct spawn side orthrow above)
 
-- [ ] rework serializers to be unified with recipetype and use RecipeUtils.optionalCodec() when optional
+- [ ] extra mobdrops to mob drops
+
+- [ ] fossil usage
+
+- [ ] aquamarine -> underground block cluster
+
+- [ ] chopper slots need to change when item isn't empty to blank
+- [ ] chopper configs
+
+- [ ] urn jei category rework to dynamic handling
+- [ ] [#12](https://github.com/DevDyna/Synergy/issues/12) 
 
 ### Survival expansion
 
