@@ -560,6 +560,8 @@ public class zItems {
                         .resourceItem("stone_pebble");
         public static final DeferredHolder<Item, Item> NETHERRACK_PEBBLE = Material
                         .resourceItem("netherrack_pebble");
+        public static final DeferredHolder<Item, Item> ENDSTONE_PEBBLE = Material
+                        .resourceItem("endstone_pebble");
 
         public static final DeferredHolder<Item, Item> SAWDUST = Material
                         .resourceItem(zStatic.ResourceMaterial.sawdust);
