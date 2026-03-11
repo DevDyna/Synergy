@@ -2525,6 +2525,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .define('W', zItems.WROUGHT_IRON_PLATE.get())
                                 .unlockedBy(getHasName(zItems.WROUGHT_IRON_PLATE.get()),
                                                 has(zItems.WROUGHT_IRON_PLATE.get()))
+                                .save(c);
         }
 
 }
