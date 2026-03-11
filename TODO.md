@@ -52,10 +52,6 @@
 
 ## PRIORITIES
 
-- [x] router recipe
-
-- [x] quern output rework (random to direct spawn side orthrow above)
-
 - [ ] extra mobdrops to mob drops
 
 - [ ] fossil usage
@@ -65,9 +61,6 @@
 - [ ] chopper slots need to change when item isn't empty to blank
 - [ ] chopper configs
 
-- [x] urn jei category rework to dynamic handling
-- [x] [#12](https://github.com/DevDyna/Synergy/issues/12) 
-
 ### Survival expansion
 
 - [ ] scrap and slags
@@ -75,10 +68,6 @@
 - [ ] brick oven
 
 - [ ] enchanting table-like that require enchanted books on chiseled bookshelf to be used
-
-- [x] faucet & casting table (tcon like)
-
-- [x] foundry fuel efficiency and boost jei
 
 ### Automation
 
@@ -94,7 +83,6 @@
 - [ ] Blaze Lily
 - [ ] Experience Lily
 
-- [x] cave mushroom -> press -> liquid lapis/ liquid coal
 - [ ] weed crop plant (unwanted plant) -> farmland spreaddable crop -> fibers(?)
 -> convert dirt to grass like ic2?
 
