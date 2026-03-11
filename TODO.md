@@ -44,6 +44,8 @@
 
 - [ ] Ticker need to use level.gameTime intend of tick
 
+- [ ] chopper desync client when insered battery on fuel slot
+
 - [ ] rework serializers to be unified with recipetype and use RecipeUtils.optionalCodec() when optional
 
 - [ ] implement fluid upgrades
@@ -58,10 +60,10 @@
 
 - [ ] fossil usage
 
-- [ ] aquamarine -> underground block cluster
+- [x] aquamarine -> underground block cluster
 
-- [ ] chopper slots need to change when item isn't empty to blank
-- [ ] chopper configs
+- [x] chopper slots need to change when item isn't empty to blank
+- [x] chopper configs
 
 ### Survival expansion
 
