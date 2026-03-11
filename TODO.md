@@ -76,6 +76,8 @@
 - [ ] router recipe
 - [ ] rock crusher recipe
 
+- [ ] quern output rework (random to direct spawn side orthrow above)
+
 ### Survival expansion
 
 - [ ] scrap and slags
