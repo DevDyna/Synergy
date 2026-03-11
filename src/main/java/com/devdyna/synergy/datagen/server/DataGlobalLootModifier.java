@@ -85,8 +85,7 @@ public class DataGlobalLootModifier extends GlobalLootModifierProvider {
                                 BuiltInLootTables.ABANDONED_MINESHAFT,
                                 BuiltInLootTables.SIMPLE_DUNGEON,
                                 BuiltInLootTables.WOODLAND_MANSION,
-                                BuiltInLootTables.SHIPWRECK_SUPPLY,
-                                BuiltInLootTables.TRIAL_CHAMBERS_CORRIDOR);
+                                BuiltInLootTables.SHIPWRECK_SUPPLY);
 
                 DataAnyLoot.MOB_DROPS.forEach(item -> asignItemToLootTable(item));
 
