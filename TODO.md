@@ -50,6 +50,8 @@
 
 - [ ] patina usage
 
+- [ ] chopper jade?
+
 ## PRIORITIES
 
 - [ ] extra mobdrops to mob drops
