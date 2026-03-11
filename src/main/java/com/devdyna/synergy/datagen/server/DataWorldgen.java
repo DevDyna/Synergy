@@ -114,7 +114,7 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
                 WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.WILD_RICE,
                                 zBlocks.WILD_RICE.get(), 1, 4, 3);
                 WorldgenUtils.registerPatchConfig(c, zWorldGenFeatures.ConfiguredFeatures.AQUAMARINE_CLUSTER,
-                                zBlocks.AQUAMARINE_CLUSTER.get(), 10, 2, 2);
+                                zBlocks.AQUAMARINE_CLUSTER.get(), 10, 5, 5);
         }
 
         protected static void placedFeatures(BootstrapContext<PlacedFeature> c) {
