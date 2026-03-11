@@ -130,13 +130,20 @@ public class DataWorldgen extends DatapackBuiltinEntriesProvider {
                                                                 CountPlacement.of(new WeightedListInt(
                                                                                 SimpleWeightedRandomList
                                                                                                 .<IntProvider>builder()
-                                                                                                .add(UniformInt.of(3,
-                                                                                                                4), 1)
-                                                                                                .add(UniformInt.of(2,
-                                                                                                                3), 2)
-                                                                                                .add(UniformInt.of(1,
-                                                                                                                2), 4)
-                                                                                                .add(ConstantInt.of(0),
+                                                                                                .add(UniformInt.of(
+                                                                                                                3,
+                                                                                                                4),
+                                                                                                                1)
+                                                                                                .add(UniformInt.of(
+                                                                                                                2,
+                                                                                                                3),
+                                                                                                                2)
+                                                                                                .add(UniformInt.of(
+                                                                                                                1,
+                                                                                                                2),
+                                                                                                                4)
+                                                                                                .add(ConstantInt.of(
+                                                                                                                0),
                                                                                                                 33)
                                                                                                 .build())),
                                                                 zBlocks.IRON_WOOD.getSapling().get())));
