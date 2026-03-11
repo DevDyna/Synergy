@@ -46,6 +46,10 @@
 
 - [ ] rework serializers to be unified with recipetype and use RecipeUtils.optionalCodec() when optional
 
+- [ ] implement fluid upgrades
+
+- [ ] patina usage
+
 ## PRIORITIES
 
 - [ ] router recipe
