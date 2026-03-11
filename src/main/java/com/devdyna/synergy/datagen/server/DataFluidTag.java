@@ -45,6 +45,8 @@ public class DataFluidTag extends FluidTagsProvider {
                 tag(zFluidTags.TIN_MOLTEN).add(zFluids.MOLTEN_TIN.getFluid());
                 tag(zFluidTags.URANIUM_MOLTEN).add(zFluids.MOLTEN_URANIUM.getFluid());
 
+                tag(zFluidTags.SULFURIC_ACID).add(zFluids.SULFURIC_ACID.getFluid());
+
         }
 
 }
