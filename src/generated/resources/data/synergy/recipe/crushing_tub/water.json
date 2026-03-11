@@ -1,0 +1,10 @@
+{
+  "type": "synergy:crushing_tub",
+  "fluid": {
+    "amount": 125,
+    "id": "minecraft:water"
+  },
+  "input": {
+    "tag": "minecraft:leaves"
+  }
+}

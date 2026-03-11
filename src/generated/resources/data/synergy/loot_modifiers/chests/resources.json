@@ -19,10 +19,6 @@
         {
           "condition": "neoforge:loot_table_id",
           "loot_table_id": "minecraft:chests/shipwreck_supply"
-        },
-        {
-          "condition": "neoforge:loot_table_id",
-          "loot_table_id": "minecraft:chests/trial_chambers/corridor"
         }
       ]
     }

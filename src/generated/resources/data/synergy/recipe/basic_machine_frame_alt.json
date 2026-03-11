@@ -9,13 +9,13 @@
       "item": "synergy:silicon_gem"
     },
     "W": {
-      "item": "synergy:wrought_iron_plate"
+      "item": "synergy:wrought_iron_block"
     }
   },
   "pattern": [
-    "PPP",
-    "PSP",
-    "WWW"
+    " P ",
+    "PWP",
+    " S "
   ],
   "result": {
     "count": 2,
