@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -53,14 +54,16 @@ public class CrushingTubRecipe extends BaseRecipeType<MonoItemInput> {
         return output;
     }
 
-public FluidStack getFluid() {
-    return fluid;
-}
+    public FluidStack getFluid() {
+        return fluid;
+    }
 
     @Override
     @Deprecated
-    public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
-        return this.output;
+    public ItemStack getResultItem(HolderLookup.Provider r) {
+        return this.output != null
+                ? this.output
+                : x.item(this.fluid.getFluid().getBucket()).copy();
     }
 
     @Override

@@ -22,7 +22,8 @@ import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings({ "null" })
 public class CrushingTubBuilder extends BaseRecipeBuilder
-        implements ItemAttach.Output.SimpleOutputItem<CrushingTubBuilder>, ItemAttach.Input.NoItemCount<CrushingTubBuilder>,
+        implements ItemAttach.Output.SimpleOutputItem<CrushingTubBuilder>,
+        ItemAttach.Input.NoItemCount<CrushingTubBuilder>,
         FluidAttach.Any.SimpleFluidAttach<CrushingTubBuilder> {
 
     private Ingredient input;
@@ -48,7 +49,9 @@ public class CrushingTubBuilder extends BaseRecipeBuilder
     }
 
     public Item getResult() {
-        return this.output.getItem();
+        return this.output != null
+                ? this.output.getItem()
+                : this.fluid.getFluid().getBucket();
     }
 
     @Override
@@ -86,7 +89,9 @@ public class CrushingTubBuilder extends BaseRecipeBuilder
 
     @Override
     public ResourceLocation getSuffix(String extra) {
-        return x.rl(zStatic.Blocks.crushing_tub+"/" + x.path(this.output.getItem())
+        return x.rl(zStatic.Blocks.crushing_tub + "/"
+                + (this.output != null ? x.path(this.output.getItem())
+                        : x.path(this.fluid.getFluid()))
                 + extra);
     }
 
