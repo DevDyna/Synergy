@@ -477,6 +477,7 @@ public class zStatic {
         public static String ironberry_juice = "ironberry_juice";
         public static String liquid_glass = "liquid_glass";
         public static String honey = "honey";
+        public static String sulfuric_acid = "sulfuric_acid";
 
         public static String iron = AFFIX_MOLTEN + "iron";
         public static String copper = AFFIX_MOLTEN + "copper";

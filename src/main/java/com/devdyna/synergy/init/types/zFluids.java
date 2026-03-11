@@ -103,4 +103,7 @@ public class zFluids {
                         .create(zStatic.Fluids.rubber, 0xDAF3EFE6)
                         .pushEntity().setTextures(x.rl("block/fluid/custom/still"), x.rl("block/fluid/custom/flow"));
 
+        public static final FluidRegister SULFURIC_ACID = FluidRegister
+                        .create(zStatic.Fluids.sulfuric_acid, Color.YELLOW).pushEntity().drown();
+
 }
