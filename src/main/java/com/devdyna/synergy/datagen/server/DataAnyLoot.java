@@ -99,7 +99,7 @@ public class DataAnyLoot implements LootTableSubProvider {
 
                 DataGenUtil.registerTable(c, x.rl(RESOURCES),
                                 DataGenUtil.createTable(DataGenUtil.createPool()
-                                                .setRolls(UniformGenerator.between(1, 2))
+                                                .setRolls(UniformGenerator.between(0, 1))
                                                 .add(LootItem.lootTableItem(zItems.AQUAMARINE.get()))
                                                 .add(LootItem.lootTableItem(Items.SLIME_BALL))));
 
