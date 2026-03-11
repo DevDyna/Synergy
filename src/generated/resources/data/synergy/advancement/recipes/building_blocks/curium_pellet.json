@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_curium_fragment": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:curium_fragment"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:curium_pellet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_curium_fragment"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:curium_pellet"
+    ]
+  }
+}

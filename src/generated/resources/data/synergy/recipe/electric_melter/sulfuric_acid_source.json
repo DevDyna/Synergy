@@ -1,0 +1,13 @@
+{
+  "type": "synergy:machine/electric_melter",
+  "energy": 5000,
+  "fluid": {
+    "amount": 250,
+    "id": "synergy:sulfuric_acid_source"
+  },
+  "input": {
+    "count": 1,
+    "tag": "c:dusts/sulfur"
+  },
+  "ticks": 400
+}

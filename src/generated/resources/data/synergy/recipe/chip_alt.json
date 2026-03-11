@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "synergy:silicon_gem"
+    },
+    "N": {
+      "item": "synergy:advanced_alloy_nugget"
+    },
+    "Q": {
+      "item": "synergy:plastic"
+    }
+  },
+  "pattern": [
+    " N ",
+    " GN",
+    "Q  "
+  ],
+  "result": {
+    "count": 8,
+    "id": "synergy:chip"
+  }
+}

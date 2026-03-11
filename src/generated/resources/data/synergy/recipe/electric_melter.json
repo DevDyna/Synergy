@@ -2,26 +2,26 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": {
+    "B": {
       "item": "synergy:blue_battery"
+    },
+    "C": {
+      "item": "synergy:chip"
+    },
+    "D": {
+      "item": "synergy:condenser"
     },
     "M": {
       "item": "synergy:basic_machine_frame"
     },
-    "Q": {
-      "item": "synergy:fluid_tank"
-    },
     "R": {
-      "item": "synergy:resistor"
-    },
-    "S": {
-      "item": "synergy:light_bulb"
+      "item": "synergy:resistive_stone_circuit"
     }
   },
   "pattern": [
-    " Q ",
-    "RMS",
-    " C "
+    "CRC",
+    "DMD",
+    " B "
   ],
   "result": {
     "count": 1,

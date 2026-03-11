@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dripstone_chunk": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:dripstone_chunk"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:dripstone_block_from_dripstone_chunk"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_dripstone_chunk"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:dripstone_block_from_dripstone_chunk"
+    ]
+  }
+}

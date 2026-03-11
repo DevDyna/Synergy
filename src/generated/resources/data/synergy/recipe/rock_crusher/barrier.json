@@ -1,0 +1,36 @@
+{
+  "type": "synergy:machine/rock_crusher",
+  "energy": 1500,
+  "input_fluid": {
+    "amount": 250,
+    "fluid": "minecraft:water"
+  },
+  "input_item": {
+    "count": 1,
+    "tag": "c:dusts/uranium"
+  },
+  "result": [
+    {
+      "chance": 0.75,
+      "item": {
+        "count": 1,
+        "id": "synergy:uranium_fragment"
+      }
+    },
+    {
+      "chance": 0.5,
+      "item": {
+        "count": 1,
+        "id": "synergy:uranium_fragment"
+      }
+    },
+    {
+      "chance": 0.35,
+      "item": {
+        "count": 1,
+        "id": "synergy:uranium_fragment"
+      }
+    }
+  ],
+  "ticks": 120
+}

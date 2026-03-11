@@ -2,26 +2,26 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": {
+    "B": {
       "item": "synergy:blue_battery"
+    },
+    "C": {
+      "item": "synergy:chip"
     },
     "M": {
       "item": "synergy:basic_machine_frame"
     },
-    "Q": {
-      "item": "minecraft:crafter"
+    "P": {
+      "item": "minecraft:piston"
     },
     "R": {
       "item": "synergy:resistor"
-    },
-    "S": {
-      "item": "synergy:magnetic_stone_circuit"
     }
   },
   "pattern": [
-    " Q ",
-    "RMS",
-    " C "
+    "CPC",
+    "RMR",
+    " B "
   ],
   "result": {
     "count": 1,

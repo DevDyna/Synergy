@@ -2,16 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "H": {
-      "item": "synergy:green_battery"
+    "C": {
+      "item": "synergy:condenser"
     },
     "R": {
-      "tag": "c:gems/aquamarine"
+      "item": "synergy:resistor"
+    },
+    "S": {
+      "item": "minecraft:redstone"
     }
   },
   "pattern": [
-    " R ",
-    "RHR",
+    " S ",
+    "RCR",
     " R "
   ],
   "result": {

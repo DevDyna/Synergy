@@ -1,0 +1,18 @@
+{
+  "type": "synergy:machine/macerator",
+  "chance": 0.75,
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "minecraft:blackstone"
+  },
+  "output": {
+    "count": 2,
+    "id": "synergy:blackstone_chunk"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "synergy:blackstone_chunk"
+  },
+  "ticks": 100
+}

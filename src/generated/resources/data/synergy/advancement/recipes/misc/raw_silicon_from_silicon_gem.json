@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_silicon_gem": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:silicon_gem"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:raw_silicon_from_silicon_gem"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_silicon_gem"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:raw_silicon_from_silicon_gem"
+    ]
+  }
+}

@@ -1,18 +1,14 @@
 {
-  "type": "synergy:macerator",
-  "chance": 0.5,
+  "type": "synergy:machine/macerator",
+  "chance": 0.0,
   "energy": 500,
   "input": {
     "count": 1,
-    "tag": "c:gravels"
+    "item": "minecraft:gravel"
   },
   "output": {
     "count": 1,
     "id": "minecraft:sand"
   },
-  "secondary": {
-    "count": 1,
-    "id": "minecraft:sand"
-  },
-  "ticks": 20
+  "ticks": 80
 }

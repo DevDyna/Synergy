@@ -2,26 +2,26 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": {
+    "B": {
       "item": "synergy:blue_battery"
+    },
+    "E": {
+      "item": "synergy:steel_electron_tube"
+    },
+    "F": {
+      "item": "synergy:magnetic_stone_circuit"
     },
     "M": {
       "item": "synergy:basic_machine_frame"
     },
-    "Q": {
-      "item": "synergy:crushing_tub"
-    },
     "R": {
       "item": "synergy:resistor"
-    },
-    "S": {
-      "item": "synergy:steel_electron_tube"
     }
   },
   "pattern": [
-    " Q ",
-    "RMS",
-    " C "
+    "RFR",
+    "EME",
+    " B "
   ],
   "result": {
     "count": 1,

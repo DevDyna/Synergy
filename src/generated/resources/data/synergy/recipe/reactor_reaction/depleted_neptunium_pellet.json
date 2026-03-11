@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 4320,
+  "heat": 350.0,
+  "ingredient": {
+    "item": "synergy:neptunium_pellet"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:depleted_neptunium_pellet"
+  },
+  "ticks": 75000
+}

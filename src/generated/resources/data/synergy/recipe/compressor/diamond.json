@@ -1,10 +1,10 @@
 {
-  "type": "synergy:compressor",
+  "type": "synergy:machine/compressor",
   "consume_catalyst": false,
   "energy": 500,
   "input": {
     "count": 1,
-    "tag": "c:dusts/diamond"
+    "item": "synergy:diamond_dust"
   },
   "output": {
     "count": 1,

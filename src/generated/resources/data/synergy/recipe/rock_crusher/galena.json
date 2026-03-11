@@ -1,9 +1,9 @@
 {
-  "type": "synergy:rock_crusher",
+  "type": "synergy:machine/rock_crusher",
   "energy": 1500,
   "input_fluid": {
-    "amount": 250,
-    "fluid": "minecraft:water"
+    "amount": 25,
+    "tag": "c:sulfuric_acid"
   },
   "input_item": {
     "count": 1,

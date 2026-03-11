@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mixture_tip",
+  "ingredients": [
+    {
+      "item": "synergy:stone_pebble"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "item": "synergy:salt"
+    },
+    {
+      "tag": "c:dusts/amethyst"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "synergy:amethyst_mixture"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "synergy:machine/macerator",
+  "chance": 0.75,
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "tag": "c:netherracks"
+  },
+  "output": {
+    "count": 2,
+    "id": "synergy:sulfur_dust"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "synergy:sulfur_dust"
+  },
+  "ticks": 40
+}

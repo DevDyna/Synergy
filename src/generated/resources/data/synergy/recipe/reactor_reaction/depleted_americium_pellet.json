@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 12960,
+  "heat": 1040.0,
+  "ingredient": {
+    "item": "synergy:americium_pellet"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:depleted_americium_pellet"
+  },
+  "ticks": 150000
+}

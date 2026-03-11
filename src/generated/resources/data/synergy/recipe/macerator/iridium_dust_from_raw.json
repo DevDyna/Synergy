@@ -8,7 +8,7 @@
       }
     }
   ],
-  "type": "synergy:macerator",
+  "type": "synergy:machine/macerator",
   "chance": 0.25,
   "energy": 500,
   "input": {

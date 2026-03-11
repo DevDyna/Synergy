@@ -1,5 +1,5 @@
 {
-  "type": "synergy:casting_factory",
+  "type": "synergy:machine/casting_factory",
   "consume_item": false,
   "energy": 500,
   "input_fluid": {

@@ -1,5 +1,5 @@
 {
-  "type": "synergy:extractor",
+  "type": "synergy:machine/extractor",
   "chance": 0.5,
   "energy": 500,
   "input": {

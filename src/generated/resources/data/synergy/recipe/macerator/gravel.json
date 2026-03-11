@@ -1,18 +1,14 @@
 {
-  "type": "synergy:macerator",
-  "chance": 0.5,
+  "type": "synergy:machine/macerator",
+  "chance": 0.0,
   "energy": 500,
   "input": {
     "count": 1,
-    "tag": "c:cobblestones"
+    "item": "minecraft:cobblestone"
   },
   "output": {
     "count": 1,
     "id": "minecraft:gravel"
   },
-  "secondary": {
-    "count": 1,
-    "id": "minecraft:gravel"
-  },
-  "ticks": 20
+  "ticks": 80
 }

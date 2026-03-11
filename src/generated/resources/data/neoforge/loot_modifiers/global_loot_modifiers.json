@@ -1,6 +1,7 @@
 {
   "entries": [
     "synergy:chests/mushrooms",
+    "synergy:chests/resources",
     "synergy:entities/extra_mob_drops/creeper_gall",
     "synergy:entities/extra_mob_drops/enderman_heart",
     "synergy:entities/extra_mob_drops/slime_bolus",

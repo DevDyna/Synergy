@@ -10,7 +10,7 @@
     "components": {
       "synergy:upgrade_components": {
         "energy": 150,
-        "secondary_luck": 25
+        "secondary_luck": 20
       }
     },
     "count": 1,

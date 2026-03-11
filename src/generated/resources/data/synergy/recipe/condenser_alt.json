@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "synergy:plastic"
+    },
+    "I": {
+      "item": "synergy:advanced_alloy_ingot"
+    },
+    "M": {
+      "item": "synergy:silicon_gem"
+    },
+    "N": {
+      "item": "synergy:advanced_alloy_nugget"
+    }
+  },
+  "pattern": [
+    "N N",
+    "GMG",
+    " I "
+  ],
+  "result": {
+    "count": 8,
+    "id": "synergy:condenser"
+  }
+}

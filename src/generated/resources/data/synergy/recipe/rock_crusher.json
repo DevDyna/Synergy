@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "synergy:blue_battery"
+    },
+    "F": {
+      "item": "synergy:basic_machine_frame"
+    },
+    "L": {
+      "item": "synergy:light_bulb"
+    },
+    "M": {
+      "item": "synergy:macerator"
+    },
+    "R": {
+      "item": "synergy:resistor"
+    }
+  },
+  "pattern": [
+    "RLR",
+    "MFM",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:rock_crusher"
+  }
+}

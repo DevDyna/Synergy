@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "N": {
+      "item": "synergy:advanced_alloy_nugget"
+    },
+    "R": {
+      "item": "synergy:plastic"
+    }
+  },
+  "pattern": [
+    " MN",
+    "MRM",
+    "NM "
+  ],
+  "result": {
+    "count": 8,
+    "id": "synergy:resistor"
+  }
+}

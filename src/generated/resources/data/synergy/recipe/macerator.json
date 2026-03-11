@@ -2,26 +2,23 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": {
+    "B": {
       "item": "synergy:blue_battery"
+    },
+    "F": {
+      "item": "minecraft:flint"
     },
     "M": {
       "item": "synergy:basic_machine_frame"
     },
-    "Q": {
-      "item": "synergy:quern"
-    },
     "R": {
       "item": "synergy:resistor"
-    },
-    "S": {
-      "item": "synergy:stone_circuit"
     }
   },
   "pattern": [
-    " Q ",
-    "RMS",
-    " C "
+    "FFF",
+    "RMR",
+    " B "
   ],
   "result": {
     "count": 1,

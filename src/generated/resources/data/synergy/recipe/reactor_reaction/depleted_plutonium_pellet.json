@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 1440,
+  "heat": 180.0,
+  "ingredient": {
+    "item": "synergy:plutonium_pellet"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:depleted_plutonium_pellet"
+  },
+  "ticks": 50000
+}

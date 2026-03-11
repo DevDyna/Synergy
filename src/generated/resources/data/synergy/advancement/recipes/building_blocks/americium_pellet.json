@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_americium_fragment": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:americium_fragment"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:americium_pellet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_americium_fragment"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:americium_pellet"
+    ]
+  }
+}

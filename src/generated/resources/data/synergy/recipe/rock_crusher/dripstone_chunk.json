@@ -1,0 +1,50 @@
+{
+  "type": "synergy:machine/rock_crusher",
+  "energy": 1500,
+  "input_fluid": {
+    "amount": 25,
+    "tag": "c:sulfuric_acid"
+  },
+  "input_item": {
+    "count": 1,
+    "item": "synergy:dripstone_chunk"
+  },
+  "result": [
+    {
+      "chance": 0.55,
+      "item": {
+        "count": 1,
+        "id": "synergy:kaolin"
+      }
+    },
+    {
+      "chance": 0.35,
+      "item": {
+        "count": 1,
+        "id": "synergy:hematite"
+      }
+    },
+    {
+      "chance": 0.2,
+      "item": {
+        "count": 1,
+        "id": "synergy:bauxite"
+      }
+    },
+    {
+      "chance": 0.15,
+      "item": {
+        "count": 1,
+        "id": "synergy:malachite"
+      }
+    },
+    {
+      "chance": 0.05,
+      "item": {
+        "count": 1,
+        "id": "synergy:lignite"
+      }
+    }
+  ],
+  "ticks": 120
+}

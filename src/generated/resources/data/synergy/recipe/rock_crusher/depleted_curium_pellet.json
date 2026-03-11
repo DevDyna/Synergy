@@ -1,0 +1,36 @@
+{
+  "type": "synergy:machine/rock_crusher",
+  "energy": 1500,
+  "input_fluid": {
+    "amount": 25,
+    "tag": "c:sulfuric_acid"
+  },
+  "input_item": {
+    "count": 1,
+    "item": "synergy:depleted_curium_pellet"
+  },
+  "result": [
+    {
+      "chance": 0.75,
+      "item": {
+        "count": 1,
+        "id": "synergy:curium_fragment"
+      }
+    },
+    {
+      "chance": 0.5,
+      "item": {
+        "count": 1,
+        "id": "synergy:curium_fragment"
+      }
+    },
+    {
+      "chance": 0.05,
+      "item": {
+        "count": 1,
+        "id": "synergy:berkelium_fragment"
+      }
+    }
+  ],
+  "ticks": 120
+}

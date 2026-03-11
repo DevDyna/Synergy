@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 480,
+  "heat": 90.0,
+  "ingredient": {
+    "item": "synergy:thorium_pellet"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:depleted_thorium_pellet"
+  },
+  "ticks": 25000
+}

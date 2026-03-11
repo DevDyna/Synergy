@@ -2,26 +2,26 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": {
+    "B": {
       "item": "synergy:blue_battery"
+    },
+    "C": {
+      "item": "synergy:chip"
+    },
+    "G": {
+      "item": "synergy:steel_gear"
     },
     "M": {
       "item": "synergy:basic_machine_frame"
     },
-    "Q": {
-      "item": "synergy:evaporation_basin"
-    },
     "R": {
       "item": "synergy:resistor"
-    },
-    "S": {
-      "item": "synergy:steel_gear"
     }
   },
   "pattern": [
-    " Q ",
-    "RMS",
-    " C "
+    "CRC",
+    "GMG",
+    " B "
   ],
   "result": {
     "count": 1,

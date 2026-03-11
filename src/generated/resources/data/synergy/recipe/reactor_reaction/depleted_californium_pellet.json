@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 116640,
+  "heat": 3500.0,
+  "ingredient": {
+    "item": "synergy:californium_pellet"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:depleted_californium_pellet"
+  },
+  "ticks": 750000
+}

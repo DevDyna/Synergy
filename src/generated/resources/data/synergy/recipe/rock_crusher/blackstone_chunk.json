@@ -1,0 +1,57 @@
+{
+  "type": "synergy:machine/rock_crusher",
+  "energy": 1500,
+  "input_fluid": {
+    "amount": 25,
+    "tag": "c:sulfuric_acid"
+  },
+  "input_item": {
+    "count": 1,
+    "item": "synergy:blackstone_chunk"
+  },
+  "result": [
+    {
+      "chance": 0.65,
+      "item": {
+        "count": 1,
+        "id": "synergy:stone_pebble"
+      }
+    },
+    {
+      "chance": 0.65,
+      "item": {
+        "count": 1,
+        "id": "synergy:netherrack_pebble"
+      }
+    },
+    {
+      "chance": 0.35,
+      "item": {
+        "count": 1,
+        "id": "synergy:lignite"
+      }
+    },
+    {
+      "chance": 0.25,
+      "item": {
+        "count": 1,
+        "id": "synergy:hematite"
+      }
+    },
+    {
+      "chance": 0.15,
+      "item": {
+        "count": 1,
+        "id": "synergy:pyrolite"
+      }
+    },
+    {
+      "chance": 0.15,
+      "item": {
+        "count": 1,
+        "id": "synergy:xenothite"
+      }
+    }
+  ],
+  "ticks": 120
+}

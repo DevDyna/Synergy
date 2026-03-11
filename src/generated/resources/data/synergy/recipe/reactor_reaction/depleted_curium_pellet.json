@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 349920,
+  "heat": 7500.0,
+  "ingredient": {
+    "item": "synergy:curium_pellet"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:depleted_curium_pellet"
+  },
+  "ticks": 1250000
+}

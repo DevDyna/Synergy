@@ -3,16 +3,22 @@
   "category": "misc",
   "key": {
     "H": {
-      "item": "synergy:blue_battery"
+      "item": "synergy:condenser"
+    },
+    "P": {
+      "item": "synergy:plastic"
     },
     "R": {
-      "tag": "synergy:urn_mixtures"
+      "item": "synergy:energized_redstone_dust"
+    },
+    "S": {
+      "item": "synergy:silicon_gem"
     }
   },
   "pattern": [
-    " R ",
+    "PSP",
     "RHR",
-    " R "
+    "PSP"
   ],
   "result": {
     "count": 1,

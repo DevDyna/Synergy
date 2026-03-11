@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mixture_tip",
+  "ingredients": [
+    {
+      "item": "synergy:salt"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "tag": "c:dusts/lapis"
+    },
+    {
+      "tag": "c:dusts/glowstone"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "id": "synergy:glowstone_mixture"
+  }
+}

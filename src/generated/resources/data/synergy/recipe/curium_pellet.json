@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "synergy:curium_fragment"
+    },
+    "A": {
+      "tag": "c:dusts/sulfur"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#A#",
+    " # "
+  ],
+  "result": {
+    "count": 4,
+    "id": "synergy:curium_pellet"
+  }
+}

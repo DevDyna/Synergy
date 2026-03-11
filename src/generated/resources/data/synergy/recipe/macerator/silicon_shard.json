@@ -1,0 +1,14 @@
+{
+  "type": "synergy:machine/macerator",
+  "chance": 0.0,
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "minecraft:sand"
+  },
+  "output": {
+    "count": 1,
+    "id": "synergy:silicon_shard"
+  },
+  "ticks": 100
+}

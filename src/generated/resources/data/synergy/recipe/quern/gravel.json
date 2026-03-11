@@ -1,8 +1,8 @@
 {
   "type": "synergy:quern",
-  "frequence": 20,
+  "frequence": 60,
   "ingredient": {
-    "tag": "c:cobblestones"
+    "item": "minecraft:cobblestone"
   },
   "result": {
     "count": 1,

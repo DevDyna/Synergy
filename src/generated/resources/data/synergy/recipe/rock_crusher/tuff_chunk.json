@@ -1,0 +1,64 @@
+{
+  "type": "synergy:machine/rock_crusher",
+  "energy": 1500,
+  "input_fluid": {
+    "amount": 25,
+    "tag": "c:sulfuric_acid"
+  },
+  "input_item": {
+    "count": 1,
+    "item": "synergy:tuff_chunk"
+  },
+  "result": [
+    {
+      "chance": 0.65,
+      "item": {
+        "count": 1,
+        "id": "synergy:stone_pebble"
+      }
+    },
+    {
+      "chance": 0.45,
+      "item": {
+        "count": 1,
+        "id": "synergy:hematite"
+      }
+    },
+    {
+      "chance": 0.35,
+      "item": {
+        "count": 1,
+        "id": "synergy:galena"
+      }
+    },
+    {
+      "chance": 0.35,
+      "item": {
+        "count": 1,
+        "id": "synergy:bauxite"
+      }
+    },
+    {
+      "chance": 0.25,
+      "item": {
+        "count": 1,
+        "id": "synergy:osmiridium"
+      }
+    },
+    {
+      "chance": 0.15,
+      "item": {
+        "count": 1,
+        "id": "synergy:pentlandite"
+      }
+    },
+    {
+      "chance": 0.15,
+      "item": {
+        "count": 1,
+        "id": "synergy:cassiterite"
+      }
+    }
+  ],
+  "ticks": 120
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_andesite_chunk": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:andesite_chunk"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:andesite_from_andesite_chunk"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_andesite_chunk"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:andesite_from_andesite_chunk"
+    ]
+  }
+}

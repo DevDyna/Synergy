@@ -1,5 +1,5 @@
 {
-  "type": "synergy:macerator",
+  "type": "synergy:machine/macerator",
   "chance": 0.0,
   "energy": 500,
   "input": {
@@ -10,5 +10,5 @@
     "count": 1,
     "id": "minecraft:prismarine_crystals"
   },
-  "ticks": 20
+  "ticks": 80
 }

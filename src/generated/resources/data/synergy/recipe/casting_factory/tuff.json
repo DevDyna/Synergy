@@ -1,5 +1,5 @@
 {
-  "type": "synergy:casting_factory",
+  "type": "synergy:machine/casting_factory",
   "consume_item": true,
   "energy": 1000,
   "input_fluid": {
@@ -8,7 +8,7 @@
   },
   "input_item": {
     "count": 1,
-    "item": "minecraft:stone"
+    "item": "synergy:stone_pebble"
   },
   "output": {
     "count": 1,

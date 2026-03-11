@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 160,
+  "heat": 50.0,
+  "ingredient": {
+    "item": "synergy:uranium_pellet"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:depleted_uranium_pellet"
+  },
+  "ticks": 10000
+}

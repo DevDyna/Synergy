@@ -1,5 +1,5 @@
 {
-  "type": "synergy:electric_melter",
+  "type": "synergy:machine/electric_melter",
   "energy": 100,
   "fluid": {
     "amount": 250,

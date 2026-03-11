@@ -1,0 +1,13 @@
+{
+  "type": "synergy:fuel_cell",
+  "fe": 38880,
+  "heat": 1700.0,
+  "ingredient": {
+    "item": "synergy:berkelium_pellet"
+  },
+  "result": {
+    "count": 1,
+    "id": "synergy:depleted_berkelium_pellet"
+  },
+  "ticks": 300000
+}

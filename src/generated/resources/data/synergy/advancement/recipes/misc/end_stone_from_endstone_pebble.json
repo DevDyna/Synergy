@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_endstone_pebble": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:endstone_pebble"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:end_stone_from_endstone_pebble"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_endstone_pebble"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:end_stone_from_endstone_pebble"
+    ]
+  }
+}

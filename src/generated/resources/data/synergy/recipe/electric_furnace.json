@@ -2,26 +2,26 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": {
+    "B": {
       "item": "synergy:blue_battery"
+    },
+    "C": {
+      "item": "synergy:chip"
+    },
+    "F": {
+      "item": "minecraft:furnace"
     },
     "M": {
       "item": "synergy:basic_machine_frame"
     },
-    "Q": {
-      "item": "minecraft:furnace"
-    },
     "R": {
       "item": "synergy:resistor"
-    },
-    "S": {
-      "item": "synergy:nether_circuit"
     }
   },
   "pattern": [
-    " Q ",
-    "RMS",
-    " C "
+    "CFC",
+    "RMR",
+    " B "
   ],
   "result": {
     "count": 1,
