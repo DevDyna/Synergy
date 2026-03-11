@@ -147,7 +147,7 @@ public class QuernBE extends TickingBE implements ItemStorageBlock , NoGuiStorag
 
                     if (minDelay >= recipe.get().value().getTime() && minDelay % recipe.get().value().getTime() == 0) {
                         var output = recipe.get().value().getOutput();
-                        LevelUtil.popItemFromPos(level, getBlockPos(), output.copy());
+                        dropInWorldResult(output, level, getBlockPos());
                         slot.extractItem(0, 1, false);
                         level.playSound(null, getBlockPos(),
                                 SoundEvents.ITEM_FRAME_REMOVE_ITEM,

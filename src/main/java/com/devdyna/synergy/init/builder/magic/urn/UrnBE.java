@@ -36,7 +36,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public class UrnBE extends TickingBE implements ItemStorageBlock , NoGuiStorage{
+public class UrnBE extends TickingBE implements ItemStorageBlock, NoGuiStorage {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
@@ -130,7 +130,7 @@ public class UrnBE extends TickingBE implements ItemStorageBlock , NoGuiStorage{
                 if (!recipe.isEmpty()) {
                     var input = recipe.get().value().getIngredients();
                     var output = recipe.get().value().getResultItem();
-                    LevelUtil.popItemFromPos(level, getBlockPos(), output.copy());
+                    dropInWorldResult(output, level, getBlockPos());
 
                     extractItems(input);
 

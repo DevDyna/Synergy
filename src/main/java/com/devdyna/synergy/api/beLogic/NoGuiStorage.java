@@ -1,8 +1,15 @@
 package com.devdyna.synergy.api.beLogic;
 
+import java.util.ArrayList;
+
+import com.devdyna.synergy.api.utils.ArrayUtils;
+import com.devdyna.synergy.api.utils.DirectionUtil;
+
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -32,7 +39,7 @@ public interface NoGuiStorage {
                     return ItemInteractionResult.sidedSuccess(level.isClientSide);
                 }
 
-                if (stack.isEmpty() && ! insertOnly()) {
+                if (stack.isEmpty() && !insertOnly()) {
                     // If empty hand -> extract one item
                     ItemStack extracted = storage.extractItem();
                     if (!extracted.isEmpty() && !level.isClientSide) {
@@ -60,4 +67,35 @@ public interface NoGuiStorage {
 
     abstract void setChanged();
 
+    default void dropInWorldResult(ItemStack output, Level level, BlockPos pos) {
+
+        var validDir = new ArrayList<Direction>();
+
+        for (Direction dir : ArrayUtils.concat(DirectionUtil.HORIZONTAL, new Direction[] { Direction.UP })) {
+
+            var relate = pos.relative(dir);
+
+            if (!level.getBlockState(relate).isSolidRender(level, relate)) {
+                validDir.add(dir);
+            }
+        }
+
+        spawnItemEntity(level,
+                !validDir.isEmpty()
+                        ? pos.relative(
+                                validDir.get(
+                                        level.random.nextInt(validDir.size())))
+                        : pos,
+                output);
+
+    }
+
+    private void spawnItemEntity(Level l, BlockPos p, ItemStack s) {
+        l.addFreshEntity(new ItemEntity(
+                l,
+                p.getX() + 0.5,
+                p.getY() + 0.5,
+                p.getZ() + 0.5,
+                s.copy()));
+    }
 }
