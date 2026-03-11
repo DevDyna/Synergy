@@ -9,6 +9,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.*;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
@@ -54,7 +55,23 @@ public class ChopperMenu extends BaseMenu {
     }
 
     public boolean hasAxe() {
-        return !blockEntity.getStorage().getStackInSlot(ChopperBE.AXE_SLOT).isEmpty();
+        return !getAxeSlot().isEmpty();
+    }
+
+    public ItemStack getFuelSlot() {
+        return blockEntity.getStorage().getStackInSlot(ChopperBE.FUEL_SLOT);
+    }
+
+    public ItemStack getAxeSlot() {
+        return blockEntity.getStorage().getStackInSlot(ChopperBE.AXE_SLOT);
+    }
+
+    public ItemStack getUpgradeSlot() {
+        return blockEntity.getStorage().getStackInSlot(ChopperBE.UPGRADE_SLOT);
+    }
+
+    public ItemStack getSaplingSlot() {
+        return blockEntity.getStorage().getStackInSlot(ChopperBE.SAPLING_SLOT);
     }
 
     public boolean handleEnergy() {
@@ -72,6 +89,7 @@ public class ChopperMenu extends BaseMenu {
     public int getEnergy() {
         return data.get(2);
     }
+
     public int getMaxEnergy() {
         return data.get(3);
     }

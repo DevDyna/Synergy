@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.gui.BaseScreen;
+import com.devdyna.synergy.api.utils.Image;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
@@ -82,6 +83,39 @@ public class ChopperScreen extends BaseScreen<ChopperMenu> {
                     18, slice,
                     36, 72);
         }
+
+        if (!menu.hasAxe())
+            Image.of().rl(
+                    "textures/gui/sprite/chopper/axe.png")
+                    .size(16, 16)
+                    .sizeTexture(16, 16)
+                    .offset(getGuiLeft() + 62 + 1, getGuiTop() + 62 + 1)
+                    .render(guiGraphics);
+
+        if (menu.getUpgradeSlot().isEmpty())
+            Image.of().rl(
+                    "textures/gui/sprite/chopper/floppy.png")
+                    .size(16, 16)
+                    .sizeTexture(16, 16)
+                    .offset(getGuiLeft() + 80 + 1, getGuiTop() + 62 + 1)
+                    .render(guiGraphics);
+
+        if (menu.getFuelSlot().isEmpty())
+            Image.of().rl(
+                    "textures/gui/sprite/chopper/fuel.png")
+                    .size(16, 16)
+                    .sizeTexture(16, 16)
+                    .offset(getGuiLeft() + 13 + 1, getGuiTop() + 53 + 1)
+                    .render(guiGraphics);
+
+        if (menu.getSaplingSlot().isEmpty())
+            Image.of().rl(
+                    "textures/gui/sprite/chopper/sapling.png")
+                    .size(16, 16)
+                    .sizeTexture(16, 16)
+                    .offset(getGuiLeft() + 13 + 1, getGuiTop() + 17 + 1)
+                    .render(guiGraphics);
+
     }
 
     @Override
@@ -125,11 +159,6 @@ public class ChopperScreen extends BaseScreen<ChopperMenu> {
     @Override
     protected void renderTooltip(GuiGraphics guiGraphics, int xmouse, int ymouse) {
         super.renderTooltip(guiGraphics, xmouse, ymouse);
-        // if (Pos.of(getGuiLeft() + 12, getGuiTop() + 35).setSize(18, 16).test(xmouse, ymouse))
-        //     guiGraphics.renderTooltip(font,
-        //             Component.literal(
-        //                     "Burntime: " + (menu.getProgress() <= 0 ? "Empty" : (menu.getProgress() + " ticks left"))),
-        //             xmouse, ymouse);
 
         if (menu.handleEnergy())
             if (Pos.of(getGuiLeft() - 22, getGuiTop() + 6).setSize(18, 72).test(xmouse, ymouse)) {
