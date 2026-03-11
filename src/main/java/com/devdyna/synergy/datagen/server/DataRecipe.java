@@ -2509,6 +2509,12 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(getHasName(Items.QUARTZ),
                                                 has(Items.QUARTZ))
                                 .save(c);
+
+                CrushingTubBuilder.of()
+                                .input(ItemTags.LEAVES)
+                                .fluid(Fluids.WATER, 125)
+                                .unlockedBy()
+                                .save(c);
         }
 
 }
