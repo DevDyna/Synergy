@@ -48,6 +48,7 @@ public class zItems {
                 zMolds.register(bus);
                 zDepositOres.register(bus);
                 zMachineUpgrades.register(bus);
+                zRockChunk.register(bus);
         }
 
         // ---------------------------------------------------------------------------------------//
@@ -118,6 +119,7 @@ public class zItems {
         public static final DeferredRegister.Items zShards = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zGears = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zDusts = DeferredRegister.createItems(Main.ID);
+        public static final DeferredRegister.Items zRockChunk = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zMobDrop = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zPellets = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zDepletedPellets = DeferredRegister.createItems(Main.ID);
@@ -495,6 +497,25 @@ public class zItems {
         public static final DeferredHolder<Item, Item> MOLD_BLOCK = Material
                         .resourceMold(zStatic.ResourceType.block);
 
+        // ---------------------------------------------------------------------------------------//
+       
+       public static final DeferredHolder<Item, Item> ANDESITE_CHUNK = Material
+                        .resourceRockChunk("andesite");
+       public static final DeferredHolder<Item, Item> BLACKSTONE_CHUNK = Material
+                        .resourceRockChunk("blackstone");
+       public static final DeferredHolder<Item, Item> DEEPSLATE_CHUNK = Material
+                        .resourceRockChunk("deepslate");
+       public static final DeferredHolder<Item, Item> DIORITE_CHUNK = Material
+                        .resourceRockChunk("diorite");
+       public static final DeferredHolder<Item, Item> DRIPSTONE_CHUNK = Material
+                        .resourceRockChunk("dripstone");
+       public static final DeferredHolder<Item, Item> ENDSTONE_CHUNK = Material
+                        .resourceRockChunk("endstone");
+       public static final DeferredHolder<Item, Item> GRANITE_CHUNK = Material
+                        .resourceRockChunk("granite");
+       public static final DeferredHolder<Item, Item> TUFF_CHUNK = Material
+                        .resourceRockChunk("tuff");
+       
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Item, Item> IRON_ELECTRON_TUBE = Material

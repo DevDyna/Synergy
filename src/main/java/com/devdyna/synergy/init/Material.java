@@ -326,6 +326,11 @@ public class Material {
                                 .registerSimpleItem(name.replace("_", "") + zStatic.ResourceType.mold);
         }
 
+        public static DeferredHolder<Item, Item> resourceRockChunk(String name) {
+                return zItems.zRockChunk
+                                .registerSimpleItem(name+zStatic.ResourceType.chunk);
+        }
+
         public static DeferredHolder<Item, Item> resourceElectronTube(String name) {
                 return zItems.zElectronTubes
                                 .registerSimpleItem(name + zStatic.ResourceType.electron_tube);

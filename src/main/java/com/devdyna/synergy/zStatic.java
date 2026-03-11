@@ -127,6 +127,7 @@ public class zStatic {
         public static String mold = "_mold";
         public static String electron_tube = "_electron_tube";
         public static String depleted = "depleted_";
+        public static String chunk = "_chunk";
     }
 
     public class MachineUpgrades {
