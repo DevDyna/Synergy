@@ -52,9 +52,9 @@
 
 ## PRIORITIES
 
-- [ ] router recipe
+- [x] router recipe
 
-- [ ] quern output rework (random to direct spawn side orthrow above)
+- [x] quern output rework (random to direct spawn side orthrow above)
 
 - [ ] extra mobdrops to mob drops
 
