@@ -1,600 +1,94 @@
 package com.devdyna.synergy.datagen.api;
 
 import static com.devdyna.synergy.Main.ID;
-import static net.minecraft.data.recipes.RecipeCategory.BUILDING_BLOCKS;
-import static net.minecraft.data.recipes.RecipeCategory.MISC;
+import static net.minecraft.data.recipes.RecipeCategory.*;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.registers.FluidRegister;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.builders.CropResultBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.CasterRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.recipe.MelterRecipeBuilder;
-import com.devdyna.synergy.init.builder.industrial_machines.rock_crusher.recipe.RockCrusherRecipeBuilder;
 import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingBuilder;
-import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualBuilder;
-import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.ReactorCellBuilder;
 import com.devdyna.synergy.init.builder.survival.casting_table.recipe.CastingTableBuilder;
 import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryBuilder;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksBuilder;
-import com.devdyna.synergy.init.types.*;
+import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.*;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ICondition;
-import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
 import net.neoforged.neoforge.common.conditions.NotCondition;
+import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-public abstract class ExtraRecipeProvider extends RecipeProvider {
+public class ExtraRecipeProvider extends RecipeProvider {
 
-        public ExtraRecipeProvider(PackOutput output, CompletableFuture<Provider> registries) {
-                super(output, registries);
+        public ExtraRecipeProvider(PackOutput c, CompletableFuture<Provider> r) {
+                super(c, r);
         }
 
-        protected void depositsProcessing(RecipeOutput c) {
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(Items.STONE)
-                                .addResult(zItems.STONE_PEBBLE, 0.95f)
-                                .addResult(zItems.CASSITERITE, 0.35f)
-                                .addResult(zItems.HEMATITE, 0.25f)
-                                .addResult(zItems.CHALCOPYRITE, 0.15f)
-                                .addResult(zItems.CYLINDRITE, 0.05f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(Items.ANDESITE)
-                                .addResult(zItems.STONE_PEBBLE, 0.85f)
-                                .addResult(zItems.QUARTZITE, 0.35f)
-                                .addResult(zItems.CYLINDRITE, 0.25f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(Items.DIORITE)
-                                .addResult(zItems.STONE_PEBBLE, 0.65f)
-                                .addResult(zItems.QUARTZITE, 0.35f)
-                                .addResult(zItems.CASSITERITE, 0.25f)
-                                .addResult(zItems.ARGENTITE, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(Items.GRANITE)
-                                .addResult(zItems.STONE_PEBBLE, 0.75f)
-                                .addResult(zItems.QUARTZITE, 0.35f)
-                                .addResult(zItems.BAUXITE, 0.25f)
-                                .addResult(zItems.HEMATITE, 0.15f)
-                                .addResult(zItems.LIGNITE, 0.05f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(Items.DRIPSTONE_BLOCK)
-                                .addResult(Items.CLAY_BALL, 0.85f)
-                                .addResult(zItems.KAOLIN, 0.55f)
-                                .addResult(zItems.HEMATITE, 0.35f)
-                                .addResult(zItems.BAUXITE, 0.2f)
-                                .addResult(zItems.MALACHITE, 0.15f)
-                                .addResult(zItems.LIGNITE, 0.05f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(Items.MUD)
-                                .addResult(zItems.MUD_BALL, 0.85f)
-                                .addResult(Items.FLINT, 0.45f)
-                                .addResult(zItems.KAOLIN, 0.25f)
-                                .addResult(zItems.LIGNITE, 0.05f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(Items.TUFF)
-                                .addResult(zItems.STONE_PEBBLE, 0.85f)
-                                .addResult(zItems.HEMATITE, 0.45f)
-                                .addResult(zItems.GALENA, 0.35f)
-                                .addResult(zItems.BAUXITE, 0.35f)
-                                .addResult(zItems.OSMIRIDIUM, 0.25f)
-                                .addResult(zItems.PENTLANDITE, 0.15f)
-                                .addResult(zItems.CASSITERITE, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItemTag.DEEPSLATE_STONES)
-                                .addResult(zItems.STONE_PEBBLE, 0.85f)
-                                .addResult(zItems.HEMATITE, 0.55f)
-                                .addResult(zItems.PENTLANDITE, 0.45f)
-                                .addResult(zItems.GALENA, 0.35f)
-                                .addResult(zItems.ARGENTITE, 0.25f)
-                                .addResult(zItems.AURICUPRIDE, 0.15f)
-                                .unlockedBy()
-                                .save(c, x.rl("rock_crusher/deepslate"));
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(Items.NETHERRACK)
-                                .addResult(zItems.NETHERRACK_PEBBLE, 0.85f)
-                                .addResult(zItems.PYROLITE, 0.35f)
-                                .addResult(zItems.QUARTZITE, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(Items.BLACKSTONE)
-                                .addResult(zItems.NETHERRACK_PEBBLE, 0.65f)
-                                .addResult(zItems.LIGNITE, 0.35f)
-                                .addResult(zItems.HEMATITE, 0.25f)
-                                .addResult(zItems.PYROLITE, 0.15f)
-                                .addResult(zItems.XENOTHITE, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(Items.END_STONE)
-                                .addResult(zItems.URANINITE, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.BAUXITE)
-                                .addResult(zItems.ALUMINUM_DUST, 0.75f)
-                                .addResult(zItems.ALUMINUM_DUST, 0.5f)
-                                .addResult(zItems.IRON_DUST, 0.5f)
-                                .addResult(zItems.IRON_DUST, 0.25f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.CYLINDRITE)
-                                .addResult(zItems.TIN_DUST, 0.75f)
-                                .addResult(zItems.TIN_DUST, 0.5f)
-                                .addResult(zItems.IRON_DUST, 0.25f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.AURICUPRIDE)
-                                .addResult(zItems.GOLD_DUST, 0.75f)
-                                .addResult(zItems.GOLD_DUST, 0.5f)
-                                .addResult(zItems.COPPER_DUST, 0.5f)
-                                .addResult(zItems.COPPER_DUST, 0.25f)
-                                .addResult(Items.GLOWSTONE_DUST, 0.05f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.PENTLANDITE)
-                                .addResult(zItems.NICKEL_DUST, 0.75f)
-                                .addResult(zItems.NICKEL_DUST, 0.5f)
-                                .addResult(zItems.IRON_DUST, 0.25f)
-                                .addResult(zItems.COPPER_DUST, 0.25f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.GALENA)
-                                .addResult(zItems.LEAD_DUST, 0.75f)
-                                .addResult(zItems.LEAD_DUST, 0.65f)
-                                .addResult(zItems.SILVER_DUST, 0.5f)
-                                .addResult(zItems.SILVER_DUST, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.OSMIRIDIUM)
-                                .addResult(zItems.OSMIUM_DUST, 0.75f)
-                                .addResult(zItems.OSMIUM_DUST, 0.45f)
-                                .addResult(zItems.PLATINUM_DUST, 0.35f)
-                                .addResult(zItems.IRIDIUM_DUST, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.ARGENTITE)
-                                .addResult(zItems.SILVER_DUST, 0.75f)
-                                .addResult(zItems.SILVER_DUST, 0.45f)
-                                .addResult(zItems.LEAD_DUST, 0.35f)
-                                .addResult(zItems.IRON_DUST, 0.15f)
-                                .addResult(Items.GLOWSTONE_DUST, 0.05f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.CASSITERITE)
-                                .addResult(zItems.TIN_DUST, 0.75f)
-                                .addResult(zItems.TIN_DUST, 0.5f)
-                                .addResult(zItems.IRON_DUST, 0.45f)
-                                .addResult(zItems.IRON_DUST, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.MALACHITE)
-                                .addResult(zItems.COPPER_DUST, 0.75f)
-                                .addResult(zItems.COPPER_DUST, 0.5f)
-                                .addResult(zItems.COPPER_DUST, 0.25f)
-                                .addResult(zItems.GOLD_DUST, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.URANINITE)
-                                .addResult(zItems.URANIUM_DUST, 0.75f)
-                                .addResult(zItems.PLATINUM_DUST, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.KAOLIN)
-                                .addResult(Items.CLAY_BALL, 0.75f)
-                                .addResult(Items.CLAY_BALL, 0.5f)
-                                .addResult(zItems.FOSSIL, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.XENOTHITE)
-                                .addResult(zItems.ANCIENT_DEBRIS_DUST, 0.65f)
-                                .addResult(zItems.LEAD_DUST, 0.35f)
-                                .addResult(zItems.IRON_DUST, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.QUARTZITE)
-                                .addResult(zItems.QUARTZ_DUST, 0.75f)
-                                .addResult(zItems.QUARTZ_DUST, 0.5f)
-                                .addResult(Items.QUARTZ, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.CHALCOPYRITE)
-                                .addResult(zItems.COPPER_DUST, 0.75f)
-                                .addResult(zItems.COPPER_DUST, 0.5f)
-                                .addResult(zItems.IRON_DUST, 0.25f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.PYROLITE)
-                                .addResult(zItems.NETHERRACK_PEBBLE, 0.75f)
-                                .addResult(zItems.NETHERRACK_PEBBLE, 0.5f)
-                                .addResult(zItems.GOLD_DUST, 0.45f)
-                                .addResult(zItems.SULFUR_DUST, 0.25f)
-                                .addResult(Items.GLOWSTONE_DUST, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.LIGNITE)
-                                .addResult(zItems.CARBON_DUST, 0.5f)
-                                .addResult(zItems.CARBON_DUST, 0.25f)
-                                .addResult(zItems.SULFUR_DUST, 0.25f)
-                                .addResult(zItems.SULFUR_DUST, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
-                RockCrusherRecipeBuilder.of()
-                                .fluid(Fluids.WATER, 250)
-                                .input(zItems.HEMATITE)
-                                .addResult(zItems.IRON_DUST, 0.75f)
-                                .addResult(zItems.IRON_DUST, 0.5f)
-                                .addResult(zItems.TIN_DUST, 0.15f)
-                                .unlockedBy()
-                                .save(c);
-
+        protected String asID(Item i,String suffix){
+              return  ID + ":" + x.path(i) + suffix;
+        }
+        protected String asID(Item i){
+              return asID(i, "_alt");
         }
 
-        protected void compatIngotsAndDusts(RecipeOutput c) {
-                // minecraft ores
-                oreProcessing(c, zFluids.MOLTEN_COPPER, x.rl("c", "raw_materials/copper"), zItems.COPPER_DUST.get(),
-                                Items.COPPER_INGOT, x.rl("c", "ingots/copper"), zItems.GOLD_DUST.get(), 0.25f);
-                oreProcessing(c, zFluids.MOLTEN_GOLD, x.rl("c", "raw_materials/gold"), zItems.GOLD_DUST.get(),
-                                Items.GOLD_INGOT, x.rl("c", "ingots/gold"), zItems.SILVER_DUST.get(), 0.25f);
-                oreProcessing(c, zFluids.MOLTEN_IRON, x.rl("c", "raw_materials/iron"), zItems.IRON_DUST.get(),
-                                Items.IRON_INGOT, x.rl("c", "ingots/iron"), zItems.NICKEL_DUST.get(), 0.25f);
-                // compat ores
-                oreProcessing(c, zFluids.MOLTEN_TIN, x.rl("c", "raw_materials/tin"), zItems.TIN_DUST.get(),
-                                zItems.TIN_INGOT.get(), x.rl("c", "ingots/tin"), zItems.IRON_DUST.get(), 0.25f);
-                oreProcessing(c, zFluids.MOLTEN_SILVER, x.rl("c", "raw_materials/silver"), zItems.SILVER_DUST.get(),
-                                zItems.SILVER_INGOT.get(), x.rl("c", "ingots/silver"), zItems.TIN_DUST.get(), 0.25f);
-                oreProcessing(c, zFluids.MOLTEN_NICKEL, x.rl("c", "raw_materials/nickel"), zItems.NICKEL_DUST.get(),
-                                zItems.NICKEL_INGOT.get(), x.rl("c", "ingots/nickel"), zItems.SILVER_DUST.get(), 0.25f);
-                oreProcessing(c, zFluids.MOLTEN_IRIDIUM, x.rl("c", "raw_materials/iridium"), zItems.IRIDIUM_DUST.get(),
-                                zItems.IRIDIUM_INGOT.get(), x.rl("c", "ingots/iridium"), zItems.IRON_DUST.get(), 0.25f);
-                oreProcessing(c, zFluids.MOLTEN_URANIUM, x.rl("c", "raw_materials/uranium"), zItems.URANIUM_DUST.get(),
-                                zItems.URANIUM_INGOT.get(), x.rl("c", "ingots/uranium"), zItems.LEAD_DUST.get(), 0.25f);
-                oreProcessing(c, zFluids.MOLTEN_PLATINUM, x.rl("c", "raw_materials/platinum"),
-                                zItems.PLATINUM_DUST.get(),
-                                zItems.PLATINUM_INGOT.get(), x.rl("c", "ingots/platinum"), zItems.IRIDIUM_DUST.get(),
-                                0.25f);
-                oreProcessing(c, zFluids.MOLTEN_OSMIUM, x.rl("c", "raw_materials/osmium"), zItems.OSMIUM_DUST.get(),
-                                zItems.OSMIUM_INGOT.get(), x.rl("c", "ingots/osmium"), zItems.IRON_DUST.get(), 0.25f);
-                oreProcessing(c, zFluids.MOLTEN_ALUMINUM, x.rl("c", "raw_materials/aluminum"),
-                                zItems.ALUMINUM_DUST.get(),
-                                zItems.ALUMINUM_INGOT.get(), x.rl("c", "ingots/aluminum"), zItems.IRON_DUST.get(),
-                                0.25f);
-                oreProcessing(c, zFluids.MOLTEN_LEAD, x.rl("c", "raw_materials/lead"), zItems.LEAD_DUST.get(),
-                                zItems.LEAD_INGOT.get(), x.rl("c", "ingots/lead"), zItems.SILVER_DUST.get(), 0.25f);
+        protected void nodeRecipe(RecipeOutput c, Block b, ItemLike catalyst) {
 
-                moltenIngots(c, zItems.STEEL_INGOT.get(), zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
+                ShapedRecipeBuilder.shaped(MISC, b.asItem())
+                                .pattern(" P ")
+                                .pattern("RBR")
+                                .pattern("SCS")
+                                .define('P', zBlocks.PIPE.get().asItem())
+                                .define('R', Tags.Items.DUSTS_REDSTONE)
+                                .define('C', catalyst)
+                                .define('B', Tags.Items.STORAGE_BLOCKS_REDSTONE)
+                                .define('S', Tags.Items.STONES)
+                                .unlockedBy(ID,
+                                                has(
+                                                                zBlocks.PIPE.get()))
+                                .group(zStatic.PipeStuff.types.item_node).save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, b.asItem(), 4)
+                                .pattern(" P ")
+                                .pattern("RBR")
+                                .pattern("SCS")
+                                .define('P', zBlocks.PIPE.get().asItem())
+                                .define('R', Tags.Items.DUSTS_REDSTONE)
+                                .define('C', catalyst)
+                                .define('B', Items.ENDER_PEARL)
+                                .define('S', Tags.Items.STONES)
+                                .unlockedBy(ID,
+                                                has(
+                                                                zBlocks.PIPE.get()))
+                                .group(zStatic.PipeStuff.types.item_node)
+                                .save(c, BuiltInRegistries.ITEM.getKey(b.asItem())
+                                                + "_alt");
 
         }
-
-        protected void ingredients(RecipeOutput c) {
-
-                gear(c, zItems.WOODEN_GEAR, Tags.Items.RODS_WOODEN, ItemTags.PLANKS);
-
-                gear(c, zItems.TIN_GEAR, zItemTag.INGOT_TIN, zFluids.MOLTEN_TIN);
-                gear(c, zItems.GOLD_GEAR, Tags.Items.INGOTS_GOLD, zFluids.MOLTEN_GOLD);
-                gear(c, zItems.IRON_GEAR, Tags.Items.INGOTS_IRON, zFluids.MOLTEN_IRON);
-                gear(c, zItems.LEAD_GEAR, zItemTag.INGOT_LEAD, zFluids.MOLTEN_LEAD);
-                gear(c, zItems.STEEL_GEAR, zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
-                gear(c, zItems.COPPER_GEAR, Tags.Items.INGOTS_COPPER, zFluids.MOLTEN_COPPER);
-                gear(c, zItems.NICKEL_GEAR, zItemTag.INGOT_NICKEL, zFluids.MOLTEN_NICKEL);
-
-                plate(Items.IRON_INGOT, zItems.IRON_PLATE.get(), c);
-                plate(Items.GOLD_INGOT, zItems.GOLD_PLATE.get(), c);
-                plate(Items.COPPER_INGOT, zItems.COPPER_PLATE.get(), c);
-                plate(zItemTag.INGOT_SILVER, zItems.SILVER_PLATE.get(), c);
-                plate(zItemTag.INGOT_STEEL, zItems.STEEL_PLATE.get(), c);
-                plate(zItemTag.INGOT_ADVANCEDALLOY, zItems.ADVANCED_ALLOY_PLATE.get(), c);
-                plate(zItemTag.GEMS_AQUAMARINE, zItems.AQUAMARINE_PLATE.get(), c);
-                plate(zItemTag.INGOT_WROUGHT_IRON, zItems.WROUGHT_IRON_PLATE.get(), c);
-
-                moltenPlates(c, zItems.IRON_PLATE.get(), zItemTag.PLATE_IRON, zFluids.MOLTEN_IRON);
-                moltenPlates(c, zItems.GOLD_PLATE.get(), zItemTag.PLATE_GOLD, zFluids.MOLTEN_GOLD);
-                moltenPlates(c, zItems.COPPER_PLATE.get(), zItemTag.PLATE_COPPER, zFluids.MOLTEN_COPPER);
-                moltenPlates(c, zItems.SILVER_PLATE.get(), zItemTag.PLATE_SILVER, zFluids.MOLTEN_SILVER);
-                moltenPlates(c, zItems.STEEL_PLATE.get(), zItemTag.PLATE_STEEL, zFluids.MOLTEN_STEEL);
-
-                foil(c, zItemTag.PLATE_GOLD, zItems.GOLD_FOIL.get());
-                foil(c, zItemTag.PLATE_COPPER, zItems.COPPER_FOIL.get());
-                foil(c, zItemTag.PLATE_SILVER, zItems.SILVER_FOIL.get());
-                foil(c, zItemTag.PLATE_IRON, zItems.IRON_FOIL.get());
-
-                coil(c, zItemTag.FOIL_COPPER, zItems.COPPER_COIL.get());
-                coil(c, zItemTag.FOIL_GOLD, zItems.GOLD_COIL.get());
-                coil(c, zItemTag.FOIL_IRON, zItems.IRON_COIL.get());
-                coil(c, zItemTag.FOIL_SILVER, zItems.SILVER_COIL.get());
-
-                electron_tube(c, zItems.TIN_ELECTRON_TUBE, zFluids.MOLTEN_TIN);
-                electron_tube(c, zItems.GOLD_ELECTRON_TUBE, zFluids.MOLTEN_GOLD);
-                electron_tube(c, zItems.IRON_ELECTRON_TUBE, zFluids.MOLTEN_IRON);
-                electron_tube(c, zItems.LEAD_ELECTRON_TUBE, zFluids.MOLTEN_LEAD);
-                electron_tube(c, zItems.STEEL_ELECTRON_TUBE, zFluids.MOLTEN_STEEL);
-                electron_tube(c, zItems.COPPER_ELECTRON_TUBE, zFluids.MOLTEN_COPPER);
-                electron_tube(c, zItems.NICKEL_ELECTRON_TUBE, zFluids.MOLTEN_NICKEL);
-                electron_tube(c, zItems.OSMIUM_ELECTRON_TUBE, zFluids.MOLTEN_OSMIUM);
-                electron_tube(c, zItems.SILVER_ELECTRON_TUBE, zFluids.MOLTEN_SILVER);
-                electron_tube(c, zItems.IRIDIUM_ELECTRON_TUBE, zFluids.MOLTEN_IRIDIUM);
-                electron_tube(c, zItems.URANIUM_ELECTRON_TUBE, zFluids.MOLTEN_URANIUM);
-                electron_tube(c, zItems.ALUMINUM_ELECTRON_TUBE, zFluids.MOLTEN_ALUMINUM);
-                electron_tube(c, zItems.PLATINUM_ELECTRON_TUBE, zFluids.MOLTEN_PLATINUM);
-        }
-
-        protected void nuggetIngotBlock(RecipeOutput c, ItemLike nugget, ItemLike ingot, ItemLike block) {
-                packUnpack(c, nugget, ingot, false);
-                packUnpack(c, ingot, block, false);
-        }
-
-        protected void gear(RecipeOutput c, DeferredHolder<Item, Item> gear, TagKey<Item> input,
-                        TagKey<Item> inputCompress) {
-                ShapedRecipeBuilder.shaped(MISC, gear.get())
-                                .pattern(" # ")
-                                .pattern("# #")
-                                .pattern(" # ")
-                                .define('#', input)
-                                .unlockedBy(ID, has(input))
-                                .save(c);
-
-                CompressorRecipeBuilder.of()
-                                .input(inputCompress)
-                                .delay(80)
-                                .catalyst(zItems.MOLD_GEAR.get())
-                                .output(gear)
-                                .unlockedBy()
-                                .save(c);
-        }
-
-        protected void gear(RecipeOutput c, DeferredHolder<Item, Item> gear, TagKey<Item> input, FluidRegister fluid) {
-                ShapedRecipeBuilder.shaped(MISC, gear.get())
-                                .pattern(" # ")
-                                .pattern("# #")
-                                .pattern(" # ")
-                                .define('#', input)
-                                .unlockedBy(ID, has(input))
-                                .save(c);
-
-                MelterRecipeBuilder.of()
-                                .input(gear)
-                                .fluid(fluid, 180)
-                                .unlockedBy()
-                                .save(c, "_from_gear");
-
-                CasterRecipeBuilder.of()
-                                .fluid(fluid, 180)
-                                .input(zItems.MOLD_GEAR)
-                                .output(gear)
-                                .unlockedBy()
-                                .save(c);
-
-                CastingTableBuilder.of()
-                                .fluid(fluid, 180)
-                                .input(zItems.MOLD_GEAR)
-                                .output(gear)
-                                .unlockedBy()
-                                .save(c);
-        }
-
-        protected void moltenIngots(RecipeOutput c, Item ingot, TagKey<Item> ingot_tag, FluidRegister fluid) {
-                moltenRecipes(c, "_from_ingot", zItems.MOLD_INGOT.get(), ingot, ingot_tag, fluid, 90);
-        }
-
-        protected void moltenPlates(RecipeOutput c, Item plate, TagKey<Item> plate_tag, FluidRegister fluid) {
-                moltenRecipes(c, "_from_plate", zItems.MOLD_PLATE.get(), plate, plate_tag, fluid, 45);
-        }
-
-        protected void moltenRecipes(RecipeOutput c, String suffix, Item mold, Item result, TagKey<Item> input,
-                        FluidRegister fluid, int amount) {
-
-                MelterRecipeBuilder.of()
-                                .input(input)
-                                .fluid(fluid, amount)
-                                .unlockedBy()
-                                .save(c, suffix);
-
-                FoundryBuilder.of()
-                                .input(input)
-                                .fluid(fluid, amount)
-                                .unlockedBy()
-                                .save(c, suffix);
-
-                CasterRecipeBuilder.of()
-                                .fluid(fluid, amount)
-                                .input(mold)
-                                .output(result)
-                                .unlockedBy()
-                                .save(c);
-
-                CastingTableBuilder.of()
-                                .fluid(fluid, amount)
-                                .input(mold)
-                                .output(result)
-                                .unlockedBy()
-                                .save(c);
-
-        }
-
-        protected void electron_tube(RecipeOutput c, DeferredHolder<Item, Item> tube, FluidRegister fluid) {
-
-                CasterRecipeBuilder.of()
-                                .fluid(fluid, 180)
-                                .input(zItems.ELECTRON_TUBE_BASE)
-                                .output(tube)
-                                .delay(100)
-                                .consumeItemInput()
-                                .unlockedBy()
-                                .save(c);
-
-                CastingTableBuilder.of()
-                                .fluid(fluid, 180)
-                                .input(zItems.ELECTRON_TUBE_BASE)
-                                .output(tube)
-                                .delay(100)
-                                .consumeItemInput()
-                                .unlockedBy()
-                                .save(c);
-
-        }
-
-        // @Deprecated
-        // protected void raw_dust_smelt(RecipeOutput c, ItemLike raw, ItemLike dust,
-        // ItemLike ingot, Item secondary,
-        // float chance) {
-
-        // QuernMillingBuilder.of().input(x.ingredient(raw.asItem()))
-        // .output(x.item(dust.asItem(), 2))
-        // .unlockedBy().save(c, "_from_raw");
-
-        // QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
-        // .output(x.item(dust.asItem()))
-        // .unlockedBy().save(c, "_from_ingot");
-
-        // MaceratorRecipeBuilder.of().input(x.itemSized(raw.asItem()))
-        // .output(x.item(dust.asItem(), 3))
-        // .secondary(secondary)
-        // .chance(chance)
-        // .unlockedBy().save(c, "_from_raw");
-
-        // MaceratorRecipeBuilder.of().input(x.itemSized(ingot.asItem()))
-        // .output(x.item(dust.asItem()))
-        // .unlockedBy().save(c, "_from_ingot");
-
-        // doubleSmelt(c, dust, ingot);
-        // }
-
-        // @Deprecated
-        // protected void raw_dust_smelt(RecipeOutput c, ResourceLocation raw, ItemLike
-        // dust, ItemLike ingot,
-        // Item secondary, float chance) {
-
-        // QuernMillingBuilder.of().input(x.ingredient(raw))
-        // .output(x.item(dust.asItem(), 2))
-        // .unlockedBy().save(c.withConditions(
-        // new ICondition[] {
-        // new NotCondition(
-        // new TagEmptyCondition(raw)) }),
-        // "_from_raw");
-
-        // QuernMillingBuilder.of().input(x.ingredient(ingot.asItem()))
-        // .output(x.item(dust.asItem()))
-        // .unlockedBy().save(c, "_from_ingot");
-
-        // MaceratorRecipeBuilder.of().input(x.itemSized(raw))
-        // .output(x.item(dust.asItem(), 3))
-        // .secondary(secondary)
-        // .chance(chance)
-        // .unlockedBy().save(c.withConditions(
-        // new ICondition[] {
-        // new NotCondition(
-        // new TagEmptyCondition(raw)) }),
-        // "_from_raw");
-
-        // MaceratorRecipeBuilder.of().input(x.itemSized(ingot.asItem()))
-        // .output(x.item(dust.asItem()))
-        // .unlockedBy().save(c, "_from_ingot");
-
-        // doubleSmelt(c, dust, ingot);
-        // }
 
         protected void oreProcessing(RecipeOutput c, FluidRegister fluid, ResourceLocation raw, ItemLike dust,
                         ItemLike ingot,
@@ -715,29 +209,210 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                                 + "_smelting");
         }
 
-        protected static void unpacker(RecipeOutput c, ItemLike input, ItemLike output, int count) {
+        protected void unpacker(RecipeOutput c, ItemLike input, ItemLike output, int count) {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, output, count).requires(input)
                                 .unlockedBy(getHasName(input), has(input))
                                 .save(c, getConversionRecipeName(output, input));
         }
 
-        protected static void brickRecipes(RecipeOutput c) {
+        protected void nuggetIngotBlock(RecipeOutput c, ItemLike nugget, ItemLike ingot, ItemLike block) {
+                packUnpack(c, nugget, ingot, false);
+                packUnpack(c, ingot, block, false);
+        }
 
-                brickDryingRecipe(c, Items.CLAY_BALL, zBlocks.CLAY_BRICK.get(),
-                                Items.BRICK);
+        protected void gear(RecipeOutput c, DeferredHolder<Item, Item> gear, TagKey<Item> input,
+                        TagKey<Item> inputCompress) {
+                ShapedRecipeBuilder.shaped(MISC, gear.get())
+                                .pattern(" # ")
+                                .pattern("# #")
+                                .pattern(" # ")
+                                .define('#', input)
+                                .unlockedBy(ID, has(input))
+                                .save(c);
 
-                brickDryingRecipe(c, zItems.PACKED_MUD_BALL.get(), zBlocks.PACKED_MUD_BRICK.get(),
-                                zItems.PACKED_MUD_BRICK.get());
+                CompressorRecipeBuilder.of()
+                                .input(inputCompress)
+                                .delay(80)
+                                .catalyst(zItems.MOLD_GEAR.get())
+                                .output(gear)
+                                .unlockedBy()
+                                .save(c);
+        }
 
-                brickDryingRecipe(c, zItems.FIRECLAY_BALL.get(), zBlocks.FIRECLAY_BRICK.get(),
-                                zItems.FIRECLAY_BRICK.get());
+        protected void gear(RecipeOutput c, DeferredHolder<Item, Item> gear, TagKey<Item> input, FluidRegister fluid) {
+                ShapedRecipeBuilder.shaped(MISC, gear.get())
+                                .pattern(" # ")
+                                .pattern("# #")
+                                .pattern(" # ")
+                                .define('#', input)
+                                .unlockedBy(ID, has(input))
+                                .save(c);
 
-                brickDryingRecipe(c, zItems.CLAY_MIXTURE_BALL.get(), zBlocks.BLAST_BRICK.get(),
-                                zItems.BLAST_BRICK.get());
+                MelterRecipeBuilder.of()
+                                .input(gear)
+                                .fluid(fluid, 180)
+                                .unlockedBy()
+                                .save(c, "_from_gear");
+
+                CasterRecipeBuilder.of()
+                                .fluid(fluid, 180)
+                                .input(zItems.MOLD_GEAR)
+                                .output(gear)
+                                .unlockedBy()
+                                .save(c);
+
+                CastingTableBuilder.of()
+                                .fluid(fluid, 180)
+                                .input(zItems.MOLD_GEAR)
+                                .output(gear)
+                                .unlockedBy()
+                                .save(c);
+        }
+
+        protected void moltenIngots(RecipeOutput c, Item ingot, TagKey<Item> ingot_tag, FluidRegister fluid) {
+                moltenRecipes(c, "_from_ingot", zItems.MOLD_INGOT.get(), ingot, ingot_tag, fluid, 90);
+        }
+
+        protected void moltenPlates(RecipeOutput c, Item plate, TagKey<Item> plate_tag, FluidRegister fluid) {
+                moltenRecipes(c, "_from_plate", zItems.MOLD_PLATE.get(), plate, plate_tag, fluid, 45);
+        }
+
+        protected void moltenRecipes(RecipeOutput c, String suffix, Item mold, Item result, TagKey<Item> input,
+                        FluidRegister fluid, int amount) {
+
+                MelterRecipeBuilder.of()
+                                .input(input)
+                                .fluid(fluid, amount)
+                                .unlockedBy()
+                                .save(c, suffix);
+
+                FoundryBuilder.of()
+                                .input(input)
+                                .fluid(fluid, amount)
+                                .unlockedBy()
+                                .save(c, suffix);
+
+                CasterRecipeBuilder.of()
+                                .fluid(fluid, amount)
+                                .input(mold)
+                                .output(result)
+                                .unlockedBy()
+                                .save(c);
+
+                CastingTableBuilder.of()
+                                .fluid(fluid, amount)
+                                .input(mold)
+                                .output(result)
+                                .unlockedBy()
+                                .save(c);
 
         }
 
-        private static void brickDryingRecipe(RecipeOutput c, Item ball, Block block,
+        protected void electron_tube(RecipeOutput c, DeferredHolder<Item, Item> tube, FluidRegister fluid) {
+
+                CasterRecipeBuilder.of()
+                                .fluid(fluid, 180)
+                                .input(zItems.ELECTRON_TUBE_BASE)
+                                .output(tube)
+                                .delay(100)
+                                .consumeItemInput()
+                                .unlockedBy()
+                                .save(c);
+
+                CastingTableBuilder.of()
+                                .fluid(fluid, 180)
+                                .input(zItems.ELECTRON_TUBE_BASE)
+                                .output(tube)
+                                .delay(100)
+                                .consumeItemInput()
+                                .unlockedBy()
+                                .save(c);
+
+        }
+
+        protected void gemDustProcess(RecipeOutput c, Item gem, Item dust) {
+
+                crushing(c, gem, dust);
+
+                CompressorRecipeBuilder.of()
+                                .input(dust)
+                                .delay(80)
+                                .output(gem)
+                                .unlockedBy()
+                                .save(c);
+        }
+
+        protected void crushing(RecipeOutput c, Item gem, Item dust) {
+                crushing(c, gem, dust, 1);
+        }
+
+        protected void crushing(RecipeOutput c, Item gem, Item dust, int mace_count) {
+                crushing(c, gem, dust, mace_count, 1);
+        }
+
+        protected void crushing(RecipeOutput c, Item gem, Item dust, int mace_count, int quern_count) {
+                crushing(c, gem, dust, mace_count, quern_count, ItemStack.EMPTY, 0);
+        }
+
+        protected void crushing(RecipeOutput c, Item gem, Item dust, int mace_count, int quern_count,
+                        Item mace_secondary, float chance) {
+                crushing(c, gem, dust, mace_count, quern_count, x.item(mace_secondary), chance);
+        }
+
+        protected void crushing(RecipeOutput c, Item gem, Item dust, int mace_count, int quern_count,
+                        ItemStack mace_secondary, float chance) {
+
+                QuernMillingBuilder.of().input(gem)
+                                .output(dust, quern_count)
+                                .unlockedBy().save(c);
+
+                var macerator = MaceratorRecipeBuilder.of()
+                                .input(gem)
+                                .delay(80)
+                                .output(dust, mace_count);
+
+                if (mace_secondary != null && !mace_secondary.isEmpty() && chance > 0)
+                        macerator.secondary(mace_secondary).chance(chance);
+
+                macerator.unlockedBy().save(c);
+        }
+
+        protected void crushing(RecipeOutput c, TagKey<Item> gem, Item dust) {
+                crushing(c, gem, dust, 1);
+        }
+
+        protected void crushing(RecipeOutput c, TagKey<Item> gem, Item dust, int mace_count) {
+                crushing(c, gem, dust, mace_count, 1);
+        }
+
+        protected void crushing(RecipeOutput c, TagKey<Item> gem, Item dust, int mace_count, int quern_count) {
+                crushing(c, gem, dust, mace_count, quern_count, ItemStack.EMPTY, 0);
+        }
+
+        protected void crushing(RecipeOutput c, TagKey<Item> gem, Item dust, int mace_count, int quern_count,
+                        Item mace_secondary, float chance) {
+                crushing(c, gem, dust, mace_count, quern_count, x.item(mace_secondary), chance);
+        }
+
+        protected void crushing(RecipeOutput c, TagKey<Item> gem, Item dust, int mace_count, int quern_count,
+                        ItemStack mace_secondary, float chance) {
+
+                QuernMillingBuilder.of().input(gem)
+                                .output(dust, quern_count)
+                                .unlockedBy().save(c);
+
+                var macerator = MaceratorRecipeBuilder.of()
+                                .input(gem)
+                                .delay(80)
+                                .output(dust, mace_count);
+
+                if (mace_secondary != null && !mace_secondary.isEmpty() && chance > 0)
+                        macerator.secondary(mace_secondary).chance(chance);
+
+                macerator.unlockedBy().save(c);
+        }
+
+        protected static void brickDryingRecipe(RecipeOutput c, Item ball, Block block,
                         Item brick) {
                 DryableBricksBuilder.of()
                                 .input(ball)
@@ -809,502 +484,6 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
         }
 
-        // nodes
-        protected void nodeRecipe(RecipeOutput c, Block b, ItemLike catalyst) {
-
-                ShapedRecipeBuilder.shaped(MISC, b.asItem())
-                                .pattern(" P ")
-                                .pattern("RBR")
-                                .pattern("SCS")
-                                .define('P', zBlocks.PIPE.get().asItem())
-                                .define('R', Tags.Items.DUSTS_REDSTONE)
-                                .define('C', catalyst)
-                                .define('B', Tags.Items.STORAGE_BLOCKS_REDSTONE)
-                                .define('S', Tags.Items.STONES)
-                                .unlockedBy(ID,
-                                                has(
-                                                                zBlocks.PIPE.get()))
-                                .group(zStatic.PipeStuff.types.item_node).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, b.asItem(), 4)
-                                .pattern(" P ")
-                                .pattern("RBR")
-                                .pattern("SCS")
-                                .define('P', zBlocks.PIPE.get().asItem())
-                                .define('R', Tags.Items.DUSTS_REDSTONE)
-                                .define('C', catalyst)
-                                .define('B', Items.ENDER_PEARL)
-                                .define('S', Tags.Items.STONES)
-                                .unlockedBy(ID,
-                                                has(
-                                                                zBlocks.PIPE.get()))
-                                .group(zStatic.PipeStuff.types.item_node)
-                                .save(c, BuiltInRegistries.ITEM.getKey(b.asItem())
-                                                + "_alt");
-
-        }
-
-        protected void node_alt(RecipeOutput c, ItemLike input, ItemLike output) {
-                ShapelessRecipeBuilder.shapeless(MISC, output)
-                                .requires(input)
-                                .unlockedBy(ID, has(input))
-                                .group(zStatic.PipeStuff.types.item_node)
-                                .save(c, BuiltInRegistries.ITEM.getKey(input.asItem()) + "_alt2");
-
-                ShapelessRecipeBuilder.shapeless(MISC, input)
-                                .requires(output)
-                                .unlockedBy(ID, has(output))
-                                .group(zStatic.PipeStuff.types.item_node)
-                                .save(c, BuiltInRegistries.ITEM.getKey(output.asItem()) + "_alt2");
-        }
-
-        protected void cropResultRecipes(RecipeOutput c) {
-
-                var seeds = List.of(
-                                x.ingredient(zItemTag.RICE_PLANT),
-                                x.ingredient(zBlocks.AZALEA.get().asItem()),
-                                x.ingredient(zItemTag.COTTON_PLANT),
-                                x.ingredient(zItemTag.CAVE_WHEAT_PLANT),
-                                x.ingredient(zItems.BLUE_CUP_SPORE.get()),
-                                x.ingredient(zItems.VIOLET_WEBCAP_SPORE.get()));
-
-                List<List<Item>> result = List.of(
-                                List.of(zItems.RICE_SEED.get()),
-                                List.of(zItems.AZALEA_SEEDS.get(), zItems.SMALL_AZALEA_LEAF.get(),
-                                                zItems.SMALL_AZALEA_ROOTS.get()),
-                                List.of(zItems.COTTON_SEEDS.get(), zItems.COTTON.get()),
-                                List.of(zItems.CAVE_WHEAT_SEEDS.get(), Items.WHEAT),
-                                List.of(zItems.BLUE_CUP_SPORE.get(), zItems.BLUE_CUP_MUSHROOM.get()),
-                                List.of(zItems.VIOLET_WEBCAP_SPORE.get(), zItems.VIOLET_WEBCAP_MUSHROOM.get()));
-
-                seeds.forEach(s -> CropResultBuilder
-                                .of().input(s).output(result.get(seeds.indexOf(s))
-                                                .stream().map(i -> x.item(i)).toList())
-                                .unlockedBy().save(c));
-
-        }
-
-        public static List<Item> clearNBT = List.of(
-                        zItems.RED_BATTERY.get(),
-                        zItems.BLUE_BATTERY.get(),
-                        zItems.GREEN_BATTERY.get(),
-                        zBlocks.SIMPLE_TANK.get().asItem(),
-                        zBlocks.FUEL_TANK.get().asItem());
-
-        protected void clearNBT(RecipeOutput c) {
-
-                clearNBT.forEach(i -> {
-                        ShapelessRecipeBuilder.shapeless(MISC, i)
-                                        .requires(i)
-                                        .unlockedBy(ID, has(i))
-                                        .save(c, ID + ":" + x.path(i) + "_clear_nbt");
-                });
-
-                zStatic.MachineUpgrades.TemplateUpgrades.ALL.forEach(i -> {
-                        ShapelessRecipeBuilder.shapeless(MISC, i)
-                                        .requires(i.getItem())
-                                        .unlockedBy(ID, has(i.getItem()))
-                                        .save(c, ID + ":" + x.path(i) + "_clear_nbt");
-                });
-        }
-
-        protected void coolerRecipes(RecipeOutput c) {
-                var coolers = List.of(
-                                zBlocks.COPPER_COOLER,
-                                zBlocks.GOLD_COOLER,
-                                zBlocks.IRON_COOLER,
-                                zBlocks.ENDER_COOLER,
-                                zBlocks.FROST_COOLER,
-                                zBlocks.LAPIS_COOLER,
-                                zBlocks.SCULK_COOLER,
-                                zBlocks.WATER_COOLER,
-                                zBlocks.QUARTZ_COOLER,
-                                zBlocks.SHADOW_COOLER,
-                                zBlocks.DIAMOND_COOLER,
-                                zBlocks.EMERALD_COOLER,
-                                zBlocks.REDSTONE_COOLER,
-                                zBlocks.GLOWSTONE_COOLER,
-                                zBlocks.NETHERITE_COOLER);
-
-                var ingredients = List.of(
-                                Items.COPPER_INGOT,
-                                Items.GOLD_INGOT,
-                                Items.IRON_INGOT,
-                                Items.ENDER_PEARL,
-                                Items.PACKED_ICE,
-                                Items.LAPIS_LAZULI,
-                                Items.SCULK,
-                                Items.WATER_BUCKET,
-                                Items.QUARTZ,
-                                zItems.GHOUL_HEART.get(),
-                                Items.DIAMOND,
-                                Items.EMERALD,
-                                Items.REDSTONE,
-                                Items.GLOWSTONE,
-                                Items.NETHERITE_INGOT);
-
-                for (DeferredHolder<Block, Block> b : coolers) {
-                        var index = coolers.indexOf(b);
-                        ShapelessRecipeBuilder.shapeless(MISC, b.get())
-                                        .requires(ingredients.get(index))
-                                        .requires(zBlocks.COOLER_BASE.get())
-                                        .unlockedBy(ID, has(ingredients.get(index)))
-                                        .save(c);
-                }
-        }
-
-        protected void bacteries(RecipeOutput c) {
-                ShapedRecipeBuilder.shaped(MISC, zItems.RED_BATTERY.get())
-                                .pattern(" R ")
-                                .pattern("RHR")
-                                .pattern(" R ")
-                                .define('R', zItemTag.URN_MIXTURES)
-                                .define('H', zItems.BLUE_BATTERY.get())
-                                .unlockedBy(ID,
-                                                has(zItems.BLUE_BATTERY.get()))
-                                .save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.BLUE_BATTERY.get())
-                                .pattern(" R ")
-                                .pattern("RHR")
-                                .pattern(" R ")
-                                .define('R', zItemTag.GEMS_AQUAMARINE)
-                                .define('H', zItems.GREEN_BATTERY.get())
-                                .unlockedBy(ID,
-                                                has(zItems.AQUAMARINE.get()))
-                                .save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.GREEN_BATTERY.get())
-                                .pattern(" S ")
-                                .pattern("RHR")
-                                .pattern(" R ")
-                                .define('S', Items.REDSTONE)
-                                .define('R', Items.SLIME_BALL)
-                                .define('H', zItems.CONDENSER.get())
-                                .unlockedBy(ID,
-                                                has(zItems.CONDENSER.get()))
-                                .save(c);
-        }
-
-        protected void legacyItemComponents(RecipeOutput c) {
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.RESISTOR.get(), 4)
-                                .pattern(" MN")
-                                .pattern("MGM")
-                                .pattern("NM ")
-                                .define('N', Items.IRON_NUGGET)
-                                .define('M', zItems.BLUE_CUP_MUSHROOM.get())
-                                .define('G', zItems.BONE_MEAL_MIXTURE.get())
-                                .unlockedBy(ID,
-                                                has(
-                                                                zItems.BONE_MEAL_MIXTURE.get()))
-                                .save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.RESISTOR.get(), 8)
-                                .pattern(" MN")
-                                .pattern("MGM")
-                                .pattern("NM ")
-                                .define('N', zItemTag.NUGGET_STEEL)
-                                .define('M', zItemTag.RESISTOR_INGREDIENT)
-                                .define('G', zItemTag.URN_MIXTURES)
-                                .unlockedBy(ID,
-                                                has(zItems.STEEL_NUGGET.get()))
-                                .save(c, ID + ":" + x.path(zItems.RESISTOR.get()) + "_improved");
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.CHIP.get(), 4)
-                                .pattern(" N ")
-                                .pattern(" GN")
-                                .pattern("Q  ")
-                                .define('G', zItems.BONE_MEAL_MIXTURE.get())
-                                .define('N', Items.IRON_NUGGET)
-                                .define('Q', Items.QUARTZ)
-                                .unlockedBy(ID,
-                                                has(zItems.BONE_MEAL_MIXTURE.get()))
-                                .save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.CHIP.get(), 8)
-                                .pattern(" N ")
-                                .pattern(" GN")
-                                .pattern("Q  ")
-                                .define('G', zItemTag.URN_MIXTURES)
-                                .define('N', zItemTag.NUGGET_STEEL)
-                                .define('Q', zItemTag.DUST_QUARTZ)
-                                .unlockedBy(ID,
-                                                has(zItems.BONE_MEAL_MIXTURE.get()))
-                                .save(c, ID + ":" + x.path(zItems.CHIP.get()) + "_improved");
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.CONDENSER.get(), 4)
-                                .pattern("N N")
-                                .pattern("GMG")
-                                .pattern(" I ")
-                                .define('N', Items.IRON_NUGGET)
-                                .define('G', zItems.BONE_MEAL_MIXTURE.get())
-                                .define('M', zItems.VIOLET_WEBCAP_MUSHROOM.get())
-                                .define('I', Items.IRON_INGOT)
-                                .unlockedBy(ID,
-                                                has(zItems.BONE_MEAL_MIXTURE.get()))
-                                .save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.CONDENSER.get(), 8)
-                                .pattern("N N")
-                                .pattern("GMG")
-                                .pattern(" I ")
-                                .define('N', zItemTag.NUGGET_STEEL)
-                                .define('G', zItemTag.URN_MIXTURES)
-                                .define('M', zItemTag.GEMS_SILICON)
-                                .define('I', zItemTag.INGOT_STEEL)
-                                .unlockedBy(ID,
-                                                has(zItems.SILICON.get()))
-                                .save(c, ID + ":" + x.path(zItems.CONDENSER.get()) + "_improved");
-        }
-
-        protected void fuelCellNuclearReactions(RecipeOutput c) {
-
-                UrnRitualBuilder.of()
-                                .add(zItems.WASTE)
-                                .output(zItems.URANIUM)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.URANIUM)
-                                .add(zItemTag.DUST_COAL)
-                                .output(zItems.THORIUM, 2)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.THORIUM)
-                                .add(zItemTag.DUST_DIAMOND)
-                                .add(zItemTag.DUST_QUARTZ)
-                                .output(zItems.PLUTONIUM, 2)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.PLUTONIUM)
-                                .add(zItems.MAGIC_DUST)
-                                .add(zItems.AQUAMARINE)
-                                .output(zItems.NEPTUNIUM, 2)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.NEPTUNIUM)
-                                .add(zItems.INFERNAL_EMBER)
-                                .add(Tags.Items.DUSTS_REDSTONE)
-                                .output(zItems.AMERICIUM, 2)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.AMERICIUM)
-                                .add(zItemTag.DUST_COPPER)
-                                .add(zItemTag.DUST_GOLD)
-                                .add(zItemTag.DUST_EMERALD)
-                                .output(zItems.BERKELIUM, 2)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.BERKELIUM)
-                                .add(zItemTag.DUST_ANCIENT_DEBRIS)
-                                .add(zItems.ENERGIZED_REDSTONE)
-                                .output(zItems.CURIUM, 2)
-                                .unlockedBy().save(c);
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.URANIUM)
-                                .output(zItems.WASTE_FRAGMENT, 3)
-                                .duration(10_000)
-                                .energy(160)
-                                .heat(50)
-                                .unlockedBy().save(c, "_from_uranium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.THORIUM)
-                                .output(zItems.WASTE_FRAGMENT, 6)
-                                .duration(25_000)
-                                .energy(480)
-                                .heat(90)
-                                .unlockedBy().save(c, "_from_thorium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.PLUTONIUM)
-                                .output(zItems.WASTE_FRAGMENT, 9)
-                                .duration(50_000)
-                                .energy(1_440)
-                                .heat(180)
-                                .unlockedBy().save(c, "_from_plutonium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.NEPTUNIUM)
-                                .output(zItems.WASTE_FRAGMENT, 12)
-                                .duration(75_000)
-                                .energy(4_320)
-                                .heat(350)
-                                .unlockedBy().save(c, "_from_neptunium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.AMERICIUM)
-                                .output(zItems.WASTE_FRAGMENT, 15)
-                                .duration(150_000)
-                                .energy(12_960)
-                                .heat(1040)
-                                .unlockedBy().save(c, "_from_americium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.BERKELIUM)
-                                .output(zItems.WASTE_FRAGMENT, 18)
-                                .duration(300_000)
-                                .energy(38_880)
-                                .heat(1700)
-                                .unlockedBy().save(c, "_from_berkelium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.CALIFORNIUM)
-                                .output(zItems.WASTE_FRAGMENT, 21)
-                                .duration(750_000)
-                                .energy(116_640)
-                                .heat(3500)
-                                .unlockedBy().save(c, "_from_californium");
-
-                ReactorCellBuilder.of()
-                                .input(zItemTag.CURIUM)
-                                .output(zItems.WASTE_FRAGMENT, 24)
-                                .duration(1_250_000)
-                                .energy(349_920)
-                                .heat(7500)
-                                .unlockedBy().save(c, "_from_curium");
-        }
-
-        protected void mixtures(RecipeOutput c) {
-
-                ShapelessRecipeBuilder.shapeless(MISC, zItems.BONE_MEAL_MIXTURE.get(), 2)
-                                .requires(Tags.Items.SLIME_BALLS)
-                                .requires(Items.BONE_MEAL)
-                                .requires(Tags.Items.DUSTS_REDSTONE)
-                                .requires(zItemTag.MIXTURE_ALTERNATIVE)
-                                .unlockedBy(ID,
-                                                has(zItemTag.MIXTURE_ALTERNATIVE))
-                                .group(zStatic.tips.MIXTURE_TIP).save(c);
-
-                UrnRitualBuilder.of()
-                                .add(Tags.Items.SLIME_BALLS)
-                                .add(zItems.ENERGIZED_REDSTONE.get())
-                                .add(zItems.LAPIS_DUST.get())
-                                .add(Items.PRISMARINE_CRYSTALS)
-                                .output(zItems.GLOWSTONE_MIXTURE.get(), 5)
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zItemTag.GEMS_SILICON)
-                                .add(zItems.QUARTZ_DUST.get())
-                                .add(zItems.AMETHYST_DUST.get())
-                                .add(Items.HONEYCOMB)
-                                .output(zItems.AMETHYST_MIXTURE.get(), 9)
-                                .unlockedBy().save(c);
-        }
-
-        protected void chests(RecipeOutput c) {
-                ShapelessRecipeBuilder.shapeless(MISC, zBlocks.WOODEN_TINY_CHEST.get(), 4)
-                                .requires(Items.CHEST)
-                                .unlockedBy(ID, has(Items.CHEST))
-                                .save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zBlocks.WOODEN_TINY_CHEST.get())
-                                .add(zItemTag.DUST_GOLD)
-                                .add(zItems.ADVANCED_ALLOY_PLATE)
-                                .add(Items.NETHERITE_SCRAP)
-                                .output(zBlocks.ORNATE_TINY_CHEST.get())
-                                .unlockedBy().save(c);
-
-                UrnRitualBuilder.of()
-                                .add(zBlocks.WOODEN_TINY_CHEST.get())
-                                .add(zItems.STONE_PEBBLE)
-                                .add(zItems.GHAST_BLADDER)
-                                .output(zBlocks.STONE_TINY_CHEST.get())
-                                .unlockedBy().save(c);
-
-        }
-
-        protected void tools(RecipeOutput c) {
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.WOODEN_CROOK.get())
-                                .pattern("SS")
-                                .pattern(" S")
-                                .pattern(" S")
-                                .define('S', Items.STICK)
-                                .unlockedBy(ID,
-                                                has(Items.STICK))
-                                .group(zStatic.Items.wooden_crook).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.WOODEN_CROOK.get())
-                                .pattern("SS")
-                                .pattern("S ")
-                                .pattern("S ")
-                                .define('S', Items.STICK)
-                                .unlockedBy(ID,
-                                                has(Items.STICK))
-                                .group(zStatic.Items.wooden_crook).save(c, x.rl(
-                                                zItems.WOODEN_CROOK.get().getDescriptionId()
-                                                                .replace("item." + ID + ".", "")
-                                                                + "_alt"));
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.SMASHER.get())
-                                .pattern("NI ")
-                                .pattern(" I ")
-                                .pattern(" IN")
-                                .define('I', Items.IRON_INGOT)
-                                .define('N', Items.IRON_NUGGET)
-                                .unlockedBy(ID,
-                                                has(Items.IRON_INGOT))
-                                .group(zStatic.Items.smasher).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.SMASHER.get())
-                                .pattern(" IN")
-                                .pattern(" I ")
-                                .pattern("NI ")
-                                .define('I', Items.IRON_INGOT)
-                                .define('N', Items.IRON_NUGGET)
-                                .unlockedBy(ID,
-                                                has(Items.IRON_INGOT))
-                                .group(zStatic.Items.smasher).save(c, x.rl(
-                                                zItems.SMASHER.get().getDescriptionId()
-                                                                .replace("item." + ID + ".", "")
-                                                                + "_alt"));
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.SOLDERING_GUN.get())
-                                .pattern("  I")
-                                .pattern(" G ")
-                                .pattern("S  ")
-                                .define('S', Items.STICK)
-                                .define('G', zItemTag.FOIL_GOLD)
-                                .define('I', Items.IRON_NUGGET)
-                                .unlockedBy(ID,
-                                                has(zItems.GOLD_FOIL.get()))
-                                .group(zStatic.Items.soldering_gun).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.CONFIGURATOR.get())
-                                .pattern("N N")
-                                .pattern("IEI")
-                                .pattern("RIR")
-                                .define('R', Items.REDSTONE)
-                                .define('N', Items.IRON_NUGGET)
-                                .define('E', Items.EMERALD)
-                                .define('I', Items.IRON_INGOT)
-                                .unlockedBy(ID,
-                                                has(Items.REDSTONE))
-                                .group(zStatic.Items.configurator).save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zItems.CHISEL.get())
-                                .pattern("  N")
-                                .pattern(" I ")
-                                .pattern("S  ")
-                                .define('N', Items.IRON_NUGGET)
-                                .define('S', Items.STICK)
-                                .define('I', Items.IRON_INGOT)
-                                .unlockedBy(ID,
-                                                has(Items.IRON_INGOT))
-                                .group(zStatic.Items.chisel).save(c);
-
-        }
-
         protected void foil(RecipeOutput c, TagKey<Item> input, Item output) {
                 ShapedRecipeBuilder.shaped(MISC, output, 3)
                                 .pattern(" IS")
@@ -1345,166 +524,32 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
         }
 
-        protected void moderators(RecipeOutput c) {
-
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.SIMPLE_MODERATOR.get())
-                                .pattern("CSC")
-                                .pattern("SFS")
-                                .pattern("CSC")
-                                .define('F', zBlocks.WROUGHT_IRON_BLOCK.get())
-                                .define('C', Items.COAL)
-                                .define('S', zItemTag.PLATE_AQUAMARINE)
-                                .unlockedBy(ID,
-                                                has(zBlocks.ADVANCED_MACHINE_FRAME.get()))
-                                .save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.ADVANCED_MODERATOR.get())
-                                .pattern("CSC")
-                                .pattern("SFS")
-                                .pattern("CSC")
-                                .define('F', zBlocks.SIMPLE_MODERATOR.get())
-                                .define('S', zItemTag.PLATE_STEEL)
-                                .define('C', zItemTag.NUGGET_ADVANCEDALLOY)
-                                .unlockedBy(ID,
-                                                has(zBlocks.SIMPLE_MODERATOR.get()))
-                                .save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.ELITE_MODERATOR.get())
-                                .pattern("SPS")
-                                .pattern("CFC")
-                                .pattern("SPS")
-                                .define('F', zBlocks.ADVANCED_MODERATOR.get())
-                                .define('P', zItems.NETHER_CIRCUIT.get())
-                                .define('C', zItems.CARBON_PLATE.get())
-                                .define('S', zItemTag.PLATE_ADVANCED_ALLOY)
-                                .unlockedBy(ID,
-                                                has(zBlocks.ADVANCED_MODERATOR.get()))
-                                .save(c);
-
-        }
-
-        protected void droplets(RecipeOutput c) {
-
-                var droplets = List.of(
-                                zItems.SAP,
-                                zItems.OIL,
-                                zItems.GLUE);
-
-                var fluids = List.of(
-                                zFluids.SAP,
-                                zFluids.OIL,
-                                zFluids.GLUE);
-
-                droplets.forEach(d -> {
-                        var fluid = fluids.get(droplets.indexOf(d));
-                        var bucket = fluid.getItemBucket().get();
-                        ShapelessRecipeBuilder.shapeless(MISC, d.get(), 4)
-                                        .requires(bucket)
-                                        .unlockedBy(ID, has(bucket))
-                                        .save(c);
-
-                        MelterRecipeBuilder.of()
-                                        .energy(100)
-                                        .delay(40)
-                                        .input(d)
-                                        .fluid(fluid, 250)
-                                        .unlockedBy()
-                                        .save(c);
-
-                        CasterRecipeBuilder.of()
-                                        .fluid(fluid, 250)
-                                        .output(d)
-                                        .unlockedBy()
-                                        .save(c);
-                });
-
-        }
-
         protected static void packUnpack(RecipeOutput c, ItemLike unpacked, ItemLike packed, boolean isSmall) {
                 ShapelessRecipeBuilder.shapeless(MISC, unpacked, isSmall ? 4 : 9)
                                 .requires(packed)
 
                                 .unlockedBy(getHasName(packed), has(packed))
                                 .save(c, ID + ":" + x.path((Item) unpacked) + "_unpack" + (isSmall ? "_4" : "_9"));
-                var temp = ShapedRecipeBuilder.shaped(MISC, packed)
-                                .define('#', unpacked)
+
+                simplePacked(c, unpacked.asItem(), packed.asItem(), isSmall);
+        }
+
+        @Deprecated
+        protected static void simplePacked(RecipeOutput c, Item input, Item output) {
+                simplePacked(c, input, output, true);
+        }
+
+        protected static void simplePacked(RecipeOutput c, Item input, Item output, boolean isSmall) {
+                var temp = ShapedRecipeBuilder.shaped(MISC, output)
+                                .define('#', input)
                                 .pattern("##" + (!isSmall ? "#" : "")).pattern("##" + (!isSmall ? "#" : ""));
 
                 if (!isSmall)
                         temp = temp.pattern("###");
 
-                temp.unlockedBy(getHasName(unpacked), has(unpacked))
-                                .save(c, ID + ":" + x.path((Item) packed) + "_pack" + (isSmall ? "_x4" : "_x9"));
-
-        }
-
-        protected static void simplePacked(RecipeOutput c, Item input, Item output) {
-                ShapedRecipeBuilder.shaped(MISC, output, 1)
-                                .define('#', input)
-                                .pattern("##")
-                                .pattern("##")
-                                .unlockedBy(getHasName(input),
-                                                has(input))
+                temp.unlockedBy(getHasName(input), has(input))
                                 .save(c, ID + ":" + getConversionRecipeName(output,
                                                 input));
-        }
-
-        protected static void lasers(RecipeOutput c) {
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_MIRROR.get(), 2)
-                                .pattern(" C ")
-                                .pattern("CGC")
-                                .pattern("SSS")
-                                .define('S', zItemTag.PLATE_STEEL)
-                                .define('C', Tags.Items.INGOTS_COPPER)
-                                .define('G', Tags.Items.GLASS_BLOCKS_COLORLESS)
-                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
-
-                                .save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_LENS.get(), 4)
-                                .pattern("G G")
-                                .pattern("GCG")
-                                .pattern("SSS")
-                                .define('S', zItemTag.PLATE_STEEL)
-                                .define('C', Tags.Items.INGOTS_COPPER)
-                                .define('G', Tags.Items.GLASS_BLOCKS_COLORLESS)
-                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
-
-                                .save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_MACHINE.get())
-                                .pattern("RC ")
-                                .pattern("CDC")
-                                .pattern(" CS")
-                                .define('R', zItems.CARBON_FIBER.get())
-                                .define('S', zItemTag.PLATE_STEEL)
-                                .define('C', Tags.Items.INGOTS_COPPER)
-                                .define('D', Tags.Items.DUSTS_REDSTONE)
-                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
-
-                                .save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_SENSOR.get())
-                                .pattern("CRC")
-                                .pattern("DSD")
-                                .define('R', zItems.CARBON_FIBER.get())
-                                .define('S', zItemTag.PLATE_STEEL)
-                                .define('C', Tags.Items.INGOTS_COPPER)
-                                .define('D', Tags.Items.DUSTS_REDSTONE)
-                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
-
-                                .save(c);
-
-                ShapedRecipeBuilder.shaped(MISC, zBlocks.LASER_ROTOR.get())
-                                .pattern("SGS")
-                                .pattern("GDG")
-                                .pattern("SGS")
-                                .define('G', zBlocks.LASER_MACHINE.get())
-                                .define('S', zItemTag.PLATE_STEEL)
-                                .define('D', Tags.Items.DUSTS_REDSTONE)
-                                .unlockedBy(ID, has(zItemTag.PLATE_STEEL))
-
-                                .save(c);
 
         }
 
@@ -1609,6 +654,28 @@ public abstract class ExtraRecipeProvider extends RecipeProvider {
                                 .define('#', material)
                                 .pattern("##")
                                 .pattern("##")
+                                .unlockedBy(getHasName(material), has(material))
+                                .save(c);
+        }
+
+        protected static void cross(RecipeOutput c, ItemLike result, ItemLike material, ItemLike middle) {
+                ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, result, 4)
+                                .define('#', material)
+                                .define('A', middle)
+                                .pattern(" # ")
+                                .pattern("#A#")
+                                .pattern(" # ")
+                                .unlockedBy(getHasName(material), has(material))
+                                .save(c);
+        }
+
+        protected static void cross(RecipeOutput c, ItemLike result, ItemLike material, TagKey<Item> middle) {
+                ShapedRecipeBuilder.shaped(BUILDING_BLOCKS, result, 4)
+                                .define('#', material)
+                                .define('A', middle)
+                                .pattern(" # ")
+                                .pattern("#A#")
+                                .pattern(" # ")
                                 .unlockedBy(getHasName(material), has(material))
                                 .save(c);
         }
