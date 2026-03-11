@@ -15,14 +15,14 @@ import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 @SuppressWarnings({ "null" })
 public class UrnRitualBuilder extends BaseRecipeBuilder
-        implements ItemAttach.Output.SimpleOutputItem<UrnRitualBuilder>, ItemAttach.Input.ListedNoItemCount<UrnRitualBuilder> {
+        implements ItemAttach.Output.SimpleOutputItem<UrnRitualBuilder>, ItemAttach.Input.ListedItemCount<UrnRitualBuilder> {
 
-    private List<Ingredient> inputList = new ArrayList<>();
+    private List<SizedIngredient> inputList = new ArrayList<>();
     private ItemStack output;
 
     private UrnRitualBuilder() {
@@ -35,7 +35,7 @@ public class UrnRitualBuilder extends BaseRecipeBuilder
 
     public UrnRitualBuilder unlockedBy() {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
-                .hasItems(IngredientUtils.getItemLikes(inputList)));
+                .hasItems(IngredientUtils.getItemLikesSized(inputList)));
     }
 
     public UrnRitualBuilder unlockedBy(String name, Criterion<?> criterion) {
@@ -49,7 +49,7 @@ public class UrnRitualBuilder extends BaseRecipeBuilder
 
     @Override
     public Recipe<?> createRecipe() {
-        return new UrnRitualRecipe(inputList, this.output);
+        return new UrnRitualRecipe(inputList, output);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class UrnRitualBuilder extends BaseRecipeBuilder
     }
 
     @Override
-    public UrnRitualBuilder add(Ingredient input) {
+    public UrnRitualBuilder add(SizedIngredient input) {
         inputList.add(input);
         return this;
     }

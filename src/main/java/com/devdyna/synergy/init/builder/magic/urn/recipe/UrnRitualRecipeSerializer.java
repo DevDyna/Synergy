@@ -7,20 +7,20 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 public class UrnRitualRecipeSerializer implements RecipeSerializer<UrnRitualRecipe> {
 
     public static final MapCodec<UrnRitualRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-            Ingredient.LIST_CODEC_NONEMPTY.fieldOf("ingredient").forGetter(UrnRitualRecipe::getIngredients),
-            ItemStack.CODEC.fieldOf("result").forGetter(UrnRitualRecipe::getResultItem)
+            SizedIngredient.FLAT_CODEC.listOf().fieldOf("ingredients").forGetter(UrnRitualRecipe::getInputs),
+            ItemStack.CODEC.fieldOf("result").forGetter(UrnRitualRecipe::getOutput)
             ).apply(inst, UrnRitualRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, UrnRitualRecipe> STREAM_CODEC =
             StreamCodec.composite(
-                    Ingredient.CONTENTS_STREAM_CODEC.apply(ByteBufCodecs.list()), UrnRitualRecipe::getIngredients,
-                    ItemStack.STREAM_CODEC, UrnRitualRecipe::getResultItem,
+                    SizedIngredient.STREAM_CODEC.apply(ByteBufCodecs.list()), UrnRitualRecipe::getInputs,
+                    ItemStack.STREAM_CODEC, UrnRitualRecipe::getOutput,
                     UrnRitualRecipe::new);
 
     @Override

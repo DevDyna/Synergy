@@ -74,12 +74,36 @@ public class ItemAttach {
 
         }
 
-        public static interface ListedNoItemCount<BUILDER extends BaseRecipeBuilder> extends BuilderAttach<BUILDER> {
+        public static interface ListedItemCount<BUILDER extends BaseRecipeBuilder> extends BuilderAttach<BUILDER> {
 
-            abstract BUILDER add(Ingredient input);
+            abstract BUILDER add(SizedIngredient input);
+
+            default BUILDER add(Ingredient input) {
+                return add(x.itemSized(input));
+            }
+
+            default BUILDER add(Ingredient input,int c) {
+                return add(x.itemSized(input,c));
+            }
+
+            default BUILDER add(Item input,int c) {
+                return add(x.ingredient(input),c);
+            }
 
             default BUILDER add(Item input) {
                 return add(x.ingredient(input));
+            }
+
+            default BUILDER add(DeferredHolder<Item, Item> input,int c) {
+                return add(input.get(),c);
+            }
+
+            default BUILDER add(TagKey<Item> input,int c) {
+                return add(x.ingredient(input),c);
+            }
+
+            default BUILDER add(ItemLike input,int c) {
+                return add(x.ingredient(input),c);
             }
 
             default BUILDER add(DeferredHolder<Item, Item> input) {
