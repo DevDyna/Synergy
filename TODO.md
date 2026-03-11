@@ -65,8 +65,8 @@
 - [ ] chopper slots need to change when item isn't empty to blank
 - [ ] chopper configs
 
-- [ ] urn jei category rework to dynamic handling
-- [ ] [#12](https://github.com/DevDyna/Synergy/issues/12) 
+- [x] urn jei category rework to dynamic handling
+- [x] [#12](https://github.com/DevDyna/Synergy/issues/12) 
 
 ### Survival expansion
 
@@ -96,6 +96,8 @@
 
 - [x] cave mushroom -> press -> liquid lapis/ liquid coal
 - [ ] weed crop plant (unwanted plant) -> farmland spreaddable crop -> fibers(?)
+-> convert dirt to grass like ic2?
+
 - [ ] Truffles
 
 - [ ] flax (double)
