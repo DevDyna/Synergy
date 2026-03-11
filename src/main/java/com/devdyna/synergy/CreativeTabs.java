@@ -88,7 +88,7 @@ public class CreativeTabs {
             zBlocks.FIRECLAY_BRICKS.buildCreativeTab(() -> event);
             zBlocks.FIRECLAY_BRICK_CRACKED.buildCreativeTab(() -> event);
             zBlocks.FIRECLAY_BRICK_MOSSY.buildCreativeTab(() -> event);
-            zBlocks.IRON_WOOD.buildCreativeTab(()-> event);
+            zBlocks.IRON_WOOD.buildCreativeTab(() -> event);
 
         }
 
@@ -157,22 +157,25 @@ public class CreativeTabs {
             Stream.of(
                     zItems.zCraftingComponents,
                     zItems.zDropLets,
-                    zItems.zResources,
                     zItems.zDusts,
                     zItems.zFoils,
-                    zItems.zGems,
                     zItems.zIngots,
                     zItems.zNuggets,
+                    zItems.zGems,
+                    zItems.zResources,
+                    zItems.zRockChunk,
+                    zItems.zDepositOres,
                     zItems.zPlates,
-                    zItems.zElectronTubes,
                     zItems.zRawOres,
                     zItems.zShards,
                     zItems.zMobDrop,
                     zItems.zPellets,
+                    zItems.zDepletedPellets,
+                    zItems.zPelletFragments,
                     zItems.zCoils,
                     zItems.zGears,
                     zItems.zMolds,
-                    zItems.zDepositOres,
+                    zItems.zElectronTubes,
                     zItems.zBucketItems).forEach(r -> r.getEntries().forEach(i -> event.accept(i.get())));
 
         }
