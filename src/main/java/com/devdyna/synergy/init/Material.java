@@ -145,6 +145,14 @@ public class Material {
         }
 
         /**
+         * create an fluidtag
+         */
+        public static TagKey<Fluid> tagFluid(String name, String modname) {
+                return TagKey.create(BuiltInRegistries.FLUID.key(),
+                                ResourceLocation.fromNamespaceAndPath(modname, name));
+        }
+
+        /**
          * create an itemtag
          */
         public static TagKey<EntityType<?>> tagEntity(String name) {
