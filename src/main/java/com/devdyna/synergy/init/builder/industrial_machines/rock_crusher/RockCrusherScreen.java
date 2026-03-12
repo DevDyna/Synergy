@@ -24,7 +24,7 @@ public class RockCrusherScreen extends BaseMachineScreen<RockCrusherMenu> {
 
         @Override
         public List<UpgradeType> validUpgrades() {
-                return ArrayUtils.concat(DEFAULT_UPGRADES, UpgradeType.LUCK);
+                return ArrayUtils.concat(DEFAULT_UPGRADES, UpgradeType.LUCK,UpgradeType.FLUID);
         }
 
         @Override

@@ -107,7 +107,7 @@ public class RockCrusherBE extends BaseMachineBE implements FluidTankStorage, Ex
                 updateOutputSlot(getStorage().getStackInSlot(recipe.getResult().indexOf(result) + 5),
                         result.item().copy(), recipe.getResult().indexOf(result) + 5);
 
-        getFluidStorage().drain(recipe.getFluidInput().amount(), FluidAction.EXECUTE);
+        getFluidStorage().drain(calculateMBUsage(recipe.getFluidInput().amount()), FluidAction.EXECUTE);
 
         getInput().shrink(recipe.getInputItem().count());
     }
