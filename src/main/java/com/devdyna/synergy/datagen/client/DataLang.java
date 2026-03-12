@@ -516,6 +516,21 @@ public class DataLang extends LanguageProvider {
                 add(ID + "." + zStatic.Blocks.chopper + ".info.fuel", "Missing Fuel");
                 add(ID + "." + zStatic.Blocks.chopper + ".info.ready", "Ready");
 
+                zPotions.zPotion.getEntries().forEach(i -> {
+                        add("item.minecraft.tipped_arrow.effect."
+                                        + i.getRegisteredName().replace(ID + ":", ""),
+                                        "Arrow of " + named(i));
+                        add("item.minecraft.potion.effect."
+                                        + i.getRegisteredName().replace(ID + ":", ""),
+                                        "Potion of " + named(i));
+                        add("item.minecraft.splash_potion.effect."
+                                        + i.getRegisteredName().replace(ID + ":", ""),
+                                        "Splash Potion of " + named(i));
+                        add("item.minecraft.lingering_potion.effect."
+                                        + i.getRegisteredName().replace(ID + ":", ""),
+                                        "Lingering Potion of " + named(i));
+                });
+
         }
 
         private String named(DeferredHolder<?, ?> b) {
