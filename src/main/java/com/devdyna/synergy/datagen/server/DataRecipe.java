@@ -555,16 +555,14 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 // ----------------------------------------------------------------------------//
 
-                // RockCrusherRecipeBuilder.of()
-                // .fluid(zFluidTags.SULFURIC_ACID, 25)
-                // .input(Items.STONE)
-                // // .addResult(zItems.STONE_PEBBLE, 0.95f)
-                // // .addResult(zItems.CASSITERITE, 0.35f)
-                // // .addResult(zItems.HEMATITE, 0.25f)
-
-                // // .addResult(zItems.CYLINDRITE, 0.05f)
-                // .unlockedBy()
-                // .save(c);
+                RockCrusherRecipeBuilder.of()
+                                .fluid(zFluidTags.SULFURIC_ACID, 75)
+                                .input(zItems.FOSSIL)
+                                .addResult(zItems.CARBON_DUST, 0.95f)
+                                .addResult(zItems.OIL, 0.15f)
+                                .addResult(zItems.SAP, 0.05f)
+                                .unlockedBy()
+                                .save(c);
 
                 RockCrusherRecipeBuilder.of()
                                 .fluid(zFluidTags.SULFURIC_ACID, 25)
