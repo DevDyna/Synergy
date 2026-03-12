@@ -547,7 +547,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         var upgrades = getValues(UpgradeType.FLUID);
         float sum = upgrades == null ? 0 : upgrades.stream().mapToInt(Integer::intValue).sum();
         return Common.MACHINE_MAX_FLUID_UPGRADES_TYPE.get() == 0 ? base
-                : Math.max(Common.MACHINE_MINIMAL_FLUID_COST.get(), (int) (base - (base * (((float) sum) / 100))));
+                : Math.max(Common.MACHINE_MINIMAL_FLUID_COST.get(), (int) (base + (base * sum / 100f)));
     }
 
     public boolean calculateSecondarySuccess(float base) {
