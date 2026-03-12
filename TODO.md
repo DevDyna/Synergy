@@ -32,7 +32,7 @@
 
 - [ ] ponder plugin?
 
-- [ ] sap & rubber recipe
+- [x] sap & rubber recipe
 
 - [ ] rework batteries
 
@@ -48,7 +48,7 @@
 
 - [ ] rework serializers to be unified with recipetype and use RecipeUtils.optionalCodec() when optional
 
-- [ ] implement fluid upgrades
+- [x] implement fluid upgrades
 
 - [ ] patina usage
 
@@ -58,7 +58,7 @@
 
 - [x] extra mobdrops to mob drops
 
-- [ ] fossil usage
+- [x] fossil usage
 
 - [x] aquamarine -> underground block cluster
 
