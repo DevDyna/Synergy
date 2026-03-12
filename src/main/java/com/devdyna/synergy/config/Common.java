@@ -337,10 +337,6 @@ public class Common {
                                 "Max Energy Efficiency Upgrade Types usable foreach machine",
                                 "max_energy_upgrades", 16, 0, 16);
 
-                // MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE = number("Max Energy Capacity
-                // Upgrade Types usable foreach machine",
-                // "max_energy_upgrades", 16,0,16);
-
                 MACHINE_MAX_LUCK_UPGRADES_TYPE = number(
                                 "Max Secondary Output Increaser Upgrade Types usable foreach machine",
                                 "max_luck_upgrades", 4, 0, 16);
@@ -353,14 +349,6 @@ public class Common {
 
                 MACHINE_MINIMAL_FE_COST = number("Minimal Energy cost based on upgrade installed",
                                 "min_fe_cost", 5);
-
-                // MACHINE_MINIMAL_FE_CAPACITY = number("Minimal Energy cost based on upgrade
-                // installed",
-                // "min_fe_capacity", 100);
-
-                // MACHINE_MAXIMAL_FE_CAPACITY = number("Minimal Energy cost based on upgrade
-                // installed",
-                // "max_fe_capacity", Integer.MAX_VALUE);
 
                 MACHINE_MINIMAL_FLUID_COST = number("Minimal Fluid cost based on upgrade installed",
                                 "min_mb_cost", 0);
