@@ -80,11 +80,12 @@ public class RockCrusherCategory extends BaseMachineRecipeCategory<RockCrusherRe
                 stack.pushPose();
                 stack.scale(0.6F, 0.6F, 1F);
                 for (ChanceOutputItem output : recipe.getResult())
-                        guiGraphics.drawString(font, ((int) (output.chance() * 100)) + "%",
-                                        68 + 10 + 10 + 10 + 5 + 5 + 5 + 2
+                        guiGraphics.drawCenteredString(font, ((int) (output.chance() * 100)) + "%",
+                                        68 + 10 + 10 + 10 + 5 + 5 + 5 + 2 + 10
                                                         + (recipe.getResult().indexOf(output) % 3 * (20 + 12 + 1)),
                                         26 + 10 + 10 - 5 + 2 + 1
-                                                        + (recipe.getResult().indexOf(output) / 3 * (24 + 10 + 10 - 2- 2)),
+                                                        + (recipe.getResult().indexOf(output) / 3
+                                                                        * (24 + 10 + 10 - 2 - 2)),
                                         0xFFFFFF);
                 stack.popPose();
 
