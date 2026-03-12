@@ -343,10 +343,10 @@ public class Common {
 
                 MACHINE_MAX_LUCK_UPGRADES_TYPE = number(
                                 "Max Secondary Output Increaser Upgrade Types usable foreach machine",
-                                "max_luck_upgrades", 16, 0, 16);
+                                "max_luck_upgrades", 4, 0, 16);
 
                 MACHINE_MAX_FLUID_UPGRADES_TYPE = number("Max Fluid Efficiency Upgrade Types usable foreach machine",
-                                "max_fluid_upgrades", 16, 0, 16);
+                                "max_fluid_upgrades", 4, 0, 16);
 
                 MACHINE_MINIMAL_TICK_DELAY = number("Minimal tick delay based on upgrade installed",
                                 "min_tick_rate", 1);
