@@ -2526,6 +2526,63 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(getHasName(zItems.WROUGHT_IRON_PLATE.get()),
                                                 has(zItems.WROUGHT_IRON_PLATE.get()))
                                 .save(c);
+
+                crushing(c,
+                                zItems.CREEPER_GALL.get(),
+                                Items.GUNPOWDER,
+                                3, 3,
+                                x.item(zItems.URANIUM_FRAGMENT),
+                                0.25f);
+
+                crushing(c,
+                                zItems.ENDERMAN_HEART.get(),
+                                Items.ENDER_PEARL,
+                                6, 6,
+                                x.item(zItems.MAGIC_DUST),
+                                0.25f);
+
+                crushing(c,
+                                zItems.GHAST_BLADDER.get(),
+                                Items.GHAST_TEAR,
+                                3, 3,
+                                x.item(Items.SOUL_SAND),
+                                0.25f);
+
+                crushing(c,
+                                zItems.GUARDIAN_SCALE.get(),
+                                Items.PRISMARINE_CRYSTALS,
+                                4, 4,
+                                x.item(Items.PRISMARINE_SHARD, 2),
+                                0.25f);
+
+                crushing(c,
+                                zItems.SILVERFISH_DUST.get(),
+                                Items.IRON_NUGGET,
+                                2, 2,
+                                x.item(Items.IRON_NUGGET, 2),
+                                0.25f);
+
+                crushing(c,
+                                zItems.SLIME_BOLUS.get(),
+                                Items.SLIME_BALL,
+                                2, 2,
+                                x.item(zItems.GLUE),
+                                0.25f);
+
+                crushing(c,
+                                zItems.WITHERFLESH.get(),
+                                zItems.CARBON_DUST.get(),
+                                2, 2,
+                                x.item(Items.BONE_MEAL, 2),
+                                0.75f);
+
+                crushing(c,
+                                zItems.ZOMBIE_LIVER.get(),
+                                Items.ROTTEN_FLESH,
+                                3, 3,
+                                x.item(zItems.GHOUL_HEART),
+                                0.25f);
+
         }
 
 }

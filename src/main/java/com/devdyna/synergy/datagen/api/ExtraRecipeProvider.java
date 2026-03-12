@@ -49,11 +49,12 @@ public class ExtraRecipeProvider extends RecipeProvider {
                 super(c, r);
         }
 
-        protected String asID(Item i,String suffix){
-              return  ID + ":" + x.path(i) + suffix;
+        protected String asID(Item i, String suffix) {
+                return ID + ":" + x.path(i) + suffix;
         }
-        protected String asID(Item i){
-              return asID(i, "_alt");
+
+        protected String asID(Item i) {
+                return asID(i, "_alt");
         }
 
         protected void nodeRecipe(RecipeOutput c, Block b, ItemLike catalyst) {
@@ -364,7 +365,7 @@ public class ExtraRecipeProvider extends RecipeProvider {
 
                 QuernMillingBuilder.of().input(gem)
                                 .output(dust, quern_count)
-                                .unlockedBy().save(c);
+                                .unlockedBy().save(c, "_from_" + x.path(gem));
 
                 var macerator = MaceratorRecipeBuilder.of()
                                 .input(gem)
@@ -374,7 +375,7 @@ public class ExtraRecipeProvider extends RecipeProvider {
                 if (mace_secondary != null && !mace_secondary.isEmpty() && chance > 0)
                         macerator.secondary(mace_secondary).chance(chance);
 
-                macerator.unlockedBy().save(c);
+                macerator.unlockedBy().save(c, "_from_" + x.path(gem));
         }
 
         protected void crushing(RecipeOutput c, TagKey<Item> gem, Item dust) {

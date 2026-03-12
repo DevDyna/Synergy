@@ -76,6 +76,7 @@ public class Material {
                 zMachines.register(bus);
                 zEntityTag.register(bus);
                 zWorldGenFeatures.register(bus);
+                zPotions.register(bus);
         }
 
         /**
