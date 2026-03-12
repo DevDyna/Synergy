@@ -1,0 +1,18 @@
+{
+  "type": "synergy:machine/macerator",
+  "chance": 0.25,
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "synergy:silverfish_dust"
+  },
+  "output": {
+    "count": 2,
+    "id": "minecraft:iron_nugget"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "minecraft:iron_nugget"
+  },
+  "ticks": 80
+}

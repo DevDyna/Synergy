@@ -1,0 +1,18 @@
+{
+  "type": "synergy:machine/macerator",
+  "chance": 0.25,
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "synergy:guardian_scale"
+  },
+  "output": {
+    "count": 4,
+    "id": "minecraft:prismarine_crystals"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "minecraft:prismarine_shard"
+  },
+  "ticks": 80
+}

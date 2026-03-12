@@ -1,0 +1,11 @@
+{
+  "type": "synergy:quern",
+  "frequence": 60,
+  "ingredient": {
+    "item": "synergy:enderman_heart"
+  },
+  "result": {
+    "count": 6,
+    "id": "minecraft:ender_pearl"
+  }
+}

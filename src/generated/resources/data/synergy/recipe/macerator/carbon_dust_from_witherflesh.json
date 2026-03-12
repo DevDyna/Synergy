@@ -1,0 +1,18 @@
+{
+  "type": "synergy:machine/macerator",
+  "chance": 0.75,
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "synergy:witherflesh"
+  },
+  "output": {
+    "count": 2,
+    "id": "synergy:carbon_dust"
+  },
+  "secondary": {
+    "count": 2,
+    "id": "minecraft:bone_meal"
+  },
+  "ticks": 80
+}

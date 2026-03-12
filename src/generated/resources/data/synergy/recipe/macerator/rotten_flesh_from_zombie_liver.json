@@ -1,0 +1,18 @@
+{
+  "type": "synergy:machine/macerator",
+  "chance": 0.25,
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "synergy:zombie_liver"
+  },
+  "output": {
+    "count": 3,
+    "id": "minecraft:rotten_flesh"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "synergy:ghoul_heart"
+  },
+  "ticks": 80
+}

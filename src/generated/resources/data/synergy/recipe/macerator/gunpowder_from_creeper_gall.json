@@ -1,0 +1,18 @@
+{
+  "type": "synergy:machine/macerator",
+  "chance": 0.25,
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "synergy:creeper_gall"
+  },
+  "output": {
+    "count": 3,
+    "id": "minecraft:gunpowder"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "synergy:uranium_fragment"
+  },
+  "ticks": 80
+}

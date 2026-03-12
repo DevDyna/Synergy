@@ -1,0 +1,11 @@
+{
+  "type": "synergy:quern",
+  "frequence": 60,
+  "ingredient": {
+    "item": "synergy:witherflesh"
+  },
+  "result": {
+    "count": 2,
+    "id": "synergy:carbon_dust"
+  }
+}

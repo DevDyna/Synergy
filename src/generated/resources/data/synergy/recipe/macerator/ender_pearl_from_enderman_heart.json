@@ -1,0 +1,18 @@
+{
+  "type": "synergy:machine/macerator",
+  "chance": 0.25,
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "synergy:enderman_heart"
+  },
+  "output": {
+    "count": 6,
+    "id": "minecraft:ender_pearl"
+  },
+  "secondary": {
+    "count": 1,
+    "id": "synergy:magic_dust"
+  },
+  "ticks": 80
+}
