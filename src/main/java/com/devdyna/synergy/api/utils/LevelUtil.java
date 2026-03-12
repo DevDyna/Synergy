@@ -35,8 +35,6 @@ import net.minecraft.world.phys.Vec3;
 @SuppressWarnings("null")
 public class LevelUtil {
 
-    
-
     public static boolean isDimension(Level level, ResourceKey<Level> dim) {
         return level.dimension().equals(dim);
     }
@@ -186,7 +184,7 @@ public class LevelUtil {
     }
 
     public static void addParticle(ParticleOptions type, Level level, BlockPos pos, boolean isRandom) {
-        addParticle(type, (ServerLevel)level, pos, isRandom, 1);
+        addParticle(type, (ServerLevel) level, pos, isRandom, 1);
     }
 
     /**
