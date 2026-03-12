@@ -56,7 +56,7 @@
 
 ## PRIORITIES
 
-- [ ] extra mobdrops to mob drops
+- [x] extra mobdrops to mob drops
 
 - [ ] fossil usage
 
