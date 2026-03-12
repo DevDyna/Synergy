@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:jei/crop_result/blue_cup_pod"
+        "recipe": "synergy:resource_info/plant/cotton"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:blue_cup_pod"
+            "items": "minecraft:barrier"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:jei/crop_result/blue_cup_pod"
+      "synergy:resource_info/plant/cotton"
     ]
   }
 }

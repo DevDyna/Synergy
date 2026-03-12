@@ -1,0 +1,20 @@
+{
+  "type": "synergy:resource_info",
+  "crop": {
+    "tag": "synergy:azalea_bushes"
+  },
+  "result": [
+    {
+      "count": 1,
+      "id": "minecraft:oak_log"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:azalea_leaves"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:flowering_azalea_leaves"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "synergy:resource_info",
+  "crop": {
+    "item": "minecraft:jungle_sapling"
+  },
+  "result": [
+    {
+      "count": 1,
+      "id": "minecraft:jungle_log"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:jungle_leaves"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:vine"
+    }
+  ]
+}

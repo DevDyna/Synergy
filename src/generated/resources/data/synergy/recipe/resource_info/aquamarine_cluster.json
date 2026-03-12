@@ -1,0 +1,12 @@
+{
+  "type": "synergy:resource_info",
+  "crop": {
+    "item": "synergy:aquamarine_cluster"
+  },
+  "result": [
+    {
+      "count": 1,
+      "id": "synergy:aquamarine_gem"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "type": "synergy:crop_result",
+  "type": "synergy:resource_info",
   "crop": {
     "tag": "synergy:plant/cave_wheat"
   },

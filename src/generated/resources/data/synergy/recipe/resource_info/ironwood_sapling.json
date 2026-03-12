@@ -1,0 +1,20 @@
+{
+  "type": "synergy:resource_info",
+  "crop": {
+    "item": "synergy:ironwood_sapling"
+  },
+  "result": [
+    {
+      "count": 1,
+      "id": "synergy:ironwood_log"
+    },
+    {
+      "count": 1,
+      "id": "synergy:ironwood_leaves"
+    },
+    {
+      "count": 1,
+      "id": "synergy:ironberries"
+    }
+  ]
+}

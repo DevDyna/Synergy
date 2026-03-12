@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:jei/crop_result/rice_seed"
+        "recipe": "synergy:resource_info/spruce_sapling"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:barrier"
+            "items": "minecraft:spruce_sapling"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:jei/crop_result/rice_seed"
+      "synergy:resource_info/spruce_sapling"
     ]
   }
 }

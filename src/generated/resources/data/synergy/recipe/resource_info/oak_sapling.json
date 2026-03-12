@@ -1,0 +1,20 @@
+{
+  "type": "synergy:resource_info",
+  "crop": {
+    "item": "minecraft:oak_sapling"
+  },
+  "result": [
+    {
+      "count": 1,
+      "id": "minecraft:oak_log"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:oak_leaves"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:apple"
+    }
+  ]
+}

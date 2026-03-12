@@ -1,0 +1,32 @@
+{
+  "type": "synergy:resource_info",
+  "crop": {
+    "item": "minecraft:mangrove_propagule"
+  },
+  "result": [
+    {
+      "count": 1,
+      "id": "minecraft:mangrove_log"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:mangrove_leaves"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:vine"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:mangrove_roots"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:moss_carpet"
+    },
+    {
+      "count": 1,
+      "id": "minecraft:bee_nest"
+    }
+  ]
+}
