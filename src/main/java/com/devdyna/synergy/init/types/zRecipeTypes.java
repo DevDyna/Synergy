@@ -56,8 +56,8 @@ public class zRecipeTypes {
         public static final RecipeRegister<QuernMillingRecipe> QUERN_MILLING = RecipeRegister.of(zStatic.Blocks.quern,
                         QuernMillingRecipeSerializer::new);
 
-        public static final RecipeRegister<CropResultRecipe> CROP_RESULT = RecipeRegister.of("crop_result",
-                        CropResultRecipe.Serializer::new);
+        public static final RecipeRegister<ResourceInfoRecipe> RESOURCE_INFO = RecipeRegister.of("resource_info",
+                        ResourceInfoRecipe.Serializer::new);
 
         public static final RecipeRegister<ItemUseRecipe> ITEM_USE = RecipeRegister.of("item_use", ItemUseRecipe.Serializer::new);
 

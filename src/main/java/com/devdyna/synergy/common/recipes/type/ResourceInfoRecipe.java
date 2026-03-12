@@ -22,13 +22,13 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 
 @SuppressWarnings("null")
-public class CropResultRecipe extends BaseRecipeType<ItemListInput> {
+public class ResourceInfoRecipe extends BaseRecipeType<ItemListInput> {
 
     public static final int INPUT_COUNT = 6;
     public final Ingredient input;
     public final List<ItemStack> outputs;
 
-    public CropResultRecipe(Ingredient input,
+    public ResourceInfoRecipe(Ingredient input,
             List<ItemStack> outputs) {
         this.input = input;
         this.outputs = outputs;
@@ -51,7 +51,6 @@ public class CropResultRecipe extends BaseRecipeType<ItemListInput> {
         return NonNullList.copyOf(List.of(input));
     }
     
-    @Override
     public ItemStack getResultItem(HolderLookup.Provider registryAccess) {
         return this.outputs.get(0);
     }
@@ -65,29 +64,29 @@ public class CropResultRecipe extends BaseRecipeType<ItemListInput> {
     }
 
     @Override
-    public RecipeRegister<CropResultRecipe> getRecipe() {
-        return zRecipeTypes.CROP_RESULT;
+    public RecipeRegister<ResourceInfoRecipe> getRecipe() {
+        return zRecipeTypes.RESOURCE_INFO;
     }
 
-    public static class Serializer implements RecipeSerializer<CropResultRecipe> {
+    public static class Serializer implements RecipeSerializer<ResourceInfoRecipe> {
 
-    public static final MapCodec<CropResultRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-            Ingredient.CODEC.fieldOf("crop").forGetter(CropResultRecipe::getInput),
-            ItemStack.CODEC.listOf().fieldOf("result").forGetter(CropResultRecipe::getOutputs))
-            .apply(inst, CropResultRecipe::new));
+    public static final MapCodec<ResourceInfoRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
+            Ingredient.CODEC.fieldOf("crop").forGetter(ResourceInfoRecipe::getInput),
+            ItemStack.CODEC.listOf().fieldOf("result").forGetter(ResourceInfoRecipe::getOutputs))
+            .apply(inst, ResourceInfoRecipe::new));
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, CropResultRecipe> STREAM_CODEC = StreamCodec.composite(
-            Ingredient.CONTENTS_STREAM_CODEC, CropResultRecipe::getInput,
-            ItemStack.LIST_STREAM_CODEC, CropResultRecipe::getOutputs,
-            CropResultRecipe::new);
+    public static final StreamCodec<RegistryFriendlyByteBuf, ResourceInfoRecipe> STREAM_CODEC = StreamCodec.composite(
+            Ingredient.CONTENTS_STREAM_CODEC, ResourceInfoRecipe::getInput,
+            ItemStack.LIST_STREAM_CODEC, ResourceInfoRecipe::getOutputs,
+            ResourceInfoRecipe::new);
 
     @Override
-    public MapCodec<CropResultRecipe> codec() {
+    public MapCodec<ResourceInfoRecipe> codec() {
         return CODEC;
     }
 
     @Override
-    public StreamCodec<RegistryFriendlyByteBuf, CropResultRecipe> streamCodec() {
+    public StreamCodec<RegistryFriendlyByteBuf, ResourceInfoRecipe> streamCodec() {
         return STREAM_CODEC;
     }
 

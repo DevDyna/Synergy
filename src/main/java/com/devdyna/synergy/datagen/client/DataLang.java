@@ -184,8 +184,8 @@ public class DataLang extends LanguageProvider {
                 add(Main.ID + ".jei." + zStatic.Blocks.quern,
                                 "Quern Milling");
 
-                add(Main.ID + ".jei.crop",
-                                "Crop Result");
+                add(Main.ID + ".jei.resource_info",
+                                "Resource Info");
 
                 add(Main.ID + ".jei.item_use",
                                 "Item Use Recipes");

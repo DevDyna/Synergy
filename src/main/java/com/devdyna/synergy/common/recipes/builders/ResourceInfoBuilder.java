@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.api.recipes.builders.ItemAttach;
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.type.CropResultRecipe;
+import com.devdyna.synergy.common.recipes.type.ResourceInfoRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -20,41 +20,41 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 
 @SuppressWarnings("null")
-public class CropResultBuilder extends BaseRecipeBuilder
-        implements ItemAttach.Input.NoItemCount<CropResultBuilder>, ItemAttach.Output.ListedOutputItemStack<CropResultBuilder> {
+public class ResourceInfoBuilder extends BaseRecipeBuilder
+        implements ItemAttach.Input.NoItemCount<ResourceInfoBuilder>, ItemAttach.Output.ListedOutputItemStack<ResourceInfoBuilder> {
 
     private Ingredient input;
     private List<ItemStack> output;
 
-    public CropResultBuilder() {
+    public ResourceInfoBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
     }
 
-    public static CropResultBuilder of() {
-        return new CropResultBuilder();
+    public static ResourceInfoBuilder of() {
+        return new ResourceInfoBuilder();
     }
 
-    public CropResultBuilder input(Ingredient input) {
+    public ResourceInfoBuilder input(Ingredient input) {
         this.input = input;
         return this;
     }
 
-    public CropResultBuilder output(List<ItemStack> output) {
+    public ResourceInfoBuilder output(List<ItemStack> output) {
         this.output = output;
         return this;
     }
 
-    public CropResultBuilder unlockedBy() {
+    public ResourceInfoBuilder unlockedBy() {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
                 .hasItems(this.input.getItems()[0].getItem()));
     }
 
-    public CropResultBuilder unlockedBy(String name, Criterion<?> criterion) {
+    public ResourceInfoBuilder unlockedBy(String name, Criterion<?> criterion) {
         this.criteria.put(name, criterion);
         return this;
     }
 
-    public CropResultBuilder group(@Nullable String groupName) {
+    public ResourceInfoBuilder group(@Nullable String groupName) {
         return this;
     }
 
@@ -64,17 +64,17 @@ public class CropResultBuilder extends BaseRecipeBuilder
 
     @Override
     public ResourceLocation getSuffix(String extra) {
-        return x.rl("jei/crop_result/" + x.path(output.getFirst())
+        return x.rl("resource_info/" + x.id(input)
                 + extra);
     }
 
     @Override
     public Recipe<?> createRecipe() {
-        return new CropResultRecipe(input, output);
+        return new ResourceInfoRecipe(input, output);
     }
 
     @Override
-    public CropResultBuilder getBuilder() {
+    public ResourceInfoBuilder getBuilder() {
         return this;
     }
 

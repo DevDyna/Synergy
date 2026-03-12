@@ -1034,10 +1034,118 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 List.of(zItems.BLUE_CUP_SPORE.get(), zItems.BLUE_CUP_MUSHROOM.get()),
                                 List.of(zItems.VIOLET_WEBCAP_SPORE.get(), zItems.VIOLET_WEBCAP_MUSHROOM.get()));
 
-                seeds.forEach(s -> CropResultBuilder
+                seeds.forEach(s -> ResourceInfoBuilder
                                 .of().input(s).output(result.get(seeds.indexOf(s))
                                                 .stream().map(i -> x.item(i)).toList())
                                 .unlockedBy().save(c));
+
+                ResourceInfoBuilder
+                                .of()
+                                .input(zBlocks.IRON_WOOD.getSapling().get().asItem())
+                                .output(
+                                                zBlocks.IRON_WOOD.getLog().get().asItem(),
+                                                zBlocks.IRON_WOOD.getLeaves().get().asItem(),
+                                                zItems.IRONBERRIES.get())
+                                .unlockedBy()
+                                .save(c);
+
+                ResourceInfoBuilder
+                                .of()
+                                .input(Items.OAK_SAPLING)
+                                .output(
+                                                Items.OAK_LOG,
+                                                Items.OAK_LEAVES,
+                                                Items.APPLE)
+                                .unlockedBy()
+                                .save(c);
+
+                ResourceInfoBuilder
+                                .of()
+                                .input(Items.DARK_OAK_SAPLING)
+                                .output(
+                                                Items.DARK_OAK_LOG,
+                                                Items.DARK_OAK_LEAVES,
+                                                Items.APPLE)
+                                .unlockedBy()
+                                .save(c);
+
+                ResourceInfoBuilder
+                                .of()
+                                .input(Items.SPRUCE_SAPLING)
+                                .output(
+                                                Items.SPRUCE_LOG,
+                                                Items.SPRUCE_LEAVES)
+                                .unlockedBy()
+                                .save(c);
+
+                ResourceInfoBuilder
+                                .of()
+                                .input(Items.BIRCH_SAPLING)
+                                .output(
+                                                Items.BIRCH_LOG,
+                                                Items.BIRCH_LEAVES)
+                                .unlockedBy()
+                                .save(c);
+
+                ResourceInfoBuilder
+                                .of()
+                                .input(Items.JUNGLE_SAPLING)
+                                .output(
+                                                Items.JUNGLE_LOG,
+                                                Items.JUNGLE_LEAVES,
+                                                Items.VINE)
+                                .unlockedBy()
+                                .save(c);
+
+                ResourceInfoBuilder
+                                .of()
+                                .input(Items.ACACIA_SAPLING)
+                                .output(
+                                                Items.ACACIA_LOG,
+                                                Items.ACACIA_LEAVES)
+                                .unlockedBy()
+                                .save(c);
+
+                ResourceInfoBuilder
+                                .of()
+                                .input(zItemTag.AZALEA_BUSHES)
+                                .output(
+                                                Items.OAK_LOG,
+                                                Items.AZALEA_LEAVES,
+                                                Items.FLOWERING_AZALEA_LEAVES)
+                                .unlockedBy()
+                                .save(c);
+
+                ResourceInfoBuilder
+                                .of()
+                                .input(Items.MANGROVE_PROPAGULE)
+                                .output(
+                                                Items.MANGROVE_LOG,
+                                                Items.MANGROVE_LEAVES,
+                                                Items.VINE,
+                                                Items.MANGROVE_ROOTS,
+                                                Items.MOSS_CARPET,
+                                                Items.BEE_NEST)
+                                .unlockedBy()
+                                .save(c);
+
+                ResourceInfoBuilder
+                                .of()
+                                .input(Items.CHERRY_SAPLING)
+                                .output(
+                                                Items.CHERRY_LOG,
+                                                Items.CHERRY_LEAVES,
+                                                Items.BEE_NEST)
+                                .unlockedBy()
+                                .save(c);
+
+                ResourceInfoBuilder
+                                .of()
+                                .input(zBlocks.AQUAMARINE_CLUSTER.get().asItem())
+                                .output(
+                                                zItems.AQUAMARINE.get())
+                                .unlockedBy()
+                                .save(c);
 
                 List<Item> clearNBT = List.of(
                                 zItems.RED_BATTERY.get(),

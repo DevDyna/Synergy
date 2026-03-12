@@ -1,7 +1,7 @@
 package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.api.utils.Size;
-import com.devdyna.synergy.common.recipes.type.CropResultRecipe;
+import com.devdyna.synergy.common.recipes.type.ResourceInfoRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -14,22 +14,22 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
-public class CropResultCategory extends BaseRecipeCategory<CropResultRecipe> {
+public class ResourceInfoCategory extends BaseRecipeCategory<ResourceInfoRecipe> {
 
-    public CropResultCategory(IGuiHelper helper) {
+    public ResourceInfoCategory(IGuiHelper helper) {
         super(helper);
     }
 
-    public static final RecipeType<RecipeHolder<CropResultRecipe>> TYPE = RecipeType
-            .createFromVanilla(zRecipeTypes.CROP_RESULT.getType());
+    public static final RecipeType<RecipeHolder<ResourceInfoRecipe>> TYPE = RecipeType
+            .createFromVanilla(zRecipeTypes.RESOURCE_INFO.getType());
 
     @Override
-    public RecipeType<RecipeHolder<CropResultRecipe>> getRecipeType() {
+    public RecipeType<RecipeHolder<ResourceInfoRecipe>> getRecipeType() {
         return TYPE;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, CropResultRecipe recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, ResourceInfoRecipe recipe, IFocusGroup focuses) {
 
         builder.addInputSlot(16, 24).addIngredients(recipe.getInput());
 
@@ -40,12 +40,12 @@ public class CropResultCategory extends BaseRecipeCategory<CropResultRecipe> {
 
     @Override
     public String getTitleKey() {
-        return "crop";
+        return "resource_info";
     }
 
     @Override
     public ItemLike getIconItem() {
-        return Items.WHEAT_SEEDS;
+        return Items.OAK_SAPLING;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class CropResultCategory extends BaseRecipeCategory<CropResultRecipe> {
 
     @Override
     public String setBackGround() {
-        return "textures/gui/jei/crop_result.png";
+        return "textures/gui/jei/resource_info.png";
     }
 
 }

@@ -122,7 +122,7 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCategories(
                                 new ReactorCellCategory(helper),
                                 new UrnCategory(helper),
-                                new CropResultCategory(helper),
+                                new ResourceInfoCategory(helper),
                                 new ItemUseCategory(helper),
                                 new QuernCategory(helper),
 
@@ -131,7 +131,7 @@ public class Plugin implements IModPlugin {
 
                                 new DryableBricksCategory(helper),
                                 new VoidBoxInfusionCategory(helper),
-                                
+
                                 new MaceratorCategory(helper),
                                 new CompressorCategory(helper),
                                 new AlloySmelterCategory(helper),
@@ -162,8 +162,8 @@ public class Plugin implements IModPlugin {
                 r.addRecipes(UrnCategory.TYPE,
                                 RecipeUtils.getRecipes(zRecipeTypes.URN_RITUAL_RECIPE));
 
-                r.addRecipes(CropResultCategory.TYPE,
-                                RecipeUtils.getRecipes(zRecipeTypes.CROP_RESULT));
+                r.addRecipes(ResourceInfoCategory.TYPE,
+                                RecipeUtils.getRecipes(zRecipeTypes.RESOURCE_INFO));
 
                 r.addRecipes(ItemUseCategory.TYPE, RecipeUtils.getRecipes(zRecipeTypes.ITEM_USE));
 
