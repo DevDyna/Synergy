@@ -154,6 +154,7 @@ public class x {
     public static FluidIngredient ingredientFluid(ResourceLocation tag) {
         return FluidIngredient.tag(TagKey.create(Registries.FLUID, tag));
     }
+
     public static Ingredient ingredient(ItemStack i) {
         return Ingredient.of(i);
     }
@@ -280,6 +281,7 @@ public class x {
     public static List<FluidStack> getFluids(SizedFluidIngredient i) {
         return Arrays.asList(i.getFluids());
     }
+
     public static List<FluidStack> getFluids(FluidIngredient i) {
         return Arrays.asList(i.getStacks());
     }
@@ -304,6 +306,22 @@ public class x {
         return Arrays.asList(i.getItems());
     }
 
+    public static String id(Ingredient i) {
+
+        var v = i.getValues();
+
+        if (v.length == 0)
+            throw new NullPointerException("Ingredient don't match requisitions!");
+
+        if (v[0] instanceof Ingredient.ItemValue itemValue)
+            return id(itemValue.item().getItem()).getPath();
+
+        if (v[0] instanceof Ingredient.TagValue tagValue)
+            return tagValue.tag().location().getPath();
+
+        throw new NullPointerException("Ingredient broken!");
+    }
+
     public static Block[] toBlocks(DeferredHolder<Block, ?>... blocks) {
         return Arrays.asList(blocks).stream().map(DeferredHolder::get).toArray(Block[]::new);
     }
@@ -311,6 +329,7 @@ public class x {
     public static DeferredHolder<Block, ?>[] toDefHolders(MachineType<?, ?, ?, ?>... machines) {
         return Arrays.asList(machines).stream().map(MachineType::block).toArray(DeferredHolder[]::new);
     }
+
     public static Block[] toBlocks(MachineType<?, ?, ?, ?>... machines) {
         return toBlocks(toDefHolders(machines));
     }
