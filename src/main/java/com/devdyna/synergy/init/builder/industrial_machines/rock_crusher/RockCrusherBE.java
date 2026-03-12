@@ -36,7 +36,7 @@ public class RockCrusherBE extends BaseMachineBE implements FluidTankStorage, Ex
     public static final List<Integer> EXTRA_OUTPUT_SLOTS = List.of(OUTPUT_EXTRA_1, OUTPUT_EXTRA_2, OUTPUT_EXTRA_3,
             OUTPUT_EXTRA_4, OUTPUT_EXTRA_5, OUTPUT_EXTRA_6, OUTPUT_EXTRA_7, OUTPUT_EXTRA_8);
 
-    public static final List<Integer> OUTPUT_SLOTS = ArrayUtils.concat(OUTPUT_SLOT, EXTRA_OUTPUT_SLOTS);
+    public static final List<Integer> OUTPUT_SLOTS = ArrayUtils.concat(EXTRA_OUTPUT_SLOTS,OUTPUT_SLOT);
 
     public RockCrusherBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
