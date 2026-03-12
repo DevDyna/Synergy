@@ -71,6 +71,9 @@ public class CreativeTabs {
                     zItems.zCropExtra,
                     zItems.zFoods)
                     .forEach(i -> event.accept(i.get()));
+
+            zBlocks.IRON_WOOD.buildCreativeTab(() -> event);
+            event.accept(zBlocks.AQUAMARINE_CLUSTER.get());
         }
 
         // ---------------------------------------------------------- //
@@ -88,8 +91,6 @@ public class CreativeTabs {
             zBlocks.FIRECLAY_BRICKS.buildCreativeTab(() -> event);
             zBlocks.FIRECLAY_BRICK_CRACKED.buildCreativeTab(() -> event);
             zBlocks.FIRECLAY_BRICK_MOSSY.buildCreativeTab(() -> event);
-            zBlocks.IRON_WOOD.buildCreativeTab(() -> event);
-            event.accept(zBlocks.AQUAMARINE_CLUSTER.get());
 
         }
 
