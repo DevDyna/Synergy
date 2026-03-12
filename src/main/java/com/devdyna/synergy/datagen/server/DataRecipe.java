@@ -514,6 +514,11 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(Items.CLAY)
                                 .unlockedBy().save(c);
 
+                ElectricFurnaceRecipeBuilder.of()
+                                .input(zItems.MUD_BALL)
+                                .output(Items.CLAY_BALL)
+                                .unlockedBy().save(c);
+
                 Map.of(
                                 Items.ANDESITE, zItems.ANDESITE_CHUNK,
                                 Items.DIORITE, zItems.DIORITE_CHUNK,
@@ -771,7 +776,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 RockCrusherRecipeBuilder.of()
                                 .fluid(zFluidTags.SULFURIC_ACID, 25)
                                 .input(zItems.KAOLIN)
-                                .addResult(Items.CLAY_BALL, 0.75f)
+                                .addResult(zItems.MUD_BALL, 0.75f)
                                 .addResult(Items.CLAY_BALL, 0.5f)
                                 .addResult(zItems.FOSSIL, 0.15f)
                                 .unlockedBy()
