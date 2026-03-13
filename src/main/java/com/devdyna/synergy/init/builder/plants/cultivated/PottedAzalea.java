@@ -19,7 +19,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class azalea extends BaseCropBlock {
+public class PottedAzalea extends BaseCropBlock {
 
     protected static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] {
             Block.box(5.0, 0.0, 5.0, 11.0, 12.0, 11.0),
@@ -33,7 +33,7 @@ public class azalea extends BaseCropBlock {
 
     };
 
-    public azalea() {
+    public PottedAzalea() {
         super(Properties.of().mapColor(MapColor.COLOR_GREEN));
     }
 

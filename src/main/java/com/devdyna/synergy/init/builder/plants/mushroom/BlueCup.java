@@ -9,9 +9,9 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.MapColor;
 
-public class blue_cup extends BaseCropMushroom {
+public class BlueCup extends BaseCropMushroom {
 
-    public blue_cup() {
+    public BlueCup() {
         super(Properties.of().mapColor(MapColor.TERRACOTTA_BLUE));
     }
 

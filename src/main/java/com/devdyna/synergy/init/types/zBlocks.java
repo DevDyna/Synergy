@@ -144,7 +144,7 @@ public class zBlocks {
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Block, Block> AZALEA = Material.registerItemBlock(zStatic.Blocks.azalea,
-                        () -> new azalea(), zBlock);
+                        () -> new PottedAzalea(), zBlock);
 
         public static final DeferredHolder<Block, Block> SPRINKLER = Material.registerItemBlock(
                         zStatic.Blocks.sprinkler,
@@ -194,31 +194,31 @@ public class zBlocks {
                         () -> new FluidRetrieval());
 
         public static final DeferredHolder<Block, Block> RICE = zCrop.register(zStatic.Plants.RICE,
-                        () -> new rice());
+                        () -> new Rice());
 
         public static final DeferredHolder<Block, Block> CAVE_WHEAT = zCrop.register(zStatic.Plants.CAVE_WHEAT,
-                        () -> new cave_wheat());
+                        () -> new CaveWheat());
 
         public static final DeferredHolder<Block, Block> COTTON = zCrop.register(zStatic.Plants.COTTON,
-                        () -> new cotton());
+                        () -> new Cotton());
 
         public static final DeferredHolder<Block, Block> BLUE_CUP_MUSHROOM = zCrop.register(
                         zStatic.Plants.BLUE_CUP_MUSHROOM,
-                        () -> new blue_cup());
+                        () -> new BlueCup());
 
         public static final DeferredHolder<Block, Block> VIOLET_WEBCAP_MUSHROOM = zCrop.register(
                         zStatic.Plants.VIOLET_WEBCAP_MUSHROOM,
-                        () -> new violet_webcap());
+                        () -> new VioletWebcap());
 
         public static final DeferredHolder<Block, Block> WILD_RICE = Material.registerItemBlock(zStatic.Wild.RICE,
-                        () -> new wild_rice(), zWildCrop);
+                        () -> new WildRice(), zWildCrop);
 
         public static final DeferredHolder<Block, Block> WILD_CAVE_WHEAT = Material.registerItemBlock(
                         zStatic.Wild.CAVE_WHEAT,
-                        () -> new wild_cave_wheat(), zWildCrop);
+                        () -> new WildCaveWheat(), zWildCrop);
 
         public static final DeferredHolder<Block, Block> WILD_COTTON = Material.registerItemBlock(zStatic.Wild.COTTON,
-                        () -> new wild_cotton(), zWildCrop);
+                        () -> new WildCotton(), zWildCrop);
 
         public static final DeferredHolder<Block, Block> WROUGHT_IRON_BLOCK = Material
                         .DecoBlock(zStatic.ResourceMaterial.wrought_iron + zStatic.ResourceType.block,

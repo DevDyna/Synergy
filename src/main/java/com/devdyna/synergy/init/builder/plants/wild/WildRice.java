@@ -8,22 +8,22 @@ import com.devdyna.synergy.init.types.zBlockTag;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("null")
-public class wild_cave_wheat extends BaseWildCropBlock {
+public class WildRice extends BaseWildCropBlock {
 
-    public wild_cave_wheat() {
-        super(Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY));
+    public WildRice() {
+        super(Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN));
     }
 
-    @Override
+        @Override
     public TagKey<Block> getSpawnFilter() {
-        return zBlockTag.CAN_SUSTAIN_CAVE_WHEAT;
+        return zBlockTag.CAN_SUSTAIN_RICE;
     }
 
     @Override

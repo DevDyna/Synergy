@@ -13,9 +13,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("null")
-public class cave_wheat extends BaseShortCropBlock {
+public class CaveWheat extends BaseShortCropBlock {
 
-    public cave_wheat() {
+    public CaveWheat() {
         super(Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY));
     }
 

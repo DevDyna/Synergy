@@ -21,9 +21,9 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.Vec3;
 
 @SuppressWarnings("null")
-public class wild_cotton extends BaseWildCropBlock implements CropEntityInteraction {
+public class WildCotton extends BaseWildCropBlock implements CropEntityInteraction {
 
-    public wild_cotton() {
+    public WildCotton() {
         super(Properties.of().mapColor(MapColor.WOOL));
     }
 

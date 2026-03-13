@@ -6,9 +6,9 @@ import com.devdyna.synergy.init.types.zItems;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.MapColor;
 
-public class cotton extends BaseShortCropBlock {
+public class Cotton extends BaseShortCropBlock {
 
-    public cotton() {
+    public Cotton() {
         super(Properties.of().mapColor(MapColor.WOOL));
     }
 

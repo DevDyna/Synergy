@@ -23,7 +23,7 @@ import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingBuilder;
 import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualBuilder;
 import com.devdyna.synergy.init.builder.magic.void_box.recipe.VoidBoxInfusionBuilder;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe.ReactorCellBuilder;
-import com.devdyna.synergy.init.builder.plants.cultivated.azalea;
+import com.devdyna.synergy.init.builder.plants.cultivated.PottedAzalea;
 import com.devdyna.synergy.init.builder.survival.casting_table.recipe.CastingTableBuilder;
 import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubBuilder;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackBuilder;
@@ -1974,7 +1974,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 ItemUseBuilder.of()
                                 .inputItem(zItems.AZALEA_SEEDS)
                                 .inputBlock(Blocks.FLOWER_POT)
-                                .outputBlock(zBlocks.AZALEA.get().defaultBlockState().setValue(azalea.AGE, 0))
+                                .outputBlock(zBlocks.AZALEA.get().defaultBlockState().setValue(PottedAzalea.AGE, 0))
                                 .canBeDisabled()
                                 .unlockedBy().save(c);
 

@@ -6,9 +6,9 @@ import com.devdyna.synergy.init.types.zItems;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.MapColor;
 
-public class rice extends BaseCropBlock {
+public class Rice extends BaseCropBlock {
 
-    public rice() {
+    public Rice() {
         super(Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN));
     }
 

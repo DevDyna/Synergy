@@ -9,9 +9,9 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.MapColor;
 
-public class violet_webcap extends BaseCropMushroom {
+public class VioletWebcap extends BaseCropMushroom {
 
-    public violet_webcap() {
+    public VioletWebcap() {
         super(Properties.of().lightLevel(s -> 4).mapColor(MapColor.COLOR_MAGENTA));
     }
 
