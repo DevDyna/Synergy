@@ -31,6 +31,9 @@ public class DataEntityTag extends EntityTypeTagsProvider {
 
                 tag(zEntityTag.CRUSHING_TUB_ALLOW)
                                 .add(EntityType.PLAYER, EntityType.ARMOR_STAND);
+
+                tag(zEntityTag.ENTITY_WATCHER_IGNORE)
+                                .add(EntityType.PLAYER);
         }
 
 }
