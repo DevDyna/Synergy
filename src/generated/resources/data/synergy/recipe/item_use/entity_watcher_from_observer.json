@@ -15,7 +15,7 @@
   "result": {
     "Name": "synergy:entity_watcher",
     "Properties": {
-      "enabled": "true",
+      "filter_player": "false",
       "power": "0"
     }
   }
