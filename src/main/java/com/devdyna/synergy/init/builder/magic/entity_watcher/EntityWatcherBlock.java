@@ -54,6 +54,13 @@ public class EntityWatcherBlock extends TickingBlock {
                 .lightLevel((s) -> {
                     return 10;
                 }).pushReaction(PushReaction.BLOCK));
+
+        this.registerDefaultState(
+                this.stateDefinition
+                        .any()
+                        .setValue(BlockStateProperties.POWER, 0)
+                        .setValue(PLAYER_FILTER, false));
+
     }
 
     @Override
