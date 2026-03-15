@@ -531,6 +531,14 @@ public class DataLang extends LanguageProvider {
                                         "Lingering Potion of " + named(i));
                 });
 
+                add(ID + "." + zStatic.Blocks.entity_watcher, TIP_COLOR + "An eye that want look any near entities");
+
+                add(ID + "." + zStatic.Blocks.entity_watcher + ".tweak",
+                                TIP_COLOR + "Allow to change entity filter to the Entity Watcher");
+
+                add(ID + ".jade.watcher_mode.player_only", "§aCheck only any nearest player");
+                add(ID + ".jade.watcher_mode.not_player", "§aCheck any living entity except the player");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {

@@ -35,7 +35,7 @@ public class ItemTooltipEvents {
 
     private static void itemTooltipWatcherTweak(ItemStack i, List<Component> t) {
         if (i.is(zItemTag.ENTITY_WATCHER_TWEAK)) {
-            t.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + "entity_watcher" + ".tweak"));
+            t.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + zStatic.Blocks.entity_watcher + ".tweak"));
         }
     }
 
