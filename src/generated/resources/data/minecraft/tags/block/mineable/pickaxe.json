@@ -27,7 +27,6 @@
     "synergy:fuel_tank",
     "synergy:evaporation_basin",
     "synergy:aquamarine_cluster",
-    "synergy:player_watcher",
     "synergy:entity_watcher"
   ]
 }
