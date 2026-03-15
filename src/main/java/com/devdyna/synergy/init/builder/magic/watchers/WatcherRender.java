@@ -39,12 +39,12 @@ public class WatcherRender<T extends BaseWatcherBE> implements BlockEntityRender
         float pitch = 0;
 
         if (entity != null) {
-            Vec3 playerPos = entity.getEyePosition(partialTicks);
+            Vec3 entityPos = entity.getEyePosition(partialTicks);
             BlockPos pos = be.getBlockPos();
 
-            double dx = playerPos.x - (pos.getX() + 0.5);
-            double dy = playerPos.y - (pos.getY() + 0.5);
-            double dz = playerPos.z - (pos.getZ() + 0.5);
+            double dx = entityPos.x - (pos.getX() + 0.5);
+            double dy = entityPos.y - (pos.getY() + 0.5);
+            double dz = entityPos.z - (pos.getZ() + 0.5);
 
             yaw = -((float) (Math.atan2(dz, dx) * (180F / Math.PI)) - 90F) + 180f;
             pitch = (float) (Math.atan2(dy, Math.sqrt(dx * dx + dz * dz)) * (180F / Math.PI));
@@ -64,7 +64,7 @@ public class WatcherRender<T extends BaseWatcherBE> implements BlockEntityRender
                 .noPop()
                 .noPush()
                 .pivot(0.5, 0.5, 0.5)
-                .model(zStatic.AdditionalModel.AURA_NODE)//TODO
+                .model(zStatic.AdditionalModel.WATCHER)//TODO
                 .build(Minecraft.getInstance().getModelManager(), brd, poseStack, light, overlay, buffer);
 
         poseStack.popPose();

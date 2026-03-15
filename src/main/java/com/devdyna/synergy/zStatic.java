@@ -552,7 +552,7 @@ public class zStatic {
         public static final String VOID_BOX = "block/tiny_block/void_box/animation";
         public static final String LOGIC_BOX_OFF = "block/tiny_block/logic_box/animation/red";
         public static final String LOGIC_BOX_ON = "block/tiny_block/logic_box/animation/green";
-        public static final String AURA_NODE = "block/tiny_block/watcher";
+        public static final String WATCHER = "block/tiny_block/watcher";//TODO
 
     }
 
