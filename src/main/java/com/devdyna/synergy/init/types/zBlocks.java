@@ -55,6 +55,8 @@ import com.devdyna.synergy.init.builder.magic.tiny_chests.stone.StoneTinyChestBl
 import com.devdyna.synergy.init.builder.magic.tiny_chests.wooden.WoodenTinyChestBlock;
 import com.devdyna.synergy.init.builder.magic.urn.UrnBlock;
 import com.devdyna.synergy.init.builder.magic.void_box.VoidBoxBlock;
+import com.devdyna.synergy.init.builder.magic.watchers.entity.EntityWatcherBlock;
+import com.devdyna.synergy.init.builder.magic.watchers.player.PlayerWatcherBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.cooler.*;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
@@ -657,6 +659,15 @@ public class zBlocks {
                                                         .lightLevel((s) -> {
                                                                 return 5;
                                                         }).pushReaction(PushReaction.DESTROY)));
+
+
+        public static final DeferredHolder<Block, Block> ENTITY_WATCHER = Material.registerItemBlock(
+                        zStatic.Blocks.entity_watcher,
+                        () -> new EntityWatcherBlock());
+
+        public static final DeferredHolder<Block, Block> PLAYER_WATCHER = Material.registerItemBlock(
+                        zStatic.Blocks.player_watcher,
+                        () -> new PlayerWatcherBlock());
 
         // ---------------------------------------------------------------------------------------//
 

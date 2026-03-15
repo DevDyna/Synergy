@@ -25,6 +25,8 @@ import com.devdyna.synergy.init.builder.magic.tiny_chests.stone.StoneTinyChestBE
 import com.devdyna.synergy.init.builder.magic.tiny_chests.wooden.WoodenTinyChestBE;
 import com.devdyna.synergy.init.builder.magic.urn.UrnBE;
 import com.devdyna.synergy.init.builder.magic.void_box.VoidBoxBE;
+import com.devdyna.synergy.init.builder.magic.watchers.entity.EntityWatcherBE;
+import com.devdyna.synergy.init.builder.magic.watchers.player.PlayerWatcherBE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;
 import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities.*;
@@ -200,5 +202,13 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<RouterBE>> ROUTER = Material
                         .createBlockEntity(zStatic.Blocks.router, RouterBE::new,
                                         zBlocks.ROUTER);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EntityWatcherBE>> ENTITY_WATCHER = Material
+                        .createBlockEntity(zStatic.Blocks.entity_watcher, EntityWatcherBE::new,
+                                        zBlocks.ENTITY_WATCHER);
+                                        
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PlayerWatcherBE>> PLAYER_WATCHER = Material
+                        .createBlockEntity(zStatic.Blocks.player_watcher, PlayerWatcherBE::new,
+                                        zBlocks.PLAYER_WATCHER);
 
 }

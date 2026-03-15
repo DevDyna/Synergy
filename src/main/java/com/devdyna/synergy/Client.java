@@ -22,6 +22,7 @@ import com.devdyna.synergy.init.builder.magic.tiny_chests.ornated.OrnatedTinyChe
 import com.devdyna.synergy.init.builder.magic.tiny_chests.stone.StoneTinyChestScreen;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.wooden.WoodenTinyChestScreen;
 import com.devdyna.synergy.init.builder.magic.void_box.VoidBoxRender;
+import com.devdyna.synergy.init.builder.magic.watchers.WatcherRender;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorAOE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.init.builder.survival.casting_table.CastingTableRender;
@@ -75,6 +76,9 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.FAUCET.get(), FaucetRender::new);
 
         event.registerBlockEntityRenderer(zBlockEntities.CHOPPER.get(), ChopperAOE::new);
+     
+        event.registerBlockEntityRenderer(zBlockEntities.ENTITY_WATCHER.get(), WatcherRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.PLAYER_WATCHER.get(), WatcherRender::new);
 
     }
 
