@@ -5,7 +5,7 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.List;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.machine.BaseMachineScreen;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.api.utils.x;

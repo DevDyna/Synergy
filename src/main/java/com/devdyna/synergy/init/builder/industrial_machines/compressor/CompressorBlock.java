@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;

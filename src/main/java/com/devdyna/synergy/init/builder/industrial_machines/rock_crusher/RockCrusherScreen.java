@@ -2,7 +2,7 @@ package com.devdyna.synergy.init.builder.industrial_machines.rock_crusher;
 
 import java.util.List;
 
-import com.devdyna.synergy.api.machine.BaseMachineScreen;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.render.FluidGUITank;
 import com.devdyna.synergy.api.utils.ArrayUtils;
 import com.devdyna.synergy.api.utils.Pos;

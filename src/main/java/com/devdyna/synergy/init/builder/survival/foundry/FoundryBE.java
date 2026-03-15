@@ -11,7 +11,7 @@ import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
 import com.devdyna.synergy.api.beLogic.TimeredRecipe;
-import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.common.recipes.input.FluidInput;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;

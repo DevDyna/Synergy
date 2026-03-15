@@ -3,8 +3,8 @@ package com.devdyna.synergy.datagen.server;
 
 import java.util.*;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.plants.builder.BaseCropBlock;
-import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
+import com.devdyna.synergy.api.blockfactories.plants.builder.BaseCropBlock;
+import com.devdyna.synergy.api.blockfactories.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.EnchantUtil;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;

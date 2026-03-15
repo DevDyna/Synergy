@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.plants.cultivated;
 
-import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
+import com.devdyna.synergy.api.blockfactories.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.world.level.ItemLike;

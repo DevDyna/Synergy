@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.builder.industrial_machines.furnace;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeType;

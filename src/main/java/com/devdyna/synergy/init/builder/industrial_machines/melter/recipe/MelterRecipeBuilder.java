@@ -2,17 +2,18 @@ package com.devdyna.synergy.init.builder.industrial_machines.melter.recipe;
 
 import java.util.LinkedHashMap;
 
-import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.BaseMachineBlock;
-import com.devdyna.synergy.api.machine.BaseMachineMenu;
-import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeBuilder;
-import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.neoforged.neoforge.fluids.FluidStack;
+
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
+import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeBuilder;
+import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.api.recipes.builders.*;
 
 

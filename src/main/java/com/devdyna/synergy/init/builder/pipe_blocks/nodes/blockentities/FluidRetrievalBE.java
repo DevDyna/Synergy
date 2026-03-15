@@ -1,7 +1,7 @@
 package com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities;
 
-import com.devdyna.synergy.api.node.FluidNodeType;
-import com.devdyna.synergy.api.node.builder.NodeBaseBE;
+import com.devdyna.synergy.api.node_pipe.FluidNodeType;
+import com.devdyna.synergy.api.node_pipe.builder.NodeBaseBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

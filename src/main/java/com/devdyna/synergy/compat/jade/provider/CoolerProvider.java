@@ -3,7 +3,7 @@ package com.devdyna.synergy.compat.jade.provider;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.reactor.CoolerBlockBase;
+import com.devdyna.synergy.api.blockfactories.reactor.CoolerBlockBase;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.nbt.CompoundTag;

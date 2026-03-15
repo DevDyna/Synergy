@@ -3,9 +3,9 @@ package com.devdyna.synergy.compat.jade.provider;
 import java.util.ArrayList;
 import java.util.List;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.ExtraMachineSlots;
-import com.devdyna.synergy.api.machine.ExtraMachineSlots.SlotType;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
+import com.devdyna.synergy.api.blockfactories.machine.ExtraMachineSlots;
+import com.devdyna.synergy.api.blockfactories.machine.ExtraMachineSlots.SlotType;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;

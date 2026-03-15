@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.block.BlockMenu;
 import com.devdyna.synergy.api.beLogic.BucketInteraction;
-import com.devdyna.synergy.api.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;

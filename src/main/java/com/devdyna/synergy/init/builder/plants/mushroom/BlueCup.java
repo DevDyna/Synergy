@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.plants.mushroom;
 
-import com.devdyna.synergy.api.plants.builder.BaseCropMushroom;
+import com.devdyna.synergy.api.blockfactories.plants.builder.BaseCropMushroom;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.init.types.zItems;
 

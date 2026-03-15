@@ -1,6 +1,7 @@
 package com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter;
 
-import com.devdyna.synergy.api.machine.BaseMachineScreen;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineScreen;
+
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 

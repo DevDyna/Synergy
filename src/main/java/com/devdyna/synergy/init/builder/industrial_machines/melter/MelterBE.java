@@ -3,8 +3,8 @@ package com.devdyna.synergy.init.builder.industrial_machines.melter;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.FluidStorageTank;
-import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.FluidTankStorage;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
+import com.devdyna.synergy.api.blockfactories.machine.FluidTankStorage;
 import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;

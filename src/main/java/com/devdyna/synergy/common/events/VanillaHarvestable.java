@@ -2,8 +2,8 @@ package com.devdyna.synergy.common.events;
 
 import java.util.*;
 
+import com.devdyna.synergy.api.blockfactories.plants.Harvestable;
 import com.devdyna.synergy.api.harvester.VanillaPlants;
-import com.devdyna.synergy.api.plants.Harvestable;
 
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;

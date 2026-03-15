@@ -3,8 +3,8 @@ package com.devdyna.synergy.api.registers;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import com.devdyna.synergy.api.machine.*;
-import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.blockfactories.machine.*;
+import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 
 import net.minecraft.world.inventory.MenuType;

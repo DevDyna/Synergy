@@ -1,9 +1,9 @@
 package com.devdyna.synergy.init.builder.industrial_machines.furnace;
 
-import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.BaseMachineBlock;
-import com.devdyna.synergy.api.machine.BaseMachineMenu;
-import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
+import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.init.types.zMachines;
 

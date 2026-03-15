@@ -1,0 +1,334 @@
+package com.devdyna.synergy.api.blockfactories;
+
+import javax.annotation.Nullable;
+
+import org.jetbrains.annotations.NotNull;
+
+import com.devdyna.synergy.api.basebe.be.TickingBE;
+import com.devdyna.synergy.api.beLogic.EnergyBlock;
+import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.config.Common;
+import com.devdyna.synergy.init.builder.laser.LaserMirrorBlock;
+import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBE;
+import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
+import com.devdyna.synergy.init.types.zHandlers;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.SimpleContainerData;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Level.ExplosionInteraction;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.energy.EnergyStorage;
+
+@SuppressWarnings("null")
+public abstract class AbstractLaserMachine extends TickingBE implements EnergyBlock {
+
+    public boolean fused;
+
+    public int red = Common.LASER_MACHINE_GUN_COLOR_RED.get();
+    public int green = Common.LASER_MACHINE_GUN_COLOR_GREEN.get();
+    public int blue = Common.LASER_MACHINE_GUN_COLOR_BLUE.get();
+
+    /**
+     * dead decay stage -1 (lasermachine)
+     */
+    protected final int MAX_LASER_LENGHT = getMaxLaserLenght();
+    /**
+     * init decay stage
+     */
+    protected final int RESET = 0;
+
+    public AbstractLaserMachine(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+        super(type, pos, blockState);
+        fused = false;
+    }
+
+    // public BaseLaserMachine(BlockPos p, BlockState s) {
+    // this(zBlockEntities.LASER_MACHINE.get(), p, s);
+    // }
+
+    /**
+     * check if there is an entity at specific blockpos
+     */
+    public static boolean isEntity(Level level, BlockState partialState, BlockPos currentPos) {
+        return isEntity(level, partialState, new AABB(currentPos));
+    }
+
+    /**
+     * check if there is an entity at specific blockpos
+     */
+    public static boolean isEntity(Level level, BlockState partialState, AABB pos) {
+        return !level.getEntities(null, pos).isEmpty();
+    }
+
+    /**
+     * check if there is an opaque block at specific blockpos
+     */
+    public static boolean isOpaqueBlock(Level level, BlockState partialState, BlockPos currentPos) {
+        return partialState.isCollisionShapeFullBlock(level, currentPos);
+    }
+
+    @Override
+    public void tickServer() {
+        if (!fused)
+            level.setBlockAndUpdate(getBlockPos(),
+                    getBlockState()
+                            .setValue(BlockStateProperties.ENABLED, enableWhen(level, getBlockPos())));
+    }
+
+    @Override
+    public void tickBoth() {
+        var state = getBlockState();
+        var pos = getBlockPos();
+        var facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
+
+        if (state.getValue(BlockStateProperties.ENABLED) && canExtract()) {
+            extractFE(Common.LASER_MACHINE_GUN_FE_COST.get(), false);
+
+            /**
+             * dynamic pos
+             */
+            var currentPos = pos;
+
+            /**
+             * decay
+             */
+            var lenght = RESET;
+
+            boolean isStart = true;
+
+            var currentDir = facing;
+
+            /**
+             * life time
+             */
+            while (lenght < MAX_LASER_LENGHT) {
+
+                BlockState partialState = level.getBlockState(currentPos);
+                @Nullable
+                BlockEntity partialBE = level.getBlockEntity(currentPos);
+
+                // extra condition -> break
+                if (breakWhen(level, partialState, currentDir, currentPos, isStart, partialBE))
+                    break;
+
+                // lens -> extend
+                if (extendWhen(level, partialState, currentDir, currentPos, isStart, partialBE))
+                    lenght = RESET;
+
+                // sensor -> update | break
+                if (partialBE != null && partialBE instanceof LaserSensorBE ls) {
+                    if (sensorActive(level, partialState, currentDir, currentPos, isStart, ls))
+                        ls.setActive();
+                    else
+                        break;
+                }
+
+                // mirror -> rotate
+                if (partialState.getBlock() instanceof LaserMirrorBlock lm
+                        && rotateWhen(level, partialState, currentDir, currentPos, isStart)) {
+                    var newDir = lm.getMirrorDir(currentDir, partialState);
+
+                    if (renderParticlesWhen(level, partialState, currentDir, currentPos, isStart, partialBE, lenght))
+                        LevelUtil.addDustParticleDiagonalLine(red, green, blue, (ServerLevel) level, currentPos,
+                                currentDir, newDir,
+                                getParticlesScale(level, partialState, currentDir, currentPos, isStart, partialBE,
+                                        lenght));
+
+                    currentDir = newDir;
+
+                    lenght = MAX_LASER_LENGHT / 4;
+                } else // empty -> repeat
+                if (renderParticlesWhen(level, partialState, currentDir, currentPos, isStart, partialBE, lenght))
+                    LevelUtil.addDustParticleLine(red, green, blue,
+                            (ServerLevel) level, currentPos, currentDir,
+                            getParticlesScale(level, partialState, currentDir, currentPos, isStart, partialBE, lenght));
+
+                // laser machine -> explode
+                if (partialBE != null && partialBE instanceof AbstractLaserMachine laser
+                        && explodeWhen(level, partialState, currentDir, currentPos, isStart, laser)) {
+                    laser.setFused();
+
+                    level.explode(null, currentPos.getX() + 0.5, currentPos.getY() + 0.5, currentPos.getZ() + 0.5,
+                            1,
+                            ExplosionInteraction.BLOCK);
+                    break;
+                }
+
+                if (partialBE != null && partialBE instanceof LaserRotorBE rotor) {
+                    if (partialState.getValue(BlockStateProperties.HORIZONTAL_FACING) == currentDir.getOpposite()) {
+                        rotor.sendRotation(pos, currentDir.getOpposite());
+                    }
+                }
+
+                currentPos = currentPos.relative(currentDir);
+
+                // prevent to select the initial laser machine at initial execution
+                if (isStart)
+                    isStart = false;
+
+                // increase decay
+                lenght++;
+
+            }
+
+        }
+
+    }
+
+    protected abstract boolean renderParticlesWhen(Level level, BlockState partialState, Direction currentDir,
+            BlockPos currentPos, boolean isStart, @Nullable BlockEntity partialBE, int lenght);
+
+    protected abstract float getParticlesScale(Level level, BlockState partialState, Direction currentDir,
+            BlockPos currentPos, boolean isStart, @Nullable BlockEntity partialBE, int lenght);
+
+    protected abstract boolean sensorActive(Level level, BlockState partialState, Direction currentDir,
+            BlockPos currentPos, boolean isStart, @NotNull LaserSensorBE partialBE);
+
+    /**
+     * 
+     * @param partialState support ONLY LaserMirrorBlock state
+     */
+    protected abstract boolean rotateWhen(Level level, BlockState partialState, Direction currentDir,
+            BlockPos currentPos,
+            boolean isStart);
+
+    protected abstract boolean canExplodeDestination();
+
+    /**
+     * Server Side Level Only!
+     */
+    protected abstract boolean enableWhen(Level level, BlockPos pos);
+
+    protected abstract int getMaxLaserLenght();
+
+    protected abstract boolean breakWhen(Level level, BlockState partialState, Direction currentDir,
+            BlockPos currentPos, boolean isStart, @Nullable BlockEntity partialBE);
+
+    protected abstract boolean explodeWhen(Level level, BlockState partialState, Direction currentDir,
+            BlockPos currentPos, boolean isStart, @NotNull AbstractLaserMachine partialBE);
+
+    protected abstract boolean extendWhen(Level level, BlockState partialState, Direction currentDir,
+            BlockPos currentPos, boolean isStart, @Nullable BlockEntity partialBE);
+
+    @Override
+    public ContainerData getContainerData() {
+        return new SimpleContainerData(getMaxFE());
+    }
+
+    @Override
+    public EnergyStorage getCapEnergy() {
+        return getData(zHandlers.ENERGY_STORAGE);
+    }
+
+    @Override
+    public int MaxFE() {
+        return Common.LASER_MACHINE_GUN_MAX_FE.get();
+    }
+
+    public void setFused() {
+        if (canExplodeDestination())
+            fused = true;
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag, Provider registries) {
+        tag.putInt("red", red);
+        tag.putInt("green", green);
+        tag.putInt("blue", blue);
+        super.saveAdditional(tag, registries);
+    }
+
+    @Override
+    protected void loadAdditional(CompoundTag tag, Provider registries) {
+
+        if (tag.contains("red"))
+            red = tag.getInt("red");
+        if (tag.contains("green"))
+            green = tag.getInt("green");
+        if (tag.contains("blue"))
+            blue = tag.getInt("blue");
+        super.loadAdditional(tag, registries);
+    }
+
+    public void setRed(int red) {
+        this.red = red;
+    }
+
+    public void setGreen(int green) {
+        this.green = green;
+    }
+
+    public void setBlue(int blue) {
+        this.blue = blue;
+    }
+
+    private int COLOR_VARIABLE = 16;
+
+    public void incRed() {
+        this.red = Math.min(this.red + COLOR_VARIABLE, 255);
+    }
+
+    public void incGreen() {
+        this.green = Math.min(this.green + COLOR_VARIABLE, 255);
+    }
+
+    public void incBlue() {
+        this.blue = Math.min(this.blue + COLOR_VARIABLE, 255);
+    }
+
+    public void decRed() {
+        this.red = Math.max(this.red - COLOR_VARIABLE, 0);
+    }
+
+    public void decGreen() {
+        this.green = Math.max(this.green - COLOR_VARIABLE, 0);
+    }
+
+    public void decBlue() {
+        this.blue = Math.max(this.blue - COLOR_VARIABLE, 0);
+    }
+
+    public void tweakRed(boolean status) {
+        if (status)
+            incRed();
+        else
+            decRed();
+    }
+
+    public void tweakGreen(boolean status) {
+        if (status)
+            incGreen();
+        else
+            decGreen();
+    }
+
+    public void tweakBlue(boolean status) {
+        if (status)
+            incBlue();
+        else
+            decBlue();
+    }
+
+    public int getRed() {
+        return red;
+    }
+
+    public int getGreen() {
+        return green;
+    }
+
+    public int getBlue() {
+        return blue;
+    }
+
+}

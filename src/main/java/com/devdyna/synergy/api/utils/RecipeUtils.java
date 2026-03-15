@@ -3,7 +3,7 @@ package com.devdyna.synergy.api.utils;
 import java.util.List;
 import java.util.Optional;
 
-import com.devdyna.synergy.api.machine.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeType;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 

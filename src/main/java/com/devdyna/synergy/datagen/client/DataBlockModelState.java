@@ -3,7 +3,7 @@ package com.devdyna.synergy.datagen.client;
 import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.plants.builder.BaseShortCropBlock;
+import com.devdyna.synergy.api.blockfactories.plants.builder.BaseShortCropBlock;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;

@@ -3,9 +3,9 @@ package com.devdyna.synergy.compat.jade.provider;
 import java.util.Optional;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.node.IProvider;
-import com.devdyna.synergy.api.node.nodeType;
-import com.devdyna.synergy.api.node.builder.NodeBaseBE;
+import com.devdyna.synergy.api.node_pipe.IProvider;
+import com.devdyna.synergy.api.node_pipe.nodeType;
+import com.devdyna.synergy.api.node_pipe.builder.NodeBaseBE;
 import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.utils.x;
 import net.minecraft.core.registries.BuiltInRegistries;

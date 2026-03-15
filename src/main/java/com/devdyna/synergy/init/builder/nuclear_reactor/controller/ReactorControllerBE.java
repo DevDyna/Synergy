@@ -3,10 +3,9 @@ package com.devdyna.synergy.init.builder.nuclear_reactor.controller;
 import java.util.*;
 
 import com.devdyna.synergy.api.beLogic.EnergyProvider;
+import com.devdyna.synergy.api.blockfactories.reactor.CoolerBlockBase;
+import com.devdyna.synergy.api.blockfactories.reactor.ModeratorBase;
 import com.devdyna.synergy.api.basebe.be.AreaBE;
-import com.devdyna.synergy.api.reactor.ControllerProperties;
-import com.devdyna.synergy.api.reactor.CoolerBlockBase;
-import com.devdyna.synergy.api.reactor.ModeratorBase;
 import com.devdyna.synergy.api.utils.*;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBE;

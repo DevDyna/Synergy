@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.builder.plants.wild;
 import java.util.List;
 
 import com.devdyna.synergy.Main;
-import com.devdyna.synergy.api.plants.builder.BaseWildCropBlock;
+import com.devdyna.synergy.api.blockfactories.plants.builder.BaseWildCropBlock;
 import com.devdyna.synergy.init.types.zBlockTag;
 
 import net.minecraft.network.chat.Component;

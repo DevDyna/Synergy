@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.industrial_machines.furnace;
 
-import com.devdyna.synergy.api.machine.BaseMachineScreen;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.client.gui.GuiGraphics;

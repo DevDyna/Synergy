@@ -3,8 +3,8 @@ package com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter;
 import java.util.List;
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.ExtraMachineSlots;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
+import com.devdyna.synergy.api.blockfactories.machine.ExtraMachineSlots;
 import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.common.recipes.input.BiItemInput;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe.AlloySmelterRecipeType;

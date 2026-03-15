@@ -4,7 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.*;
 
-import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents.UpgradeType;
 import com.devdyna.synergy.init.types.zComponents;

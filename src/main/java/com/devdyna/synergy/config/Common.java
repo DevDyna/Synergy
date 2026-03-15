@@ -1,7 +1,7 @@
 package com.devdyna.synergy.config;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.machine.BaseMachineBE;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.utils.ModAddonUtil;
 import com.devdyna.synergy.api.utils.StringUtil;
 

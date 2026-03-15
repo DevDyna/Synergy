@@ -2,10 +2,10 @@ package com.devdyna.synergy.init.builder.pipe_blocks.nodes.blockentities;
 
 import java.util.Optional;
 
-import com.devdyna.synergy.api.node.IProvider;
-import com.devdyna.synergy.api.node.ItemNodeType;
-import com.devdyna.synergy.api.node.nodeType;
-import com.devdyna.synergy.api.node.builder.NodeBaseBE;
+import com.devdyna.synergy.api.node_pipe.IProvider;
+import com.devdyna.synergy.api.node_pipe.ItemNodeType;
+import com.devdyna.synergy.api.node_pipe.nodeType;
+import com.devdyna.synergy.api.node_pipe.builder.NodeBaseBE;
 import com.devdyna.synergy.common.recipes.input.ProviderInput;
 import com.devdyna.synergy.common.recipes.type.node_providers.ItemProviderRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;

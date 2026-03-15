@@ -2,8 +2,8 @@ package com.devdyna.synergy.compat.jade.provider;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
+import com.devdyna.synergy.api.blockfactories.AbstractLaserMachine;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.init.builder.laser.machine_gun.AbstractLaserMachine;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

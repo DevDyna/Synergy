@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.builder.plants.cultivated;
 import java.util.List;
 import java.util.Random;
 
-import com.devdyna.synergy.api.plants.builder.BaseCropBlock;
+import com.devdyna.synergy.api.blockfactories.plants.builder.BaseCropBlock;
 import com.devdyna.synergy.init.types.zItems;
 
 import net.minecraft.core.BlockPos;

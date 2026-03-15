@@ -47,27 +47,27 @@ public class SimpleItemRender {
         return this;
     }
 
-    public SimpleItemRender rotateXP(int angle) {
+    public SimpleItemRender rotateXP(float angle) {
         return rotate(Axis.XP.rotationDegrees(angle));
     }
 
-    public SimpleItemRender rotateXN(int angle) {
+    public SimpleItemRender rotateXN(float angle) {
         return rotate(Axis.XN.rotationDegrees(angle));
     }
 
-    public SimpleItemRender rotateYP(int angle) {
+    public SimpleItemRender rotateYP(float angle) {
         return rotate(Axis.YP.rotationDegrees(angle));
     }
 
-    public SimpleItemRender rotateYN(int angle) {
+    public SimpleItemRender rotateYN(float angle) {
         return rotate(Axis.YN.rotationDegrees(angle));
     }
 
-    public SimpleItemRender rotateZP(int angle) {
+    public SimpleItemRender rotateZP(float angle) {
         return rotate(Axis.ZP.rotationDegrees(angle));
     }
 
-    public SimpleItemRender rotateZN(int angle) {
+    public SimpleItemRender rotateZN(float angle) {
         return rotate(Axis.ZN.rotationDegrees(angle));
     }
 

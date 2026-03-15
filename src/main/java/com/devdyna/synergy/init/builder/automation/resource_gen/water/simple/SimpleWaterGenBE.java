@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.automation.resource_gen.water.simple;
 
-import com.devdyna.synergy.api.resource_gen.BaseWaterRGBE;
+import com.devdyna.synergy.api.blockfactories.resource_gen.BaseWaterRGBE;
 import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;

@@ -5,11 +5,11 @@ import com.devdyna.synergy.api.basebe.block.BlockTank;
 import com.devdyna.synergy.api.beLogic.DirectionBasedItemHandler;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.SimpleMachineItemStorage;
+import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
+import com.devdyna.synergy.api.blockfactories.machine.FluidTankStorage;
 import com.devdyna.synergy.api.beLogic.RestrictedFluidHandler;
 import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
-import com.devdyna.synergy.api.machine.BaseMachineBE;
-import com.devdyna.synergy.api.machine.FluidTankStorage;
 import com.devdyna.synergy.init.types.zComponents;
 import com.devdyna.synergy.init.types.zHandlers;
 

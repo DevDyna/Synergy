@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.automation.resource_gen.cobble.simple;
 
-import com.devdyna.synergy.api.resource_gen.BaseCobbleRGBE;
+import com.devdyna.synergy.api.blockfactories.resource_gen.BaseCobbleRGBE;
 import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
