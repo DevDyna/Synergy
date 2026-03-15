@@ -11,6 +11,7 @@ import com.devdyna.synergy.compat.jade.provider.AOEMachines;
 import com.devdyna.synergy.compat.jade.provider.CoolerProvider;
 import com.devdyna.synergy.compat.jade.provider.DryableBricksProvider;
 import com.devdyna.synergy.compat.jade.provider.EnergyTipProviders;
+import com.devdyna.synergy.compat.jade.provider.EntityWatcherModeProvider;
 import com.devdyna.synergy.compat.jade.provider.EnvironmentModifierProvider;
 import com.devdyna.synergy.compat.jade.provider.FilterProvider;
 import com.devdyna.synergy.compat.jade.provider.FuelCellProgress;
@@ -26,6 +27,7 @@ import com.devdyna.synergy.compat.jade.provider.TickProgressBlock;
 import com.devdyna.synergy.init.builder.automation.router.RouterBlock;
 import com.devdyna.synergy.init.builder.laser.laser_rotor.LaserRotorBlock;
 import com.devdyna.synergy.init.builder.laser.machine_gun.LaserMachineBlock;
+import com.devdyna.synergy.init.builder.magic.entity_watcher.EntityWatcherBlock;
 import com.devdyna.synergy.init.builder.magic.logic_box.LogicBoxBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
@@ -57,6 +59,7 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
         r.registerBlockComponent(FilterProvider.INSTANCE, LogicBoxBlock.class);
         r.registerBlockComponent(SidedFilterProvider.INSTANCE, RouterBlock.class);
+        r.registerBlockComponent(EntityWatcherModeProvider.INSTANCE, EntityWatcherBlock.class);
     }
 
     @Override
@@ -78,5 +81,6 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockDataProvider(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
         r.registerBlockDataProvider(FilterProvider.INSTANCE, LogicBoxBlock.class);
         r.registerBlockDataProvider(SidedFilterProvider.INSTANCE, RouterBlock.class);
+        r.registerBlockDataProvider(EntityWatcherModeProvider.INSTANCE, EntityWatcherBlock.class);
     }
 }
