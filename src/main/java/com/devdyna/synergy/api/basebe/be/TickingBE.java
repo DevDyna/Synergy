@@ -17,6 +17,11 @@ public class TickingBE extends BlockEntity {
 
     /**
      * Server only ticking
+     * <br/>
+     * <br/>
+     * Level-null SAFE
+     * <br/>
+     * <br/>
      * Useful for block events
      */
     public void tickServer() {
@@ -24,6 +29,11 @@ public class TickingBE extends BlockEntity {
 
     /**
      * Client only ticking
+     * <br/>
+     * <br/>
+     * Level-null SAFE
+     * <br/>
+     * <br/>
      * Useful for player events
      */
     public void tickClient() {
@@ -31,12 +41,15 @@ public class TickingBE extends BlockEntity {
 
     /**
      * Client and Server ticking
-     * 
+     * <br/>
+     * <br/>
+     * Level-null SAFE
+     * <br/>
+     * <br/>
      * Usefull for particles
      */
     public void tickBoth() {
     }
-
 
     // required to sync client to server data
     @Override
