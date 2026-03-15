@@ -394,6 +394,9 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(Tags.Items.CLUSTERS)
                                 .add(zBlocks.AQUAMARINE_CLUSTER.get().asItem());
 
+                tag(zItemTag.ENTITY_WATCHER_TWEAK)
+                                .add(Items.REDSTONE_TORCH);
+
         }
 
 }

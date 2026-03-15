@@ -29,15 +29,22 @@ public class ItemTooltipEvents {
         itemTooltipNoGrowingItems(item, tooltip);
         itemTooltipPlaceable(item, tooltip);
         itemTooltipChopperUpgrades(item, tooltip);
+        itemTooltipWatcherTweak(item, tooltip);
 
+    }
+
+    private static void itemTooltipWatcherTweak(ItemStack i, List<Component> t) {
+        if (i.is(zItemTag.ENTITY_WATCHER_TWEAK)) {
+            t.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + "entity_watcher" + ".tweak"));
+        }
     }
 
     private static void itemTooltipChopperUpgrades(ItemStack i, List<Component> t) {
         if (i.is(zItemTag.CHOPPER_AREA_INCREASE)) {
-            t.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + zStatic.Blocks.chopper+".aoe"));
+            t.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + zStatic.Blocks.chopper + ".aoe"));
         }
         if (i.is(zItemTag.CHOPPER_ENERGY_UPGRADE)) {
-            t.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + zStatic.Blocks.chopper+".energy"));
+            t.add(OVER_THE_REGISTRY_ID, Component.translatable(ID + "." + zStatic.Blocks.chopper + ".energy"));
         }
     }
 

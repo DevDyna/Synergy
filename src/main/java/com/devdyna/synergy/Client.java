@@ -16,13 +16,13 @@ import com.devdyna.synergy.init.builder.industrial_machines.furnace.ElectricFurn
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.MaceratorScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.melter.MelterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.rock_crusher.RockCrusherScreen;
+import com.devdyna.synergy.init.builder.magic.entity_watcher.EntityWatcherRender;
 import com.devdyna.synergy.init.builder.magic.logic_box.LogicBoxRender;
 import com.devdyna.synergy.init.builder.magic.quern.QuernRendering;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.ornated.OrnatedTinyChestScreen;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.stone.StoneTinyChestScreen;
 import com.devdyna.synergy.init.builder.magic.tiny_chests.wooden.WoodenTinyChestScreen;
 import com.devdyna.synergy.init.builder.magic.void_box.VoidBoxRender;
-import com.devdyna.synergy.init.builder.magic.watchers.WatcherRender;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorAOE;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellScreen;
 import com.devdyna.synergy.init.builder.survival.casting_table.CastingTableRender;
@@ -77,8 +77,7 @@ public class Client {
 
         event.registerBlockEntityRenderer(zBlockEntities.CHOPPER.get(), ChopperAOE::new);
      
-        event.registerBlockEntityRenderer(zBlockEntities.ENTITY_WATCHER.get(), WatcherRender::new);
-        event.registerBlockEntityRenderer(zBlockEntities.PLAYER_WATCHER.get(), WatcherRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.ENTITY_WATCHER.get(), EntityWatcherRender::new);
 
     }
 

@@ -289,7 +289,6 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 modLoc("block/decorative/aquamarine"))
                                                 .renderType(DataGenUtil.CUTOUT));
 
-                noModel(zBlocks.PLAYER_WATCHER,x.rl("block/tiny_block/watcher/player"));
                 noModel(zBlocks.ENTITY_WATCHER,x.rl("block/tiny_block/watcher/player"));
 
         }

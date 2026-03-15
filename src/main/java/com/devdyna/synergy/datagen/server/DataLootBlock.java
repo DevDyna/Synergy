@@ -132,7 +132,6 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.CHOPPER,
                                 zBlocks.LOGIC_BOX,
                                 zBlocks.ROUTER,
-                                zBlocks.PLAYER_WATCHER,
                                 zBlocks.ENTITY_WATCHER
 
                 ).stream().map(DeferredHolder::get).forEach(this::dropSelf);

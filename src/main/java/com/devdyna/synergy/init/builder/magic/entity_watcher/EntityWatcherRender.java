@@ -1,7 +1,6 @@
-package com.devdyna.synergy.init.builder.magic.watchers;
+package com.devdyna.synergy.init.builder.magic.entity_watcher;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.blockfactories.watchers.BaseWatcherBE;
 import com.devdyna.synergy.api.render.ModelRenderHelper;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -15,11 +14,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
 
 @SuppressWarnings("null")
-public class WatcherRender<T extends BaseWatcherBE> implements BlockEntityRenderer<T> {
+public class EntityWatcherRender<T extends EntityWatcherBE> implements BlockEntityRenderer<T> {
 
     private BlockRenderDispatcher brd;
 
-    public WatcherRender(Context c) {
+    public EntityWatcherRender(Context c) {
         super();
         this.brd = c.getBlockRenderDispatcher();
     }
@@ -64,7 +63,7 @@ public class WatcherRender<T extends BaseWatcherBE> implements BlockEntityRender
                 .noPop()
                 .noPush()
                 .pivot(0.5, 0.5, 0.5)
-                .model(zStatic.AdditionalModel.WATCHER)//TODO
+                .model(zStatic.AdditionalModel.WATCHER)
                 .build(Minecraft.getInstance().getModelManager(), brd, poseStack, light, overlay, buffer);
 
         poseStack.popPose();

@@ -258,5 +258,6 @@ public class zItemTag {
         public static final TagKey<Item> DIRTS = Material.tagItem("dirts","c");
        
         public static final TagKey<Item> IRONWOOD_LOGS = Material.tagItem("ironwood_logs");
+        public static final TagKey<Item> ENTITY_WATCHER_TWEAK = Material.tagItem("entity_watcher_tweak");
 
 }

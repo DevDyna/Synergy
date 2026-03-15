@@ -255,7 +255,6 @@ public class zStatic {
         public static String harvester = "harvester";
         public static String chopper = "tree_chopper";
         public static String router = "router";
-        public static String player_watcher = "player_watcher";
         public static String entity_watcher = "entity_watcher";
         public static String solar_panel = "solar_panel";
         public static String healer = "healer";
