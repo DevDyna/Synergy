@@ -1,7 +1,5 @@
 package com.devdyna.synergy.init.builder.magic.logic_box;
 
-import java.util.Random;
-
 import com.devdyna.synergy.api.render.SimpleItemRender;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.render.PreFabRender;
@@ -15,18 +13,15 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 public class LogicBoxRender<T extends LogicBoxBE> implements BlockEntityRenderer<T> {
 
         private ItemRenderer itemRenderer;
-        private int timer;
 
         public LogicBoxRender(BlockEntityRendererProvider.Context ctx) {
                 this.itemRenderer = ctx.getItemRenderer();
-                this.timer = new Random().nextInt(360);
         }
 
         @Override
         public void render(T be, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource,
                         int packedLight, int packedOverlay) {
 
-                var condition = be.getAnimationProgress() > 0.1;
 
                 PreFabRender.renderChest(be,
                                 (be.isInverted() ? zStatic.AdditionalModel.LOGIC_BOX_OFF
@@ -34,24 +29,19 @@ public class LogicBoxRender<T extends LogicBoxBE> implements BlockEntityRenderer
                                 partialTick, poseStack, bufferSource,
                                 packedLight, packedOverlay);
 
-                if (condition) {
-                        timer++;
-
-                        if (timer > 360)
-                                timer = 0;
-                }
+                var angle = ((be.getLevel().getGameTime() % 360) + partialTick) * 4f;
 
                 if (!be.getFilterSlot().isEmpty())
                         SimpleItemRender.of()
-                                        .whenOn(condition)
+                                        .whenOn(be.getAnimationProgress() > 0.1)
                                         .move(0.5,
                                                         0.5 * be.getAnimationProgress()
                                                                         + (0.15 * (1 - Math.cos(
-                                                                                        Math.PI * Math.abs(timer - 180)
+                                                                                        Math.PI * Math.abs(angle - 180)
                                                                                                         / 180.0))
                                                                                         / 2),
                                                         0.5)
-                                        .rotateYP(timer)
+                                        .rotateYP(angle)
                                         .scale(0.75F, 0.75F, 0.75F)
                                         .item(be.getFilterSlot())
                                         .build(itemRenderer, poseStack, packedLight, packedOverlay, bufferSource,
