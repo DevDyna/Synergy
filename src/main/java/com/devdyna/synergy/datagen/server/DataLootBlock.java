@@ -131,7 +131,9 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.FAUCET,
                                 zBlocks.CHOPPER,
                                 zBlocks.LOGIC_BOX,
-                                zBlocks.ROUTER
+                                zBlocks.ROUTER,
+                                zBlocks.PLAYER_WATCHER,
+                                zBlocks.ENTITY_WATCHER
 
                 ).stream().map(DeferredHolder::get).forEach(this::dropSelf);
 

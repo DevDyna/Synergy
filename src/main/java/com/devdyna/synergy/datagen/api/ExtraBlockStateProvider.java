@@ -390,6 +390,14 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                 .addModel();
         }
 
+        protected void noModel(DeferredHolder<Block, ?>  b) {
+                getVariantBuilder(b.get())
+                                .partialState().modelForState()
+                                .modelFile(models().getBuilder("block/" + x.path(b.get()))
+                                                .texture("particle", x.path(b.get())))
+                                .addModel();
+        }
+
         protected void decorativeBlocks() {
 
                 zBlocks.zColumn.getEntries().forEach(b -> axisBlock((RotatedPillarBlock) b.get(),

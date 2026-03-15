@@ -236,6 +236,12 @@ public class DataItemModel extends ExtraItemModelProvider {
                 withExistingParent(zBlocks.AQUAMARINE_CLUSTER.getRegisteredName(), DataGenUtil.ITEM)
                                 .texture("layer0", x.rl("block/decorative/aquamarine"));
 
+                withExistingParent(zBlocks.PLAYER_WATCHER.getRegisteredName(),
+                                modLoc("block/tiny_block/watcher"));
+                                
+                withExistingParent(zBlocks.ENTITY_WATCHER.getRegisteredName(),
+                                modLoc("block/tiny_block/watcher"));
+
         }
 
 }

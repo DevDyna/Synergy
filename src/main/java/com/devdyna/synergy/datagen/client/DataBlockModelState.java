@@ -289,6 +289,9 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 modLoc("block/decorative/aquamarine"))
                                                 .renderType(DataGenUtil.CUTOUT));
 
+                noModel(zBlocks.PLAYER_WATCHER);
+                noModel(zBlocks.ENTITY_WATCHER);
+
         }
 
 }
