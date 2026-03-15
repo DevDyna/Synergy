@@ -42,7 +42,7 @@ public class EntityWatcherBE extends TickingBE {
             return 0;
 
         for (int i = 1; i <= 15; i++) {
-            var entity = getBlockState().getValue(BlockStateProperties.ENABLED)
+            var entity = getBlockState().getValue(EntityWatcherBlock.PLAYER_FILTER)
                     ? level.getNearestPlayer(
                             getBlockPos().getX() + 0.5,
                             getBlockPos().getY() + 0.5,
@@ -71,7 +71,7 @@ public class EntityWatcherBE extends TickingBE {
             return null;
 
         for (int i = 1; i <= 15; i++) {
-            var entity = getBlockState().getValue(BlockStateProperties.ENABLED)
+            var entity = getBlockState().getValue(EntityWatcherBlock.PLAYER_FILTER)
                     ? level.getNearestPlayer(
                             getBlockPos().getX() + 0.5,
                             getBlockPos().getY() + 0.5,

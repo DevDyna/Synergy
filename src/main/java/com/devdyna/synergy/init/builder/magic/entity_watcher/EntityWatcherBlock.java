@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
@@ -37,6 +38,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
 public class EntityWatcherBlock extends TickingBlock {
+
+    public static final BooleanProperty PLAYER_FILTER = BooleanProperty.create("filter_player");
 
     public EntityWatcherBlock(Properties properties) {
         super(properties);
@@ -55,14 +58,14 @@ public class EntityWatcherBlock extends TickingBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
-        b.add(BlockStateProperties.POWER, BlockStateProperties.ENABLED);
+        b.add(BlockStateProperties.POWER, PLAYER_FILTER);
     }
 
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext c) {
         return defaultBlockState()
-                .setValue(BlockStateProperties.ENABLED, false)
+                .setValue(PLAYER_FILTER, false)
                 .setValue(BlockStateProperties.POWER, 0);
     }
 
@@ -83,7 +86,7 @@ public class EntityWatcherBlock extends TickingBlock {
 
         if (stack.is(zItemTag.ENTITY_WATCHER_TWEAK)) {
             level.setBlockAndUpdate(pos,
-                    state.setValue(BlockStateProperties.ENABLED, !state.getValue(BlockStateProperties.ENABLED)));
+                    state.setValue(PLAYER_FILTER, !state.getValue(PLAYER_FILTER)));
             return ItemInteractionResult.SUCCESS;
         }
 
