@@ -2,12 +2,12 @@ package com.devdyna.synergy.api.utils;
 
 import java.util.List;
 import java.util.Random;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 import org.joml.Vector3f;
 
 import com.devdyna.synergy.init.Material;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -15,10 +15,13 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.models.blockstates.PropertyDispatch.TriFunction;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -30,6 +33,7 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootParams.Builder;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 @SuppressWarnings("null")
@@ -372,6 +376,46 @@ public class LevelUtil {
                 pos.getY() + 0.4 + (level.random.nextDouble() - 0.5) * 0.2,
                 pos.getZ() + 0.5 + (level.random.nextDouble() - 0.5) * 0.2 + f * dir.getStepZ(),
                 0.0, 0.0, 0.0);
+    }
+
+    public static int trackPlayerDistance(Level level, BlockPos core) {
+        return trackEntityDistance(level, core,
+                (l, p, i) -> (l.getNearestPlayer(
+                        p.getX() + 0.5,
+                        p.getY() + 0.5,
+                        p.getZ() + 0.5,
+                        i,
+                        true) != null));
+    }
+
+    public static int trackEntityDistance(Level level, BlockPos core, Function<LivingEntity, Boolean> filter) {
+        return trackEntityDistance(level, core,
+                (l, p, i) -> {
+                    var entity = getNearestEntity(level, p, i);
+
+                    return entity != null && filter.apply(entity);
+                });
+    }
+
+  
+
+    public static LivingEntity getNearestEntity(Level level, BlockPos p, int radius) {
+        return level.getNearestEntity(
+                LivingEntity.class,
+                TargetingConditions.forNonCombat(),
+                null,
+                p.getX() + 0.5,
+                p.getY() + 0.5,
+                p.getZ() + 0.5,
+                new AABB(p).inflate(radius));
+    }
+
+    public static int trackEntityDistance(Level level, BlockPos core,
+            TriFunction<Level, BlockPos, Integer, Boolean> filter) {
+        for (int i = 1; i <= 15; i++)
+            if (filter.apply(level, core, i))
+                return i;
+        return 0;
     }
 
 }
