@@ -1,7 +1,8 @@
 {
   "format_version": "1.21.6",
   "credit": "Made with Blockbench",
-  "render_type": "cutout",
+  "parent": "block/block",
+	"render_type": "cutout",
   "textures": { "5": "synergy:block/tiny_block/watcher/entity" },
   "elements": [
     {
@@ -17,5 +18,6 @@
         "down": { "uv": [8, 8, 16, 16], "rotation": 90, "texture": "#5" }
       }
     }
-  ]
+  ],
+  "display": { "gui": { "rotation": [30, -135, 0], "translation": [0, 4, 0] } }
 }

@@ -3,10 +3,10 @@ package com.devdyna.synergy.init.builder.magic.watchers.player;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.blockfactories.watchers.BaseWatcherBE;
-import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.types.zBlockEntities;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,10 +23,18 @@ public class PlayerWatcherBE extends BaseWatcherBE {
     }
 
     public int getSignal() {
-        if (level == null)
-            return 0;
+        for (int i = 1; i <= 15; i++) {
+            var entity = level.getNearestPlayer(
+                    getBlockPos().getX() + 0.5,
+                    getBlockPos().getY() + 0.5,
+                    getBlockPos().getZ() + 0.5,
+                    i,
+                    true);
 
-        return  LevelUtil.trackPlayerDistance(level, getBlockPos());
+            if (entity != null && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity))
+                return i;
+        }
+        return 0;
     }
 
     @Override
