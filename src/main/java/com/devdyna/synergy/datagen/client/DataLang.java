@@ -336,6 +336,8 @@ public class DataLang extends LanguageProvider {
                                 "Logic Box Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.Blocks.router,
                                 "Router Info");
+                add("config.jade.plugin_" + ID + "." + zStatic.Blocks.entity_watcher,
+                                "Entity Watcher Info");
 
                 add(Main.ID + ".color", "Color: %d");
 
@@ -531,13 +533,13 @@ public class DataLang extends LanguageProvider {
                                         "Lingering Potion of " + named(i));
                 });
 
-                add(ID + "." + zStatic.Blocks.entity_watcher, TIP_COLOR + "An eye that want look any near entities");
+                add(ID + "." + zStatic.Blocks.entity_watcher, TIP_COLOR + "A strange eye that want look any near entities");
 
                 add(ID + "." + zStatic.Blocks.entity_watcher + ".tweak",
-                                TIP_COLOR + "Allow to change entity filter to the Entity Watcher");
+                                TIP_COLOR + "Right click to a Entity Watcher to change the Entity Mode filter");
 
-                add(ID + ".jade.watcher_mode.player_only", "§aCheck only any nearest player");
-                add(ID + ".jade.watcher_mode.not_player", "§aCheck any living entity except the player");
+                add(ID + ".jade.watcher_mode.player_only", "Mode Filter: §aNearest player");
+                add(ID + ".jade.watcher_mode.not_player", "Mode Filter: §aNearest living entity not player");
 
         }
 
