@@ -1336,7 +1336,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 cross(c, zItems.CURIUM_PELLET.get(), zItems.CURIUM_FRAGMENT.get(), zItemTag.DUST_SULFUR);
 
                 RockCrusherRecipeBuilder.of()
-                                .fluid(zFluidTags.SULFURIC_ACID, 25)
+                                .fluid(zFluidTags.SULFURIC_ACID, 250)
                                 .input(zItems.DEPLETED_URANIUM_PELLET)
                                 .addResult(zItems.URANIUM_FRAGMENT, 0.75f)
                                 .addResult(zItems.URANIUM_FRAGMENT, 0.5f)
@@ -1345,7 +1345,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 RockCrusherRecipeBuilder.of()
-                                .fluid(zFluidTags.SULFURIC_ACID, 25)
+                                .fluid(zFluidTags.SULFURIC_ACID, 250)
                                 .input(zItems.DEPLETED_THORIUM_PELLET)
                                 .addResult(zItems.THORIUM_FRAGMENT, 0.75f)
                                 .addResult(zItems.THORIUM_FRAGMENT, 0.5f)
@@ -1355,7 +1355,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 RockCrusherRecipeBuilder.of()
-                                .fluid(zFluidTags.SULFURIC_ACID, 25)
+                                .fluid(zFluidTags.SULFURIC_ACID, 250)
                                 .input(zItems.DEPLETED_PLUTONIUM_PELLET)
                                 .addResult(zItems.PLUTONIUM_FRAGMENT, 0.75f)
                                 .addResult(zItems.PLUTONIUM_FRAGMENT, 0.5f)
@@ -1365,7 +1365,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 RockCrusherRecipeBuilder.of()
-                                .fluid(zFluidTags.SULFURIC_ACID, 25)
+                                .fluid(zFluidTags.SULFURIC_ACID, 250)
                                 .input(zItems.DEPLETED_NEPTUNIUM_PELLET)
                                 .addResult(zItems.NEPTUNIUM_FRAGMENT, 0.75f)
                                 .addResult(zItems.NEPTUNIUM_FRAGMENT, 0.5f)
@@ -1375,7 +1375,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 RockCrusherRecipeBuilder.of()
-                                .fluid(zFluidTags.SULFURIC_ACID, 25)
+                                .fluid(zFluidTags.SULFURIC_ACID, 250)
                                 .input(zItems.DEPLETED_AMERICIUM_PELLET)
                                 .addResult(zItems.AMERICIUM_FRAGMENT, 0.75f)
                                 .addResult(zItems.AMERICIUM_FRAGMENT, 0.5f)
@@ -1385,7 +1385,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 RockCrusherRecipeBuilder.of()
-                                .fluid(zFluidTags.SULFURIC_ACID, 25)
+                                .fluid(zFluidTags.SULFURIC_ACID, 250)
                                 .input(zItems.DEPLETED_BERKELIUM_PELLET)
                                 .addResult(zItems.BERKELIUM_FRAGMENT, 0.75f)
                                 .addResult(zItems.BERKELIUM_FRAGMENT, 0.5f)
@@ -1399,6 +1399,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(zItems.DEPLETED_CURIUM_PELLET)
                                 .addResult(zItems.CURIUM_FRAGMENT, 0.75f)
                                 .addResult(zItems.CURIUM_FRAGMENT, 0.5f)
+                                .addResult(zItems.CALIFORNIUM_FRAGMENT, 0.05f)
                                 .addResult(zItems.BERKELIUM_FRAGMENT, 0.05f)
                                 .unlockedBy()
                                 .save(c);
