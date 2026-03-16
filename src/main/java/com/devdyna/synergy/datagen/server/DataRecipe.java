@@ -1395,7 +1395,17 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 RockCrusherRecipeBuilder.of()
-                                .fluid(zFluidTags.SULFURIC_ACID, 25)
+                                .fluid(zFluidTags.SULFURIC_ACID, 250)
+                                .input(zItems.DEPLETED_CALIFORNIUM_PELLET)
+                                .addResult(zItems.CALIFORNIUM_FRAGMENT, 0.75f)
+                                .addResult(zItems.CALIFORNIUM_FRAGMENT, 0.5f)
+                                .addResult(zItems.CURIUM_FRAGMENT, 0.25f)
+                                .addResult(zItems.CURIUM_FRAGMENT, 0.05f)
+                                .unlockedBy()
+                                .save(c);
+
+                RockCrusherRecipeBuilder.of()
+                                .fluid(zFluidTags.SULFURIC_ACID, 250)
                                 .input(zItems.DEPLETED_CURIUM_PELLET)
                                 .addResult(zItems.CURIUM_FRAGMENT, 0.75f)
                                 .addResult(zItems.CURIUM_FRAGMENT, 0.5f)
