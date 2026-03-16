@@ -2694,11 +2694,13 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 x.item(zItems.GHOUL_HEART),
                                 0.25f);
 
-                ItemUseBuilder.of()
-                                .inputItem(zItems.MAGIC_DUST)
-                                .inputBlock(Blocks.OBSERVER)
-                                .outputBlock(zBlocks.ENTITY_WATCHER)
-                                .unlockedBy().save(c);
+                UrnRitualBuilder.of()
+                                .add(Items.OBSERVER)
+                                .add(Items.ENDER_EYE)
+                                .add(zItems.MAGIC_DUST)
+                                .output(zBlocks.ENTITY_WATCHER.get())
+                                .unlockedBy()
+                                .save(c);
 
         }
 
