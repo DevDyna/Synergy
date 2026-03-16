@@ -1330,6 +1330,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 cross(c, zItems.THORIUM_PELLET.get(), zItems.THORIUM_FRAGMENT.get(), zItemTag.DUST_SULFUR);
                 cross(c, zItems.PLUTONIUM_PELLET.get(), zItems.PLUTONIUM_FRAGMENT.get(), zItemTag.DUST_SULFUR);
                 cross(c, zItems.NEPTUNIUM_PELLET.get(), zItems.NEPTUNIUM_FRAGMENT.get(), zItemTag.DUST_SULFUR);
+                cross(c, zItems.CALIFORNIUM_PELLET.get(), zItems.CALIFORNIUM_FRAGMENT.get(), zItemTag.DUST_SULFUR);
                 cross(c, zItems.AMERICIUM_PELLET.get(), zItems.AMERICIUM_FRAGMENT.get(), zItemTag.DUST_SULFUR);
                 cross(c, zItems.BERKELIUM_PELLET.get(), zItems.BERKELIUM_FRAGMENT.get(), zItemTag.DUST_SULFUR);
                 cross(c, zItems.CURIUM_PELLET.get(), zItems.CURIUM_FRAGMENT.get(), zItemTag.DUST_SULFUR);
