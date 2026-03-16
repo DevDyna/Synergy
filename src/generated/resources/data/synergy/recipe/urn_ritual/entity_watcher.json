@@ -1,0 +1,21 @@
+{
+  "type": "synergy:urn",
+  "ingredients": [
+    {
+      "count": 1,
+      "item": "minecraft:observer"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:ender_eye"
+    },
+    {
+      "count": 1,
+      "item": "synergy:magic_dust"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:entity_watcher"
+  }
+}

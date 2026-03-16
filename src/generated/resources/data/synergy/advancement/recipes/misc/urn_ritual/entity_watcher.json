@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:item_use/entity_watcher_from_observer"
+        "recipe": "synergy:urn_ritual/entity_watcher"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -19,7 +19,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:item_use/entity_watcher_from_observer"
+      "synergy:urn_ritual/entity_watcher"
     ]
   }
 }
