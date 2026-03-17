@@ -259,5 +259,9 @@ public class zItemTag {
        
         public static final TagKey<Item> IRONWOOD_LOGS = Material.tagItem("ironwood_logs");
         public static final TagKey<Item> ENTITY_WATCHER_TWEAK = Material.tagItem("entity_watcher_tweak");
+      
+        public static final TagKey<Item> BATTERIES = Material.tagItem("batteries");
+      
+        public static final TagKey<Item> DRYING_RACKS = Material.tagItem("drying_racks");
 
 }
