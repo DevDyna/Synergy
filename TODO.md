@@ -54,7 +54,7 @@
 
 - [ ] chopper jade?
 
-- [ ] hexadecimal negative redstone signal
+- [x] hexadecimal negative redstone signal
 
 ## PRIORITIES
 
