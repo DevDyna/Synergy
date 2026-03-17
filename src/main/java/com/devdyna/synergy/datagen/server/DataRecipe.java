@@ -1389,7 +1389,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(zItems.DEPLETED_BERKELIUM_PELLET)
                                 .addResult(zItems.BERKELIUM_FRAGMENT, 0.75f)
                                 .addResult(zItems.BERKELIUM_FRAGMENT, 0.5f)
-                                .addResult(zItems.CURIUM_FRAGMENT, 0.25f)
+                                .addResult(zItems.CALIFORNIUM_FRAGMENT, 0.25f)
                                 .addResult(zItems.AMERICIUM_FRAGMENT, 0.05f)
                                 .unlockedBy()
                                 .save(c);
@@ -1409,8 +1409,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(zItems.DEPLETED_CURIUM_PELLET)
                                 .addResult(zItems.CURIUM_FRAGMENT, 0.75f)
                                 .addResult(zItems.CURIUM_FRAGMENT, 0.5f)
-                                .addResult(zItems.CALIFORNIUM_FRAGMENT, 0.05f)
-                                .addResult(zItems.BERKELIUM_FRAGMENT, 0.05f)
+                                .addResult(zItems.CALIFORNIUM_FRAGMENT, 0.15f)
                                 .unlockedBy()
                                 .save(c);
 
