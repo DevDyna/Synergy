@@ -54,6 +54,8 @@
 
 - [ ] chopper jade?
 
+- [ ] hexadecimal negative redstone signal
+
 ## PRIORITIES
 
 - [x] extra mobdrops to mob drops
