@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
+import com.devdyna.synergy.api.utils.ColorUtil;
 import com.devdyna.synergy.init.types.zItemTag;
 
 import net.minecraft.core.BlockPos;
@@ -35,6 +36,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import java.awt.Color;
 
 @SuppressWarnings("null")
 public class EntityWatcherBlock extends TickingBlock {
@@ -118,6 +120,18 @@ public class EntityWatcherBlock extends TickingBlock {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context,
             List<Component> tooltip, TooltipFlag flag) {
+
+        tooltip.clear();
+
+        int color = Color.CYAN.getRGB();
+        if (context.level() != null) {
+            color = ColorUtil.pulseColor(
+                    context.level(),
+                    Color.CYAN.getRGB(),
+                    Color.YELLOW.getRGB());
+        }
+
+        tooltip.add(0, Component.translatable(this.getDescriptionId()).withColor(color));
         tooltip.add(Component.translatable(ID + "." + zStatic.Blocks.entity_watcher));
     }
 
