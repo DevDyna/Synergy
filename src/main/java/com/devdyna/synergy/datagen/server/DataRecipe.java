@@ -2707,7 +2707,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 0.25f);
 
                 UrnRitualBuilder.of()
-                                .add(Items.OBSERVER)
+                                .add(Items.SCULK_SENSOR)
                                 .add(Items.ENDER_EYE)
                                 .add(zItems.MAGIC_DUST)
                                 .output(zBlocks.ENTITY_WATCHER.get())
