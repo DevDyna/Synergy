@@ -307,7 +307,7 @@ public class DataLang extends LanguageProvider {
 
                 addItem(zItems.CAKE_STICK, "The Cake Stick");
 
-                add(Main.ID + "." + zStatic.Blocks.inverted_repeater, TIP_COLOR + "Configurable NOT gate");
+                add(Main.ID + "." + zStatic.Blocks.inverted_repeater, TIP_COLOR + "Configurable hexadecimal NOT gate");
                 add(Main.ID + "." + zStatic.Blocks.recursive_repeater, TIP_COLOR + "Configurable timer");
                 add(Main.ID + "." + zStatic.Blocks.pulse_repeater, TIP_COLOR + "Configurable pulse converter");
 
