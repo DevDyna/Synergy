@@ -82,8 +82,12 @@ public class InvertedRepeater extends DiodeBlock {
 
     @Override
     protected boolean shouldTurnOn(Level level, BlockPos pos, BlockState state) {
-        return !(getInputSignal(level, pos, state) > 0);
+        return 15 -  getInputSignal(level, pos, state) != 0;
+    }
 
+    @Override
+    protected int getOutputSignal(BlockGetter level, BlockPos pos, BlockState state) {
+        return 15 - getInputSignal((Level) level, pos, state);
     }
 
     @Override
