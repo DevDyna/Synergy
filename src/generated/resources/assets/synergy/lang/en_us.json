@@ -655,7 +655,7 @@
   "synergy.healer": "§7Heal and remove fire effect at all entities above it",
   "synergy.heat": "Heat: ",
   "synergy.hematite.tip": "§7High concentration of iron",
-  "synergy.inverted_repeater": "§7Configurable NOT gate",
+  "synergy.inverted_repeater": "§7Configurable hexadecimal NOT gate",
   "synergy.jade.bricks.dried": "Drying stage: §aMature",
   "synergy.jade.bricks.stage": "Drying stage: %s",
   "synergy.jade.bricks.wet": "§cDrying conditions don't match!",
