@@ -32,7 +32,7 @@
 
 - [ ] ponder plugin?
 
-- [x] sap & rubber recipe
+- [ ] tree fluid extractor(?)
 
 - [ ] rework batteries
 
@@ -46,26 +46,14 @@
 
 - [ ] chopper desync client when insered battery on fuel slot
 
-- [ ] rework serializers to be unified with recipetype and use RecipeUtils.optionalCodec() when optional
-
-- [x] implement fluid upgrades
+- [ ] rework serializers to be unified with recipetype
+      and use RecipeUtils.optionalCodec() when optional
 
 - [ ] patina usage
 
 - [ ] chopper jade?
 
-- [x] hexadecimal negative redstone signal
-
 ## PRIORITIES
-
-- [x] extra mobdrops to mob drops
-
-- [x] fossil usage
-
-- [x] aquamarine -> underground block cluster
-
-- [x] chopper slots need to change when item isn't empty to blank
-- [x] chopper configs
 
 ### Survival expansion
 
@@ -90,7 +78,7 @@
 - [ ] Experience Lily
 
 - [ ] weed crop plant (unwanted plant) -> farmland spreaddable crop -> fibers(?)
--> convert dirt to grass like ic2?
+      -> convert dirt to grass like ic2?
 
 - [ ] Truffles
 
