@@ -3,6 +3,7 @@ package com.devdyna.synergy.datagen.server;
 import java.util.concurrent.CompletableFuture;
 
 import com.devdyna.synergy.Main;
+import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.ArrayUtils;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
@@ -396,6 +397,13 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.ENTITY_WATCHER_TWEAK)
                                 .add(Items.REDSTONE_TORCH);
+
+                tag(zItemTag.BATTERIES)
+                                .add(zItems.GREEN_BATTERY.get(), zItems.BLUE_BATTERY.get(), zItems.RED_BATTERY.get());
+
+                tag(zItemTag.DRYING_RACKS)
+                                .add(zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get).map(Block::asItem)
+                                                .toArray(Item[]::new));
 
         }
 
