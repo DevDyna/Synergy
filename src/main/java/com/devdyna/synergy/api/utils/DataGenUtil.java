@@ -3,17 +3,27 @@ package com.devdyna.synergy.api.utils;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
+import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.datagen.server.DataGlobalLootModifier;
-
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.AdvancementRequirements;
+import net.minecraft.advancements.AdvancementType;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.advancements.AdvancementSubProvider;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -42,14 +52,15 @@ public class DataGenUtil {
     public static String ITEM = mc + "item/generated";
     private static String mod = ID + ":";
 
-
     public static ItemModelBuilder itemTool(Item item, ItemModelProvider b) {
         return itemModel(item, b, "", x.path(item), TOOL);
     }
-    public static ItemModelBuilder itemTool(Item item, ItemModelProvider b,String pathSuffix) {
+
+    public static ItemModelBuilder itemTool(Item item, ItemModelProvider b, String pathSuffix) {
         return itemModel(item, b, pathSuffix, x.path(item), TOOL);
     }
-    public static ItemModelBuilder itemTool(Item item, ItemModelProvider b,String pathSuffix, String itemPath) {
+
+    public static ItemModelBuilder itemTool(Item item, ItemModelProvider b, String pathSuffix, String itemPath) {
         return itemModel(item, b, pathSuffix, itemPath, TOOL);
     }
 
@@ -234,6 +245,46 @@ public class DataGenUtil {
                     return Stream.empty();
                 })
                 .toArray(Item[]::new);
+    }
+
+    public static Advancement.Builder getExistingParent(AdvancementHolder parent, ItemLike icon, String t,
+            AdvancementType type, boolean showToast, boolean announceToChat, boolean hidden) {
+        return Advancement.Builder.advancement().parent(parent).display(icon,
+                Component.translatable(ID + ".advancement.branch." + t),
+                Component.translatable(ID + ".advancement.branch." + t + ".desc"),
+                null, type, showToast, announceToChat, hidden);
+    }
+
+    public static Advancement.Builder getExistingParent(String parent, ItemLike icon, String t,
+            AdvancementType type, boolean showToast, boolean announceToChat, boolean hidden) {
+        return getExistingParent(AdvancementSubProvider.createPlaceholder(parent), icon, t, type, showToast,
+                announceToChat, hidden);
+    }
+
+    public static AdvancementHolder machineAdvancement(AdvancementHolder p, Consumer<AdvancementHolder> c,
+            MachineType<?, ?, ?, ?> machine) {
+        return DataGenUtil
+                .getExistingParent(p, machine.block().get(),
+                        machine.id(),
+                        AdvancementType.TASK, true, true, false)
+                .addCriterion("craft_" + machine.id(),
+                        InventoryChangeTrigger.TriggerInstance
+                                .hasItems(machine.block().get()))
+                .requirements(AdvancementRequirements.allOf(List.of("craft_" + machine.id())))
+                .save(c, ID + ":main/steel/" + machine.id());
+    }
+
+    public static AdvancementHolder fuelpelletAdvancement(AdvancementHolder p, Consumer<AdvancementHolder> c,
+            Item i, String id, boolean isfinal) {
+        return DataGenUtil
+                .getExistingParent(p, i,
+                        id,
+                        (isfinal ? AdvancementType.CHALLENGE : AdvancementType.GOAL), true, true, false)
+                .addCriterion("craft_" + id,
+                        InventoryChangeTrigger.TriggerInstance
+                                .hasItems(i))
+                .requirements(AdvancementRequirements.allOf(List.of("craft_" + id)))
+                .save(c, ID + ":main/steel/" + id);
     }
 
 }

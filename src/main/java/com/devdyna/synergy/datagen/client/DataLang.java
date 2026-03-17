@@ -533,13 +533,125 @@ public class DataLang extends LanguageProvider {
                                         "Lingering Potion of " + named(i));
                 });
 
-                add(ID + "." + zStatic.Blocks.entity_watcher, TIP_COLOR + "A strange eye that want look any near entities");
+                add(ID + "." + zStatic.Blocks.entity_watcher,
+                                TIP_COLOR + "A strange eye that want look any near entities");
 
                 add(ID + "." + zStatic.Blocks.entity_watcher + ".tweak",
                                 TIP_COLOR + "Right click to a Entity Watcher to change the Entity Mode filter");
 
                 add(ID + ".jade.watcher_mode.player_only", "Mode Filter: §aNearest player");
                 add(ID + ".jade.watcher_mode.not_player", "Mode Filter: §aNearest living entity not player");
+
+                add(ID + ".advancement.root.wrought_iron", "Simplify what you desire");
+                add(ID + ".advancement.root.wrought_iron.desc", "The time isn't a reason to define complexity");
+                add(ID + ".advancement.root.steel", "Simplify to another level");
+                add(ID + ".advancement.root.steel.desc", "Exponential potential");
+                add(ID + ".advancement.root.magic", "Thinking as a wizard");
+                add(ID + ".advancement.root.magic.desc", "Not Forge Energy Based");
+
+                advKey(zStatic.ResourceMaterial.wrought_iron, "One shade of gray",
+                                "Combine some carbon dust with an iron ingot");
+                advKey(zStatic.ResourceMaterial.steel, "Steel!", "Smelt on a blast furnace a wrought iron ingot");
+
+                advKey("ironberries", "IronBerry Expert 2.0 when?", "Obtain some ironberries from an IronWood Tree");
+                advKey(zStatic.Items.wooden_crook, "More from less",
+                                "Craft a wooden crook to obtain more leaves drops");
+                advKey("mushrooms", "Beta Infestation!",
+                                "Obtain some mushroom spores , keep in mind that they can spread very quickly!");
+                advKey(zStatic.Items.cake_stick, "The cake is(n't) a lie!", "The Cake stick is right!");
+
+                advKey(zStatic.Blocks.quern, "It spin!", "Craft a quern to process resources into dusts");
+                advKey(zStatic.Blocks.crushing_tub, "Crushing time",
+                                "Craft a crushing tub to obtain a early way to produce iron");
+                advKey(zStatic.Blocks.evaporation_basin, "Drying fluids",
+                                "Craft a evaporation basin to dry fluids using the sun");
+                advKey(zStatic.Blocks.drying_rack, "Drying with style", "Craft any drying rack to dry items");
+
+                advKey(zStatic.ResourceMaterial.aquamarine, "Well yes but actually no", "Obtain some aquamarine");
+                advKey(zStatic.PipeStuff.pipe, "Back to 2014", "Craft some pipes and have fun with nostalgia");
+                advKey(zStatic.ResourceMaterial.sulfur, "This isn't gunpowder!", "Obtain some sulfur");
+
+                advKey(zStatic.Items.chisel, "StoneCutter on a Stick",
+                                "Craft a chisel to craft in-world stonecutting recipes");
+                advKey(zStatic.Items.soldering_gun, "No limits",
+                                "Craft a soldering gun to extend AOE of any compatible machine");
+                advKey(zStatic.Items.configurator, "Let me see!",
+                                "Craft a configurator to show AOE of any compatible machine");
+
+                advKey(zStatic.Blocks.chopper, "Not a progressive automation",
+                                "Craft a Tree chopper to fully automate wood gathering");
+                advKey(zStatic.Blocks.router, "Diamonds aren't filters", "Craft a Router to filter items using pipes");
+                advKey(zStatic.Blocks.foundry, "Better than Productive Metalwork",
+                                "Craft a foundry to melt items into fluids");
+
+                advKey(zStatic.ResourceGenerators.CobbleStone.simple, "Chobblesome!",
+                                "Craft a cobblestone generator to collect a passive amount of cobblestone");
+                advKey(zStatic.ResourceGenerators.CobbleStone.advanced, "I want more cobblestone!",
+                                "Upgrade your cobblestone generator to obtain more cobblestone");
+                advKey(zStatic.ResourceGenerators.CobbleStone.elite, "I want MORE cobblestone!",
+                                "Upgrade your cobblestone generator to obtain MORE cobblestone");
+
+                advKey(zStatic.ResourceGenerators.Water.simple, "Watermon",
+                                "Craft a water collector to collect a passive amount of water");
+                advKey(zStatic.ResourceGenerators.Water.advanced, "I want MORE water!",
+                                "Upgrade your water collector to obtain more water");
+                advKey(zStatic.ResourceGenerators.Water.elite, "I want MORE water!",
+                                "Upgrade your water collector to obtain MORE water");
+
+                advKey(zStatic.Blocks.urn, "Dark brick pot with inside parts of monsters",
+                                "Craft an urn to craft more magic blocks");
+                advKey(zStatic.Blocks.void_box, "Hungry chest", "Craft a void box to delete anything you don't want");
+                advKey(zStatic.Blocks.logic_box, "Red Green but not Blue!", "Craft a logic box to filter input items");
+                advKey(zStatic.Blocks.entity_watcher, "A harmless and curious floating eye",
+                                "Craft an entity watcher to detect any entity near to you like a security camera!");
+
+                advKey("battery", "Transfer energy around the world",
+                                "Craft some batteries to hand-transfer energy across blocks");
+
+                advKey(zStatic.Blocks.solar_panel, "Sun is the source", "Craft a solar panel to produce Forge Energy");
+                advKey(zStatic.Blocks.sprinkler, "Watering can mentioned!",
+                                "Craft a sprinkler to speed up crop growing");
+                advKey(zStatic.Blocks.harvester, "Harvest anything you want",
+                                "Craft an harvester to harvest trees , crops and any other growable plant");
+
+                advKey(zStatic.Lazers.machine_gun, "Beam!",
+                                "Craft a laser machine gun to create a colourful laser track");
+                advKey(zStatic.Lazers.mirror, "Mirrors and Levers", "Craft some laser mirrors to rotate a laser track");
+                advKey(zStatic.Lazers.rotor, "You spin me round",
+                                "Craft a laser rotor to generate huge amounts of energy every time the same laser machine gun hit all of four faces of it");
+
+                advKey(zStatic.DecorativeBlocks.MachineFrame.basic, "Industrial machines",
+                                "Craft a basic machine frame");
+                advKey(zStatic.DecorativeBlocks.MachineFrame.advanced, "Nuclear machines",
+                                "Craft an advanced machine frame");
+
+                advKey(zStatic.ReactorStuff.controller, "Wireless Puzzle",
+                                "Craft a Quantum Reactor Controller , the core of any quantum reactor controller multiblock structure");
+                advKey(zStatic.ReactorStuff.fuel_cell, "The tricky part", "Craft a Quantum Reactor Fuel Cell");
+                advKey(zStatic.ReactorStuff.moderator, "Improve your work",
+                                "Craft any Moderator to improve fuel cell efficiency");
+                advKey(zStatic.ReactorStuff.cooler, "Reduce what could gone wrong",
+                                "Craft any Cooler to reduce the Heating generated");
+
+                advKey(zStatic.Machines.alloy_smelter, "Mix stuff", "Craft an alloy smelter");
+                advKey(zStatic.Machines.casting_factory, "Cool it down!", "Craft a casting factory");
+                advKey(zStatic.Machines.compressor, "Don't put your finger here!", "Craft a compressor");
+                advKey(zStatic.Machines.electric_furnace, "Not an Iron Furnace", "Craft an electric furnace");
+                advKey(zStatic.Machines.extractor, "Extract the essential", "Craft an extractor");
+                advKey(zStatic.Machines.macerator, "Crush into dusts", "Craft a macerator to process items into dusts");
+                advKey(zStatic.Machines.melter, "High temperatures", "Craft an electric melter");
+                advKey(zStatic.Machines.rock_crusher, "Rock 'n' Roll", "Craft a rock crusher");
+
+                advKey(zStatic.ResourceMaterial.plastic, "Plastic Fantastic", "Craft some plastic");
+
+                advKey(zStatic.ResourceMaterial.uranium, "Also called U235", "Craft an uranium pellet");
+                advKey(zStatic.ResourceMaterial.thorium, "Not lightning related", "Craft a thorium pellet");
+                advKey(zStatic.ResourceMaterial.plutonium, "We can't forget it", "Craft a plutonium pellet");
+                advKey(zStatic.ResourceMaterial.neptunium, "Same of Atlantis", "Craft a neptunium pellet");
+                advKey(zStatic.ResourceMaterial.americium, "Before Christopher Columbus", "Craft an americium pellet");
+                advKey(zStatic.ResourceMaterial.berkelium, "Berkel!", "Craft a berkelium pellet");
+                advKey(zStatic.ResourceMaterial.californium, "Eagles Success", "Craft a californium pellet");
+                advKey(zStatic.ResourceMaterial.curium, "Curiosity", "Craft a curium pellet");
 
         }
 
@@ -554,6 +666,11 @@ public class DataLang extends LanguageProvider {
                         }
                 }
                 return result.toString().trim();
+        }
+
+        private void advKey(String k, String title, String desc) {
+                add(ID + ".advancement.branch." + k, title);
+                add(ID + ".advancement.branch." + k + ".desc", desc);
         }
 
 }
