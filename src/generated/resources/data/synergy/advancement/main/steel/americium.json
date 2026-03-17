@@ -1,0 +1,34 @@
+{
+  "parent": "synergy:main/steel/neptunium",
+  "criteria": {
+    "craft_americium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:americium_pellet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.americium.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "synergy:americium_pellet"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.americium"
+    }
+  },
+  "requirements": [
+    [
+      "craft_americium"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

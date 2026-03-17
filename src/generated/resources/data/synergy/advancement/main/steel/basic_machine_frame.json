@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/root",
+  "criteria": {
+    "craft_basic_machine_frame": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:basic_machine_frame"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.basic_machine_frame.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:basic_machine_frame"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.basic_machine_frame"
+    }
+  },
+  "requirements": [
+    [
+      "craft_basic_machine_frame"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

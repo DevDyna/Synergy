@@ -1,0 +1,34 @@
+{
+  "parent": "synergy:main/steel/fuel_cell",
+  "criteria": {
+    "craft_uranium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:uranium_pellet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.uranium.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "synergy:uranium_pellet"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.uranium"
+    }
+  },
+  "requirements": [
+    [
+      "craft_uranium"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

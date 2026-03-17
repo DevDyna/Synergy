@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/quantum_reactor_controller",
+  "criteria": {
+    "craft_fuel_cell": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:fuel_cell"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.fuel_cell.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:fuel_cell"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.fuel_cell"
+    }
+  },
+  "requirements": [
+    [
+      "craft_fuel_cell"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

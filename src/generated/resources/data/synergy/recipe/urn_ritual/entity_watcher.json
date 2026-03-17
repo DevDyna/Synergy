@@ -3,7 +3,7 @@
   "ingredients": [
     {
       "count": 1,
-      "item": "minecraft:observer"
+      "item": "minecraft:sculk_sensor"
     },
     {
       "count": 1,

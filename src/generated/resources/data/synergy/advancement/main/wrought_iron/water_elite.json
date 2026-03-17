@@ -1,0 +1,37 @@
+{
+  "parent": "synergy:main/wrought_iron/water_advanced",
+  "criteria": {
+    "craft_water_elite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:elite_water_collector"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.elite_water_collector.desc"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "synergy:elite_water_collector"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.elite_water_collector"
+    }
+  },
+  "requirements": [
+    [
+      "craft_water_elite"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}

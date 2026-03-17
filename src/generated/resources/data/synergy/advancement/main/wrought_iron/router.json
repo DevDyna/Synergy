@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/wrought_iron/root",
+  "criteria": {
+    "craft_router": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:router"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.router.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:router"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.router"
+    }
+  },
+  "requirements": [
+    [
+      "craft_router"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

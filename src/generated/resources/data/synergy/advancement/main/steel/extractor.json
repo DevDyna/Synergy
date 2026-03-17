@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/basic_machine_frame",
+  "criteria": {
+    "craft_extractor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:extractor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.extractor.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:extractor"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.extractor"
+    }
+  },
+  "requirements": [
+    [
+      "craft_extractor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/basic_machine_frame",
+  "criteria": {
+    "craft_compressor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:compressor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.compressor.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:compressor"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.compressor"
+    }
+  },
+  "requirements": [
+    [
+      "craft_compressor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

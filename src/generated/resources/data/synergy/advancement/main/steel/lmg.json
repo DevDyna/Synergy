@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/root",
+  "criteria": {
+    "craft_lmg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:laser_machine_gun"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.laser_machine_gun.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:laser_machine_gun"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.laser_machine_gun"
+    }
+  },
+  "requirements": [
+    [
+      "craft_lmg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

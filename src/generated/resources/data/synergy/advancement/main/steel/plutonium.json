@@ -1,0 +1,34 @@
+{
+  "parent": "synergy:main/steel/thorium",
+  "criteria": {
+    "craft_plutonium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:plutonium_pellet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.plutonium.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "synergy:plutonium_pellet"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.plutonium"
+    }
+  },
+  "requirements": [
+    [
+      "craft_plutonium"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/smelt_iron",
+  "criteria": {
+    "craft_wrought_iron": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:wrought_iron_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.wrought_iron.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:wrought_iron_ingot"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.wrought_iron"
+    }
+  },
+  "requirements": [
+    [
+      "craft_wrought_iron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

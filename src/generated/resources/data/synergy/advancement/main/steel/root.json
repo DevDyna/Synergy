@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "correct_way_to_coke_iron": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:steel_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "synergy:textures/block/decorative/steel_block.png",
+    "description": {
+      "translate": "synergy.advancement.root.steel.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:steel_ingot"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "synergy.advancement.root.steel"
+    }
+  },
+  "requirements": [
+    [
+      "correct_way_to_coke_iron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

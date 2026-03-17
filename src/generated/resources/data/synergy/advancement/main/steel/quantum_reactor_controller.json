@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/advanced_machine_frame",
+  "criteria": {
+    "craft_qrc": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:quantum_reactor_controller"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.quantum_reactor_controller.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:quantum_reactor_controller"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.quantum_reactor_controller"
+    }
+  },
+  "requirements": [
+    [
+      "craft_qrc"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

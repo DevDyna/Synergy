@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "obtain_mushrooms": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#synergy:mushroom/seed"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.mushrooms.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:blue_cup_pod"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.mushrooms"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_mushrooms"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

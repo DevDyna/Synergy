@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "craft_soldering_gun": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:soldering_gun"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.soldering_gun.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:soldering_gun"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.soldering_gun"
+    }
+  },
+  "requirements": [
+    [
+      "craft_soldering_gun"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

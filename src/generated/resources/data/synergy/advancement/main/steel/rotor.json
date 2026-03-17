@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/mirror",
+  "criteria": {
+    "craft_rotor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:laser_rotor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.laser_rotor.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:laser_rotor"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.laser_rotor"
+    }
+  },
+  "requirements": [
+    [
+      "craft_rotor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

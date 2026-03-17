@@ -1,0 +1,37 @@
+{
+  "parent": "synergy:main/wrought_iron/cobble_advanced",
+  "criteria": {
+    "craft_cobble_elite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:elite_cobblestone_generator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.elite_cobblestone_generator.desc"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "synergy:elite_cobblestone_generator"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.elite_cobblestone_generator"
+    }
+  },
+  "requirements": [
+    [
+      "craft_cobble_elite"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}

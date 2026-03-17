@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/magic/urn",
+  "criteria": {
+    "craft_void_box": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:void_box"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.void_box.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:void_box"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.void_box"
+    }
+  },
+  "requirements": [
+    [
+      "craft_void_box"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

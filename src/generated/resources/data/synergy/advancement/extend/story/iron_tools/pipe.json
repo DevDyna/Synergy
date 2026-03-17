@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "craft_pipe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:pipe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.pipe.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:pipe"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.pipe"
+    }
+  },
+  "requirements": [
+    [
+      "craft_pipe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

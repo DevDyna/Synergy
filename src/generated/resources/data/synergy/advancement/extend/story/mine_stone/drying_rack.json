@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/mine_stone",
+  "criteria": {
+    "craft_drying_rack": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#synergy:drying_racks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.drying_rack.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:bamboo_drying_rack"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.drying_rack"
+    }
+  },
+  "requirements": [
+    [
+      "craft_drying_rack"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

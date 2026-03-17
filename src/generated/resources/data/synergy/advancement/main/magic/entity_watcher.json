@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/magic/urn",
+  "criteria": {
+    "craft_entity_watcher": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:entity_watcher"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.entity_watcher.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:entity_watcher"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.entity_watcher"
+    }
+  },
+  "requirements": [
+    [
+      "craft_entity_watcher"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

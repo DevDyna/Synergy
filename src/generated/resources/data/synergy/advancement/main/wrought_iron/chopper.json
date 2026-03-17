@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/wrought_iron/root",
+  "criteria": {
+    "craft_chopper": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:tree_chopper"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.tree_chopper.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:tree_chopper"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.tree_chopper"
+    }
+  },
+  "requirements": [
+    [
+      "craft_chopper"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

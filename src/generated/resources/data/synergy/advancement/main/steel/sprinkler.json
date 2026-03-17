@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/batteries",
+  "criteria": {
+    "craft_sprinkler": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:sprinkler"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.sprinkler.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:sprinkler"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.sprinkler"
+    }
+  },
+  "requirements": [
+    [
+      "craft_sprinkler"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

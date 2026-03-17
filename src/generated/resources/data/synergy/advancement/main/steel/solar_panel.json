@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/batteries",
+  "criteria": {
+    "craft_solar_panel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:solar_panel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.solar_panel.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:solar_panel"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.solar_panel"
+    }
+  },
+  "requirements": [
+    [
+      "craft_solar_panel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

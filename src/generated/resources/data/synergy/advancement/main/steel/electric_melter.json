@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/basic_machine_frame",
+  "criteria": {
+    "craft_electric_melter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:electric_melter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.electric_melter.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:electric_melter"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.electric_melter"
+    }
+  },
+  "requirements": [
+    [
+      "craft_electric_melter"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

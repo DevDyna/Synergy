@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_californium_fragment": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:californium_fragment"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:californium_pellet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_californium_fragment"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:californium_pellet"
+    ]
+  }
+}

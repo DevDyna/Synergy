@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/basic_machine_frame",
+  "criteria": {
+    "craft_casting_factory": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:casting_factory"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.casting_factory.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:casting_factory"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.casting_factory"
+    }
+  },
+  "requirements": [
+    [
+      "craft_casting_factory"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

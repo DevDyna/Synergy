@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "craft_chisel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:chisel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.chisel.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:chisel"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.chisel"
+    }
+  },
+  "requirements": [
+    [
+      "craft_chisel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

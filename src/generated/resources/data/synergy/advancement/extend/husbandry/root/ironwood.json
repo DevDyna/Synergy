@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "obtain_ironwood": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:ironwood_sapling"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.ironberries.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:ironberries"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.ironberries"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_ironwood"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/basic_machine_frame",
+  "criteria": {
+    "craft_alloy_smelter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:alloy_smelter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.alloy_smelter.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:alloy_smelter"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.alloy_smelter"
+    }
+  },
+  "requirements": [
+    [
+      "craft_alloy_smelter"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

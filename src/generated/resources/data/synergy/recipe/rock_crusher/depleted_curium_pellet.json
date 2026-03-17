@@ -2,7 +2,7 @@
   "type": "synergy:machine/rock_crusher",
   "energy": 1500,
   "input_fluid": {
-    "amount": 25,
+    "amount": 250,
     "tag": "c:sulfuric_acid"
   },
   "input_item": {
@@ -25,10 +25,10 @@
       }
     },
     {
-      "chance": 0.05,
+      "chance": 0.15,
       "item": {
         "count": 1,
-        "id": "synergy:berkelium_fragment"
+        "id": "synergy:californium_fragment"
       }
     }
   ],

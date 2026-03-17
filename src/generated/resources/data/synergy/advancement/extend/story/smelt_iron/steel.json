@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:extend/story/smelt_iron/wrought_iron",
+  "criteria": {
+    "craft_steel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:steel_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.steel.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:steel_ingot"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.steel"
+    }
+  },
+  "requirements": [
+    [
+      "craft_steel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

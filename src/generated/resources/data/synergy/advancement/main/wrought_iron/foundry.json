@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/wrought_iron/root",
+  "criteria": {
+    "craft_foundry": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:foundry"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.foundry.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:foundry"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.foundry"
+    }
+  },
+  "requirements": [
+    [
+      "craft_foundry"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

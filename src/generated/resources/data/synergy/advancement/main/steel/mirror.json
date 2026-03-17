@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/lmg",
+  "criteria": {
+    "craft_mirror": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:laser_mirror"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.laser_mirror.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:laser_mirror"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.laser_mirror"
+    }
+  },
+  "requirements": [
+    [
+      "craft_mirror"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/basic_machine_frame",
+  "criteria": {
+    "craft_macerator": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:macerator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.macerator.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:macerator"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.macerator"
+    }
+  },
+  "requirements": [
+    [
+      "craft_macerator"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

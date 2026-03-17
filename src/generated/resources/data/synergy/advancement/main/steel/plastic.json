@@ -1,0 +1,37 @@
+{
+  "parent": "synergy:main/steel/casting_factory",
+  "criteria": {
+    "craft_plastic": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:plastic"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.plastic.desc"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "synergy:plastic"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.plastic"
+    }
+  },
+  "requirements": [
+    [
+      "craft_plastic"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}

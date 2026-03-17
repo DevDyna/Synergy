@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/basic_machine_frame",
+  "criteria": {
+    "craft_harvester": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:harvester"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.harvester.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:harvester"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.harvester"
+    }
+  },
+  "requirements": [
+    [
+      "craft_harvester"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

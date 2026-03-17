@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "obtain_sulfur": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:sulfur_dust"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.sulfur.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:sulfur_dust"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.sulfur"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_sulfur"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

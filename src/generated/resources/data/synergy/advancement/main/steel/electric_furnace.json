@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/basic_machine_frame",
+  "criteria": {
+    "craft_electric_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:electric_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.electric_furnace.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:electric_furnace"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.electric_furnace"
+    }
+  },
+  "requirements": [
+    [
+      "craft_electric_furnace"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

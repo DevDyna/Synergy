@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "craft_crook": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:wooden_crook"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.wooden_crook.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:wooden_crook"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.wooden_crook"
+    }
+  },
+  "requirements": [
+    [
+      "craft_crook"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

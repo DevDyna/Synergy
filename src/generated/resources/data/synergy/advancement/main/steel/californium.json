@@ -1,0 +1,34 @@
+{
+  "parent": "synergy:main/steel/berkelium",
+  "criteria": {
+    "craft_californium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:californium_pellet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.californium.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "synergy:californium_pellet"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.californium"
+    }
+  },
+  "requirements": [
+    [
+      "craft_californium"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

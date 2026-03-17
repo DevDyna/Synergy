@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/quantum_reactor_controller",
+  "criteria": {
+    "craft_moderators": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#synergy:moderator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.moderator.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:simple_moderator"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.moderator"
+    }
+  },
+  "requirements": [
+    [
+      "craft_moderators"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/mine_stone",
+  "criteria": {
+    "craft_evap_tub": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:evaporation_basin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.evaporation_basin.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:evaporation_basin"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.evaporation_basin"
+    }
+  },
+  "requirements": [
+    [
+      "craft_evap_tub"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

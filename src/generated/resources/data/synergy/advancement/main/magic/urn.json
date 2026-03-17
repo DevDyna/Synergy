@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/magic/root",
+  "criteria": {
+    "craft_urn": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:urn"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.urn.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:urn"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.urn"
+    }
+  },
+  "requirements": [
+    [
+      "craft_urn"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

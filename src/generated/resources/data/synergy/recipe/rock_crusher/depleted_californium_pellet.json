@@ -7,35 +7,35 @@
   },
   "input_item": {
     "count": 1,
-    "item": "synergy:depleted_berkelium_pellet"
+    "item": "synergy:depleted_californium_pellet"
   },
   "result": [
     {
       "chance": 0.75,
       "item": {
         "count": 1,
-        "id": "synergy:berkelium_fragment"
+        "id": "synergy:californium_fragment"
       }
     },
     {
       "chance": 0.5,
       "item": {
         "count": 1,
-        "id": "synergy:berkelium_fragment"
+        "id": "synergy:californium_fragment"
       }
     },
     {
       "chance": 0.25,
       "item": {
         "count": 1,
-        "id": "synergy:californium_fragment"
+        "id": "synergy:curium_fragment"
       }
     },
     {
       "chance": 0.05,
       "item": {
         "count": 1,
-        "id": "synergy:americium_fragment"
+        "id": "synergy:curium_fragment"
       }
     }
   ],

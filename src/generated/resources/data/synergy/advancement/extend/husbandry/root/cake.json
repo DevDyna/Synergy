@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "cake_stick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:cake_stick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.cake_stick.desc"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "synergy:cake_stick"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.cake_stick"
+    }
+  },
+  "requirements": [
+    [
+      "cake_stick"
+    ]
+  ],
+  "rewards": {
+    "experience": 1000
+  },
+  "sends_telemetry_event": true
+}

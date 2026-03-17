@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "craft_configurator": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:configurator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.configurator.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:configurator"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.configurator"
+    }
+  },
+  "requirements": [
+    [
+      "craft_configurator"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

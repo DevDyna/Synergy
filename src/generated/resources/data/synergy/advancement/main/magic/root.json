@@ -1,0 +1,28 @@
+{
+  "criteria": {
+    "magic": {
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "synergy:textures/block/decorative/waxed_planks.png",
+    "description": {
+      "translate": "synergy.advancement.root.magic.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:ghoul_heart"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "synergy.advancement.root.magic"
+    }
+  },
+  "requirements": [
+    [
+      "magic"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

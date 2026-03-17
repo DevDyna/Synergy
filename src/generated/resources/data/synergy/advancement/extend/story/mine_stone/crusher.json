@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/mine_stone",
+  "criteria": {
+    "craft_crusher": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:crushing_tub"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.crushing_tub.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:crushing_tub"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.crushing_tub"
+    }
+  },
+  "requirements": [
+    [
+      "craft_crusher"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "wrong_way_to_coke_iron": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:wrought_iron_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "synergy:textures/block/decorative/wrought_iron_block.png",
+    "description": {
+      "translate": "synergy.advancement.root.wrought_iron.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:wrought_iron_ingot"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "synergy.advancement.root.wrought_iron"
+    }
+  },
+  "requirements": [
+    [
+      "wrong_way_to_coke_iron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

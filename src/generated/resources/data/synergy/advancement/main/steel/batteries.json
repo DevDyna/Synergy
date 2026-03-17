@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/root",
+  "criteria": {
+    "craft_batteries": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#synergy:batteries"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.battery.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:blue_battery"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.battery"
+    }
+  },
+  "requirements": [
+    [
+      "craft_batteries"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "aquire_aquamarine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:aquamarine_gem"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.aquamarine.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:aquamarine_gem"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.aquamarine"
+    }
+  },
+  "requirements": [
+    [
+      "aquire_aquamarine"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

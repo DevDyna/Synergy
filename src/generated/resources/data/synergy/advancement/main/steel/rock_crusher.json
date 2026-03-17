@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/basic_machine_frame",
+  "criteria": {
+    "craft_rock_crusher": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:rock_crusher"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.rock_crusher.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:rock_crusher"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.rock_crusher"
+    }
+  },
+  "requirements": [
+    [
+      "craft_rock_crusher"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

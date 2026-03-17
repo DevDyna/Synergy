@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/wrought_iron/root",
+  "criteria": {
+    "craft_cobble_simple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:simple_cobblestone_generator"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.simple_cobblestone_generator.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:simple_cobblestone_generator"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.simple_cobblestone_generator"
+    }
+  },
+  "requirements": [
+    [
+      "craft_cobble_simple"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

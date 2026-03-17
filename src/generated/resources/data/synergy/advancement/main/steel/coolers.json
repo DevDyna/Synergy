@@ -1,0 +1,33 @@
+{
+  "parent": "synergy:main/steel/quantum_reactor_controller",
+  "criteria": {
+    "craft_coolers": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#synergy:cooler"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.cooler.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "synergy:shadow_cooler"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.cooler"
+    }
+  },
+  "requirements": [
+    [
+      "craft_coolers"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

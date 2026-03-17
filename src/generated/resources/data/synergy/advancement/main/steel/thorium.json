@@ -1,0 +1,34 @@
+{
+  "parent": "synergy:main/steel/uranium",
+  "criteria": {
+    "craft_thorium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:thorium_pellet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "synergy.advancement.branch.thorium.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "synergy:thorium_pellet"
+    },
+    "title": {
+      "translate": "synergy.advancement.branch.thorium"
+    }
+  },
+  "requirements": [
+    [
+      "craft_thorium"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
