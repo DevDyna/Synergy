@@ -1,45 +1,22 @@
 package com.devdyna.synergy.compat.jei.categories.core;
 
-import static com.devdyna.synergy.Main.ID;
-
-import java.awt.Color;
-
-import org.jetbrains.annotations.Nullable;
-
 import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
-import com.devdyna.synergy.api.utils.ColorUtil;
-import com.devdyna.synergy.api.utils.Image;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.types.zBlocks;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.LiquidBlock;
 
 @SuppressWarnings({ "null" })
 public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
-        implements IRecipeCategory<T> {
-
-    protected IGuiHelper helper;
-
-    public final Font font = Minecraft.getInstance().font;
-
-    protected final Color defaultToolTipColor = ColorUtil.color(64, 64, 64);
-
-    public abstract ItemLike getIconItem();
+        extends BaseCategory<T> {
 
     public BaseProviderCategory(IGuiHelper h) {
+        super(h);
         this.helper = h;
     }
 
@@ -110,38 +87,6 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
         } catch (Exception e) {
         }
 
-    }
-
-    @Override
-    public Component getTitle() {
-        return Component.translatable(ID + ".jei." + getTitleKey());
-    }
-
-    @Override
-    public @Nullable IDrawable getIcon() {
-        return helper.createDrawableItemLike(getIconItem());
-    }
-
-    @Override
-    public int getWidth() {
-        return setXY().getX();
-    }
-
-    @Override
-    public int getHeight() {
-        return setXY().getY();
-    }
-
-    public void background(GuiGraphics graphics) {
-        Image.of()
-                .rl(this.setBackGround())
-                .size(this.getWidth(), this.getHeight())
-                .render(helper, graphics);
-    }
-
-    public void draw(T recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
-            double mouseY) {
-        background(guiGraphics);
     }
 
 }

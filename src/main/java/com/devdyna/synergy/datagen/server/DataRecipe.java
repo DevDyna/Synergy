@@ -340,6 +340,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 EvaporatingBasinBuilder.of()
                                 .fluid(zFluids.IRONBERRY_JUICE, 125)
+                                .delay(80)
                                 .output(zItems.TINY_IRON_DUST)
                                 .unlockedBy()
                                 .save(c);

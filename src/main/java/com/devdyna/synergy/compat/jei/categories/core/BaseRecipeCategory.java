@@ -1,5 +1,6 @@
 package com.devdyna.synergy.compat.jei.categories.core;
 
+import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.TimeUtil;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.ITooltipBuilder;
@@ -29,8 +30,12 @@ public abstract class BaseRecipeCategory<T extends Recipe<?>> extends BaseCatego
     @Override
     public void draw(RecipeHolder<T> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
             double mouseY) {
-        draw(recipe.value(), recipeSlotsView, guiGraphics, mouseX, mouseY);
         super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+        if (enableTimerRender())
+            renderTickDelay(recipe.value(), guiGraphics);
+
+        draw(recipe.value(), recipeSlotsView, guiGraphics, mouseX, mouseY);
+
     }
 
     public void draw(T recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
@@ -48,13 +53,26 @@ public abstract class BaseRecipeCategory<T extends Recipe<?>> extends BaseCatego
             double mouseX, double mouseY) {
     }
 
+    /**
+     * Default : false
+     */
+    public boolean enableTimerRender() {
+        return false;
+    }
+
+    /**
+     * Default : true
+     */
+    public boolean shortTicks() {
+        return true;
+    }
 
     /**
      * This method is already used by default!
      */
     public void renderTickDelay(T recipe, GuiGraphics guiGraphics) {
         guiGraphics.drawString(font,
-                Component.literal(TimeUtil.getTimeValue(tickValue(recipe),shortTicks())),
+                Component.literal(TimeUtil.getTimeValue(tickValue(recipe), shortTicks())),
                 tickPos().getX(), tickPos().getY(), tickColor());
     }
 
@@ -63,6 +81,20 @@ public abstract class BaseRecipeCategory<T extends Recipe<?>> extends BaseCatego
      */
     public int tickValue(T recipe) {
         return 0;
+    }
+
+    /**
+     * Default : 21 | 14
+     */
+    public Size tickPos() {
+        return Size.of(21, 14);
+    }
+
+    /**
+     * Default : 0xA0A0A0
+     */
+    public int tickColor() {
+        return 0xA0A0A0;
     }
 
 }
