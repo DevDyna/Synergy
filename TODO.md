@@ -53,6 +53,14 @@
 
 - [ ] chopper jade?
 
+- [ ] patina FD compat
+
+- [ ] patina -> cheap electric components
+
+- [ ] patina jei category
+
+- [ ] oxidation speeder
+
 ## PRIORITIES
 
 ### Survival expansion
