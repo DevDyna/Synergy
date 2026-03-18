@@ -3,8 +3,6 @@ package com.devdyna.synergy.api.beLogic;
 import java.util.List;
 import java.util.Map;
 
-import com.devdyna.synergy.api.utils.LevelUtil;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -13,6 +11,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.capabilities.BlockCapabilityCache;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
@@ -60,7 +59,7 @@ public interface ItemProducer {
             if (item.is(items.getItem()) && item.getCount() == items.getCount()
                     && items != new ItemStack(Items.AIR) && dropWhenFail()) {
 
-                LevelUtil.popItemFromPos(level, pos.above(), item);
+                Block.popResource(level, pos.above(), item);
                 if (applySoundWhenFail())
                     level.playSound(null, pos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 1F, 0.75F);
 
@@ -75,10 +74,9 @@ public interface ItemProducer {
 
         }
 
-        if (totalDir <= 0 && dropWhenFail()) {
+        if (totalDir <= 0 && dropWhenFail())
 
-            LevelUtil.popItemFromPos(level, pos.above(), item);
-        }
+            Block.popResource(level, pos.above(), item);
 
         return totalDir <= 0;
     }

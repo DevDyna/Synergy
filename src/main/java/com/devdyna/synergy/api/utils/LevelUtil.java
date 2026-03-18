@@ -19,16 +19,13 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootParams.Builder;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.phys.Vec3;
@@ -89,58 +86,58 @@ public class LevelUtil {
         return BlockByTag(tag).size() - 1;
     }
 
-    @Deprecated
-    public static void popItemFromPos(Level level, BlockPos pos, ItemStack itemStack) {
-        Block.popResource(level, pos, itemStack);
-    }
+    // @Deprecated
+    // public static void popItemFromPos(Level level, BlockPos pos, ItemStack itemStack) {
+    //     Block.popResource(level, pos, itemStack);
+    // }
 
-    @Deprecated
-    public static void popItemFromPos(Level level, int x, int y, int z, ItemStack itemStack) {
-        popItemFromPos(level, new BlockPos(x, y, z), itemStack);
-    }
+    // @Deprecated
+    // public static void popItemFromPos(Level level, int x, int y, int z, ItemStack itemStack) {
+    //     popItemFromPos(level, new BlockPos(x, y, z), itemStack);
+    // }
 
-    /**
-     * @deprecated use Block.getDrops()
-     */
-    @Deprecated
-    public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, float luck) {
+    // /**
+    //  * @deprecated use Block.getDrops()
+    //  */
+    // @Deprecated
+    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, float luck) {
 
-        Builder builder = new LootParams.Builder((ServerLevel) level);
-        LootParams params = builder.create(LootContextParamSets.EMPTY);
-        builder.withLuck(luck);
+    //     Builder builder = new LootParams.Builder((ServerLevel) level);
+    //     LootParams params = builder.create(LootContextParamSets.EMPTY);
+    //     builder.withLuck(luck);
 
-        LootTable lootTable = level.getServer().reloadableRegistries()
-                .getLootTable(ResourceKey
-                        .create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(
-                                StringUtil.getModName(raw_ore_name), "blocks/"
-                                        + raw_ore_name.substring(raw_ore_name.lastIndexOf('.') + 1))));
-        return lootTable.getRandomItems(params);
+    //     LootTable lootTable = level.getServer().reloadableRegistries()
+    //             .getLootTable(ResourceKey
+    //                     .create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(
+    //                             StringUtil.getModName(raw_ore_name), "blocks/"
+    //                                     + raw_ore_name.substring(raw_ore_name.lastIndexOf('.') + 1))));
+    //     return lootTable.getRandomItems(params);
 
-    }
+    // }
 
-    /**
-     * @deprecated use Block.getDrops()
-     */
-    @Deprecated
-    public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name) {
-        return getItemStackFromLootTable(level, raw_ore_name, 1);
-    }
+    // /**
+    //  * @deprecated use Block.getDrops()
+    //  */
+    // @Deprecated
+    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name) {
+    //     return getItemStackFromLootTable(level, raw_ore_name, 1);
+    // }
 
-    /**
-     * @deprecated use Block.getDrops()
-     */
-    @Deprecated
-    public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, Player player) {
-        return getItemStackFromLootTable(level, raw_ore_name, player.getLuck());
-    }
+    // /**
+    //  * @deprecated use Block.getDrops()
+    //  */
+    // @Deprecated
+    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, Player player) {
+    //     return getItemStackFromLootTable(level, raw_ore_name, player.getLuck());
+    // }
 
-    /**
-     * @deprecated use Block.getDrops()
-     */
-    @Deprecated
-    public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, BlockState state) {
-        return getItemStackFromLootTable(level, state.getBlock().getDescriptionId(), 1);
-    }
+    // /**
+    //  * @deprecated use Block.getDrops()
+    //  */
+    // @Deprecated
+    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, BlockState state) {
+    //     return getItemStackFromLootTable(level, state.getBlock().getDescriptionId(), 1);
+    // }
 
     public static LootTable getLootTable(Level level, ResourceLocation rl) {
         return level.getServer().reloadableRegistries()

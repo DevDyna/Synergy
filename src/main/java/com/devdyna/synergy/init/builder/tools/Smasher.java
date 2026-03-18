@@ -6,7 +6,7 @@ import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.pipe.pipeType;
-import com.devdyna.synergy.api.utils.LevelUtil;
+import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -15,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.block.Block;
 
 @SuppressWarnings("null")
 public class Smasher extends Item {
@@ -34,7 +35,8 @@ public class Smasher extends Item {
             pipeType.onDestroyPipe(state, c.getLevel(), c.getClickedPos());
 
             c.getLevel().removeBlock(c.getClickedPos(), false);
-            LevelUtil.popItemFromPos(c.getLevel(), c.getClickedPos(), new ItemStack(state.getBlock()));
+
+            Block.popResource(c.getLevel(), c.getClickedPos(), x.item(state.getBlock()));
 
             return InteractionResult.SUCCESS_NO_ITEM_USED;
         }

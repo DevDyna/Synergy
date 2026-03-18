@@ -110,7 +110,7 @@ public class VoidBoxBlock extends TickingBlock {
                 if (!level.isClientSide)
                     LevelUtil.addParticle(ParticleTypes.WITCH, level, pos, true);
                 level.playSound(player, pos, SoundEvents.WITCH_DRINK, SoundSource.BLOCKS, 0.5f, 0.25f);
-                LevelUtil.popItemFromPos(level, pos, recipe.getOutput().copy());
+                Block.popResource(level, pos, recipe.getOutput().copy());
 
                 if (!player.isCreative())
                     stack.shrink(1);
