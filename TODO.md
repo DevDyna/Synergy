@@ -61,6 +61,8 @@
 
 - [ ] oxidation speeder
 
+- [ ] patina replace slime
+
 ## PRIORITIES
 
 ### Survival expansion
