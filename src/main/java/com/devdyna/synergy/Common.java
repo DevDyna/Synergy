@@ -205,6 +205,7 @@ public class Common {
         public static BooleanValue DISABLE_ENDER_EYE_RETURN_EVENT;// false
         public static BooleanValue DISABLE_REMOVE_BABY_GROW_EVENT;// false
         public static BooleanValue DISABLE_READD_BABY_GROW_EVENT;// false
+        public static BooleanValue DISABLE_PATINA_DROP_EVENT;// false
 
         private static void agriculture() {
                 qCOMMON.comment("Agriculture").push("1-agriculture");
@@ -571,6 +572,8 @@ public class Common {
                                 "git_commit_forever_young");
                 DISABLE_READD_BABY_GROW_EVENT = bool("Disable the reverse of Forever Young effect",
                                 "git_revert_forever_young");
+                DISABLE_PATINA_DROP_EVENT = bool("Disable Patina drop when scrapped any oxidized copper block",
+                                "patina_drop");
 
                 qCOMMON.pop();
         }

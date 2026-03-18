@@ -33,6 +33,8 @@ public class DataAnyLoot implements LootTableSubProvider {
         public final static String MUSHROOMS = "chests/mushrooms";
         public final static String RESOURCES = "chests/resources";
 
+        public final static String PATINA = "extra/patina";
+
         private HolderLookup.Provider p;
 
         public DataAnyLoot(HolderLookup.Provider p) {
@@ -65,11 +67,9 @@ public class DataAnyLoot implements LootTableSubProvider {
                                                                         UniformGenerator.between(1.0f, 3.0f)))
                                                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(p,
                                                                         UniformGenerator.between(1, 3))))
-                                        .setParamSet(LootContextParamSet.builder().build())
+                                        .setParamSet(LootContextParamSet.builder().build());
 
-                        ;
-
-                        if (MOB_DROPS.indexOf(items) == 0) {
+                        if (MOB_DROPS.indexOf(items) == 0)
                                 table.withPool(DataGenUtil.createPool().setRolls(UniformGenerator.between(0.0f, 1.0f))
                                                 .add(LootItem.lootTableItem(zItems.SULFUR_DUST.get()))
                                                 .when(LootItemRandomChanceCondition.randomChance(0.85f))
@@ -77,7 +77,6 @@ public class DataAnyLoot implements LootTableSubProvider {
                                                                 ConstantValue.exactly(1)))
                                                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(p,
                                                                 UniformGenerator.between(1, 4))));
-                        }
 
                         DataGenUtil.registerTable(c, x.rl(items.getRegisteredName().replace(ID + ":", PREFIX_DROPS)),
                                         table);
@@ -102,6 +101,11 @@ public class DataAnyLoot implements LootTableSubProvider {
                                                 .setRolls(UniformGenerator.between(0, 1))
                                                 .add(LootItem.lootTableItem(zItems.AQUAMARINE.get()))
                                                 .add(LootItem.lootTableItem(Items.SLIME_BALL))));
+
+                DataGenUtil.registerTable(c, x.rl(PATINA),
+                                DataGenUtil.createTable(DataGenUtil.createPool()
+                                                .setRolls(UniformGenerator.between(0, 2))
+                                                .add(LootItem.lootTableItem(zItems.PATINA.get()))));
 
         }
 

@@ -24,6 +24,7 @@ public class GameEvents {
                 EntityInteractionEvent.class,
                 VanillaHarvestable.class,
                 RegisterBrewingRecipes.class,
+                PatinaDropEvent.class,
                 EnderEyeReturn.class)
                 .forEach(NeoForge.EVENT_BUS::register);
 
