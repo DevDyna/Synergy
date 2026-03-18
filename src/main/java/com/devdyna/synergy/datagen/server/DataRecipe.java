@@ -1820,6 +1820,13 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
+                DryingRackBuilder.of()
+                                .input(Items.KELP)
+                                .delay(200)
+                                .output(Items.DRIED_KELP)
+                                .unlockedBy()
+                                .save(c);
+
                 brickDryingRecipe(c, Items.CLAY_BALL, zBlocks.CLAY_BRICK.get(),
                                 Items.BRICK);
 
