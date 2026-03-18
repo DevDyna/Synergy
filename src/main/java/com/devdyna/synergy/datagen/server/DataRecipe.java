@@ -340,7 +340,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 EvaporatingBasinBuilder.of()
                                 .fluid(zFluids.IRONBERRY_JUICE, 125)
-                                .delay(80)
+                                .delay(40)
                                 .output(zItems.TINY_IRON_DUST)
                                 .unlockedBy()
                                 .save(c);
@@ -1823,7 +1823,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 DryingRackBuilder.of()
                                 .input(Items.KELP)
-                                .delay(200)
+                                .delay(160)
                                 .output(Items.DRIED_KELP)
                                 .unlockedBy()
                                 .save(c);
