@@ -237,7 +237,7 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("layer0", x.rl("block/decorative/aquamarine"));
                                 
                 withExistingParent(zBlocks.ENTITY_WATCHER.getRegisteredName(),
-                                modLoc("block/tiny_block/watcher"));
+                                modLoc("block/tiny_block/entity_watcher"));
 
         }
 
