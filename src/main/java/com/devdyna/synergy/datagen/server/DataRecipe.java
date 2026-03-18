@@ -1242,7 +1242,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern("RHR")
                                 .pattern(" R ")
                                 .define('S', Items.REDSTONE)
-                                .define('R', Items.SLIME_BALL)
+                                .define('R', Tags.Items.SLIME_BALLS)
                                 .define('H', zItems.CONDENSER.get())
                                 .unlockedBy(ID, has(zItems.CONDENSER.get()))
                                 .save(c);
