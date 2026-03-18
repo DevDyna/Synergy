@@ -9,6 +9,7 @@ import com.devdyna.synergy.api.basebe.be.AreaBE;
 import com.devdyna.synergy.api.harvester.PlantHandler;
 import com.devdyna.synergy.api.harvester.VanillaPlants;
 import com.devdyna.synergy.api.utils.ColorUtil;
+import com.devdyna.synergy.api.utils.IOUtils;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
@@ -104,7 +105,7 @@ public class HarvesterBE extends AreaBE implements EnergyBlock, ItemProducer {
             List<ItemStack> items = collectItemDrops(level, area.get(i));
 
             if (items != null)
-                for (ItemStack itemStack : VanillaPlants.unifyDrops(items))
+                for (ItemStack itemStack : IOUtils.unifyDrops(items))
                     exportItems(itemStack, List.of(getBlockState().getValue(BlockStateProperties.HORIZONTAL_FACING)),
                             level, getBlockPos(), cache);
 

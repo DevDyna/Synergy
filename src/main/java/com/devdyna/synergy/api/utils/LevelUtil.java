@@ -87,56 +87,63 @@ public class LevelUtil {
     }
 
     // @Deprecated
-    // public static void popItemFromPos(Level level, BlockPos pos, ItemStack itemStack) {
-    //     Block.popResource(level, pos, itemStack);
+    // public static void popItemFromPos(Level level, BlockPos pos, ItemStack
+    // itemStack) {
+    // Block.popResource(level, pos, itemStack);
     // }
 
     // @Deprecated
-    // public static void popItemFromPos(Level level, int x, int y, int z, ItemStack itemStack) {
-    //     popItemFromPos(level, new BlockPos(x, y, z), itemStack);
-    // }
-
-    // /**
-    //  * @deprecated use Block.getDrops()
-    //  */
-    // @Deprecated
-    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, float luck) {
-
-    //     Builder builder = new LootParams.Builder((ServerLevel) level);
-    //     LootParams params = builder.create(LootContextParamSets.EMPTY);
-    //     builder.withLuck(luck);
-
-    //     LootTable lootTable = level.getServer().reloadableRegistries()
-    //             .getLootTable(ResourceKey
-    //                     .create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(
-    //                             StringUtil.getModName(raw_ore_name), "blocks/"
-    //                                     + raw_ore_name.substring(raw_ore_name.lastIndexOf('.') + 1))));
-    //     return lootTable.getRandomItems(params);
-
+    // public static void popItemFromPos(Level level, int x, int y, int z, ItemStack
+    // itemStack) {
+    // popItemFromPos(level, new BlockPos(x, y, z), itemStack);
     // }
 
     // /**
-    //  * @deprecated use Block.getDrops()
-    //  */
+    // * @deprecated use Block.getDrops()
+    // */
     // @Deprecated
-    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name) {
-    //     return getItemStackFromLootTable(level, raw_ore_name, 1);
+    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level,
+    // String raw_ore_name, float luck) {
+
+    // Builder builder = new LootParams.Builder((ServerLevel) level);
+    // LootParams params = builder.create(LootContextParamSets.EMPTY);
+    // builder.withLuck(luck);
+
+    // LootTable lootTable = level.getServer().reloadableRegistries()
+    // .getLootTable(ResourceKey
+    // .create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(
+    // StringUtil.getModName(raw_ore_name), "blocks/"
+    // + raw_ore_name.substring(raw_ore_name.lastIndexOf('.') + 1))));
+    // return lootTable.getRandomItems(params);
+
     // }
 
     // /**
-    //  * @deprecated use Block.getDrops()
-    //  */
+    // * @deprecated use Block.getDrops()
+    // */
     // @Deprecated
-    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, String raw_ore_name, Player player) {
-    //     return getItemStackFromLootTable(level, raw_ore_name, player.getLuck());
+    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level,
+    // String raw_ore_name) {
+    // return getItemStackFromLootTable(level, raw_ore_name, 1);
     // }
 
     // /**
-    //  * @deprecated use Block.getDrops()
-    //  */
+    // * @deprecated use Block.getDrops()
+    // */
     // @Deprecated
-    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, BlockState state) {
-    //     return getItemStackFromLootTable(level, state.getBlock().getDescriptionId(), 1);
+    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level,
+    // String raw_ore_name, Player player) {
+    // return getItemStackFromLootTable(level, raw_ore_name, player.getLuck());
+    // }
+
+    // /**
+    // * @deprecated use Block.getDrops()
+    // */
+    // @Deprecated
+    // public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level,
+    // BlockState state) {
+    // return getItemStackFromLootTable(level, state.getBlock().getDescriptionId(),
+    // 1);
     // }
 
     public static LootTable getLootTable(Level level, ResourceLocation rl) {

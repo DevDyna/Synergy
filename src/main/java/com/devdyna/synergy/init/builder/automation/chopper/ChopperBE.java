@@ -11,6 +11,7 @@ import com.devdyna.synergy.api.harvester.VanillaPlants;
 import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.basebe.be.MachineBE;
 import com.devdyna.synergy.api.utils.ColorUtil;
+import com.devdyna.synergy.api.utils.IOUtils;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
@@ -244,7 +245,7 @@ public class ChopperBE extends MachineBE implements RestrictedItemHandler, AreaO
 
                 // void overflow
 
-                VanillaPlants.unifyDrops(items)
+                IOUtils.unifyDrops(items)
                         .forEach(s -> {
 
                             if (!s.isEmpty() && s.getItem() instanceof BlockItem bi
