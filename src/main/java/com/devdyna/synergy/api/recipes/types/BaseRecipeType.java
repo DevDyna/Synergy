@@ -42,4 +42,14 @@ public abstract class BaseRecipeType<RECIPE_INPUT extends RecipeInput>
         return x.item(getToastIcon());
     }
 
+    @Override
+    public boolean isSpecial() {
+        return true;
+    }
+
+    @Override
+    public String getGroup() {
+        return getType().toString();
+    }
+
 }
