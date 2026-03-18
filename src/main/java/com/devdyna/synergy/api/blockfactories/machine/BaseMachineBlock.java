@@ -2,8 +2,8 @@ package com.devdyna.synergy.api.blockfactories.machine;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.basebe.block.BlockMenu;
-import com.devdyna.synergy.config.Common;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

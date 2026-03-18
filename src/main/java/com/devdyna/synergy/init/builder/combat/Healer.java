@@ -2,10 +2,10 @@ package com.devdyna.synergy.init.builder.combat;
 
 import java.util.List;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.LevelUtil;
-import com.devdyna.synergy.config.Common;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;

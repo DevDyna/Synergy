@@ -4,8 +4,8 @@ import javax.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.blockfactories.AbstractLaserMachine;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.laser.sensor.LaserSensorBE;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zBlocks;

@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnvironmentModifier;
@@ -16,7 +17,6 @@ import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.common.recipes.input.FluidInput;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.common.recipes.type.FoundryFuelEfficiencyRecipe;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.automation.tank.FluidTankBE;
 import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;

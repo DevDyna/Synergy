@@ -7,11 +7,11 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.gui.BaseScreen;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents;
 import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents.UpgradeType;
 

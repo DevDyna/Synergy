@@ -22,7 +22,7 @@ public class Main {
 
         GameEvents.register(bus);
 
-        Config.register(mc);
+        Common.register(mc);
 
     }
 

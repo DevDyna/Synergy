@@ -26,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootParams.Builder;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -88,10 +89,12 @@ public class LevelUtil {
         return BlockByTag(tag).size() - 1;
     }
 
+    @Deprecated
     public static void popItemFromPos(Level level, BlockPos pos, ItemStack itemStack) {
         Block.popResource(level, pos, itemStack);
     }
 
+    @Deprecated
     public static void popItemFromPos(Level level, int x, int y, int z, ItemStack itemStack) {
         popItemFromPos(level, new BlockPos(x, y, z), itemStack);
     }
@@ -137,6 +140,30 @@ public class LevelUtil {
     @Deprecated
     public static List<ItemStack> getItemStackFromLootTable(LevelAccessor level, BlockState state) {
         return getItemStackFromLootTable(level, state.getBlock().getDescriptionId(), 1);
+    }
+
+    public static LootTable getLootTable(Level level, ResourceLocation rl) {
+        return level.getServer().reloadableRegistries()
+                .getLootTable(ResourceKey
+                        .create(Registries.LOOT_TABLE, rl));
+    }
+
+    public static List<ItemStack> getLootTableItems(Level level, ResourceLocation rl, float luck) {
+        return getLootTable(level, rl)
+                .getRandomItems(new LootParams.Builder((ServerLevel) level)
+                        .withLuck(luck)
+                        .create(LootContextParamSets.EMPTY));
+    }
+
+    public static List<ItemStack> getLootTableItems(Level level, String rl, float luck) {
+        return getLootTable(level, rl)
+                .getRandomItems(new LootParams.Builder((ServerLevel) level)
+                        .withLuck(luck)
+                        .create(LootContextParamSets.EMPTY));
+    }
+
+    public static LootTable getLootTable(Level level, String rl) {
+        return getLootTable(level, x.rl(rl));
     }
 
     // example
@@ -374,5 +401,16 @@ public class LevelUtil {
                 0.0, 0.0, 0.0);
     }
 
+    /**
+     * compare All Blockstate Properties
+     */
+    public static boolean compareProperties(BlockState a, BlockState b) {
+
+        for (Property<?> prop : a.getProperties())
+            if (!a.getValue(prop).equals(b.getValue(prop)))
+                return false;
+
+        return true;
+    }
 
 }

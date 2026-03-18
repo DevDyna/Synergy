@@ -1,7 +1,7 @@
 package com.devdyna.synergy.common.events;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.utils.LevelUtil;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zEntityTag;
 import com.devdyna.synergy.init.types.zItemTag;
 

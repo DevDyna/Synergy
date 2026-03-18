@@ -2,9 +2,9 @@ package com.devdyna.synergy.init.builder.survival.placeable_bricks;
 
 import java.util.List;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.api.utils.LevelUtil;
-import com.devdyna.synergy.config.Common;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;

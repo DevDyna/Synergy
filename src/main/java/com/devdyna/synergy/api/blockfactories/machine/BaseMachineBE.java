@@ -2,12 +2,13 @@ package com.devdyna.synergy.api.blockfactories.machine;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.basebe.be.BEMenu;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.MachineItemAutomation;
 import com.devdyna.synergy.api.utils.LogUtil;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade;
 import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents;
 import com.devdyna.synergy.init.builder.industrial_machines.IndustrialUpgrade.UpgradeComponents.UpgradeType;

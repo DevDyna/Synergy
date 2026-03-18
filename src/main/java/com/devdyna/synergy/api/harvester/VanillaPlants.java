@@ -8,9 +8,9 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.function.BiFunction;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.api.utils.LogUtil;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockTag;
 
 import net.minecraft.core.BlockPos;

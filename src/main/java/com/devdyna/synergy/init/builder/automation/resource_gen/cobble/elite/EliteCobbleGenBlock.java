@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.blockfactories.resource_gen.BaseResourceGenBlock;
-import com.devdyna.synergy.config.Common;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;

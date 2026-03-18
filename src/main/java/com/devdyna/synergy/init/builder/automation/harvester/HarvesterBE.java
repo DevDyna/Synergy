@@ -4,12 +4,12 @@ import java.util.*;
 
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.beLogic.ItemProducer;
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.basebe.be.AreaBE;
 import com.devdyna.synergy.api.harvester.PlantHandler;
 import com.devdyna.synergy.api.harvester.VanillaPlants;
 import com.devdyna.synergy.api.utils.ColorUtil;
 import com.devdyna.synergy.api.utils.LevelUtil;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 

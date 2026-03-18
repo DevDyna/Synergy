@@ -2,11 +2,11 @@ package com.devdyna.synergy.compat.jei.categories;
 
 import static com.devdyna.synergy.Main.ID;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;

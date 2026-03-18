@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnvironmentModifier;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
@@ -14,7 +15,6 @@ import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zBlockTag;

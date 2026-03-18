@@ -1,6 +1,5 @@
-package com.devdyna.synergy.config;
+package com.devdyna.synergy;
 
-import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.utils.ModAddonUtil;
 import com.devdyna.synergy.api.utils.StringUtil;
@@ -13,6 +12,24 @@ import net.neoforged.neoforge.common.ModConfigSpec.*;
 public class Common {
 
         private static final ModConfigSpec.Builder qCOMMON = new ModConfigSpec.Builder();
+
+        public static void register(ModContainer c) {
+                agriculture();
+                automation();
+                industrial_machines();
+                laser_stuff();
+                magic();
+                nuclear_stuff();
+                pipe_blocks();
+                redstone();
+                tools();
+                survival();
+                rpg();
+                skyblock();
+                other();
+
+                c.registerConfig(ModConfig.Type.COMMON, qCOMMON.build());
+        }
 
         // grr grr
         public static BooleanValue DISABLE_ITEM_USE_RECIPE;// false
@@ -189,24 +206,6 @@ public class Common {
         public static BooleanValue DISABLE_REMOVE_BABY_GROW_EVENT;// false
         public static BooleanValue DISABLE_READD_BABY_GROW_EVENT;// false
 
-        public static void register(ModContainer c) {
-                agriculture();
-                automation();
-                industrial_machines();
-                laser_stuff();
-                magic();
-                nuclear_stuff();
-                pipe_blocks();
-                redstone();
-                tools();
-                survival();
-                rpg();
-                skyblock();
-                other();
-
-                c.registerConfig(ModConfig.Type.COMMON, qCOMMON.build());
-        }
-
         private static void agriculture() {
                 qCOMMON.comment("Agriculture").push("1-agriculture");
 
@@ -252,7 +251,7 @@ public class Common {
                 decor.complex(zStatic.Blocks.chopper);
 
                 CHOPPER_UPGRADE_SLOT_LIMIT = number("Slot limit of upgrades applicable to the Chopper",
-                                "chopper_upgrade_slot_limit", 15,1,64);
+                                "chopper_upgrade_slot_limit", 15, 1, 64);
                 CHOPPER_DEFAULT_TICK_DELAY = number("Tick delay on AOE checking the next blockpos", "chopper_tick_rate",
                                 20);
                 CHOPPER_FE_USAGE = number("FE usage every tick when upgraded", "chopper_fe_rate", 25);

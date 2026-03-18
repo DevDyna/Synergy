@@ -2,9 +2,9 @@ package com.devdyna.synergy.init.builder.laser.sensor;
 
 import java.util.List;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.utils.LevelUtil;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
 
 import net.minecraft.core.BlockPos;

@@ -1,8 +1,8 @@
 package com.devdyna.synergy.init.builder.automation.resource_gen.cobble.elite;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.blockfactories.resource_gen.BaseCobbleRGBE;
 import com.devdyna.synergy.api.utils.Ticker;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
 
 import net.minecraft.core.BlockPos;

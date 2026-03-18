@@ -2,10 +2,10 @@ package com.devdyna.synergy.init.builder.automation.sprinkler;
 
 import java.util.List;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.basebe.be.AreaBE;
 import com.devdyna.synergy.api.beLogic.EnergyBlock;
 import com.devdyna.synergy.api.utils.LevelUtil;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 

@@ -1,7 +1,7 @@
 package com.devdyna.synergy.init.builder.nuclear_reactor.moderator;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.blockfactories.reactor.ModeratorBase;
-import com.devdyna.synergy.config.Common;
 
 public class SimpleModerator extends ModeratorBase {
 

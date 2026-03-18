@@ -4,6 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.List;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineScreen;
 import com.devdyna.synergy.api.utils.ClazzUtil;
@@ -22,7 +23,6 @@ import com.devdyna.synergy.compat.jei.categories.machines.MelterCategory;
 import com.devdyna.synergy.compat.jei.categories.machines.RockCrusherCategory;
 import com.devdyna.synergy.compat.jei.categories.provider.FluidProviderCategory;
 import com.devdyna.synergy.compat.jei.categories.provider.ItemProviderCategory;
-import com.devdyna.synergy.config.Common;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.caster.CasterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorScreen;

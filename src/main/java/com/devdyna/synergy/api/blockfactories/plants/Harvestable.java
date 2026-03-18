@@ -2,8 +2,8 @@ package com.devdyna.synergy.api.blockfactories.plants;
 
 import java.util.List;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.utils.LevelUtil;
-import com.devdyna.synergy.config.Common;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
