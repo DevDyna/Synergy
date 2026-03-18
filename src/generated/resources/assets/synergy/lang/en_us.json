@@ -747,6 +747,7 @@
   "synergy.nofuel": "§eNo Fuel Cell available",
   "synergy.osmiridium.tip": "§7High concentration of osmium",
   "synergy.overheated": "§cOverheated",
+  "synergy.patina": "§7Obtained from scrapping oxidized copper blocks",
   "synergy.pentlandite.tip": "§7High concentration of nickel",
   "synergy.pipe.desc": "§7Can connected at any #synergy:can_connect",
   "synergy.pipe.extend": "§7Can be extended using pipes",
