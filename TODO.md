@@ -49,7 +49,7 @@
 - [ ] rework serializers to be unified with recipetype
       and use RecipeUtils.optionalCodec() when optional
 
-- [ ] patina usage
+- [x] patina usage
 
 - [ ] chopper jade?
 
@@ -62,6 +62,8 @@
 - [ ] oxidation speeder
 
 - [ ] patina replace slime
+
+- [ ] dye seed and seed recipe?(stonecutter)
 
 ## PRIORITIES
 
