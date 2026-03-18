@@ -76,9 +76,14 @@ public class EvaporatingBasinBuilder extends BaseRecipeBuilder
         return this;
     }
 
+    public EvaporatingBasinBuilder delay(int ticks) {
+        this.ticks = ticks;
+        return this;
+    }
+
     @Override
     public ResourceLocation getSuffix(String extra) {
-        return x.rl(zStatic.Blocks.evaporation_basin+"/" + x.path(this.output.getItem()) + extra);
+        return x.rl(zStatic.Blocks.evaporation_basin + "/" + x.path(this.output.getItem()) + extra);
     }
 
 }

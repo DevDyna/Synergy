@@ -5,7 +5,6 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.*;
 import javax.annotation.Nullable;
 
-
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.recipes.builders.*;
@@ -78,9 +77,14 @@ public class FoundryBuilder extends BaseRecipeBuilder
         return this;
     }
 
+    public FoundryBuilder delay(int ticks) {
+        this.ticks = ticks;
+        return this;
+    }
+
     @Override
     public ResourceLocation getSuffix(String extra) {
-        return x.rl(zStatic.Blocks.foundry+"/" + x.path(this.fluid.getFluid()) + extra);
+        return x.rl(zStatic.Blocks.foundry + "/" + x.path(this.fluid.getFluid()) + extra);
     }
 
 }
