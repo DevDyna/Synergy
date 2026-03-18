@@ -407,6 +407,9 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(Tags.Items.SLIME_BALLS)
                                 .add(zItems.PATINA.get());
+                tag(zItemTag.PATINA)
+                                .add(zItems.PATINA.get());
+
         }
 
 }

@@ -32,6 +32,7 @@ public class ItemTooltipEvents {
         itemTooltipPlaceable(item, tooltip);
         itemTooltipChopperUpgrades(item, tooltip);
         itemTooltipWatcherTweak(item, tooltip);
+        itemTooltipPatina(item, tooltip);
 
     }
 
@@ -95,6 +96,16 @@ public class ItemTooltipEvents {
         if (blockCheck(i, zBlockTag.EVAPORATION_BASIC_HEATER)) {
             t.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".boost.evaporation_basin"));
         }
+
+    }
+
+    //TODO replace with JEI
+    public static void itemTooltipPatina(ItemStack i, List<Component> t) {
+
+        if (i.is(zItemTag.PATINA)) {
+            t.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".patina"));
+        }
+        
 
     }
 

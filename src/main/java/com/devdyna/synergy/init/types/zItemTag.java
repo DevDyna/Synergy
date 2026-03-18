@@ -263,5 +263,7 @@ public class zItemTag {
         public static final TagKey<Item> BATTERIES = Material.tagItem("batteries");
       
         public static final TagKey<Item> DRYING_RACKS = Material.tagItem("drying_racks");
+       
+        public static final TagKey<Item> PATINA = Material.tagItem("patina");
 
 }
