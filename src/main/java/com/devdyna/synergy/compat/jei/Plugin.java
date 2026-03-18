@@ -147,7 +147,9 @@ public class Plugin implements IModPlugin {
                                 new DryingRackCategory(helper),
                                 new FoundryCategory(helper),
                                 new FoundryFuelRecipeCategory(helper),
-                                new CastingTableCategory(helper));
+                                new CastingTableCategory(helper)
+
+                );
 
         }
 
