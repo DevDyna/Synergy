@@ -63,7 +63,7 @@ public class EntityWatcherRender<T extends EntityWatcherBE> implements BlockEnti
                 .noPop()
                 .noPush()
                 .pivot(0.5, 0.5, 0.5)
-                .model(zStatic.AdditionalModel.WATCHER)
+                .model(zStatic.AdditionalModel.ENTITY_WATCHER)
                 .build(Minecraft.getInstance().getModelManager(), brd, poseStack, light, overlay, buffer);
 
         poseStack.popPose();
