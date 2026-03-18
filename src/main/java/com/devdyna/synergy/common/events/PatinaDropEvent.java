@@ -1,7 +1,8 @@
 package com.devdyna.synergy.common.events;
 
+import java.util.Arrays;
+
 import com.devdyna.synergy.Common;
-import com.devdyna.synergy.api.utils.IOUtils;
 import com.devdyna.synergy.api.utils.LevelUtil;
 import com.devdyna.synergy.datagen.server.DataAnyLoot;
 import net.minecraft.world.item.ItemStack;
@@ -33,13 +34,18 @@ public class PatinaDropEvent {
         if (!(event.getState().getBlock() instanceof WeatheringCopper oxidize))
             return;
 
-        if (oxidize.getAge() == WeatherState.UNAFFECTED)
+        var age = Arrays.asList(WeatherState.values()).indexOf(oxidize.getAge());
+
+        if (age <= 0)
             return;
 
-        // useful when changed the loot table to custom
-        for (ItemStack item : IOUtils.unifyDrops(LevelUtil.getLootTableItems(level, DataAnyLoot.PATINA,
-                event.getPlayer() != null ? event.getPlayer().getLuck() : 0)))
+        // useful when changed the loot table to drop multiple items
+        for (ItemStack item : LevelUtil.getLootTableItems(level, DataAnyLoot.PATINA,
+                event.getPlayer() != null ? event.getPlayer().getLuck() : 0)) {
+            if (age > 1)
+                Block.popResource(level, event.getPos().relative(event.getContext().getClickedFace()), item);
             Block.popResource(level, event.getPos().relative(event.getContext().getClickedFace()), item);
+        }
 
     }
 }
