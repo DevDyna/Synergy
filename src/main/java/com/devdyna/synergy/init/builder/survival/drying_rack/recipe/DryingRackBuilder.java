@@ -3,7 +3,6 @@ package com.devdyna.synergy.init.builder.survival.drying_rack.recipe;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.*;
-import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.zStatic;
@@ -21,7 +20,8 @@ import net.minecraft.world.item.crafting.Recipe;
 
 @SuppressWarnings({ "null" })
 public class DryingRackBuilder extends BaseRecipeBuilder
-        implements ItemAttach.Input.NoItemCount<DryingRackBuilder>, ItemAttach.Output.SimpleOutputItem<DryingRackBuilder> {
+        implements ItemAttach.Input.NoItemCount<DryingRackBuilder>,
+        ItemAttach.Output.SimpleOutputItem<DryingRackBuilder> {
 
     private Ingredient input;
     private int ticks = 100;
@@ -60,11 +60,6 @@ public class DryingRackBuilder extends BaseRecipeBuilder
     }
 
     @Override
-    public DryingRackBuilder group(@Nullable String groupName) {
-        return this;
-    }
-
-    @Override
     public DryingRackBuilder input(Ingredient input) {
         this.input = input;
         return this;
@@ -83,7 +78,7 @@ public class DryingRackBuilder extends BaseRecipeBuilder
 
     @Override
     public ResourceLocation getSuffix(String extra) {
-        return x.rl(zStatic.Blocks.drying_rack+"/" + x.path(this.output.getItem())
+        return x.rl(zStatic.Blocks.drying_rack + "/" + x.path(this.output.getItem())
                 + extra);
     }
 

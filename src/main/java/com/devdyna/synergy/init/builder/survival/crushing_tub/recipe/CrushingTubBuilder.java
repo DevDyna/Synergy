@@ -3,7 +3,6 @@ package com.devdyna.synergy.init.builder.survival.crushing_tub.recipe;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.*;
-import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.zStatic;
@@ -61,11 +60,6 @@ public class CrushingTubBuilder extends BaseRecipeBuilder
 
     @Override
     public CrushingTubBuilder getBuilder() {
-        return this;
-    }
-
-    @Override
-    public CrushingTubBuilder group(@Nullable String groupName) {
         return this;
     }
 

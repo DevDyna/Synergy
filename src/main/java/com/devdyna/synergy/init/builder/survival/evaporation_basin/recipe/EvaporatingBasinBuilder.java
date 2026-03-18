@@ -3,7 +3,6 @@ package com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.*;
-import javax.annotation.Nullable;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.recipes.builders.*;
@@ -56,11 +55,6 @@ public class EvaporatingBasinBuilder extends BaseRecipeBuilder
 
     @Override
     public EvaporatingBasinBuilder getBuilder() {
-        return this;
-    }
-
-    @Override
-    public EvaporatingBasinBuilder group(@Nullable String groupName) {
         return this;
     }
 

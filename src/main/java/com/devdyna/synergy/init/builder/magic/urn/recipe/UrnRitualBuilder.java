@@ -3,8 +3,6 @@ package com.devdyna.synergy.init.builder.magic.urn.recipe;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.*;
-import javax.annotation.Nullable;
-
 import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.IngredientUtils;
@@ -54,11 +52,6 @@ public class UrnRitualBuilder extends BaseRecipeBuilder
 
     @Override
     public UrnRitualBuilder getBuilder() {
-        return this;
-    }
-
-    @Override
-    public UrnRitualBuilder group(@Nullable String groupName) {
         return this;
     }
 

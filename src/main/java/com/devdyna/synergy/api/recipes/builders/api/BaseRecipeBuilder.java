@@ -7,14 +7,13 @@ import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Recipe;
 
 @SuppressWarnings("null")
-public abstract class BaseRecipeBuilder implements RecipeBuilder {
+public abstract class BaseRecipeBuilder {
 
     protected Map<String, Criterion<?>> criteria;
 
@@ -22,7 +21,6 @@ public abstract class BaseRecipeBuilder implements RecipeBuilder {
 
     public abstract ResourceLocation getSuffix(String extra);
 
-    @Override
     public void save(RecipeOutput recipeOutput) {
         save(recipeOutput, "");
     }
@@ -31,10 +29,9 @@ public abstract class BaseRecipeBuilder implements RecipeBuilder {
         this.save(o, getSuffix(extra));
     }
 
-    @Override
     public void save(RecipeOutput c, ResourceLocation pId) {
         if (this.criteria.isEmpty())
-            throw new IllegalStateException("Missing/Null Criteria " + String.valueOf(pId));
+            throw new IllegalStateException("Recipe unobtainable : " + String.valueOf(pId));
         Advancement.Builder adv = c.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pId))
                 .rewards(AdvancementRewards.Builder.recipe(pId))

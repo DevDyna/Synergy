@@ -3,7 +3,6 @@ package com.devdyna.synergy.init.builder.magic.void_box.recipe;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.*;
-import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.recipes.builders.*;
@@ -54,11 +53,6 @@ public class VoidBoxInfusionBuilder extends BaseRecipeBuilder
 
     @Override
     public VoidBoxInfusionBuilder getBuilder() {
-        return this;
-    }
-
-    @Override
-    public VoidBoxInfusionBuilder group(@Nullable String groupName) {
         return this;
     }
 

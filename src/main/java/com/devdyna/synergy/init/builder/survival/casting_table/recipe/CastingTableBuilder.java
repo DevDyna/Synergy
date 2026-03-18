@@ -3,7 +3,6 @@ package com.devdyna.synergy.init.builder.survival.casting_table.recipe;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.*;
-import javax.annotation.Nullable;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.recipes.builders.*;
@@ -59,11 +58,6 @@ public class CastingTableBuilder extends BaseRecipeBuilder
 
     @Override
     public CastingTableBuilder getBuilder() {
-        return this;
-    }
-
-    @Override
-    public CastingTableBuilder group(@Nullable String groupName) {
         return this;
     }
 

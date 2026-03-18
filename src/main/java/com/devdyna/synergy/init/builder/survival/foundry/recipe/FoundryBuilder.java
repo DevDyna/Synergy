@@ -3,8 +3,6 @@ package com.devdyna.synergy.init.builder.survival.foundry.recipe;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.*;
-import javax.annotation.Nullable;
-
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.recipes.builders.*;
@@ -57,11 +55,6 @@ public class FoundryBuilder extends BaseRecipeBuilder
 
     @Override
     public FoundryBuilder getBuilder() {
-        return this;
-    }
-
-    @Override
-    public FoundryBuilder group(@Nullable String groupName) {
         return this;
     }
 
