@@ -6,11 +6,13 @@ import java.util.List;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.utils.BlockItemUtils;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.init.types.zItemTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
@@ -87,13 +89,18 @@ public class ItemTooltipEvents {
 
     public static void itemTooltipEnvironmentModifier(ItemStack i, List<Component> t) {
 
-        if (BlockItemUtils.blockCheck(i, zBlockTag.DRYING_RACK_HEATER)) {
+        if (blockCheck(i, zBlockTag.DRYING_RACK_HEATER)) {
             t.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".boost.drying_rack"));
         }
-        if (BlockItemUtils.blockCheck(i, zBlockTag.EVAPORATION_BASIC_HEATER)) {
+        if (blockCheck(i, zBlockTag.EVAPORATION_BASIC_HEATER)) {
             t.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".boost.evaporation_basin"));
         }
 
+    }
+
+
+    private static boolean blockCheck(ItemStack i, TagKey<Block> tag) {
+        return i.getItem() instanceof BlockItem bi && bi.getBlock().defaultBlockState().is(tag);
     }
 
 }
