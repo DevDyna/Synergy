@@ -169,8 +169,8 @@ public class DataItemTag extends ItemTagsProvider {
                                                 zItems.COTTON_SEEDS.get(),
                                                 zBlocks.WILD_COTTON.get().asItem());
 
-                tag(zItemTag.URN_MIXTURES).add(zItems.AMETHYST_MIXTURE.get(),
-                                zItems.GLOWSTONE_MIXTURE.get());
+                // tag(zItemTag.URN_MIXTURES).add(zItems.AMETHYST_MIXTURE.get(),
+                //                 zItems.GLOWSTONE_MIXTURE.get());
 
                 tag(Tags.Items.GEMS).add(DataGenUtil.getItems(zItems.zGems));
 
