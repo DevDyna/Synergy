@@ -405,6 +405,8 @@ public class DataItemTag extends ItemTagsProvider {
                                 .add(zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get).map(Block::asItem)
                                                 .toArray(Item[]::new));
 
+                tag(Tags.Items.SLIME_BALLS)
+                                .add(zItems.PATINA.get());
         }
 
 }
