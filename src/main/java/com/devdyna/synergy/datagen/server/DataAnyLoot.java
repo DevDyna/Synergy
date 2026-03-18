@@ -17,6 +17,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
+import net.minecraft.world.level.storage.loot.functions.EnchantWithLevelsFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
@@ -104,7 +105,9 @@ public class DataAnyLoot implements LootTableSubProvider {
 
                 DataGenUtil.registerTable(c, x.rl(PATINA),
                                 DataGenUtil.createTable(DataGenUtil.createPool()
-                                                .setRolls(UniformGenerator.between(0, 2))
+                                                .setRolls(UniformGenerator.between(0, 1))
+                                                .apply(EnchantWithLevelsFunction.enchantWithLevels(p,
+                                                                UniformGenerator.between(1, 3)))
                                                 .add(LootItem.lootTableItem(zItems.PATINA.get()))));
 
         }
