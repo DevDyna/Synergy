@@ -56,6 +56,9 @@ public class CompressorBE extends BaseMachineBE implements ExtraMachineSlots {
 
         var recipe = r.get().value();
 
+        if (!checkSlot(getOutput(), recipe.getOutputItem().copy()))
+            return cancel();
+
         if (!calculateAndConsumeFE(recipe.getEnergy()))
             return cancel();
 
