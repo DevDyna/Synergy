@@ -128,7 +128,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
             @Override
             public int get(int i) {
 
-                if (this instanceof FluidTankStorage fluid)
+                if (BaseMachineBE.this instanceof FluidTankStorage fluid)
                     switch (i) {
                         case FLUID_INDEX:
                             return check(level, fluid.getFluidStorage().getFluidAmount(), fluid_amount);
@@ -153,7 +153,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
 
             @Override
             public int getCount() {
-                return 5 + ((this instanceof FluidTankStorage) ? 2 : 0);
+                return 5 + ((BaseMachineBE.this instanceof FluidTankStorage) ? 2 : 0);
             }
         };
     }
@@ -402,7 +402,9 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         endProgress();
 
         progress = 0;
+        
         setChanged();
+        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
     }
 
     /**
