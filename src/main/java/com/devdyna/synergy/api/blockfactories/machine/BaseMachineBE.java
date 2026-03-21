@@ -121,8 +121,8 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         this.storage = new MachineItemHandler(getMachineSlots());
         this.energyStorage = new EnergyStorage(MaxFE());
 
-        if (this instanceof FluidTankStorage tank)
-            this.fluid_tank = new FluidStorageTank(this, tank.getFluidCapacity());
+        this.fluid_tank = new FluidStorageTank(this,
+                this instanceof FluidTankStorage tank ? tank.getFluidCapacity() : 0);
 
         this.networkData = new ContainerData() {
             @Override
@@ -244,7 +244,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         tag.put("inventory", getStorage().serializeNBT(registries));
         tag.putInt("progress", progress);
         tag.putInt("energy", energyStorage.getEnergyStored());
-        if (this instanceof FluidTankStorage tank)
+        if (this instanceof FluidTankStorage tank && tank.getFluidStorage() != null)
             tag.put("tank", tank.getFluidStorage().serializeNBT(registries));
         super.saveAdditional(tag, registries);
     }
@@ -258,7 +258,7 @@ public abstract class BaseMachineBE extends BEMenu implements MachineItemAutomat
         if (tag.contains("energy"))
             energyStorage.receiveEnergy(Math.min(tag.getInt("energy"), energyStorage.getMaxEnergyStored()), false);
 
-        if (this instanceof FluidTankStorage tank)
+        if (this instanceof FluidTankStorage tank && tank.getFluidStorage() != null)
             tank.getFluidStorage().deserializeNBT(registries, tag.getCompound("tank"));
 
         super.loadAdditional(tag, registries);

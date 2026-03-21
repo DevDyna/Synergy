@@ -1,10 +1,11 @@
 package com.devdyna.synergy;
 
-import com.devdyna.synergy.api.registers.MachineType;
 import static com.devdyna.synergy.api.utils.CapabilityUtils.*;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.types.zBlocks;
+import com.devdyna.synergy.init.types.zMachines;
+
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -13,7 +14,13 @@ public class Capability {
 
         public static void register(RegisterCapabilitiesEvent event) {
 
-                registerBlockAll(event, x.toBlocks(ClazzUtil.getAllMachineTypes().toArray(MachineType[]::new)));
+                registerItemBlock(event, x.toBlocks(ClazzUtil.getAllMachineTypes()));
+                registerEnergyBlock(event, x.toBlocks(ClazzUtil.getAllMachineTypes()));
+                registerFluidBlocks(event, x.toBlocks(
+                                zMachines.CASTING_FACTORY,
+                                zMachines.EXTRACTOR,
+                                zMachines.ROCK_CRUSHER,
+                                zMachines.MELTER));
 
                 registerItemBlock(event, x.toBlocks(zStatic.ALL_DRYING_RACKS.toArray(DeferredHolder[]::new)));
 
@@ -35,8 +42,7 @@ public class Capability {
                                                 zBlocks.CASTING_TABLE,
                                                 zBlocks.CHOPPER,
                                                 zBlocks.LOGIC_BOX,
-                                                zBlocks.ROUTER
-                                ));
+                                                zBlocks.ROUTER));
 
                 registerEnergyBlock(event, x.toBlocks(
                                 zBlocks.HARVESTER,

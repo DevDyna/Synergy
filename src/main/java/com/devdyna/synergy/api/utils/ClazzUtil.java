@@ -211,9 +211,9 @@ public class ClazzUtil {
                 .toList();
     }
 
-    public static List<MachineType> getAllMachineTypes() {
+    public static List<MachineType<?,?,?,?>> getAllMachineTypes() {
 
-        List<MachineType> types = new ArrayList<>();
+        List<MachineType<?, ?, ?, ?>> types = new ArrayList<>();
         Field[] fields = zMachines.class.getDeclaredFields();
         for (Field field : fields) {
             if (field.getType() == MachineType.class) {

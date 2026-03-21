@@ -334,6 +334,10 @@ public class x {
         return toBlocks(toDefHolders(machines));
     }
 
+    public static Block[] toBlocks(List<MachineType<?, ?, ?, ?>> machines) {
+        return toBlocks(toDefHolders(machines.toArray(MachineType[]::new)));
+    }
+
     public static Item[] toItems(DeferredHolder<Block, ?>... blocks) {
         return toItems(toBlocks(blocks));
     }
