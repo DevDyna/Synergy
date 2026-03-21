@@ -65,6 +65,8 @@
 
 - [ ] dye seed and seed recipe?(stonecutter)
 
+- [ ] factory bee
+
 ## PRIORITIES
 
 ### Survival expansion
