@@ -12,6 +12,8 @@ This section will let you know what some key-words define what
 
 - `<recipe-id>` -> `"minecraft:crafting_shapeless"`
 
+- `<blockstate-id>` -> `"{"Name": "minecraft:stonecutter","Properties": {"facing": "north"}}"`
+
 - `<item-id>` -> `"minecraft:oak_log"`
 - `<item-tag>` -> `"#minecraft:logs"`
 
@@ -20,6 +22,7 @@ This section will let you know what some key-words define what
 
 - `<integer>` -> `1`
 - `<float>` -> `1.0`
+- `<boolean>` -> `true`
 
 - Multiple Elements
 
@@ -28,7 +31,6 @@ This section will let you know what some key-words define what
 ```
 
 describe a list of differents `<item-stack>` which can be at most 2 elements!
-
 
 ## Itemtype
 
@@ -106,7 +108,6 @@ Use cases:
 
 - rock crusher recipe output
 
-
 ## FluidType
 
 ### Fluid Stack syntax `<fluid-stack>`
@@ -142,7 +143,7 @@ Tag Fluid type
 
 Use cases:
 
-- *deprecated*
+- _deprecated_
 
 ### Sized Fluid Ingredient syntax `<fluid-sized-ingredient>`
 
@@ -168,4 +169,16 @@ Use cases:
 
 #TODO
 
+### Provider Node Pattern syntax `<node-pattern>`
 
+```js
+{
+    "core": <blockstate-id>,
+    "left": <blockstate-id>,
+    "right": <blockstate-id>,
+    "below": <blockstate-id>
+}
+```
+
+- `"core"` is required
+- `"left"` , `"right"` and `"below"` are optional
