@@ -22,23 +22,20 @@ mavenLocal()
 
 dependencies {
 
-   
     //ponder compat
-    jarJar(implementation("net.createmod.ponder:ponder-neoforge:${ponder_version}+mc${minecraft_version}")) {
-        version {
-            strictly ponder_version_range
-            prefer ponder_version
-        }
-    }
+    // jarJar(implementation("net.createmod.ponder:ponder-neoforge:${ponder_version}+mc${minecraft_version}")) {
+    //     version {
+    //         strictly ponder_version_range
+    //         prefer ponder_version
+    //     }
+    // }
 
-    jarJar(implementation("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")) {
-        version {
-            strictly flywheel_version_range
-            prefer flywheel_version
-        }
-    }
-
-
+    // jarJar(implementation("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")) {
+    //     version {
+    //         strictly flywheel_version_range
+    //         prefer flywheel_version
+    //     }
+    // }
 
     //jei
     compileOnly "mezz.jei:jei-${jei_minecraft}-common-api:${jei_version}"
