@@ -41,10 +41,6 @@ Describe a list of differents `<item-stack>` which can be at most 2 elements!
 }
 ```
 
-Use cases:
-
-#TODO
-
 ## Ingredient syntax `<item-ingredient>`
 
 Static Item type
@@ -62,10 +58,6 @@ Tag Item type
     "tag": <item-tag>
 }
 ```
-
-Use cases:
-
-#TODO
 
 ## Sized Ingredient syntax `<item-sized-ingredient>`
 
@@ -87,10 +79,6 @@ Tag Item type
 }
 ```
 
-Use cases:
-
-#TODO
-
 ## ChanceOutputItem syntax `<chance-output-item>`
 
 Static Item type
@@ -102,10 +90,6 @@ Static Item type
 }
 ```
 
-Use cases:
-
-- rock crusher recipe output
-
 ## Fluid Stack syntax `<fluid-stack>`
 
 ```js
@@ -114,10 +98,6 @@ Use cases:
     "id": <fluid-id>
   }
 ```
-
-Use cases:
-
-#TODO
 
 ## FluidIngredient syntax `<fluid-ingredient>`
 
@@ -136,8 +116,6 @@ Tag Fluid type
     "tag": <fluid-tag>
 }
 ```
-
-Use cases:
 
 - _deprecated_
 
@@ -161,10 +139,6 @@ Tag Fluid type
 }
 ```
 
-Use cases:
-
-#TODO
-
 ## Provider Node Pattern syntax `<node-pattern>`
 
 ```js
@@ -179,8 +153,8 @@ Use cases:
 - `"core"` is required
 - `"left"` , `"right"` and `"below"` are optional
 
-
 # All Recipe Schemes
+
 - [Alloy Smelter](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/alloy_smelter.md)
 - [Casting Factory](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/casting_factory.md)
 - [Casting Table](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/casting_table.md)
