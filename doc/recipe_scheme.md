@@ -117,7 +117,7 @@ Tag Fluid type
 }
 ```
 
-- _deprecated_
+_deprecated_
 
 ## Sized Fluid Ingredient syntax `<fluid-sized-ingredient>`
 
