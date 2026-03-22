@@ -653,8 +653,7 @@ public class DataLang extends LanguageProvider {
                 advKey(zStatic.ResourceMaterial.californium, "Eagles Success", "Craft a californium pellet");
                 advKey(zStatic.ResourceMaterial.curium, "Curiosity", "Craft a curium pellet");
 
-
-                add(Main.ID + ".patina",TIP_COLOR+"Obtained from scrapping oxidized copper blocks");
+                add(Main.ID + ".patina", TIP_COLOR + "Obtained from scrapping oxidized copper blocks");
 
         }
 
