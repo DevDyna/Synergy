@@ -2,9 +2,6 @@ package com.devdyna.synergy.compat.ponder;
 
 import static com.devdyna.synergy.Main.ID;
 
-import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.init.types.zBlocks;
-
 import net.createmod.ponder.api.registration.PonderPlugin;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
 import net.createmod.ponder.api.registration.PonderTagRegistrationHelper;
