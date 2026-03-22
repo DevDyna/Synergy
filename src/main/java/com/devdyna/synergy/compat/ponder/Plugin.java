@@ -1,36 +1,33 @@
-package com.devdyna.synergy.compat.ponder;
+// package com.devdyna.synergy.compat.ponder;
 
-import static com.devdyna.synergy.Main.ID;
+// @SuppressWarnings("null")
+// public class Plugin implements PonderPlugin {
 
-import net.createmod.ponder.api.registration.PonderPlugin;
-import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
-import net.createmod.ponder.api.registration.PonderTagRegistrationHelper;
-import net.minecraft.resources.ResourceLocation;
+//     @Override
+//     public String getModId() {
+//         return ID;
+//     }
 
-@SuppressWarnings("null")
-public class Plugin implements PonderPlugin {
+//     @Override
+//     public void registerScenes(PonderSceneRegistrationHelper<ResourceLocation> h) {
 
-    @Override
-    public String getModId() {
-        return ID;
-    }
+//         h.addStoryBoard(zBlocks.HARVESTER.getId(), x.rl("base"), StoryBoards::harvester);
 
-    @Override
-    public void registerScenes(PonderSceneRegistrationHelper<ResourceLocation> h) {
+//         // node
+//         // redstone repeaters
+//         // sprinker
+//         // harvester
 
+//     }
 
-        // h.addStoryBoard(zBlocks.HARVESTER.getId(), x.rl(""), null);
+//     @Override
+//     public void registerTags(PonderTagRegistrationHelper<ResourceLocation> h) {
+//         ResourceLocation tag = x.rl("key");
+//         TagBuilder builder = h.registerTag(tag);
+//         builder.item(zBlocks.HARVESTER.get().asItem(), true, false);
+//         h.addTagToComponent(zBlocks.HARVESTER.getId(), tag);
+//         builder.addToIndex();
+//         builder.register();
+//     }
 
-        //node
-        //redstone repeaters
-        //sprinker
-        //harvester
-
-    }
-
-    @Override
-    public void registerTags(PonderTagRegistrationHelper<ResourceLocation> h) {
-
-    }
-
-}
+// }

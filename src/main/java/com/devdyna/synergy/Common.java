@@ -206,6 +206,7 @@ public class Common {
         public static BooleanValue DISABLE_REMOVE_BABY_GROW_EVENT;// false
         public static BooleanValue DISABLE_READD_BABY_GROW_EVENT;// false
         public static BooleanValue DISABLE_PATINA_DROP_EVENT;// false
+        // public static BooleanValue DISABLE_PONDER_COMPAT;// false
 
         private static void agriculture() {
                 qCOMMON.comment("Agriculture").push("1-agriculture");
@@ -574,6 +575,10 @@ public class Common {
                                 "git_revert_forever_young");
                 DISABLE_PATINA_DROP_EVENT = bool("Disable Patina drop when scrapped any oxidized copper block",
                                 "patina_drop");
+
+                // DISABLE_PONDER_COMPAT = bool(
+                //                 "Disable Ponder tooltip only on this project\nIf you are looking to disable GuideMe compat , you need to override the guide removing all item_links!",
+                //                 "disable_ponder_compat");
 
                 qCOMMON.pop();
         }

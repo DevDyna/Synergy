@@ -45,6 +45,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
@@ -76,7 +77,7 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.FAUCET.get(), FaucetRender::new);
 
         event.registerBlockEntityRenderer(zBlockEntities.CHOPPER.get(), ChopperAOE::new);
-     
+
         event.registerBlockEntityRenderer(zBlockEntities.ENTITY_WATCHER.get(), EntityWatcherRender::new);
 
     }
@@ -137,6 +138,12 @@ public class Client {
             return BiomeColors.getAverageFoliageColor(level, pos);
 
         }, zBlocks.IRON_WOOD.getLeaves().get());
+    }
+
+    @SubscribeEvent
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        // if(!Common.DISABLE_PONDER_COMPAT.get())
+        // event.enqueueWork(() ->PonderIndex.addPlugin(new Plugin()));
     }
 
 }
