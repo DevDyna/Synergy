@@ -2,7 +2,7 @@
 
 ### Required fields
 
-- `"energy"`
+- `"energy"` Energy consumed every tick when the recipe is present
 - `"ticks"`
 - `"left"`
 - `"right"`
