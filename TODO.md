@@ -67,6 +67,8 @@
 
 - [ ] factory bee
 
+- [ ] industrial machine - auto output upgrade modifier
+
 ## PRIORITIES
 
 ### Survival expansion
