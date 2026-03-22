@@ -105,8 +105,7 @@ public class ExtraRecipeProvider extends RecipeProvider {
 
                 MaceratorRecipeBuilder.of().input(x.itemSized(raw))
                                 .output(x.item(dust.asItem(), 3))
-                                .secondary(secondary)
-                                .chance(chance)
+                                .secondary(secondary,chance)
                                 .unlockedBy().save(c.withConditions(
                                                 new ICondition[] {
                                                                 new NotCondition(
@@ -373,7 +372,7 @@ public class ExtraRecipeProvider extends RecipeProvider {
                                 .output(dust, mace_count);
 
                 if (mace_secondary != null && !mace_secondary.isEmpty() && chance > 0)
-                        macerator.secondary(mace_secondary).chance(chance);
+                        macerator.secondary(mace_secondary,chance);
 
                 macerator.unlockedBy().save(c, "_from_" + x.path(gem));
         }
@@ -408,7 +407,7 @@ public class ExtraRecipeProvider extends RecipeProvider {
                                 .output(dust, mace_count);
 
                 if (mace_secondary != null && !mace_secondary.isEmpty() && chance > 0)
-                        macerator.secondary(mace_secondary).chance(chance);
+                        macerator.secondary(mace_secondary,chance);
 
                 macerator.unlockedBy().save(c);
         }

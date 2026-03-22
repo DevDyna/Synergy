@@ -39,6 +39,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
+import com.devdyna.synergy.api.codec.recipe.ChanceOutputItem;
 import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.recipes.builders.FluidAttach.Any.SimpleFluidAttach;
 
@@ -53,9 +54,12 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
     protected SizedIngredient input;
     protected SizedIngredient optional_input = x.itemSized();
     protected ItemStack output;
-    protected ItemStack optional_output = ItemStack.EMPTY;
+    // @Deprecated
+    // protected ItemStack optional_output = ItemStack.EMPTY;
+    protected @Nullable ChanceOutputItem optional_output_item;
     protected SizedIngredient extra_input = x.itemSized();
-    protected float chance;
+    // @Deprecated
+    // protected float chance;
     protected boolean consumeCatalyst = false;
     protected SizedFluidIngredient fluid_input;
     protected FluidStack fluid_output = FluidStack.EMPTY;
@@ -89,10 +93,10 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
     /**
      * secondary recipe output chance to success
      */
-    public T chance(float chance) {
-        this.chance = chance;
-        return getBuilder();
-    }
+    // public T chance(float chance) {
+    //     this.chance = chance;
+    //     return getBuilder();
+    // }
 
     public T unlockedBy() {
         return unlockedBy(ID, InventoryChangeTrigger.TriggerInstance
@@ -131,8 +135,8 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
                 && !fluid_output.isEmpty())
             return x.rl(getMachinePath() + x.path(fluid_output.getFluid()) + extra);
 
-        if (optional_output != null && !optional_output.isEmpty())
-            return x.rl(getMachinePath() + x.path(optional_output.getItem()) + extra);
+        if (ChanceOutputItem.itemValid(optional_output_item))
+            return x.rl(getMachinePath() + x.path(optional_output_item.item()) + extra);
 
         if (input != null && input.getItems().length > 0)
             return x.rl(getMachinePath() + x.path(input.getItems()[0]) + extra);

@@ -14,6 +14,7 @@ import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.codec.recipe.ChanceOutputItem;
 import com.devdyna.synergy.api.recipes.builders.*;
 
 @SuppressWarnings({ "null" })
@@ -30,7 +31,7 @@ public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder<MaceratorRe
 
     @Override
     public Recipe<?> createRecipe() {
-        return new MaceratorRecipeType(ticks, energy, input, output, optional_output, chance);
+        return new MaceratorRecipeType(ticks, energy, input, output, optional_output_item);
     }
 
     @Override
@@ -39,8 +40,7 @@ public class MaceratorRecipeBuilder extends BaseMachineRecipeBuilder<MaceratorRe
     }
 
     public MaceratorRecipeBuilder secondary(ItemStack secondary, float chance) {
-        this.optional_output = secondary;
-        this.chance = chance;
+        this.optional_output_item = ChanceOutputItem.of(secondary, chance);
         return getBuilder();
     }
 

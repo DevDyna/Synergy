@@ -48,7 +48,7 @@ public class ExtractorCategory extends BaseMachineRecipeCategory<ExtractorRecipe
 
                 builder.addInputSlot(2, 5).addItemStacks(x.getItems(recipe.getInputItem()));
                 if (recipe.hasSecondaryOutput())
-                        builder.addOutputSlot(81, 5).addItemStack(recipe.getSecondaryItem());
+                        builder.addOutputSlot(81, 5).addItemStack(recipe.getSecondaryOutputItem().item());
 
                 if (!recipe.getFluidOutput().isEmpty())
                         JEIFluidTankHelper.of()
@@ -72,12 +72,10 @@ public class ExtractorCategory extends BaseMachineRecipeCategory<ExtractorRecipe
                                 24, -2,
                                 defaultToolTipColor.getRGB(), false);
 
-                if (recipe.hasSecondaryOutput() && recipe.getSecondaryItem() != null)
-                        if (recipe.getSecondaryItemChance() > 0f && recipe.getSecondaryItemChance() < 1f
-                                        && !recipe.getSecondaryItem().isEmpty())
+                if (recipe.hasSecondaryOutput())
                                 guiGraphics.drawString(font,
                                                 Component.literal(
-                                                                ((int) (recipe.getSecondaryItemChance() * 100)) + "%"),
+                                                                ((int) (recipe.getSecondaryOutputItem().chance() * 100)) + "%"),
                                                 60, 10,
                                                 defaultToolTipColor.getRGB(), false);
 

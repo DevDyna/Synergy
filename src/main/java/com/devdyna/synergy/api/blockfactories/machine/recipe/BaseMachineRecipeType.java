@@ -2,9 +2,12 @@ package com.devdyna.synergy.api.blockfactories.machine.recipe;
 
 import java.util.ArrayList;
 
+import javax.annotation.Nullable;
+
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
+import com.devdyna.synergy.api.codec.recipe.ChanceOutputItem;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.api.utils.x;
 
@@ -29,8 +32,12 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
     public SizedIngredient input;
     public SizedIngredient optional_input;
     public ItemStack output;
+    @Deprecated
     public ItemStack optional_output;
+    
+    public @Nullable ChanceOutputItem optional_output_item;
     // public SizedIngredient extra_input;
+    @Deprecated
     public float chance;
     public boolean consumeCatalyst;
     public SizedFluidIngredient fluid_input;
@@ -56,8 +63,13 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return output;
     }
 
+    @Deprecated
     public ItemStack getSecondaryItem() {
         return optional_output;
+    }
+
+    public @Nullable ChanceOutputItem getSecondaryOutputItem() {
+        return optional_output_item;
     }
 
     public SizedIngredient getCatalystItem() {
@@ -75,6 +87,7 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
     /**
      * 0.00 -> 1.00
      */
+    @Deprecated
     public float getSecondaryItemChance() {
         return chance;
     }
@@ -84,7 +97,7 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
     // }
 
     public boolean hasSecondaryOutput() {
-        return false;
+        return ChanceOutputItem.valid(optional_output_item);
     }
 
     @Deprecated

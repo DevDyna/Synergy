@@ -1,11 +1,10 @@
 package com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe;
 
-import java.util.Optional;
-
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.codec.recipe.ChanceOutputItem;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
@@ -23,25 +22,24 @@ import net.neoforged.neoforge.common.crafting.SizedIngredient;
 @SuppressWarnings("null")
 public class MaceratorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
-    public MaceratorRecipeType(int ticks, int energy, SizedIngredient  input,
-            ItemStack output, ItemStack secondary, float chance) {
+    public MaceratorRecipeType(int ticks, int energy, SizedIngredient input,
+            ItemStack output, ChanceOutputItem secondary) {
         this.input = input;
         this.ticks = ticks;
         this.output = output;
         this.energy = energy;
-        this.optional_output = secondary;
-        this.chance = chance;
+        this.optional_output_item = secondary;
     }
 
     public static MaceratorRecipeType of(int ticks, int energy, SizedIngredient input,
-            ItemStack output, ItemStack secondary, float chance) {
-        return new MaceratorRecipeType(ticks, energy, input, output, secondary, chance);
+            ItemStack output, ChanceOutputItem secondary) {
+        return new MaceratorRecipeType(ticks, energy, input, output, secondary);
     }
 
-    @Override
-    public boolean hasSecondaryOutput() {
-        return true;
-    }
+    // @Override
+    // public boolean hasSecondaryOutput() {
+    //     return true;
+    // }
 
     @Override
     public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<MonoItemInput>> getMachine() {
@@ -61,12 +59,14 @@ public class MaceratorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
                 SizedIngredient.FLAT_CODEC.fieldOf("input").forGetter(MaceratorRecipeType::getInputItem),
                 ItemStack.CODEC.fieldOf("output").forGetter(MaceratorRecipeType::getOutputItem),
-                ItemStack.CODEC.optionalFieldOf("secondary", ItemStack.EMPTY)
-                        .forGetter(r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())
-                                ? ItemStack.EMPTY
-                                : r.getSecondaryItem()),
-                Codec.floatRange(0, 1).fieldOf("chance").forGetter(MaceratorRecipeType::getSecondaryItemChance))
-                .apply(inst, MaceratorRecipeType::new));
+                ChanceOutputItem.CODEC.optionalFieldOf("secondary")
+                        .forGetter(r -> ChanceOutputItem.optional(r.getSecondaryOutputItem())))
+                .apply(inst, (ticks, energy, input, output, secondary) -> new MaceratorRecipeType(
+                        ticks,
+                        energy,
+                        input,
+                        output,
+                        secondary.orElse(null))));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, MaceratorRecipeType> STREAM_CODEC = StreamCodec
                 .composite(
@@ -74,12 +74,14 @@ public class MaceratorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                         ByteBufCodecs.INT, MaceratorRecipeType::getEnergy,
                         SizedIngredient.STREAM_CODEC, MaceratorRecipeType::getInputItem,
                         ItemStack.STREAM_CODEC, MaceratorRecipeType::getOutputItem,
-                        ByteBufCodecs.optional(ItemStack.STREAM_CODEC),
-                        r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())
-                                ? Optional.empty()
-                                : Optional.of(r.getSecondaryItem()),
-                        ByteBufCodecs.FLOAT, MaceratorRecipeType::getSecondaryItemChance,
-                        (t, e, i, o, s, c) -> new MaceratorRecipeType(t, e, i, o, s.orElse(ItemStack.EMPTY), c));
+                        ByteBufCodecs.optional(ChanceOutputItem.STREAM_CODEC),
+                        r -> ChanceOutputItem.optional(r.getSecondaryOutputItem()),
+                        (ticks, energy, input, output, secondary) -> new MaceratorRecipeType(
+                                ticks,
+                                energy,
+                                input,
+                                output,
+                                secondary.orElse(null)));
 
         @Override
         public MapCodec<MaceratorRecipeType> codec() {

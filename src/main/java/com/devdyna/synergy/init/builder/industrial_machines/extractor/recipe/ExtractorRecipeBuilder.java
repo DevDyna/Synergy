@@ -15,11 +15,13 @@ import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.codec.recipe.ChanceOutputItem;
 import com.devdyna.synergy.api.recipes.builders.*;
 
 @SuppressWarnings({ "null" })
 public class ExtractorRecipeBuilder extends BaseMachineRecipeBuilder<ExtractorRecipeBuilder>
-        implements FluidAttach.Any.SimpleFluidAttach<ExtractorRecipeBuilder> , ItemAttach.Output.SecondaryOutputItem<ExtractorRecipeBuilder> {
+        implements FluidAttach.Any.SimpleFluidAttach<ExtractorRecipeBuilder>,
+        ItemAttach.Output.SecondaryOutputItem<ExtractorRecipeBuilder> {
 
     private ExtractorRecipeBuilder() {
         this.criteria = new LinkedHashMap<String, Criterion<?>>();
@@ -31,7 +33,7 @@ public class ExtractorRecipeBuilder extends BaseMachineRecipeBuilder<ExtractorRe
 
     @Override
     public Recipe<?> createRecipe() {
-        return new ExtractorRecipeType(ticks, energy, input, optional_output, fluid_output, chance);
+        return new ExtractorRecipeType(ticks, energy, input, optional_output_item, fluid_output);
     }
 
     @Override
@@ -52,8 +54,7 @@ public class ExtractorRecipeBuilder extends BaseMachineRecipeBuilder<ExtractorRe
 
     @Override
     public ExtractorRecipeBuilder secondary(ItemStack secondary, float chance) {
-        this.optional_output = secondary;
-        this.chance = chance;
+        this.optional_output_item = ChanceOutputItem.of(secondary, chance);
         return getBuilder();
     }
 

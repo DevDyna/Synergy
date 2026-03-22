@@ -6,6 +6,7 @@ import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.codec.recipe.ChanceOutputItem;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zMachines;
@@ -25,24 +26,23 @@ import net.neoforged.neoforge.fluids.FluidStack;
 public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
     public ExtractorRecipeType(int ticks, int energy, SizedIngredient input,
-            ItemStack secondary, FluidStack fluid, float chance) {
+            ChanceOutputItem secondary, FluidStack fluid) {
         this.input = input;
         this.ticks = ticks;
-        this.optional_output = secondary;
+        this.optional_output_item = secondary;
         this.energy = energy;
         this.fluid_output = fluid;
-        this.chance = chance;
     }
 
     public static ExtractorRecipeType of(int ticks, int energy, SizedIngredient input,
-            ItemStack secondary, FluidStack fluid, float chance) {
-        return new ExtractorRecipeType(ticks, energy, input, secondary, fluid, chance);
+            ChanceOutputItem secondary, FluidStack fluid) {
+        return new ExtractorRecipeType(ticks, energy, input, secondary, fluid);
     }
 
-    @Override
-    public boolean hasSecondaryOutput() {
-        return true;
-    }
+    // @Override
+    // public boolean hasSecondaryOutput() {
+    //     return true;
+    // }
 
     @Override
     public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<MonoItemInput>> getMachine() {
@@ -62,16 +62,18 @@ public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
                 SizedIngredient.FLAT_CODEC.fieldOf("input").forGetter(ExtractorRecipeType::getInputItem),
 
-                ItemStack.CODEC.optionalFieldOf("output_item", ItemStack.EMPTY)
-                        .forGetter(r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())
-                                ? ItemStack.EMPTY
-                                : r.getSecondaryItem()),
+                ChanceOutputItem.CODEC.optionalFieldOf("secondary")
+                        .forGetter(r -> ChanceOutputItem.optional(r.getSecondaryOutputItem())),
                 FluidStack.CODEC.optionalFieldOf("output_fluid", FluidStack.EMPTY)
                         .forGetter(r -> (r.getFluidOutput() == null || r.getFluidOutput().isEmpty())
                                 ? FluidStack.EMPTY
-                                : r.getFluidOutput()),
-                Codec.floatRange(0, 1).fieldOf("chance").forGetter(ExtractorRecipeType::getSecondaryItemChance))
-                .apply(inst, ExtractorRecipeType::new));
+                                : r.getFluidOutput()))
+                .apply(inst, (ticks, energy, input, secondary,fluid) -> new ExtractorRecipeType(
+                        ticks,
+                        energy,
+                        input,
+                        secondary.orElse(null),
+                        fluid)));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, ExtractorRecipeType> STREAM_CODEC = StreamCodec
                 .composite(
@@ -80,22 +82,18 @@ public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                         ByteBufCodecs.INT, ExtractorRecipeType::getEnergy,
                         SizedIngredient.STREAM_CODEC, ExtractorRecipeType::getInputItem,
 
-                        ByteBufCodecs.optional(ItemStack.STREAM_CODEC),
-                        r -> (r.getSecondaryItem() == null || r.getSecondaryItem().isEmpty())
-                                ? Optional.empty()
-                                : Optional.of(r.getSecondaryItem()),
+                        ByteBufCodecs.optional(ChanceOutputItem.STREAM_CODEC),
+                        r -> ChanceOutputItem.optional(r.getSecondaryOutputItem()),
                         ByteBufCodecs.optional(FluidStack.STREAM_CODEC),
                         r -> (r.getFluidOutput() == null || r.getFluidOutput().isEmpty())
                                 ? Optional.empty()
                                 : Optional.of(r.getFluidOutput()),
-                        ByteBufCodecs.FLOAT, ExtractorRecipeType::getSecondaryItemChance,
-                        (ticks, energy, input, a, b, c) -> new ExtractorRecipeType(
-                                ticks,
-                                energy,
-                                input,
-                                a.orElse(ItemStack.EMPTY),
-                                b.orElse(FluidStack.EMPTY),
-                                c));
+                        (ticks, energy, input, secondary,fluid) -> new ExtractorRecipeType(
+                        ticks,
+                        energy,
+                        input,
+                        secondary.orElse(null),
+                        fluid.orElse(null)));
 
         @Override
         public MapCodec<ExtractorRecipeType> codec() {
