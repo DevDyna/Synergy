@@ -178,3 +178,29 @@ Use cases:
 
 - `"core"` is required
 - `"left"` , `"right"` and `"below"` are optional
+
+
+# All Recipe Schemes
+- [Alloy Smelter](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/alloy_smelter.md)
+- [Casting Factory](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/casting_factory.md)
+- [Casting Table](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/casting_table.md)
+- [Compressor](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/compressor.md)
+- [Crushing Tub](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/crushing_tub.md)
+- [Dryable Bricks](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/dryable_brick.md)
+- [Drying Rack](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/drying_rack.md)
+- [Electric Furnace](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/electric_furnace.md)
+- [Electric Melter](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/electric_melter.md)
+- [Evaporation Basin](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/evaporation_basin.md)
+- [Extractor](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/extractor.md)
+- [Foundry Fuels](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/foundry_fuels.md)
+- [Foundry](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/foundry.md)
+- [Item Use](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/item_use.md)
+- [Macerator](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/macerator.md)
+- [Provider Fluid](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/provider_fluid.md)
+- [Provider Item](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/provider_item.md)
+- [Quern](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/quern.md)
+- [Reactor Reaction](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/reactor_reaction.md)
+- [Resource Info](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/resource_info.md)
+- [Rock Crusher](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/rock_crusher.md)
+- [Urn Ritual](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/urn_ritual.md)
+- [Void Box Conversion](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/void_box_conversion.md)
