@@ -82,28 +82,28 @@ public class ItemAttach {
                 return add(x.itemSized(input));
             }
 
-            default BUILDER add(Ingredient input,int c) {
-                return add(x.itemSized(input,c));
+            default BUILDER add(Ingredient input, int c) {
+                return add(x.itemSized(input, c));
             }
 
-            default BUILDER add(Item input,int c) {
-                return add(x.ingredient(input),c);
+            default BUILDER add(Item input, int c) {
+                return add(x.ingredient(input), c);
             }
 
             default BUILDER add(Item input) {
                 return add(x.ingredient(input));
             }
 
-            default BUILDER add(DeferredHolder<Item, Item> input,int c) {
-                return add(input.get(),c);
+            default BUILDER add(DeferredHolder<Item, Item> input, int c) {
+                return add(input.get(), c);
             }
 
-            default BUILDER add(TagKey<Item> input,int c) {
-                return add(x.ingredient(input),c);
+            default BUILDER add(TagKey<Item> input, int c) {
+                return add(x.ingredient(input), c);
             }
 
-            default BUILDER add(ItemLike input,int c) {
-                return add(x.ingredient(input),c);
+            default BUILDER add(ItemLike input, int c) {
+                return add(x.ingredient(input), c);
             }
 
             default BUILDER add(DeferredHolder<Item, Item> input) {
@@ -223,18 +223,30 @@ public class ItemAttach {
                 return secondary(secondary, 1f);
             }
 
+            /**
+             * default chance of success -> 100%
+             */
             default BUILDER secondary(DeferredHolder<Item, Item> secondary) {
                 return secondary(secondary.get());
             }
 
+            /**
+             * default chance of success -> 100%
+             */
             default BUILDER secondary(Item secondary) {
                 return secondary(x.item(secondary));
             }
 
+            /**
+             * default chance of success -> 100%
+             */
             default BUILDER secondary(Item secondary, int count) {
                 return secondary(x.item(secondary, count));
             }
 
+            /**
+             * default chance of success -> 100%
+             */
             default BUILDER secondary(DeferredHolder<Item, Item> secondary, int count) {
                 return secondary(secondary.get(), count);
             }
