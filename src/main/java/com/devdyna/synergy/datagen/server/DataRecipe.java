@@ -101,7 +101,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 MaceratorRecipeBuilder.of().input(Items.SUGAR_CANE)
                                 .output(Items.SUGAR, 2)
-                                .secondary(Items.SUGAR,0.75f)
+                                .secondary(Items.SUGAR, 0.75f)
                                 .unlockedBy().save(c);
 
                 MaceratorRecipeBuilder.of().input(Items.SAND)
@@ -114,7 +114,7 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 MaceratorRecipeBuilder.of().input(Items.BONE)
                                 .output(Items.BONE_MEAL, 5)
-                                .secondary(Items.BONE_MEAL, 2,0.75f)
+                                .secondary(Items.BONE_MEAL, 2, 0.75f)
                                 .unlockedBy().save(c);
 
                 QuernMillingBuilder.of().input(ItemTags.WOOL)
@@ -127,17 +127,17 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 MaceratorRecipeBuilder.of().input(zItems.COTTON.get())
                                 .output(Items.STRING, 5)
-                                .secondary(Items.STRING, 2,0.75f)
+                                .secondary(Items.STRING, 2, 0.75f)
                                 .unlockedBy().save(c, "_from_cotton");
 
                 MaceratorRecipeBuilder.of().input(Tags.Items.SANDSTONE_UNCOLORED_BLOCKS)
                                 .output(Items.SAND, 4)
-                                .secondary(zItems.SILICON_SHARD,0.25f)
+                                .secondary(zItems.SILICON_SHARD, 0.25f)
                                 .unlockedBy().save(c, "_from_sandstone");
 
                 MaceratorRecipeBuilder.of().input(Tags.Items.SANDSTONE_RED_BLOCKS)
                                 .output(Items.RED_SAND, 4)
-                                .secondary(zItems.SILICON_SHARD,0.25f)
+                                .secondary(zItems.SILICON_SHARD, 0.25f)
                                 .unlockedBy().save(c);
 
                 MaceratorRecipeBuilder.of().input(Items.BREEZE_ROD)
@@ -186,7 +186,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 MaceratorRecipeBuilder.of()
                                 .input(Items.TORCHFLOWER)
                                 .output(Items.BLAZE_POWDER)
-                                .secondary(Items.BLAZE_POWDER,0.05f)
+                                .secondary(Items.BLAZE_POWDER, 0.05f)
                                 .delay(120)
                                 .unlockedBy()
                                 .save(c, "_from_torchflower");
@@ -531,7 +531,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                         MaceratorRecipeBuilder.of()
                                                         .input(bk)
                                                         .output(ch, 2)
-                                                        .secondary(ch,0.75f)
+                                                        .secondary(ch, 0.75f)
                                                         .unlockedBy()
                                                         .save(c);
 
@@ -540,7 +540,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 MaceratorRecipeBuilder.of()
                                 .input(zItems.ENDSTONE_CHUNK)
                                 .output(zItems.ENDSTONE_PEBBLE, 2)
-                                .secondary(zItems.ENDSTONE_PEBBLE,0.25f)
+                                .secondary(zItems.ENDSTONE_PEBBLE, 0.25f)
                                 .unlockedBy()
                                 .save(c);
 
@@ -936,7 +936,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 MaceratorRecipeBuilder.of()
                                 .input(Items.BLAZE_ROD)
                                 .output(Items.BLAZE_POWDER, 2)
-                                .secondary(Items.BLAZE_POWDER, 2,0.75f)
+                                .secondary(Items.BLAZE_POWDER, 2, 0.75f)
                                 .delay(120)
                                 .unlockedBy()
                                 .save(c, "_from_blaze_rod");
@@ -946,7 +946,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .delay(40)
                                 .unlockedBy()
                                 .output(zItems.SULFUR_DUST, 2)
-                                .secondary(zItems.SULFUR_DUST,0.75f)
+                                .secondary(zItems.SULFUR_DUST, 0.75f)
                                 .save(c);
 
                 MaceratorRecipeBuilder.of()
@@ -1770,31 +1770,22 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .group(zStatic.PipeStuff.pipe).save(c);
 
                 ItemProviderBuilder.of()
-                                .core(Blocks.COBBLESTONE)
-                                .left(Blocks.LAVA)
-                                .right(Blocks.WATER)
+                                .pattern(Blocks.COBBLESTONE, Blocks.LAVA, Blocks.WATER)
                                 .output(Items.COBBLESTONE)
                                 .unlockedBy().save(c);
 
                 ItemProviderBuilder.of()
-                                .core(Blocks.BASALT)
-                                .left(Blocks.LAVA)
-                                .right(Blocks.BLUE_ICE)
-                                .below(Blocks.SOUL_SOIL)
+                                .pattern(Blocks.BASALT, Blocks.LAVA, Blocks.BLUE_ICE, Blocks.SOUL_SOIL)
                                 .output(Items.BASALT)
                                 .unlockedBy().save(c);
 
                 FluidProviderBuilder.of()
-                                .core(Blocks.COBBLESTONE)
-                                .left(Blocks.WATER)
-                                .right(Blocks.WATER)
+                                .pattern(Blocks.COBBLESTONE, Blocks.WATER, Blocks.WATER)
                                 .output(Fluids.WATER.getSource())
                                 .unlockedBy().save(c);
 
                 FluidProviderBuilder.of()
-                                .core(Blocks.OBSIDIAN)
-                                .left(Blocks.LAVA)
-                                .right(Blocks.LAVA)
+                                .pattern(Blocks.OBSIDIAN, Blocks.LAVA, Blocks.LAVA)
                                 .output(Fluids.LAVA.getSource(), 1)
                                 .unlockedBy().save(c);
 

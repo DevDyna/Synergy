@@ -1,6 +1,9 @@
 package com.devdyna.synergy.api.codec;
 
+import java.util.Optional;
+
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,4 +21,6 @@ public class BetterThanBlockStates {
             buf.writeInt(Block.getId(state));
         }
     };
+
+    public static final StreamCodec<FriendlyByteBuf,Optional<BlockState>> OPTIONAL_STREAM_CODEC = ByteBufCodecs.optional(STREAM_CODEC);
 }

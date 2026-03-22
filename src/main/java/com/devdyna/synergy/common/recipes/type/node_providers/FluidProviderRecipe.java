@@ -1,8 +1,6 @@
 package com.devdyna.synergy.common.recipes.type.node_providers;
 
-import javax.annotation.Nullable;
-
-import com.devdyna.synergy.api.codec.BetterThanBlockStates;
+import com.devdyna.synergy.api.codec.recipe.NodePattern;
 import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
@@ -18,17 +16,15 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 @SuppressWarnings({ "null" })
 public class FluidProviderRecipe<T> extends BaseProviderRecipe<FluidStack> {
 
-    private final FluidStack output;
+    // private final FluidStack output;
 
-    public FluidProviderRecipe(BlockState core, @Nullable BlockState below, @Nullable BlockState left,
-            @Nullable BlockState right, FluidStack output) {
-        super(core, below, left, right, output);
+    public FluidProviderRecipe(NodePattern pattern, FluidStack output) {
+        super(pattern, output);
         this.output = output;
 
     }
@@ -56,23 +52,16 @@ public class FluidProviderRecipe<T> extends BaseProviderRecipe<FluidStack> {
     public static class Serializer implements RecipeSerializer<FluidProviderRecipe<FluidStack>> {
 
     public static final MapCodec<FluidProviderRecipe<FluidStack>> CODEC = RecordCodecBuilder.mapCodec(inst -> inst
-            .group(
-                    BlockState.CODEC.fieldOf("core").forGetter(FluidProviderRecipe::getCore),
-                    BlockState.CODEC.fieldOf("below").forGetter(FluidProviderRecipe::getBelow),
-                    BlockState.CODEC.fieldOf("left").forGetter(FluidProviderRecipe::getLeft),
-                    BlockState.CODEC.fieldOf("right").forGetter(FluidProviderRecipe::getRight),
-                    FluidStack.CODEC.fieldOf("result").forGetter(FluidProviderRecipe::getOutput))
-            .apply(inst, FluidProviderRecipe::new));
+                .group(
+                        NodePattern.CODEC.fieldOf("pattern").forGetter(FluidProviderRecipe::getPattern),
+                        FluidStack.CODEC.fieldOf("result").forGetter(FluidProviderRecipe::getOutput))
+                .apply(inst, FluidProviderRecipe::new));
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, FluidProviderRecipe<FluidStack>> STREAM_CODEC = StreamCodec
-            .composite(
-                    BetterThanBlockStates.STREAM_CODEC, FluidProviderRecipe::getCore,
-                    BetterThanBlockStates.STREAM_CODEC, FluidProviderRecipe::getBelow,
-                    BetterThanBlockStates.STREAM_CODEC, FluidProviderRecipe::getLeft,
-                    BetterThanBlockStates.STREAM_CODEC, FluidProviderRecipe::getRight,
-                    FluidStack.STREAM_CODEC, FluidProviderRecipe::getOutput,
-                    FluidProviderRecipe::new);
-
+        public static final StreamCodec<RegistryFriendlyByteBuf, FluidProviderRecipe<FluidStack>> STREAM_CODEC = StreamCodec
+                .composite(
+                        NodePattern.STREAM_CODEC, FluidProviderRecipe::getPattern,
+                        FluidStack.STREAM_CODEC, FluidProviderRecipe::getOutput,
+                        FluidProviderRecipe::new);
     @Override
     public MapCodec<FluidProviderRecipe<FluidStack>> codec() {
         return CODEC;

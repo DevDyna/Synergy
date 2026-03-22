@@ -46,7 +46,7 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
                 .addIngredients(x.ingredient(zBlocks.FLUID_PROVIDER.get()));
 
         try {
-            var core = recipe.getCore();
+            var core = recipe.getPattern().core();
             if (core.getBlock() instanceof LiquidBlock fluid)
                 builder.addInputSlot(33 - 15, 62 - 8).addFluidStack(fluid.fluid);
             else
@@ -55,8 +55,8 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
         }
 
         try {
-            var below = recipe.getBelow();
-            if (!below.isAir()) {
+            var below = recipe.getPattern().below();
+            if (!below.isAir() && below != null) {
                 if (below.getBlock() instanceof LiquidBlock fluid)
                     builder.addInputSlot(33 - 15, 79 - 8).addFluidStack(fluid.fluid);
                 else
@@ -66,8 +66,8 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
         }
 
         try {
-            var right = recipe.getRight();
-            if (!right.isAir()) {
+            var right = recipe.getPattern().right();
+            if (!right.isAir() && right != null) {
                 if (right.getBlock() instanceof LiquidBlock fluid)
                     builder.addInputSlot(50 - 15, 62 - 8).addFluidStack(fluid.fluid);
                 else
@@ -77,8 +77,8 @@ public abstract class BaseProviderCategory<T extends BaseProviderRecipe<J>, J>
         }
 
         try {
-            var left = recipe.getLeft();
-            if (!left.isAir()) {
+            var left = recipe.getPattern().left();
+            if (!left.isAir() && left != null) {
                 if (left.getBlock() instanceof LiquidBlock fluid)
                     builder.addInputSlot(16 - 15, 62 - 8).addFluidStack(fluid.fluid);
                 else

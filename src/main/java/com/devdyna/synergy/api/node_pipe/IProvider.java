@@ -36,12 +36,12 @@ public interface IProvider<I extends RecipeInput, T extends Recipe<I>, L> {
 
         var recipe = (BaseProviderRecipe<L>) r.get().value();
 
-        var requireBelow = !(recipe.getBelow() == null || recipe.getBelow().isAir());
-        var requireLeft = !(recipe.getLeft() == null || recipe.getLeft().isAir());
-        var requireRight = !(recipe.getRight() == null || recipe.getRight().isAir());
+        var requireBelow = !(recipe.getPattern().below() == null || recipe.getPattern().below().isAir());
+        var requireLeft = !(recipe.getPattern().left() == null || recipe.getPattern().left().isAir());
+        var requireRight = !(recipe.getPattern().right() == null || recipe.getPattern().right().isAir());
 
         if (requireBelow)
-            if (!NodeBaseBE.check(level, defineInput().relative(dir), recipe.getBelow()))
+            if (!NodeBaseBE.check(level, defineInput().relative(dir), recipe.getPattern().below()))
                 return false;
 
         var dirs = Arrays.asList(Direction.values()).stream()
@@ -53,14 +53,14 @@ public interface IProvider<I extends RecipeInput, T extends Recipe<I>, L> {
         if (requireLeft || requireRight)
             for (Direction direction : dirs) {
                 if (requireRight)
-                    if (NodeBaseBE.check(level, pos.relative(direction), recipe.getRight())
+                    if (NodeBaseBE.check(level, pos.relative(direction), recipe.getPattern().right())
                             && !pos.relative(direction).equals(leftPos) && rightPos == null) {
                         rightPos = pos.relative(direction);
                         continue;
                     }
 
                 if (requireLeft)
-                    if (NodeBaseBE.check(level, pos.relative(direction), recipe.getLeft())
+                    if (NodeBaseBE.check(level, pos.relative(direction), recipe.getPattern().left())
                             && !pos.relative(direction).equals(rightPos) && leftPos == null) {
                         leftPos = pos.relative(direction);
                         continue;
