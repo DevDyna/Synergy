@@ -59,7 +59,7 @@ public class MaceratorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
                 SizedIngredient.FLAT_CODEC.fieldOf("input").forGetter(MaceratorRecipeType::getInputItem),
                 ItemStack.CODEC.fieldOf("output").forGetter(MaceratorRecipeType::getOutputItem),
-                ChanceOutputItem.CODEC.optionalFieldOf("secondary")
+                ChanceOutputItem.CODEC.optionalFieldOf("secondary_item")
                         .forGetter(r -> ChanceOutputItem.optional(r.getSecondaryOutputItem())))
                 .apply(inst, (ticks, energy, input, output, secondary) -> new MaceratorRecipeType(
                         ticks,

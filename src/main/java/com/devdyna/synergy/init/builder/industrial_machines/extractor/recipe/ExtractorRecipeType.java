@@ -62,9 +62,9 @@ public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
 
                 SizedIngredient.FLAT_CODEC.fieldOf("input").forGetter(ExtractorRecipeType::getInputItem),
 
-                ChanceOutputItem.CODEC.optionalFieldOf("secondary")
+                ChanceOutputItem.CODEC.optionalFieldOf("secondary_item")
                         .forGetter(r -> ChanceOutputItem.optional(r.getSecondaryOutputItem())),
-                FluidStack.CODEC.optionalFieldOf("output_fluid", FluidStack.EMPTY)
+                FluidStack.CODEC.optionalFieldOf("optional_fluid", FluidStack.EMPTY)
                         .forGetter(r -> (r.getFluidOutput() == null || r.getFluidOutput().isEmpty())
                                 ? FluidStack.EMPTY
                                 : r.getFluidOutput()))
