@@ -1,25 +1,27 @@
 {
   "type": "synergy:provider/item",
-  "below": {
-    "Name": "minecraft:soul_soil"
-  },
-  "core": {
-    "Name": "minecraft:basalt",
-    "Properties": {
-      "axis": "y"
-    }
-  },
-  "left": {
-    "Name": "minecraft:lava",
-    "Properties": {
-      "level": "0"
+  "pattern": {
+    "below": {
+      "Name": "minecraft:soul_soil"
+    },
+    "core": {
+      "Name": "minecraft:basalt",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "left": {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    "right": {
+      "Name": "minecraft:blue_ice"
     }
   },
   "result": {
     "count": 1,
     "id": "minecraft:basalt"
-  },
-  "right": {
-    "Name": "minecraft:blue_ice"
   }
 }

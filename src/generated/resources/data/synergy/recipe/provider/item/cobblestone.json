@@ -1,25 +1,24 @@
 {
   "type": "synergy:provider/item",
-  "below": {
-    "Name": "minecraft:air"
-  },
-  "core": {
-    "Name": "minecraft:cobblestone"
-  },
-  "left": {
-    "Name": "minecraft:lava",
-    "Properties": {
-      "level": "0"
+  "pattern": {
+    "core": {
+      "Name": "minecraft:cobblestone"
+    },
+    "left": {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    "right": {
+      "Name": "minecraft:water",
+      "Properties": {
+        "level": "0"
+      }
     }
   },
   "result": {
     "count": 1,
     "id": "minecraft:cobblestone"
-  },
-  "right": {
-    "Name": "minecraft:water",
-    "Properties": {
-      "level": "0"
-    }
   }
 }
