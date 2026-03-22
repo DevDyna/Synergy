@@ -30,11 +30,9 @@ This section will let you know what some key-words define what
 "entry": <item-stack..2>
 ```
 
-describe a list of differents `<item-stack>` which can be at most 2 elements!
+Describe a list of differents `<item-stack>` which can be at most 2 elements!
 
-## Itemtype
-
-### Item Stack syntax `<item-stack>`
+## Item Stack syntax `<item-stack>`
 
 ```js
 {
@@ -47,7 +45,7 @@ Use cases:
 
 #TODO
 
-### Ingredient syntax `<item-ingredient>`
+## Ingredient syntax `<item-ingredient>`
 
 Static Item type
 
@@ -69,7 +67,7 @@ Use cases:
 
 #TODO
 
-### Sized Ingredient syntax `<item-sized-ingredient>`
+## Sized Ingredient syntax `<item-sized-ingredient>`
 
 Static Item type
 
@@ -93,7 +91,7 @@ Use cases:
 
 #TODO
 
-### ChanceOutputItem syntax `<chance-output-item>`
+## ChanceOutputItem syntax `<chance-output-item>`
 
 Static Item type
 
@@ -108,9 +106,7 @@ Use cases:
 
 - rock crusher recipe output
 
-## FluidType
-
-### Fluid Stack syntax `<fluid-stack>`
+## Fluid Stack syntax `<fluid-stack>`
 
 ```js
 {
@@ -123,7 +119,7 @@ Use cases:
 
 #TODO
 
-### FluidIngredient syntax `<fluid-ingredient>`
+## FluidIngredient syntax `<fluid-ingredient>`
 
 Static Fluid type
 
@@ -145,7 +141,7 @@ Use cases:
 
 - _deprecated_
 
-### Sized Fluid Ingredient syntax `<fluid-sized-ingredient>`
+## Sized Fluid Ingredient syntax `<fluid-sized-ingredient>`
 
 Static Fluid type
 
@@ -169,7 +165,7 @@ Use cases:
 
 #TODO
 
-### Provider Node Pattern syntax `<node-pattern>`
+## Provider Node Pattern syntax `<node-pattern>`
 
 ```js
 {
