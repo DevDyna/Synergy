@@ -1,5 +1,7 @@
 package com.devdyna.synergy.api.codec.recipe;
 
+import java.util.Optional;
+
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
@@ -23,5 +25,17 @@ public record ChanceOutputItem(ItemStack item, float chance) {
 
         public static final ChanceOutputItem of(ItemStack stack, float chance) {
                 return new ChanceOutputItem(stack, chance);
+        }
+
+        public static final Optional<ChanceOutputItem> optional(ChanceOutputItem t) {
+                return t != null ? Optional.of(t) : Optional.empty();
+        }
+
+        public static final boolean valid(ChanceOutputItem t) {
+                return itemValid(t) && t.chance > 0f && t.chance <= 1f;
+        }
+
+        public static final boolean itemValid(ChanceOutputItem t) {
+                return t != null && t.item != null && !t.item.isEmpty();
         }
 }
