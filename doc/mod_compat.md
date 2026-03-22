@@ -8,5 +8,5 @@ JarInJar
 
 Mod Compat
 - [Guideme](https://legacy.curseforge.com/minecraft/mc-mods/guideme)
-    It will provide a full documentation related on most of the content
+    It will provide a full documentation related on most of the present content
 
