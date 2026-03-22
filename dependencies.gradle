@@ -1,5 +1,11 @@
 repositories {
 
+mavenLocal()
+    
+    maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" }
+    maven { url = "https://maven.createmod.net" }
+
+
     //required for jei
         maven {
         url = "https://maven.blamejared.com"
@@ -15,6 +21,24 @@ repositories {
 
 
 dependencies {
+
+   
+    //ponder compat
+    jarJar(implementation("net.createmod.ponder:ponder-neoforge:${ponder_version}+mc${minecraft_version}")) {
+        version {
+            strictly ponder_version_range
+            prefer ponder_version
+        }
+    }
+
+    jarJar(implementation("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")) {
+        version {
+            strictly flywheel_version_range
+            prefer flywheel_version
+        }
+    }
+
+
 
     //jei
     compileOnly "mezz.jei:jei-${jei_minecraft}-common-api:${jei_version}"
