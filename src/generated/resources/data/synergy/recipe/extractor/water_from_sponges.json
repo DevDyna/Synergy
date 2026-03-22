@@ -5,11 +5,11 @@
     "count": 1,
     "item": "minecraft:wet_sponge"
   },
-  "output_fluid": {
+  "optional_fluid": {
     "amount": 1000,
     "id": "minecraft:water"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 1.0,
     "item": {
       "count": 1,

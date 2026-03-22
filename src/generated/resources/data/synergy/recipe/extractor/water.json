@@ -5,11 +5,11 @@
     "count": 1,
     "item": "synergy:blue_cup_mushroom"
   },
-  "output_fluid": {
+  "optional_fluid": {
     "amount": 250,
     "id": "minecraft:water"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.25,
     "item": {
       "count": 1,

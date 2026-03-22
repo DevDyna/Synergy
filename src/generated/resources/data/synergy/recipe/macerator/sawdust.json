@@ -9,7 +9,7 @@
     "count": 3,
     "id": "synergy:sawdust"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.5,
     "item": {
       "count": 1,

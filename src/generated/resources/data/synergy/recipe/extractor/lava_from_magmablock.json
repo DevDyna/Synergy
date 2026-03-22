@@ -5,11 +5,11 @@
     "count": 1,
     "item": "minecraft:magma_block"
   },
-  "output_fluid": {
+  "optional_fluid": {
     "amount": 250,
     "id": "minecraft:lava"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.75,
     "item": {
       "count": 1,

@@ -5,7 +5,7 @@
     "count": 1,
     "item": "synergy:beewax"
   },
-  "output_fluid": {
+  "optional_fluid": {
     "amount": 150,
     "id": "synergy:honey_source"
   },

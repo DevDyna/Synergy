@@ -9,7 +9,7 @@
     "count": 1,
     "id": "minecraft:blaze_powder"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.05,
     "item": {
       "count": 1,

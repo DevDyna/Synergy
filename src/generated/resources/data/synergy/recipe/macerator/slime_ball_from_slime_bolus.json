@@ -9,7 +9,7 @@
     "count": 2,
     "id": "minecraft:slime_ball"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.25,
     "item": {
       "count": 1,

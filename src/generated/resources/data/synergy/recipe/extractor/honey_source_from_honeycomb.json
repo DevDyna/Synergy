@@ -5,11 +5,11 @@
     "count": 1,
     "item": "minecraft:honeycomb"
   },
-  "output_fluid": {
+  "optional_fluid": {
     "amount": 250,
     "id": "synergy:honey_source"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.5,
     "item": {
       "count": 1,

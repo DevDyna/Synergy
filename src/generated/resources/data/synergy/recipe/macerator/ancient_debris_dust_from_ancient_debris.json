@@ -9,7 +9,7 @@
     "count": 2,
     "id": "synergy:ancient_debris_dust"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.5,
     "item": {
       "count": 1,

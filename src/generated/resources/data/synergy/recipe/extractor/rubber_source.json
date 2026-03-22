@@ -5,11 +5,11 @@
     "count": 1,
     "item": "synergy:oil"
   },
-  "output_fluid": {
+  "optional_fluid": {
     "amount": 25,
     "id": "synergy:rubber_source"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.15,
     "item": {
       "count": 1,

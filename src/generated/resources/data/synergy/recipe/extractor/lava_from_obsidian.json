@@ -5,11 +5,11 @@
     "count": 1,
     "item": "minecraft:obsidian"
   },
-  "output_fluid": {
+  "optional_fluid": {
     "amount": 1000,
     "id": "minecraft:lava"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.25,
     "item": {
       "count": 1,

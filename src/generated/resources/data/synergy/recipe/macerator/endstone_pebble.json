@@ -9,7 +9,7 @@
     "count": 2,
     "id": "synergy:endstone_pebble"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.25,
     "item": {
       "count": 1,

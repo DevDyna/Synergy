@@ -9,7 +9,7 @@
     "count": 2,
     "id": "synergy:carbon_dust"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.75,
     "item": {
       "count": 2,

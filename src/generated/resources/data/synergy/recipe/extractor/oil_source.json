@@ -5,7 +5,7 @@
     "count": 1,
     "item": "synergy:violet_webcap_mushroom"
   },
-  "output_fluid": {
+  "optional_fluid": {
     "amount": 250,
     "id": "synergy:oil_source"
   },

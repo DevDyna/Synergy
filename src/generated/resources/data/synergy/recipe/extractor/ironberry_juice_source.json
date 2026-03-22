@@ -5,11 +5,11 @@
     "count": 1,
     "item": "synergy:ironberries"
   },
-  "output_fluid": {
+  "optional_fluid": {
     "amount": 500,
     "id": "synergy:ironberry_juice_source"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.25,
     "item": {
       "count": 1,

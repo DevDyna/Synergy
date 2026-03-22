@@ -5,7 +5,7 @@
     "count": 1,
     "item": "minecraft:honey_bottle"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 1.0,
     "item": {
       "count": 6,

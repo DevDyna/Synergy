@@ -9,7 +9,7 @@
     "count": 6,
     "id": "minecraft:ender_pearl"
   },
-  "secondary": {
+  "secondary_item": {
     "chance": 0.25,
     "item": {
       "count": 1,
