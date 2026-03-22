@@ -24,65 +24,66 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 @SuppressWarnings("null")
 public class MaceratorCategory extends BaseMachineRecipeCategory<MaceratorRecipeType> {
 
-    public MaceratorCategory(IGuiHelper h) {
-        super(h);
-        this.arrow = helper
-                .drawableBuilder(x.rl("minecraft", "textures/gui/sprites/container/furnace/burn_progress.png"),
-                        0, 0, 24, 16)
-                .setTextureSize(24, 16).buildAnimated(60,
-                        IDrawableAnimated.StartDirection.LEFT, false);
-    }
-
-    public static final RecipeType<RecipeHolder<MaceratorRecipeType>> TYPE = RecipeType
-            .createFromVanilla(zMachines.MACERATOR.recipe().getType());
-
-    @Override
-    public RecipeType<RecipeHolder<MaceratorRecipeType>> getRecipeType() {
-        return TYPE;
-    }
-
-    @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, MaceratorRecipeType recipe, IFocusGroup focuses) {
-
-        builder.addInputSlot(2, 14).addItemStacks(x.getItems(recipe.getInputItem()));
-        builder.addOutputSlot(74, 6).addItemStack(recipe.getOutputItem());
-        if (recipe.hasSecondaryOutput()) {
-            builder.addOutputSlot(74, 31).addItemStack(recipe.getSecondaryOutputItem().item());
+        public MaceratorCategory(IGuiHelper h) {
+                super(h);
+                this.arrow = helper
+                                .drawableBuilder(x.rl("minecraft",
+                                                "textures/gui/sprites/container/furnace/burn_progress.png"),
+                                                0, 0, 24, 16)
+                                .setTextureSize(24, 16).buildAnimated(60,
+                                                IDrawableAnimated.StartDirection.LEFT, false);
         }
 
-    }
+        public static final RecipeType<RecipeHolder<MaceratorRecipeType>> TYPE = RecipeType
+                        .createFromVanilla(zMachines.MACERATOR.recipe().getType());
 
-    @Override
-    public void draw(MaceratorRecipeType recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
-            double mouseX,
-            double mouseY) {
-        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+        @Override
+        public RecipeType<RecipeHolder<MaceratorRecipeType>> getRecipeType() {
+                return TYPE;
+        }
 
-        arrow.draw(guiGraphics, 29, 15);
+        @Override
+        public void setRecipe(IRecipeLayoutBuilder builder, MaceratorRecipeType recipe, IFocusGroup focuses) {
 
-        guiGraphics.drawString(font,
-                Component.literal(
-                        recipe.getTime() + " ticks"),
-                22, 2,
-                defaultToolTipColor.getRGB(), false);
+                builder.addInputSlot(2, 14).addItemStacks(x.getItems(recipe.getInputItem()));
+                builder.addOutputSlot(74, 6).addItemStack(recipe.getOutputItem());
+                if (recipe.hasSecondaryOutput()) {
+                        builder.addOutputSlot(74, 31).addItemStack(recipe.getSecondaryOutputItem().item());
+                }
 
-        if (recipe.hasSecondaryOutput())
+        }
+
+        @Override
+        public void draw(MaceratorRecipeType recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics,
+                        double mouseX,
+                        double mouseY) {
+                super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+
+                arrow.draw(guiGraphics, 29, 15);
+
                 guiGraphics.drawString(font,
-                        Component.literal(
-                                ((int) (recipe.getSecondaryOutputItem().chance() * 100)) + "%"),
-                        50, 36,
-                        defaultToolTipColor.getRGB(), false);
+                                Component.literal(
+                                                recipe.getTime() + " ticks"),
+                                22, 2,
+                                defaultToolTipColor.getRGB(), false);
 
-    }
+                if (recipe.hasSecondaryOutput())
+                        drawCentredStringFixed(guiGraphics,font,
+                                        Component.literal(
+                                                        ((int) (recipe.getSecondaryOutputItem().chance() * 100)) + "%"),
+                                        60, 36,
+                                        defaultToolTipColor.getRGB(),false);
 
-    @Override
-    public Size setXY() {
-        return Size.of(96, 49);
-    }
+        }
 
-    @Override
-    public MachineType<? extends Block, ? extends BlockEntity, ? extends AbstractContainerMenu, ? extends Recipe<?>> getMachine() {
-        return zMachines.MACERATOR;
-    }
+        @Override
+        public Size setXY() {
+                return Size.of(96, 49);
+        }
+
+        @Override
+        public MachineType<? extends Block, ? extends BlockEntity, ? extends AbstractContainerMenu, ? extends Recipe<?>> getMachine() {
+                return zMachines.MACERATOR;
+        }
 
 }

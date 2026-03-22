@@ -7,6 +7,7 @@ import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.Recipe;
@@ -51,6 +52,11 @@ public abstract class BaseRecipeCategory<T extends Recipe<?>> extends BaseCatego
 
     public void getTooltip(ITooltipBuilder tooltip, T recipe, IRecipeSlotsView recipeSlotsView,
             double mouseX, double mouseY) {
+    }
+
+    public void drawCentredStringFixed(GuiGraphics g, Font font, Component text, int x, int y, int color,Boolean bool) {
+        var f = text.getVisualOrderText();
+        g.drawString(font, f, x - font.width(f) / 2, y, color,bool);
     }
 
     /**
