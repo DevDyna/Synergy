@@ -1,6 +1,5 @@
 {
   "type": "synergy:machine/macerator",
-  "chance": 0.75,
   "energy": 500,
   "input": {
     "count": 1,
@@ -11,8 +10,11 @@
     "id": "synergy:andesite_chunk"
   },
   "secondary": {
-    "count": 1,
-    "id": "synergy:andesite_chunk"
+    "chance": 0.75,
+    "item": {
+      "count": 1,
+      "id": "synergy:andesite_chunk"
+    }
   },
   "ticks": 100
 }

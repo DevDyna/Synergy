@@ -1,14 +1,16 @@
 {
   "type": "synergy:machine/extractor",
-  "chance": 1.0,
   "energy": 500,
   "input": {
     "count": 1,
     "item": "minecraft:honey_bottle"
   },
-  "output_item": {
-    "count": 6,
-    "id": "minecraft:sugar"
+  "secondary": {
+    "chance": 1.0,
+    "item": {
+      "count": 6,
+      "id": "minecraft:sugar"
+    }
   },
   "ticks": 100
 }

@@ -1,6 +1,5 @@
 {
   "type": "synergy:machine/extractor",
-  "chance": 0.75,
   "energy": 500,
   "input": {
     "count": 1,
@@ -10,9 +9,12 @@
     "amount": 250,
     "id": "minecraft:lava"
   },
-  "output_item": {
-    "count": 1,
-    "id": "minecraft:netherrack"
+  "secondary": {
+    "chance": 0.75,
+    "item": {
+      "count": 1,
+      "id": "minecraft:netherrack"
+    }
   },
   "ticks": 100
 }

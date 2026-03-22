@@ -1,6 +1,5 @@
 {
   "type": "synergy:machine/extractor",
-  "chance": 0.25,
   "energy": 500,
   "input": {
     "count": 1,
@@ -10,9 +9,12 @@
     "amount": 1000,
     "id": "minecraft:lava"
   },
-  "output_item": {
-    "count": 1,
-    "id": "minecraft:cobblestone"
+  "secondary": {
+    "chance": 0.25,
+    "item": {
+      "count": 1,
+      "id": "minecraft:cobblestone"
+    }
   },
   "ticks": 100
 }

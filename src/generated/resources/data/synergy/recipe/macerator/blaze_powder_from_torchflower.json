@@ -1,6 +1,5 @@
 {
   "type": "synergy:machine/macerator",
-  "chance": 0.05,
   "energy": 500,
   "input": {
     "count": 1,
@@ -11,8 +10,11 @@
     "id": "minecraft:blaze_powder"
   },
   "secondary": {
-    "count": 1,
-    "id": "minecraft:blaze_powder"
+    "chance": 0.05,
+    "item": {
+      "count": 1,
+      "id": "minecraft:blaze_powder"
+    }
   },
   "ticks": 120
 }

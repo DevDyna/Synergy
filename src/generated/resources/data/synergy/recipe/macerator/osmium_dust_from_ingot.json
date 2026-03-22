@@ -9,7 +9,6 @@
     }
   ],
   "type": "synergy:machine/macerator",
-  "chance": 0.0,
   "energy": 500,
   "input": {
     "count": 1,

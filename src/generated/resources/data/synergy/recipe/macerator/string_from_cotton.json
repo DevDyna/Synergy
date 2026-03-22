@@ -1,6 +1,5 @@
 {
   "type": "synergy:machine/macerator",
-  "chance": 0.75,
   "energy": 500,
   "input": {
     "count": 1,
@@ -11,8 +10,11 @@
     "id": "minecraft:string"
   },
   "secondary": {
-    "count": 2,
-    "id": "minecraft:string"
+    "chance": 0.75,
+    "item": {
+      "count": 2,
+      "id": "minecraft:string"
+    }
   },
   "ticks": 100
 }

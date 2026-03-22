@@ -1,6 +1,5 @@
 {
   "type": "synergy:machine/macerator",
-  "chance": 0.5,
   "energy": 500,
   "input": {
     "count": 1,
@@ -11,8 +10,11 @@
     "id": "synergy:sawdust"
   },
   "secondary": {
-    "count": 1,
-    "id": "synergy:sawdust"
+    "chance": 0.5,
+    "item": {
+      "count": 1,
+      "id": "synergy:sawdust"
+    }
   },
   "ticks": 80
 }

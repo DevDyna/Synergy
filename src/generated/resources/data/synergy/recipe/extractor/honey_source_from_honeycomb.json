@@ -1,6 +1,5 @@
 {
   "type": "synergy:machine/extractor",
-  "chance": 0.5,
   "energy": 500,
   "input": {
     "count": 1,
@@ -10,9 +9,12 @@
     "amount": 250,
     "id": "synergy:honey_source"
   },
-  "output_item": {
-    "count": 1,
-    "id": "synergy:beewax"
+  "secondary": {
+    "chance": 0.5,
+    "item": {
+      "count": 1,
+      "id": "synergy:beewax"
+    }
   },
   "ticks": 100
 }

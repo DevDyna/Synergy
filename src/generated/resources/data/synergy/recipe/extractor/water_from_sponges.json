@@ -1,6 +1,5 @@
 {
   "type": "synergy:machine/extractor",
-  "chance": 1.0,
   "energy": 500,
   "input": {
     "count": 1,
@@ -10,9 +9,12 @@
     "amount": 1000,
     "id": "minecraft:water"
   },
-  "output_item": {
-    "count": 1,
-    "id": "minecraft:sponge"
+  "secondary": {
+    "chance": 1.0,
+    "item": {
+      "count": 1,
+      "id": "minecraft:sponge"
+    }
   },
   "ticks": 100
 }

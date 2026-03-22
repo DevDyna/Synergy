@@ -1,6 +1,5 @@
 {
   "type": "synergy:machine/macerator",
-  "chance": 0.25,
   "energy": 500,
   "input": {
     "count": 1,
@@ -11,8 +10,11 @@
     "id": "synergy:endstone_pebble"
   },
   "secondary": {
-    "count": 1,
-    "id": "synergy:endstone_pebble"
+    "chance": 0.25,
+    "item": {
+      "count": 1,
+      "id": "synergy:endstone_pebble"
+    }
   },
   "ticks": 100
 }

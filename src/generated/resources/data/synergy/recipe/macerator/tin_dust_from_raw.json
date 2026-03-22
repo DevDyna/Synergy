@@ -9,7 +9,6 @@
     }
   ],
   "type": "synergy:machine/macerator",
-  "chance": 0.25,
   "energy": 500,
   "input": {
     "count": 1,
@@ -20,8 +19,11 @@
     "id": "synergy:tin_dust"
   },
   "secondary": {
-    "count": 1,
-    "id": "synergy:iron_dust"
+    "chance": 0.25,
+    "item": {
+      "count": 1,
+      "id": "synergy:iron_dust"
+    }
   },
   "ticks": 100
 }

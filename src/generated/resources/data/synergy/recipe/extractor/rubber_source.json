@@ -1,6 +1,5 @@
 {
   "type": "synergy:machine/extractor",
-  "chance": 0.15,
   "energy": 500,
   "input": {
     "count": 1,
@@ -10,9 +9,12 @@
     "amount": 25,
     "id": "synergy:rubber_source"
   },
-  "output_item": {
-    "count": 1,
-    "id": "synergy:carbon_dust"
+  "secondary": {
+    "chance": 0.15,
+    "item": {
+      "count": 1,
+      "id": "synergy:carbon_dust"
+    }
   },
   "ticks": 100
 }
