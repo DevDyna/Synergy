@@ -2,10 +2,11 @@
 
 ### Required fields
 
-- `"energy"`
+- `"energy"` Energy consumed every tick when the recipe is present
+- `"ticks"` Duration of the recipe
 - `"input"`
 - `"output"`
-- `"ticks"`
+
 
 ### Optional fields
 

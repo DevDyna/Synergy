@@ -1,12 +1,17 @@
 # Reactor Reaction
 
+### Note:
+- `"fe"` can be modified using moderators
+- `"heat"` can be modified using moderators and coolers
+
 ### Required fields
 
-- `"fe"`
-- `"ticks"`
-- `"heat"`
+- `"ticks"` Duration of the recipe
 - `"ingredient"`
 - `"result"`
+- `"fe"` ForgeEnergy factor produced every tick
+- `"heat"` Heat factor produced every tick
+
 
 ```js
 {

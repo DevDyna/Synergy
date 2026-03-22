@@ -2,8 +2,8 @@
 
 ### Required fields
 
-- `"consume_input"`
-- `"ticks"`
+- `"ticks"` Duration of the recipe
+- `"consume_input"` Define if consume the `"input"` at the end of the recipe
 - `"fluid"`
 - `"output"`
 

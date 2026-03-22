@@ -2,9 +2,9 @@
 
 ### Required fields
 
-- `"fluid"`
-- `"speed"`
-- `"usage"`
+- `"fluid"` Fluid used as fuel
+- `"speed"` Define the speed boost for the foundry
+- `"usage"` Define the fuel usage
 
 ```js
 {

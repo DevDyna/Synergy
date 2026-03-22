@@ -3,7 +3,7 @@
 ### Required fields
 
 - `"energy"` Energy consumed every tick when the recipe is present
-- `"ticks"`
+- `"ticks"` Duration of the recipe
 - `"left"`
 - `"right"`
 - `"output"`

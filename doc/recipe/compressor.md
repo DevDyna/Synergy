@@ -2,10 +2,10 @@
 
 ### Required fields
 
-- `"energy"`
-- `"consume_catalyst"`
+- `"energy"` Energy consumed every tick when the recipe is present
+- `"ticks"` Duration of the recipe
+- `"consume_catalyst"` Define if consume the `"plate"` at the end of the recipe
 - `"input"`
-- `"ticks"`
 - `"output"`
 
 ### Optional fields

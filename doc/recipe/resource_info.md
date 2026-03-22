@@ -1,9 +1,12 @@
 # Resource Info
 
+### Note:
+- This recipe type only show information on recipe viewers
+
 ### Required fields
 
-- `"crop"`
-- `"result"`
+- `"crop"` Natural resource mainly to show worldgen resources
+- `"result"` Result Items mainly to show loot table items or specific feature blocks
 
 ```js
 {

@@ -5,7 +5,6 @@
 - `"pattern"`
 - `"result"`
 
-
 ```js
 {
   "type": "synergy:provider/fluid",

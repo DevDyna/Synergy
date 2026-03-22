@@ -2,10 +2,12 @@
 
 ### Required fields
 
-- `"energy"`
+- `"energy"` Energy consumed every tick when the recipe is present
+- `"ticks"` Duration of the recipe
+- `"consume_input"` Define if consume the `"input_item"` at the end of the recipe
 - `"input_fluid"`
 - `"output"`
-- `"ticks"`
+
 
 ### Optional fields
 

@@ -2,7 +2,7 @@
 
 ### Required fields
 
-- `"frequence"`
+- `"frequence"` Duration of the recipe
 - `"ingredient"`
 - `"result"`
 

@@ -1,8 +1,11 @@
 # Drying Rack
 
+### Note:
+- `"ticks"` can decrease and increase based on specific conditions!
+
 ### Required fields
 
-- `"ticks"`
+- `"ticks"` Duration of the recipe and can change based on item stack size configurable via config
 - `"input"`
 - `"output"`
 

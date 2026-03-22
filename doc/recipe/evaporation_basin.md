@@ -1,10 +1,14 @@
 # Evaporation Basin
 
+### Note:
+- `"ticks"` can be speed-up placing specific blocks below the block
+
 ### Required fields
 
+- `"ticks"` Duration of the recipe
 - `"fluid"`
 - `"output"`
-- `"ticks"`
+
 
 ```js
 {
