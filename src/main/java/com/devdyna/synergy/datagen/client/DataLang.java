@@ -330,6 +330,8 @@ public class DataLang extends LanguageProvider {
                                 "Recipe Timered Info");
                 add("config.jade.plugin_" + ID + ".environment_modifier",
                                 "Environment Modifier Info");
+                add("config.jade.plugin_" + ID + ".foundry_fuel",
+                                "Foundry Fuel Provider Modifier Info");
                 add("config.jade.plugin_" + ID + ".simple_timer",
                                 "Simple Delay Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.Blocks.logic_box,
@@ -424,6 +426,7 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jade.bricks.wet", "§cDrying conditions don't match!");
                 add(ID + ".jade.bricks.stage", "Drying stage: %s");
                 add(ID + ".jade.environment_modifier.tip", "Base Speed: %s");
+                add(ID + ".jade.foundry_fuel.tip", "Heat Speed Modifier: %s");
 
                 add(ID + ".jei.fuel.usage", "Fluid amount used every recipe");
                 add(ID + ".jei.fuel.speed", "Base recipe speed");

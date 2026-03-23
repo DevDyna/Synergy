@@ -14,6 +14,7 @@ import com.devdyna.synergy.compat.jade.provider.EnergyTipProviders;
 import com.devdyna.synergy.compat.jade.provider.EntityWatcherModeProvider;
 import com.devdyna.synergy.compat.jade.provider.EnvironmentModifierProvider;
 import com.devdyna.synergy.compat.jade.provider.FilterProvider;
+import com.devdyna.synergy.compat.jade.provider.FoundryHeaterProvider;
 import com.devdyna.synergy.compat.jade.provider.FuelCellProgress;
 import com.devdyna.synergy.compat.jade.provider.LaserMachineGunProvider;
 import com.devdyna.synergy.compat.jade.provider.LaserRotorProvider;
@@ -32,6 +33,8 @@ import com.devdyna.synergy.init.builder.magic.logic_box.LogicBoxBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
+
+import net.minecraft.world.level.block.Block;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
@@ -60,6 +63,7 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(FilterProvider.INSTANCE, LogicBoxBlock.class);
         r.registerBlockComponent(SidedFilterProvider.INSTANCE, RouterBlock.class);
         r.registerBlockComponent(EntityWatcherModeProvider.INSTANCE, EntityWatcherBlock.class);
+        r.registerBlockComponent(FoundryHeaterProvider.INSTANCE, Block.class);
     }
 
     @Override
@@ -82,5 +86,6 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockDataProvider(FilterProvider.INSTANCE, LogicBoxBlock.class);
         r.registerBlockDataProvider(SidedFilterProvider.INSTANCE, RouterBlock.class);
         r.registerBlockDataProvider(EntityWatcherModeProvider.INSTANCE, EntityWatcherBlock.class);
+        r.registerBlockDataProvider(FoundryHeaterProvider.INSTANCE, Block.class);
     }
 }
