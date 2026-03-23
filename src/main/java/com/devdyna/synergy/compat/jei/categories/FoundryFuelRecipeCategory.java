@@ -15,7 +15,7 @@ import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.common.recipes.type.FoundryFuelEfficiencyRecipe;
 import com.devdyna.synergy.compat.jei.api.JEIFluidTankHelper;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.init.builder.survival.foundry.FoundryBE;
+import com.devdyna.synergy.init.builder.survival.tank.FuelTankBE;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -80,7 +80,7 @@ public class FoundryFuelRecipeCategory extends BaseRecipeCategory<FoundryFuelEff
         stack.pushPose();
         stack.scale(0.75F, 0.75F, 8000F);
         guiGraphics.drawString(font, recipe.getSpeedModifier() + "x", 46, 4, 0xFFFFFF);
-        guiGraphics.drawString(font, (int) (FoundryBE.FLUID_BURN_RATE * recipe.getUsageModifier()) + "mb/wk", 46, 18, 0xFFFFFF);
+        guiGraphics.drawString(font, (int) (FuelTankBE.FLUID_BURN_RATE * recipe.getUsageModifier()) + "mb/wk", 46, 18, 0xFFFFFF);
         stack.popPose();
 
     }
