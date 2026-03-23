@@ -35,6 +35,7 @@ import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBE;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBE;
 import com.devdyna.synergy.init.builder.survival.faucet.FaucetBE;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryBE;
+import com.devdyna.synergy.init.builder.survival.tank.FuelTankBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -140,7 +141,11 @@ public class zBlockEntities {
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FluidTankBE>> FLUID_TANK = Material
                         .createBlockEntity(zStatic.FluidTanks.normal, FluidTankBE::new,
-                                        zBlocks.SIMPLE_TANK, zBlocks.FUEL_TANK);
+                                        zBlocks.SIMPLE_TANK);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FuelTankBE>> FUEL_TANK = Material
+                        .createBlockEntity(zStatic.FluidTanks.fuel, FuelTankBE::new,
+                                         zBlocks.FUEL_TANK);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SimpleWaterGenBE>> SIMPLE_WATER_GEN = Material
                         .createBlockEntity(zStatic.ResourceGenerators.Water.simple, SimpleWaterGenBE::new,

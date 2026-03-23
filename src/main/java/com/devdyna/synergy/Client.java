@@ -1,5 +1,6 @@
 package com.devdyna.synergy;
 
+import com.devdyna.synergy.api.render.FullTankRender;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.automation.chopper.ChopperAOE;
@@ -7,7 +8,6 @@ import com.devdyna.synergy.init.builder.automation.chopper.ChopperScreen;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterAOE;
 import com.devdyna.synergy.init.builder.automation.router.RouterScreen;
 import com.devdyna.synergy.init.builder.automation.sprinkler.SprinklerAOE;
-import com.devdyna.synergy.init.builder.automation.tank.FluidTankFluidRender;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.AlloySmelterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.caster.CasterScreen;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.CompressorScreen;
@@ -66,7 +66,8 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.VOID_BOX.get(), VoidBoxRender::new);
         event.registerBlockEntityRenderer(zBlockEntities.LOGIC_BOX.get(), LogicBoxRender::new);
 
-        event.registerBlockEntityRenderer(zBlockEntities.FLUID_TANK.get(), FluidTankFluidRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.FLUID_TANK.get(), FullTankRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.FUEL_TANK.get(), FullTankRender::new);
 
         event.registerBlockEntityRenderer(zBlockEntities.CRUSHING_TUB.get(), CrushingTubRender::new);
         event.registerBlockEntityRenderer(zBlockEntities.EVAPORATION_BASIN.get(), EvaporationBasinRender::new);

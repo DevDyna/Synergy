@@ -1,15 +1,15 @@
-package com.devdyna.synergy.init.builder.automation.tank;
+package com.devdyna.synergy.api.render;
 
-import com.devdyna.synergy.api.render.FluidRenderHelper;
+import com.devdyna.synergy.api.basebe.be.BETank;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Context;
 
 @SuppressWarnings("null")
-public class FluidTankFluidRender<T extends FluidTankBE> implements BlockEntityRenderer<T> {
+public class FullTankRender<T extends BETank> implements BlockEntityRenderer<T> {
 
-        public FluidTankFluidRender(Context c) {
+        public FullTankRender(Context c) {
         }
 
         @Override

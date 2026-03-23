@@ -8,16 +8,14 @@ import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.EnvironmentModifier;
+import com.devdyna.synergy.api.beLogic.FoundryFuelProvider;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
 import com.devdyna.synergy.api.beLogic.TimeredRecipe;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.utils.Ticker;
-import com.devdyna.synergy.common.recipes.input.FluidInput;
 import com.devdyna.synergy.common.recipes.input.MonoItemInput;
-import com.devdyna.synergy.common.recipes.type.FoundryFuelEfficiencyRecipe;
-import com.devdyna.synergy.init.builder.automation.tank.FluidTankBE;
 import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
@@ -49,8 +47,6 @@ public class FoundryBE extends TickingBE
         implements NoGuiStorage, ItemStorageBlock, SimpleFluidStorage, TimeredRecipe, EnvironmentModifier {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
-
-    public static final int FLUID_BURN_RATE = 25;
 
     public FoundryBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -132,31 +128,41 @@ public class FoundryBE extends TickingBE
             return;
         }
 
-        if (getFuelTankStorage() == null) {
+        if (getFuelProvider() == null) {
             fail();
             return;
         }
 
-        if (getFuelTankStorage().isEmpty()) {
+        if (!getFuelProvider().initConditions()) {
             fail();
             return;
         }
 
-        Optional<RecipeHolder<FoundryFuelEfficiencyRecipe>> f = level.getRecipeManager()
-                .getRecipeFor(zRecipeTypes.FOUNDRY_FUELS.getType(),
-                        new FluidInput(getFuelTankStorage().getFluid()), level);
+        // if (getFuelTank() == null) {
+        // fail();
+        // return;
+        // }
 
-        if (f.isEmpty()) {
-            fail();
-            return;
-        }
+        // if (getFuelTankStorage().isEmpty()) {
+        // fail();
+        // return;
+        // }
 
-        var fuel = f.get().value();
+        // Optional<RecipeHolder<FoundryFuelEfficiencyRecipe>> f =
+        // getFuelTank().getRecipe();
 
-        if (getFuelTankStorage().getFluidAmount() < (FLUID_BURN_RATE * fuel.getUsageModifier())) {
-            fail();
-            return;
-        }
+        // if (f.isEmpty()) {
+        // fail();
+        // return;
+        // }
+
+        // var fuel = f.get().value();
+
+        // if (getFuelTankStorage().getFluidAmount() < (FLUID_BURN_RATE *
+        // fuel.getUsageModifier())) {
+        // fail();
+        // return;
+        // }
 
         Optional<RecipeHolder<FoundryRecipe>> r = level.getRecipeManager()
                 .getRecipeFor(zRecipeTypes.FOUNDRY.getType(),
@@ -182,7 +188,7 @@ public class FoundryBE extends TickingBE
         if (ticker.commit()) {
             getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.EXECUTE);
             getStorage().extractItem(0, 1, false);
-            getFuelTankStorage().drain((int) (FLUID_BURN_RATE * fuel.getUsageModifier()), FluidAction.EXECUTE);
+            getFuelProvider().executeOnRecipeCompleted();
         }
 
         update();
@@ -205,8 +211,13 @@ public class FoundryBE extends TickingBE
 
     }
 
-    public FluidStorageTank getFuelTankStorage() {
-        return (level.getBlockEntity(getBlockPos().below()) instanceof FluidTankBE tank) ? tank.getFluidStorage()
+    // public FluidStorageTank getFuelTankStorage() {
+    // return getFuelTank().getFluidStorage();
+    // }
+
+    public @Nullable FoundryFuelProvider getFuelProvider() {
+        return (level.getBlockEntity(getBlockPos().below()) instanceof FoundryFuelProvider provider)
+                ? provider
                 : null;
     }
 
@@ -267,14 +278,10 @@ public class FoundryBE extends TickingBE
     @Override
     public float getSpeedModifier() {
 
-        if (getFuelTankStorage() == null)
+        if (getFuelProvider() == null)
             return 0.0f;
 
-        Optional<RecipeHolder<FoundryFuelEfficiencyRecipe>> f = level.getRecipeManager()
-                .getRecipeFor(zRecipeTypes.FOUNDRY_FUELS.getType(),
-                        new FluidInput(getFuelTankStorage().getFluid()), level);
-
-        return (f.isEmpty() ? 1.0f : f.get().value().getSpeedModifier());
+        return getFuelProvider().getSpeedModifier();
     }
 
 }

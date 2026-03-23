@@ -29,6 +29,7 @@ import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBa
 import com.devdyna.synergy.init.builder.survival.faucet.FaucetBlock;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
+import com.devdyna.synergy.init.builder.survival.tank.FuelTankBlock;
 import com.devdyna.synergy.init.builder.*;
 import com.devdyna.synergy.init.builder.automation.chopper.ChopperBlock;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterBLK;
@@ -445,7 +446,7 @@ public class zBlocks {
 
         public static final DeferredHolder<Block, Block> FUEL_TANK = Material.registerItemBlock(
                         zStatic.FluidTanks.fuel,
-                        () -> new FluidTankBlock(Properties.of().strength(1.0f).sound(SoundType.METAL)
+                        () -> new FuelTankBlock(Properties.of().strength(1.0f).sound(SoundType.METAL)
                                         .mapColor(MapColor.METAL)));
 
         public static final DeferredHolder<Block, Block> VOID_BOX = Material.registerItemBlock(
