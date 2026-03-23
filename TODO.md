@@ -38,11 +38,7 @@
 
 - [ ] Forestry Peatfarm (?)
 
-- [ ] replace many drawString -> drawCenteredString
-
 - [ ] coockoo clock SoundEvents.UI_BUTTON_CLICK
-
-- [ ] Ticker need to use level.gameTime intend of tick
 
 - [ ] chopper desync client when insered battery on fuel slot
 
