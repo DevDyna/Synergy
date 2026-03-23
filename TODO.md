@@ -49,8 +49,6 @@
 - [ ] rework serializers to be unified with recipetype
       and use RecipeUtils.optionalCodec() when optional
 
-- [x] patina usage
-
 - [ ] chopper jade?
 
 - [ ] patina FD compat
