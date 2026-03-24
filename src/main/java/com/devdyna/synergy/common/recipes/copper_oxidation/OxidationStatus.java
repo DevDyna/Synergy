@@ -15,7 +15,7 @@ public enum OxidationStatus implements StringRepresentable {
     SCRAPPING("scrapping"),
     OXIDIZING("oxidizing"),
     WAXING("waxing"),
-    UN_WAXING("un_waxing");
+    UNWAXING("unwaxing");
 
     private final String i;
 

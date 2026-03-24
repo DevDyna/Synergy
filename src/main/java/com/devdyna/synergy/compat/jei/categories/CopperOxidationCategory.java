@@ -36,9 +36,8 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
 
     private List<Block> oxidable = x.getBlocks(NeoForgeDataMaps.OXIDIZABLES);
     private List<Block> waxable = x.getBlocks(NeoForgeDataMaps.WAXABLES);
-    private List<Block> scrappable = waxable.stream().filter(i -> (DataMapHooks.getPreviousOxidizedStage(i) != null))
-            .toList();
-    private List<Block> un_waxable = waxable.stream().filter(i -> (DataMapHooks.getBlockUnwaxed(i) != null)).toList();
+    // private List<Block> scrappable = waxable.stream().filter(i -> (DataMapHooks.getPreviousOxidizedStage(i) != null)).toList();
+    // private List<Block> un_waxable = waxable.stream().filter(i -> (DataMapHooks.getBlockUnwaxed(i) != null)).toList();
 
     public CopperOxidationCategory(IGuiHelper h) {
         super(h);
@@ -83,9 +82,9 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
 
         switch (recipe.getOxidationType()) {
             case OxidationStatus.SCRAPPING:
-                input = x.ingredient(scrappable.stream().map(Block::asItem).toList());
+                input = mapBlocks(oxidable, DataMapHooks::getNextOxidizedStage);
                 catalyst = x.ingredient(ItemTags.AXES);
-                output = mapBlocks(scrappable, DataMapHooks::getPreviousOxidizedStage);
+                output = x.ingredient(oxidable.stream().map(Block::asItem).toList());
                 break;
 
             case OxidationStatus.OXIDIZING:
@@ -100,10 +99,10 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
                 output = mapBlocks(waxable, DataMapHooks::getBlockWaxed);
                 break;
 
-            case OxidationStatus.UN_WAXING:
-                input = x.ingredient(un_waxable.stream().map(Block::asItem).toList());
+            case OxidationStatus.UNWAXING:
+                input = mapBlocks(waxable, DataMapHooks::getBlockWaxed);
                 catalyst = x.ingredient(ItemTags.AXES);
-                output = mapBlocks(un_waxable, DataMapHooks::getBlockUnwaxed);
+                output = x.ingredient(waxable.stream().map(Block::asItem).toList());
                 break;
         }
 
