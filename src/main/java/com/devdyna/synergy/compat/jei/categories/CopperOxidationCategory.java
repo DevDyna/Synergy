@@ -151,13 +151,13 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
                     .offset(58, 20)
                     .render(helper, guiGraphics);
 
-            var pose = guiGraphics.pose();
+            // var pose = guiGraphics.pose();
 
-            pose.pushPose();
+            // pose.pushPose();
             guiGraphics.drawCenteredString(font, "0-2", 67, 30, Color.WHITE.rgb());
-            pose.translate(0, 0, 1);
-            pose.scale(0.9f, 0.9f, 1f);
-            pose.popPose();
+            // pose.translate(0, 0, 1);
+            // pose.scale(0.9f, 0.9f, 1f);
+            // pose.popPose();
 
         }
 
