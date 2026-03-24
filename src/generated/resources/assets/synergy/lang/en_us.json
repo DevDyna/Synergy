@@ -725,6 +725,7 @@
   "synergy.jei.provider.item": "Item Provider Pattern",
   "synergy.jei.quern": "Quern Milling",
   "synergy.jei.resource_info": "Resource Info",
+  "synergy.jei.tip.consume_durability": "§cConsume durability",
   "synergy.jei.tip.dont_consume": "§cNot consume",
   "synergy.jei.urn": "Urn Rituals",
   "synergy.jei.void_box": "Void Box Infusions",
