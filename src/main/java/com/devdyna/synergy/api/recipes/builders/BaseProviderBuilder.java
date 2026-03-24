@@ -4,7 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import javax.annotation.Nullable;
 
-import com.devdyna.synergy.api.codec.recipe.NodePattern;
+import com.devdyna.synergy.api.codec.NodePattern;
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.x;
 

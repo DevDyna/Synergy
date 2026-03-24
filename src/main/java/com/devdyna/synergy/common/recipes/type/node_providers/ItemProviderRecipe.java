@@ -1,6 +1,6 @@
 package com.devdyna.synergy.common.recipes.type.node_providers;
 
-import com.devdyna.synergy.api.codec.recipe.NodePattern;
+import com.devdyna.synergy.api.codec.NodePattern;
 import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.common.recipes.input.ProviderInput;

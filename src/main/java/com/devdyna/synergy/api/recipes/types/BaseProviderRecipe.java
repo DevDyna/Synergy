@@ -2,7 +2,7 @@ package com.devdyna.synergy.api.recipes.types;
 
 import java.util.List;
 
-import com.devdyna.synergy.api.codec.recipe.NodePattern;
+import com.devdyna.synergy.api.codec.NodePattern;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.input.ProviderInput;
 

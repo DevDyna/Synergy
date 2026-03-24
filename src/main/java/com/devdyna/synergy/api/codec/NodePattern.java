@@ -1,8 +1,7 @@
-package com.devdyna.synergy.api.codec.recipe;
+package com.devdyna.synergy.api.codec;
 
 import java.util.Optional;
 
-import com.devdyna.synergy.api.codec.BetterThanBlockStates;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
