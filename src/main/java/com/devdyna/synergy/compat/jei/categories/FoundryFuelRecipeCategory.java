@@ -12,7 +12,7 @@ import static com.devdyna.synergy.Main.ID;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.Size;
-import com.devdyna.synergy.common.recipes.type.FoundryFuelEfficiencyRecipe;
+import com.devdyna.synergy.common.recipes.foundry_fuel.FoundryFuelEfficiencyRecipe;
 import com.devdyna.synergy.compat.jei.api.JEIFluidTankHelper;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.builder.survival.fuel_tank.FuelTankBE;
