@@ -4,6 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.registers.RecipeRegister;
+import com.devdyna.synergy.common.recipes.copper_oxidation.*;
 import com.devdyna.synergy.common.recipes.foundry_fuel.FoundryFuelEfficiencyRecipe;
 import com.devdyna.synergy.common.recipes.item_use.ItemUseRecipe;
 import com.devdyna.synergy.common.recipes.node_provider.fluid.FluidProviderRecipe;
@@ -92,6 +93,9 @@ public class zRecipeTypes {
 
         public static final RecipeRegister<CastingTableRecipe> CASTING_TABLE = RecipeRegister.of(zStatic.Blocks.casting_table,
                         CastingTableRecipe.Serializer::new);
+
+        public static final RecipeRegister<CopperOxidationRecipe> COPPER_OXIDATION = RecipeRegister.of("copper_oxidation",
+                        CopperOxidationRecipe.Serializer::new);
 
 
         // ------------------------------------------------------------------------------------------------------------------------------------//

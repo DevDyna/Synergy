@@ -174,6 +174,8 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + ".jei." + zStatic.ReactorStuff.fuel_cell,
                                 "Reactor Reactions");
+                add(Main.ID + ".jei." + "copper_oxidation",
+                                "Copper Oxidation Info");
 
                 add(Main.ID + ".jei." + zStatic.Blocks.foundry,
                                 "Foundry Recipes");
@@ -656,7 +658,7 @@ public class DataLang extends LanguageProvider {
                 advKey(zStatic.ResourceMaterial.californium, "Eagles Success", "Craft a californium pellet");
                 advKey(zStatic.ResourceMaterial.curium, "Curiosity", "Craft a curium pellet");
 
-                add(Main.ID + ".patina", TIP_COLOR + "Obtained from scrapping oxidized copper blocks");
+                add(Main.ID + ".jei.patina_drop", TIP_COLOR + "Can drop %s items every scrape");
 
         }
 

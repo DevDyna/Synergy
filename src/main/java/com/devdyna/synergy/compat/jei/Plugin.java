@@ -147,7 +147,8 @@ public class Plugin implements IModPlugin {
                                 new DryingRackCategory(helper),
                                 new FoundryCategory(helper),
                                 new FoundryFuelRecipeCategory(helper),
-                                new CastingTableCategory(helper)
+                                new CastingTableCategory(helper),
+                                new CopperOxidationCategory(helper)
 
                 );
 
@@ -207,6 +208,9 @@ public class Plugin implements IModPlugin {
 
                 r.addRecipes(RockCrusherCategory.TYPE,
                                 RecipeUtils.getRecipes(zMachines.ROCK_CRUSHER));
+
+                r.addRecipes(CopperOxidationCategory.TYPE,
+                                RecipeUtils.getRecipes(zRecipeTypes.COPPER_OXIDATION));
 
                 if (!Common.DISABLE_MACHINE_FURNACE_PROCESS_VANILLA.get())
                         r.addRecipes(ElectricFurnaceCategory.TYPE,

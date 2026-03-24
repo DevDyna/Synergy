@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.common.recipes.copper_oxidation.CopperOxidationBuilder;
 import com.devdyna.synergy.common.recipes.foundry_fuel.FoundryFuelBuilder;
 import com.devdyna.synergy.common.recipes.item_use.ItemUseBuilder;
 import com.devdyna.synergy.common.recipes.node_provider.fluid.FluidProviderBuilder;
@@ -2704,6 +2705,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
+                CopperOxidationBuilder.build(c);
 
                 ShapelessRecipeBuilder.shapeless(MISC, zItems.REDSTONE_ACID.get(), 1)
                                 .requires(Items.HONEY_BOTTLE)

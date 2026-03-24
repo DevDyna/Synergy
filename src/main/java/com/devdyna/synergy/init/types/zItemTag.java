@@ -45,20 +45,27 @@ public class zItemTag {
 
         public static final TagKey<Item> TOOLS_INTERACTIVE = Material.tagItem("interactive_tools");
 
-        // public static final TagKey<Item> AMERICIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.americium,
-        //                 "c");
-        // public static final TagKey<Item> BERKELIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.berkelium,
-        //                 "c");
+        // public static final TagKey<Item> AMERICIUM = Material.tagItem("pellets/" +
+        // zStatic.ResourceMaterial.americium,
+        // "c");
+        // public static final TagKey<Item> BERKELIUM = Material.tagItem("pellets/" +
+        // zStatic.ResourceMaterial.berkelium,
+        // "c");
         // public static final TagKey<Item> CALIFORNIUM = Material.tagItem(
-        //                 "pellets/" + zStatic.ResourceMaterial.californium,
-        //                 "c");
-        // public static final TagKey<Item> CURIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.curium, "c");
-        // public static final TagKey<Item> NEPTUNIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.neptunium,
-        //                 "c");
-        // public static final TagKey<Item> PLUTONIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.plutonium,
-        //                 "c");
-        // public static final TagKey<Item> THORIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.thorium, "c");
-        // public static final TagKey<Item> URANIUM = Material.tagItem("pellets/" + zStatic.ResourceMaterial.uranium, "c");
+        // "pellets/" + zStatic.ResourceMaterial.californium,
+        // "c");
+        // public static final TagKey<Item> CURIUM = Material.tagItem("pellets/" +
+        // zStatic.ResourceMaterial.curium, "c");
+        // public static final TagKey<Item> NEPTUNIUM = Material.tagItem("pellets/" +
+        // zStatic.ResourceMaterial.neptunium,
+        // "c");
+        // public static final TagKey<Item> PLUTONIUM = Material.tagItem("pellets/" +
+        // zStatic.ResourceMaterial.plutonium,
+        // "c");
+        // public static final TagKey<Item> THORIUM = Material.tagItem("pellets/" +
+        // zStatic.ResourceMaterial.thorium, "c");
+        // public static final TagKey<Item> URANIUM = Material.tagItem("pellets/" +
+        // zStatic.ResourceMaterial.uranium, "c");
 
         public static final TagKey<Item> COAL_LIKE = Material.tagItem("coal_like", "c");
 
@@ -76,7 +83,8 @@ public class zItemTag {
         public static final TagKey<Item> NUGGET_COPPER = Material.tagItem("nuggets/copper", "c");
         public static final TagKey<Item> NUGGET_WROUGHT_IRON = Material.tagItem("nuggets/wrought_iron", "c");
 
-        // public static final TagKey<Item> URN_MIXTURES = Material.tagItem("urn_mixtures");
+        // public static final TagKey<Item> URN_MIXTURES =
+        // Material.tagItem("urn_mixtures");
 
         public static final TagKey<Item> FOILS = Material.tagItem("foils", "c");
         public static final TagKey<Item> FOIL_COPPER = Material.tagItem("foils/copper", "c");
@@ -239,31 +247,33 @@ public class zItemTag {
         public static final TagKey<Item> CAST_IRON_BLOCKS = Material.tagItem("cast_iron_blocks");
 
         public static final TagKey<Item> MIXTURE_ALTERNATIVE = Material.tagItem("mixture_alternative");
-        
+
         public static final TagKey<Item> RESISTOR_INGREDIENT = Material.tagItem("resistor_ingredient");
 
         public static final TagKey<Item> CHOPPER_AREA_INCREASE = Material.tagItem("chopper/area_increaser");
 
         public static final TagKey<Item> CHOPPER_ENERGY_UPGRADE = Material.tagItem("chopper/energy_upgrade");
-      
-        public static final TagKey<Item> DEEPSLATE_STONES = Material.tagItem("deepslate_stones","c");
 
-        public static final TagKey<Item> ORE_DEPOSITS = Material.tagItem("deposit","c");
-       
-       
+        public static final TagKey<Item> DEEPSLATE_STONES = Material.tagItem("deepslate_stones", "c");
+
+        public static final TagKey<Item> ORE_DEPOSITS = Material.tagItem("deposit", "c");
+
         public static final TagKey<Item> NODE_ITEM = Material.tagItem("nodes/item");
         public static final TagKey<Item> NODE_FLUID = Material.tagItem("nodes/fluid");
         public static final TagKey<Item> NODE_ENERGY = Material.tagItem("nodes/energy");
 
-        public static final TagKey<Item> DIRTS = Material.tagItem("dirts","c");
-       
+        public static final TagKey<Item> DIRTS = Material.tagItem("dirts", "c");
+
         public static final TagKey<Item> IRONWOOD_LOGS = Material.tagItem("ironwood_logs");
         public static final TagKey<Item> ENTITY_WATCHER_TWEAK = Material.tagItem("entity_watcher_tweak");
-      
+
         public static final TagKey<Item> BATTERIES = Material.tagItem("batteries");
-      
+
         public static final TagKey<Item> DRYING_RACKS = Material.tagItem("drying_racks");
-       
+
+        @Deprecated
         public static final TagKey<Item> PATINA = Material.tagItem("patina");
+
+        public static final TagKey<Item> OXIDIZER = Material.tagItem("oxidizer");
 
 }
