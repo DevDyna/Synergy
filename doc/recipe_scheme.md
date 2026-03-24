@@ -24,6 +24,8 @@ This section will let you know what some key-words define what
 - `<float>` -> `1.0`
 - `<boolean>` -> `true`
 
+- `<hardcoded>` -> It cannot customized
+
 - Multiple Elements
 
 ```js
@@ -159,6 +161,7 @@ Tag Fluid type
 - [Casting Factory](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/casting_factory.md)
 - [Casting Table](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/casting_table.md)
 - [Compressor](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/compressor.md)
+- [Copper Oxidation](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/copper_oxidation.md)
 - [Crushing Tub](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/crushing_tub.md)
 - [Dryable Bricks](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/dryable_brick.md)
 - [Drying Rack](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/drying_rack.md)
