@@ -2704,6 +2704,13 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
+
+                ShapelessRecipeBuilder.shapeless(MISC, zItems.REDSTONE_ACID.get(), 1)
+                                .requires(Items.HONEY_BOTTLE)
+                                .requires(Tags.Items.DUSTS_REDSTONE)
+                                .unlockedBy(ID, has(Tags.Items.DUSTS_REDSTONE))
+                                .save(c);
+
         }
 
 }
