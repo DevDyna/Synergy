@@ -720,7 +720,7 @@
   "synergy.jei.machine.extractor": "Extractor Recipes",
   "synergy.jei.machine.macerator": "Macerator Recipes",
   "synergy.jei.machine.rock_crusher": "Rock Crusher Recipes",
-  "synergy.jei.patina_drop": "§7Can drop %s items every scrape",
+  "synergy.jei.patina_drop": "§7Drop %s§7 items every scrape",
   "synergy.jei.provider.fluid": "Fluid Provider Pattern",
   "synergy.jei.provider.item": "Item Provider Pattern",
   "synergy.jei.quern": "Quern Milling",
