@@ -35,8 +35,8 @@ public class Image {
         return this;
     }
     public Image sizeTexture(int textureWidth, int textureHeight) {
-        this.tx = x;
-        this.ty = y;
+        this.tx = textureWidth;
+        this.ty = textureHeight;
         return this;
     }
 
