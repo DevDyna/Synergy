@@ -658,7 +658,7 @@ public class DataLang extends LanguageProvider {
                 advKey(zStatic.ResourceMaterial.californium, "Eagles Success", "Craft a californium pellet");
                 advKey(zStatic.ResourceMaterial.curium, "Curiosity", "Craft a curium pellet");
 
-                add(Main.ID + ".jei.patina_drop", TIP_COLOR + "Can drop %s items every scrape");
+                add(Main.ID + ".jei.patina_drop", TIP_COLOR + "Drop %s"+TIP_COLOR+" items every scrape");
 
                 add(ID + ".jei.tip.consume_durability", "§cConsume durability");
 
