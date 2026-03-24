@@ -660,6 +660,8 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + ".jei.patina_drop", TIP_COLOR + "Can drop %s items every scrape");
 
+                add(ID + ".jei.tip.consume_durability", "§cConsume durability");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {

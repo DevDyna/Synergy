@@ -16,6 +16,7 @@ import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import mekanism.common.lib.Color;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -36,8 +37,10 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
 
     private List<Block> oxidable = x.getBlocks(NeoForgeDataMaps.OXIDIZABLES);
     private List<Block> waxable = x.getBlocks(NeoForgeDataMaps.WAXABLES);
-    // private List<Block> scrappable = waxable.stream().filter(i -> (DataMapHooks.getPreviousOxidizedStage(i) != null)).toList();
-    // private List<Block> un_waxable = waxable.stream().filter(i -> (DataMapHooks.getBlockUnwaxed(i) != null)).toList();
+    // private List<Block> scrappable = waxable.stream().filter(i ->
+    // (DataMapHooks.getPreviousOxidizedStage(i) != null)).toList();
+    // private List<Block> un_waxable = waxable.stream().filter(i ->
+    // (DataMapHooks.getBlockUnwaxed(i) != null)).toList();
 
     public CopperOxidationCategory(IGuiHelper h) {
         super(h);
@@ -80,6 +83,8 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
         Ingredient output = null;
         Ingredient catalyst = null;
 
+        IRecipeSlotBuilder cat_item = null;
+
         switch (recipe.getOxidationType()) {
             case OxidationStatus.SCRAPPING:
                 input = mapBlocks(oxidable, DataMapHooks::getNextOxidizedStage);
@@ -110,9 +115,15 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
             builder.addSlot(RecipeIngredientRole.INPUT, 2, 2)
                     .addIngredients(input);
 
-        if (catalyst != null)
-            builder.addSlot(RecipeIngredientRole.CATALYST, 29, 2)
+        if (catalyst != null) {
+            cat_item = builder.addSlot(RecipeIngredientRole.CATALYST, 29, 2)
                     .addIngredients(catalyst);
+
+            if (recipe.getOxidationType().equals(OxidationStatus.SCRAPPING)
+                    || recipe.getOxidationType().equals(OxidationStatus.UNWAXING))
+                cat_item.addRichTooltipCallback(
+                        (v, t) -> t.add(Component.translatable(ID + ".jei.tip.consume_durability")));
+        }
 
         if (output != null)
             builder.addSlot(RecipeIngredientRole.OUTPUT, 59, 2)
