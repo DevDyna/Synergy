@@ -4,9 +4,11 @@ import static com.devdyna.synergy.Main.ID;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.registers.RecipeRegister;
-import com.devdyna.synergy.common.recipes.type.*;
-import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecipe;
-import com.devdyna.synergy.common.recipes.type.node_providers.ItemProviderRecipe;
+import com.devdyna.synergy.common.recipes.foundry_fuel.FoundryFuelEfficiencyRecipe;
+import com.devdyna.synergy.common.recipes.item_use.ItemUseRecipe;
+import com.devdyna.synergy.common.recipes.node_provider.fluid.FluidProviderRecipe;
+import com.devdyna.synergy.common.recipes.node_provider.item.ItemProviderRecipe;
+import com.devdyna.synergy.common.recipes.resource_info.ResourceInfoRecipe;
 import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingRecipe;
 import com.devdyna.synergy.init.builder.magic.quern.recipe.QuernMillingRecipeSerializer;
 import com.devdyna.synergy.init.builder.magic.urn.recipe.UrnRitualRecipe;
