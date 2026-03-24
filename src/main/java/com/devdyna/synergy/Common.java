@@ -206,6 +206,7 @@ public class Common {
         public static BooleanValue DISABLE_REMOVE_BABY_GROW_EVENT;// false
         public static BooleanValue DISABLE_READD_BABY_GROW_EVENT;// false
         public static BooleanValue DISABLE_PATINA_DROP_EVENT;// false
+        public static BooleanValue DISABLE_REDSTONE_ACID_EVENT;// false
         // public static BooleanValue DISABLE_PONDER_COMPAT;// false
 
         private static void agriculture() {
@@ -575,6 +576,8 @@ public class Common {
                                 "git_revert_forever_young");
                 DISABLE_PATINA_DROP_EVENT = bool("Disable Patina drop when scrapped any oxidized copper block",
                                 "patina_drop");
+                DISABLE_REDSTONE_ACID_EVENT = bool("Disable Redstone Acid can increase a stage of oxidation at the block clicked",
+                                "redstone_acid_oxide");
 
                 // DISABLE_PONDER_COMPAT = bool(
                 //                 "Disable Ponder tooltip only on this project\nIf you are looking to disable GuideMe compat , you need to override the guide removing all item_links!",

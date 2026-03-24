@@ -22,6 +22,7 @@ public class GameEvents {
                 PlaceableBrickEvent.class,
                 ItemTooltipEvents.class,
                 EntityInteractionEvent.class,
+                RedstoneAcidEvent.class,
                 VanillaHarvestable.class,
                 RegisterBrewingRecipes.class,
                 PatinaDropEvent.class,
