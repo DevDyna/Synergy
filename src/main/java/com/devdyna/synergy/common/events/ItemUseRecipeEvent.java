@@ -10,6 +10,8 @@ import com.devdyna.synergy.init.types.zRecipeTypes;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.ParticleUtils;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -46,10 +48,12 @@ public class ItemUseRecipeEvent {
             var output = rcp.getOutputState();
 
             try {
-                for (int i = 0; i < 8; i++)
-                    level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, output),
-                            pos.getX() + 0.25, pos.getY() + 0.25, pos.getZ() + 0.25,
-                            1, 1, 1);
+                ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.BLOCK, output), UniformInt.of(3, 5));
+
+                // for (int i = 0; i < 8; i++)
+                //     level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, output),
+                //             pos.getX() + 0.25, pos.getY() + 0.25, pos.getZ() + 0.25,
+                //             1, 1, 1);
 
             } catch (Exception e) {
 
