@@ -1,7 +1,8 @@
 # Copper Oxidation
 
 ### Note:
-- `"step"` Is mainly useful to hide specific recipe schemes
+- `"step"` It doesn't change nothing if added another one of same type!
+- This recipe type cannot be customized but can be removed on recipe viewers
 
 ### Required fields
 
