@@ -19,6 +19,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.ParticleUtils;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -415,6 +417,13 @@ public class LevelUtil {
                 return false;
 
         return true;
+    }
+
+    /**
+     * based on net.minecraft.client.renderer.LevelRenderer-L2723
+     */
+    public static void addCopperWaxingParticle(Level level, BlockPos pos, ParticleOptions p) {
+        ParticleUtils.spawnParticlesOnBlockFaces(level, pos, p, UniformInt.of(3, 5));
     }
 
 }
