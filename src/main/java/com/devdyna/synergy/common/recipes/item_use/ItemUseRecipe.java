@@ -1,4 +1,4 @@
-package com.devdyna.synergy.common.recipes.type;
+package com.devdyna.synergy.common.recipes.item_use;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,7 +7,6 @@ import com.devdyna.synergy.api.codec.BetterThanBlockStates;
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.input.UseItemInput;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

@@ -1,8 +1,8 @@
 package com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.recipe;
 
+import com.devdyna.synergy.api.recipes.inputs.MonoItemInput;
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
-import com.devdyna.synergy.common.recipes.input.MonoItemInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 

@@ -1,7 +1,7 @@
 package com.devdyna.synergy.compat.guideme;
 
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.type.ItemUseRecipe;
+import com.devdyna.synergy.common.recipes.item_use.ItemUseRecipe;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 

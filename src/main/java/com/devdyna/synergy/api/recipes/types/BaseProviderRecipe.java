@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.devdyna.synergy.api.codec.NodePattern;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.input.ProviderInput;
+import com.devdyna.synergy.common.recipes.node_provider.ProviderInput;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.crafting.Ingredient;

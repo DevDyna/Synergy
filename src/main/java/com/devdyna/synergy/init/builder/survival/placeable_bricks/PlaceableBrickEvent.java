@@ -2,7 +2,7 @@ package com.devdyna.synergy.init.builder.survival.placeable_bricks;
 
 import java.util.Optional;
 
-import com.devdyna.synergy.common.recipes.input.MonoItemInput;
+import com.devdyna.synergy.api.recipes.inputs.MonoItemInput;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipe;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.common.recipes.input;
+package com.devdyna.synergy.api.recipes.inputs;
 
 import java.util.List;
 

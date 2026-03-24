@@ -1,11 +1,11 @@
-package com.devdyna.synergy.common.recipes.type;
+package com.devdyna.synergy.common.recipes.resource_info;
 
 import java.util.List;
 
+import com.devdyna.synergy.api.recipes.inputs.ItemListInput;
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.input.ItemListInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.mojang.serialization.MapCodec;

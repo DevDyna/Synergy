@@ -1,10 +1,10 @@
-package com.devdyna.synergy.common.recipes.type.node_providers;
+package com.devdyna.synergy.common.recipes.node_provider.fluid;
 
 import com.devdyna.synergy.api.codec.NodePattern;
 import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.input.ProviderInput;
+import com.devdyna.synergy.common.recipes.node_provider.ProviderInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.mojang.serialization.MapCodec;

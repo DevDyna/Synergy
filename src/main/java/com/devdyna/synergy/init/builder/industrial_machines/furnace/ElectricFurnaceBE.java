@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
-import com.devdyna.synergy.common.recipes.input.MonoItemInput;
+import com.devdyna.synergy.api.recipes.inputs.MonoItemInput;
 import com.devdyna.synergy.init.builder.industrial_machines.furnace.recipe.ElectricFurnaceRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.common.recipes.builders;
+package com.devdyna.synergy.common.recipes.item_use;
 
 import static com.devdyna.synergy.Main.ID;
 
@@ -8,7 +8,6 @@ import javax.annotation.Nullable;
 import com.devdyna.synergy.api.recipes.builders.api.BaseRecipeBuilder;
 import com.devdyna.synergy.api.utils.IngredientUtils;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.type.ItemUseRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;

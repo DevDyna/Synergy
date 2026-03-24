@@ -2,10 +2,10 @@ package com.devdyna.synergy.init.builder.survival.casting_table.recipe;
 
 import java.util.List;
 
+import com.devdyna.synergy.api.recipes.inputs.ItemFluidInput;
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.input.ItemFluidInput;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.mojang.serialization.Codec;

@@ -1,10 +1,10 @@
-package com.devdyna.synergy.common.recipes.input;
+package com.devdyna.synergy.api.recipes.inputs;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.neoforged.neoforge.fluids.FluidStack;
 
-public record FluidInput(FluidStack input) implements RecipeInput {
+public record ItemFluidInput(FluidStack input,ItemStack item) implements RecipeInput {
 
     @Override
     public ItemStack getItem(int i) {
@@ -13,7 +13,7 @@ public record FluidInput(FluidStack input) implements RecipeInput {
 
     @Override
     public int size() {
-        return 1;
+        return 2;
     }
 
 }

@@ -3,8 +3,8 @@ package com.devdyna.synergy.common.events;
 import java.util.Optional;
 
 import com.devdyna.synergy.Common;
-import com.devdyna.synergy.common.recipes.input.UseItemInput;
-import com.devdyna.synergy.common.recipes.type.ItemUseRecipe;
+import com.devdyna.synergy.common.recipes.item_use.ItemUseRecipe;
+import com.devdyna.synergy.common.recipes.item_use.UseItemInput;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
 import net.minecraft.core.particles.BlockParticleOption;

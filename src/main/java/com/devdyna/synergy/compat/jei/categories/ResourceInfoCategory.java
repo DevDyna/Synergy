@@ -1,7 +1,7 @@
 package com.devdyna.synergy.compat.jei.categories;
 
 import com.devdyna.synergy.api.utils.Size;
-import com.devdyna.synergy.common.recipes.type.ResourceInfoRecipe;
+import com.devdyna.synergy.common.recipes.resource_info.ResourceInfoRecipe;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 

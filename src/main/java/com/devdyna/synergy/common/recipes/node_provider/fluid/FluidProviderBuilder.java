@@ -1,10 +1,9 @@
-package com.devdyna.synergy.common.recipes.builders.node_provider;
+package com.devdyna.synergy.common.recipes.node_provider.fluid;
 
 import java.util.LinkedHashMap;
 
 import com.devdyna.synergy.api.recipes.builders.BaseProviderBuilder;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.type.node_providers.FluidProviderRecipe;
 
 import net.minecraft.advancements.Criterion;
 import net.minecraft.world.item.crafting.Recipe;

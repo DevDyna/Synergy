@@ -1,4 +1,4 @@
-package com.devdyna.synergy.common.recipes.input;
+package com.devdyna.synergy.common.recipes.node_provider;
 
 import com.devdyna.synergy.api.utils.x;
 

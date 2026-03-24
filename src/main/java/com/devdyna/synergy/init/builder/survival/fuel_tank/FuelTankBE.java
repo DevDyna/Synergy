@@ -6,8 +6,8 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.be.BETank;
 import com.devdyna.synergy.api.beLogic.FoundryFuelProvider;
-import com.devdyna.synergy.common.recipes.input.FluidInput;
-import com.devdyna.synergy.common.recipes.type.FoundryFuelEfficiencyRecipe;
+import com.devdyna.synergy.api.recipes.inputs.FluidInput;
+import com.devdyna.synergy.common.recipes.foundry_fuel.FoundryFuelEfficiencyRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 

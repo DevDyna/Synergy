@@ -1,10 +1,11 @@
-package com.devdyna.synergy.common.recipes.type;
+package com.devdyna.synergy.common.recipes.foundry_fuel;
 
 import java.util.List;
+
+import com.devdyna.synergy.api.recipes.inputs.FluidInput;
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
-import com.devdyna.synergy.common.recipes.input.FluidInput;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

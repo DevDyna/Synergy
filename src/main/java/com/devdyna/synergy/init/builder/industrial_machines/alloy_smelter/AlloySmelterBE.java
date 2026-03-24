@@ -5,8 +5,8 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.blockfactories.machine.ExtraMachineSlots;
+import com.devdyna.synergy.api.recipes.inputs.BiItemInput;
 import com.devdyna.synergy.api.utils.RecipeUtils;
-import com.devdyna.synergy.common.recipes.input.BiItemInput;
 import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe.AlloySmelterRecipeType;
 import com.devdyna.synergy.init.types.zMachines;
 import net.minecraft.core.BlockPos;
