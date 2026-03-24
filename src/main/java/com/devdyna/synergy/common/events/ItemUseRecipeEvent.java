@@ -69,7 +69,7 @@ public class ItemUseRecipeEvent {
 
             }
             player.swing(hand);
-            level.setBlockAndUpdate(pos, output);
+            level.setBlockAndUpdate(pos, output.getBlock().withPropertiesOf(state));
             event.isCanceled();
             event.setCanceled(true);
 
