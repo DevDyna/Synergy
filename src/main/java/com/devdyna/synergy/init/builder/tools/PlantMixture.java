@@ -58,8 +58,10 @@ public class PlantMixture extends BoneMealItem {
                 item.shrink(1);
 
                 if (!level.isClientSide) {
-                    LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER, (ServerLevel) level, pos, true,
-                            LevelUtil.getRandomValue(7, level) + 5);
+                    LevelUtil.addCopperWaxingParticle(level, pos, ParticleTypes.HAPPY_VILLAGER);
+                    // LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER, (ServerLevel) level, pos,
+                    // true,
+                    // LevelUtil.getRandomValue(7, level) + 5);
 
                     for (int i = 0; i < 10; i++)
                         if (state.isRandomlyTicking())// this should prevent over-ticking
@@ -74,8 +76,7 @@ public class PlantMixture extends BoneMealItem {
         if (!Common.DISABLE_PLANT_MIXTURE_FLOWER_SPREADING.get())
             if (block instanceof FlowerBlock) {
                 if (!level.isClientSide) {
-                    LevelUtil.addParticle(ParticleTypes.HAPPY_VILLAGER, (ServerLevel) level, pos, true,
-                            LevelUtil.getRandomValue(7, level) + 3);
+                    LevelUtil.addCopperWaxingParticle(level, pos, ParticleTypes.HAPPY_VILLAGER);
                     BlockPos.randomBetweenClosed(random, LevelUtil.getRandomValue(12, level),
                             x - GRASS_SPREAD_WIDTH, y, z - GRASS_SPREAD_WIDTH,
                             x + GRASS_SPREAD_WIDTH, y + GRASS_SPREAD_HEIGHT, z + GRASS_SPREAD_WIDTH).forEach(ps -> {
