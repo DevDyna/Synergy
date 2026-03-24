@@ -3,6 +3,7 @@ package com.devdyna.synergy.api.utils;
 import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -17,11 +18,12 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 import net.neoforged.neoforge.registries.DeferredHolder;
-
+import net.neoforged.neoforge.registries.datamaps.DataMapType;
 import static com.devdyna.synergy.Main.ID;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import com.devdyna.synergy.api.registers.FluidRegister;
 import com.devdyna.synergy.api.registers.MachineType;
@@ -155,11 +157,11 @@ public class x {
         return FluidIngredient.tag(TagKey.create(Registries.FLUID, tag));
     }
 
-    public static Ingredient ingredient(ItemStack i) {
+    public static Ingredient ingredient(ItemStack... i) {
         return Ingredient.of(i);
     }
 
-    public static Ingredient ingredient(ItemLike i) {
+    public static Ingredient ingredient(ItemLike... i) {
         return Ingredient.of(i);
     }
 
@@ -348,6 +350,26 @@ public class x {
 
     public static DeferredHolder<Item, ?>[] toItems(MachineType<?, ?, ?, ?>... machines) {
         return Arrays.asList(machines).stream().map(MachineType::item).toArray(DeferredHolder[]::new);
+    }
+
+    public static List<Block> getBlocks(DataMapType<Block, ?> datamap) {
+        return BuiltInRegistries.BLOCK.getDataMap(datamap).entrySet()
+                .stream()
+                .map(Map.Entry::getKey)
+                .map(ResourceKey::location)
+                .map(BuiltInRegistries.BLOCK::get).toList();
+    }
+
+    public static List<Item> getItems(DataMapType<Item, ?> datamap) {
+        return BuiltInRegistries.ITEM.getDataMap(datamap).entrySet()
+                .stream()
+                .map(Map.Entry::getKey)
+                .map(ResourceKey::location)
+                .map(BuiltInRegistries.ITEM::get).toList();
+    }
+
+    public static Ingredient ingredient(List<Item> list) {
+        return Ingredient.of(list.stream().toArray(ItemLike[]::new));
     }
 
 }
