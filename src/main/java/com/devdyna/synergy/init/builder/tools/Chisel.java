@@ -56,9 +56,10 @@ public class Chisel extends Item {
             player.swing(hand);
         } else {
             var id = item.get(zComponents.REGISTRY_ID);
-            if (id == null) {
+
+            if (id == null) 
                 return InteractionResult.FAIL;
-            }
+            
 
             var saved = x.get(id);
 
@@ -66,9 +67,9 @@ public class Chisel extends Item {
                     .getRecipesFor(RecipeType.STONECUTTING,
                             new SingleRecipeInput(blockItem), level);
 
-            if (r == null || r.isEmpty()) {
+            if (r == null || r.isEmpty()) 
                 return InteractionResult.FAIL;
-            }
+            
 
             for (int i = 0; i < r.size(); i++) {
                 var recipe = r.get(i).value();
