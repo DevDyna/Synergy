@@ -19,9 +19,6 @@ public class PatinaDropEvent {
     @SubscribeEvent
     public static void patinaDropEvent(BlockEvent.BlockToolModificationEvent event) {
 
-        if (Common.DISABLE_PATINA_DROP_EVENT.get())
-            return;
-
         if (event.getItemAbility() != ItemAbilities.AXE_SCRAPE)
             return;
 
@@ -37,6 +34,9 @@ public class PatinaDropEvent {
         var age = Arrays.asList(WeatherState.values()).indexOf(oxidize.getAge());
 
         if (age <= 0)
+            return;
+
+        if (Common.DISABLE_PATINA_DROP_EVENT.get())
             return;
 
         // useful when changed the loot table to drop multiple items
