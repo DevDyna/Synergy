@@ -64,4 +64,10 @@ public class PottedAzalea extends BaseCropBlock {
                 new ItemStack(zItems.SMALL_AZALEA_LEAF, new Random().nextInt(3) + 1),
                 new ItemStack(zItems.SMALL_AZALEA_ROOTS, new Random().nextInt(1) + 1));
     }
+
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos,
+            CollisionContext context) {
+        return Block.box(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+    }
 }
