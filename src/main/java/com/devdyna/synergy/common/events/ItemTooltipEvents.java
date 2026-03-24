@@ -32,7 +32,6 @@ public class ItemTooltipEvents {
         itemTooltipPlaceable(item, tooltip);
         itemTooltipChopperUpgrades(item, tooltip);
         itemTooltipWatcherTweak(item, tooltip);
-        itemTooltipPatina(item, tooltip);
 
     }
 
@@ -98,17 +97,6 @@ public class ItemTooltipEvents {
         }
 
     }
-
-    //TODO replace with JEI
-    public static void itemTooltipPatina(ItemStack i, List<Component> t) {
-
-        if (i.is(zItemTag.PATINA)) {
-            t.add(OVER_THE_REGISTRY_ID, Component.translatable(Main.ID + ".patina"));
-        }
-        
-
-    }
-
 
     private static boolean blockCheck(ItemStack i, TagKey<Block> tag) {
         return i.getItem() instanceof BlockItem bi && bi.getBlock().defaultBlockState().is(tag);
