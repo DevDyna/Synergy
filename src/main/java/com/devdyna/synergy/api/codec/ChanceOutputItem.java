@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.codec.recipe;
+package com.devdyna.synergy.api.codec;
 
 import java.util.Optional;
 

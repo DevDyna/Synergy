@@ -7,7 +7,7 @@ import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.blockfactories.machine.ExtraMachineSlots;
 import com.devdyna.synergy.api.blockfactories.machine.FluidTankStorage;
-import com.devdyna.synergy.api.codec.recipe.ChanceOutputItem;
+import com.devdyna.synergy.api.codec.ChanceOutputItem;
 import com.devdyna.synergy.api.utils.ArrayUtils;
 import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.common.recipes.input.ItemFluidInput;

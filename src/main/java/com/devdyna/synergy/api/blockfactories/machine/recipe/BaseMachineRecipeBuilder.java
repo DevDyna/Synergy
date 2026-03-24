@@ -39,7 +39,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
-import com.devdyna.synergy.api.codec.recipe.ChanceOutputItem;
+import com.devdyna.synergy.api.codec.ChanceOutputItem;
 import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.recipes.builders.FluidAttach.Any.SimpleFluidAttach;
 

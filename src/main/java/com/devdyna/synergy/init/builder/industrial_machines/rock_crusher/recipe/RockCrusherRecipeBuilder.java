@@ -7,7 +7,7 @@ import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
 import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeBuilder;
 import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeType;
-import com.devdyna.synergy.api.codec.recipe.ChanceOutputItem;
+import com.devdyna.synergy.api.codec.ChanceOutputItem;
 import com.devdyna.synergy.api.recipes.builders.*;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.api.utils.x;

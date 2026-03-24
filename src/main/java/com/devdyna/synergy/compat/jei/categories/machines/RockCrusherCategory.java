@@ -1,6 +1,6 @@
 package com.devdyna.synergy.compat.jei.categories.machines;
 
-import com.devdyna.synergy.api.codec.recipe.ChanceOutputItem;
+import com.devdyna.synergy.api.codec.ChanceOutputItem;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
