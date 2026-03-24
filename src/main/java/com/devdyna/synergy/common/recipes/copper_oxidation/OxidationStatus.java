@@ -13,8 +13,9 @@ import net.minecraft.world.item.crafting.RecipeInput;
 
 public enum OxidationStatus implements StringRepresentable {
     SCRAPPING("scrapping"),
+    OXIDIZING("oxidizing"),
     WAXING("waxing"),
-    OXIDIZING("oxidizing");
+    UN_WAXING("un_waxing");
 
     private final String i;
 

@@ -38,6 +38,7 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
     private List<Block> waxable = x.getBlocks(NeoForgeDataMaps.WAXABLES);
     private List<Block> scrappable = waxable.stream().filter(i -> (DataMapHooks.getPreviousOxidizedStage(i) != null))
             .toList();
+    private List<Block> un_waxable = waxable.stream().filter(i -> (DataMapHooks.getBlockUnwaxed(i) != null)).toList();
 
     public CopperOxidationCategory(IGuiHelper h) {
         super(h);
@@ -87,16 +88,22 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
                 output = mapBlocks(scrappable, DataMapHooks::getPreviousOxidizedStage);
                 break;
 
+            case OxidationStatus.OXIDIZING:
+                input = x.ingredient(oxidable.stream().map(Block::asItem).toList());
+                catalyst = x.ingredient(zItemTag.OXIDIZER);
+                output = mapBlocks(oxidable, DataMapHooks::getNextOxidizedStage);
+                break;
+
             case OxidationStatus.WAXING:
                 input = x.ingredient(waxable.stream().map(Block::asItem).toList());
                 catalyst = x.ingredient(Items.HONEYCOMB);
                 output = mapBlocks(waxable, DataMapHooks::getBlockWaxed);
                 break;
 
-            case OxidationStatus.OXIDIZING:
-                input = x.ingredient(oxidable.stream().map(Block::asItem).toList());
-                catalyst = x.ingredient(zItemTag.OXIDIZER);
-                output = mapBlocks(oxidable, DataMapHooks::getNextOxidizedStage);
+            case OxidationStatus.UN_WAXING:
+                input = x.ingredient(un_waxable.stream().map(Block::asItem).toList());
+                catalyst = x.ingredient(ItemTags.AXES);
+                output = mapBlocks(un_waxable, DataMapHooks::getBlockUnwaxed);
                 break;
         }
 
