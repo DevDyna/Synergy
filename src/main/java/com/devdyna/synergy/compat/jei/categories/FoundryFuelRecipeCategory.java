@@ -15,7 +15,7 @@ import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.common.recipes.type.FoundryFuelEfficiencyRecipe;
 import com.devdyna.synergy.compat.jei.api.JEIFluidTankHelper;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.init.builder.survival.tank.FuelTankBE;
+import com.devdyna.synergy.init.builder.survival.fuel_tank.FuelTankBE;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import com.mojang.blaze3d.vertex.PoseStack;
 

@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.survival.tank;
+package com.devdyna.synergy.init.builder.survival.fuel_tank;
 
 import javax.annotation.Nullable;
 

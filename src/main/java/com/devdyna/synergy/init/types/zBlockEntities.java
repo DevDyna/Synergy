@@ -35,7 +35,7 @@ import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBE;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBE;
 import com.devdyna.synergy.init.builder.survival.faucet.FaucetBE;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryBE;
-import com.devdyna.synergy.init.builder.survival.tank.FuelTankBE;
+import com.devdyna.synergy.init.builder.survival.fuel_tank.FuelTankBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
