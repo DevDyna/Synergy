@@ -10,6 +10,7 @@ import com.devdyna.synergy.api.registers.RecipeRegister;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeInput;
@@ -58,6 +59,12 @@ public class RecipeUtils {
     public static ItemStack optionalCodec(ItemStack i) {
         return (i == null || i.isEmpty())
                 ? ItemStack.EMPTY
+                : i;
+    }
+
+    public static Ingredient optionalCodec(Ingredient i) {
+        return (i == null || i.isEmpty())
+                ? Ingredient.EMPTY
                 : i;
     }
 
