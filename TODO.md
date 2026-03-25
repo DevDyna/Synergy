@@ -53,11 +53,11 @@
 
 - [ ] patina -> cheap electric components
 
-- [ ] patina jei category
+- [x] patina jei category
 
 - [ ] oxidation speeder
 
-- [ ] patina replace slime
+- [x] patina replace slime
 
 - [ ] dye seed and seed recipe?(stonecutter)
 
