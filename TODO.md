@@ -49,6 +49,8 @@
 
 - [ ] patina FD compat
 
+- [ ] SoundEvents.AXE_SCRAPE pitch 0.1 -> metal hammering
+
 - [ ] patina -> cheap electric components
 
 - [ ] patina jei category
