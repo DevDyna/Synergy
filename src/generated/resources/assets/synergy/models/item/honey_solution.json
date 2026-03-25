@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "synergy:item/tools/redstone_acid"
+    "layer0": "synergy:item/tools/honey_solution"
   }
 }

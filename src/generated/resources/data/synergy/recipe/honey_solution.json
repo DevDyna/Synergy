@@ -6,14 +6,14 @@
       "item": "minecraft:glass_bottle"
     },
     {
-      "item": "minecraft:redstone"
+      "item": "minecraft:honeycomb"
     },
     {
-      "item": "synergy:patina"
+      "item": "synergy:salt"
     }
   ],
   "result": {
     "count": 1,
-    "id": "synergy:redstone_acid"
+    "id": "synergy:honey_solution"
   }
 }

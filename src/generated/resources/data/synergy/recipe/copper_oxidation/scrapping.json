@@ -1,4 +1,7 @@
 {
   "type": "synergy:copper_oxidation",
+  "catalyst": {
+    "tag": "minecraft:axes"
+  },
   "step": "scrapping"
 }
