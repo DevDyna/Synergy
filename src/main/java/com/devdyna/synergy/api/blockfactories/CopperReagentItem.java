@@ -67,7 +67,7 @@ public abstract class CopperReagentItem extends Item {
     }
 
     public void getSound(Level level, BlockPos pos) {
-        level.playLocalSound(pos, SoundEvents.AXE_SCRAPE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
+        level.playLocalSound(pos, SoundEvents.COPPER_GRATE_STEP, SoundSource.BLOCKS, 1.0F, 0.1F, false);
     }
 
 }
