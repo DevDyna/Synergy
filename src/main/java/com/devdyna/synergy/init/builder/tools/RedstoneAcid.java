@@ -7,7 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.DataMapHooks;
 
-public class RedstoneAcid extends CopperReagentItem{
+public class RedstoneAcid extends CopperReagentItem {
 
     public RedstoneAcid(Properties p) {
         super(p);
@@ -26,5 +26,5 @@ public class RedstoneAcid extends CopperReagentItem{
     public Boolean getConfig() {
         return Common.DISABLE_REDSTONE_ACID_EVENT.get();
     }
-    
+
 }
