@@ -168,6 +168,7 @@ public class zStatic {
         public static String amethyst_mixture = "amethyst_mixture";
 
         public static String cake_stick = "cake_stick";
+        public static String redstone_acid = "redstone_acid";
 
         public static String chisel = "chisel";
 

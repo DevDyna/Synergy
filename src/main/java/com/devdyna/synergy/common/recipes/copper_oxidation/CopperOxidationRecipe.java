@@ -1,7 +1,6 @@
 package com.devdyna.synergy.common.recipes.copper_oxidation;
 
 import java.util.List;
-
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 import com.devdyna.synergy.api.utils.x;
@@ -25,9 +24,11 @@ import net.minecraft.world.level.Level;
 public class CopperOxidationRecipe extends BaseRecipeType<OxidationInput> {
 
     private OxidationStatus type;
+    private Ingredient catalyst;
 
-    public CopperOxidationRecipe(OxidationStatus type) {
+    public CopperOxidationRecipe(OxidationStatus type, Ingredient catalyst) {
         this.type = type;
+        this.catalyst = catalyst;
     }
 
     public boolean matches(OxidationInput r, Level l) {
@@ -40,6 +41,10 @@ public class CopperOxidationRecipe extends BaseRecipeType<OxidationInput> {
 
     public OxidationStatus getOxidationType() {
         return type;
+    }
+
+    public Ingredient getCatalyst() {
+        return catalyst;
     }
 
     @Override
@@ -63,12 +68,15 @@ public class CopperOxidationRecipe extends BaseRecipeType<OxidationInput> {
     public static class Serializer implements RecipeSerializer<CopperOxidationRecipe> {
 
         public static final MapCodec<CopperOxidationRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                OxidationStatus.CODEC.fieldOf("step").forGetter(CopperOxidationRecipe::getOxidationType))
+                OxidationStatus.CODEC.fieldOf("step").forGetter(CopperOxidationRecipe::getOxidationType),
+                Ingredient.CODEC.fieldOf("catalyst").forGetter(CopperOxidationRecipe::getCatalyst))
                 .apply(inst, CopperOxidationRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, CopperOxidationRecipe> STREAM_CODEC = StreamCodec
                 .composite(
                         OxidationStatus.STREAM_CODEC, CopperOxidationRecipe::getOxidationType,
+                        Ingredient.CONTENTS_STREAM_CODEC,
+                        CopperOxidationRecipe::getCatalyst,
                         CopperOxidationRecipe::new);
 
         @Override

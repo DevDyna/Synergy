@@ -576,7 +576,7 @@ public class Common {
                                 "git_revert_forever_young");
                 DISABLE_PATINA_DROP_EVENT = bool("Disable Patina drop when scrapped any oxidized copper block",
                                 "patina_drop");
-                DISABLE_REDSTONE_ACID_EVENT = bool("Disable Redstone Acid can increase a stage of oxidation at the block clicked",
+                DISABLE_REDSTONE_ACID_EVENT = bool("Disable Redstone Acid can increase a stage of oxidation at the copper block clicked",
                                 "redstone_acid_oxide");
 
                 // DISABLE_PONDER_COMPAT = bool(

@@ -11,12 +11,10 @@ import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.copper_oxidation.CopperOxidationRecipe;
 import com.devdyna.synergy.common.recipes.copper_oxidation.OxidationStatus;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.init.types.zItemTag;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 import mekanism.common.lib.Color;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -24,7 +22,6 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -37,10 +34,6 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
 
     private List<Block> oxidable = x.getBlocks(NeoForgeDataMaps.OXIDIZABLES);
     private List<Block> waxable = x.getBlocks(NeoForgeDataMaps.WAXABLES);
-    // private List<Block> scrappable = waxable.stream().filter(i ->
-    // (DataMapHooks.getPreviousOxidizedStage(i) != null)).toList();
-    // private List<Block> un_waxable = waxable.stream().filter(i ->
-    // (DataMapHooks.getBlockUnwaxed(i) != null)).toList();
 
     public CopperOxidationCategory(IGuiHelper h) {
         super(h);
@@ -81,32 +74,26 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
 
         Ingredient input = null;
         Ingredient output = null;
-        Ingredient catalyst = null;
-
-        IRecipeSlotBuilder cat_item = null;
+        Ingredient catalyst = recipe.getCatalyst();
 
         switch (recipe.getOxidationType()) {
             case OxidationStatus.SCRAPPING:
                 input = mapBlocks(oxidable, DataMapHooks::getNextOxidizedStage);
-                catalyst = x.ingredient(ItemTags.AXES);
                 output = x.ingredient(oxidable.stream().map(Block::asItem).toList());
                 break;
 
             case OxidationStatus.OXIDIZING:
                 input = x.ingredient(oxidable.stream().map(Block::asItem).toList());
-                catalyst = x.ingredient(zItemTag.OXIDIZER);
                 output = mapBlocks(oxidable, DataMapHooks::getNextOxidizedStage);
                 break;
 
             case OxidationStatus.WAXING:
                 input = x.ingredient(waxable.stream().map(Block::asItem).toList());
-                catalyst = x.ingredient(Items.HONEYCOMB);
                 output = mapBlocks(waxable, DataMapHooks::getBlockWaxed);
                 break;
 
             case OxidationStatus.UNWAXING:
                 input = mapBlocks(waxable, DataMapHooks::getBlockWaxed);
-                catalyst = x.ingredient(ItemTags.AXES);
                 output = x.ingredient(waxable.stream().map(Block::asItem).toList());
                 break;
         }
@@ -116,13 +103,9 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
                     .addIngredients(input);
 
         if (catalyst != null) {
-            cat_item = builder.addSlot(RecipeIngredientRole.CATALYST, 29, 2)
+            builder.addSlot(RecipeIngredientRole.CATALYST, 29, 2)
                     .addIngredients(catalyst);
 
-            if (recipe.getOxidationType().equals(OxidationStatus.SCRAPPING)
-                    || recipe.getOxidationType().equals(OxidationStatus.UNWAXING))
-                cat_item.addRichTooltipCallback(
-                        (v, t) -> t.add(Component.translatable(ID + ".jei.tip.consume_durability")));
         }
 
         if (output != null)
@@ -151,13 +134,7 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
                     .offset(58, 20)
                     .render(helper, guiGraphics);
 
-            // var pose = guiGraphics.pose();
-
-            // pose.pushPose();
             guiGraphics.drawCenteredString(font, "0-2", 67, 30, Color.WHITE.rgb());
-            // pose.translate(0, 0, 1);
-            // pose.scale(0.9f, 0.9f, 1f);
-            // pose.popPose();
 
         }
 

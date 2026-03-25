@@ -647,10 +647,12 @@ public class zItems {
         public static final DeferredHolder<Item, Item> FOSSIL = Material
                         .resourceItem("fossil");
 
-        public static final DeferredHolder<Item, Item> REDSTONE_ACID = Material
-                        .resourceItem("redstone_acid");
+        
 
         // ---------------------------------------------------------------------------------------//
+
+        public static final DeferredHolder<Item, Item> REDSTONE_ACID = zTool.register(zStatic.Items.redstone_acid,
+                        () -> new RedstoneAcid());
 
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,
                         () -> new CakeStick());
