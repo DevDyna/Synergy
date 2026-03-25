@@ -53,7 +53,7 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
 
     @Override
     public ItemLike getIconItem() {
-        return Items.COPPER_BLOCK;
+        return zItems.REDSTONE_ACID.get();
     }
 
     @Override
