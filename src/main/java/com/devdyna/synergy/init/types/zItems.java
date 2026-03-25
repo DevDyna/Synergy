@@ -654,6 +654,9 @@ public class zItems {
         public static final DeferredHolder<Item, Item> REDSTONE_ACID = zTool.register(zStatic.Items.redstone_acid,
                         () -> new RedstoneAcid());
 
+        public static final DeferredHolder<Item, Item> HONEY_SOLUTION = zTool.register(zStatic.Items.honey_solution,
+                        () -> new HoneySolution());
+
         public static final DeferredHolder<Item, Item> CAKE_STICK = zTool.register(zStatic.Items.cake_stick,
                         () -> new CakeStick());
 

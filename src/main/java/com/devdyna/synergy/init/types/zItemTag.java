@@ -275,5 +275,6 @@ public class zItemTag {
         public static final TagKey<Item> PATINA = Material.tagItem("patina");
 
         public static final TagKey<Item> OXIDIZER = Material.tagItem("oxidizer");
+        public static final TagKey<Item> WAXING = Material.tagItem("waxing");
 
 }

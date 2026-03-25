@@ -170,7 +170,7 @@ public class DataItemTag extends ItemTagsProvider {
                                                 zBlocks.WILD_COTTON.get().asItem());
 
                 // tag(zItemTag.URN_MIXTURES).add(zItems.AMETHYST_MIXTURE.get(),
-                //                 zItems.GLOWSTONE_MIXTURE.get());
+                // zItems.GLOWSTONE_MIXTURE.get());
 
                 tag(Tags.Items.GEMS).add(DataGenUtil.getItems(zItems.zGems));
 
@@ -410,6 +410,9 @@ public class DataItemTag extends ItemTagsProvider {
 
                 tag(zItemTag.OXIDIZER)
                                 .add(zItems.REDSTONE_ACID.get());
+
+                tag(zItemTag.WAXING)
+                                .add(zItems.HONEY_SOLUTION.get(), Items.HONEYCOMB);
 
         }
 

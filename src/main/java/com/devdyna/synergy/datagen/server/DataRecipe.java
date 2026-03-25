@@ -8,6 +8,7 @@ import java.util.concurrent.CompletableFuture;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.copper_oxidation.CopperOxidationBuilder;
+import com.devdyna.synergy.common.recipes.copper_oxidation.OxidationStatus;
 import com.devdyna.synergy.common.recipes.foundry_fuel.FoundryFuelBuilder;
 import com.devdyna.synergy.common.recipes.item_use.ItemUseBuilder;
 import com.devdyna.synergy.common.recipes.node_provider.fluid.FluidProviderBuilder;
@@ -2705,12 +2706,39 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                CopperOxidationBuilder.build(c);
+                ShapelessRecipeBuilder.shapeless(MISC, zItems.REDSTONE_ACID.get())
+                                .requires(Items.GLASS_BOTTLE)
+                                .requires(Items.REDSTONE)
+                                .requires(zItems.PATINA.get())
+                                .unlockedBy(ID, has(zItems.PATINA.get()))
+                                .save(c);
 
-                ShapelessRecipeBuilder.shapeless(MISC, zItems.REDSTONE_ACID.get(), 1)
-                                .requires(Items.HONEY_BOTTLE)
-                                .requires(Tags.Items.DUSTS_REDSTONE)
-                                .unlockedBy(ID, has(Tags.Items.DUSTS_REDSTONE))
+                ShapelessRecipeBuilder.shapeless(MISC, zItems.HONEY_SOLUTION.get())
+                                .requires(Items.GLASS_BOTTLE)
+                                .requires(Items.HONEYCOMB)
+                                .requires(zItems.SALT.get())
+                                .unlockedBy(ID, has(zItems.SALT.get()))
+                                .save(c);
+
+                CopperOxidationBuilder.of()
+                                .type(OxidationStatus.OXIDIZING)
+                                .catalyst(zItemTag.OXIDIZER)
+                                .unlockedBy()
+                                .save(c);
+                CopperOxidationBuilder.of()
+                                .type(OxidationStatus.WAXING)
+                                .catalyst(zItemTag.WAXING)
+                                .unlockedBy()
+                                .save(c);
+                CopperOxidationBuilder.of()
+                                .type(OxidationStatus.SCRAPPING)
+                                .catalyst(ItemTags.AXES)
+                                .unlockedBy()
+                                .save(c);
+                CopperOxidationBuilder.of()
+                                .type(OxidationStatus.UNWAXING)
+                                .catalyst(ItemTags.AXES)
+                                .unlockedBy()
                                 .save(c);
 
         }
