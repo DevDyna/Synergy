@@ -9,6 +9,7 @@ import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeTy
 import com.devdyna.synergy.api.codec.ChanceOutputItem;
 import com.devdyna.synergy.api.recipes.inputs.MonoItemInput;
 import com.devdyna.synergy.api.registers.MachineType;
+import com.devdyna.synergy.api.utils.RecipeUtils;
 import com.devdyna.synergy.init.types.zMachines;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -65,9 +66,7 @@ public class ExtractorRecipeType extends BaseMachineRecipeType<MonoItemInput> {
                 ChanceOutputItem.CODEC.optionalFieldOf("secondary_item")
                         .forGetter(r -> ChanceOutputItem.optional(r.getSecondaryOutputItem())),
                 FluidStack.CODEC.optionalFieldOf("optional_fluid", FluidStack.EMPTY)
-                        .forGetter(r -> (r.getFluidOutput() == null || r.getFluidOutput().isEmpty())
-                                ? FluidStack.EMPTY
-                                : r.getFluidOutput()))
+                        .forGetter(r -> RecipeUtils.optionalCodec(r.getFluidOutput())))
                 .apply(inst, (ticks, energy, input, secondary,fluid) -> new ExtractorRecipeType(
                         ticks,
                         energy,
