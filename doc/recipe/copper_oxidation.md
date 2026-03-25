@@ -7,10 +7,12 @@
 ### Required fields
 
 - `"step"`
+- `"catalyst"` Define what will show as item used to convert blocks
 
 ```js
 {
   "type": "synergy:copper_oxidation",
-  "step": <hardcoded>
+  "step": <hardcoded>,
+  "catalyst":<item-ingredient>
 }
 ```
