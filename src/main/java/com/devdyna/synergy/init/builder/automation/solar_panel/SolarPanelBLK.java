@@ -1,15 +1,17 @@
 package com.devdyna.synergy.init.builder.automation.solar_panel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.basebe.block.TickingBlock;
+import com.devdyna.synergy.api.beLogic.Connectable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -32,62 +34,14 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public class SolarPanelBLK extends TickingBlock {
-
-    protected static ArrayList<BooleanProperty> PROPRTIES = new ArrayList<>(
-            Arrays.asList(
-                    BlockStateProperties.NORTH,
-                    BlockStateProperties.SOUTH,
-                    BlockStateProperties.EAST,
-                    BlockStateProperties.WEST));
-
-    protected static ArrayList<Direction> DIRECTIONS = new ArrayList<>(
-            Arrays.asList(
-                    Direction.NORTH,
-                    Direction.SOUTH,
-                    Direction.EAST,
-                    Direction.WEST));
+public class SolarPanelBLK extends TickingBlock implements Connectable {
 
     public SolarPanelBLK() {
-        super(Properties.of().strength(1.0f).destroyTime(1.0f).sound(SoundType.METAL).mapColor(MapColor.METAL));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(Builder<Block, BlockState> b) {
-        b.add(BlockStateProperties.ENABLED);
-        PROPRTIES.forEach(p -> b.add(p));
-    }
-
-    @Override
-    @Nullable
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        // Just return default state with all connections false
-        return defaultBlockState()
-                .setValue(BlockStateProperties.ENABLED, false)
-                .setValue(BlockStateProperties.NORTH, false)
-                .setValue(BlockStateProperties.SOUTH, false)
-                .setValue(BlockStateProperties.EAST, false)
-                .setValue(BlockStateProperties.WEST, false);
-    }
-
-    @Override
-    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
-        if (!level.isClientSide) {
-            BlockState newState = state;
-            for (Direction face : DIRECTIONS) {
-                BlockPos neighborPos = pos.relative(face);
-                BlockState neighborState = level.getBlockState(neighborPos);
-
-                if (neighborState.is(this)) {
-                    newState = newState.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), true);
-
-                    level.setBlock(neighborPos,
-                            neighborState.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())), true),
-                            Block.UPDATE_ALL);
-                }
-            }
-            level.setBlock(pos, newState, Block.UPDATE_ALL);
-        }
+        super(Properties.of()
+                .strength(1.0f)
+                .destroyTime(1.0f)
+                .sound(SoundType.METAL)
+                .mapColor(MapColor.METAL));
     }
 
     @Override
@@ -96,41 +50,20 @@ public class SolarPanelBLK extends TickingBlock {
     }
 
     @Override
-    public void destroy(LevelAccessor l, BlockPos p, BlockState s) {
-        for (Direction face : DIRECTIONS) {
-            var offset = l.getBlockState(p.relative(face));
-            if (offset.is(s.getBlock())) {
-                l.setBlock(p.relative(face),
-                        offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
-                                false),
-                        Block.UPDATE_ALL);
-            }
-        }
-
+    protected void createBlockStateDefinition(Builder<Block, BlockState> b) {
+        b.add(BlockStateProperties.ENABLED);
+        PropByDir().values().forEach(b::add);
     }
 
     @Override
-    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
-            BlockPos neighborPos, boolean movedByPiston) {
-
-        for (Direction face : DIRECTIONS) {
-
-            var offset = level.getBlockState(pos.relative(face));
-            if (offset.is(state.getBlock())) {
-
-                level.setBlockAndUpdate(pos.relative(face),
-                        offset.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face.getOpposite())),
-                                true));
-                level.setBlockAndUpdate(pos, state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), true));
-
-            } else {
-
-                level.setBlockAndUpdate(pos, state.setValue(PROPRTIES.get(DIRECTIONS.indexOf(face)), false));
-
-            }
-        }
-
-        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+    @Nullable
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return defaultBlockState()
+                .setValue(BlockStateProperties.ENABLED, false)
+                .setValue(BlockStateProperties.NORTH, false)
+                .setValue(BlockStateProperties.SOUTH, false)
+                .setValue(BlockStateProperties.EAST, false)
+                .setValue(BlockStateProperties.WEST, false);
     }
 
     @Nullable
@@ -139,10 +72,40 @@ public class SolarPanelBLK extends TickingBlock {
         return new SolarPanelBE(p, s);
     }
 
-    public BooleanProperty getProp(int i) {
-        if (PROPRTIES.size() < i)
-            return null;
-        return PROPRTIES.get(i);
+    @Override
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+        updateOnPlace(state, level, pos, oldState, isMoving);
+    }
+
+    @Override
+    public void destroy(LevelAccessor l, BlockPos p, BlockState s) {
+        updateOnDestroy(l, p, s);
+    }
+
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock,
+            BlockPos neighborPos, boolean movedByPiston) {
+
+        updateOnNeighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+    }
+
+    @Override
+    public Map<Direction, BooleanProperty> PropByDir() {
+        return  ImmutableMap.copyOf(Util.make(Maps.newEnumMap(Direction.class), (e) -> {
+         e.put(Direction.NORTH, BlockStateProperties.NORTH);
+         e.put(Direction.EAST, BlockStateProperties.EAST);
+         e.put(Direction.SOUTH, BlockStateProperties.SOUTH);
+         e.put(Direction.WEST, BlockStateProperties.WEST);
+      }));
+    }
+
+
+
+    @Override
+    public Boolean whenConnect(Level level, BlockPos basePos, BlockPos neighborPos, BlockState baseState,
+            BlockState neighborState) {
+        return neighborState.is(this);
     }
 
     @Override
