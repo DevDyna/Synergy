@@ -17,6 +17,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
+@SuppressWarnings("null")
 public class FluidProvider extends NodeBaseBlock {
 
     public FluidProvider() {

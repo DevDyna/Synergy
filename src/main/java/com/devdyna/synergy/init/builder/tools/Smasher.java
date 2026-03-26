@@ -5,7 +5,7 @@ import java.util.List;
 import com.devdyna.synergy.init.types.zBlockTag;
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.pipe.pipeType;
+import com.devdyna.synergy.api.beLogic.Connectable;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.network.chat.Component;
@@ -32,7 +32,8 @@ public class Smasher extends Item {
             c.getPlayer().playSound(SoundEvents.ITEM_FRAME_REMOVE_ITEM);
 
             c.getPlayer().swing(c.getPlayer().getUsedItemHand());
-            pipeType.onDestroyPipe(state, c.getLevel(), c.getClickedPos());
+            if (c.getLevel().getBlockEntity(c.getClickedPos()) instanceof Connectable connect)
+                connect.updateOnDestroy(c.getLevel(), c.getClickedPos(), state);
 
             c.getLevel().removeBlock(c.getClickedPos(), false);
 

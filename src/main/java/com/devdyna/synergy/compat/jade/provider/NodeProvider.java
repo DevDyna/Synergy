@@ -4,8 +4,8 @@ import java.util.Optional;
 
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.node_pipe.IProvider;
-import com.devdyna.synergy.api.node_pipe.nodeType;
 import com.devdyna.synergy.api.node_pipe.builder.NodeBaseBE;
+import com.devdyna.synergy.api.node_pipe.builder.NodeBaseBlock;
 import com.devdyna.synergy.api.recipes.types.BaseProviderRecipe;
 import com.devdyna.synergy.api.utils.x;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -49,7 +49,7 @@ public enum NodeProvider implements IBlockComponentProvider, IServerDataProvider
 
         ResourceLocation id = null;
 
-        var pos = nodejs.getBlockPos().relative(nodejs.getBlockState().getValue(nodeType.FACING));
+        var pos = nodejs.getBlockPos().relative(nodejs.getBlockState().getValue(NodeBaseBlock.FACING));
 
         if (nodejs instanceof IProvider ip) {
             var r = ((Optional<RecipeHolder<?>>) ip.getRecipe(pos));

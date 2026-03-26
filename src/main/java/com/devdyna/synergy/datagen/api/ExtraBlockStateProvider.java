@@ -2,18 +2,19 @@ package com.devdyna.synergy.datagen.api;
 
 import static com.devdyna.synergy.Main.ID;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
 
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
-import com.devdyna.synergy.api.node_pipe.nodeType;
-import com.devdyna.synergy.api.pipe.pipeType;
+import com.devdyna.synergy.api.node_pipe.builder.NodeBaseBlock;
 import com.devdyna.synergy.api.registers.FluidRegister;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ControllerProperties;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
+import com.devdyna.synergy.init.builder.pipe_blocks.pipeBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 
@@ -282,12 +283,19 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                 var model = getMultipartBuilder(b);
                 var core = models().getExistingFile(modLoc("block/pipe/basic/core"));
                 var pipe = models().getExistingFile(modLoc("block/pipe/basic/pipe"));
-                pipeType.getPipeMultiPart(b, model, core, pipe);
+
+                model.part().modelFile(core).addModel();
+                model.part().modelFile(pipe).addModel().condition(pipeBlock.NORTH, true);
+                model.part().modelFile(pipe).rotationY(90).addModel().condition(pipeBlock.EAST, true);
+                model.part().modelFile(pipe).rotationX(180).addModel().condition(pipeBlock.SOUTH, true);
+                model.part().modelFile(pipe).rotationY(270).addModel().condition(pipeBlock.WEST, true);
+                model.part().modelFile(pipe).rotationX(270).addModel().condition(pipeBlock.UP, true);
+                model.part().modelFile(pipe).rotationX(90).addModel().condition(pipeBlock.DOWN, true);
+
         }
 
         protected void node(Block b, String color) {
                 var model = getMultipartBuilder(b);
-                var core = models().getExistingFile(modLoc("block/pipe/basic/core"));
                 var pipe = models().getExistingFile(modLoc("block/pipe/basic/pipe"));
                 var node = models()
                                 .withExistingParent(b.getDescriptionId().replace("block." + ID + ".", ""),
@@ -296,14 +304,56 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                 .texture("node", ID + ":block/node/" + color)
                                 .texture("back", ID + ":block/node/back");
 
-                nodeType.getNodeMultiPart(b, model, core, pipe, node);
-        }
+                for (Direction d : Direction.values()) {
+                        int rotX = 0;
+                        int rotY = 0;
 
-        // protected void deposits(){
-        // //
-        // zBlocks.deposits.forEach(c->DataGenUtil.BlockwithParent(zBlocks.AZALEA.get(),
-        // this, ID + ":block/pebbles/_base").texture("block", ""));
-        // }
+                        switch (d) {
+                                case NORTH:
+                                        rotX = 0;
+                                        rotY = 0;
+                                        break;
+                                case EAST:
+                                        rotX = 0;
+                                        rotY = 90;
+                                        break;
+                                case SOUTH:
+                                        rotX = 180;
+                                        rotY = 0;
+                                        break;
+                                case WEST:
+                                        rotX = 0;
+                                        rotY = 270;
+                                        break;
+                                case UP:
+                                        rotX = 270;
+                                        rotY = 0;
+                                        break;
+                                case DOWN:
+                                        rotX = 90;
+                                        rotY = 0;
+                                        break;
+                        }
+
+                        model.part().modelFile(pipe)
+                                        .rotationX(rotX)
+                                        .rotationY(rotY)
+                                        .addModel()
+                                        .condition(pipeBlock.PROPERTY_BY_DIRECTION.get(d), true)
+                                        .condition(NodeBaseBlock.FACING,
+                                                        Arrays.stream(Direction.values())
+                                                                        .filter(f -> !f.equals(d))
+                                                                        .toArray(Direction[]::new));
+                }
+
+                model.part().modelFile(node).addModel().condition(NodeBaseBlock.FACING, Direction.NORTH);
+                model.part().modelFile(node).rotationY(90).addModel().condition(NodeBaseBlock.FACING, Direction.EAST);
+                model.part().modelFile(node).rotationY(180).addModel().condition(NodeBaseBlock.FACING, Direction.SOUTH);
+                model.part().modelFile(node).rotationY(270).addModel().condition(NodeBaseBlock.FACING, Direction.WEST);
+                model.part().modelFile(node).rotationX(270).addModel().condition(NodeBaseBlock.FACING, Direction.UP);
+                model.part().modelFile(node).rotationX(90).addModel().condition(NodeBaseBlock.FACING, Direction.DOWN);
+
+        }
 
         protected void crop(Block b, int max, boolean isCrop, IntegerProperty property) {
                 var name = b.getDescriptionId().replace("block." + ID + ".", "");
@@ -390,7 +440,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                 .addModel();
         }
 
-        protected void noModel(DeferredHolder<Block, ?>  b) {
+        protected void noModel(DeferredHolder<Block, ?> b) {
                 getVariantBuilder(b.get())
                                 .partialState().modelForState()
                                 .modelFile(models().getBuilder("block/" + x.path(b.get()))
@@ -398,7 +448,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                 .addModel();
         }
 
-        protected void noModel(DeferredHolder<Block, ?>  b,ResourceLocation particles) {
+        protected void noModel(DeferredHolder<Block, ?> b, ResourceLocation particles) {
                 getVariantBuilder(b.get())
                                 .partialState().modelForState()
                                 .modelFile(models().getBuilder("block/" + x.path(b.get()))

@@ -9,9 +9,7 @@ import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.node_pipe.FluidNodeType;
 import com.devdyna.synergy.api.node_pipe.ItemNodeType;
-import com.devdyna.synergy.api.node_pipe.nodeType;
-import com.devdyna.synergy.api.pipe.pipeProperties;
-import com.devdyna.synergy.api.pipe.pipeType;
+import com.devdyna.synergy.init.builder.pipe_blocks.pipeBlock;
 import com.devdyna.synergy.init.types.zBlockTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -66,7 +64,7 @@ public abstract class NodeBaseBE extends BlockEntity {
     }
 
     public Direction getNodeDirection() {
-        return getBlockState().getValue(nodeType.FACING).getOpposite();
+        return getBlockState().getValue(NodeBaseBlock.FACING).getOpposite();
     }
 
     public Direction getOutputDirection() {
@@ -141,18 +139,6 @@ public abstract class NodeBaseBE extends BlockEntity {
     public Object getOutputCap() {
         return this.outCap;
     }
-
-    // public BlockEntity getInputBE() {
-    // return inBE;
-    // }
-
-    // public BlockEntity getOutputBE() {
-    // return outBE;
-    // }
-
-    // public boolean allowInputNull() {
-    // return false;
-    // }
 
     public BlockEntity getNodeBE() {
         return level.getBlockEntity(getBlockPos());
@@ -283,7 +269,7 @@ public abstract class NodeBaseBE extends BlockEntity {
                 BlockPos next = current.relative(dir);
 
                 if (!visited.contains(next) &&
-                        state.getValue(pipeType.D2P(dir)) == pipeProperties.TRUE) {
+                        state.getValue(pipeBlock.PROPERTY_BY_DIRECTION.get(dir))) {
                     // check if pipe is connected and not included
                     BlockState neighbor = level.getBlockState(next);
 
@@ -307,7 +293,7 @@ public abstract class NodeBaseBE extends BlockEntity {
      */
     @Nullable
     private BlockPos getInputPos(BlockState state, Level level, BlockPos nodePos) {
-        return nodePos.relative(state.getValue(nodeType.FACING));
+        return nodePos.relative(state.getValue(NodeBaseBlock.FACING));
     }
 
     /**

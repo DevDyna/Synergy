@@ -4,8 +4,8 @@ import java.util.Optional;
 
 import com.devdyna.synergy.api.node_pipe.IProvider;
 import com.devdyna.synergy.api.node_pipe.ItemNodeType;
-import com.devdyna.synergy.api.node_pipe.nodeType;
 import com.devdyna.synergy.api.node_pipe.builder.NodeBaseBE;
+import com.devdyna.synergy.api.node_pipe.builder.NodeBaseBlock;
 import com.devdyna.synergy.common.recipes.node_provider.ProviderInput;
 import com.devdyna.synergy.common.recipes.node_provider.item.ItemProviderRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
@@ -36,7 +36,7 @@ public class ItemProviderBE extends NodeBaseBE
     protected void executeItem(IItemHandler input, IItemHandler output) {
 
         var state = getBlockState();
-        var dir = state.getValue(nodeType.FACING);
+        var dir = state.getValue(NodeBaseBlock.FACING);
         var pos = getInputPos();
 
         if (isValidSet(state, dir, pos, level)) {
