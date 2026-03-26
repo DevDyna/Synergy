@@ -28,7 +28,7 @@ public class BaseWildCropBlock extends BushBlock {
 
     @Override
     public MapCodec<BaseWildCropBlock> codec() {
-        return simpleCodec((p) -> new BaseWildCropBlock(p));
+        return simpleCodec(BaseWildCropBlock::new);
     }
 
     public TagKey<Block> getSpawnFilter() {
