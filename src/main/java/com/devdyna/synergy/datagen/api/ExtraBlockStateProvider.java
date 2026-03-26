@@ -14,7 +14,7 @@ import com.devdyna.synergy.api.utils.DataGenUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ControllerProperties;
 import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorControllerBlock;
-import com.devdyna.synergy.init.builder.pipe_blocks.pipeBlock;
+import com.devdyna.synergy.init.builder.pipe_blocks.NodePipeBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
 import com.devdyna.synergy.init.types.zBlocks;
 
@@ -285,12 +285,12 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                 var pipe = models().getExistingFile(modLoc("block/pipe/basic/pipe"));
 
                 model.part().modelFile(core).addModel();
-                model.part().modelFile(pipe).addModel().condition(pipeBlock.NORTH, true);
-                model.part().modelFile(pipe).rotationY(90).addModel().condition(pipeBlock.EAST, true);
-                model.part().modelFile(pipe).rotationX(180).addModel().condition(pipeBlock.SOUTH, true);
-                model.part().modelFile(pipe).rotationY(270).addModel().condition(pipeBlock.WEST, true);
-                model.part().modelFile(pipe).rotationX(270).addModel().condition(pipeBlock.UP, true);
-                model.part().modelFile(pipe).rotationX(90).addModel().condition(pipeBlock.DOWN, true);
+                model.part().modelFile(pipe).addModel().condition(NodePipeBlock.NORTH, true);
+                model.part().modelFile(pipe).rotationY(90).addModel().condition(NodePipeBlock.EAST, true);
+                model.part().modelFile(pipe).rotationX(180).addModel().condition(NodePipeBlock.SOUTH, true);
+                model.part().modelFile(pipe).rotationY(270).addModel().condition(NodePipeBlock.WEST, true);
+                model.part().modelFile(pipe).rotationX(270).addModel().condition(NodePipeBlock.UP, true);
+                model.part().modelFile(pipe).rotationX(90).addModel().condition(NodePipeBlock.DOWN, true);
 
         }
 
@@ -339,7 +339,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                         .rotationX(rotX)
                                         .rotationY(rotY)
                                         .addModel()
-                                        .condition(pipeBlock.PROPERTY_BY_DIRECTION.get(d), true)
+                                        .condition(NodePipeBlock.PROPERTY_BY_DIRECTION.get(d), true)
                                         .condition(NodeBaseBlock.FACING,
                                                         Arrays.stream(Direction.values())
                                                                         .filter(f -> !f.equals(d))

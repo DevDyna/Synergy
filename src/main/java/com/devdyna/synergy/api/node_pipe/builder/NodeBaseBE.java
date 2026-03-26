@@ -9,7 +9,7 @@ import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.node_pipe.FluidNodeType;
 import com.devdyna.synergy.api.node_pipe.ItemNodeType;
-import com.devdyna.synergy.init.builder.pipe_blocks.pipeBlock;
+import com.devdyna.synergy.init.builder.pipe_blocks.NodePipeBlock;
 import com.devdyna.synergy.init.types.zBlockTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -269,7 +269,7 @@ public abstract class NodeBaseBE extends BlockEntity {
                 BlockPos next = current.relative(dir);
 
                 if (!visited.contains(next) &&
-                        state.getValue(pipeBlock.PROPERTY_BY_DIRECTION.get(dir))) {
+                        state.getValue(NodePipeBlock.PROPERTY_BY_DIRECTION.get(dir))) {
                     // check if pipe is connected and not included
                     BlockState neighbor = level.getBlockState(next);
 

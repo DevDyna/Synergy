@@ -61,7 +61,7 @@ import com.devdyna.synergy.init.builder.nuclear_reactor.controller.ReactorContro
 import com.devdyna.synergy.init.builder.nuclear_reactor.cooler.*;
 import com.devdyna.synergy.init.builder.nuclear_reactor.fuel_cell.FuelCellBlock;
 import com.devdyna.synergy.init.builder.nuclear_reactor.moderator.*;
-import com.devdyna.synergy.init.builder.pipe_blocks.pipeBlock;
+import com.devdyna.synergy.init.builder.pipe_blocks.NodePipeBlock;
 import com.devdyna.synergy.init.builder.pipe_blocks.nodes.blocks.*;
 import com.devdyna.synergy.init.builder.plants.cultivated.*;
 import com.devdyna.synergy.init.builder.plants.mushroom.*;
@@ -161,7 +161,7 @@ public class zBlocks {
                         () -> new HarvesterBLK());
 
         public static final DeferredHolder<Block, Block> PIPE = Material.registerItemBlock(zStatic.Blocks.pipe,
-                        () -> new pipeBlock());
+                        () -> new NodePipeBlock());
 
         public static final DeferredHolder<Block, Block> ITEM_TRANSFER = Material.registerItemBlock(
                         zStatic.PipeStuff.nodes.Transfer.Item,

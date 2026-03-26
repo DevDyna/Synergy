@@ -31,13 +31,13 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.MapColor;
 
 @SuppressWarnings("null")
-public class pipeBlock extends PipeBlock implements Connectable {
+public class NodePipeBlock extends PipeBlock implements Connectable {
 
-    public pipeBlock() {
+    public NodePipeBlock() {
         this(BlockBehaviour.Properties.of());
     }
 
-    public pipeBlock(Properties p) {
+    public NodePipeBlock(Properties p) {
         super(0.125f, p
                 .destroyTime(0.125f)
                 .forceSolidOn()
@@ -77,7 +77,7 @@ public class pipeBlock extends PipeBlock implements Connectable {
     @Override
     public Boolean updateWhen(@Nullable Level level, BlockPos basePos, BlockPos neighborPos, BlockState baseState,
             BlockState neighborState) {
-        return neighborState.is(zBlockTag.CAN_CONNECT) || neighborState.getBlock() instanceof pipeBlock;
+        return neighborState.is(zBlockTag.CAN_CONNECT) || neighborState.getBlock() instanceof NodePipeBlock;
     }
 
     @Override
@@ -99,7 +99,7 @@ public class pipeBlock extends PipeBlock implements Connectable {
 
     @Override
     protected MapCodec<? extends PipeBlock> codec() {
-        return simpleCodec(pipeBlock::new);
+        return simpleCodec(NodePipeBlock::new);
     }
 
     @Override

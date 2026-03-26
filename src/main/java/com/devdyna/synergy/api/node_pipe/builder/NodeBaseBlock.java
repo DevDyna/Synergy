@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Main;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.init.builder.pipe_blocks.pipeBlock;
+import com.devdyna.synergy.init.builder.pipe_blocks.NodePipeBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -31,7 +31,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 @SuppressWarnings("null")
-public abstract class NodeBaseBlock extends pipeBlock implements EntityBlock {
+public abstract class NodeBaseBlock extends NodePipeBlock implements EntityBlock {
 
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
 
