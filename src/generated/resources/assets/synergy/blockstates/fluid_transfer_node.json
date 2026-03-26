@@ -2,19 +2,31 @@
   "multipart": [
     {
       "apply": {
-        "model": "synergy:block/pipe/basic/pipe"
+        "model": "synergy:block/pipe/basic/pipe",
+        "x": 90
       },
       "when": {
-        "north": "true"
+        "down": "true",
+        "facing": "up|north|south|west|east"
       }
     },
     {
       "apply": {
         "model": "synergy:block/pipe/basic/pipe",
-        "y": 90
+        "x": 270
       },
       "when": {
-        "east": "true"
+        "facing": "down|north|south|west|east",
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "synergy:block/pipe/basic/pipe"
+      },
+      "when": {
+        "facing": "down|up|south|west|east",
+        "north": "true"
       }
     },
     {
@@ -23,6 +35,7 @@
         "x": 180
       },
       "when": {
+        "facing": "down|up|north|west|east",
         "south": "true"
       }
     },
@@ -32,25 +45,18 @@
         "y": 270
       },
       "when": {
+        "facing": "down|up|north|south|east",
         "west": "true"
       }
     },
     {
       "apply": {
         "model": "synergy:block/pipe/basic/pipe",
-        "x": 270
+        "y": 90
       },
       "when": {
-        "up": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "synergy:block/pipe/basic/pipe",
-        "x": 90
-      },
-      "when": {
-        "down": "true"
+        "east": "true",
+        "facing": "down|up|north|south|west"
       }
     },
     {
