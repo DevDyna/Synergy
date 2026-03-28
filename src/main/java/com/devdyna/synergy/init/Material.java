@@ -332,10 +332,10 @@ public class Material {
                                 .registerSimpleItem(name+zStatic.ResourceType.chunk);
         }
 
-        public static DeferredHolder<Item, Item> resourceElectronTube(String name) {
-                return zItems.zElectronTubes
-                                .registerSimpleItem(name + zStatic.ResourceType.electron_tube);
-        }
+        // public static DeferredHolder<Item, Item> resourceElectronTube(String name) {
+        //         return zItems.zElectronTubes
+        //                         .registerSimpleItem(name + zStatic.ResourceType.electron_tube);
+        // }
 
         public static DeferredHolder<CreativeModeTab, CreativeModeTab> createCreativeTab(
                         String id,

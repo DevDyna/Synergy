@@ -31,7 +31,7 @@ public class zItems {
                 zDropLets.register(bus);
                 zResources.register(bus);
                 zDusts.register(bus);
-                zElectronTubes.register(bus);
+                // zElectronTubes.register(bus);
                 zFoils.register(bus);
                 zGems.register(bus);
                 zIngots.register(bus);
@@ -107,7 +107,8 @@ public class zItems {
         public static final DeferredRegister.Items zMachineUpgrades = DeferredRegister.createItems(Main.ID);
 
         // Dedicated resource types
-        public static final DeferredRegister.Items zElectronTubes = DeferredRegister.createItems(Main.ID);
+        // public static final DeferredRegister.Items zElectronTubes =
+        // DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zMolds = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zCoils = DeferredRegister.createItems(Main.ID);
         public static final DeferredRegister.Items zFoils = DeferredRegister.createItems(Main.ID);
@@ -438,7 +439,6 @@ public class zItems {
         public static final DeferredHolder<Item, Item> DEPLETED_URANIUM_PELLET = Material
                         .resourceDepletedPellet(zStatic.ResourceMaterial.uranium);
 
-        
         // ---------------------------------------------------------------------------------------//
         public static final DeferredHolder<Item, Item> COPPER_COIL = Material
                         .resourceCoil(zStatic.ResourceMaterial.copper);
@@ -518,40 +518,48 @@ public class zItems {
        
         // ---------------------------------------------------------------------------------------//
 
-        public static final DeferredHolder<Item, Item> IRON_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.iron);
-        public static final DeferredHolder<Item, Item> GOLD_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.gold);
-        public static final DeferredHolder<Item, Item> COPPER_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.copper);
-        public static final DeferredHolder<Item, Item> ALUMINUM_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.aluminum);
-        public static final DeferredHolder<Item, Item> IRIDIUM_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.iridium);
-        public static final DeferredHolder<Item, Item> LEAD_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.lead);
-        public static final DeferredHolder<Item, Item> NICKEL_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.nickel);
-        public static final DeferredHolder<Item, Item> OSMIUM_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.osmium);
-        public static final DeferredHolder<Item, Item> PLATINUM_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.platinum);
-        public static final DeferredHolder<Item, Item> SILVER_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.silver);
-        public static final DeferredHolder<Item, Item> STEEL_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.steel);
-        public static final DeferredHolder<Item, Item> TIN_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.tin);
-        public static final DeferredHolder<Item, Item> URANIUM_ELECTRON_TUBE = Material
-                        .resourceElectronTube(zStatic.ResourceMaterial.uranium);
+        // public static final DeferredHolder<Item, Item> IRON_ELECTRON_TUBE = Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.iron);
+        // public static final DeferredHolder<Item, Item> GOLD_ELECTRON_TUBE = Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.gold);
+        // public static final DeferredHolder<Item, Item> COPPER_ELECTRON_TUBE =
+        // Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.copper);
+        // public static final DeferredHolder<Item, Item> ALUMINUM_ELECTRON_TUBE =
+        // Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.aluminum);
+        // public static final DeferredHolder<Item, Item> IRIDIUM_ELECTRON_TUBE =
+        // Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.iridium);
+        // public static final DeferredHolder<Item, Item> LEAD_ELECTRON_TUBE = Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.lead);
+        // public static final DeferredHolder<Item, Item> NICKEL_ELECTRON_TUBE =
+        // Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.nickel);
+        // public static final DeferredHolder<Item, Item> OSMIUM_ELECTRON_TUBE =
+        // Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.osmium);
+        // public static final DeferredHolder<Item, Item> PLATINUM_ELECTRON_TUBE =
+        // Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.platinum);
+        // public static final DeferredHolder<Item, Item> SILVER_ELECTRON_TUBE =
+        // Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.silver);
+        // public static final DeferredHolder<Item, Item> STEEL_ELECTRON_TUBE = Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.steel);
+        // public static final DeferredHolder<Item, Item> TIN_ELECTRON_TUBE = Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.tin);
+        // public static final DeferredHolder<Item, Item> URANIUM_ELECTRON_TUBE =
+        // Material
+        // .resourceElectronTube(zStatic.ResourceMaterial.uranium);
 
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Item, Item> BLANK_MOLD = Material
                         .resourceItem("blank_mold");
 
-        public static final DeferredHolder<Item, Item> ELECTRON_TUBE_BASE = Material
-                        .resourceItem("electron_tube_base");
+        public static final DeferredHolder<Item, Item> ELECTRON_TUBE = Material
+                        .resourceItem("electron_tube");
 
         public static final DeferredHolder<Item, Item> CARBON_FIBER = Material
                         .resourceItem("carbon_fiber");

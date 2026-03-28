@@ -308,27 +308,27 @@ public class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        protected void electron_tube(RecipeOutput c, DeferredHolder<Item, Item> tube, FluidRegister fluid) {
+        // protected void electron_tube(RecipeOutput c, DeferredHolder<Item, Item> tube, FluidRegister fluid) {
 
-                CasterRecipeBuilder.of()
-                                .fluid(fluid, 180)
-                                .input(zItems.ELECTRON_TUBE_BASE)
-                                .output(tube)
-                                .delay(100)
-                                .consumeItemInput()
-                                .unlockedBy()
-                                .save(c);
+        //         CasterRecipeBuilder.of()
+        //                         .fluid(fluid, 180)
+        //                         .input(zItems.ELECTRON_TUBE_BASE)
+        //                         .output(tube)
+        //                         .delay(100)
+        //                         .consumeItemInput()
+        //                         .unlockedBy()
+        //                         .save(c);
 
-                CastingTableBuilder.of()
-                                .fluid(fluid, 180)
-                                .input(zItems.ELECTRON_TUBE_BASE)
-                                .output(tube)
-                                .delay(100)
-                                .consumeItemInput()
-                                .unlockedBy()
-                                .save(c);
+        //         CastingTableBuilder.of()
+        //                         .fluid(fluid, 180)
+        //                         .input(zItems.ELECTRON_TUBE_BASE)
+        //                         .output(tube)
+        //                         .delay(100)
+        //                         .consumeItemInput()
+        //                         .unlockedBy()
+        //                         .save(c);
 
-        }
+        // }
 
         protected void gemDustProcess(RecipeOutput c, Item gem, Item dust) {
 

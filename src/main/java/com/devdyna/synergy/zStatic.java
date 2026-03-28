@@ -125,7 +125,7 @@ public class zStatic {
         public static String pellet = "_pellet";
         public static String fragment = "_fragment";
         public static String mold = "_mold";
-        public static String electron_tube = "_electron_tube";
+        // public static String electron_tube = "_electron_tube";
         public static String depleted = "depleted_";
         public static String chunk = "_chunk";
     }

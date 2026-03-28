@@ -286,14 +286,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .input(zItems.CHIP)
                                 .fluid(zFluids.LIQUID_GLASS, 250)
                                 .consumeItemInput()
-                                .output(zItems.ELECTRON_TUBE_BASE)
+                                .output(zItems.ELECTRON_TUBE)
                                 .unlockedBy()
                                 .save(c);
 
                 CastingTableBuilder.of()
                                 .fluid(zFluids.LIQUID_GLASS, 250)
                                 .input(zItems.CHIP)
-                                .output(zItems.ELECTRON_TUBE_BASE)
+                                .output(zItems.ELECTRON_TUBE)
                                 .consumeItemInput()
                                 .unlockedBy()
                                 .save(c);
@@ -902,19 +902,19 @@ public class DataRecipe extends ExtraRecipeProvider {
                 coil(c, zItemTag.FOIL_IRON, zItems.IRON_COIL.get());
                 coil(c, zItemTag.FOIL_SILVER, zItems.SILVER_COIL.get());
 
-                electron_tube(c, zItems.TIN_ELECTRON_TUBE, zFluids.MOLTEN_TIN);
-                electron_tube(c, zItems.GOLD_ELECTRON_TUBE, zFluids.MOLTEN_GOLD);
-                electron_tube(c, zItems.IRON_ELECTRON_TUBE, zFluids.MOLTEN_IRON);
-                electron_tube(c, zItems.LEAD_ELECTRON_TUBE, zFluids.MOLTEN_LEAD);
-                electron_tube(c, zItems.STEEL_ELECTRON_TUBE, zFluids.MOLTEN_STEEL);
-                electron_tube(c, zItems.COPPER_ELECTRON_TUBE, zFluids.MOLTEN_COPPER);
-                electron_tube(c, zItems.NICKEL_ELECTRON_TUBE, zFluids.MOLTEN_NICKEL);
-                electron_tube(c, zItems.OSMIUM_ELECTRON_TUBE, zFluids.MOLTEN_OSMIUM);
-                electron_tube(c, zItems.SILVER_ELECTRON_TUBE, zFluids.MOLTEN_SILVER);
-                electron_tube(c, zItems.IRIDIUM_ELECTRON_TUBE, zFluids.MOLTEN_IRIDIUM);
-                electron_tube(c, zItems.URANIUM_ELECTRON_TUBE, zFluids.MOLTEN_URANIUM);
-                electron_tube(c, zItems.ALUMINUM_ELECTRON_TUBE, zFluids.MOLTEN_ALUMINUM);
-                electron_tube(c, zItems.PLATINUM_ELECTRON_TUBE, zFluids.MOLTEN_PLATINUM);
+                // electron_tube(c, zItems.TIN_ELECTRON_TUBE, zFluids.MOLTEN_TIN);
+                // electron_tube(c, zItems.GOLD_ELECTRON_TUBE, zFluids.MOLTEN_GOLD);
+                // electron_tube(c, zItems.IRON_ELECTRON_TUBE, zFluids.MOLTEN_IRON);
+                // electron_tube(c, zItems.LEAD_ELECTRON_TUBE, zFluids.MOLTEN_LEAD);
+                // electron_tube(c, zItems.STEEL_ELECTRON_TUBE, zFluids.MOLTEN_STEEL);
+                // electron_tube(c, zItems.COPPER_ELECTRON_TUBE, zFluids.MOLTEN_COPPER);
+                // electron_tube(c, zItems.NICKEL_ELECTRON_TUBE, zFluids.MOLTEN_NICKEL);
+                // electron_tube(c, zItems.OSMIUM_ELECTRON_TUBE, zFluids.MOLTEN_OSMIUM);
+                // electron_tube(c, zItems.SILVER_ELECTRON_TUBE, zFluids.MOLTEN_SILVER);
+                // electron_tube(c, zItems.IRIDIUM_ELECTRON_TUBE, zFluids.MOLTEN_IRIDIUM);
+                // electron_tube(c, zItems.URANIUM_ELECTRON_TUBE, zFluids.MOLTEN_URANIUM);
+                // electron_tube(c, zItems.ALUMINUM_ELECTRON_TUBE, zFluids.MOLTEN_ALUMINUM);
+                // electron_tube(c, zItems.PLATINUM_ELECTRON_TUBE, zFluids.MOLTEN_PLATINUM);
 
                 crushing(c, Items.ANCIENT_DEBRIS, zItems.ANCIENT_DEBRIS_DUST.get(), 2, 1,
                                 zItems.ANCIENT_DEBRIS_DUST.get(), 0.5f);
@@ -2278,7 +2278,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .pattern("RFR")
                                 .pattern("EME")
                                 .pattern(" B ")
-                                .define('E', zItems.STEEL_ELECTRON_TUBE.get())
+                                .define('E', zItems.ELECTRON_TUBE.get())
                                 .define('R', zItems.RESISTOR.get())
                                 .define('F', zItems.MAGNETIC_STONE_CIRCUIT.get())
                                 .define('B', zItems.BLUE_BATTERY.get())
