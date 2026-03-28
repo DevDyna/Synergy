@@ -181,11 +181,6 @@ public class IndustrialUpgrade extends Item {
                 t.add(Component.translatable(ID + ".upgrades.modifier.energy",
                         ((energy < 0 ? "§a" : "§c+") + energy + "%")));
             }
-            // if (UpgradeComponents.has(nbt, UpgradeType.ENERGY_CAPACITY)) {
-            //     var energy_cap = UpgradeComponents.get(nbt, UpgradeType.ENERGY_CAPACITY);
-            //     t.add(Component.translatable(ID + ".upgrades.modifier.energy.capacity",
-            //             ((energy_cap < 0 ? "§c" : "§a+") + energy_cap + "%")));
-            // }
             if (UpgradeComponents.has(nbt, UpgradeType.SPEED)) {
                 var speed = UpgradeComponents.get(nbt, UpgradeType.SPEED);
                 t.add(Component.translatable(ID + ".upgrades.modifier.speed",
