@@ -4,6 +4,7 @@ import java.util.*;
 
 import javax.annotation.Nullable;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.beLogic.DirectionBasedItemHandler;
 import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
@@ -13,6 +14,8 @@ import com.devdyna.synergy.init.builder.pipe_blocks.NodePipeBlock;
 import com.devdyna.synergy.init.types.zBlockTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -41,23 +44,23 @@ public abstract class NodeBaseBE extends BlockEntity {
     // private BlockEntity inBE;
     // private BlockEntity outBE;
 
-    /**
-     * Client only ticking
-     * <br/>
-     * <br/>
-     * Useful for player events
-     */
-    public void tickClient() {
-    }
+    // /**
+    // * Client only ticking
+    // * <br/>
+    // * <br/>
+    // * Useful for player events
+    // */
+    // public void tickClient() {
+    // }
 
-    /**
-     * Client and Server ticking
-     * <br/>
-     * <br/>
-     * Usefull for particles
-     */
-    public void tickBoth() {
-    }
+    // /**
+    // * Client and Server ticking
+    // * <br/>
+    // * <br/>
+    // * Usefull for particles
+    // */
+    // public void tickBoth() {
+    // }
 
     public Direction getInputDirection() {
         return getNodeDirection();
@@ -75,6 +78,48 @@ public abstract class NodeBaseBE extends BlockEntity {
         return this.outputDir;
     }
 
+    public Boolean canRun() {
+        return speed <= 0 ? true : level.getGameTime() % speed == 0;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getStack(BlockCapability<?, Direction> c) {
+        if (c == Capabilities.ItemHandler.BLOCK)
+            return switch (getStackUpgrades()) {
+                case 0 -> 1;
+                case 1 -> 4;
+                case 2 -> 8;
+                case 3 -> 16;
+                case 4 -> 64;
+                default -> 0;
+            };
+        else if (c == Capabilities.EnergyStorage.BLOCK)
+            return switch (getStackUpgrades()) {
+                case 0 -> 250;
+                case 1 -> 500;
+                case 2 -> 1_000;
+                case 3 -> 2_000;
+                case 4 -> 5_000;
+                default -> 0;
+            };
+        else if (c == Capabilities.FluidHandler.BLOCK)
+            return switch (getStackUpgrades()) {
+                case 0 -> 250;
+                case 1 -> 500;
+                case 2 -> 1_000;
+                case 3 -> 2_000;
+                case 4 -> 5_000;
+                default -> 0;
+            };
+        else
+            return 0;
+    }
+
+    private int speed = Common.DEFAULT_NODE_SPEED.get();
+
     /**
      * Server only ticking
      * <br/>
@@ -82,6 +127,14 @@ public abstract class NodeBaseBE extends BlockEntity {
      * Useful for block events
      */
     public void tickServer() {
+
+        if (level == null)
+            return;
+
+        speed = Common.DEFAULT_NODE_SPEED.get() - (25 * getSpeedUpgrades());
+
+        if (!canRun())
+            return;
 
         this.failedRoutes = new HashSet<>();
         var input = getInputPos(getBlockState(), level, getBlockPos());
@@ -259,6 +312,8 @@ public abstract class NodeBaseBE extends BlockEntity {
 
         this.outputDir = getNodeDirection().getOpposite();
 
+        var facing = level.getBlockState(start).getValue(NodeBaseBlock.FACING);
+
         while (!queue.isEmpty()) {
             BlockPos current = queue.poll();
             if (failedRoutes.contains(current))
@@ -267,21 +322,23 @@ public abstract class NodeBaseBE extends BlockEntity {
             BlockState state = level.getBlockState(current);
             for (Direction dir : Direction.values()) {
                 BlockPos next = current.relative(dir);
+                // exclude node input from be selected when searching output
+                if (!(next.equals(start.relative(facing)) && dir.equals(facing)))
+                    if (!visited.contains(next) &&
+                            state.getValue(NodePipeBlock.PROPERTY_BY_DIRECTION.get(dir))) {
 
-                if (!visited.contains(next) &&
-                        state.getValue(NodePipeBlock.PROPERTY_BY_DIRECTION.get(dir))) {
-                    // check if pipe is connected and not included
-                    BlockState neighbor = level.getBlockState(next);
+                        // check if pipe is connected and not included
+                        BlockState neighbor = level.getBlockState(next);
 
-                    if (match(level, current, state, dir, next, neighbor)) {
-                        this.outputDir = dir;
-                        return next;
+                        if (match(level, current, state, dir, next, neighbor)) {
+                            this.outputDir = dir;
+                            return next;
+                        }
+
+                        if (neighbor.is(zBlockTag.CAN_CONNECT)) {
+                            queue.add(next);
+                        }
                     }
-
-                    if (neighbor.is(zBlockTag.CAN_CONNECT)) {
-                        queue.add(next);
-                    }
-                }
             }
         }
         failedRoutes.add(start);
@@ -326,5 +383,46 @@ public abstract class NodeBaseBE extends BlockEntity {
     public abstract BlockPos defineOutput();
 
     public abstract BlockPos defineInput();
+
+    public static final String NBT_SPEED = "speed";
+    public static final String NBT_STACK = "stack";
+
+    public int speed_upgrades;
+    public int stack_upgrades;
+
+    @Override
+    protected void saveAdditional(CompoundTag tag, Provider registries) {
+
+        tag.putInt(NBT_SPEED, speed_upgrades);
+        tag.putInt(NBT_STACK, stack_upgrades);
+        super.saveAdditional(tag, registries);
+    }
+
+    @Override
+    protected void loadAdditional(CompoundTag tag, Provider registries) {
+
+        if (tag.contains(NBT_SPEED))
+            speed_upgrades = tag.getInt(NBT_SPEED);
+        if (tag.contains(NBT_STACK))
+            stack_upgrades = tag.getInt(NBT_STACK);
+
+        super.loadAdditional(tag, registries);
+    }
+
+    public int getSpeedUpgrades() {
+        return speed_upgrades;
+    }
+
+    public int getStackUpgrades() {
+        return stack_upgrades;
+    }
+
+    public void addSpeedUpgrade() {
+        speed_upgrades = speed_upgrades + 1;
+    }
+
+    public void addStackUpgrade() {
+        stack_upgrades = stack_upgrades + 1;
+    }
 
 }

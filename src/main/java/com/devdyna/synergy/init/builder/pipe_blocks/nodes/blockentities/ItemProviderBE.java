@@ -40,8 +40,9 @@ public class ItemProviderBE extends NodeBaseBE
         var pos = getInputPos();
 
         if (isValidSet(state, dir, pos, level)) {
-            if (level.getGameTime() % 20 == 0)// TODO change based on upgrades
-                insertItemStacked(output, getRecipe(pos).get().value().getOutput().copy(), false);
+            var item = getRecipe(pos).get().value().getOutput().copy();
+            item.setCount(getStack(getCapType()));
+            insertItemStacked(output, item, false);
         }
 
     }

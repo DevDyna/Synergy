@@ -203,6 +203,15 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
                                                                 + x.path(d).replace("_" + zStatic.MachineUpgrades.TYPE,
                                                                                 ""))));
 
+                zItems.zNodeUpgrades.getEntries().stream().map(DeferredHolder::get)
+                                .forEach(d -> withExistingParent(x.path(d), "minecraft:item/generated")
+                                                .texture("layer0", x.rl("item/upgrades/node/base"))
+                                                .texture("layer1", x.rl("item/upgrades/node/"
+                                                                + x.path(d)
+                                                                                .replace("node_", "")
+                                                                                .replace("_" + zStatic.MachineUpgrades.TYPE,
+                                                                                                ""))));
+
         }
 
         protected void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {

@@ -166,8 +166,10 @@ public class Common {
         public static DoubleValue SIMPLE_MODERATOR_HEAT_REDUCER;// 1.3
         public static DoubleValue ADVANCED_MODERATOR_HEAT_REDUCER;// 2
         public static DoubleValue ELITE_MODERATOR_HEAT_REDUCER;// 4.5
-
         // pimpa
+        public static IntValue DEFAULT_NODE_SPEED;// 80
+        public static IntValue MAX_NODE_SPEED_UPGRADES;// 8
+        public static IntValue MAX_NODE_STACK_UPGRADES;// 4
 
         // redrock
 
@@ -483,7 +485,9 @@ public class Common {
 
         private static void pipe_blocks() {
                 qCOMMON.comment("PipeBlocks").push("7-pipe");
-
+                DEFAULT_NODE_SPEED = number("Base speed of any node without upgrades", "base_node_speed", 100);
+                MAX_NODE_SPEED_UPGRADES = number("Number of speed upgrades installable foreach nodes", "node_upgrades", 4);
+                MAX_NODE_STACK_UPGRADES = number("Number of stack upgrades installable foreach nodes", "node_upgrades", 4);
                 qCOMMON.pop();
         }
 
@@ -577,14 +581,16 @@ public class Common {
                                 "git_revert_forever_young");
                 DISABLE_PATINA_DROP_EVENT = bool("Disable Patina drop when scrapped any oxidized copper block",
                                 "patina_drop");
-                DISABLE_REDSTONE_ACID_EVENT = bool("Disable Redstone Acid can increase a stage of oxidation at the copper block clicked",
+                DISABLE_REDSTONE_ACID_EVENT = bool(
+                                "Disable Redstone Acid can increase a stage of oxidation at the copper block clicked",
                                 "redstone_acid_oxide");
                 DISABLE_HONEY_SOLUTION_EVENT = bool("Disable Honey Solution can wax the copper block clicked",
                                 "honey_solution_wax");
 
                 // DISABLE_PONDER_COMPAT = bool(
-                //                 "Disable Ponder tooltip only on this project\nIf you are looking to disable GuideMe compat , you need to override the guide removing all item_links!",
-                //                 "disable_ponder_compat");
+                // "Disable Ponder tooltip only on this project\nIf you are looking to disable
+                // GuideMe compat , you need to override the guide removing all item_links!",
+                // "disable_ponder_compat");
 
                 qCOMMON.pop();
         }

@@ -119,6 +119,7 @@ public class CreativeTabs {
             event.accept(zBlocks.FLUID_TRANSFER.get());
             event.accept(zBlocks.ENERGY_RETRIEVAL.get());
             event.accept(zBlocks.ENERGY_TRANSFER.get());
+            zItems.zNodeUpgrades.getEntries().stream().map(DeferredHolder::get).forEach(event::accept);
         }
 
         // ---------------------------------------------------------- //

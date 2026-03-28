@@ -23,7 +23,7 @@ public class zItems {
                 zBlockItem.register(bus);
                 zTool.register(bus);
                 zCraftingComponents.register(bus);
-                zNodeModules.register(bus);
+                zNodeUpgrades.register(bus);
                 zFoods.register(bus);
                 zCropExtra.register(bus);
                 zSeeds.register(bus);
@@ -68,10 +68,6 @@ public class zItems {
          */
         public static final DeferredRegister.Items zCraftingComponents = DeferredRegister.createItems(Main.ID);
         /**
-         * Nodes upgrades
-         */
-        public static final DeferredRegister.Items zNodeModules = DeferredRegister.createItems(Main.ID);
-        /**
          * Edible items
          */
         public static final DeferredRegister.Items zFoods = DeferredRegister.createItems(Main.ID);
@@ -105,6 +101,10 @@ public class zItems {
          * Machine Upgrades
          */
         public static final DeferredRegister.Items zMachineUpgrades = DeferredRegister.createItems(Main.ID);
+        /**
+         * Machine Upgrades
+         */
+        public static final DeferredRegister.Items zNodeUpgrades = DeferredRegister.createItems(Main.ID);
 
         // Dedicated resource types
         // public static final DeferredRegister.Items zElectronTubes =
@@ -498,24 +498,24 @@ public class zItems {
                         .resourceMold(zStatic.ResourceType.block);
 
         // ---------------------------------------------------------------------------------------//
-       
-       public static final DeferredHolder<Item, Item> ANDESITE_CHUNK = Material
+
+        public static final DeferredHolder<Item, Item> ANDESITE_CHUNK = Material
                         .resourceRockChunk("andesite");
-       public static final DeferredHolder<Item, Item> BLACKSTONE_CHUNK = Material
+        public static final DeferredHolder<Item, Item> BLACKSTONE_CHUNK = Material
                         .resourceRockChunk("blackstone");
-       public static final DeferredHolder<Item, Item> DEEPSLATE_CHUNK = Material
+        public static final DeferredHolder<Item, Item> DEEPSLATE_CHUNK = Material
                         .resourceRockChunk("deepslate");
-       public static final DeferredHolder<Item, Item> DIORITE_CHUNK = Material
+        public static final DeferredHolder<Item, Item> DIORITE_CHUNK = Material
                         .resourceRockChunk("diorite");
-       public static final DeferredHolder<Item, Item> DRIPSTONE_CHUNK = Material
+        public static final DeferredHolder<Item, Item> DRIPSTONE_CHUNK = Material
                         .resourceRockChunk("dripstone");
-       public static final DeferredHolder<Item, Item> ENDSTONE_CHUNK = Material
+        public static final DeferredHolder<Item, Item> ENDSTONE_CHUNK = Material
                         .resourceRockChunk("endstone");
-       public static final DeferredHolder<Item, Item> GRANITE_CHUNK = Material
+        public static final DeferredHolder<Item, Item> GRANITE_CHUNK = Material
                         .resourceRockChunk("granite");
-       public static final DeferredHolder<Item, Item> TUFF_CHUNK = Material
+        public static final DeferredHolder<Item, Item> TUFF_CHUNK = Material
                         .resourceRockChunk("tuff");
-       
+
         // ---------------------------------------------------------------------------------------//
 
         // public static final DeferredHolder<Item, Item> IRON_ELECTRON_TUBE = Material
@@ -576,13 +576,13 @@ public class zItems {
         public static final DeferredHolder<Item, Item> RUBBER = Material.droplet(zStatic.Fluids.rubber);
 
         // public static final DeferredHolder<Item, Item> WASTE_FRAGMENT = Material
-        //                 .resourceItem("waste_fragment");
+        // .resourceItem("waste_fragment");
 
         // public static final DeferredHolder<Item, Item> YELLOW_CAKE = Material
-        //                 .resourceItem("yellow_cake");
+        // .resourceItem("yellow_cake");
         // public static final DeferredHolder<Item, Item> WASTE = Material
-        //                 .resourceItem("waste");
-        
+        // .resourceItem("waste");
+
         public static final DeferredHolder<Item, Item> GHOUL_HEART = Material
                         .resourceItem("ghoul_heart");
         public static final DeferredHolder<Item, Item> STONE_PEBBLE = Material
@@ -655,8 +655,6 @@ public class zItems {
         public static final DeferredHolder<Item, Item> FOSSIL = Material
                         .resourceItem("fossil");
 
-        
-
         // ---------------------------------------------------------------------------------------//
 
         public static final DeferredHolder<Item, Item> REDSTONE_ACID = zTool.register(zStatic.Items.redstone_acid,
@@ -721,5 +719,8 @@ public class zItems {
                         .machineUpgrade(zStatic.MachineUpgrades.fluid);
 
         // ---------------------------------------------------------------------------------------//
+
+        public static final DeferredHolder<Item, Item> NODE_SPEED_UPGRADE = Material.nodeUpgrade("speed");
+        public static final DeferredHolder<Item, Item> NODE_STACK_UPGRADE = Material.nodeUpgrade("stack");
 
 }

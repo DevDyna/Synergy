@@ -24,7 +24,7 @@ public class EnergyTransferBE extends NodeBaseBE implements EnergyNodeType {
 
     @Override
     protected void executeEnergy(IEnergyStorage input, IEnergyStorage output) {
-        moveEnergy(input, output, input.getEnergyStored());// TODO UPGRADE, #WE_NEED_NODE_UPGRADES_NOW
+        moveEnergy(input, output, Math.min(input.getEnergyStored(),getStack(getCapType())));
     }
 
     @Override

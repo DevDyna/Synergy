@@ -39,8 +39,9 @@ public class FluidProviderBE extends NodeBaseBE
         var pos = getInputPos();
 
         if (isValidSet(state, dir, pos, level)) {
-            if (level.getGameTime() % 20 == 0)// TODO change based on upgrades
-                insertFluidStacked(output, getRecipe(pos).get().value().getOutput().copy(), false);
+             var fluid = getRecipe(pos).get().value().getOutput().copy();
+             fluid.setAmount(getStack(getCapType()));
+                insertFluidStacked(output, fluid, false);
         }
 
     }

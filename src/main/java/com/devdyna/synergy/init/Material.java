@@ -250,6 +250,11 @@ public class Material {
                                                 () -> new IndustrialUpgrade());
         }
 
+        public static DeferredHolder<Item, Item> nodeUpgrade(String name) {
+                return zItems.zNodeUpgrades
+                                .registerSimpleItem("node_"+name + "_" + zStatic.MachineUpgrades.TYPE);
+        }
+
         public static DeferredHolder<Item, Item> droplet(String name) {
                 return zItems.zDropLets
                                 .registerSimpleItem(name);
