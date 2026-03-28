@@ -103,7 +103,6 @@ public class Client {
         event.register(zContainer.ROUTER.get(), RouterScreen::new);
     }
 
-    @SuppressWarnings("deprecation")
     @SubscribeEvent
     public static void registerItemColor(RegisterColorHandlersEvent.Item event) {
         // idk if it work but i will keep it
