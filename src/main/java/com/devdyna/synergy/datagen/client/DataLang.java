@@ -664,6 +664,8 @@ public class DataLang extends LanguageProvider {
                 //unused
                 add(ID + ".jei.tip.consume_durability", "§cConsume durability");
 
+                add(ID + ".click.install.node", TIP_COLOR+"Right Click on a Pipe Node to install");
+
         }
 
         private String named(DeferredHolder<?, ?> b) {

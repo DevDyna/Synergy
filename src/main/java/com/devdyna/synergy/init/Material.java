@@ -252,7 +252,7 @@ public class Material {
 
         public static DeferredHolder<Item, Item> nodeUpgrade(String name) {
                 return zItems.zNodeUpgrades
-                                .registerSimpleItem("node_"+name + "_" + zStatic.MachineUpgrades.TYPE);
+                                .register("node_"+name + "_" + zStatic.MachineUpgrades.TYPE,() -> new ItemToolTipped("click.install.node"));
         }
 
         public static DeferredHolder<Item, Item> droplet(String name) {
