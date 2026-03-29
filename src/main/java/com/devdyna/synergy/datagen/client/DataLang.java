@@ -480,6 +480,9 @@ public class DataLang extends LanguageProvider {
                                                                                 .getAllStrings(zStatic.ResourceMaterial.deposits.class))
                                                                                 .indexOf(s))));
 
+                add(ID + ".jei.atlas.upgrade.nodes", "Node Upgrade");
+                add(ID + ".jei.atlas.upgrade.machines", "Industrial Machines Upgrade");
+
                 add(ID + ".jei.atlas.consumer.energy", "Energy Consumer");
 
                 add(ID + ".jei.atlas.consumer.optional.energy", "Optional Energy Consumer");
