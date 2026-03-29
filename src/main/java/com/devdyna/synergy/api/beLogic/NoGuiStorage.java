@@ -26,22 +26,24 @@ public interface NoGuiStorage {
 
             if (be instanceof NoGuiStorage storage) {
 
-                player.swing(hand);
-
                 // If holding item -> try insert
-                if (!stack.isEmpty() && !extractOnly()) {
-                    if (!level.isClientSide) {
+                if (!stack.isEmpty() && !extractOnly() && insertFilter(stack) && requiredToInsert(stack)) {
+
+                    player.swing(hand);
+                    if (!level.isClientSide()) {
                         ItemStack remaining = storage.insertItem(stack);
                         player.setItemInHand(hand, remaining);
                     }
                     setChanged();
-                    return ItemInteractionResult.sidedSuccess(level.isClientSide);
+                    return ItemInteractionResult.sidedSuccess(level.isClientSide());
                 }
 
                 if (stack.isEmpty() && !insertOnly()) {
+
+                    player.swing(hand);
                     // If empty hand -> extract one item
                     ItemStack extracted = storage.extractItem();
-                    if (!extracted.isEmpty() && !level.isClientSide) {
+                    if (!extracted.isEmpty() && !level.isClientSide()) {
                         ItemHandlerHelper.giveItemToPlayer(player, extracted);
                         setChanged();
                         return ItemInteractionResult.CONSUME;
@@ -58,6 +60,22 @@ public interface NoGuiStorage {
 
     default boolean extractOnly() {
         return false;
+    }
+
+    /**
+     * insert only specific itemstacks
+     */
+    default boolean insertFilter(ItemStack i) {
+        return true;
+    }
+
+    /**
+     * insert only when holding a specific itemstack<br/>
+     * <br/>
+     * NOTE : it will consume the item used!
+     */
+    default boolean requiredToInsert(ItemStack i) {
+        return true;
     }
 
     default boolean insertOnly() {
