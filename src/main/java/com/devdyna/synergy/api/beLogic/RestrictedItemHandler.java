@@ -17,15 +17,13 @@ public interface RestrictedItemHandler extends ItemStorageBlock {
     }
 
     /**
-     * insert a limited amount of stack to the specific slot<br/>
-     * <br/>
-     * NOTE : <code>getStorage()</code> is used as result!
+     * insert a limited amount of stack to the specific slot
      */
-    default ItemStack insertLimited(ItemStack stack, int slot, int limit) {
+    default ItemStack insertLimited(IItemHandler h, ItemStack stack, int slot, int limit) {
         if (stack.isEmpty())
             return ItemStack.EMPTY;
 
-        ItemStack existing = getStorage().getStackInSlot(slot);
+        ItemStack existing = h.getStackInSlot(slot);
 
         int currentCount = existing.isEmpty() ? 0 : existing.getCount();
 
@@ -34,7 +32,7 @@ public interface RestrictedItemHandler extends ItemStorageBlock {
 
         ItemStack toInsert = stack.copyWithCount(Math.min(stack.getCount(), limit - currentCount));
 
-        int inserted = toInsert.getCount() - getStorage().insertItem(slot, toInsert, false).getCount();
+        int inserted = toInsert.getCount() - h.insertItem(slot, toInsert, false).getCount();
 
         if (inserted <= 0)
             return stack;
