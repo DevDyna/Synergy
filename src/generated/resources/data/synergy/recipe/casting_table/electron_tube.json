@@ -10,7 +10,7 @@
   },
   "output": {
     "count": 1,
-    "id": "synergy:electron_tube_base"
+    "id": "synergy:electron_tube"
   },
   "ticks": 40
 }

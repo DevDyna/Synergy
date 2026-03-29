@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "synergy:item/upgrades/node/base",
+    "layer1": "synergy:item/upgrades/node/speed"
+  }
+}

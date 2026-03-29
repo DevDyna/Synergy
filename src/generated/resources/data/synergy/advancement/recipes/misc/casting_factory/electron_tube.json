@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:casting_factory/gold_electron_tube"
+        "recipe": "synergy:casting_factory/electron_tube"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": "synergy:electron_tube_base"
+            "items": "synergy:chip"
           }
         ]
       },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:casting_factory/gold_electron_tube"
+      "synergy:casting_factory/electron_tube"
     ]
   }
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:plates/steel"
+    },
+    {
+      "tag": "c:coils/gold"
+    },
+    {
+      "tag": "c:gears/gold"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:node_stack_upgrade"
+  }
+}

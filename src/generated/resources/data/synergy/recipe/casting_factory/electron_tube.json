@@ -3,16 +3,16 @@
   "consume_item": true,
   "energy": 500,
   "input_fluid": {
-    "amount": 180,
-    "fluid": "synergy:molten_iron_source"
+    "amount": 250,
+    "fluid": "synergy:liquid_glass_source"
   },
   "input_item": {
     "count": 1,
-    "item": "synergy:electron_tube_base"
+    "item": "synergy:chip"
   },
   "output": {
     "count": 1,
-    "id": "synergy:iron_electron_tube"
+    "id": "synergy:electron_tube"
   },
-  "ticks": 100
+  "ticks": 10
 }
