@@ -24,7 +24,7 @@ public class EnergyRetrievalBE extends NodeBaseBE implements EnergyNodeType {
 
     @Override
     protected void executeEnergy(IEnergyStorage input, IEnergyStorage output) {
-        moveEnergy(output, input, Math.min(output.getEnergyStored(),getStack(getCapType())));
+        moveEnergy(output, input, Math.min(output.getEnergyStored(),getStack()));
     }
 
     @Override

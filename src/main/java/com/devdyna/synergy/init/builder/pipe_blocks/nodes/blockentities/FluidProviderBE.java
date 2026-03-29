@@ -40,7 +40,7 @@ public class FluidProviderBE extends NodeBaseBE
 
         if (isValidSet(state, dir, pos, level)) {
              var fluid = getRecipe(pos).get().value().getOutput().copy();
-             fluid.setAmount(getStack(getCapType()));
+             fluid.setAmount(getStack());
                 insertFluidStacked(output, fluid, false);
         }
 

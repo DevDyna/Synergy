@@ -25,7 +25,7 @@ public class ItemTransferBE extends NodeBaseBE implements ItemNodeType {
 
     @Override
     protected void executeItem(IItemHandler input, IItemHandler output) {
-        moveItems(input, output, getStack(getCapType()));
+        moveItems(input, output, getStack());
     }
 
     @Override

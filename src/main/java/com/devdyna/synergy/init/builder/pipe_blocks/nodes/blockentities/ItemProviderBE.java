@@ -41,7 +41,7 @@ public class ItemProviderBE extends NodeBaseBE
 
         if (isValidSet(state, dir, pos, level)) {
             var item = getRecipe(pos).get().value().getOutput().copy();
-            item.setCount(getStack(getCapType()));
+            item.setCount(getStack());
             insertItemStacked(output, item, false);
         }
 

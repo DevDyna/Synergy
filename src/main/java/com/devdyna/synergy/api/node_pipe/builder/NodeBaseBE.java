@@ -5,18 +5,26 @@ import java.util.*;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Common;
+import com.devdyna.synergy.api.basebe.be.TickingBE;
 import com.devdyna.synergy.api.beLogic.DirectionBasedItemHandler;
+import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.node_pipe.FluidNodeType;
 import com.devdyna.synergy.api.node_pipe.ItemNodeType;
 import com.devdyna.synergy.init.builder.pipe_blocks.NodePipeBlock;
 import com.devdyna.synergy.init.types.zBlockTag;
+import com.devdyna.synergy.init.types.zHandlers;
+import com.devdyna.synergy.init.types.zItems;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.Containers;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -26,9 +34,10 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
-public abstract class NodeBaseBE extends BlockEntity {
+public abstract class NodeBaseBE extends TickingBE implements NoGuiStorage, RestrictedItemHandler {
 
     public NodeBaseBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -41,26 +50,24 @@ public abstract class NodeBaseBE extends BlockEntity {
     private Object outCap;
 
     private Direction outputDir;
-    // private BlockEntity inBE;
-    // private BlockEntity outBE;
 
-    // /**
-    // * Client only ticking
-    // * <br/>
-    // * <br/>
-    // * Useful for player events
-    // */
-    // public void tickClient() {
-    // }
+    /**
+     * Client only ticking
+     * <br/>
+     * <br/>
+     * Useful for player events
+     */
+    public void tickClient() {
+    }
 
-    // /**
-    // * Client and Server ticking
-    // * <br/>
-    // * <br/>
-    // * Usefull for particles
-    // */
-    // public void tickBoth() {
-    // }
+    /**
+     * Client and Server ticking
+     * <br/>
+     * <br/>
+     * Usefull for particles
+     */
+    public void tickBoth() {
+    }
 
     public Direction getInputDirection() {
         return getNodeDirection();
@@ -79,14 +86,27 @@ public abstract class NodeBaseBE extends BlockEntity {
     }
 
     public Boolean canRun() {
-        return speed <= 0 ? true : level.getGameTime() % speed == 0;
+        return speed <= 1 ? true : level.getGameTime() % speed == 0;
     }
 
     public int getSpeed() {
         return speed;
     }
 
-    public int getStack(BlockCapability<?, Direction> c) {
+    public String getSuffix() {
+        var c = getCapType();
+        if (c == Capabilities.ItemHandler.BLOCK)
+            return "item" + (getStackUpgrades() > 0 ? "s" : "");
+        else if (c == Capabilities.EnergyStorage.BLOCK)
+            return "fe";
+        else if (c == Capabilities.FluidHandler.BLOCK)
+            return "mb";
+        else
+            return "";
+    }
+
+    public int getStack() {
+        var c = getCapType();
         if (c == Capabilities.ItemHandler.BLOCK)
             return switch (getStackUpgrades()) {
                 case 0 -> 1;
@@ -322,23 +342,28 @@ public abstract class NodeBaseBE extends BlockEntity {
             BlockState state = level.getBlockState(current);
             for (Direction dir : Direction.values()) {
                 BlockPos next = current.relative(dir);
-                // exclude node input from be selected when searching output
+                // exclude node input
                 if (!(next.equals(start.relative(facing)) && dir.equals(facing)))
-                    if (!visited.contains(next) &&
-                            state.getValue(NodePipeBlock.PROPERTY_BY_DIRECTION.get(dir))) {
+                    // exclude others nodes inputs
+                    if (!(state.getBlock() instanceof NodeBaseBlock
+                            && state.getValue(NodeBaseBlock.FACING).equals(dir)))
+                        // exclude visited
+                        if (!visited.contains(next))
+                            // exclude pipes not connected
+                            if (state.getValue(NodePipeBlock.PROPERTY_BY_DIRECTION.get(dir))) {
 
-                        // check if pipe is connected and not included
-                        BlockState neighbor = level.getBlockState(next);
+                                // check if pipe is connected and not included
+                                BlockState neighbor = level.getBlockState(next);
 
-                        if (match(level, current, state, dir, next, neighbor)) {
-                            this.outputDir = dir;
-                            return next;
-                        }
+                                if (match(level, current, state, dir, next, neighbor)) {
+                                    this.outputDir = dir;
+                                    return next;
+                                }
 
-                        if (neighbor.is(zBlockTag.CAN_CONNECT)) {
-                            queue.add(next);
-                        }
-                    }
+                                if (neighbor.is(zBlockTag.CAN_CONNECT)) {
+                                    queue.add(next);
+                                }
+                            }
             }
         }
         failedRoutes.add(start);
@@ -384,45 +409,115 @@ public abstract class NodeBaseBE extends BlockEntity {
 
     public abstract BlockPos defineInput();
 
-    public static final String NBT_SPEED = "speed";
-    public static final String NBT_STACK = "stack";
-
-    public int speed_upgrades;
-    public int stack_upgrades;
-
-    @Override
-    protected void saveAdditional(CompoundTag tag, Provider registries) {
-
-        tag.putInt(NBT_SPEED, speed_upgrades);
-        tag.putInt(NBT_STACK, stack_upgrades);
-        super.saveAdditional(tag, registries);
-    }
-
-    @Override
-    protected void loadAdditional(CompoundTag tag, Provider registries) {
-
-        if (tag.contains(NBT_SPEED))
-            speed_upgrades = tag.getInt(NBT_SPEED);
-        if (tag.contains(NBT_STACK))
-            stack_upgrades = tag.getInt(NBT_STACK);
-
-        super.loadAdditional(tag, registries);
-    }
-
     public int getSpeedUpgrades() {
-        return speed_upgrades;
+        return getStorage().getStackInSlot(SPEED_UPGRADE_SLOT).getCount();
     }
 
     public int getStackUpgrades() {
-        return stack_upgrades;
+        return getStorage().getStackInSlot(STACK_UPGRADE_SLOT).getCount();
     }
 
-    public void addSpeedUpgrade() {
-        speed_upgrades = speed_upgrades + 1;
+    public static final int SPEED_UPGRADE_SLOT = 0;
+    public static final int STACK_UPGRADE_SLOT = 1;
+
+    @Override
+    public ItemStackHandler getStorage() {
+        return getData(zHandlers.ITEM_STORAGE);
     }
 
-    public void addStackUpgrade() {
-        stack_upgrades = stack_upgrades + 1;
+    @Override
+    public int MachineSlots() {
+        return 2;
+    }
+
+    @Override
+    public IItemHandler getStorageRestricted() {
+        return new IItemHandler() {
+
+            @Override
+            public int getSlots() {
+                return 0;
+            }
+
+            @Override
+            public ItemStack getStackInSlot(int slot) {
+                return ItemStack.EMPTY;
+            }
+
+            @Override
+            public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+                return stack;
+            }
+
+            @Override
+            public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                return ItemStack.EMPTY;
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                return 0;
+            }
+
+            @Override
+            public boolean isItemValid(int slot, ItemStack stack) {
+                return getStorage().isItemValid(slot, stack);
+            }
+
+        };
+    }
+
+    public void drops() {
+        SimpleContainer inv = new SimpleContainer(getStorage().getSlots());
+        inv.setItem(SPEED_UPGRADE_SLOT, getStorage().getStackInSlot(SPEED_UPGRADE_SLOT));
+        inv.setItem(STACK_UPGRADE_SLOT, getStorage().getStackInSlot(STACK_UPGRADE_SLOT));
+        Containers.dropContents(this.level, this.worldPosition, inv);
+    }
+
+    public ItemStack insertItem(ItemStack stack) {
+
+        if (stack.is(zItems.NODE_SPEED_UPGRADE))
+            return insertLimited(stack, SPEED_UPGRADE_SLOT, Common.MAX_NODE_SPEED_UPGRADES.get());
+
+        if (stack.is(zItems.NODE_STACK_UPGRADE))
+            return insertLimited(stack, STACK_UPGRADE_SLOT, Common.MAX_NODE_STACK_UPGRADES.get());
+
+        return stack;
+    }
+
+    public ItemStack extractItem() {
+        for (int i = 0; i < getStorage().getSlots(); i++) {
+            ItemStack extracted = getStorage().extractItem(i, getStorage().getStackInSlot(i).getCount(), false);
+            if (!extracted.isEmpty()) {
+                return extracted;
+            }
+        }
+        return ItemStack.EMPTY;
+    }
+
+    @Override
+    public boolean insertOnly() {
+        return true;
+    }
+
+    @Override
+    public boolean insertFilter(ItemStack i) {
+        return i.is(zItems.NODE_SPEED_UPGRADE) || i.is(zItems.NODE_STACK_UPGRADE);
+    }
+
+    // @Override
+    // public boolean requiredToExtract(ItemStack i) {
+    // return i.is(zItems.SMASHER);
+    // }
+
+    @Override
+    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        super.saveAdditional(pTag, pRegistries);
+    }
+
+    @Override
+    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        super.loadAdditional(pTag, pRegistries);
     }
 
 }

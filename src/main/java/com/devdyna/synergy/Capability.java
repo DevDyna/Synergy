@@ -42,7 +42,20 @@ public class Capability {
                                                 zBlocks.CASTING_TABLE,
                                                 zBlocks.CHOPPER,
                                                 zBlocks.LOGIC_BOX,
-                                                zBlocks.ROUTER));
+                                                zBlocks.ROUTER,
+
+                                                zBlocks.ITEM_PROVIDER,
+                                                zBlocks.ITEM_RETRIEVAL,
+                                                zBlocks.ITEM_TRANSFER,
+
+                                                zBlocks.ENERGY_RETRIEVAL,
+                                                zBlocks.ENERGY_TRANSFER,
+
+                                                zBlocks.FLUID_PROVIDER,
+                                                zBlocks.FLUID_RETRIEVAL,
+                                                zBlocks.FLUID_TRANSFER
+
+                                ));
 
                 registerEnergyBlock(event, x.toBlocks(
                                 zBlocks.HARVESTER,

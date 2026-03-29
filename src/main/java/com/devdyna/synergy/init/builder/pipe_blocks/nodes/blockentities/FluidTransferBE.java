@@ -25,7 +25,7 @@ public class FluidTransferBE extends NodeBaseBE implements FluidNodeType {
 
     @Override
     protected void executeFluid(IFluidHandler input, IFluidHandler output) {
-        moveFluids(input, output, getStack(getCapType()));
+        moveFluids(input, output, getStack());
     }
 
     @Override

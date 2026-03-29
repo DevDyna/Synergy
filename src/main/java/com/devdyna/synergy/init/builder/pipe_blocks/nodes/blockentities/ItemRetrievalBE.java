@@ -25,7 +25,7 @@ public class ItemRetrievalBE extends NodeBaseBE implements ItemNodeType {
 
     @Override
     protected void executeItem(IItemHandler input, IItemHandler output) {
-        moveItems(output, input, getStack(getCapType()));
+        moveItems(output, input, getStack());
     }
 
     @Override
