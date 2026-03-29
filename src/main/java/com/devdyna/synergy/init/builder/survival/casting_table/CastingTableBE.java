@@ -91,8 +91,9 @@ public class CastingTableBE extends TickingBE
 
     public ItemStack insertItem(ItemStack stack) {
         update();
-        if (getStorageRestricted().getStackInSlot(MOLD_SLOT).isEmpty())
-            return getStorageRestricted().insertItem(MOLD_SLOT, stack, false);
+        if (getStorageRestricted().getStackInSlot(MOLD_SLOT).isEmpty()
+                && getStorageRestricted().getStackInSlot(OUTPUT_SLOT).isEmpty())
+            return insertLimited(getStorageRestricted(), stack, MOLD_SLOT, 1);
         return stack;
     }
 
