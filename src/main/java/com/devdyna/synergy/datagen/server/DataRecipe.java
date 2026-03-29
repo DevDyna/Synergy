@@ -2741,6 +2741,20 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
+                ShapelessRecipeBuilder.shapeless(MISC, zItems.NODE_SPEED_UPGRADE.get(), 1)
+                                .requires(zItemTag.PLATE_STEEL)
+                                .requires(zItemTag.GEAR_GOLD)
+                                .requires(Tags.Items.STORAGE_BLOCKS_REDSTONE)
+                                .unlockedBy(ID, has(zItems.STEEL_PLATE.get()))
+                                .save(c);
+
+                ShapelessRecipeBuilder.shapeless(MISC, zItems.NODE_STACK_UPGRADE.get(), 1)
+                                .requires(zItemTag.PLATE_STEEL)
+                                .requires(zItemTag.GEAR_GOLD)
+                                .requires(Tags.Items.GEMS_DIAMOND)
+                                .unlockedBy(ID, has(zItems.STEEL_PLATE.get()))
+                                .save(c);
+
         }
 
 }
