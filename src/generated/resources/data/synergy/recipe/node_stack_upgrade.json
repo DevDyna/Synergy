@@ -6,10 +6,10 @@
       "tag": "c:plates/steel"
     },
     {
-      "tag": "c:coils/gold"
+      "tag": "c:gears/gold"
     },
     {
-      "tag": "c:gears/gold"
+      "tag": "c:gems/diamond"
     }
   ],
   "result": {
