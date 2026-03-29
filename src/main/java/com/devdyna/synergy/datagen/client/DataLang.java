@@ -15,7 +15,6 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-@SuppressWarnings({ "unchecked" })
 public class DataLang extends LanguageProvider {
 
         public DataLang(PackOutput o) {
@@ -342,6 +341,8 @@ public class DataLang extends LanguageProvider {
                                 "Router Info");
                 add("config.jade.plugin_" + ID + "." + zStatic.Blocks.entity_watcher,
                                 "Entity Watcher Info");
+                add("config.jade.plugin_" + ID + "." + "node_upgrades",
+                                "Node Upgrades Info");
 
                 add(Main.ID + ".color", "Color: %d");
 
