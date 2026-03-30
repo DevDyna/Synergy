@@ -146,7 +146,7 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("layer0", modLoc("item/redstone/inverted_repeater"));
 
                 simpleFlexibleBlock(zBlocks.SIMPLE_TANK, "tank/simple").renderType(DataGenUtil.CUTOUT);
-                simpleFlexibleBlock(zBlocks.FUEL_TANK, "tank/fuel").renderType(DataGenUtil.CUTOUT);
+                // simpleFlexibleBlock(zBlocks.FUEL_TANK, "tank/fuel").renderType(DataGenUtil.CUTOUT);
 
                 withExistingParent(zBlocks.SIMPLE_WATER_GEN.getRegisteredName(), modLoc("block/triple_layer"))
                                 .texture("top", "block/resource_gen/water")
@@ -238,6 +238,9 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 
                 withExistingParent(zBlocks.ENTITY_WATCHER.getRegisteredName(),
                                 modLoc("block/tiny_block/entity_watcher"));
+
+
+                cubeColumn(zBlocks.FUEL_TANK.getRegisteredName(), modLoc("block/fuel_tank/side"), modLoc("block/fuel_tank/top")).renderType(DataGenUtil.CUTOUT);
 
         }
 

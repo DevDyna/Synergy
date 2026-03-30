@@ -195,8 +195,8 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 simpleBlock(zBlocks.SIMPLE_TANK.get(), models().cubeAll(zBlocks.SIMPLE_TANK.getRegisteredName(),
                                 modLoc("block/tank/simple")).renderType(DataGenUtil.CUTOUT));
 
-                simpleBlock(zBlocks.FUEL_TANK.get(), models().cubeAll(zBlocks.FUEL_TANK.getRegisteredName(),
-                                modLoc("block/tank/fuel")).renderType(DataGenUtil.CUTOUT));
+                // simpleBlock(zBlocks.FUEL_TANK.get(), models().cubeAll(zBlocks.FUEL_TANK.getRegisteredName(),
+                //                 modLoc("block/tank/fuel")).renderType(DataGenUtil.CUTOUT));
 
                 simpleBlock(zBlocks.ROUTER.get(), models().getExistingFile(x.rl("block/router")));
 
@@ -289,7 +289,12 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 modLoc("block/decorative/aquamarine"))
                                                 .renderType(DataGenUtil.CUTOUT));
 
-                noModel(zBlocks.ENTITY_WATCHER,x.rl("block/tiny_block/entity_watcher"));
+                noModel(zBlocks.ENTITY_WATCHER, x.rl("block/tiny_block/entity_watcher"));
+
+                simpleBlock(zBlocks.FUEL_TANK.get(),models().cubeColumn(zBlocks.FUEL_TANK.getRegisteredName(), modLoc("block/fuel_tank/side"),
+                                modLoc("block/fuel_tank/top")).renderType(DataGenUtil.CUTOUT));
+
+                
 
         }
 
