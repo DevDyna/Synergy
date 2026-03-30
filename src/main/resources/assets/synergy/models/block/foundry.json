@@ -5,7 +5,7 @@
   "render_type": "cutout",
   "textures": {
     "side": "synergy:block/foundry/side",
-    "top": "synergy:block/tank/fuel",
+    "top": "synergy:block/foundry/top",
     "particle": "block/smooth_stone",
     "plate": "block/smooth_stone"
   },
