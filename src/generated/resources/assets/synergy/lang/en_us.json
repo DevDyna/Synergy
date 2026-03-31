@@ -654,6 +654,7 @@
   "synergy.jade.bricks.stage": "Drying stage: %s",
   "synergy.jade.bricks.wet": "§cDrying conditions don't match!",
   "synergy.jade.environment_modifier.tip": "Base Speed: %s",
+  "synergy.jade.foundry.fail": "§cRequire an heat source below",
   "synergy.jade.foundry_fuel.tip": "Heat Speed Modifier: %s",
   "synergy.jade.info.blacklist": "Blacklist:",
   "synergy.jade.info.cooler_status.false": "Status: §cInactive",
