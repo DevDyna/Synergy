@@ -1,3 +1,7 @@
 {
-  "parent": "synergy:block/tiny_block/void_box/block"
+  "parent": "synergy:block/_template/tiny/animated/block",
+  "textures": {
+    "all": "synergy:block/void_box/chest",
+    "inside": "synergy:block/void_box/inside"
+  }
 }

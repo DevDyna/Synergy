@@ -1,8 +1,0 @@
-{
-  "parent": "synergy:block/tiny_block/base/animated/block",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "all": "synergy:block/tiny_block/logic_box/green/chest",
-    "inside": "synergy:block/tiny_block/logic_box/green/inside"
-  }
-}

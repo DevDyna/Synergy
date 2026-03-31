@@ -1,5 +1,5 @@
 {
-  "parent": "synergy:block/triple_layer",
+  "parent": "synergy:block/_template/triple_layer",
   "render_type": "minecraft:cutout",
   "textures": {
     "below": "synergy:block/decorative/wrought_iron_block",

@@ -1,12 +1,12 @@
 {
-  "parent": "synergy:block/tiny_block/chest",
+  "parent": "synergy:block/_template/tiny/sided",
   "textures": {
-    "down": "synergy:block/tiny_block/chest/wooden",
-    "east": "synergy:block/tiny_block/chest/wooden",
-    "north": "synergy:block/tiny_block/chest/wooden",
-    "particle": "synergy:block/tiny_block/chest/wooden",
-    "south": "synergy:block/tiny_block/chest/wooden",
-    "up": "synergy:block/tiny_block/chest/wooden",
-    "west": "synergy:block/tiny_block/chest/wooden"
+    "down": "synergy:block/tiny_chest/wooden",
+    "east": "synergy:block/tiny_chest/wooden",
+    "north": "synergy:block/tiny_chest/wooden",
+    "particle": "synergy:block/tiny_chest/wooden",
+    "south": "synergy:block/tiny_chest/wooden",
+    "up": "synergy:block/tiny_chest/wooden",
+    "west": "synergy:block/tiny_chest/wooden"
   }
 }

@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=east,inverted=false": {
-      "model": "synergy:block/logic_box_off",
+      "model": "synergy:logic_box/green",
       "y": 90
     },
     "facing=east,inverted=true": {
-      "model": "synergy:block/logic_box_on",
+      "model": "synergy:logic_box/red",
       "y": 90
     },
     "facing=north,inverted=false": {
-      "model": "synergy:block/logic_box_off"
+      "model": "synergy:logic_box/green"
     },
     "facing=north,inverted=true": {
-      "model": "synergy:block/logic_box_on"
+      "model": "synergy:logic_box/red"
     },
     "facing=south,inverted=false": {
-      "model": "synergy:block/logic_box_off",
+      "model": "synergy:logic_box/green",
       "y": 180
     },
     "facing=south,inverted=true": {
-      "model": "synergy:block/logic_box_on",
+      "model": "synergy:logic_box/red",
       "y": 180
     },
     "facing=west,inverted=false": {
-      "model": "synergy:block/logic_box_off",
+      "model": "synergy:logic_box/green",
       "y": 270
     },
     "facing=west,inverted=true": {
-      "model": "synergy:block/logic_box_on",
+      "model": "synergy:logic_box/red",
       "y": 270
     }
   }

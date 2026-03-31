@@ -1,5 +1,5 @@
 {
-  "parent": "synergy:block/double_layer",
+  "parent": "synergy:block/_template/double_layer",
   "textures": {
     "below": "minecraft:block/emerald_block",
     "top": "synergy:block/machine/nuclear/cooler/casing"

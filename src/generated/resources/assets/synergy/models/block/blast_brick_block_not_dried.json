@@ -1,5 +1,5 @@
 {
-  "parent": "synergy:block/base_brick",
+  "parent": "synergy:block/_template/dryable_brick",
   "textures": {
     "texture": "synergy:block/decorative/clay_mixture"
   }
