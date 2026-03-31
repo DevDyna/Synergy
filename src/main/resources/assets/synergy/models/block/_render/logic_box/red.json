@@ -1,5 +1,5 @@
 {
-  "parent": "synergy:block/_templates/tiny/animated/animation",
+  "parent": "synergy:block/_template/tiny/animated/animation",
   "textures": {
     "inside": "synergy:block/logic_box/red/inside",
     "all": "synergy:block/logic_box/red/chest"
