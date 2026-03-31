@@ -46,7 +46,7 @@ public class FuelTankBE extends BETank implements FoundryFuelProvider {
     public float getSpeedModifier() {
         var f = getRecipe();
         if (f == null)
-            return 1.0f;
+            return 0.0f;
 
         return (f.isEmpty() ? 1.0f : f.get().value().getSpeedModifier());
     }
