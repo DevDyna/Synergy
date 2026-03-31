@@ -48,7 +48,7 @@ public class FuelTankBE extends BETank implements FoundryFuelProvider {
         if (f == null)
             return 0.0f;
 
-        return (f.isEmpty() ? 1.0f : f.get().value().getSpeedModifier());
+        return (f.isEmpty() ? 0.0f : f.get().value().getSpeedModifier());
     }
 
     public static final int FLUID_BURN_RATE = 25;
