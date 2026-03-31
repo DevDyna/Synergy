@@ -94,8 +94,7 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
     }
 
     /**
-     * TODO
-     * unused but can be useful on a future automation
+     * TODO unused but can be useful on a future automation
      */
     public ItemStack getNextDroppedItem() {
         if (level == null)
@@ -166,7 +165,7 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
         getStorage().extractItem(0, 1, false);
 
         if (dropWhenCrafted)
-        Block.popResource(level, getBlockPos().above(), recipe.getOutput().copy());
+            Block.popResource(level, getBlockPos().above(), recipe.getOutput().copy());
 
         level.playSound(null, getBlockPos(),
                 LevelUtil.chance(50, level) ? SoundEvents.SLIME_BLOCK_FALL : SoundEvents.SNIFFER_EGG_CRACK,
