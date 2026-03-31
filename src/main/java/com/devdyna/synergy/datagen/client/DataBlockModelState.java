@@ -194,13 +194,6 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 .texture("all", modLoc("block/logic_box/red/chest"))
                                                 .renderType(DataGenUtil.CUTOUT));
 
-                simpleBlock(zBlocks.SIMPLE_TANK.get(), models().cubeAll(zBlocks.SIMPLE_TANK.getRegisteredName(),
-                                modLoc("block/tank/simple")).renderType(DataGenUtil.CUTOUT));
-
-                // simpleBlock(zBlocks.FUEL_TANK.get(),
-                // models().cubeAll(zBlocks.FUEL_TANK.getRegisteredName(),
-                // modLoc("block/tank/fuel")).renderType(DataGenUtil.CUTOUT));
-
                 simpleBlock(zBlocks.ROUTER.get(), models().getExistingFile(x.rl("block/router")));
 
                 simpleBlock(zBlocks.SIMPLE_WATER_GEN.get(),
@@ -294,10 +287,17 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 noModel(zBlocks.ENTITY_WATCHER, x.rl("block/entity_watcher"));
 
+                simpleBlock(zBlocks.SIMPLE_TANK.get(),
+                                models().withExistingParent(zBlocks.SIMPLE_TANK.getRegisteredName(),
+                                                x.rl("block/_template/tank"))
+                                                .texture("side", "synergy:block/tank/simple")
+                                                .texture("top", "synergy:block/tank/simple"));
+
                 simpleBlock(zBlocks.FUEL_TANK.get(),
-                                models().withExistingParent(zBlocks.FUEL_TANK.getRegisteredName(),x.rl("block/_template/dual_layer_tank"))
-                                .texture("side", "synergy:block/fuel_tank/side")
-                                .texture("top", "synergy:block/fuel_tank/top"));
+                                models().withExistingParent(zBlocks.FUEL_TANK.getRegisteredName(),
+                                                x.rl("block/_template/tank"))
+                                                .texture("side", "synergy:block/fuel_tank/side")
+                                                .texture("top", "synergy:block/fuel_tank/top"));
 
         }
 

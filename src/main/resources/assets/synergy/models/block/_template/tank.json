@@ -3,9 +3,7 @@
   "credit": "Made with Blockbench",
   "parent": "block/block",
   "render_type": "cutout",
-  "textures": {
-    "particle": "#top"
-  },
+  "textures": { "particle": "#top" },
   "elements": [
     {
       "from": [0, 0, 0],
@@ -20,8 +18,8 @@
       }
     },
     {
-      "from": [0.25, 0.25, 0.25],
-      "to": [15.75, 15.75, 15.75],
+      "from": [15.9, 15.9, 15.9],
+      "to": [0.1, 0.1, 0.1],
       "faces": {
         "north": { "uv": [0, 0, 16, 16], "texture": "#side" },
         "east": { "uv": [0, 0, 16, 16], "texture": "#side" },

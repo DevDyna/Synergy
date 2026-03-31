@@ -23,6 +23,18 @@
       }
     },
     {
+      "from": [15.9, 15.9, 15.9],
+      "to": [0.1, 7.9, 0.1],
+      "rotation": { "angle": 0, "axis": "y", "origin": [8, 8, 8] },
+      "faces": {
+        "north": { "uv": [0, 8, 16, 0], "texture": "#side" },
+        "east": { "uv": [0, 8, 16, 0], "texture": "#side" },
+        "south": { "uv": [0, 8, 16, 0], "texture": "#front" },
+        "west": { "uv": [0, 8, 16, 0], "texture": "#side" },
+        "down": { "uv": [0, 0, 16, 16], "rotation": 180, "texture": "#top" }
+      }
+    },
+    {
       "from": [0, 0, 0],
       "to": [16, 8, 16],
       "rotation": { "angle": 0, "axis": "y", "origin": [8, 8, 8] },
