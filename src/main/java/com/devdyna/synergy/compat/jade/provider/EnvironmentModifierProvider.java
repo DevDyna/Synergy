@@ -19,12 +19,17 @@ public enum EnvironmentModifierProvider
   public void appendTooltip(ITooltip t, BlockAccessor a, IPluginConfig c) {
 
     var nbt = a.getServerData();
-    if (!nbt.contains("speed_modifier"))
+    if (!nbt.contains("speed_modifier") || !nbt.contains("flag") || !nbt.contains("failkey"))
       return;
 
-      t.add(Component
-          .translatable( ID+".jade.environment_modifier.tip" ,(nbt.getFloat("speed_modifier") >= 1.0f ? "§a" : "§c")
-              + StringUtil.cut(nbt.getFloat("speed_modifier")) + "x"));
+    if (nbt.getBoolean("flag") && nbt.getFloat("speed_modifier") <= 0) {
+      t.add(Component.translatable(nbt.getString("failkey")));
+      return;
+    }
+
+    t.add(Component
+        .translatable(ID + ".jade.environment_modifier.tip", (nbt.getFloat("speed_modifier") >= 1.0f ? "§a" : "§c")
+            + StringUtil.cut(nbt.getFloat("speed_modifier")) + "x"));
 
   }
 
@@ -37,8 +42,11 @@ public enum EnvironmentModifierProvider
   public void appendServerData(CompoundTag c, BlockAccessor a) {
     var be = a.getBlockEntity();
 
-    if (be instanceof EnvironmentModifier m)
+    if (be instanceof EnvironmentModifier m) {
       c.putFloat("speed_modifier", m.getSpeedModifier());
+      c.putBoolean("flag", m.isRequired());
+      c.putString("failkey", m.failDescKey());
+    }
 
   }
 

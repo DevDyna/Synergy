@@ -211,12 +211,17 @@ public class EvaporationBasinBE extends TickingBE
 
     @Override
     public float getTickerSpeed() {
-        return  1.0f * getSpeedModifier();
+        return 1.0f * getSpeedModifier();
     }
 
     @Override
     public float getSpeedModifier() {
         return (level.getBlockState(getBlockPos().below()).is(zBlockTag.EVAPORATION_BASIC_HEATER) ? 2 : 1);
+    }
+
+    @Override
+    public boolean isRequired() {
+        return false;
     }
 
 }

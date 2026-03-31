@@ -217,4 +217,9 @@ public class DryingRackBE extends TickingBE
         return (result ? 2 : 1);
     }
 
+    @Override
+    public boolean isRequired() {
+        return false;
+    }
+
 }

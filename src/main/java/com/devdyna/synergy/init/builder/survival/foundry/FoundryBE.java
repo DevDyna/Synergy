@@ -1,5 +1,7 @@
 package com.devdyna.synergy.init.builder.survival.foundry;
 
+import static com.devdyna.synergy.Main.ID;
+
 import java.util.Optional;
 
 import javax.annotation.Nullable;
@@ -282,6 +284,16 @@ public class FoundryBE extends TickingBE
             return 0.0f;
 
         return getFuelProvider().getSpeedModifier();
+    }
+
+    @Override
+    public boolean isRequired() {
+        return true;
+    }
+
+    @Override
+    public String failDescKey() {
+        return ID + ".jade.foundry.fail";
     }
 
 }
