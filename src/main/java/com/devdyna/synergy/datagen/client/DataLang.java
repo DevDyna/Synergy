@@ -517,6 +517,9 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jei.atlas.foundry.melter", "Item Melter");
 
                 add(ID + ".jei.atlas.aoe", "Area of Effect Related");
+                
+                add(ID + ".jei.atlas.heat.provider", "Heat Provider");
+                add(ID + ".jei.atlas.heat.source", "Heat Source");
 
                 add(ID + "." + zStatic.Blocks.router, TIP_COLOR
                                 + "Route items to be extracted from differents sides based on some internal filters");

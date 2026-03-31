@@ -424,14 +424,21 @@ public class Plugin implements IModPlugin {
                 List.of(zItems.CONFIGURATOR, zItems.FLOPPY_DISK, zItems.SOLDERING_GUN).stream()
                                 .map(DeferredHolder::get).map(x::item)
                                 .forEach(e -> r.addAlias(e, ID + ".jei.atlas.aoe"));
-              
-                                zItems.zMachineUpgrades.getEntries().stream()
+
+                zItems.zMachineUpgrades.getEntries().stream()
                                 .map(DeferredHolder::get).map(x::item)
                                 .forEach(e -> r.addAlias(e, ID + ".jei.atlas.upgrade.machines"));
-              
-                                zItems.zNodeUpgrades.getEntries().stream()
+
+                zItems.zNodeUpgrades.getEntries().stream()
                                 .map(DeferredHolder::get).map(x::item)
                                 .forEach(e -> r.addAlias(e, ID + ".jei.atlas.upgrade.nodes"));
+
+                List.of(zBlocks.FUEL_TANK).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> {
+                                        r.addAlias(e, ID + ".jei.atlas.heat.provider");
+                                        r.addAlias(e, ID + ".jei.atlas.heat.source");
+                                });
 
         }
 
