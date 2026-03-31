@@ -436,9 +436,16 @@ public class Plugin implements IModPlugin {
                 List.of(zBlocks.FUEL_TANK).stream()
                                 .map(DeferredHolder::get).map(x::item)
                                 .forEach(e -> {
-                                        r.addAlias(e, ID + ".jei.atlas.heat.provider");
+                                        r.addAlias(e, ID + ".jei.atlas.heat.provider.passive");
                                         r.addAlias(e, ID + ".jei.atlas.heat.source");
                                 });
+
+                // List.of(zBlocks.FUEL_TANK).stream()
+                // .map(DeferredHolder::get).map(x::item)
+                // .forEach(e -> {
+                // r.addAlias(e, ID + ".jei.atlas.heat.provider.active");
+                // r.addAlias(e, ID + ".jei.atlas.heat.source");
+                // });
 
         }
 

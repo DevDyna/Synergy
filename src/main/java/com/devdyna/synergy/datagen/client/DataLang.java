@@ -517,8 +517,10 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jei.atlas.foundry.melter", "Item Melter");
 
                 add(ID + ".jei.atlas.aoe", "Area of Effect Related");
-                
-                add(ID + ".jei.atlas.heat.provider", "Heat Provider");
+
+                add(ID + ".jei.atlas.heat.provider.passive", "Passive Heat Provider");
+                // TODO useful on future but atm unused
+                add(ID + ".jei.atlas.heat.provider.active", "Active Heat Provider");
                 add(ID + ".jei.atlas.heat.source", "Heat Source");
 
                 add(ID + "." + zStatic.Blocks.router, TIP_COLOR
@@ -665,15 +667,14 @@ public class DataLang extends LanguageProvider {
                 advKey(zStatic.ResourceMaterial.californium, "Eagles Success", "Craft a californium pellet");
                 advKey(zStatic.ResourceMaterial.curium, "Curiosity", "Craft a curium pellet");
 
-                add(Main.ID + ".jei.patina_drop", TIP_COLOR + "Drop %s"+TIP_COLOR+" items every scrape");
+                add(Main.ID + ".jei.patina_drop", TIP_COLOR + "Drop %s" + TIP_COLOR + " items every scrape");
 
-                //TODO unused
+                // TODO unused
                 add(ID + ".jei.tip.consume_durability", "§cConsume durability");
 
-                add(ID + ".click.install.node", TIP_COLOR+"Right Click on a Pipe Node to install");
+                add(ID + ".click.install.node", TIP_COLOR + "Right Click on a Pipe Node to install");
 
                 add(ID + ".jade.foundry.fail", "§cRequire an heat source below");
-
 
         }
 
