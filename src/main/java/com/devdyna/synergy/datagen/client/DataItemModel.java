@@ -239,7 +239,7 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("layer0", x.rl("block/decorative/aquamarine"));
                                 
                 withExistingParent(zBlocks.ENTITY_WATCHER.getRegisteredName(),
-                                modLoc("block/entity_watcher"));
+                                modLoc("block/_render/entity_watcher"));
 
 
                 cubeColumn(zBlocks.FUEL_TANK.getRegisteredName(), modLoc("block/fuel_tank/side"), modLoc("block/fuel_tank/top")).renderType(DataGenUtil.CUTOUT);
