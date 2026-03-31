@@ -6,9 +6,9 @@
 
 - [ ] Nodes bypass WorldyContainers restrictions
 
-- [ ] Fuel Cells dont sync with client
+- [ ] Fuel Cells dont sync with client (rework?)
 
-- [ ] Node Upgrades
+- [x] Node Upgrades
 
 - [ ] Differents styles for Nodes / Node model rework
 
@@ -19,8 +19,6 @@
 - [ ] mechanical crushing tub (piston)
 
 - [ ] dryable bricks not customizable tooltip on jei (+config)
-
-- [ ] industrial machines process warning tooltips (meka like?)
 
 - [ ] dimensional miner like?
 
