@@ -22,9 +22,10 @@ public enum FoundryHeaterProvider
     if (!nbt.contains("foundry_fuel"))
       return;
 
-    t.add(Component
-        .translatable(ID + ".jade.foundry_fuel.tip", (nbt.getFloat("foundry_fuel") >= 1.0f ? "§a" : "§c")
-            + StringUtil.cut(nbt.getFloat("foundry_fuel")) + "x"));
+    if (nbt.getFloat("foundry_fuel") > 0)
+      t.add(Component
+          .translatable(ID + ".jade.foundry_fuel.tip", (nbt.getFloat("foundry_fuel") >= 1.0f ? "§a" : "§c")
+              + StringUtil.cut(nbt.getFloat("foundry_fuel")) + "x"));
 
   }
 
