@@ -215,13 +215,13 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
         }
 
         protected void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
-                withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
+                withExistingParent(b.getRegisteredName(), modLoc("block/_template/double_layer"))
                                 .texture("top", "block/machine/nuclear/cooler/casing")
                                 .texture("below", below);
         }
 
         protected void moderatorBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
-                withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
+                withExistingParent(b.getRegisteredName(), modLoc("block/_template/double_layer"))
                                 .texture("top", "block/machine/nuclear/moderator/base_off")
                                 .texture("below", below);
         }
@@ -233,7 +233,7 @@ public abstract class ExtraItemModelProvider extends ItemModelProvider {
         protected void tinyChest(DeferredHolder<Block, Block> b, String particles, String north, String south,
                         String east, String west, String up, String down) {
                 withExistingParent(b.getRegisteredName(),
-                                modLoc("block/tiny_block/chest"))
+                                modLoc("block/_template/tiny/sided"))
                                 .texture("particle", particles)
                                 .texture("north", north)
                                 .texture("south", south)

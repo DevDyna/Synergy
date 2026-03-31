@@ -101,14 +101,16 @@ public class DataItemModel extends ExtraItemModelProvider {
                 moderatorBlock(zBlocks.ADVANCED_MODERATOR, modLoc("block/machine/nuclear/moderator/advanced_frame"));
                 moderatorBlock(zBlocks.ELITE_MODERATOR, modLoc("block/machine/nuclear/moderator/elite_frame"));
 
-                tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
-                tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
-                tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
-                tinyChestAll(zBlocks.VOID_BOX, "block/tiny_block/void_box/chest");
-                tinyChestAll(zBlocks.LOGIC_BOX, "block/tiny_block/logic_box/item");
+                tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_chest/wooden");
+                tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_chest/stone");
+                tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_chest/ornate");
+                tinyChestAll(zBlocks.VOID_BOX, "block/void_box/chest");
+                tinyChestAll(zBlocks.LOGIC_BOX, "block/logic_box/item");
+
+                
 
                 withExistingParent(zBlocks.URN.getRegisteredName(),
-                                modLoc("block/tiny_block/urn"));
+                                modLoc("block/urn"));
 
                 withExistingParent(zBlocks.QUERN.getRegisteredName(),
                                 modLoc("block/quern/item"));
@@ -148,37 +150,37 @@ public class DataItemModel extends ExtraItemModelProvider {
                 simpleFlexibleBlock(zBlocks.SIMPLE_TANK, "tank/simple").renderType(DataGenUtil.CUTOUT);
                 // simpleFlexibleBlock(zBlocks.FUEL_TANK, "tank/fuel").renderType(DataGenUtil.CUTOUT);
 
-                withExistingParent(zBlocks.SIMPLE_WATER_GEN.getRegisteredName(), modLoc("block/triple_layer"))
+                withExistingParent(zBlocks.SIMPLE_WATER_GEN.getRegisteredName(), modLoc("block/_template/triple_layer"))
                                 .texture("top", "block/resource_gen/water")
                                 .texture("middle", "block/resource_gen/overlay/simple")
                                 .texture("below", "block/decorative/wrought_iron_block")
                                 .renderType(DataGenUtil.CUTOUT);
 
-                withExistingParent(zBlocks.ADVANCED_WATER_GEN.getRegisteredName(), modLoc("block/triple_layer"))
+                withExistingParent(zBlocks.ADVANCED_WATER_GEN.getRegisteredName(), modLoc("block/_template/triple_layer"))
                                 .texture("top", "block/resource_gen/water")
                                 .texture("middle", "block/resource_gen/overlay/advanced")
                                 .texture("below", "block/machine/frame/basic/bottom")
                                 .renderType(DataGenUtil.CUTOUT);
 
-                withExistingParent(zBlocks.ELITE_WATER_GEN.getRegisteredName(), modLoc("block/triple_layer"))
+                withExistingParent(zBlocks.ELITE_WATER_GEN.getRegisteredName(), modLoc("block/_template/triple_layer"))
                                 .texture("top", "block/resource_gen/water")
                                 .texture("middle", "block/resource_gen/overlay/elite")
                                 .texture("below", "block/machine/frame/advanced/top")
                                 .renderType(DataGenUtil.CUTOUT);
 
-                withExistingParent(zBlocks.SIMPLE_COBBLE_GEN.getRegisteredName(), modLoc("block/triple_layer"))
+                withExistingParent(zBlocks.SIMPLE_COBBLE_GEN.getRegisteredName(), modLoc("block/_template/triple_layer"))
                                 .texture("top", "block/resource_gen/cobblestone")
                                 .texture("middle", "block/resource_gen/overlay/simple")
                                 .texture("below", "block/decorative/wrought_iron_block")
                                 .renderType(DataGenUtil.CUTOUT);
 
-                withExistingParent(zBlocks.ADVANCED_COBBLE_GEN.getRegisteredName(), modLoc("block/triple_layer"))
+                withExistingParent(zBlocks.ADVANCED_COBBLE_GEN.getRegisteredName(), modLoc("block/_template/triple_layer"))
                                 .texture("top", "block/resource_gen/cobblestone")
                                 .texture("middle", "block/resource_gen/overlay/advanced")
                                 .texture("below", "block/machine/frame/basic/bottom")
                                 .renderType(DataGenUtil.CUTOUT);
 
-                withExistingParent(zBlocks.ELITE_COBBLE_GEN.getRegisteredName(), modLoc("block/triple_layer"))
+                withExistingParent(zBlocks.ELITE_COBBLE_GEN.getRegisteredName(), modLoc("block/_template/triple_layer"))
                                 .texture("top", "block/resource_gen/cobblestone")
                                 .texture("middle", "block/resource_gen/overlay/elite")
                                 .texture("below", "block/machine/frame/advanced/top")
@@ -237,7 +239,7 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("layer0", x.rl("block/decorative/aquamarine"));
                                 
                 withExistingParent(zBlocks.ENTITY_WATCHER.getRegisteredName(),
-                                modLoc("block/tiny_block/entity_watcher"));
+                                modLoc("block/entity_watcher"));
 
 
                 cubeColumn(zBlocks.FUEL_TANK.getRegisteredName(), modLoc("block/fuel_tank/side"), modLoc("block/fuel_tank/top")).renderType(DataGenUtil.CUTOUT);

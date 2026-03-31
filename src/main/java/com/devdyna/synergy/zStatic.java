@@ -549,11 +549,11 @@ public class zStatic {
 
     public class AdditionalModel {
 
-        public static final String QUERN = "block/quern/moving";
-        public static final String VOID_BOX = "block/tiny_block/void_box/animation";
-        public static final String LOGIC_BOX_OFF = "block/tiny_block/logic_box/animation/red";
-        public static final String LOGIC_BOX_ON = "block/tiny_block/logic_box/animation/green";
-        public static final String ENTITY_WATCHER = "block/tiny_block/entity_watcher";
+        public static final String QUERN = "block/_render/quern";
+        public static final String VOID_BOX = "block/_render/void_box";
+        public static final String LOGIC_BOX_OFF = "block/_render/logic_box/red";
+        public static final String LOGIC_BOX_ON = "block/_render/logic_box/green";
+        public static final String ENTITY_WATCHER = "block/_render/entity_watcher";
 
     }
 

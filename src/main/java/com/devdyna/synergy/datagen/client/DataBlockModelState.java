@@ -25,11 +25,11 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 variantRotatedBlock(zBlocks.SPRINKLER.get());
 
-                tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_block/chest/wooden");
-                tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_block/chest/stone");
-                tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_block/chest/ornate");
+                tinyChestAll(zBlocks.WOODEN_TINY_CHEST, "block/tiny_chest/wooden");
+                tinyChestAll(zBlocks.STONE_TINY_CHEST, "block/tiny_chest/stone");
+                tinyChestAll(zBlocks.ORNATE_TINY_CHEST, "block/tiny_chest/ornate");
 
-                block(zBlocks.URN, "block/tiny_block/urn");
+                block(zBlocks.URN, "block/urn");
 
                 block(zBlocks.QUERN, "block/quern/base");
 
@@ -176,33 +176,36 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 horizontalBlock(zBlocks.VOID_BOX.get(),
                                 models().withExistingParent(zBlocks.VOID_BOX.getRegisteredName(),
-                                                modLoc("block/tiny_block/void_box/block")));
+                                                modLoc("block/_template/tiny/animated/block"))
+                                                .texture("inside", modLoc("block/void_box/inside"))
+                                                .texture("all", modLoc("block/void_box/chest")));
 
                 horizontalBlockBiPhace(zBlocks.LOGIC_BOX.get(), BlockStateProperties.INVERTED,
                                 models().withExistingParent(
-                                                zBlocks.LOGIC_BOX.getRegisteredName() + "_off",
-                                                modLoc("block/tiny_block/base/animated/block"))
-                                                .texture("inside", modLoc("block/tiny_block/logic_box/green/inside"))
-                                                .texture("all", modLoc("block/tiny_block/logic_box/green/chest"))
+                                                zBlocks.LOGIC_BOX.getRegisteredName() + "/green",
+                                                modLoc("block/_template/tiny/animated/block"))
+                                                .texture("inside", modLoc("block/logic_box/green/inside"))
+                                                .texture("all", modLoc("block/logic_box/green/chest"))
                                                 .renderType(DataGenUtil.CUTOUT),
                                 models().withExistingParent(
-                                                zBlocks.LOGIC_BOX.getRegisteredName() + "_on",
-                                                modLoc("block/tiny_block/base/animated/block"))
-                                                .texture("inside", modLoc("block/tiny_block/logic_box/red/inside"))
-                                                .texture("all", modLoc("block/tiny_block/logic_box/red/chest"))
+                                                zBlocks.LOGIC_BOX.getRegisteredName() + "/red",
+                                                modLoc("block/_template/tiny/animated/block"))
+                                                .texture("inside", modLoc("block/logic_box/red/inside"))
+                                                .texture("all", modLoc("block/logic_box/red/chest"))
                                                 .renderType(DataGenUtil.CUTOUT));
 
                 simpleBlock(zBlocks.SIMPLE_TANK.get(), models().cubeAll(zBlocks.SIMPLE_TANK.getRegisteredName(),
                                 modLoc("block/tank/simple")).renderType(DataGenUtil.CUTOUT));
 
-                // simpleBlock(zBlocks.FUEL_TANK.get(), models().cubeAll(zBlocks.FUEL_TANK.getRegisteredName(),
-                //                 modLoc("block/tank/fuel")).renderType(DataGenUtil.CUTOUT));
+                // simpleBlock(zBlocks.FUEL_TANK.get(),
+                // models().cubeAll(zBlocks.FUEL_TANK.getRegisteredName(),
+                // modLoc("block/tank/fuel")).renderType(DataGenUtil.CUTOUT));
 
                 simpleBlock(zBlocks.ROUTER.get(), models().getExistingFile(x.rl("block/router")));
 
                 simpleBlock(zBlocks.SIMPLE_WATER_GEN.get(),
                                 models().withExistingParent(zBlocks.SIMPLE_WATER_GEN.getRegisteredName(),
-                                                modLoc("block/triple_layer"))
+                                                modLoc("block/_template/triple_layer"))
                                                 .texture("top", "block/resource_gen/water")
                                                 .texture("middle", "block/resource_gen/overlay/simple")
                                                 .texture("below", "block/decorative/wrought_iron_block")
@@ -210,7 +213,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 simpleBlock(zBlocks.ADVANCED_WATER_GEN.get(),
                                 models().withExistingParent(zBlocks.ADVANCED_WATER_GEN.getRegisteredName(),
-                                                modLoc("block/triple_layer"))
+                                                modLoc("block/_template/triple_layer"))
                                                 .texture("top", "block/resource_gen/water")
                                                 .texture("middle", "block/resource_gen/overlay/advanced")
                                                 .texture("below", "block/machine/frame/basic/bottom")
@@ -218,7 +221,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 simpleBlock(zBlocks.ELITE_WATER_GEN.get(),
                                 models().withExistingParent(zBlocks.ELITE_WATER_GEN.getRegisteredName(),
-                                                modLoc("block/triple_layer"))
+                                                modLoc("block/_template/triple_layer"))
                                                 .texture("top", "block/resource_gen/water")
                                                 .texture("middle", "block/resource_gen/overlay/elite")
                                                 .texture("below", "block/machine/frame/advanced/top")
@@ -226,7 +229,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 simpleBlock(zBlocks.SIMPLE_COBBLE_GEN.get(),
                                 models().withExistingParent(zBlocks.SIMPLE_COBBLE_GEN.getRegisteredName(),
-                                                modLoc("block/triple_layer"))
+                                                modLoc("block/_template/triple_layer"))
                                                 .texture("top", "block/resource_gen/cobblestone")
                                                 .texture("middle", "block/resource_gen/overlay/simple")
                                                 .texture("below", "block/decorative/wrought_iron_block")
@@ -234,7 +237,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 simpleBlock(zBlocks.ADVANCED_COBBLE_GEN.get(),
                                 models().withExistingParent(zBlocks.ADVANCED_COBBLE_GEN.getRegisteredName(),
-                                                modLoc("block/triple_layer"))
+                                                modLoc("block/_template/triple_layer"))
                                                 .texture("top", "block/resource_gen/cobblestone")
                                                 .texture("middle", "block/resource_gen/overlay/advanced")
                                                 .texture("below", "block/machine/frame/basic/bottom")
@@ -242,7 +245,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
 
                 simpleBlock(zBlocks.ELITE_COBBLE_GEN.get(),
                                 models().withExistingParent(zBlocks.ELITE_COBBLE_GEN.getRegisteredName(),
-                                                modLoc("block/triple_layer"))
+                                                modLoc("block/_template/triple_layer"))
                                                 .texture("top", "block/resource_gen/cobblestone")
                                                 .texture("middle", "block/resource_gen/overlay/elite")
                                                 .texture("below", "block/machine/frame/advanced/top")
@@ -289,12 +292,12 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 modLoc("block/decorative/aquamarine"))
                                                 .renderType(DataGenUtil.CUTOUT));
 
-                noModel(zBlocks.ENTITY_WATCHER, x.rl("block/tiny_block/entity_watcher"));
+                noModel(zBlocks.ENTITY_WATCHER, x.rl("block/entity_watcher"));
 
-                simpleBlock(zBlocks.FUEL_TANK.get(),models().cubeColumn(zBlocks.FUEL_TANK.getRegisteredName(), modLoc("block/fuel_tank/side"),
-                                modLoc("block/fuel_tank/top")).renderType(DataGenUtil.CUTOUT));
-
-                
+                simpleBlock(zBlocks.FUEL_TANK.get(),
+                                models().withExistingParent(zBlocks.FUEL_TANK.getRegisteredName(),x.rl("block/_template/dual_layer_tank"))
+                                .texture("side", "synergy:block/fuel_tank/side")
+                                .texture("top", "synergy:block/fuel_tank/top"));
 
         }
 

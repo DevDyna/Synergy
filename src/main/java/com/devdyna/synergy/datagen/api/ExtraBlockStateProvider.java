@@ -147,7 +147,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                                                         + (state.getValue(PlaceableBrickBlock.DRIED)
                                                                                         ? "_dried"
                                                                                         : "_not_dried"),
-                                                        modLoc("block/base_brick"))
+                                                        modLoc("block/_template/dryable_brick"))
                                                         .texture("texture",
                                                                         (state.getValue(PlaceableBrickBlock.DRIED)
                                                                                         ? dried
@@ -167,7 +167,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                         String east, String west, String up, String down) {
                 horizontalBlock(b.get(),
                                 models().withExistingParent(b.getRegisteredName(),
-                                                modLoc("block/tiny_block/chest"))
+                                                modLoc("block/_template/tiny_chest"))
                                                 .texture("particle", particles)
                                                 .texture("north", north)
                                                 .texture("south", south)
@@ -178,9 +178,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
         }
 
         protected void block(DeferredHolder<Block, Block> b, String rl) {
-                simpleBlock(b.get(),
-                                models().withExistingParent(b.getRegisteredName(),
-                                                modLoc(rl)));
+                simpleBlock(b.get(), models().getExistingFile(x.rl(rl)));
         }
 
         protected void simpleBlockDecorative(DeferredHolder<Block, Block> b) {
@@ -212,7 +210,8 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
         }
 
         protected void CoolerBlock(DeferredHolder<Block, Block> b, ResourceLocation below) {
-                simpleBlock(b.get(), models().withExistingParent(b.getRegisteredName(), modLoc("block/double_layer"))
+                simpleBlock(b.get(), models()
+                                .withExistingParent(b.getRegisteredName(), modLoc("block/_template/double_layer"))
                                 .texture("top", "block/machine/nuclear/cooler/casing")
                                 .texture("below", below));
         }
@@ -246,7 +245,7 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                         String front = state.getValue(BlockStateProperties.ENABLED) ? "on" : "off";
                         return ConfiguredModel.builder().modelFile(
                                         models().withExistingParent(b.getRegisteredName() + "_" + front,
-                                                        modLoc("block/double_layer"))
+                                                        modLoc("block/_template/double_layer"))
                                                         .texture("top", "block/machine/nuclear/moderator/base_" + front)
                                                         .texture("below", below))
                                         .build();
