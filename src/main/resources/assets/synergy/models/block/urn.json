@@ -4,8 +4,8 @@
 	"parent": "block/block",
 	"render_type": "cutout",
     "textures": {
-        "all": "synergy:block/tiny_block/urn",
-        "particle": "synergy:block/tiny_block/urn"
+        "all": "synergy:block/urn",
+        "particle": "synergy:block/urn"
     },
     "elements": [{
             "from": [4, 0, 4],

@@ -3,7 +3,7 @@
   "credit": "Made with Blockbench",
   "parent": "block/block",
 	"render_type": "cutout",
-  "textures": { "5": "synergy:block/tiny_block/entity_watcher" },
+  "textures": { "5": "synergy:block/entity_watcher" },
   "elements": [
     {
       "from": [4, 4, 4],

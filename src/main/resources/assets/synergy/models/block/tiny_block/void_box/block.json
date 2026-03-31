@@ -1,7 +1,0 @@
-{
-  "parent": "synergy:block/tiny_block/base/animated/block",
-  "textures": {
-    "inside": "synergy:block/tiny_block/void_box/inside",
-    "all": "synergy:block/tiny_block/void_box/chest"
-  }
-}

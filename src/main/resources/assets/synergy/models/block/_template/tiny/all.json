@@ -1,5 +1,5 @@
 {
-  "parent": "synergy:block/tiny_block/base/sided",
+  "parent": "synergy:block/_templates/tiny/sided",
   "textures": {
 	  "north": "#all", 
 	  "south": "#all",
