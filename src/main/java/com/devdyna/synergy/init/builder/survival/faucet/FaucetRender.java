@@ -48,6 +48,6 @@ public class FaucetRender<T extends FaucetBE> implements BlockEntityRenderer<T> 
         if (fluid.isEmpty())
             return;
 
-        // TODO WIP
+        // TODO NYI animation faucet
     }
 }
