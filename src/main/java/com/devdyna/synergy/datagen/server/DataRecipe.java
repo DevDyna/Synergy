@@ -2744,7 +2744,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 ShapelessRecipeBuilder.shapeless(MISC, zItems.NODE_SPEED_UPGRADE.get(), 1)
                                 .requires(zItemTag.PLATE_STEEL)
                                 .requires(zItemTag.GEAR_GOLD)
-                                .requires(Tags.Items.STORAGE_BLOCKS_REDSTONE)
+                                .requires(Tags.Items.DUSTS_REDSTONE)
                                 .unlockedBy(ID, has(zItems.STEEL_PLATE.get()))
                                 .save(c);
 
