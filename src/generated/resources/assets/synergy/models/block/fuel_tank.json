@@ -1,5 +1,5 @@
 {
-  "parent": "synergy:block/_template/dual_layer_tank",
+  "parent": "synergy:block/_template/tank",
   "textures": {
     "side": "synergy:block/fuel_tank/side",
     "top": "synergy:block/fuel_tank/top"

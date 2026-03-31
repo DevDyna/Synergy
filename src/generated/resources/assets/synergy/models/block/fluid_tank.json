@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "render_type": "minecraft:cutout",
+  "parent": "synergy:block/_template/tank",
   "textures": {
-    "all": "synergy:block/tank/simple"
+    "side": "synergy:block/tank/simple",
+    "top": "synergy:block/tank/simple"
   }
 }
