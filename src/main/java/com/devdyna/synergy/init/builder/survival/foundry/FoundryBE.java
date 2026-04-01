@@ -259,7 +259,7 @@ public class FoundryBE extends TickingBE
 
     @Override
     public String failDescKey() {
-        return ID + ".jade.foundry.fail";
+        return ID + ".jade.modifier.environment.fuel.fail";
     }
 
 }

@@ -675,6 +675,7 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".click.install.node", TIP_COLOR + "Right Click on a Pipe Node to install");
 
                 add(ID + ".jade.foundry.fail", "§cRequire an heat source below");
+                add(ID + ".jade.modifier.environment.fuel.fail", "§cRequire an heat source below");
 
         }
 
