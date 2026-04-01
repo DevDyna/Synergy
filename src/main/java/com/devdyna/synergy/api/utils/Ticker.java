@@ -1,5 +1,9 @@
 package com.devdyna.synergy.api.utils;
-
+/**
+ * Simple ticking process
+ * <br/><br/>
+ * Use only inside Server-Level!
+ */
 public class Ticker {
 
     private int value;
