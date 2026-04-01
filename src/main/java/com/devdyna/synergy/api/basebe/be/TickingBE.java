@@ -23,6 +23,9 @@ public class TickingBE extends BlockEntity {
      * <br/>
      * <br/>
      * Useful for block events
+     * <br/>
+     * <br/>
+     * Dont require super!
      */
     public void tickServer() {
     }
@@ -35,6 +38,9 @@ public class TickingBE extends BlockEntity {
      * <br/>
      * <br/>
      * Useful for player events
+     * <br/>
+     * <br/>
+     * Dont require super!
      */
     public void tickClient() {
     }
@@ -47,6 +53,9 @@ public class TickingBE extends BlockEntity {
      * <br/>
      * <br/>
      * Usefull for particles
+     * <br/>
+     * <br/>
+     * Dont require super!
      */
     public void tickBoth() {
     }
@@ -55,6 +64,14 @@ public class TickingBE extends BlockEntity {
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    /**
+     * update this specific BE
+     */
+    public void update() {
+        setChanged();
+        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
     }
 
 }

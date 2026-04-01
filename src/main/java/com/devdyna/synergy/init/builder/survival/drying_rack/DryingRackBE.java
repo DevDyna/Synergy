@@ -159,10 +159,7 @@ public class DryingRackBE extends TickingBE
         return (int) Math.max(1, base / getTickerSpeed());
     }
 
-    protected void update() {
-        setChanged();
-        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-    }
+   
 
     @Override
     public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {

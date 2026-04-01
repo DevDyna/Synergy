@@ -174,11 +174,7 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
         update();
     }
 
-    protected void update() {
-        setChanged();
-        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-    }
-
+  
     @Override
     public FluidStorageTank getFluidStorage() {
         return getData(zHandlers.FLUID_TANK);

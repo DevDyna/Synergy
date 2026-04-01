@@ -233,11 +233,6 @@ public class FoundryBE extends TickingBE
         return 16_000;
     }
 
-    protected void update() {
-        setChanged();
-        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-    }
-
     @Override
     public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         tag.put("tank", getFluidStorage().serializeNBT(registries));
