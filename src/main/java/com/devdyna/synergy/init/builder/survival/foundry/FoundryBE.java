@@ -15,7 +15,6 @@ import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
 import com.devdyna.synergy.api.beLogic.TimeredRecipe;
-import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.recipes.inputs.MonoItemInput;
 import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryRecipe;
@@ -140,31 +139,7 @@ public class FoundryBE extends TickingBE
             return;
         }
 
-        // if (getFuelTank() == null) {
-        // fail();
-        // return;
-        // }
-
-        // if (getFuelTankStorage().isEmpty()) {
-        // fail();
-        // return;
-        // }
-
-        // Optional<RecipeHolder<FoundryFuelEfficiencyRecipe>> f =
-        // getFuelTank().getRecipe();
-
-        // if (f.isEmpty()) {
-        // fail();
-        // return;
-        // }
-
-        // var fuel = f.get().value();
-
-        // if (getFuelTankStorage().getFluidAmount() < (FLUID_BURN_RATE *
-        // fuel.getUsageModifier())) {
-        // fail();
-        // return;
-        // }
+       
 
         Optional<RecipeHolder<FoundryRecipe>> r = level.getRecipeManager()
                 .getRecipeFor(zRecipeTypes.FOUNDRY.getType(),
@@ -204,7 +179,7 @@ public class FoundryBE extends TickingBE
     public void fail() {
         update();
         ticker = null;
-        if (getBlockState().getValue(BaseMachineBlock.ENABLED))
+        if (getBlockState().getValue(BlockStateProperties.ENABLED))
             updateState(false);
     }
 
@@ -274,11 +249,7 @@ public class FoundryBE extends TickingBE
 
     @Override
     public float getSpeedModifier() {
-
-        if (getFuelProvider() == null)
-            return 0.0f;
-
-        return getFuelProvider().getSpeedModifier();
+        return getFuelProvider() == null ? 0 : getFuelProvider().getSpeedModifier();
     }
 
     @Override
