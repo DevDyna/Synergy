@@ -65,7 +65,11 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.FUEL_TANK.get(),
                                                 zBlocks.EVAPORATION_BASIN.get(),
                                                 zBlocks.AQUAMARINE_CLUSTER.get(),
-                                                zBlocks.ENTITY_WATCHER.get());
+                                                zBlocks.ENTITY_WATCHER.get(),
+                                                zBlocks.FOUNDRY.get(),
+                                                zBlocks.FLUID_MIXER.get()
+                                                
+                                                );
 
                 tag(BlockTags.MINEABLE_WITH_AXE)
                                 .add(zBlocks.IRON_WOOD.getLogs())
