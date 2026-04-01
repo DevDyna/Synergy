@@ -1,14 +1,30 @@
 package com.devdyna.synergy.init.builder.survival.fuel_tank;
 
+import static com.devdyna.synergy.Main.ID;
+
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.block.BlockTank;
+import com.devdyna.synergy.api.beLogic.KeepFluidWhenBroken;
+import com.devdyna.synergy.datagen.client.DataLang;
+import com.devdyna.synergy.init.types.zComponents;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item.TooltipContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootParams.Builder;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 @SuppressWarnings("null")
 public class FuelTankBlock extends BlockTank {
@@ -25,6 +41,52 @@ public class FuelTankBlock extends BlockTank {
     @Nullable
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new FuelTankBE(pos, state);
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity entity,
+            ItemStack stack) {
+
+        super.setPlacedBy(level, pos, state, entity, stack);
+
+        if (level.getBlockEntity(pos) instanceof KeepFluidWhenBroken keep)
+            keep.whenPlaced(level, pos, entity, stack);
+
+    }
+
+    @Override
+    protected List<ItemStack> getDrops(BlockState state, Builder builder) {
+        if (builder.getParameter(LootContextParams.BLOCK_ENTITY) instanceof KeepFluidWhenBroken keep) {
+            var drops = keep.getDropItems(this, state, builder);
+
+            if (drops != null)
+                return drops;
+
+        }
+
+        return super.getDrops(state, builder);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, context, tooltip, flag);
+
+        var nbt = stack.get(zComponents.FLUID_STORAGE);
+        if (nbt != null) {
+
+            if (!nbt.isEmpty()) {
+
+                tooltip.add(Component
+                        .literal(
+                                DataLang.TIP_COLOR + nbt.getFluidType().getDescription().getString()
+                                        + " : " + nbt.getAmount() + "mB"));
+                return;
+
+            }
+        }
+
+        tooltip.add(Component.translatable(ID + ".tank_interact.empty").withStyle(ChatFormatting.GRAY));
+
     }
 
 }
