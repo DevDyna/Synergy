@@ -2760,8 +2760,8 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 FluidMixingBuilder.of()
-                                .fluids(zFluids.MOLTEN_GOLD,2, zFluids.MOLTEN_ANCIENT_DEBRIS,2)
-                                .output(zFluids.MOLTEN_NETHERITE,1)
+                                .fluids(zFluids.MOLTEN_GOLD,10, zFluids.MOLTEN_ANCIENT_DEBRIS,10)
+                                .output(zFluids.MOLTEN_NETHERITE,5)
                                 .unlockedBy()
                                 .save(c);
 
