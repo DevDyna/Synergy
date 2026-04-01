@@ -85,7 +85,7 @@ public class FluidMixerCategory extends BaseRecipeCategory<FluidMixingRecipe> {
 
     @Override
     public Size tickPos() {
-        return Size.of(26, 38);
+        return Size.of(20, 38);
     }
 
 }
