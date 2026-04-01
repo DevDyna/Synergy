@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import snownee.jade.api.*;
 import snownee.jade.api.config.IPluginConfig;
 
-public enum TickProgressBlock
+public enum TimeredRecipeProvider
     implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
   INSTANCE;
 
