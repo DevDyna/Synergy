@@ -32,6 +32,7 @@ import com.devdyna.synergy.init.builder.survival.casting_table.recipe.CastingTab
 import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubBuilder;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackBuilder;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporatingBasinBuilder;
+import com.devdyna.synergy.init.builder.survival.fluid_mixer.recipe.FluidMixingBuilder;
 import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryBuilder;
 import com.devdyna.synergy.init.types.*;
 
@@ -866,6 +867,9 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 zItems.LEAD_INGOT.get(), x.rl("c", "ingots/lead"), zItems.SILVER_DUST.get(), 0.25f);
 
                 moltenIngots(c, zItems.STEEL_INGOT.get(), zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
+                moltenIngots(c, Items.NETHERITE_INGOT, Tags.Items.INGOTS_NETHERITE, zFluids.MOLTEN_NETHERITE);
+
+                moltenRecipes(c, "", zItems.MOLD_PLATE.get(), Items.NETHERITE_SCRAP, Tags.Items.ORES_NETHERITE_SCRAP, zFluids.MOLTEN_ANCIENT_DEBRIS, 90);
 
                 gear(c, zItems.WOODEN_GEAR, Tags.Items.RODS_WOODEN, ItemTags.PLANKS);
 
@@ -2753,6 +2757,12 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .requires(zItemTag.GEAR_GOLD)
                                 .requires(Tags.Items.GEMS_DIAMOND)
                                 .unlockedBy(ID, has(zItems.STEEL_PLATE.get()))
+                                .save(c);
+
+                FluidMixingBuilder.of()
+                                .fluids(zFluids.MOLTEN_GOLD,2, zFluids.MOLTEN_ANCIENT_DEBRIS,2)
+                                .output(zFluids.MOLTEN_NETHERITE,1)
+                                .unlockedBy()
                                 .save(c);
 
         }
