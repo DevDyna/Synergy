@@ -58,9 +58,9 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(ModeratorProvider.INSTANCE, ModeratorBase.class);
         r.registerBlockComponent(FuelCellProgress.INSTANCE, FuelCellBlock.class);
 
-        r.registerBlockComponent(TimeredRecipeProvider.INSTANCE, Block.class);
+       
         r.registerBlockComponent(EnvironmentModifierProvider.INSTANCE, Block.class);
-
+ r.registerBlockComponent(TimeredRecipeProvider.INSTANCE, Block.class);
         r.registerBlockComponent(SimpleDelayProvider.INSTANCE, TickingBlock.class);
         r.registerBlockComponent(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
         r.registerBlockComponent(FilterProvider.INSTANCE, LogicBoxBlock.class);
@@ -83,8 +83,9 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockDataProvider(CoolerProvider.INSTANCE, CoolerBlockBase.class);
         r.registerBlockDataProvider(ModeratorProvider.INSTANCE, ModeratorBase.class);
         r.registerBlockDataProvider(FuelCellProgress.INSTANCE, FuelCellBlock.class);
-        r.registerBlockDataProvider(TimeredRecipeProvider.INSTANCE, Block.class);
+       
         r.registerBlockDataProvider(EnvironmentModifierProvider.INSTANCE, Block.class);
+         r.registerBlockDataProvider(TimeredRecipeProvider.INSTANCE, Block.class);
         r.registerBlockDataProvider(SimpleDelayProvider.INSTANCE, TickingBlock.class);
         r.registerBlockDataProvider(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
         r.registerBlockDataProvider(FilterProvider.INSTANCE, LogicBoxBlock.class);
