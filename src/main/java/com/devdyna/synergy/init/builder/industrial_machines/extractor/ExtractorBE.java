@@ -56,8 +56,11 @@ public class ExtractorBE extends BaseMachineBE implements FluidTankStorage {
 
         var recipe = r.get().value();
 
-        if (!(checkSlot(getOutput(), recipe.getSecondaryOutputItem().item().copy())
-                && checkTank(getFluidStorage().getFluid(), recipe.getFluidOutput().copy(), getFluidCapacity())))
+        if (recipe.getSecondaryOutputItem() != null)
+            if (!checkSlot(getOutput(), recipe.getSecondaryOutputItem().item().copy()))
+                return cancel();
+
+        if (!(checkTank(getFluidStorage().getFluid(), recipe.getFluidOutput().copy(), getFluidCapacity())))
             return cancel();
 
         if (!calculateAndConsumeFE(recipe.getEnergy()))
@@ -76,8 +79,10 @@ public class ExtractorBE extends BaseMachineBE implements FluidTankStorage {
 
         var recipe = RecipeUtils.getUnsafeRecipes(level, zMachines.EXTRACTOR, new MonoItemInput(getInput()));
 
-        if (!recipe.getSecondaryOutputItem().item().isEmpty() && calculateSecondarySuccess(recipe.getSecondaryOutputItem().chance()))
-            updateOutputSlot(getOutput(), recipe.getSecondaryOutputItem().item().copy(), OUTPUT_SLOT);
+        if (recipe.getSecondaryOutputItem() != null)
+            if (!recipe.getSecondaryOutputItem().item().isEmpty()
+                    && calculateSecondarySuccess(recipe.getSecondaryOutputItem().chance()))
+                updateOutputSlot(getOutput(), recipe.getSecondaryOutputItem().item().copy(), OUTPUT_SLOT);
 
         if (!recipe.getFluidOutput().isEmpty()) {
             if (getFluidStorage().isEmpty())

@@ -62,8 +62,11 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
 
         var recipe = r.get().value();
 
-        if (!(checkSlot(getOutput(), recipe.getOutputItem().copy())
-                && checkSlot(getSecondarySlot(), recipe.getSecondaryOutputItem().item().copy())))
+        if (recipe.getSecondaryOutputItem() != null)
+            if (!checkSlot(getSecondarySlot(), recipe.getSecondaryOutputItem().item().copy()))
+                return cancel();
+
+        if (!checkSlot(getOutput(), recipe.getOutputItem().copy()))
             return cancel();
 
         if (!calculateAndConsumeFE(recipe.getEnergy()))
@@ -84,8 +87,10 @@ public class MaceratorBE extends BaseMachineBE implements ExtraMachineSlots {
 
         updateOutputSlot(getOutput(), recipe.getOutputItem().copy(), OUTPUT_SLOT);
 
-        if (!recipe.getSecondaryOutputItem().item().copy().isEmpty() && calculateSecondarySuccess(recipe.getSecondaryOutputItem().chance()))
-            updateOutputSlot(getSecondarySlot(), recipe.getSecondaryOutputItem().item().copy(), SECONDARY_SLOT);
+        if (recipe.getSecondaryOutputItem() != null)
+            if (!recipe.getSecondaryOutputItem().item().copy().isEmpty()
+                    && calculateSecondarySuccess(recipe.getSecondaryOutputItem().chance()))
+                updateOutputSlot(getSecondarySlot(), recipe.getSecondaryOutputItem().item().copy(), SECONDARY_SLOT);
 
         getInput().shrink(recipe.getInputItem().count());
     }
