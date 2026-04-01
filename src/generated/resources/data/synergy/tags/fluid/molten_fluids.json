@@ -13,6 +13,8 @@
     "synergy:molten_platinum_source",
     "synergy:molten_osmium_source",
     "synergy:molten_lead_source",
+    "synergy:molten_ancient_debris_source",
+    "synergy:molten_netherite_source",
     "synergy:molten_blaze_source"
   ]
 }

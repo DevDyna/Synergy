@@ -1,0 +1,18 @@
+{
+  "type": "synergy:machine/casting_factory",
+  "consume_item": false,
+  "energy": 500,
+  "input_fluid": {
+    "amount": 90,
+    "fluid": "synergy:molten_ancient_debris_source"
+  },
+  "input_item": {
+    "count": 1,
+    "item": "synergy:plate_mold"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:netherite_scrap"
+  },
+  "ticks": 10
+}

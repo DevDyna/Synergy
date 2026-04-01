@@ -1,0 +1,7 @@
+{
+  "parent": "synergy:block/_template/tank",
+  "textures": {
+    "side": "synergy:block/fluid_mixer",
+    "top": "synergy:block/foundry/top"
+  }
+}

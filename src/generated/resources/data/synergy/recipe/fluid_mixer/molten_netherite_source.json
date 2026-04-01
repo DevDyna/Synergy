@@ -1,0 +1,16 @@
+{
+  "type": "synergy:fluid_mixing",
+  "left": {
+    "amount": 10,
+    "fluid": "synergy:molten_gold_source"
+  },
+  "output": {
+    "amount": 5,
+    "id": "synergy:molten_netherite_source"
+  },
+  "right": {
+    "amount": 10,
+    "fluid": "synergy:molten_ancient_debris_source"
+  },
+  "ticks": 20
+}

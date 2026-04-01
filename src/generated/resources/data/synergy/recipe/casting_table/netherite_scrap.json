@@ -1,0 +1,16 @@
+{
+  "type": "synergy:casting_table",
+  "consume_input": false,
+  "fluid": {
+    "amount": 90,
+    "fluid": "synergy:molten_ancient_debris_source"
+  },
+  "input": {
+    "item": "synergy:plate_mold"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:netherite_scrap"
+  },
+  "ticks": 40
+}
