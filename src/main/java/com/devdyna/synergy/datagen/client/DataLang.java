@@ -213,6 +213,8 @@ public class DataLang extends LanguageProvider {
                                 "Foundry Fuels Info");
                 add(Main.ID + ".jei." + zStatic.Blocks.casting_table,
                                 "Casting Table recipes");
+                add(Main.ID + ".jei." + zStatic.Blocks.fluid_mixer,
+                                "Fluid Mixing recipes");
 
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.SHADOW,
