@@ -100,7 +100,7 @@ public class zFluids {
                         .pushEntity().setTextures(x.rl("block/fluid/base/still"), x.rl("block/fluid/base/flow"));
 
         public static final FluidRegister MOLTEN_NETHERITE = FluidRegister
-                        .create(zStatic.Fluids.netherite, Color.PINK.darker().darker())
+                        .create(zStatic.Fluids.netherite, Color.PINK.darker().darker().darker())
                         .pushEntity().setTextures(x.rl("block/fluid/base/still"), x.rl("block/fluid/base/flow"));
 
         public static final FluidRegister MOLTEN_BLAZE = FluidRegister
