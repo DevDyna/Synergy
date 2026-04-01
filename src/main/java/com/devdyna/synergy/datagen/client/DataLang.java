@@ -423,7 +423,7 @@ public class DataLang extends LanguageProvider {
                 add(ID + "." + zStatic.Blocks.drying_rack, TIP_COLOR
                                 + "Dry items into other items\nA campfire placed below can speed up the process");
                 add(ID + "." + zStatic.Blocks.foundry, TIP_COLOR
-                                + "Melt items into fluids\nRequire a fuel tank with a liquid fuel to process\nIf already contain a fluid , the process time will reduced");
+                                + "Melt items into fluids\nRequire an heat source below\nIf already contain a fluid , the process time will reduced");
 
                 add(ID + ".jade.bricks.dried", "Drying stage: §aMature");
                 add(ID + ".jade.bricks.wet", "§cDrying conditions don't match!");
@@ -674,8 +674,10 @@ public class DataLang extends LanguageProvider {
 
                 add(ID + ".click.install.node", TIP_COLOR + "Right Click on a Pipe Node to install");
 
-                add(ID + ".jade.foundry.fail", "§cRequire an heat source below");
                 add(ID + ".jade.modifier.environment.fuel.fail", "§cRequire an heat source below");
+
+
+                add(ID+"."+zStatic.Blocks.fluid_mixer, TIP_COLOR+"Extract fluids to create new fluids from adjacent fluid tanks\nRequire an heat source below");
 
         }
 

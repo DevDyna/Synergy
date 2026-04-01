@@ -243,6 +243,7 @@ public class DataItemModel extends ExtraItemModelProvider {
 
 
                 cubeColumn(zBlocks.FUEL_TANK.getRegisteredName(), modLoc("block/fuel_tank/side"), modLoc("block/fuel_tank/top")).renderType(DataGenUtil.CUTOUT);
+                cubeColumn(zBlocks.FLUID_MIXER.getRegisteredName(), modLoc("block/fluid_mixer"), modLoc("block/foundry/top")).renderType(DataGenUtil.CUTOUT);
 
         }
 

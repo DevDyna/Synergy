@@ -68,6 +68,8 @@ public class Client {
 
         event.registerBlockEntityRenderer(zBlockEntities.FLUID_TANK.get(), FullTankRender::new);
         event.registerBlockEntityRenderer(zBlockEntities.FUEL_TANK.get(), FullTankRender::new);
+       
+        event.registerBlockEntityRenderer(zBlockEntities.FLUID_MIXER.get(), FullTankRender::new);
 
         event.registerBlockEntityRenderer(zBlockEntities.CRUSHING_TUB.get(), CrushingTubRender::new);
         event.registerBlockEntityRenderer(zBlockEntities.EVAPORATION_BASIN.get(), EvaporationBasinRender::new);

@@ -1,6 +1,5 @@
 package com.devdyna.synergy.datagen.server;
 
-
 import java.util.*;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.blockfactories.plants.builder.BaseCropBlock;
@@ -132,7 +131,9 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.CHOPPER,
                                 zBlocks.LOGIC_BOX,
                                 zBlocks.ROUTER,
-                                zBlocks.ENTITY_WATCHER
+                                zBlocks.ENTITY_WATCHER,
+
+                                zBlocks.FLUID_MIXER
 
                 ).stream().map(DeferredHolder::get).forEach(this::dropSelf);
 

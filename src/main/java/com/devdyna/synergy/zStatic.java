@@ -261,6 +261,9 @@ public class zStatic {
         public static String solar_panel = "solar_panel";
         public static String healer = "healer";
 
+        public static String fluid_mixer = "fluid_mixer";
+
+
         public static String logic_box = "logic_box";
         public static String void_box = "void_box";
         public static String foundry = "foundry";
