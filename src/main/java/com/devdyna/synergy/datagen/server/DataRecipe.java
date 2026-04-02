@@ -869,7 +869,8 @@ public class DataRecipe extends ExtraRecipeProvider {
                 moltenIngots(c, zItems.STEEL_INGOT.get(), zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
                 moltenIngots(c, Items.NETHERITE_INGOT, Tags.Items.INGOTS_NETHERITE, zFluids.MOLTEN_NETHERITE);
 
-                moltenRecipes(c, "", zItems.MOLD_PLATE.get(), Items.NETHERITE_SCRAP, Tags.Items.ORES_NETHERITE_SCRAP, zFluids.MOLTEN_ANCIENT_DEBRIS, 90);
+                moltenRecipes(c, "", zItems.MOLD_PLATE.get(), Items.NETHERITE_SCRAP, Items.NETHERITE_SCRAP, zFluids.MOLTEN_ANCIENT_DEBRIS, 90);
+
 
                 gear(c, zItems.WOODEN_GEAR, Tags.Items.RODS_WOODEN, ItemTags.PLANKS);
 

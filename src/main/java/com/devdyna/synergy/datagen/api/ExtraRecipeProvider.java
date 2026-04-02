@@ -105,7 +105,7 @@ public class ExtraRecipeProvider extends RecipeProvider {
 
                 MaceratorRecipeBuilder.of().input(x.itemSized(raw))
                                 .output(x.item(dust.asItem(), 3))
-                                .secondary(secondary,chance)
+                                .secondary(secondary, chance)
                                 .unlockedBy().save(c.withConditions(
                                                 new ICondition[] {
                                                                 new NotCondition(
@@ -277,9 +277,7 @@ public class ExtraRecipeProvider extends RecipeProvider {
                 moltenRecipes(c, "_from_plate", zItems.MOLD_PLATE.get(), plate, plate_tag, fluid, 45);
         }
 
-        protected void moltenRecipes(RecipeOutput c, String suffix, Item mold, Item result, TagKey<Item> input,
-                        FluidRegister fluid, int amount) {
-
+        protected void meltRecipes(RecipeOutput c, String suffix, TagKey<Item> input, FluidRegister fluid, int amount) {
                 MelterRecipeBuilder.of()
                                 .input(input)
                                 .fluid(fluid, amount)
@@ -291,6 +289,26 @@ public class ExtraRecipeProvider extends RecipeProvider {
                                 .fluid(fluid, amount)
                                 .unlockedBy()
                                 .save(c, suffix);
+        }
+
+        protected void meltRecipes(RecipeOutput c, String suffix, ItemLike input, FluidRegister fluid, int amount) {
+                MelterRecipeBuilder.of()
+                                .input(input)
+                                .fluid(fluid, amount)
+                                .unlockedBy()
+                                .save(c, suffix);
+
+                FoundryBuilder.of()
+                                .input(input)
+                                .fluid(fluid, amount)
+                                .unlockedBy()
+                                .save(c, suffix);
+        }
+
+        protected void moltenRecipes(RecipeOutput c, String suffix, Item mold, Item result, TagKey<Item> input,
+                        FluidRegister fluid, int amount) {
+
+                meltRecipes(c, suffix, input, fluid, amount);
 
                 CasterRecipeBuilder.of()
                                 .fluid(fluid, amount)
@@ -308,27 +326,26 @@ public class ExtraRecipeProvider extends RecipeProvider {
 
         }
 
-        // protected void electron_tube(RecipeOutput c, DeferredHolder<Item, Item> tube, FluidRegister fluid) {
+        protected void moltenRecipes(RecipeOutput c, String suffix, Item mold, Item result, ItemLike input,
+                        FluidRegister fluid, int amount) {
 
-        //         CasterRecipeBuilder.of()
-        //                         .fluid(fluid, 180)
-        //                         .input(zItems.ELECTRON_TUBE_BASE)
-        //                         .output(tube)
-        //                         .delay(100)
-        //                         .consumeItemInput()
-        //                         .unlockedBy()
-        //                         .save(c);
+                meltRecipes(c, suffix, input, fluid, amount);
 
-        //         CastingTableBuilder.of()
-        //                         .fluid(fluid, 180)
-        //                         .input(zItems.ELECTRON_TUBE_BASE)
-        //                         .output(tube)
-        //                         .delay(100)
-        //                         .consumeItemInput()
-        //                         .unlockedBy()
-        //                         .save(c);
+                CasterRecipeBuilder.of()
+                                .fluid(fluid, amount)
+                                .input(mold)
+                                .output(result)
+                                .unlockedBy()
+                                .save(c);
 
-        // }
+                CastingTableBuilder.of()
+                                .fluid(fluid, amount)
+                                .input(mold)
+                                .output(result)
+                                .unlockedBy()
+                                .save(c);
+
+        }
 
         protected void gemDustProcess(RecipeOutput c, Item gem, Item dust) {
 
@@ -372,7 +389,7 @@ public class ExtraRecipeProvider extends RecipeProvider {
                                 .output(dust, mace_count);
 
                 if (mace_secondary != null && !mace_secondary.isEmpty() && chance > 0)
-                        macerator.secondary(mace_secondary,chance);
+                        macerator.secondary(mace_secondary, chance);
 
                 macerator.unlockedBy().save(c, "_from_" + x.path(gem));
         }
@@ -407,7 +424,7 @@ public class ExtraRecipeProvider extends RecipeProvider {
                                 .output(dust, mace_count);
 
                 if (mace_secondary != null && !mace_secondary.isEmpty() && chance > 0)
-                        macerator.secondary(mace_secondary,chance);
+                        macerator.secondary(mace_secondary, chance);
 
                 macerator.unlockedBy().save(c);
         }
