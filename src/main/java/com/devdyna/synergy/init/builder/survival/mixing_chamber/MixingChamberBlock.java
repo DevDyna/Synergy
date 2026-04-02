@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.survival.fluid_mixer;
+package com.devdyna.synergy.init.builder.survival.mixing_chamber;
 
 import static com.devdyna.synergy.Main.ID;
 
@@ -27,14 +27,14 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 
 @SuppressWarnings("null")
-public class FluidMixerBlock extends TickingTankBlock
+public class MixingChamberBlock extends TickingTankBlock
         implements FluidClearableTank {
 
-    public FluidMixerBlock(Properties properties) {
+    public MixingChamberBlock(Properties properties) {
         super(properties.noOcclusion());
     }
 
-    public FluidMixerBlock() {
+    public MixingChamberBlock() {
         this(BlockBehaviour.Properties.of()
                 .strength(1.0f)
                 .sound(SoundType.METAL)
@@ -44,13 +44,13 @@ public class FluidMixerBlock extends TickingTankBlock
     @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new FluidMixerBE(pos, state);
+        return new MixingChamberBE(pos, state);
     }
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (level.getBlockEntity(pos) instanceof FluidMixerBE)
+        if (level.getBlockEntity(pos) instanceof MixingChamberBE)
             return bucketAction(stack, state, level, pos, player, hand, hitResult);
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
@@ -67,13 +67,13 @@ public class FluidMixerBlock extends TickingTankBlock
     @Override
     public FluidTank getFluidTank(BlockEntity be, BlockState state, Level level, BlockPos pos, Player player,
             InteractionHand hand, BlockHitResult hitResult) {
-        return (be instanceof FluidMixerBE tank) ? tank.getFluidStorage() : null;
+        return (be instanceof MixingChamberBE tank) ? tank.getFluidStorage() : null;
     }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context,
             List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable(ID + "." + zStatic.Blocks.fluid_mixer));
+        tooltip.add(Component.translatable(ID + "." + zStatic.Blocks.mixing_chamber));
     }
 
 }

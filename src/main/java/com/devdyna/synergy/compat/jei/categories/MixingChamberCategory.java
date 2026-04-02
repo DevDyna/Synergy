@@ -4,7 +4,7 @@ import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.compat.jei.api.JEIFluidTankHelper;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
-import com.devdyna.synergy.init.builder.survival.fluid_mixer.recipe.FluidMixingRecipe;
+import com.devdyna.synergy.init.builder.survival.mixing_chamber.recipe.MixingChamberRecipe;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
@@ -16,28 +16,28 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
 @SuppressWarnings("null")
-public class FluidMixerCategory extends BaseRecipeCategory<FluidMixingRecipe> {
+public class MixingChamberCategory extends BaseRecipeCategory<MixingChamberRecipe> {
 
-    public FluidMixerCategory(IGuiHelper helper) {
+    public MixingChamberCategory(IGuiHelper helper) {
         super(helper);
     }
 
-    public static final RecipeType<RecipeHolder<FluidMixingRecipe>> TYPE = RecipeType
-            .createFromVanilla(zRecipeTypes.FLUID_MIXING.getType());
+    public static final RecipeType<RecipeHolder<MixingChamberRecipe>> TYPE = RecipeType
+            .createFromVanilla(zRecipeTypes.MIXING_CHAMBER.getType());
 
     @Override
-    public RecipeType<RecipeHolder<FluidMixingRecipe>> getRecipeType() {
+    public RecipeType<RecipeHolder<MixingChamberRecipe>> getRecipeType() {
         return TYPE;
     }
 
     @Override
     public String getTitleKey() {
-        return zStatic.Blocks.fluid_mixer;
+        return zStatic.Blocks.mixing_chamber;
     }
 
     @Override
     public ItemLike getIconItem() {
-        return zBlocks.FLUID_MIXER.get();
+        return zBlocks.MIXING_CHAMBER.get();
     }
 
     @Override
@@ -47,11 +47,11 @@ public class FluidMixerCategory extends BaseRecipeCategory<FluidMixingRecipe> {
 
     @Override
     public String setBackGround() {
-        return "textures/gui/jei/fluid_mixing.png";
+        return "textures/gui/jei/mixing_chamber.png";
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, FluidMixingRecipe recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, MixingChamberRecipe recipe, IFocusGroup focuses) {
 
         JEIFluidTankHelper.of()
                 .fluid(recipe.getFirst())
@@ -79,7 +79,7 @@ public class FluidMixerCategory extends BaseRecipeCategory<FluidMixingRecipe> {
     }
 
     @Override
-    public int tickValue(FluidMixingRecipe recipe) {
+    public int tickValue(MixingChamberRecipe recipe) {
         return recipe.getTicks();
     }
 

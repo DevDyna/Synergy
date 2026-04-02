@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.survival.fluid_mixer;
+package com.devdyna.synergy.init.builder.survival.mixing_chamber;
 
 import static com.devdyna.synergy.Main.ID;
 
@@ -14,7 +14,7 @@ import com.devdyna.synergy.api.recipes.inputs.BiFluidInput;
 import com.devdyna.synergy.api.utils.DirectionUtil;
 import com.devdyna.synergy.api.utils.FluidUtil;
 import com.devdyna.synergy.api.utils.Ticker;
-import com.devdyna.synergy.init.builder.survival.fluid_mixer.recipe.FluidMixingRecipe;
+import com.devdyna.synergy.init.builder.survival.mixing_chamber.recipe.MixingChamberRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
 import com.devdyna.synergy.init.types.zRecipeTypes;
@@ -33,15 +33,15 @@ import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 
 @SuppressWarnings("null")
-public class FluidMixerBE extends TickingTankBE
+public class MixingChamberBE extends TickingTankBE
         implements EnvironmentModifier, TimeredRecipe {
 
-    public FluidMixerBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    public MixingChamberBE(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
 
-    public FluidMixerBE(BlockPos pos, BlockState blockState) {
-        this(zBlockEntities.FLUID_MIXER.get(), pos, blockState);
+    public MixingChamberBE(BlockPos pos, BlockState blockState) {
+        this(zBlockEntities.MIXING_CHAMBER.get(), pos, blockState);
     }
 
     private Ticker ticker = null;
@@ -84,7 +84,7 @@ public class FluidMixerBE extends TickingTankBE
         IFluidHandler tank2 = null;
         FluidStack fluid2 = null;
 
-        FluidMixingRecipe recipe = null;
+        MixingChamberRecipe recipe = null;
 
         outer: for (int i = 0; i < neighbors.size(); i++) {
             for (int j = i + 1; j < neighbors.size(); j++) {
@@ -102,7 +102,7 @@ public class FluidMixerBE extends TickingTankBE
                     for (var fs2 : fluids2) {
 
                         var r1 = level.getRecipeManager().getRecipeFor(
-                                zRecipeTypes.FLUID_MIXING.getType(),
+                                zRecipeTypes.MIXING_CHAMBER.getType(),
                                 new BiFluidInput(fs1, fs2),
                                 level);
 
@@ -116,7 +116,7 @@ public class FluidMixerBE extends TickingTankBE
                         }
 
                         var r2 = level.getRecipeManager().getRecipeFor(
-                                zRecipeTypes.FLUID_MIXING.getType(),
+                                zRecipeTypes.MIXING_CHAMBER.getType(),
                                 new BiFluidInput(fs2, fs1),
                                 level);
 

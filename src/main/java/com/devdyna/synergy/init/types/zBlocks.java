@@ -27,9 +27,9 @@ import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBlock;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBlock;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBlock;
 import com.devdyna.synergy.init.builder.survival.faucet.FaucetBlock;
-import com.devdyna.synergy.init.builder.survival.fluid_mixer.FluidMixerBlock;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryBlock;
 import com.devdyna.synergy.init.builder.survival.fuel_tank.FuelTankBlock;
+import com.devdyna.synergy.init.builder.survival.mixing_chamber.MixingChamberBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
 import com.devdyna.synergy.init.builder.*;
 import com.devdyna.synergy.init.builder.automation.chopper.ChopperBlock;
@@ -445,9 +445,9 @@ public class zBlocks {
                         zStatic.FluidTanks.normal,
                         () -> new FluidTankBlock());
 
-        public static final DeferredHolder<Block, Block> FLUID_MIXER = Material.registerItemBlock(
-                        zStatic.Blocks.fluid_mixer,
-                        () -> new FluidMixerBlock());
+        public static final DeferredHolder<Block, Block> MIXING_CHAMBER = Material.registerItemBlock(
+                        zStatic.Blocks.mixing_chamber,
+                        () -> new MixingChamberBlock());
 
         public static final DeferredHolder<Block, Block> FUEL_TANK = Material.registerItemBlock(
                         zStatic.FluidTanks.fuel,

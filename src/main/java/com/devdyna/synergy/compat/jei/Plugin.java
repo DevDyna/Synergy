@@ -109,7 +109,7 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item(zBlocks.FOUNDRY), FoundryCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.FUEL_TANK), FoundryFuelRecipeCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.CASTING_TABLE), CastingTableCategory.TYPE);
-                r.addRecipeCatalyst(x.item(zBlocks.FLUID_MIXER), FluidMixerCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zBlocks.MIXING_CHAMBER), MixingChamberCategory.TYPE);
 
                 r.addRecipeCatalysts(DryingRackCategory.TYPE, zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get)
                                 .map(Block::asItem).toArray(Item[]::new));
@@ -150,7 +150,7 @@ public class Plugin implements IModPlugin {
                                 new FoundryFuelRecipeCategory(helper),
                                 new CastingTableCategory(helper),
                                 new CopperOxidationCategory(helper),
-                                new FluidMixerCategory(helper)
+                                new MixingChamberCategory(helper)
 
                 );
 
@@ -259,8 +259,8 @@ public class Plugin implements IModPlugin {
                                 RecipeUtils.getRecipes(zRecipeTypes.FOUNDRY_FUELS));
                 r.addRecipes(CastingTableCategory.TYPE,
                                 RecipeUtils.getRecipes(zRecipeTypes.CASTING_TABLE));
-                r.addRecipes(FluidMixerCategory.TYPE,
-                                RecipeUtils.getRecipes(zRecipeTypes.FLUID_MIXING));
+                r.addRecipes(MixingChamberCategory.TYPE,
+                                RecipeUtils.getRecipes(zRecipeTypes.MIXING_CHAMBER));
 
         }
 

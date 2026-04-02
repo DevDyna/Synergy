@@ -107,8 +107,6 @@ public class DataItemModel extends ExtraItemModelProvider {
                 tinyChestAll(zBlocks.VOID_BOX, "block/void_box/chest");
                 tinyChestAll(zBlocks.LOGIC_BOX, "block/logic_box/item");
 
-                
-
                 withExistingParent(zBlocks.URN.getRegisteredName(),
                                 modLoc("block/urn"));
 
@@ -147,16 +145,14 @@ public class DataItemModel extends ExtraItemModelProvider {
                 withExistingParent(x.path(zBlocks.INVERTED_REPEATER.get()), "minecraft:item/generated")
                                 .texture("layer0", modLoc("item/redstone/inverted_repeater"));
 
-                simpleFlexibleBlock(zBlocks.SIMPLE_TANK, "tank/simple").renderType(DataGenUtil.CUTOUT);
-                // simpleFlexibleBlock(zBlocks.FUEL_TANK, "tank/fuel").renderType(DataGenUtil.CUTOUT);
-
                 withExistingParent(zBlocks.SIMPLE_WATER_GEN.getRegisteredName(), modLoc("block/_template/triple_layer"))
                                 .texture("top", "block/resource_gen/water")
                                 .texture("middle", "block/resource_gen/overlay/simple")
                                 .texture("below", "block/decorative/wrought_iron_block")
                                 .renderType(DataGenUtil.CUTOUT);
 
-                withExistingParent(zBlocks.ADVANCED_WATER_GEN.getRegisteredName(), modLoc("block/_template/triple_layer"))
+                withExistingParent(zBlocks.ADVANCED_WATER_GEN.getRegisteredName(),
+                                modLoc("block/_template/triple_layer"))
                                 .texture("top", "block/resource_gen/water")
                                 .texture("middle", "block/resource_gen/overlay/advanced")
                                 .texture("below", "block/machine/frame/basic/bottom")
@@ -168,13 +164,15 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("below", "block/machine/frame/advanced/top")
                                 .renderType(DataGenUtil.CUTOUT);
 
-                withExistingParent(zBlocks.SIMPLE_COBBLE_GEN.getRegisteredName(), modLoc("block/_template/triple_layer"))
+                withExistingParent(zBlocks.SIMPLE_COBBLE_GEN.getRegisteredName(),
+                                modLoc("block/_template/triple_layer"))
                                 .texture("top", "block/resource_gen/cobblestone")
                                 .texture("middle", "block/resource_gen/overlay/simple")
                                 .texture("below", "block/decorative/wrought_iron_block")
                                 .renderType(DataGenUtil.CUTOUT);
 
-                withExistingParent(zBlocks.ADVANCED_COBBLE_GEN.getRegisteredName(), modLoc("block/_template/triple_layer"))
+                withExistingParent(zBlocks.ADVANCED_COBBLE_GEN.getRegisteredName(),
+                                modLoc("block/_template/triple_layer"))
                                 .texture("top", "block/resource_gen/cobblestone")
                                 .texture("middle", "block/resource_gen/overlay/advanced")
                                 .texture("below", "block/machine/frame/basic/bottom")
@@ -237,14 +235,27 @@ public class DataItemModel extends ExtraItemModelProvider {
 
                 withExistingParent(zBlocks.AQUAMARINE_CLUSTER.getRegisteredName(), DataGenUtil.ITEM)
                                 .texture("layer0", x.rl("block/decorative/aquamarine"));
-                                
+
                 withExistingParent(zBlocks.ENTITY_WATCHER.getRegisteredName(),
                                 modLoc("block/_render/entity_watcher"));
 
+                withExistingParent(zBlocks.SIMPLE_TANK.getRegisteredName(),
+                                x.rl("block/_template/tank"))
+                                .texture("side", "synergy:block/tank/simple")
+                                .texture("top", "synergy:block/tank/simple")
+                                .renderType(DataGenUtil.CUTOUT);
 
-                cubeColumn(zBlocks.FUEL_TANK.getRegisteredName(), modLoc("block/fuel_tank/side"), modLoc("block/fuel_tank/top")).renderType(DataGenUtil.CUTOUT);
-                cubeColumn(zBlocks.FLUID_MIXER.getRegisteredName(), modLoc("block/fluid_mixer"), modLoc("block/foundry/top")).renderType(DataGenUtil.CUTOUT);
+                withExistingParent(zBlocks.FUEL_TANK.getRegisteredName(),
+                                x.rl("block/_template/tank"))
+                                .texture("side", "synergy:block/fuel_tank/side")
+                                .texture("top", "synergy:block/fuel_tank/top")
+                                .renderType(DataGenUtil.CUTOUT);
 
+                withExistingParent(zBlocks.MIXING_CHAMBER.getRegisteredName(),
+                                x.rl("block/_template/tank"))
+                                .texture("side", "synergy:block/mixing_chamber")
+                                .texture("top", "synergy:block/fuel_tank/top")
+                                .renderType(DataGenUtil.CUTOUT);
         }
 
 }

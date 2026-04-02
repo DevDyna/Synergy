@@ -25,9 +25,9 @@ import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackRe
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackRecipeSerializer;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporationBasinRecipe;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporationBasinRecipeSerializer;
-import com.devdyna.synergy.init.builder.survival.fluid_mixer.recipe.FluidMixingRecipe;
 import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryRecipe;
 import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryRecipeSerializer;
+import com.devdyna.synergy.init.builder.survival.mixing_chamber.recipe.MixingChamberRecipe;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipe;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipeSerializer;
 
@@ -92,8 +92,8 @@ public class zRecipeTypes {
         public static final RecipeRegister<FoundryFuelEfficiencyRecipe> FOUNDRY_FUELS = RecipeRegister.of(zStatic.Blocks.foundry+"_fuels",
                         FoundryFuelEfficiencyRecipe.Serializer::new);
 
-        public static final RecipeRegister<FluidMixingRecipe> FLUID_MIXING = RecipeRegister.of("fluid_mixing",
-                        FluidMixingRecipe.Serializer::new);
+        public static final RecipeRegister<MixingChamberRecipe> MIXING_CHAMBER = RecipeRegister.of("mixing_chamber",
+                        MixingChamberRecipe.Serializer::new);
 
         public static final RecipeRegister<CastingTableRecipe> CASTING_TABLE = RecipeRegister.of(zStatic.Blocks.casting_table,
                         CastingTableRecipe.Serializer::new);

@@ -133,7 +133,7 @@ public class DataLootBlock extends BlockLootSubProvider {
                                 zBlocks.ROUTER,
                                 zBlocks.ENTITY_WATCHER,
 
-                                zBlocks.FLUID_MIXER
+                                zBlocks.MIXING_CHAMBER
 
                 ).stream().map(DeferredHolder::get).forEach(this::dropSelf);
 

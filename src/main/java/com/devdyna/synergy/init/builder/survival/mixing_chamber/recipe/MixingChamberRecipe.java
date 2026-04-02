@@ -1,4 +1,4 @@
-package com.devdyna.synergy.init.builder.survival.fluid_mixer.recipe;
+package com.devdyna.synergy.init.builder.survival.mixing_chamber.recipe;
 
 import java.util.List;
 
@@ -25,14 +25,14 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
 @SuppressWarnings("null")
-public class FluidMixingRecipe extends BaseRecipeType<BiFluidInput> {
+public class MixingChamberRecipe extends BaseRecipeType<BiFluidInput> {
 
     private int ticks;
     private SizedFluidIngredient first;
     private SizedFluidIngredient second;
     private FluidStack output;
 
-    public FluidMixingRecipe(SizedFluidIngredient first,SizedFluidIngredient second,int ticks,FluidStack output) {
+    public MixingChamberRecipe(SizedFluidIngredient first,SizedFluidIngredient second,int ticks,FluidStack output) {
         this.ticks = ticks;
         this.first = first;
         this.second = second;
@@ -60,7 +60,7 @@ public class FluidMixingRecipe extends BaseRecipeType<BiFluidInput> {
 
     @Override
     public RecipeRegister<? extends BaseRecipeType<BiFluidInput>> getRecipe() {
-        return zRecipeTypes.FLUID_MIXING;
+        return zRecipeTypes.MIXING_CHAMBER;
     }
 
     public int getTicks() {
@@ -84,32 +84,32 @@ public class FluidMixingRecipe extends BaseRecipeType<BiFluidInput> {
         return output.getFluid().getBucket();
     }
 
-    public static class Serializer implements RecipeSerializer<FluidMixingRecipe> {
+    public static class Serializer implements RecipeSerializer<MixingChamberRecipe> {
 
-        public static final MapCodec<FluidMixingRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst
+        public static final MapCodec<MixingChamberRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst
                 .group(
-                        SizedFluidIngredient.FLAT_CODEC.fieldOf("left").forGetter(FluidMixingRecipe::getFirst),
-                        SizedFluidIngredient.FLAT_CODEC.fieldOf("right").forGetter(FluidMixingRecipe::getSecond),
-                        Codec.intRange(1, Integer.MAX_VALUE).fieldOf("ticks").forGetter(FluidMixingRecipe::getTicks),
+                        SizedFluidIngredient.FLAT_CODEC.fieldOf("left").forGetter(MixingChamberRecipe::getFirst),
+                        SizedFluidIngredient.FLAT_CODEC.fieldOf("right").forGetter(MixingChamberRecipe::getSecond),
+                        Codec.intRange(1, Integer.MAX_VALUE).fieldOf("ticks").forGetter(MixingChamberRecipe::getTicks),
                         FluidStack.CODEC.fieldOf("output")
-                                .forGetter(FluidMixingRecipe::getOutput))
-                .apply(inst, FluidMixingRecipe::new));
+                                .forGetter(MixingChamberRecipe::getOutput))
+                .apply(inst, MixingChamberRecipe::new));
 
-        public static final StreamCodec<RegistryFriendlyByteBuf, FluidMixingRecipe> STREAM_CODEC = StreamCodec
+        public static final StreamCodec<RegistryFriendlyByteBuf, MixingChamberRecipe> STREAM_CODEC = StreamCodec
                 .composite(
-                        SizedFluidIngredient.STREAM_CODEC, FluidMixingRecipe::getFirst,
-                        SizedFluidIngredient.STREAM_CODEC, FluidMixingRecipe::getSecond,
-                        ByteBufCodecs.INT, FluidMixingRecipe::getTicks,
-                        FluidStack.STREAM_CODEC, FluidMixingRecipe::getOutput,
-                        FluidMixingRecipe::new);
+                        SizedFluidIngredient.STREAM_CODEC, MixingChamberRecipe::getFirst,
+                        SizedFluidIngredient.STREAM_CODEC, MixingChamberRecipe::getSecond,
+                        ByteBufCodecs.INT, MixingChamberRecipe::getTicks,
+                        FluidStack.STREAM_CODEC, MixingChamberRecipe::getOutput,
+                        MixingChamberRecipe::new);
 
         @Override
-        public MapCodec<FluidMixingRecipe> codec() {
+        public MapCodec<MixingChamberRecipe> codec() {
             return CODEC;
         }
 
         @Override
-        public StreamCodec<RegistryFriendlyByteBuf, FluidMixingRecipe> streamCodec() {
+        public StreamCodec<RegistryFriendlyByteBuf, MixingChamberRecipe> streamCodec() {
             return STREAM_CODEC;
         }
     }

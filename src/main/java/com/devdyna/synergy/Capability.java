@@ -78,7 +78,7 @@ public class Capability {
                                 zBlocks.EVAPORATION_BASIN,
                                 zBlocks.FOUNDRY,
                                 zBlocks.CASTING_TABLE,
-                                zBlocks.FLUID_MIXER
+                                zBlocks.MIXING_CHAMBER
 
                 ));
 

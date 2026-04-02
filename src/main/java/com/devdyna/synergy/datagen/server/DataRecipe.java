@@ -32,8 +32,8 @@ import com.devdyna.synergy.init.builder.survival.casting_table.recipe.CastingTab
 import com.devdyna.synergy.init.builder.survival.crushing_tub.recipe.CrushingTubBuilder;
 import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackBuilder;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporatingBasinBuilder;
-import com.devdyna.synergy.init.builder.survival.fluid_mixer.recipe.FluidMixingBuilder;
 import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryBuilder;
+import com.devdyna.synergy.init.builder.survival.mixing_chamber.recipe.MixingChamberBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup;
@@ -2759,7 +2759,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItems.STEEL_PLATE.get()))
                                 .save(c);
 
-                FluidMixingBuilder.of()
+                MixingChamberBuilder.of()
                                 .fluids(zFluids.MOLTEN_GOLD,10, zFluids.MOLTEN_ANCIENT_DEBRIS,10)
                                 .output(zFluids.MOLTEN_NETHERITE,5)
                                 .unlockedBy()

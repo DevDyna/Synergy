@@ -34,9 +34,9 @@ import com.devdyna.synergy.init.builder.survival.crushing_tub.CrushingTubBE;
 import com.devdyna.synergy.init.builder.survival.drying_rack.DryingRackBE;
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBasinBE;
 import com.devdyna.synergy.init.builder.survival.faucet.FaucetBE;
-import com.devdyna.synergy.init.builder.survival.fluid_mixer.FluidMixerBE;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryBE;
 import com.devdyna.synergy.init.builder.survival.fuel_tank.FuelTankBE;
+import com.devdyna.synergy.init.builder.survival.mixing_chamber.MixingChamberBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -148,9 +148,9 @@ public class zBlockEntities {
                         .createBlockEntity(zStatic.FluidTanks.fuel, FuelTankBE::new,
                                          zBlocks.FUEL_TANK);
 
-        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FluidMixerBE>> FLUID_MIXER = Material
-                        .createBlockEntity(zStatic.Blocks.fluid_mixer, FluidMixerBE::new,
-                                         zBlocks.FLUID_MIXER);
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MixingChamberBE>> MIXING_CHAMBER = Material
+                        .createBlockEntity(zStatic.Blocks.mixing_chamber, MixingChamberBE::new,
+                                         zBlocks.MIXING_CHAMBER);
 
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SimpleWaterGenBE>> SIMPLE_WATER_GEN = Material
                         .createBlockEntity(zStatic.ResourceGenerators.Water.simple, SimpleWaterGenBE::new,

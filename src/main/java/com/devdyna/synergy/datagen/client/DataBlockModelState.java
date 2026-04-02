@@ -299,11 +299,11 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 .texture("side", "synergy:block/fuel_tank/side")
                                                 .texture("top", "synergy:block/fuel_tank/top"));
 
-                simpleBlock(zBlocks.FLUID_MIXER.get(),
-                                models().withExistingParent(zBlocks.FLUID_MIXER.getRegisteredName(),
+                simpleBlock(zBlocks.MIXING_CHAMBER.get(),
+                                models().withExistingParent(zBlocks.MIXING_CHAMBER.getRegisteredName(),
                                                 x.rl("block/_template/tank"))
-                                                .texture("side", "synergy:block/fluid_mixer")
-                                                .texture("top", "synergy:block/foundry/top"));
+                                                .texture("side", "synergy:block/mixing_chamber")
+                                                .texture("top", "synergy:block/fuel_tank/top"));
 
         }
 

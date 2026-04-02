@@ -213,8 +213,8 @@ public class DataLang extends LanguageProvider {
                                 "Foundry Fuels Info");
                 add(Main.ID + ".jei." + zStatic.Blocks.casting_table,
                                 "Casting Table recipes");
-                add(Main.ID + ".jei." + zStatic.Blocks.fluid_mixer,
-                                "Fluid Mixing recipes");
+                add(Main.ID + ".jei." + zStatic.Blocks.mixing_chamber,
+                                "Mixing Chamber recipes");
 
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.SHADOW,
@@ -679,7 +679,7 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jade.modifier.environment.fuel.fail", "§cRequire an heat source below");
 
 
-                add(ID+"."+zStatic.Blocks.fluid_mixer, TIP_COLOR+"Extract fluids to create new fluids from adjacent fluid tanks\nRequire an heat source below");
+                add(ID+"."+zStatic.Blocks.mixing_chamber, TIP_COLOR+"Extract fluids to create new fluids from adjacent fluid tanks\nRequire an heat source below");
 
         }
 
