@@ -254,19 +254,8 @@ public class ExtraRecipeProvider extends RecipeProvider {
                                 .unlockedBy()
                                 .save(c, "_from_gear");
 
-                CasterRecipeBuilder.of()
-                                .fluid(fluid, 180)
-                                .input(zItems.MOLD_GEAR)
-                                .output(gear)
-                                .unlockedBy()
-                                .save(c);
+                castingRecipe(c, "", fluid, 180, zItems.MOLD_GEAR.get(), gear.get(), false);
 
-                CastingTableBuilder.of()
-                                .fluid(fluid, 180)
-                                .input(zItems.MOLD_GEAR)
-                                .output(gear)
-                                .unlockedBy()
-                                .save(c);
         }
 
         protected void moltenIngots(RecipeOutput c, Item ingot, TagKey<Item> ingot_tag, FluidRegister fluid) {
@@ -305,46 +294,40 @@ public class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c, suffix);
         }
 
+        protected void castingRecipe(RecipeOutput c, String suffix, FluidRegister fluid, int amount, Item mold,
+                        Item result, boolean consume) {
+                var cast = CasterRecipeBuilder.of()
+                                .fluid(fluid, amount)
+                                .input(mold)
+                                .output(result)
+                                .unlockedBy();
+                if (consume)
+                        cast.consumeItemInput();
+
+                cast.save(c);
+
+                var table = CastingTableBuilder.of()
+                                .fluid(fluid, amount)
+                                .input(mold)
+                                .output(result)
+                                .unlockedBy();
+
+                if (consume)
+                        table.consumeItemInput();
+
+                table.save(c);
+        }
+
         protected void moltenRecipes(RecipeOutput c, String suffix, Item mold, Item result, TagKey<Item> input,
                         FluidRegister fluid, int amount) {
-
                 meltRecipes(c, suffix, input, fluid, amount);
-
-                CasterRecipeBuilder.of()
-                                .fluid(fluid, amount)
-                                .input(mold)
-                                .output(result)
-                                .unlockedBy()
-                                .save(c);
-
-                CastingTableBuilder.of()
-                                .fluid(fluid, amount)
-                                .input(mold)
-                                .output(result)
-                                .unlockedBy()
-                                .save(c);
-
+                castingRecipe(c, suffix, fluid, amount, mold, result, false);
         }
 
         protected void moltenRecipes(RecipeOutput c, String suffix, Item mold, Item result, ItemLike input,
                         FluidRegister fluid, int amount) {
-
                 meltRecipes(c, suffix, input, fluid, amount);
-
-                CasterRecipeBuilder.of()
-                                .fluid(fluid, amount)
-                                .input(mold)
-                                .output(result)
-                                .unlockedBy()
-                                .save(c);
-
-                CastingTableBuilder.of()
-                                .fluid(fluid, amount)
-                                .input(mold)
-                                .output(result)
-                                .unlockedBy()
-                                .save(c);
-
+                castingRecipe(c, suffix, fluid, amount, mold, result, false);
         }
 
         protected void gemDustProcess(RecipeOutput c, Item gem, Item dust) {

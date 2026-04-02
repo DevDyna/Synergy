@@ -2761,16 +2761,14 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItems.STEEL_PLATE.get()))
                                 .save(c);
 
-                MixingChamberBuilder.of()
-                                .fluids(zFluids.MOLTEN_GOLD,10, zFluids.MOLTEN_ANCIENT_DEBRIS,10)
-                                .output(zFluids.MOLTEN_NETHERITE,5)
-                                .unlockedBy()
-                                .save(c);
                 // MixingChamberBuilder.of() TODO BRONZE
                 //                 .fluids(zFluids.MOLTEN_GOLD,90, zFluids.MOLTEN_ANCIENT_DEBRIS,90*2)
                 //                 .output(zFluids.MOLTEN_NETHERITE,90)
                 //                 .unlockedBy()
                 //                 .save(c);
+
+                castingRecipe(c, "", zFluids.MOLTEN_ANCIENT_DEBRIS, 180, Items.GOLD_INGOT, Items.NETHERITE_INGOT,true);
+
 
 
         }
