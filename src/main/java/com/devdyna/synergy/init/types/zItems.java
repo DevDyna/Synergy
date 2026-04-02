@@ -312,6 +312,9 @@ public class zItems {
         public static final DeferredHolder<Item, Item> STEEL_INGOT = Material
                         .resourceIngot(zStatic.ResourceMaterial.steel);
 
+        public static final DeferredHolder<Item, Item> BRONZE_INGOT = Material
+                        .resourceIngot(zStatic.ResourceMaterial.bronze);
+
         public static final DeferredHolder<Item, Item> MIXED_INGOT = Material
                         .resourceIngot(zStatic.ResourceMaterial.mixed);
 

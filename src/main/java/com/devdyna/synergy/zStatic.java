@@ -52,6 +52,7 @@ public class zStatic {
         public static String silicon = "silicon";
         public static String advanced_alloy = "advanced_alloy";
         public static String steel = "steel";
+        public static String bronze = "bronze";
         public static String carbon = "carbon";
         public static String netherrack = "netherrack";
         public static String stone = "stone";
@@ -505,6 +506,7 @@ public class zStatic {
         public static String osmium = AFFIX_MOLTEN + "osmium";
         public static String lead = AFFIX_MOLTEN + "lead";
         public static String blaze = AFFIX_MOLTEN + "blaze";
+        public static String bronze = AFFIX_MOLTEN + "bronze";
 
     }
 

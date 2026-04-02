@@ -596,7 +596,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                 RockCrusherRecipeBuilder.of()
                                 .fluid(zFluidTags.SULFURIC_ACID, 25)
                                 .input(zItems.DRIPSTONE_CHUNK)
-                                // .addResult(Items.CLAY_BALL, 0.85f)
                                 .addResult(zItems.KAOLIN, 0.55f)
                                 .addResult(zItems.HEMATITE, 0.35f)
                                 .addResult(zItems.BAUXITE, 0.2f)
@@ -605,15 +604,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                // RockCrusherRecipeBuilder.of()
-                // .fluid(zFluidTags.SULFURIC_ACID, 25)
-                // .input(Items.MUD)
-                // // .addResult(zItems.MUD_BALL, 0.85f)
-                // // .addResult(Items.FLINT, 0.45f)
-                // .addResult(zItems.KAOLIN, 0.25f)
-                // .addResult(zItems.LIGNITE, 0.05f)
-                // .unlockedBy()
-                // .save(c);
+                
 
                 RockCrusherRecipeBuilder.of()
                                 .fluid(zFluidTags.SULFURIC_ACID, 25)
@@ -640,14 +631,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                // RockCrusherRecipeBuilder.of()
-                // .fluid(zFluidTags.SULFURIC_ACID, 25)
-                // .input(Items.NETHERRACK)
-                // // .addResult(zItems.NETHERRACK_PEBBLE, 0.85f)
-                // .addResult(zItems.PYROLITE, 0.35f)
-                // .addResult(zItems.QUARTZITE, 0.15f)
-                // .unlockedBy()
-                // .save(c);
+                
 
                 RockCrusherRecipeBuilder.of()
                                 .fluid(zFluidTags.SULFURIC_ACID, 25)
@@ -867,11 +851,13 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 zItems.LEAD_INGOT.get(), x.rl("c", "ingots/lead"), zItems.SILVER_DUST.get(), 0.25f);
 
                 moltenIngots(c, zItems.STEEL_INGOT.get(), zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
-                // moltenIngots(c, Items.NETHERITE_INGOT, Tags.Items.INGOTS_NETHERITE, zFluids.MOLTEN_NETHERITE);
+                moltenIngots(c, zItems.BRONZE_INGOT.get(), zItemTag.INGOT_BRONZE, zFluids.MOLTEN_BRONZE);
+                
 
-                moltenRecipes(c, "", zItems.MOLD_PLATE.get(), Items.NETHERITE_SCRAP, Items.NETHERITE_SCRAP, zFluids.MOLTEN_ANCIENT_DEBRIS, 90);
+                moltenRecipes(c, "", zItems.MOLD_PLATE.get(), Items.NETHERITE_SCRAP, Items.NETHERITE_SCRAP,
+                                zFluids.MOLTEN_ANCIENT_DEBRIS, 90);
 
-                meltRecipes(c, "_from_debris", Tags.Items.ORES_NETHERITE_SCRAP, zFluids.MOLTEN_ANCIENT_DEBRIS, 180);    
+                meltRecipes(c, "_from_debris", Tags.Items.ORES_NETHERITE_SCRAP, zFluids.MOLTEN_ANCIENT_DEBRIS, 180);
 
                 gear(c, zItems.WOODEN_GEAR, Tags.Items.RODS_WOODEN, ItemTags.PLANKS);
 
@@ -907,20 +893,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                 coil(c, zItemTag.FOIL_GOLD, zItems.GOLD_COIL.get());
                 coil(c, zItemTag.FOIL_IRON, zItems.IRON_COIL.get());
                 coil(c, zItemTag.FOIL_SILVER, zItems.SILVER_COIL.get());
-
-                // electron_tube(c, zItems.TIN_ELECTRON_TUBE, zFluids.MOLTEN_TIN);
-                // electron_tube(c, zItems.GOLD_ELECTRON_TUBE, zFluids.MOLTEN_GOLD);
-                // electron_tube(c, zItems.IRON_ELECTRON_TUBE, zFluids.MOLTEN_IRON);
-                // electron_tube(c, zItems.LEAD_ELECTRON_TUBE, zFluids.MOLTEN_LEAD);
-                // electron_tube(c, zItems.STEEL_ELECTRON_TUBE, zFluids.MOLTEN_STEEL);
-                // electron_tube(c, zItems.COPPER_ELECTRON_TUBE, zFluids.MOLTEN_COPPER);
-                // electron_tube(c, zItems.NICKEL_ELECTRON_TUBE, zFluids.MOLTEN_NICKEL);
-                // electron_tube(c, zItems.OSMIUM_ELECTRON_TUBE, zFluids.MOLTEN_OSMIUM);
-                // electron_tube(c, zItems.SILVER_ELECTRON_TUBE, zFluids.MOLTEN_SILVER);
-                // electron_tube(c, zItems.IRIDIUM_ELECTRON_TUBE, zFluids.MOLTEN_IRIDIUM);
-                // electron_tube(c, zItems.URANIUM_ELECTRON_TUBE, zFluids.MOLTEN_URANIUM);
-                // electron_tube(c, zItems.ALUMINUM_ELECTRON_TUBE, zFluids.MOLTEN_ALUMINUM);
-                // electron_tube(c, zItems.PLATINUM_ELECTRON_TUBE, zFluids.MOLTEN_PLATINUM);
 
                 crushing(c, Items.ANCIENT_DEBRIS, zItems.ANCIENT_DEBRIS_DUST.get(), 2, 1,
                                 zItems.ANCIENT_DEBRIS_DUST.get(), 0.5f);
@@ -2761,15 +2733,28 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy(ID, has(zItems.STEEL_PLATE.get()))
                                 .save(c);
 
-                // MixingChamberBuilder.of() TODO BRONZE
-                //                 .fluids(zFluids.MOLTEN_GOLD,90, zFluids.MOLTEN_ANCIENT_DEBRIS,90*2)
-                //                 .output(zFluids.MOLTEN_NETHERITE,90)
-                //                 .unlockedBy()
-                //                 .save(c);
+                MixingChamberBuilder.of()
+                                .fluids(zFluids.MOLTEN_COPPER, 90 * 3, zFluids.MOLTEN_TIN, 90)
+                                .output(zFluids.MOLTEN_BRONZE, 90 * 4)
+                                .unlockedBy()
+                                .save(c);
 
-                castingRecipe(c, "", zFluids.MOLTEN_ANCIENT_DEBRIS, 180, Items.GOLD_INGOT, Items.NETHERITE_INGOT,true);
+                castingRecipe(c, "", zFluids.MOLTEN_ANCIENT_DEBRIS, 180, Items.GOLD_INGOT, Items.NETHERITE_INGOT, true);
 
+                AlloySmelterRecipeBuilder.of()
+                                .inputs(zItemTag.INGOT_TIN, 1, Tags.Items.INGOTS_COPPER, 3)
+                                .delay(240)
+                                .output(zItems.BRONZE_INGOT, 4)
+                                .unlockedBy()
+                                .save(c);
 
+                ShapedRecipeBuilder.shaped(MISC, zItems.BRONZE_INGOT.get(), 4)
+                                .pattern("CC")
+                                .pattern("CT")
+                                .define('T', Tags.Items.INGOTS_COPPER)
+                                .define('C', zItemTag.INGOT_TIN)
+                                .unlockedBy(ID, has(Items.COPPER_INGOT))
+                                .save(c);
 
         }
 

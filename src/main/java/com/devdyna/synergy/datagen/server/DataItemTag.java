@@ -198,6 +198,7 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.INGOT_LEAD).add(zItems.LEAD_INGOT.get());
                 tag(zItemTag.INGOT_URANIUM).add(zItems.URANIUM_INGOT.get());
                 tag(zItemTag.INGOT_ALUMINUM).add(zItems.ALUMINUM_INGOT.get());
+                tag(zItemTag.INGOT_BRONZE).add(zItems.BRONZE_INGOT.get());
 
                 tag(zItemTag.DUST_NICKEL).add(zItems.NICKEL_DUST.get());
                 tag(zItemTag.DUST_SILVER).add(zItems.SILVER_DUST.get());

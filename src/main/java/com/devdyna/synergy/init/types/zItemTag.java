@@ -75,6 +75,7 @@ public class zItemTag {
         public static final TagKey<Item> MOB_DROP = Material.tagItem("mob_drops");
 
         public static final TagKey<Item> INGOT_STEEL = Material.tagItem("ingots/steel", "c");
+        public static final TagKey<Item> INGOT_BRONZE = Material.tagItem("ingots/bronze", "c");
         public static final TagKey<Item> INGOT_ADVANCEDALLOY = Material.tagItem("ingots/advanced_alloy", "c");
         public static final TagKey<Item> INGOT_WROUGHT_IRON = Material.tagItem("ingots/wrought_iron", "c");
 
