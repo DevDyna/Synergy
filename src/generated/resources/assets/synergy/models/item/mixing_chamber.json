@@ -2,7 +2,7 @@
   "parent": "synergy:block/_template/tank",
   "render_type": "minecraft:cutout",
   "textures": {
-    "side": "synergy:block/fuel_tank/side",
+    "side": "synergy:block/mixing_chamber",
     "top": "synergy:block/fuel_tank/top"
   }
 }

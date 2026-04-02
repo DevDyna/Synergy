@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "synergy:fluid_mixer/molten_netherite_source"
+        "recipe": "synergy:mixing_chamber/molten_netherite_source"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "synergy:fluid_mixer/molten_netherite_source"
+      "synergy:mixing_chamber/molten_netherite_source"
     ]
   }
 }

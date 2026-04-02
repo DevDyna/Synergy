@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "synergy:fluid_mixer"
+          "name": "synergy:mixing_chamber"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "synergy:blocks/fluid_mixer"
+  "random_sequence": "synergy:blocks/mixing_chamber"
 }
