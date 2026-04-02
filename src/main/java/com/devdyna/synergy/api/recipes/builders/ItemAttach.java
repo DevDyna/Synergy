@@ -71,7 +71,6 @@ public class ItemAttach {
             default BUILDER input(TagKey<Item> input) {
                 return input(x.ingredient(input));
             }
-            
 
         }
 
@@ -159,12 +158,24 @@ public class ItemAttach {
 
             abstract BUILDER inputs(SizedIngredient right, SizedIngredient left);
 
-            default BUILDER inputs(Ingredient right, Ingredient left) {
-                return inputs(x.itemSized(right), x.itemSized(left));
+            default BUILDER inputs(Ingredient right, int a, Ingredient left, int b) {
+                return inputs(x.itemSized(right, a), x.itemSized(left, b));
             }
 
-            default BUILDER inputs(Item right, Item left) {
-                return inputs(x.ingredient(right), x.ingredient(left));
+            default BUILDER inputs(ItemLike right, int a, ItemLike left, int b) {
+                return inputs(x.itemSized(right, a), x.itemSized(left, b));
+            }
+
+            default BUILDER inputs(Ingredient right, Ingredient left) {
+                return inputs(right, 1, left, 1);
+            }
+
+            default BUILDER inputs(ItemLike right, ItemLike left) {
+                return inputs(right, 1, left, 1);
+            }
+
+            default BUILDER inputs(DeferredHolder<Item, Item> right, int a, DeferredHolder<Item, Item> left, int b) {
+                return inputs(right.get(), a, left.get(), b);
             }
 
             default BUILDER inputs(DeferredHolder<Item, Item> right, DeferredHolder<Item, Item> left) {
@@ -172,7 +183,7 @@ public class ItemAttach {
             }
 
             default BUILDER inputs(TagKey<Item> right, TagKey<Item> left) {
-                return inputs(x.ingredient(right), x.ingredient(left));
+                return inputs(right, 1, left, 1);
             }
 
             default BUILDER inputs(TagKey<Item> right, Item left) {
@@ -181,6 +192,18 @@ public class ItemAttach {
 
             default BUILDER inputs(Item right, TagKey<Item> left) {
                 return inputs(x.ingredient(right), x.ingredient(left));
+            }
+
+            default BUILDER inputs(TagKey<Item> right, int a, TagKey<Item> left, int b) {
+                return inputs(x.ingredient(right), a, x.ingredient(left), b);
+            }
+
+            default BUILDER inputs(TagKey<Item> right, int a, Item left, int b) {
+                return inputs(x.ingredient(right), a, x.ingredient(left), b);
+            }
+
+            default BUILDER inputs(Item right, int a, TagKey<Item> left, int b) {
+                return inputs(x.ingredient(right), a, x.ingredient(left), b);
             }
 
         }
