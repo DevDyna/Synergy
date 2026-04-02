@@ -1,14 +1,14 @@
 {
   "type": "synergy:machine/casting_factory",
-  "consume_item": false,
+  "consume_item": true,
   "energy": 500,
   "input_fluid": {
-    "amount": 90,
-    "fluid": "synergy:molten_netherite_source"
+    "amount": 180,
+    "fluid": "synergy:molten_ancient_debris_source"
   },
   "input_item": {
     "count": 1,
-    "item": "synergy:ingot_mold"
+    "item": "minecraft:gold_ingot"
   },
   "output": {
     "count": 1,
