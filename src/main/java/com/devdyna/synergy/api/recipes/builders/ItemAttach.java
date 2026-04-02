@@ -60,7 +60,7 @@ public class ItemAttach {
 
             abstract BUILDER input(Ingredient input);
 
-            default BUILDER input(Item input) {
+            default BUILDER input(ItemLike input) {
                 return input(x.ingredient(input));
             }
 
@@ -71,6 +71,7 @@ public class ItemAttach {
             default BUILDER input(TagKey<Item> input) {
                 return input(x.ingredient(input));
             }
+            
 
         }
 
