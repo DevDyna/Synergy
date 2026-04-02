@@ -99,9 +99,9 @@ public class zFluids {
                         .create(zStatic.Fluids.ancient_debris, Color.PINK.darker().darker())
                         .pushEntity().setTextures(x.rl("block/fluid/base/still"), x.rl("block/fluid/base/flow"));
 
-        public static final FluidRegister MOLTEN_NETHERITE = FluidRegister
-                        .create(zStatic.Fluids.netherite, Color.PINK.darker().darker().darker())
-                        .pushEntity().setTextures(x.rl("block/fluid/base/still"), x.rl("block/fluid/base/flow"));
+        // public static final FluidRegister MOLTEN_NETHERITE = FluidRegister
+        //                 .create(zStatic.Fluids.netherite, Color.PINK.darker().darker().darker())
+        //                 .pushEntity().setTextures(x.rl("block/fluid/base/still"), x.rl("block/fluid/base/flow"));
 
         public static final FluidRegister MOLTEN_BLAZE = FluidRegister
                         .create(zStatic.Fluids.blaze, Color.YELLOW.brighter().brighter())

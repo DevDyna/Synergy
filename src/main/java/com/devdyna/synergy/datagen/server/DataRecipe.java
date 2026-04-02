@@ -867,7 +867,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 zItems.LEAD_INGOT.get(), x.rl("c", "ingots/lead"), zItems.SILVER_DUST.get(), 0.25f);
 
                 moltenIngots(c, zItems.STEEL_INGOT.get(), zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
-                moltenIngots(c, Items.NETHERITE_INGOT, Tags.Items.INGOTS_NETHERITE, zFluids.MOLTEN_NETHERITE);
+                // moltenIngots(c, Items.NETHERITE_INGOT, Tags.Items.INGOTS_NETHERITE, zFluids.MOLTEN_NETHERITE);
 
                 moltenRecipes(c, "", zItems.MOLD_PLATE.get(), Items.NETHERITE_SCRAP, Items.NETHERITE_SCRAP, zFluids.MOLTEN_ANCIENT_DEBRIS, 90);
 
@@ -2766,6 +2766,12 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .output(zFluids.MOLTEN_NETHERITE,5)
                                 .unlockedBy()
                                 .save(c);
+                // MixingChamberBuilder.of() TODO BRONZE
+                //                 .fluids(zFluids.MOLTEN_GOLD,90, zFluids.MOLTEN_ANCIENT_DEBRIS,90*2)
+                //                 .output(zFluids.MOLTEN_NETHERITE,90)
+                //                 .unlockedBy()
+                //                 .save(c);
+
 
         }
 

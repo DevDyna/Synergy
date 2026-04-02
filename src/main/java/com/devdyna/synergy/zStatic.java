@@ -490,7 +490,7 @@ public class zStatic {
         public static String sulfuric_acid = "sulfuric_acid";
 
         public static String ancient_debris = AFFIX_MOLTEN + "ancient_debris";
-        public static String netherite = AFFIX_MOLTEN + "netherite";
+        // public static String netherite = AFFIX_MOLTEN + "netherite";
         public static String iron = AFFIX_MOLTEN + "iron";
         public static String copper = AFFIX_MOLTEN + "copper";
         public static String gold = AFFIX_MOLTEN + "gold";
