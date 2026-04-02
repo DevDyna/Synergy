@@ -1,11 +1,11 @@
 {
   "type": "synergy:foundry",
   "fluid": {
-    "amount": 90,
+    "amount": 180,
     "id": "synergy:molten_ancient_debris_source"
   },
   "input": {
-    "item": "minecraft:netherite_scrap"
+    "tag": "c:ores/netherite_scrap"
   },
   "ticks": 100
 }

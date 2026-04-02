@@ -2,12 +2,12 @@
   "type": "synergy:machine/electric_melter",
   "energy": 5000,
   "fluid": {
-    "amount": 90,
+    "amount": 180,
     "id": "synergy:molten_ancient_debris_source"
   },
   "input": {
     "count": 1,
-    "item": "minecraft:netherite_scrap"
+    "tag": "c:ores/netherite_scrap"
   },
   "ticks": 400
 }
