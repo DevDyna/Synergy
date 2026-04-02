@@ -308,7 +308,9 @@ public abstract class NodeBaseBE extends TickingBE implements NoGuiStorage, Rest
             if (fluid instanceof IFluidHandler handler) {
                 if (getNodeBE() instanceof FluidNodeType ft) {
                     for (int tank = 0; tank < handler.getTanks(); tank++) {
-                        if (handler.getFluidInTank(tank).isEmpty() || handler.isFluidValid(tank, ft.getFluidStack())) {
+                        if (handler.getFluidInTank(tank).isEmpty()
+                                || (handler.isFluidValid(tank, ft.getFluidStack())
+                                        && handler.getFluidInTank(tank).getAmount() < handler.getTankCapacity(tank))) {
                             return true;
                         }
                     }
@@ -477,10 +479,10 @@ public abstract class NodeBaseBE extends TickingBE implements NoGuiStorage, Rest
     public ItemStack insertItem(ItemStack stack) {
 
         if (stack.is(zItems.NODE_SPEED_UPGRADE))
-            return insertLimited(getStorage(),stack, SPEED_UPGRADE_SLOT, Common.MAX_NODE_SPEED_UPGRADES.get());
+            return insertLimited(getStorage(), stack, SPEED_UPGRADE_SLOT, Common.MAX_NODE_SPEED_UPGRADES.get());
 
         if (stack.is(zItems.NODE_STACK_UPGRADE))
-            return insertLimited(getStorage(),stack, STACK_UPGRADE_SLOT, Common.MAX_NODE_STACK_UPGRADES.get());
+            return insertLimited(getStorage(), stack, STACK_UPGRADE_SLOT, Common.MAX_NODE_STACK_UPGRADES.get());
 
         return stack;
     }
