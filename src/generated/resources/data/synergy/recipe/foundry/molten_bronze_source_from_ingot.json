@@ -1,0 +1,11 @@
+{
+  "type": "synergy:foundry",
+  "fluid": {
+    "amount": 90,
+    "id": "synergy:molten_bronze_source"
+  },
+  "input": {
+    "tag": "c:ingots/bronze"
+  },
+  "ticks": 100
+}

@@ -1,0 +1,17 @@
+{
+  "type": "synergy:machine/alloy_smelter",
+  "energy": 500,
+  "left": {
+    "count": 3,
+    "tag": "c:ingots/copper"
+  },
+  "output": {
+    "count": 4,
+    "id": "synergy:bronze_ingot"
+  },
+  "right": {
+    "count": 1,
+    "tag": "c:ingots/tin"
+  },
+  "ticks": 240
+}

@@ -1,0 +1,16 @@
+{
+  "type": "synergy:mixing_chamber",
+  "left": {
+    "amount": 270,
+    "fluid": "synergy:molten_copper_source"
+  },
+  "output": {
+    "amount": 360,
+    "id": "synergy:molten_bronze_source"
+  },
+  "right": {
+    "amount": 90,
+    "fluid": "synergy:molten_tin_source"
+  },
+  "ticks": 20
+}
