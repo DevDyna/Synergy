@@ -1,6 +1,8 @@
 package com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter;
 
 import java.util.List;
+import java.util.Optional;
+
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
@@ -15,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -47,6 +50,23 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
         return new AlloySmelterMenu(i, inventory, this, this.networkData);
     }
 
+    Optional<RecipeHolder<AlloySmelterRecipeType>> saved_recipe = null;
+
+    @Override
+    public ItemStack getInput() {
+        return invertedRecipe
+                ? super.getInput()
+                : getStorage().getStackInSlot(SECONDARY_INPUT);
+    }
+
+    public ItemStack getSecondaryInput() {
+        return invertedRecipe
+                ? getStorage().getStackInSlot(SECONDARY_INPUT)
+                : super.getInput();
+    }
+
+    boolean invertedRecipe = false;
+
     @Override
     public boolean initProgress() {
 
@@ -55,20 +75,17 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
 
         progress_cancel = false;
 
-        var r = RecipeUtils.getRecipes(level, zMachines.ALLOY_SMELTER,
-                new BiItemInput(getSecondaryInput(), getInput()));
-        var r2 = RecipeUtils.getRecipes(level, zMachines.ALLOY_SMELTER,
+        saved_recipe = RecipeUtils.getRecipes(level, zMachines.ALLOY_SMELTER,
                 new BiItemInput(getInput(), getSecondaryInput()));
+
+        if (saved_recipe.isEmpty()) {
+            invertedRecipe = !invertedRecipe;
+            return cancel();
+        }
 
         AlloySmelterRecipeType recipe;
 
-        boolean inverse = r.isEmpty();
-
-        // no recipe
-        if (inverse && r2.isEmpty())
-            return cancel();
-
-        recipe = (inverse ? r2 : r).get().value();
+        recipe = saved_recipe.get().value();
 
         if (!checkSlot(getOutput(), recipe.getOutputItem().copy()))
             return cancel();
@@ -87,17 +104,9 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
     @Override
     public void endProgress() {
 
-        var r = RecipeUtils.getRecipes(level, zMachines.ALLOY_SMELTER,
-                new BiItemInput(getSecondaryInput(), getInput()));
-
-        var r2 = RecipeUtils.getRecipes(level, zMachines.ALLOY_SMELTER,
-                new BiItemInput(getInput(), getSecondaryInput()));
-
         AlloySmelterRecipeType recipe;
 
-        boolean inverse = r.isEmpty();
-
-        recipe = (inverse ? r2 : r).get().value();
+        recipe = saved_recipe.get().value();
 
         updateOutputSlot(getOutput(), recipe.getOutputItem().copy(), OUTPUT_SLOT);
 
@@ -113,10 +122,6 @@ public class AlloySmelterBE extends BaseMachineBE implements ExtraMachineSlots {
     @Override
     public SlotBuilder getSlotTypes() {
         return SlotBuilder.of(1).set(SECONDARY_INPUT, SlotType.INPUT);
-    }
-
-    public ItemStack getSecondaryInput() {
-        return getStorage().getStackInSlot(SECONDARY_INPUT);
     }
 
 }
