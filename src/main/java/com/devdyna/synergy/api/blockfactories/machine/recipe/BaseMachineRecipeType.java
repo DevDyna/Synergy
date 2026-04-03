@@ -34,13 +34,14 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
     public ItemStack output;
     @Deprecated
     public ItemStack optional_output;
-    
+
     public @Nullable ChanceOutputItem optional_output_item;
     // public SizedIngredient extra_input;
     @Deprecated
     public float chance;
     public boolean consumeCatalyst;
     public SizedFluidIngredient fluid_input;
+    public SizedFluidIngredient optional_fluid_input;
     public FluidStack fluid_output;
 
     public boolean consumeCatalyst() {
@@ -84,6 +85,10 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return fluid_input;
     }
 
+    public SizedFluidIngredient getOptionalFluidInput() {
+        return optional_fluid_input;
+    }
+
     /**
      * 0.00 -> 1.00
      */
@@ -110,7 +115,9 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return NonNullList.copyOf(list);
     }
 
-    public abstract ItemStack getRecipeInput(T recipe);
+    public ItemStack getRecipeInput(T recipe) {
+        return null;
+    }
 
     public ItemStack getRecipeInput2(T recipe) {
         return null;
@@ -120,28 +127,53 @@ public abstract class BaseMachineRecipeType<T extends RecipeInput> implements Re
         return null;
     };
 
+    public SizedFluidIngredient getRecipeFluidInput2(T recipe) {
+        return null;
+    };
+
     public boolean matches(T r, Level l) {
 
-        if (!getInputItem().test(getRecipeInput(r)))
-            return false;
+        // primary item is present
+        if (getRecipeInput(r) != null && getInputItem() != null) 
+            if (!x.getItems(getInputItem()).isEmpty()) {
 
-        if (getFluidInput() != null && !x.getFluids(getFluidInput()).isEmpty()) {
-            if (!x.getFluids(getRecipeFluidInput(r))
-                    .stream()
-                    .anyMatch(i -> getFluidInput().test(i)))
+            // primary item dont match
+            if (!getInputItem().test(getRecipeInput(r)))
+                return false;
+
+            // primary count dont match
+            if (getInputItem().count() > getRecipeInput(r).getCount())
                 return false;
         }
 
-        if (getCatalystItem() != null && !x.getItems(getCatalystItem()).isEmpty()) {
+        // primary fluid is present
+        if (getFluidInput() != null && getRecipeFluidInput(r) != null)
+            if (!x.getFluids(getFluidInput()).isEmpty())
+                if (!x.getFluids(getRecipeFluidInput(r))
+                        .stream()
+                        .anyMatch(i -> getFluidInput().test(i)))
+                    return false;
 
-            // required catalyst empty -> fail
-            if (getRecipeInput2(r) == null || getRecipeInput2(r).isEmpty())
-                return false;
+        // secondary fluid is present
+        if (getOptionalFluidInput() != null && getRecipeFluidInput2(r) != null)
+            if (!x.getFluids(getOptionalFluidInput()).isEmpty())
+                if (!x.getFluids(getRecipeFluidInput2(r))
+                        .stream()
+                        .anyMatch(i -> getOptionalFluidInput().test(i)))
+                    return false;
 
-            // catalyst dont match -> fail
-            if (!getCatalystItem().test(getRecipeInput2(r)))
-                return false;
-        }
+        // secondary item input is present
+        if (getCatalystItem() != null && getRecipeInput2(r) != null)
+            if (!x.getItems(getCatalystItem()).isEmpty()) {
+
+                // secondary item input dont match
+                if (getCatalystItem().count() > getRecipeInput2(r).getCount())
+                    return false;
+
+                // secondary item input dont match
+                if (!getCatalystItem().test(getRecipeInput2(r)))
+                    return false;
+            }
 
         return true;
     }
