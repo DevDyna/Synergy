@@ -1,7 +1,9 @@
 package com.devdyna.synergy.api.utils;
+
 /**
  * Simple ticking process
- * <br/><br/>
+ * <br/>
+ * <br/>
  * Use only inside Server-Level!
  */
 public class Ticker {
@@ -49,7 +51,11 @@ public class Ticker {
         return check;
     }
 
-    public void cancel(){
+    public boolean every(int v) {
+        return (value > 0 && v > 0) ? value % v == 0 : false;
+    }
+
+    public void cancel() {
         value = base;
     }
 
