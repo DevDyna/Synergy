@@ -104,7 +104,7 @@ public interface NoGuiStorage {
     }
 
     private boolean canPlaceItem(Level l, BlockPos p, Direction d) {
-        return !l.getBlockState(p.relative(d)).isSolidRender(l, p.relative(d));
+        return l.getBlockState(p.relative(d)).isSolidRender(l, p.relative(d));
     }
 
     private void spawnItemEntity(Level l, BlockPos p, ItemStack s) {
