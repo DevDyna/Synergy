@@ -213,6 +213,11 @@ public class zStatic {
 
         public static String blast_bricks = "blast_bricks";
 
+        /**
+         * THIS REGISTRY ID IS "sandy" NOT "sandy_bricks"
+         */
+        public static String sandy_brick = "sandy";
+
         public class MachineFrame {
             public static String basic = "basic_machine_frame";
             public static String advanced = "advanced_machine_frame";

@@ -62,6 +62,7 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 simpleFullBlock(zBlocks.FIRECLAY_BRICK_CRACKED.getTiles(), "decorative/");
                 simpleFullBlock(zBlocks.FIRECLAY_BRICK_MOSSY.getBricks(), "decorative/");
                 simpleFullBlock(zBlocks.FIRECLAY_BRICK_MOSSY.getTiles(), "decorative/");
+                simpleFullBlock(zBlocks.SANDY_BRICK.getBricks(), "decorative/");
 
                 simpleFullBlock(zBlocks.IRON_WOOD.getPlanks(), "decorative/");
                 leaveBlock(zBlocks.IRON_WOOD.getLeaves(), "block/decorative/");

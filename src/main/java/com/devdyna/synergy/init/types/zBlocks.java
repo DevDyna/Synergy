@@ -511,6 +511,19 @@ public class zBlocks {
                         .tile_slab()
                         .createTag();
 
+        public static final BrickFamily SANDY_BRICK = BrickFamily
+                        .of(zStatic.DecorativeBlocks.sandy_brick,
+                                        BlockBehaviour.Properties.of().sound(SoundType.STONE)
+                                                        .strength(0.75f).mapColor(MapColor.SAND))
+                        .bricks()
+                        // .pillar()
+                        // .tiles()
+                        .brick_stair()
+                        .brick_slab()
+                        // .tile_stair()
+                        // .tile_slab()
+                        .createTag();
+
         public static final DeferredHolder<Block, Block> SIMPLE_WATER_GEN = Material.registerItemBlock(
                         zStatic.ResourceGenerators.Water.simple,
                         () -> new SimpleWaterGenBlock(), zResourceGenerators);

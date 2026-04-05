@@ -84,9 +84,6 @@ public class zItemTag {
         public static final TagKey<Item> NUGGET_COPPER = Material.tagItem("nuggets/copper", "c");
         public static final TagKey<Item> NUGGET_WROUGHT_IRON = Material.tagItem("nuggets/wrought_iron", "c");
 
-        // public static final TagKey<Item> URN_MIXTURES =
-        // Material.tagItem("urn_mixtures");
-
         public static final TagKey<Item> FOILS = Material.tagItem("foils", "c");
         public static final TagKey<Item> FOIL_COPPER = Material.tagItem("foils/copper", "c");
         public static final TagKey<Item> FOIL_GOLD = Material.tagItem("foils/gold", "c");

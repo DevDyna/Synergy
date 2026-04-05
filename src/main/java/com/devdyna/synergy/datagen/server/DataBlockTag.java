@@ -43,6 +43,7 @@ public class DataBlockTag extends BlockTagsProvider {
                                 .addTag(zBlocks.FIRECLAY_BRICKS.getTagkey())
                                 .addTag(zBlocks.FIRECLAY_BRICK_CRACKED.getTagkey())
                                 .addTag(zBlocks.FIRECLAY_BRICK_MOSSY.getTagkey())
+                                .addTag(zBlocks.SANDY_BRICK.getTagkey())
                                 .add(
                                                 zBlocks.SPRINKLER.get(),
                                                 zBlocks.HARVESTER.get(),
@@ -68,8 +69,11 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.ENTITY_WATCHER.get(),
                                                 zBlocks.FOUNDRY.get(),
                                                 zBlocks.MIXING_CHAMBER.get()
-                                                
-                                                );
+
+                                );
+
+                tag(BlockTags.MINEABLE_WITH_SHOVEL)
+                                .addTag(zBlocks.SANDY_BRICK.getTagkey());
 
                 tag(BlockTags.MINEABLE_WITH_AXE)
                                 .add(zBlocks.IRON_WOOD.getLogs())
@@ -213,6 +217,9 @@ public class DataBlockTag extends BlockTagsProvider {
                 tag(zBlocks.FIRECLAY_BRICK_MOSSY.getTagkey())
                                 .add(zBlocks.FIRECLAY_BRICK_MOSSY.getAll());
 
+                tag(zBlocks.SANDY_BRICK.getTagkey())
+                                .add(zBlocks.SANDY_BRICK.getAll());
+
                 tag(zBlockTag.EVAPORATION_BASIC_HEATER).add(Blocks.MAGMA_BLOCK);
                 tag(zBlockTag.DRYING_RACK_HEATER).addTag(BlockTags.CAMPFIRES);
 
@@ -249,7 +256,7 @@ public class DataBlockTag extends BlockTagsProvider {
 
                 tag(zBlockTag.IRONWOOD_LOGS)
                                 .add(zBlocks.IRON_WOOD.getLogs());
-                                
+
                 tag(Tags.Blocks.CLUSTERS)
                                 .add(zBlocks.AQUAMARINE_CLUSTER.get());
 

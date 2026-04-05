@@ -604,8 +604,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .unlockedBy()
                                 .save(c);
 
-                
-
                 RockCrusherRecipeBuilder.of()
                                 .fluid(zFluidTags.SULFURIC_ACID, 25)
                                 .input(zItems.TUFF_CHUNK)
@@ -630,8 +628,6 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .addResult(zItems.AURICUPRIDE, 0.15f)
                                 .unlockedBy()
                                 .save(c);
-
-                
 
                 RockCrusherRecipeBuilder.of()
                                 .fluid(zFluidTags.SULFURIC_ACID, 25)
@@ -852,7 +848,6 @@ public class DataRecipe extends ExtraRecipeProvider {
 
                 moltenIngots(c, zItems.STEEL_INGOT.get(), zItemTag.INGOT_STEEL, zFluids.MOLTEN_STEEL);
                 moltenIngots(c, zItems.BRONZE_INGOT.get(), zItemTag.INGOT_BRONZE, zFluids.MOLTEN_BRONZE);
-                
 
                 moltenRecipes(c, "", zItems.MOLD_PLATE.get(), Items.NETHERITE_SCRAP, Items.NETHERITE_SCRAP,
                                 zFluids.MOLTEN_ANCIENT_DEBRIS, 90);
@@ -2467,7 +2462,8 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .define('N', Items.IRON_NUGGET)
                                 .unlockedBy(ID,
                                                 has(Items.IRON_INGOT))
-                                .group(zStatic.Items.smasher).save(c, x.rl(
+                                .group(zStatic.Items.smasher)
+                                .save(c, x.rl(
                                                 zItems.SMASHER.get().getDescriptionId()
                                                                 .replace("item." + ID + ".", "")
                                                                 + "_alt"));
@@ -2751,10 +2747,27 @@ public class DataRecipe extends ExtraRecipeProvider {
                 ShapedRecipeBuilder.shaped(MISC, zItems.BRONZE_INGOT.get(), 4)
                                 .pattern("CC")
                                 .pattern("CT")
-                                .define('T', Tags.Items.INGOTS_COPPER)
-                                .define('C', zItemTag.INGOT_TIN)
+                                .define('C', Tags.Items.INGOTS_COPPER)
+                                .define('T', zItemTag.INGOT_TIN)
                                 .unlockedBy(ID, has(Items.COPPER_INGOT))
                                 .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.SANDY_BRICK.getBricks().get(), 1)
+                                .pattern("SB")
+                                .pattern("BS")
+                                .define('S', Items.SAND)
+                                .define('B', zItems.PACKED_MUD_BRICK.get())
+                                .unlockedBy(ID, has(Items.SAND))
+                                .save(c);
+
+                List.of(zBlocks.SANDY_BRICK)
+                                .forEach(s -> {
+                                        stair(s.getStairBricks().get(), s.getBricks().get(), c);
+                                        slab(s.getSlabBricks().get(), s.getBricks().get(), c);
+                                        stonecutter(c, s.getSlabBricks().get(), s.getBricks().get(), 2);
+                                        stonecutter(c, s.getStairBricks().get(), s.getBricks().get());
+
+                                });
 
         }
 
