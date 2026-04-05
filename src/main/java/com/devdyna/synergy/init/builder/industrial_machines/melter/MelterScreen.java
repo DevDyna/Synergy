@@ -3,7 +3,7 @@ package com.devdyna.synergy.init.builder.industrial_machines.melter;
 import java.util.List;
 
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineScreen;
-import com.devdyna.synergy.api.render.FluidGUITank;
+import com.devdyna.synergy.api.render.helpers.FluidGUITank;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;

@@ -1,8 +1,8 @@
 package com.devdyna.synergy.init.builder.magic.logic_box;
 
-import com.devdyna.synergy.api.render.SimpleItemRender;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.render.PreFabRender;
+import com.devdyna.synergy.api.render.helpers.PreFabRender;
+import com.devdyna.synergy.api.render.helpers.SimpleItemRender;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;

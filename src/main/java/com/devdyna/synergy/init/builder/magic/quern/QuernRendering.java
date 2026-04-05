@@ -1,7 +1,8 @@
 package com.devdyna.synergy.init.builder.magic.quern;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.render.ModelRenderHelper;
+import com.devdyna.synergy.api.render.helpers.ModelRenderHelper;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;

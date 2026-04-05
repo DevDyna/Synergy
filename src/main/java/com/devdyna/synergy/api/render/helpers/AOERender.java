@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.render;
+package com.devdyna.synergy.api.render.helpers;
 
 import javax.annotation.Nullable;
 

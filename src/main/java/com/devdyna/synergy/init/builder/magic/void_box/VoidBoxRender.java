@@ -1,8 +1,8 @@
 package com.devdyna.synergy.init.builder.magic.void_box;
 
-import com.devdyna.synergy.api.render.SimpleItemRender;
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.render.PreFabRender;
+import com.devdyna.synergy.api.render.helpers.PreFabRender;
+import com.devdyna.synergy.api.render.helpers.SimpleItemRender;
 import com.devdyna.synergy.init.types.zItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 

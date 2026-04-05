@@ -2,8 +2,8 @@ package com.devdyna.synergy.init.builder.survival.crushing_tub;
 
 import java.util.Random;
 
-import com.devdyna.synergy.api.render.FluidRenderHelper;
-import com.devdyna.synergy.api.render.SimpleItemRender;
+import com.devdyna.synergy.api.render.helpers.FluidRenderHelper;
+import com.devdyna.synergy.api.render.helpers.SimpleItemRender;
 import com.devdyna.synergy.api.utils.Ticker;
 import com.devdyna.synergy.init.types.zItems;
 import com.mojang.blaze3d.vertex.PoseStack;

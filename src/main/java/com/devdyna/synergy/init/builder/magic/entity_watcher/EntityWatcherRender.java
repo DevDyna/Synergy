@@ -1,7 +1,7 @@
 package com.devdyna.synergy.init.builder.magic.entity_watcher;
 
 import com.devdyna.synergy.zStatic;
-import com.devdyna.synergy.api.render.ModelRenderHelper;
+import com.devdyna.synergy.api.render.helpers.ModelRenderHelper;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 

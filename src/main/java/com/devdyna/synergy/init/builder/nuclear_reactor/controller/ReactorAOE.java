@@ -1,6 +1,6 @@
 package com.devdyna.synergy.init.builder.nuclear_reactor.controller;
 
-import com.devdyna.synergy.api.render.AOERender;
+import com.devdyna.synergy.api.render.helpers.AOERender;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;

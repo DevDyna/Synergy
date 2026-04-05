@@ -1,6 +1,7 @@
 package com.devdyna.synergy.api.render;
 
 import com.devdyna.synergy.api.basebe.be.BETank;
+import com.devdyna.synergy.api.render.helpers.FluidRenderHelper;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;

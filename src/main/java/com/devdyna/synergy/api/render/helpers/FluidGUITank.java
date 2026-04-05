@@ -1,4 +1,4 @@
-package com.devdyna.synergy.api.render;
+package com.devdyna.synergy.api.render.helpers;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
