@@ -18,10 +18,10 @@ public enum SimpleDelayProvider
   public void appendTooltip(ITooltip t, BlockAccessor a, IPluginConfig c) {
 
     var nbt = a.getServerData();
-    if (!nbt.contains("delay") || !nbt.contains("max"))
+    if (!nbt.contains("diff"))
       return;
 
-    t.add(Component.literal(TimeUtil.getTimeValue(nbt.getInt("max")-nbt.getInt("delay"), 0, false)+ " left"));
+    t.add(Component.literal(TimeUtil.getTimeValue(nbt.getInt("diff"), 0, false)+ " left"));
 
   }
 
@@ -35,8 +35,7 @@ public enum SimpleDelayProvider
     var be = a.getBlockEntity();
 
     if (be instanceof SimpleTickerDelay m && m.getTicker() != null && !(be instanceof TimeredRecipe)) {
-      c.putInt("delay", m.getTicker().get());
-      c.putInt("max", m.getTicker().max());
+      c.putInt("diff", m.getTicker().diff());
     }
 
   }
