@@ -41,6 +41,10 @@ public class Ticker {
         return delay;
     }
 
+    public int diff() {
+        return max() - get();
+    }
+
     public boolean commit() {
         var check = value >= delay;
         if (check)
@@ -52,7 +56,7 @@ public class Ticker {
     }
 
     public boolean every(int v) {
-        return (value > 0 && v > 0) ? value % v == 0 : false;
+        return v > 0 && value % v == 0;
     }
 
     public void cancel() {
