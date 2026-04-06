@@ -16,6 +16,7 @@ import com.devdyna.synergy.compat.jade.provider.EnvironmentModifierProvider;
 import com.devdyna.synergy.compat.jade.provider.FilterProvider;
 import com.devdyna.synergy.compat.jade.provider.FoundryHeaterProvider;
 import com.devdyna.synergy.compat.jade.provider.FuelCellProgress;
+import com.devdyna.synergy.compat.jade.provider.HeatInfoProvider;
 import com.devdyna.synergy.compat.jade.provider.LaserMachineGunProvider;
 import com.devdyna.synergy.compat.jade.provider.LaserRotorProvider;
 import com.devdyna.synergy.compat.jade.provider.MachineProgress;
@@ -57,10 +58,9 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(CoolerProvider.INSTANCE, CoolerBlockBase.class);
         r.registerBlockComponent(ModeratorProvider.INSTANCE, ModeratorBase.class);
         r.registerBlockComponent(FuelCellProgress.INSTANCE, FuelCellBlock.class);
-
-       
+        r.registerBlockComponent(HeatInfoProvider.INSTANCE, TickingBlock.class);
         r.registerBlockComponent(EnvironmentModifierProvider.INSTANCE, Block.class);
- r.registerBlockComponent(TimeredRecipeProvider.INSTANCE, Block.class);
+        r.registerBlockComponent(TimeredRecipeProvider.INSTANCE, Block.class);
         r.registerBlockComponent(SimpleDelayProvider.INSTANCE, TickingBlock.class);
         r.registerBlockComponent(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
         r.registerBlockComponent(FilterProvider.INSTANCE, LogicBoxBlock.class);
@@ -68,6 +68,7 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(EntityWatcherModeProvider.INSTANCE, EntityWatcherBlock.class);
         r.registerBlockComponent(FoundryHeaterProvider.INSTANCE, Block.class);
         r.registerBlockComponent(NodeUpgradesProvider.INSTANCE, NodeBaseBlock.class);
+
     }
 
     @Override
@@ -83,9 +84,9 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockDataProvider(CoolerProvider.INSTANCE, CoolerBlockBase.class);
         r.registerBlockDataProvider(ModeratorProvider.INSTANCE, ModeratorBase.class);
         r.registerBlockDataProvider(FuelCellProgress.INSTANCE, FuelCellBlock.class);
-       
+        r.registerBlockDataProvider(HeatInfoProvider.INSTANCE, TickingBlock.class);
         r.registerBlockDataProvider(EnvironmentModifierProvider.INSTANCE, Block.class);
-         r.registerBlockDataProvider(TimeredRecipeProvider.INSTANCE, Block.class);
+        r.registerBlockDataProvider(TimeredRecipeProvider.INSTANCE, Block.class);
         r.registerBlockDataProvider(SimpleDelayProvider.INSTANCE, TickingBlock.class);
         r.registerBlockDataProvider(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
         r.registerBlockDataProvider(FilterProvider.INSTANCE, LogicBoxBlock.class);
@@ -93,5 +94,6 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockDataProvider(EntityWatcherModeProvider.INSTANCE, EntityWatcherBlock.class);
         r.registerBlockDataProvider(FoundryHeaterProvider.INSTANCE, Block.class);
         r.registerBlockDataProvider(NodeUpgradesProvider.INSTANCE, NodeBaseBlock.class);
+
     }
 }
