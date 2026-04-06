@@ -1,6 +1,7 @@
 package com.devdyna.synergy;
 
 import com.devdyna.synergy.api.render.FullTankRender;
+import com.devdyna.synergy.api.render.SolidFuelHeaterRender;
 import com.devdyna.synergy.api.utils.ClazzUtil;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.automation.chopper.ChopperAOE;
@@ -82,6 +83,9 @@ public class Client {
         event.registerBlockEntityRenderer(zBlockEntities.CHOPPER.get(), ChopperAOE::new);
 
         event.registerBlockEntityRenderer(zBlockEntities.ENTITY_WATCHER.get(), EntityWatcherRender::new);
+
+        event.registerBlockEntityRenderer(zBlockEntities.BRICKED_HEATER.get(), SolidFuelHeaterRender::new);
+        event.registerBlockEntityRenderer(zBlockEntities.METALLIC_HEATER.get(), SolidFuelHeaterRender::new);
 
     }
 

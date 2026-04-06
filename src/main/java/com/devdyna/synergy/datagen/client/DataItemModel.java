@@ -256,6 +256,10 @@ public class DataItemModel extends ExtraItemModelProvider {
                                 .texture("side", "synergy:block/mixing_chamber")
                                 .texture("top", "synergy:block/fuel_tank/top")
                                 .renderType(DataGenUtil.CUTOUT);
+
+                withExistingParent(zBlocks.BRICKED_HEATER.getRegisteredName(), modLoc("block/heater/bricked/close"));
+                withExistingParent(zBlocks.METALLIC_HEATER.getRegisteredName(), modLoc("block/heater/metallic/close"));
+
         }
 
 }

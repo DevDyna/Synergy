@@ -36,6 +36,8 @@ import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBa
 import com.devdyna.synergy.init.builder.survival.faucet.FaucetBE;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryBE;
 import com.devdyna.synergy.init.builder.survival.fuel_tank.FuelTankBE;
+import com.devdyna.synergy.init.builder.survival.heater.bricked.BrickedHeaterBE;
+import com.devdyna.synergy.init.builder.survival.heater.metallic.MetallicHeaterBE;
 import com.devdyna.synergy.init.builder.survival.mixing_chamber.MixingChamberBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -215,5 +217,13 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EntityWatcherBE>> ENTITY_WATCHER = Material
                         .createBlockEntity(zStatic.Blocks.entity_watcher, EntityWatcherBE::new,
                                         zBlocks.ENTITY_WATCHER);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BrickedHeaterBE>> BRICKED_HEATER = Material
+                        .createBlockEntity(zStatic.Blocks.bricked_heater, BrickedHeaterBE::new,
+                                        zBlocks.BRICKED_HEATER);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MetallicHeaterBE>> METALLIC_HEATER = Material
+                        .createBlockEntity(zStatic.Blocks.metallic_heater, MetallicHeaterBE::new,
+                                        zBlocks.METALLIC_HEATER);
 
 }

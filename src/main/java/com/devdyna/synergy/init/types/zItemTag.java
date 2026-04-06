@@ -275,4 +275,6 @@ public class zItemTag {
         public static final TagKey<Item> OXIDIZER = Material.tagItem("oxidizer");
         public static final TagKey<Item> WAXING = Material.tagItem("waxing");
 
+        public static final TagKey<Item> CAN_LIT_SOLID_IGNITER = Material.tagItem("lit_solid_igniter");
+
 }

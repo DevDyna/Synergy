@@ -345,6 +345,8 @@ public class DataLang extends LanguageProvider {
                                 "Entity Watcher Info");
                 add("config.jade.plugin_" + ID + "." + "node_upgrades",
                                 "Node Upgrades Info");
+                add("config.jade.plugin_" + ID + "." + "heating",
+                                "Solid Fuel Heater Info");
 
                 add(Main.ID + ".color", "Color: %d");
 

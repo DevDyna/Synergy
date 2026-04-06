@@ -2,8 +2,7 @@ package com.devdyna.synergy.datagen.api;
 
 import static com.devdyna.synergy.Main.ID;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiFunction;
 
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
@@ -275,6 +274,41 @@ public abstract class ExtraBlockStateProvider extends BlockStateProvider {
                                                                         .toYRot() + 0) % 360)
                                         .build();
                 });
+
+        }
+
+        protected void solidheater(Block b,String suffix) {
+                var m = getMultipartBuilder(b);
+
+                var models = List.of(models().getExistingFile(modLoc("block/heater/"+suffix+"/open")),
+                                models().getExistingFile(modLoc("block/heater/"+suffix+"/close")));
+                var state = List.of(true, false);
+
+                for (Boolean v : state) {
+                        m.part().modelFile(models.get(state.indexOf(v)))
+                                        .rotationY(0)
+                                        .addModel()
+                                        .condition(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)
+                                        .condition(BlockStateProperties.OPEN, v);
+                        m.part().modelFile(models.get(state.indexOf(v)))
+                                        .rotationY(180)
+                                        .addModel()
+                                        .condition(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH)
+                                        .condition(BlockStateProperties.OPEN, v);
+                        m.part().modelFile(models.get(state.indexOf(v)))
+                                        .rotationY(90)
+                                        .addModel()
+                                        .condition(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST)
+                                        .condition(BlockStateProperties.OPEN, v);
+                        m.part().modelFile(models.get(state.indexOf(v)))
+                                        .rotationY(270)
+                                        .addModel()
+                                        .condition(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST)
+                                        .condition(BlockStateProperties.OPEN, v);
+                }
+
+                m.part().modelFile(models().getExistingFile(modLoc("block/heater/fire"))).addModel()
+                                .condition(BlockStateProperties.ENABLED, true);
 
         }
 

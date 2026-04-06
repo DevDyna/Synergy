@@ -53,7 +53,10 @@ public class Capability {
 
                                                 zBlocks.FLUID_PROVIDER,
                                                 zBlocks.FLUID_RETRIEVAL,
-                                                zBlocks.FLUID_TRANSFER
+                                                zBlocks.FLUID_TRANSFER,
+
+                                                zBlocks.BRICKED_HEATER,
+                                                zBlocks.METALLIC_HEATER
 
                                 ));
 

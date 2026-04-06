@@ -267,8 +267,10 @@ public class zStatic {
         public static String solar_panel = "solar_panel";
         public static String healer = "healer";
 
-        public static String mixing_chamber = "mixing_chamber";
+        public static String bricked_heater = "bricked_heater";
+        public static String metallic_heater = "metallic_heater";
 
+        public static String mixing_chamber = "mixing_chamber";
 
         public static String logic_box = "logic_box";
         public static String void_box = "void_box";
@@ -566,7 +568,6 @@ public class zStatic {
         public static final String LOGIC_BOX_OFF = "block/_render/logic_box/red";
         public static final String LOGIC_BOX_ON = "block/_render/logic_box/green";
         public static final String ENTITY_WATCHER = "block/_render/entity_watcher";
-
     }
 
 }

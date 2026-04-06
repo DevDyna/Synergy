@@ -145,6 +145,9 @@ public class CreativeTabs {
             event.accept(zBlocks.FUEL_TANK.get());
             event.accept(zBlocks.CASTING_TABLE.get());
             event.accept(zBlocks.FAUCET.get());
+            event.accept(zBlocks.MIXING_CHAMBER.get());
+            event.accept(zBlocks.BRICKED_HEATER.get());
+            event.accept(zBlocks.METALLIC_HEATER.get());
             zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get).forEach(event::accept);
         }
 

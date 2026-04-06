@@ -1,0 +1,27 @@
+{
+  "format_version": "1.9.0",
+  "credit": "Made with Blockbench",
+  "parent": "block/block",
+  "render_type": "cutout",
+  "textures": { "this_is_fine": "block/campfire_fire" },
+  "elements": [
+    {
+      "from": [2, 5, 8],
+      "to": [14, 12, 8],
+      "rotation": { "angle": 45, "axis": "y", "origin": [8, 8, 8] },
+      "faces": {
+        "north": { "uv": [2, 0, 14, 7], "texture": "#this_is_fine" },
+        "south": { "uv": [2, 0, 14, 7], "texture": "#this_is_fine" }
+      }
+    },
+    {
+      "from": [8, 5, 2],
+      "to": [8, 12, 14],
+      "rotation": { "angle": 45, "axis": "y", "origin": [8, 8, 8] },
+      "faces": {
+        "east": { "uv": [2, 0, 14, 7], "texture": "#this_is_fine" },
+        "west": { "uv": [2, 0, 14, 7], "texture": "#this_is_fine" }
+      }
+    }
+  ]
+}

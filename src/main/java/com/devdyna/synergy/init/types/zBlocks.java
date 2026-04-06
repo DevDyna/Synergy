@@ -29,6 +29,8 @@ import com.devdyna.synergy.init.builder.survival.evaporation_basin.EvaporationBa
 import com.devdyna.synergy.init.builder.survival.faucet.FaucetBlock;
 import com.devdyna.synergy.init.builder.survival.foundry.FoundryBlock;
 import com.devdyna.synergy.init.builder.survival.fuel_tank.FuelTankBlock;
+import com.devdyna.synergy.init.builder.survival.heater.bricked.BrickedHeaterBlock;
+import com.devdyna.synergy.init.builder.survival.heater.metallic.MetallicHeaterBlock;
 import com.devdyna.synergy.init.builder.survival.mixing_chamber.MixingChamberBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
 import com.devdyna.synergy.init.builder.*;
@@ -681,6 +683,14 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> ENTITY_WATCHER = Material.registerItemBlock(
                         zStatic.Blocks.entity_watcher,
                         () -> new EntityWatcherBlock());
+
+        public static final DeferredHolder<Block, Block> BRICKED_HEATER = Material.registerItemBlock(
+                        zStatic.Blocks.bricked_heater,
+                        () -> new BrickedHeaterBlock());
+
+        public static final DeferredHolder<Block, Block> METALLIC_HEATER = Material.registerItemBlock(
+                        zStatic.Blocks.metallic_heater,
+                        () -> new MetallicHeaterBlock());
 
         // ---------------------------------------------------------------------------------------//
 

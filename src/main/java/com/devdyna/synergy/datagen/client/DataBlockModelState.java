@@ -306,6 +306,11 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                                                 .texture("side", "synergy:block/mixing_chamber")
                                                 .texture("top", "synergy:block/fuel_tank/top"));
 
+
+                solidheater(zBlocks.BRICKED_HEATER.get(),"bricked");
+                solidheater(zBlocks.METALLIC_HEATER.get(),"metallic");
+
+
         }
 
 }

@@ -415,6 +415,9 @@ public class DataItemTag extends ItemTagsProvider {
                 tag(zItemTag.WAXING)
                                 .add(zItems.HONEY_SOLUTION.get(), Items.HONEYCOMB);
 
+                tag(zItemTag.CAN_LIT_SOLID_IGNITER)
+                                .add(Items.FLINT_AND_STEEL, Items.FIRE_CHARGE);
+
         }
 
 }
