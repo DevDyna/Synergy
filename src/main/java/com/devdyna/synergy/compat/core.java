@@ -40,6 +40,6 @@ public class core {
 
     private static final void compatInfo(String id, String displayName) {
         LogUtil.info(displayName
-                + (ModAddonUtil.checkMod(id) ? " " : " not") + " found");
+                + (ModAddonUtil.checkMod(id) ? "" : " not") + " found");
     }
 }
