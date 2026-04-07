@@ -28,14 +28,14 @@ public class CapabilityUtils {
                 Capabilities.FluidHandler.BLOCK,
                 (level, pos, state, be, side) -> {
 
+                    if (be instanceof RestrictedFluidHandler h)
+                        return h.getFluidStorageRestricted();
+
                     if (be instanceof FluidTankStorage t)
                         return t.getFluidStorage();
 
                     if (be instanceof SimpleFluidStorage)
                         return be.getData(zHandlers.FLUID_TANK);
-
-                    if (be instanceof RestrictedFluidHandler h)
-                        return h.getFluidStorageRestricted();
 
                     return (be != null) ? be.getData(zHandlers.FLUID_TANK) : null;
                 },
