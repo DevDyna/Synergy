@@ -114,4 +114,6 @@ public class zFluids {
                         .create(zStatic.Fluids.bronze, Color.ORANGE.darker())
                         .pushEntity().setTextures(x.rl("block/fluid/base/still"), x.rl("block/fluid/base/flow"));
 
+        public static final FluidRegister STEAM = FluidRegister.create(zStatic.Fluids.steam, Color.WHITE);
+
 }

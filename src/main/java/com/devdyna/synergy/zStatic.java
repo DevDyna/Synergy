@@ -497,6 +497,7 @@ public class zStatic {
         public static String ironberry_juice = "ironberry_juice";
         public static String liquid_glass = "liquid_glass";
         public static String honey = "honey";
+        public static String steam = "steam";
         public static String sulfuric_acid = "sulfuric_acid";
 
         public static String ancient_debris = AFFIX_MOLTEN + "ancient_debris";

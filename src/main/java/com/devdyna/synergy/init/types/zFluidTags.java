@@ -28,5 +28,7 @@ public class zFluidTags {
     public static final TagKey<Fluid> URANIUM_MOLTEN = Material.tagFluid("molten_fluids/uranium");
     
     public static final TagKey<Fluid> SULFURIC_ACID = Material.tagFluid("sulfuric_acid","c");
+   
+    public static final TagKey<Fluid> STEAM = Material.tagFluid("steam","c");
 
 }
