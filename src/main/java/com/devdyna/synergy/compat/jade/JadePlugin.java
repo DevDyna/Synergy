@@ -64,7 +64,6 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(TimeredRecipeProvider.INSTANCE, Block.class);
         r.registerBlockComponent(HeatInfoConsumer.INSTANCE, Block.class);
 
-        r.registerBlockComponent(SimpleDelayProvider.INSTANCE, Block.class);
         r.registerBlockComponent(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
         r.registerBlockComponent(FilterProvider.INSTANCE, LogicBoxBlock.class);
         r.registerBlockComponent(SidedFilterProvider.INSTANCE, RouterBlock.class);
@@ -72,6 +71,7 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(FoundryHeaterProvider.INSTANCE, Block.class);
         r.registerBlockComponent(NodeUpgradesProvider.INSTANCE, NodeBaseBlock.class);
 
+        r.registerBlockComponent(SimpleDelayProvider.INSTANCE, Block.class);
     }
 
     @Override
@@ -92,13 +92,14 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockDataProvider(TimeredRecipeProvider.INSTANCE, Block.class);
         r.registerBlockDataProvider(HeatInfoConsumer.INSTANCE, Block.class);
 
-        r.registerBlockDataProvider(SimpleDelayProvider.INSTANCE, Block.class);
         r.registerBlockDataProvider(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
         r.registerBlockDataProvider(FilterProvider.INSTANCE, LogicBoxBlock.class);
         r.registerBlockDataProvider(SidedFilterProvider.INSTANCE, RouterBlock.class);
         r.registerBlockDataProvider(EntityWatcherModeProvider.INSTANCE, EntityWatcherBlock.class);
         r.registerBlockDataProvider(FoundryHeaterProvider.INSTANCE, Block.class);
         r.registerBlockDataProvider(NodeUpgradesProvider.INSTANCE, NodeBaseBlock.class);
+
+        r.registerBlockDataProvider(SimpleDelayProvider.INSTANCE, Block.class);
 
     }
 }
