@@ -2803,7 +2803,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.BRICKED_HEATER.get(), 1)
-                                .pattern(" R ")
+                                .pattern("RSR")
                                 .pattern("PFP")
                                 .pattern(" S ")
                                 .define('F', Items.FURNACE)
@@ -2814,12 +2814,12 @@ public class DataRecipe extends ExtraRecipeProvider {
                                 .save(c);
 
                 ShapedRecipeBuilder.shaped(MISC, zBlocks.METALLIC_HEATER.get(), 1)
-                                .pattern(" R ")
+                                .pattern("IRI")
                                 .pattern("PFP")
-                                .pattern(" I ")
+                                .pattern("I I")
                                 .define('F', Items.FURNACE)
                                 .define('P', zItems.WROUGHT_IRON_PLATE.get())
-                                .define('I', zItems.WROUGHT_IRON_INGOT.get())
+                                .define('I', zItems.STEEL_INGOT.get())
                                 .define('R', zItems.RESISTOR.get())
                                 .unlockedBy(ID, has(zItems.RESISTOR.get()))
                                 .save(c);
