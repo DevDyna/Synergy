@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 @SuppressWarnings("null")
-public abstract class BETank extends BlockEntity implements SimpleFluidStorage{
+public abstract class BETank extends BlockEntity implements SimpleFluidStorage {
 
     public static final int DEFAULT_TANK_STORAGE = 16_000;
 
@@ -57,7 +57,5 @@ public abstract class BETank extends BlockEntity implements SimpleFluidStorage{
     public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
         return saveWithoutMetadata(pRegistries);
     }
-
-   
 
 }
