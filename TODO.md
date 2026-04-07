@@ -49,19 +49,17 @@
 
 - [ ] SoundEvents.AXE_SCRAPE pitch 0.1 -> metal hammering
 
-- [ ] patina -> cheap electric components
-
-- [x] patina jei category
+- [ ] patina -> cheap electric components?
 
 - [ ] oxidation speeder
-
-- [x] patina replace slime
 
 - [ ] dye seed and seed recipe?(stonecutter)
 
 - [ ] factory bee
 
 - [ ] industrial machine - auto output upgrade modifier
+
+- [ ] bucket interaction dont swing when item isn't empty
 
 ## PRIORITIES
 
@@ -127,6 +125,7 @@
 - [ ] Toaster
 - [ ] Spawner Essence
 - [ ] EYE
+- [ ] dolly
 - [ ] Easy Bee Fertilizer/bonemeals
 - [ ] Fermenting (cobble->moss)
 - [ ] temporal hourglass (like unique crops)
