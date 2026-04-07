@@ -16,6 +16,7 @@ import com.devdyna.synergy.compat.jade.provider.EnvironmentModifierProvider;
 import com.devdyna.synergy.compat.jade.provider.FilterProvider;
 import com.devdyna.synergy.compat.jade.provider.FoundryHeaterProvider;
 import com.devdyna.synergy.compat.jade.provider.FuelCellProgress;
+import com.devdyna.synergy.compat.jade.provider.HeatInfoConsumer;
 import com.devdyna.synergy.compat.jade.provider.HeatInfoProvider;
 import com.devdyna.synergy.compat.jade.provider.LaserMachineGunProvider;
 import com.devdyna.synergy.compat.jade.provider.LaserRotorProvider;
@@ -61,7 +62,9 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockComponent(HeatInfoProvider.INSTANCE, TickingBlock.class);
         r.registerBlockComponent(EnvironmentModifierProvider.INSTANCE, Block.class);
         r.registerBlockComponent(TimeredRecipeProvider.INSTANCE, Block.class);
-        r.registerBlockComponent(SimpleDelayProvider.INSTANCE, TickingBlock.class);
+        r.registerBlockComponent(HeatInfoConsumer.INSTANCE, Block.class);
+
+        r.registerBlockComponent(SimpleDelayProvider.INSTANCE, Block.class);
         r.registerBlockComponent(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
         r.registerBlockComponent(FilterProvider.INSTANCE, LogicBoxBlock.class);
         r.registerBlockComponent(SidedFilterProvider.INSTANCE, RouterBlock.class);
@@ -87,7 +90,9 @@ public class JadePlugin implements IWailaPlugin {
         r.registerBlockDataProvider(HeatInfoProvider.INSTANCE, TickingBlock.class);
         r.registerBlockDataProvider(EnvironmentModifierProvider.INSTANCE, Block.class);
         r.registerBlockDataProvider(TimeredRecipeProvider.INSTANCE, Block.class);
-        r.registerBlockDataProvider(SimpleDelayProvider.INSTANCE, TickingBlock.class);
+        r.registerBlockDataProvider(HeatInfoConsumer.INSTANCE, Block.class);
+
+        r.registerBlockDataProvider(SimpleDelayProvider.INSTANCE, Block.class);
         r.registerBlockDataProvider(DryableBricksProvider.INSTANCE, PlaceableBrickBlock.class);
         r.registerBlockDataProvider(FilterProvider.INSTANCE, LogicBoxBlock.class);
         r.registerBlockDataProvider(SidedFilterProvider.INSTANCE, RouterBlock.class);
