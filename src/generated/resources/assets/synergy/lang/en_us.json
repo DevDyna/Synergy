@@ -604,7 +604,7 @@
   "synergy.blockpos": "§7BlockPos : ",
   "synergy.boost.drying_rack": "§7When placed below a Drying Rack it will speed up the process",
   "synergy.boost.evaporation_basin": "§7When placed below a Evaporation Basin it will speed up the process",
-  "synergy.bricked_heater": "§7Consume solid fuel items to produce heat\nMax temperature: 100°C\nCannot be used as heater of the Foundry!",
+  "synergy.bricked_heater": "§7Consume solid fuel items to produce heat\nMax temperature: 100°C\nCannot be used on Foundry Structure!",
   "synergy.cake_stick": "§7Place cake slices",
   "synergy.cassiterite.tip": "§7High concentration of tin",
   "synergy.casting_table": "§7Use molds to solidify liquids",

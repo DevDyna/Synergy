@@ -6,7 +6,7 @@
       "item": "minecraft:furnace"
     },
     "I": {
-      "item": "synergy:wrought_iron_ingot"
+      "item": "synergy:steel_ingot"
     },
     "P": {
       "item": "synergy:wrought_iron_plate"
@@ -16,9 +16,9 @@
     }
   },
   "pattern": [
-    " R ",
+    "IRI",
     "PFP",
-    " I "
+    "I I"
   ],
   "result": {
     "count": 1,
