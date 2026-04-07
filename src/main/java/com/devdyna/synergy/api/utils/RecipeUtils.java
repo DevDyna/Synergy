@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.devdyna.synergy.api.blockfactories.machine.recipe.BaseMachineRecipeType;
+import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.api.registers.MachineType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
 
@@ -33,6 +34,11 @@ public class RecipeUtils {
     public static <T extends BaseMachineRecipeType<I>, I extends RecipeInput> T getUnsafeRecipes(Level level,
             MachineType<?, ?, ?, T> m, I input) {
         return level.getRecipeManager().getRecipeFor(m.recipe().getType(), input, level).get().value();
+    }
+
+    public static <T extends BaseRecipeType<I>, I extends RecipeInput> T getUnsafeRecipes(Level level,
+            RecipeRegister<T> m, I input) {
+        return level.getRecipeManager().getRecipeFor(m.getType(), input, level).get().value();
     }
 
     public static <T extends Recipe<I>, I extends RecipeInput> List<RecipeHolder<T>> getRecipes(RecipeRegister<T> r) {
