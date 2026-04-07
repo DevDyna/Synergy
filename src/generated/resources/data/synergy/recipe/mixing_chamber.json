@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "synergy:wrought_iron_ingot"
+    },
+    "P": {
+      "item": "synergy:wrought_iron_plate"
+    },
+    "T": {
+      "item": "synergy:fuel_tank"
+    }
+  },
+  "pattern": [
+    "PIP",
+    "ITI",
+    "PIP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:mixing_chamber"
+  }
+}

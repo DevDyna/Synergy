@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "C": {
-      "tag": "c:ingots/tin"
+      "tag": "c:ingots/copper"
     },
     "T": {
-      "tag": "c:ingots/copper"
+      "tag": "c:ingots/tin"
     }
   },
   "pattern": [

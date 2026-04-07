@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "I": {
+      "item": "synergy:wrought_iron_ingot"
+    },
+    "P": {
+      "item": "synergy:wrought_iron_plate"
+    },
+    "R": {
+      "item": "synergy:resistor"
+    }
+  },
+  "pattern": [
+    " R ",
+    "PFP",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:metallic_heater"
+  }
+}

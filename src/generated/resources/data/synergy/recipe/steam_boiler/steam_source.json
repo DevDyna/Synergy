@@ -1,0 +1,12 @@
+{
+  "type": "synergy:steam_boiler",
+  "input": {
+    "amount": 125,
+    "tag": "minecraft:water"
+  },
+  "output": {
+    "amount": 1000,
+    "id": "synergy:steam_source"
+  },
+  "ticks": 20
+}

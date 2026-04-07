@@ -6,6 +6,7 @@
     "#synergy:fireclay_group",
     "#synergy:cracked_fireclay_group",
     "#synergy:mossy_fireclay_group",
+    "#synergy:sandy_group",
     "synergy:sprinkler",
     "synergy:harvester",
     "synergy:solar_panel",
@@ -29,6 +30,9 @@
     "synergy:aquamarine_cluster",
     "synergy:entity_watcher",
     "synergy:foundry",
-    "synergy:mixing_chamber"
+    "synergy:mixing_chamber",
+    "synergy:bricked_heater",
+    "synergy:metallic_heater",
+    "synergy:steam_boiler"
   ]
 }

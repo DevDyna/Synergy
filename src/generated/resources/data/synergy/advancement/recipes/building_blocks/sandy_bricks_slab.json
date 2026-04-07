@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sandy_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "synergy:sandy_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:sandy_bricks_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sandy_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:sandy_bricks_slab"
+    ]
+  }
+}

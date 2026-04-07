@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "P": {
+      "item": "synergy:wrought_iron_plate"
+    },
+    "R": {
+      "item": "synergy:resistor"
+    },
+    "S": {
+      "item": "synergy:sandy_bricks_slab"
+    }
+  },
+  "pattern": [
+    " R ",
+    "PFP",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "synergy:bricked_heater"
+  }
+}
