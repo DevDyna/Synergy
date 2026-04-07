@@ -342,6 +342,10 @@ public class ExtraRecipeProvider extends RecipeProvider {
                                 .save(c);
         }
 
+        protected void crushing(RecipeOutput c, ItemLike gem, ItemLike dust) {
+                crushing(c, gem.asItem(), dust.asItem(), 1);
+        }
+
         protected void crushing(RecipeOutput c, Item gem, Item dust) {
                 crushing(c, gem, dust, 1);
         }
