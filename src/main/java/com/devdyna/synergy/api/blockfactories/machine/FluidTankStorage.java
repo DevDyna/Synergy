@@ -14,16 +14,12 @@ public interface FluidTankStorage extends SimpleFluidStorage {
         INPUT(),
         OUTPUT();
 
-    
-    
-        public class Codec{
-            public static final StreamCodec<ByteBuf, FluidTankType> STREAM =
-        ByteBufCodecs.idMapper(
-                id -> FluidTankType.values()[id],
-                FluidTankType::ordinal
-        );
+        public class Codec {
+            public static final StreamCodec<ByteBuf, FluidTankType> STREAM = ByteBufCodecs.idMapper(
+                    id -> FluidTankType.values()[id],
+                    FluidTankType::ordinal);
         }
-    
+
     }
 
     /**
@@ -31,7 +27,7 @@ public interface FluidTankStorage extends SimpleFluidStorage {
      */
     abstract FluidTankType getTankIOType();
 
-    default ItemStack getAsBucket(){
+    default ItemStack getAsBucket() {
         return x.item(getFluidStorage().getFluid().getFluid().getBucket());
     }
 
