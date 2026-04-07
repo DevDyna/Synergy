@@ -22,7 +22,7 @@ public class MetallicHeaterBE extends SolidFuelHeaterBE
 
     @Override
     public float getSpeedModifier() {
-        return (heat-20) * 0.0125f;
+        return (heat - 20) * 0.0125f;
     }
 
     @Override
@@ -38,6 +38,11 @@ public class MetallicHeaterBE extends SolidFuelHeaterBE
     @Override
     public int getHeatCap() {
         return 300;
+    }
+
+    @Override
+    protected float heatMultiplier() {
+        return 2.0f;
     }
 
 }
