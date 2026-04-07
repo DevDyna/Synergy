@@ -135,7 +135,8 @@ public class DataLootBlock extends BlockLootSubProvider {
 
                                 zBlocks.MIXING_CHAMBER,
                                 zBlocks.BRICKED_HEATER,
-                                zBlocks.METALLIC_HEATER
+                                zBlocks.METALLIC_HEATER,
+                                zBlocks.STEAM_BOILER
 
                 ).stream().map(DeferredHolder::get).forEach(this::dropSelf);
 

@@ -68,7 +68,10 @@ public class DataBlockTag extends BlockTagsProvider {
                                                 zBlocks.AQUAMARINE_CLUSTER.get(),
                                                 zBlocks.ENTITY_WATCHER.get(),
                                                 zBlocks.FOUNDRY.get(),
-                                                zBlocks.MIXING_CHAMBER.get()
+                                                zBlocks.MIXING_CHAMBER.get(),
+                                                zBlocks.BRICKED_HEATER.get(),
+                                                zBlocks.METALLIC_HEATER.get(),
+                                                zBlocks.STEAM_BOILER.get()
 
                                 );
 

@@ -34,11 +34,13 @@ import com.devdyna.synergy.init.builder.survival.drying_rack.recipe.DryingRackBu
 import com.devdyna.synergy.init.builder.survival.evaporation_basin.recipe.EvaporatingBasinBuilder;
 import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryBuilder;
 import com.devdyna.synergy.init.builder.survival.mixing_chamber.recipe.MixingChamberBuilder;
+import com.devdyna.synergy.init.builder.survival.steam_boiler.recipe.SteamBoilerBuilder;
 import com.devdyna.synergy.init.types.*;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -2765,9 +2767,60 @@ public class DataRecipe extends ExtraRecipeProvider {
                                         stair(s.getStairBricks().get(), s.getBricks().get(), c);
                                         slab(s.getSlabBricks().get(), s.getBricks().get(), c);
                                         stonecutter(c, s.getSlabBricks().get(), s.getBricks().get(), 2);
-                                        stonecutter(c, s.getStairBricks().get(), s.getBricks().get());
-
                                 });
+
+                SteamBoilerBuilder.of()
+                                .fluid(FluidTags.WATER, 125)
+                                .output(zFluids.STEAM, 1000)
+                                .unlockedBy()
+                                .save(c);
+
+                FoundryFuelBuilder.of()
+                                .fluid(zFluids.STEAM)
+                                .speed(1.0f)
+                                .usage(2f)
+                                .unlockedBy()
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.MIXING_CHAMBER.get(), 1)
+                                .pattern("PIP")
+                                .pattern("ITI")
+                                .pattern("PIP")
+                                .define('P', zItems.WROUGHT_IRON_PLATE.get())
+                                .define('I', zItems.WROUGHT_IRON_INGOT.get())
+                                .define('T', zBlocks.FUEL_TANK.get())
+                                .unlockedBy(ID, has(zBlocks.FUEL_TANK.get()))
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.STEAM_BOILER.get(), 1)
+                                .pattern("PPP")
+                                .pattern("P P")
+                                .pattern("PPP")
+                                .define('P', zItems.IRON_PLATE.get())
+                                .unlockedBy(ID, has(zItems.IRON_PLATE.get()))
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.BRICKED_HEATER.get(), 1)
+                                .pattern(" R ")
+                                .pattern("PFP")
+                                .pattern(" S ")
+                                .define('F', Items.FURNACE)
+                                .define('P', zItems.WROUGHT_IRON_PLATE.get())
+                                .define('S', zBlocks.SANDY_BRICK.getSlabBricks().get())
+                                .define('R', zItems.RESISTOR.get())
+                                .unlockedBy(ID, has(zItems.RESISTOR.get()))
+                                .save(c);
+
+                ShapedRecipeBuilder.shaped(MISC, zBlocks.METALLIC_HEATER.get(), 1)
+                                .pattern(" R ")
+                                .pattern("PFP")
+                                .pattern(" I ")
+                                .define('F', Items.FURNACE)
+                                .define('P', zItems.WROUGHT_IRON_PLATE.get())
+                                .define('I', zItems.WROUGHT_IRON_INGOT.get())
+                                .define('R', zItems.RESISTOR.get())
+                                .unlockedBy(ID, has(zItems.RESISTOR.get()))
+                                .save(c);
 
         }
 

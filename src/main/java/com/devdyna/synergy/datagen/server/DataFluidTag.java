@@ -47,6 +47,8 @@ public class DataFluidTag extends FluidTagsProvider {
 
                 tag(zFluidTags.SULFURIC_ACID).add(zFluids.SULFURIC_ACID.getFluid());
 
+                tag(zFluidTags.STEAM).add(zFluids.STEAM.getFluid());
+
         }
 
 }

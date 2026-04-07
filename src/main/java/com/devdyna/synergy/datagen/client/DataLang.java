@@ -215,6 +215,8 @@ public class DataLang extends LanguageProvider {
                                 "Casting Table recipes");
                 add(Main.ID + ".jei." + zStatic.Blocks.mixing_chamber,
                                 "Mixing Chamber recipes");
+                add(Main.ID + ".jei." + zStatic.Blocks.steam_boiler,
+                                "Steam Boiler recipes");
 
                 List<String> coolerTypes = List.of(
                                 zStatic.ReactorStuff.CoolerTypes.SHADOW,
@@ -345,10 +347,10 @@ public class DataLang extends LanguageProvider {
                                 "Entity Watcher Info");
                 add("config.jade.plugin_" + ID + "." + "node_upgrades",
                                 "Node Upgrades Info");
-                add("config.jade.plugin_" + ID + "." + "heating",
-                                "Solid Fuel Heater Info");
                 add("config.jade.plugin_" + ID + "." + "heat_provider",
                                 "Heat Provider Info");
+                add("config.jade.plugin_" + ID + "." + "heat_consumer",
+                                "Heat Consumer Info");
 
                 add(Main.ID + ".color", "Color: %d");
 
@@ -525,8 +527,10 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jei.atlas.aoe", "Area of Effect Related");
 
                 add(ID + ".jei.atlas.heat.provider.passive", "Passive Heat Provider");
-                // TODO useful on future but atm unused
+
                 add(ID + ".jei.atlas.heat.provider.active", "Active Heat Provider");
+
+                add(ID + ".jei.atlas.heat.consumer", "Heat Consumer");
                 add(ID + ".jei.atlas.heat.source", "Heat Source");
 
                 add(ID + "." + zStatic.Blocks.router, TIP_COLOR
@@ -675,15 +679,33 @@ public class DataLang extends LanguageProvider {
 
                 add(Main.ID + ".jei.patina_drop", TIP_COLOR + "Drop %s" + TIP_COLOR + " items every scrape");
 
-                // TODO unused
-                add(ID + ".jei.tip.consume_durability", "§cConsume durability");
-
                 add(ID + ".click.install.node", TIP_COLOR + "Right Click on a Pipe Node to install");
 
                 add(ID + ".jade.modifier.environment.fuel.fail", "§cRequire an heat source below");
 
+                add(ID + "." + zStatic.Blocks.mixing_chamber, TIP_COLOR
+                                + "Extract fluids to create new fluids from adjacent fluid tanks\nRequire an heat source below");
 
-                add(ID+"."+zStatic.Blocks.mixing_chamber, TIP_COLOR+"Extract fluids to create new fluids from adjacent fluid tanks\nRequire an heat source below");
+                add(ID + ".jade.heat_consumer.status.safe", "Status: §aWorking");
+                add(ID + ".jade.heat_consumer.status.warn.above", "Status: §cTemperature is too high!");
+                add(ID + ".jade.heat_consumer.status.warn.below", "Status: §cTemperature is too low!");
+
+                // TODO implement
+                add(ID + ".jade.tip.include", "Include");
+                add(ID + ".jade.tip.exclude", "Exclude");
+
+                add(ID + ".jade.heat_consumer.status.missing_heat", "§cRequire an active heat source below");
+
+                add(ID + ".jade.heat_consumer.temperature", "Heat provided: %d°C [%d-%d]");
+
+                add(ID + "." + zStatic.Blocks.steam_boiler, TIP_COLOR
+                                + "Convert fluids to other fluids using temperatures\nRequire an §lactive"+TIP_COLOR+" heat source below\nCan explode when above 100°C!");
+
+                add(ID + "." + zStatic.Blocks.bricked_heater, TIP_COLOR
+                                + "Consume solid fuel items to produce heat\nMax temperature: 100°C");
+
+                add(ID + "." + zStatic.Blocks.metallic_heater, TIP_COLOR
+                                + "Consume solid fuel items to produce heat\nMax temperature: 300°C");
 
         }
 
