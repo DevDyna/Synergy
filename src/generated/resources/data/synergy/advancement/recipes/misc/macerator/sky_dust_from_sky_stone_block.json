@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ae2"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:macerator/sky_dust_from_sky_stone_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "synergy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ae2:sky_stone_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "synergy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:macerator/sky_dust_from_sky_stone_block"
+    ]
+  }
+}

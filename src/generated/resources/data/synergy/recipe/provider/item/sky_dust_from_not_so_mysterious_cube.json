@@ -1,0 +1,27 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ae2"
+    }
+  ],
+  "type": "synergy:provider/item",
+  "pattern": {
+    "below": {
+      "Name": "ae2:sky_stone_block"
+    },
+    "core": {
+      "Name": "ae2:not_so_mysterious_cube"
+    },
+    "left": {
+      "Name": "ae2:sky_stone_block"
+    },
+    "right": {
+      "Name": "ae2:sky_stone_block"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "ae2:sky_dust"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "silentgear"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:macerator/crushed_shulker_shell_from_shulker_shell"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "synergy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:shulker_shell"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "synergy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:macerator/crushed_shulker_shell_from_shulker_shell"
+    ]
+  }
+}

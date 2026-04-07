@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ae2"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:macerator/ender_dust_from_ender_pearl"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "synergy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:ender_pearl"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "synergy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:macerator/ender_dust_from_ender_pearl"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "enderio"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "synergy:alloy_smelter/conductive_alloy_ingot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "synergy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:barrier"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "synergy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "synergy:alloy_smelter/conductive_alloy_ingot"
+    ]
+  }
+}

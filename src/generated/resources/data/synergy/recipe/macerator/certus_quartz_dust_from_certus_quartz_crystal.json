@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ae2"
+    }
+  ],
+  "type": "synergy:machine/macerator",
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "ae2:certus_quartz_crystal"
+  },
+  "output": {
+    "count": 1,
+    "id": "ae2:certus_quartz_dust"
+  },
+  "ticks": 80
+}

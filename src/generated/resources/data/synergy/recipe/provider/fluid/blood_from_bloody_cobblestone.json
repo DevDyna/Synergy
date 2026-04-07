@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "evilcraft"
+    }
+  ],
+  "type": "synergy:provider/fluid",
+  "pattern": {
+    "core": {
+      "Name": "evilcraft:bloody_cobblestone"
+    },
+    "left": {
+      "Name": "evilcraft:hardened_blood"
+    },
+    "right": {
+      "Name": "evilcraft:hardened_blood"
+    }
+  },
+  "result": {
+    "amount": 1000,
+    "id": "evilcraft:blood"
+  }
+}

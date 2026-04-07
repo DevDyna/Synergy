@@ -1,0 +1,17 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "synergy:quern",
+  "frequence": 60,
+  "ingredient": {
+    "item": "create:raw_zinc"
+  },
+  "result": {
+    "count": 18,
+    "id": "create:zinc_nugget"
+  }
+}

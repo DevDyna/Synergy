@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "silentgear"
+    }
+  ],
+  "type": "synergy:machine/macerator",
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "silentgear:azure_silver_ingot"
+  },
+  "output": {
+    "count": 1,
+    "id": "silentgear:azure_silver_dust"
+  },
+  "ticks": 80
+}

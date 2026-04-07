@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "silentgear"
+    }
+  ],
+  "type": "synergy:machine/macerator",
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "minecraft:shulker_shell"
+  },
+  "output": {
+    "count": 1,
+    "id": "silentgear:crushed_shulker_shell"
+  },
+  "ticks": 80
+}

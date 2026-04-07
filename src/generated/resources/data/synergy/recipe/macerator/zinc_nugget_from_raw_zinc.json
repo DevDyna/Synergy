@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "synergy:machine/macerator",
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "create:raw_zinc"
+  },
+  "output": {
+    "count": 18,
+    "id": "create:zinc_nugget"
+  },
+  "ticks": 80
+}

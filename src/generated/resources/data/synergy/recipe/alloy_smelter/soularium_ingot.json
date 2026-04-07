@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "enderio"
+    }
+  ],
+  "type": "synergy:machine/alloy_smelter",
+  "energy": 500,
+  "left": {
+    "count": 1,
+    "tag": "c:ingots/gold"
+  },
+  "output": {
+    "count": 1,
+    "id": "enderio:soularium_ingot"
+  },
+  "right": {
+    "type": "neoforge:compound",
+    "children": [
+      {
+        "item": "minecraft:soul_sand"
+      },
+      {
+        "item": "minecraft:soul_soil"
+      }
+    ],
+    "count": 1
+  },
+  "ticks": 100
+}

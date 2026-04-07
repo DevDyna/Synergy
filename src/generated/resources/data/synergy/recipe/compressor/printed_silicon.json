@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ae2"
+    }
+  ],
+  "type": "synergy:machine/compressor",
+  "consume_catalyst": false,
+  "energy": 500,
+  "input": {
+    "count": 1,
+    "item": "ae2:silicon"
+  },
+  "output": {
+    "count": 1,
+    "id": "ae2:printed_silicon"
+  },
+  "plate": {
+    "count": 1,
+    "item": "ae2:silicon_press"
+  },
+  "ticks": 100
+}
