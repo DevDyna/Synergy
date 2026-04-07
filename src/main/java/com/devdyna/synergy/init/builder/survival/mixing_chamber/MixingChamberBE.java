@@ -49,11 +49,6 @@ public class MixingChamberBE extends TickingTankBE
     @Override
     public void tickServer() {
 
-        if (level == null) {
-            fail();
-            return;
-        }
-
         update();
 
         if (getFuelProvider() == null) {
