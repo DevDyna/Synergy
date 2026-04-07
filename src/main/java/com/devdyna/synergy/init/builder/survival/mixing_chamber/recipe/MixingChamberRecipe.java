@@ -32,7 +32,7 @@ public class MixingChamberRecipe extends BaseRecipeType<BiFluidInput> {
     private SizedFluidIngredient second;
     private FluidStack output;
 
-    public MixingChamberRecipe(SizedFluidIngredient first,SizedFluidIngredient second,int ticks,FluidStack output) {
+    public MixingChamberRecipe(SizedFluidIngredient first, SizedFluidIngredient second, int ticks, FluidStack output) {
         this.ticks = ticks;
         this.first = first;
         this.second = second;
@@ -49,7 +49,8 @@ public class MixingChamberRecipe extends BaseRecipeType<BiFluidInput> {
 
     public NonNullList<Ingredient> getIngredients() {
         return NonNullList
-                .copyOf(List.of(x.ingredient(x.getFluids(first).getFirst().getFluid().getBucket()),x.ingredient(x.getFluids(second).getFirst().getFluid().getBucket())));
+                .copyOf(List.of(x.ingredient(x.getFluids(first).getFirst().getFluid().getBucket()),
+                        x.ingredient(x.getFluids(second).getFirst().getFluid().getBucket())));
     }
 
     @Override
