@@ -34,6 +34,12 @@ This section will let you know what some key-words define what
 
 Describe a list of differents `<item-stack>` which can be at most 2 elements!
 
+```js
+"entry": <fluid-stack..?>
+```
+
+Describe a list of differents `<fluid-stack>` without a defined limit
+
 ## Item Stack syntax `<item-stack>`
 
 ```js
@@ -79,6 +85,16 @@ Tag Item type
     "count": <integer>,
     "tag": <item-tag>
 }
+```
+
+Neo-Compound type
+
+```js
+{
+    "type": "neoforge:compound",
+    "children": <item-ingredient..?>,
+    "count": 1
+  }
 ```
 
 ## ChanceOutputItem syntax `<chance-output-item>`
@@ -173,11 +189,13 @@ Tag Fluid type
 - [Foundry](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/foundry.md)
 - [Item Use](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/item_use.md)
 - [Macerator](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/macerator.md)
+- [Mixing Chamber](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/mixing_chamber.md)
 - [Provider Fluid](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/provider_fluid.md)
 - [Provider Item](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/provider_item.md)
 - [Quern](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/quern.md)
 - [Reactor Reaction](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/reactor_reaction.md)
 - [Resource Info](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/resource_info.md)
 - [Rock Crusher](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/rock_crusher.md)
+- [Steam Boiler](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/steam_boiler.md)
 - [Urn Ritual](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/urn_ritual.md)
 - [Void Box Conversion](https://github.com/DevDyna/Synergy/blob/21.1/doc/recipe/void_box_conversion.md)
