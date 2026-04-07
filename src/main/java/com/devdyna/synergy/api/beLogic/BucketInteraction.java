@@ -55,7 +55,7 @@ public interface BucketInteraction {
             FluidStack sim = cap.drain(bucket.getTankCapacity(0),
                     IFluidHandler.FluidAction.SIMULATE);
 
-            if (sim.getAmount() > 0) {
+            if (sim.getAmount() > 0 && insertFilter(sim)) {
 
                 droplet = bucket.fill(sim, IFluidHandler.FluidAction.SIMULATE);
                 if (droplet > 0) {
@@ -91,5 +91,9 @@ public interface BucketInteraction {
 
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    default boolean insertFilter(FluidStack simulated){
+        return true;
     }
 }
