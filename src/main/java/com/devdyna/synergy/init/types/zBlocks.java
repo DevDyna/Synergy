@@ -33,6 +33,7 @@ import com.devdyna.synergy.init.builder.survival.heater.bricked.BrickedHeaterBlo
 import com.devdyna.synergy.init.builder.survival.heater.metallic.MetallicHeaterBlock;
 import com.devdyna.synergy.init.builder.survival.mixing_chamber.MixingChamberBlock;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.PlaceableBrickBlock;
+import com.devdyna.synergy.init.builder.survival.steam_boiler.SteamBoilerBlock;
 import com.devdyna.synergy.init.builder.*;
 import com.devdyna.synergy.init.builder.automation.chopper.ChopperBlock;
 import com.devdyna.synergy.init.builder.automation.harvester.HarvesterBLK;
@@ -691,6 +692,10 @@ public class zBlocks {
         public static final DeferredHolder<Block, Block> METALLIC_HEATER = Material.registerItemBlock(
                         zStatic.Blocks.metallic_heater,
                         () -> new MetallicHeaterBlock());
+
+        public static final DeferredHolder<Block, Block> STEAM_BOILER = Material.registerItemBlock(
+                        zStatic.Blocks.steam_boiler,
+                        () -> new SteamBoilerBlock());
 
         // ---------------------------------------------------------------------------------------//
 

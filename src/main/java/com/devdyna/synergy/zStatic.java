@@ -270,6 +270,8 @@ public class zStatic {
         public static String bricked_heater = "bricked_heater";
         public static String metallic_heater = "metallic_heater";
 
+        public static String steam_boiler = "steam_boiler";
+
         public static String mixing_chamber = "mixing_chamber";
 
         public static String logic_box = "logic_box";

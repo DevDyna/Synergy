@@ -39,6 +39,7 @@ import com.devdyna.synergy.init.builder.survival.fuel_tank.FuelTankBE;
 import com.devdyna.synergy.init.builder.survival.heater.bricked.BrickedHeaterBE;
 import com.devdyna.synergy.init.builder.survival.heater.metallic.MetallicHeaterBE;
 import com.devdyna.synergy.init.builder.survival.mixing_chamber.MixingChamberBE;
+import com.devdyna.synergy.init.builder.survival.steam_boiler.SteamBoilerBE;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -225,5 +226,9 @@ public class zBlockEntities {
         public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MetallicHeaterBE>> METALLIC_HEATER = Material
                         .createBlockEntity(zStatic.Blocks.metallic_heater, MetallicHeaterBE::new,
                                         zBlocks.METALLIC_HEATER);
+
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SteamBoilerBE>> STEAM_BOILER = Material
+                        .createBlockEntity(zStatic.Blocks.steam_boiler, SteamBoilerBE::new,
+                                        zBlocks.STEAM_BOILER);
 
 }

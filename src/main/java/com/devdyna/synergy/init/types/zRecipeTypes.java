@@ -30,6 +30,7 @@ import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryRecipeSer
 import com.devdyna.synergy.init.builder.survival.mixing_chamber.recipe.MixingChamberRecipe;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipe;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksRecipeSerializer;
+import com.devdyna.synergy.init.builder.survival.steam_boiler.recipe.SteamBoilerRecipe;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.ItemStack;
@@ -100,6 +101,9 @@ public class zRecipeTypes {
 
         public static final RecipeRegister<CopperOxidationRecipe> COPPER_OXIDATION = RecipeRegister.of("copper_oxidation",
                         CopperOxidationRecipe.Serializer::new);
+
+        public static final RecipeRegister<SteamBoilerRecipe> STEAM_BOILER = RecipeRegister.of("steam_boiler",
+                        SteamBoilerRecipe.Serializer::new);
 
 
         // ------------------------------------------------------------------------------------------------------------------------------------//

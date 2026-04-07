@@ -110,6 +110,7 @@ public class Plugin implements IModPlugin {
                 r.addRecipeCatalyst(x.item(zBlocks.FUEL_TANK), FoundryFuelRecipeCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.CASTING_TABLE), CastingTableCategory.TYPE);
                 r.addRecipeCatalyst(x.item(zBlocks.MIXING_CHAMBER), MixingChamberCategory.TYPE);
+                r.addRecipeCatalyst(x.item(zBlocks.STEAM_BOILER), SteamBoilerCategory.TYPE);
 
                 r.addRecipeCatalysts(DryingRackCategory.TYPE, zStatic.ALL_DRYING_RACKS.stream().map(DeferredHolder::get)
                                 .map(Block::asItem).toArray(Item[]::new));
@@ -150,7 +151,8 @@ public class Plugin implements IModPlugin {
                                 new FoundryFuelRecipeCategory(helper),
                                 new CastingTableCategory(helper),
                                 new CopperOxidationCategory(helper),
-                                new MixingChamberCategory(helper)
+                                new MixingChamberCategory(helper),
+                                new SteamBoilerCategory(helper)
 
                 );
 
@@ -261,6 +263,8 @@ public class Plugin implements IModPlugin {
                                 RecipeUtils.getRecipes(zRecipeTypes.CASTING_TABLE));
                 r.addRecipes(MixingChamberCategory.TYPE,
                                 RecipeUtils.getRecipes(zRecipeTypes.MIXING_CHAMBER));
+                r.addRecipes(SteamBoilerCategory.TYPE,
+                                RecipeUtils.getRecipes(zRecipeTypes.STEAM_BOILER));
 
         }
 
@@ -444,12 +448,18 @@ public class Plugin implements IModPlugin {
                                         r.addAlias(e, ID + ".jei.atlas.heat.source");
                                 });
 
-                // List.of(zBlocks.FUEL_TANK).stream()
-                // .map(DeferredHolder::get).map(x::item)
-                // .forEach(e -> {
-                // r.addAlias(e, ID + ".jei.atlas.heat.provider.active");
-                // r.addAlias(e, ID + ".jei.atlas.heat.source");
-                // });
+                List.of(zBlocks.FOUNDRY, zBlocks.MIXING_CHAMBER, zBlocks.STEAM_BOILER).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> {
+                                        r.addAlias(e, ID + ".jei.atlas.heat.consumer");
+                                });
+
+                List.of(zBlocks.BRICKED_HEATER, zBlocks.METALLIC_HEATER).stream()
+                                .map(DeferredHolder::get).map(x::item)
+                                .forEach(e -> {
+                                        r.addAlias(e, ID + ".jei.atlas.heat.provider.active");
+                                        r.addAlias(e, ID + ".jei.atlas.heat.source");
+                                });
 
         }
 
