@@ -311,6 +311,8 @@ public class DataBlockModelState extends ExtraBlockStateProvider {
                 solidheater(zBlocks.METALLIC_HEATER.get(),"metallic");
 
 
+                simpleBlock(zBlocks.STEAM_BOILER.get(), models().getExistingFile(modLoc("block/steam_boiler")));
+
         }
 
 }

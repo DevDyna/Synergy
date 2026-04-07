@@ -259,6 +259,7 @@ public class DataItemModel extends ExtraItemModelProvider {
 
                 withExistingParent(zBlocks.BRICKED_HEATER.getRegisteredName(), modLoc("block/heater/bricked/close"));
                 withExistingParent(zBlocks.METALLIC_HEATER.getRegisteredName(), modLoc("block/heater/metallic/close"));
+                withExistingParent(zBlocks.STEAM_BOILER.getRegisteredName(), modLoc("block/steam_boiler"));
 
         }
 
