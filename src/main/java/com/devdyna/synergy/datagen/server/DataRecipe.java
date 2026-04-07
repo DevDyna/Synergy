@@ -5,6 +5,7 @@ import static net.minecraft.data.recipes.RecipeCategory.*;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
+
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.common.recipes.copper_oxidation.CopperOxidationBuilder;
@@ -36,7 +37,6 @@ import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryBuilder;
 import com.devdyna.synergy.init.builder.survival.mixing_chamber.recipe.MixingChamberBuilder;
 import com.devdyna.synergy.init.builder.survival.steam_boiler.recipe.SteamBoilerBuilder;
 import com.devdyna.synergy.init.types.*;
-
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -73,7 +73,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 AlloySmelterRecipeBuilder.of()
                                 .inputs(zItemTag.DUST_COAL, Tags.Items.INGOTS_IRON)
                                 .delay(80)
-                                .output(zItems.STEEL_INGOT)
+                                .output(zItems.WROUGHT_IRON_INGOT)
                                 .unlockedBy()
                                 .save(c);
 
