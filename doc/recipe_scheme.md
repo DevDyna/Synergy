@@ -94,7 +94,7 @@ Neo-Compound type
     "type": "neoforge:compound",
     "children": <item-ingredient..?>,
     "count": <integer>
-  }
+}
 ```
 
 ## ChanceOutputItem syntax `<chance-output-item>`
