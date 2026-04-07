@@ -19,8 +19,8 @@ public class FluidStorageTank extends FluidTank implements INBTSerializable<Comp
         this.be = be;
     }
 
-    public FluidStorageTank(BlockEntity be, int capacity,Predicate<FluidStack> filter) {
-        super(capacity,filter);
+    public FluidStorageTank(BlockEntity be, int capacity, Predicate<FluidStack> filter) {
+        super(capacity, filter);
         this.be = be;
     }
 
