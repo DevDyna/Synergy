@@ -5,6 +5,7 @@ import static com.devdyna.synergy.Main.ID;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
@@ -120,8 +121,15 @@ public abstract class BaseMachineRecipeBuilder<T extends BaseMachineRecipeBuilde
         return this.output.getItem();
     }
 
+    private String suffix = "";
+
     public String getMachinePath() {
-        return getMachine().id() + "/";
+        return getMachine().id() + "/"+suffix;
+    }
+
+    public T defineSuffix(String s){
+        this.suffix = s;
+        return getBuilder();
     }
 
     @Override
