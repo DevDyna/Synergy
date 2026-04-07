@@ -5,9 +5,16 @@ import static net.minecraft.data.recipes.RecipeCategory.*;
 
 import java.util.concurrent.CompletableFuture;
 
+import org.cyclops.evilcraft.RegistryEntries;
+
+import com.brandon3055.draconicevolution.init.DEContent;
 import com.devdyna.synergy.zStatic;
 import com.devdyna.synergy.api.registers.FluidRegister;
+import com.devdyna.synergy.api.utils.ModAddonUtil;
 import com.devdyna.synergy.api.utils.x;
+import com.devdyna.synergy.common.recipes.node_provider.fluid.FluidProviderBuilder;
+import com.devdyna.synergy.common.recipes.node_provider.item.ItemProviderBuilder;
+import com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter.recipe.AlloySmelterRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.caster.recipe.CasterRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.compressor.recipe.CompressorRecipeBuilder;
 import com.devdyna.synergy.init.builder.industrial_machines.macerator.recipe.MaceratorRecipeBuilder;
@@ -18,7 +25,12 @@ import com.devdyna.synergy.init.builder.survival.foundry.recipe.FoundryBuilder;
 import com.devdyna.synergy.init.builder.survival.placeable_bricks.recipe.DryableBricksBuilder;
 import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zItems;
+import com.enderio.enderio.init.EIOBlocks;
+import com.enderio.enderio.init.EIOItems;
+import com.simibubi.create.AllItems;
 
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -37,11 +49,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ICondition;
 import net.neoforged.neoforge.common.conditions.NotCondition;
 import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.silentchaos512.gear.item.CraftingItems;
 
 public class ExtraRecipeProvider extends RecipeProvider {
 
@@ -55,6 +69,192 @@ public class ExtraRecipeProvider extends RecipeProvider {
 
         protected String asID(Item i) {
                 return asID(i, "_alt");
+        }
+
+        protected void modCompats(RecipeOutput c) {
+
+                CompressorRecipeBuilder.of()
+                                .input(AEItems.SILICON)
+                                .catalyst(AEItems.SILICON_PRESS)
+                                .output(AEItems.SILICON_PRINT)
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.AE2)));
+
+                CompressorRecipeBuilder.of()
+                                .input(Items.DIAMOND)
+                                .catalyst(AEItems.ENGINEERING_PROCESSOR_PRESS)
+                                .output(AEItems.ENGINEERING_PROCESSOR_PRINT)
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.AE2)));
+
+                CompressorRecipeBuilder.of()
+                                .input(AEItems.CERTUS_QUARTZ_CRYSTAL)
+                                .catalyst(AEItems.CALCULATION_PROCESSOR_PRESS)
+                                .output(AEItems.CALCULATION_PROCESSOR_PRINT)
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.AE2)));
+
+                CompressorRecipeBuilder.of()
+                                .input(Items.GOLD_INGOT)
+                                .catalyst(AEItems.LOGIC_PROCESSOR_PRESS)
+                                .output(AEItems.LOGIC_PROCESSOR_PRINT)
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.AE2)));
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.AE2)),
+                                AEItems.CERTUS_QUARTZ_CRYSTAL,
+                                AEItems.CERTUS_QUARTZ_DUST);
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.AE2)),
+                                AEBlocks.SKY_STONE_BLOCK,
+                                AEItems.SKY_DUST);
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.AE2)),
+                                AEItems.FLUIX_CRYSTAL,
+                                AEItems.FLUIX_DUST);
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.AE2)),
+                                Items.ENDER_PEARL,
+                                AEItems.ENDER_DUST);
+
+                ItemProviderBuilder.of()
+                                .pattern(
+                                                AEBlocks.NOT_SO_MYSTERIOUS_CUBE.block(),
+                                                AEBlocks.SKY_STONE_BLOCK.block(),
+                                                AEBlocks.SKY_STONE_BLOCK.block(),
+                                                AEBlocks.SKY_STONE_BLOCK.block())
+                                .output(AEItems.SKY_DUST.asItem())
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.AE2)));
+
+                ItemProviderBuilder.of()
+                                .pattern(AEBlocks.FLAWLESS_BUDDING_QUARTZ.block())
+                                .output(AEItems.CERTUS_QUARTZ_DUST.asItem())
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.AE2)));
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.Create)),
+                                AllItems.ZINC_INGOT.get(),
+                                AllItems.ZINC_NUGGET.get(),
+                                9, 9);
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.Create)),
+                                AllItems.RAW_ZINC.get(),
+                                AllItems.ZINC_NUGGET.get(),
+                                18, 18);
+
+                AlloySmelterRecipeBuilder.of()
+                                .inputs(AllItems.ZINC_INGOT, Items.COPPER_INGOT)
+                                .output(AllItems.BRASS_INGOT, 2)
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.Create)));
+
+                AlloySmelterRecipeBuilder.of()
+                                .inputs(x.ingredient(AllItems.ZINC_NUGGET, Items.IRON_NUGGET),
+                                                x.ingredient(Items.ANDESITE))
+                                .output(AllItems.ANDESITE_ALLOY.asItem())
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.Create)));
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.DraconicEvolution)),
+                                DEContent.INGOT_DRACONIUM.get(),
+                                DEContent.DUST_DRACONIUM.get());
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.DraconicEvolution)),
+                                DEContent.INGOT_DRACONIUM_AWAKENED.get(),
+                                DEContent.DUST_DRACONIUM_AWAKENED.get());
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.SilentGear)),
+                                CraftingItems.AZURE_SILVER_INGOT,
+                                CraftingItems.AZURE_SILVER_DUST);
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.SilentGear)),
+                                CraftingItems.RAW_AZURE_SILVER.asItem(),
+                                CraftingItems.AZURE_SILVER_DUST.asItem(), 2, 2);
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.SilentGear)),
+                                CraftingItems.CRIMSON_IRON_INGOT,
+                                CraftingItems.CRIMSON_IRON_DUST);
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.SilentGear)),
+                                CraftingItems.RAW_CRIMSON_IRON.asItem(),
+                                CraftingItems.CRIMSON_IRON_DUST.asItem(), 2, 2);
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.SilentGear)),
+                                CraftingItems.BLAZE_GOLD_INGOT.asItem(),
+                                CraftingItems.BLAZE_GOLD_DUST.asItem());
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.SilentGear)),
+                                CraftingItems.TYRIAN_STEEL_INGOT.asItem(),
+                                CraftingItems.TYRIAN_STEEL_DUST.asItem());
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.SilentGear)),
+                                CraftingItems.CRIMSON_STEEL_INGOT.asItem(),
+                                CraftingItems.CRIMSON_STEEL_DUST.asItem());
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.SilentGear)),
+                                CraftingItems.AZURE_ELECTRUM_INGOT.asItem(),
+                                CraftingItems.AZURE_ELECTRUM_DUST.asItem());
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.SilentGear)),
+                                Items.SHULKER_SHELL,
+                                CraftingItems.CRUSHED_SHULKER_SHELL.asItem());
+
+                crushing(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.Evilcraft)),
+                                RegistryEntries.ITEM_DARK_GEM.get(),
+                                RegistryEntries.ITEM_DARK_GEM_CRUSHED.get());
+
+                FluidProviderBuilder.of()
+                                .pattern(
+                                                RegistryEntries.BLOCK_BLOODY_COBBLESTONE.get(),
+                                                RegistryEntries.BLOCK_HARDENED_BLOOD.get(),
+                                                RegistryEntries.BLOCK_HARDENED_BLOOD.get())
+                                .output(RegistryEntries.FLUID_BLOOD.get())
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.Evilcraft)));
+
+                ItemProviderBuilder.of()
+                                .pattern(
+                                                EIOBlocks.VOID_CHASSIS.get(),
+                                                EIOBlocks.REINFORCED_OBSIDIAN.get(),
+                                                EIOBlocks.REINFORCED_OBSIDIAN.get(),
+                                                Blocks.BEDROCK)
+                                .output(EIOItems.GRAINS_OF_INFINITY.get())
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.EnderIO)));
+
+                AlloySmelterRecipeBuilder.of()
+                                .inputs(
+                                                Tags.Items.INGOTS_IRON,
+                                                Tags.Items.INGOTS_COPPER)
+                                .output(EIOItems.CONDUCTIVE_ALLOY_INGOT.get())
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.EnderIO)));
+
+                AlloySmelterRecipeBuilder.of()
+                                .inputs(
+                                                Tags.Items.INGOTS_IRON,
+                                                Tags.Items.ENDER_PEARLS)
+                                .output(EIOItems.PULSATING_ALLOY_INGOT.get(), 2)
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.EnderIO)));
+
+                AlloySmelterRecipeBuilder.of()
+                                .inputs(
+                                                x.ingredient(Items.SOUL_SAND, Items.SOUL_SOIL),
+                                                x.ingredient(Tags.Items.INGOTS_GOLD))
+                                .output(EIOItems.SOULARIUM_INGOT.get())
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.EnderIO)));
+
+                AlloySmelterRecipeBuilder.of()
+                                .inputs(
+                                                x.ingredient(Items.OBSIDIAN, Items.CRYING_OBSIDIAN),
+                                                x.ingredient(zItems.WROUGHT_IRON_INGOT))
+                                .output(EIOItems.DARK_STEEL_INGOT.get())
+                                .unlockedBy()
+                                .save(c.withConditions(ModAddonUtil.hasMod(zStatic.Mods.EnderIO)));
+
         }
 
         protected void nodeRecipe(RecipeOutput c, Block b, ItemLike catalyst) {

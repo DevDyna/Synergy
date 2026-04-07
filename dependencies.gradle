@@ -2,6 +2,7 @@ repositories {
 
 mavenLocal()
     
+    maven { url = "https://maven.ithundxr.dev/snapshots" } // Registrate
     maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" }
     maven { url = "https://maven.createmod.net" }
 
@@ -55,4 +56,19 @@ dependencies {
     compileOnly "mezz.jei:jei-1.21.1-neoforge-api:19.18.10.218"
     runtimeOnly "mezz.jei:jei-1.21.1-neoforge:19.18.10.218"
 
+    //recipe-compat
+    implementation "curse.maven:silent-gear-297039:7870014"
+    // implementation "curse.maven:immersive-engineering-231951:6733669"
+    implementation "curse.maven:evilcraft-74610:7872945"
+    implementation "curse.maven:ender-io-64578:7847616"
+    implementation "curse.maven:draconic-evolution-223565:7584459"
+    implementation "curse.maven:applied-energistics-2-223794:7027323"
+    implementation "curse.maven:create-328085:7408951"
+    //libs
+    implementation "curse.maven:cyclops-core-232758:7786075"
+    implementation "curse.maven:silent-lib-242998:6565251"
+    implementation "curse.maven:codechicken-lib-1-8-242818:7281427"
+    implementation "curse.maven:brandons-core-231382:7130990"
+    implementation("com.tterrag.registrate:Registrate:MC1.21-1.3.0+67")
+    implementation "curse.maven:curios-309927:6529130"
 }

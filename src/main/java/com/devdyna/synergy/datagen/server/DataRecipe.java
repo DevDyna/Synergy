@@ -61,6 +61,8 @@ public class DataRecipe extends ExtraRecipeProvider {
         @Override
         protected void buildRecipes(RecipeOutput c) {
 
+                modCompats(c);
+
                 packUnpack(c, zItems.SILICON_SHARD.get(), zItems.RAW_SILICON.get(), false);
 
                 UrnRitualBuilder.of()
