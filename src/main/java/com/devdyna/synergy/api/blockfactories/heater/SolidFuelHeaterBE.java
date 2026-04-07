@@ -3,6 +3,7 @@ package com.devdyna.synergy.api.blockfactories.heater;
 import javax.annotation.Nullable;
 
 import com.devdyna.synergy.api.basebe.be.TickingBE;
+import com.devdyna.synergy.api.beLogic.HeatProvider;
 import com.devdyna.synergy.api.beLogic.ItemStorageBlock;
 import com.devdyna.synergy.api.beLogic.NoGuiStorage;
 import com.devdyna.synergy.api.beLogic.SimpleTickerDelay;
@@ -32,7 +33,7 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 
 @SuppressWarnings("null")
 public abstract class SolidFuelHeaterBE extends TickingBE
-        implements NoGuiStorage, ItemStorageBlock, SimpleTickerDelay {
+        implements NoGuiStorage, ItemStorageBlock, SimpleTickerDelay, HeatProvider {
 
     private BlockCapabilityCache<IItemHandler, Direction> cache;
 
@@ -89,12 +90,16 @@ public abstract class SolidFuelHeaterBE extends TickingBE
 
     protected boolean is_decay = false;
 
+    protected float heatMultiplier() {
+        return 1.0f;
+    }
+
     @Override
     public void tickServer() {
 
         if (is_decay)
             if (heat > BASE_HEAT) {
-                heat--;
+                heat -= 1 * heatMultiplier();
                 return;
             } else
                 is_decay = false;
@@ -154,7 +159,7 @@ public abstract class SolidFuelHeaterBE extends TickingBE
 
             if (ticker.every(10))
                 if (heat < getHeatCap())
-                    heat++;
+                    heat += 1 * heatMultiplier();
 
             if (ticker.commit())
                 ticker = null;
