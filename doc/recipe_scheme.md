@@ -93,7 +93,7 @@ Neo-Compound type
 {
     "type": "neoforge:compound",
     "children": <item-ingredient..?>,
-    "count": 1
+    "count": <integer>
   }
 ```
 
