@@ -347,6 +347,8 @@ public class DataLang extends LanguageProvider {
                                 "Node Upgrades Info");
                 add("config.jade.plugin_" + ID + "." + "heating",
                                 "Solid Fuel Heater Info");
+                add("config.jade.plugin_" + ID + "." + "heat_provider",
+                                "Heat Provider Info");
 
                 add(Main.ID + ".color", "Color: %d");
 

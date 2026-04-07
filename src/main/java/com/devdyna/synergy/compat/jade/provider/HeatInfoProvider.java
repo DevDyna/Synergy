@@ -31,7 +31,7 @@ public enum HeatInfoProvider
 
   @Override
   public ResourceLocation getUid() {
-    return x.rl("heating");
+    return x.rl("heat_provider");
   }
 
   @Override
