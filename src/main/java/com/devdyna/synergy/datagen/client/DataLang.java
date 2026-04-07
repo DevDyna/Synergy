@@ -702,7 +702,7 @@ public class DataLang extends LanguageProvider {
                                 + "Convert fluids to other fluids using temperatures\nRequire an §lactive"+TIP_COLOR+" heat source below\nCan explode when above 100°C!");
 
                 add(ID + "." + zStatic.Blocks.bricked_heater, TIP_COLOR
-                                + "Consume solid fuel items to produce heat\nMax temperature: 100°C");
+                                + "Consume solid fuel items to produce heat\nMax temperature: 100°C\nCannot be used as heater of the Foundry!");
 
                 add(ID + "." + zStatic.Blocks.metallic_heater, TIP_COLOR
                                 + "Consume solid fuel items to produce heat\nMax temperature: 300°C");
