@@ -60,22 +60,12 @@ public class CastingTableBE extends TickingBE
         this(zBlockEntities.CASTING_TABLE.get(), pos, blockState);
     }
 
-    // @Override
-    // public ItemStackHandler getStorage() {
-    // return getData(zHandlers.ITEM_STORAGE);
-    // }
-
     public void drops() {
         SimpleContainer inv = new SimpleContainer(getStorageRestricted().getSlots());
         for (int i = 0; i < getStorageRestricted().getSlots(); i++)
             inv.setItem(i, getStorageRestricted().getStackInSlot(i));
         Containers.dropContents(this.level, this.worldPosition, inv);
     }
-
-    // @Override
-    // public int MachineSlots() {
-    // return 2;
-    // }
 
     @Override
     public void onLoad() {
@@ -157,7 +147,6 @@ public class CastingTableBE extends TickingBE
 
         if (!getStorage().getStackInSlot(OUTPUT_SLOT).isEmpty()) {
             fail();
-            // getFluidStorage().setCapacity(0);
             return;
         }
 
@@ -201,8 +190,6 @@ public class CastingTableBE extends TickingBE
     public void fail() {
         ticker = null;
     }
-
-  
 
     @Override
     public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
