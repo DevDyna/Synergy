@@ -4,7 +4,7 @@ import static com.devdyna.synergy.Main.ID;
 
 import java.util.*;
 import java.util.function.Function;
-
+import java.awt.Color;
 import com.devdyna.synergy.api.utils.Image;
 import com.devdyna.synergy.api.utils.Size;
 import com.devdyna.synergy.api.utils.x;
@@ -13,7 +13,6 @@ import com.devdyna.synergy.common.recipes.copper_oxidation.OxidationStatus;
 import com.devdyna.synergy.compat.jei.categories.core.BaseRecipeCategory;
 import com.devdyna.synergy.init.types.zItems;
 import com.devdyna.synergy.init.types.zRecipeTypes;
-import mekanism.common.lib.Color;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -133,7 +132,7 @@ public class CopperOxidationCategory extends BaseRecipeCategory<CopperOxidationR
                     .offset(58, 20)
                     .render(helper, guiGraphics);
 
-            guiGraphics.drawCenteredString(font, "0-2", 67, 30, Color.WHITE.rgb());
+            guiGraphics.drawCenteredString(font, "0-2", 67, 30, Color.WHITE.getRGB());
 
         }
 
