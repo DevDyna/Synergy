@@ -1,12 +1,9 @@
 package com.devdyna.synergy.api.blockfactories.machine;
 
 import com.devdyna.synergy.api.beLogic.SimpleFluidStorage;
-import com.devdyna.synergy.api.utils.x;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.ItemStack;
 
 public interface FluidTankStorage extends SimpleFluidStorage {
 
