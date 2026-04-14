@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 
 import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.gui.BaseScreen;
+import com.devdyna.synergy.api.render.helpers.FluidGUITank;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
 import com.devdyna.synergy.api.utils.x;
@@ -78,29 +79,30 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
                 return menu.getEnergyUsage();
         }
 
-        @Override
-        protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
-
+        protected void renderUpgradesLabel(GuiGraphics guiGraphics, int xo, int yo) {
                 guiGraphics.blit(
                                 x.rl("textures/gui/container/upgrade_slots.png"),
-                                getGuiLeft() + 172,
-                                getGuiTop(),
+                                getGuiLeft() + xo,
+                                getGuiTop() + yo,
                                 0, 0,
                                 32, 86,
                                 32, 86);
+        }
 
-                super.renderBg(guiGraphics, v, i, i1);
-
+        protected void renderTickProgress(GuiGraphics guiGraphics, int xo, int yo) {
                 if (getRemainProgress() > 0)
                         guiGraphics.drawString(font, Component.literal((1 + getRemainProgress()) + " ticks"),
-                                        getGuiLeft() + 68,
-                                        getGuiTop() + 70,
+                                        getGuiLeft() + xo,
+                                        getGuiTop() + yo,
                                         defaultToolTipColor.getRGB(), false);
+        }
+
+        protected void renderEnergyStorage(GuiGraphics guiGraphics, int xo, int yo) {
 
                 guiGraphics.blit(
                                 x.rl("textures/gui/container/energy.png"),
-                                getGuiLeft() + 8,
-                                getGuiTop() + 5,
+                                getGuiLeft() + xo,
+                                getGuiTop() + yo,
                                 0, 0,
                                 18, 72,
                                 36, 72);
@@ -111,12 +113,52 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
 
                         guiGraphics.blit(
                                         x.rl("textures/gui/container/energy.png"),
-                                        getGuiLeft() + 8,
-                                        getGuiTop() + 5 + (72 - slice),
+                                        getGuiLeft() + xo,
+                                        getGuiTop() + yo + (72 - slice),
                                         18, 72 - slice,
                                         18, slice,
                                         36, 72);
                 }
+
+        }
+
+        protected void renderFluidTank(GuiGraphics guiGraphics, int xo, int yo) {
+
+                guiGraphics.blit(x.rl("textures/gui/container/fluid_widget.png"),
+                                getGuiLeft() + xo,
+                                getGuiTop() + yo,
+                                0, 0,
+                                18, 72,
+                                36, 72);
+
+                if (getMaxFluidAmount() > 0 && getFluidAmount() > 0)
+                        FluidGUITank.of()
+                                        .setFluid(getFluid())
+                                        .setMaxCapacity(getMaxFluidAmount())
+                                        .setAmount(getFluidAmount())
+                                        .size(72, 16)
+                                        .offset(getGuiLeft() + xo + 1, getGuiTop() + yo - 1)
+                                        .render(guiGraphics);
+
+                guiGraphics.blit(x.rl("textures/gui/container/fluid_widget.png"),
+                                getGuiLeft() + xo,
+                                getGuiTop() + yo,
+                                18, 0,
+                                18, 72,
+                                36, 72);
+
+        }
+
+        @Override
+        protected void renderBg(GuiGraphics guiGraphics, float v, int i, int i1) {
+
+                renderUpgradesLabel(guiGraphics, 172, 0);
+
+                super.renderBg(guiGraphics, v, i, i1);
+
+                renderTickProgress(guiGraphics, 68, 70);
+
+                renderEnergyStorage(guiGraphics, 8, 5);
 
         }
 
@@ -202,7 +244,6 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
 
         public int getConfigLimits(UpgradeType type) {
                 return switch (type) {
-                        // case UpgradeType.ENERGY -> Common.MACHINE_MAX_ENERGY_CAPACITY_UPGRADES_TYPE.get();
                         case UpgradeType.ENERGY -> Common.MACHINE_MAX_ENERGY_EFFICIENCY_UPGRADES_TYPE.get();
                         case UpgradeType.SPEED -> Common.MACHINE_MAX_SPEED_UPGRADES_TYPE.get();
                         case UpgradeType.LUCK -> Common.MACHINE_MAX_LUCK_UPGRADES_TYPE.get();
