@@ -27,8 +27,5 @@ public interface FluidTankStorage extends SimpleFluidStorage {
      */
     abstract FluidTankType getTankIOType();
 
-    default ItemStack getAsBucket() {
-        return x.item(getFluidStorage().getFluid().getFluid().getBucket());
-    }
 
 }
