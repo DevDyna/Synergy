@@ -1,6 +1,6 @@
 package com.devdyna.synergy.api.beLogic;
 
-import com.devdyna.synergy.api.fluidtanks.FluidStorageTank;
+import com.devdyna.synergy.api.FluidStorageTank;
 import com.devdyna.synergy.api.utils.x;
 
 import net.minecraft.world.item.ItemStack;
