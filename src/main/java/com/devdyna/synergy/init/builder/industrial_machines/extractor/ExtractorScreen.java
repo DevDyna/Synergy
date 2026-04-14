@@ -3,7 +3,6 @@ package com.devdyna.synergy.init.builder.industrial_machines.extractor;
 import java.util.List;
 
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineScreen;
-import com.devdyna.synergy.api.render.helpers.FluidGUITank;
 import com.devdyna.synergy.api.utils.ArrayUtils;
 import com.devdyna.synergy.api.utils.Pos;
 import com.devdyna.synergy.api.utils.StringUtil;
@@ -33,28 +32,7 @@ public class ExtractorScreen extends BaseMachineScreen<ExtractorMenu> {
 
         super.renderBg(guiGraphics, v, i, i1);
 
-        guiGraphics.blit(x.rl("textures/gui/container/fluid_widget.png"),
-                getGuiLeft() + 150,
-                getGuiTop() + 5,
-                0, 0,
-                18, 72,
-                36, 72);
-
-        if (getMaxFluidAmount() > 0 && getFluidAmount() > 0)
-            FluidGUITank.of()
-                    .setFluid(getFluid())
-                    .setMaxCapacity(getMaxFluidAmount())
-                    .setAmount(getFluidAmount())
-                    .size(72, 16)
-                    .offset(getGuiLeft() + 151, getGuiTop() + 4)
-                    .render(guiGraphics);
-
-        guiGraphics.blit(x.rl("textures/gui/container/fluid_widget.png"),
-                getGuiLeft() + 150,
-                getGuiTop() + 5,
-                18, 0,
-                18, 72,
-                36, 72);
+        renderFluidTank(guiGraphics, 150, 5);
 
     }
 

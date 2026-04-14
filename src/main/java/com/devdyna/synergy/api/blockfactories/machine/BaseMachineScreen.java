@@ -97,6 +97,16 @@ public abstract class BaseMachineScreen<T extends BaseMachineMenu> extends BaseS
                                         defaultToolTipColor.getRGB(), false);
         }
 
+        protected void renderLeftLabel(GuiGraphics guiGraphics) {
+                guiGraphics.blit(
+                                x.rl("textures/gui/container/left_label.png"),
+                                getGuiLeft() - 30,
+                                getGuiTop(),
+                                0, 0,
+                                32, 86,
+                                32, 86);
+        }
+
         protected void renderEnergyStorage(GuiGraphics guiGraphics, int xo, int yo) {
 
                 guiGraphics.blit(
