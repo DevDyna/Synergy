@@ -13,6 +13,7 @@ import com.devdyna.synergy.api.beLogic.RestrictedItemHandler;
 import com.devdyna.synergy.api.beLogic.SimpleTickerDelay;
 import com.devdyna.synergy.api.recipes.inputs.ItemFluidInput;
 import com.devdyna.synergy.api.utils.Ticker;
+import com.devdyna.synergy.api.utils.x;
 import com.devdyna.synergy.init.builder.survival.casting_table.recipe.CastingTableRecipe;
 import com.devdyna.synergy.init.types.zBlockEntities;
 import com.devdyna.synergy.init.types.zHandlers;
@@ -300,19 +301,38 @@ public class CastingTableBE extends TickingBE
             @Override
             public int fill(FluidStack resource, FluidAction action) {
 
+                if (resource.isEmpty())
+                    return 0;
+
                 if (!getStorage().getStackInSlot(OUTPUT_SLOT).isEmpty())
                     return 0;
 
+                int maxFill = getFluidCapacity();
+
                 Optional<RecipeHolder<CastingTableRecipe>> r = level.getRecipeManager()
                         .getRecipeFor(zRecipeTypes.CASTING_TABLE.getType(),
-                                new ItemFluidInput(getFluidStorage().getFluid(),
+                                new ItemFluidInput(resource,
                                         getStorageRestricted().getStackInSlot(MOLD_SLOT)),
                                 level);
 
-                if (r.isEmpty())
+                if (r.isPresent()) {
+                    var recipe = r.get().value();
+
+                    if (!recipe.getFluid().ingredient().test(resource))
+                        return 0;
+
+                    maxFill = Math.max(0, recipe.getFluid().amount() - getFluidStorage().getFluidAmount());
+
+                    if (maxFill <= 0)
+                        return 0;
+                }
+
+                int toFill = Math.min(resource.getAmount(), maxFill);
+
+                if (toFill <= 0)
                     return 0;
 
-                return r.get().value().getFluid().amount();
+                return getFluidStorage().fill(x.fluid(resource.getFluid(), toFill), action);
             }
 
             @Override
