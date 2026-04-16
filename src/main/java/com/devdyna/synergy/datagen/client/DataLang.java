@@ -690,9 +690,8 @@ public class DataLang extends LanguageProvider {
                 add(ID + ".jade.heat_consumer.status.warn.above", "Status: §cTemperature is too high!");
                 add(ID + ".jade.heat_consumer.status.warn.below", "Status: §cTemperature is too low!");
 
-                // TODO implement
-                add(ID + ".jade.tip.include", "Include");
-                add(ID + ".jade.tip.exclude", "Exclude");
+                // add(ID + ".jade.tip.include", "Include");
+                // add(ID + ".jade.tip.exclude", "Exclude");
 
                 add(ID + ".jade.heat_consumer.status.missing_heat", "§cRequire an active heat source below");
 
