@@ -49,9 +49,8 @@ public interface ExtraMachineSlots {
 
         public SlotBuilder(int slots) {
             List<SlotType> a = new ArrayList<>();
-            for (int i = 0; i < slots; i++) {
+            for (int i = 0; i < slots; i++)
                 a.add(SlotType.UNUSED);
-            }
             this.list = a;
         }
 
@@ -69,10 +68,9 @@ public interface ExtraMachineSlots {
         }
 
         public SlotBuilder setAll(SlotType type, Integer... slots) {
-            for (int s : slots) {
+            for (int s : slots)
                 if (s >= 6)
                     list.set(s - 6, type);
-            }
             return this;
         }
 

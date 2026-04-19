@@ -27,7 +27,7 @@ public class MelterBE extends BaseMachineBE implements FluidTankStorage {
 
     @Override
     public int getMachineSlots() {
-        return 5;
+        return MAX_UPGRADE_SLOTS + 1;
     }
 
     public MelterBE(BlockPos pos, BlockState blockState) {
