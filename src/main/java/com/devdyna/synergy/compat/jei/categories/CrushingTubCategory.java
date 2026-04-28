@@ -9,10 +9,13 @@ import com.devdyna.synergy.init.types.zBlocks;
 import com.devdyna.synergy.init.types.zRecipeTypes;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 
@@ -56,13 +59,30 @@ public class CrushingTubCategory extends BaseRecipeCategory<CrushingTubRecipe> {
 
         builder.addSlot(RecipeIngredientRole.INPUT, 21, 29).addIngredients(recipe.getInput());
 
-        JEIFluidTankHelper.of()
-                .fluid(recipe.getFluid())
-                .offset(71, 39)
-                .scale(2.0f, 1.0f)
-                .build((x, y) -> builder.addOutputSlot(x, y));
+        if (recipe.getFluid() != null)
+            JEIFluidTankHelper.of()
+                    .fluid(recipe.getFluid())
+                    .offset(71, 39)
+                    .scale(2.0f, 1.0f)
+                    .build((x, y) -> builder.addOutputSlot(x, y));
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 70+1, 46+1).addItemStack(recipe.getOutput());
+        if (recipe.getOutput() != null)
+            builder.addSlot(RecipeIngredientRole.OUTPUT, 70 + 1, 46 + 1).addItemStack(recipe.getOutput().item());
+
+    }
+
+    @Override
+    public void draw(CrushingTubRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
+            double mouseY) {
+        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+
+        if (recipe.getOutput() != null && recipe.getOutput().chance() < 1)
+            drawCentredStringFixed(guiGraphics, font,
+                    Component.literal(
+                            ((int) (recipe.getOutput().chance() * 100)) + "%"),
+                    55, 53,
+                    defaultToolTipColor.getRGB(), false);
+
     }
 
 }
