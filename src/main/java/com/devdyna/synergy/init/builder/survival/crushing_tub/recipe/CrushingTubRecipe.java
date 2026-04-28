@@ -2,6 +2,7 @@ package com.devdyna.synergy.init.builder.survival.crushing_tub.recipe;
 
 import java.util.List;
 
+import com.devdyna.synergy.api.codec.ChanceOutputItem;
 import com.devdyna.synergy.api.recipes.inputs.MonoItemInput;
 import com.devdyna.synergy.api.recipes.types.BaseRecipeType;
 import com.devdyna.synergy.api.registers.RecipeRegister;
@@ -21,16 +22,16 @@ public class CrushingTubRecipe extends BaseRecipeType<MonoItemInput> {
 
     private final Ingredient input;
     private final FluidStack fluid;
-    private final ItemStack output;
+    private final ChanceOutputItem output;
 
     public CrushingTubRecipe(Ingredient input,
-            ItemStack output, FluidStack fluid) {
+            ChanceOutputItem output, FluidStack fluid) {
         this.input = input;
         this.fluid = fluid;
         this.output = output;
     }
 
-    public static CrushingTubRecipe of(Ingredient input, ItemStack output, FluidStack fluid) {
+    public static CrushingTubRecipe of(Ingredient input, ChanceOutputItem output, FluidStack fluid) {
         return new CrushingTubRecipe(input, output, fluid);
     }
 
@@ -39,7 +40,7 @@ public class CrushingTubRecipe extends BaseRecipeType<MonoItemInput> {
     }
 
     public ItemStack assemble(MonoItemInput i, HolderLookup.Provider r) {
-        return this.output.copy();
+        return this.output.item().copy();
     }
 
     public NonNullList<Ingredient> getIngredients() {
@@ -50,7 +51,7 @@ public class CrushingTubRecipe extends BaseRecipeType<MonoItemInput> {
         return input;
     }
 
-    public ItemStack getOutput() {
+    public ChanceOutputItem getOutput() {
         return output;
     }
 
@@ -62,7 +63,7 @@ public class CrushingTubRecipe extends BaseRecipeType<MonoItemInput> {
     @Deprecated
     public ItemStack getResultItem(HolderLookup.Provider r) {
         return this.output != null
-                ? this.output
+                ? this.output.item()
                 : x.item(this.fluid.getFluid().getBucket()).copy();
     }
 
