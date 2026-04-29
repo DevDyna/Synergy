@@ -59,7 +59,7 @@ public class CrushingTubCategory extends BaseRecipeCategory<CrushingTubRecipe> {
 
         builder.addSlot(RecipeIngredientRole.INPUT, 21, 29).addIngredients(recipe.getInput());
 
-        if (recipe.getFluid() != null)
+        if (recipe.getFluid() != null && recipe.getFluid().getAmount() > 0)
             JEIFluidTankHelper.of()
                     .fluid(recipe.getFluid())
                     .offset(71, 39)
