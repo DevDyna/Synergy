@@ -14,6 +14,6 @@
   "type": "synergy:crushing_tub",
   "fluid": <fluid-stack>,
   "input": <item-ingredient>,
-  "output": <item-stack>
+  "output": <chance-output-item>
 }
 ```

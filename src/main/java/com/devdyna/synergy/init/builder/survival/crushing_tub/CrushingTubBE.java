@@ -125,8 +125,8 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
         if (getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.SIMULATE) != 0)
             return ItemStack.EMPTY;
 
-        return recipe.getOutput().copy();
-
+        return level.random.nextFloat() < recipe.getOutput().chance() ? recipe.getOutput().item().copy()
+                : ItemStack.EMPTY;
     }
 
     public void craft(boolean dropWhenCrafted) {
@@ -164,8 +164,9 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
         getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.EXECUTE);
         getStorage().extractItem(0, 1, false);
 
-        if (dropWhenCrafted)
-            Block.popResource(level, getBlockPos().above(), recipe.getOutput().copy());
+        if (level.random.nextFloat() < recipe.getOutput().chance())
+            if (dropWhenCrafted)
+                Block.popResource(level, getBlockPos().above(), recipe.getOutput().item().copy());
 
         level.playSound(null, getBlockPos(),
                 LevelUtil.chance(50, level) ? SoundEvents.SLIME_BLOCK_FALL : SoundEvents.SNIFFER_EGG_CRACK,
@@ -174,7 +175,6 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
         update();
     }
 
-  
     @Override
     public FluidStorageTank getFluidStorage() {
         return getData(zHandlers.FLUID_TANK);

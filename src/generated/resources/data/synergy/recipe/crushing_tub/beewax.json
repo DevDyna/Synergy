@@ -2,16 +2,16 @@
   "type": "synergy:crushing_tub",
   "fluid": {
     "amount": 250,
-    "id": "synergy:ironberry_juice_source"
+    "id": "synergy:honey_source"
   },
   "input": {
-    "item": "synergy:ironberries"
+    "item": "minecraft:honeycomb"
   },
   "output": {
-    "chance": 1.0,
+    "chance": 0.5,
     "item": {
       "count": 1,
-      "id": "synergy:tiny_iron_dust"
+      "id": "synergy:beewax"
     }
   }
 }

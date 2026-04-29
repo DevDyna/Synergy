@@ -337,7 +337,7 @@ public class DataRecipe extends ExtraRecipeProvider {
                 CrushingTubBuilder.of()
                                 .input(zItems.IRONBERRIES)
                                 .fluid(zFluids.IRONBERRY_JUICE, 250)
-                                .output(zItems.TINY_IRON_DUST)
+                                .output(zItems.TINY_IRON_DUST, 1)
                                 .unlockedBy()
                                 .save(c);
 
@@ -2606,6 +2606,19 @@ public class DataRecipe extends ExtraRecipeProvider {
                 CrushingTubBuilder.of()
                                 .input(ItemTags.LEAVES)
                                 .fluid(Fluids.WATER, 125)
+                                .unlockedBy()
+                                .save(c);
+
+                CrushingTubBuilder.of()
+                                .input(Items.HONEYCOMB)
+                                .fluid(zFluids.HONEY, 250)
+                                .output(zItems.BEEWAX, 0.5f)
+                                .unlockedBy()
+                                .save(c);
+
+                CrushingTubBuilder.of()
+                                .input(zItems.BEEWAX)
+                                .fluid(zFluids.HONEY, 125)
                                 .unlockedBy()
                                 .save(c);
 
