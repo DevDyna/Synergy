@@ -122,8 +122,9 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
 
         var recipe = r.get().value();
 
-        if (getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.SIMULATE) != 0)
-            return ItemStack.EMPTY;
+        if (recipe.getFluid() != null && !recipe.getFluid().isEmpty())
+            if (getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.SIMULATE) != 0)
+                return ItemStack.EMPTY;
 
         return level.random.nextFloat() < recipe.getOutput().chance() ? recipe.getOutput().item().copy()
                 : ItemStack.EMPTY;
@@ -158,10 +159,14 @@ public class CrushingTubBE extends TickingBE implements NoGuiStorage, ItemStorag
 
         var recipe = r.get().value();
 
-        if (getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.SIMULATE) == 0)
-            return;
+        var hasFluid = recipe.getFluid() != null && !recipe.getFluid().isEmpty();
 
-        getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.EXECUTE);
+        if (hasFluid)
+            if (getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.SIMULATE) == 0)
+                return;
+
+        if (hasFluid)
+            getFluidStorage().fill(recipe.getFluid().copy(), FluidAction.EXECUTE);
         getStorage().extractItem(0, 1, false);
 
         if (level.random.nextFloat() < recipe.getOutput().chance())
