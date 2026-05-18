@@ -63,6 +63,8 @@
 
 ## PRIORITIES
 
+- [ ] rework heaters (it will be too abstract)
+
 ### Survival expansion
 
 - [ ] scrap and slags
