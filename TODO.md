@@ -2,7 +2,7 @@
 
 ## GENERAL
 
-- [ ] quickMoveStack (i hate you!)
+- [x] quickMoveStack (i hate you!)
 
 - [ ] Nodes bypass WorldyContainers restrictions
 
