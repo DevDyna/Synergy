@@ -1,5 +1,6 @@
 package com.devdyna.synergy.api.blockfactories.plants.builder;
 
+import com.devdyna.synergy.Common;
 import com.devdyna.synergy.api.utils.LevelUtil;
 
 import net.minecraft.core.BlockPos;
@@ -103,6 +104,7 @@ public class BaseCropMushroom extends BaseShortCropBlock {
 
         if (!isMaxAge(state))
             if (LevelUtil.chance(2 + getMaxAge() - getAge(state), level))
+            if(!Common.DISABLE_MUSHROOM_SPREADING.get())
                 spreadSpores(pos, level, state);
 
     }
