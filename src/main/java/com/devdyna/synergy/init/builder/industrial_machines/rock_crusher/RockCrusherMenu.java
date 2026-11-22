@@ -1,5 +1,7 @@
 package com.devdyna.synergy.init.builder.industrial_machines.rock_crusher;
 
+import com.devdyna.synergy.api.blockfactories.machine.ExtraMachineSlots.SlotBuilder;
+import com.devdyna.synergy.api.blockfactories.machine.ExtraMachineSlots.SlotType;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
@@ -33,6 +35,18 @@ public class RockCrusherMenu extends BaseMachineMenu {
     @Override
     public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<?>> getMachine() {
         return zMachines.ROCK_CRUSHER;
+    }
+
+    @Override
+    public SlotBuilder getSlots() {
+        var builder = SlotBuilder.of(blockEntity.getMachineSlots())
+                .set(RockCrusherBE.INPUT_SLOT - 4 + 6, SlotType.INPUT);
+
+        for (var slot : RockCrusherBE.OUTPUT_SLOTS)
+            builder = builder.set(slot - 4 + 6, SlotType.OUTPUT);
+
+        return builder;
+
     }
 
 }

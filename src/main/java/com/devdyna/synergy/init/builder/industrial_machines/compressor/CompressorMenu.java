@@ -1,5 +1,7 @@
 package com.devdyna.synergy.init.builder.industrial_machines.compressor;
 
+import com.devdyna.synergy.api.blockfactories.machine.ExtraMachineSlots.SlotBuilder;
+import com.devdyna.synergy.api.blockfactories.machine.ExtraMachineSlots.SlotType;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
@@ -29,6 +31,14 @@ public class CompressorMenu extends BaseMachineMenu {
     @Override
     public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<?>> getMachine() {
         return zMachines.COMPRESSOR;
+    }
+
+    @Override
+    public SlotBuilder getSlots() {
+        return SlotBuilder.of(blockEntity.getMachineSlots())
+                .set(CompressorBE.INPUT_SLOT - 4+6, SlotType.INPUT)
+                .set(CompressorBE.OUTPUT_SLOT - 4+6, SlotType.OUTPUT)
+                .set(CompressorBE.PLATE_SLOT - 4+6, SlotType.INPUT);
     }
 
 }

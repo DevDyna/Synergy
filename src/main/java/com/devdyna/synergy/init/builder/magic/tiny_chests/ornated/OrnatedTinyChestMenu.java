@@ -19,13 +19,11 @@ public class OrnatedTinyChestMenu extends BaseTinyChestMenu {
     public OrnatedTinyChestMenu(int containerId, Inventory inv, BlockEntity be) {
         super(zContainer.ORNATED_TINY_CHEST_MENU.get(), containerId, be);
         this.level = inv.player.level();
-        addPlayerSlots(inv,0,56);
+        addPlayerSlots(inv, 0, 56);
         addMachineSlots(this.blockEntity.getStorage(),
                 0, 8, 18, blockEntity.MachineSlots(), i -> (i % 9) * 18, i -> (i / 9) * 18);
 
     }
-
-    
 
     @Override
     public Block getChestType() {
@@ -35,6 +33,11 @@ public class OrnatedTinyChestMenu extends BaseTinyChestMenu {
     @Override
     public Level getLevel() {
         return level;
+    }
+
+    @Override
+    public int getSlots() {
+        return 54;
     }
 
 }

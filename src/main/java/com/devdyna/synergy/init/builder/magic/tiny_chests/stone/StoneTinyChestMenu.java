@@ -35,4 +35,9 @@ public class StoneTinyChestMenu extends BaseTinyChestMenu {
         return level;
     }
 
+    @Override
+    public int getSlots() {
+        return 27;
+    }
+
 }

@@ -34,6 +34,7 @@ public class Common {
         // grr grr
         public static BooleanValue DISABLE_ITEM_USE_RECIPE;// false
         public static BooleanValue DISABLE_HARVESTABLE_ACTION;// false
+        public static BooleanValue DISABLE_MUSHROOM_SPREADING;// false
 
         // autotune
         public static IntValue HARVESTER_TICK_DELAY;// 5
@@ -223,6 +224,9 @@ public class Common {
                                                 + " it will turn off by default",
                                 "harvestable_action",
                                 ModAddonUtil.checkMod(zStatic.Mods.FarmersDelight));
+
+                DISABLE_MUSHROOM_SPREADING = bool("Disable Mushroom In-World spreading",
+                                "disable_mushrooms");
 
                 qCOMMON.pop();
         }
@@ -486,8 +490,10 @@ public class Common {
         private static void pipe_blocks() {
                 qCOMMON.comment("PipeBlocks").push("7-pipe");
                 DEFAULT_NODE_SPEED = number("Base speed of any node without upgrades", "base_node_speed", 100);
-                MAX_NODE_SPEED_UPGRADES = number("Number of speed upgrades installable foreach nodes", "node_speed_upgrades", 4,1,4);
-                MAX_NODE_STACK_UPGRADES = number("Number of stack upgrades installable foreach nodes", "node_stack_upgrades", 4,1,4);
+                MAX_NODE_SPEED_UPGRADES = number("Number of speed upgrades installable foreach nodes",
+                                "node_speed_upgrades", 4, 1, 4);
+                MAX_NODE_STACK_UPGRADES = number("Number of stack upgrades installable foreach nodes",
+                                "node_stack_upgrades", 4, 1, 4);
                 qCOMMON.pop();
         }
 

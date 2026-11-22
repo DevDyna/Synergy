@@ -24,9 +24,9 @@ public interface ExtraMachineSlots {
          */
         INPUT(),
         // /**
-        // * Item cannot be consumed but required
+        // * Item cannot be consumed or required
         // */
-        // CATALYST(),
+        BUFFER(),
         /**
          * Item result and not required
          */
@@ -38,10 +38,6 @@ public interface ExtraMachineSlots {
     }
 
     abstract SlotBuilder getSlotTypes();
-
-    // default List<Integer> getExtraSlots(){
-    // return List.of();
-    // }
 
     class SlotBuilder {
 

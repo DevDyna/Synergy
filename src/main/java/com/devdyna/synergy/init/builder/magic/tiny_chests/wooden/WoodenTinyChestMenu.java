@@ -33,4 +33,9 @@ public class WoodenTinyChestMenu extends BaseTinyChestMenu {
         return level;
     }
 
+    @Override
+    public int getSlots() {
+        return 1;
+    }
+
 }

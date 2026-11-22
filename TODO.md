@@ -2,7 +2,7 @@
 
 ## GENERAL
 
-- [ ] quickMoveStack (i hate you!)
+- [x] quickMoveStack (i hate you!)
 
 - [ ] Nodes bypass WorldyContainers restrictions
 
@@ -62,6 +62,8 @@
 - [ ] bucket interaction dont swing when item isn't empty
 
 ## PRIORITIES
+
+- [ ] rework heaters (it will be too abstract)
 
 ### Survival expansion
 
