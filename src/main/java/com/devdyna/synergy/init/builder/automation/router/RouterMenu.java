@@ -6,6 +6,8 @@ import com.devdyna.synergy.init.types.zContainer;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -64,6 +66,12 @@ public class RouterMenu extends BaseMenu {
     @Override
     public Level getLevel() {
         return level;
+    }
+
+    //disabled quickMoveStack due it is a selective choise
+    @Override
+    public ItemStack quickMoveStack(Player player, int index) {
+        return ItemStack.EMPTY;
     }
 
 }

@@ -6,7 +6,9 @@ import com.devdyna.synergy.init.types.zContainer;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -59,6 +61,54 @@ public class FuelCellMenu extends BaseMenu {
     @Override
     public Level getLevel() {
         return level;
+    }
+
+    @Override
+    public ItemStack quickMoveStack(Player player, int index) {
+
+        if (index < 0 || index >= this.slots.size())
+            return ItemStack.EMPTY;
+
+        var slot = this.slots.get(index);
+
+        if (!slot.hasItem())
+            return ItemStack.EMPTY;
+
+        var item = slot.getItem();
+
+        // player inv -> <?>
+        if (index >= 0 && index <= 35) {
+            var copy = item.copy();
+
+            // player -> machine
+            if (moveItemStackTo(item, 36, 36 + 1, true)) {
+                slot.onTake(player, item);
+                return copy;
+            }
+
+            // inv -> hotbar
+            if (index >= 0 && index <= 26) {
+                if (moveItemStackTo(item, 27, 35 + 1, true)) {
+                    slot.onTake(player, item);
+                    return copy;
+                }
+            }
+
+            // hotbar -> inv
+            if (index >= 27 && index <= 35) {
+                if (moveItemStackTo(item, 0, 26 + 1, true)) {
+                    slot.onTake(player, item);
+                    return copy;
+                }
+            }
+        }
+
+        // machine -> <?>
+        if (index >= 36)
+            return moveToInventory(item, slot, player, 0);
+
+        return ItemStack.EMPTY;
+
     }
 
 }

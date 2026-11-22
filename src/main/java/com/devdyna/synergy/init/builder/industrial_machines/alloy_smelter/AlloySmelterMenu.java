@@ -1,5 +1,7 @@
 package com.devdyna.synergy.init.builder.industrial_machines.alloy_smelter;
 
+import com.devdyna.synergy.api.blockfactories.machine.ExtraMachineSlots.SlotBuilder;
+import com.devdyna.synergy.api.blockfactories.machine.ExtraMachineSlots.SlotType;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBE;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineBlock;
 import com.devdyna.synergy.api.blockfactories.machine.BaseMachineMenu;
@@ -29,6 +31,14 @@ public class AlloySmelterMenu extends BaseMachineMenu {
     @Override
     public MachineType<? extends BaseMachineBlock, ? extends BaseMachineBE, ? extends BaseMachineMenu, ? extends BaseMachineRecipeType<?>> getMachine() {
         return zMachines.ALLOY_SMELTER;
+    }
+
+    @Override
+    public SlotBuilder getSlots() {
+        return SlotBuilder.of(blockEntity.getMachineSlots())
+                .set(AlloySmelterBE.INPUT_SLOT - 4+6, SlotType.INPUT)
+                .set(AlloySmelterBE.OUTPUT_SLOT - 4+6, SlotType.OUTPUT)
+                .set(AlloySmelterBE.SECONDARY_INPUT - 4+6, SlotType.INPUT);
     }
 
 }
